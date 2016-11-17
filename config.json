@@ -1,0 +1,10 @@
+{
+  "groupId":"net.troja.eve",
+  "artifactId":"esi",
+  "invokerPackage":"net.troja.eve.esi",
+  "apiPackage":"net.troja.eve.esi.api",
+  "modelPackage":"net.troja.eve.esi.model",
+  "library":"jersey2",
+  "serializableModel":"true",
+  "dateLibrary":"java8"
+}
