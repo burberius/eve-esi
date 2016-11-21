@@ -58,6 +58,6 @@ rm -rf gradle* settings.gradle build.* docs git_push.sh .travis.yml
 
 git add .
 git commit -m "Generated API version $APIVERSION"
-git push
+git push origin $APIVERSION
 
 echo "New version $APIVERSION"
