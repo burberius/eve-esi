@@ -27,7 +27,7 @@ if [ "a$COMMIT" = "atrue" ]; then
   exit 0
 fi
 
-#git checkout -b $APIVERSION
+git checkout -b $APIVERSION
 
 #
 # Get swagger code generator
