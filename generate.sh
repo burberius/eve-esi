@@ -67,4 +67,4 @@ echo "New version $APIVERSION"
 #
 EMAILS=$(sed -n -e 's#.*<email>\(.*\)</email>#\1#p' pom.xml | tr "\n" " ")
 DIFF=$(git diff HEAD^ HEAD)
-echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION"
+echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION" $EMAILS
