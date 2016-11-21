@@ -61,3 +61,10 @@ git commit -m "Generated API version $APIVERSION"
 git push origin $APIVERSION
 
 echo "New version $APIVERSION"
+
+#
+# Send email
+#
+EMAILS=$(sed -n -e 's#.*<email>\(.*\)</email>#\1#p' pom.xml | tr "\n" " ")
+DIFF=$(git diff HEAD^ HEAD)
+echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION"
