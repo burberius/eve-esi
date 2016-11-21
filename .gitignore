@@ -19,8 +19,12 @@ hs_err_pid*
 target
 .gradle
 build
+bin
 
 *~
 
-# Download the swagger-codegen-cli
+# Downloaded swagger-codegen-cli
 swagger-codegen-cli*
+
+# Swagger data file
+esi.json
