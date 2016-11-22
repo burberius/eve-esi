@@ -21,7 +21,10 @@ target
 build
 bin
 .project
+.classpath
+.settings
 
+# joe backup files
 *~
 
 # Downloaded swagger-codegen-cli

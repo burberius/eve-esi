@@ -6,5 +6,6 @@
   "modelPackage":"net.troja.eve.esi.model",
   "library":"jersey2",
   "serializableModel":"true",
+  "hideGenerationTimestamp":"true",
   "dateLibrary":"java8"
 }
