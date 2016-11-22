@@ -1,33 +1,38 @@
 #!/bin/bash
 
+if [ "a$1" = "a-g" ]; then
+  GIT=true
+fi
+
 #
 # Get eve swagger file
 #
 rm -f esi.json
 wget -q -O esi.json https://esi.tech.ccp.is/latest/swagger.json?datasource=tranquility
-APIVERSION=$(jq -r '.info.version' esi.json)
 
-if [ a$APIVERSION = "a" ]; then
-  echo "Version not found, perhaps the API is down."
-  exit 1
-fi
+APIHASH=$(md5sum esi.json | sed -e 's#.*\(.\{10\}\)  esi.json#\1#')
+DATE=$(date +"%y-%m-%d")
+
+APIVERSION="$DATE-$APIHASH"
 
 echo "ESI version $APIVERSION"
 
-git fetch -p
-BRANCH=$(git branch -a | grep $APIVERSION > /dev/null && echo "true")
-COMMIT=$(git log | grep $APIVERSION > /dev/null && echo "true")
+if [ "$GIT" = true ]; then
+  git fetch -p
+  BRANCH=$(git branch -a | grep $APIVERSION > /dev/null && echo "true")
+  COMMIT=$(git log | grep $APIVERSION > /dev/null && echo "true")
 
-if [ "a$BRANCH" = "atrue" ]; then
-  echo "Found version as branch"
-  exit 0
-fi
-if [ "a$COMMIT" = "atrue" ]; then
-  echo "Found version as commit"
-  exit 0
-fi
+  if [ "a$BRANCH" = "atrue" ]; then
+    echo "Found version as branch"
+    exit 0
+  fi
+  if [ "a$COMMIT" = "atrue" ]; then
+    echo "Found version as commit"
+    exit 0
+  fi
 
-git checkout -b $APIVERSION
+  git checkout -b $APIVERSION
+fi
 
 #
 # Get swagger code generator
@@ -44,6 +49,11 @@ if [ ! -e swagger-codegen-cli-$VERSION.jar ]; then
 fi
 
 #
+# Beautify swagger file
+#
+sed -i -f replace.sed esi.json
+
+#
 # Generate code
 #
 java -jar swagger-codegen-cli-$VERSION.jar generate \
@@ -56,15 +66,20 @@ java -jar swagger-codegen-cli-$VERSION.jar generate \
 #
 rm -rf gradle* settings.gradle build.* docs git_push.sh .travis.yml
 
-git add .
-git commit -m "Generated API version $APIVERSION"
-git push origin $APIVERSION
+if [ "$GIT" = true ]; then
+  git add .
+  git commit -m "Generated API version $APIVERSION"
+  git push origin $APIVERSION
 
-echo "New version $APIVERSION"
+  echo "New version $APIVERSION"
 
 #
 # Send email
 #
-EMAILS=$(sed -n -e 's#.*<email>\(.*\)</email>#\1#p' pom.xml | tr "\n" " ")
-DIFF=$(git diff HEAD^ HEAD)
-echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION" $EMAILS
+  EMAILS=$(sed -n -e 's#.*<email>\(.*\)</email>#\1#p' pom.xml | tr "\n" " ")
+  DIFF=$(git diff HEAD^ HEAD)
+  echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION" $EMAILS
+
+else
+  echo "To publish to a git branch, start with '-g'"
+fi

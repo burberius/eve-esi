@@ -1,0 +1,33 @@
+# jq '.paths[].get.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
+s/get_alliances_200_ok/AlliancesResponse/g
+s/get_alliances_alliance_id_corporations_200_ok/AllianceCorporationsResponse/g
+s/get_alliances_names_200_ok/AllianceNamesResponse/g
+s/get_characters_character_id_bookmarks_200_ok/CharacterBookmarksResponse/g
+s/get_characters_character_id_bookmarks_folders_200_ok/CharacterBookmarkFoldersResponse/g
+s/get_characters_character_id_calendar_200_ok/CharacterCalendarResponse/g
+s/get_characters_character_id_corporationhistory_200_ok/CharacterCorporationHistoryResponse/g
+s/get_characters_character_id_killmails_recent_200_ok/CharacterKillmailsResponse/g
+s/get_characters_character_id_mail_200_ok/MailHeadersResponse/g
+s/get_characters_character_id_mail_lists_200_ok/CharacterMailinglistsResponse/g
+s/get_characters_character_id_skillqueue_200_ok/CharacterSkillqueueResponse/g
+s/get_characters_character_id_wallets_200_ok/CharacterWalletsResponse/g
+s/get_characters_character_id_wallets_journal_200_ok/CharacterWalletJournalResponse/g
+s/get_characters_character_id_wallets_transactions_200_ok/CharacterWalletTransactionsResponse/g
+s/get_characters_names_200_ok/CharacterNamesResponse/g
+s/get_corporations_corporation_id_alliancehistory_200_ok/CorporationAlliancesHistoryResponse/g
+s/get_corporations_corporation_id_members_200_ok/CorporationMembersResponse/g
+s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
+s/get_corporations_names_200_ok/CorporationNamesResponse/g
+s/get_incursions_200_ok/IncursionsResponse/g
+s/get_markets_prices_200_ok/MarketPricesResponse/g
+s/get_markets_region_id_history_200_ok/MarketHistoryResponse/g
+s/get_markets_region_id_orders_200_ok/MarketOrdersResponse/g
+s/get_sovereignty_campaigns_200_ok/SovereigntyCampaignsResponse/g
+s/get_sovereignty_structures_200_ok/SovereigntyStructuresResponse/g
+s/get_universe_structures_200_ok/UniverseStructuresResponse/g
+
+# errors
+s/[_0-9a-z]*internal_server_error/InternalServerErrorResponse/g
+s/[_0-9a-z]*forbidden/ForbiddenResponse/g
+s/[_0-9a-z]*bad_request/BadRequestResponse/g
+s/[_0-9a-z]*not_found/NotFoundResponse/g
