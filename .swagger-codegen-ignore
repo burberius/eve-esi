@@ -28,6 +28,7 @@ settings.gradle
 gradle.properties
 src/main/AndroidManifest.xml
 .travis.yml
+gradle
 gradlew
 gradlew.bat
 gradle/wrapper/gradle-wrapper.properties
