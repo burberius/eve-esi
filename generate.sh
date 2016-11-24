@@ -62,9 +62,9 @@ java -jar swagger-codegen-cli-$VERSION.jar generate \
   -c config.json
 
 #
-# Clean up
+# Clean formating
 #
-rm -rf gradle* settings.gradle build.* docs git_push.sh .travis.yml
+mvn formatter:format
 
 if [ "$GIT" = true ]; then
   git add .
