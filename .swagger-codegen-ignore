@@ -18,10 +18,23 @@
 
 # You can also negate patterns with an exclamation (!).
 # For example, you can ignore all files in a docs folder with the file extension .md:
-#docs/*.md
+docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+build.gradle
+build.sbt
+settings.gradle
+gradle.properties
+src/main/AndroidManifest.xml
+.travis.yml
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+git_push.sh
 
 docs 
 pom.xml
 .gitignore
+LICENSE
