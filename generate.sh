@@ -19,8 +19,8 @@ echo "ESI version $APIVERSION"
 
 if [ "$GIT" = true ]; then
   git fetch -p
-  BRANCH=$(git branch -a | grep $APIVERSION > /dev/null && echo "true")
-  COMMIT=$(git log | grep $APIVERSION > /dev/null && echo "true")
+  BRANCH=$(git branch -a | grep $APIHASH > /dev/null && echo "true")
+  COMMIT=$(git log | grep $APIHASH > /dev/null && echo "true")
 
   if [ "a$BRANCH" = "atrue" ]; then
     echo "Found version as branch"
