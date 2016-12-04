@@ -22,57 +22,68 @@
  * limitations under the License.
  */
 
-
 package net.troja.eve.esi.api;
+
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
+import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.SovereigntyCampaignsResponse;
 import net.troja.eve.esi.model.SovereigntyStructuresResponse;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for SovereigntyApi
  */
-public class SovereigntyApiTest {
+public class SovereigntyApiTest extends GeneralApiTest {
 
     private final SovereigntyApi api = new SovereigntyApi();
 
-    
     /**
      * List sovereignty campaigns
      *
-     * Shows sovereignty data for campaigns.  ---  Alternate route: &#x60;/v1/sovereignty/campaigns/&#x60;  Alternate route: &#x60;/legacy/sovereignty/campaigns/&#x60;  Alternate route: &#x60;/dev/sovereignty/campaigns/&#x60;   ---  This route is cached for up to 5 seconds
+     * Shows sovereignty data for campaigns. --- Alternate route:
+     * &#x60;/v1/sovereignty/campaigns/&#x60; Alternate route:
+     * &#x60;/legacy/sovereignty/campaigns/&#x60; Alternate route:
+     * &#x60;/dev/sovereignty/campaigns/&#x60; --- This route is cached for up
+     * to 5 seconds
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getSovereigntyCampaignsTest() throws ApiException {
-        String datasource = null;
-        // List<SovereigntyCampaignsResponse> response = api.getSovereigntyCampaigns(datasource);
+        List<SovereigntyCampaignsResponse> response = api.getSovereigntyCampaigns(DATASOURCE);
 
-        // TODO: test validations
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+        SovereigntyCampaignsResponse sovereigntyResponse = response.get(0);
+        assertThat(sovereigntyResponse.getSolarSystemId(), greaterThan(0l));
     }
-    
+
     /**
      * List sovereignty structures
      *
-     * Shows sovereignty data for structures.  ---  Alternate route: &#x60;/v1/sovereignty/structures/&#x60;  Alternate route: &#x60;/legacy/sovereignty/structures/&#x60;  Alternate route: &#x60;/dev/sovereignty/structures/&#x60;   ---  This route is cached for up to 120 seconds
+     * Shows sovereignty data for structures. --- Alternate route:
+     * &#x60;/v1/sovereignty/structures/&#x60; Alternate route:
+     * &#x60;/legacy/sovereignty/structures/&#x60; Alternate route:
+     * &#x60;/dev/sovereignty/structures/&#x60; --- This route is cached for up
+     * to 120 seconds
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getSovereigntyStructuresTest() throws ApiException {
-        String datasource = null;
-        // List<SovereigntyStructuresResponse> response = api.getSovereigntyStructures(datasource);
+        List<SovereigntyStructuresResponse> response = api.getSovereigntyStructures(DATASOURCE);
 
-        // TODO: test validations
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+        SovereigntyStructuresResponse structuresResponse = response.get(0);
+        assertThat(structuresResponse.getSolarSystemId(), greaterThan(0l));
     }
-    
 }
