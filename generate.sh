@@ -49,8 +49,9 @@ if [ ! -e swagger-codegen-cli-$VERSION.jar ]; then
 fi
 
 #
-# Beautify swagger file
+# Transform and beautify swagger file
 #
+./transformation.sh
 sed -i -f replace.sed esi.json
 
 #
