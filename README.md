@@ -25,19 +25,19 @@ with your client id as first and the secret as second argument. Then it shows yo
 
 Open the url in your browser, login with your account and authorize the access. This will redirect you
 to an url on localhost, something like:
-'''
+```
 http://localhost/?code=7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0&state=somesecret
-'''
+```
 
 Copy the *code* part to console and press enter. As result you will get a refresh token, that can be
 used to run the tests.
 
 Example output:
-'''shell
+```shell
 Authorization URL: https://login.eveonline.com/oauth/authorize?scope=esi-clones.read_clones.v1&response_type=code&state=somesecret&redirect_uri=http%3A%2F%2Flocalhost&client_id=352ef22ca74e33c78c11779ab3saffe
 Code from Answer: 7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0
 Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
-'''
+```
 
 ## Links
 * [EVE Swagger Interface](https://esi.tech.ccp.is/latest/)
