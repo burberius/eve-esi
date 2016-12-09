@@ -3,12 +3,17 @@
 s/get_characters_character_id_clones_home_location/CloneHomeLocation/g
 s/get_killmails_killmail_id_killmail_hash_victim/KillmailVictim/g
 s/get_universe_structures_structure_id_position/Position/g
+s/get_wars_war_id_aggressor/Aggressor/g
+s/get_wars_war_id_defender/Defender/g
 
 # Objects in Arrays
 # jq '.paths[].get.responses["200"].schema.properties[]? | select(.type == "array") | .items | select(.type == "object") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_clones_jump_clone/Clone/g
 s/get_characters_character_id_mail_labels_label/MailLabel/g
 s/get_characters_character_id_mail_mail_id_recipient/MailRecipient/g
+s/get_characters_character_id_planets_planet_id_link/PlanetLink/g
+s/get_characters_character_id_planets_planet_id_pin/PlanetPin/g
+s/get_characters_character_id_planets_planet_id_route/PlanetRoute/g
 s/get_characters_character_id_skills_skill/Skill/g
 s/get_killmails_killmail_id_killmail_hash_attacker/KillmailAttacker/g
 s/get_wars_war_id_ally/WarAlly/g
@@ -18,12 +23,18 @@ s/get_wars_war_id_ally/WarAlly/g
 s/post_characters_character_id_cspa_characters/CspaCharacters/g
 s/post_characters_character_id_mail_labels_label/MailLabel/g
 s/post_characters_character_id_mail_mail/Mail/g
+s/post_fleets_fleet_id_members_invitation/FleetInvitation/g
 s/post_universe_names_ids/EntityIds/g
 s/put_characters_character_id_mail_mail_id_contents/MailMetaData/g
 s/put_characters_character_id_calendar_event_id_response/EventResponseStatus/g
+s/put_fleets_fleet_id_members_member_id_movement/FleetMemberMovement/g
+s/put_fleets_fleet_id_new_settings/FleetNewSettings/g
+s/put_fleets_fleet_id_squads_squad_id_naming/FleetSquadNaming/g
+s/put_fleets_fleet_id_wings_wing_id_naming/FleetWingNaming/g
+
 
 # Post 200
-# jq '.paths[].post.responses["200"].schema.items.title' work1.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
+# jq '.paths[].post.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/post_universe_names_200_ok/UniverseNamesResponse/g
 
 # Post 201
@@ -31,6 +42,8 @@ s/post_universe_names_200_ok/UniverseNamesResponse/g
 s/post_characters_character_id_cspa_created/CspaCostResponse/g
 s/post_characters_character_id_mail_created/SendMailResponse/g
 s/post_characters_character_id_mail_labels_created/CreateMailLabelResponse/g
+s/post_fleets_fleet_id_wings_created/FleetWingCreatedResponse/g
+s/post_fleets_fleet_id_wings_wing_id_squads_created/FleetSquadCreatedResponse/g
 
 # Responses Objects
 # jq '.paths[].get.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
@@ -45,6 +58,7 @@ s/get_characters_character_id_corporationhistory_200_ok/CharacterCorporationHist
 s/get_characters_character_id_killmails_recent_200_ok/CharacterKillmailsResponse/g
 s/get_characters_character_id_mail_200_ok/MailHeadersResponse/g
 s/get_characters_character_id_mail_lists_200_ok/CharacterMailinglistsResponse/g
+s/get_characters_character_id_planets_200_ok/CharacterPlanetsResponse/g
 s/get_characters_character_id_skillqueue_200_ok/CharacterSkillqueueResponse/g
 s/get_characters_character_id_wallets_200_ok/CharacterWalletsResponse/g
 s/get_characters_character_id_wallets_journal_200_ok/CharacterWalletJournalResponse/g
@@ -54,6 +68,8 @@ s/get_corporations_corporation_id_alliancehistory_200_ok/CorporationAlliancesHis
 s/get_corporations_corporation_id_members_200_ok/CorporationMembersResponse/g
 s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
 s/get_corporations_names_200_ok/CorporationNamesResponse/g
+s/get_fleets_fleet_id_members_200_ok/FleetMembersResponse/g
+s/get_fleets_fleet_id_wings_200_ok/FleetWingsResponse/g
 s/get_incursions_200_ok/IncursionsResponse/g
 s/get_industry_facilities_200_ok/IndustryFacilitiesResponse/g
 s/get_industry_systems_200_ok/IndustrySystemsResponse/g
@@ -77,15 +93,18 @@ s/get_characters_character_id_location_ok/CharacterLocationResponse/g
 s/get_characters_character_id_mail_labels_ok/MailLabelsResponse/g
 s/get_characters_character_id_mail_mail_id_ok/MailResponse/g
 s/get_characters_character_id_ok/CharacterResponse/g
+s/get_characters_character_id_planets_planet_id_ok/CharacterPlanetResponse/g
 s/get_characters_character_id_portrait_ok/CharacterPortraitResponse/g
 s/get_characters_character_id_search_ok/CharacterSearchResponse/g
 s/get_characters_character_id_ship_ok/CharacterShipResponse/g
 s/get_characters_character_id_skills_ok/CharacterSkillsResponse/g
 s/get_corporations_corporation_id_icons_ok/CorporationIconsResponse/g
 s/get_corporations_corporation_id_ok/CorporationResponse/g
+s/get_fleets_fleet_id_ok/FleetResponse/g
 s/get_killmails_killmail_id_killmail_hash_ok/KillmailResponse/g
 s/get_search_ok/SearchResponse/g
 s/get_universe_planets_planet_id_ok/PlanetResponse/g
+s/get_universe_schematics_schematic_id_ok/PlanetFactorySchematicResponse/g
 s/get_universe_stations_station_id_ok/StationResponse/g
 s/get_universe_structures_structure_id_ok/StructureResponse/g
 s/get_universe_systems_system_id_ok/SystemResponse/g
