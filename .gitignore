@@ -28,7 +28,7 @@ bin
 *~
 
 # Downloaded swagger-codegen-cli
-swagger-codegen-cli*
+#swagger-codegen-cli*
 
 # Swagger data file
 esi.json
