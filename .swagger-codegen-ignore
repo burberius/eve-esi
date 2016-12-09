@@ -39,3 +39,6 @@ docs
 pom.xml
 .gitignore
 LICENSE
+
+# Changed by us
+src/main/java/net/troja/eve/esi/auth/OAuth.java
