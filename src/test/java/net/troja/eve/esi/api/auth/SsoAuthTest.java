@@ -3,9 +3,12 @@ package net.troja.eve.esi.api.auth;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -43,8 +46,9 @@ public class SsoAuthTest extends GeneralApiTest {
      * @param args
      *            The client id and client secret.
      * @throws IOException
+     * @throws URISyntaxException
      */
-    public static void main(final String... args) throws IOException {
+    public static void main(final String... args) throws IOException, URISyntaxException {
         final String state = "somesecret";
         if (args.length != 2) {
             System.err.println("ClientId and ClientSecret missing");
@@ -57,7 +61,9 @@ public class SsoAuthTest extends GeneralApiTest {
 
         final Set<String> scopes = new HashSet<>();
         scopes.add("esi-clones.read_clones.v1");
-        System.out.println("Authorization URL: " + auth.getAuthorizationUri("http://localhost", scopes, state));
+        final String authorizationUri = auth.getAuthorizationUri("http://localhost", scopes, state);
+        System.out.println("Authorization URL: " + authorizationUri);
+        Desktop.getDesktop().browse(new URI(authorizationUri));
 
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Code from Answer: ");
