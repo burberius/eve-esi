@@ -31,4 +31,4 @@ sed -i -e 's#get_alliances_internal_server_error#InternalServerError#g' work1.js
 jq ".paths[][] | select(.security[0].evesso) | [.description , .security[].evesso[0]] | @csv" work1.json > tmp.csv
 sed -e 's|"\\"\(.*\)\\",\\"\(.*\)\\""|s#\1#\1\\n\\nSSO Scope: \2#g|' -e 's#\\#\\\\#g' tmp.csv > scope.sed
 sed -f scope.sed work1.json > esi.json
-#rm work1.json tmp.csv scope.sed
+rm work1.json tmp.csv scope.sed

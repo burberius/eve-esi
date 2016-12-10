@@ -56,11 +56,15 @@ sed -i -f replace.sed esi.json
 
 #
 # Generate code
+# Move tests so they are generated new and then moved to a different directory
 #
+mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
 java -jar swagger-codegen-cli.jar generate \
   -i esi.json \
   -l java \
   -c config.json
+mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
+mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
 
 #
 # Generate SSO scopes
@@ -96,8 +100,9 @@ if [ "$GIT" = true ]; then
 # Send email
 #
   EMAILS=$(sed -n -e 's#.*<email>\(.*\)</email>#\1#p' pom.xml | tr "\n" " ")
+  DIFFTESTS=$(diff -Naur src/test/java/net/troja/eve/esi/api.new src/test/java/net/troja/eve/esi/api)
   DIFF=$(git diff HEAD^ HEAD)
-  echo -e "$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION" $EMAILS
+  echo -e "$DIFFTESTS\n\n$DIFF\n.\n" | mail -s "New eve-esi version $APIVERSION" $EMAILS
 
 else
   echo "To publish to a git branch, start with '-g'"
