@@ -77,7 +77,7 @@ for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0]
   fi
   echo "public static final String $UPPER = \"$VAL\";" >> $FILE
 done
-echo "private static final String[] ALL = {$ALL};" >> $FILE
+echo -e "\npublic static final String[] ALL = {$ALL};" >> $FILE
 echo "}" >> $FILE
 
 #
