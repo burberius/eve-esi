@@ -63,6 +63,24 @@ java -jar swagger-codegen-cli.jar generate \
   -c config.json
 
 #
+# Generate SSO scopes
+#
+FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
+echo "package net.troja.eve.esi.auth;" > $FILE
+echo "public class SsoScopes {" >> $FILE
+for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
+  UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
+  if [ "a$ALL" = "a" ]; then
+    ALL="$UPPER"
+  else
+    ALL="$ALL, $UPPER"
+  fi
+  echo "public static final String $UPPER = \"$VAL\";" >> $FILE
+done
+echo "private static final String[] ALL = {$ALL};" >> $FILE
+echo "}" >> $FILE
+
+#
 # Clean formating
 #
 mvn formatter:format
