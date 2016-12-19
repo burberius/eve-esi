@@ -14,16 +14,16 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.GetFleetsFleetIdMembers200Ok;
-import net.troja.eve.esi.model.GetFleetsFleetIdOk;
-import net.troja.eve.esi.model.GetFleetsFleetIdWings200Ok;
-import net.troja.eve.esi.model.PostFleetsFleetIdMembersInvitation;
-import net.troja.eve.esi.model.PostFleetsFleetIdWingsCreated;
-import net.troja.eve.esi.model.PostFleetsFleetIdWingsWingIdSquadsCreated;
-import net.troja.eve.esi.model.PutFleetsFleetIdMembersMemberIdMovement;
-import net.troja.eve.esi.model.PutFleetsFleetIdNewSettings;
-import net.troja.eve.esi.model.PutFleetsFleetIdSquadsSquadIdNaming;
-import net.troja.eve.esi.model.PutFleetsFleetIdWingsWingIdNaming;
+import net.troja.eve.esi.model.FleetInvitation;
+import net.troja.eve.esi.model.FleetMemberMovement;
+import net.troja.eve.esi.model.FleetMembersResponse;
+import net.troja.eve.esi.model.FleetNewSettings;
+import net.troja.eve.esi.model.FleetResponse;
+import net.troja.eve.esi.model.FleetSquadCreatedResponse;
+import net.troja.eve.esi.model.FleetSquadNaming;
+import net.troja.eve.esi.model.FleetWingCreatedResponse;
+import net.troja.eve.esi.model.FleetWingNaming;
+import net.troja.eve.esi.model.FleetWingsResponse;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class FleetsApiTest {
     /**
      * Kick fleet member
      *
-     * Kick a fleet member  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; 
+     * Kick a fleet member  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -60,7 +60,7 @@ public class FleetsApiTest {
     /**
      * Delete fleet squad
      *
-     * Delete a fleet squad, only empty squads can be deleted  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60; 
+     * Delete a fleet squad, only empty squads can be deleted  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -78,7 +78,7 @@ public class FleetsApiTest {
     /**
      * Delete fleet wing
      *
-     * Delete a fleet wing, only empty wings can be deleted. The wing may contain squads, but the squads must be empty  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; 
+     * Delete a fleet wing, only empty wings can be deleted. The wing may contain squads, but the squads must be empty  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -96,7 +96,7 @@ public class FleetsApiTest {
     /**
      * Get fleet information
      *
-     * Return details about a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/&#x60;   ---  This route is cached for up to 5 seconds
+     * Return details about a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/&#x60;   ---  This route is cached for up to 5 seconds  SSO Scope: esi-fleets.read_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -105,7 +105,7 @@ public class FleetsApiTest {
     public void getFleetsFleetIdTest() throws ApiException {
         Long fleetId = null;
         String datasource = null;
-        // GetFleetsFleetIdOk response = api.getFleetsFleetId(fleetId, datasource);
+        // FleetResponse response = api.getFleetsFleetId(fleetId, datasource);
 
         // TODO: test validations
     }
@@ -113,7 +113,7 @@ public class FleetsApiTest {
     /**
      * Get fleet members
      *
-     * Return information about fleet members  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/&#x60;   ---  This route is cached for up to 5 seconds
+     * Return information about fleet members  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/&#x60;   ---  This route is cached for up to 5 seconds  SSO Scope: esi-fleets.read_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -123,7 +123,7 @@ public class FleetsApiTest {
         Long fleetId = null;
         String acceptLanguage = null;
         String datasource = null;
-        // List<GetFleetsFleetIdMembers200Ok> response = api.getFleetsFleetIdMembers(fleetId, acceptLanguage, datasource);
+        // List<FleetMembersResponse> response = api.getFleetsFleetIdMembers(fleetId, acceptLanguage, datasource);
 
         // TODO: test validations
     }
@@ -131,7 +131,7 @@ public class FleetsApiTest {
     /**
      * Get fleet wings
      *
-     * Return information about wings in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/&#x60;   ---  This route is cached for up to 5 seconds
+     * Return information about wings in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/&#x60;   ---  This route is cached for up to 5 seconds  SSO Scope: esi-fleets.read_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -141,7 +141,7 @@ public class FleetsApiTest {
         Long fleetId = null;
         String acceptLanguage = null;
         String datasource = null;
-        // List<GetFleetsFleetIdWings200Ok> response = api.getFleetsFleetIdWings(fleetId, acceptLanguage, datasource);
+        // List<FleetWingsResponse> response = api.getFleetsFleetIdWings(fleetId, acceptLanguage, datasource);
 
         // TODO: test validations
     }
@@ -149,7 +149,7 @@ public class FleetsApiTest {
     /**
      * Create fleet invitation
      *
-     * Invite a character into the fleet, if a character has a CSPA charge set, it is not possible to invite them to the fleet using ESI  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/&#x60; 
+     * Invite a character into the fleet, if a character has a CSPA charge set, it is not possible to invite them to the fleet using ESI  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -157,7 +157,7 @@ public class FleetsApiTest {
     @Test
     public void postFleetsFleetIdMembersTest() throws ApiException {
         Long fleetId = null;
-        PostFleetsFleetIdMembersInvitation invitation = null;
+        FleetInvitation invitation = null;
         String datasource = null;
         // api.postFleetsFleetIdMembers(fleetId, invitation, datasource);
 
@@ -167,7 +167,7 @@ public class FleetsApiTest {
     /**
      * Create fleet wing
      *
-     * Create a new wing in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/&#x60; 
+     * Create a new wing in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -176,7 +176,7 @@ public class FleetsApiTest {
     public void postFleetsFleetIdWingsTest() throws ApiException {
         Long fleetId = null;
         String datasource = null;
-        // PostFleetsFleetIdWingsCreated response = api.postFleetsFleetIdWings(fleetId, datasource);
+        // FleetWingCreatedResponse response = api.postFleetsFleetIdWings(fleetId, datasource);
 
         // TODO: test validations
     }
@@ -184,7 +184,7 @@ public class FleetsApiTest {
     /**
      * Create fleet squad
      *
-     * Create a new squad in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60; 
+     * Create a new squad in a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -194,7 +194,7 @@ public class FleetsApiTest {
         Long fleetId = null;
         Long wingId = null;
         String datasource = null;
-        // PostFleetsFleetIdWingsWingIdSquadsCreated response = api.postFleetsFleetIdWingsWingIdSquads(fleetId, wingId, datasource);
+        // FleetSquadCreatedResponse response = api.postFleetsFleetIdWingsWingIdSquads(fleetId, wingId, datasource);
 
         // TODO: test validations
     }
@@ -202,7 +202,7 @@ public class FleetsApiTest {
     /**
      * Update fleet
      *
-     * Update settings about a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/&#x60; 
+     * Update settings about a fleet  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -210,7 +210,7 @@ public class FleetsApiTest {
     @Test
     public void putFleetsFleetIdTest() throws ApiException {
         Long fleetId = null;
-        PutFleetsFleetIdNewSettings newSettings = null;
+        FleetNewSettings newSettings = null;
         String datasource = null;
         // api.putFleetsFleetId(fleetId, newSettings, datasource);
 
@@ -220,7 +220,7 @@ public class FleetsApiTest {
     /**
      * Move fleet member
      *
-     * Move a fleet member around  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; 
+     * Move a fleet member around  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -229,7 +229,7 @@ public class FleetsApiTest {
     public void putFleetsFleetIdMembersMemberIdTest() throws ApiException {
         Long fleetId = null;
         Integer memberId = null;
-        PutFleetsFleetIdMembersMemberIdMovement movement = null;
+        FleetMemberMovement movement = null;
         String datasource = null;
         // api.putFleetsFleetIdMembersMemberId(fleetId, memberId, movement, datasource);
 
@@ -239,7 +239,7 @@ public class FleetsApiTest {
     /**
      * Rename fleet squad
      *
-     * Rename a fleet squad  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60; 
+     * Rename a fleet squad  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -248,7 +248,7 @@ public class FleetsApiTest {
     public void putFleetsFleetIdSquadsSquadIdTest() throws ApiException {
         Long fleetId = null;
         Long squadId = null;
-        PutFleetsFleetIdSquadsSquadIdNaming naming = null;
+        FleetSquadNaming naming = null;
         String datasource = null;
         // api.putFleetsFleetIdSquadsSquadId(fleetId, squadId, naming, datasource);
 
@@ -258,7 +258,7 @@ public class FleetsApiTest {
     /**
      * Rename fleet wing
      *
-     * Rename a fleet wing  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; 
+     * Rename a fleet wing  ---  Alternate route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60;  Alternate route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60;   SSO Scope: esi-fleets.write_fleet.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -267,7 +267,7 @@ public class FleetsApiTest {
     public void putFleetsFleetIdWingsWingIdTest() throws ApiException {
         Long fleetId = null;
         Long wingId = null;
-        PutFleetsFleetIdWingsWingIdNaming naming = null;
+        FleetWingNaming naming = null;
         String datasource = null;
         // api.putFleetsFleetIdWingsWingId(fleetId, wingId, naming, datasource);
 
