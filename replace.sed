@@ -2,7 +2,6 @@
 # jq '.paths[].get.responses["200"].schema.properties[]? | select(.type == "object") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_clones_home_location/CloneHomeLocation/g
 s/get_killmails_killmail_id_killmail_hash_victim/KillmailVictim/g
-s/get_universe_structures_structure_id_position/Position/g
 s/get_wars_war_id_aggressor/Aggressor/g
 s/get_wars_war_id_defender/Defender/g
 
@@ -10,7 +9,6 @@ s/get_wars_war_id_defender/Defender/g
 # jq '.paths[].get.responses["200"].schema.properties[]? | select(.type == "array") | .items | select(.type == "object") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_clones_jump_clone/Clone/g
 s/get_characters_character_id_mail_labels_label/MailLabel/g
-s/get_characters_character_id_mail_mail_id_recipient/MailRecipient/g
 s/get_characters_character_id_planets_planet_id_link/PlanetLink/g
 s/get_characters_character_id_planets_planet_id_pin/PlanetPin/g
 s/get_characters_character_id_planets_planet_id_route/PlanetRoute/g
@@ -18,10 +16,17 @@ s/get_characters_character_id_skills_skill/Skill/g
 s/get_killmails_killmail_id_killmail_hash_attacker/KillmailAttacker/g
 s/get_wars_war_id_ally/WarAlly/g
 
+# Inner Objects
+# jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.type == "object") | .title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
+s/get_characters_character_id_bookmarks_target/BookmarkTarget/g
+s/get_corporations_corporation_id_alliancehistory_alliance/Alliance/g
+# jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.properties != null).properties[] | select(.type == "object").title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
+s/get_characters_character_id_bookmarks_item/BookmarkItem/g
+
 # Objects in post/put
 # jq '.paths[][].parameters[].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/post_characters_character_id_cspa_characters/CspaCharacters/g
-s/post_characters_character_id_mail_labels_label/MailLabel/g
+s/post_characters_character_id_mail_labels_label/MailLabelSimple/g
 s/post_characters_character_id_mail_mail/Mail/g
 s/post_fleets_fleet_id_members_invitation/FleetInvitation/g
 s/post_universe_names_ids/EntityIds/g
@@ -32,6 +37,16 @@ s/put_fleets_fleet_id_new_settings/FleetNewSettings/g
 s/put_fleets_fleet_id_squads_squad_id_naming/FleetSquadNaming/g
 s/put_fleets_fleet_id_wings_wing_id_naming/FleetWingNaming/g
 
+# Other objects
+s/get_characters_character_id_planets_planet_id_content/PlanetContent/
+s/get_characters_character_id_planets_planet_id_extractor_details/PlanetExtractorDetails/
+s/get_characters_character_id_planets_planet_id_factory_details/PlanetFactoryDetails/
+s/get_characters_character_id_planets_planet_id_head/PlanetHead/
+s/get_characters_character_id_planets_planet_id_waypoint/PlanetWaypoint/
+s/get_fleets_fleet_id_wings_squad/Squad/
+s/get_industry_systems_cost_indice/SystemCostIndice/
+s/get_insurance_prices_level/InsurancePriceLevel/
+s/get_sovereignty_campaigns_participant/SovereigntyCampaignParticipant/
 
 # Post 200
 # jq '.paths[].post.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

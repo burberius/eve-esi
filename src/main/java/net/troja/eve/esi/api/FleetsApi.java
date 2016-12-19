@@ -7,16 +7,16 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.GetFleetsFleetIdMembers200Ok;
-import net.troja.eve.esi.model.GetFleetsFleetIdOk;
-import net.troja.eve.esi.model.GetFleetsFleetIdWings200Ok;
-import net.troja.eve.esi.model.PostFleetsFleetIdMembersInvitation;
-import net.troja.eve.esi.model.PostFleetsFleetIdWingsCreated;
-import net.troja.eve.esi.model.PostFleetsFleetIdWingsWingIdSquadsCreated;
-import net.troja.eve.esi.model.PutFleetsFleetIdMembersMemberIdMovement;
-import net.troja.eve.esi.model.PutFleetsFleetIdNewSettings;
-import net.troja.eve.esi.model.PutFleetsFleetIdSquadsSquadIdNaming;
-import net.troja.eve.esi.model.PutFleetsFleetIdWingsWingIdNaming;
+import net.troja.eve.esi.model.FleetInvitation;
+import net.troja.eve.esi.model.FleetMemberMovement;
+import net.troja.eve.esi.model.FleetMembersResponse;
+import net.troja.eve.esi.model.FleetNewSettings;
+import net.troja.eve.esi.model.FleetResponse;
+import net.troja.eve.esi.model.FleetSquadCreatedResponse;
+import net.troja.eve.esi.model.FleetSquadNaming;
+import net.troja.eve.esi.model.FleetWingCreatedResponse;
+import net.troja.eve.esi.model.FleetWingNaming;
+import net.troja.eve.esi.model.FleetWingsResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +46,8 @@ public class FleetsApi {
      * Kick fleet member Kick a fleet member --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60;
+     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -105,6 +106,7 @@ public class FleetsApi {
      * --- Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;
      * Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;
      * Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60;
+     * SSO Scope: esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -162,7 +164,8 @@ public class FleetsApi {
      * The wing may contain squads, but the squads must be empty --- Alternate
      * route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate
      * route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60;
+     * route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -220,18 +223,18 @@ public class FleetsApi {
      * &#x60;/v1/fleets/{fleet_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/&#x60; Alternate route:
      * &#x60;/dev/fleets/{fleet_id}/&#x60; --- This route is cached for up to 5
-     * seconds
+     * seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return GetFleetsFleetIdOk
+     * @return FleetResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public GetFleetsFleetIdOk getFleetsFleetId(Long fleetId, String datasource) throws ApiException {
+    public FleetResponse getFleetsFleetId(Long fleetId, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -260,7 +263,7 @@ public class FleetsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<GetFleetsFleetIdOk> localVarReturnType = new GenericType<GetFleetsFleetIdOk>() {
+        GenericType<FleetResponse> localVarReturnType = new GenericType<FleetResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -271,7 +274,7 @@ public class FleetsApi {
      * route: &#x60;/v1/fleets/{fleet_id}/members/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/members/&#x60; Alternate route:
      * &#x60;/dev/fleets/{fleet_id}/members/&#x60; --- This route is cached for
-     * up to 5 seconds
+     * up to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -280,12 +283,12 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return List<GetFleetsFleetIdMembers200Ok>
+     * @return List<FleetMembersResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<GetFleetsFleetIdMembers200Ok> getFleetsFleetIdMembers(Long fleetId, String acceptLanguage,
-            String datasource) throws ApiException {
+    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String acceptLanguage, String datasource)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -317,7 +320,7 @@ public class FleetsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<GetFleetsFleetIdMembers200Ok>> localVarReturnType = new GenericType<List<GetFleetsFleetIdMembers200Ok>>() {
+        GenericType<List<FleetMembersResponse>> localVarReturnType = new GenericType<List<FleetMembersResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -328,7 +331,7 @@ public class FleetsApi {
      * route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/wings/&#x60; Alternate route:
      * &#x60;/dev/fleets/{fleet_id}/wings/&#x60; --- This route is cached for up
-     * to 5 seconds
+     * to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -337,11 +340,11 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return List<GetFleetsFleetIdWings200Ok>
+     * @return List<FleetWingsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<GetFleetsFleetIdWings200Ok> getFleetsFleetIdWings(Long fleetId, String acceptLanguage, String datasource)
+    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String acceptLanguage, String datasource)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -374,7 +377,7 @@ public class FleetsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<GetFleetsFleetIdWings200Ok>> localVarReturnType = new GenericType<List<GetFleetsFleetIdWings200Ok>>() {
+        GenericType<List<FleetWingsResponse>> localVarReturnType = new GenericType<List<FleetWingsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -385,7 +388,8 @@ public class FleetsApi {
      * has a CSPA charge set, it is not possible to invite them to the fleet
      * using ESI --- Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;
      * Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/&#x60;
+     * route: &#x60;/dev/fleets/{fleet_id}/members/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -397,7 +401,7 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postFleetsFleetIdMembers(Long fleetId, PostFleetsFleetIdMembersInvitation invitation, String datasource)
+    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource)
             throws ApiException {
         Object localVarPostBody = invitation;
 
@@ -442,18 +446,19 @@ public class FleetsApi {
      * Create fleet wing Create a new wing in a fleet --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/wings/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/wings/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/&#x60;
+     * &#x60;/dev/fleets/{fleet_id}/wings/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return PostFleetsFleetIdWingsCreated
+     * @return FleetWingCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public PostFleetsFleetIdWingsCreated postFleetsFleetIdWings(Long fleetId, String datasource) throws ApiException {
+    public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -482,7 +487,7 @@ public class FleetsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<PostFleetsFleetIdWingsCreated> localVarReturnType = new GenericType<PostFleetsFleetIdWingsCreated>() {
+        GenericType<FleetWingCreatedResponse> localVarReturnType = new GenericType<FleetWingCreatedResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -493,7 +498,8 @@ public class FleetsApi {
      * &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60; Alternate
      * route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;
      * Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;
+     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -502,12 +508,12 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return PostFleetsFleetIdWingsWingIdSquadsCreated
+     * @return FleetSquadCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public PostFleetsFleetIdWingsWingIdSquadsCreated postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId,
-            String datasource) throws ApiException {
+    public FleetSquadCreatedResponse postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId, String datasource)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -544,7 +550,7 @@ public class FleetsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<PostFleetsFleetIdWingsWingIdSquadsCreated> localVarReturnType = new GenericType<PostFleetsFleetIdWingsWingIdSquadsCreated>() {
+        GenericType<FleetSquadCreatedResponse> localVarReturnType = new GenericType<FleetSquadCreatedResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -554,7 +560,7 @@ public class FleetsApi {
      * Update fleet Update settings about a fleet --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/&#x60;
+     * &#x60;/dev/fleets/{fleet_id}/&#x60; SSO Scope: esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -566,8 +572,7 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetId(Long fleetId, PutFleetsFleetIdNewSettings newSettings, String datasource)
-            throws ApiException {
+    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource) throws ApiException {
         Object localVarPostBody = newSettings;
 
         // verify the required parameter 'fleetId' is set
@@ -609,7 +614,8 @@ public class FleetsApi {
      * Move fleet member Move a fleet member around --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60;
+     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -623,8 +629,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId,
-            PutFleetsFleetIdMembersMemberIdMovement movement, String datasource) throws ApiException {
+    public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, FleetMemberMovement movement,
+            String datasource) throws ApiException {
         Object localVarPostBody = movement;
 
         // verify the required parameter 'fleetId' is set
@@ -675,7 +681,8 @@ public class FleetsApi {
      * Rename fleet squad Rename a fleet squad --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60;
+     * &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -689,8 +696,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, PutFleetsFleetIdSquadsSquadIdNaming naming,
-            String datasource) throws ApiException {
+    public void putFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, FleetSquadNaming naming, String datasource)
+            throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set
@@ -741,7 +748,8 @@ public class FleetsApi {
      * Rename fleet wing Rename a fleet wing --- Alternate route:
      * &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate route:
      * &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60;
+     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -755,8 +763,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetIdWingsWingId(Long fleetId, Long wingId, PutFleetsFleetIdWingsWingIdNaming naming,
-            String datasource) throws ApiException {
+    public void putFleetsFleetIdWingsWingId(Long fleetId, Long wingId, FleetWingNaming naming, String datasource)
+            throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set

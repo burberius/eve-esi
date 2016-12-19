@@ -7,13 +7,12 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CharacterResponse;
-import net.troja.eve.esi.model.UnprocessableEntity;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
-import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
-import net.troja.eve.esi.model.CspaCostResponse;
+import net.troja.eve.esi.model.CharacterPortraitResponse;
+import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CspaCharacters;
+import net.troja.eve.esi.model.CspaCostResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -255,7 +254,8 @@ public class CharacterApi {
      * set of target character ID&#39;s in the body, returns a CSPA charge cost
      * --- Alternate route: &#x60;/v3/characters/{character_id}/cspa/&#x60;
      * Alternate route: &#x60;/legacy/characters/{character_id}/cspa/&#x60;
-     * Alternate route: &#x60;/dev/characters/{character_id}/cspa/&#x60;
+     * Alternate route: &#x60;/dev/characters/{character_id}/cspa/&#x60; SSO
+     * Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

@@ -19,8 +19,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.GetKillmailsKillmailIdKillmailHashItem1;
-import net.troja.eve.esi.model.GetKillmailsKillmailIdKillmailHashPosition;
+import net.troja.eve.esi.model.KillmailItem;
+import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
 /**
@@ -46,10 +46,10 @@ public class KillmailVictim implements Serializable {
     private Integer factionId = null;
 
     @JsonProperty("items")
-    private List<GetKillmailsKillmailIdKillmailHashItem1> items = new ArrayList<GetKillmailsKillmailIdKillmailHashItem1>();
+    private List<KillmailItem> items = new ArrayList<KillmailItem>();
 
     @JsonProperty("position")
-    private GetKillmailsKillmailIdKillmailHashPosition position = null;
+    private Position position = null;
 
     @JsonProperty("ship_type_id")
     private Integer shipTypeId = null;
@@ -149,12 +149,12 @@ public class KillmailVictim implements Serializable {
         this.factionId = factionId;
     }
 
-    public KillmailVictim items(List<GetKillmailsKillmailIdKillmailHashItem1> items) {
+    public KillmailVictim items(List<KillmailItem> items) {
         this.items = items;
         return this;
     }
 
-    public KillmailVictim addItemsItem(GetKillmailsKillmailIdKillmailHashItem1 itemsItem) {
+    public KillmailVictim addItemsItem(KillmailItem itemsItem) {
         this.items.add(itemsItem);
         return this;
     }
@@ -165,15 +165,15 @@ public class KillmailVictim implements Serializable {
      * @return items
      **/
     @ApiModelProperty(example = "null", value = "items array")
-    public List<GetKillmailsKillmailIdKillmailHashItem1> getItems() {
+    public List<KillmailItem> getItems() {
         return items;
     }
 
-    public void setItems(List<GetKillmailsKillmailIdKillmailHashItem1> items) {
+    public void setItems(List<KillmailItem> items) {
         this.items = items;
     }
 
-    public KillmailVictim position(GetKillmailsKillmailIdKillmailHashPosition position) {
+    public KillmailVictim position(Position position) {
         this.position = position;
         return this;
     }
@@ -184,11 +184,11 @@ public class KillmailVictim implements Serializable {
      * @return position
      **/
     @ApiModelProperty(example = "null", value = "")
-    public GetKillmailsKillmailIdKillmailHashPosition getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(GetKillmailsKillmailIdKillmailHashPosition position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 

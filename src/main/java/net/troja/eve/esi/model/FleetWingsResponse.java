@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.GetFleetsFleetIdWingsSquad;
+import net.troja.eve.esi.model.Squad;
 import java.io.Serializable;
 
 /**
@@ -36,7 +36,7 @@ public class FleetWingsResponse implements Serializable {
     private String name = null;
 
     @JsonProperty("squads")
-    private List<GetFleetsFleetIdWingsSquad> squads = new ArrayList<GetFleetsFleetIdWingsSquad>();
+    private List<Squad> squads = new ArrayList<Squad>();
 
     public FleetWingsResponse id(Long id) {
         this.id = id;
@@ -76,12 +76,12 @@ public class FleetWingsResponse implements Serializable {
         this.name = name;
     }
 
-    public FleetWingsResponse squads(List<GetFleetsFleetIdWingsSquad> squads) {
+    public FleetWingsResponse squads(List<Squad> squads) {
         this.squads = squads;
         return this;
     }
 
-    public FleetWingsResponse addSquadsItem(GetFleetsFleetIdWingsSquad squadsItem) {
+    public FleetWingsResponse addSquadsItem(Squad squadsItem) {
         this.squads.add(squadsItem);
         return this;
     }
@@ -92,11 +92,11 @@ public class FleetWingsResponse implements Serializable {
      * @return squads
      **/
     @ApiModelProperty(example = "null", required = true, value = "squads array")
-    public List<GetFleetsFleetIdWingsSquad> getSquads() {
+    public List<Squad> getSquads() {
         return squads;
     }
 
-    public void setSquads(List<GetFleetsFleetIdWingsSquad> squads) {
+    public void setSquads(List<Squad> squads) {
         this.squads = squads;
     }
 

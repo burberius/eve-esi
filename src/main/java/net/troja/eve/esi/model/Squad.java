@@ -20,32 +20,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * 200 ok object
+ * squad object
  */
-@ApiModel(description = "200 ok object")
-public class SystemResponse implements Serializable {
+@ApiModel(description = "squad object")
+public class Squad implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("solar_system_name")
-    private String solarSystemName = null;
+    @JsonProperty("id")
+    private Long id = null;
 
-    public SystemResponse solarSystemName(String solarSystemName) {
-        this.solarSystemName = solarSystemName;
+    @JsonProperty("name")
+    private String name = null;
+
+    public Squad id(Long id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * the full name of the system
+     * id integer
      * 
-     * @return solarSystemName
+     * @return id
      **/
-    @ApiModelProperty(example = "null", value = "the full name of the system")
-    public String getSolarSystemName() {
-        return solarSystemName;
+    @ApiModelProperty(example = "null", required = true, value = "id integer")
+    public Long getId() {
+        return id;
     }
 
-    public void setSolarSystemName(String solarSystemName) {
-        this.solarSystemName = solarSystemName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Squad name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -56,21 +78,22 @@ public class SystemResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SystemResponse systemResponse = (SystemResponse) o;
-        return Objects.equals(this.solarSystemName, systemResponse.solarSystemName);
+        Squad squad = (Squad) o;
+        return Objects.equals(this.id, squad.id) && Objects.equals(this.name, squad.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(solarSystemName);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class SystemResponse {\n");
+        sb.append("class Squad {\n");
 
-        sb.append("    solarSystemName: ").append(toIndentedString(solarSystemName)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

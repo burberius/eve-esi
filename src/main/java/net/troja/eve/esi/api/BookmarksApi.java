@@ -7,8 +7,8 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CharacterBookmarksResponse;
 import net.troja.eve.esi.model.CharacterBookmarkFoldersResponse;
+import net.troja.eve.esi.model.CharacterBookmarksResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +39,8 @@ public class BookmarksApi {
      * route: &#x60;/v1/characters/{character_id}/bookmarks/&#x60; Alternate
      * route: &#x60;/legacy/characters/{character_id}/bookmarks/&#x60; Alternate
      * route: &#x60;/dev/characters/{character_id}/bookmarks/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-bookmarks.read_character_bookmarks.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -94,7 +95,8 @@ public class BookmarksApi {
      * route: &#x60;/legacy/characters/{character_id}/bookmarks/folders/&#x60;
      * Alternate route:
      * &#x60;/dev/characters/{character_id}/bookmarks/folders/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-bookmarks.read_character_bookmarks.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

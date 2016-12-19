@@ -7,14 +7,13 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.MailHeadersResponse;
-import net.troja.eve.esi.model.MailLabelsResponse;
 import net.troja.eve.esi.model.CharacterMailinglistsResponse;
-import net.troja.eve.esi.model.MailResponse;
-import net.troja.eve.esi.model.BadRequest;
 import net.troja.eve.esi.model.Mail;
-import net.troja.eve.esi.model.MailLabel;
+import net.troja.eve.esi.model.MailHeadersResponse;
+import net.troja.eve.esi.model.MailLabelSimple;
+import net.troja.eve.esi.model.MailLabelsResponse;
 import net.troja.eve.esi.model.MailMetaData;
+import net.troja.eve.esi.model.MailResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +44,8 @@ public class MailApi {
      * &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
      * route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;
      * Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60;
+     * &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; SSO Scope:
+     * esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -106,7 +106,7 @@ public class MailApi {
      * route: &#x60;/v1/characters/{character_id}/mail/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/mail/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/mail/&#x60; --- This route is cached
-     * for up to 30 seconds
+     * for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -167,7 +167,7 @@ public class MailApi {
      * unread counts for each label and a total unread count. --- Alternate
      * route: &#x60;/v3/characters/{character_id}/mail/labels/&#x60; Alternate
      * route: &#x60;/dev/characters/{character_id}/mail/labels/&#x60; --- This
-     * route is cached for up to 30 seconds
+     * route is cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -221,7 +221,7 @@ public class MailApi {
      * &#x60;/v1/characters/{character_id}/mail/lists/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/mail/lists/&#x60; Alternate
      * route: &#x60;/dev/characters/{character_id}/mail/lists/&#x60; --- This
-     * route is cached for up to 120 seconds
+     * route is cached for up to 120 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -275,7 +275,7 @@ public class MailApi {
      * route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;
      * Alternate route:
      * &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; --- This route
-     * is cached for up to 30 seconds
+     * is cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -336,7 +336,8 @@ public class MailApi {
      * Send a new mail Create and send a new mail --- Alternate route:
      * &#x60;/v1/characters/{character_id}/mail/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/mail/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/&#x60;
+     * &#x60;/dev/characters/{character_id}/mail/&#x60; SSO Scope:
+     * esi-mail.send_mail.v1
      * 
      * @param characterId
      *            The sender&#39;s character ID (required)
@@ -395,7 +396,8 @@ public class MailApi {
      * Create a mail label Create a mail label --- Alternate route:
      * &#x60;/v2/characters/{character_id}/mail/labels/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/mail/labels/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/labels/&#x60;
+     * route: &#x60;/dev/characters/{character_id}/mail/labels/&#x60; SSO Scope:
+     * esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -408,7 +410,7 @@ public class MailApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public Long postCharactersCharacterIdMailLabels(Integer characterId, MailLabel label, String datasource)
+    public Long postCharactersCharacterIdMailLabels(Integer characterId, MailLabelSimple label, String datasource)
             throws ApiException {
         Object localVarPostBody = label;
 
@@ -450,7 +452,8 @@ public class MailApi {
      * route: &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60;
      * Alternate route:
      * &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60;
+     * route: &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; SSO
+     * Scope: esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

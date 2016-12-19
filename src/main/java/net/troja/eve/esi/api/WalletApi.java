@@ -40,7 +40,8 @@ public class WalletApi {
      * &#x60;/v1/characters/{character_id}/wallets/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/wallets/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/wallets/&#x60; --- This route is
-     * cached for up to 120 seconds
+     * cached for up to 120 seconds SSO Scope:
+     * esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

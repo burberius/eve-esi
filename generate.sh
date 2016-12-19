@@ -58,6 +58,7 @@ sed -i -f replace.sed esi.json
 # Generate code
 # Move tests so they are generated new and then moved to a different directory
 #
+test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
 java -jar swagger-codegen-cli.jar generate \
   -i esi.json \

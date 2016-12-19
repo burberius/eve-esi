@@ -7,12 +7,12 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.EntityIds;
 import net.troja.eve.esi.model.StationResponse;
 import net.troja.eve.esi.model.StructureResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseNamesResponse;
-import net.troja.eve.esi.model.EntityIds;
 
 import java.util.ArrayList;
 import java.util.HashMap;

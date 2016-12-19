@@ -7,7 +7,6 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class AssetsApi {
      * route: &#x60;/v1/characters/{character_id}/assets/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/assets/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/assets/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * cached for up to 3600 seconds SSO Scope: esi-assets.read_assets.v1
      * 
      * @param characterId
      *            Character id of the target character (required)

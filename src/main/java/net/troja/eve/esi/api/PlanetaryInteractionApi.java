@@ -7,9 +7,9 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanets200Ok;
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanetsPlanetIdOk;
-import net.troja.eve.esi.model.GetUniverseSchematicsSchematicIdOk;
+import net.troja.eve.esi.model.CharacterPlanetResponse;
+import net.troja.eve.esi.model.CharacterPlanetsResponse;
+import net.troja.eve.esi.model.PlanetFactorySchematicResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,19 +41,19 @@ public class PlanetaryInteractionApi {
      * &#x60;/v1/characters/{character_id}/planets/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/planets/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/planets/&#x60; --- This route is
-     * cached for up to 600 seconds
+     * cached for up to 600 seconds SSO Scope: esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            Character id of the target character (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return List<GetCharactersCharacterIdPlanets200Ok>
+     * @return List<CharacterPlanetsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<GetCharactersCharacterIdPlanets200Ok> getCharactersCharacterIdPlanets(Integer characterId,
-            String datasource) throws ApiException {
+    public List<CharacterPlanetsResponse> getCharactersCharacterIdPlanets(Integer characterId, String datasource)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -83,7 +83,7 @@ public class PlanetaryInteractionApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<GetCharactersCharacterIdPlanets200Ok>> localVarReturnType = new GenericType<List<GetCharactersCharacterIdPlanets200Ok>>() {
+        GenericType<List<CharacterPlanetsResponse>> localVarReturnType = new GenericType<List<CharacterPlanetsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -99,7 +99,8 @@ public class PlanetaryInteractionApi {
      * route: &#x60;/legacy/characters/{character_id}/planets/{planet_id}/&#x60;
      * Alternate route:
      * &#x60;/dev/characters/{character_id}/planets/{planet_id}/&#x60; --- This
-     * route is cached for up to 600 seconds
+     * route is cached for up to 600 seconds SSO Scope:
+     * esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            Character id of the target character (required)
@@ -108,12 +109,12 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return GetCharactersCharacterIdPlanetsPlanetIdOk
+     * @return CharacterPlanetResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public GetCharactersCharacterIdPlanetsPlanetIdOk getCharactersCharacterIdPlanetsPlanetId(Integer characterId,
-            Integer planetId, String datasource) throws ApiException {
+    public CharacterPlanetResponse getCharactersCharacterIdPlanetsPlanetId(Integer characterId, Integer planetId,
+            String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -150,7 +151,7 @@ public class PlanetaryInteractionApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<GetCharactersCharacterIdPlanetsPlanetIdOk> localVarReturnType = new GenericType<GetCharactersCharacterIdPlanetsPlanetIdOk>() {
+        GenericType<CharacterPlanetResponse> localVarReturnType = new GenericType<CharacterPlanetResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -169,11 +170,11 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @return GetUniverseSchematicsSchematicIdOk
+     * @return PlanetFactorySchematicResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public GetUniverseSchematicsSchematicIdOk getUniverseSchematicsSchematicId(Integer schematicId, String datasource)
+    public PlanetFactorySchematicResponse getUniverseSchematicsSchematicId(Integer schematicId, String datasource)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -204,7 +205,7 @@ public class PlanetaryInteractionApi {
 
         String[] localVarAuthNames = new String[] {};
 
-        GenericType<GetUniverseSchematicsSchematicIdOk> localVarReturnType = new GenericType<GetUniverseSchematicsSchematicIdOk>() {
+        GenericType<PlanetFactorySchematicResponse> localVarReturnType = new GenericType<PlanetFactorySchematicResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

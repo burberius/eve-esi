@@ -7,8 +7,8 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CharacterCalendarResponse;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
+import net.troja.eve.esi.model.CharacterCalendarResponse;
 import net.troja.eve.esi.model.EventResponseStatus;
 
 import java.util.ArrayList;
@@ -44,7 +44,8 @@ public class CalendarApi {
      * &#x60;/v1/characters/{character_id}/calendar/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/calendar/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/calendar/&#x60; --- This route is
-     * cached for up to 5 seconds
+     * cached for up to 5 seconds SSO Scope:
+     * esi-calendar.read_calendar_events.v1
      * 
      * @param characterId
      *            The character to retrieve events from (required)
@@ -100,7 +101,8 @@ public class CalendarApi {
      * route: &#x60;/v3/characters/{character_id}/calendar/{event_id}/&#x60;
      * Alternate route:
      * &#x60;/dev/characters/{character_id}/calendar/{event_id}/&#x60; --- This
-     * route is cached for up to 5 seconds
+     * route is cached for up to 5 seconds SSO Scope:
+     * esi-calendar.read_calendar_events.v1
      * 
      * @param characterId
      *            The character id requesting the event (required)
@@ -161,7 +163,8 @@ public class CalendarApi {
      * Respond to an event Set your response status to an event --- Alternate
      * route: &#x60;/v3/characters/{character_id}/calendar/{event_id}/&#x60;
      * Alternate route:
-     * &#x60;/dev/characters/{character_id}/calendar/{event_id}/&#x60;
+     * &#x60;/dev/characters/{character_id}/calendar/{event_id}/&#x60; SSO
+     * Scope: esi-calendar.respond_calendar_events.v1
      * 
      * @param characterId
      *            The character ID requesting the event (required)

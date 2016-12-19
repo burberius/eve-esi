@@ -20,32 +20,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * 200 ok object
+ * waypoint object
  */
-@ApiModel(description = "200 ok object")
-public class SystemResponse implements Serializable {
+@ApiModel(description = "waypoint object")
+public class PlanetWaypoint implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("solar_system_name")
-    private String solarSystemName = null;
+    @JsonProperty("order")
+    private Integer order = null;
 
-    public SystemResponse solarSystemName(String solarSystemName) {
-        this.solarSystemName = solarSystemName;
+    @JsonProperty("pin_id")
+    private Long pinId = null;
+
+    public PlanetWaypoint order(Integer order) {
+        this.order = order;
         return this;
     }
 
     /**
-     * the full name of the system
+     * order integer minimum: 1 maximum: 5
      * 
-     * @return solarSystemName
+     * @return order
      **/
-    @ApiModelProperty(example = "null", value = "the full name of the system")
-    public String getSolarSystemName() {
-        return solarSystemName;
+    @ApiModelProperty(example = "null", required = true, value = "order integer")
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setSolarSystemName(String solarSystemName) {
-        this.solarSystemName = solarSystemName;
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    public PlanetWaypoint pinId(Long pinId) {
+        this.pinId = pinId;
+        return this;
+    }
+
+    /**
+     * pin_id integer
+     * 
+     * @return pinId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "pin_id integer")
+    public Long getPinId() {
+        return pinId;
+    }
+
+    public void setPinId(Long pinId) {
+        this.pinId = pinId;
     }
 
     @Override
@@ -56,21 +78,22 @@ public class SystemResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SystemResponse systemResponse = (SystemResponse) o;
-        return Objects.equals(this.solarSystemName, systemResponse.solarSystemName);
+        PlanetWaypoint planetWaypoint = (PlanetWaypoint) o;
+        return Objects.equals(this.order, planetWaypoint.order) && Objects.equals(this.pinId, planetWaypoint.pinId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(solarSystemName);
+        return Objects.hash(order, pinId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class SystemResponse {\n");
+        sb.append("class PlanetWaypoint {\n");
 
-        sb.append("    solarSystemName: ").append(toIndentedString(solarSystemName)).append("\n");
+        sb.append("    order: ").append(toIndentedString(order)).append("\n");
+        sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

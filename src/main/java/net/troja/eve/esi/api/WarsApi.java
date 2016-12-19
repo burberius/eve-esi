@@ -7,8 +7,8 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.WarResponse;
 import net.troja.eve.esi.model.WarKillmailsResponse;
+import net.troja.eve.esi.model.WarResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -41,7 +41,7 @@ public class LocationApi {
      * &#x60;/v1/characters/{character_id}/location/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/location/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/location/&#x60; --- This route is
-     * cached for up to 5 seconds
+     * cached for up to 5 seconds SSO Scope: esi-location.read_location.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -94,7 +94,7 @@ public class LocationApi {
      * route: &#x60;/v1/characters/{character_id}/ship/&#x60; Alternate route:
      * &#x60;/legacy/characters/{character_id}/ship/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/ship/&#x60; --- This route is cached
-     * for up to 5 seconds
+     * for up to 5 seconds SSO Scope: esi-location.read_ship_type.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

@@ -7,12 +7,12 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMembersResponse;
-import net.troja.eve.esi.model.CorporationRolesResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
+import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationRolesResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,9 +40,8 @@ public class CorporationApi {
 
     /**
      * Get corporation information Public information about a corporation ---
-     * Alternate route: &#x60;/v2/corporations/{corporation_id}/&#x60; Alternate
-     * route: &#x60;/dev/corporations/{corporation_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Alternate route: &#x60;/v2/corporations/{corporation_id}/&#x60; --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param corporationId
      *            An Eve corporation ID (required)
@@ -204,7 +203,8 @@ public class CorporationApi {
      * &#x60;/v2/corporations/{corporation_id}/members/&#x60; Alternate route:
      * &#x60;/legacy/corporations/{corporation_id}/members/&#x60; Alternate
      * route: &#x60;/dev/corporations/{corporation_id}/members/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            A corporation ID (required)
@@ -258,7 +258,8 @@ public class CorporationApi {
      * Alternate route: &#x60;/v1/corporations/{corporation_id}/roles/&#x60;
      * Alternate route: &#x60;/legacy/corporations/{corporation_id}/roles/&#x60;
      * Alternate route: &#x60;/dev/corporations/{corporation_id}/roles/&#x60;
-     * --- This route is cached for up to 3600 seconds
+     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            A corporation ID (required)

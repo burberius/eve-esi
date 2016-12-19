@@ -41,7 +41,8 @@ public class KillmailsApi {
      * route: &#x60;/legacy/characters/{character_id}/killmails/recent/&#x60;
      * Alternate route:
      * &#x60;/dev/characters/{character_id}/killmails/recent/&#x60; --- This
-     * route is cached for up to 120 seconds
+     * route is cached for up to 120 seconds SSO Scope:
+     * esi-killmails.read_killmails.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

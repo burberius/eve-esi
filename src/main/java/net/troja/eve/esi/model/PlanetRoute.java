@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanetsPlanetIdWaypoint;
+import net.troja.eve.esi.model.PlanetWaypoint;
 import java.io.Serializable;
 
 /**
@@ -45,7 +45,7 @@ public class PlanetRoute implements Serializable {
     private Long sourcePinId = null;
 
     @JsonProperty("waypoints")
-    private List<GetCharactersCharacterIdPlanetsPlanetIdWaypoint> waypoints = new ArrayList<GetCharactersCharacterIdPlanetsPlanetIdWaypoint>();
+    private List<PlanetWaypoint> waypoints = new ArrayList<PlanetWaypoint>();
 
     public PlanetRoute contentTypeId(Integer contentTypeId) {
         this.contentTypeId = contentTypeId;
@@ -142,12 +142,12 @@ public class PlanetRoute implements Serializable {
         this.sourcePinId = sourcePinId;
     }
 
-    public PlanetRoute waypoints(List<GetCharactersCharacterIdPlanetsPlanetIdWaypoint> waypoints) {
+    public PlanetRoute waypoints(List<PlanetWaypoint> waypoints) {
         this.waypoints = waypoints;
         return this;
     }
 
-    public PlanetRoute addWaypointsItem(GetCharactersCharacterIdPlanetsPlanetIdWaypoint waypointsItem) {
+    public PlanetRoute addWaypointsItem(PlanetWaypoint waypointsItem) {
         this.waypoints.add(waypointsItem);
         return this;
     }
@@ -158,11 +158,11 @@ public class PlanetRoute implements Serializable {
      * @return waypoints
      **/
     @ApiModelProperty(example = "null", value = "waypoints array")
-    public List<GetCharactersCharacterIdPlanetsPlanetIdWaypoint> getWaypoints() {
+    public List<PlanetWaypoint> getWaypoints() {
         return waypoints;
     }
 
-    public void setWaypoints(List<GetCharactersCharacterIdPlanetsPlanetIdWaypoint> waypoints) {
+    public void setWaypoints(List<PlanetWaypoint> waypoints) {
         this.waypoints = waypoints;
     }
 

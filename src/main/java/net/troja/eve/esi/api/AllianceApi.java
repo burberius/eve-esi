@@ -7,11 +7,9 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.InternalServerError;
-import net.troja.eve.esi.model.AllianceResponse;
-import net.troja.eve.esi.model.NotFound;
 import net.troja.eve.esi.model.AllianceIconsResponse;
 import net.troja.eve.esi.model.AllianceNamesResponse;
+import net.troja.eve.esi.model.AllianceResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,9 +80,8 @@ public class AllianceApi {
 
     /**
      * Get alliance information Public information about an alliance ---
-     * Alternate route: &#x60;/v2/alliances/{alliance_id}/&#x60; Alternate
-     * route: &#x60;/dev/alliances/{alliance_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Alternate route: &#x60;/v2/alliances/{alliance_id}/&#x60; --- This route
+     * is cached for up to 3600 seconds
      * 
      * @param allianceId
      *            An Eve alliance ID (required)

@@ -37,7 +37,7 @@ public class ClonesApi {
      * Get clones A list of the character&#39;s clones --- Alternate route:
      * &#x60;/v2/characters/{character_id}/clones/&#x60; Alternate route:
      * &#x60;/dev/characters/{character_id}/clones/&#x60; --- This route is
-     * cached for up to 120 seconds
+     * cached for up to 120 seconds SSO Scope: esi-clones.read_clones.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

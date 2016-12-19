@@ -20,9 +20,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanetsPlanetIdContent;
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails;
-import net.troja.eve.esi.model.GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails;
+import net.troja.eve.esi.model.PlanetContent;
+import net.troja.eve.esi.model.PlanetExtractorDetails;
+import net.troja.eve.esi.model.PlanetFactoryDetails;
 import java.io.Serializable;
 
 /**
@@ -33,16 +33,16 @@ public class PlanetPin implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("content")
-    private List<GetCharactersCharacterIdPlanetsPlanetIdContent> content = new ArrayList<GetCharactersCharacterIdPlanetsPlanetIdContent>();
+    private List<PlanetContent> content = new ArrayList<PlanetContent>();
 
     @JsonProperty("expiry_time")
     private OffsetDateTime expiryTime = null;
 
     @JsonProperty("extractor_details")
-    private GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails extractorDetails = null;
+    private PlanetExtractorDetails extractorDetails = null;
 
     @JsonProperty("factory_details")
-    private GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails factoryDetails = null;
+    private PlanetFactoryDetails factoryDetails = null;
 
     @JsonProperty("install_time")
     private OffsetDateTime installTime = null;
@@ -65,12 +65,12 @@ public class PlanetPin implements Serializable {
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public PlanetPin content(List<GetCharactersCharacterIdPlanetsPlanetIdContent> content) {
+    public PlanetPin content(List<PlanetContent> content) {
         this.content = content;
         return this;
     }
 
-    public PlanetPin addContentItem(GetCharactersCharacterIdPlanetsPlanetIdContent contentItem) {
+    public PlanetPin addContentItem(PlanetContent contentItem) {
         this.content.add(contentItem);
         return this;
     }
@@ -81,11 +81,11 @@ public class PlanetPin implements Serializable {
      * @return content
      **/
     @ApiModelProperty(example = "null", value = "content array")
-    public List<GetCharactersCharacterIdPlanetsPlanetIdContent> getContent() {
+    public List<PlanetContent> getContent() {
         return content;
     }
 
-    public void setContent(List<GetCharactersCharacterIdPlanetsPlanetIdContent> content) {
+    public void setContent(List<PlanetContent> content) {
         this.content = content;
     }
 
@@ -108,7 +108,7 @@ public class PlanetPin implements Serializable {
         this.expiryTime = expiryTime;
     }
 
-    public PlanetPin extractorDetails(GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails extractorDetails) {
+    public PlanetPin extractorDetails(PlanetExtractorDetails extractorDetails) {
         this.extractorDetails = extractorDetails;
         return this;
     }
@@ -119,15 +119,15 @@ public class PlanetPin implements Serializable {
      * @return extractorDetails
      **/
     @ApiModelProperty(example = "null", value = "")
-    public GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails getExtractorDetails() {
+    public PlanetExtractorDetails getExtractorDetails() {
         return extractorDetails;
     }
 
-    public void setExtractorDetails(GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails extractorDetails) {
+    public void setExtractorDetails(PlanetExtractorDetails extractorDetails) {
         this.extractorDetails = extractorDetails;
     }
 
-    public PlanetPin factoryDetails(GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails factoryDetails) {
+    public PlanetPin factoryDetails(PlanetFactoryDetails factoryDetails) {
         this.factoryDetails = factoryDetails;
         return this;
     }
@@ -138,11 +138,11 @@ public class PlanetPin implements Serializable {
      * @return factoryDetails
      **/
     @ApiModelProperty(example = "null", value = "")
-    public GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails getFactoryDetails() {
+    public PlanetFactoryDetails getFactoryDetails() {
         return factoryDetails;
     }
 
-    public void setFactoryDetails(GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails factoryDetails) {
+    public void setFactoryDetails(PlanetFactoryDetails factoryDetails) {
         this.factoryDetails = factoryDetails;
     }
 

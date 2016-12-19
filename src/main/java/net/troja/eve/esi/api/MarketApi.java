@@ -7,9 +7,9 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.MarketPricesResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
+import net.troja.eve.esi.model.MarketPricesResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,7 +97,7 @@ public class MarketApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketHistoryResponse> getMarketsRegionIdHistory(Long regionId, Long typeId, String datasource)
+    public List<MarketHistoryResponse> getMarketsRegionIdHistory(Integer regionId, Integer typeId, String datasource)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -166,7 +166,7 @@ public class MarketApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketOrdersResponse> getMarketsRegionIdOrders(Long regionId, String orderType, Long typeId,
+    public List<MarketOrdersResponse> getMarketsRegionIdOrders(Integer regionId, String orderType, Integer typeId,
             Integer page, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
