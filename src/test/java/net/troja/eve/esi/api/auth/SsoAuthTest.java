@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.junit.Test;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.api.GeneralApiTest;
 import net.troja.eve.esi.auth.OAuth;
+import net.troja.eve.esi.auth.SsoScopes;
 
 public class SsoAuthTest extends GeneralApiTest {
     @Test
@@ -59,8 +61,7 @@ public class SsoAuthTest extends GeneralApiTest {
         auth.setClientId(args[0]);
         auth.setClientSecret(args[1]);
 
-        final Set<String> scopes = new HashSet<>();
-        scopes.add("esi-clones.read_clones.v1");
+        final Set<String> scopes = new HashSet<>(Arrays.asList(SsoScopes.ALL));
         final String authorizationUri = auth.getAuthorizationUri("http://localhost", scopes, state);
         System.out.println("Authorization URL: " + authorizationUri);
         Desktop.getDesktop().browse(new URI(authorizationUri));
