@@ -18,48 +18,31 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.Recipient;
 import java.io.Serializable;
 
 /**
- * mail schema
+ * new_mail object
  */
-@ApiModel(description = "mail schema")
-public class Mail implements Serializable {
+@ApiModel(description = "new_mail object")
+public class UiNewMail implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @JsonProperty("approved_cost")
-    private Long approvedCost = 0l;
 
     @JsonProperty("body")
     private String body = null;
 
     @JsonProperty("recipients")
-    private List<Recipient> recipients = new ArrayList<Recipient>();
+    private List<Integer> recipients = new ArrayList<Integer>();
 
     @JsonProperty("subject")
     private String subject = null;
 
-    public Mail approvedCost(Long approvedCost) {
-        this.approvedCost = approvedCost;
-        return this;
-    }
+    @JsonProperty("to_corp_or_alliance_id")
+    private Integer toCorpOrAllianceId = null;
 
-    /**
-     * approved_cost integer
-     * 
-     * @return approvedCost
-     **/
-    @ApiModelProperty(example = "null", value = "approved_cost integer")
-    public Long getApprovedCost() {
-        return approvedCost;
-    }
+    @JsonProperty("to_mailing_list_id")
+    private Integer toMailingListId = null;
 
-    public void setApprovedCost(Long approvedCost) {
-        this.approvedCost = approvedCost;
-    }
-
-    public Mail body(String body) {
+    public UiNewMail body(String body) {
         this.body = body;
         return this;
     }
@@ -78,12 +61,12 @@ public class Mail implements Serializable {
         this.body = body;
     }
 
-    public Mail recipients(List<Recipient> recipients) {
+    public UiNewMail recipients(List<Integer> recipients) {
         this.recipients = recipients;
         return this;
     }
 
-    public Mail addRecipientsItem(Recipient recipientsItem) {
+    public UiNewMail addRecipientsItem(Integer recipientsItem) {
         this.recipients.add(recipientsItem);
         return this;
     }
@@ -94,15 +77,15 @@ public class Mail implements Serializable {
      * @return recipients
      **/
     @ApiModelProperty(example = "null", required = true, value = "recipients array")
-    public List<Recipient> getRecipients() {
+    public List<Integer> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(List<Recipient> recipients) {
+    public void setRecipients(List<Integer> recipients) {
         this.recipients = recipients;
     }
 
-    public Mail subject(String subject) {
+    public UiNewMail subject(String subject) {
         this.subject = subject;
         return this;
     }
@@ -121,6 +104,46 @@ public class Mail implements Serializable {
         this.subject = subject;
     }
 
+    public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
+        this.toCorpOrAllianceId = toCorpOrAllianceId;
+        return this;
+    }
+
+    /**
+     * to_corp_or_alliance_id integer
+     * 
+     * @return toCorpOrAllianceId
+     **/
+    @ApiModelProperty(example = "null", value = "to_corp_or_alliance_id integer")
+    public Integer getToCorpOrAllianceId() {
+        return toCorpOrAllianceId;
+    }
+
+    public void setToCorpOrAllianceId(Integer toCorpOrAllianceId) {
+        this.toCorpOrAllianceId = toCorpOrAllianceId;
+    }
+
+    public UiNewMail toMailingListId(Integer toMailingListId) {
+        this.toMailingListId = toMailingListId;
+        return this;
+    }
+
+    /**
+     * Corporations, alliances and mailing lists are all types of mailing
+     * groups. You may only send to one mailing group, at a time, so you may
+     * fill out either this field or the to_corp_or_alliance_ids field
+     * 
+     * @return toMailingListId
+     **/
+    @ApiModelProperty(example = "null", value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
+    public Integer getToMailingListId() {
+        return toMailingListId;
+    }
+
+    public void setToMailingListId(Integer toMailingListId) {
+        this.toMailingListId = toMailingListId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,25 +152,28 @@ public class Mail implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Mail mail = (Mail) o;
-        return Objects.equals(this.approvedCost, mail.approvedCost) && Objects.equals(this.body, mail.body)
-                && Objects.equals(this.recipients, mail.recipients) && Objects.equals(this.subject, mail.subject);
+        UiNewMail uiNewMail = (UiNewMail) o;
+        return Objects.equals(this.body, uiNewMail.body) && Objects.equals(this.recipients, uiNewMail.recipients)
+                && Objects.equals(this.subject, uiNewMail.subject)
+                && Objects.equals(this.toCorpOrAllianceId, uiNewMail.toCorpOrAllianceId)
+                && Objects.equals(this.toMailingListId, uiNewMail.toMailingListId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(approvedCost, body, recipients, subject);
+        return Objects.hash(body, recipients, subject, toCorpOrAllianceId, toMailingListId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Mail {\n");
+        sb.append("class UiNewMail {\n");
 
-        sb.append("    approvedCost: ").append(toIndentedString(approvedCost)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
         sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+        sb.append("    toCorpOrAllianceId: ").append(toIndentedString(toCorpOrAllianceId)).append("\n");
+        sb.append("    toMailingListId: ").append(toIndentedString(toMailingListId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

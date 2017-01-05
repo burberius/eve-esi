@@ -67,13 +67,19 @@ java -jar swagger-codegen-cli.jar generate \
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
 
+for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
+  sed -i -e '/OpenAPI spec version/d' $I
+done
+
 #
 # Generate SSO scopes
 #
+BAD_SCOPES="esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1"
 FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
 echo "package net.troja.eve.esi.auth;" > $FILE
 echo "public class SsoScopes {" >> $FILE
 for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
+  echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
   if [ "a$ALL" = "a" ]; then
     ALL="$UPPER"

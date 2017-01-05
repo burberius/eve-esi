@@ -47,6 +47,7 @@ s/get_fleets_fleet_id_wings_squad/Squad/
 s/get_industry_systems_cost_indice/SystemCostIndice/
 s/get_insurance_prices_level/InsurancePriceLevel/
 s/get_sovereignty_campaigns_participant/SovereigntyCampaignParticipant/
+s/post_ui_openwindow_newmail_new_mail/UiNewMail/
 
 # Post 200
 # jq '.paths[].post.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
@@ -54,6 +55,7 @@ s/post_universe_names_200_ok/UniverseNamesResponse/g
 
 # Post 201
 # jq '.paths[].post.responses["201"].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
+s/post_characters_character_id_contacts_created/AddContactsResponse/g
 s/post_characters_character_id_cspa_created/CspaCostResponse/g
 s/post_characters_character_id_mail_created/SendMailResponse/g
 s/post_characters_character_id_mail_labels_created/CreateMailLabelResponse/g
@@ -85,6 +87,8 @@ s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
 s/get_corporations_names_200_ok/CorporationNamesResponse/g
 s/get_fleets_fleet_id_members_200_ok/FleetMembersResponse/g
 s/get_fleets_fleet_id_wings_200_ok/FleetWingsResponse/g
+s/get_characters_character_id_contacts_200_ok/ContactsResponse/g
+s/get_characters_character_id_contacts_labels_200_ok/ContactLabelsResponse/g
 s/get_incursions_200_ok/IncursionsResponse/g
 s/get_industry_facilities_200_ok/IndustryFacilitiesResponse/g
 s/get_industry_systems_200_ok/IndustrySystemsResponse/g

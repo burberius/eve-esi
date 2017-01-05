@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cp esi.json work1.json
-
 # Position
 POS=$(jq ".paths.\"/universe/structures/{structure_id}/\".get.responses.\"200\".schema.properties.position" esi.json)
 jq ".definitions.position = $POS" esi.json > work1.json

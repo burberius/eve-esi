@@ -22,51 +22,51 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
-public class CharacterWalletsResponse implements Serializable {
+public class ContactLabelsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("balance")
-    private Long balance = null;
+    @JsonProperty("label_id")
+    private Long labelId = null;
 
-    @JsonProperty("wallet_id")
-    private Integer walletId = null;
+    @JsonProperty("label_name")
+    private String labelName = null;
 
-    public CharacterWalletsResponse balance(Long balance) {
-        this.balance = balance;
+    public ContactLabelsResponse labelId(Long labelId) {
+        this.labelId = labelId;
         return this;
     }
 
     /**
-     * Wallet's balance in ISK hundredths.
+     * label_id integer
      * 
-     * @return balance
+     * @return labelId
      **/
-    @ApiModelProperty(example = "null", value = "Wallet's balance in ISK hundredths.")
-    public Long getBalance() {
-        return balance;
+    @ApiModelProperty(example = "null", required = true, value = "label_id integer")
+    public Long getLabelId() {
+        return labelId;
     }
 
-    public void setBalance(Long balance) {
-        this.balance = balance;
+    public void setLabelId(Long labelId) {
+        this.labelId = labelId;
     }
 
-    public CharacterWalletsResponse walletId(Integer walletId) {
-        this.walletId = walletId;
+    public ContactLabelsResponse labelName(String labelName) {
+        this.labelName = labelName;
         return this;
     }
 
     /**
-     * wallet_id integer
+     * label_name string
      * 
-     * @return walletId
+     * @return labelName
      **/
-    @ApiModelProperty(example = "null", value = "wallet_id integer")
-    public Integer getWalletId() {
-        return walletId;
+    @ApiModelProperty(example = "null", required = true, value = "label_name string")
+    public String getLabelName() {
+        return labelName;
     }
 
-    public void setWalletId(Integer walletId) {
-        this.walletId = walletId;
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
     }
 
     @Override
@@ -77,23 +77,23 @@ public class CharacterWalletsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterWalletsResponse characterWalletsResponse = (CharacterWalletsResponse) o;
-        return Objects.equals(this.balance, characterWalletsResponse.balance)
-                && Objects.equals(this.walletId, characterWalletsResponse.walletId);
+        ContactLabelsResponse contactLabelsResponse = (ContactLabelsResponse) o;
+        return Objects.equals(this.labelId, contactLabelsResponse.labelId)
+                && Objects.equals(this.labelName, contactLabelsResponse.labelName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(balance, walletId);
+        return Objects.hash(labelId, labelName);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterWalletsResponse {\n");
+        sb.append("class ContactLabelsResponse {\n");
 
-        sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
-        sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
+        sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
+        sb.append("    labelName: ").append(toIndentedString(labelName)).append("\n");
         sb.append("}");
         return sb.toString();
     }
