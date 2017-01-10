@@ -40,6 +40,67 @@ public class MailApi {
     }
 
     /**
+     * Delete a mail label Delete a mail label --- Alternate route:
+     * &#x60;/v1/characters/{character_id}/mail/labels/{label_id}/&#x60;
+     * Alternate route:
+     * &#x60;/legacy/characters/{character_id}/mail/labels/{label_id}/&#x60;
+     * Alternate route:
+     * &#x60;/dev/characters/{character_id}/mail/labels/{label_id}/&#x60; SSO
+     * Scope: esi-mail.organize_mail.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param labelId
+     *            An EVE label id (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void deleteCharactersCharacterIdMailLabelsLabelId(Integer characterId, Integer labelId, String datasource)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling deleteCharactersCharacterIdMailLabelsLabelId");
+        }
+
+        // verify the required parameter 'labelId' is set
+        if (labelId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'labelId' when calling deleteCharactersCharacterIdMailLabelsLabelId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/characters/{character_id}/mail/labels/{label_id}/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
+                .replaceAll("\\{" + "label_id" + "\\}", apiClient.escapeString(labelId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
+    }
+
+    /**
      * Delete a mail Delete a mail --- Alternate route:
      * &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
      * route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;

@@ -183,7 +183,9 @@ public class CharacterAssetsResponse implements Serializable {
 
         FIGHTERTUBE3("FighterTube3"),
 
-        FIGHTERTUBE4("FighterTube4");
+        FIGHTERTUBE4("FighterTube4"),
+
+        MODULE("Module");
 
         private String value;
 

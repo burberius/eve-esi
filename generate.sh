@@ -96,6 +96,9 @@ echo "}" >> $FILE
 #
 mvn formatter:format
 
+cp src/test/java/net/troja/eve/esi/api/GeneralApiTest.java src/test/java/net/troja/eve/esi/api.new/
+cp -r src/test/java/net/troja/eve/esi/api/auth src/test/java/net/troja/eve/esi/api.new/
+
 if [ "$GIT" = true ]; then
   git add .
   git commit -m "Generated API version $APIVERSION"

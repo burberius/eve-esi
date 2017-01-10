@@ -36,6 +36,24 @@ public class MailApiTest {
 
     
     /**
+     * Delete a mail label
+     *
+     * Delete a mail label  ---  Alternate route: &#x60;/v1/characters/{character_id}/mail/labels/{label_id}/&#x60;  Alternate route: &#x60;/legacy/characters/{character_id}/mail/labels/{label_id}/&#x60;  Alternate route: &#x60;/dev/characters/{character_id}/mail/labels/{label_id}/&#x60;   SSO Scope: esi-mail.organize_mail.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteCharactersCharacterIdMailLabelsLabelIdTest() throws ApiException {
+        Integer characterId = null;
+        Integer labelId = null;
+        String datasource = null;
+        // api.deleteCharactersCharacterIdMailLabelsLabelId(characterId, labelId, datasource);
+
+        // TODO: test validations
+    }
+
+    /**
      * Delete a mail
      *
      * Delete a mail  ---  Alternate route: &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60;  Alternate route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;  Alternate route: &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60;   SSO Scope: esi-mail.organize_mail.v1
