@@ -18,8 +18,9 @@ import org.glassfish.jersey.client.oauth2.TokenResult;
 import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
-    private static final String URI_AUTHENTICATION = "https://login.eveonline.com/oauth/authorize";
-    private static final String URI_ACCESS_TOKEN = "https://login.eveonline.com/oauth/token";
+    public static final String URI_OAUTH = "https://login.eveonline.com/oauth";
+    private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
+    private static final String URI_ACCESS_TOKEN = URI_OAUTH + "/token";
 
     private String accessToken;
     private long validUntil;
@@ -94,8 +95,8 @@ public class OAuth implements Authentication {
         final String scopesString = getScopesString(scopes);
         final ClientIdentifier clientIdentifier = new ClientIdentifier(clientId, clientSecret);
         @SuppressWarnings("rawtypes")
-        final OAuth2CodeGrantFlow.Builder builder = OAuth2ClientSupport.authorizationCodeGrantFlowBuilder(
-                clientIdentifier, URI_AUTHENTICATION, URI_ACCESS_TOKEN);
+        final OAuth2CodeGrantFlow.Builder builder = OAuth2ClientSupport
+                .authorizationCodeGrantFlowBuilder(clientIdentifier, URI_AUTHENTICATION, URI_ACCESS_TOKEN);
         if (StringUtils.isNotBlank(redirectUri)) {
             builder.redirectUri(redirectUri);
         }

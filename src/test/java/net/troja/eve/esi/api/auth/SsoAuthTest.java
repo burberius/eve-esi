@@ -1,6 +1,8 @@
 package net.troja.eve.esi.api.auth;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import java.awt.Desktop;
@@ -15,10 +17,14 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiClient;
+import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.GeneralApiTest;
+import net.troja.eve.esi.api.SsoApi;
+import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
 
@@ -36,6 +42,27 @@ public class SsoAuthTest extends GeneralApiTest {
         auth.applyToParams(null, headerParams);
 
         assertThat(headerParams.size(), equalTo(1));
+    }
+
+    @Test
+    public void getCharacterInfo() throws ApiException {
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        auth.setClientId(clientId);
+        auth.setClientSecret(clientSecret);
+        auth.setRefreshToken(refreshToken);
+
+        final SsoApi api = new SsoApi(client);
+        final CharacterInfo info = api.getCharacterInfo();
+
+        assertThat(info, notNullValue());
+        assertThat(info.getCharacterId(), greaterThan(100000));
+        assertThat(StringUtils.isBlank(info.getCharacterName()), equalTo(false));
+        assertThat(info.getExpiresOn(), notNullValue());
+        assertThat(StringUtils.isBlank(info.getCharacterName()), equalTo(false));
+        assertThat(info.getTokenType(), equalTo("Character"));
+        assertThat(StringUtils.isBlank(info.getCharacterOwnerHash()), equalTo(false));
+        assertThat(info.getIntellectualProperty(), equalTo("EVE"));
     }
 
     /**
