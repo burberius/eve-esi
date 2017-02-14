@@ -2,6 +2,7 @@
 # jq '.paths[].get.responses["200"].schema.properties[]? | select(.type == "object") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_clones_home_location/CloneHomeLocation/g
 s/get_killmails_killmail_id_killmail_hash_victim/KillmailVictim/g
+s/get_universe_stargates_stargate_id_destination/StargateDestination/g
 s/get_wars_war_id_aggressor/Aggressor/g
 s/get_wars_war_id_defender/Defender/g
 
@@ -14,18 +15,23 @@ s/get_characters_character_id_planets_planet_id_pin/PlanetPin/g
 s/get_characters_character_id_planets_planet_id_route/PlanetRoute/g
 s/get_characters_character_id_skills_skill/Skill/g
 s/get_killmails_killmail_id_killmail_hash_attacker/KillmailAttacker/g
+s/get_universe_systems_system_id_planet/SystemPlanet/g
+s/get_universe_types_type_id_dogma_attribute/TypeDogmaAttribute/g
+s/get_universe_types_type_id_dogma_effect/TypeDogmaEffect/g
 s/get_wars_war_id_ally/WarAlly/g
 
 # Inner Objects
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.type == "object") | .title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_bookmarks_target/BookmarkTarget/g
 s/get_corporations_corporation_id_alliancehistory_alliance/Alliance/g
+
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.properties != null).properties[] | select(.type == "object").title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_bookmarks_item/BookmarkItem/g
 
 # Objects in post/put
 # jq '.paths[][].parameters[].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/post_characters_character_id_cspa_characters/CspaCharacters/g
+s/post_characters_character_id_fittings_fitting/CharacterFitting/g
 s/post_characters_character_id_mail_labels_label/MailLabelSimple/g
 s/post_characters_character_id_mail_mail/Mail/g
 s/post_fleets_fleet_id_members_invitation/FleetInvitation/g
@@ -57,6 +63,7 @@ s/post_universe_names_200_ok/UniverseNamesResponse/g
 # jq '.paths[].post.responses["201"].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/post_characters_character_id_contacts_created/AddContactsResponse/g
 s/post_characters_character_id_cspa_created/CspaCostResponse/g
+s/post_characters_character_id_fittings_created/CharacterFittingResponse/g
 s/post_characters_character_id_mail_created/SendMailResponse/g
 s/post_characters_character_id_mail_labels_created/CreateMailLabelResponse/g
 s/post_fleets_fleet_id_wings_created/FleetWingCreatedResponse/g
@@ -71,7 +78,10 @@ s/get_characters_character_id_assets_200_ok/CharacterAssetsResponse/g
 s/get_characters_character_id_bookmarks_200_ok/CharacterBookmarksResponse/g
 s/get_characters_character_id_bookmarks_folders_200_ok/CharacterBookmarkFoldersResponse/g
 s/get_characters_character_id_calendar_200_ok/CharacterCalendarResponse/g
+s/get_characters_character_id_contacts_200_ok/ContactsResponse/g
+s/get_characters_character_id_contacts_labels_200_ok/ContactLabelsResponse/g
 s/get_characters_character_id_corporationhistory_200_ok/CharacterCorporationHistoryResponse/g
+s/get_characters_character_id_fittings_200_ok/CharacterFittingsResponse/g
 s/get_characters_character_id_killmails_recent_200_ok/CharacterKillmailsResponse/g
 s/get_characters_character_id_mail_200_ok/MailHeadersResponse/g
 s/get_characters_character_id_mail_lists_200_ok/CharacterMailinglistsResponse/g
@@ -87,8 +97,6 @@ s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
 s/get_corporations_names_200_ok/CorporationNamesResponse/g
 s/get_fleets_fleet_id_members_200_ok/FleetMembersResponse/g
 s/get_fleets_fleet_id_wings_200_ok/FleetWingsResponse/g
-s/get_characters_character_id_contacts_200_ok/ContactsResponse/g
-s/get_characters_character_id_contacts_labels_200_ok/ContactLabelsResponse/g
 s/get_incursions_200_ok/IncursionsResponse/g
 s/get_industry_facilities_200_ok/IndustryFacilitiesResponse/g
 s/get_industry_systems_200_ok/IndustrySystemsResponse/g
@@ -96,9 +104,19 @@ s/get_insurance_prices_200_ok/InsurancePricesResponse/g
 s/get_markets_prices_200_ok/MarketPricesResponse/g
 s/get_markets_region_id_history_200_ok/MarketHistoryResponse/g
 s/get_markets_region_id_orders_200_ok/MarketOrdersResponse/g
+s/get_markets_structures_structure_id_200_ok/MarketStructuresResponse/g
 s/get_sovereignty_campaigns_200_ok/SovereigntyCampaignsResponse/g
 s/get_sovereignty_structures_200_ok/SovereigntyStructuresResponse/g
+s/get_universe_bloodlines_200_ok/BloodlinesResponse/g
+s/get_universe_categories_200_ok/CategoriesResponse/g
+s/get_universe_constellations_200_ok/ConstellationsResponse/g
+s/get_universe_factions_200_ok/FactionsResponse/g
+s/get_universe_groups_200_ok/GroupsResponse/g
+s/get_universe_races_200_ok/RacesResponse/g
+s/get_universe_regions_200_ok/RegionsResponse/g
 s/get_universe_structures_200_ok/StructuresResponse/g
+s/get_universe_systems_200_ok/SystemsResponse/g
+s/get_universe_types_200_ok/TypesResponse/g
 s/get_wars_200_ok/WarsResponse/g
 s/get_wars_war_id_killmails_200_ok/WarKillmailsResponse/g
 
@@ -122,8 +140,14 @@ s/get_corporations_corporation_id_ok/CorporationResponse/g
 s/get_fleets_fleet_id_ok/FleetResponse/g
 s/get_killmails_killmail_id_killmail_hash_ok/KillmailResponse/g
 s/get_search_ok/SearchResponse/g
+s/get_universe_categories_category_id_ok/CategoryResponse/g
+s/get_universe_constellations_constellation_id_ok/ConstellationResponse/g
+s/get_universe_groups_group_id_ok/GroupResponse/g
+s/get_universe_moons_moon_id_ok/MoonResponse/g
 s/get_universe_planets_planet_id_ok/PlanetResponse/g
+s/get_universe_regions_region_id_ok/RegionResponse/g
 s/get_universe_schematics_schematic_id_ok/PlanetFactorySchematicResponse/g
+s/get_universe_stargates_stargate_id_ok/StargateResponse/g
 s/get_universe_stations_station_id_ok/StationResponse/g
 s/get_universe_structures_structure_id_ok/StructureResponse/g
 s/get_universe_systems_system_id_ok/SystemResponse/g

@@ -16,6 +16,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.model.MarketStructuresResponse;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class MarketApiTest {
     /**
      * List historical market statistics in a region
      *
-     * Return a list of historical market statistics for the specified type in a region  ---  Alternate route: &#x60;/v1/markets/{region_id}/history/&#x60;  Alternate route: &#x60;/legacy/markets/{region_id}/history/&#x60;  Alternate route: &#x60;/dev/markets/{region_id}/history/&#x60;   ---  This route is cached for up to 300 seconds
+     * Return a list of historical market statistics for the specified type in a region  ---  Alternate route: &#x60;/v1/markets/{region_id}/history/&#x60;  Alternate route: &#x60;/legacy/markets/{region_id}/history/&#x60;  Alternate route: &#x60;/dev/markets/{region_id}/history/&#x60;   ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *          if the Api call fails
@@ -81,6 +82,24 @@ public class MarketApiTest {
         Integer page = null;
         String datasource = null;
         // List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(regionId, orderType, typeId, page, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List orders in a structure
+     *
+     * Return all orders in a structure  ---  Alternate route: &#x60;/v1/markets/structures/{structure_id}/&#x60;  Alternate route: &#x60;/legacy/markets/structures/{structure_id}/&#x60;  Alternate route: &#x60;/dev/markets/structures/{structure_id}/&#x60;   ---  This route is cached for up to 300 seconds  SSO Scope: esi-markets.structure_markets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getMarketsStructuresStructureIdTest() throws ApiException {
+        Long structureId = null;
+        Integer page = null;
+        String datasource = null;
+        // List<MarketStructuresResponse> response = api.getMarketsStructuresStructureId(structureId, page, datasource);
 
         // TODO: test validations
     }

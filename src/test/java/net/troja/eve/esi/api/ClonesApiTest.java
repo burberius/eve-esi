@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
@@ -39,6 +40,7 @@ public class ClonesApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
+    @Ignore
     public void getCharactersCharacterIdClonesTest() throws ApiException {
         api = new ClonesApi(apiClient);
 

@@ -40,8 +40,8 @@ public class InsuranceApi {
      * &#x60;/dev/insurance/prices/&#x60; --- This route is cached for up to
      * 3600 seconds
      * 
-     * @param acceptLanguage
-     *            Language to use in the response (optional, default to en)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -49,8 +49,7 @@ public class InsuranceApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<InsurancePricesResponse> getInsurancePrices(String acceptLanguage, String datasource)
-            throws ApiException {
+    public List<InsurancePricesResponse> getInsurancePrices(String language, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -61,10 +60,8 @@ public class InsuranceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-
-        if (acceptLanguage != null)
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

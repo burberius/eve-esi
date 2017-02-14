@@ -278,8 +278,8 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param acceptLanguage
-     *            Language to use in the response (optional, default to en)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -287,7 +287,7 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String acceptLanguage, String datasource)
+    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String language, String datasource)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -305,10 +305,8 @@ public class FleetsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-
-        if (acceptLanguage != null)
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -335,8 +333,8 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param acceptLanguage
-     *            Language to use in the response (optional, default to en)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -344,7 +342,7 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String acceptLanguage, String datasource)
+    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String language, String datasource)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -362,10 +360,8 @@ public class FleetsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-
-        if (acceptLanguage != null)
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

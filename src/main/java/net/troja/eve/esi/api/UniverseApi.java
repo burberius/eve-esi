@@ -7,7 +7,16 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.EntityIds;
+import net.troja.eve.esi.model.BloodlinesResponse;
+import net.troja.eve.esi.model.CategoryResponse;
+import net.troja.eve.esi.model.ConstellationResponse;
+import net.troja.eve.esi.model.FactionsResponse;
+import net.troja.eve.esi.model.GroupResponse;
+import net.troja.eve.esi.model.MoonResponse;
+import net.troja.eve.esi.model.PlanetResponse;
+import net.troja.eve.esi.model.RacesResponse;
+import net.troja.eve.esi.model.RegionResponse;
+import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
 import net.troja.eve.esi.model.StructureResponse;
 import net.troja.eve.esi.model.SystemResponse;
@@ -39,14 +48,707 @@ public class UniverseApi {
     }
 
     /**
-     * Get station information Public information on stations --- Alternate
-     * route: &#x60;/v1/universe/stations/{station_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/stations/{station_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/stations/{station_id}/&#x60; --- This route is cached
+     * Get bloodlines Get a list of bloodlines --- Alternate route:
+     * &#x60;/v1/universe/bloodlines/&#x60; Alternate route:
+     * &#x60;/legacy/universe/bloodlines/&#x60; Alternate route:
+     * &#x60;/dev/universe/bloodlines/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<BloodlinesResponse>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<BloodlinesResponse> getUniverseBloodlines(String language, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/bloodlines/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<BloodlinesResponse>> localVarReturnType = new GenericType<List<BloodlinesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get item categories Get a list of item categories --- Alternate route:
+     * &#x60;/v1/universe/categories/&#x60; Alternate route:
+     * &#x60;/legacy/universe/categories/&#x60; Alternate route:
+     * &#x60;/dev/universe/categories/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseCategories(String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/categories/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get item category information Get information of an item category ---
+     * Alternate route: &#x60;/v1/universe/categories/{category_id}/&#x60;
+     * Alternate route: &#x60;/legacy/universe/categories/{category_id}/&#x60;
+     * Alternate route: &#x60;/dev/universe/categories/{category_id}/&#x60; ---
+     * This route is cached for up to 3600 seconds
+     * 
+     * @param categoryId
+     *            An Eve item category ID (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return CategoryResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String language, String datasource)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'categoryId' is set
+        if (categoryId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'categoryId' when calling getUniverseCategoriesCategoryId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/categories/{category_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "category_id" + "\\}", apiClient.escapeString(categoryId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<CategoryResponse> localVarReturnType = new GenericType<CategoryResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get constellations Get a list of constellations --- Alternate route:
+     * &#x60;/v1/universe/constellations/&#x60; Alternate route:
+     * &#x60;/legacy/universe/constellations/&#x60; Alternate route:
+     * &#x60;/dev/universe/constellations/&#x60; --- This route is cached for up
+     * to 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseConstellations(String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/constellations/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get constellation information Get information on a constellation ---
+     * Alternate route:
+     * &#x60;/v1/universe/constellations/{constellation_id}/&#x60; Alternate
+     * route: &#x60;/legacy/universe/constellations/{constellation_id}/&#x60;
+     * Alternate route:
+     * &#x60;/dev/universe/constellations/{constellation_id}/&#x60; --- This
+     * route is cached for up to 3600 seconds
+     * 
+     * @param constellationId
+     *            constellation_id integer (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return ConstellationResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public ConstellationResponse getUniverseConstellationsConstellationId(Integer constellationId, String language,
+            String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'constellationId' is set
+        if (constellationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'constellationId' when calling getUniverseConstellationsConstellationId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/constellations/{constellation_id}/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "constellation_id" + "\\}", apiClient.escapeString(constellationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<ConstellationResponse> localVarReturnType = new GenericType<ConstellationResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get factions Get a list of factions --- Alternate route:
+     * &#x60;/v1/universe/factions/&#x60; Alternate route:
+     * &#x60;/legacy/universe/factions/&#x60; Alternate route:
+     * &#x60;/dev/universe/factions/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<FactionsResponse>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<FactionsResponse> getUniverseFactions(String language, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/factions/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<FactionsResponse>> localVarReturnType = new GenericType<List<FactionsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get item groups Get a list of item groups --- Alternate route:
+     * &#x60;/v1/universe/groups/&#x60; Alternate route:
+     * &#x60;/legacy/universe/groups/&#x60; Alternate route:
+     * &#x60;/dev/universe/groups/&#x60; --- This route is cached for up to 3600
+     * seconds
+     * 
+     * @param page
+     *            Which page to query (optional)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseGroups(Integer page, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/groups/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get item group information Get information on an item group --- Alternate
+     * route: &#x60;/v1/universe/groups/{group_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/groups/{group_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/groups/{group_id}/&#x60; --- This route is cached for
+     * up to 3600 seconds
+     * 
+     * @param groupId
+     *            An Eve item group ID (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return GroupResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GroupResponse getUniverseGroupsGroupId(Integer groupId, String language, String datasource)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'groupId' is set
+        if (groupId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'groupId' when calling getUniverseGroupsGroupId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/groups/{group_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "group_id" + "\\}", apiClient.escapeString(groupId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<GroupResponse> localVarReturnType = new GenericType<GroupResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get moon information Get information on a moon --- Alternate route:
+     * &#x60;/v1/universe/moons/{moon_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/moons/{moon_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/moons/{moon_id}/&#x60; --- This route is cached for
+     * up to 3600 seconds
+     * 
+     * @param moonId
+     *            moon_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return MoonResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'moonId' is set
+        if (moonId == null) {
+            throw new ApiException(400, "Missing the required parameter 'moonId' when calling getUniverseMoonsMoonId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/moons/{moon_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "moon_id" + "\\}", apiClient.escapeString(moonId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<MoonResponse> localVarReturnType = new GenericType<MoonResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get planet information Get information on a planet --- Alternate route:
+     * &#x60;/v1/universe/planets/{planet_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/planets/{planet_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/planets/{planet_id}/&#x60; --- This route is cached
      * for up to 3600 seconds
      * 
+     * @param planetId
+     *            planet_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return PlanetResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'planetId' is set
+        if (planetId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'planetId' when calling getUniversePlanetsPlanetId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/planets/{planet_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "planet_id" + "\\}", apiClient.escapeString(planetId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<PlanetResponse> localVarReturnType = new GenericType<PlanetResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get character races Get a list of character races --- Alternate route:
+     * &#x60;/v1/universe/races/&#x60; Alternate route:
+     * &#x60;/legacy/universe/races/&#x60; Alternate route:
+     * &#x60;/dev/universe/races/&#x60; --- This route is cached for up to 3600
+     * seconds
+     * 
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<RacesResponse>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<RacesResponse> getUniverseRaces(String language, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/races/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<RacesResponse>> localVarReturnType = new GenericType<List<RacesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get regions Get a list of regions --- Alternate route:
+     * &#x60;/v1/universe/regions/&#x60; Alternate route:
+     * &#x60;/legacy/universe/regions/&#x60; Alternate route:
+     * &#x60;/dev/universe/regions/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseRegions(String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/regions/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get region information Get information on a region --- Alternate route:
+     * &#x60;/v1/universe/regions/{region_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/regions/{region_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/regions/{region_id}/&#x60; --- This route is cached
+     * for up to 3600 seconds
+     * 
+     * @param regionId
+     *            region_id integer (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return RegionResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public RegionResponse getUniverseRegionsRegionId(Integer regionId, String language, String datasource)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'regionId' is set
+        if (regionId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'regionId' when calling getUniverseRegionsRegionId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/regions/{region_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "region_id" + "\\}", apiClient.escapeString(regionId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<RegionResponse> localVarReturnType = new GenericType<RegionResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get stargate information Get information on a stargate --- Alternate
+     * route: &#x60;/v1/universe/stargates/{stargate_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/stargates/{stargate_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/stargates/{stargate_id}/&#x60; --- This route is
+     * cached for up to 3600 seconds
+     * 
+     * @param stargateId
+     *            stargate_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return StargateResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'stargateId' is set
+        if (stargateId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'stargateId' when calling getUniverseStargatesStargateId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/universe/stargates/{stargate_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "stargate_id" + "\\}", apiClient.escapeString(stargateId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<StargateResponse> localVarReturnType = new GenericType<StargateResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get station information Get information on a station --- Alternate route:
+     * &#x60;/v2/universe/stations/{station_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/stations/{station_id}/&#x60; --- This route is cached
+     * for up to 300 seconds
+     * 
      * @param stationId
-     *            An Eve station ID (required)
+     *            station_id integer (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -187,14 +889,58 @@ public class UniverseApi {
     }
 
     /**
-     * Get solar system information Information on solar systems --- Alternate
-     * route: &#x60;/v1/universe/systems/{system_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/systems/{system_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/systems/{system_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get solar systems Get a list of solar systems --- Alternate route:
+     * &#x60;/v1/universe/systems/&#x60; Alternate route:
+     * &#x60;/legacy/universe/systems/&#x60; Alternate route:
+     * &#x60;/dev/universe/systems/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseSystems(String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/systems/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get solar system information Get information on a solar system ---
+     * Alternate route: &#x60;/v2/universe/systems/{system_id}/&#x60; Alternate
+     * route: &#x60;/dev/universe/systems/{system_id}/&#x60; --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param systemId
-     *            An Eve solar system ID (required)
+     *            system_id integer (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -202,7 +948,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String datasource) throws ApiException {
+    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String language, String datasource)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'systemId' is set
@@ -220,6 +967,7 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
 
         final String[] localVarAccepts = { "application/json" };
@@ -239,14 +987,61 @@ public class UniverseApi {
     }
 
     /**
+     * Get types Get a list of type ids --- Alternate route:
+     * &#x60;/v1/universe/types/&#x60; Alternate route:
+     * &#x60;/legacy/universe/types/&#x60; Alternate route:
+     * &#x60;/dev/universe/types/&#x60; --- This route is cached for up to 3600
+     * seconds
+     * 
+     * @param page
+     *            Which page to query (optional)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseTypes(Integer page, String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/universe/types/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get type information Get information on a type --- Alternate route:
-     * &#x60;/v1/universe/types/{type_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/types/{type_id}/&#x60; Alternate route:
+     * &#x60;/v2/universe/types/{type_id}/&#x60; Alternate route:
      * &#x60;/dev/universe/types/{type_id}/&#x60; --- This route is cached for
      * up to 3600 seconds
      * 
      * @param typeId
      *            An Eve item type ID (required)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -254,7 +1049,7 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public TypeResponse getUniverseTypesTypeId(Integer typeId, String datasource) throws ApiException {
+    public TypeResponse getUniverseTypesTypeId(Integer typeId, String language, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'typeId' is set
@@ -271,6 +1066,7 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
 
         final String[] localVarAccepts = { "application/json" };
@@ -293,8 +1089,8 @@ public class UniverseApi {
      * Get names and categories for a set of ID&#39;s Resolve a set of IDs to
      * names and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types. --- Alternate route: &#x60;/v1/universe/names/&#x60;
-     * Alternate route: &#x60;/legacy/universe/names/&#x60;
+     * Regions, Types. --- Alternate route: &#x60;/v2/universe/names/&#x60;
+     * Alternate route: &#x60;/dev/universe/names/&#x60;
      * 
      * @param ids
      *            The ids to resolve (required)
@@ -305,7 +1101,7 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<UniverseNamesResponse> postUniverseNames(EntityIds ids, String datasource) throws ApiException {
+    public List<UniverseNamesResponse> postUniverseNames(List<Integer> ids, String datasource) throws ApiException {
         Object localVarPostBody = ids;
 
         // verify the required parameter 'ids' is set

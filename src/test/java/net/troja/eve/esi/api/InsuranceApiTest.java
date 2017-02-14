@@ -39,9 +39,9 @@ public class InsuranceApiTest {
      */
     @Test
     public void getInsurancePricesTest() throws ApiException {
-        String acceptLanguage = null;
+        String language = null;
         String datasource = null;
-        // List<InsurancePricesResponse> response = api.getInsurancePrices(acceptLanguage, datasource);
+        // List<InsurancePricesResponse> response = api.getInsurancePrices(language, datasource);
 
         // TODO: test validations
     }

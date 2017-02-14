@@ -30,7 +30,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     private OffsetDateTime date = null;
 
     @JsonProperty("duration")
-    private Long duration = null;
+    private Integer duration = null;
 
     @JsonProperty("event_id")
     private Integer eventId = null;
@@ -39,7 +39,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     private Integer importance = null;
 
     @JsonProperty("owner_id")
-    private Long ownerId = null;
+    private Integer ownerId = null;
 
     @JsonProperty("owner_name")
     private String ownerName = null;
@@ -111,7 +111,7 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.date = date;
     }
 
-    public CharacterCalendarEventResponse duration(Long duration) {
+    public CharacterCalendarEventResponse duration(Integer duration) {
         this.duration = duration;
         return this;
     }
@@ -122,11 +122,11 @@ public class CharacterCalendarEventResponse implements Serializable {
      * @return duration
      **/
     @ApiModelProperty(example = "null", required = true, value = "Length in minutes")
-    public Long getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(Long duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
@@ -168,7 +168,7 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.importance = importance;
     }
 
-    public CharacterCalendarEventResponse ownerId(Long ownerId) {
+    public CharacterCalendarEventResponse ownerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -179,11 +179,11 @@ public class CharacterCalendarEventResponse implements Serializable {
      * @return ownerId
      **/
     @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
-    public Long getOwnerId() {
+    public Integer getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(Long ownerId) {
+    public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
 

@@ -16,6 +16,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import net.troja.eve.esi.model.TypeDogmaAttribute;
+import net.troja.eve.esi.model.TypeDogmaEffect;
 import java.io.Serializable;
 
 /**
@@ -25,8 +29,17 @@ import java.io.Serializable;
 public class TypeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("category_id")
-    private Integer categoryId = null;
+    @JsonProperty("capacity")
+    private Float capacity = null;
+
+    @JsonProperty("description")
+    private String description = null;
+
+    @JsonProperty("dogma_attributes")
+    private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<TypeDogmaAttribute>();
+
+    @JsonProperty("dogma_effects")
+    private List<TypeDogmaEffect> dogmaEffects = new ArrayList<TypeDogmaEffect>();
 
     @JsonProperty("graphic_id")
     private Integer graphicId = null;
@@ -37,29 +50,111 @@ public class TypeResponse implements Serializable {
     @JsonProperty("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("type_description")
-    private String typeDescription = null;
+    @JsonProperty("mass")
+    private Float mass = null;
 
-    @JsonProperty("type_name")
-    private String typeName = null;
+    @JsonProperty("name")
+    private String name = null;
 
-    public TypeResponse categoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    @JsonProperty("portion_size")
+    private Integer portionSize = null;
+
+    @JsonProperty("published")
+    private Boolean published = null;
+
+    @JsonProperty("radius")
+    private Float radius = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    @JsonProperty("volume")
+    private Float volume = null;
+
+    public TypeResponse capacity(Float capacity) {
+        this.capacity = capacity;
         return this;
     }
 
     /**
-     * category_id integer
+     * capacity number
      * 
-     * @return categoryId
+     * @return capacity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "category_id integer")
-    public Integer getCategoryId() {
-        return categoryId;
+    @ApiModelProperty(example = "null", value = "capacity number")
+    public Float getCapacity() {
+        return capacity;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCapacity(Float capacity) {
+        this.capacity = capacity;
+    }
+
+    public TypeResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TypeResponse dogmaAttributes(List<TypeDogmaAttribute> dogmaAttributes) {
+        this.dogmaAttributes = dogmaAttributes;
+        return this;
+    }
+
+    public TypeResponse addDogmaAttributesItem(TypeDogmaAttribute dogmaAttributesItem) {
+        this.dogmaAttributes.add(dogmaAttributesItem);
+        return this;
+    }
+
+    /**
+     * dogma_attributes array
+     * 
+     * @return dogmaAttributes
+     **/
+    @ApiModelProperty(example = "null", value = "dogma_attributes array")
+    public List<TypeDogmaAttribute> getDogmaAttributes() {
+        return dogmaAttributes;
+    }
+
+    public void setDogmaAttributes(List<TypeDogmaAttribute> dogmaAttributes) {
+        this.dogmaAttributes = dogmaAttributes;
+    }
+
+    public TypeResponse dogmaEffects(List<TypeDogmaEffect> dogmaEffects) {
+        this.dogmaEffects = dogmaEffects;
+        return this;
+    }
+
+    public TypeResponse addDogmaEffectsItem(TypeDogmaEffect dogmaEffectsItem) {
+        this.dogmaEffects.add(dogmaEffectsItem);
+        return this;
+    }
+
+    /**
+     * dogma_effects array
+     * 
+     * @return dogmaEffects
+     **/
+    @ApiModelProperty(example = "null", value = "dogma_effects array")
+    public List<TypeDogmaEffect> getDogmaEffects() {
+        return dogmaEffects;
+    }
+
+    public void setDogmaEffects(List<TypeDogmaEffect> dogmaEffects) {
+        this.dogmaEffects = dogmaEffects;
     }
 
     public TypeResponse graphicId(Integer graphicId) {
@@ -119,42 +214,137 @@ public class TypeResponse implements Serializable {
         this.iconId = iconId;
     }
 
-    public TypeResponse typeDescription(String typeDescription) {
-        this.typeDescription = typeDescription;
+    public TypeResponse mass(Float mass) {
+        this.mass = mass;
         return this;
     }
 
     /**
-     * type_description string
+     * mass number
      * 
-     * @return typeDescription
+     * @return mass
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_description string")
-    public String getTypeDescription() {
-        return typeDescription;
+    @ApiModelProperty(example = "null", value = "mass number")
+    public Float getMass() {
+        return mass;
     }
 
-    public void setTypeDescription(String typeDescription) {
-        this.typeDescription = typeDescription;
+    public void setMass(Float mass) {
+        this.mass = mass;
     }
 
-    public TypeResponse typeName(String typeName) {
-        this.typeName = typeName;
+    public TypeResponse name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * type_name string
+     * name string
      * 
-     * @return typeName
+     * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_name string")
-    public String getTypeName() {
-        return typeName;
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public TypeResponse portionSize(Integer portionSize) {
+        this.portionSize = portionSize;
+        return this;
+    }
+
+    /**
+     * portion_size integer
+     * 
+     * @return portionSize
+     **/
+    @ApiModelProperty(example = "null", value = "portion_size integer")
+    public Integer getPortionSize() {
+        return portionSize;
+    }
+
+    public void setPortionSize(Integer portionSize) {
+        this.portionSize = portionSize;
+    }
+
+    public TypeResponse published(Boolean published) {
+        this.published = published;
+        return this;
+    }
+
+    /**
+     * published boolean
+     * 
+     * @return published
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "published boolean")
+    public Boolean getPublished() {
+        return published;
+    }
+
+    public void setPublished(Boolean published) {
+        this.published = published;
+    }
+
+    public TypeResponse radius(Float radius) {
+        this.radius = radius;
+        return this;
+    }
+
+    /**
+     * radius number
+     * 
+     * @return radius
+     **/
+    @ApiModelProperty(example = "null", value = "radius number")
+    public Float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(Float radius) {
+        this.radius = radius;
+    }
+
+    public TypeResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public TypeResponse volume(Float volume) {
+        this.volume = volume;
+        return this;
+    }
+
+    /**
+     * volume number
+     * 
+     * @return volume
+     **/
+    @ApiModelProperty(example = "null", value = "volume number")
+    public Float getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Float volume) {
+        this.volume = volume;
     }
 
     @Override
@@ -166,17 +356,24 @@ public class TypeResponse implements Serializable {
             return false;
         }
         TypeResponse typeResponse = (TypeResponse) o;
-        return Objects.equals(this.categoryId, typeResponse.categoryId)
+        return Objects.equals(this.capacity, typeResponse.capacity)
+                && Objects.equals(this.description, typeResponse.description)
+                && Objects.equals(this.dogmaAttributes, typeResponse.dogmaAttributes)
+                && Objects.equals(this.dogmaEffects, typeResponse.dogmaEffects)
                 && Objects.equals(this.graphicId, typeResponse.graphicId)
                 && Objects.equals(this.groupId, typeResponse.groupId)
-                && Objects.equals(this.iconId, typeResponse.iconId)
-                && Objects.equals(this.typeDescription, typeResponse.typeDescription)
-                && Objects.equals(this.typeName, typeResponse.typeName);
+                && Objects.equals(this.iconId, typeResponse.iconId) && Objects.equals(this.mass, typeResponse.mass)
+                && Objects.equals(this.name, typeResponse.name)
+                && Objects.equals(this.portionSize, typeResponse.portionSize)
+                && Objects.equals(this.published, typeResponse.published)
+                && Objects.equals(this.radius, typeResponse.radius) && Objects.equals(this.typeId, typeResponse.typeId)
+                && Objects.equals(this.volume, typeResponse.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, graphicId, groupId, iconId, typeDescription, typeName);
+        return Objects.hash(capacity, description, dogmaAttributes, dogmaEffects, graphicId, groupId, iconId, mass,
+                name, portionSize, published, radius, typeId, volume);
     }
 
     @Override
@@ -184,12 +381,20 @@ public class TypeResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class TypeResponse {\n");
 
-        sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
+        sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    dogmaAttributes: ").append(toIndentedString(dogmaAttributes)).append("\n");
+        sb.append("    dogmaEffects: ").append(toIndentedString(dogmaEffects)).append("\n");
         sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
         sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
         sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
-        sb.append("    typeDescription: ").append(toIndentedString(typeDescription)).append("\n");
-        sb.append("    typeName: ").append(toIndentedString(typeName)).append("\n");
+        sb.append("    mass: ").append(toIndentedString(mass)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    portionSize: ").append(toIndentedString(portionSize)).append("\n");
+        sb.append("    published: ").append(toIndentedString(published)).append("\n");
+        sb.append("    radius: ").append(toIndentedString(radius)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("}");
         return sb.toString();
     }

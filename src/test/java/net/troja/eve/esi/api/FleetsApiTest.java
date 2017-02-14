@@ -120,9 +120,9 @@ public class FleetsApiTest {
     @Test
     public void getFleetsFleetIdMembersTest() throws ApiException {
         Long fleetId = null;
-        String acceptLanguage = null;
+        String language = null;
         String datasource = null;
-        // List<FleetMembersResponse> response = api.getFleetsFleetIdMembers(fleetId, acceptLanguage, datasource);
+        // List<FleetMembersResponse> response = api.getFleetsFleetIdMembers(fleetId, language, datasource);
 
         // TODO: test validations
     }
@@ -138,9 +138,9 @@ public class FleetsApiTest {
     @Test
     public void getFleetsFleetIdWingsTest() throws ApiException {
         Long fleetId = null;
-        String acceptLanguage = null;
+        String language = null;
         String datasource = null;
-        // List<FleetWingsResponse> response = api.getFleetsFleetIdWings(fleetId, acceptLanguage, datasource);
+        // List<FleetWingsResponse> response = api.getFleetsFleetIdWings(fleetId, language, datasource);
 
         // TODO: test validations
     }

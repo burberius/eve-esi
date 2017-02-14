@@ -10,6 +10,7 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.model.MarketStructuresResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +85,7 @@ public class MarketApi {
      * &#x60;/v1/markets/{region_id}/history/&#x60; Alternate route:
      * &#x60;/legacy/markets/{region_id}/history/&#x60; Alternate route:
      * &#x60;/dev/markets/{region_id}/history/&#x60; --- This route is cached
-     * for up to 300 seconds
+     * for up to 3600 seconds
      * 
      * @param regionId
      *            Return statistics in this region (required)
@@ -207,6 +208,63 @@ public class MarketApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<List<MarketOrdersResponse>> localVarReturnType = new GenericType<List<MarketOrdersResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * List orders in a structure Return all orders in a structure --- Alternate
+     * route: &#x60;/v1/markets/structures/{structure_id}/&#x60; Alternate
+     * route: &#x60;/legacy/markets/structures/{structure_id}/&#x60; Alternate
+     * route: &#x60;/dev/markets/structures/{structure_id}/&#x60; --- This route
+     * is cached for up to 300 seconds SSO Scope:
+     * esi-markets.structure_markets.v1
+     * 
+     * @param structureId
+     *            Return orders in this structure (required)
+     * @param page
+     *            Which page to query, starting at 1 (optional, default to 1)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @return List<MarketStructuresResponse>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<MarketStructuresResponse> getMarketsStructuresStructureId(Long structureId, Integer page,
+            String datasource) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'structureId' is set
+        if (structureId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'structureId' when calling getMarketsStructuresStructureId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/markets/structures/{structure_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "structure_id" + "\\}", apiClient.escapeString(structureId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<MarketStructuresResponse>> localVarReturnType = new GenericType<List<MarketStructuresResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

@@ -58,7 +58,7 @@ public class CalendarApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterCalendarResponse> getCharactersCharacterIdCalendar(Long characterId, Integer fromEvent,
+    public List<CharacterCalendarResponse> getCharactersCharacterIdCalendar(Integer characterId, Integer fromEvent,
             String datasource) throws ApiException {
         Object localVarPostBody = null;
 
@@ -115,7 +115,7 @@ public class CalendarApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public CharacterCalendarEventResponse getCharactersCharacterIdCalendarEventId(Long characterId, Integer eventId,
+    public CharacterCalendarEventResponse getCharactersCharacterIdCalendarEventId(Integer characterId, Integer eventId,
             String datasource) throws ApiException {
         Object localVarPostBody = null;
 

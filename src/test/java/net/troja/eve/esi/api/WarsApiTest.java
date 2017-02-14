@@ -40,9 +40,9 @@ public class WarsApiTest {
      */
     @Test
     public void getWarsTest() throws ApiException {
-        Integer page = null;
+        Integer maxWarId = null;
         String datasource = null;
-        // List<Integer> response = api.getWars(page, datasource);
+        // List<Integer> response = api.getWars(maxWarId, datasource);
 
         // TODO: test validations
     }

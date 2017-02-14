@@ -13,7 +13,16 @@
 package net.troja.eve.esi.api;
 
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.EntityIds;
+import net.troja.eve.esi.model.BloodlinesResponse;
+import net.troja.eve.esi.model.CategoryResponse;
+import net.troja.eve.esi.model.ConstellationResponse;
+import net.troja.eve.esi.model.FactionsResponse;
+import net.troja.eve.esi.model.GroupResponse;
+import net.troja.eve.esi.model.MoonResponse;
+import net.troja.eve.esi.model.PlanetResponse;
+import net.troja.eve.esi.model.RacesResponse;
+import net.troja.eve.esi.model.RegionResponse;
+import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
 import net.troja.eve.esi.model.StructureResponse;
 import net.troja.eve.esi.model.SystemResponse;
@@ -35,9 +44,248 @@ public class UniverseApiTest {
 
     
     /**
+     * Get bloodlines
+     *
+     * Get a list of bloodlines  ---  Alternate route: &#x60;/v1/universe/bloodlines/&#x60;  Alternate route: &#x60;/legacy/universe/bloodlines/&#x60;  Alternate route: &#x60;/dev/universe/bloodlines/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseBloodlinesTest() throws ApiException {
+        String language = null;
+        String datasource = null;
+        // List<BloodlinesResponse> response = api.getUniverseBloodlines(language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get item categories
+     *
+     * Get a list of item categories  ---  Alternate route: &#x60;/v1/universe/categories/&#x60;  Alternate route: &#x60;/legacy/universe/categories/&#x60;  Alternate route: &#x60;/dev/universe/categories/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseCategoriesTest() throws ApiException {
+        String datasource = null;
+        // List<Integer> response = api.getUniverseCategories(datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get item category information
+     *
+     * Get information of an item category  ---  Alternate route: &#x60;/v1/universe/categories/{category_id}/&#x60;  Alternate route: &#x60;/legacy/universe/categories/{category_id}/&#x60;  Alternate route: &#x60;/dev/universe/categories/{category_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseCategoriesCategoryIdTest() throws ApiException {
+        Integer categoryId = null;
+        String language = null;
+        String datasource = null;
+        // CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get constellations
+     *
+     * Get a list of constellations  ---  Alternate route: &#x60;/v1/universe/constellations/&#x60;  Alternate route: &#x60;/legacy/universe/constellations/&#x60;  Alternate route: &#x60;/dev/universe/constellations/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseConstellationsTest() throws ApiException {
+        String datasource = null;
+        // List<Integer> response = api.getUniverseConstellations(datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get constellation information
+     *
+     * Get information on a constellation  ---  Alternate route: &#x60;/v1/universe/constellations/{constellation_id}/&#x60;  Alternate route: &#x60;/legacy/universe/constellations/{constellation_id}/&#x60;  Alternate route: &#x60;/dev/universe/constellations/{constellation_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseConstellationsConstellationIdTest() throws ApiException {
+        Integer constellationId = null;
+        String language = null;
+        String datasource = null;
+        // ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get factions
+     *
+     * Get a list of factions  ---  Alternate route: &#x60;/v1/universe/factions/&#x60;  Alternate route: &#x60;/legacy/universe/factions/&#x60;  Alternate route: &#x60;/dev/universe/factions/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseFactionsTest() throws ApiException {
+        String language = null;
+        String datasource = null;
+        // List<FactionsResponse> response = api.getUniverseFactions(language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get item groups
+     *
+     * Get a list of item groups  ---  Alternate route: &#x60;/v1/universe/groups/&#x60;  Alternate route: &#x60;/legacy/universe/groups/&#x60;  Alternate route: &#x60;/dev/universe/groups/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseGroupsTest() throws ApiException {
+        Integer page = null;
+        String datasource = null;
+        // List<Integer> response = api.getUniverseGroups(page, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get item group information
+     *
+     * Get information on an item group  ---  Alternate route: &#x60;/v1/universe/groups/{group_id}/&#x60;  Alternate route: &#x60;/legacy/universe/groups/{group_id}/&#x60;  Alternate route: &#x60;/dev/universe/groups/{group_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseGroupsGroupIdTest() throws ApiException {
+        Integer groupId = null;
+        String language = null;
+        String datasource = null;
+        // GroupResponse response = api.getUniverseGroupsGroupId(groupId, language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get moon information
+     *
+     * Get information on a moon  ---  Alternate route: &#x60;/v1/universe/moons/{moon_id}/&#x60;  Alternate route: &#x60;/legacy/universe/moons/{moon_id}/&#x60;  Alternate route: &#x60;/dev/universe/moons/{moon_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseMoonsMoonIdTest() throws ApiException {
+        Integer moonId = null;
+        String datasource = null;
+        // MoonResponse response = api.getUniverseMoonsMoonId(moonId, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get planet information
+     *
+     * Get information on a planet  ---  Alternate route: &#x60;/v1/universe/planets/{planet_id}/&#x60;  Alternate route: &#x60;/legacy/universe/planets/{planet_id}/&#x60;  Alternate route: &#x60;/dev/universe/planets/{planet_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniversePlanetsPlanetIdTest() throws ApiException {
+        Integer planetId = null;
+        String datasource = null;
+        // PlanetResponse response = api.getUniversePlanetsPlanetId(planetId, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get character races
+     *
+     * Get a list of character races  ---  Alternate route: &#x60;/v1/universe/races/&#x60;  Alternate route: &#x60;/legacy/universe/races/&#x60;  Alternate route: &#x60;/dev/universe/races/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseRacesTest() throws ApiException {
+        String language = null;
+        String datasource = null;
+        // List<RacesResponse> response = api.getUniverseRaces(language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get regions
+     *
+     * Get a list of regions  ---  Alternate route: &#x60;/v1/universe/regions/&#x60;  Alternate route: &#x60;/legacy/universe/regions/&#x60;  Alternate route: &#x60;/dev/universe/regions/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseRegionsTest() throws ApiException {
+        String datasource = null;
+        // List<Integer> response = api.getUniverseRegions(datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get region information
+     *
+     * Get information on a region  ---  Alternate route: &#x60;/v1/universe/regions/{region_id}/&#x60;  Alternate route: &#x60;/legacy/universe/regions/{region_id}/&#x60;  Alternate route: &#x60;/dev/universe/regions/{region_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseRegionsRegionIdTest() throws ApiException {
+        Integer regionId = null;
+        String language = null;
+        String datasource = null;
+        // RegionResponse response = api.getUniverseRegionsRegionId(regionId, language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get stargate information
+     *
+     * Get information on a stargate  ---  Alternate route: &#x60;/v1/universe/stargates/{stargate_id}/&#x60;  Alternate route: &#x60;/legacy/universe/stargates/{stargate_id}/&#x60;  Alternate route: &#x60;/dev/universe/stargates/{stargate_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseStargatesStargateIdTest() throws ApiException {
+        Integer stargateId = null;
+        String datasource = null;
+        // StargateResponse response = api.getUniverseStargatesStargateId(stargateId, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get station information
      *
-     * Public information on stations  ---  Alternate route: &#x60;/v1/universe/stations/{station_id}/&#x60;  Alternate route: &#x60;/legacy/universe/stations/{station_id}/&#x60;  Alternate route: &#x60;/dev/universe/stations/{station_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     * Get information on a station  ---  Alternate route: &#x60;/v2/universe/stations/{station_id}/&#x60;  Alternate route: &#x60;/dev/universe/stations/{station_id}/&#x60;   ---  This route is cached for up to 300 seconds
      *
      * @throws ApiException
      *          if the Api call fails
@@ -85,9 +333,25 @@ public class UniverseApiTest {
     }
     
     /**
+     * Get solar systems
+     *
+     * Get a list of solar systems  ---  Alternate route: &#x60;/v1/universe/systems/&#x60;  Alternate route: &#x60;/legacy/universe/systems/&#x60;  Alternate route: &#x60;/dev/universe/systems/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseSystemsTest() throws ApiException {
+        String datasource = null;
+        // List<Integer> response = api.getUniverseSystems(datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Get solar system information
      *
-     * Information on solar systems  ---  Alternate route: &#x60;/v1/universe/systems/{system_id}/&#x60;  Alternate route: &#x60;/legacy/universe/systems/{system_id}/&#x60;  Alternate route: &#x60;/dev/universe/systems/{system_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     * Get information on a solar system  ---  Alternate route: &#x60;/v2/universe/systems/{system_id}/&#x60;  Alternate route: &#x60;/dev/universe/systems/{system_id}/&#x60;   ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *          if the Api call fails
@@ -95,8 +359,26 @@ public class UniverseApiTest {
     @Test
     public void getUniverseSystemsSystemIdTest() throws ApiException {
         Integer systemId = null;
+        String language = null;
         String datasource = null;
-        // SystemResponse response = api.getUniverseSystemsSystemId(systemId, datasource);
+        // SystemResponse response = api.getUniverseSystemsSystemId(systemId, language, datasource);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get types
+     *
+     * Get a list of type ids  ---  Alternate route: &#x60;/v1/universe/types/&#x60;  Alternate route: &#x60;/legacy/universe/types/&#x60;  Alternate route: &#x60;/dev/universe/types/&#x60;   ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseTypesTest() throws ApiException {
+        Integer page = null;
+        String datasource = null;
+        // List<Integer> response = api.getUniverseTypes(page, datasource);
 
         // TODO: test validations
     }
@@ -104,7 +386,7 @@ public class UniverseApiTest {
     /**
      * Get type information
      *
-     * Get information on a type  ---  Alternate route: &#x60;/v1/universe/types/{type_id}/&#x60;  Alternate route: &#x60;/legacy/universe/types/{type_id}/&#x60;  Alternate route: &#x60;/dev/universe/types/{type_id}/&#x60;   ---  This route is cached for up to 3600 seconds
+     * Get information on a type  ---  Alternate route: &#x60;/v2/universe/types/{type_id}/&#x60;  Alternate route: &#x60;/dev/universe/types/{type_id}/&#x60;   ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *          if the Api call fails
@@ -112,8 +394,9 @@ public class UniverseApiTest {
     @Test
     public void getUniverseTypesTypeIdTest() throws ApiException {
         Integer typeId = null;
+        String language = null;
         String datasource = null;
-        // TypeResponse response = api.getUniverseTypesTypeId(typeId, datasource);
+        // TypeResponse response = api.getUniverseTypesTypeId(typeId, language, datasource);
 
         // TODO: test validations
     }
@@ -121,14 +404,14 @@ public class UniverseApiTest {
     /**
      * Get names and categories for a set of ID&#39;s
      *
-     * Resolve a set of IDs to names and categories. Supported ID&#39;s for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.  ---  Alternate route: &#x60;/v1/universe/names/&#x60;  Alternate route: &#x60;/legacy/universe/names/&#x60; 
+     * Resolve a set of IDs to names and categories. Supported ID&#39;s for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types.  ---  Alternate route: &#x60;/v2/universe/names/&#x60;  Alternate route: &#x60;/dev/universe/names/&#x60; 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void postUniverseNamesTest() throws ApiException {
-        EntityIds ids = null;
+        List<Integer> ids = null;
         String datasource = null;
         // List<UniverseNamesResponse> response = api.postUniverseNames(ids, datasource);
 

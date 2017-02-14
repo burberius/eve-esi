@@ -48,10 +48,11 @@ public class CalendarApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
+    @Ignore
     public void getCharactersCharacterIdCalendarTest() throws ApiException {
         final Integer fromEvent = null;
-        final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar((long) characterId,
-                fromEvent, DATASOURCE);
+        final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, fromEvent,
+                DATASOURCE);
 
         assertThat(response.size(), greaterThan(1));
     }
@@ -69,9 +70,10 @@ public class CalendarApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
+    @Ignore
     public void getCharactersCharacterIdCalendarEventIdTest() throws ApiException {
         final Integer eventId = null;
-        final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId((long) characterId,
+        final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId,
                 eventId, DATASOURCE);
 
         assertThat(response.getEventId(), greaterThan(1));

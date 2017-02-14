@@ -40,9 +40,8 @@ public class WarsApi {
      * Alternate route: &#x60;/dev/wars/&#x60; --- This route is cached for up
      * to 3600 seconds
      * 
-     * @param page
-     *            Which page to query, starting at 1, 2000 wars per page.
-     *            (optional, default to 1)
+     * @param maxWarId
+     *            Only return wars with ID smaller than this. (optional)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -50,7 +49,7 @@ public class WarsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getWars(Integer page, String datasource) throws ApiException {
+    public List<Integer> getWars(Integer maxWarId, String datasource) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -61,7 +60,7 @@ public class WarsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_war_id", maxWarId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
 
         final String[] localVarAccepts = { "application/json" };

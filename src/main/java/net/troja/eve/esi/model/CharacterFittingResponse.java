@@ -16,42 +16,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 /**
- * ids schema
+ * 201 created object
  */
-@ApiModel(description = "ids schema")
-public class EntityIds implements Serializable {
+@ApiModel(description = "201 created object")
+public class CharacterFittingResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("ids")
-    private List<Integer> ids = new ArrayList<Integer>();
+    @JsonProperty("fitting_id")
+    private Integer fittingId = null;
 
-    public EntityIds ids(List<Integer> ids) {
-        this.ids = ids;
-        return this;
-    }
-
-    public EntityIds addIdsItem(Integer idsItem) {
-        this.ids.add(idsItem);
+    public CharacterFittingResponse fittingId(Integer fittingId) {
+        this.fittingId = fittingId;
         return this;
     }
 
     /**
-     * ids array
+     * fitting_id integer
      * 
-     * @return ids
+     * @return fittingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ids array")
-    public List<Integer> getIds() {
-        return ids;
+    @ApiModelProperty(example = "null", required = true, value = "fitting_id integer")
+    public Integer getFittingId() {
+        return fittingId;
     }
 
-    public void setIds(List<Integer> ids) {
-        this.ids = ids;
+    public void setFittingId(Integer fittingId) {
+        this.fittingId = fittingId;
     }
 
     @Override
@@ -62,21 +55,21 @@ public class EntityIds implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        EntityIds entityIds = (EntityIds) o;
-        return Objects.equals(this.ids, entityIds.ids);
+        CharacterFittingResponse characterFittingResponse = (CharacterFittingResponse) o;
+        return Objects.equals(this.fittingId, characterFittingResponse.fittingId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ids);
+        return Objects.hash(fittingId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class EntityIds {\n");
+        sb.append("class CharacterFittingResponse {\n");
 
-        sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+        sb.append("    fittingId: ").append(toIndentedString(fittingId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
