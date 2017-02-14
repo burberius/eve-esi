@@ -95,8 +95,8 @@ public class OAuth implements Authentication {
         final String scopesString = getScopesString(scopes);
         final ClientIdentifier clientIdentifier = new ClientIdentifier(clientId, clientSecret);
         @SuppressWarnings("rawtypes")
-        final OAuth2CodeGrantFlow.Builder builder = OAuth2ClientSupport
-                .authorizationCodeGrantFlowBuilder(clientIdentifier, URI_AUTHENTICATION, URI_ACCESS_TOKEN);
+        final OAuth2CodeGrantFlow.Builder builder = OAuth2ClientSupport.authorizationCodeGrantFlowBuilder(
+                clientIdentifier, URI_AUTHENTICATION, URI_ACCESS_TOKEN);
         if (StringUtils.isNotBlank(redirectUri)) {
             builder.redirectUri(redirectUri);
         }

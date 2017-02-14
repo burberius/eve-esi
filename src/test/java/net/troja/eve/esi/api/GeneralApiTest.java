@@ -5,6 +5,8 @@ import java.util.Map;
 import org.junit.BeforeClass;
 
 import net.troja.eve.esi.ApiClient;
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
 
 public class GeneralApiTest {
@@ -16,11 +18,12 @@ public class GeneralApiTest {
     protected static String clientId;
     protected static String clientSecret;
     protected static String refreshToken;
+    protected static int characterId;
 
     protected static ApiClient apiClient;
 
     @BeforeClass
-    public static void initClass() {
+    public static void initClass() throws ApiException {
         final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);
@@ -32,5 +35,20 @@ public class GeneralApiTest {
         auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
         auth.setRefreshToken(refreshToken);
+
+        characterId = getCharacterId();
+    }
+
+    private static int getCharacterId() throws ApiException {
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        auth.setClientId(clientId);
+        auth.setClientSecret(clientSecret);
+        auth.setRefreshToken(refreshToken);
+
+        final SsoApi api = new SsoApi(client);
+        final CharacterInfo info = api.getCharacterInfo();
+
+        return info.getCharacterId();
     }
 }
