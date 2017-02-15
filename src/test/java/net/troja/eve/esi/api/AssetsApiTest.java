@@ -11,9 +11,12 @@
 
 package net.troja.eve.esi.api;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
@@ -39,10 +42,11 @@ public class AssetsApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-    @Ignore
     public void getCharactersCharacterIdAssetsTest() throws ApiException {
+        api.setApiClient(apiClient);
         final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE);
 
-        System.out.println(response);
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 }

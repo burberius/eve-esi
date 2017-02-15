@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
@@ -29,6 +29,11 @@ import net.troja.eve.esi.model.CharacterBookmarksResponse;
 public class BookmarksApiTest extends GeneralApiTest {
 
     private final BookmarksApi api = new BookmarksApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
 
     /**
      * List bookmarks
@@ -44,7 +49,6 @@ public class BookmarksApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-    @Ignore
     public void getCharactersCharacterIdBookmarksTest() throws ApiException {
         final List<CharacterBookmarksResponse> response = api.getCharactersCharacterIdBookmarks(characterId,
                 DATASOURCE);
@@ -67,7 +71,6 @@ public class BookmarksApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-    @Ignore
     public void getCharactersCharacterIdBookmarksFoldersTest() throws ApiException {
         final List<CharacterBookmarkFoldersResponse> response = api
                 .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE);

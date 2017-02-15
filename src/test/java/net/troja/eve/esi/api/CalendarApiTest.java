@@ -11,18 +11,19 @@
 
 package net.troja.eve.esi.api;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
 import net.troja.eve.esi.model.CharacterCalendarResponse;
-import net.troja.eve.esi.model.EventResponseStatus;
 
 /**
  * API tests for CalendarApi
@@ -30,6 +31,11 @@ import net.troja.eve.esi.model.EventResponseStatus;
 public class CalendarApiTest extends GeneralApiTest {
 
     private final CalendarApi api = new CalendarApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
 
     /**
      * List calendar event summaries
@@ -48,7 +54,6 @@ public class CalendarApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-    @Ignore
     public void getCharactersCharacterIdCalendarTest() throws ApiException {
         final Integer fromEvent = null;
         final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, fromEvent,
@@ -70,13 +75,15 @@ public class CalendarApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-    @Ignore
     public void getCharactersCharacterIdCalendarEventIdTest() throws ApiException {
-        final Integer eventId = null;
+        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, null,
+                DATASOURCE);
+
+        final Integer eventId = calendar.get(0).getEventId();
         final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId,
                 eventId, DATASOURCE);
 
-        assertThat(response.getEventId(), greaterThan(1));
+        assertThat(response.getEventId(), equalTo(eventId));
     }
 
     /**
@@ -93,14 +100,7 @@ public class CalendarApiTest extends GeneralApiTest {
     @Test
     @Ignore("Can't test write operations")
     public void putCharactersCharacterIdCalendarEventIdTest() throws ApiException {
-        final Integer characterId = null;
-        final Integer eventId = null;
-        final EventResponseStatus response = null;
-        final String datasource = null;
-        // api.putCharactersCharacterIdCalendarEventId(characterId, eventId,
-        // response, datasource);
 
-        // TODO: test validations
     }
 
 }
