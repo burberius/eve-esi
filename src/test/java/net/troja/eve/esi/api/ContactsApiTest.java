@@ -68,7 +68,8 @@ public class ContactsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdContactsTest() throws ApiException {
         final Integer page = null;
-        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, page, DATASOURCE);
+        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, page,
+                null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -89,8 +90,8 @@ public class ContactsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContactsLabelsTest() throws ApiException {
-        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId,
-                DATASOURCE);
+        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE,
+                null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }

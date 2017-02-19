@@ -74,7 +74,7 @@ done
 #
 # Generate SSO scopes
 #
-BAD_SCOPES="esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1"
+BAD_SCOPES=""
 FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
 echo "package net.troja.eve.esi.auth;" > $FILE
 echo "public class SsoScopes {" >> $FILE

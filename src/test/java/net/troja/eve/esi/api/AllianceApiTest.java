@@ -46,7 +46,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesTest() throws ApiException {
-        final List<Integer> response = api.getAlliances(DATASOURCE);
+        final List<Integer> response = api.getAlliances(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(1));
         assertThat(response.get(0), equalTo(99000006));
@@ -64,7 +64,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdTest() throws ApiException {
-        final AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE);
+        final AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE, null, null);
 
         assertThat(response.getAllianceName(), equalTo("Triumvirate."));
         assertThat(response.getTicker(), equalTo("TRI"));
@@ -86,7 +86,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdCorporationsTest() throws ApiException {
-        final List<Integer> response = api.getAlliancesAllianceIdCorporations(ALLIANCE_ID_TRI, DATASOURCE);
+        final List<Integer> response = api.getAlliancesAllianceIdCorporations(ALLIANCE_ID_TRI, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(1));
         assertThat(response, hasItem(98435559));
@@ -106,7 +106,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdIconsTest() throws ApiException {
-        final AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE);
+        final AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE, null, null);
 
         assertThat(response.getPx128x128(), equalTo("http://image.eveonline.com/Alliance/933731581_128.png"));
     }
@@ -127,7 +127,7 @@ public class AllianceApiTest extends GeneralApiTest {
     public void getAlliancesNamesTest() throws ApiException {
         final List<Long> allianceIds = new ArrayList<>();
         allianceIds.add((long) ALLIANCE_ID_TRI);
-        final List<AllianceNamesResponse> response = api.getAlliancesNames(allianceIds, DATASOURCE);
+        final List<AllianceNamesResponse> response = api.getAlliancesNames(allianceIds, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(1));
         final AllianceNamesResponse alliance = response.get(0);

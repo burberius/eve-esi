@@ -43,7 +43,7 @@ public class IndustryApiTest extends GeneralApiTest {
      */
     @Test
     public void getIndustryFacilitiesTest() throws ApiException {
-        final List<IndustryFacilitiesResponse> response = api.getIndustryFacilities(DATASOURCE);
+        final List<IndustryFacilitiesResponse> response = api.getIndustryFacilities(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final IndustryFacilitiesResponse facility = response.get(0);
@@ -64,7 +64,7 @@ public class IndustryApiTest extends GeneralApiTest {
      */
     @Test
     public void getIndustrySystemsTest() throws ApiException {
-        final List<IndustrySystemsResponse> response = api.getIndustrySystems(DATASOURCE);
+        final List<IndustrySystemsResponse> response = api.getIndustrySystems(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final IndustrySystemsResponse system = response.get(0);

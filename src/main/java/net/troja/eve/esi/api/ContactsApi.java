@@ -48,11 +48,17 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, String datasource)
-            throws ApiException {
+    public void deleteCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -77,6 +83,11 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -101,17 +112,23 @@ public class ContactsApi {
      * 
      * @param characterId
      *            ID for a character (required)
-     * @param page
-     *            page integer (optional, default to 1)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            page integer (optional, default to 1)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<ContactsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<ContactsResponse> getCharactersCharacterIdContacts(Integer characterId, Integer page, String datasource)
-            throws ApiException {
+    public List<ContactsResponse> getCharactersCharacterIdContacts(Integer characterId, String datasource,
+            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -129,8 +146,13 @@ public class ContactsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -163,12 +185,18 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<ContactLabelsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<ContactLabelsResponse> getCharactersCharacterIdContactsLabels(Integer characterId, String datasource)
-            throws ApiException {
+    public List<ContactLabelsResponse> getCharactersCharacterIdContactsLabels(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -187,6 +215,11 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -213,24 +246,31 @@ public class ContactsApi {
      * 
      * @param characterId
      *            ID for a character (required)
-     * @param standing
-     *            Standing for the new contact (required)
      * @param contactIds
      *            A list of contacts to add (required)
-     * @param watched
-     *            Whether the new contact should be watched, note this is only
-     *            effective on characters (optional, default to false)
-     * @param labelId
-     *            Add a custom label to the new contact (optional, default to 0)
+     * @param standing
+     *            Standing for the new contact (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param labelId
+     *            Add a custom label to the new contact (optional, default to 0)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param watched
+     *            Whether the new contact should be watched, note this is only
+     *            effective on characters (optional, default to false)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> postCharactersCharacterIdContacts(Integer characterId, Float standing,
-            List<Integer> contactIds, Boolean watched, Long labelId, String datasource) throws ApiException {
+    public List<Integer> postCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds,
+            Float standing, String datasource, Long labelId, String token, String userAgent, Boolean watched,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -239,16 +279,16 @@ public class ContactsApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdContacts");
         }
 
-        // verify the required parameter 'standing' is set
-        if (standing == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'standing' when calling postCharactersCharacterIdContacts");
-        }
-
         // verify the required parameter 'contactIds' is set
         if (contactIds == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'contactIds' when calling postCharactersCharacterIdContacts");
+        }
+
+        // verify the required parameter 'standing' is set
+        if (standing == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'standing' when calling postCharactersCharacterIdContacts");
         }
 
         // create path and map variables
@@ -260,10 +300,15 @@ public class ContactsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -290,24 +335,31 @@ public class ContactsApi {
      * 
      * @param characterId
      *            ID for a character (required)
-     * @param standing
-     *            Standing for the contact (required)
      * @param contactIds
      *            A list of contacts to edit (required)
-     * @param watched
-     *            Whether the contact should be watched, note this is only
-     *            effective on characters (optional, default to false)
-     * @param labelId
-     *            Add a custom label to the contact, use 0 for clearing label
-     *            (optional, default to 0)
+     * @param standing
+     *            Standing for the contact (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param labelId
+     *            Add a custom label to the contact, use 0 for clearing label
+     *            (optional, default to 0)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param watched
+     *            Whether the contact should be watched, note this is only
+     *            effective on characters (optional, default to false)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putCharactersCharacterIdContacts(Integer characterId, Float standing, List<Integer> contactIds,
-            Boolean watched, Long labelId, String datasource) throws ApiException {
+    public void putCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, Float standing,
+            String datasource, Long labelId, String token, String userAgent, Boolean watched, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -316,16 +368,16 @@ public class ContactsApi {
                     "Missing the required parameter 'characterId' when calling putCharactersCharacterIdContacts");
         }
 
-        // verify the required parameter 'standing' is set
-        if (standing == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'standing' when calling putCharactersCharacterIdContacts");
-        }
-
         // verify the required parameter 'contactIds' is set
         if (contactIds == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'contactIds' when calling putCharactersCharacterIdContacts");
+        }
+
+        // verify the required parameter 'standing' is set
+        if (standing == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'standing' when calling putCharactersCharacterIdContacts");
         }
 
         // create path and map variables
@@ -337,10 +389,15 @@ public class ContactsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

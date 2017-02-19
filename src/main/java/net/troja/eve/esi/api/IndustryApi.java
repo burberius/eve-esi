@@ -44,11 +44,16 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<IndustryFacilitiesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<IndustryFacilitiesResponse> getIndustryFacilities(String datasource) throws ApiException {
+    public List<IndustryFacilitiesResponse> getIndustryFacilities(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -60,6 +65,10 @@ public class IndustryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -87,11 +96,16 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<IndustrySystemsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<IndustrySystemsResponse> getIndustrySystems(String datasource) throws ApiException {
+    public List<IndustrySystemsResponse> getIndustrySystems(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -103,6 +117,10 @@ public class IndustryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

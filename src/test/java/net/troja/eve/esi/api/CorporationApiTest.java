@@ -47,7 +47,8 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdTest() throws ApiException {
-        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE);
+        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null,
+                null);
 
         assertThat(response.getTicker(), equalTo(".AAC."));
         assertThat(response.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
@@ -70,12 +71,11 @@ public class CorporationApiTest extends GeneralApiTest {
     @Test
     public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
         final List<CorporationAlliancesHistoryResponse> response = api
-                .getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE);
+                .getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         // The last entry is without alliance!
         final CorporationAlliancesHistoryResponse alliance = response.get(response.size() - 2);
-        System.out.println(response);
         assertThat(alliance.getAlliance().getAllianceId(), equalTo(1804089170));
     }
 
@@ -93,7 +93,8 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdIconsTest() throws ApiException {
-        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE);
+        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE,
+                null, null);
 
         assertThat(response.getPx64x64(), notNullValue());
     }
@@ -158,10 +159,61 @@ public class CorporationApiTest extends GeneralApiTest {
         final List<Long> corporationIds = new ArrayList<>();
         corporationIds.add((long) CORPORATION_ID_AAC);
 
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE);
+        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null,
+                null);
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));
+    }
+
+    /**
+     * Get corporation structures
+     *
+     * Get a list of corporation structures --- Alternate route:
+     * &#x60;/v1/corporations/{corporation_id}/structures/&#x60; Alternate
+     * route: &#x60;/legacy/corporations/{corporation_id}/structures/&#x60;
+     * Alternate route:
+     * &#x60;/dev/corporations/{corporation_id}/structures/&#x60; --- This route
+     * is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_structures.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    @Ignore("Can't test that")
+    public void getCorporationsCorporationIdStructuresTest() throws ApiException {
+        final Integer corporationId = null;
+        final Integer page = null;
+        final String token = null;
+        final String userAgent = null;
+        final String xUserAgent = null;
+        // final List<CorporationStructuresResponse> response =
+        // api.getCorporationsCorporationIdStructures(corporationId,
+        // DATASOURCE, LANGUAGE, page, token, userAgent, xUserAgent);
+
+    }
+
+    /**
+     * Get npc corporations
+     *
+     * Get a list of npc corporations --- Alternate route:
+     * &#x60;/v1/corporations/npccorps/&#x60; Alternate route:
+     * &#x60;/legacy/corporations/npccorps/&#x60; Alternate route:
+     * &#x60;/dev/corporations/npccorps/&#x60; --- This route is cached for up
+     * to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    @Ignore("Doesn't work?!?!")
+    public void getCorporationsNpccorpsTest() throws ApiException {
+        final String userAgent = null;
+        final String xUserAgent = null;
+        final List<Integer> response = api.getCorporationsNpccorps(DATASOURCE, userAgent, xUserAgent);
+
+        assertThat(response.size(), equalTo(50));
     }
 
 }

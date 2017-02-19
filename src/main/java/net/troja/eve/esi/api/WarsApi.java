@@ -40,16 +40,21 @@ public class WarsApi {
      * Alternate route: &#x60;/dev/wars/&#x60; --- This route is cached for up
      * to 3600 seconds
      * 
-     * @param maxWarId
-     *            Only return wars with ID smaller than this. (optional)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param maxWarId
+     *            Only return wars with ID smaller than this. (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getWars(Integer maxWarId, String datasource) throws ApiException {
+    public List<Integer> getWars(String datasource, Integer maxWarId, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -60,8 +65,12 @@ public class WarsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_war_id", maxWarId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_war_id", maxWarId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -91,11 +100,16 @@ public class WarsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return WarResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public WarResponse getWarsWarId(Integer warId, String datasource) throws ApiException {
+    public WarResponse getWarsWarId(Integer warId, String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'warId' is set
@@ -113,6 +127,10 @@ public class WarsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -139,18 +157,22 @@ public class WarsApi {
      * 
      * @param warId
      *            A valid war ID (required)
-     * @param page
-     *            Which page to query, starting at 1, 2000 killmails per page.
-     *            (optional, default to 1)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page to query, starting at 1, 2000 killmails per page.
+     *            (optional, default to 1)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<WarKillmailsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<WarKillmailsResponse> getWarsWarIdKillmails(Integer warId, Integer page, String datasource)
-            throws ApiException {
+    public List<WarKillmailsResponse> getWarsWarIdKillmails(Integer warId, String datasource, Integer page,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'warId' is set
@@ -167,8 +189,12 @@ public class WarsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

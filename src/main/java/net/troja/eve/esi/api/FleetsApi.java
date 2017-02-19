@@ -56,11 +56,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, String datasource)
-            throws ApiException {
+    public void deleteFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -86,6 +92,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -115,10 +126,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, String datasource) throws ApiException {
+    public void deleteFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -144,6 +162,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -174,10 +197,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdWingsWingId(Long fleetId, Long wingId, String datasource) throws ApiException {
+    public void deleteFleetsFleetIdWingsWingId(Long fleetId, Long wingId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -203,6 +233,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -230,11 +265,18 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetResponse getFleetsFleetId(Long fleetId, String datasource) throws ApiException {
+    public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -252,6 +294,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -278,17 +325,23 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<FleetMembersResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String language, String datasource)
-            throws ApiException {
+    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String datasource, String language,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -305,8 +358,13 @@ public class FleetsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -333,17 +391,23 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<FleetWingsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String language, String datasource)
-            throws ApiException {
+    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String datasource, String language,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -360,8 +424,13 @@ public class FleetsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -394,11 +463,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource)
-            throws ApiException {
+    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = invitation;
 
         // verify the required parameter 'fleetId' is set
@@ -423,6 +498,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -450,11 +530,18 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetWingCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource) throws ApiException {
+    public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -472,6 +559,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -504,12 +596,18 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetSquadCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetSquadCreatedResponse postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId, String datasource)
-            throws ApiException {
+    public FleetSquadCreatedResponse postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -535,6 +633,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -565,10 +668,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource) throws ApiException {
+    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = newSettings;
 
         // verify the required parameter 'fleetId' is set
@@ -591,6 +701,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -622,11 +737,17 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, FleetMemberMovement movement,
-            String datasource) throws ApiException {
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = movement;
 
         // verify the required parameter 'fleetId' is set
@@ -658,6 +779,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -682,18 +808,24 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param squadId
-     *            The squad to rename (required)
      * @param naming
      *            New name of the squad (required)
+     * @param squadId
+     *            The squad to rename (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, FleetSquadNaming naming, String datasource)
-            throws ApiException {
+    public void putFleetsFleetIdSquadsSquadId(Long fleetId, FleetSquadNaming naming, Long squadId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set
@@ -702,16 +834,16 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling putFleetsFleetIdSquadsSquadId");
         }
 
-        // verify the required parameter 'squadId' is set
-        if (squadId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'squadId' when calling putFleetsFleetIdSquadsSquadId");
-        }
-
         // verify the required parameter 'naming' is set
         if (naming == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'naming' when calling putFleetsFleetIdSquadsSquadId");
+        }
+
+        // verify the required parameter 'squadId' is set
+        if (squadId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'squadId' when calling putFleetsFleetIdSquadsSquadId");
         }
 
         // create path and map variables
@@ -725,6 +857,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -749,18 +886,24 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
-     * @param wingId
-     *            The wing to rename (required)
      * @param naming
      *            New name of the wing (required)
+     * @param wingId
+     *            The wing to rename (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetIdWingsWingId(Long fleetId, Long wingId, FleetWingNaming naming, String datasource)
-            throws ApiException {
+    public void putFleetsFleetIdWingsWingId(Long fleetId, FleetWingNaming naming, Long wingId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set
@@ -769,16 +912,16 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling putFleetsFleetIdWingsWingId");
         }
 
-        // verify the required parameter 'wingId' is set
-        if (wingId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'wingId' when calling putFleetsFleetIdWingsWingId");
-        }
-
         // verify the required parameter 'naming' is set
         if (naming == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'naming' when calling putFleetsFleetIdWingsWingId");
+        }
+
+        // verify the required parameter 'wingId' is set
+        if (wingId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'wingId' when calling putFleetsFleetIdWingsWingId");
         }
 
         // create path and map variables
@@ -792,6 +935,11 @@ public class FleetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

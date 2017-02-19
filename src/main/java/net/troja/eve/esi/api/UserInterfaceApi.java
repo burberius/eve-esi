@@ -39,29 +39,35 @@ public class UserInterfaceApi {
      * &#x60;/dev/ui/autopilot/waypoint/&#x60; SSO Scope:
      * esi-ui.write_waypoint.v1
      * 
-     * @param destinationId
-     *            The destination to travel to, can be solar system, station or
-     *            structure&#39;s id (required)
-     * @param clearOtherWaypoints
-     *            Whether clean other waypoints beforing adding this one
-     *            (required)
      * @param addToBeginning
      *            Whether this solar system should be added to the beginning of
      *            all waypoints (required)
+     * @param clearOtherWaypoints
+     *            Whether clean other waypoints beforing adding this one
+     *            (required)
+     * @param destinationId
+     *            The destination to travel to, can be solar system, station or
+     *            structure&#39;s id (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiAutopilotWaypoint(Long destinationId, Boolean clearOtherWaypoints, Boolean addToBeginning,
-            String datasource) throws ApiException {
+    public void postUiAutopilotWaypoint(Boolean addToBeginning, Boolean clearOtherWaypoints, Long destinationId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'destinationId' is set
-        if (destinationId == null) {
+        // verify the required parameter 'addToBeginning' is set
+        if (addToBeginning == null) {
             throw new ApiException(400,
-                    "Missing the required parameter 'destinationId' when calling postUiAutopilotWaypoint");
+                    "Missing the required parameter 'addToBeginning' when calling postUiAutopilotWaypoint");
         }
 
         // verify the required parameter 'clearOtherWaypoints' is set
@@ -70,10 +76,10 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'clearOtherWaypoints' when calling postUiAutopilotWaypoint");
         }
 
-        // verify the required parameter 'addToBeginning' is set
-        if (addToBeginning == null) {
+        // verify the required parameter 'destinationId' is set
+        if (destinationId == null) {
             throw new ApiException(400,
-                    "Missing the required parameter 'addToBeginning' when calling postUiAutopilotWaypoint");
+                    "Missing the required parameter 'destinationId' when calling postUiAutopilotWaypoint");
         }
 
         // create path and map variables
@@ -84,10 +90,15 @@ public class UserInterfaceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "destination_id", destinationId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "clear_other_waypoints", clearOtherWaypoints));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "add_to_beginning", addToBeginning));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "clear_other_waypoints", clearOtherWaypoints));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "destination_id", destinationId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -114,10 +125,17 @@ public class UserInterfaceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowContract(Integer contractId, String datasource) throws ApiException {
+    public void postUiOpenwindowContract(Integer contractId, String datasource, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'contractId' is set
@@ -136,6 +154,11 @@ public class UserInterfaceApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "contract_id", contractId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -164,10 +187,17 @@ public class UserInterfaceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowInformation(Integer targetId, String datasource) throws ApiException {
+    public void postUiOpenwindowInformation(Integer targetId, String datasource, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'targetId' is set
@@ -184,8 +214,13 @@ public class UserInterfaceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "target_id", targetId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "target_id", targetId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -214,10 +249,17 @@ public class UserInterfaceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowMarketdetails(Integer typeId, String datasource) throws ApiException {
+    public void postUiOpenwindowMarketdetails(Integer typeId, String datasource, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'typeId' is set
@@ -234,8 +276,13 @@ public class UserInterfaceApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -263,10 +310,17 @@ public class UserInterfaceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowNewmail(UiNewMail newMail, String datasource) throws ApiException {
+    public void postUiOpenwindowNewmail(UiNewMail newMail, String datasource, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = newMail;
 
         // verify the required parameter 'newMail' is set
@@ -283,6 +337,11 @@ public class UserInterfaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

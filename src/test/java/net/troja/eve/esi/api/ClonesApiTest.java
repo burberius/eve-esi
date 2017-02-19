@@ -43,7 +43,8 @@ public class ClonesApiTest extends GeneralApiTest {
         api = new ClonesApi(apiClient);
 
         final Integer characterId = 91649735;
-        final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE);
+        final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE, null, null,
+                null);
 
         assertThat(response, notNullValue());
         assertThat(response.getJumpClones().size(), greaterThan(0));

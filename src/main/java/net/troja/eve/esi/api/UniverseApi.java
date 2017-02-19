@@ -54,16 +54,21 @@ public class UniverseApi {
      * &#x60;/dev/universe/bloodlines/&#x60; --- This route is cached for up to
      * 3600 seconds
      * 
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<BloodlinesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<BloodlinesResponse> getUniverseBloodlines(String language, String datasource) throws ApiException {
+    public List<BloodlinesResponse> getUniverseBloodlines(String datasource, String language, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -74,8 +79,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -103,11 +112,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseCategories(String datasource) throws ApiException {
+    public List<Integer> getUniverseCategories(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -119,6 +133,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -145,17 +163,21 @@ public class UniverseApi {
      * 
      * @param categoryId
      *            An Eve item category ID (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CategoryResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String language, String datasource)
-            throws ApiException {
+    public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'categoryId' is set
@@ -173,8 +195,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -202,11 +228,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseConstellations(String datasource) throws ApiException {
+    public List<Integer> getUniverseConstellations(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -218,6 +249,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -246,17 +281,21 @@ public class UniverseApi {
      * 
      * @param constellationId
      *            constellation_id integer (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return ConstellationResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public ConstellationResponse getUniverseConstellationsConstellationId(Integer constellationId, String language,
-            String datasource) throws ApiException {
+    public ConstellationResponse getUniverseConstellationsConstellationId(Integer constellationId, String datasource,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'constellationId' is set
@@ -274,8 +313,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -300,16 +343,21 @@ public class UniverseApi {
      * &#x60;/dev/universe/factions/&#x60; --- This route is cached for up to
      * 3600 seconds
      * 
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<FactionsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FactionsResponse> getUniverseFactions(String language, String datasource) throws ApiException {
+    public List<FactionsResponse> getUniverseFactions(String datasource, String language, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -320,8 +368,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -346,16 +398,21 @@ public class UniverseApi {
      * &#x60;/dev/universe/groups/&#x60; --- This route is cached for up to 3600
      * seconds
      * 
-     * @param page
-     *            Which page to query (optional)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page to query (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseGroups(Integer page, String datasource) throws ApiException {
+    public List<Integer> getUniverseGroups(String datasource, Integer page, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -366,8 +423,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -394,17 +455,21 @@ public class UniverseApi {
      * 
      * @param groupId
      *            An Eve item group ID (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return GroupResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public GroupResponse getUniverseGroupsGroupId(Integer groupId, String language, String datasource)
-            throws ApiException {
+    public GroupResponse getUniverseGroupsGroupId(Integer groupId, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'groupId' is set
@@ -422,8 +487,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -453,11 +522,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return MoonResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource) throws ApiException {
+    public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'moonId' is set
@@ -475,6 +549,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -504,11 +582,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return PlanetResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource) throws ApiException {
+    public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'planetId' is set
@@ -527,6 +610,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -551,16 +638,21 @@ public class UniverseApi {
      * &#x60;/dev/universe/races/&#x60; --- This route is cached for up to 3600
      * seconds
      * 
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<RacesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<RacesResponse> getUniverseRaces(String language, String datasource) throws ApiException {
+    public List<RacesResponse> getUniverseRaces(String datasource, String language, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -571,8 +663,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -600,11 +696,15 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseRegions(String datasource) throws ApiException {
+    public List<Integer> getUniverseRegions(String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -616,6 +716,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -642,17 +746,21 @@ public class UniverseApi {
      * 
      * @param regionId
      *            region_id integer (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return RegionResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public RegionResponse getUniverseRegionsRegionId(Integer regionId, String language, String datasource)
-            throws ApiException {
+    public RegionResponse getUniverseRegionsRegionId(Integer regionId, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'regionId' is set
@@ -670,8 +778,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -701,11 +813,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return StargateResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource) throws ApiException {
+    public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'stargateId' is set
@@ -724,6 +841,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -752,11 +873,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return StationResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public StationResponse getUniverseStationsStationId(Integer stationId, String datasource) throws ApiException {
+    public StationResponse getUniverseStationsStationId(Integer stationId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'stationId' is set
@@ -775,6 +901,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -802,11 +932,15 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Long>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Long> getUniverseStructures(String datasource) throws ApiException {
+    public List<Long> getUniverseStructures(String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -818,6 +952,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -848,11 +986,18 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return StructureResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public StructureResponse getUniverseStructuresStructureId(Long structureId, String datasource) throws ApiException {
+    public StructureResponse getUniverseStructuresStructureId(Long structureId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'structureId' is set
@@ -871,6 +1016,11 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -898,11 +1048,15 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseSystems(String datasource) throws ApiException {
+    public List<Integer> getUniverseSystems(String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -914,6 +1068,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -939,17 +1097,21 @@ public class UniverseApi {
      * 
      * @param systemId
      *            system_id integer (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return SystemResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String language, String datasource)
-            throws ApiException {
+    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'systemId' is set
@@ -967,8 +1129,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -993,16 +1159,21 @@ public class UniverseApi {
      * &#x60;/dev/universe/types/&#x60; --- This route is cached for up to 3600
      * seconds
      * 
-     * @param page
-     *            Which page to query (optional)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page to query (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseTypes(Integer page, String datasource) throws ApiException {
+    public List<Integer> getUniverseTypes(String datasource, Integer page, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1013,8 +1184,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1040,16 +1215,21 @@ public class UniverseApi {
      * 
      * @param typeId
      *            An Eve item type ID (required)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return TypeResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public TypeResponse getUniverseTypesTypeId(Integer typeId, String language, String datasource) throws ApiException {
+    public TypeResponse getUniverseTypesTypeId(Integer typeId, String datasource, String language, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'typeId' is set
@@ -1066,8 +1246,12 @@ public class UniverseApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1097,11 +1281,16 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<UniverseNamesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<UniverseNamesResponse> postUniverseNames(List<Integer> ids, String datasource) throws ApiException {
+    public List<UniverseNamesResponse> postUniverseNames(List<Integer> ids, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = ids;
 
         // verify the required parameter 'ids' is set
@@ -1118,6 +1307,10 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

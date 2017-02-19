@@ -44,7 +44,8 @@ public class AssetsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdAssetsTest() throws ApiException {
         api.setApiClient(apiClient);
-        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE);
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null,
+                null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

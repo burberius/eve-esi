@@ -22,7 +22,7 @@ RECIPIENT=$(jq ".paths.\"/characters/{character_id}/mail/{mail_id}/\".get.respon
 jq ".definitions.recipient = $RECIPIENT" work1.json > work2.json
 jq "(.paths.\"/characters/{character_id}/mail/{mail_id}/\".get.responses.\"200\".schema.properties.recipients.items) = { \"\$ref\": \"#/definitions/recipient\" }" work2.json > work1.json
 jq "(.paths[].get.responses[\"200\"].schema.items.properties | select(.recipients.title == \"get_characters_character_id_mail_recipients\") | .recipients.items) = { \"\$ref\": \"#/definitions/recipient\" }" work1.json > work2.json
-jq "(.paths[].post.parameters[1].schema.properties.recipients | select(.title == \"post_characters_character_id_mail_recipients\")).items = { \"\$ref\": \"#/definitions/recipient\" }" work2.json > work1.json
+jq "(.paths[].post.parameters[2].schema.properties.recipients | select(.title == \"post_characters_character_id_mail_recipients\")).items = { \"\$ref\": \"#/definitions/recipient\" }" work2.json > work1.json
 sed -i -e 's#get_characters_character_id_mail_mail_id_recipient#Recipient#g' work1.json
 
 # Killmail items are double named
@@ -35,7 +35,7 @@ echo "Transporting fitting item"
 FITTINGITEM=$(jq ".paths.\"/characters/{character_id}/fittings/\".get.responses.\"200\".schema.items.properties.items.items" esi.json)
 jq ".definitions.fitting_item = $FITTINGITEM" work1.json > work2.json
 jq "(.paths.\"/characters/{character_id}/fittings/\".get.responses.\"200\".schema.items.properties.items.items) = { \"\$ref\": \"#/definitions/fitting_item\" }" work2.json > work1.json
-jq "(.paths[].post.parameters[1].schema.properties.items | select(.title == \"post_characters_character_id_fittings_items\")).items = { \"\$ref\": \"#/definitions/fitting_item\" }" work1.json > work2.json
+jq "(.paths[].post.parameters[2].schema.properties.items | select(.title == \"post_characters_character_id_fittings_items\")).items = { \"\$ref\": \"#/definitions/fitting_item\" }" work1.json > work2.json
 mv work2.json work1.json
 
 # Bad Request = 400

@@ -46,20 +46,27 @@ public class KillmailsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
      * @param maxCount
      *            How many killmails to return at maximum (optional, default to
      *            50)
      * @param maxKillId
      *            Only return killmails with ID smaller than this. (optional)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<CharacterKillmailsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterKillmailsResponse> getCharactersCharacterIdKillmailsRecent(Integer characterId,
-            Integer maxCount, Integer maxKillId, String datasource) throws ApiException {
+            String datasource, Integer maxCount, Integer maxKillId, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -77,9 +84,14 @@ public class KillmailsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_count", maxCount));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_kill_id", maxKillId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -105,26 +117,24 @@ public class KillmailsApi {
      * route: &#x60;/dev/killmails/{killmail_id}/{killmail_hash}/&#x60; --- This
      * route is cached for up to 3600 seconds
      * 
-     * @param killmailId
-     *            The killmail ID to be queried (required)
      * @param killmailHash
      *            The killmail hash for verification (required)
+     * @param killmailId
+     *            The killmail ID to be queried (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return KillmailResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public KillmailResponse getKillmailsKillmailIdKillmailHash(Integer killmailId, String killmailHash,
-            String datasource) throws ApiException {
+    public KillmailResponse getKillmailsKillmailIdKillmailHash(String killmailHash, Integer killmailId,
+            String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
-
-        // verify the required parameter 'killmailId' is set
-        if (killmailId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'killmailId' when calling getKillmailsKillmailIdKillmailHash");
-        }
 
         // verify the required parameter 'killmailHash' is set
         if (killmailHash == null) {
@@ -132,10 +142,16 @@ public class KillmailsApi {
                     "Missing the required parameter 'killmailHash' when calling getKillmailsKillmailIdKillmailHash");
         }
 
+        // verify the required parameter 'killmailId' is set
+        if (killmailId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'killmailId' when calling getKillmailsKillmailIdKillmailHash");
+        }
+
         // create path and map variables
         String localVarPath = "/killmails/{killmail_id}/{killmail_hash}/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "killmail_id" + "\\}", apiClient.escapeString(killmailId.toString()))
-                .replaceAll("\\{" + "killmail_hash" + "\\}", apiClient.escapeString(killmailHash.toString()));
+                .replaceAll("\\{" + "killmail_hash" + "\\}", apiClient.escapeString(killmailHash.toString()))
+                .replaceAll("\\{" + "killmail_id" + "\\}", apiClient.escapeString(killmailId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -143,6 +159,10 @@ public class KillmailsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

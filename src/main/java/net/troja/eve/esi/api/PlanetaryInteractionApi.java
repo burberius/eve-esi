@@ -48,12 +48,18 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<CharacterPlanetsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterPlanetsResponse> getCharactersCharacterIdPlanets(Integer characterId, String datasource)
-            throws ApiException {
+    public List<CharacterPlanetsResponse> getCharactersCharacterIdPlanets(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -72,6 +78,11 @@ public class PlanetaryInteractionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -97,9 +108,7 @@ public class PlanetaryInteractionApi {
      * is met. --- Alternate route:
      * &#x60;/v1/characters/{character_id}/planets/{planet_id}/&#x60; Alternate
      * route: &#x60;/legacy/characters/{character_id}/planets/{planet_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/planets/{planet_id}/&#x60; --- This
-     * route is cached for up to 600 seconds SSO Scope:
+     * --- This route is cached for up to 600 seconds SSO Scope:
      * esi-planets.manage_planets.v1
      * 
      * @param characterId
@@ -109,12 +118,18 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterPlanetResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterPlanetResponse getCharactersCharacterIdPlanetsPlanetId(Integer characterId, Integer planetId,
-            String datasource) throws ApiException {
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -140,6 +155,11 @@ public class PlanetaryInteractionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -170,12 +190,16 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return PlanetFactorySchematicResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public PlanetFactorySchematicResponse getUniverseSchematicsSchematicId(Integer schematicId, String datasource)
-            throws ApiException {
+    public PlanetFactorySchematicResponse getUniverseSchematicsSchematicId(Integer schematicId, String datasource,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'schematicId' is set
@@ -194,6 +218,10 @@ public class PlanetaryInteractionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

@@ -46,11 +46,16 @@ public class MarketApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<MarketPricesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketPricesResponse> getMarketsPrices(String datasource) throws ApiException {
+    public List<MarketPricesResponse> getMarketsPrices(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -62,6 +67,10 @@ public class MarketApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -94,12 +103,16 @@ public class MarketApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<MarketHistoryResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketHistoryResponse> getMarketsRegionIdHistory(Integer regionId, Integer typeId, String datasource)
-            throws ApiException {
+    public List<MarketHistoryResponse> getMarketsRegionIdHistory(Integer regionId, Integer typeId, String datasource,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'regionId' is set
@@ -123,8 +136,12 @@ public class MarketApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -149,38 +166,42 @@ public class MarketApi {
      * &#x60;/dev/markets/{region_id}/orders/&#x60; --- This route is cached for
      * up to 300 seconds
      * 
-     * @param regionId
-     *            Return orders in this region (required)
      * @param orderType
      *            Filter buy/sell orders, return all orders by default. If you
      *            query without type_id, we always return both buy and sell
      *            orders. (required)
-     * @param typeId
-     *            Return orders only for this type (optional)
-     * @param page
-     *            Which page to query, only used for querying without type_id.
-     *            Starting at 1 (optional, default to 1)
+     * @param regionId
+     *            Return orders in this region (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page to query, only used for querying without type_id.
+     *            Starting at 1 (optional, default to 1)
+     * @param typeId
+     *            Return orders only for this type (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<MarketOrdersResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketOrdersResponse> getMarketsRegionIdOrders(Integer regionId, String orderType, Integer typeId,
-            Integer page, String datasource) throws ApiException {
+    public List<MarketOrdersResponse> getMarketsRegionIdOrders(String orderType, Integer regionId, String datasource,
+            Integer page, Integer typeId, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
-
-        // verify the required parameter 'regionId' is set
-        if (regionId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'regionId' when calling getMarketsRegionIdOrders");
-        }
 
         // verify the required parameter 'orderType' is set
         if (orderType == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'orderType' when calling getMarketsRegionIdOrders");
+        }
+
+        // verify the required parameter 'regionId' is set
+        if (regionId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'regionId' when calling getMarketsRegionIdOrders");
         }
 
         // create path and map variables
@@ -192,10 +213,14 @@ public class MarketApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "order_type", orderType));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -223,17 +248,23 @@ public class MarketApi {
      * 
      * @param structureId
      *            Return orders in this structure (required)
-     * @param page
-     *            Which page to query, starting at 1 (optional, default to 1)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page to query, starting at 1 (optional, default to 1)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<MarketStructuresResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MarketStructuresResponse> getMarketsStructuresStructureId(Long structureId, Integer page,
-            String datasource) throws ApiException {
+    public List<MarketStructuresResponse> getMarketsStructuresStructureId(Long structureId, String datasource,
+            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'structureId' is set
@@ -251,8 +282,13 @@ public class MarketApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

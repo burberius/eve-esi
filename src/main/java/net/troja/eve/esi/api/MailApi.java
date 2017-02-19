@@ -55,11 +55,17 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteCharactersCharacterIdMailLabelsLabelId(Integer characterId, Integer labelId, String datasource)
-            throws ApiException {
+    public void deleteCharactersCharacterIdMailLabelsLabelId(Integer characterId, Integer labelId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -85,6 +91,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -115,11 +126,17 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource)
-            throws ApiException {
+    public void deleteCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -145,6 +162,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -171,21 +193,28 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
      * @param labels
      *            Fetch only mails that match one or more of the given labels
      *            (optional)
      * @param lastMailId
      *            List only mail with an ID lower than the given ID, if present
      *            (optional)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<MailHeadersResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<MailHeadersResponse> getCharactersCharacterIdMail(Integer characterId, List<Long> labels,
-            Integer lastMailId, String datasource) throws ApiException {
+    public List<MailHeadersResponse> getCharactersCharacterIdMail(Integer characterId, String datasource,
+            List<Long> labels, Integer lastMailId, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -203,9 +232,14 @@ public class MailApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "labels", labels));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "last_mail_id", lastMailId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -235,12 +269,18 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return MailLabelsResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public MailLabelsResponse getCharactersCharacterIdMailLabels(Integer characterId, String datasource)
-            throws ApiException {
+    public MailLabelsResponse getCharactersCharacterIdMailLabels(Integer characterId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -259,6 +299,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -289,12 +334,18 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<CharacterMailinglistsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterMailinglistsResponse> getCharactersCharacterIdMailLists(Integer characterId, String datasource)
-            throws ApiException {
+    public List<CharacterMailinglistsResponse> getCharactersCharacterIdMailLists(Integer characterId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -313,6 +364,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -345,12 +401,18 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return MailResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public MailResponse getCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource)
-            throws ApiException {
+    public MailResponse getCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -376,6 +438,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -407,11 +474,18 @@ public class MailApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return Integer
      * @throws ApiException
      *             if fails to make API call
      */
-    public Integer postCharactersCharacterIdMail(Integer characterId, Mail mail, String datasource) throws ApiException {
+    public Integer postCharactersCharacterIdMail(Integer characterId, Mail mail, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = mail;
 
         // verify the required parameter 'characterId' is set
@@ -436,6 +510,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -462,17 +541,23 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param label
-     *            Label to create (optional)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param label
+     *            Label to create (optional)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return Long
      * @throws ApiException
      *             if fails to make API call
      */
-    public Long postCharactersCharacterIdMailLabels(Integer characterId, MailLabelSimple label, String datasource)
-            throws ApiException {
+    public Long postCharactersCharacterIdMailLabels(Integer characterId, String datasource, MailLabelSimple label,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = label;
 
         // verify the required parameter 'characterId' is set
@@ -491,6 +576,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -518,18 +608,24 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param mailId
-     *            An EVE mail ID (required)
      * @param contents
      *            Data used to update the mail (required)
+     * @param mailId
+     *            An EVE mail ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, MailMetaData contents,
-            String datasource) throws ApiException {
+    public void putCharactersCharacterIdMailMailId(Integer characterId, MailMetaData contents, Integer mailId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = contents;
 
         // verify the required parameter 'characterId' is set
@@ -538,16 +634,16 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling putCharactersCharacterIdMailMailId");
         }
 
-        // verify the required parameter 'mailId' is set
-        if (mailId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'mailId' when calling putCharactersCharacterIdMailMailId");
-        }
-
         // verify the required parameter 'contents' is set
         if (contents == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'contents' when calling putCharactersCharacterIdMailMailId");
+        }
+
+        // verify the required parameter 'mailId' is set
+        if (mailId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'mailId' when calling putCharactersCharacterIdMailMailId");
         }
 
         // create path and map variables
@@ -561,6 +657,11 @@ public class MailApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

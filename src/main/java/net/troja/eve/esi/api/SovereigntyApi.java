@@ -44,11 +44,16 @@ public class SovereigntyApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<SovereigntyCampaignsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<SovereigntyCampaignsResponse> getSovereigntyCampaigns(String datasource) throws ApiException {
+    public List<SovereigntyCampaignsResponse> getSovereigntyCampaigns(String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -60,6 +65,10 @@ public class SovereigntyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -87,11 +96,16 @@ public class SovereigntyApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<SovereigntyStructuresResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<SovereigntyStructuresResponse> getSovereigntyStructures(String datasource) throws ApiException {
+    public List<SovereigntyStructuresResponse> getSovereigntyStructures(String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -103,6 +117,10 @@ public class SovereigntyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

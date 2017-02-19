@@ -50,8 +50,8 @@ public class BookmarksApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdBookmarksTest() throws ApiException {
-        final List<CharacterBookmarksResponse> response = api.getCharactersCharacterIdBookmarks(characterId,
-                DATASOURCE);
+        final List<CharacterBookmarksResponse> response = api.getCharactersCharacterIdBookmarks(characterId, DATASOURCE,
+                null, null, null);
 
         assertThat(response.size(), greaterThan(1));
     }
@@ -73,7 +73,7 @@ public class BookmarksApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdBookmarksFoldersTest() throws ApiException {
         final List<CharacterBookmarkFoldersResponse> response = api
-                .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE);
+                .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(1));
     }

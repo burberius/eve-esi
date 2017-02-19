@@ -57,7 +57,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdTest() throws ApiException {
-        final CharacterResponse response = api.getCharactersCharacterId(characterId, DATASOURCE);
+        final CharacterResponse response = api.getCharactersCharacterId(characterId, DATASOURCE, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getName(), notNullValue());
@@ -80,7 +80,7 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdCorporationhistoryTest() throws ApiException {
         final List<CharacterCorporationHistoryResponse> response = api
-                .getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE);
+                .getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getCorporationId(), greaterThan(0));
@@ -99,7 +99,8 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdPortraitTest() throws ApiException {
-        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE);
+        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE, null,
+                null);
 
         assertThat(response, notNullValue());
         final String icon = response.getPx64x64();
@@ -123,7 +124,7 @@ public class CharacterApiTest extends GeneralApiTest {
         final List<Long> characterIds = new ArrayList<>();
         characterIds.add((long) characterId);
 
-        final List<CharacterNamesResponse> response = api.getCharactersNames(characterIds, DATASOURCE);
+        final List<CharacterNamesResponse> response = api.getCharactersNames(characterIds, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCharacterName(), equalTo(characterName));
@@ -147,7 +148,8 @@ public class CharacterApiTest extends GeneralApiTest {
         final CspaCharacters characters = new CspaCharacters();
         characters.addCharactersItem(CHARACTER_ID_CHRIBBA);
 
-        final CspaCostResponse response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE);
+        final CspaCostResponse response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null,
+                null, null);
 
         assertThat(response.getCost(), equalTo(0l));
     }

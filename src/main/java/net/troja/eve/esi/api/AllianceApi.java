@@ -45,11 +45,15 @@ public class AllianceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getAlliances(String datasource) throws ApiException {
+    public List<Integer> getAlliances(String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -61,6 +65,10 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -88,11 +96,16 @@ public class AllianceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return AllianceResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public AllianceResponse getAlliancesAllianceId(Integer allianceId, String datasource) throws ApiException {
+    public AllianceResponse getAlliancesAllianceId(Integer allianceId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -111,6 +124,10 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -141,11 +158,16 @@ public class AllianceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<Integer>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getAlliancesAllianceIdCorporations(Integer allianceId, String datasource) throws ApiException {
+    public List<Integer> getAlliancesAllianceIdCorporations(Integer allianceId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -164,6 +186,10 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -193,11 +219,16 @@ public class AllianceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return AllianceIconsResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public AllianceIconsResponse getAlliancesAllianceIdIcons(Integer allianceId, String datasource) throws ApiException {
+    public AllianceIconsResponse getAlliancesAllianceIdIcons(Integer allianceId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -216,6 +247,10 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -245,11 +280,16 @@ public class AllianceApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List<AllianceNamesResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<AllianceNamesResponse> getAlliancesNames(List<Long> allianceIds, String datasource) throws ApiException {
+    public List<AllianceNamesResponse> getAlliancesNames(List<Long> allianceIds, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceIds' is set
@@ -267,6 +307,10 @@ public class AllianceApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "alliance_ids", allianceIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

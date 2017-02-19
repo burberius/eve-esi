@@ -40,27 +40,40 @@ public class SearchApi {
      * This route is cached for up to 3600 seconds SSO Scope:
      * esi-search.search_structures.v1
      * 
+     * @param categories
+     *            Type of entities to search for (required)
      * @param characterId
      *            An EVE character ID (required)
      * @param search
      *            The string to search on (required)
-     * @param categories
-     *            Type of entities to search for (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
      * @param language
      *            Search locale (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterSearchResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public CharacterSearchResponse getCharactersCharacterIdSearch(Integer characterId, String search,
-            List<String> categories, String language, Boolean strict, String datasource) throws ApiException {
+    public CharacterSearchResponse getCharactersCharacterIdSearch(List<String> categories, Integer characterId,
+            String search, String datasource, String language, Boolean strict, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
+
+        // verify the required parameter 'categories' is set
+        if (categories == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'categories' when calling getCharactersCharacterIdSearch");
+        }
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -74,12 +87,6 @@ public class SearchApi {
                     "Missing the required parameter 'search' when calling getCharactersCharacterIdSearch");
         }
 
-        // verify the required parameter 'categories' is set
-        if (categories == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'categories' when calling getCharactersCharacterIdSearch");
-        }
-
         // create path and map variables
         String localVarPath = "/characters/{character_id}/search/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
@@ -89,11 +96,16 @@ public class SearchApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "categories", categories));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -117,34 +129,38 @@ public class SearchApi {
      * &#x60;/legacy/search/&#x60; --- This route is cached for up to 3600
      * seconds
      * 
-     * @param search
-     *            The string to search on (required)
      * @param categories
      *            Type of entities to search for (required)
+     * @param search
+     *            The string to search on (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
      * @param language
      *            Search locale (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
      * @return SearchResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public SearchResponse getSearch(String search, List<String> categories, String language, Boolean strict,
-            String datasource) throws ApiException {
+    public SearchResponse getSearch(List<String> categories, String search, String datasource, String language,
+            Boolean strict, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
-
-        // verify the required parameter 'search' is set
-        if (search == null) {
-            throw new ApiException(400, "Missing the required parameter 'search' when calling getSearch");
-        }
 
         // verify the required parameter 'categories' is set
         if (categories == null) {
             throw new ApiException(400, "Missing the required parameter 'categories' when calling getSearch");
+        }
+
+        // verify the required parameter 'search' is set
+        if (search == null) {
+            throw new ApiException(400, "Missing the required parameter 'search' when calling getSearch");
         }
 
         // create path and map variables
@@ -155,11 +171,15 @@ public class SearchApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "categories", categories));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
