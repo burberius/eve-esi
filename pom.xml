@@ -180,6 +180,7 @@
                         			<configuration>
                             				<source>${maven.compile.source}</source>
                             				<detectLinks />
+							<failOnError>false</failOnError>
                         			</configuration>
                     			</execution>
                 		</executions>
