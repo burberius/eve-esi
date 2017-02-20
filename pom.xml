@@ -124,6 +124,67 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-compiler-plugin</artifactId>
+                		<version>3.6.1</version>
+                		<configuration>
+                    			<debug>${java.debug}</debug>
+                    			<optimize>${java.optimize}</optimize>
+                    			<encoding>${project.build.sourceEncoding}</encoding>
+                		</configuration>
+            		</plugin>
+			<plugin>
+                		<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-release-plugin</artifactId>
+                		<version>2.5.3</version>
+                		<configuration>
+                    			<releaseProfiles>production</releaseProfiles>
+                    			<goals>jar:test-jar javadoc:jar javadoc:test-jar source:jar
+                        			source:test-jar deploy</goals>
+                		</configuration>
+            		</plugin>
+			<plugin>
+                		<groupId>org.sonatype.plugins</groupId>
+                		<artifactId>nexus-staging-maven-plugin</artifactId>
+                		<version>1.6.7</version>
+                		<extensions>true</extensions>
+                		<configuration>
+                    			<serverId>ossrh</serverId>
+                    			<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    			<autoReleaseAfterClose>true</autoReleaseAfterClose>
+                		</configuration>
+            		</plugin>
+			<plugin>
+                		<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-source-plugin</artifactId>
+                		<version>2.2.1</version>
+                		<executions>
+                    			<execution>
+                        			<id>attach-sources</id>
+                        			<goals>
+                            				<goal>jar-no-fork</goal>
+                        			</goals>
+                    			</execution>
+                		</executions>
+            		</plugin>
+			<plugin>
+                		<groupId>org.apache.maven.plugins</groupId>
+                		<artifactId>maven-javadoc-plugin</artifactId>
+                		<version>2.9</version>
+                		<executions>
+                    			<execution>
+                        			<id>create-javadoc-jar</id>
+                        			<goals>
+                            				<goal>jar</goal>
+                        			</goals>
+                        			<configuration>
+                            				<source>${maven.compile.source}</source>
+                            				<detectLinks />
+                        			</configuration>
+                    			</execution>
+                		</executions>
+            		</plugin>
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.9</version>
@@ -142,4 +203,41 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+            		</activation>
+            		<properties>
+                		<java.debug>true</java.debug>
+                		<java.optimize>false</java.optimize>
+            		</properties>
+        	</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<java.debug>false</java.debug>
+				<java.optimize>true</java.optimize>
+            		</properties>
+            		<build>
+                		<plugins>
+                    			<plugin>
+                        			<groupId>org.apache.maven.plugins</groupId>
+                        			<artifactId>maven-gpg-plugin</artifactId>
+                        			<version>1.5</version>
+                        			<executions>
+                            				<execution>
+                                				<id>sign-artifacts</id>
+                                				<phase>verify</phase>
+                                				<goals>
+                                    					<goal>sign</goal>
+                                				</goals>
+                            				</execution>
+                        			</executions>
+                    			</plugin>
+                		</plugins>
+            		</build>
+        	</profile>
+	</profiles>
 </project>
