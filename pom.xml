@@ -7,6 +7,7 @@
   <packaging>jar</packaging>
   <name>EVE-ESI</name>
   <description>Java Client for the new Eve Swagger Interface (ESI)</description>
+  <url>https://github.com/burberius/eve-esi</url>
 
   <licenses>
     <license>
