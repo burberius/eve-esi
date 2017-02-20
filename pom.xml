@@ -181,6 +181,7 @@
               <source>${maven.compile.source}</source>
               <detectLinks />
               <failOnError>false</failOnError>
+              <additionalparam>-Xdoclint:none</additionalparam>
             </configuration>
           </execution>
         </executions>
