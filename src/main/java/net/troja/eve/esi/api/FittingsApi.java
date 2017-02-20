@@ -77,7 +77,7 @@ public class FittingsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/fittings/{fitting_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/fittings/{fitting_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "fitting_id" + "\\}", apiClient.escapeString(fittingId.toString()));
 
@@ -140,7 +140,7 @@ public class FittingsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/fittings/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/fittings/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -206,7 +206,7 @@ public class FittingsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/fittings/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/fittings/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

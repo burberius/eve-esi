@@ -13,7 +13,6 @@ import net.troja.eve.esi.model.CorporationMembersResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesResponse;
-import net.troja.eve.esi.model.CorporationStructuresResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +67,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/corporations/{corporation_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -131,7 +130,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -192,7 +191,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/icons/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/corporations/{corporation_id}/icons/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -257,8 +256,8 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/members/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/members/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -323,7 +322,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/roles/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/corporations/{corporation_id}/roles/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -349,80 +348,6 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CorporationRolesResponse>> localVarReturnType = new GenericType<List<CorporationRolesResponse>>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Get corporation structures Get a list of corporation structures ---
-     * Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/structures/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/structures/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/structures/&#x60; --- This route
-     * is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_structures.v1
-     * 
-     * @param corporationId
-     *            A corporation ID (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param language
-     *            Language to use in the response (optional, default to en-us)
-     * @param page
-     *            Which page to query, 250 structures per page (optional)
-     * @param token
-     *            Access token to use, if preferred over a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationStructuresResponse>
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public List<CorporationStructuresResponse> getCorporationsCorporationIdStructures(Integer corporationId,
-            String datasource, String language, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStructures");
-        }
-
-        // create path and map variables
-        String localVarPath = "/corporations/{corporation_id}/structures/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "evesso" };
-
-        GenericType<List<CorporationStructuresResponse>> localVarReturnType = new GenericType<List<CorporationStructuresResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -459,7 +384,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/corporations/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/corporations/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -512,7 +437,7 @@ public class CorporationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/corporations/npccorps/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/corporations/npccorps/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

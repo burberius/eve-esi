@@ -59,7 +59,7 @@ public class MarketApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/markets/prices/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/markets/prices/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -128,7 +128,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/markets/{region_id}/history/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/markets/{region_id}/history/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "region_id" + "\\}", apiClient.escapeString(regionId.toString()));
 
         // query params
@@ -205,7 +205,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/markets/{region_id}/orders/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/markets/{region_id}/orders/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "region_id" + "\\}", apiClient.escapeString(regionId.toString()));
 
         // query params
@@ -274,7 +274,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/markets/structures/{structure_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/markets/structures/{structure_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "structure_id" + "\\}", apiClient.escapeString(structureId.toString()));
 
         // query params

@@ -68,7 +68,7 @@ public class BookmarksApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/bookmarks/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/bookmarks/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -135,7 +135,7 @@ public class BookmarksApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/bookmarks/folders/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/bookmarks/folders/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

@@ -69,8 +69,8 @@ public class SkillsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/skillqueue/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/skillqueue/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -133,7 +133,7 @@ public class SkillsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/skills/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/characters/{character_id}/skills/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

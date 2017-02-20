@@ -83,7 +83,7 @@ public class UserInterfaceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/ui/autopilot/waypoint/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/ui/autopilot/waypoint/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -145,7 +145,7 @@ public class UserInterfaceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/ui/openwindow/contract/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/ui/openwindow/contract/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -207,7 +207,7 @@ public class UserInterfaceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/ui/openwindow/information/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/ui/openwindow/information/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -269,7 +269,7 @@ public class UserInterfaceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/ui/openwindow/marketdetails/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/ui/openwindow/marketdetails/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -329,7 +329,7 @@ public class UserInterfaceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/ui/openwindow/newmail/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/ui/openwindow/newmail/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

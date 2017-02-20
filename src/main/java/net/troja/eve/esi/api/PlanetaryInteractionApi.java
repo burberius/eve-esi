@@ -69,7 +69,7 @@ public class PlanetaryInteractionApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/planets/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/planets/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -145,7 +145,7 @@ public class PlanetaryInteractionApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/planets/{planet_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/planets/{planet_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "planet_id" + "\\}", apiClient.escapeString(planetId.toString()));
 
@@ -209,7 +209,7 @@ public class PlanetaryInteractionApi {
         }
 
         // create path and map variables
-        String localVarPath = "/universe/schematics/{schematic_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/universe/schematics/{schematic_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "schematic_id" + "\\}", apiClient.escapeString(schematicId.toString()));
 
         // query params

@@ -57,7 +57,7 @@ public class SovereigntyApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/sovereignty/campaigns/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/sovereignty/campaigns/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -109,7 +109,7 @@ public class SovereigntyApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/sovereignty/structures/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/sovereignty/structures/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

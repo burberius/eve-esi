@@ -57,7 +57,7 @@ public class IndustryApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/industry/facilities/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/industry/facilities/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -109,7 +109,7 @@ public class IndustryApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/industry/systems/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/industry/systems/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

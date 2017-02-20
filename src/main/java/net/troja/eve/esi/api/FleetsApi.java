@@ -82,7 +82,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "member_id" + "\\}", apiClient.escapeString(memberId.toString()));
 
@@ -152,7 +152,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "squad_id" + "\\}", apiClient.escapeString(squadId.toString()));
 
@@ -223,7 +223,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "wing_id" + "\\}", apiClient.escapeString(wingId.toString()));
 
@@ -285,7 +285,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -350,7 +350,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/members/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/members/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -416,7 +416,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/wings/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -489,7 +489,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/members/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/members/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -550,7 +550,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/wings/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -623,7 +623,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}/squads/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/squads/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "wing_id" + "\\}", apiClient.escapeString(wingId.toString()));
 
@@ -692,7 +692,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/fleets/{fleet_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()));
 
         // query params
@@ -769,7 +769,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "member_id" + "\\}", apiClient.escapeString(memberId.toString()));
 
@@ -847,7 +847,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "squad_id" + "\\}", apiClient.escapeString(squadId.toString()));
 
@@ -925,7 +925,7 @@ public class FleetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "fleet_id" + "\\}", apiClient.escapeString(fleetId.toString()))
                 .replaceAll("\\{" + "wing_id" + "\\}", apiClient.escapeString(wingId.toString()));
 

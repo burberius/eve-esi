@@ -56,7 +56,7 @@ public class IncursionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/incursions/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/incursions/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

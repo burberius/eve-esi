@@ -13,6 +13,7 @@
 /v1/characters/{character_id}/fittings/{fitting_id}/
 /v1/characters/{character_id}/killmails/recent/
 /v1/characters/{character_id}/location/
+/v1/characters/{character_id}/loyalty/points/
 /v1/characters/{character_id}/mail/
 /v1/characters/{character_id}/mail/labels/{label_id}/
 /v1/characters/{character_id}/mail/lists/
@@ -25,7 +26,6 @@
 /v1/corporations/{corporation_id}/alliancehistory/
 /v1/corporations/{corporation_id}/icons/
 /v1/corporations/{corporation_id}/roles/
-/v1/corporations/{corporation_id}/structures/
 /v1/corporations/names/
 /v1/corporations/npccorps/
 /v1/fleets/{fleet_id}/
@@ -40,6 +40,7 @@
 /v1/industry/systems/
 /v1/insurance/prices/
 /v1/killmails/{killmail_id}/{killmail_hash}/
+/v1/loyalty/stores/{corporation_id}/offers/
 /v1/markets/prices/
 /v1/markets/{region_id}/history/
 /v1/markets/{region_id}/orders/

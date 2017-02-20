@@ -57,7 +57,7 @@ public class AllianceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/alliances/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/alliances/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -115,7 +115,7 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/alliances/{alliance_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/alliances/{alliance_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
@@ -177,8 +177,8 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/alliances/{alliance_id}/corporations/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
+        String localVarPath = "/v1/alliances/{alliance_id}/corporations/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -238,7 +238,7 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/alliances/{alliance_id}/icons/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/alliances/{alliance_id}/icons/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
@@ -298,7 +298,7 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/alliances/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/alliances/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

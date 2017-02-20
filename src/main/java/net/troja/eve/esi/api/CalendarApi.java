@@ -75,7 +75,7 @@ public class CalendarApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/calendar/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/calendar/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -149,7 +149,7 @@ public class CalendarApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/calendar/{event_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/characters/{character_id}/calendar/{event_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
 
@@ -231,7 +231,7 @@ public class CalendarApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/calendar/{event_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/characters/{character_id}/calendar/{event_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
 

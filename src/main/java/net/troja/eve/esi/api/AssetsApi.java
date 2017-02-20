@@ -66,7 +66,7 @@ public class AssetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/assets/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/assets/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

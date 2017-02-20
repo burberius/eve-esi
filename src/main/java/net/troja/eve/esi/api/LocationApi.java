@@ -69,7 +69,7 @@ public class LocationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/location/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/location/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -133,7 +133,7 @@ public class LocationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/ship/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/ship/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

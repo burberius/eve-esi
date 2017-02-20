@@ -65,7 +65,7 @@ public class ClonesApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/clones/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/clones/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

@@ -81,7 +81,8 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/labels/{label_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/mail/labels/{label_id}/"
+                .replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "label_id" + "\\}", apiClient.escapeString(labelId.toString()));
 
@@ -152,7 +153,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
 
@@ -224,7 +225,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/mail/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -290,8 +291,8 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -355,8 +356,8 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/lists/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/characters/{character_id}/mail/lists/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -428,7 +429,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
 
@@ -501,7 +502,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/characters/{character_id}/mail/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -567,8 +568,8 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -647,7 +648,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
 

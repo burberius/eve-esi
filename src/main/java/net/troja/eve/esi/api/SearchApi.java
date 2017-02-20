@@ -88,7 +88,7 @@ public class SearchApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/search/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/search/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -164,7 +164,7 @@ public class SearchApi {
         }
 
         // create path and map variables
-        String localVarPath = "/search/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/search/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

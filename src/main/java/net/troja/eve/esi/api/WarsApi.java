@@ -58,7 +58,7 @@ public class WarsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/wars/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/wars/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -118,8 +118,8 @@ public class WarsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/wars/{war_id}/".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "war_id" + "\\}",
-                apiClient.escapeString(warId.toString()));
+        String localVarPath = "/v1/wars/{war_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "war_id" + "\\}", apiClient.escapeString(warId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -181,7 +181,7 @@ public class WarsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/wars/{war_id}/killmails/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v1/wars/{war_id}/killmails/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "war_id" + "\\}", apiClient.escapeString(warId.toString()));
 
         // query params

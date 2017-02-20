@@ -7,22 +7,22 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CharacterKillmailsResponse;
-import net.troja.eve.esi.model.KillmailResponse;
+import net.troja.eve.esi.model.CharacterLoyaltyPointsResponse;
+import net.troja.eve.esi.model.LoyaltyStoreOffersResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class KillmailsApi {
+public class LoyaltyApi {
     private ApiClient apiClient;
 
-    public KillmailsApi() {
+    public LoyaltyApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public KillmailsApi(ApiClient apiClient) {
+    public LoyaltyApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -35,48 +35,41 @@ public class KillmailsApi {
     }
 
     /**
-     * List kills and losses Return a list of character&#39;s recent kills and
-     * losses --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/killmails/recent/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/killmails/recent/&#x60;
+     * Get loyalty points Return a list of loyalty points for all corporations
+     * the character has worked for --- Alternate route:
+     * &#x60;/v1/characters/{character_id}/loyalty/points/&#x60; Alternate
+     * route: &#x60;/legacy/characters/{character_id}/loyalty/points/&#x60;
      * Alternate route:
-     * &#x60;/dev/characters/{character_id}/killmails/recent/&#x60; --- This
-     * route is cached for up to 120 seconds SSO Scope:
-     * esi-killmails.read_killmails.v1
+     * &#x60;/dev/characters/{character_id}/loyalty/points/&#x60; SSO Scope:
+     * esi-characters.read_loyalty.v1
      * 
      * @param characterId
-     *            An EVE character ID (required)
+     *            ID for a character (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param maxCount
-     *            How many killmails to return at maximum (optional, default to
-     *            50)
-     * @param maxKillId
-     *            Only return killmails with ID smaller than this. (optional)
      * @param token
      *            Access token to use, if preferred over a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterKillmailsResponse>
+     * @return List<CharacterLoyaltyPointsResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterKillmailsResponse> getCharactersCharacterIdKillmailsRecent(Integer characterId,
-            String datasource, Integer maxCount, Integer maxKillId, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<CharacterLoyaltyPointsResponse> getCharactersCharacterIdLoyaltyPoints(Integer characterId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(400,
-                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdKillmailsRecent");
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdLoyaltyPoints");
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/killmails/recent/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/loyalty/points/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -85,8 +78,6 @@ public class KillmailsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_count", maxCount));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_kill_id", maxKillId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
@@ -103,24 +94,22 @@ public class KillmailsApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<CharacterKillmailsResponse>> localVarReturnType = new GenericType<List<CharacterKillmailsResponse>>() {
+        GenericType<List<CharacterLoyaltyPointsResponse>> localVarReturnType = new GenericType<List<CharacterLoyaltyPointsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Get a single killmail Return a single killmail from its ID and hash ---
-     * Alternate route: &#x60;/v1/killmails/{killmail_id}/{killmail_hash}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/killmails/{killmail_id}/{killmail_hash}/&#x60; Alternate
-     * route: &#x60;/dev/killmails/{killmail_id}/{killmail_hash}/&#x60; --- This
+     * List loyalty store offers Return a list of offers from a specific
+     * corporation&#39;s loyalty store --- Alternate route:
+     * &#x60;/v1/loyalty/stores/{corporation_id}/offers/&#x60; Alternate route:
+     * &#x60;/legacy/loyalty/stores/{corporation_id}/offers/&#x60; Alternate
+     * route: &#x60;/dev/loyalty/stores/{corporation_id}/offers/&#x60; --- This
      * route is cached for up to 3600 seconds
      * 
-     * @param killmailHash
-     *            The killmail hash for verification (required)
-     * @param killmailId
-     *            The killmail ID to be queried (required)
+     * @param corporationId
+     *            ID of a corporation (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -128,30 +117,23 @@ public class KillmailsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return KillmailResponse
+     * @return List<LoyaltyStoreOffersResponse>
      * @throws ApiException
      *             if fails to make API call
      */
-    public KillmailResponse getKillmailsKillmailIdKillmailHash(String killmailHash, Integer killmailId,
+    public List<LoyaltyStoreOffersResponse> getLoyaltyStoresCorporationIdOffers(Integer corporationId,
             String datasource, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'killmailHash' is set
-        if (killmailHash == null) {
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
             throw new ApiException(400,
-                    "Missing the required parameter 'killmailHash' when calling getKillmailsKillmailIdKillmailHash");
-        }
-
-        // verify the required parameter 'killmailId' is set
-        if (killmailId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'killmailId' when calling getKillmailsKillmailIdKillmailHash");
+                    "Missing the required parameter 'corporationId' when calling getLoyaltyStoresCorporationIdOffers");
         }
 
         // create path and map variables
-        String localVarPath = "/v1/killmails/{killmail_id}/{killmail_hash}/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "killmail_hash" + "\\}", apiClient.escapeString(killmailHash.toString()))
-                .replaceAll("\\{" + "killmail_id" + "\\}", apiClient.escapeString(killmailId.toString()));
+        String localVarPath = "/v1/loyalty/stores/{corporation_id}/offers/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -174,7 +156,7 @@ public class KillmailsApi {
 
         String[] localVarAuthNames = new String[] {};
 
-        GenericType<KillmailResponse> localVarReturnType = new GenericType<KillmailResponse>() {
+        GenericType<List<LoyaltyStoreOffersResponse>> localVarReturnType = new GenericType<List<LoyaltyStoreOffersResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

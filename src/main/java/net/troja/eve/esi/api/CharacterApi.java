@@ -68,7 +68,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v4/characters/{character_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -131,7 +131,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/corporationhistory/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v1/characters/{character_id}/corporationhistory/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -191,7 +191,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/portrait/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/portrait/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -251,7 +251,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/characters/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -323,7 +323,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/characters/{character_id}/cspa/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/characters/{character_id}/cspa/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

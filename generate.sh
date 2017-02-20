@@ -53,6 +53,7 @@ fi
 #
 ./transformation.sh
 sed -i -f replace.sed esi.json
+./fix-routes.sh
 
 #
 # Generate code

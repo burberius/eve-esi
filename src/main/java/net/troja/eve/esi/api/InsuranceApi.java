@@ -58,7 +58,7 @@ public class InsuranceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/insurance/prices/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v1/insurance/prices/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
