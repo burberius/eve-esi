@@ -1,6 +1,16 @@
 # EVE-ESI
 A Java client library for the new EVE Swagger Interface (ESI)
 
+## Maven integration
+Just add the following to your *pom.xml*:
+```xml
+<dependency>
+    <groupId>net.troja.eve</groupId>
+    <artifactId>eve-esi</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
 ## SSO usage
 The usage of the SSO can be seen in the *main* method within the test class
 *net/troja/eve/esi/api/auth/SsoAuthTest.java*.
