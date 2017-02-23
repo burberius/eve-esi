@@ -31,7 +31,7 @@ jq "(.paths.\"/killmails/{killmail_id}/{killmail_hash}/\".get.responses[\"200\"]
 sed -e 's#get_killmails_killmail_id_killmail_hash_item#KillmailItem#' work2.json > work1.json
 
 # Fitting item
-echo "Transporting fitting item"
+echo "Transforming fitting item"
 FITTINGITEM=$(jq ".paths.\"/characters/{character_id}/fittings/\".get.responses.\"200\".schema.items.properties.items.items" esi.json)
 jq ".definitions.fitting_item = $FITTINGITEM" work1.json > work2.json
 jq "(.paths.\"/characters/{character_id}/fittings/\".get.responses.\"200\".schema.items.properties.items.items) = { \"\$ref\": \"#/definitions/fitting_item\" }" work2.json > work1.json

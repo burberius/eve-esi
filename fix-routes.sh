@@ -1,11 +1,22 @@
 #!/bin/bash
 
 SWAGGER="esi.json"
-FILE="version-routes.txt"
+ROUTES="version-routes.txt"
 
-sed -n -e 's#.*Alternate route: `\(/v[^`]*\)`.*#\1#p' $SWAGGER | sort | uniq > $FILE
+echo "Fixing routes"
 
-for ROUTE in $(cat $FILE); do
-  OLD=$(echo $ROUTE | sed -e 's#/v[0-9]*##')
-  sed -i -e "s#\"$OLD\":#\"$ROUTE\":#" esi.json
+./create-version-routes.sh $ROUTES
+
+IFS="
+"
+for ROUTE in $(cat $ROUTES); do
+  TYPE=$(echo $ROUTE | sed -e 's#^\([^ ]*\) .*#\1#')
+  URI=$(echo $ROUTE | sed -e 's#^[^ ]* ##')
+  OLD=$(echo $URI | sed -e 's#/v[0-9]*##')
+  NAME=$(echo $OLD | sed -e 's#[/{}_]##g')
+
+  FOUND=$(grep -i "$TYPE$NAME(" src/main/java/net/troja/eve/esi/api/*)
+  FILE=$(echo $FOUND | sed -s 's#:.*##')
+  REALNAME=$(echo $FOUND | sed -s "s#.*:.*\($TYPE[^(]*\).*#\1#")
+  sed -i -e "/$REALNAME(/,/String localVarPath/ s#$OLD#$URI#" $FILE
 done
