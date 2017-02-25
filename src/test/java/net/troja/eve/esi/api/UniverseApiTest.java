@@ -26,6 +26,7 @@ import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
 import net.troja.eve.esi.model.FactionsResponse;
+import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
@@ -179,6 +180,50 @@ public class UniverseApiTest extends GeneralApiTest {
         assertThat(response.size(), equalTo(22));
         final FactionsResponse factionsResponse = response.get(0);
         assertThat(factionsResponse.getName(), equalTo("Caldari State"));
+    }
+
+    /**
+     * Get graphics
+     *
+     * Get a list of graphics --- Alternate route:
+     * &#x60;/v1/universe/graphics/&#x60; Alternate route:
+     * &#x60;/legacy/universe/graphics/&#x60; Alternate route:
+     * &#x60;/dev/universe/graphics/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getUniverseGraphicsTest() throws ApiException {
+        final String userAgent = null;
+        final String xUserAgent = null;
+        final List<Integer> response = api.getUniverseGraphics(DATASOURCE, userAgent, xUserAgent);
+
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Get graphic information
+     *
+     * Get information on a graphic --- Alternate route:
+     * &#x60;/v1/universe/graphics/{graphic_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/graphics/{graphic_id}/&#x60; Alternate route:
+     * &#x60;/dev/univ erse/graphics/{graphic_id}/&#x60; --- This route is
+     * cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getUniverseGraphicsGraphicIdTest() throws ApiException {
+        final Integer graphicId = 1843;
+        final String userAgent = null;
+        final String xUserAgent = null;
+        final GraphicResponse response = api.getUniverseGraphicsGraphicId(graphicId, DATASOURCE, userAgent, xUserAgent);
+
+        assertThat(response.getGraphicId(), equalTo(graphicId));
+        assertThat(response.getSofFationName(), equalTo("creodron"));
     }
 
     /**

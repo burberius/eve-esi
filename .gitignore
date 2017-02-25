@@ -24,9 +24,6 @@ bin
 .classpath
 .settings
 
-# New tests
-src/test/java/net/troja/eve/esi/api.new
-
 # joe backup files
 *~
 

@@ -49,7 +49,6 @@ public class AllianceApiTest extends GeneralApiTest {
         final List<Integer> response = api.getAlliances(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(1));
-        assertThat(response.get(0), equalTo(99000006));
     }
 
     /**

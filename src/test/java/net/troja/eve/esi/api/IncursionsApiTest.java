@@ -45,6 +45,8 @@ public class IncursionsApiTest extends GeneralApiTest {
         final List<IncursionsResponse> response = api.getIncursions(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
+        final IncursionsResponse incursionsResponse = response.get(0);
+        assertThat(incursionsResponse.getConstellationId(), greaterThan(0));
     }
 
 }

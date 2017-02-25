@@ -20,3 +20,5 @@ for ROUTE in $(cat $ROUTES); do
   REALNAME=$(echo $FOUND | sed -s "s#.*:.*\($TYPE[^(]*\).*#\1#")
   sed -i -e "/$REALNAME(/,/String localVarPath/ s#$OLD#$URI#" $FILE
 done
+
+sed -i -e 's#https://esi.tech.ccp.is/latest#https://esi.tech.ccp.is#' src/main/java/net/troja/eve/esi/ApiClient.java

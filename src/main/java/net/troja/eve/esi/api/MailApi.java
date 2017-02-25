@@ -291,7 +291,7 @@ public class MailApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/characters/{character_id}/mail/labels/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

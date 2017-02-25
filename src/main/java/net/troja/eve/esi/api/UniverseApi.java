@@ -11,6 +11,7 @@ import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
 import net.troja.eve.esi.model.FactionsResponse;
+import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
 import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
@@ -386,6 +387,119 @@ public class UniverseApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<List<FactionsResponse>> localVarReturnType = new GenericType<List<FactionsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get graphics Get a list of graphics --- Alternate route:
+     * &#x60;/v1/universe/graphics/&#x60; Alternate route:
+     * &#x60;/legacy/universe/graphics/&#x60; Alternate route:
+     * &#x60;/dev/universe/graphics/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getUniverseGraphics(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/universe/graphics/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get graphic information Get information on a graphic --- Alternate route:
+     * &#x60;/v1/universe/graphics/{graphic_id}/&#x60; Alternate route:
+     * &#x60;/legacy/universe/graphics/{graphic_id}/&#x60; Alternate route:
+     * &#x60;/dev/universe/graphics/{graphic_id}/&#x60; --- This route is cached
+     * for up to 3600 seconds
+     * 
+     * @param graphicId
+     *            graphic_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return GraphicResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public GraphicResponse getUniverseGraphicsGraphicId(Integer graphicId, String datasource, String userAgent,
+            String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'graphicId' is set
+        if (graphicId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'graphicId' when calling getUniverseGraphicsGraphicId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/universe/graphics/{graphic_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "graphic_id" + "\\}", apiClient.escapeString(graphicId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<GraphicResponse> localVarReturnType = new GenericType<GraphicResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

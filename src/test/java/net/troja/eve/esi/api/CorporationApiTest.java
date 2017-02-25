@@ -183,15 +183,14 @@ public class CorporationApiTest extends GeneralApiTest {
     @Test
     @Ignore("Can't test that")
     public void getCorporationsCorporationIdStructuresTest() throws ApiException {
-        final Integer corporationId = null;
-        final Integer page = null;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
+        // final Integer corporationId = null;
+        // final Integer page = null;
+        // final String token = null;
+        // final String userAgent = null;
+        // final String xUserAgent = null;
         // final List<CorporationStructuresResponse> response =
         // api.getCorporationsCorporationIdStructures(corporationId,
         // DATASOURCE, LANGUAGE, page, token, userAgent, xUserAgent);
-
     }
 
     /**
@@ -216,4 +215,23 @@ public class CorporationApiTest extends GeneralApiTest {
         assertThat(response.size(), equalTo(50));
     }
 
+    /**
+     * Update structure vulnerability schedule
+     *
+     * Update the vulnerability window schedule of a corporation structure ---
+     * Alternate route:
+     * &#x60;/v1/corporations/{corporation_id}/structures/{structure_id}/&#x60;
+     * Alternate route:
+     * &#x60;/legacy/corporations/{corporation_id}/structures/{structure_id}/&#x60;
+     * Alternate route:
+     * &#x60;/dev/corporations/{corporation_id}/structures/{structure_id}/&#x60;
+     * SSO Scope: esi-corporations.write_structures.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    @Ignore("Update can't be tested")
+    public void putCorporationsCorporationIdStructuresStructureIdTest() throws ApiException {
+    }
 }

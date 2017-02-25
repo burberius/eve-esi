@@ -35,7 +35,7 @@ public class PlanetRoute implements Serializable {
     private Long destinationPinId = null;
 
     @JsonProperty("quantity")
-    private Long quantity = null;
+    private Float quantity = null;
 
     @JsonProperty("route_id")
     private Long routeId = null;
@@ -84,22 +84,22 @@ public class PlanetRoute implements Serializable {
         this.destinationPinId = destinationPinId;
     }
 
-    public PlanetRoute quantity(Long quantity) {
+    public PlanetRoute quantity(Float quantity) {
         this.quantity = quantity;
         return this;
     }
 
     /**
-     * quantity integer
+     * quantity number
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Long getQuantity() {
+    @ApiModelProperty(example = "null", required = true, value = "quantity number")
+    public Float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Long quantity) {
+    public void setQuantity(Float quantity) {
         this.quantity = quantity;
     }
 
