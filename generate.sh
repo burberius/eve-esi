@@ -4,7 +4,7 @@
 # Get eve swagger file
 #
 rm -f esi.json
-wget -q -O esi.json https://esi.tech.ccp.is/latest/swagger.json?datasource=tranquility
+wget -q -O esi.json https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility
 
 #
 # Get swagger code generator
@@ -42,8 +42,6 @@ mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
 for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
   sed -i -e '/OpenAPI spec version/d' $I
 done
-
-./fix-routes.sh
 
 #
 # Generate SSO scopes
