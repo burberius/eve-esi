@@ -51,7 +51,7 @@ public class PlanetaryInteractionApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterPlanetsResponse>
+     * @return List&lt;CharacterPlanetsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

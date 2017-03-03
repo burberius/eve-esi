@@ -109,7 +109,7 @@ public class CharacterApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterCorporationHistoryResponse>
+     * @return List&lt;CharacterCorporationHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -225,7 +225,7 @@ public class CharacterApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterNamesResponse>
+     * @return List&lt;CharacterNamesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

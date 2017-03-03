@@ -61,7 +61,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<BloodlinesResponse>
+     * @return List&lt;BloodlinesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -111,7 +111,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -221,7 +221,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -333,7 +333,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<FactionsResponse>
+     * @return List&lt;FactionsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -383,7 +383,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -492,7 +492,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -720,7 +720,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<RacesResponse>
+     * @return List&lt;RacesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -770,7 +770,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -995,7 +995,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Long>
+     * @return List&lt;Long&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -1105,7 +1105,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -1216,7 +1216,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -1330,7 +1330,7 @@ public class UniverseApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<UniverseNamesResponse>
+     * @return List&lt;UniverseNamesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

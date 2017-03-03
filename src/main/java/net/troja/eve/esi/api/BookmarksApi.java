@@ -50,7 +50,7 @@ public class BookmarksApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterBookmarksResponse>
+     * @return List&lt;CharacterBookmarksResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -112,7 +112,7 @@ public class BookmarksApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterBookmarkFoldersResponse>
+     * @return List&lt;CharacterBookmarkFoldersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

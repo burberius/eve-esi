@@ -196,7 +196,7 @@ public class MailApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<MailHeadersResponse>
+     * @return List&lt;MailHeadersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -323,7 +323,7 @@ public class MailApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterMailinglistsResponse>
+     * @return List&lt;CharacterMailinglistsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

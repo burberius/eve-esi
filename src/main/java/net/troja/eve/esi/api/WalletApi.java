@@ -50,7 +50,7 @@ public class WalletApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterWalletsResponse>
+     * @return List&lt;CharacterWalletsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

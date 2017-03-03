@@ -117,7 +117,7 @@ public class FittingsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterFittingsResponse>
+     * @return List&lt;CharacterFittingsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

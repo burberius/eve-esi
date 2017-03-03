@@ -50,7 +50,7 @@ public class SkillsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterSkillqueueResponse>
+     * @return List&lt;CharacterSkillqueueResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

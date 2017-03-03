@@ -55,7 +55,7 @@ public class CalendarApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterCalendarResponse>
+     * @return List&lt;CharacterCalendarResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

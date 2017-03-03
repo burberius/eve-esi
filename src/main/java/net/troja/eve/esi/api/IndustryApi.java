@@ -45,7 +45,7 @@ public class IndustryApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<IndustryFacilitiesResponse>
+     * @return List&lt;IndustryFacilitiesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -94,7 +94,7 @@ public class IndustryApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<IndustrySystemsResponse>
+     * @return List&lt;IndustrySystemsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

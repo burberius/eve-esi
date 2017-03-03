@@ -263,7 +263,7 @@ public class CharacterResponse implements Serializable {
     }
 
     /**
-     * security_status number minimum: -10.0 maximum: 10.0
+     * security_status number minimum: -10 maximum: 10
      * 
      * @return securityStatus
      **/

@@ -117,7 +117,7 @@ public class ContactsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<ContactsResponse>
+     * @return List&lt;ContactsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -180,7 +180,7 @@ public class ContactsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<ContactLabelsResponse>
+     * @return List&lt;ContactLabelsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -250,7 +250,7 @@ public class ContactsApi {
      *            effective on characters (optional, default to false)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */

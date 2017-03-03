@@ -111,7 +111,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationAlliancesHistoryResponse>
+     * @return List&lt;CorporationAlliancesHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -230,7 +230,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationMembersResponse>
+     * @return List&lt;CorporationMembersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -293,7 +293,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationRolesResponse>
+     * @return List&lt;CorporationRolesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -359,7 +359,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationStructuresResponse>
+     * @return List&lt;CorporationStructuresResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -421,7 +421,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CorporationNamesResponse>
+     * @return List&lt;CorporationNamesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -477,7 +477,7 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */

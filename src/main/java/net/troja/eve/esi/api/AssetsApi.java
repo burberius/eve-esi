@@ -49,7 +49,7 @@ public class AssetsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterAssetsResponse>
+     * @return List&lt;CharacterAssetsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

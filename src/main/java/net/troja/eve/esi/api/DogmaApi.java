@@ -45,7 +45,7 @@ public class DogmaApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -151,7 +151,7 @@ public class DogmaApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */

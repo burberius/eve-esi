@@ -50,7 +50,7 @@ public class LoyaltyApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<CharacterLoyaltyPointsResponse>
+     * @return List&lt;CharacterLoyaltyPointsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -110,7 +110,7 @@ public class LoyaltyApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<LoyaltyStoreOffersResponse>
+     * @return List&lt;LoyaltyStoreOffersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

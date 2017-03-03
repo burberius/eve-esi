@@ -251,7 +251,7 @@ public class CorporationResponse implements Serializable {
     }
 
     /**
-     * tax_rate number minimum: 0.0 maximum: 1.0
+     * tax_rate number minimum: 0 maximum: 1
      * 
      * @return taxRate
      **/

@@ -47,7 +47,7 @@ public class WarsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -159,7 +159,7 @@ public class WarsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<WarKillmailsResponse>
+     * @return List&lt;WarKillmailsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

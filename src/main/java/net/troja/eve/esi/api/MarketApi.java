@@ -48,7 +48,7 @@ public class MarketApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<Integer>
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -157,7 +157,7 @@ public class MarketApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<MarketPricesResponse>
+     * @return List&lt;MarketPricesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -211,7 +211,7 @@ public class MarketApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<MarketHistoryResponse>
+     * @return List&lt;MarketHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -285,7 +285,7 @@ public class MarketApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<MarketOrdersResponse>
+     * @return List&lt;MarketOrdersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -357,7 +357,7 @@ public class MarketApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<MarketStructuresResponse>
+     * @return List&lt;MarketStructuresResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

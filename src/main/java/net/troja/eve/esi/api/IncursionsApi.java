@@ -44,7 +44,7 @@ public class IncursionsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<IncursionsResponse>
+     * @return List&lt;IncursionsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

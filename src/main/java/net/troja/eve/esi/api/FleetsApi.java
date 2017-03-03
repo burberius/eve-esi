@@ -321,7 +321,7 @@ public class FleetsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<FleetMembersResponse>
+     * @return List&lt;FleetMembersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -384,7 +384,7 @@ public class FleetsApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<FleetWingsResponse>
+     * @return List&lt;FleetWingsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */

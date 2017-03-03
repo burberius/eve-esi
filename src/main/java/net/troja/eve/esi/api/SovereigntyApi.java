@@ -45,7 +45,7 @@ public class SovereigntyApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<SovereigntyCampaignsResponse>
+     * @return List&lt;SovereigntyCampaignsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
@@ -94,7 +94,7 @@ public class SovereigntyApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List<SovereigntyStructuresResponse>
+     * @return List&lt;SovereigntyStructuresResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
