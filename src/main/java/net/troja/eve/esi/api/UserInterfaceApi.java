@@ -34,10 +34,8 @@ public class UserInterfaceApi {
     }
 
     /**
-     * Set Autopilot Waypoint Set a solar system as autopilot waypoint ---
-     * Alternate route: &#x60;/v2/ui/autopilot/waypoint/&#x60; Alternate route:
-     * &#x60;/dev/ui/autopilot/waypoint/&#x60; SSO Scope:
-     * esi-ui.write_waypoint.v1
+     * Set Autopilot Waypoint Set a solar system as autopilot waypoint --- SSO
+     * Scope: esi-ui.write_waypoint.v1
      * 
      * @param addToBeginning
      *            Whether this solar system should be added to the beginning of
@@ -115,10 +113,8 @@ public class UserInterfaceApi {
     }
 
     /**
-     * Open Contract Window Open the contract window inside the client ---
-     * Alternate route: &#x60;/v1/ui/openwindow/contract/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/contract/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/contract/&#x60; SSO Scope: esi-ui.open_window.v1
+     * Open Contract Window Open the contract window inside the client --- SSO
+     * Scope: esi-ui.open_window.v1
      * 
      * @param contractId
      *            The contract to open (required)
@@ -176,10 +172,7 @@ public class UserInterfaceApi {
 
     /**
      * Open Information Window Open the information window for a character,
-     * corporation or alliance inside the client --- Alternate route:
-     * &#x60;/v1/ui/openwindow/information/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/information/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/information/&#x60; SSO Scope:
+     * corporation or alliance inside the client --- SSO Scope:
      * esi-ui.open_window.v1
      * 
      * @param targetId
@@ -238,11 +231,7 @@ public class UserInterfaceApi {
 
     /**
      * Open Market Details Open the market details window for a specific typeID
-     * inside the client --- Alternate route:
-     * &#x60;/v1/ui/openwindow/marketdetails/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/marketdetails/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/marketdetails/&#x60; SSO Scope:
-     * esi-ui.open_window.v1
+     * inside the client --- SSO Scope: esi-ui.open_window.v1
      * 
      * @param typeId
      *            The item type to open in market window (required)
@@ -300,10 +289,7 @@ public class UserInterfaceApi {
 
     /**
      * Open New Mail Window Open the New Mail window, according to settings from
-     * the request if applicable --- Alternate route:
-     * &#x60;/v1/ui/openwindow/newmail/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/newmail/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/newmail/&#x60; SSO Scope: esi-ui.open_window.v1
+     * the request if applicable --- SSO Scope: esi-ui.open_window.v1
      * 
      * @param newMail
      *            The details of mail to create (required)

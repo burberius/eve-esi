@@ -38,7 +38,6 @@ s/post_characters_character_id_mail_mail/Mail/g
 s/post_fleets_fleet_id_members_invitation/FleetInvitation/g
 s/post_universe_names_ids/EntityIds/g
 s/put_characters_character_id_mail_mail_id_contents/MailMetaData/g
-s/put_characters_character_id_calendar_event_id_response/EventResponseStatus/g
 s/put_corporations_corporation_id_structures_structure_id_new_schedule//g
 s/put_fleets_fleet_id_members_member_id_movement/FleetMemberMovement/g
 s/put_fleets_fleet_id_new_settings/FleetNewSettings/g
@@ -153,6 +152,7 @@ s/get_dogma_attributes_attribute_id_ok/DogmaAttributeResponse/g
 s/get_dogma_effects_effect_id_ok/DogmaEffectResponse/g
 s/get_fleets_fleet_id_ok/FleetResponse/g
 s/get_killmails_killmail_id_killmail_hash_ok/KillmailResponse/g
+s/get_markets_groups_market_group_id_ok/MarketGroupResponse/g
 s/get_search_ok/SearchResponse/g
 s/get_universe_categories_category_id_ok/CategoryResponse/g
 s/get_universe_constellations_constellation_id_ok/ConstellationResponse/g

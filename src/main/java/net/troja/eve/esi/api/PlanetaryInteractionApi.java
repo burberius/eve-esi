@@ -37,11 +37,8 @@ public class PlanetaryInteractionApi {
 
     /**
      * Get colonies Returns a list of all planetary colonies owned by a
-     * character. --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/planets/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/planets/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/planets/&#x60; --- This route is
-     * cached for up to 600 seconds SSO Scope: esi-planets.manage_planets.v1
+     * character. --- This route is cached for up to 600 seconds SSO Scope:
+     * esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            Character id of the target character (required)
@@ -105,10 +102,7 @@ public class PlanetaryInteractionApi {
      * planetary colony, including links, pins and routes. Note: Planetary
      * information is only recalculated when the colony is viewed through the
      * client. Information on this endpoint will not update until this criteria
-     * is met. --- Alternate route:
-     * &#x60;/v2/characters/{character_id}/planets/{planet_id}/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/planets/{planet_id}/&#x60;
-     * --- This route is cached for up to 600 seconds SSO Scope:
+     * is met. --- This route is cached for up to 600 seconds SSO Scope:
      * esi-planets.manage_planets.v1
      * 
      * @param characterId
@@ -179,11 +173,7 @@ public class PlanetaryInteractionApi {
 
     /**
      * Get schematic information Get information on a planetary factory
-     * schematic --- Alternate route:
-     * &#x60;/v1/universe/schematics/{schematic_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/schematics/{schematic_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/schematics/{schematic_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * schematic --- This route is cached for up to 3600 seconds
      * 
      * @param schematicId
      *            A PI schematic ID (required)

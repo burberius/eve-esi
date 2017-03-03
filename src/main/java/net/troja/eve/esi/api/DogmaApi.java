@@ -35,11 +35,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get attributes Get a list of dogma attribute ids --- Alternate route:
-     * &#x60;/v1/dogma/attributes/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/attributes/&#x60; Alternate route:
-     * &#x60;/dev/dogma/attributes/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get attributes Get a list of dogma attribute ids --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -86,11 +83,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get attribute information Get information on a dogma attribute ---
-     * Alternate route: &#x60;/v1/dogma/attributes/{attribute_id}/&#x60;
-     * Alternate route: &#x60;/legacy/dogma/attributes/{attribute_id}/&#x60;
-     * Alternate route: &#x60;/dev/dogma/attributes/{attribute_id}/&#x60; ---
-     * This route is cached for up to 3600 seconds
+     * Get attribute information Get information on a dogma attribute --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param attributeId
      *            A dogma attribute ID (required)
@@ -147,11 +141,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get effects Get a list of dogma effect ids --- Alternate route:
-     * &#x60;/v1/dogma/effects/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/effects/&#x60; Alternate route:
-     * &#x60;/dev/dogma/effects/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get effects Get a list of dogma effect ids --- This route is cached for
+     * up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -198,11 +189,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get effect information Get information on a dogma effect --- Alternate
-     * route: &#x60;/v1/dogma/effects/{effect_id}/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/effects/{effect_id}/&#x60; Alternate route:
-     * &#x60;/dev/dogma/effects/{effect_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get effect information Get information on a dogma effect --- This route
+     * is cached for up to 3600 seconds
      * 
      * @param effectId
      *            A dogma effect ID (required)

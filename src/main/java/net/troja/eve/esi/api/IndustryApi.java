@@ -35,11 +35,8 @@ public class IndustryApi {
     }
 
     /**
-     * List industry facilities Return a list of industry facilities ---
-     * Alternate route: &#x60;/v1/industry/facilities/&#x60; Alternate route:
-     * &#x60;/legacy/industry/facilities/&#x60; Alternate route:
-     * &#x60;/dev/industry/facilities/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * List industry facilities Return a list of industry facilities --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -88,10 +85,7 @@ public class IndustryApi {
 
     /**
      * List solar system cost indices Return cost indices for solar systems ---
-     * Alternate route: &#x60;/v1/industry/systems/&#x60; Alternate route:
-     * &#x60;/legacy/industry/systems/&#x60; Alternate route:
-     * &#x60;/dev/industry/systems/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * This route is cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to

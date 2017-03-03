@@ -49,11 +49,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get bloodlines Get a list of bloodlines --- Alternate route:
-     * &#x60;/v1/universe/bloodlines/&#x60; Alternate route:
-     * &#x60;/legacy/universe/bloodlines/&#x60; Alternate route:
-     * &#x60;/dev/universe/bloodlines/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get bloodlines Get a list of bloodlines --- This route is cached for up
+     * to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -104,11 +101,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get item categories Get a list of item categories --- Alternate route:
-     * &#x60;/v1/universe/categories/&#x60; Alternate route:
-     * &#x60;/legacy/universe/categories/&#x60; Alternate route:
-     * &#x60;/dev/universe/categories/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get item categories Get a list of item categories --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -157,9 +151,6 @@ public class UniverseApi {
 
     /**
      * Get item category information Get information of an item category ---
-     * Alternate route: &#x60;/v1/universe/categories/{category_id}/&#x60;
-     * Alternate route: &#x60;/legacy/universe/categories/{category_id}/&#x60;
-     * Alternate route: &#x60;/dev/universe/categories/{category_id}/&#x60; ---
      * This route is cached for up to 3600 seconds
      * 
      * @param categoryId
@@ -220,11 +211,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get constellations Get a list of constellations --- Alternate route:
-     * &#x60;/v1/universe/constellations/&#x60; Alternate route:
-     * &#x60;/legacy/universe/constellations/&#x60; Alternate route:
-     * &#x60;/dev/universe/constellations/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * Get constellations Get a list of constellations --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -272,12 +260,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get constellation information Get information on a constellation ---
-     * Alternate route:
-     * &#x60;/v1/universe/constellations/{constellation_id}/&#x60; Alternate
-     * route: &#x60;/legacy/universe/constellations/{constellation_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/universe/constellations/{constellation_id}/&#x60; --- This
+     * Get constellation information Get information on a constellation --- This
      * route is cached for up to 3600 seconds
      * 
      * @param constellationId
@@ -338,10 +321,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get factions Get a list of factions --- Alternate route:
-     * &#x60;/v1/universe/factions/&#x60; Alternate route:
-     * &#x60;/legacy/universe/factions/&#x60; Alternate route:
-     * &#x60;/dev/universe/factions/&#x60; --- This route is cached for up to
+     * Get factions Get a list of factions --- This route is cached for up to
      * 3600 seconds
      * 
      * @param datasource
@@ -393,10 +373,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get graphics Get a list of graphics --- Alternate route:
-     * &#x60;/v1/universe/graphics/&#x60; Alternate route:
-     * &#x60;/legacy/universe/graphics/&#x60; Alternate route:
-     * &#x60;/dev/universe/graphics/&#x60; --- This route is cached for up to
+     * Get graphics Get a list of graphics --- This route is cached for up to
      * 3600 seconds
      * 
      * @param datasource
@@ -445,11 +422,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get graphic information Get information on a graphic --- Alternate route:
-     * &#x60;/v1/universe/graphics/{graphic_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/graphics/{graphic_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/graphics/{graphic_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get graphic information Get information on a graphic --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param graphicId
      *            graphic_id integer (required)
@@ -506,11 +480,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get item groups Get a list of item groups --- Alternate route:
-     * &#x60;/v1/universe/groups/&#x60; Alternate route:
-     * &#x60;/legacy/universe/groups/&#x60; Alternate route:
-     * &#x60;/dev/universe/groups/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get item groups Get a list of item groups --- This route is cached for up
+     * to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -561,11 +532,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get item group information Get information on an item group --- Alternate
-     * route: &#x60;/v1/universe/groups/{group_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/groups/{group_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/groups/{group_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get item group information Get information on an item group --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param groupId
      *            An Eve item group ID (required)
@@ -625,11 +593,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get moon information Get information on a moon --- Alternate route:
-     * &#x60;/v1/universe/moons/{moon_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/moons/{moon_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/moons/{moon_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get moon information Get information on a moon --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param moonId
      *            moon_id integer (required)
@@ -685,11 +650,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get planet information Get information on a planet --- Alternate route:
-     * &#x60;/v1/universe/planets/{planet_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/planets/{planet_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/planets/{planet_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get planet information Get information on a planet --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param planetId
      *            planet_id integer (required)
@@ -746,11 +708,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get character races Get a list of character races --- Alternate route:
-     * &#x60;/v1/universe/races/&#x60; Alternate route:
-     * &#x60;/legacy/universe/races/&#x60; Alternate route:
-     * &#x60;/dev/universe/races/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get character races Get a list of character races --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -801,11 +760,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get regions Get a list of regions --- Alternate route:
-     * &#x60;/v1/universe/regions/&#x60; Alternate route:
-     * &#x60;/legacy/universe/regions/&#x60; Alternate route:
-     * &#x60;/dev/universe/regions/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get regions Get a list of regions --- This route is cached for up to 3600
+     * seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -852,11 +808,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get region information Get information on a region --- Alternate route:
-     * &#x60;/v1/universe/regions/{region_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/regions/{region_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/regions/{region_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get region information Get information on a region --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param regionId
      *            region_id integer (required)
@@ -916,10 +869,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get stargate information Get information on a stargate --- Alternate
-     * route: &#x60;/v1/universe/stargates/{stargate_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/stargates/{stargate_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/stargates/{stargate_id}/&#x60; --- This route is
+     * Get stargate information Get information on a stargate --- This route is
      * cached for up to 3600 seconds
      * 
      * @param stargateId
@@ -977,10 +927,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get station information Get information on a station --- Alternate route:
-     * &#x60;/v2/universe/stations/{station_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/stations/{station_id}/&#x60; --- This route is cached
-     * for up to 300 seconds
+     * Get station information Get information on a station --- This route is
+     * cached for up to 300 seconds
      * 
      * @param stationId
      *            station_id integer (required)
@@ -1037,11 +985,8 @@ public class UniverseApi {
     }
 
     /**
-     * List all public structures List all public structures --- Alternate
-     * route: &#x60;/v1/universe/structures/&#x60; Alternate route:
-     * &#x60;/legacy/universe/structures/&#x60; Alternate route:
-     * &#x60;/dev/universe/structures/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * List all public structures List all public structures --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1090,10 +1035,7 @@ public class UniverseApi {
     /**
      * Get structure information Returns information on requested structure, if
      * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
-     * inputs. --- Alternate route:
-     * &#x60;/v1/universe/structures/{structure_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/structures/{structure_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/structures/{structure_id}/&#x60;
+     * inputs. ---
      * 
      * @param structureId
      *            An Eve structure ID (required)
@@ -1153,11 +1095,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get solar systems Get a list of solar systems --- Alternate route:
-     * &#x60;/v1/universe/systems/&#x60; Alternate route:
-     * &#x60;/legacy/universe/systems/&#x60; Alternate route:
-     * &#x60;/dev/universe/systems/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get solar systems Get a list of solar systems --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1204,10 +1143,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get solar system information Get information on a solar system ---
-     * Alternate route: &#x60;/v2/universe/systems/{system_id}/&#x60; Alternate
-     * route: &#x60;/dev/universe/systems/{system_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get solar system information Get information on a solar system --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param systemId
      *            system_id integer (required)
@@ -1267,10 +1204,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get types Get a list of type ids --- Alternate route:
-     * &#x60;/v1/universe/types/&#x60; Alternate route:
-     * &#x60;/legacy/universe/types/&#x60; Alternate route:
-     * &#x60;/dev/universe/types/&#x60; --- This route is cached for up to 3600
+     * Get types Get a list of type ids --- This route is cached for up to 3600
      * seconds
      * 
      * @param datasource
@@ -1322,10 +1256,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get type information Get information on a type --- Alternate route:
-     * &#x60;/v2/universe/types/{type_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/types/{type_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get type information Get information on a type --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param typeId
      *            An Eve item type ID (required)
@@ -1387,8 +1319,7 @@ public class UniverseApi {
      * Get names and categories for a set of ID&#39;s Resolve a set of IDs to
      * names and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types. --- Alternate route: &#x60;/v2/universe/names/&#x60;
-     * Alternate route: &#x60;/dev/universe/names/&#x60;
+     * Regions, Types. ---
      * 
      * @param ids
      *            The ids to resolve (required)

@@ -35,10 +35,8 @@ public class WarsApi {
     }
 
     /**
-     * List wars Return a list of wars --- Alternate route:
-     * &#x60;/v1/wars/&#x60; Alternate route: &#x60;/legacy/wars/&#x60;
-     * Alternate route: &#x60;/dev/wars/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * List wars Return a list of wars --- This route is cached for up to 3600
+     * seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -89,11 +87,8 @@ public class WarsApi {
     }
 
     /**
-     * Get war information Return details about a war --- Alternate route:
-     * &#x60;/v1/wars/{war_id}/&#x60; Alternate route:
-     * &#x60;/legacy/wars/{war_id}/&#x60; Alternate route:
-     * &#x60;/dev/wars/{war_id}/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get war information Return details about a war --- This route is cached
+     * for up to 3600 seconds
      * 
      * @param warId
      *            ID for a war (required)
@@ -149,11 +144,8 @@ public class WarsApi {
     }
 
     /**
-     * List kills for a war Return a list of kills related to a war ---
-     * Alternate route: &#x60;/v1/wars/{war_id}/killmails/&#x60; Alternate
-     * route: &#x60;/legacy/wars/{war_id}/killmails/&#x60; Alternate route:
-     * &#x60;/dev/wars/{war_id}/killmails/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * List kills for a war Return a list of kills related to a war --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param warId
      *            A valid war ID (required)

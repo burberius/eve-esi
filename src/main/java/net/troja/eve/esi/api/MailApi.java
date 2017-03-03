@@ -40,13 +40,8 @@ public class MailApi {
     }
 
     /**
-     * Delete a mail label Delete a mail label --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/mail/labels/{label_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/labels/{label_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/labels/{label_id}/&#x60; SSO
-     * Scope: esi-mail.organize_mail.v1
+     * Delete a mail label Delete a mail label --- SSO Scope:
+     * esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -113,12 +108,7 @@ public class MailApi {
     }
 
     /**
-     * Delete a mail Delete a mail --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; SSO Scope:
-     * esi-mail.organize_mail.v1
+     * Delete a mail Delete a mail --- SSO Scope: esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -186,11 +176,8 @@ public class MailApi {
     /**
      * Return mail headers Return the 50 most recent mail headers belonging to
      * the character that match the query criteria. Queries can be filtered by
-     * label, and last_mail_id can be used to paginate backwards. --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/mail/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/&#x60; --- This route is cached
-     * for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
+     * label, and last_mail_id can be used to paginate backwards. --- This route
+     * is cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -260,10 +247,8 @@ public class MailApi {
 
     /**
      * Get mail labels and unread counts Return a list of the users mail labels,
-     * unread counts for each label and a total unread count. --- Alternate
-     * route: &#x60;/v3/characters/{character_id}/mail/labels/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/labels/&#x60; --- This
-     * route is cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
+     * unread counts for each label and a total unread count. --- This route is
+     * cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -324,11 +309,8 @@ public class MailApi {
 
     /**
      * Return mailing list subscriptions Return all mailing lists that the
-     * character is subscribed to --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/mail/lists/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/lists/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/lists/&#x60; --- This
-     * route is cached for up to 120 seconds SSO Scope: esi-mail.read_mail.v1
+     * character is subscribed to --- This route is cached for up to 120 seconds
+     * SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -388,12 +370,8 @@ public class MailApi {
     }
 
     /**
-     * Return a mail Return the contents of an EVE mail --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; --- This route
-     * is cached for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
+     * Return a mail Return the contents of an EVE mail --- This route is cached
+     * for up to 30 seconds SSO Scope: esi-mail.read_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -462,10 +440,7 @@ public class MailApi {
     }
 
     /**
-     * Send a new mail Create and send a new mail --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/mail/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/mail/&#x60; SSO Scope:
+     * Send a new mail Create and send a new mail --- SSO Scope:
      * esi-mail.send_mail.v1
      * 
      * @param characterId
@@ -534,10 +509,7 @@ public class MailApi {
     }
 
     /**
-     * Create a mail label Create a mail label --- Alternate route:
-     * &#x60;/v2/characters/{character_id}/mail/labels/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/labels/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/labels/&#x60; SSO Scope:
+     * Create a mail label Create a mail label --- SSO Scope:
      * esi-mail.organize_mail.v1
      * 
      * @param characterId
@@ -600,12 +572,8 @@ public class MailApi {
     }
 
     /**
-     * Update metadata about a mail Update metadata about a mail --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/mail/{mail_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/mail/{mail_id}/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/mail/{mail_id}/&#x60; SSO
-     * Scope: esi-mail.organize_mail.v1
+     * Update metadata about a mail Update metadata about a mail --- SSO Scope:
+     * esi-mail.organize_mail.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

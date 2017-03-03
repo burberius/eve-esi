@@ -18,7 +18,6 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
@@ -85,22 +84,4 @@ public class CalendarApiTest extends GeneralApiTest {
 
         assertThat(response.getEventId(), equalTo(eventId));
     }
-
-    /**
-     * Respond to an event
-     *
-     * Set your response status to an event --- Alternate route:
-     * &#x60;/v3/characters/{character_id}/calendar/{event_id}/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/calendar/{event_id}/&#x60;
-     * SSO Scope: esi-calendar.respond_calendar_events.v1
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    @Ignore("Can't test write operations")
-    public void putCharactersCharacterIdCalendarEventIdTest() throws ApiException {
-
-    }
-
 }

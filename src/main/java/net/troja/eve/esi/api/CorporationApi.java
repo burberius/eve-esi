@@ -42,9 +42,7 @@ public class CorporationApi {
 
     /**
      * Get corporation information Public information about a corporation ---
-     * Alternate route: &#x60;/v3/corporations/{corporation_id}/&#x60; Alternate
-     * route: &#x60;/dev/corporations/{corporation_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * This route is cached for up to 3600 seconds
      * 
      * @param corporationId
      *            An Eve corporation ID (required)
@@ -102,12 +100,7 @@ public class CorporationApi {
 
     /**
      * Get alliance history Get a list of all the alliances a corporation has
-     * been a member of --- Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/alliancehistory/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/alliancehistory/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/alliancehistory/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * been a member of --- This route is cached for up to 3600 seconds
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -164,11 +157,8 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation icon Get the icon urls for a corporation --- Alternate
-     * route: &#x60;/v1/corporations/{corporation_id}/icons/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/icons/&#x60; Alternate
-     * route: &#x60;/dev/corporations/{corporation_id}/icons/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Get corporation icon Get the icon urls for a corporation --- This route
+     * is cached for up to 3600 seconds
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -226,12 +216,8 @@ public class CorporationApi {
 
     /**
      * Get corporation members Read the current list of members if the calling
-     * character is a member. --- Alternate route:
-     * &#x60;/v2/corporations/{corporation_id}/members/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/members/&#x60; Alternate
-     * route: &#x60;/dev/corporations/{corporation_id}/members/&#x60; --- This
-     * route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1
+     * character is a member. --- This route is cached for up to 3600 seconds
+     * SSO Scope: esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            A corporation ID (required)
@@ -292,11 +278,8 @@ public class CorporationApi {
 
     /**
      * Get corporation member roles Return the roles of all members if the
-     * character has the personnel manager role or any grantable role. ---
-     * Alternate route: &#x60;/v1/corporations/{corporation_id}/roles/&#x60;
-     * Alternate route: &#x60;/legacy/corporations/{corporation_id}/roles/&#x60;
-     * Alternate route: &#x60;/dev/corporations/{corporation_id}/roles/&#x60;
-     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * character has the personnel manager role or any grantable role. --- This
+     * route is cached for up to 3600 seconds SSO Scope:
      * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
@@ -357,13 +340,8 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation structures Get a list of corporation structures ---
-     * Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/structures/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/structures/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/structures/&#x60; --- This route
-     * is cached for up to 3600 seconds SSO Scope:
+     * Get corporation structures Get a list of corporation structures --- This
+     * route is cached for up to 3600 seconds SSO Scope:
      * esi-corporations.read_structures.v1
      * 
      * @param corporationId
@@ -432,10 +410,7 @@ public class CorporationApi {
 
     /**
      * Get corporation names Resolve a set of corporation IDs to corporation
-     * names --- Alternate route: &#x60;/v1/corporations/names/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/names/&#x60; Alternate route:
-     * &#x60;/dev/corporations/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * names --- This route is cached for up to 3600 seconds
      * 
      * @param corporationIds
      *            A comma separated list of corporation IDs (required)
@@ -492,11 +467,8 @@ public class CorporationApi {
     }
 
     /**
-     * Get npc corporations Get a list of npc corporations --- Alternate route:
-     * &#x60;/v1/corporations/npccorps/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/npccorps/&#x60; Alternate route:
-     * &#x60;/dev/corporations/npccorps/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * Get npc corporations Get a list of npc corporations --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -545,13 +517,8 @@ public class CorporationApi {
 
     /**
      * Update structure vulnerability schedule Update the vulnerability window
-     * schedule of a corporation structure --- Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/structures/{structure_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/structures/{structure_id
-     * }/&#x60; Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/structures/{structure_id}/&#x60;
-     * SSO Scope: esi-corporations.write_structures.v1
+     * schedule of a corporation structure --- SSO Scope:
+     * esi-corporations.write_structures.v1
      * 
      * @param corporationId
      *            A corporation ID (required)

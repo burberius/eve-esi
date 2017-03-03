@@ -35,10 +35,7 @@ public class InsuranceApi {
 
     /**
      * List insurance levels Return available insurance levels for all ship
-     * types --- Alternate route: &#x60;/v1/insurance/prices/&#x60; Alternate
-     * route: &#x60;/legacy/insurance/prices/&#x60; Alternate route:
-     * &#x60;/dev/insurance/prices/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * types --- This route is cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to

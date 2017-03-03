@@ -35,10 +35,7 @@ public class BookmarksApi {
     }
 
     /**
-     * List bookmarks List your character&#39;s personal bookmarks --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/bookmarks/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/bookmarks/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/bookmarks/&#x60; --- This
+     * List bookmarks List your character&#39;s personal bookmarks --- This
      * route is cached for up to 3600 seconds SSO Scope:
      * esi-bookmarks.read_character_bookmarks.v1
      * 
@@ -101,12 +98,7 @@ public class BookmarksApi {
 
     /**
      * List bookmark folders List your character&#39;s personal bookmark folders
-     * --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/bookmarks/folders/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/bookmarks/folders/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/bookmarks/folders/&#x60; --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * --- This route is cached for up to 3600 seconds SSO Scope:
      * esi-bookmarks.read_character_bookmarks.v1
      * 
      * @param characterId

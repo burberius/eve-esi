@@ -36,7 +36,6 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * Alternate route: &#x60;/v2/characters/{character_id}/search/&#x60; ---
      * This route is cached for up to 3600 seconds SSO Scope:
      * esi-search.search_structures.v1
      * 
@@ -125,9 +124,8 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * Alternate route: &#x60;/v1/search/&#x60; Alternate route:
-     * &#x60;/legacy/search/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-search.search_structures.v1
      * 
      * @param categories
      *            Type of entities to search for (required)

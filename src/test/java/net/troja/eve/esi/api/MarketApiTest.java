@@ -11,6 +11,8 @@
 
 package net.troja.eve.esi.api;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
@@ -20,6 +22,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
@@ -30,6 +33,27 @@ import net.troja.eve.esi.model.MarketPricesResponse;
 public class MarketApiTest extends GeneralApiTest {
 
     private final MarketApi api = new MarketApi();
+
+    /**
+     * Get item group information
+     *
+     * Get information on an item group --- This route is cached for up to 3600
+     * seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getMarketsGroupsMarketGroupIdTest() throws ApiException {
+        final Integer marketGroupId = 23;
+        final String userAgent = null;
+        final String xUserAgent = null;
+        final MarketGroupResponse response = api.getMarketsGroupsMarketGroupId(marketGroupId, DATASOURCE, LANGUAGE,
+                userAgent, xUserAgent);
+
+        assertThat(response, notNullValue());
+        assertThat(response.getName(), equalTo("Passengers"));
+    }
 
     /**
      * List market prices

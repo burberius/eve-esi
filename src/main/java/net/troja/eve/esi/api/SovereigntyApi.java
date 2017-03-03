@@ -35,11 +35,8 @@ public class SovereigntyApi {
     }
 
     /**
-     * List sovereignty campaigns Shows sovereignty data for campaigns. ---
-     * Alternate route: &#x60;/v1/sovereignty/campaigns/&#x60; Alternate route:
-     * &#x60;/legacy/sovereignty/campaigns/&#x60; Alternate route:
-     * &#x60;/dev/sovereignty/campaigns/&#x60; --- This route is cached for up
-     * to 5 seconds
+     * List sovereignty campaigns Shows sovereignty data for campaigns. --- This
+     * route is cached for up to 5 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -88,10 +85,7 @@ public class SovereigntyApi {
 
     /**
      * List sovereignty structures Shows sovereignty data for structures. ---
-     * Alternate route: &#x60;/v1/sovereignty/structures/&#x60; Alternate route:
-     * &#x60;/legacy/sovereignty/structures/&#x60; Alternate route:
-     * &#x60;/dev/sovereignty/structures/&#x60; --- This route is cached for up
-     * to 120 seconds
+     * This route is cached for up to 120 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to

@@ -7,6 +7,7 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
@@ -37,11 +38,117 @@ public class MarketApi {
     }
 
     /**
-     * List market prices Return a list of prices --- Alternate route:
-     * &#x60;/v1/markets/prices/&#x60; Alternate route:
-     * &#x60;/legacy/markets/prices/&#x60; Alternate route:
-     * &#x60;/dev/markets/prices/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get item groups Get a list of item groups --- This route is cached for up
+     * to 3600 seconds
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List<Integer>
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<Integer> getMarketsGroups(String datasource, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/markets/groups/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get item group information Get information on an item group --- This
+     * route is cached for up to 3600 seconds
+     * 
+     * @param marketGroupId
+     *            An Eve item group ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return MarketGroupResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public MarketGroupResponse getMarketsGroupsMarketGroupId(Integer marketGroupId, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'marketGroupId' is set
+        if (marketGroupId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'marketGroupId' when calling getMarketsGroupsMarketGroupId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/markets/groups/{market_group_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "market_group_id" + "\\}", apiClient.escapeString(marketGroupId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<MarketGroupResponse> localVarReturnType = new GenericType<MarketGroupResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * List market prices Return a list of prices --- This route is cached for
+     * up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -90,11 +197,8 @@ public class MarketApi {
 
     /**
      * List historical market statistics in a region Return a list of historical
-     * market statistics for the specified type in a region --- Alternate route:
-     * &#x60;/v1/markets/{region_id}/history/&#x60; Alternate route:
-     * &#x60;/legacy/markets/{region_id}/history/&#x60; Alternate route:
-     * &#x60;/dev/markets/{region_id}/history/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * market statistics for the specified type in a region --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param regionId
      *            Return statistics in this region (required)
@@ -160,11 +264,8 @@ public class MarketApi {
     }
 
     /**
-     * List orders in a region Return a list of orders in a region --- Alternate
-     * route: &#x60;/v1/markets/{region_id}/orders/&#x60; Alternate route:
-     * &#x60;/legacy/markets/{region_id}/orders/&#x60; Alternate route:
-     * &#x60;/dev/markets/{region_id}/orders/&#x60; --- This route is cached for
-     * up to 300 seconds
+     * List orders in a region Return a list of orders in a region --- This
+     * route is cached for up to 300 seconds
      * 
      * @param orderType
      *            Filter buy/sell orders, return all orders by default. If you
@@ -239,11 +340,8 @@ public class MarketApi {
     }
 
     /**
-     * List orders in a structure Return all orders in a structure --- Alternate
-     * route: &#x60;/v1/markets/structures/{structure_id}/&#x60; Alternate
-     * route: &#x60;/legacy/markets/structures/{structure_id}/&#x60; Alternate
-     * route: &#x60;/dev/markets/structures/{structure_id}/&#x60; --- This route
-     * is cached for up to 300 seconds SSO Scope:
+     * List orders in a structure Return all orders in a structure --- This
+     * route is cached for up to 300 seconds SSO Scope:
      * esi-markets.structure_markets.v1
      * 
      * @param structureId

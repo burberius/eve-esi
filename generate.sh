@@ -43,6 +43,9 @@ for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
   sed -i -e '/OpenAPI spec version/d' $I
 done
 
+# Fix route
+sed -i -e 's#https://esi.tech.ccp.is/#https://esi.tech.ccp.is#' src/main/java/net/troja/eve/esi/ApiClient.java
+
 #
 # Generate SSO scopes
 #

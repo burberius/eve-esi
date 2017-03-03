@@ -37,11 +37,8 @@ public class LocationApi {
     /**
      * Get character location Information about the characters current location.
      * Returns the current solar system id, and also the current station or
-     * structure ID if applicable. --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/location/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/location/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/location/&#x60; --- This route is
-     * cached for up to 5 seconds SSO Scope: esi-location.read_location.v1
+     * structure ID if applicable. --- This route is cached for up to 5 seconds
+     * SSO Scope: esi-location.read_location.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -101,11 +98,8 @@ public class LocationApi {
     }
 
     /**
-     * Get current ship Get the current ship type, name and id --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/ship/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/ship/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/ship/&#x60; --- This route is cached
-     * for up to 5 seconds SSO Scope: esi-location.read_ship_type.v1
+     * Get current ship Get the current ship type, name and id --- This route is
+     * cached for up to 5 seconds SSO Scope: esi-location.read_ship_type.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

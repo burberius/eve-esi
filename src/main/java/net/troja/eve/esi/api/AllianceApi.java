@@ -36,11 +36,8 @@ public class AllianceApi {
     }
 
     /**
-     * List all alliances List all active player alliances --- Alternate route:
-     * &#x60;/v1/alliances/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/&#x60; Alternate route:
-     * &#x60;/dev/alliances/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * List all alliances List all active player alliances --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -87,9 +84,8 @@ public class AllianceApi {
     }
 
     /**
-     * Get alliance information Public information about an alliance ---
-     * Alternate route: &#x60;/v2/alliances/{alliance_id}/&#x60; --- This route
-     * is cached for up to 3600 seconds
+     * Get alliance information Public information about an alliance --- This
+     * route is cached for up to 3600 seconds
      * 
      * @param allianceId
      *            An Eve alliance ID (required)
@@ -147,11 +143,7 @@ public class AllianceApi {
 
     /**
      * List alliance&#39;s corporations List all current member corporations of
-     * an alliance --- Alternate route:
-     * &#x60;/v1/alliances/{alliance_id}/corporations/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/{alliance_id}/corporations/&#x60; Alternate
-     * route: &#x60;/dev/alliances/{alliance_id}/corporations/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * an alliance --- This route is cached for up to 3600 seconds
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -208,11 +200,8 @@ public class AllianceApi {
     }
 
     /**
-     * Get alliance icon Get the icon urls for a alliance --- Alternate route:
-     * &#x60;/v1/alliances/{alliance_id}/icons/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/{alliance_id}/icons/&#x60; Alternate route:
-     * &#x60;/dev/alliances/{alliance_id}/icons/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get alliance icon Get the icon urls for a alliance --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -270,10 +259,7 @@ public class AllianceApi {
 
     /**
      * Get alliance names Resolve a set of alliance IDs to alliance names ---
-     * Alternate route: &#x60;/v1/alliances/names/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/names/&#x60; Alternate route:
-     * &#x60;/dev/alliances/names/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * This route is cached for up to 3600 seconds
      * 
      * @param allianceIds
      *            A comma separated list of alliance IDs (required)

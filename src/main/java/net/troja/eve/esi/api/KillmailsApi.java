@@ -36,12 +36,7 @@ public class KillmailsApi {
 
     /**
      * List kills and losses Return a list of character&#39;s recent kills and
-     * losses --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/killmails/recent/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/killmails/recent/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/killmails/recent/&#x60; --- This
-     * route is cached for up to 120 seconds SSO Scope:
+     * losses --- This route is cached for up to 120 seconds SSO Scope:
      * esi-killmails.read_killmails.v1
      * 
      * @param characterId
@@ -111,11 +106,7 @@ public class KillmailsApi {
 
     /**
      * Get a single killmail Return a single killmail from its ID and hash ---
-     * Alternate route: &#x60;/v1/killmails/{killmail_id}/{killmail_hash}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/killmails/{killmail_id}/{killmail_hash}/&#x60; Alternate
-     * route: &#x60;/dev/killmails/{killmail_id}/{killmail_hash}/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * This route is cached for up to 3600 seconds
      * 
      * @param killmailHash
      *            The killmail hash for verification (required)

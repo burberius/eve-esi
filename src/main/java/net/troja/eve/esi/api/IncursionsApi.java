@@ -34,11 +34,8 @@ public class IncursionsApi {
     }
 
     /**
-     * List incursions Return a list of current incursions --- Alternate route:
-     * &#x60;/v1/incursions/&#x60; Alternate route:
-     * &#x60;/legacy/incursions/&#x60; Alternate route:
-     * &#x60;/dev/incursions/&#x60; --- This route is cached for up to 300
-     * seconds
+     * List incursions Return a list of current incursions --- This route is
+     * cached for up to 300 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to

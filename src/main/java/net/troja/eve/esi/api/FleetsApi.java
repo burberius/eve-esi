@@ -43,10 +43,7 @@ public class FleetsApi {
     }
 
     /**
-     * Kick fleet member Kick a fleet member --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; SSO Scope:
+     * Kick fleet member Kick a fleet member --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -114,10 +111,7 @@ public class FleetsApi {
 
     /**
      * Delete fleet squad Delete a fleet squad, only empty squads can be deleted
-     * --- Alternate route: &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60;
-     * Alternate route: &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60;
-     * Alternate route: &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60;
-     * SSO Scope: esi-fleets.write_fleet.v1
+     * --- SSO Scope: esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -184,10 +178,7 @@ public class FleetsApi {
 
     /**
      * Delete fleet wing Delete a fleet wing, only empty wings can be deleted.
-     * The wing may contain squads, but the squads must be empty --- Alternate
-     * route: &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate
-     * route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; SSO Scope:
+     * The wing may contain squads, but the squads must be empty --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -254,11 +245,8 @@ public class FleetsApi {
     }
 
     /**
-     * Get fleet information Return details about a fleet --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/&#x60; --- This route is cached for up to 5
-     * seconds SSO Scope: esi-fleets.read_fleet.v1
+     * Get fleet information Return details about a fleet --- This route is
+     * cached for up to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -317,11 +305,8 @@ public class FleetsApi {
     }
 
     /**
-     * Get fleet members Return information about fleet members --- Alternate
-     * route: &#x60;/v1/fleets/{fleet_id}/members/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/members/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/members/&#x60; --- This route is cached for
-     * up to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
+     * Get fleet members Return information about fleet members --- This route
+     * is cached for up to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -383,11 +368,8 @@ public class FleetsApi {
     }
 
     /**
-     * Get fleet wings Return information about wings in a fleet --- Alternate
-     * route: &#x60;/v1/fleets/{fleet_id}/wings/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/wings/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/&#x60; --- This route is cached for up
-     * to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
+     * Get fleet wings Return information about wings in a fleet --- This route
+     * is cached for up to 5 seconds SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -451,10 +433,7 @@ public class FleetsApi {
     /**
      * Create fleet invitation Invite a character into the fleet, if a character
      * has a CSPA charge set, it is not possible to invite them to the fleet
-     * using ESI --- Alternate route: &#x60;/v1/fleets/{fleet_id}/members/&#x60;
-     * Alternate route: &#x60;/legacy/fleets/{fleet_id}/members/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/&#x60; SSO Scope:
-     * esi-fleets.write_fleet.v1
+     * using ESI --- SSO Scope: esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -519,10 +498,7 @@ public class FleetsApi {
     }
 
     /**
-     * Create fleet wing Create a new wing in a fleet --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/wings/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/wings/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/&#x60; SSO Scope:
+     * Create fleet wing Create a new wing in a fleet --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -582,11 +558,7 @@ public class FleetsApi {
     }
 
     /**
-     * Create fleet squad Create a new squad in a fleet --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60; Alternate
-     * route: &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60;
-     * Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/squads/&#x60; SSO Scope:
+     * Create fleet squad Create a new squad in a fleet --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -656,10 +628,8 @@ public class FleetsApi {
     }
 
     /**
-     * Update fleet Update settings about a fleet --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/&#x60; SSO Scope: esi-fleets.write_fleet.v1
+     * Update fleet Update settings about a fleet --- SSO Scope:
+     * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
      *            ID for a fleet (required)
@@ -722,10 +692,7 @@ public class FleetsApi {
     }
 
     /**
-     * Move fleet member Move a fleet member around --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/members/{member_id}/&#x60; Alternate
-     * route: &#x60;/dev/fleets/{fleet_id}/members/{member_id}/&#x60; SSO Scope:
+     * Move fleet member Move a fleet member around --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -800,10 +767,7 @@ public class FleetsApi {
     }
 
     /**
-     * Rename fleet squad Rename a fleet squad --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/squads/{squad_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/squads/{squad_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/squads/{squad_id}/&#x60; SSO Scope:
+     * Rename fleet squad Rename a fleet squad --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId
@@ -878,10 +842,7 @@ public class FleetsApi {
     }
 
     /**
-     * Rename fleet wing Rename a fleet wing --- Alternate route:
-     * &#x60;/v1/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate route:
-     * &#x60;/legacy/fleets/{fleet_id}/wings/{wing_id}/&#x60; Alternate route:
-     * &#x60;/dev/fleets/{fleet_id}/wings/{wing_id}/&#x60; SSO Scope:
+     * Rename fleet wing Rename a fleet wing --- SSO Scope:
      * esi-fleets.write_fleet.v1
      * 
      * @param fleetId

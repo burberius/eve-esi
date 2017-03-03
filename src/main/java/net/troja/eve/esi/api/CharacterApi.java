@@ -40,9 +40,7 @@ public class CharacterApi {
 
     /**
      * Get character&#39;s public information Public information about a
-     * character --- Alternate route: &#x60;/v4/characters/{character_id}/&#x60;
-     * Alternate route: &#x60;/dev/characters/{character_id}/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * character --- This route is cached for up to 3600 seconds
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -100,12 +98,7 @@ public class CharacterApi {
 
     /**
      * Get corporation history Get a list of all the corporations a character
-     * has been a member of --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/corporationhistory/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/corporationhistory/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/corporationhistory/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * has been a member of --- This route is cached for up to 3600 seconds
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -162,10 +155,8 @@ public class CharacterApi {
     }
 
     /**
-     * Get character portraits Get portrait urls for a character --- Alternate
-     * route: &#x60;/v2/characters/{character_id}/portrait/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/portrait/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Get character portraits Get portrait urls for a character --- This route
+     * is cached for up to 3600 seconds
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -223,10 +214,7 @@ public class CharacterApi {
 
     /**
      * Get character names Resolve a set of character IDs to character names ---
-     * Alternate route: &#x60;/v1/characters/names/&#x60; Alternate route:
-     * &#x60;/legacy/characters/names/&#x60; Alternate route:
-     * &#x60;/dev/characters/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * This route is cached for up to 3600 seconds
      * 
      * @param characterIds
      *            A comma separated list of character IDs (required)
@@ -284,10 +272,7 @@ public class CharacterApi {
     /**
      * Calculate a CSPA charge cost Takes a source character ID in the url and a
      * set of target character ID&#39;s in the body, returns a CSPA charge cost
-     * --- Alternate route: &#x60;/v3/characters/{character_id}/cspa/&#x60;
-     * Alternate route: &#x60;/legacy/characters/{character_id}/cspa/&#x60;
-     * Alternate route: &#x60;/dev/characters/{character_id}/cspa/&#x60; SSO
-     * Scope: esi-characters.read_contacts.v1
+     * --- SSO Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
