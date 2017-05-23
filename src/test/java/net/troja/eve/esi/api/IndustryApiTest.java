@@ -12,13 +12,16 @@
 package net.troja.eve.esi.api;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
 import net.troja.eve.esi.model.IndustryFacilitiesResponse;
 import net.troja.eve.esi.model.IndustrySystemsResponse;
 
@@ -28,6 +31,29 @@ import net.troja.eve.esi.model.IndustrySystemsResponse;
 public class IndustryApiTest extends GeneralApiTest {
 
     private final IndustryApi api = new IndustryApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
+
+    /**
+     * List character industry jobs
+     *
+     * List industry jobs placed by a character --- This route is cached for up
+     * to 300 seconds SSO Scope: esi-industry.read_character_jobs.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdIndustryJobsTest() throws ApiException {
+        final Boolean includeCompleted = null;
+        final List<CharacterIndustryJobsResponse> response = api.getCharactersCharacterIdIndustryJobs(characterId,
+                DATASOURCE, includeCompleted, null, null, null);
+
+        assertThat(response, notNullValue());
+    }
 
     /**
      * List industry facilities

@@ -21,13 +21,19 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterBlueprintsResponse;
+import net.troja.eve.esi.model.CharacterChatChannelsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
+import net.troja.eve.esi.model.CharacterMedalsResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
+import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
 
@@ -64,6 +70,62 @@ public class CharacterApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get agents research
+     *
+     * Return a list of agents research information for a character. The formula
+     * for finding the current research points with an agent is: currentPoints
+     * &#x3D; remainderPoints + pointsPerDay * days(currentTime -
+     * researchStartDate) --- This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdAgentsResearchTest() throws ApiException {
+        final List<CharacterResearchAgentsResponse> response = api.getCharactersCharacterIdAgentsResearch(characterId,
+                DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get blueprints
+     *
+     * Return a list of blueprints the character has --- This route is cached
+     * for up to 3600 seconds SSO Scope: esi-characters.read_blueprints.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdBlueprintsTest() throws ApiException {
+
+        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId,
+                DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get chat channels
+     *
+     * Return chat channels that a character is the owner or an operator of ---
+     * This route is cached for up to 300 seconds SSO Scope:
+     * esi-characters.read_chat_channels.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdChatChannelsTest() throws ApiException {
+        final List<CharacterChatChannelsResponse> response = api.getCharactersCharacterIdChatChannels(characterId,
+                DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
      * Get corporation history
      *
      * Get a list of all the corporations a character has been a member of ---
@@ -84,6 +146,23 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getCorporationId(), greaterThan(0));
+    }
+
+    /**
+     * Get medals
+     *
+     * Return a list of medals the character has --- This route is cached for up
+     * to 3600 seconds SSO Scope: esi-characters.read_medals.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdMedalsTest() throws ApiException {
+        final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null,
+                null, null);
+
+        assertThat(response, notNullValue());
     }
 
     /**
@@ -108,6 +187,41 @@ public class CharacterApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get character corporation roles
+     *
+     * Returns a character&#39;s corporation roles --- This route is cached for
+     * up to 3600 seconds SSO Scope: esi-characters.read_corporation_roles.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdRolesTest() throws ApiException {
+        final List<String> response = api.getCharactersCharacterIdRoles(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get standings
+     *
+     * Return character standings from agents, NPC corporations, and factions
+     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-characters.read_standings.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdStandingsTest() throws ApiException {
+        final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE,
+                null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
      * Get character names
      *
      * Resolve a set of character IDs to character names --- Alternate route:
@@ -128,6 +242,20 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCharacterName(), equalTo(characterName));
+    }
+
+    /**
+     * Character affiliation
+     *
+     * Bulk lookup of character IDs to corporation, alliance and faction ---
+     * This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    @Ignore("We can't test changes")
+    public void postCharactersAffiliationTest() throws ApiException {
     }
 
     /**

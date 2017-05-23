@@ -7,10 +7,16 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.CharacterAffiliationResponse;
+import net.troja.eve.esi.model.CharacterBlueprintsResponse;
+import net.troja.eve.esi.model.CharacterChatChannelsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
+import net.troja.eve.esi.model.CharacterMedalsResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
+import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
+import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
 
@@ -97,6 +103,194 @@ public class CharacterApi {
     }
 
     /**
+     * Get agents research Return a list of agents research information for a
+     * character. The formula for finding the current research points with an
+     * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
+     * days(currentTime - researchStartDate) --- This route is cached for up to
+     * 3600 seconds
+     * 
+     * @param characterId
+     *            ID for a character (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterResearchAgentsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterResearchAgentsResponse> getCharactersCharacterIdAgentsResearch(Integer characterId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdAgentsResearch");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/agents_research/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterResearchAgentsResponse>> localVarReturnType = new GenericType<List<CharacterResearchAgentsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get blueprints Return a list of blueprints the character has --- This
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-characters.read_blueprints.v1
+     * 
+     * @param characterId
+     *            ID for a character (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterBlueprintsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterBlueprintsResponse> getCharactersCharacterIdBlueprints(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdBlueprints");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/blueprints/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterBlueprintsResponse>> localVarReturnType = new GenericType<List<CharacterBlueprintsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get chat channels Return chat channels that a character is the owner or
+     * an operator of --- This route is cached for up to 300 seconds SSO Scope:
+     * esi-characters.read_chat_channels.v1
+     * 
+     * @param characterId
+     *            ID for a character (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterChatChannelsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterChatChannelsResponse> getCharactersCharacterIdChatChannels(Integer characterId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdChatChannels");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/chat_channels/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterChatChannelsResponse>> localVarReturnType = new GenericType<List<CharacterChatChannelsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get corporation history Get a list of all the corporations a character
      * has been a member of --- This route is cached for up to 3600 seconds
      * 
@@ -149,6 +343,67 @@ public class CharacterApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<List<CharacterCorporationHistoryResponse>> localVarReturnType = new GenericType<List<CharacterCorporationHistoryResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get medals Return a list of medals the character has --- This route is
+     * cached for up to 3600 seconds SSO Scope: esi-characters.read_medals.v1
+     * 
+     * @param characterId
+     *            ID for a character (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterMedalsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterMedalsResponse> getCharactersCharacterIdMedals(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMedals");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/medals/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterMedalsResponse>> localVarReturnType = new GenericType<List<CharacterMedalsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -213,6 +468,130 @@ public class CharacterApi {
     }
 
     /**
+     * Get character corporation roles Returns a character&#39;s corporation
+     * roles --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-characters.read_corporation_roles.v1
+     * 
+     * @param characterId
+     *            A character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;String&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<String> getCharactersCharacterIdRoles(Integer characterId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdRoles");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/roles/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<String>> localVarReturnType = new GenericType<List<String>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get standings Return character standings from agents, NPC corporations,
+     * and factions --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-characters.read_standings.v1
+     * 
+     * @param characterId
+     *            ID for a character (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use, if preferred over a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterStandingsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterStandingsResponse> getCharactersCharacterIdStandings(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdStandings");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/standings/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterStandingsResponse>> localVarReturnType = new GenericType<List<CharacterStandingsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get character names Resolve a set of character IDs to character names ---
      * This route is cached for up to 3600 seconds
      * 
@@ -266,6 +645,63 @@ public class CharacterApi {
         GenericType<List<CharacterNamesResponse>> localVarReturnType = new GenericType<List<CharacterNamesResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Character affiliation Bulk lookup of character IDs to corporation,
+     * alliance and faction --- This route is cached for up to 3600 seconds
+     * 
+     * @param characters
+     *            The character IDs to fetch affiliations for (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterAffiliationResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> characters, String datasource,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = characters;
+
+        // verify the required parameter 'characters' is set
+        if (characters == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characters' when calling postCharactersAffiliation");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/affiliation/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<CharacterAffiliationResponse>> localVarReturnType = new GenericType<List<CharacterAffiliationResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 

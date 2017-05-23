@@ -58,7 +58,7 @@ public class CalendarApiTest extends GeneralApiTest {
         final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE,
                 fromEvent, null, null, null);
 
-        assertThat(response.size(), greaterThan(1));
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**

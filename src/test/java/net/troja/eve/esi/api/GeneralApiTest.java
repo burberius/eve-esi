@@ -20,6 +20,8 @@ public class GeneralApiTest {
     protected static final int ALLIANCE_ID_TRI = 933731581;
     protected final static int REGION_ID_THE_FORGE = 10000002;
     protected final static int TYPE_ID_PLEX = 29668;
+    protected final static int SOLARSYSTEM_ID_JITA = 30000142;
+    protected final static int SOLARSYSTEM_ID_ALIKARA = 30002754;
 
     protected static String clientId;
     protected static String clientSecret;

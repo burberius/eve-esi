@@ -18,10 +18,12 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterOrdersResponse;
 import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
@@ -33,6 +35,43 @@ import net.troja.eve.esi.model.MarketPricesResponse;
 public class MarketApiTest extends GeneralApiTest {
 
     private final MarketApi api = new MarketApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
+
+    /**
+     * List orders from a character
+     *
+     * List market orders placed by a character --- This route is cached for up
+     * to 3600 seconds SSO Scope: esi-markets.read_character_orders.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdOrdersTest() throws ApiException {
+        final List<CharacterOrdersResponse> response = api.getCharactersCharacterIdOrders(characterId, DATASOURCE, null,
+                null, null);
+
+        assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get item groups
+     *
+     * Get a list of item groups --- This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getMarketsGroupsTest() throws ApiException {
+        final List<Integer> response = api.getMarketsGroups(DATASOURCE, null, null);
+
+        assertThat(response.size(), greaterThan(0));
+    }
 
     /**
      * Get item group information

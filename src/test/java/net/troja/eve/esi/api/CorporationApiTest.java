@@ -143,30 +143,6 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get corporation names
-     *
-     * Resolve a set of corporation IDs to corporation names --- Alternate
-     * route: &#x60;/v1/corporations/names/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/names/&#x60; Alternate route:
-     * &#x60;/dev/corporations/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCorporationsNamesTest() throws ApiException {
-        final List<Long> corporationIds = new ArrayList<>();
-        corporationIds.add((long) CORPORATION_ID_AAC);
-
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null,
-                null);
-
-        assertThat(response.size(), equalTo(1));
-        assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));
-    }
-
-    /**
      * Get corporation structures
      *
      * Get a list of corporation structures --- Alternate route:
@@ -191,6 +167,30 @@ public class CorporationApiTest extends GeneralApiTest {
         // final List<CorporationStructuresResponse> response =
         // api.getCorporationsCorporationIdStructures(corporationId,
         // DATASOURCE, LANGUAGE, page, token, userAgent, xUserAgent);
+    }
+
+    /**
+     * Get corporation names
+     *
+     * Resolve a set of corporation IDs to corporation names --- Alternate
+     * route: &#x60;/v1/corporations/names/&#x60; Alternate route:
+     * &#x60;/legacy/corporations/names/&#x60; Alternate route:
+     * &#x60;/dev/corporations/names/&#x60; --- This route is cached for up to
+     * 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCorporationsNamesTest() throws ApiException {
+        final List<Long> corporationIds = new ArrayList<>();
+        corporationIds.add((long) CORPORATION_ID_AAC);
+
+        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null,
+                null);
+
+        assertThat(response.size(), equalTo(1));
+        assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));
     }
 
     /**

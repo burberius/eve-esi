@@ -32,11 +32,8 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get attributes
      *
-     * Get a list of dogma attribute ids --- Alternate route:
-     * &#x60;/v1/dogma/attributes/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/attributes/&#x60; Alternate route:
-     * &#x60;/dev/dogma/attributes/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of dogma attribute ids --- This route is cached for up to 3600
+     * seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -47,17 +44,14 @@ public class DogmaApiTest extends GeneralApiTest {
         final String xUserAgent = null;
         final List<Integer> response = api.getDogmaAttributes(DATASOURCE, userAgent, xUserAgent);
 
-        assertThat(response.size(), equalTo(2284));
+        assertThat(response.size(), equalTo(2319));
     }
 
     /**
      * Get attribute information
      *
-     * Get information on a dogma attribute --- Alternate route:
-     * &#x60;/v1/dogma/attributes/{attribute_id}/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/attributes/{attribute_id}/&#x60; Alternate route:
-     * &#x60;/dev/dogma/attributes/{attribute_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get information on a dogma attribute --- This route is cached for up to
+     * 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -77,10 +71,7 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get effects
      *
-     * Get a list of dogma effect ids --- Alternate route:
-     * &#x60;/v1/dogma/effects/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/effects/&#x60; Alternate route:
-     * &#x60;/dev/dogma/effects/&#x60; --- This route is cached for up to 3600
+     * Get a list of dogma effect ids --- This route is cached for up to 3600
      * seconds
      *
      * @throws ApiException
@@ -92,17 +83,14 @@ public class DogmaApiTest extends GeneralApiTest {
         final String xUserAgent = null;
         final List<Integer> response = api.getDogmaEffects(DATASOURCE, userAgent, xUserAgent);
 
-        assertThat(response.size(), equalTo(3885));
+        assertThat(response.size(), equalTo(3917));
     }
 
     /**
      * Get effect information
      *
-     * Get information on a dogma effect --- Alternate route:
-     * &#x60;/v1/dogma/effects/{effect_id}/&#x60; Alternate route:
-     * &#x60;/legacy/dogma/effects/{effect_id}/&#x60; Alternate route:
-     * &#x60;/dev/dogma/effects/{effect_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get information on a dogma effect --- This route is cached for up to 3600
+     * seconds
      *
      * @throws ApiException
      *             if the Api call fails

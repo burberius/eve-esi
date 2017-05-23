@@ -34,6 +34,8 @@ import net.troja.eve.esi.model.RacesResponse;
 import net.troja.eve.esi.model.RegionResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
+import net.troja.eve.esi.model.SystemJumpsResponse;
+import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseNamesResponse;
@@ -462,6 +464,42 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     @Ignore("Can't be tested")
     public void getUniverseStructuresStructureIdTest() throws ApiException {
+    }
+
+    /**
+     * Get system jumps
+     *
+     * Get the number of jumps in solar systems within the last hour, excluding
+     * wormhole space. Only systems with jumps will be listed --- This route is
+     * cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getUniverseSystemJumpsTest() throws ApiException {
+        final List<SystemJumpsResponse> response = api.getUniverseSystemJumps(DATASOURCE, null, null);
+
+        assertThat(response.size(), greaterThan(0));
+        assertThat(response.get(0).getSystemId(), greaterThan(30000));
+    }
+
+    /**
+     * Get system kills
+     *
+     * Get the number of ship, pod and NPC kills per solar system within the
+     * last hour, excluding wormhole space. Only systems with kills will be
+     * listed --- This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getUniverseSystemKillsTest() throws ApiException {
+        final List<SystemKillsResponse> response = api.getUniverseSystemKills(DATASOURCE, null, null);
+
+        assertThat(response.size(), greaterThan(0));
+        assertThat(response.get(0).getSystemId(), greaterThan(30000));
     }
 
     /**

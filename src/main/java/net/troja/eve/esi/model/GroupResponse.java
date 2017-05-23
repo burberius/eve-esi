@@ -28,7 +28,7 @@ public class GroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("category_id")
-    private Float categoryId = null;
+    private Integer categoryId = null;
 
     @JsonProperty("group_id")
     private Integer groupId = null;
@@ -42,22 +42,22 @@ public class GroupResponse implements Serializable {
     @JsonProperty("types")
     private List<Integer> types = new ArrayList<Integer>();
 
-    public GroupResponse categoryId(Float categoryId) {
+    public GroupResponse categoryId(Integer categoryId) {
         this.categoryId = categoryId;
         return this;
     }
 
     /**
-     * category_id number
+     * category_id integer
      * 
      * @return categoryId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "category_id number")
-    public Float getCategoryId() {
+    @ApiModelProperty(example = "null", required = true, value = "category_id integer")
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Float categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

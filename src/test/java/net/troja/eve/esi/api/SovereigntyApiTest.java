@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.SovereigntyCampaignsResponse;
+import net.troja.eve.esi.model.SovereigntyMapResponse;
 import net.troja.eve.esi.model.SovereigntyStructuresResponse;
 
 /**
@@ -50,6 +51,22 @@ public class SovereigntyApiTest extends GeneralApiTest {
         assertThat(response.size(), greaterThan(0));
         final SovereigntyCampaignsResponse sovereigntyResponse = response.get(0);
         assertThat(sovereigntyResponse.getSolarSystemId(), greaterThan(0));
+    }
+
+    /**
+     * List sovereignty of systems
+     *
+     * Shows sovereignty information for solar systems --- This route is cached
+     * for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getSovereigntyMapTest() throws ApiException {
+        final List<SovereigntyMapResponse> response = api.getSovereigntyMap(DATASOURCE, null, null);
+
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**

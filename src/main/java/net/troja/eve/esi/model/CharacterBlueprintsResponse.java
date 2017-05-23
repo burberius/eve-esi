@@ -22,17 +22,16 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
-public class CharacterAssetsResponse implements Serializable {
+public class CharacterBlueprintsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @JsonProperty("is_singleton")
-    private Boolean isSingleton = null;
 
     @JsonProperty("item_id")
     private Long itemId = null;
 
     /**
-     * location_flag string
+     * Indicates something about this item's storage location. The flag is used
+     * to differentiate between hangar divisions, drone bay, fitting location,
+     * and similar.
      */
     public enum LocationFlagEnum {
         AUTOFIT("AutoFit"),
@@ -185,9 +184,7 @@ public class CharacterAssetsResponse implements Serializable {
 
         FIGHTERTUBE4("FighterTube4"),
 
-        MODULE("Module"),
-
-        WARDROBE("Wardrobe");
+        MODULE("Module");
 
         private String value;
 
@@ -217,77 +214,35 @@ public class CharacterAssetsResponse implements Serializable {
     @JsonProperty("location_id")
     private Long locationId = null;
 
-    /**
-     * location_type string
-     */
-    public enum LocationTypeEnum {
-        STATION("station"),
-
-        SOLAR_SYSTEM("solar_system"),
-
-        OTHER("other");
-
-        private String value;
-
-        LocationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static LocationTypeEnum fromValue(String text) {
-            for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("location_type")
-    private LocationTypeEnum locationType = null;
+    @JsonProperty("material_efficiency")
+    private Integer materialEfficiency = null;
 
     @JsonProperty("quantity")
     private Integer quantity = null;
 
+    @JsonProperty("runs")
+    private Integer runs = null;
+
+    @JsonProperty("time_efficiency")
+    private Integer timeEfficiency = null;
+
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
-        return this;
-    }
-
-    /**
-     * is_singleton boolean
-     * 
-     * @return isSingleton
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
-        return isSingleton;
-    }
-
-    public void setIsSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
-    }
-
-    public CharacterAssetsResponse itemId(Long itemId) {
+    public CharacterBlueprintsResponse itemId(Long itemId) {
         this.itemId = itemId;
         return this;
     }
 
     /**
-     * item_id integer
+     * Unique ID for this item. The ID of an item is stable if that item is not
+     * repackaged, stacked, detached from a stack, assembled, or otherwise
+     * altered. If an item is changed in one of these ways, then the ID will
+     * also change (see notes below).
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item. The ID of an item is stable if that item is not repackaged, stacked, detached from a stack, assembled, or otherwise altered. If an item is changed in one of these ways, then the ID will also change (see notes below).")
     public Long getItemId() {
         return itemId;
     }
@@ -296,17 +251,19 @@ public class CharacterAssetsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CharacterBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
         this.locationFlag = locationFlag;
         return this;
     }
 
     /**
-     * location_flag string
+     * Indicates something about this item's storage location. The flag is used
+     * to differentiate between hangar divisions, drone bay, fitting location,
+     * and similar.
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    @ApiModelProperty(example = "null", required = true, value = "Indicates something about this item's storage location. The flag is used to differentiate between hangar divisions, drone bay, fitting location, and similar.")
     public LocationFlagEnum getLocationFlag() {
         return locationFlag;
     }
@@ -315,17 +272,20 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationFlag = locationFlag;
     }
 
-    public CharacterAssetsResponse locationId(Long locationId) {
+    public CharacterBlueprintsResponse locationId(Long locationId) {
         this.locationId = locationId;
         return this;
     }
 
     /**
-     * location_id integer
+     * References a solar system, station or itemID if this blueprint is located
+     * within a container. If an itemID the Character - AssetList API must be
+     * queried to find the container using the itemID, from which the correct
+     * location of the Blueprint can be derived.
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or itemID if this blueprint is located within a container. If an itemID the Character - AssetList API must be queried to find the container using the itemID, from which the correct location of the Blueprint can be derived.")
     public Long getLocationId() {
         return locationId;
     }
@@ -334,36 +294,40 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CharacterAssetsResponse locationType(LocationTypeEnum locationType) {
-        this.locationType = locationType;
+    public CharacterBlueprintsResponse materialEfficiency(Integer materialEfficiency) {
+        this.materialEfficiency = materialEfficiency;
         return this;
     }
 
     /**
-     * location_type string
+     * Material Efficiency Level of the blueprint, can be any integer between 0
+     * and 10.
      * 
-     * @return locationType
+     * @return materialEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_type string")
-    public LocationTypeEnum getLocationType() {
-        return locationType;
+    @ApiModelProperty(example = "null", required = true, value = "Material Efficiency Level of the blueprint, can be any integer between 0 and 10.")
+    public Integer getMaterialEfficiency() {
+        return materialEfficiency;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
-        this.locationType = locationType;
+    public void setMaterialEfficiency(Integer materialEfficiency) {
+        this.materialEfficiency = materialEfficiency;
     }
 
-    public CharacterAssetsResponse quantity(Integer quantity) {
+    public CharacterBlueprintsResponse quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
 
     /**
-     * quantity integer
+     * Typically will be -1 or -2 designating a singleton item, where -1 is an
+     * original and -2 is a copy. It can be a positive integer if it is a stack
+     * of blueprint originals fresh from the market (no activities performed on
+     * them yet).
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", value = "quantity integer")
+    @ApiModelProperty(example = "null", required = true, value = "Typically will be -1 or -2 designating a singleton item, where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (no activities performed on them yet).")
     public Integer getQuantity() {
         return quantity;
     }
@@ -372,7 +336,47 @@ public class CharacterAssetsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public CharacterAssetsResponse typeId(Integer typeId) {
+    public CharacterBlueprintsResponse runs(Integer runs) {
+        this.runs = runs;
+        return this;
+    }
+
+    /**
+     * Number of runs remaining if the blueprint is a copy, -1 if it is an
+     * original.
+     * 
+     * @return runs
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original.")
+    public Integer getRuns() {
+        return runs;
+    }
+
+    public void setRuns(Integer runs) {
+        this.runs = runs;
+    }
+
+    public CharacterBlueprintsResponse timeEfficiency(Integer timeEfficiency) {
+        this.timeEfficiency = timeEfficiency;
+        return this;
+    }
+
+    /**
+     * Time Efficiency Level of the blueprint, can be any even integer between 0
+     * and 20.
+     * 
+     * @return timeEfficiency
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Time Efficiency Level of the blueprint, can be any even integer between 0 and 20.")
+    public Integer getTimeEfficiency() {
+        return timeEfficiency;
+    }
+
+    public void setTimeEfficiency(Integer timeEfficiency) {
+        this.timeEfficiency = timeEfficiency;
+    }
+
+    public CharacterBlueprintsResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -399,32 +403,35 @@ public class CharacterAssetsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterAssetsResponse characterAssetsResponse = (CharacterAssetsResponse) o;
-        return Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton)
-                && Objects.equals(this.itemId, characterAssetsResponse.itemId)
-                && Objects.equals(this.locationFlag, characterAssetsResponse.locationFlag)
-                && Objects.equals(this.locationId, characterAssetsResponse.locationId)
-                && Objects.equals(this.locationType, characterAssetsResponse.locationType)
-                && Objects.equals(this.quantity, characterAssetsResponse.quantity)
-                && Objects.equals(this.typeId, characterAssetsResponse.typeId);
+        CharacterBlueprintsResponse characterBlueprintsResponse = (CharacterBlueprintsResponse) o;
+        return Objects.equals(this.itemId, characterBlueprintsResponse.itemId)
+                && Objects.equals(this.locationFlag, characterBlueprintsResponse.locationFlag)
+                && Objects.equals(this.locationId, characterBlueprintsResponse.locationId)
+                && Objects.equals(this.materialEfficiency, characterBlueprintsResponse.materialEfficiency)
+                && Objects.equals(this.quantity, characterBlueprintsResponse.quantity)
+                && Objects.equals(this.runs, characterBlueprintsResponse.runs)
+                && Objects.equals(this.timeEfficiency, characterBlueprintsResponse.timeEfficiency)
+                && Objects.equals(this.typeId, characterBlueprintsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSingleton, itemId, locationFlag, locationId, locationType, quantity, typeId);
+        return Objects.hash(itemId, locationFlag, locationId, materialEfficiency, quantity, runs, timeEfficiency,
+                typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterAssetsResponse {\n");
+        sb.append("class CharacterBlueprintsResponse {\n");
 
-        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
+        sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
+        sb.append("    timeEfficiency: ").append(toIndentedString(timeEfficiency)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
