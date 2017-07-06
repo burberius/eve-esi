@@ -65,6 +65,6 @@ public class GeneralApiTest {
     }
 
     protected void ignoreTestFails() {
-        assumeFalse("Ignore test fails: ", true); //true = ignore tests :: false = run all tests
+        assumeFalse("Ignore test fails", true); //true = ignore tests :: false = run all tests
     }
 }
