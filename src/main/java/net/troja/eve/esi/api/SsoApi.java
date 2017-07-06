@@ -31,8 +31,8 @@ public class SsoApi {
     }
 
     public CharacterInfo getCharacterInfo() throws ApiException {
-        final String basePath = apiClient.getBasePath();
-        final DateFormat dateFormat = apiClient.getDateFormat();
+        final String basePath = apiClient.getBasePath(); //Save old basepath
+        final DateFormat dateFormat = apiClient.getDateFormat(); //Save old date format
         apiClient.setBasePath(OAuth.URI_OAUTH); //Set new basepath
         apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); //Set new date format
         final Object localVarPostBody = null;
