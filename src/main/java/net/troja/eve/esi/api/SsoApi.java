@@ -1,5 +1,6 @@
 package net.troja.eve.esi.api;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,11 +28,13 @@ public class SsoApi {
 
     public SsoApi(final ApiClient apiClient) {
         this.apiClient = apiClient;
-        apiClient.setBasePath(OAuth.URI_OAUTH);
-        apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT));
     }
 
     public CharacterInfo getCharacterInfo() throws ApiException {
+        final String basePath = apiClient.getBasePath(); //Save old basepath
+        final DateFormat dateFormat = apiClient.getDateFormat(); //Save old date format
+        apiClient.setBasePath(OAuth.URI_OAUTH); //Set new basepath
+        apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); //Set new date format
         final Object localVarPostBody = null;
 
         final String localVarPath = "/verify";
@@ -51,7 +54,12 @@ public class SsoApi {
         final GenericType<CharacterInfo> localVarReturnType = new GenericType<CharacterInfo>() {
         };
 
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        try {
+            return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                    localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        } finally {
+            apiClient.setBasePath(basePath); //load old basepath
+            apiClient.setDateFormat(dateFormat); //load old date format
+        }
     }
 }
