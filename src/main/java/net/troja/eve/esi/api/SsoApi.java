@@ -32,7 +32,7 @@ public class SsoApi {
 
     public CharacterInfo getCharacterInfo() throws ApiException {
         final String basePath = apiClient.getBasePath();
-        DateFormat dateFormat = apiClient.getDateFormat();
+        final DateFormat dateFormat = apiClient.getDateFormat();
         apiClient.setBasePath(OAuth.URI_OAUTH); //Set new basepath
         apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); //Set new date format
         final Object localVarPostBody = null;
