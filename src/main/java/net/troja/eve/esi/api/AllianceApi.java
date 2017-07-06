@@ -10,6 +10,7 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.AllianceIconsResponse;
 import net.troja.eve.esi.model.AllianceNamesResponse;
 import net.troja.eve.esi.model.AllianceResponse;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -88,7 +89,7 @@ public class AllianceApi {
      * route is cached for up to 3600 seconds
      * 
      * @param allianceId
-     *            An Eve alliance ID (required)
+     *            An EVE alliance ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)

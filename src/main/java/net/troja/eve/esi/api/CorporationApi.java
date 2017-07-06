@@ -14,6 +14,8 @@ import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesResponse;
 import net.troja.eve.esi.model.CorporationStructuresResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.VulnerabilityWindow;
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class CorporationApi {
      * This route is cached for up to 3600 seconds
      * 
      * @param corporationId
-     *            An Eve corporation ID (required)
+     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -220,12 +222,12 @@ public class CorporationApi {
      * SSO Scope: esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
-     *            A corporation ID (required)
+     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -283,12 +285,12 @@ public class CorporationApi {
      * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
-     *            A corporation ID (required)
+     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -345,16 +347,16 @@ public class CorporationApi {
      * esi-corporations.read_structures.v1
      * 
      * @param corporationId
-     *            A corporation ID (required)
+     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param page
-     *            Which page to query, 250 structures per page (optional)
+     *            Which page of results to return (optional, default to 1)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -467,8 +469,8 @@ public class CorporationApi {
     }
 
     /**
-     * Get npc corporations Get a list of npc corporations --- This route is
-     * cached for up to 3600 seconds
+     * Get npc corporations Get a list of npc corporations --- This route
+     * expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -521,7 +523,7 @@ public class CorporationApi {
      * esi-corporations.write_structures.v1
      * 
      * @param corporationId
-     *            A corporation ID (required)
+     *            An EVE corporation ID (required)
      * @param newSchedule
      *            New vulnerability window schedule for the structure (required)
      * @param structureId
@@ -530,7 +532,7 @@ public class CorporationApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

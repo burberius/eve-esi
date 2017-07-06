@@ -8,6 +8,8 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterOrdersResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
@@ -49,7 +51,7 @@ public class MarketApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -101,8 +103,8 @@ public class MarketApi {
     }
 
     /**
-     * Get item groups Get a list of item groups --- This route is cached for up
-     * to 3600 seconds
+     * Get item groups Get a list of item groups --- This route expires daily at
+     * 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -150,7 +152,7 @@ public class MarketApi {
 
     /**
      * Get item group information Get information on an item group --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param marketGroupId
      *            An Eve item group ID (required)
@@ -340,8 +342,7 @@ public class MarketApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            Which page to query, only used for querying without type_id.
-     *            Starting at 1 (optional, default to 1)
+     *            Which page of results to return (optional, default to 1)
      * @param typeId
      *            Return orders only for this type (optional)
      * @param userAgent
@@ -413,9 +414,9 @@ public class MarketApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            Which page to query, starting at 1 (optional, default to 1)
+     *            Which page of results to return (optional, default to 1)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

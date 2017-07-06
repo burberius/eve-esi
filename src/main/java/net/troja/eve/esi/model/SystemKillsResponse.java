@@ -81,11 +81,11 @@ public class SystemKillsResponse implements Serializable {
     }
 
     /**
-     * Number of player ships killed in this system
+     * Number of player and NPC ships killed in this system
      * 
      * @return shipKills
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of player ships killed in this system")
+    @ApiModelProperty(example = "null", required = true, value = "Number of player and NPC ships killed in this system")
     public Integer getShipKills() {
         return shipKills;
     }

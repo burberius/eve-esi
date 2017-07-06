@@ -9,6 +9,8 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.ContactLabelsResponse;
 import net.troja.eve.esi.model.ContactsResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,14 +41,14 @@ public class ContactsApi {
      * esi-characters.write_contacts.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param contactIds
-     *            A list of contacts to edit (required)
+     *            A list of contacts to delete (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -105,14 +107,14 @@ public class ContactsApi {
      * up to 300 seconds SSO Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            page integer (optional, default to 1)
+     *            Which page of results to return (optional, default to 1)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -170,12 +172,12 @@ public class ContactsApi {
      * esi-characters.read_contacts.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -231,7 +233,7 @@ public class ContactsApi {
      * esi-characters.write_contacts.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param contactIds
      *            A list of contacts to add (required)
      * @param standing
@@ -242,7 +244,7 @@ public class ContactsApi {
      * @param labelId
      *            Add a custom label to the new contact (optional, default to 0)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param watched
@@ -317,7 +319,7 @@ public class ContactsApi {
      * esi-characters.write_contacts.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param contactIds
      *            A list of contacts to edit (required)
      * @param standing
@@ -329,7 +331,7 @@ public class ContactsApi {
      *            Add a custom label to the contact, use 0 for clearing label
      *            (optional, default to 0)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param watched

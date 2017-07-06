@@ -8,6 +8,8 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterLoyaltyPointsResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.LoyaltyStoreOffersResponse;
 
 import java.util.ArrayList;
@@ -40,12 +42,12 @@ public class LoyaltyApi {
      * esi-characters.read_loyalty.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -98,11 +100,10 @@ public class LoyaltyApi {
 
     /**
      * List loyalty store offers Return a list of offers from a specific
-     * corporation&#39;s loyalty store --- This route is cached for up to 3600
-     * seconds
+     * corporation&#39;s loyalty store --- This route expires daily at 11:05
      * 
      * @param corporationId
-     *            ID of a corporation (required)
+     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)

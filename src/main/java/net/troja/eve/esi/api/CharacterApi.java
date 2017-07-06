@@ -19,6 +19,8 @@ import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -110,12 +112,12 @@ public class CharacterApi {
      * 3600 seconds
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -172,12 +174,12 @@ public class CharacterApi {
      * esi-characters.read_blueprints.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -234,12 +236,12 @@ public class CharacterApi {
      * esi-characters.read_chat_channels.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -353,12 +355,12 @@ public class CharacterApi {
      * cached for up to 3600 seconds SSO Scope: esi-characters.read_medals.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -473,12 +475,12 @@ public class CharacterApi {
      * esi-characters.read_corporation_roles.v1
      * 
      * @param characterId
-     *            A character ID (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -535,12 +537,12 @@ public class CharacterApi {
      * esi-characters.read_standings.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -718,7 +720,7 @@ public class CharacterApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

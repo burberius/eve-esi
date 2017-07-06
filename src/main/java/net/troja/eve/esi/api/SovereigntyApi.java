@@ -7,6 +7,7 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.SovereigntyCampaignsResponse;
 import net.troja.eve.esi.model.SovereigntyMapResponse;
 import net.troja.eve.esi.model.SovereigntyStructuresResponse;

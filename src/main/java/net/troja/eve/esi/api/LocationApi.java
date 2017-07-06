@@ -9,6 +9,8 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterLocationResponse;
 import net.troja.eve.esi.model.CharacterShipResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +48,7 @@ public class LocationApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -98,6 +100,68 @@ public class LocationApi {
     }
 
     /**
+     * Get character online Checks if the character is currently online --- This
+     * route is cached for up to 60 seconds SSO Scope:
+     * esi-location.read_online.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return Boolean
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public Boolean getCharactersCharacterIdOnline(Integer characterId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdOnline");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/online/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<Boolean> localVarReturnType = new GenericType<Boolean>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get current ship Get the current ship type, name and id --- This route is
      * cached for up to 5 seconds SSO Scope: esi-location.read_ship_type.v1
      * 
@@ -107,7 +171,7 @@ public class LocationApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

@@ -11,8 +11,10 @@ import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
 import net.troja.eve.esi.model.ConstellationResponse;
 import net.troja.eve.esi.model.FactionsResponse;
+import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponse;
@@ -51,8 +53,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get bloodlines Get a list of bloodlines --- This route is cached for up
-     * to 3600 seconds
+     * Get bloodlines Get a list of bloodlines --- This route expires daily at
+     * 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -103,8 +105,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get item categories Get a list of item categories --- This route is
-     * cached for up to 3600 seconds
+     * Get item categories Get a list of item categories --- This route expires
+     * daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -153,7 +155,7 @@ public class UniverseApi {
 
     /**
      * Get item category information Get information of an item category ---
-     * This route is cached for up to 3600 seconds
+     * This route expires daily at 11:05
      * 
      * @param categoryId
      *            An Eve item category ID (required)
@@ -213,8 +215,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get constellations Get a list of constellations --- This route is cached
-     * for up to 3600 seconds
+     * Get constellations Get a list of constellations --- This route expires
+     * daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -263,7 +265,7 @@ public class UniverseApi {
 
     /**
      * Get constellation information Get information on a constellation --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param constellationId
      *            constellation_id integer (required)
@@ -323,8 +325,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get factions Get a list of factions --- This route is cached for up to
-     * 3600 seconds
+     * Get factions Get a list of factions --- This route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -375,8 +376,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get graphics Get a list of graphics --- This route is cached for up to
-     * 3600 seconds
+     * Get graphics Get a list of graphics --- This route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -424,8 +424,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get graphic information Get information on a graphic --- This route is
-     * cached for up to 3600 seconds
+     * Get graphic information Get information on a graphic --- This route
+     * expires daily at 11:05
      * 
      * @param graphicId
      *            graphic_id integer (required)
@@ -482,14 +482,14 @@ public class UniverseApi {
     }
 
     /**
-     * Get item groups Get a list of item groups --- This route is cached for up
-     * to 3600 seconds
+     * Get item groups Get a list of item groups --- This route expires daily at
+     * 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            Which page to query (optional)
+     *            Which page of results to return (optional, default to 1)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -535,7 +535,7 @@ public class UniverseApi {
 
     /**
      * Get item group information Get information on an item group --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param groupId
      *            An Eve item group ID (required)
@@ -595,8 +595,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get moon information Get information on a moon --- This route is cached
-     * for up to 3600 seconds
+     * Get moon information Get information on a moon --- This route expires
+     * daily at 11:05
      * 
      * @param moonId
      *            moon_id integer (required)
@@ -652,8 +652,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get planet information Get information on a planet --- This route is
-     * cached for up to 3600 seconds
+     * Get planet information Get information on a planet --- This route expires
+     * daily at 11:05
      * 
      * @param planetId
      *            planet_id integer (required)
@@ -710,8 +710,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get character races Get a list of character races --- This route is
-     * cached for up to 3600 seconds
+     * Get character races Get a list of character races --- This route expires
+     * daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -762,8 +762,7 @@ public class UniverseApi {
     }
 
     /**
-     * Get regions Get a list of regions --- This route is cached for up to 3600
-     * seconds
+     * Get regions Get a list of regions --- This route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -810,8 +809,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get region information Get information on a region --- This route is
-     * cached for up to 3600 seconds
+     * Get region information Get information on a region --- This route expires
+     * daily at 11:05
      * 
      * @param regionId
      *            region_id integer (required)
@@ -871,8 +870,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get stargate information Get information on a stargate --- This route is
-     * cached for up to 3600 seconds
+     * Get stargate information Get information on a stargate --- This route
+     * expires daily at 11:05
      * 
      * @param stargateId
      *            stargate_id integer (required)
@@ -1045,7 +1044,7 @@ public class UniverseApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1098,8 +1097,9 @@ public class UniverseApi {
 
     /**
      * Get system jumps Get the number of jumps in solar systems within the last
-     * hour, excluding wormhole space. Only systems with jumps will be listed
-     * --- This route is cached for up to 3600 seconds
+     * hour ending at the timestamp of the Last-Modified header, excluding
+     * wormhole space. Only systems with jumps will be listed --- This route is
+     * cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1148,8 +1148,9 @@ public class UniverseApi {
 
     /**
      * Get system kills Get the number of ship, pod and NPC kills per solar
-     * system within the last hour, excluding wormhole space. Only systems with
-     * kills will be listed --- This route is cached for up to 3600 seconds
+     * system within the last hour ending at the timestamp of the Last-Modified
+     * header, excluding wormhole space. Only systems with kills will be listed
+     * --- This route is cached for up to 3600 seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1197,8 +1198,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get solar systems Get a list of solar systems --- This route is cached
-     * for up to 3600 seconds
+     * Get solar systems Get a list of solar systems --- This route expires
+     * daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1246,7 +1247,7 @@ public class UniverseApi {
 
     /**
      * Get solar system information Get information on a solar system --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param systemId
      *            system_id integer (required)
@@ -1306,14 +1307,13 @@ public class UniverseApi {
     }
 
     /**
-     * Get types Get a list of type ids --- This route is cached for up to 3600
-     * seconds
+     * Get types Get a list of type ids --- This route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            Which page to query (optional)
+     *            Which page of results to return (optional, default to 1)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1358,8 +1358,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get type information Get information on a type --- This route is cached
-     * for up to 3600 seconds
+     * Get type information Get information on a type --- This route expires
+     * daily at 11:05
      * 
      * @param typeId
      *            An Eve item type ID (required)

@@ -8,6 +8,8 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterSearchResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.SearchResponse;
 
 import java.util.ArrayList;
@@ -49,12 +51,12 @@ public class SearchApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param language
-     *            Search locale (optional, default to en-us)
+     *            Language to use in the response (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -135,7 +137,7 @@ public class SearchApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param language
-     *            Search locale (optional, default to en-us)
+     *            Language to use in the response (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)

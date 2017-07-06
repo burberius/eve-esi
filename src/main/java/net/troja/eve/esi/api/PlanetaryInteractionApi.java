@@ -9,6 +9,8 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterPlanetResponse;
 import net.troja.eve.esi.model.CharacterPlanetsResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.PlanetFactorySchematicResponse;
 
 import java.util.ArrayList;
@@ -41,12 +43,12 @@ public class PlanetaryInteractionApi {
      * esi-planets.manage_planets.v1
      * 
      * @param characterId
-     *            Character id of the target character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -101,19 +103,19 @@ public class PlanetaryInteractionApi {
      * Get colony layout Returns full details on the layout of a single
      * planetary colony, including links, pins and routes. Note: Planetary
      * information is only recalculated when the colony is viewed through the
-     * client. Information on this endpoint will not update until this criteria
-     * is met. --- This route is cached for up to 600 seconds SSO Scope:
+     * client. Information will not update until this criteria is met. --- This
+     * route is cached for up to 600 seconds SSO Scope:
      * esi-planets.manage_planets.v1
      * 
      * @param characterId
-     *            Character id of the target character (required)
+     *            An EVE character ID (required)
      * @param planetId
      *            Planet id of the target planet (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

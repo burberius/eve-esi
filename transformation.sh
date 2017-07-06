@@ -47,13 +47,6 @@ jq ".definitions.bad_request = $BADREQUEST" work1.json > work2.json
 jq "(.paths[][].responses[\"400\"]) = { \"\$ref\": \"#/definitions/bad_request\" }" work2.json > work1.json
 sed -i -e 's#post_characters_character_id_mail_bad_request#BadRequest#g' work1.json
 
-# Forbidden = 403
-echo "Transforming forbidden"
-FORBIDDEN=$(jq ".paths[][].responses[\"403\"] | select(.schema.title == \"get_characters_character_id_assets_forbidden\")" esi.json)
-jq ".definitions.forbidden = $FORBIDDEN" work1.json > work2.json
-jq "(.paths[][].responses[\"403\"]) = { \"\$ref\": \"#/definitions/forbidden\" }" work2.json > work1.json
-sed -i -e 's#get_characters_character_id_assets_forbidden#Forbidden#g' work1.json
-
 # Not Found = 404
 echo "Transforming not found"
 NOTFOUND=$(jq ".paths[][].responses[\"404\"] | select(.schema.title == \"get_alliances_alliance_id_not_found\")" esi.json)
@@ -67,13 +60,6 @@ UNPROENTITY=$(jq ".paths[][].responses[\"422\"] | select(.schema.title == \"get_
 jq ".definitions.unprocessable_entity = $UNPROENTITY" work1.json > work2.json
 jq "(.paths[][].responses[\"422\"]) = { \"\$ref\": \"#/definitions/unprocessable_entity\" }" work2.json > work1.json
 sed -i -e 's#get_characters_character_id_unprocessable_entity#UnprocessableEntity#g' work1.json
-
-# Internal Server Error = 500
-echo "Transforming internal server error"
-SERVERERROR=$(jq ".paths[][].responses[\"500\"] | select(.schema.title == \"get_alliances_internal_server_error\")" esi.json)
-jq ".definitions.internal_server_error = $SERVERERROR" work1.json > work2.json
-jq "(.paths[][].responses[\"500\"]) = { \"\$ref\": \"#/definitions/internal_server_error\" }" work2.json > work1.json
-sed -i -e 's#get_alliances_internal_server_error#InternalServerError#g' work1.json
 
 # Add SSO scope to description
 echo "Adding SSO scopes"

@@ -8,6 +8,8 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterOpportunitiesResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.OpportunitiesGroupResponse;
 import net.troja.eve.esi.model.OpportunitiesTasksResponse;
 
@@ -41,12 +43,12 @@ public class OpportunitiesApi {
      * esi-characters.read_opportunities.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -99,7 +101,7 @@ public class OpportunitiesApi {
 
     /**
      * Get opportunities groups Return a list of opportunities groups --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -148,7 +150,7 @@ public class OpportunitiesApi {
 
     /**
      * Get opportunities group Return information of an opportunities group ---
-     * This route is cached for up to 3600 seconds
+     * This route expires daily at 11:05
      * 
      * @param groupId
      *            ID of an opportunities group (required)
@@ -209,7 +211,7 @@ public class OpportunitiesApi {
 
     /**
      * Get opportunities tasks Return a list of opportunities tasks --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -258,7 +260,7 @@ public class OpportunitiesApi {
 
     /**
      * Get opportunities task Return information of an opportunities task ---
-     * This route is cached for up to 3600 seconds
+     * This route expires daily at 11:05
      * 
      * @param taskId
      *            ID of an opportunities task (required)
