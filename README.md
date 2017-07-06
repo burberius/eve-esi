@@ -49,6 +49,21 @@ Code from Answer: 7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0
 Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 ```
 
+### Development on windows
+
+#### Setup
+1) Download Cygwin from: https://www.cygwin.com
+2) Install Cygwin with the default options
+3) Run the Cygwin installer again and add: wget (web), git (devel), jq (text)
+4) Download maven from: http://maven.apache.org/download.cgi (if you don't have it installed already)
+5) Unpack and add the "bin" directory to windows environment variable "path"
+6) Download and install Java SE JDK: http://www.oracle.com/technetwork/java/javase/downloads/index.html (if you don't have it installed already)
+
+#### Generate new source
+1) Start the Cygwin Terminal
+2) ``cd`` to the source
+2) run ``./generate.sh``
+
 ## Links
 * [EVE Swagger Interface](https://esi.tech.ccp.is/latest/)
 * [Eve Online SSO](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/index.html)
