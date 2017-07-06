@@ -1,6 +1,6 @@
 package net.troja.eve.esi.api;
 
-import static org.junit.Assume.assumeTrue;
+import static org.junit.Assume.assumeFalse;
 
 import java.util.Map;
 
@@ -65,6 +65,6 @@ public class GeneralApiTest {
     }
 
     protected void ignoreTestFails() {
-        assumeTrue("Ignore test fails: ", false); // Ignore empty collection
+        assumeFalse("Ignore test fails: ", true); //true = ignore tests :: false = run all tests
     }
 }
