@@ -11,9 +11,6 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
@@ -21,8 +18,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
 import net.troja.eve.esi.model.CharacterCalendarResponse;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Ignore;
 
 /**
  * API tests for CalendarApi
@@ -60,7 +62,7 @@ public class CalendarApiTest extends GeneralApiTest {
 
         assertThat(response.size(), greaterThan(0));
     }
-
+    
     /**
      * Get an event
      *
@@ -83,5 +85,18 @@ public class CalendarApiTest extends GeneralApiTest {
                 eventId, DATASOURCE, null, null, null);
 
         assertThat(response.getEventId(), equalTo(eventId));
+    }
+
+    /**
+     * Respond to an event
+     *
+     * Set your response status to an event  ---   SSO Scope: esi-calendar.respond_calendar_events.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Can't test put")
+    public void putCharactersCharacterIdCalendarEventIdTest() throws ApiException {
     }
 }

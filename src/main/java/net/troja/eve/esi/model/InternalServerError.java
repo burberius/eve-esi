@@ -16,42 +16,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 /**
- * characters object
+ * Internal server error model
  */
-@ApiModel(description = "characters object")
-public class CspaCharacters implements Serializable {
+@ApiModel(description = "Internal server error model")
+public class InternalServerError implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("characters")
-    private List<Integer> characters = new ArrayList<Integer>();
+    @JsonProperty("error")
+    private String error = null;
 
-    public CspaCharacters characters(List<Integer> characters) {
-        this.characters = characters;
-        return this;
-    }
-
-    public CspaCharacters addCharactersItem(Integer charactersItem) {
-        this.characters.add(charactersItem);
+    public InternalServerError error(String error) {
+        this.error = error;
         return this;
     }
 
     /**
-     * characters array
+     * Internal server error message
      * 
-     * @return characters
+     * @return error
      **/
-    @ApiModelProperty(example = "null", required = true, value = "characters array")
-    public List<Integer> getCharacters() {
-        return characters;
+    @ApiModelProperty(example = "null", value = "Internal server error message")
+    public String getError() {
+        return error;
     }
 
-    public void setCharacters(List<Integer> characters) {
-        this.characters = characters;
+    public void setError(String error) {
+        this.error = error;
     }
 
     @Override
@@ -62,21 +55,21 @@ public class CspaCharacters implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CspaCharacters cspaCharacters = (CspaCharacters) o;
-        return Objects.equals(this.characters, cspaCharacters.characters);
+        InternalServerError internalServerError = (InternalServerError) o;
+        return Objects.equals(this.error, internalServerError.error);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characters);
+        return Objects.hash(error);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CspaCharacters {\n");
+        sb.append("class InternalServerError {\n");
 
-        sb.append("    characters: ").append(toIndentedString(characters)).append("\n");
+        sb.append("    error: ").append(toIndentedString(error)).append("\n");
         sb.append("}");
         return sb.toString();
     }

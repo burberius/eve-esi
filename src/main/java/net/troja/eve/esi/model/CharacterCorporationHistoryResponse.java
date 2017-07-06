@@ -48,7 +48,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -87,7 +87,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return recordId
      **/
-    @ApiModelProperty(example = "null", value = "An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous")
+    @ApiModelProperty(example = "null", required = true, value = "An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous")
     public Integer getRecordId() {
         return recordId;
     }
@@ -106,7 +106,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(example = "null", value = "start_date string")
+    @ApiModelProperty(example = "null", required = true, value = "start_date string")
     public OffsetDateTime getStartDate() {
         return startDate;
     }

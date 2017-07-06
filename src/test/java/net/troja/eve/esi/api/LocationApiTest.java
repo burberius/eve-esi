@@ -12,6 +12,7 @@
 package net.troja.eve.esi.api;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
@@ -54,7 +55,21 @@ public class LocationApiTest extends GeneralApiTest {
 
         assertThat(response.getSolarSystemId(), greaterThan(0));
     }
-
+    
+    /**
+     * Get character online
+     *
+     * Checks if the character is currently online  ---  This route is cached for up to 60 seconds  SSO Scope: esi-location.read_online.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdOnlineTest() throws ApiException {
+        Boolean response = api.getCharactersCharacterIdOnline(characterId, DATASOURCE, null, null, null);
+        assertThat(response, notNullValue());
+    }
+    
     /**
      * Get current ship
      *

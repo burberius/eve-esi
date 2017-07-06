@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.DogmaAttributeResponse;
 import net.troja.eve.esi.model.DogmaEffectResponse;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +36,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get attributes Get a list of dogma attribute ids --- This route is cached
-     * for up to 3600 seconds
+     * Get attributes Get a list of dogma attribute ids --- This route expires
+     * daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -84,7 +85,7 @@ public class DogmaApi {
 
     /**
      * Get attribute information Get information on a dogma attribute --- This
-     * route is cached for up to 3600 seconds
+     * route expires daily at 11:05
      * 
      * @param attributeId
      *            A dogma attribute ID (required)
@@ -141,8 +142,8 @@ public class DogmaApi {
     }
 
     /**
-     * Get effects Get a list of dogma effect ids --- This route is cached for
-     * up to 3600 seconds
+     * Get effects Get a list of dogma effect ids --- This route expires daily
+     * at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -190,7 +191,7 @@ public class DogmaApi {
 
     /**
      * Get effect information Get information on a dogma effect --- This route
-     * is cached for up to 3600 seconds
+     * expires daily at 11:05
      * 
      * @param effectId
      *            A dogma effect ID (required)

@@ -7,8 +7,11 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.CharacterCalendarEvent;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
 import net.troja.eve.esi.model.CharacterCalendarResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,14 +46,14 @@ public class CalendarApi {
      * esi-calendar.read_calendar_events.v1
      * 
      * @param characterId
-     *            The character to retrieve events from (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param fromEvent
      *            The event ID to retrieve events from (optional)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -108,14 +111,14 @@ public class CalendarApi {
      * esi-calendar.read_calendar_events.v1
      * 
      * @param characterId
-     *            The character id requesting the event (required)
+     *            An EVE character ID (required)
      * @param eventId
      *            The id of the event requested (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -171,5 +174,82 @@ public class CalendarApi {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Respond to an event Set your response status to an event --- SSO Scope:
+     * esi-calendar.respond_calendar_events.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param eventId
+     *            The ID of the event requested (required)
+     * @param response
+     *            The response value to set, overriding current value.
+     *            (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public void putCharactersCharacterIdCalendarEventId(Integer characterId, Integer eventId,
+            CharacterCalendarEvent response, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = response;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling putCharactersCharacterIdCalendarEventId");
+        }
+
+        // verify the required parameter 'eventId' is set
+        if (eventId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'eventId' when calling putCharactersCharacterIdCalendarEventId");
+        }
+
+        // verify the required parameter 'response' is set
+        if (response == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'response' when calling putCharactersCharacterIdCalendarEventId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v3/characters/{character_id}/calendar/{event_id}/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
+                .replaceAll("\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
 }

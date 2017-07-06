@@ -12,6 +12,7 @@
 package net.troja.eve.esi.api;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterAttributesResponse;
 import net.troja.eve.esi.model.CharacterSkillqueueResponse;
 import net.troja.eve.esi.model.CharacterSkillsResponse;
 
@@ -33,6 +35,22 @@ public class SkillsApiTest extends GeneralApiTest {
     @Before
     public void setUp() {
         api.setApiClient(apiClient);
+    }
+
+    /**
+     * Get character attributes
+     *
+     * Return attributes of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-skills.read_skills.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdAttributesTest() throws ApiException {
+        CharacterAttributesResponse response = api.getCharactersCharacterIdAttributes(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.getIntelligence(), greaterThan(0));
     }
 
     /**
@@ -60,7 +78,7 @@ public class SkillsApiTest extends GeneralApiTest {
         final CharacterSkillqueueResponse skillqueue = response.get(0);
         assertThat(skillqueue.getSkillId(), greaterThan(0));
     }
-
+    
     /**
      * Get character skills
      *

@@ -20,6 +20,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterWalletJournalResponse;
+import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import net.troja.eve.esi.model.CharacterWalletsJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletsResponse;
 
 /**
@@ -34,6 +37,57 @@ public class WalletApiTest extends GeneralApiTest {
         api.setApiClient(apiClient);
     }
 
+    /**
+     * Get a character&#39;s wallet balance
+     *
+     * Returns a character&#39;s wallet_id and balance  ---  This route is cached for up to 120 seconds  SSO Scope: esi-wallet.read_character_wallet.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdWalletTest() throws ApiException {
+        Float response = api.getCharactersCharacterIdWallet(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, greaterThan(0f));
+    }
+    
+    /**
+     * Get character wallet journal
+     *
+     * Retrieve character wallet journal  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_character_wallet.v1  SSO Scope: esi-wallet.read_character_wallet.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdWalletJournalTest() throws ApiException {
+        Long fromId = null;
+        List<CharacterWalletJournalResponse> response = api.getCharactersCharacterIdWalletJournal(characterId, DATASOURCE, fromId, null, null, null);
+
+        assertThat(response.size(), greaterThan(0));
+        final CharacterWalletJournalResponse characterWalletJournalResponse = response.get(0);
+        assertThat(characterWalletJournalResponse.getBalance(), greaterThan(0f));
+    }
+    
+    /**
+     * Get wallet transactions
+     *
+     * Get wallet transactions of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_character_wallet.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdWalletTransactionsTest() throws ApiException {
+        Long fromId = null;
+        List<CharacterWalletTransactionsResponse> response = api.getCharactersCharacterIdWalletTransactions(characterId, DATASOURCE, fromId, null, null, null);
+
+        assertThat(response.size(), greaterThan(0));
+        final CharacterWalletTransactionsResponse characterWalletTransactionsResponse = response.get(0);
+        assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0));
+    }
+    
     /**
      * List wallets and balances
      *
@@ -60,5 +114,22 @@ public class WalletApiTest extends GeneralApiTest {
         final CharacterWalletsResponse characterWalletsResponse = response.get(0);
         assertThat(characterWalletsResponse.getBalance(), greaterThan(0l));
     }
+    
+    /**
+     * Get character wallet journal
+     *
+     * Retrieve character wallet journal  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_character_wallet.v1  SSO Scope: esi-wallet.read_character_wallet.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdWalletsJournalTest() throws ApiException {
+        Long fromId = null;
+        List<CharacterWalletsJournalResponse> response = api.getCharactersCharacterIdWalletsJournal(characterId, DATASOURCE, fromId, null, null, null);
 
+        assertThat(response.size(), greaterThan(0));
+        final CharacterWalletsJournalResponse characterWalletsJournalResponse = response.get(0);
+        assertThat(characterWalletsJournalResponse.getBalance(), greaterThan(0f));
+    }
 }

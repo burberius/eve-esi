@@ -7,6 +7,7 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.WarKillmailsResponse;
 import net.troja.eve.esi.model.WarResponse;
 
@@ -153,8 +154,7 @@ public class WarsApi {
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param page
-     *            Which page to query, starting at 1, 2000 killmails per page.
-     *            (optional, default to 1)
+     *            Which page of results to return (optional, default to 1)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

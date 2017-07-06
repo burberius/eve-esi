@@ -42,7 +42,6 @@ public class ClonesApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdClonesTest() throws ApiException {
         api = new ClonesApi(apiClient);
 
-        final Integer characterId = 91649735;
         final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE, null, null,
                 null);
 

@@ -10,6 +10,8 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.CharacterFitting;
 import net.troja.eve.esi.model.CharacterFittingResponse;
 import net.troja.eve.esi.model.CharacterFittingsResponse;
+import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,14 +42,14 @@ public class FittingsApi {
      * esi-fittings.write_fittings.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param fittingId
      *            ID for a fitting of this character (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -107,12 +109,12 @@ public class FittingsApi {
      * up to 300 seconds SSO Scope: esi-fittings.read_fittings.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -168,14 +170,14 @@ public class FittingsApi {
      * esi-fittings.write_fittings.v1
      * 
      * @param characterId
-     *            ID for a character (required)
+     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param fitting
      *            Details about the new fitting (optional)
      * @param token
-     *            Access token to use, if preferred over a header (optional)
+     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent

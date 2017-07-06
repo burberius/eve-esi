@@ -40,11 +40,9 @@ public class DogmaApiTest extends GeneralApiTest {
      */
     @Test
     public void getDogmaAttributesTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null, null);
 
-        assertThat(response.size(), equalTo(2319));
+        assertThat(response.size(), equalTo(2328));
     }
 
     /**
@@ -83,7 +81,7 @@ public class DogmaApiTest extends GeneralApiTest {
         final String xUserAgent = null;
         final List<Integer> response = api.getDogmaEffects(DATASOURCE, userAgent, xUserAgent);
 
-        assertThat(response.size(), equalTo(3917));
+        assertThat(response.size(), equalTo(3922));
     }
 
     /**
