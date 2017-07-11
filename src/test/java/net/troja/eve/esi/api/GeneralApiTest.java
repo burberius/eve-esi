@@ -1,5 +1,7 @@
 package net.troja.eve.esi.api;
 
+import static org.junit.Assume.assumeFalse;
+
 import java.util.Map;
 
 import org.junit.BeforeClass;
@@ -60,5 +62,9 @@ public class GeneralApiTest {
 
         characterName = info.getCharacterName();
         characterId = info.getCharacterId();
+    }
+
+    protected void ignoreTestFails() {
+        assumeFalse("Ignore test fails", true); //true = ignore tests :: false = run all tests
     }
 }
