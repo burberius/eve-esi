@@ -30,6 +30,13 @@
       <email>burberius@gmail.com</email>
       <url>https://github.com/burberius</url>
     </developer>
+    <developer>
+    <id>goldengnu</id>
+      <name>Niklas Kyster Rasmussen</name>
+      <email>niklaskr@gmail.com</email>
+      <url>https://github.com/GoldenGnu</url>
+      <timezone>+1</timezone>
+    </developer>
   </developers>
 
   <properties>

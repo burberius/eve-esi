@@ -128,7 +128,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params

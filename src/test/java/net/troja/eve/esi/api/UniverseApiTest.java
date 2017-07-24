@@ -44,7 +44,6 @@ import net.troja.eve.esi.model.UniverseNamesResponse;
  * API tests for UniverseApi
  */
 public class UniverseApiTest extends GeneralApiTest {
-    private static final String NAME_PLEX = "30 Day Pilot's License Extension (PLEX)";
 
     private final UniverseApi api = new UniverseApi();
 
@@ -580,12 +579,12 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseTypesTypeIdTest() throws ApiException {
-        final Integer typeId = TYPE_ID_PLEX;
+        final Integer typeId = TYPE_ID_VELDSPAR;
         final String userAgent = null;
         final String xUserAgent = null;
         final TypeResponse response = api.getUniverseTypesTypeId(typeId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
-        assertThat(response.getName(), equalTo(NAME_PLEX));
+        assertThat(response.getName(), equalTo(NAME_VELDSPAR));
     }
 
     /**
@@ -603,14 +602,14 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void postUniverseNamesTest() throws ApiException {
         final List<Integer> ids = new ArrayList<>();
-        ids.add(TYPE_ID_PLEX);
+        ids.add(TYPE_ID_VELDSPAR);
         final String userAgent = null;
         final String xUserAgent = null;
         final List<UniverseNamesResponse> response = api.postUniverseNames(ids, DATASOURCE, userAgent, xUserAgent);
 
         assertThat(response.size(), equalTo(1));
         final UniverseNamesResponse result = response.get(0);
-        assertThat(result.getName(), equalTo(NAME_PLEX));
+        assertThat(result.getName(), equalTo(NAME_VELDSPAR));
     }
 
 }

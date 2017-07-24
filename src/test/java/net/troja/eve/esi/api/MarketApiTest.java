@@ -133,7 +133,7 @@ public class MarketApiTest extends GeneralApiTest {
     public void getMarketsRegionIdHistoryTest() throws ApiException {
         final String userAgent = null;
         final String xUserAgent = null;
-        final List<MarketHistoryResponse> response = api.getMarketsRegionIdHistory(REGION_ID_THE_FORGE, TYPE_ID_PLEX,
+        final List<MarketHistoryResponse> response = api.getMarketsRegionIdHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR,
                 DATASOURCE, userAgent, xUserAgent);
 
         assertThat(response.size(), greaterThan(0));
@@ -160,7 +160,7 @@ public class MarketApiTest extends GeneralApiTest {
         final String userAgent = null;
         final String xUserAgent = null;
         final List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
-                DATASOURCE, page, TYPE_ID_PLEX, userAgent, xUserAgent);
+                DATASOURCE, page, TYPE_ID_VELDSPAR, userAgent, xUserAgent);
 
         assertThat(response.size(), greaterThan(0));
         final MarketOrdersResponse ordersResponse = response.get(0);

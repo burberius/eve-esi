@@ -76,7 +76,7 @@ public class CorporationApiTest extends GeneralApiTest {
         assertThat(response.size(), greaterThan(0));
         // The last entry is without alliance!
         final CorporationAlliancesHistoryResponse alliance = response.get(response.size() - 2);
-        assertThat(alliance.getAlliance().getAllianceId(), equalTo(1804089170));
+        assertThat(alliance.getAllianceId(), equalTo(1804089170));
     }
 
     /**

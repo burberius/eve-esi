@@ -11,6 +11,7 @@
 
 package net.troja.eve.esi.api;
 
+import java.util.List;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -18,14 +19,21 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterClonesResponse;
+import org.junit.Before;
 
 /**
  * API tests for ClonesApi
  */
 public class ClonesApiTest extends GeneralApiTest {
 
-    private ClonesApi api;
+    private final ClonesApi api = new ClonesApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
 
     /**
      * Get clones
@@ -40,13 +48,26 @@ public class ClonesApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdClonesTest() throws ApiException {
-        api = new ClonesApi(apiClient);
-
         final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE, null, null,
                 null);
 
         assertThat(response, notNullValue());
         assertThat(response.getJumpClones().size(), greaterThan(0));
+    }
+
+    /**
+     * Get active implants
+     *
+     * Return implants on the active clone of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-clones.read_implants.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdImplantsTest() throws ApiException {
+        List<Integer> response = api.getCharactersCharacterIdImplants(characterId, DATASOURCE, null, null, null);
+        assertThat(response.size(), greaterThan(0));
+        assertThat(response.get(0), greaterThan(0));
     }
 
 }

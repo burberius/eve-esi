@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
-import net.troja.eve.esi.model.Alliance;
 import java.io.Serializable;
 
 /**
@@ -27,8 +26,11 @@ import java.io.Serializable;
 public class CorporationAlliancesHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance")
-    private Alliance alliance = null;
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
+
+    @JsonProperty("is_deleted")
+    private Boolean isDeleted = null;
 
     @JsonProperty("record_id")
     private Integer recordId = null;
@@ -36,23 +38,42 @@ public class CorporationAlliancesHistoryResponse implements Serializable {
     @JsonProperty("start_date")
     private OffsetDateTime startDate = null;
 
-    public CorporationAlliancesHistoryResponse alliance(Alliance alliance) {
-        this.alliance = alliance;
+    public CorporationAlliancesHistoryResponse allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
         return this;
     }
 
     /**
-     * Get alliance
+     * alliance_id integer
      * 
-     * @return alliance
+     * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public Alliance getAlliance() {
-        return alliance;
+    @ApiModelProperty(example = "null", value = "alliance_id integer")
+    public Integer getAllianceId() {
+        return allianceId;
     }
 
-    public void setAlliance(Alliance alliance) {
-        this.alliance = alliance;
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+    }
+
+    public CorporationAlliancesHistoryResponse isDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
+    }
+
+    /**
+     * True if the alliance has been closed
+     * 
+     * @return isDeleted
+     **/
+    @ApiModelProperty(example = "null", value = "True if the alliance has been closed")
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public CorporationAlliancesHistoryResponse recordId(Integer recordId) {
@@ -103,14 +124,15 @@ public class CorporationAlliancesHistoryResponse implements Serializable {
             return false;
         }
         CorporationAlliancesHistoryResponse corporationAlliancesHistoryResponse = (CorporationAlliancesHistoryResponse) o;
-        return Objects.equals(this.alliance, corporationAlliancesHistoryResponse.alliance)
+        return Objects.equals(this.allianceId, corporationAlliancesHistoryResponse.allianceId)
+                && Objects.equals(this.isDeleted, corporationAlliancesHistoryResponse.isDeleted)
                 && Objects.equals(this.recordId, corporationAlliancesHistoryResponse.recordId)
                 && Objects.equals(this.startDate, corporationAlliancesHistoryResponse.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(alliance, recordId, startDate);
+        return Objects.hash(allianceId, isDeleted, recordId, startDate);
     }
 
     @Override
@@ -118,7 +140,8 @@ public class CorporationAlliancesHistoryResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationAlliancesHistoryResponse {\n");
 
-        sb.append("    alliance: ").append(toIndentedString(alliance)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
+        sb.append("    isDeleted: ").append(toIndentedString(isDeleted)).append("\n");
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
         sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("}");
