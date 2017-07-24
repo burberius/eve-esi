@@ -157,6 +157,8 @@ public class CharacterAssetsResponse implements Serializable {
 
         SPECIALIZEDMATERIALBAY("SpecializedMaterialBay"),
 
+        SUBSYSTEMBAY("SubSystemBay"),
+
         SUBSYSTEMSLOT0("SubSystemSlot0"),
 
         SUBSYSTEMSLOT1("SubSystemSlot1"),

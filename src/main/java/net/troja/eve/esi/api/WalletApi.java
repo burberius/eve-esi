@@ -39,8 +39,8 @@ public class WalletApi {
     }
 
     /**
-     * Get a character&#39;s wallet balance Returns a character&#39;s wallet_id
-     * and balance --- This route is cached for up to 120 seconds SSO Scope:
+     * Get a character&#39;s wallet balance Returns a character&#39;s wallet
+     * balance --- This route is cached for up to 120 seconds SSO Scope:
      * esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
@@ -103,7 +103,6 @@ public class WalletApi {
     /**
      * Get character wallet journal Retrieve character wallet journal --- This
      * route is cached for up to 3600 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1 SSO Scope:
      * esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
@@ -236,8 +235,10 @@ public class WalletApi {
     /**
      * List wallets and balances List your wallets and their balances.
      * Characters typically have only one wallet, with wallet_id 1000 being the
-     * master wallet. --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * master wallet. --- This route is cached for up to 120 seconds ---
+     * Warning: Since a character has only 1 wallet, this route will be moved to
+     * /characters/{character_id}/wallet, this route will be removed on
+     * 2017-07-31. SSO Scope: esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -299,8 +300,10 @@ public class WalletApi {
     /**
      * Get character wallet journal Retrieve character wallet journal --- This
      * route is cached for up to 3600 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1 SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * esi-wallet.read_character_wallet.v1 --- Warning: Since a character has
+     * only 1 wallet, this route will be moved to
+     * /characters/{character_id}/wallet/journal, this route will be removed on
+     * 2017-07-31.
      * 
      * @param characterId
      *            An EVE character ID (required)

@@ -38,7 +38,7 @@ public class InternalServerError implements Serializable {
      * 
      * @return error
      **/
-    @ApiModelProperty(example = "null", value = "Internal server error message")
+    @ApiModelProperty(example = "null", required = true, value = "Internal server error message")
     public String getError() {
         return error;
     }

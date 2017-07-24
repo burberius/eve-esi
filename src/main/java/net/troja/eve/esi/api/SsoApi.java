@@ -31,10 +31,13 @@ public class SsoApi {
     }
 
     public CharacterInfo getCharacterInfo() throws ApiException {
-        final String basePath = apiClient.getBasePath(); //Save old basepath
-        final DateFormat dateFormat = apiClient.getDateFormat(); //Save old date format
-        apiClient.setBasePath(OAuth.URI_OAUTH); //Set new basepath
-        apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); //Set new date format
+        final String basePath = apiClient.getBasePath(); // Save old basepath
+        final DateFormat dateFormat = apiClient.getDateFormat(); // Save old
+                                                                 // date format
+        apiClient.setBasePath(OAuth.URI_OAUTH); // Set new basepath
+        apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); // Set new
+                                                                    // date
+                                                                    // format
         final Object localVarPostBody = null;
 
         final String localVarPath = "/verify";
@@ -55,11 +58,12 @@ public class SsoApi {
         };
 
         try {
-            return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                    localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+            return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody,
+                    localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames,
+                    localVarReturnType);
         } finally {
-            apiClient.setBasePath(basePath); //load old basepath
-            apiClient.setDateFormat(dateFormat); //load old date format
+            apiClient.setBasePath(basePath); // load old basepath
+            apiClient.setDateFormat(dateFormat); // load old date format
         }
     }
 }

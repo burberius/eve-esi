@@ -28,6 +28,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBlueprintsResponse;
 import net.troja.eve.esi.model.CharacterChatChannelsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
+import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
@@ -147,6 +148,20 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getCorporationId(), greaterThan(0));
+    }
+
+    /**
+     * Get jump fatigue
+     *
+     * Return a character&#39;s jump activation and fatigue information  ---  This route is cached for up to 300 seconds  SSO Scope: esi-characters.read_fatigue.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdFatigueTest() throws ApiException {
+        CharacterFatigueResponse response = api.getCharactersCharacterIdFatigue(characterId, DATASOURCE, null, null, null);
+        assertThat(response, notNullValue());
     }
 
     /**
