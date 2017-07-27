@@ -8,6 +8,8 @@ package net.troja.eve.esi.auth;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.ws.rs.ProcessingException;
+import net.troja.eve.esi.ApiException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
@@ -30,7 +32,7 @@ public class OAuth implements Authentication {
     private OAuth2CodeGrantFlow oAuthFlow;
 
     @Override
-    public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
+    public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) throws ApiException {
         if ((refreshToken != null) && (validUntil < System.currentTimeMillis())) {
             refreshToken();
         }
@@ -69,13 +71,22 @@ public class OAuth implements Authentication {
      * @param state
      *            This should be some secret to prevent XRSF see
      *            getAuthorizationUri
+     * @throws net.troja.eve.esi.ApiException
      */
-    public void finishFlow(final String code, final String state) {
-        updateTokens(getFlow().finish(code, state));
+    public void finishFlow(final String code, final String state) throws ApiException {
+        try {
+            updateTokens(getFlow().finish(code, state));
+        } catch (ProcessingException ex) {
+            throw new ApiException(ex);
+        }
     }
 
-    private void refreshToken() {
-        updateTokens(getFlow().refreshAccessToken(refreshToken));
+    private void refreshToken() throws ApiException {
+        try {
+            updateTokens(getFlow().refreshAccessToken(refreshToken));
+        } catch (ProcessingException ex) {
+            throw new ApiException(ex);
+        }
     }
 
     private OAuth2CodeGrantFlow getFlow() {
@@ -104,7 +115,7 @@ public class OAuth implements Authentication {
             builder.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "state", state);
         }
         if (StringUtils.isNotBlank(scopesString)) {
-            builder.scope(scopesString.toString());
+            builder.scope(scopesString);
         }
         oAuthFlow = builder.build();
     }

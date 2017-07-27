@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -27,10 +28,11 @@ import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
+import static org.junit.Assert.fail;
 
 public class SsoAuthTest extends GeneralApiTest {
     @Test
-    public void refreshToken() {
+    public void refreshToken() throws ApiException {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
@@ -65,6 +67,34 @@ public class SsoAuthTest extends GeneralApiTest {
         assertThat(info.getIntellectualProperty(), equalTo("EVE"));
     }
 
+    @Test
+    public void getCharacterInfoFail() {
+        final SsoApi api = new SsoApi();
+        try {
+            api.getCharacterInfo();
+            fail("Must fail with ApiException");
+        } catch (ApiException ex) {
+            assertThat(ex, notNullValue());
+            assertThat(ex.getCode(), notNullValue());
+        }
+    }
+
+    @Test
+    public void finishFlowFail() {
+        OAuth oAuth = new OAuth();
+        oAuth.setClientId("");
+        oAuth.setClientSecret("");
+        final String state = "TESTING";
+        oAuth.getAuthorizationUri("", Collections.singleton(""), state);
+        try {
+            oAuth.finishFlow("", state);
+            fail("Must fail with ApiException");
+        } catch (ApiException ex) {
+            assertThat(ex, notNullValue());
+            assertThat(ex.getCode(), notNullValue());
+        }
+    }
+
     /**
      * This main method can be used to generate a refresh token to run the unit
      * tests that need authentication. It is also an example how to use SSO in
@@ -76,8 +106,9 @@ public class SsoAuthTest extends GeneralApiTest {
      *            The client id and client secret.
      * @throws IOException
      * @throws URISyntaxException
+     * @throws net.troja.eve.esi.ApiException
      */
-    public static void main(final String... args) throws IOException, URISyntaxException {
+    public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
         final String state = "somesecret";
         if (args.length != 2) {
             System.err.println("ClientId and ClientSecret missing");
