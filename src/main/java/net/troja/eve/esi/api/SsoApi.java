@@ -20,13 +20,21 @@ import net.troja.eve.esi.auth.OAuth;
  */
 public class SsoApi {
     private static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss.sss";
-    private final ApiClient apiClient;
+    private ApiClient apiClient;
 
     public SsoApi() {
         this(new ApiClient());
     }
 
     public SsoApi(final ApiClient apiClient) {
+        this.apiClient = apiClient;
+    }
+
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
+
+    public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
