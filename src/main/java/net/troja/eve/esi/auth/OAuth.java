@@ -127,6 +127,7 @@ public class OAuth implements Authentication {
     }
 
     public void setRefreshToken(final String refreshToken) {
+        validUntil = 0; //Reset
         this.refreshToken = refreshToken;
     }
 
