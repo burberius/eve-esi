@@ -32,9 +32,13 @@ public class OAuth implements Authentication {
     private OAuth2CodeGrantFlow oAuthFlow;
 
     @Override
-    public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) throws ApiException {
+    public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
         if ((refreshToken != null) && (validUntil < System.currentTimeMillis())) {
-            refreshToken();
+            try {
+                refreshToken();
+            } catch (ProcessingException ex) {
+                //This error will be handled by ESI once the request is made
+            }
         }
         if (accessToken != null) {
             headerParams.put("Authorization", "Bearer " + accessToken);
@@ -81,12 +85,8 @@ public class OAuth implements Authentication {
         }
     }
 
-    private void refreshToken() throws ApiException {
-        try {
-            updateTokens(getFlow().refreshAccessToken(refreshToken));
-        } catch (ProcessingException ex) {
-            throw new ApiException(ex);
-        }
+    private void refreshToken() {
+        updateTokens(getFlow().refreshAccessToken(refreshToken));
     }
 
     private OAuth2CodeGrantFlow getFlow() {

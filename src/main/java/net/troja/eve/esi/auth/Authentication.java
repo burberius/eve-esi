@@ -15,7 +15,6 @@ import net.troja.eve.esi.Pair;
 
 import java.util.Map;
 import java.util.List;
-import net.troja.eve.esi.ApiException;
 
 public interface Authentication {
     /**
@@ -25,7 +24,6 @@ public interface Authentication {
      *            List of query parameters
      * @param headerParams
      *            Map of header parameters
-     * @throws net.troja.eve.esi.ApiException
      */
-    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) throws ApiException;
+    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams);
 }

@@ -23,6 +23,7 @@ import org.junit.Test;
 
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.CharacterInfo;
@@ -68,8 +69,32 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
-    public void getCharacterInfoFail() {
-        final SsoApi api = new SsoApi();
+    public void expiredAccessTokenAssets() {
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        auth.setClientId(clientId);
+        auth.setClientSecret(clientSecret);
+        auth.setRefreshToken(null);
+        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+        AssetsApi api = new AssetsApi(client);
+        try {
+            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+            fail("Must fail with ApiException");
+        } catch (ApiException ex) {
+            assertThat(ex, notNullValue());
+            assertThat(ex.getCode(), notNullValue());
+        }
+    }
+
+    @Test
+    public void expiredAccessTokenSso() {
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        auth.setClientId(clientId);
+        auth.setClientSecret(clientSecret);
+        auth.setRefreshToken(null);
+        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+        final SsoApi api = new SsoApi(client);
         try {
             api.getCharacterInfo();
             fail("Must fail with ApiException");
