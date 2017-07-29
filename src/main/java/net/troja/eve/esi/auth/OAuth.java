@@ -27,6 +27,7 @@ public class OAuth implements Authentication {
     private String clientId;
     private String clientSecret;
     private OAuth2CodeGrantFlow oAuthFlow;
+    private final Map<String, AccessTokenData> accessTokenCache = new HashMap<String, AccessTokenData>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
@@ -146,9 +147,15 @@ public class OAuth implements Authentication {
     }
 
     private void saveAccessToken() {
+        AccessTokenData accessTokenData = new AccessTokenData(accessToken, validUntil);
+        accessTokenCache.put(getAuthKey(), accessTokenData);
     }
 
     private void loadAccessToken() {
+        AccessTokenData accessTokenData = accessTokenCache.get(getAuthKey());
+        if (accessTokenData != null) { //Old refreshToken: Use existing accesssToken
+            accessToken = accessTokenData.getAccessToken();
+            validUntil = accessTokenData.getValidUntil();
         } else { //New refreshToken: reset accesssToken
             accessToken = null;
             validUntil = 0;
@@ -159,9 +166,11 @@ public class OAuth implements Authentication {
         return "clientId:"+clientId+"clientSecret:"+clientSecret+"refreshToken:"+refreshToken;
     }
 
+    private static class AccessTokenData {
         private final String accessToken;
         private final long validUntil;
 
+        public AccessTokenData(String accessToken, long validUntil) {
             this.accessToken = accessToken;
             this.validUntil = validUntil;
         }
