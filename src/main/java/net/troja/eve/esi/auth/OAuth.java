@@ -163,7 +163,7 @@ public class OAuth implements Authentication {
     }
 
     private String getAuthKey() {
-        return "clientId:"+clientId+"clientSecret:"+clientSecret+"refreshToken:"+refreshToken;
+        return clientId + clientSecret + refreshToken;
     }
 
     private static class AccessTokenData {
