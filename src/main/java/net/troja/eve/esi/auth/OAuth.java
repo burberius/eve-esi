@@ -5,17 +5,16 @@
 
 package net.troja.eve.esi.auth;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+import net.troja.eve.esi.Pair;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;
 import org.glassfish.jersey.client.oauth2.TokenResult;
-
-import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
     public static final String URI_OAUTH = "https://login.eveonline.com/oauth";
@@ -28,6 +27,7 @@ public class OAuth implements Authentication {
     private String clientId;
     private String clientSecret;
     private OAuth2CodeGrantFlow oAuthFlow;
+    private final Map<String, AccessTokenData> accessTokenCache = new HashMap<String, AccessTokenData>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
@@ -89,6 +89,7 @@ public class OAuth implements Authentication {
         accessToken = result.getAccessToken();
         refreshToken = result.getRefreshToken();
         validUntil = (System.currentTimeMillis() + (result.getExpiresIn() * 1000)) - 5000;
+        saveAccessToken();
     }
 
     private void createFlow(final String redirectUri, final Set<String> scopes, final String state) {
@@ -127,19 +128,59 @@ public class OAuth implements Authentication {
     }
 
     public void setRefreshToken(final String refreshToken) {
-        validUntil = 0; //Reset
         this.refreshToken = refreshToken;
+        loadAccessToken();
     }
 
     public void setClientId(final String clientId) {
         this.clientId = clientId;
+        loadAccessToken();
     }
 
     public void setClientSecret(final String clientSecret) {
         this.clientSecret = clientSecret;
+        loadAccessToken();
     }
 
     public String getRefreshToken() {
         return refreshToken;
+    }
+
+    private void saveAccessToken() {
+        AccessTokenData accessTokenData = new AccessTokenData(accessToken, validUntil);
+        accessTokenCache.put(getAuthKey(), accessTokenData);
+    }
+
+    private void loadAccessToken() {
+        AccessTokenData accessTokenData = accessTokenCache.get(getAuthKey());
+        if (accessTokenData != null) { //Old refreshToken: Use existing accesssToken
+            accessToken = accessTokenData.getAccessToken();
+            validUntil = accessTokenData.getValidUntil();
+        } else { //New refreshToken: reset accesssToken
+            accessToken = null;
+            validUntil = 0;
+        }
+    }
+
+    private String getAuthKey() {
+        return clientId + clientSecret + refreshToken;
+    }
+
+    private static class AccessTokenData {
+        private final String accessToken;
+        private final long validUntil;
+
+        public AccessTokenData(String accessToken, long validUntil) {
+            this.accessToken = accessToken;
+            this.validUntil = validUntil;
+        }
+
+        public String getAccessToken() {
+            return accessToken;
+        }
+
+        public long getValidUntil() {
+            return validUntil;
+        }
     }
 }
