@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import net.troja.eve.esi.Pair;
+import javax.ws.rs.ProcessingException;
+import net.troja.eve.esi.ApiException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
@@ -32,7 +34,11 @@ public class OAuth implements Authentication {
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
         if ((refreshToken != null) && (validUntil < System.currentTimeMillis())) {
-            refreshToken();
+            try {
+                refreshToken();
+            } catch (ProcessingException ex) {
+                //This error will be handled by ESI once the request is made
+            }
         }
         if (accessToken != null) {
             headerParams.put("Authorization", "Bearer " + accessToken);
@@ -69,9 +75,14 @@ public class OAuth implements Authentication {
      * @param state
      *            This should be some secret to prevent XRSF see
      *            getAuthorizationUri
+     * @throws net.troja.eve.esi.ApiException
      */
-    public void finishFlow(final String code, final String state) {
-        updateTokens(getFlow().finish(code, state));
+    public void finishFlow(final String code, final String state) throws ApiException {
+        try {
+            updateTokens(getFlow().finish(code, state));
+        } catch (ProcessingException ex) {
+            throw new ApiException(ex);
+        }
     }
 
     private void refreshToken() {
@@ -105,7 +116,7 @@ public class OAuth implements Authentication {
             builder.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "state", state);
         }
         if (StringUtils.isNotBlank(scopesString)) {
-            builder.scope(scopesString.toString());
+            builder.scope(scopesString);
         }
         oAuthFlow = builder.build();
     }
