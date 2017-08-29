@@ -47,6 +47,9 @@ public class SystemResponse implements Serializable {
     @JsonProperty("security_status")
     private Float securityStatus = null;
 
+    @JsonProperty("star_id")
+    private Integer starId = null;
+
     @JsonProperty("stargates")
     private List<Integer> stargates = new ArrayList<Integer>();
 
@@ -172,6 +175,25 @@ public class SystemResponse implements Serializable {
         this.securityStatus = securityStatus;
     }
 
+    public SystemResponse starId(Integer starId) {
+        this.starId = starId;
+        return this;
+    }
+
+    /**
+     * star_id integer
+     * 
+     * @return starId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "star_id integer")
+    public Integer getStarId() {
+        return starId;
+    }
+
+    public void setStarId(Integer starId) {
+        this.starId = starId;
+    }
+
     public SystemResponse stargates(List<Integer> stargates) {
         this.stargates = stargates;
         return this;
@@ -230,13 +252,14 @@ public class SystemResponse implements Serializable {
                 && Objects.equals(this.position, systemResponse.position)
                 && Objects.equals(this.securityClass, systemResponse.securityClass)
                 && Objects.equals(this.securityStatus, systemResponse.securityStatus)
+                && Objects.equals(this.starId, systemResponse.starId)
                 && Objects.equals(this.stargates, systemResponse.stargates)
                 && Objects.equals(this.systemId, systemResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(constellationId, name, planets, position, securityClass, securityStatus, stargates,
+        return Objects.hash(constellationId, name, planets, position, securityClass, securityStatus, starId, stargates,
                 systemId);
     }
 
@@ -251,6 +274,7 @@ public class SystemResponse implements Serializable {
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    securityClass: ").append(toIndentedString(securityClass)).append("\n");
         sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");
+        sb.append("    starId: ").append(toIndentedString(starId)).append("\n");
         sb.append("    stargates: ").append(toIndentedString(stargates)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");

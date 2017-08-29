@@ -37,9 +37,9 @@ public class KillmailsApi {
     }
 
     /**
-     * List kills and losses Return a list of character&#39;s recent kills and
-     * losses --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-killmails.read_killmails.v1
+     * Get character kills and losses Return a list of character&#39;s recent
+     * kills and losses --- This route is cached for up to 120 seconds SSO
+     * Scope: esi-killmails.read_killmails.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

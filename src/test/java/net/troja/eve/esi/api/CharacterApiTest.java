@@ -11,11 +11,6 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +18,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+
+import static org.junit.Assert.assertThat;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBlueprintsResponse;
@@ -37,6 +38,7 @@ import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
+import net.troja.eve.esi.model.NewContactNotificationsResponse;
 
 /**
  * API tests for CharacterApi
@@ -83,8 +85,8 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdAgentsResearchTest() throws ApiException {
-        final List<CharacterResearchAgentsResponse> response = api.getCharactersCharacterIdAgentsResearch(characterId,
-                DATASOURCE, null, null, null);
+        final List<CharacterResearchAgentsResponse> response = api.getCharactersCharacterIdAgentsResearch(characterId, DATASOURCE, null, null,
+                null);
 
         assertThat(response, notNullValue());
     }
@@ -101,8 +103,7 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdBlueprintsTest() throws ApiException {
 
-        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId,
-                DATASOURCE, null, null, null);
+        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
     }
@@ -119,8 +120,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdChatChannelsTest() throws ApiException {
-        final List<CharacterChatChannelsResponse> response = api.getCharactersCharacterIdChatChannels(characterId,
-                DATASOURCE, null, null, null);
+        final List<CharacterChatChannelsResponse> response = api.getCharactersCharacterIdChatChannels(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         ignoreTestFails();
@@ -143,8 +143,8 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdCorporationhistoryTest() throws ApiException {
-        final List<CharacterCorporationHistoryResponse> response = api
-                .getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null, null);
+        final List<CharacterCorporationHistoryResponse> response = api.getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null,
+                null);
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getCorporationId(), greaterThan(0));
@@ -153,14 +153,16 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get jump fatigue
      *
-     * Return a character&#39;s jump activation and fatigue information  ---  This route is cached for up to 300 seconds  SSO Scope: esi-characters.read_fatigue.v1
+     * Return a character&#39;s jump activation and fatigue information --- This
+     * route is cached for up to 300 seconds SSO Scope:
+     * esi-characters.read_fatigue.v1
      *
      * @throws ApiException
-     *          if the Api call fails
+     *             if the Api call fails
      */
     @Test
     public void getCharactersCharacterIdFatigueTest() throws ApiException {
-        CharacterFatigueResponse response = api.getCharactersCharacterIdFatigue(characterId, DATASOURCE, null, null, null);
+        final CharacterFatigueResponse response = api.getCharactersCharacterIdFatigue(characterId, DATASOURCE, null, null, null);
         assertThat(response, notNullValue());
     }
 
@@ -176,7 +178,25 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdMedalsTest() throws ApiException {
         ignoreTestFails();
-        final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null,
+        final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get new contact notifications
+     *
+     * Return notifications about having been added to someone&#39;s contact
+     * list --- This route is cached for up to 600 seconds SSO Scope:
+     * esi-characters.read_notifications.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdNotificationsContactsTest() throws ApiException {
+        ignoreTestFails();
+        final List<NewContactNotificationsResponse> response = api.getCharactersCharacterIdNotificationsContacts(characterId, DATASOURCE, null,
                 null, null);
 
         assertThat(response, notNullValue());
@@ -195,8 +215,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdPortraitTest() throws ApiException {
-        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE, null,
-                null);
+        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE, null, null);
 
         assertThat(response, notNullValue());
         final String icon = response.getPx64x64();
@@ -231,8 +250,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdStandingsTest() throws ApiException {
-        final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE,
-                null, null, null);
+        final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -293,8 +311,7 @@ public class CharacterApiTest extends GeneralApiTest {
         final CspaCharacters characters = new CspaCharacters();
         characters.addCharactersItem(CHARACTER_ID_CHRIBBA);
 
-        final CspaCostResponse response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null,
-                null, null);
+        final CspaCostResponse response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null, null, null);
 
         assertThat(response.getCost(), equalTo(0l));
     }
