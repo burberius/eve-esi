@@ -23,9 +23,8 @@ wget -q -O esi.json https://esi.tech.ccp.is/_latest/swagger.json?datasource=tran
 #
 # Transform and beautify swagger file
 #
-./transformation.sh
 sed -i -f replace.sed esi.json
-
+./transformation.sh
 #
 # Generate code
 # Move tests so they are generated new and then moved to a different directory
