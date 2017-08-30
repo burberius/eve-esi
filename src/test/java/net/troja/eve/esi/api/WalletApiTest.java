@@ -12,18 +12,15 @@
 package net.troja.eve.esi.api;
 
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import static org.hamcrest.Matchers.greaterThan;
-
-import static org.junit.Assert.assertThat;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterWalletJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for WalletApi
@@ -65,11 +62,11 @@ public class WalletApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdWalletJournalTest() throws ApiException {
-        ignoreTestFails();
         final Long fromId = null;
         final List<CharacterWalletJournalResponse> response = api.getCharactersCharacterIdWalletJournal(characterId, DATASOURCE, fromId, null, null,
                 null);
 
+        assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
         final CharacterWalletJournalResponse characterWalletJournalResponse = response.get(0);
         assertThat(characterWalletJournalResponse.getBalance(), greaterThan(0f));
@@ -90,6 +87,7 @@ public class WalletApiTest extends GeneralApiTest {
         final List<CharacterWalletTransactionsResponse> response = api.getCharactersCharacterIdWalletTransactions(characterId, DATASOURCE, fromId,
                 null, null, null);
 
+        assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
         final CharacterWalletTransactionsResponse characterWalletTransactionsResponse = response.get(0);
         assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0));
