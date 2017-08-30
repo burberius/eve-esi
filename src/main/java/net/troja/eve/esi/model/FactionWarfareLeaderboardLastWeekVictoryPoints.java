@@ -22,7 +22,7 @@ import java.io.Serializable;
  * last_week object
  */
 @ApiModel(description = "last_week object")
-public class FactionWarfareLeaderboardLastWeek1 implements Serializable {
+public class FactionWarfareLeaderboardLastWeekVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
@@ -31,7 +31,7 @@ public class FactionWarfareLeaderboardLastWeek1 implements Serializable {
     @JsonProperty("faction_id")
     private Integer factionId = null;
 
-    public FactionWarfareLeaderboardLastWeek1 amount(Integer amount) {
+    public FactionWarfareLeaderboardLastWeekVictoryPoints amount(Integer amount) {
         this.amount = amount;
         return this;
     }
@@ -50,7 +50,7 @@ public class FactionWarfareLeaderboardLastWeek1 implements Serializable {
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardLastWeek1 factionId(Integer factionId) {
+    public FactionWarfareLeaderboardLastWeekVictoryPoints factionId(Integer factionId) {
         this.factionId = factionId;
         return this;
     }
@@ -77,9 +77,9 @@ public class FactionWarfareLeaderboardLastWeek1 implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FactionWarfareLeaderboardLastWeek1 factionWarfareLeaderboardLastWeek1 = (FactionWarfareLeaderboardLastWeek1) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardLastWeek1.amount)
-                && Objects.equals(this.factionId, factionWarfareLeaderboardLastWeek1.factionId);
+        FactionWarfareLeaderboardLastWeekVictoryPoints factionWarfareLeaderboardLastWeekVictoryPoints = (FactionWarfareLeaderboardLastWeekVictoryPoints) o;
+        return Objects.equals(this.amount, factionWarfareLeaderboardLastWeekVictoryPoints.amount)
+                && Objects.equals(this.factionId, factionWarfareLeaderboardLastWeekVictoryPoints.factionId);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FactionWarfareLeaderboardLastWeek1 implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class FactionWarfareLeaderboardLastWeek1 {\n");
+        sb.append("class FactionWarfareLeaderboardLastWeekVictoryPoints {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");

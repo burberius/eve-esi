@@ -18,9 +18,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationActiveTotal1;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationLastWeek1;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationYesterday1;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationLastWeekVictoryPoints;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationYesterdayVictoryPoints;
 import java.io.Serializable;
 
 /**
@@ -32,22 +32,22 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCorporationActiveTotal1> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotal1>();
+    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints>();
 
     @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCorporationLastWeek1> lastWeek = new ArrayList<FactionWarfareLeaderboardCorporationLastWeek1>();
+    private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek = new ArrayList<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints>();
 
     @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCorporationYesterday1> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterday1>();
+    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints>();
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints activeTotal(
-            List<FactionWarfareLeaderboardCorporationActiveTotal1> activeTotal) {
+            List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints addActiveTotalItem(
-            FactionWarfareLeaderboardCorporationActiveTotal1 activeTotalItem) {
+            FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints activeTotalItem) {
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -60,22 +60,22 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * @return activeTotal
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days.")
-    public List<FactionWarfareLeaderboardCorporationActiveTotal1> getActiveTotal() {
+    public List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
 
-    public void setActiveTotal(List<FactionWarfareLeaderboardCorporationActiveTotal1> activeTotal) {
+    public void setActiveTotal(List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints lastWeek(
-            List<FactionWarfareLeaderboardCorporationLastWeek1> lastWeek) {
+            List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints addLastWeekItem(
-            FactionWarfareLeaderboardCorporationLastWeek1 lastWeekItem) {
+            FactionWarfareLeaderboardCorporationLastWeekVictoryPoints lastWeekItem) {
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -86,22 +86,22 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * @return lastWeek
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past week")
-    public List<FactionWarfareLeaderboardCorporationLastWeek1> getLastWeek() {
+    public List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
 
-    public void setLastWeek(List<FactionWarfareLeaderboardCorporationLastWeek1> lastWeek) {
+    public void setLastWeek(List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints yesterday(
-            List<FactionWarfareLeaderboardCorporationYesterday1> yesterday) {
+            List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints addYesterdayItem(
-            FactionWarfareLeaderboardCorporationYesterday1 yesterdayItem) {
+            FactionWarfareLeaderboardCorporationYesterdayVictoryPoints yesterdayItem) {
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -112,11 +112,11 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * @return yesterday
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past day")
-    public List<FactionWarfareLeaderboardCorporationYesterday1> getYesterday() {
+    public List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }
 
-    public void setYesterday(List<FactionWarfareLeaderboardCorporationYesterday1> yesterday) {
+    public void setYesterday(List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
     }
 
