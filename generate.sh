@@ -9,23 +9,22 @@ wget -q -O esi.json https://esi.tech.ccp.is/_latest/swagger.json?datasource=tran
 #
 # Get swagger code generator
 #
-VERSION=$(git ls-remote --tags https://github.com/swagger-api/swagger-codegen.git | grep -o "refs/tags/v.*" | sort -rV | head -1 | sed -e 's#.*v##')
+#VERSION=$(git ls-remote --tags https://github.com/swagger-api/swagger-codegen.git | grep -o "refs/tags/v.*" | sort -rV | head -1 | sed -e 's#.*v##')
 
-if [ ! -e swagger-codegen-cli-$VERSION.jar ]; then
-  wget -O swagger-codegen-cli.jar -q http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
+#if [ ! -e swagger-codegen-cli-$VERSION.jar ]; then
+#  wget -O swagger-codegen-cli.jar -q http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
 
-  if [ $? != 0 ]; then
-    echo "Could not download http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar"
-    exit -1
-  fi
-fi
+#  if [ $? != 0 ]; then
+#    echo "Could not download http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar"
+#    exit -1
+#  fi
+#fi
 
 #
 # Transform and beautify swagger file
 #
-./transformation.sh
 sed -i -f replace.sed esi.json
-
+./transformation.sh
 #
 # Generate code
 # Move tests so they are generated new and then moved to a different directory

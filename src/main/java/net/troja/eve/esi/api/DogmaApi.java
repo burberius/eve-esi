@@ -217,7 +217,7 @@ public class DogmaApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/dogma/effects/{effect_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/dogma/effects/{effect_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "effect_id" + "\\}", apiClient.escapeString(effectId.toString()));
 
         // query params

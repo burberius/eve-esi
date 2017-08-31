@@ -7,11 +7,12 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.CharacterWalletJournalResponse;
-import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
-import net.troja.eve.esi.model.CorporationWalletJournalResponse;
-import net.troja.eve.esi.model.CorporationWalletsResponse;
-import net.troja.eve.esi.model.Forbidden;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersResponse;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationsResponse;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardResponse;
+import net.troja.eve.esi.model.FactionWarfareStatsResponse;
+import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
+import net.troja.eve.esi.model.FactionWarfareWarsResponse;
 import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
@@ -19,14 +20,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WalletApi {
+public class FactionWarfareApi {
     private ApiClient apiClient;
 
-    public WalletApi() {
+    public FactionWarfareApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public WalletApi(ApiClient apiClient) {
+    public FactionWarfareApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -39,38 +40,77 @@ public class WalletApi {
     }
 
     /**
-     * Get a character&#39;s wallet balance Returns a character&#39;s wallet
-     * balance --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * List of the top factions in faction warfare Top 4 leaderboard of factions
+     * for kills and victory points separated by total, last week and yesterday.
+     * --- This route expires daily at 11:05
      * 
-     * @param characterId
-     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return Float
+     * @return FactionWarfareLeaderboardResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public Float getCharactersCharacterIdWallet(Integer characterId, String datasource, String token, String userAgent,
+    public FactionWarfareLeaderboardResponse getFwLeaderboards(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/fw/leaderboards/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<FactionWarfareLeaderboardResponse> localVarReturnType = new GenericType<FactionWarfareLeaderboardResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * List of the top pilots in faction warfare Top 100 leaderboard of pilots
+     * for kills and victory points separated by total, last week and yesterday.
+     * --- This route expires daily at 11:05
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return FactionWarfareLeaderboardCharactersResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public FactionWarfareLeaderboardCharactersResponse getFwLeaderboardsCharacters(String datasource, String userAgent,
             String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWallet");
-        }
-
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/wallet/".replaceAll("\\{format\\}", "json").replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/fw/leaderboards/characters/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -78,7 +118,6 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (xUserAgent != null)
@@ -92,50 +131,36 @@ public class WalletApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "evesso" };
+        String[] localVarAuthNames = new String[] {};
 
-        GenericType<Float> localVarReturnType = new GenericType<Float>() {
+        GenericType<FactionWarfareLeaderboardCharactersResponse> localVarReturnType = new GenericType<FactionWarfareLeaderboardCharactersResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Get character wallet journal Retrieve character wallet journal --- This
-     * route is cached for up to 3600 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * List of the top corporations in faction warfare Top 10 leaderboard of
+     * corporations for kills and victory points separated by total, last week
+     * and yesterday. --- This route expires daily at 11:05
      * 
-     * @param characterId
-     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fromId
-     *            Only show journal entries happened before the transaction
-     *            referenced by this id (optional)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CharacterWalletJournalResponse&gt;
+     * @return FactionWarfareLeaderboardCorporationsResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterWalletJournalResponse> getCharactersCharacterIdWalletJournal(Integer characterId,
-            String datasource, Long fromId, String token, String userAgent, String xUserAgent) throws ApiException {
+    public FactionWarfareLeaderboardCorporationsResponse getFwLeaderboardsCorporations(String datasource,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWalletJournal");
-        }
-
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/fw/leaderboards/corporations/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -143,8 +168,6 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (xUserAgent != null)
@@ -158,50 +181,36 @@ public class WalletApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "evesso" };
+        String[] localVarAuthNames = new String[] {};
 
-        GenericType<List<CharacterWalletJournalResponse>> localVarReturnType = new GenericType<List<CharacterWalletJournalResponse>>() {
+        GenericType<FactionWarfareLeaderboardCorporationsResponse> localVarReturnType = new GenericType<FactionWarfareLeaderboardCorporationsResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Get wallet transactions Get wallet transactions of a character --- This
-     * route is cached for up to 3600 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * An overview of statistics about factions involved in faction warfare
+     * Statistical overviews of factions involved in faction warfare --- This
+     * route expires daily at 11:05
      * 
-     * @param characterId
-     *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fromId
-     *            Only show transactions happened before the one referenced by
-     *            this id (optional)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CharacterWalletTransactionsResponse&gt;
+     * @return List&lt;FactionWarfareStatsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterWalletTransactionsResponse> getCharactersCharacterIdWalletTransactions(Integer characterId,
-            String datasource, Long fromId, String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FactionWarfareStatsResponse> getFwStats(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'characterId' is set
-        if (characterId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWalletTransactions");
-        }
-
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/wallet/transactions/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/fw/stats/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -209,8 +218,6 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (xUserAgent != null)
@@ -224,47 +231,36 @@ public class WalletApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "evesso" };
+        String[] localVarAuthNames = new String[] {};
 
-        GenericType<List<CharacterWalletTransactionsResponse>> localVarReturnType = new GenericType<List<CharacterWalletTransactionsResponse>>() {
+        GenericType<List<FactionWarfareStatsResponse>> localVarReturnType = new GenericType<List<FactionWarfareStatsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Returns a corporation&#39;s wallet balance Get a corporation&#39;s
-     * wallets --- This route is cached for up to 300 seconds SSO Scope:
-     * esi-wallet.read_corporation_wallets.v1
+     * Ownership of faction warfare systems An overview of the current ownership
+     * of faction warfare solar systems --- This route is cached for up to 1800
+     * seconds
      * 
-     * @param corporationId
-     *            An EVE corporation ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CorporationWalletsResponse&gt;
+     * @return List&lt;FactionWarfareSystemsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CorporationWalletsResponse> getCorporationsCorporationIdWallets(Integer corporationId,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FactionWarfareSystemsResponse> getFwSystems(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdWallets");
-        }
-
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/wallets/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v1/fw/systems/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -272,7 +268,6 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (xUserAgent != null)
@@ -286,61 +281,35 @@ public class WalletApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "evesso" };
+        String[] localVarAuthNames = new String[] {};
 
-        GenericType<List<CorporationWalletsResponse>> localVarReturnType = new GenericType<List<CorporationWalletsResponse>>() {
+        GenericType<List<FactionWarfareSystemsResponse>> localVarReturnType = new GenericType<List<FactionWarfareSystemsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
-     * Get character wallet journal Retrieve corporation wallet journal --- This
-     * route is cached for up to 300 seconds SSO Scope:
-     * esi-wallet.read_corporation_wallets.v1
+     * Data about which NPC factions are at war Data about which NPC factions
+     * are at war --- This route expires daily at 11:05
      * 
-     * @param corporationId
-     *            An EVE corporation ID (required)
-     * @param division
-     *            Wallet key of the division to fetch journals from (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fromId
-     *            Only show journal entries happened before the transaction
-     *            referenced by this id (optional)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CorporationWalletJournalResponse&gt;
+     * @return List&lt;FactionWarfareWarsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
-            Integer corporationId, Integer division, String datasource, Long fromId, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<FactionWarfareWarsResponse> getFwWars(String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdWalletsDivisionJournal");
-        }
-
-        // verify the required parameter 'division' is set
-        if (division == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'division' when calling getCorporationsCorporationIdWalletsDivisionJournal");
-        }
-
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/wallets/{division}/journal/"
-                .replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
-                .replaceAll("\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));
+        String localVarPath = "/v1/fw/wars/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -348,8 +317,6 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (xUserAgent != null)
@@ -363,9 +330,9 @@ public class WalletApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        String[] localVarAuthNames = new String[] { "evesso" };
+        String[] localVarAuthNames = new String[] {};
 
-        GenericType<List<CorporationWalletJournalResponse>> localVarReturnType = new GenericType<List<CorporationWalletJournalResponse>>() {
+        GenericType<List<FactionWarfareWarsResponse>> localVarReturnType = new GenericType<List<FactionWarfareWarsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

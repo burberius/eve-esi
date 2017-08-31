@@ -1,6 +1,12 @@
 # Objects
 # jq '.paths[].get.responses["200"].schema.properties[]? | select(.type == "object") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_clones_home_location/CloneHomeLocation/g
+s/get_fw_leaderboards_characters_kills/FactionWarfareLeaderboardCharacterKills/g
+s/get_fw_leaderboards_characters_victory_points/FactionWarfareLeaderboardCharacterVictoryPoints/g
+s/get_fw_leaderboards_corporations_kills/FactionWarfareLeaderboardCorporationsKills/g
+s/get_fw_leaderboards_corporations_victory_points/FactionWarfareLeaderboardCorporationsVictoryPoints/g
+s/get_fw_leaderboards_kills/FactionWarfareLeaderboardKills/g
+s/get_fw_leaderboards_victory_points/FactionWarfareLeaderboardVictoryPoints/g
 s/get_killmails_killmail_id_killmail_hash_victim/KillmailVictim/g
 s/get_universe_stargates_stargate_id_destination/StargateDestination/g
 s/get_wars_war_id_aggressor/Aggressor/g
@@ -25,6 +31,8 @@ s/get_wars_war_id_ally/WarAlly/g
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.type == "object") | .title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_bookmarks_target/BookmarkTarget/g
 s/get_corporations_corporation_id_alliancehistory_alliance/Alliance/g
+s/get_fw_stats_kills/FactionWarfareStatsKills/g
+s/get_fw_stats_victory_points/FactionWarfareStatsVictoryPoints/g
 
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.properties != null).properties[] | select(.type == "object").title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/get_characters_character_id_bookmarks_item/BookmarkItem/g
@@ -38,7 +46,7 @@ s/post_characters_character_id_mail_mail/Mail/g
 s/post_fleets_fleet_id_members_invitation/FleetInvitation/g
 s/post_universe_names_ids/EntityIds/g
 s/put_characters_character_id_mail_mail_id_contents/MailMetaData/g
-s/put_corporations_corporation_id_structures_structure_id_new_schedule//g
+s/put_corporations_corporation_id_structures_structure_id_new_schedule/StructureSchedule/g
 s/put_fleets_fleet_id_members_member_id_movement/FleetMemberMovement/g
 s/put_fleets_fleet_id_new_settings/FleetNewSettings/g
 s/put_fleets_fleet_id_squads_squad_id_naming/FleetSquadNaming/g
@@ -47,23 +55,41 @@ s/put_characters_character_id_calendar_event_id_response/CharacterCalendarEvent/
 
 
 # Other objects
-s/get_characters_character_id_chat_channels_allowed/ChatChannelsAllowed/
-s/get_characters_character_id_chat_channels_blocked/ChatChannelsBlocked/
-s/get_characters_character_id_chat_channels_muted/ChatChannelsMuted/
-s/get_characters_character_id_chat_channels_operator/ChatChannelsOperator/
-s/get_characters_character_id_medals_graphic/CharacterMedalsGraphic/
-s/get_characters_character_id_planets_planet_id_content/PlanetContent/
-s/get_characters_character_id_planets_planet_id_extractor_details/PlanetExtractorDetails/
-s/get_characters_character_id_planets_planet_id_factory_details/PlanetFactoryDetails/
-s/get_characters_character_id_planets_planet_id_head/PlanetHead/
-s/get_characters_character_id_planets_planet_id_waypoint/PlanetWaypoint/
-s/get_corporations_corporation_id_structures_service/StructureService/
-s/get_fleets_fleet_id_wings_squad/Squad/
-s/get_industry_systems_cost_indice/SystemCostIndice/
-s/get_insurance_prices_level/InsurancePriceLevel/
-s/get_loyalty_stores_corporation_id_offers_required_item/RequiredItem/
-s/get_sovereignty_campaigns_participant/SovereigntyCampaignParticipant/
-s/post_ui_openwindow_newmail_new_mail/UiNewMail/
+s/get_characters_character_id_chat_channels_allowed/ChatChannelsAllowed/g
+s/get_characters_character_id_chat_channels_blocked/ChatChannelsBlocked/g
+s/get_characters_character_id_chat_channels_muted/ChatChannelsMuted/g
+s/get_characters_character_id_chat_channels_operator/ChatChannelsOperator/g
+s/get_characters_character_id_medals_graphic/CharacterMedalsGraphic/g
+s/get_characters_character_id_planets_planet_id_content/PlanetContent/g
+s/get_characters_character_id_planets_planet_id_extractor_details/PlanetExtractorDetails/g
+s/get_characters_character_id_planets_planet_id_factory_details/PlanetFactoryDetails/g
+s/get_characters_character_id_planets_planet_id_head/PlanetHead/g
+s/get_characters_character_id_planets_planet_id_waypoint/PlanetWaypoint/g
+s/get_corporations_corporation_id_structures_service/StructureService/g
+s/get_fleets_fleet_id_wings_squad/Squad/g
+s/get_fw_leaderboards_characters_active_total/FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints/g3
+s/get_fw_leaderboards_characters_active_total/FactionWarfareLeaderboardCharactersActiveTotalKills/
+s/get_fw_leaderboards_characters_last_week/FactionWarfareLeaderboardCharactersLastWeekVictoryPoints/g3
+s/get_fw_leaderboards_characters_last_week/FactionWarfareLeaderboardCharactersLastWeekKills/
+s/get_fw_leaderboards_characters_yesterday/FactionWarfareLeaderboardCharactersYesterdayVictoryPoints/g3
+s/get_fw_leaderboards_characters_yesterday/FactionWarfareLeaderboardCharactersYesterdayKills/
+s/get_fw_leaderboards_corporations_active_total/FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints/g3
+s/get_fw_leaderboards_corporations_active_total/FactionWarfareLeaderboardCorporationActiveTotalKills/
+s/get_fw_leaderboards_corporations_last_week/FactionWarfareLeaderboardCorporationLastWeekVictoryPoints/g3
+s/get_fw_leaderboards_corporations_last_week/FactionWarfareLeaderboardCorporationLastWeekKills/
+s/get_fw_leaderboards_corporations_yesterday/FactionWarfareLeaderboardCorporationYesterdayVictoryPoints/g3
+s/get_fw_leaderboards_corporations_yesterday/FactionWarfareLeaderboardCorporationYesterdayKills/
+s/get_fw_leaderboards_active_total/FactionWarfareLeaderboardActiveTotalVictoryPoints/g3
+s/get_fw_leaderboards_active_total/FactionWarfareLeaderboardActiveTotalKills/
+s/get_fw_leaderboards_last_week/FactionWarfareLeaderboardLastWeekVictoryPoints/g3
+s/get_fw_leaderboards_last_week/FactionWarfareLeaderboardLastWeekKills/
+s/get_fw_leaderboards_yesterday/FactionWarfareLeaderboardYesterdayVictoryPoints/g3
+s/get_fw_leaderboards_yesterday/FactionWarfareLeaderboardYesterdayKills/
+s/get_industry_systems_cost_indice/SystemCostIndice/g
+s/get_insurance_prices_level/InsurancePriceLevel/g
+s/get_loyalty_stores_corporation_id_offers_required_item/RequiredItem/g
+s/get_sovereignty_campaigns_participant/SovereigntyCampaignParticipant/g
+s/post_ui_openwindow_newmail_new_mail/UiNewMail/g
 
 # Post 200
 # jq '.paths[].post.responses["200"].schema.items.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
@@ -96,12 +122,14 @@ s/get_characters_character_id_contacts_200_ok/ContactsResponse/g
 s/get_characters_character_id_contacts_labels_200_ok/ContactLabelsResponse/g
 s/get_characters_character_id_corporationhistory_200_ok/CharacterCorporationHistoryResponse/g
 s/get_characters_character_id_fittings_200_ok/CharacterFittingsResponse/g
+s/get_characters_character_id_implants_200_ok/CharacterImplantsResponse/g
 s/get_characters_character_id_industry_jobs_200_ok/CharacterIndustryJobsResponse/g
 s/get_characters_character_id_killmails_recent_200_ok/CharacterKillmailsResponse/g
 s/get_characters_character_id_loyalty_points_200_ok/CharacterLoyaltyPointsResponse/g
 s/get_characters_character_id_mail_200_ok/MailHeadersResponse/g
 s/get_characters_character_id_mail_lists_200_ok/CharacterMailinglistsResponse/g
 s/get_characters_character_id_medals_200_ok/CharacterMedalsResponse/g
+s/get_characters_character_id_notifications_contacts_200_ok/NewContactNotificationsResponse/g
 s/get_characters_character_id_opportunities_200_ok/CharacterOpportunitiesResponse/g
 s/get_characters_character_id_orders_200_ok/CharacterOrdersResponse/g
 s/get_characters_character_id_planets_200_ok/CharacterPlanetsResponse/g
@@ -122,14 +150,22 @@ s/get_characters_character_id_fatigue_ok/CharacterFatigueResponse/g
 s/get_characters_names_200_ok/CharacterNamesResponse/g
 s/get_corporations_corporation_id_alliancehistory_200_ok/CorporationAlliancesHistoryResponse/g
 s/get_corporations_corporation_id_members_200_ok/CorporationMembersResponse/g
+s/get_corporations_corporation_id_membertracking_200_ok/CorporationMemberTrackingResponse/g
 s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
 s/get_corporations_corporation_id_structures_200_ok/CorporationStructuresResponse/g
+s/get_corporations_corporation_id_wallets_200_ok/CorporationWalletsResponse/g
+s/get_corporations_corporation_id_wallets_division_journal_extra_info/CorporationWalletJournalExtraInfoResponse/g
+s/get_corporations_corporation_id_wallets_division_journal_200_ok/CorporationWalletJournalResponse/g
+s/get_corporations_corporation_id_killmails_recent_200_ok/CorporationKillmailsResponse/g
 s/get_corporations_names_200_ok/CorporationNamesResponse/g
 s/get_corporations_npccorps_200_ok/NpcCorporationsResponse/g
 s/get_dogma_attributes_200_ok/DogmaAttributesResponse/g
 s/get_dogma_effects_200_ok/DogmaEffectsResponse/g
 s/get_fleets_fleet_id_members_200_ok/FleetMembersResponse/g
 s/get_fleets_fleet_id_wings_200_ok/FleetWingsResponse/g
+s/get_fw_stats_200_ok/FactionWarfareStatsResponse/g
+s/get_fw_systems_200_ok/FactionWarfareSystemsResponse/g
+s/get_fw_wars_200_ok/FactionWarfareWarsResponse/g
 s/get_incursions_200_ok/IncursionsResponse/g
 s/get_industry_facilities_200_ok/IndustryFacilitiesResponse/g
 s/get_industry_systems_200_ok/IndustrySystemsResponse/g
@@ -171,16 +207,21 @@ s/get_characters_character_id_location_ok/CharacterLocationResponse/g
 s/get_characters_character_id_mail_labels_ok/MailLabelsResponse/g
 s/get_characters_character_id_mail_mail_id_ok/MailResponse/g
 s/get_characters_character_id_ok/CharacterResponse/g
+s/get_characters_character_id_online_ok/CharacterOnlineResponse/g
 s/get_characters_character_id_planets_planet_id_ok/CharacterPlanetResponse/g
 s/get_characters_character_id_portrait_ok/CharacterPortraitResponse/g
 s/get_characters_character_id_search_ok/CharacterSearchResponse/g
 s/get_characters_character_id_ship_ok/CharacterShipResponse/g
 s/get_characters_character_id_skills_ok/CharacterSkillsResponse/g
+s/get_characters_character_id_wallet_ok/CharacterWalletResponse/g
 s/get_corporations_corporation_id_icons_ok/CorporationIconsResponse/g
 s/get_corporations_corporation_id_ok/CorporationResponse/g
 s/get_dogma_attributes_attribute_id_ok/DogmaAttributeResponse/g
 s/get_dogma_effects_effect_id_ok/DogmaEffectResponse/g
 s/get_fleets_fleet_id_ok/FleetResponse/g
+s/get_fw_leaderboards_characters_ok/FactionWarfareLeaderboardCharactersResponse/g
+s/get_fw_leaderboards_corporations_ok/FactionWarfareLeaderboardCorporationsResponse/g
+s/get_fw_leaderboards_ok/FactionWarfareLeaderboardResponse/g
 s/get_killmails_killmail_id_killmail_hash_ok/KillmailResponse/g
 s/get_markets_groups_market_group_id_ok/MarketGroupResponse/g
 s/get_opportunities_groups_group_id_ok/OpportunitiesGroupResponse/g
@@ -196,6 +237,7 @@ s/get_universe_planets_planet_id_ok/PlanetResponse/g
 s/get_universe_regions_region_id_ok/RegionResponse/g
 s/get_universe_schematics_schematic_id_ok/PlanetFactorySchematicResponse/g
 s/get_universe_stargates_stargate_id_ok/StargateResponse/g
+s/get_universe_stars_star_id_ok/StarResponse/g
 s/get_universe_stations_station_id_ok/StationResponse/g
 s/get_universe_structures_structure_id_ok/StructureResponse/g
 s/get_universe_systems_system_id_ok/SystemResponse/g

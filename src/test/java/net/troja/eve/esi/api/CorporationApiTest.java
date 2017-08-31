@@ -11,16 +11,17 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+
+import static org.junit.Assert.assertThat;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
@@ -47,8 +48,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdTest() throws ApiException {
-        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null,
-                null);
+        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null, null);
 
         assertThat(response.getTicker(), equalTo(".AAC."));
         assertThat(response.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
@@ -70,8 +70,8 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
-        final List<CorporationAlliancesHistoryResponse> response = api
-                .getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE, null, null);
+        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE,
+                null, null);
 
         assertThat(response.size(), greaterThan(0));
         // The last entry is without alliance!
@@ -93,8 +93,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdIconsTest() throws ApiException {
-        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE,
-                null, null);
+        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE, null, null);
 
         assertThat(response.getPx64x64(), notNullValue());
     }
@@ -119,6 +118,25 @@ public class CorporationApiTest extends GeneralApiTest {
         // final List<CorporationMembersResponse> response =
         // api.getCorporationsCorporationIdMembers(CORPORATION_ID_AAC,
         // DATASOURCE);
+    }
+
+    /**
+     * Get corporation members
+     *
+     * Read the current list of members if the calling character is a member.
+     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1 SSO Scope:
+     * esi-corporations.track_members.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    @Ignore("One can only get the members of the own corp")
+    public void getCorporationsCorporationIdMembertrackingTest() throws ApiException {
+        // List<CorporationMemberTrackingResponse> response =
+        // api.getCorporationsCorporationIdMembertracking(corporationId,
+        // datasource, token, userAgent, xUserAgent);
     }
 
     /**
@@ -186,8 +204,7 @@ public class CorporationApiTest extends GeneralApiTest {
         final List<Long> corporationIds = new ArrayList<>();
         corporationIds.add((long) CORPORATION_ID_AAC);
 
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null,
-                null);
+        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));

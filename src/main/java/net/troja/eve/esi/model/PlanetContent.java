@@ -19,54 +19,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * waypoint object
+ * content object
  */
-@ApiModel(description = "waypoint object")
-public class PlanetWaypoint implements Serializable {
+@ApiModel(description = "content object")
+public class PlanetContent implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("order")
-    private Integer order = null;
+    @JsonProperty("amount")
+    private Long amount = null;
 
-    @JsonProperty("pin_id")
-    private Long pinId = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
-    public PlanetWaypoint order(Integer order) {
-        this.order = order;
+    public PlanetContent amount(Long amount) {
+        this.amount = amount;
         return this;
     }
 
     /**
-     * order integer minimum: 1 maximum: 5
+     * amount integer
      * 
-     * @return order
+     * @return amount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "order integer")
-    public Integer getOrder() {
-        return order;
+    @ApiModelProperty(example = "null", required = true, value = "amount integer")
+    public Long getAmount() {
+        return amount;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
-    public PlanetWaypoint pinId(Long pinId) {
-        this.pinId = pinId;
+    public PlanetContent typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * pin_id integer
+     * type_id integer
      * 
-     * @return pinId
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "pin_id integer")
-    public Long getPinId() {
-        return pinId;
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setPinId(Long pinId) {
-        this.pinId = pinId;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -77,22 +77,22 @@ public class PlanetWaypoint implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlanetWaypoint planetWaypoint = (PlanetWaypoint) o;
-        return Objects.equals(this.order, planetWaypoint.order) && Objects.equals(this.pinId, planetWaypoint.pinId);
+        PlanetContent planetContent = (PlanetContent) o;
+        return Objects.equals(this.amount, planetContent.amount) && Objects.equals(this.typeId, planetContent.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(order, pinId);
+        return Objects.hash(amount, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlanetWaypoint {\n");
+        sb.append("class PlanetContent {\n");
 
-        sb.append("    order: ").append(toIndentedString(order)).append("\n");
-        sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

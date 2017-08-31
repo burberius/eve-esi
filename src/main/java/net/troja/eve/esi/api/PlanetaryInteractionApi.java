@@ -141,7 +141,7 @@ public class PlanetaryInteractionApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/planets/{planet_id}/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/characters/{character_id}/planets/{planet_id}/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()))
                 .replaceAll("\\{" + "planet_id" + "\\}", apiClient.escapeString(planetId.toString()));
 

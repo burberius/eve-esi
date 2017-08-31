@@ -28,6 +28,9 @@ public class DogmaEffectModifier implements Serializable {
     @JsonProperty("domain")
     private String domain = null;
 
+    @JsonProperty("effect_id")
+    private Integer effectId = null;
+
     @JsonProperty("func")
     private String func = null;
 
@@ -50,13 +53,32 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return domain
      **/
-    @ApiModelProperty(example = "null", required = true, value = "domain string")
+    @ApiModelProperty(example = "null", value = "domain string")
     public String getDomain() {
         return domain;
     }
 
     public void setDomain(String domain) {
         this.domain = domain;
+    }
+
+    public DogmaEffectModifier effectId(Integer effectId) {
+        this.effectId = effectId;
+        return this;
+    }
+
+    /**
+     * effect_id integer
+     * 
+     * @return effectId
+     **/
+    @ApiModelProperty(example = "null", value = "effect_id integer")
+    public Integer getEffectId() {
+        return effectId;
+    }
+
+    public void setEffectId(Integer effectId) {
+        this.effectId = effectId;
     }
 
     public DogmaEffectModifier func(String func) {
@@ -88,7 +110,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return modifiedAttributeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "modified_attribute_id integer")
+    @ApiModelProperty(example = "null", value = "modified_attribute_id integer")
     public Integer getModifiedAttributeId() {
         return modifiedAttributeId;
     }
@@ -107,7 +129,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return modifyingAttributeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "modifying_attribute_id integer")
+    @ApiModelProperty(example = "null", value = "modifying_attribute_id integer")
     public Integer getModifyingAttributeId() {
         return modifyingAttributeId;
     }
@@ -126,7 +148,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return operator
      **/
-    @ApiModelProperty(example = "null", required = true, value = "operator integer")
+    @ApiModelProperty(example = "null", value = "operator integer")
     public Integer getOperator() {
         return operator;
     }
@@ -145,6 +167,7 @@ public class DogmaEffectModifier implements Serializable {
         }
         DogmaEffectModifier dogmaEffectModifier = (DogmaEffectModifier) o;
         return Objects.equals(this.domain, dogmaEffectModifier.domain)
+                && Objects.equals(this.effectId, dogmaEffectModifier.effectId)
                 && Objects.equals(this.func, dogmaEffectModifier.func)
                 && Objects.equals(this.modifiedAttributeId, dogmaEffectModifier.modifiedAttributeId)
                 && Objects.equals(this.modifyingAttributeId, dogmaEffectModifier.modifyingAttributeId)
@@ -153,7 +176,7 @@ public class DogmaEffectModifier implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(domain, func, modifiedAttributeId, modifyingAttributeId, operator);
+        return Objects.hash(domain, effectId, func, modifiedAttributeId, modifyingAttributeId, operator);
     }
 
     @Override
@@ -162,6 +185,7 @@ public class DogmaEffectModifier implements Serializable {
         sb.append("class DogmaEffectModifier {\n");
 
         sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
+        sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
         sb.append("    func: ").append(toIndentedString(func)).append("\n");
         sb.append("    modifiedAttributeId: ").append(toIndentedString(modifiedAttributeId)).append("\n");
         sb.append("    modifyingAttributeId: ").append(toIndentedString(modifyingAttributeId)).append("\n");
