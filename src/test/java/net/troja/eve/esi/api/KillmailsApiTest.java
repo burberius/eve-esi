@@ -11,19 +11,17 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Before;
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterKillmailsResponse;
 import net.troja.eve.esi.model.KillmailResponse;
+import org.apache.commons.lang3.StringUtils;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for KillmailsApi
@@ -65,6 +63,19 @@ public class KillmailsApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get corporation kills and losses
+     *
+     * Get a list of corporation&#39;s recent kills and losses  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-killmails.read_corporation_killmails.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdKillmailsRecentTest() throws ApiException {
+    }
+
+    /**
      * Get a single killmail
      *
      * Return a single killmail from its ID and hash --- Alternate route:
@@ -89,5 +100,4 @@ public class KillmailsApiTest extends GeneralApiTest {
         assertThat(response.getAttackers().size(), greaterThan(0));
         assertThat(response.getVictim().getCharacterId(), greaterThan(0));
     }
-
 }

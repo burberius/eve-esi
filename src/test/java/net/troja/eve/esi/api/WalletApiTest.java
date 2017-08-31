@@ -106,4 +106,17 @@ public class WalletApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdWalletsTest() throws ApiException {
     }
+    
+    /**
+     * Get character wallet journal
+     *
+     * Retrieve corporation wallet journal  ---  This route is cached for up to 300 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdWalletsDivisionJournalTest() throws ApiException {
+    }
 }
