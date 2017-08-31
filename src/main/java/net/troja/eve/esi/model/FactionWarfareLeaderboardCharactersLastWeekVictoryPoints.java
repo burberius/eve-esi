@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * yesterday object
+ * last_week object
  */
-@ApiModel(description = "yesterday object")
-public class FactionWarfareLeaderboardCorporationYesterday implements Serializable {
+@ApiModel(description = "last_week object")
+public class FactionWarfareLeaderboardCharactersLastWeekVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
     private Integer amount = null;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
-    public FactionWarfareLeaderboardCorporationYesterday amount(Integer amount) {
+    public FactionWarfareLeaderboardCharactersLastWeekVictoryPoints amount(Integer amount) {
         this.amount = amount;
         return this;
     }
 
     /**
-     * Amount of kills
+     * Amount of victory points
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Amount of kills")
+    @ApiModelProperty(example = "null", value = "Amount of victory points")
     public Integer getAmount() {
         return amount;
     }
@@ -50,23 +50,23 @@ public class FactionWarfareLeaderboardCorporationYesterday implements Serializab
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardCorporationYesterday corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
+    public FactionWarfareLeaderboardCharactersLastWeekVictoryPoints characterId(Integer characterId) {
+        this.characterId = characterId;
         return this;
     }
 
     /**
-     * corporation_id integer
+     * character_id integer
      * 
-     * @return corporationId
+     * @return characterId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
+    @ApiModelProperty(example = "null", value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
     }
 
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
     }
 
     @Override
@@ -77,23 +77,24 @@ public class FactionWarfareLeaderboardCorporationYesterday implements Serializab
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FactionWarfareLeaderboardCorporationYesterday factionWarfareLeaderboardCorporationYesterday = (FactionWarfareLeaderboardCorporationYesterday) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationYesterday.amount)
-                && Objects.equals(this.corporationId, factionWarfareLeaderboardCorporationYesterday.corporationId);
+        FactionWarfareLeaderboardCharactersLastWeekVictoryPoints factionWarfareLeaderboardCharactersLastWeekVictoryPoints = (FactionWarfareLeaderboardCharactersLastWeekVictoryPoints) o;
+        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersLastWeekVictoryPoints.amount)
+                && Objects.equals(this.characterId,
+                        factionWarfareLeaderboardCharactersLastWeekVictoryPoints.characterId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, corporationId);
+        return Objects.hash(amount, characterId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class FactionWarfareLeaderboardCorporationYesterday {\n");
+        sb.append("class FactionWarfareLeaderboardCharactersLastWeekVictoryPoints {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -19,10 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * active_total object
+ * yesterday object
  */
-@ApiModel(description = "active_total object")
-public class FactionWarfareLeaderboardCorporationActiveTotal1 implements Serializable {
+@ApiModel(description = "yesterday object")
+public class FactionWarfareLeaderboardCorporationYesterdayKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
@@ -31,17 +31,17 @@ public class FactionWarfareLeaderboardCorporationActiveTotal1 implements Seriali
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    public FactionWarfareLeaderboardCorporationActiveTotal1 amount(Integer amount) {
+    public FactionWarfareLeaderboardCorporationYesterdayKills amount(Integer amount) {
         this.amount = amount;
         return this;
     }
 
     /**
-     * Amount of victory points
+     * Amount of kills
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Amount of victory points")
+    @ApiModelProperty(example = "null", value = "Amount of kills")
     public Integer getAmount() {
         return amount;
     }
@@ -50,7 +50,7 @@ public class FactionWarfareLeaderboardCorporationActiveTotal1 implements Seriali
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardCorporationActiveTotal1 corporationId(Integer corporationId) {
+    public FactionWarfareLeaderboardCorporationYesterdayKills corporationId(Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -77,9 +77,9 @@ public class FactionWarfareLeaderboardCorporationActiveTotal1 implements Seriali
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FactionWarfareLeaderboardCorporationActiveTotal1 factionWarfareLeaderboardCorporationActiveTotal1 = (FactionWarfareLeaderboardCorporationActiveTotal1) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationActiveTotal1.amount)
-                && Objects.equals(this.corporationId, factionWarfareLeaderboardCorporationActiveTotal1.corporationId);
+        FactionWarfareLeaderboardCorporationYesterdayKills factionWarfareLeaderboardCorporationYesterdayKills = (FactionWarfareLeaderboardCorporationYesterdayKills) o;
+        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationYesterdayKills.amount)
+                && Objects.equals(this.corporationId, factionWarfareLeaderboardCorporationYesterdayKills.corporationId);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FactionWarfareLeaderboardCorporationActiveTotal1 implements Seriali
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class FactionWarfareLeaderboardCorporationActiveTotal1 {\n");
+        sb.append("class FactionWarfareLeaderboardCorporationYesterdayKills {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");

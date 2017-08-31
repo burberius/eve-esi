@@ -19,10 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * last_week object
+ * yesterday object
  */
-@ApiModel(description = "last_week object")
-public class FactionWarfareLeaderboardCorporationLastWeek1 implements Serializable {
+@ApiModel(description = "yesterday object")
+public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
@@ -31,7 +31,7 @@ public class FactionWarfareLeaderboardCorporationLastWeek1 implements Serializab
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    public FactionWarfareLeaderboardCorporationLastWeek1 amount(Integer amount) {
+    public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints amount(Integer amount) {
         this.amount = amount;
         return this;
     }
@@ -50,7 +50,7 @@ public class FactionWarfareLeaderboardCorporationLastWeek1 implements Serializab
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardCorporationLastWeek1 corporationId(Integer corporationId) {
+    public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints corporationId(Integer corporationId) {
         this.corporationId = corporationId;
         return this;
     }
@@ -77,9 +77,10 @@ public class FactionWarfareLeaderboardCorporationLastWeek1 implements Serializab
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FactionWarfareLeaderboardCorporationLastWeek1 factionWarfareLeaderboardCorporationLastWeek1 = (FactionWarfareLeaderboardCorporationLastWeek1) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationLastWeek1.amount)
-                && Objects.equals(this.corporationId, factionWarfareLeaderboardCorporationLastWeek1.corporationId);
+        FactionWarfareLeaderboardCorporationYesterdayVictoryPoints factionWarfareLeaderboardCorporationYesterdayVictoryPoints = (FactionWarfareLeaderboardCorporationYesterdayVictoryPoints) o;
+        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationYesterdayVictoryPoints.amount)
+                && Objects.equals(this.corporationId,
+                        factionWarfareLeaderboardCorporationYesterdayVictoryPoints.corporationId);
     }
 
     @Override
@@ -90,7 +91,7 @@ public class FactionWarfareLeaderboardCorporationLastWeek1 implements Serializab
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class FactionWarfareLeaderboardCorporationLastWeek1 {\n");
+        sb.append("class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");

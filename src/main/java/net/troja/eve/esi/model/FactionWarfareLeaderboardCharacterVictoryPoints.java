@@ -18,9 +18,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersActiveTotal1;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersLastWeek1;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersYesterday1;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersLastWeekVictoryPoints;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersYesterdayVictoryPoints;
 import java.io.Serializable;
 
 /**
@@ -32,22 +32,22 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCharactersActiveTotal1> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotal1>();
+    private List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints>();
 
     @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCharactersLastWeek1> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeek1>();
+    private List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints>();
 
     @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCharactersYesterday1> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterday1>();
+    private List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints>();
 
     public FactionWarfareLeaderboardCharacterVictoryPoints activeTotal(
-            List<FactionWarfareLeaderboardCharactersActiveTotal1> activeTotal) {
+            List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addActiveTotalItem(
-            FactionWarfareLeaderboardCharactersActiveTotal1 activeTotalItem) {
+            FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints activeTotalItem) {
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -60,22 +60,22 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * @return activeTotal
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days.")
-    public List<FactionWarfareLeaderboardCharactersActiveTotal1> getActiveTotal() {
+    public List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
 
-    public void setActiveTotal(List<FactionWarfareLeaderboardCharactersActiveTotal1> activeTotal) {
+    public void setActiveTotal(List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints lastWeek(
-            List<FactionWarfareLeaderboardCharactersLastWeek1> lastWeek) {
+            List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addLastWeekItem(
-            FactionWarfareLeaderboardCharactersLastWeek1 lastWeekItem) {
+            FactionWarfareLeaderboardCharactersLastWeekVictoryPoints lastWeekItem) {
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -86,22 +86,22 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * @return lastWeek
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by victory points in the past week")
-    public List<FactionWarfareLeaderboardCharactersLastWeek1> getLastWeek() {
+    public List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
 
-    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeek1> lastWeek) {
+    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints yesterday(
-            List<FactionWarfareLeaderboardCharactersYesterday1> yesterday) {
+            List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addYesterdayItem(
-            FactionWarfareLeaderboardCharactersYesterday1 yesterdayItem) {
+            FactionWarfareLeaderboardCharactersYesterdayVictoryPoints yesterdayItem) {
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -112,11 +112,11 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * @return yesterday
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by victory points in the past day")
-    public List<FactionWarfareLeaderboardCharactersYesterday1> getYesterday() {
+    public List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }
 
-    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterday1> yesterday) {
+    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday) {
         this.yesterday = yesterday;
     }
 

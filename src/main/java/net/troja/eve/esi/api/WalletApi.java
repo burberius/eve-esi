@@ -9,6 +9,7 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterWalletJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletJournalResponse;
 import net.troja.eve.esi.model.CorporationWalletsResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
@@ -288,6 +289,83 @@ public class WalletApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CorporationWalletsResponse>> localVarReturnType = new GenericType<List<CorporationWalletsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get character wallet journal Retrieve corporation wallet journal --- This
+     * route is cached for up to 300 seconds SSO Scope:
+     * esi-wallet.read_corporation_wallets.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param division
+     *            Wallet key of the division to fetch journals from (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param fromId
+     *            Only show journal entries happened before the transaction
+     *            referenced by this id (optional)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationWalletJournalResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
+            Integer corporationId, Integer division, String datasource, Long fromId, String token, String userAgent,
+            String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdWalletsDivisionJournal");
+        }
+
+        // verify the required parameter 'division' is set
+        if (division == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'division' when calling getCorporationsCorporationIdWalletsDivisionJournal");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/wallets/{division}/journal/"
+                .replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
+                .replaceAll("\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationWalletJournalResponse>> localVarReturnType = new GenericType<List<CorporationWalletJournalResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

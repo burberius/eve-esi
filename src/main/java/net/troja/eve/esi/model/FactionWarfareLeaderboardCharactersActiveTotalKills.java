@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * yesterday object
+ * active_total object
  */
-@ApiModel(description = "yesterday object")
-public class FactionWarfareLeaderboardYesterday1 implements Serializable {
+@ApiModel(description = "active_total object")
+public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
     private Integer amount = null;
 
-    @JsonProperty("faction_id")
-    private Integer factionId = null;
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
-    public FactionWarfareLeaderboardYesterday1 amount(Integer amount) {
+    public FactionWarfareLeaderboardCharactersActiveTotalKills amount(Integer amount) {
         this.amount = amount;
         return this;
     }
 
     /**
-     * Amount of victory points
+     * Amount of kills
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Amount of victory points")
+    @ApiModelProperty(example = "null", value = "Amount of kills")
     public Integer getAmount() {
         return amount;
     }
@@ -50,23 +50,23 @@ public class FactionWarfareLeaderboardYesterday1 implements Serializable {
         this.amount = amount;
     }
 
-    public FactionWarfareLeaderboardYesterday1 factionId(Integer factionId) {
-        this.factionId = factionId;
+    public FactionWarfareLeaderboardCharactersActiveTotalKills characterId(Integer characterId) {
+        this.characterId = characterId;
         return this;
     }
 
     /**
-     * faction_id integer
+     * character_id integer
      * 
-     * @return factionId
+     * @return characterId
      **/
-    @ApiModelProperty(example = "null", value = "faction_id integer")
-    public Integer getFactionId() {
-        return factionId;
+    @ApiModelProperty(example = "null", value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
     }
 
-    public void setFactionId(Integer factionId) {
-        this.factionId = factionId;
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
     }
 
     @Override
@@ -77,23 +77,23 @@ public class FactionWarfareLeaderboardYesterday1 implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        FactionWarfareLeaderboardYesterday1 factionWarfareLeaderboardYesterday1 = (FactionWarfareLeaderboardYesterday1) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardYesterday1.amount)
-                && Objects.equals(this.factionId, factionWarfareLeaderboardYesterday1.factionId);
+        FactionWarfareLeaderboardCharactersActiveTotalKills factionWarfareLeaderboardCharactersActiveTotalKills = (FactionWarfareLeaderboardCharactersActiveTotalKills) o;
+        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersActiveTotalKills.amount)
+                && Objects.equals(this.characterId, factionWarfareLeaderboardCharactersActiveTotalKills.characterId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, factionId);
+        return Objects.hash(amount, characterId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class FactionWarfareLeaderboardYesterday1 {\n");
+        sb.append("class FactionWarfareLeaderboardCharactersActiveTotalKills {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

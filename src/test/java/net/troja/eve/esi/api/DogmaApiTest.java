@@ -11,16 +11,15 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
-
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.DogmaAttributeResponse;
 import net.troja.eve.esi.model.DogmaEffectResponse;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 /**
  * API tests for DogmaApi
@@ -42,7 +41,8 @@ public class DogmaApiTest extends GeneralApiTest {
     public void getDogmaAttributesTest() throws ApiException {
         final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null, null);
 
-        assertThat(response.size(), equalTo(2357));
+        assertThat(response.size(), notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**
@@ -81,7 +81,8 @@ public class DogmaApiTest extends GeneralApiTest {
         final String xUserAgent = null;
         final List<Integer> response = api.getDogmaEffects(DATASOURCE, userAgent, xUserAgent);
 
-        assertThat(response.size(), equalTo(3986));
+        assertThat(response.size(), notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**

@@ -18,9 +18,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersActiveTotal;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersLastWeek;
-import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersYesterday;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersActiveTotalKills;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersLastWeekKills;
+import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersYesterdayKills;
 import java.io.Serializable;
 
 /**
@@ -32,22 +32,22 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCharactersActiveTotal> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotal>();
+    private List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotalKills>();
 
     @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCharactersLastWeek> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeek>();
+    private List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeekKills>();
 
     @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCharactersYesterday> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterday>();
+    private List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterdayKills>();
 
     public FactionWarfareLeaderboardCharacterKills activeTotal(
-            List<FactionWarfareLeaderboardCharactersActiveTotal> activeTotal) {
+            List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal) {
         this.activeTotal = activeTotal;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterKills addActiveTotalItem(
-            FactionWarfareLeaderboardCharactersActiveTotal activeTotalItem) {
+            FactionWarfareLeaderboardCharactersActiveTotalKills activeTotalItem) {
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -60,21 +60,22 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
      * @return activeTotal
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots active in faction warfare by total kills. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days.")
-    public List<FactionWarfareLeaderboardCharactersActiveTotal> getActiveTotal() {
+    public List<FactionWarfareLeaderboardCharactersActiveTotalKills> getActiveTotal() {
         return activeTotal;
     }
 
-    public void setActiveTotal(List<FactionWarfareLeaderboardCharactersActiveTotal> activeTotal) {
+    public void setActiveTotal(List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal) {
         this.activeTotal = activeTotal;
     }
 
-    public FactionWarfareLeaderboardCharacterKills lastWeek(List<FactionWarfareLeaderboardCharactersLastWeek> lastWeek) {
+    public FactionWarfareLeaderboardCharacterKills lastWeek(
+            List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
         this.lastWeek = lastWeek;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterKills addLastWeekItem(
-            FactionWarfareLeaderboardCharactersLastWeek lastWeekItem) {
+            FactionWarfareLeaderboardCharactersLastWeekKills lastWeekItem) {
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -85,22 +86,22 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
      * @return lastWeek
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past week")
-    public List<FactionWarfareLeaderboardCharactersLastWeek> getLastWeek() {
+    public List<FactionWarfareLeaderboardCharactersLastWeekKills> getLastWeek() {
         return lastWeek;
     }
 
-    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeek> lastWeek) {
+    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
         this.lastWeek = lastWeek;
     }
 
     public FactionWarfareLeaderboardCharacterKills yesterday(
-            List<FactionWarfareLeaderboardCharactersYesterday> yesterday) {
+            List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
         this.yesterday = yesterday;
         return this;
     }
 
     public FactionWarfareLeaderboardCharacterKills addYesterdayItem(
-            FactionWarfareLeaderboardCharactersYesterday yesterdayItem) {
+            FactionWarfareLeaderboardCharactersYesterdayKills yesterdayItem) {
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -111,11 +112,11 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
      * @return yesterday
      **/
     @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past day")
-    public List<FactionWarfareLeaderboardCharactersYesterday> getYesterday() {
+    public List<FactionWarfareLeaderboardCharactersYesterdayKills> getYesterday() {
         return yesterday;
     }
 
-    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterday> yesterday) {
+    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
         this.yesterday = yesterday;
     }
 
