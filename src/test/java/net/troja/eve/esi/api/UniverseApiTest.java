@@ -11,15 +11,16 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+
+import static org.junit.Assert.assertThat;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.BloodlinesResponse;
@@ -32,6 +33,7 @@ import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponse;
 import net.troja.eve.esi.model.RegionResponse;
+import net.troja.eve.esi.model.StarResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
 import net.troja.eve.esi.model.SystemJumpsResponse;
@@ -63,8 +65,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseBloodlinesTest() throws ApiException {
         final String userAgent = null;
         final String xUserAgent = null;
-        final List<BloodlinesResponse> response = api.getUniverseBloodlines(DATASOURCE, LANGUAGE, userAgent,
-                xUserAgent);
+        final List<BloodlinesResponse> response = api.getUniverseBloodlines(DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.size(), equalTo(15));
         final BloodlinesResponse bloodlinesResponse = response.get(0);
@@ -109,8 +110,7 @@ public class UniverseApiTest extends GeneralApiTest {
         final Integer categoryId = 8;
         final String userAgent = null;
         final String xUserAgent = null;
-        final CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, DATASOURCE, LANGUAGE,
-                userAgent, xUserAgent);
+        final CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.getName(), equalTo("Charge"));
     }
@@ -154,8 +154,8 @@ public class UniverseApiTest extends GeneralApiTest {
         final Integer constellationId = 20000006;
         final String userAgent = null;
         final String xUserAgent = null;
-        final ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, DATASOURCE,
-                LANGUAGE, userAgent, xUserAgent);
+        final ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, DATASOURCE, LANGUAGE, userAgent,
+                xUserAgent);
 
         assertThat(response.getName(), equalTo("Sazdih"));
     }
@@ -266,8 +266,7 @@ public class UniverseApiTest extends GeneralApiTest {
         final Integer groupId = 5;
         final String userAgent = null;
         final String xUserAgent = null;
-        final GroupResponse response = api.getUniverseGroupsGroupId(groupId, DATASOURCE, LANGUAGE, userAgent,
-                xUserAgent);
+        final GroupResponse response = api.getUniverseGroupsGroupId(groupId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.getName(), equalTo("Solar System"));
     }
@@ -377,8 +376,7 @@ public class UniverseApiTest extends GeneralApiTest {
         final Integer regionId = REGION_ID_THE_FORGE;
         final String userAgent = null;
         final String xUserAgent = null;
-        final RegionResponse response = api.getUniverseRegionsRegionId(regionId, DATASOURCE, LANGUAGE, userAgent,
-                xUserAgent);
+        final RegionResponse response = api.getUniverseRegionsRegionId(regionId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.getName(), equalTo("The Forge"));
     }
@@ -398,12 +396,25 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseStargatesStargateIdTest() throws ApiException {
         final Integer stargateId = 50000277;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final StargateResponse response = api.getUniverseStargatesStargateId(stargateId, DATASOURCE, userAgent,
-                xUserAgent);
+        final StargateResponse response = api.getUniverseStargatesStargateId(stargateId, DATASOURCE, null, null);
 
         assertThat(response.getName(), equalTo("Stargate (Kiereend)"));
+    }
+
+    /**
+     * Get star information
+     *
+     * Get information on a star --- This route expires daily at 11:05
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getUniverseStarsStarIdTest() throws ApiException {
+        final int starId = 40001581;
+        final StarResponse response = api.getUniverseStarsStarId(starId, DATASOURCE, null, null);
+
+        assertThat(response.getName(), equalTo("Fovihi - Star"));
     }
 
     /**
@@ -538,8 +549,7 @@ public class UniverseApiTest extends GeneralApiTest {
         final Integer systemId = 30000023;
         final String userAgent = null;
         final String xUserAgent = null;
-        final SystemResponse response = api.getUniverseSystemsSystemId(systemId, DATASOURCE, LANGUAGE, userAgent,
-                xUserAgent);
+        final SystemResponse response = api.getUniverseSystemsSystemId(systemId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.getName(), equalTo("Fovihi"));
     }

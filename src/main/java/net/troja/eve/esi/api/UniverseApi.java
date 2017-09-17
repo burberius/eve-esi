@@ -19,6 +19,7 @@ import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponse;
 import net.troja.eve.esi.model.RegionResponse;
+import net.troja.eve.esi.model.StarResponse;
 import net.troja.eve.esi.model.StargateResponse;
 import net.troja.eve.esi.model.StationResponse;
 import net.troja.eve.esi.model.StructureResponse;
@@ -928,6 +929,63 @@ public class UniverseApi {
     }
 
     /**
+     * Get star information Get information on a star --- This route expires
+     * daily at 11:05
+     * 
+     * @param starId
+     *            star_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return StarResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public StarResponse getUniverseStarsStarId(Integer starId, String datasource, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'starId' is set
+        if (starId == null) {
+            throw new ApiException(400, "Missing the required parameter 'starId' when calling getUniverseStarsStarId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/universe/stars/{star_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "star_id" + "\\}", apiClient.escapeString(starId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<StarResponse> localVarReturnType = new GenericType<StarResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get station information Get information on a station --- This route is
      * cached for up to 300 seconds
      * 
@@ -1168,7 +1226,7 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/universe/system_kills/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/universe/system_kills/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

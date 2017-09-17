@@ -17,6 +17,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import net.troja.eve.esi.model.PlanetContent;
 import net.troja.eve.esi.model.PlanetExtractorDetails;
 import net.troja.eve.esi.model.PlanetFactoryDetails;
 import java.io.Serializable;
@@ -27,6 +30,9 @@ import java.io.Serializable;
 @ApiModel(description = "pin object")
 public class PlanetPin implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @JsonProperty("contents")
+    private List<PlanetContent> contents = new ArrayList<PlanetContent>();
 
     @JsonProperty("expiry_time")
     private OffsetDateTime expiryTime = null;
@@ -57,6 +63,30 @@ public class PlanetPin implements Serializable {
 
     @JsonProperty("type_id")
     private Integer typeId = null;
+
+    public PlanetPin contents(List<PlanetContent> contents) {
+        this.contents = contents;
+        return this;
+    }
+
+    public PlanetPin addContentsItem(PlanetContent contentsItem) {
+        this.contents.add(contentsItem);
+        return this;
+    }
+
+    /**
+     * contents array
+     * 
+     * @return contents
+     **/
+    @ApiModelProperty(example = "null", value = "contents array")
+    public List<PlanetContent> getContents() {
+        return contents;
+    }
+
+    public void setContents(List<PlanetContent> contents) {
+        this.contents = contents;
+    }
 
     public PlanetPin expiryTime(OffsetDateTime expiryTime) {
         this.expiryTime = expiryTime;
@@ -257,7 +287,8 @@ public class PlanetPin implements Serializable {
             return false;
         }
         PlanetPin planetPin = (PlanetPin) o;
-        return Objects.equals(this.expiryTime, planetPin.expiryTime)
+        return Objects.equals(this.contents, planetPin.contents)
+                && Objects.equals(this.expiryTime, planetPin.expiryTime)
                 && Objects.equals(this.extractorDetails, planetPin.extractorDetails)
                 && Objects.equals(this.factoryDetails, planetPin.factoryDetails)
                 && Objects.equals(this.installTime, planetPin.installTime)
@@ -270,8 +301,8 @@ public class PlanetPin implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(expiryTime, extractorDetails, factoryDetails, installTime, lastCycleStart, latitude,
-                longitude, pinId, schematicId, typeId);
+        return Objects.hash(contents, expiryTime, extractorDetails, factoryDetails, installTime, lastCycleStart,
+                latitude, longitude, pinId, schematicId, typeId);
     }
 
     @Override
@@ -279,6 +310,7 @@ public class PlanetPin implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetPin {\n");
 
+        sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
         sb.append("    expiryTime: ").append(toIndentedString(expiryTime)).append("\n");
         sb.append("    extractorDetails: ").append(toIndentedString(extractorDetails)).append("\n");
         sb.append("    factoryDetails: ").append(toIndentedString(factoryDetails)).append("\n");
