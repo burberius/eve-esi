@@ -38,8 +38,8 @@ public class LoyaltyApi {
 
     /**
      * Get loyalty points Return a list of loyalty points for all corporations
-     * the character has worked for --- SSO Scope:
-     * esi-characters.read_loyalty.v1
+     * the character has worked for --- This route is cached for up to 3600
+     * seconds SSO Scope: esi-characters.read_loyalty.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

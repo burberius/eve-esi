@@ -11,7 +11,6 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
@@ -20,7 +19,12 @@ import java.util.List;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
+import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
+import net.troja.eve.esi.model.CorporationAssetsResponse;
+import static org.hamcrest.Matchers.notNullValue;
+import org.junit.Before;
+import org.junit.Ignore;
 
 /**
  * API tests for AssetsApi
@@ -28,6 +32,11 @@ import net.troja.eve.esi.model.CharacterAssetsResponse;
 public class AssetsApiTest extends GeneralApiTest {
 
     private final AssetsApi api = new AssetsApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
 
     /**
      * Get character assets
@@ -43,9 +52,28 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdAssetsTest() throws ApiException {
-        api.setApiClient(apiClient);
-        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null,
-                null, null);
+        Integer page = null;
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, page,
+                null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Get corporation assets
+     *
+     * Return a list of the corporation assets  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-assets.read_corporation_assets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdAssetsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, page, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

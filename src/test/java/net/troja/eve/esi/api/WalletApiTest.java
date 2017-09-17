@@ -15,6 +15,7 @@ import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterWalletJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
+import net.troja.eve.esi.model.CorporationTransactionsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -118,5 +119,25 @@ public class WalletApiTest extends GeneralApiTest {
     @Test
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdWalletsDivisionJournalTest() throws ApiException {
+    }
+
+    /**
+     * Get corporation wallet transactions
+     *
+     * Get wallet transactions of a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdWalletsDivisionTransactionsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer division = 1;
+        Long fromId = null;
+        List<CorporationTransactionsResponse> response = api.getCorporationsCorporationIdWalletsDivisionTransactions(corporationId, division, DATASOURCE, fromId, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 }

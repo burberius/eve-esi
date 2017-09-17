@@ -14,6 +14,7 @@ import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
+import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
@@ -470,6 +471,68 @@ public class CharacterApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CharacterMedalsResponse>> localVarReturnType = new GenericType<List<CharacterMedalsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get character notifications Return character notifications --- This route
+     * is cached for up to 1800 seconds SSO Scope:
+     * esi-characters.read_notifications.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterNotificationsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterNotificationsResponse> getCharactersCharacterIdNotifications(Integer characterId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdNotifications");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/notifications/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterNotificationsResponse>> localVarReturnType = new GenericType<List<CharacterNotificationsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

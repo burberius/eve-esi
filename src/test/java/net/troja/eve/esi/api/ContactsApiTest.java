@@ -23,6 +23,10 @@ import org.junit.Test;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.ContactLabelsResponse;
 import net.troja.eve.esi.model.ContactsResponse;
+import net.troja.eve.esi.model.CorporationContactsResponse;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * API tests for ContactsApi
@@ -93,6 +97,25 @@ public class ContactsApiTest extends GeneralApiTest {
         final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE,
                 null, null, null);
 
+        assertThat(response.size(), greaterThan(0));
+    }
+
+     /**
+     * Get corporation contacts
+     *
+     * Return contacts of a corporation  ---  This route is cached for up to 300 seconds  SSO Scope: esi-corporations.read_contacts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContactsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, page, null, null, null);
+
+        assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
     }
 
