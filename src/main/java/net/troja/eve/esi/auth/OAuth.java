@@ -5,11 +5,12 @@
 
 package net.troja.eve.esi.auth;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import javax.ws.rs.ProcessingException;
-import net.troja.eve.esi.ApiException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
@@ -17,6 +18,7 @@ import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;
 import org.glassfish.jersey.client.oauth2.TokenResult;
 
+import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
@@ -30,14 +32,15 @@ public class OAuth implements Authentication {
     private String clientId;
     private String clientSecret;
     private OAuth2CodeGrantFlow oAuthFlow;
+    private final Map<String, AccessTokenData> accessTokenCache = new HashMap<>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
-        if ((refreshToken != null) && (validUntil < System.currentTimeMillis())) {
+        if (refreshToken != null && validUntil < System.currentTimeMillis()) {
             try {
                 refreshToken();
-            } catch (ProcessingException ex) {
-                //This error will be handled by ESI once the request is made
+            } catch (final ProcessingException ex) {
+                // This error will be handled by ESI once the request is made
             }
         }
         if (accessToken != null) {
@@ -80,7 +83,7 @@ public class OAuth implements Authentication {
     public void finishFlow(final String code, final String state) throws ApiException {
         try {
             updateTokens(getFlow().finish(code, state));
-        } catch (ProcessingException ex) {
+        } catch (final ProcessingException ex) {
             throw new ApiException(ex);
         }
     }
@@ -99,7 +102,8 @@ public class OAuth implements Authentication {
     private void updateTokens(final TokenResult result) {
         accessToken = result.getAccessToken();
         refreshToken = result.getRefreshToken();
-        validUntil = (System.currentTimeMillis() + (result.getExpiresIn() * 1000)) - 5000;
+        validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
+        saveAccessToken();
     }
 
     private void createFlow(final String redirectUri, final Set<String> scopes, final String state) {
@@ -138,19 +142,60 @@ public class OAuth implements Authentication {
     }
 
     public void setRefreshToken(final String refreshToken) {
-        validUntil = 0; //Reset
         this.refreshToken = refreshToken;
+        loadAccessToken();
     }
 
     public void setClientId(final String clientId) {
         this.clientId = clientId;
+        loadAccessToken();
     }
 
     public void setClientSecret(final String clientSecret) {
         this.clientSecret = clientSecret;
+        loadAccessToken();
     }
 
     public String getRefreshToken() {
         return refreshToken;
+    }
+
+    private void saveAccessToken() {
+        final AccessTokenData accessTokenData = new AccessTokenData(accessToken, validUntil);
+        accessTokenCache.put(getAuthKey(), accessTokenData);
+    }
+
+    private void loadAccessToken() {
+        final AccessTokenData accessTokenData = accessTokenCache.get(getAuthKey());
+        if (accessTokenData != null) { // Old refreshToken: Use existing
+                                       // accesssToken
+            accessToken = accessTokenData.getAccessToken();
+            validUntil = accessTokenData.getValidUntil();
+        } else { // New refreshToken: reset accesssToken
+            accessToken = null;
+            validUntil = 0;
+        }
+    }
+
+    private String getAuthKey() {
+        return clientId + clientSecret + refreshToken;
+    }
+
+    private static class AccessTokenData {
+        private final String accessToken;
+        private final long validUntil;
+
+        public AccessTokenData(final String accessToken, final long validUntil) {
+            this.accessToken = accessToken;
+            this.validUntil = validUntil;
+        }
+
+        public String getAccessToken() {
+            return accessToken;
+        }
+
+        public long getValidUntil() {
+            return validUntil;
+        }
     }
 }
