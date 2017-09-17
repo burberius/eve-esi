@@ -196,6 +196,13 @@ s/get_universe_systems_200_ok/SystemsResponse/g
 s/get_universe_types_200_ok/TypesResponse/g
 s/get_wars_200_ok/WarsResponse/g
 s/get_wars_war_id_killmails_200_ok/WarKillmailsResponse/g
+s/get_characters_character_id_notifications_200_ok/CharacterNotificationsResponse/g
+s/get_corporations_corporation_id_assets_200_ok/CorporationAssetsResponse/g
+s/get_corporations_corporation_id_contacts_200_ok/CorporationContactsResponse/g
+s/get_corporations_corporation_id_divisions_hangar/CorporationDivisionsHangar/g
+s/get_corporations_corporation_id_divisions_ok/CorporationDivisionsResponse/g
+s/get_corporations_corporation_id_divisions_wallet/CorporationDivisionsWallet/g
+s/get_corporations_corporation_id_wallets_division_transactions_200_ok/CorporationTransactionsResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

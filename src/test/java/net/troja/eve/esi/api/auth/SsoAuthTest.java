@@ -78,7 +78,7 @@ public class SsoAuthTest extends GeneralApiTest {
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         AssetsApi api = new AssetsApi(client);
         try {
-            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex, notNullValue());
@@ -135,17 +135,30 @@ public class SsoAuthTest extends GeneralApiTest {
      */
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
         final String state = "somesecret";
-        if (args.length != 2) {
-            System.err.println("ClientId and ClientSecret missing");
-            System.exit(-1);
-        }
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(args[0]);
-        auth.setClientSecret(args[1]);
+        if (args.length == 2) {
+            auth.setClientId(args[0]);
+            auth.setClientSecret(args[1]);
+        } else {
+            initClass();
+            if (clientId != null && clientSecret != null) {
+                auth.setClientId(clientId);
+                auth.setClientSecret(clientSecret);
+            } else {
+                System.err.println("ClientId and ClientSecret missing");
+                System.exit(-1);
+            }
+        }
 
         final Set<String> scopes = new HashSet<>(Arrays.asList(SsoScopes.ALL));
-        final String authorizationUri = auth.getAuthorizationUri("http://localhost", scopes, state);
+        String redirectUri;
+        if (System.getenv().get("SSO_CALLBACK_URL") != null) {
+            redirectUri = System.getenv().get("SSO_CALLBACK_URL");
+        } else {
+            redirectUri = "http://localhost";
+        }
+        final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
         System.out.println("Authorization URL: " + authorizationUri);
         Desktop.getDesktop().browse(new URI(authorizationUri));
 

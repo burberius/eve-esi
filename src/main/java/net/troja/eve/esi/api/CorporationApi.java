@@ -8,6 +8,7 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
+import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
 import net.troja.eve.esi.model.CorporationMembersResponse;
@@ -160,6 +161,69 @@ public class CorporationApi {
     }
 
     /**
+     * Get corporation divisions Return corporation hangar and wallet division
+     * names, only show if a division is not using the default name --- This
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_divisions.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return CorporationDivisionsResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CorporationDivisionsResponse getCorporationsCorporationIdDivisions(Integer corporationId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdDivisions");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/divisions/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<CorporationDivisionsResponse> localVarReturnType = new GenericType<CorporationDivisionsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get corporation icon Get the icon urls for a corporation --- This route
      * is cached for up to 3600 seconds
      * 
@@ -220,8 +284,7 @@ public class CorporationApi {
     /**
      * Get corporation members Read the current list of members if the calling
      * character is a member. --- This route is cached for up to 3600 seconds
-     * SSO Scope: esi-corporations.read_corporation_membership.v1 SSO Scope:
-     * esi-corporations.track_members.v1
+     * SSO Scope: esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -281,9 +344,71 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation members Read the current list of members if the calling
-     * character is a member. --- This route is cached for up to 3600 seconds
-     * SSO Scope: esi-corporations.read_corporation_membership.v1 SSO Scope:
+     * Get corporation member limit Return a corporation&#39;s member limit, not
+     * including CEO himself --- This route is cached for up to 3600 seconds SSO
+     * Scope: esi-corporations.track_members.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return Integer
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public Integer getCorporationsCorporationIdMembersLimit(Integer corporationId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersLimit");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/members/limit/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<Integer> localVarReturnType = new GenericType<Integer>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Track corporation members Returns additional information about a
+     * corporation&#39;s members which helps tracking their activities --- This
+     * route is cached for up to 3600 seconds SSO Scope:
      * esi-corporations.track_members.v1
      * 
      * @param corporationId

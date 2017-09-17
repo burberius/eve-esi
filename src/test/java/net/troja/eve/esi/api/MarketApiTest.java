@@ -168,6 +168,24 @@ public class MarketApiTest extends GeneralApiTest {
     }
 
     /**
+     * List type IDs relevant to a market
+     *
+     * Return a list of type IDs that have active orders in the region, for efficient market indexing.  ---  This route is cached for up to 600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getMarketsRegionIdTypesTest() throws ApiException {
+        Integer regionId = 10000002;
+        Integer page = null;
+        List<Integer> response = api.getMarketsRegionIdTypes(regionId, DATASOURCE, page, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
      * List orders in a structure
      *
      * Return all orders in a structure --- Alternate route:

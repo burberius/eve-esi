@@ -24,10 +24,13 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import net.troja.eve.esi.ApiException;
+import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
+import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import org.junit.Before;
 
 /**
  * API tests for CorporationApi
@@ -35,6 +38,11 @@ import net.troja.eve.esi.model.CorporationResponse;
 public class CorporationApiTest extends GeneralApiTest {
 
     private final CorporationApi api = new CorporationApi();
+
+    @Before
+    public void setUp() {
+        api.setApiClient(apiClient);
+    }
 
     /**
      * Get corporation information
@@ -80,6 +88,25 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get corporation divisions
+     *
+     * Return corporation hangar and wallet division names, only show if a division is not using the default name  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_divisions.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdDivisionsTest() throws ApiException {
+        Integer corporationId = null;
+        CorporationDivisionsResponse response = api.getCorporationsCorporationIdDivisions(corporationId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.getHangar().size(), greaterThan(0));
+        assertThat(response.getWallet().size(), greaterThan(0));
+    }
+
+    /**
      * Get corporation icon
      *
      * Get the icon urls for a corporation --- Alternate route:
@@ -118,6 +145,24 @@ public class CorporationApiTest extends GeneralApiTest {
         // final List<CorporationMembersResponse> response =
         // api.getCorporationsCorporationIdMembers(CORPORATION_ID_AAC,
         // DATASOURCE);
+    }
+
+    /**
+     * Get corporation member limit
+     *
+     * Return a corporation&#39;s member limit, not including CEO himself  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.track_members.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdMembersLimitTest() throws ApiException {
+        Integer corporationId = null;
+        Integer response = api.getCorporationsCorporationIdMembersLimit(corporationId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response, greaterThan(0));
     }
 
     /**

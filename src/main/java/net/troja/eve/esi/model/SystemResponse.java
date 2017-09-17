@@ -53,6 +53,9 @@ public class SystemResponse implements Serializable {
     @JsonProperty("stargates")
     private List<Integer> stargates = new ArrayList<Integer>();
 
+    @JsonProperty("stations")
+    private List<Integer> stations = new ArrayList<Integer>();
+
     @JsonProperty("system_id")
     private Integer systemId = null;
 
@@ -209,13 +212,37 @@ public class SystemResponse implements Serializable {
      * 
      * @return stargates
      **/
-    @ApiModelProperty(example = "null", required = true, value = "stargates array")
+    @ApiModelProperty(example = "null", value = "stargates array")
     public List<Integer> getStargates() {
         return stargates;
     }
 
     public void setStargates(List<Integer> stargates) {
         this.stargates = stargates;
+    }
+
+    public SystemResponse stations(List<Integer> stations) {
+        this.stations = stations;
+        return this;
+    }
+
+    public SystemResponse addStationsItem(Integer stationsItem) {
+        this.stations.add(stationsItem);
+        return this;
+    }
+
+    /**
+     * stations array
+     * 
+     * @return stations
+     **/
+    @ApiModelProperty(example = "null", value = "stations array")
+    public List<Integer> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<Integer> stations) {
+        this.stations = stations;
     }
 
     public SystemResponse systemId(Integer systemId) {
@@ -254,13 +281,14 @@ public class SystemResponse implements Serializable {
                 && Objects.equals(this.securityStatus, systemResponse.securityStatus)
                 && Objects.equals(this.starId, systemResponse.starId)
                 && Objects.equals(this.stargates, systemResponse.stargates)
+                && Objects.equals(this.stations, systemResponse.stations)
                 && Objects.equals(this.systemId, systemResponse.systemId);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(constellationId, name, planets, position, securityClass, securityStatus, starId, stargates,
-                systemId);
+                stations, systemId);
     }
 
     @Override
@@ -276,6 +304,7 @@ public class SystemResponse implements Serializable {
         sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");
         sb.append("    starId: ").append(toIndentedString(starId)).append("\n");
         sb.append("    stargates: ").append(toIndentedString(stargates)).append("\n");
+        sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
