@@ -22,7 +22,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
-public class CharacterAssetsResponse implements Serializable {
+public class CorporationAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("is_singleton")
@@ -39,13 +39,41 @@ public class CharacterAssetsResponse implements Serializable {
 
         AUTOFIT("AutoFit"),
 
+        BONUS("Bonus"),
+
+        BOOSTER("Booster"),
+
+        BOOSTERBAY("BoosterBay"),
+
+        CAPSULE("Capsule"),
+
         CARGO("Cargo"),
 
-        CORPSEBAY("CorpseBay"),
+        CORPDELIVERIES("CorpDeliveries"),
+
+        CORPSAG1("CorpSAG1"),
+
+        CORPSAG2("CorpSAG2"),
+
+        CORPSAG3("CorpSAG3"),
+
+        CORPSAG4("CorpSAG4"),
+
+        CORPSAG5("CorpSAG5"),
+
+        CORPSAG6("CorpSAG6"),
+
+        CORPSAG7("CorpSAG7"),
+
+        CRATELOOT("CrateLoot"),
 
         DELIVERIES("Deliveries"),
 
         DRONEBAY("DroneBay"),
+
+        DUSTBATTLE("DustBattle"),
+
+        DUSTDATABANK("DustDatabank"),
 
         FIGHTERBAY("FighterBay"),
 
@@ -81,9 +109,15 @@ public class CharacterAssetsResponse implements Serializable {
 
         HISLOT7("HiSlot7"),
 
-        HIDDENMODIFIERS("HiddenModifiers"),
+        HIDDENMODIFERS("HiddenModifers"),
 
         IMPLANT("Implant"),
+
+        IMPOUNDED("Impounded"),
+
+        JUNKYARDREPROCESSED("JunkyardReprocessed"),
+
+        JUNKYARDTRASHED("JunkyardTrashed"),
 
         LOSLOT0("LoSlot0"),
 
@@ -119,9 +153,15 @@ public class CharacterAssetsResponse implements Serializable {
 
         MEDSLOT7("MedSlot7"),
 
-        MODULE("Module"),
+        OFFICEFOLDER("OfficeFolder"),
+
+        PILOT("Pilot"),
+
+        PLANETSURFACE("PlanetSurface"),
 
         QUAFEBAY("QuafeBay"),
+
+        REWARD("Reward"),
 
         RIGSLOT0("RigSlot0"),
 
@@ -139,7 +179,31 @@ public class CharacterAssetsResponse implements Serializable {
 
         RIGSLOT7("RigSlot7"),
 
+        SECONDARYSTORAGE("SecondaryStorage"),
+
+        SERVICESLOT0("ServiceSlot0"),
+
+        SERVICESLOT1("ServiceSlot1"),
+
+        SERVICESLOT2("ServiceSlot2"),
+
+        SERVICESLOT3("ServiceSlot3"),
+
+        SERVICESLOT4("ServiceSlot4"),
+
+        SERVICESLOT5("ServiceSlot5"),
+
+        SERVICESLOT6("ServiceSlot6"),
+
+        SERVICESLOT7("ServiceSlot7"),
+
         SHIPHANGAR("ShipHangar"),
+
+        SHIPOFFLINE("ShipOffline"),
+
+        SKILL("Skill"),
+
+        SKILLINTRAINING("SkillInTraining"),
 
         SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
 
@@ -169,7 +233,13 @@ public class CharacterAssetsResponse implements Serializable {
 
         SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
 
-        SUBSYSTEMBAY("SubSystemBay"),
+        STRUCTUREACTIVE("StructureActive"),
+
+        STRUCTUREFUEL("StructureFuel"),
+
+        STRUCTUREINACTIVE("StructureInactive"),
+
+        STRUCTUREOFFLINE("StructureOffline"),
 
         SUBSYSTEMSLOT0("SubSystemSlot0"),
 
@@ -187,7 +257,11 @@ public class CharacterAssetsResponse implements Serializable {
 
         SUBSYSTEMSLOT7("SubSystemSlot7"),
 
+        SUBSYSTEMBAY("SubsystemBay"),
+
         UNLOCKED("Unlocked"),
+
+        WALLET("Wallet"),
 
         WARDROBE("Wardrobe");
 
@@ -260,7 +334,7 @@ public class CharacterAssetsResponse implements Serializable {
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
+    public CorporationAssetsResponse isSingleton(Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
     }
@@ -279,7 +353,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.isSingleton = isSingleton;
     }
 
-    public CharacterAssetsResponse itemId(Long itemId) {
+    public CorporationAssetsResponse itemId(Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -298,7 +372,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
         this.locationFlag = locationFlag;
         return this;
     }
@@ -317,7 +391,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationFlag = locationFlag;
     }
 
-    public CharacterAssetsResponse locationId(Long locationId) {
+    public CorporationAssetsResponse locationId(Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -336,7 +410,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CharacterAssetsResponse locationType(LocationTypeEnum locationType) {
+    public CorporationAssetsResponse locationType(LocationTypeEnum locationType) {
         this.locationType = locationType;
         return this;
     }
@@ -355,7 +429,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationType = locationType;
     }
 
-    public CharacterAssetsResponse quantity(Integer quantity) {
+    public CorporationAssetsResponse quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -374,7 +448,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public CharacterAssetsResponse typeId(Integer typeId) {
+    public CorporationAssetsResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -401,14 +475,14 @@ public class CharacterAssetsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterAssetsResponse characterAssetsResponse = (CharacterAssetsResponse) o;
-        return Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton)
-                && Objects.equals(this.itemId, characterAssetsResponse.itemId)
-                && Objects.equals(this.locationFlag, characterAssetsResponse.locationFlag)
-                && Objects.equals(this.locationId, characterAssetsResponse.locationId)
-                && Objects.equals(this.locationType, characterAssetsResponse.locationType)
-                && Objects.equals(this.quantity, characterAssetsResponse.quantity)
-                && Objects.equals(this.typeId, characterAssetsResponse.typeId);
+        CorporationAssetsResponse corporationAssetsResponse = (CorporationAssetsResponse) o;
+        return Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton)
+                && Objects.equals(this.itemId, corporationAssetsResponse.itemId)
+                && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag)
+                && Objects.equals(this.locationId, corporationAssetsResponse.locationId)
+                && Objects.equals(this.locationType, corporationAssetsResponse.locationType)
+                && Objects.equals(this.quantity, corporationAssetsResponse.quantity)
+                && Objects.equals(this.typeId, corporationAssetsResponse.typeId);
     }
 
     @Override
@@ -419,7 +493,7 @@ public class CharacterAssetsResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterAssetsResponse {\n");
+        sb.append("class CorporationAssetsResponse {\n");
 
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");

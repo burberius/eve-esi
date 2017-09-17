@@ -32,6 +32,7 @@ import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
 import net.troja.eve.esi.model.CharacterNamesResponse;
+import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
@@ -39,6 +40,8 @@ import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
 
 /**
  * API tests for CharacterApi
@@ -181,6 +184,23 @@ public class CharacterApiTest extends GeneralApiTest {
         final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
+    }
+
+    /**
+     * Get character notifications
+     *
+     * Return character notifications  ---  This route is cached for up to 1800 seconds  SSO Scope: esi-characters.read_notifications.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdNotificationsTest() throws ApiException {
+        ignoreTestFails();
+        List<CharacterNotificationsResponse> response = api.getCharactersCharacterIdNotifications(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**

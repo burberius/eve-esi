@@ -278,14 +278,14 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * References a solar system, station or itemID if this blueprint is located
-     * within a container. If an itemID the Character - AssetList API must be
-     * queried to find the container using the itemID, from which the correct
-     * location of the Blueprint can be derived.
+     * References a solar system, station or item_id if this blueprint is
+     * located within a container. If an item_id the Character - AssetList API
+     * must be queried to find the container using the item_id, from which the
+     * correct location of the Blueprint can be derived.
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or itemID if this blueprint is located within a container. If an itemID the Character - AssetList API must be queried to find the container using the itemID, from which the correct location of the Blueprint can be derived.")
+    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or item_id if this blueprint is located within a container. If an item_id the Character - AssetList API must be queried to find the container using the item_id, from which the correct location of the Blueprint can be derived.")
     public Long getLocationId() {
         return locationId;
     }
