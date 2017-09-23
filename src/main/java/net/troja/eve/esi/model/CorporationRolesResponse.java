@@ -34,48 +34,6 @@ public class CorporationRolesResponse implements Serializable {
      * grantable_role string
      */
     public enum GrantableRolesEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -90,9 +48,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -108,31 +72,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -163,48 +163,6 @@ public class CorporationRolesResponse implements Serializable {
      * grantable_roles_at_base string
      */
     public enum GrantableRolesAtBaseEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -219,9 +177,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -237,31 +201,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -292,48 +292,6 @@ public class CorporationRolesResponse implements Serializable {
      * grantable_roles_at_hq string
      */
     public enum GrantableRolesAtHqEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -348,9 +306,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -366,31 +330,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -421,48 +421,6 @@ public class CorporationRolesResponse implements Serializable {
      * grantable_roles_at_other string
      */
     public enum GrantableRolesAtOtherEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -477,9 +435,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -495,31 +459,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -550,48 +550,6 @@ public class CorporationRolesResponse implements Serializable {
      * role string
      */
     public enum RolesEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -606,9 +564,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -624,31 +588,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -679,48 +679,6 @@ public class CorporationRolesResponse implements Serializable {
      * roles_at_base string
      */
     public enum RolesAtBaseEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -735,9 +693,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -753,31 +717,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -808,48 +808,6 @@ public class CorporationRolesResponse implements Serializable {
      * roles_at_hq string
      */
     public enum RolesAtHqEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -864,9 +822,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -882,31 +846,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 
@@ -937,48 +937,6 @@ public class CorporationRolesResponse implements Serializable {
      * roles_at_other string
      */
     public enum RolesAtOtherEnum {
-        DIRECTOR("Director"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        ACCOUNTANT("Accountant"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        AUDITOR("Auditor"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
         ACCOUNT_TAKE_1("Account_Take_1"),
 
         ACCOUNT_TAKE_2("Account_Take_2"),
@@ -993,9 +951,15 @@ public class CorporationRolesResponse implements Serializable {
 
         ACCOUNT_TAKE_7("Account_Take_7"),
 
-        DIPLOMAT("Diplomat"),
+        ACCOUNTANT("Accountant"),
+
+        AUDITOR("Auditor"),
+
+        COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
+
+        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
 
         CONTAINER_TAKE_1("Container_Take_1"),
 
@@ -1011,31 +975,67 @@ public class CorporationRolesResponse implements Serializable {
 
         CONTAINER_TAKE_7("Container_Take_7"),
 
-        RENT_OFFICE("Rent_Office"),
+        CONTRACT_MANAGER("Contract_Manager"),
 
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
+        DIPLOMAT("Diplomat"),
 
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+        DIRECTOR("Director"),
+
+        FACTORY_MANAGER("Factory_Manager"),
+
+        FITTING_MANAGER("Fitting_Manager"),
+
+        HANGAR_QUERY_1("Hangar_Query_1"),
+
+        HANGAR_QUERY_2("Hangar_Query_2"),
+
+        HANGAR_QUERY_3("Hangar_Query_3"),
+
+        HANGAR_QUERY_4("Hangar_Query_4"),
+
+        HANGAR_QUERY_5("Hangar_Query_5"),
+
+        HANGAR_QUERY_6("Hangar_Query_6"),
+
+        HANGAR_QUERY_7("Hangar_Query_7"),
+
+        HANGAR_TAKE_1("Hangar_Take_1"),
+
+        HANGAR_TAKE_2("Hangar_Take_2"),
+
+        HANGAR_TAKE_3("Hangar_Take_3"),
+
+        HANGAR_TAKE_4("Hangar_Take_4"),
+
+        HANGAR_TAKE_5("Hangar_Take_5"),
+
+        HANGAR_TAKE_6("Hangar_Take_6"),
+
+        HANGAR_TAKE_7("Hangar_Take_7"),
 
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
+        PERSONNEL_MANAGER("Personnel_Manager"),
 
-        TRADER("Trader"),
+        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
+        RENT_OFFICE("Rent_Office"),
 
-        CONTRACT_MANAGER("Contract_Manager"),
+        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
+
+        SECURITY_OFFICER("Security_Officer"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
-        FITTING_MANAGER("Fitting_Manager"),
+        STATION_MANAGER("Station_Manager"),
 
         TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
 
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer");
+        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
+
+        TRADER("Trader");
 
         private String value;
 

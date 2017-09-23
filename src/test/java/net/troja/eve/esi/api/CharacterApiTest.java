@@ -13,18 +13,6 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.notNullValue;
-
-import static org.junit.Assert.assertThat;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBlueprintsResponse;
 import net.troja.eve.esi.model.CharacterChatChannelsResponse;
@@ -40,8 +28,14 @@ import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
+import org.apache.commons.lang3.StringUtils;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for CharacterApi
@@ -126,8 +120,6 @@ public class CharacterApiTest extends GeneralApiTest {
         final List<CharacterChatChannelsResponse> response = api.getCharactersCharacterIdChatChannels(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
-        ignoreTestFails();
-        assertThat(response.size(), greaterThan(0));
     }
 
     /**
@@ -196,7 +188,6 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdNotificationsTest() throws ApiException {
-        ignoreTestFails();
         List<CharacterNotificationsResponse> response = api.getCharactersCharacterIdNotifications(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
@@ -215,7 +206,6 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdNotificationsContactsTest() throws ApiException {
-        ignoreTestFails();
         final List<NewContactNotificationsResponse> response = api.getCharactersCharacterIdNotificationsContacts(characterId, DATASOURCE, null,
                 null, null);
 

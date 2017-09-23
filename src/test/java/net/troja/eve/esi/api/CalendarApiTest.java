@@ -13,18 +13,17 @@ package net.troja.eve.esi.api;
 
 
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
+import net.troja.eve.esi.model.CharacterCalendarAttendeesResponse;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
 import net.troja.eve.esi.model.CharacterCalendarResponse;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for CalendarApi
@@ -36,6 +35,24 @@ public class CalendarApiTest extends GeneralApiTest {
     @Before
     public void setUp() {
         api.setApiClient(apiClient);
+    }
+
+    /**
+     * Get attendees
+     *
+     * Get all invited attendees for a given event  ---  This route is cached for up to 600 seconds  SSO Scope: esi-calendar.read_calendar_events.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdCalendarEventIdAttendeesTest() throws ApiException {
+        ignoreTestFails();
+        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE,
+                null, null, null, null);
+        final Integer eventId = calendar.get(0).getEventId();
+
+        List<CharacterCalendarAttendeesResponse> response = api.getCharactersCharacterIdCalendarEventIdAttendees(characterId, eventId, DATASOURCE, null, null, null);
     }
 
     /**

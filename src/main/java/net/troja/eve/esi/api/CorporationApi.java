@@ -8,6 +8,7 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
+import net.troja.eve.esi.model.CorporationBlueprintsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
@@ -155,6 +156,71 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<List<CorporationAlliancesHistoryResponse>> localVarReturnType = new GenericType<List<CorporationAlliancesHistoryResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation blueprints Returns a list of blueprints the corporation
+     * owns --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_blueprints.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationBlueprintsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationBlueprintsResponse> getCorporationsCorporationIdBlueprints(Integer corporationId,
+            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdBlueprints");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/blueprints/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationBlueprintsResponse>> localVarReturnType = new GenericType<List<CorporationBlueprintsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
