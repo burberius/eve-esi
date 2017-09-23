@@ -15,7 +15,7 @@ import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterWalletJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
-import net.troja.eve.esi.model.CorporationTransactionsResponse;
+import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -135,7 +135,7 @@ public class WalletApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Integer division = 1;
         Long fromId = null;
-        List<CorporationTransactionsResponse> response = api.getCorporationsCorporationIdWalletsDivisionTransactions(corporationId, division, DATASOURCE, fromId, null, null, null);
+        List<CorporationWalletTransactionsResponse> response = api.getCorporationsCorporationIdWalletsDivisionTransactions(corporationId, division, DATASOURCE, fromId, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

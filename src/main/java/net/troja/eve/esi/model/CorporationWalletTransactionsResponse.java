@@ -23,7 +23,7 @@ import java.io.Serializable;
  * wallet transaction
  */
 @ApiModel(description = "wallet transaction")
-public class CorporationTransactionsResponse implements Serializable {
+public class CorporationWalletTransactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("client_id")
@@ -53,7 +53,7 @@ public class CorporationTransactionsResponse implements Serializable {
     @JsonProperty("unit_price")
     private Integer unitPrice = null;
 
-    public CorporationTransactionsResponse clientId(Integer clientId) {
+    public CorporationWalletTransactionsResponse clientId(Integer clientId) {
         this.clientId = clientId;
         return this;
     }
@@ -72,7 +72,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.clientId = clientId;
     }
 
-    public CorporationTransactionsResponse date(OffsetDateTime date) {
+    public CorporationWalletTransactionsResponse date(OffsetDateTime date) {
         this.date = date;
         return this;
     }
@@ -91,7 +91,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.date = date;
     }
 
-    public CorporationTransactionsResponse isBuy(Boolean isBuy) {
+    public CorporationWalletTransactionsResponse isBuy(Boolean isBuy) {
         this.isBuy = isBuy;
         return this;
     }
@@ -110,7 +110,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.isBuy = isBuy;
     }
 
-    public CorporationTransactionsResponse journalRefId(Long journalRefId) {
+    public CorporationWalletTransactionsResponse journalRefId(Long journalRefId) {
         this.journalRefId = journalRefId;
         return this;
     }
@@ -129,7 +129,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.journalRefId = journalRefId;
     }
 
-    public CorporationTransactionsResponse locationId(Long locationId) {
+    public CorporationWalletTransactionsResponse locationId(Long locationId) {
         this.locationId = locationId;
         return this;
     }
@@ -148,7 +148,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CorporationTransactionsResponse quantity(Integer quantity) {
+    public CorporationWalletTransactionsResponse quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -167,7 +167,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public CorporationTransactionsResponse transactionId(Long transactionId) {
+    public CorporationWalletTransactionsResponse transactionId(Long transactionId) {
         this.transactionId = transactionId;
         return this;
     }
@@ -186,7 +186,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.transactionId = transactionId;
     }
 
-    public CorporationTransactionsResponse typeId(Integer typeId) {
+    public CorporationWalletTransactionsResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
     }
@@ -205,7 +205,7 @@ public class CorporationTransactionsResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public CorporationTransactionsResponse unitPrice(Integer unitPrice) {
+    public CorporationWalletTransactionsResponse unitPrice(Integer unitPrice) {
         this.unitPrice = unitPrice;
         return this;
     }
@@ -232,16 +232,16 @@ public class CorporationTransactionsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationTransactionsResponse corporationTransactionsResponse = (CorporationTransactionsResponse) o;
-        return Objects.equals(this.clientId, corporationTransactionsResponse.clientId)
-                && Objects.equals(this.date, corporationTransactionsResponse.date)
-                && Objects.equals(this.isBuy, corporationTransactionsResponse.isBuy)
-                && Objects.equals(this.journalRefId, corporationTransactionsResponse.journalRefId)
-                && Objects.equals(this.locationId, corporationTransactionsResponse.locationId)
-                && Objects.equals(this.quantity, corporationTransactionsResponse.quantity)
-                && Objects.equals(this.transactionId, corporationTransactionsResponse.transactionId)
-                && Objects.equals(this.typeId, corporationTransactionsResponse.typeId)
-                && Objects.equals(this.unitPrice, corporationTransactionsResponse.unitPrice);
+        CorporationWalletTransactionsResponse corporationWalletTransactionsResponse = (CorporationWalletTransactionsResponse) o;
+        return Objects.equals(this.clientId, corporationWalletTransactionsResponse.clientId)
+                && Objects.equals(this.date, corporationWalletTransactionsResponse.date)
+                && Objects.equals(this.isBuy, corporationWalletTransactionsResponse.isBuy)
+                && Objects.equals(this.journalRefId, corporationWalletTransactionsResponse.journalRefId)
+                && Objects.equals(this.locationId, corporationWalletTransactionsResponse.locationId)
+                && Objects.equals(this.quantity, corporationWalletTransactionsResponse.quantity)
+                && Objects.equals(this.transactionId, corporationWalletTransactionsResponse.transactionId)
+                && Objects.equals(this.typeId, corporationWalletTransactionsResponse.typeId)
+                && Objects.equals(this.unitPrice, corporationWalletTransactionsResponse.unitPrice);
     }
 
     @Override
@@ -253,7 +253,7 @@ public class CorporationTransactionsResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationTransactionsResponse {\n");
+        sb.append("class CorporationWalletTransactionsResponse {\n");
 
         sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
