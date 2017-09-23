@@ -9,8 +9,8 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterWalletJournalResponse;
 import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
-import net.troja.eve.esi.model.CorporationTransactionsResponse;
 import net.troja.eve.esi.model.CorporationWalletJournalResponse;
+import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
 import net.troja.eve.esi.model.CorporationWalletsResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
@@ -393,11 +393,11 @@ public class WalletApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CorporationTransactionsResponse&gt;
+     * @return List&lt;CorporationWalletTransactionsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CorporationTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
+    public List<CorporationWalletTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
             Integer corporationId, Integer division, String datasource, Long fromId, String token, String userAgent,
             String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
@@ -443,7 +443,7 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<CorporationTransactionsResponse>> localVarReturnType = new GenericType<List<CorporationTransactionsResponse>>() {
+        GenericType<List<CorporationWalletTransactionsResponse>> localVarReturnType = new GenericType<List<CorporationWalletTransactionsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

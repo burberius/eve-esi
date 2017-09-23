@@ -13,24 +13,21 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Ignore;
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-
-import static org.junit.Assert.assertThat;
-
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
+import net.troja.eve.esi.model.CorporationBlueprintsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for CorporationApi
@@ -60,6 +57,23 @@ public class CorporationApiTest extends GeneralApiTest {
 
         assertThat(response.getTicker(), equalTo(".AAC."));
         assertThat(response.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
+    }
+
+    /**
+     * Get corporation blueprints
+     *
+     * Returns a list of blueprints the corporation owns  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_blueprints.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdBlueprintsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, page, null, null, null);
+        // TODO: test validations
     }
 
     /**
