@@ -11,6 +11,7 @@
 
 package net.troja.eve.esi.api;
 
+import java.util.ArrayList;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
@@ -20,8 +21,11 @@ import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
+import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
+import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -77,5 +81,50 @@ public class AssetsApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Get character asset locations
+     *
+     * Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)  ---   SSO Scope: esi-assets.read_assets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postCharactersCharacterIdAssetsLocationsTest() throws ApiException {
+        List<Long> itemIds = new ArrayList<>();
+        itemIds.add(1021792628250L);
+        itemIds.add(1004353009292L);
+        itemIds.add(1004329151505L);
+        itemIds.add(1004329154088L);
+        itemIds.add(1004329156651L);
+
+        List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), equalTo(5));
+    }
+    
+    /**
+     * Get character asset names
+     *
+     * Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.  ---   SSO Scope: esi-assets.read_assets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postCharactersCharacterIdAssetsNamesTest() throws ApiException {
+        List<Long> itemIds = new ArrayList<>();
+        itemIds.add(1021792628250L);
+        itemIds.add(1004353009292L);
+        itemIds.add(1004329151505L);
+        itemIds.add(1004329154088L);
+        itemIds.add(1004329156651L);
+        List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), equalTo(5));
     }
 }

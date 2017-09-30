@@ -26,12 +26,12 @@ public class FleetMemberMovement implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * - If a character is moved to the `fleet_commander` role, neither
-     * `wing_id` or `squad_id` should be specified - If a character is moved to
-     * the `wing_commander` role, only `wing_id` should be specified - If a
-     * character is moved to the `squad_commander` role, both `wing_id` and
-     * `squad_id` should be specified - If a character is moved to the
-     * `squad_member` role, both `wing_id` and `squad_id` should be specified
+     * If a character is moved to the `fleet_commander` role, neither `wing_id`
+     * or `squad_id` should be specified. If a character is moved to the
+     * `wing_commander` role, only `wing_id` should be specified. If a character
+     * is moved to the `squad_commander` role, both `wing_id` and `squad_id`
+     * should be specified. If a character is moved to the `squad_member` role,
+     * both `wing_id` and `squad_id` should be specified.
      */
     public enum RoleEnum {
         FLEET_COMMANDER("fleet_commander"),
@@ -79,16 +79,16 @@ public class FleetMemberMovement implements Serializable {
     }
 
     /**
-     * - If a character is moved to the `fleet_commander` role, neither
-     * `wing_id` or `squad_id` should be specified - If a character is moved to
-     * the `wing_commander` role, only `wing_id` should be specified - If a
-     * character is moved to the `squad_commander` role, both `wing_id` and
-     * `squad_id` should be specified - If a character is moved to the
-     * `squad_member` role, both `wing_id` and `squad_id` should be specified
+     * If a character is moved to the `fleet_commander` role, neither `wing_id`
+     * or `squad_id` should be specified. If a character is moved to the
+     * `wing_commander` role, only `wing_id` should be specified. If a character
+     * is moved to the `squad_commander` role, both `wing_id` and `squad_id`
+     * should be specified. If a character is moved to the `squad_member` role,
+     * both `wing_id` and `squad_id` should be specified.
      * 
      * @return role
      **/
-    @ApiModelProperty(example = "null", required = true, value = "- If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified - If a character is moved to the `wing_commander` role, only `wing_id` should be specified - If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified - If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified ")
+    @ApiModelProperty(example = "null", required = true, value = "If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.")
     public RoleEnum getRole() {
         return role;
     }

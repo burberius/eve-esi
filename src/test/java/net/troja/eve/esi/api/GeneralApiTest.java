@@ -1,15 +1,12 @@
 package net.troja.eve.esi.api;
 
-import static org.junit.Assume.assumeFalse;
-
 import java.util.Map;
-
-import org.junit.BeforeClass;
-
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
+import static org.junit.Assume.assumeFalse;
+import org.junit.BeforeClass;
 
 public class GeneralApiTest {
     protected static final String DATASOURCE = "tranquility";
