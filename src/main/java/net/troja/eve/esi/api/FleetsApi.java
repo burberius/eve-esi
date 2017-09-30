@@ -433,8 +433,8 @@ public class FleetsApi {
     }
 
     /**
-     * Create fleet invitation Invite a character into the fleet, if a character
-     * has a CSPA charge set, it is not possible to invite them to the fleet
+     * Create fleet invitation Invite a character into the fleet. If a character
+     * has a CSPA charge set it is not possible to invite them to the fleet
      * using ESI --- SSO Scope: esi-fleets.write_fleet.v1
      * 
      * @param fleetId

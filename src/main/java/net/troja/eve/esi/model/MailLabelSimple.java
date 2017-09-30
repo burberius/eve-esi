@@ -29,41 +29,41 @@ public class MailLabelSimple implements Serializable {
      * Hexadecimal string representing label color, in RGB format
      */
     public enum ColorEnum {
-        FFFFFF("#ffffff"),
-
-        FFFF01("#ffff01"),
-
-        FF6600("#ff6600"),
-
-        FE0000("#fe0000"),
-
-        _9A0000("#9a0000"),
-
-        _660066("#660066"),
-
         _0000FE("#0000fe"),
+
+        _006634("#006634"),
 
         _0099FF("#0099ff"),
 
-        _01FFFF("#01ffff"),
-
         _00FF33("#00ff33"),
+
+        _01FFFF("#01ffff"),
 
         _349800("#349800"),
 
-        _006634("#006634"),
+        _660066("#660066"),
 
         _666666("#666666"),
 
         _999999("#999999"),
 
+        _99FFFF("#99ffff"),
+
+        _9A0000("#9a0000"),
+
+        CCFF9A("#ccff9a"),
+
         E6E6E6("#e6e6e6"),
+
+        FE0000("#fe0000"),
+
+        FF6600("#ff6600"),
+
+        FFFF01("#ffff01"),
 
         FFFFCD("#ffffcd"),
 
-        _99FFFF("#99ffff"),
-
-        CCFF9A("#ccff9a");
+        FFFFFF("#ffffff");
 
         private String value;
 
@@ -103,7 +103,7 @@ public class MailLabelSimple implements Serializable {
      * 
      * @return color
      **/
-    @ApiModelProperty(example = "null", value = "Hexadecimal string representing label color, in RGB format ")
+    @ApiModelProperty(example = "null", value = "Hexadecimal string representing label color, in RGB format")
     public ColorEnum getColor() {
         return color;
     }

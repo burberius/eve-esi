@@ -238,11 +238,11 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Unique ID for this item. The ID of an item is stable if that item is not
      * repackaged, stacked, detached from a stack, assembled, or otherwise
      * altered. If an item is changed in one of these ways, then the ID will
-     * also change (see notes below).
+     * also change.
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item. The ID of an item is stable if that item is not repackaged, stacked, detached from a stack, assembled, or otherwise altered. If an item is changed in one of these ways, then the ID will also change (see notes below).")
+    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item. The ID of an item is stable if that item is not repackaged, stacked, detached from a stack, assembled, or otherwise altered. If an item is changed in one of these ways, then the ID will also change.")
     public Long getItemId() {
         return itemId;
     }

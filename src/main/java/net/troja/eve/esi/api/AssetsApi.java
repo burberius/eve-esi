@@ -7,6 +7,8 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
+import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
 import net.troja.eve.esi.model.Forbidden;
@@ -163,6 +165,150 @@ public class AssetsApi {
         GenericType<List<CorporationAssetsResponse>> localVarReturnType = new GenericType<List<CorporationAssetsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get character asset locations Return locations for a set of item ids,
+     * which you can get from character assets endpoint. Coordinates for items
+     * in hangars or stations are set to (0,0,0) --- SSO Scope:
+     * esi-assets.read_assets.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param itemIds
+     *            A list of item ids (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterAssetsLocationsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterAssetsLocationsResponse> postCharactersCharacterIdAssetsLocations(Integer characterId,
+            List<Long> itemIds, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = itemIds;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling postCharactersCharacterIdAssetsLocations");
+        }
+
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'itemIds' when calling postCharactersCharacterIdAssetsLocations");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/assets/locations/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterAssetsLocationsResponse>> localVarReturnType = new GenericType<List<CharacterAssetsLocationsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get character asset names Return names for a set of item ids, which you
+     * can get from character assets endpoint. Typically used for items that can
+     * customize names, like containers or ships. --- SSO Scope:
+     * esi-assets.read_assets.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param itemIds
+     *            A list of item ids (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CharacterAssetsNamesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CharacterAssetsNamesResponse> postCharactersCharacterIdAssetsNames(Integer characterId,
+            List<Long> itemIds, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = itemIds;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling postCharactersCharacterIdAssetsNames");
+        }
+
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'itemIds' when calling postCharactersCharacterIdAssetsNames");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/assets/names/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CharacterAssetsNamesResponse>> localVarReturnType = new GenericType<List<CharacterAssetsNamesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 }

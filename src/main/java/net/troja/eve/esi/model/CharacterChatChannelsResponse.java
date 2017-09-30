@@ -154,11 +154,11 @@ public class CharacterChatChannelsResponse implements Serializable {
     }
 
     /**
-     * Whether this is a password protected channel
+     * If this is a password protected channel
      * 
      * @return hasPassword
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Whether this is a password protected channel")
+    @ApiModelProperty(example = "null", required = true, value = "If this is a password protected channel")
     public Boolean getHasPassword() {
         return hasPassword;
     }
