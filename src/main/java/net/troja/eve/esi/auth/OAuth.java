@@ -30,13 +30,12 @@ public class OAuth implements Authentication {
     private String clientId;
     private String clientSecret;
     private OAuth2CodeGrantFlow oAuthFlow;
-    private static final Object STATIC_LOCK = new Object();
     private static final Map<String, AccessTokenData> ACCESS_TOKEN_CACHE = new ConcurrentHashMap<>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
         //Check if we need a new access token
-        synchronized(STATIC_LOCK) { //This block is synchronized across all threads - so we don't update the access token more than once
+        synchronized(OAuth.class) { //This block is synchronized across all threads - so we don't update the access token more than once
             AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
             if (refreshToken != null  && (accessTokenData == null || accessTokenData.getValidUntil() < System.currentTimeMillis())) {
                 try {
