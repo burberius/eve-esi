@@ -29,14 +29,14 @@ public class FleetInvitation implements Serializable {
     private Integer characterId = null;
 
     /**
-     * - If a character is invited with the `fleet_commander` role, neither
-     * `wing_id` or `squad_id` should be specified - If a character is invited
-     * with the `wing_commander` role, only `wing_id` should be specified - If a
+     * If a character is invited with the `fleet_commander` role, neither
+     * `wing_id` or `squad_id` should be specified. If a character is invited
+     * with the `wing_commander` role, only `wing_id` should be specified. If a
      * character is invited with the `squad_commander` role, both `wing_id` and
-     * `squad_id` should be specified - If a character is invited with the
+     * `squad_id` should be specified. If a character is invited with the
      * `squad_member` role, `wing_id` and `squad_id` should either both be
      * specified or not specified at all. If they aren’t specified, the invited
-     * character will join any squad with available positions
+     * character will join any squad with available positions.
      */
     public enum RoleEnum {
         FLEET_COMMANDER("fleet_commander"),
@@ -103,18 +103,18 @@ public class FleetInvitation implements Serializable {
     }
 
     /**
-     * - If a character is invited with the `fleet_commander` role, neither
-     * `wing_id` or `squad_id` should be specified - If a character is invited
-     * with the `wing_commander` role, only `wing_id` should be specified - If a
+     * If a character is invited with the `fleet_commander` role, neither
+     * `wing_id` or `squad_id` should be specified. If a character is invited
+     * with the `wing_commander` role, only `wing_id` should be specified. If a
      * character is invited with the `squad_commander` role, both `wing_id` and
-     * `squad_id` should be specified - If a character is invited with the
+     * `squad_id` should be specified. If a character is invited with the
      * `squad_member` role, `wing_id` and `squad_id` should either both be
      * specified or not specified at all. If they aren’t specified, the invited
-     * character will join any squad with available positions
+     * character will join any squad with available positions.
      * 
      * @return role
      **/
-    @ApiModelProperty(example = "null", required = true, value = "- If a character is invited with the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified - If a character is invited with the `wing_commander` role, only `wing_id` should be specified - If a character is invited with the `squad_commander` role, both `wing_id` and `squad_id` should be specified - If a character is invited with the `squad_member` role, `wing_id` and `squad_id` should either both be specified or not specified at all. If they aren’t specified, the invited character will join any squad with available positions ")
+    @ApiModelProperty(example = "null", required = true, value = "If a character is invited with the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is invited with the `wing_commander` role, only `wing_id` should be specified. If a character is invited with the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is invited with the `squad_member` role, `wing_id` and `squad_id` should either both be specified or not specified at all. If they aren’t specified, the invited character will join any squad with available positions.")
     public RoleEnum getRole() {
         return role;
     }

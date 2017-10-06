@@ -21,6 +21,7 @@ import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationTitlesResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -244,6 +245,21 @@ public class CorporationApiTest extends GeneralApiTest {
         // final List<CorporationStructuresResponse> response =
         // api.getCorporationsCorporationIdStructures(corporationId,
         // DATASOURCE, LANGUAGE, page, token, userAgent, xUserAgent);
+    }
+
+    /**
+     * Get corporation titles
+     *
+     * Returns a corporation&#39;s titles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_titles.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdTitlesTest() throws ApiException {
+        Integer corporationId = null;
+        List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null, null);
     }
 
     /**

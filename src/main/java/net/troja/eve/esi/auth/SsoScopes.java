@@ -26,6 +26,7 @@ public class SsoScopes {
     public static final String ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1 = "esi-corporations.read_corporation_membership.v1";
     public static final String ESI_CORPORATIONS_READ_DIVISIONS_V1 = "esi-corporations.read_divisions.v1";
     public static final String ESI_CORPORATIONS_READ_STRUCTURES_V1 = "esi-corporations.read_structures.v1";
+    public static final String ESI_CORPORATIONS_READ_TITLES_V1 = "esi-corporations.read_titles.v1";
     public static final String ESI_CORPORATIONS_TRACK_MEMBERS_V1 = "esi-corporations.track_members.v1";
     public static final String ESI_CORPORATIONS_WRITE_STRUCTURES_V1 = "esi-corporations.write_structures.v1";
     public static final String ESI_FITTINGS_READ_FITTINGS_V1 = "esi-fittings.read_fittings.v1";
@@ -63,7 +64,7 @@ public class SsoScopes {
             ESI_CLONES_READ_IMPLANTS_V1, ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1,
             ESI_CORPORATIONS_READ_BLUEPRINTS_V1, ESI_CORPORATIONS_READ_CONTACTS_V1,
             ESI_CORPORATIONS_READ_CORPORATION_MEMBERSHIP_V1, ESI_CORPORATIONS_READ_DIVISIONS_V1,
-            ESI_CORPORATIONS_READ_STRUCTURES_V1, ESI_CORPORATIONS_TRACK_MEMBERS_V1,
+            ESI_CORPORATIONS_READ_STRUCTURES_V1, ESI_CORPORATIONS_READ_TITLES_V1, ESI_CORPORATIONS_TRACK_MEMBERS_V1,
             ESI_CORPORATIONS_WRITE_STRUCTURES_V1, ESI_FITTINGS_READ_FITTINGS_V1, ESI_FITTINGS_WRITE_FITTINGS_V1,
             ESI_FLEETS_READ_FLEET_V1, ESI_FLEETS_WRITE_FLEET_V1, ESI_INDUSTRY_READ_CHARACTER_JOBS_V1,
             ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1, ESI_KILLMAILS_READ_KILLMAILS_V1,

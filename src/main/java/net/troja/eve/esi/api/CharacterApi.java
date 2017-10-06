@@ -235,7 +235,7 @@ public class CharacterApi {
 
     /**
      * Get chat channels Return chat channels that a character is the owner or
-     * an operator of --- This route is cached for up to 300 seconds SSO Scope:
+     * operator of --- This route is cached for up to 300 seconds SSO Scope:
      * esi-characters.read_chat_channels.v1
      * 
      * @param characterId
