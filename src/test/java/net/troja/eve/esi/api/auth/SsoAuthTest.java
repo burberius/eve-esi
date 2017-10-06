@@ -1,9 +1,5 @@
 package net.troja.eve.esi.api.auth;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -11,12 +7,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -25,13 +26,35 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
+import static net.troja.eve.esi.api.GeneralApiTest.initClass;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
+import net.troja.eve.esi.model.CharacterAssetsResponse;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 public class SsoAuthTest extends GeneralApiTest {
+
+    @Test
+    public void threads() throws ApiException {
+        final int threads = 10;
+        List<Callable<Void>> runnables = new ArrayList<>();
+        for (int i = 0; i < threads; i++) {
+            runnables.add(new UpdateThread());
+        }
+        ExecutorService threadPool = Executors.newFixedThreadPool(threads);
+        try {
+            threadPool.invokeAll(runnables);
+        } catch (InterruptedException ex) {
+            fail(ex.getMessage());
+        }
+    }
+
     @Test
     public void refreshToken() throws ApiException {
         final ApiClient client = new ApiClient();
@@ -167,5 +190,22 @@ public class SsoAuthTest extends GeneralApiTest {
         final String code = br.readLine();
         auth.finishFlow(code, state);
         System.out.println("Refresh Token: " + auth.getRefreshToken());
+    }
+
+    private static class UpdateThread implements Callable<Void> {
+
+        @Override
+        public Void call() throws Exception {
+            try {
+                AssetsApi api = new AssetsApi();
+                Integer page = null;
+                final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, page, null, null, null);
+                assertThat(response, notNullValue());
+                assertThat(response.size(), greaterThan(0));
+            } catch (ApiException ex) {
+                fail(ex.getMessage());
+            }
+            return null;
+        }
     }
 }
