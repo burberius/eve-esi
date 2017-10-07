@@ -5,10 +5,10 @@
 
 package net.troja.eve.esi.auth;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.ws.rs.ProcessingException;
 
@@ -26,25 +26,29 @@ public class OAuth implements Authentication {
     private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
     private static final String URI_ACCESS_TOKEN = URI_OAUTH + "/token";
 
-    private String accessToken;
-    private long validUntil;
     private String refreshToken;
     private String clientId;
     private String clientSecret;
     private OAuth2CodeGrantFlow oAuthFlow;
-    private final Map<String, AccessTokenData> accessTokenCache = new HashMap<>();
+    private static final Map<String, AccessTokenData> ACCESS_TOKEN_CACHE = new ConcurrentHashMap<>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
-        if (refreshToken != null && validUntil < System.currentTimeMillis()) {
-            try {
-                refreshToken();
-            } catch (final ProcessingException ex) {
-                // This error will be handled by ESI once the request is made
+        //Check if we need a new access token
+        synchronized(OAuth.class) { //This block is synchronized across all threads - so we don't update the access token more than once
+            AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
+            if (refreshToken != null  && (accessTokenData == null || accessTokenData.getValidUntil() < System.currentTimeMillis())) {
+                try {
+                    refreshToken();
+                } catch (final ProcessingException ex) {
+                    // This error will be handled by ESI once the request is made
+                }
             }
         }
-        if (accessToken != null) {
-            headerParams.put("Authorization", "Bearer " + accessToken);
+        //Add auth
+        AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
+        if (accessTokenData != null) {
+            headerParams.put("Authorization", "Bearer " + accessTokenData.getAccessToken());
         }
     }
 
@@ -100,10 +104,10 @@ public class OAuth implements Authentication {
     }
 
     private void updateTokens(final TokenResult result) {
-        accessToken = result.getAccessToken();
         refreshToken = result.getRefreshToken();
-        validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
-        saveAccessToken();
+        String accessToken = result.getAccessToken();
+        long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
+        ACCESS_TOKEN_CACHE.put(getAuthKey(), new AccessTokenData(accessToken, validUntil));
     }
 
     private void createFlow(final String redirectUri, final Set<String> scopes, final String state) {
@@ -138,43 +142,23 @@ public class OAuth implements Authentication {
     }
 
     public void setAccessToken(final String accessToken) {
-        this.accessToken = accessToken;
+        ACCESS_TOKEN_CACHE.put(getAuthKey(), new AccessTokenData(accessToken, 0));
     }
 
     public void setRefreshToken(final String refreshToken) {
         this.refreshToken = refreshToken;
-        loadAccessToken();
     }
 
     public void setClientId(final String clientId) {
         this.clientId = clientId;
-        loadAccessToken();
     }
 
     public void setClientSecret(final String clientSecret) {
         this.clientSecret = clientSecret;
-        loadAccessToken();
     }
 
     public String getRefreshToken() {
         return refreshToken;
-    }
-
-    private void saveAccessToken() {
-        final AccessTokenData accessTokenData = new AccessTokenData(accessToken, validUntil);
-        accessTokenCache.put(getAuthKey(), accessTokenData);
-    }
-
-    private void loadAccessToken() {
-        final AccessTokenData accessTokenData = accessTokenCache.get(getAuthKey());
-        if (accessTokenData != null) { // Old refreshToken: Use existing
-                                       // accesssToken
-            accessToken = accessTokenData.getAccessToken();
-            validUntil = accessTokenData.getValidUntil();
-        } else { // New refreshToken: reset accesssToken
-            accessToken = null;
-            validUntil = 0;
-        }
     }
 
     private String getAuthKey() {
