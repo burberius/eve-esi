@@ -1444,7 +1444,7 @@ public class UniverseApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/universe/types/{type_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/universe/types/{type_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "type_id" + "\\}", apiClient.escapeString(typeId.toString()));
 
         // query params

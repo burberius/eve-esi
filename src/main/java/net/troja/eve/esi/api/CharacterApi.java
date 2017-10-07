@@ -172,7 +172,7 @@ public class CharacterApi {
     }
 
     /**
-     * Get blueprints Return a list of blueprints the character has --- This
+     * Get blueprints Return a list of blueprints the character owns --- This
      * route is cached for up to 3600 seconds SSO Scope:
      * esi-characters.read_blueprints.v1
      * 
@@ -181,6 +181,8 @@ public class CharacterApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -192,7 +194,7 @@ public class CharacterApi {
      *             if fails to make API call
      */
     public List<CharacterBlueprintsResponse> getCharactersCharacterIdBlueprints(Integer characterId, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -202,7 +204,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/blueprints/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/characters/{character_id}/blueprints/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -211,6 +213,7 @@ public class CharacterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 

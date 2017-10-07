@@ -50,11 +50,17 @@ public class TypeResponse implements Serializable {
     @JsonProperty("icon_id")
     private Integer iconId = null;
 
+    @JsonProperty("market_group_id")
+    private Integer marketGroupId = null;
+
     @JsonProperty("mass")
     private Float mass = null;
 
     @JsonProperty("name")
     private String name = null;
+
+    @JsonProperty("packaged_volume")
+    private Float packagedVolume = null;
 
     @JsonProperty("portion_size")
     private Integer portionSize = null;
@@ -214,6 +220,25 @@ public class TypeResponse implements Serializable {
         this.iconId = iconId;
     }
 
+    public TypeResponse marketGroupId(Integer marketGroupId) {
+        this.marketGroupId = marketGroupId;
+        return this;
+    }
+
+    /**
+     * This only exists for types that can be put on the market
+     * 
+     * @return marketGroupId
+     **/
+    @ApiModelProperty(example = "null", value = "This only exists for types that can be put on the market")
+    public Integer getMarketGroupId() {
+        return marketGroupId;
+    }
+
+    public void setMarketGroupId(Integer marketGroupId) {
+        this.marketGroupId = marketGroupId;
+    }
+
     public TypeResponse mass(Float mass) {
         this.mass = mass;
         return this;
@@ -250,6 +275,25 @@ public class TypeResponse implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TypeResponse packagedVolume(Float packagedVolume) {
+        this.packagedVolume = packagedVolume;
+        return this;
+    }
+
+    /**
+     * packaged_volume number
+     * 
+     * @return packagedVolume
+     **/
+    @ApiModelProperty(example = "null", value = "packaged_volume number")
+    public Float getPackagedVolume() {
+        return packagedVolume;
+    }
+
+    public void setPackagedVolume(Float packagedVolume) {
+        this.packagedVolume = packagedVolume;
     }
 
     public TypeResponse portionSize(Integer portionSize) {
@@ -362,8 +406,10 @@ public class TypeResponse implements Serializable {
                 && Objects.equals(this.dogmaEffects, typeResponse.dogmaEffects)
                 && Objects.equals(this.graphicId, typeResponse.graphicId)
                 && Objects.equals(this.groupId, typeResponse.groupId)
-                && Objects.equals(this.iconId, typeResponse.iconId) && Objects.equals(this.mass, typeResponse.mass)
-                && Objects.equals(this.name, typeResponse.name)
+                && Objects.equals(this.iconId, typeResponse.iconId)
+                && Objects.equals(this.marketGroupId, typeResponse.marketGroupId)
+                && Objects.equals(this.mass, typeResponse.mass) && Objects.equals(this.name, typeResponse.name)
+                && Objects.equals(this.packagedVolume, typeResponse.packagedVolume)
                 && Objects.equals(this.portionSize, typeResponse.portionSize)
                 && Objects.equals(this.published, typeResponse.published)
                 && Objects.equals(this.radius, typeResponse.radius) && Objects.equals(this.typeId, typeResponse.typeId)
@@ -372,8 +418,8 @@ public class TypeResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(capacity, description, dogmaAttributes, dogmaEffects, graphicId, groupId, iconId, mass,
-                name, portionSize, published, radius, typeId, volume);
+        return Objects.hash(capacity, description, dogmaAttributes, dogmaEffects, graphicId, groupId, iconId,
+                marketGroupId, mass, name, packagedVolume, portionSize, published, radius, typeId, volume);
     }
 
     @Override
@@ -388,8 +434,10 @@ public class TypeResponse implements Serializable {
         sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
         sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
         sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
+        sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
         sb.append("    mass: ").append(toIndentedString(mass)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    packagedVolume: ").append(toIndentedString(packagedVolume)).append("\n");
         sb.append("    portionSize: ").append(toIndentedString(portionSize)).append("\n");
         sb.append("    published: ").append(toIndentedString(published)).append("\n");
         sb.append("    radius: ").append(toIndentedString(radius)).append("\n");

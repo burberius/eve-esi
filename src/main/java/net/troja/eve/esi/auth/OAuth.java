@@ -34,18 +34,22 @@ public class OAuth implements Authentication {
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
-        //Check if we need a new access token
-        synchronized(OAuth.class) { //This block is synchronized across all threads - so we don't update the access token more than once
+        // Check if we need a new access token
+        synchronized (OAuth.class) { // This block is synchronized across all
+                                     // threads - so we don't update the access
+                                     // token more than once
             AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
-            if (refreshToken != null  && (accessTokenData == null || accessTokenData.getValidUntil() < System.currentTimeMillis())) {
+            if (refreshToken != null
+                    && (accessTokenData == null || accessTokenData.getValidUntil() < System.currentTimeMillis())) {
                 try {
                     refreshToken();
                 } catch (final ProcessingException ex) {
-                    // This error will be handled by ESI once the request is made
+                    // This error will be handled by ESI once the request is
+                    // made
                 }
             }
         }
-        //Add auth
+        // Add auth
         AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
         if (accessTokenData != null) {
             headerParams.put("Authorization", "Bearer " + accessTokenData.getAccessToken());
