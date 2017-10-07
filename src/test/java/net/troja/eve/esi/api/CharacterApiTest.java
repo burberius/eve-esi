@@ -99,8 +99,8 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdBlueprintsTest() throws ApiException {
-
-        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId, DATASOURCE, null, null, null);
+        Integer page = null;
+        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId, DATASOURCE, page, null, null, null);
 
         assertThat(response, notNullValue());
     }
