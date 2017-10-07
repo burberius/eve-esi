@@ -29,9 +29,7 @@ public class CharacterBlueprintsResponse implements Serializable {
     private Long itemId = null;
 
     /**
-     * Indicates something about this item's storage location. The flag is used
-     * to differentiate between hangar divisions, drone bay, fitting location,
-     * and similar.
+     * Type of the location_id
      */
     public enum LocationFlagEnum {
         AUTOFIT("AutoFit"),
@@ -235,14 +233,11 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Unique ID for this item. The ID of an item is stable if that item is not
-     * repackaged, stacked, detached from a stack, assembled, or otherwise
-     * altered. If an item is changed in one of these ways, then the ID will
-     * also change.
+     * Unique ID for this item.
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item. The ID of an item is stable if that item is not repackaged, stacked, detached from a stack, assembled, or otherwise altered. If an item is changed in one of these ways, then the ID will also change.")
+    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item.")
     public Long getItemId() {
         return itemId;
     }
@@ -257,13 +252,11 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Indicates something about this item's storage location. The flag is used
-     * to differentiate between hangar divisions, drone bay, fitting location,
-     * and similar.
+     * Type of the location_id
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Indicates something about this item's storage location. The flag is used to differentiate between hangar divisions, drone bay, fitting location, and similar.")
+    @ApiModelProperty(example = "null", required = true, value = "Type of the location_id")
     public LocationFlagEnum getLocationFlag() {
         return locationFlag;
     }
@@ -279,13 +272,13 @@ public class CharacterBlueprintsResponse implements Serializable {
 
     /**
      * References a solar system, station or item_id if this blueprint is
-     * located within a container. If an item_id the Character - AssetList API
-     * must be queried to find the container using the item_id, from which the
-     * correct location of the Blueprint can be derived.
+     * located within a container. If the return value is an item_id, then the
+     * Character AssetList API must be queried to find the container using the
+     * given item_id to determine the correct location of the Blueprint.
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or item_id if this blueprint is located within a container. If an item_id the Character - AssetList API must be queried to find the container using the item_id, from which the correct location of the Blueprint can be derived.")
+    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or item_id if this blueprint is located within a container. If the return value is an item_id, then the Character AssetList API must be queried to find the container using the given item_id to determine the correct location of the Blueprint.")
     public Long getLocationId() {
         return locationId;
     }
@@ -300,12 +293,11 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Material Efficiency Level of the blueprint, can be any integer between 0
-     * and 10.
+     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
      * 
      * @return materialEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Material Efficiency Level of the blueprint, can be any integer between 0 and 10.")
+    @ApiModelProperty(example = "null", required = true, value = "Material Efficiency Level of the blueprint.")
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
@@ -320,14 +312,14 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Typically will be -1 or -2 designating a singleton item, where -1 is an
-     * original and -2 is a copy. It can be a positive integer if it is a stack
-     * of blueprint originals fresh from the market (no activities performed on
-     * them yet).
+     * A range of numbers with a minimum of -2 and no maximum value where -1 is
+     * an original and -2 is a copy. It can be a positive integer if it is a
+     * stack of blueprint originals fresh from the market (e.g. no activities
+     * performed on them yet). minimum: -2
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Typically will be -1 or -2 designating a singleton item, where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (no activities performed on them yet).")
+    @ApiModelProperty(example = "null", required = true, value = "A range of numbers with a minimum of -2 and no maximum value where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (e.g. no activities performed on them yet).")
     public Integer getQuantity() {
         return quantity;
     }
@@ -343,7 +335,7 @@ public class CharacterBlueprintsResponse implements Serializable {
 
     /**
      * Number of runs remaining if the blueprint is a copy, -1 if it is an
-     * original.
+     * original. minimum: -1
      * 
      * @return runs
      **/
@@ -362,12 +354,11 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Time Efficiency Level of the blueprint, can be any even integer between 0
-     * and 20.
+     * Time Efficiency Level of the blueprint. minimum: 0 maximum: 20
      * 
      * @return timeEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time Efficiency Level of the blueprint, can be any even integer between 0 and 20.")
+    @ApiModelProperty(example = "null", required = true, value = "Time Efficiency Level of the blueprint.")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }

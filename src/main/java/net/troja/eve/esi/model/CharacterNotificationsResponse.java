@@ -45,7 +45,9 @@ public class CharacterNotificationsResponse implements Serializable {
 
         ALLIANCE("alliance"),
 
-        FACTION("faction");
+        FACTION("faction"),
+
+        OTHER("other");
 
         private String value;
 

@@ -135,7 +135,7 @@ public class WalletApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
