@@ -13,13 +13,13 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.CharacterInfo;
-import net.troja.eve.esi.auth.OAuth;
 
 /**
  * Api to retrieve the character information from the sso.
  */
 public class SsoApi {
-    private static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss.sss";
+    private static final String URI_ESI = "https://esi.tech.ccp.is";
+    protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
     private ApiClient apiClient;
 
     public SsoApi() {
@@ -42,7 +42,7 @@ public class SsoApi {
         final String basePath = apiClient.getBasePath(); // Save old basepath
         final DateFormat dateFormat = apiClient.getDateFormat(); // Save old
                                                                  // date format
-        apiClient.setBasePath(OAuth.URI_OAUTH); // Set new basepath
+        apiClient.setBasePath(URI_ESI); // Set new basepath
         apiClient.setDateFormat(new SimpleDateFormat(DATE_FORMAT)); // Set new
                                                                     // date
                                                                     // format
