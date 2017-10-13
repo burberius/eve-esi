@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import net.troja.eve.esi.model.BookmarkItem;
+import net.troja.eve.esi.model.CharacterBookmarkItem;
 import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
@@ -31,7 +31,7 @@ public class BookmarkTarget implements Serializable {
     private Position coordinates = null;
 
     @JsonProperty("item")
-    private BookmarkItem item = null;
+    private CharacterBookmarkItem item = null;
 
     @JsonProperty("location_id")
     private Long locationId = null;
@@ -55,7 +55,7 @@ public class BookmarkTarget implements Serializable {
         this.coordinates = coordinates;
     }
 
-    public BookmarkTarget item(BookmarkItem item) {
+    public BookmarkTarget item(CharacterBookmarkItem item) {
         this.item = item;
         return this;
     }
@@ -66,11 +66,11 @@ public class BookmarkTarget implements Serializable {
      * @return item
      **/
     @ApiModelProperty(example = "null", value = "")
-    public BookmarkItem getItem() {
+    public CharacterBookmarkItem getItem() {
         return item;
     }
 
-    public void setItem(BookmarkItem item) {
+    public void setItem(CharacterBookmarkItem item) {
         this.item = item;
     }
 

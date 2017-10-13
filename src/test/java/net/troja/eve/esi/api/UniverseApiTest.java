@@ -13,15 +13,6 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Ignore;
-import org.junit.Test;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-
-import static org.junit.Assert.assertThat;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
@@ -41,6 +32,11 @@ import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseNamesResponse;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for UniverseApi
@@ -612,14 +608,14 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void postUniverseNamesTest() throws ApiException {
         final List<Integer> ids = new ArrayList<>();
-        ids.add(TYPE_ID_VELDSPAR);
+        ids.add(CHARACTER_ID_CHRIBBA);
         final String userAgent = null;
         final String xUserAgent = null;
         final List<UniverseNamesResponse> response = api.postUniverseNames(ids, DATASOURCE, userAgent, xUserAgent);
 
         assertThat(response.size(), equalTo(1));
         final UniverseNamesResponse result = response.get(0);
-        assertThat(result.getName(), equalTo(NAME_VELDSPAR));
+        assertThat(result.getName(), equalTo(CHARACTER_NAME_CHRIBBA));
     }
 
 }

@@ -8,6 +8,7 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
+import net.troja.eve.esi.model.CorporationIndustryJobsResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.IndustryFacilitiesResponse;
 import net.troja.eve.esi.model.IndustrySystemsResponse;
@@ -99,6 +100,76 @@ public class IndustryApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CharacterIndustryJobsResponse>> localVarReturnType = new GenericType<List<CharacterIndustryJobsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * List corporation industry jobs List industry jobs run by a corporation
+     * --- This route is cached for up to 300 seconds SSO Scope:
+     * esi-industry.read_corporation_jobs.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param includeCompleted
+     *            Whether retrieve completed industry jobs as well (optional,
+     *            default to false)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationIndustryJobsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationIndustryJobsResponse> getCorporationsCorporationIdIndustryJobs(Integer corporationId,
+            String datasource, Boolean includeCompleted, Integer page, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdIndustryJobs");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/industry/jobs/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_completed", includeCompleted));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationIndustryJobsResponse>> localVarReturnType = new GenericType<List<CorporationIndustryJobsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

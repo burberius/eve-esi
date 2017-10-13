@@ -15,6 +15,7 @@ public class GeneralApiTest {
     protected static final String SSO_CLIENT_SECRET = "SSO_CLIENT_SECRET";
     protected static final String SSO_REFRESH_TOKEN = "SSO_REFRESH_TOKEN";
     protected static final int CHARACTER_ID_CHRIBBA = 196379789;
+    protected static final String CHARACTER_NAME_CHRIBBA = "Chribba";
     protected static final int CORPORATION_ID_AAC = 98008663;
     protected static final int ALLIANCE_ID_TRI = 933731581;
     protected final static int REGION_ID_THE_FORGE = 10000002;
