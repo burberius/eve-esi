@@ -23,7 +23,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
-public class CharacterContractsResponse implements Serializable {
+public class CorporationContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("acceptor_id")
@@ -208,7 +208,7 @@ public class CharacterContractsResponse implements Serializable {
     @JsonProperty("volume")
     private Float volume = null;
 
-    public CharacterContractsResponse acceptorId(Integer acceptorId) {
+    public CorporationContractsResponse acceptorId(Integer acceptorId) {
         this.acceptorId = acceptorId;
         return this;
     }
@@ -227,7 +227,7 @@ public class CharacterContractsResponse implements Serializable {
         this.acceptorId = acceptorId;
     }
 
-    public CharacterContractsResponse assigneeId(Integer assigneeId) {
+    public CorporationContractsResponse assigneeId(Integer assigneeId) {
         this.assigneeId = assigneeId;
         return this;
     }
@@ -246,7 +246,7 @@ public class CharacterContractsResponse implements Serializable {
         this.assigneeId = assigneeId;
     }
 
-    public CharacterContractsResponse availability(AvailabilityEnum availability) {
+    public CorporationContractsResponse availability(AvailabilityEnum availability) {
         this.availability = availability;
         return this;
     }
@@ -265,7 +265,7 @@ public class CharacterContractsResponse implements Serializable {
         this.availability = availability;
     }
 
-    public CharacterContractsResponse buyout(Float buyout) {
+    public CorporationContractsResponse buyout(Float buyout) {
         this.buyout = buyout;
         return this;
     }
@@ -284,7 +284,7 @@ public class CharacterContractsResponse implements Serializable {
         this.buyout = buyout;
     }
 
-    public CharacterContractsResponse collateral(Float collateral) {
+    public CorporationContractsResponse collateral(Float collateral) {
         this.collateral = collateral;
         return this;
     }
@@ -303,7 +303,7 @@ public class CharacterContractsResponse implements Serializable {
         this.collateral = collateral;
     }
 
-    public CharacterContractsResponse contractId(Integer contractId) {
+    public CorporationContractsResponse contractId(Integer contractId) {
         this.contractId = contractId;
         return this;
     }
@@ -322,7 +322,7 @@ public class CharacterContractsResponse implements Serializable {
         this.contractId = contractId;
     }
 
-    public CharacterContractsResponse dateAccepted(OffsetDateTime dateAccepted) {
+    public CorporationContractsResponse dateAccepted(OffsetDateTime dateAccepted) {
         this.dateAccepted = dateAccepted;
         return this;
     }
@@ -341,7 +341,7 @@ public class CharacterContractsResponse implements Serializable {
         this.dateAccepted = dateAccepted;
     }
 
-    public CharacterContractsResponse dateCompleted(OffsetDateTime dateCompleted) {
+    public CorporationContractsResponse dateCompleted(OffsetDateTime dateCompleted) {
         this.dateCompleted = dateCompleted;
         return this;
     }
@@ -360,7 +360,7 @@ public class CharacterContractsResponse implements Serializable {
         this.dateCompleted = dateCompleted;
     }
 
-    public CharacterContractsResponse dateExpired(OffsetDateTime dateExpired) {
+    public CorporationContractsResponse dateExpired(OffsetDateTime dateExpired) {
         this.dateExpired = dateExpired;
         return this;
     }
@@ -379,7 +379,7 @@ public class CharacterContractsResponse implements Serializable {
         this.dateExpired = dateExpired;
     }
 
-    public CharacterContractsResponse dateIssued(OffsetDateTime dateIssued) {
+    public CorporationContractsResponse dateIssued(OffsetDateTime dateIssued) {
         this.dateIssued = dateIssued;
         return this;
     }
@@ -398,7 +398,7 @@ public class CharacterContractsResponse implements Serializable {
         this.dateIssued = dateIssued;
     }
 
-    public CharacterContractsResponse daysToComplete(Integer daysToComplete) {
+    public CorporationContractsResponse daysToComplete(Integer daysToComplete) {
         this.daysToComplete = daysToComplete;
         return this;
     }
@@ -417,7 +417,7 @@ public class CharacterContractsResponse implements Serializable {
         this.daysToComplete = daysToComplete;
     }
 
-    public CharacterContractsResponse endLocationId(Long endLocationId) {
+    public CorporationContractsResponse endLocationId(Long endLocationId) {
         this.endLocationId = endLocationId;
         return this;
     }
@@ -436,7 +436,7 @@ public class CharacterContractsResponse implements Serializable {
         this.endLocationId = endLocationId;
     }
 
-    public CharacterContractsResponse forCorporation(Boolean forCorporation) {
+    public CorporationContractsResponse forCorporation(Boolean forCorporation) {
         this.forCorporation = forCorporation;
         return this;
     }
@@ -455,7 +455,7 @@ public class CharacterContractsResponse implements Serializable {
         this.forCorporation = forCorporation;
     }
 
-    public CharacterContractsResponse issuerCorporationId(Integer issuerCorporationId) {
+    public CorporationContractsResponse issuerCorporationId(Integer issuerCorporationId) {
         this.issuerCorporationId = issuerCorporationId;
         return this;
     }
@@ -474,7 +474,7 @@ public class CharacterContractsResponse implements Serializable {
         this.issuerCorporationId = issuerCorporationId;
     }
 
-    public CharacterContractsResponse issuerId(Integer issuerId) {
+    public CorporationContractsResponse issuerId(Integer issuerId) {
         this.issuerId = issuerId;
         return this;
     }
@@ -493,7 +493,7 @@ public class CharacterContractsResponse implements Serializable {
         this.issuerId = issuerId;
     }
 
-    public CharacterContractsResponse price(Float price) {
+    public CorporationContractsResponse price(Float price) {
         this.price = price;
         return this;
     }
@@ -512,7 +512,7 @@ public class CharacterContractsResponse implements Serializable {
         this.price = price;
     }
 
-    public CharacterContractsResponse reward(Float reward) {
+    public CorporationContractsResponse reward(Float reward) {
         this.reward = reward;
         return this;
     }
@@ -531,7 +531,7 @@ public class CharacterContractsResponse implements Serializable {
         this.reward = reward;
     }
 
-    public CharacterContractsResponse startLocationId(Long startLocationId) {
+    public CorporationContractsResponse startLocationId(Long startLocationId) {
         this.startLocationId = startLocationId;
         return this;
     }
@@ -550,7 +550,7 @@ public class CharacterContractsResponse implements Serializable {
         this.startLocationId = startLocationId;
     }
 
-    public CharacterContractsResponse status(StatusEnum status) {
+    public CorporationContractsResponse status(StatusEnum status) {
         this.status = status;
         return this;
     }
@@ -569,7 +569,7 @@ public class CharacterContractsResponse implements Serializable {
         this.status = status;
     }
 
-    public CharacterContractsResponse title(String title) {
+    public CorporationContractsResponse title(String title) {
         this.title = title;
         return this;
     }
@@ -588,7 +588,7 @@ public class CharacterContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public CharacterContractsResponse type(TypeEnum type) {
+    public CorporationContractsResponse type(TypeEnum type) {
         this.type = type;
         return this;
     }
@@ -607,7 +607,7 @@ public class CharacterContractsResponse implements Serializable {
         this.type = type;
     }
 
-    public CharacterContractsResponse volume(Float volume) {
+    public CorporationContractsResponse volume(Float volume) {
         this.volume = volume;
         return this;
     }
@@ -634,29 +634,29 @@ public class CharacterContractsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterContractsResponse characterContractsResponse = (CharacterContractsResponse) o;
-        return Objects.equals(this.acceptorId, characterContractsResponse.acceptorId)
-                && Objects.equals(this.assigneeId, characterContractsResponse.assigneeId)
-                && Objects.equals(this.availability, characterContractsResponse.availability)
-                && Objects.equals(this.buyout, characterContractsResponse.buyout)
-                && Objects.equals(this.collateral, characterContractsResponse.collateral)
-                && Objects.equals(this.contractId, characterContractsResponse.contractId)
-                && Objects.equals(this.dateAccepted, characterContractsResponse.dateAccepted)
-                && Objects.equals(this.dateCompleted, characterContractsResponse.dateCompleted)
-                && Objects.equals(this.dateExpired, characterContractsResponse.dateExpired)
-                && Objects.equals(this.dateIssued, characterContractsResponse.dateIssued)
-                && Objects.equals(this.daysToComplete, characterContractsResponse.daysToComplete)
-                && Objects.equals(this.endLocationId, characterContractsResponse.endLocationId)
-                && Objects.equals(this.forCorporation, characterContractsResponse.forCorporation)
-                && Objects.equals(this.issuerCorporationId, characterContractsResponse.issuerCorporationId)
-                && Objects.equals(this.issuerId, characterContractsResponse.issuerId)
-                && Objects.equals(this.price, characterContractsResponse.price)
-                && Objects.equals(this.reward, characterContractsResponse.reward)
-                && Objects.equals(this.startLocationId, characterContractsResponse.startLocationId)
-                && Objects.equals(this.status, characterContractsResponse.status)
-                && Objects.equals(this.title, characterContractsResponse.title)
-                && Objects.equals(this.type, characterContractsResponse.type)
-                && Objects.equals(this.volume, characterContractsResponse.volume);
+        CorporationContractsResponse corporationContractsResponse = (CorporationContractsResponse) o;
+        return Objects.equals(this.acceptorId, corporationContractsResponse.acceptorId)
+                && Objects.equals(this.assigneeId, corporationContractsResponse.assigneeId)
+                && Objects.equals(this.availability, corporationContractsResponse.availability)
+                && Objects.equals(this.buyout, corporationContractsResponse.buyout)
+                && Objects.equals(this.collateral, corporationContractsResponse.collateral)
+                && Objects.equals(this.contractId, corporationContractsResponse.contractId)
+                && Objects.equals(this.dateAccepted, corporationContractsResponse.dateAccepted)
+                && Objects.equals(this.dateCompleted, corporationContractsResponse.dateCompleted)
+                && Objects.equals(this.dateExpired, corporationContractsResponse.dateExpired)
+                && Objects.equals(this.dateIssued, corporationContractsResponse.dateIssued)
+                && Objects.equals(this.daysToComplete, corporationContractsResponse.daysToComplete)
+                && Objects.equals(this.endLocationId, corporationContractsResponse.endLocationId)
+                && Objects.equals(this.forCorporation, corporationContractsResponse.forCorporation)
+                && Objects.equals(this.issuerCorporationId, corporationContractsResponse.issuerCorporationId)
+                && Objects.equals(this.issuerId, corporationContractsResponse.issuerId)
+                && Objects.equals(this.price, corporationContractsResponse.price)
+                && Objects.equals(this.reward, corporationContractsResponse.reward)
+                && Objects.equals(this.startLocationId, corporationContractsResponse.startLocationId)
+                && Objects.equals(this.status, corporationContractsResponse.status)
+                && Objects.equals(this.title, corporationContractsResponse.title)
+                && Objects.equals(this.type, corporationContractsResponse.type)
+                && Objects.equals(this.volume, corporationContractsResponse.volume);
     }
 
     @Override
@@ -669,7 +669,7 @@ public class CharacterContractsResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterContractsResponse {\n");
+        sb.append("class CorporationContractsResponse {\n");
 
         sb.append("    acceptorId: ").append(toIndentedString(acceptorId)).append("\n");
         sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");

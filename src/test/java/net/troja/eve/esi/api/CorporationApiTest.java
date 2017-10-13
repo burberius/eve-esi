@@ -21,6 +21,7 @@ import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationStandingsResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
@@ -218,6 +219,24 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdRolesTest() throws ApiException {
         // List<CorporationRolesResponse> response =
         // api.getCorporationsCorporationIdRoles(corporationId, datasource);
+    }
+
+    /**
+     * Get corporation standings
+     *
+     * Return corporation standings from agents, NPC corporations, and factions  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_standings.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdStandingsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

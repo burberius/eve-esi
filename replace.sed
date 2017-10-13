@@ -35,7 +35,7 @@ s/get_fw_stats_kills/FactionWarfareStatsKills/g
 s/get_fw_stats_victory_points/FactionWarfareStatsVictoryPoints/g
 
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.properties != null).properties[] | select(.type == "object").title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
-s/get_characters_character_id_bookmarks_item/BookmarkItem/g
+s/get_characters_character_id_bookmarks_item/CharacterBookmarkItem/g
 
 # Objects in post/put
 # jq '.paths[][].parameters[].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
@@ -208,6 +208,18 @@ s/get_corporations_corporation_id_blueprints_200_ok/CorporationBlueprintsRespons
 s/get_corporations_corporation_id_titles_200_ok/CorporationTitlesResponse/g
 s/post_characters_character_id_assets_locations_200_ok/CharacterAssetsLocationsResponse/g
 s/post_characters_character_id_assets_names_200_ok/CharacterAssetsNamesResponse/g
+s/get_corporations_corporation_id_bookmarks_200_ok/CorporationBookmarksResponse/g
+s/get_corporations_corporation_id_bookmarks_coordinates/CorporationBookmarksCoordinates/g
+s/get_corporations_corporation_id_bookmarks_folders_200_ok/CorporationBookmarkFoldersResponse/g
+s/get_corporations_corporation_id_bookmarks_item/CorporationBookmarkItem/g
+s/get_corporations_corporation_id_contracts_200_ok/CorporationContractsResponse/g
+s/get_corporations_corporation_id_contracts_contract_id_bids_200_ok/CorporationContractsBidsResponse/g
+s/get_corporations_corporation_id_contracts_contract_id_items_200_ok/CorporationContractsItemsResponse/g
+s/get_corporations_corporation_id_industry_jobs_200_ok/CorporationIndustryJobsResponse/g
+s/get_corporations_corporation_id_orders_200_ok/CorporationOrdersResponse/g
+s/get_corporations_corporation_id_standings_200_ok/CorporationStandingsResponse/g
+s/post_corporations_corporation_id_assets_locations_200_ok/CorporationAssetsLocationsResponse/g
+s/post_corporations_corporation_id_assets_names_200_ok/CorporationAssetsNamesResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

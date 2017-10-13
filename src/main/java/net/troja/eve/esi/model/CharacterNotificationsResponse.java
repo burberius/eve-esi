@@ -320,6 +320,14 @@ public class CharacterNotificationsResponse implements Serializable {
 
         MISSIONTIMEOUTMSG("MissionTimeoutMsg"),
 
+        MOONMININGAUTOMATICFRACTURE("MoonminingAutomaticFracture"),
+
+        MOONMININGEXTRACTIONCANCELLED("MoonminingExtractionCancelled"),
+
+        MOONMININGEXTRACTIONFINISHED("MoonminingExtractionFinished"),
+
+        MOONMININGLASERFIRED("MoonminingLaserFired"),
+
         NPCSTANDINGSGAINED("NPCStandingsGained"),
 
         NPCSTANDINGSLOST("NPCStandingsLost"),
@@ -424,7 +432,9 @@ public class CharacterNotificationsResponse implements Serializable {
 
         WARSURRENDERDECLINEDMSG("WarSurrenderDeclinedMsg"),
 
-        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg");
+        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg"),
+
+        NOTIFICATIONTYPEMOONMININGEXTRACTIONSTARTED("notificationTypeMoonminingExtractionStarted");
 
         private String value;
 

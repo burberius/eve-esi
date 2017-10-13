@@ -11,17 +11,17 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBookmarkFoldersResponse;
 import net.troja.eve.esi.model.CharacterBookmarksResponse;
+import net.troja.eve.esi.model.CorporationBookmarkFoldersResponse;
+import net.troja.eve.esi.model.CorporationBookmarksResponse;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for BookmarksApi
@@ -76,6 +76,42 @@ public class BookmarksApiTest extends GeneralApiTest {
                 .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(1));
+    }
+
+    /**
+     * List corporation bookmarks
+     *
+     * A list of your corporation&#39;s bookmarks  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-bookmarks.read_corporation_bookmarks.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdBookmarksTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationBookmarksResponse> response = api.getCorporationsCorporationIdBookmarks(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List corporation bookmark folders
+     *
+     * A list of your corporation&#39;s bookmark folders  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-bookmarks.read_corporation_bookmarks.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdBookmarksFoldersTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationBookmarkFoldersResponse> response = api.getCorporationsCorporationIdBookmarksFolders(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
 }

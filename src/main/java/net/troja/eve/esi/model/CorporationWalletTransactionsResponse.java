@@ -51,7 +51,7 @@ public class CorporationWalletTransactionsResponse implements Serializable {
     private Integer typeId = null;
 
     @JsonProperty("unit_price")
-    private Integer unitPrice = null;
+    private Float unitPrice = null;
 
     public CorporationWalletTransactionsResponse clientId(Integer clientId) {
         this.clientId = clientId;
@@ -205,7 +205,7 @@ public class CorporationWalletTransactionsResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public CorporationWalletTransactionsResponse unitPrice(Integer unitPrice) {
+    public CorporationWalletTransactionsResponse unitPrice(Float unitPrice) {
         this.unitPrice = unitPrice;
         return this;
     }
@@ -216,11 +216,11 @@ public class CorporationWalletTransactionsResponse implements Serializable {
      * @return unitPrice
      **/
     @ApiModelProperty(example = "null", required = true, value = "Amount paid per unit")
-    public Integer getUnitPrice() {
+    public Float getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Integer unitPrice) {
+    public void setUnitPrice(Float unitPrice) {
         this.unitPrice = unitPrice;
     }
 

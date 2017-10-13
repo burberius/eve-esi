@@ -481,7 +481,7 @@ public class CharacterApi {
 
     /**
      * Get character notifications Return character notifications --- This route
-     * is cached for up to 1800 seconds SSO Scope:
+     * is cached for up to 600 seconds SSO Scope:
      * esi-characters.read_notifications.v1
      * 
      * @param characterId

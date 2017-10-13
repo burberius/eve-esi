@@ -11,23 +11,21 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterOrdersResponse;
+import net.troja.eve.esi.model.CorporationOrdersResponse;
 import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for MarketApi
@@ -56,6 +54,24 @@ public class MarketApiTest extends GeneralApiTest {
                 null, null);
 
         assertThat(response, notNullValue());
+    }
+
+    /**
+     * List orders from a corporation
+     *
+     * List market orders placed on behalf of a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-markets.read_corporation_orders.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdOrdersTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationOrdersResponse> response = api.getCorporationsCorporationIdOrders(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
