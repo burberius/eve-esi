@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CharacterOrdersResponse;
 import net.troja.eve.esi.model.CorporationOrdersResponse;
 import net.troja.eve.esi.model.MarketGroupResponse;
