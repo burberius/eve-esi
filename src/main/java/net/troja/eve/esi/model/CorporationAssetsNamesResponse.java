@@ -19,19 +19,19 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * item object
+ * 200 ok object
  */
-@ApiModel(description = "item object")
-public class BookmarkItem implements Serializable {
+@ApiModel(description = "200 ok object")
+public class CorporationAssetsNamesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("item_id")
     private Long itemId = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("name")
+    private String name = null;
 
-    public BookmarkItem itemId(Long itemId) {
+    public CorporationAssetsNamesResponse itemId(Long itemId) {
         this.itemId = itemId;
         return this;
     }
@@ -50,23 +50,23 @@ public class BookmarkItem implements Serializable {
         this.itemId = itemId;
     }
 
-    public BookmarkItem typeId(Integer typeId) {
-        this.typeId = typeId;
+    public CorporationAssetsNamesResponse name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * type_id integer
+     * name string
      * 
-     * @return typeId
+     * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -77,22 +77,23 @@ public class BookmarkItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        BookmarkItem bookmarkItem = (BookmarkItem) o;
-        return Objects.equals(this.itemId, bookmarkItem.itemId) && Objects.equals(this.typeId, bookmarkItem.typeId);
+        CorporationAssetsNamesResponse corporationAssetsNamesResponse = (CorporationAssetsNamesResponse) o;
+        return Objects.equals(this.itemId, corporationAssetsNamesResponse.itemId)
+                && Objects.equals(this.name, corporationAssetsNamesResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, typeId);
+        return Objects.hash(itemId, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class BookmarkItem {\n");
+        sb.append("class CorporationAssetsNamesResponse {\n");
 
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

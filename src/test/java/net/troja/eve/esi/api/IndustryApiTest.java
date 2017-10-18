@@ -11,19 +11,18 @@
 
 package net.troja.eve.esi.api;
 
+import java.util.List;
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
+import net.troja.eve.esi.model.CorporationIndustryJobsResponse;
+import net.troja.eve.esi.model.IndustryFacilitiesResponse;
+import net.troja.eve.esi.model.IndustrySystemsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-
-import java.util.List;
-
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
-import net.troja.eve.esi.model.IndustryFacilitiesResponse;
-import net.troja.eve.esi.model.IndustrySystemsResponse;
 
 /**
  * API tests for IndustryApi
@@ -53,6 +52,25 @@ public class IndustryApiTest extends GeneralApiTest {
                 DATASOURCE, includeCompleted, null, null, null);
 
         assertThat(response, notNullValue());
+    }
+
+    /**
+     * List corporation industry jobs
+     *
+     * List industry jobs run by a corporation  ---  This route is cached for up to 300 seconds  SSO Scope: esi-industry.read_corporation_jobs.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdIndustryJobsTest() throws ApiException {
+        Integer corporationId = null;
+        Boolean includeCompleted = null;
+        Integer page = null;
+        List<CorporationIndustryJobsResponse> response = api.getCorporationsCorporationIdIndustryJobs(corporationId, DATASOURCE, includeCompleted, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

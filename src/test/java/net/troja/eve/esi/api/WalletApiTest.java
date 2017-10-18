@@ -91,7 +91,7 @@ public class WalletApiTest extends GeneralApiTest {
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
         final CharacterWalletTransactionsResponse characterWalletTransactionsResponse = response.get(0);
-        assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0));
+        assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0.0f));
     }
 
     /**

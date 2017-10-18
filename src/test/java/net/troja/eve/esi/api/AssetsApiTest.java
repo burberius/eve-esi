@@ -12,23 +12,22 @@
 package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
 import java.util.List;
-
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
 import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
+import net.troja.eve.esi.model.CorporationAssetsLocationsResponse;
+import net.troja.eve.esi.model.CorporationAssetsNamesResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for AssetsApi
@@ -126,5 +125,41 @@ public class AssetsApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         assertThat(response.size(), equalTo(5));
+    }
+
+        /**
+     * Get corporation asset locations
+     *
+     * Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)  ---   SSO Scope: esi-assets.read_corporation_assets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void postCorporationsCorporationIdAssetsLocationsTest() throws ApiException {
+        Integer corporationId = null;
+        List<Long> itemIds = null;
+        List<CorporationAssetsLocationsResponse> response = api.postCorporationsCorporationIdAssetsLocations(corporationId, itemIds, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get coporation asset names
+     *
+     * Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships.  ---   SSO Scope: esi-assets.read_corporation_assets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void postCorporationsCorporationIdAssetsNamesTest() throws ApiException {
+        Integer corporationId = null;
+        List<Long> itemIds = null;
+        List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null, null, null);
+
+        // TODO: test validations
     }
 }

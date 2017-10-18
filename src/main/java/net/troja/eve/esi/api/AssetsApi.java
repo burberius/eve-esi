@@ -10,6 +10,8 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
 import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
+import net.troja.eve.esi.model.CorporationAssetsLocationsResponse;
+import net.troja.eve.esi.model.CorporationAssetsNamesResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
@@ -307,6 +309,150 @@ public class AssetsApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CharacterAssetsNamesResponse>> localVarReturnType = new GenericType<List<CharacterAssetsNamesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation asset locations Return locations for a set of item ids,
+     * which you can get from corporation assets endpoint. Coordinates for items
+     * in hangars or stations are set to (0,0,0) --- SSO Scope:
+     * esi-assets.read_corporation_assets.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param itemIds
+     *            A list of item ids (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationAssetsLocationsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationAssetsLocationsResponse> postCorporationsCorporationIdAssetsLocations(Integer corporationId,
+            List<Long> itemIds, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = itemIds;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling postCorporationsCorporationIdAssetsLocations");
+        }
+
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'itemIds' when calling postCorporationsCorporationIdAssetsLocations");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/assets/locations/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationAssetsLocationsResponse>> localVarReturnType = new GenericType<List<CorporationAssetsLocationsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get coporation asset names Return names for a set of item ids, which you
+     * can get from corporation assets endpoint. Only valid for items that can
+     * customize names, like containers or ships. --- SSO Scope:
+     * esi-assets.read_corporation_assets.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param itemIds
+     *            A list of item ids (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationAssetsNamesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationAssetsNamesResponse> postCorporationsCorporationIdAssetsNames(Integer corporationId,
+            List<Long> itemIds, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
+        Object localVarPostBody = itemIds;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling postCorporationsCorporationIdAssetsNames");
+        }
+
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'itemIds' when calling postCorporationsCorporationIdAssetsNames");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/assets/names/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationAssetsNamesResponse>> localVarReturnType = new GenericType<List<CorporationAssetsNamesResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

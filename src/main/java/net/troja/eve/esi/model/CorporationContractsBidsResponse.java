@@ -23,7 +23,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
-public class CharacterContractsBidsResponse implements Serializable {
+public class CorporationContractsBidsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("amount")
@@ -38,7 +38,7 @@ public class CharacterContractsBidsResponse implements Serializable {
     @JsonProperty("date_bid")
     private OffsetDateTime dateBid = null;
 
-    public CharacterContractsBidsResponse amount(Float amount) {
+    public CorporationContractsBidsResponse amount(Float amount) {
         this.amount = amount;
         return this;
     }
@@ -57,7 +57,7 @@ public class CharacterContractsBidsResponse implements Serializable {
         this.amount = amount;
     }
 
-    public CharacterContractsBidsResponse bidId(Integer bidId) {
+    public CorporationContractsBidsResponse bidId(Integer bidId) {
         this.bidId = bidId;
         return this;
     }
@@ -76,7 +76,7 @@ public class CharacterContractsBidsResponse implements Serializable {
         this.bidId = bidId;
     }
 
-    public CharacterContractsBidsResponse bidderId(Integer bidderId) {
+    public CorporationContractsBidsResponse bidderId(Integer bidderId) {
         this.bidderId = bidderId;
         return this;
     }
@@ -95,7 +95,7 @@ public class CharacterContractsBidsResponse implements Serializable {
         this.bidderId = bidderId;
     }
 
-    public CharacterContractsBidsResponse dateBid(OffsetDateTime dateBid) {
+    public CorporationContractsBidsResponse dateBid(OffsetDateTime dateBid) {
         this.dateBid = dateBid;
         return this;
     }
@@ -122,11 +122,11 @@ public class CharacterContractsBidsResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterContractsBidsResponse characterContractsBidsResponse = (CharacterContractsBidsResponse) o;
-        return Objects.equals(this.amount, characterContractsBidsResponse.amount)
-                && Objects.equals(this.bidId, characterContractsBidsResponse.bidId)
-                && Objects.equals(this.bidderId, characterContractsBidsResponse.bidderId)
-                && Objects.equals(this.dateBid, characterContractsBidsResponse.dateBid);
+        CorporationContractsBidsResponse corporationContractsBidsResponse = (CorporationContractsBidsResponse) o;
+        return Objects.equals(this.amount, corporationContractsBidsResponse.amount)
+                && Objects.equals(this.bidId, corporationContractsBidsResponse.bidId)
+                && Objects.equals(this.bidderId, corporationContractsBidsResponse.bidderId)
+                && Objects.equals(this.dateBid, corporationContractsBidsResponse.dateBid);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class CharacterContractsBidsResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterContractsBidsResponse {\n");
+        sb.append("class CorporationContractsBidsResponse {\n");
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    bidId: ").append(toIndentedString(bidId)).append("\n");

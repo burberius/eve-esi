@@ -12,18 +12,19 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-
-import net.troja.eve.esi.ApiException;
-import org.junit.Test;
-import org.junit.Ignore;
-
 import java.util.List;
+import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterContractsBidsResponse;
 import net.troja.eve.esi.model.CharacterContractsItemsResponse;
 import net.troja.eve.esi.model.CharacterContractsResponse;
+import net.troja.eve.esi.model.CorporationContractsBidsResponse;
+import net.troja.eve.esi.model.CorporationContractsItemsResponse;
+import net.troja.eve.esi.model.CorporationContractsResponse;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for ContractsApi
@@ -100,5 +101,58 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(contractId, notNullValue());
         List<CharacterContractsItemsResponse> response = api.getCharactersCharacterIdContractsContractIdItems(characterId, contractId, DATASOURCE, null, null, null);
     }
+
+        /**
+     * Get coporation contracts
+     *
+     * Returns contracts available to a coporation, only if the corporation is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is \&quot;in_progress\&quot;.  ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContractsTest() throws ApiException {
+        Integer corporationId = null;
+        List<CorporationContractsResponse> response = api.getCorporationsCorporationIdContracts(corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
     
+    /**
+     * Get corporation contract bids
+     *
+     * Lists bids on a particular auction contract  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-contracts.read_corporation_contracts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContractsContractIdBidsTest() throws ApiException {
+        Integer contractId = null;
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationContractsBidsResponse> response = api.getCorporationsCorporationIdContractsContractIdBids(contractId, corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get corporation contract items
+     *
+     * Lists items of a particular contract  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-contracts.read_corporation_contracts.v1  SSO Scope: esi-contracts.read_character_contracts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContractsContractIdItemsTest() throws ApiException {
+        Integer contractId = null;
+        Integer corporationId = null;
+        List<CorporationContractsItemsResponse> response = api.getCorporationsCorporationIdContractsContractIdItems(contractId, corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
 }
