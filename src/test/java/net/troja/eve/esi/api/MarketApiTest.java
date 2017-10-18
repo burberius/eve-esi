@@ -11,6 +11,7 @@
 
 package net.troja.eve.esi.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterOrdersResponse;
@@ -19,6 +20,7 @@ import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.HeaderUtil;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -37,6 +39,44 @@ public class MarketApiTest extends GeneralApiTest {
     @Before
     public void setUp() {
         api.setApiClient(apiClient);
+    }
+
+    /**
+     * X-Pages example
+     * @throws ApiException 
+     */
+    @Test
+    public void pagingExample() throws ApiException {
+        final String orderType = "all";
+        //Save all results in this List
+        final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
+
+    //Step 1: Get first page
+    
+        //Get assets
+        List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
+                DATASOURCE, null, null, null, null);
+        result.addAll(response);
+
+    //Step 2: Safely get X-Pages header
+
+        Integer xPages = HeaderUtil.getXPages(apiClient.getResponseHeaders());
+        if (xPages == null || xPages < 2) { //Better safe than sorry
+            return;
+        }
+
+    //Step 3: Get the rest of the pages
+
+        //For each page greater than one. This can be done in threads, but, require a new ApiClient and AssetsApi for each thread
+        for (int page = 2; page <= xPages; page++) {
+            //Get assets
+            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
+                DATASOURCE, page, null, null, null);
+            result.addAll(pageResponse);
+        }
+        
+        assertThat(result, notNullValue());
+        assertThat(result.size(), greaterThan(0));
     }
 
     /**
