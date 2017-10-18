@@ -13,8 +13,6 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterOrdersResponse;
 import net.troja.eve.esi.model.CorporationOrdersResponse;
@@ -22,6 +20,7 @@ import net.troja.eve.esi.model.MarketGroupResponse;
 import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
+import net.troja.eve.esi.HeaderUtil;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -61,29 +60,7 @@ public class MarketApiTest extends GeneralApiTest {
 
     //Step 2: Safely get X-Pages header
 
-        //Get all headers
-        Map<String, List<String>> responseHeaders = apiClient.getResponseHeaders();
-        if (responseHeaders == null) { //Better safe than sorry
-            return;
-        }
-
-        //Make case insensitive lookup map (headers should be evaluated as case insensitive, but, the Swagger implementation uses HashMap that is case sensitive)
-        Map<String, List<String>> caseInsensitiveHeaders = new TreeMap<String, List<String>>(String.CASE_INSENSITIVE_ORDER);
-		caseInsensitiveHeaders.putAll(responseHeaders);
-
-        //Get X-Pages headers
-        List<String> xPagesList = caseInsensitiveHeaders.get("X-Pages");
-        if (xPagesList == null || xPagesList.isEmpty()) { //Better safe than sorry
-            return;
-        }
-
-        //Convert X-Pages header to Integer
-        Integer xPages;
-        try {
-            xPages = Integer.valueOf(xPagesList.get(0));
-        } catch (NumberFormatException ex) {
-            xPages = null;
-        }
+        Integer xPages = HeaderUtil.getXPages(apiClient.getResponseHeaders());
         if (xPages == null || xPages < 2) { //Better safe than sorry
             return;
         }
