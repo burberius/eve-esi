@@ -9,6 +9,8 @@ import java.util.Map;
 public class HeaderUtil {
 
     private static final ISO8601DateFormat DATE_FORMAT = new ISO8601DateFormat();
+    private static final String X_PAGES = "X-Pages";
+    private static final String EXPIRES = "Expires";
 
     private HeaderUtil() { }
 
@@ -19,7 +21,7 @@ public class HeaderUtil {
      */
     public static Integer getXPages(Map<String, List<String>> responseHeaders) {
         //Get header
-        String header = getHeader(responseHeaders, "X-Pages");
+        String header = getHeader(responseHeaders, X_PAGES);
         if (header == null) {
             return null;
         }
@@ -40,19 +42,19 @@ public class HeaderUtil {
      */
     public static Date getExpires(Map<String, List<String>> responseHeaders) {
         //Get header
-        String header = getHeader(responseHeaders, "Expires");
+        String header = getHeader(responseHeaders, EXPIRES);
         if (header == null) {
             return null;
         }
 
         //Convert
-        Date xPages = null;
+        Date expires = null;
         try {
-            xPages = DATE_FORMAT.parse(header);
+            expires = DATE_FORMAT.parse(header);
         } catch (ParseException ex) {
             
         }
-        return xPages;
+        return expires;
     }
 
     /***
@@ -66,17 +68,16 @@ public class HeaderUtil {
             return null;
         }
         //Search the headers case insensitive (headers should be evaluated as case insensitive, but, the Swagger implementation uses HashMap that is case sensitive)
-        List<String> headersList = null;
         for (Map.Entry<String, List<String>> entry : responseHeaders.entrySet()) {
             if (entry.getKey().equalsIgnoreCase(header)) {
-                headersList = entry.getValue();
-                break;
+                List<String> headersList = entry.getValue();
+                if (headersList != null && !headersList.isEmpty()) { //Better safe than sorry
+                    return headersList.get(0);
+                }
+                break; //Header found, but, was null or empty
             }
         }
-        if (headersList == null || headersList.isEmpty()) { //Better safe than sorry
-            return null;
-        }
-        return headersList.get(0);
+        return null;
     }
     
 }
