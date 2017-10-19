@@ -51,10 +51,25 @@ Authorization URL: https://login.eveonline.com/oauth/authorize?scope=esi-clones.
 Code from Answer: 7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0
 Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 ```
+## Tipps 'n' Tricks
 
-### Development on windows
+### Paging
+If you wonder how the paging with esi works, please have a look at the test
+*src/test/java/net/troja/eve/esi/api/MarketApiTest.java* there is a method *pagingExample* showing it.
 
-#### Setup
+### java.lang.IllegalStateException: InjectionManagerFactory not found
+When you get that exception with eve-esi, you have to add the following dependency to your *pom.xml*
+```xml
+<dependency>
+  <groupId>org.glassfish.jersey.inject</groupId>
+  <artifactId>jersey-hk2</artifactId>
+  <version>${jersey.version}</version>
+</dependency>
+```
+
+## Development on windows
+
+### Setup
 1) Download Cygwin from: https://www.cygwin.com
 2) Install Cygwin with the default options
 3) Run the Cygwin installer again and add: wget (web), git (devel), jq (text)
@@ -62,7 +77,7 @@ Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 5) Unpack and add the "bin" directory to windows environment variable "path"
 6) Download and install Java SE JDK: http://www.oracle.com/technetwork/java/javase/downloads/index.html (if you don't have it installed already)
 
-#### Generate new source
+### Generate new source
 1) Start the Cygwin Terminal
 2) ``cd`` to the source
 2) run ``./generate.sh``
