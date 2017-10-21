@@ -11,11 +11,11 @@
 
 package net.troja.eve.esi.api;
 
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterFleetResponse;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import net.troja.eve.esi.ApiException;
 
 /**
  * API tests for FleetsApi
@@ -79,6 +79,22 @@ public class FleetsApiTest extends GeneralApiTest {
     @Test
     @Ignore("Delete can't be tested")
     public void deleteFleetsFleetIdWingsWingIdTest() throws ApiException {
+    }
+
+    /**
+     * Get character fleet info
+     *
+     * Return the fleet ID the character is in, if any.  ---  This route is cached for up to 60 seconds  SSO Scope: esi-fleets.read_fleet.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Can't test because you need to be in fleet")
+    public void getCharactersCharacterIdFleetTest() throws ApiException {
+        CharacterFleetResponse response = api.getCharactersCharacterIdFleet(characterId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

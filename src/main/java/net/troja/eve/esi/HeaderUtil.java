@@ -12,20 +12,22 @@ public class HeaderUtil {
     private static final String X_PAGES = "X-Pages";
     private static final String EXPIRES = "Expires";
 
-    private HeaderUtil() { }
+    private HeaderUtil() {
+    }
 
     /**
      * 
-     * @param responseHeaders ApiClient.getResponseHeaders()
-     * @return 
+     * @param responseHeaders
+     *            ApiClient.getResponseHeaders()
+     * @return
      */
     public static Integer getXPages(Map<String, List<String>> responseHeaders) {
-        //Get header
+        // Get header
         String header = getHeader(responseHeaders, X_PAGES);
         if (header == null) {
             return null;
         }
-        //Convert
+        // Convert
         Integer xPages;
         try {
             xPages = Integer.valueOf(header);
@@ -37,47 +39,54 @@ public class HeaderUtil {
 
     /**
      * 
-     * @param responseHeaders ApiClient.getResponseHeaders()
-     * @return 
+     * @param responseHeaders
+     *            ApiClient.getResponseHeaders()
+     * @return
      */
     public static Date getExpires(Map<String, List<String>> responseHeaders) {
-        //Get header
+        // Get header
         String header = getHeader(responseHeaders, EXPIRES);
         if (header == null) {
             return null;
         }
 
-        //Convert
+        // Convert
         Date expires = null;
         try {
             expires = DATE_FORMAT.parse(header);
         } catch (ParseException ex) {
-            
+
         }
         return expires;
     }
 
     /***
      * 
-     * @param responseHeaders ApiClient.getResponseHeaders()
+     * @param responseHeaders
+     *            ApiClient.getResponseHeaders()
      * @param header
-     * @return 
+     * @return
      */
     public static String getHeader(Map<String, List<String>> responseHeaders, String header) {
         if (responseHeaders == null) {
             return null;
         }
-        //Search the headers case insensitive (headers should be evaluated as case insensitive, but, the Swagger implementation uses HashMap that is case sensitive)
+        // Search the headers case insensitive (headers should be evaluated as
+        // case insensitive, but, the Swagger implementation uses HashMap that
+        // is case sensitive)
         for (Map.Entry<String, List<String>> entry : responseHeaders.entrySet()) {
             if (entry.getKey().equalsIgnoreCase(header)) {
                 List<String> headersList = entry.getValue();
-                if (headersList != null && !headersList.isEmpty()) { //Better safe than sorry
+                if (headersList != null && !headersList.isEmpty()) { // Better
+                                                                     // safe
+                                                                     // than
+                                                                     // sorry
                     return headersList.get(0);
                 }
-                break; //Header found, but, was null or empty
+                break; // Header found, but, was null or empty
             }
         }
         return null;
     }
-    
+
 }
