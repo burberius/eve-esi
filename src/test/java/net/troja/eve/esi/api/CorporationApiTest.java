@@ -17,10 +17,12 @@ import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
 import net.troja.eve.esi.model.CorporationBlueprintsResponse;
+import net.troja.eve.esi.model.CorporationContainersLogsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationShareholdersResponse;
 import net.troja.eve.esi.model.CorporationStandingsResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -75,6 +77,24 @@ public class CorporationApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Integer page = null;
         List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, page, null, null, null);
+        // TODO: test validations
+    }
+
+    /**
+     * Get all corporation ALSC logs
+     *
+     * Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation  ---  This route is cached for up to 600 seconds  SSO Scope: esi-corporations.read_container_logs.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContainersLogsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationContainersLogsResponse> response = api.getCorporationsCorporationIdContainersLogs(corporationId, DATASOURCE, page, null, null, null);
+
         // TODO: test validations
     }
 
@@ -219,6 +239,23 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdRolesTest() throws ApiException {
         // List<CorporationRolesResponse> response =
         // api.getCorporationsCorporationIdRoles(corporationId, datasource);
+    }
+
+    /**
+     * Get corporation members
+     *
+     * Return the current member list of a corporation, the token&#39;s character need to be a member of the corporation.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdShareholdersTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationShareholdersResponse> response = api.getCorporationsCorporationIdShareholders(corporationId, DATASOURCE, page, null, null, null);
+        // TODO: test validations
     }
 
     /**

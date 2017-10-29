@@ -220,6 +220,9 @@ s/get_corporations_corporation_id_orders_200_ok/CorporationOrdersResponse/g
 s/get_corporations_corporation_id_standings_200_ok/CorporationStandingsResponse/g
 s/post_corporations_corporation_id_assets_locations_200_ok/CorporationAssetsLocationsResponse/g
 s/post_corporations_corporation_id_assets_names_200_ok/CorporationAssetsNamesResponse/g
+s/get_characters_character_id_fleet_ok/CharacterFleetResponse/g
+s/get_corporations_corporation_id_containers_logs_200_ok/CorporationContainersLogsResponse/g
+s/get_corporations_corporation_id_shareholders_200_ok/CorporationShareholdersResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
