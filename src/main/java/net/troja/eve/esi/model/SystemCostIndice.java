@@ -29,21 +29,23 @@ public class SystemCostIndice implements Serializable {
      * activity string
      */
     public enum ActivityEnum {
-        NONE("none"),
-
-        MANUFACTURING("manufacturing"),
-
-        RESEARCHING_TECHNOLOGY("researching_technology"),
-
-        RESEARCHING_TIME_EFFICIENCY("researching_time_efficiency"),
-
-        RESEARCHING_MATERIAL_EFFICIENCY("researching_material_efficiency"),
-
         COPYING("copying"),
 
         DUPLICATING("duplicating"),
 
         INVENTION("invention"),
+
+        MANUFACTURING("manufacturing"),
+
+        NONE("none"),
+
+        REACTION("reaction"),
+
+        RESEARCHING_MATERIAL_EFFICIENCY("researching_material_efficiency"),
+
+        RESEARCHING_TECHNOLOGY("researching_technology"),
+
+        RESEARCHING_TIME_EFFICIENCY("researching_time_efficiency"),
 
         REVERSE_ENGINEERING("reverse_engineering");
 

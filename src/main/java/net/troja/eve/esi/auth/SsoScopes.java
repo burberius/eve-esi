@@ -38,7 +38,9 @@ public class SsoScopes {
     public static final String ESI_FLEETS_READ_FLEET_V1 = "esi-fleets.read_fleet.v1";
     public static final String ESI_FLEETS_WRITE_FLEET_V1 = "esi-fleets.write_fleet.v1";
     public static final String ESI_INDUSTRY_READ_CHARACTER_JOBS_V1 = "esi-industry.read_character_jobs.v1";
+    public static final String ESI_INDUSTRY_READ_CHARACTER_MINING_V1 = "esi-industry.read_character_mining.v1";
     public static final String ESI_INDUSTRY_READ_CORPORATION_JOBS_V1 = "esi-industry.read_corporation_jobs.v1";
+    public static final String ESI_INDUSTRY_READ_CORPORATION_MINING_V1 = "esi-industry.read_corporation_mining.v1";
     public static final String ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1 = "esi-killmails.read_corporation_killmails.v1";
     public static final String ESI_KILLMAILS_READ_KILLMAILS_V1 = "esi-killmails.read_killmails.v1";
     public static final String ESI_LOCATION_READ_LOCATION_V1 = "esi-location.read_location.v1";
@@ -75,7 +77,8 @@ public class SsoScopes {
             ESI_CORPORATIONS_READ_STANDINGS_V1, ESI_CORPORATIONS_READ_STRUCTURES_V1, ESI_CORPORATIONS_READ_TITLES_V1,
             ESI_CORPORATIONS_TRACK_MEMBERS_V1, ESI_CORPORATIONS_WRITE_STRUCTURES_V1, ESI_FITTINGS_READ_FITTINGS_V1,
             ESI_FITTINGS_WRITE_FITTINGS_V1, ESI_FLEETS_READ_FLEET_V1, ESI_FLEETS_WRITE_FLEET_V1,
-            ESI_INDUSTRY_READ_CHARACTER_JOBS_V1, ESI_INDUSTRY_READ_CORPORATION_JOBS_V1,
+            ESI_INDUSTRY_READ_CHARACTER_JOBS_V1, ESI_INDUSTRY_READ_CHARACTER_MINING_V1,
+            ESI_INDUSTRY_READ_CORPORATION_JOBS_V1, ESI_INDUSTRY_READ_CORPORATION_MINING_V1,
             ESI_KILLMAILS_READ_CORPORATION_KILLMAILS_V1, ESI_KILLMAILS_READ_KILLMAILS_V1,
             ESI_LOCATION_READ_LOCATION_V1, ESI_LOCATION_READ_ONLINE_V1, ESI_LOCATION_READ_SHIP_TYPE_V1,
             ESI_MAIL_ORGANIZE_MAIL_V1, ESI_MAIL_READ_MAIL_V1, ESI_MAIL_SEND_MAIL_V1,

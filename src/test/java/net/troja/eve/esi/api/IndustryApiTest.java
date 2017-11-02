@@ -14,7 +14,11 @@ package net.troja.eve.esi.api;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterIndustryJobsResponse;
+import net.troja.eve.esi.model.CharacterMiningResponse;
 import net.troja.eve.esi.model.CorporationIndustryJobsResponse;
+import net.troja.eve.esi.model.CorporationMiningExtractionsResponse;
+import net.troja.eve.esi.model.CorporationMiningObserverResponse;
+import net.troja.eve.esi.model.CorporationMiningObserversResponse;
 import net.troja.eve.esi.model.IndustryFacilitiesResponse;
 import net.troja.eve.esi.model.IndustrySystemsResponse;
 import static org.hamcrest.Matchers.greaterThan;
@@ -52,6 +56,77 @@ public class IndustryApiTest extends GeneralApiTest {
                 DATASOURCE, includeCompleted, null, null, null);
 
         assertThat(response, notNullValue());
+    }
+
+    /**
+     * Character mining ledger
+     *
+     * Paginated record of all mining done by a character for the past 30 days  ---  This route is cached for up to 600 seconds  SSO Scope: esi-industry.read_character_mining.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("No test data")
+    public void getCharactersCharacterIdMiningTest() throws ApiException {
+        Integer page = null;
+        List<CharacterMiningResponse> response = api.getCharactersCharacterIdMining(characterId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Moon extraction timers
+     *
+     * Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.  ---  This route is cached for up to 1800 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationCorporationIdMiningExtractionsTest() throws ApiException {
+        Integer corporationId = null;
+        List<CorporationMiningExtractionsResponse> response = api.getCorporationCorporationIdMiningExtractions(corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Corporation mining observers
+     *
+     * Paginated list of all entities capable of observing and recording mining for a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationCorporationIdMiningObserversTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationMiningObserversResponse> response = api.getCorporationCorporationIdMiningObservers(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Observed corporation mining
+     *
+     * Paginated record of all mining seen by an observer  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationCorporationIdMiningObserversObserverIdTest() throws ApiException {
+        Integer corporationId = null;
+        Long observerId = null;
+        Integer page = null;
+        List<CorporationMiningObserverResponse> response = api.getCorporationCorporationIdMiningObserversObserverId(corporationId, observerId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
