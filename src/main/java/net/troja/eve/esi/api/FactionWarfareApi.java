@@ -7,12 +7,15 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import net.troja.eve.esi.model.CharacterFwStatsResponse;
+import net.troja.eve.esi.model.CorporationFwStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardResponse;
 import net.troja.eve.esi.model.FactionWarfareStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
 import net.troja.eve.esi.model.FactionWarfareWarsResponse;
+import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
@@ -37,6 +40,130 @@ public class FactionWarfareApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
+    }
+
+    /**
+     * Overview of a character involved in faction warfare Statistical overview
+     * of a character involved in faction warfare --- This route expires daily
+     * at 11:05 SSO Scope: esi-characters.read_fw_stats.v1
+     * 
+     * @param characterId
+     *            An EVE character ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return CharacterFwStatsResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CharacterFwStatsResponse getCharactersCharacterIdFwStats(Integer characterId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'characterId' is set
+        if (characterId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'characterId' when calling getCharactersCharacterIdFwStats");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/characters/{character_id}/fw/stats/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<CharacterFwStatsResponse> localVarReturnType = new GenericType<CharacterFwStatsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Overview of a corporation involved in faction warfare Statistics about a
+     * corporation involved in faction warfare --- This route expires daily at
+     * 11:05 SSO Scope: esi-corporations.read_fw_stats.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return CorporationFwStatsResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CorporationFwStatsResponse getCorporationsCorporationIdFwStats(Integer corporationId, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdFwStats");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/fw/stats/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<CorporationFwStatsResponse> localVarReturnType = new GenericType<CorporationFwStatsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**

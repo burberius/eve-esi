@@ -19,11 +19,18 @@ import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
 import net.troja.eve.esi.model.CorporationBlueprintsResponse;
 import net.troja.eve.esi.model.CorporationContainersLogsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
+import net.troja.eve.esi.model.CorporationFacilitiesResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
+import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
+import net.troja.eve.esi.model.CorporationMedalsResponse;
+import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationShareholdersResponse;
 import net.troja.eve.esi.model.CorporationStandingsResponse;
+import net.troja.eve.esi.model.CorporationStarbaseResponse;
+import net.troja.eve.esi.model.CorporationStarbasesResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
@@ -143,6 +150,24 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get corporation facilities
+     *
+     * Return a corporation&#39;s facilities  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_facilities.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdFacilitiesTest() throws ApiException {
+        Integer corporationId = null;
+        List<CorporationFacilitiesResponse> response = api.getCorporationsCorporationIdFacilities(corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
+    
+
+    /**
      * Get corporation icon
      *
      * Get the icon urls for a corporation --- Alternate route:
@@ -159,6 +184,42 @@ public class CorporationApiTest extends GeneralApiTest {
         final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE, null, null);
 
         assertThat(response.getPx64x64(), notNullValue());
+    }
+
+    /**
+     * Get corporation medals
+     *
+     * Returns a corporation&#39;s medals  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_medals.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdMedalsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationMedalsResponse> response = api.getCorporationsCorporationIdMedals(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Get corporation issued medals
+     *
+     * Returns medals issued by a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_medals.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdMedalsIssuedTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationMedalsIssuedResponse> response = api.getCorporationsCorporationIdMedalsIssued(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
@@ -202,6 +263,23 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get corporation&#39;s members&#39; titles
+     *
+     * Returns a corporation&#39;s members&#39; titles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_titles.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdMembersTitlesTest() throws ApiException {
+        Integer corporationId = null;
+        List<CorporationMembersTitlesResponse> response = api.getCorporationsCorporationIdMembersTitles(corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
      * Get corporation members
      *
      * Read the current list of members if the calling character is a member.
@@ -242,6 +320,24 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get corporation member roles history
+     *
+     * Return how roles have changed for a coporation&#39;s members, up to a month  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_corporation_membership.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdRolesHistoryTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
      * Get corporation members
      *
      * Return the current member list of a corporation, the token&#39;s character need to be a member of the corporation.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
@@ -272,6 +368,44 @@ public class CorporationApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Integer page = null;
         List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Get corporation starbases (POSes)
+     *
+     * Returns list of corporation starbases (POSes)  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_starbases.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdStarbasesTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationStarbasesResponse> response = api.getCorporationsCorporationIdStarbases(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Get starbase (POS) detail
+     *
+     * Returns various settings and fuels of a starbase (POS)  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_starbases.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdStarbasesStarbaseIdTest() throws ApiException {
+        Integer corporationId = null;
+        Long starbaseId = null;
+        Integer systemId = null;
+        Integer page = null;
+        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, page, null, null, null);
 
         // TODO: test validations
     }

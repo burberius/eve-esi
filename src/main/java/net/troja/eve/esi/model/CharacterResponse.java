@@ -44,6 +44,9 @@ public class CharacterResponse implements Serializable {
     @JsonProperty("description")
     private String description = null;
 
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
+
     /**
      * gender string
      */
@@ -200,6 +203,26 @@ public class CharacterResponse implements Serializable {
         this.description = description;
     }
 
+    public CharacterResponse factionId(Integer factionId) {
+        this.factionId = factionId;
+        return this;
+    }
+
+    /**
+     * ID of the faction the character is fighting for, if the character is
+     * enlisted in Factional Warfare
+     * 
+     * @return factionId
+     **/
+    @ApiModelProperty(example = "null", value = "ID of the faction the character is fighting for, if the character is enlisted in Factional Warfare")
+    public Integer getFactionId() {
+        return factionId;
+    }
+
+    public void setFactionId(Integer factionId) {
+        this.factionId = factionId;
+    }
+
     public CharacterResponse gender(GenderEnum gender) {
         this.gender = gender;
         return this;
@@ -291,6 +314,7 @@ public class CharacterResponse implements Serializable {
                 && Objects.equals(this.bloodlineId, characterResponse.bloodlineId)
                 && Objects.equals(this.corporationId, characterResponse.corporationId)
                 && Objects.equals(this.description, characterResponse.description)
+                && Objects.equals(this.factionId, characterResponse.factionId)
                 && Objects.equals(this.gender, characterResponse.gender)
                 && Objects.equals(this.name, characterResponse.name)
                 && Objects.equals(this.raceId, characterResponse.raceId)
@@ -299,8 +323,8 @@ public class CharacterResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, ancestryId, birthday, bloodlineId, corporationId, description, gender, name,
-                raceId, securityStatus);
+        return Objects.hash(allianceId, ancestryId, birthday, bloodlineId, corporationId, description, factionId,
+                gender, name, raceId, securityStatus);
     }
 
     @Override
@@ -314,6 +338,7 @@ public class CharacterResponse implements Serializable {
         sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");

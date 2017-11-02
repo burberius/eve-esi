@@ -11,22 +11,19 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.AllianceContactsResponse;
 import net.troja.eve.esi.model.ContactLabelsResponse;
 import net.troja.eve.esi.model.ContactsResponse;
 import net.troja.eve.esi.model.CorporationContactsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for ContactsApi
@@ -55,6 +52,24 @@ public class ContactsApiTest extends GeneralApiTest {
     @Test
     @Ignore("Delete operations can't be tested")
     public void deleteCharactersCharacterIdContactsTest() throws ApiException {
+    }
+
+    /**
+     * Get alliance contacts
+     *
+     * Return contacts of an alliance  ---  This route is cached for up to 300 seconds  SSO Scope: esi-alliances.read_contacts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs alliance with read access")
+    public void getAlliancesAllianceIdContactsTest() throws ApiException {
+        Integer allianceId = null;
+        Integer page = null;
+        List<AllianceContactsResponse> response = api.getAlliancesAllianceIdContacts(allianceId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

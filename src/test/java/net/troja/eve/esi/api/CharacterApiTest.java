@@ -25,6 +25,7 @@ import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CharacterTitlesResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
@@ -264,6 +265,21 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Get character corporation titles
+     *
+     * Returns a character&#39;s titles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_titles.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdTitlesTest() throws ApiException {
+        List<CharacterTitlesResponse> response = api.getCharactersCharacterIdTitles(characterId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
