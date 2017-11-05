@@ -29,8 +29,14 @@ public class FleetMembersResponse implements Serializable {
     @JsonProperty("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("join_time")
-    private OffsetDateTime joinTime = null;
+    @JsonProperty("ship_type_id")
+    private Integer shipTypeId = null;
+
+    @JsonProperty("wing_id")
+    private Long wingId = null;
+
+    @JsonProperty("squad_id")
+    private Long squadId = null;
 
     /**
      * Member’s role in fleet
@@ -72,23 +78,17 @@ public class FleetMembersResponse implements Serializable {
     @JsonProperty("role_name")
     private String roleName = null;
 
-    @JsonProperty("ship_type_id")
-    private Integer shipTypeId = null;
-
-    @JsonProperty("solar_system_id")
-    private Integer solarSystemId = null;
-
-    @JsonProperty("squad_id")
-    private Long squadId = null;
-
-    @JsonProperty("station_id")
-    private Long stationId = null;
+    @JsonProperty("join_time")
+    private OffsetDateTime joinTime = null;
 
     @JsonProperty("takes_fleet_warp")
     private Boolean takesFleetWarp = null;
 
-    @JsonProperty("wing_id")
-    private Long wingId = null;
+    @JsonProperty("solar_system_id")
+    private Integer solarSystemId = null;
+
+    @JsonProperty("station_id")
+    private Long stationId = null;
 
     public FleetMembersResponse characterId(Integer characterId) {
         this.characterId = characterId;
@@ -109,23 +109,61 @@ public class FleetMembersResponse implements Serializable {
         this.characterId = characterId;
     }
 
-    public FleetMembersResponse joinTime(OffsetDateTime joinTime) {
-        this.joinTime = joinTime;
+    public FleetMembersResponse shipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
         return this;
     }
 
     /**
-     * join_time string
+     * ship_type_id integer
      * 
-     * @return joinTime
+     * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "join_time string")
-    public OffsetDateTime getJoinTime() {
-        return joinTime;
+    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    public Integer getShipTypeId() {
+        return shipTypeId;
     }
 
-    public void setJoinTime(OffsetDateTime joinTime) {
-        this.joinTime = joinTime;
+    public void setShipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+    }
+
+    public FleetMembersResponse wingId(Long wingId) {
+        this.wingId = wingId;
+        return this;
+    }
+
+    /**
+     * ID of the wing the member is in. If not applicable, will be set to -1
+     * 
+     * @return wingId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
+    public Long getWingId() {
+        return wingId;
+    }
+
+    public void setWingId(Long wingId) {
+        this.wingId = wingId;
+    }
+
+    public FleetMembersResponse squadId(Long squadId) {
+        this.squadId = squadId;
+        return this;
+    }
+
+    /**
+     * ID of the squad the member is in. If not applicable, will be set to -1
+     * 
+     * @return squadId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
+    public Long getSquadId() {
+        return squadId;
+    }
+
+    public void setSquadId(Long squadId) {
+        this.squadId = squadId;
     }
 
     public FleetMembersResponse role(RoleEnum role) {
@@ -166,80 +204,23 @@ public class FleetMembersResponse implements Serializable {
         this.roleName = roleName;
     }
 
-    public FleetMembersResponse shipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
+    public FleetMembersResponse joinTime(OffsetDateTime joinTime) {
+        this.joinTime = joinTime;
         return this;
     }
 
     /**
-     * ship_type_id integer
+     * join_time string
      * 
-     * @return shipTypeId
+     * @return joinTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
-    public Integer getShipTypeId() {
-        return shipTypeId;
+    @ApiModelProperty(example = "null", required = true, value = "join_time string")
+    public OffsetDateTime getJoinTime() {
+        return joinTime;
     }
 
-    public void setShipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
-    }
-
-    public FleetMembersResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * Solar system the member is located in
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Solar system the member is located in")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-    }
-
-    public FleetMembersResponse squadId(Long squadId) {
-        this.squadId = squadId;
-        return this;
-    }
-
-    /**
-     * ID of the squad the member is in. If not applicable, will be set to -1
-     * 
-     * @return squadId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
-    public Long getSquadId() {
-        return squadId;
-    }
-
-    public void setSquadId(Long squadId) {
-        this.squadId = squadId;
-    }
-
-    public FleetMembersResponse stationId(Long stationId) {
-        this.stationId = stationId;
-        return this;
-    }
-
-    /**
-     * Station in which the member is docked in, if applicable
-     * 
-     * @return stationId
-     **/
-    @ApiModelProperty(example = "null", value = "Station in which the member is docked in, if applicable")
-    public Long getStationId() {
-        return stationId;
-    }
-
-    public void setStationId(Long stationId) {
-        this.stationId = stationId;
+    public void setJoinTime(OffsetDateTime joinTime) {
+        this.joinTime = joinTime;
     }
 
     public FleetMembersResponse takesFleetWarp(Boolean takesFleetWarp) {
@@ -261,23 +242,42 @@ public class FleetMembersResponse implements Serializable {
         this.takesFleetWarp = takesFleetWarp;
     }
 
-    public FleetMembersResponse wingId(Long wingId) {
-        this.wingId = wingId;
+    public FleetMembersResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
         return this;
     }
 
     /**
-     * ID of the wing the member is in. If not applicable, will be set to -1
+     * Solar system the member is located in
      * 
-     * @return wingId
+     * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
-    public Long getWingId() {
-        return wingId;
+    @ApiModelProperty(example = "null", required = true, value = "Solar system the member is located in")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
     }
 
-    public void setWingId(Long wingId) {
-        this.wingId = wingId;
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
+    public FleetMembersResponse stationId(Long stationId) {
+        this.stationId = stationId;
+        return this;
+    }
+
+    /**
+     * Station in which the member is docked in, if applicable
+     * 
+     * @return stationId
+     **/
+    @ApiModelProperty(example = "null", value = "Station in which the member is docked in, if applicable")
+    public Long getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(Long stationId) {
+        this.stationId = stationId;
     }
 
     @Override
@@ -290,21 +290,21 @@ public class FleetMembersResponse implements Serializable {
         }
         FleetMembersResponse fleetMembersResponse = (FleetMembersResponse) o;
         return Objects.equals(this.characterId, fleetMembersResponse.characterId)
-                && Objects.equals(this.joinTime, fleetMembersResponse.joinTime)
+                && Objects.equals(this.shipTypeId, fleetMembersResponse.shipTypeId)
+                && Objects.equals(this.wingId, fleetMembersResponse.wingId)
+                && Objects.equals(this.squadId, fleetMembersResponse.squadId)
                 && Objects.equals(this.role, fleetMembersResponse.role)
                 && Objects.equals(this.roleName, fleetMembersResponse.roleName)
-                && Objects.equals(this.shipTypeId, fleetMembersResponse.shipTypeId)
-                && Objects.equals(this.solarSystemId, fleetMembersResponse.solarSystemId)
-                && Objects.equals(this.squadId, fleetMembersResponse.squadId)
-                && Objects.equals(this.stationId, fleetMembersResponse.stationId)
+                && Objects.equals(this.joinTime, fleetMembersResponse.joinTime)
                 && Objects.equals(this.takesFleetWarp, fleetMembersResponse.takesFleetWarp)
-                && Objects.equals(this.wingId, fleetMembersResponse.wingId);
+                && Objects.equals(this.solarSystemId, fleetMembersResponse.solarSystemId)
+                && Objects.equals(this.stationId, fleetMembersResponse.stationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, joinTime, role, roleName, shipTypeId, solarSystemId, squadId, stationId,
-                takesFleetWarp, wingId);
+        return Objects.hash(characterId, shipTypeId, wingId, squadId, role, roleName, joinTime, takesFleetWarp,
+                solarSystemId, stationId);
     }
 
     @Override
@@ -313,15 +313,15 @@ public class FleetMembersResponse implements Serializable {
         sb.append("class FleetMembersResponse {\n");
 
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
-        sb.append("    joinTime: ").append(toIndentedString(joinTime)).append("\n");
+        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
+        sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
+        sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("    roleName: ").append(toIndentedString(roleName)).append("\n");
-        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
-        sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
-        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
+        sb.append("    joinTime: ").append(toIndentedString(joinTime)).append("\n");
         sb.append("    takesFleetWarp: ").append(toIndentedString(takesFleetWarp)).append("\n");
-        sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

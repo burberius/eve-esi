@@ -25,14 +25,11 @@ import java.io.Serializable;
 public class DogmaEffectModifier implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("domain")
-    private String domain = null;
-
-    @JsonProperty("effect_id")
-    private Integer effectId = null;
-
     @JsonProperty("func")
     private String func = null;
+
+    @JsonProperty("domain")
+    private String domain = null;
 
     @JsonProperty("modified_attribute_id")
     private Integer modifiedAttributeId = null;
@@ -40,46 +37,11 @@ public class DogmaEffectModifier implements Serializable {
     @JsonProperty("modifying_attribute_id")
     private Integer modifyingAttributeId = null;
 
+    @JsonProperty("effect_id")
+    private Integer effectId = null;
+
     @JsonProperty("operator")
     private Integer operator = null;
-
-    public DogmaEffectModifier domain(String domain) {
-        this.domain = domain;
-        return this;
-    }
-
-    /**
-     * domain string
-     * 
-     * @return domain
-     **/
-    @ApiModelProperty(example = "null", value = "domain string")
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public DogmaEffectModifier effectId(Integer effectId) {
-        this.effectId = effectId;
-        return this;
-    }
-
-    /**
-     * effect_id integer
-     * 
-     * @return effectId
-     **/
-    @ApiModelProperty(example = "null", value = "effect_id integer")
-    public Integer getEffectId() {
-        return effectId;
-    }
-
-    public void setEffectId(Integer effectId) {
-        this.effectId = effectId;
-    }
 
     public DogmaEffectModifier func(String func) {
         this.func = func;
@@ -98,6 +60,25 @@ public class DogmaEffectModifier implements Serializable {
 
     public void setFunc(String func) {
         this.func = func;
+    }
+
+    public DogmaEffectModifier domain(String domain) {
+        this.domain = domain;
+        return this;
+    }
+
+    /**
+     * domain string
+     * 
+     * @return domain
+     **/
+    @ApiModelProperty(example = "null", value = "domain string")
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 
     public DogmaEffectModifier modifiedAttributeId(Integer modifiedAttributeId) {
@@ -138,6 +119,25 @@ public class DogmaEffectModifier implements Serializable {
         this.modifyingAttributeId = modifyingAttributeId;
     }
 
+    public DogmaEffectModifier effectId(Integer effectId) {
+        this.effectId = effectId;
+        return this;
+    }
+
+    /**
+     * effect_id integer
+     * 
+     * @return effectId
+     **/
+    @ApiModelProperty(example = "null", value = "effect_id integer")
+    public Integer getEffectId() {
+        return effectId;
+    }
+
+    public void setEffectId(Integer effectId) {
+        this.effectId = effectId;
+    }
+
     public DogmaEffectModifier operator(Integer operator) {
         this.operator = operator;
         return this;
@@ -166,17 +166,17 @@ public class DogmaEffectModifier implements Serializable {
             return false;
         }
         DogmaEffectModifier dogmaEffectModifier = (DogmaEffectModifier) o;
-        return Objects.equals(this.domain, dogmaEffectModifier.domain)
-                && Objects.equals(this.effectId, dogmaEffectModifier.effectId)
-                && Objects.equals(this.func, dogmaEffectModifier.func)
+        return Objects.equals(this.func, dogmaEffectModifier.func)
+                && Objects.equals(this.domain, dogmaEffectModifier.domain)
                 && Objects.equals(this.modifiedAttributeId, dogmaEffectModifier.modifiedAttributeId)
                 && Objects.equals(this.modifyingAttributeId, dogmaEffectModifier.modifyingAttributeId)
+                && Objects.equals(this.effectId, dogmaEffectModifier.effectId)
                 && Objects.equals(this.operator, dogmaEffectModifier.operator);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(domain, effectId, func, modifiedAttributeId, modifyingAttributeId, operator);
+        return Objects.hash(func, domain, modifiedAttributeId, modifyingAttributeId, effectId, operator);
     }
 
     @Override
@@ -184,11 +184,11 @@ public class DogmaEffectModifier implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaEffectModifier {\n");
 
-        sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
-        sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
         sb.append("    func: ").append(toIndentedString(func)).append("\n");
+        sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
         sb.append("    modifiedAttributeId: ").append(toIndentedString(modifiedAttributeId)).append("\n");
         sb.append("    modifyingAttributeId: ").append(toIndentedString(modifyingAttributeId)).append("\n");
+        sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
         sb.append("    operator: ").append(toIndentedString(operator)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -12,21 +12,20 @@
 package net.troja.eve.esi.api;
 
 import java.util.List;
-
-import org.junit.Test;
-
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.notNullValue;
-
-import static org.junit.Assert.assertThat;
-
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterFwStatsResponse;
+import net.troja.eve.esi.model.CorporationFwStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationsResponse;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardResponse;
 import net.troja.eve.esi.model.FactionWarfareStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
 import net.troja.eve.esi.model.FactionWarfareWarsResponse;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  * API tests for FactionWarfareApi
@@ -34,6 +33,39 @@ import net.troja.eve.esi.model.FactionWarfareWarsResponse;
 public class FactionWarfareApiTest extends GeneralApiTest {
 
     private final FactionWarfareApi api = new FactionWarfareApi();
+
+    /**
+     * Overview of a character involved in faction warfare
+     *
+     * Statistical overview of a character involved in faction warfare  ---  This route expires daily at 11:05  SSO Scope: esi-characters.read_fw_stats.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs character in faction warfare")
+    public void getCharactersCharacterIdFwStatsTest() throws ApiException {
+        CharacterFwStatsResponse response = api.getCharactersCharacterIdFwStats(characterId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Overview of a corporation involved in faction warfare
+     *
+     * Statistics about a corporation involved in faction warfare  ---  This route expires daily at 11:05  SSO Scope: esi-corporations.read_fw_stats.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation in faction warfare")
+    public void getCorporationsCorporationIdFwStatsTest() throws ApiException {
+        Integer corporationId = null;
+        CorporationFwStatsResponse response = api.getCorporationsCorporationIdFwStats(corporationId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
+    }
 
     /**
      * List of the top factions in faction warfare

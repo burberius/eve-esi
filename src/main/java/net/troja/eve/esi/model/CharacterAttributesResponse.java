@@ -26,20 +26,11 @@ import java.io.Serializable;
 public class CharacterAttributesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("accrued_remap_cooldown_date")
-    private OffsetDateTime accruedRemapCooldownDate = null;
-
-    @JsonProperty("bonus_remaps")
-    private Integer bonusRemaps = null;
-
     @JsonProperty("charisma")
     private Integer charisma = null;
 
     @JsonProperty("intelligence")
     private Integer intelligence = null;
-
-    @JsonProperty("last_remap_date")
-    private OffsetDateTime lastRemapDate = null;
 
     @JsonProperty("memory")
     private Integer memory = null;
@@ -50,43 +41,14 @@ public class CharacterAttributesResponse implements Serializable {
     @JsonProperty("willpower")
     private Integer willpower = null;
 
-    public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
-        this.accruedRemapCooldownDate = accruedRemapCooldownDate;
-        return this;
-    }
+    @JsonProperty("bonus_remaps")
+    private Integer bonusRemaps = null;
 
-    /**
-     * Neural remapping cooldown after a character uses remap accrued over time
-     * 
-     * @return accruedRemapCooldownDate
-     **/
-    @ApiModelProperty(example = "null", value = "Neural remapping cooldown after a character uses remap accrued over time")
-    public OffsetDateTime getAccruedRemapCooldownDate() {
-        return accruedRemapCooldownDate;
-    }
+    @JsonProperty("last_remap_date")
+    private OffsetDateTime lastRemapDate = null;
 
-    public void setAccruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
-        this.accruedRemapCooldownDate = accruedRemapCooldownDate;
-    }
-
-    public CharacterAttributesResponse bonusRemaps(Integer bonusRemaps) {
-        this.bonusRemaps = bonusRemaps;
-        return this;
-    }
-
-    /**
-     * Number of available bonus character neural remaps
-     * 
-     * @return bonusRemaps
-     **/
-    @ApiModelProperty(example = "null", value = "Number of available bonus character neural remaps")
-    public Integer getBonusRemaps() {
-        return bonusRemaps;
-    }
-
-    public void setBonusRemaps(Integer bonusRemaps) {
-        this.bonusRemaps = bonusRemaps;
-    }
+    @JsonProperty("accrued_remap_cooldown_date")
+    private OffsetDateTime accruedRemapCooldownDate = null;
 
     public CharacterAttributesResponse charisma(Integer charisma) {
         this.charisma = charisma;
@@ -124,25 +86,6 @@ public class CharacterAttributesResponse implements Serializable {
 
     public void setIntelligence(Integer intelligence) {
         this.intelligence = intelligence;
-    }
-
-    public CharacterAttributesResponse lastRemapDate(OffsetDateTime lastRemapDate) {
-        this.lastRemapDate = lastRemapDate;
-        return this;
-    }
-
-    /**
-     * Datetime of last neural remap, including usage of bonus remaps
-     * 
-     * @return lastRemapDate
-     **/
-    @ApiModelProperty(example = "null", value = "Datetime of last neural remap, including usage of bonus remaps")
-    public OffsetDateTime getLastRemapDate() {
-        return lastRemapDate;
-    }
-
-    public void setLastRemapDate(OffsetDateTime lastRemapDate) {
-        this.lastRemapDate = lastRemapDate;
     }
 
     public CharacterAttributesResponse memory(Integer memory) {
@@ -202,6 +145,63 @@ public class CharacterAttributesResponse implements Serializable {
         this.willpower = willpower;
     }
 
+    public CharacterAttributesResponse bonusRemaps(Integer bonusRemaps) {
+        this.bonusRemaps = bonusRemaps;
+        return this;
+    }
+
+    /**
+     * Number of available bonus character neural remaps
+     * 
+     * @return bonusRemaps
+     **/
+    @ApiModelProperty(example = "null", value = "Number of available bonus character neural remaps")
+    public Integer getBonusRemaps() {
+        return bonusRemaps;
+    }
+
+    public void setBonusRemaps(Integer bonusRemaps) {
+        this.bonusRemaps = bonusRemaps;
+    }
+
+    public CharacterAttributesResponse lastRemapDate(OffsetDateTime lastRemapDate) {
+        this.lastRemapDate = lastRemapDate;
+        return this;
+    }
+
+    /**
+     * Datetime of last neural remap, including usage of bonus remaps
+     * 
+     * @return lastRemapDate
+     **/
+    @ApiModelProperty(example = "null", value = "Datetime of last neural remap, including usage of bonus remaps")
+    public OffsetDateTime getLastRemapDate() {
+        return lastRemapDate;
+    }
+
+    public void setLastRemapDate(OffsetDateTime lastRemapDate) {
+        this.lastRemapDate = lastRemapDate;
+    }
+
+    public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
+        this.accruedRemapCooldownDate = accruedRemapCooldownDate;
+        return this;
+    }
+
+    /**
+     * Neural remapping cooldown after a character uses remap accrued over time
+     * 
+     * @return accruedRemapCooldownDate
+     **/
+    @ApiModelProperty(example = "null", value = "Neural remapping cooldown after a character uses remap accrued over time")
+    public OffsetDateTime getAccruedRemapCooldownDate() {
+        return accruedRemapCooldownDate;
+    }
+
+    public void setAccruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
+        this.accruedRemapCooldownDate = accruedRemapCooldownDate;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -211,20 +211,20 @@ public class CharacterAttributesResponse implements Serializable {
             return false;
         }
         CharacterAttributesResponse characterAttributesResponse = (CharacterAttributesResponse) o;
-        return Objects.equals(this.accruedRemapCooldownDate, characterAttributesResponse.accruedRemapCooldownDate)
-                && Objects.equals(this.bonusRemaps, characterAttributesResponse.bonusRemaps)
-                && Objects.equals(this.charisma, characterAttributesResponse.charisma)
+        return Objects.equals(this.charisma, characterAttributesResponse.charisma)
                 && Objects.equals(this.intelligence, characterAttributesResponse.intelligence)
-                && Objects.equals(this.lastRemapDate, characterAttributesResponse.lastRemapDate)
                 && Objects.equals(this.memory, characterAttributesResponse.memory)
                 && Objects.equals(this.perception, characterAttributesResponse.perception)
-                && Objects.equals(this.willpower, characterAttributesResponse.willpower);
+                && Objects.equals(this.willpower, characterAttributesResponse.willpower)
+                && Objects.equals(this.bonusRemaps, characterAttributesResponse.bonusRemaps)
+                && Objects.equals(this.lastRemapDate, characterAttributesResponse.lastRemapDate)
+                && Objects.equals(this.accruedRemapCooldownDate, characterAttributesResponse.accruedRemapCooldownDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accruedRemapCooldownDate, bonusRemaps, charisma, intelligence, lastRemapDate, memory,
-                perception, willpower);
+        return Objects.hash(charisma, intelligence, memory, perception, willpower, bonusRemaps, lastRemapDate,
+                accruedRemapCooldownDate);
     }
 
     @Override
@@ -232,14 +232,14 @@ public class CharacterAttributesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAttributesResponse {\n");
 
-        sb.append("    accruedRemapCooldownDate: ").append(toIndentedString(accruedRemapCooldownDate)).append("\n");
-        sb.append("    bonusRemaps: ").append(toIndentedString(bonusRemaps)).append("\n");
         sb.append("    charisma: ").append(toIndentedString(charisma)).append("\n");
         sb.append("    intelligence: ").append(toIndentedString(intelligence)).append("\n");
-        sb.append("    lastRemapDate: ").append(toIndentedString(lastRemapDate)).append("\n");
         sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
         sb.append("    perception: ").append(toIndentedString(perception)).append("\n");
         sb.append("    willpower: ").append(toIndentedString(willpower)).append("\n");
+        sb.append("    bonusRemaps: ").append(toIndentedString(bonusRemaps)).append("\n");
+        sb.append("    lastRemapDate: ").append(toIndentedString(lastRemapDate)).append("\n");
+        sb.append("    accruedRemapCooldownDate: ").append(toIndentedString(accruedRemapCooldownDate)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -28,20 +28,20 @@ public class IndustryFacilitiesResponse implements Serializable {
     @JsonProperty("facility_id")
     private Long facilityId = null;
 
+    @JsonProperty("tax")
+    private Float tax = null;
+
     @JsonProperty("owner_id")
     private Integer ownerId = null;
 
-    @JsonProperty("region_id")
-    private Integer regionId = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("tax")
-    private Float tax = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("region_id")
+    private Integer regionId = null;
 
     public IndustryFacilitiesResponse facilityId(Long facilityId) {
         this.facilityId = facilityId;
@@ -60,63 +60,6 @@ public class IndustryFacilitiesResponse implements Serializable {
 
     public void setFacilityId(Long facilityId) {
         this.facilityId = facilityId;
-    }
-
-    public IndustryFacilitiesResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    /**
-     * Owner of the facility
-     * 
-     * @return ownerId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Owner of the facility")
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public IndustryFacilitiesResponse regionId(Integer regionId) {
-        this.regionId = regionId;
-        return this;
-    }
-
-    /**
-     * Region ID where the facility is
-     * 
-     * @return regionId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Region ID where the facility is")
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
-
-    public IndustryFacilitiesResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * Solar system ID where the facility is
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Solar system ID where the facility is")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
     }
 
     public IndustryFacilitiesResponse tax(Float tax) {
@@ -138,6 +81,25 @@ public class IndustryFacilitiesResponse implements Serializable {
         this.tax = tax;
     }
 
+    public IndustryFacilitiesResponse ownerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    /**
+     * Owner of the facility
+     * 
+     * @return ownerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Owner of the facility")
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
     public IndustryFacilitiesResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
@@ -157,6 +119,44 @@ public class IndustryFacilitiesResponse implements Serializable {
         this.typeId = typeId;
     }
 
+    public IndustryFacilitiesResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * Solar system ID where the facility is
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Solar system ID where the facility is")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
+    public IndustryFacilitiesResponse regionId(Integer regionId) {
+        this.regionId = regionId;
+        return this;
+    }
+
+    /**
+     * Region ID where the facility is
+     * 
+     * @return regionId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Region ID where the facility is")
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,16 +167,16 @@ public class IndustryFacilitiesResponse implements Serializable {
         }
         IndustryFacilitiesResponse industryFacilitiesResponse = (IndustryFacilitiesResponse) o;
         return Objects.equals(this.facilityId, industryFacilitiesResponse.facilityId)
-                && Objects.equals(this.ownerId, industryFacilitiesResponse.ownerId)
-                && Objects.equals(this.regionId, industryFacilitiesResponse.regionId)
-                && Objects.equals(this.solarSystemId, industryFacilitiesResponse.solarSystemId)
                 && Objects.equals(this.tax, industryFacilitiesResponse.tax)
-                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId);
+                && Objects.equals(this.ownerId, industryFacilitiesResponse.ownerId)
+                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId)
+                && Objects.equals(this.solarSystemId, industryFacilitiesResponse.solarSystemId)
+                && Objects.equals(this.regionId, industryFacilitiesResponse.regionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(facilityId, ownerId, regionId, solarSystemId, tax, typeId);
+        return Objects.hash(facilityId, tax, ownerId, typeId, solarSystemId, regionId);
     }
 
     @Override
@@ -185,11 +185,11 @@ public class IndustryFacilitiesResponse implements Serializable {
         sb.append("class IndustryFacilitiesResponse {\n");
 
         sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

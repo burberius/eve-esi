@@ -27,41 +27,41 @@ import java.io.Serializable;
 public class StargateResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("destination")
-    private StargateDestination destination = null;
+    @JsonProperty("stargate_id")
+    private Integer stargateId = null;
 
     @JsonProperty("name")
     private String name = null;
 
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
     @JsonProperty("position")
     private Position position = null;
-
-    @JsonProperty("stargate_id")
-    private Integer stargateId = null;
 
     @JsonProperty("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("destination")
+    private StargateDestination destination = null;
 
-    public StargateResponse destination(StargateDestination destination) {
-        this.destination = destination;
+    public StargateResponse stargateId(Integer stargateId) {
+        this.stargateId = stargateId;
         return this;
     }
 
     /**
-     * Get destination
+     * stargate_id integer
      * 
-     * @return destination
+     * @return stargateId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public StargateDestination getDestination() {
-        return destination;
+    @ApiModelProperty(example = "null", required = true, value = "stargate_id integer")
+    public Integer getStargateId() {
+        return stargateId;
     }
 
-    public void setDestination(StargateDestination destination) {
-        this.destination = destination;
+    public void setStargateId(Integer stargateId) {
+        this.stargateId = stargateId;
     }
 
     public StargateResponse name(String name) {
@@ -83,6 +83,25 @@ public class StargateResponse implements Serializable {
         this.name = name;
     }
 
+    public StargateResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     public StargateResponse position(Position position) {
         this.position = position;
         return this;
@@ -100,25 +119,6 @@ public class StargateResponse implements Serializable {
 
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public StargateResponse stargateId(Integer stargateId) {
-        this.stargateId = stargateId;
-        return this;
-    }
-
-    /**
-     * stargate_id integer
-     * 
-     * @return stargateId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "stargate_id integer")
-    public Integer getStargateId() {
-        return stargateId;
-    }
-
-    public void setStargateId(Integer stargateId) {
-        this.stargateId = stargateId;
     }
 
     public StargateResponse systemId(Integer systemId) {
@@ -140,23 +140,23 @@ public class StargateResponse implements Serializable {
         this.systemId = systemId;
     }
 
-    public StargateResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    public StargateResponse destination(StargateDestination destination) {
+        this.destination = destination;
         return this;
     }
 
     /**
-     * type_id integer
+     * Get destination
      * 
-     * @return typeId
+     * @return destination
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", value = "")
+    public StargateDestination getDestination() {
+        return destination;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setDestination(StargateDestination destination) {
+        this.destination = destination;
     }
 
     @Override
@@ -168,17 +168,17 @@ public class StargateResponse implements Serializable {
             return false;
         }
         StargateResponse stargateResponse = (StargateResponse) o;
-        return Objects.equals(this.destination, stargateResponse.destination)
+        return Objects.equals(this.stargateId, stargateResponse.stargateId)
                 && Objects.equals(this.name, stargateResponse.name)
+                && Objects.equals(this.typeId, stargateResponse.typeId)
                 && Objects.equals(this.position, stargateResponse.position)
-                && Objects.equals(this.stargateId, stargateResponse.stargateId)
                 && Objects.equals(this.systemId, stargateResponse.systemId)
-                && Objects.equals(this.typeId, stargateResponse.typeId);
+                && Objects.equals(this.destination, stargateResponse.destination);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(destination, name, position, stargateId, systemId, typeId);
+        return Objects.hash(stargateId, name, typeId, position, systemId, destination);
     }
 
     @Override
@@ -186,12 +186,12 @@ public class StargateResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class StargateResponse {\n");
 
-        sb.append("    destination: ").append(toIndentedString(destination)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    stargateId: ").append(toIndentedString(stargateId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    destination: ").append(toIndentedString(destination)).append("\n");
         sb.append("}");
         return sb.toString();
     }

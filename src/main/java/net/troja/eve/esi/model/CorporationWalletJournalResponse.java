@@ -27,60 +27,8 @@ import java.io.Serializable;
 public class CorporationWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Float amount = null;
-
-    @JsonProperty("balance")
-    private Float balance = null;
-
     @JsonProperty("date")
     private OffsetDateTime date = null;
-
-    @JsonProperty("extra_info")
-    private CorporationWalletJournalExtraInfoResponse extraInfo = null;
-
-    @JsonProperty("first_party_id")
-    private Integer firstPartyId = null;
-
-    /**
-     * first_party_type string
-     */
-    public enum FirstPartyTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction");
-
-        private String value;
-
-        FirstPartyTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static FirstPartyTypeEnum fromValue(String text) {
-            for (FirstPartyTypeEnum b : FirstPartyTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("first_party_type")
-    private FirstPartyTypeEnum firstPartyType = null;
-
-    @JsonProperty("reason")
-    private String reason = null;
 
     @JsonProperty("ref_id")
     private Long refId = null;
@@ -339,6 +287,46 @@ public class CorporationWalletJournalResponse implements Serializable {
     @JsonProperty("ref_type")
     private RefTypeEnum refType = null;
 
+    @JsonProperty("first_party_id")
+    private Integer firstPartyId = null;
+
+    /**
+     * first_party_type string
+     */
+    public enum FirstPartyTypeEnum {
+        CHARACTER("character"),
+
+        CORPORATION("corporation"),
+
+        ALLIANCE("alliance"),
+
+        FACTION("faction");
+
+        private String value;
+
+        FirstPartyTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static FirstPartyTypeEnum fromValue(String text) {
+            for (FirstPartyTypeEnum b : FirstPartyTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    @JsonProperty("first_party_type")
+    private FirstPartyTypeEnum firstPartyType = null;
+
     @JsonProperty("second_party_id")
     private Integer secondPartyId = null;
 
@@ -379,50 +367,23 @@ public class CorporationWalletJournalResponse implements Serializable {
     @JsonProperty("second_party_type")
     private SecondPartyTypeEnum secondPartyType = null;
 
-    @JsonProperty("tax")
-    private Float tax = null;
+    @JsonProperty("amount")
+    private Float amount = null;
+
+    @JsonProperty("balance")
+    private Float balance = null;
+
+    @JsonProperty("reason")
+    private String reason = null;
 
     @JsonProperty("tax_reciever_id")
     private Integer taxRecieverId = null;
 
-    public CorporationWalletJournalResponse amount(Float amount) {
-        this.amount = amount;
-        return this;
-    }
+    @JsonProperty("tax")
+    private Float tax = null;
 
-    /**
-     * Transaction amount. Positive when value transferred to the first party.
-     * Negative otherwise
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", value = "Transaction amount. Positive when value transferred to the first party. Negative otherwise")
-    public Float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
-
-    public CorporationWalletJournalResponse balance(Float balance) {
-        this.balance = balance;
-        return this;
-    }
-
-    /**
-     * Wallet balance after transaction occurred
-     * 
-     * @return balance
-     **/
-    @ApiModelProperty(example = "null", value = "Wallet balance after transaction occurred")
-    public Float getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Float balance) {
-        this.balance = balance;
-    }
+    @JsonProperty("extra_info")
+    private CorporationWalletJournalExtraInfoResponse extraInfo = null;
 
     public CorporationWalletJournalResponse date(OffsetDateTime date) {
         this.date = date;
@@ -441,82 +402,6 @@ public class CorporationWalletJournalResponse implements Serializable {
 
     public void setDate(OffsetDateTime date) {
         this.date = date;
-    }
-
-    public CorporationWalletJournalResponse extraInfo(CorporationWalletJournalExtraInfoResponse extraInfo) {
-        this.extraInfo = extraInfo;
-        return this;
-    }
-
-    /**
-     * Get extraInfo
-     * 
-     * @return extraInfo
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public CorporationWalletJournalExtraInfoResponse getExtraInfo() {
-        return extraInfo;
-    }
-
-    public void setExtraInfo(CorporationWalletJournalExtraInfoResponse extraInfo) {
-        this.extraInfo = extraInfo;
-    }
-
-    public CorporationWalletJournalResponse firstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-        return this;
-    }
-
-    /**
-     * first_party_id integer
-     * 
-     * @return firstPartyId
-     **/
-    @ApiModelProperty(example = "null", value = "first_party_id integer")
-    public Integer getFirstPartyId() {
-        return firstPartyId;
-    }
-
-    public void setFirstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-    }
-
-    public CorporationWalletJournalResponse firstPartyType(FirstPartyTypeEnum firstPartyType) {
-        this.firstPartyType = firstPartyType;
-        return this;
-    }
-
-    /**
-     * first_party_type string
-     * 
-     * @return firstPartyType
-     **/
-    @ApiModelProperty(example = "null", value = "first_party_type string")
-    public FirstPartyTypeEnum getFirstPartyType() {
-        return firstPartyType;
-    }
-
-    public void setFirstPartyType(FirstPartyTypeEnum firstPartyType) {
-        this.firstPartyType = firstPartyType;
-    }
-
-    public CorporationWalletJournalResponse reason(String reason) {
-        this.reason = reason;
-        return this;
-    }
-
-    /**
-     * reason string
-     * 
-     * @return reason
-     **/
-    @ApiModelProperty(example = "null", value = "reason string")
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
     }
 
     public CorporationWalletJournalResponse refId(Long refId) {
@@ -558,6 +443,44 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.refType = refType;
     }
 
+    public CorporationWalletJournalResponse firstPartyId(Integer firstPartyId) {
+        this.firstPartyId = firstPartyId;
+        return this;
+    }
+
+    /**
+     * first_party_id integer
+     * 
+     * @return firstPartyId
+     **/
+    @ApiModelProperty(example = "null", value = "first_party_id integer")
+    public Integer getFirstPartyId() {
+        return firstPartyId;
+    }
+
+    public void setFirstPartyId(Integer firstPartyId) {
+        this.firstPartyId = firstPartyId;
+    }
+
+    public CorporationWalletJournalResponse firstPartyType(FirstPartyTypeEnum firstPartyType) {
+        this.firstPartyType = firstPartyType;
+        return this;
+    }
+
+    /**
+     * first_party_type string
+     * 
+     * @return firstPartyType
+     **/
+    @ApiModelProperty(example = "null", value = "first_party_type string")
+    public FirstPartyTypeEnum getFirstPartyType() {
+        return firstPartyType;
+    }
+
+    public void setFirstPartyType(FirstPartyTypeEnum firstPartyType) {
+        this.firstPartyType = firstPartyType;
+    }
+
     public CorporationWalletJournalResponse secondPartyId(Integer secondPartyId) {
         this.secondPartyId = secondPartyId;
         return this;
@@ -596,23 +519,62 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.secondPartyType = secondPartyType;
     }
 
-    public CorporationWalletJournalResponse tax(Float tax) {
-        this.tax = tax;
+    public CorporationWalletJournalResponse amount(Float amount) {
+        this.amount = amount;
         return this;
     }
 
     /**
-     * Tax amount received for tax related transactions
+     * Transaction amount. Positive when value transferred to the first party.
+     * Negative otherwise
      * 
-     * @return tax
+     * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Tax amount received for tax related transactions")
-    public Float getTax() {
-        return tax;
+    @ApiModelProperty(example = "null", value = "Transaction amount. Positive when value transferred to the first party. Negative otherwise")
+    public Float getAmount() {
+        return amount;
     }
 
-    public void setTax(Float tax) {
-        this.tax = tax;
+    public void setAmount(Float amount) {
+        this.amount = amount;
+    }
+
+    public CorporationWalletJournalResponse balance(Float balance) {
+        this.balance = balance;
+        return this;
+    }
+
+    /**
+     * Wallet balance after transaction occurred
+     * 
+     * @return balance
+     **/
+    @ApiModelProperty(example = "null", value = "Wallet balance after transaction occurred")
+    public Float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Float balance) {
+        this.balance = balance;
+    }
+
+    public CorporationWalletJournalResponse reason(String reason) {
+        this.reason = reason;
+        return this;
+    }
+
+    /**
+     * reason string
+     * 
+     * @return reason
+     **/
+    @ApiModelProperty(example = "null", value = "reason string")
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public CorporationWalletJournalResponse taxRecieverId(Integer taxRecieverId) {
@@ -634,6 +596,44 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.taxRecieverId = taxRecieverId;
     }
 
+    public CorporationWalletJournalResponse tax(Float tax) {
+        this.tax = tax;
+        return this;
+    }
+
+    /**
+     * Tax amount received for tax related transactions
+     * 
+     * @return tax
+     **/
+    @ApiModelProperty(example = "null", value = "Tax amount received for tax related transactions")
+    public Float getTax() {
+        return tax;
+    }
+
+    public void setTax(Float tax) {
+        this.tax = tax;
+    }
+
+    public CorporationWalletJournalResponse extraInfo(CorporationWalletJournalExtraInfoResponse extraInfo) {
+        this.extraInfo = extraInfo;
+        return this;
+    }
+
+    /**
+     * Get extraInfo
+     * 
+     * @return extraInfo
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public CorporationWalletJournalExtraInfoResponse getExtraInfo() {
+        return extraInfo;
+    }
+
+    public void setExtraInfo(CorporationWalletJournalExtraInfoResponse extraInfo) {
+        this.extraInfo = extraInfo;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -643,25 +643,25 @@ public class CorporationWalletJournalResponse implements Serializable {
             return false;
         }
         CorporationWalletJournalResponse corporationWalletJournalResponse = (CorporationWalletJournalResponse) o;
-        return Objects.equals(this.amount, corporationWalletJournalResponse.amount)
-                && Objects.equals(this.balance, corporationWalletJournalResponse.balance)
-                && Objects.equals(this.date, corporationWalletJournalResponse.date)
-                && Objects.equals(this.extraInfo, corporationWalletJournalResponse.extraInfo)
-                && Objects.equals(this.firstPartyId, corporationWalletJournalResponse.firstPartyId)
-                && Objects.equals(this.firstPartyType, corporationWalletJournalResponse.firstPartyType)
-                && Objects.equals(this.reason, corporationWalletJournalResponse.reason)
+        return Objects.equals(this.date, corporationWalletJournalResponse.date)
                 && Objects.equals(this.refId, corporationWalletJournalResponse.refId)
                 && Objects.equals(this.refType, corporationWalletJournalResponse.refType)
+                && Objects.equals(this.firstPartyId, corporationWalletJournalResponse.firstPartyId)
+                && Objects.equals(this.firstPartyType, corporationWalletJournalResponse.firstPartyType)
                 && Objects.equals(this.secondPartyId, corporationWalletJournalResponse.secondPartyId)
                 && Objects.equals(this.secondPartyType, corporationWalletJournalResponse.secondPartyType)
+                && Objects.equals(this.amount, corporationWalletJournalResponse.amount)
+                && Objects.equals(this.balance, corporationWalletJournalResponse.balance)
+                && Objects.equals(this.reason, corporationWalletJournalResponse.reason)
+                && Objects.equals(this.taxRecieverId, corporationWalletJournalResponse.taxRecieverId)
                 && Objects.equals(this.tax, corporationWalletJournalResponse.tax)
-                && Objects.equals(this.taxRecieverId, corporationWalletJournalResponse.taxRecieverId);
+                && Objects.equals(this.extraInfo, corporationWalletJournalResponse.extraInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, balance, date, extraInfo, firstPartyId, firstPartyType, reason, refId, refType,
-                secondPartyId, secondPartyType, tax, taxRecieverId);
+        return Objects.hash(date, refId, refType, firstPartyId, firstPartyType, secondPartyId, secondPartyType, amount,
+                balance, reason, taxRecieverId, tax, extraInfo);
     }
 
     @Override
@@ -669,19 +669,19 @@ public class CorporationWalletJournalResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletJournalResponse {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-        sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
-        sb.append("    extraInfo: ").append(toIndentedString(extraInfo)).append("\n");
-        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
-        sb.append("    firstPartyType: ").append(toIndentedString(firstPartyType)).append("\n");
-        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    refId: ").append(toIndentedString(refId)).append("\n");
         sb.append("    refType: ").append(toIndentedString(refType)).append("\n");
+        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
+        sb.append("    firstPartyType: ").append(toIndentedString(firstPartyType)).append("\n");
         sb.append("    secondPartyId: ").append(toIndentedString(secondPartyId)).append("\n");
         sb.append("    secondPartyType: ").append(toIndentedString(secondPartyType)).append("\n");
-        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    taxRecieverId: ").append(toIndentedString(taxRecieverId)).append("\n");
+        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    extraInfo: ").append(toIndentedString(extraInfo)).append("\n");
         sb.append("}");
         return sb.toString();
     }

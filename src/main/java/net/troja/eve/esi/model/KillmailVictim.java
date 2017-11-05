@@ -29,48 +29,29 @@ import java.io.Serializable;
 public class KillmailVictim implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
     @JsonProperty("character_id")
     private Integer characterId = null;
 
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("damage_taken")
-    private Integer damageTaken = null;
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
 
     @JsonProperty("faction_id")
     private Integer factionId = null;
+
+    @JsonProperty("damage_taken")
+    private Integer damageTaken = null;
+
+    @JsonProperty("ship_type_id")
+    private Integer shipTypeId = null;
 
     @JsonProperty("items")
     private List<KillmailItem> items = new ArrayList<KillmailItem>();
 
     @JsonProperty("position")
     private Position position = null;
-
-    @JsonProperty("ship_type_id")
-    private Integer shipTypeId = null;
-
-    public KillmailVictim allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-        return this;
-    }
-
-    /**
-     * alliance_id integer
-     * 
-     * @return allianceId
-     **/
-    @ApiModelProperty(example = "null", value = "alliance_id integer")
-    public Integer getAllianceId() {
-        return allianceId;
-    }
-
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-    }
 
     public KillmailVictim characterId(Integer characterId) {
         this.characterId = characterId;
@@ -110,23 +91,23 @@ public class KillmailVictim implements Serializable {
         this.corporationId = corporationId;
     }
 
-    public KillmailVictim damageTaken(Integer damageTaken) {
-        this.damageTaken = damageTaken;
+    public KillmailVictim allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
         return this;
     }
 
     /**
-     * How much total damage was taken by the victim
+     * alliance_id integer
      * 
-     * @return damageTaken
+     * @return allianceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "How much total damage was taken by the victim ")
-    public Integer getDamageTaken() {
-        return damageTaken;
+    @ApiModelProperty(example = "null", value = "alliance_id integer")
+    public Integer getAllianceId() {
+        return allianceId;
     }
 
-    public void setDamageTaken(Integer damageTaken) {
-        this.damageTaken = damageTaken;
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
     }
 
     public KillmailVictim factionId(Integer factionId) {
@@ -146,6 +127,44 @@ public class KillmailVictim implements Serializable {
 
     public void setFactionId(Integer factionId) {
         this.factionId = factionId;
+    }
+
+    public KillmailVictim damageTaken(Integer damageTaken) {
+        this.damageTaken = damageTaken;
+        return this;
+    }
+
+    /**
+     * How much total damage was taken by the victim
+     * 
+     * @return damageTaken
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "How much total damage was taken by the victim ")
+    public Integer getDamageTaken() {
+        return damageTaken;
+    }
+
+    public void setDamageTaken(Integer damageTaken) {
+        this.damageTaken = damageTaken;
+    }
+
+    public KillmailVictim shipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+        return this;
+    }
+
+    /**
+     * The ship that the victim was piloting and was destroyed
+     * 
+     * @return shipTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The ship that the victim was piloting and was destroyed ")
+    public Integer getShipTypeId() {
+        return shipTypeId;
+    }
+
+    public void setShipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
     }
 
     public KillmailVictim items(List<KillmailItem> items) {
@@ -191,25 +210,6 @@ public class KillmailVictim implements Serializable {
         this.position = position;
     }
 
-    public KillmailVictim shipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
-        return this;
-    }
-
-    /**
-     * The ship that the victim was piloting and was destroyed
-     * 
-     * @return shipTypeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The ship that the victim was piloting and was destroyed ")
-    public Integer getShipTypeId() {
-        return shipTypeId;
-    }
-
-    public void setShipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -219,20 +219,20 @@ public class KillmailVictim implements Serializable {
             return false;
         }
         KillmailVictim killmailVictim = (KillmailVictim) o;
-        return Objects.equals(this.allianceId, killmailVictim.allianceId)
-                && Objects.equals(this.characterId, killmailVictim.characterId)
+        return Objects.equals(this.characterId, killmailVictim.characterId)
                 && Objects.equals(this.corporationId, killmailVictim.corporationId)
-                && Objects.equals(this.damageTaken, killmailVictim.damageTaken)
+                && Objects.equals(this.allianceId, killmailVictim.allianceId)
                 && Objects.equals(this.factionId, killmailVictim.factionId)
+                && Objects.equals(this.damageTaken, killmailVictim.damageTaken)
+                && Objects.equals(this.shipTypeId, killmailVictim.shipTypeId)
                 && Objects.equals(this.items, killmailVictim.items)
-                && Objects.equals(this.position, killmailVictim.position)
-                && Objects.equals(this.shipTypeId, killmailVictim.shipTypeId);
+                && Objects.equals(this.position, killmailVictim.position);
     }
 
     @Override
     public int hashCode() {
         return Objects
-                .hash(allianceId, characterId, corporationId, damageTaken, factionId, items, position, shipTypeId);
+                .hash(characterId, corporationId, allianceId, factionId, damageTaken, shipTypeId, items, position);
     }
 
     @Override
@@ -240,14 +240,14 @@ public class KillmailVictim implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailVictim {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    damageTaken: ").append(toIndentedString(damageTaken)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    damageTaken: ").append(toIndentedString(damageTaken)).append("\n");
+        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
-        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class WarAlly implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    public WarAlly allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-        return this;
-    }
-
-    /**
-     * Alliance ID if and only if this ally is an alliance
-     * 
-     * @return allianceId
-     **/
-    @ApiModelProperty(example = "null", value = "Alliance ID if and only if this ally is an alliance")
-    public Integer getAllianceId() {
-        return allianceId;
-    }
-
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-    }
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
 
     public WarAlly corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -69,6 +50,25 @@ public class WarAlly implements Serializable {
         this.corporationId = corporationId;
     }
 
+    public WarAlly allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+        return this;
+    }
+
+    /**
+     * Alliance ID if and only if this ally is an alliance
+     * 
+     * @return allianceId
+     **/
+    @ApiModelProperty(example = "null", value = "Alliance ID if and only if this ally is an alliance")
+    public Integer getAllianceId() {
+        return allianceId;
+    }
+
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class WarAlly implements Serializable {
             return false;
         }
         WarAlly warAlly = (WarAlly) o;
-        return Objects.equals(this.allianceId, warAlly.allianceId)
-                && Objects.equals(this.corporationId, warAlly.corporationId);
+        return Objects.equals(this.corporationId, warAlly.corporationId)
+                && Objects.equals(this.allianceId, warAlly.allianceId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, corporationId);
+        return Objects.hash(corporationId, allianceId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class WarAlly implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class WarAlly {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

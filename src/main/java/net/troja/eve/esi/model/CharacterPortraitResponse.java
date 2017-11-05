@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class CharacterPortraitResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("px64x64")
+    private String px64x64 = null;
+
     @JsonProperty("px128x128")
     private String px128x128 = null;
 
@@ -34,8 +37,24 @@ public class CharacterPortraitResponse implements Serializable {
     @JsonProperty("px512x512")
     private String px512x512 = null;
 
-    @JsonProperty("px64x64")
-    private String px64x64 = null;
+    public CharacterPortraitResponse px64x64(String px64x64) {
+        this.px64x64 = px64x64;
+        return this;
+    }
+
+    /**
+     * px64x64 string
+     * 
+     * @return px64x64
+     **/
+    @ApiModelProperty(example = "null", value = "px64x64 string")
+    public String getPx64x64() {
+        return px64x64;
+    }
+
+    public void setPx64x64(String px64x64) {
+        this.px64x64 = px64x64;
+    }
 
     public CharacterPortraitResponse px128x128(String px128x128) {
         this.px128x128 = px128x128;
@@ -94,25 +113,6 @@ public class CharacterPortraitResponse implements Serializable {
         this.px512x512 = px512x512;
     }
 
-    public CharacterPortraitResponse px64x64(String px64x64) {
-        this.px64x64 = px64x64;
-        return this;
-    }
-
-    /**
-     * px64x64 string
-     * 
-     * @return px64x64
-     **/
-    @ApiModelProperty(example = "null", value = "px64x64 string")
-    public String getPx64x64() {
-        return px64x64;
-    }
-
-    public void setPx64x64(String px64x64) {
-        this.px64x64 = px64x64;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class CharacterPortraitResponse implements Serializable {
             return false;
         }
         CharacterPortraitResponse characterPortraitResponse = (CharacterPortraitResponse) o;
-        return Objects.equals(this.px128x128, characterPortraitResponse.px128x128)
+        return Objects.equals(this.px64x64, characterPortraitResponse.px64x64)
+                && Objects.equals(this.px128x128, characterPortraitResponse.px128x128)
                 && Objects.equals(this.px256x256, characterPortraitResponse.px256x256)
-                && Objects.equals(this.px512x512, characterPortraitResponse.px512x512)
-                && Objects.equals(this.px64x64, characterPortraitResponse.px64x64);
+                && Objects.equals(this.px512x512, characterPortraitResponse.px512x512);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(px128x128, px256x256, px512x512, px64x64);
+        return Objects.hash(px64x64, px128x128, px256x256, px512x512);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class CharacterPortraitResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterPortraitResponse {\n");
 
+        sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");
         sb.append("    px256x256: ").append(toIndentedString(px256x256)).append("\n");
         sb.append("    px512x512: ").append(toIndentedString(px512x512)).append("\n");
-        sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("}");
         return sb.toString();
     }

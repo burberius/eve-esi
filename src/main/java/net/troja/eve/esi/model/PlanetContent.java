@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class PlanetContent implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Long amount = null;
-
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public PlanetContent amount(Long amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * amount integer
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "amount integer")
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
+    @JsonProperty("amount")
+    private Long amount = null;
 
     public PlanetContent typeId(Integer typeId) {
         this.typeId = typeId;
@@ -69,6 +50,25 @@ public class PlanetContent implements Serializable {
         this.typeId = typeId;
     }
 
+    public PlanetContent amount(Long amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * amount integer
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "amount integer")
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,12 +78,12 @@ public class PlanetContent implements Serializable {
             return false;
         }
         PlanetContent planetContent = (PlanetContent) o;
-        return Objects.equals(this.amount, planetContent.amount) && Objects.equals(this.typeId, planetContent.typeId);
+        return Objects.equals(this.typeId, planetContent.typeId) && Objects.equals(this.amount, planetContent.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, typeId);
+        return Objects.hash(typeId, amount);
     }
 
     @Override
@@ -91,8 +91,8 @@ public class PlanetContent implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetContent {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

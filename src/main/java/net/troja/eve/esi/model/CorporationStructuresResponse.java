@@ -30,41 +30,79 @@ import java.io.Serializable;
 public class CorporationStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
-    @JsonProperty("current_vul")
-    private List<VulnerabilityWindow> currentVul = new ArrayList<VulnerabilityWindow>();
-
-    @JsonProperty("fuel_expires")
-    private LocalDate fuelExpires = null;
-
-    @JsonProperty("next_vul")
-    private List<VulnerabilityWindow> nextVul = new ArrayList<VulnerabilityWindow>();
-
-    @JsonProperty("profile_id")
-    private Integer profileId = null;
-
-    @JsonProperty("services")
-    private List<StructureService> services = new ArrayList<StructureService>();
-
-    @JsonProperty("state_timer_end")
-    private LocalDate stateTimerEnd = null;
-
-    @JsonProperty("state_timer_start")
-    private LocalDate stateTimerStart = null;
-
     @JsonProperty("structure_id")
     private Long structureId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
 
     @JsonProperty("type_id")
     private Integer typeId = null;
 
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
+
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
+    @JsonProperty("profile_id")
+    private Integer profileId = null;
+
+    @JsonProperty("current_vul")
+    private List<VulnerabilityWindow> currentVul = new ArrayList<VulnerabilityWindow>();
+
+    @JsonProperty("next_vul")
+    private List<VulnerabilityWindow> nextVul = new ArrayList<VulnerabilityWindow>();
+
+    @JsonProperty("fuel_expires")
+    private LocalDate fuelExpires = null;
+
+    @JsonProperty("services")
+    private List<StructureService> services = new ArrayList<StructureService>();
+
+    @JsonProperty("state_timer_start")
+    private LocalDate stateTimerStart = null;
+
+    @JsonProperty("state_timer_end")
+    private LocalDate stateTimerEnd = null;
+
     @JsonProperty("unanchors_at")
     private LocalDate unanchorsAt = null;
+
+    public CorporationStructuresResponse structureId(Long structureId) {
+        this.structureId = structureId;
+        return this;
+    }
+
+    /**
+     * The Item ID of the structure
+     * 
+     * @return structureId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The Item ID of the structure")
+    public Long getStructureId() {
+        return structureId;
+    }
+
+    public void setStructureId(Long structureId) {
+        this.structureId = structureId;
+    }
+
+    public CorporationStructuresResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * The type id of the structure
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The type id of the structure")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 
     public CorporationStructuresResponse corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -83,6 +121,44 @@ public class CorporationStructuresResponse implements Serializable {
 
     public void setCorporationId(Integer corporationId) {
         this.corporationId = corporationId;
+    }
+
+    public CorporationStructuresResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system the structure is in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public CorporationStructuresResponse profileId(Integer profileId) {
+        this.profileId = profileId;
+        return this;
+    }
+
+    /**
+     * The id of the ACL profile for this citadel
+     * 
+     * @return profileId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The id of the ACL profile for this citadel")
+    public Integer getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(Integer profileId) {
+        this.profileId = profileId;
     }
 
     public CorporationStructuresResponse currentVul(List<VulnerabilityWindow> currentVul) {
@@ -109,25 +185,6 @@ public class CorporationStructuresResponse implements Serializable {
         this.currentVul = currentVul;
     }
 
-    public CorporationStructuresResponse fuelExpires(LocalDate fuelExpires) {
-        this.fuelExpires = fuelExpires;
-        return this;
-    }
-
-    /**
-     * Date on which the structure will run out of fuel
-     * 
-     * @return fuelExpires
-     **/
-    @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
-    public LocalDate getFuelExpires() {
-        return fuelExpires;
-    }
-
-    public void setFuelExpires(LocalDate fuelExpires) {
-        this.fuelExpires = fuelExpires;
-    }
-
     public CorporationStructuresResponse nextVul(List<VulnerabilityWindow> nextVul) {
         this.nextVul = nextVul;
         return this;
@@ -152,23 +209,23 @@ public class CorporationStructuresResponse implements Serializable {
         this.nextVul = nextVul;
     }
 
-    public CorporationStructuresResponse profileId(Integer profileId) {
-        this.profileId = profileId;
+    public CorporationStructuresResponse fuelExpires(LocalDate fuelExpires) {
+        this.fuelExpires = fuelExpires;
         return this;
     }
 
     /**
-     * The id of the ACL profile for this citadel
+     * Date on which the structure will run out of fuel
      * 
-     * @return profileId
+     * @return fuelExpires
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The id of the ACL profile for this citadel")
-    public Integer getProfileId() {
-        return profileId;
+    @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
+    public LocalDate getFuelExpires() {
+        return fuelExpires;
     }
 
-    public void setProfileId(Integer profileId) {
-        this.profileId = profileId;
+    public void setFuelExpires(LocalDate fuelExpires) {
+        this.fuelExpires = fuelExpires;
     }
 
     public CorporationStructuresResponse services(List<StructureService> services) {
@@ -195,25 +252,6 @@ public class CorporationStructuresResponse implements Serializable {
         this.services = services;
     }
 
-    public CorporationStructuresResponse stateTimerEnd(LocalDate stateTimerEnd) {
-        this.stateTimerEnd = stateTimerEnd;
-        return this;
-    }
-
-    /**
-     * Date at which the structure will move to it's next state
-     * 
-     * @return stateTimerEnd
-     **/
-    @ApiModelProperty(example = "null", value = "Date at which the structure will move to it's next state")
-    public LocalDate getStateTimerEnd() {
-        return stateTimerEnd;
-    }
-
-    public void setStateTimerEnd(LocalDate stateTimerEnd) {
-        this.stateTimerEnd = stateTimerEnd;
-    }
-
     public CorporationStructuresResponse stateTimerStart(LocalDate stateTimerStart) {
         this.stateTimerStart = stateTimerStart;
         return this;
@@ -233,61 +271,23 @@ public class CorporationStructuresResponse implements Serializable {
         this.stateTimerStart = stateTimerStart;
     }
 
-    public CorporationStructuresResponse structureId(Long structureId) {
-        this.structureId = structureId;
+    public CorporationStructuresResponse stateTimerEnd(LocalDate stateTimerEnd) {
+        this.stateTimerEnd = stateTimerEnd;
         return this;
     }
 
     /**
-     * The Item ID of the structure
+     * Date at which the structure will move to it's next state
      * 
-     * @return structureId
+     * @return stateTimerEnd
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The Item ID of the structure")
-    public Long getStructureId() {
-        return structureId;
+    @ApiModelProperty(example = "null", value = "Date at which the structure will move to it's next state")
+    public LocalDate getStateTimerEnd() {
+        return stateTimerEnd;
     }
 
-    public void setStructureId(Long structureId) {
-        this.structureId = structureId;
-    }
-
-    public CorporationStructuresResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The solar system the structure is in
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is in")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
-    public CorporationStructuresResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * The type id of the structure
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The type id of the structure")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setStateTimerEnd(LocalDate stateTimerEnd) {
+        this.stateTimerEnd = stateTimerEnd;
     }
 
     public CorporationStructuresResponse unanchorsAt(LocalDate unanchorsAt) {
@@ -318,24 +318,24 @@ public class CorporationStructuresResponse implements Serializable {
             return false;
         }
         CorporationStructuresResponse corporationStructuresResponse = (CorporationStructuresResponse) o;
-        return Objects.equals(this.corporationId, corporationStructuresResponse.corporationId)
-                && Objects.equals(this.currentVul, corporationStructuresResponse.currentVul)
-                && Objects.equals(this.fuelExpires, corporationStructuresResponse.fuelExpires)
-                && Objects.equals(this.nextVul, corporationStructuresResponse.nextVul)
-                && Objects.equals(this.profileId, corporationStructuresResponse.profileId)
-                && Objects.equals(this.services, corporationStructuresResponse.services)
-                && Objects.equals(this.stateTimerEnd, corporationStructuresResponse.stateTimerEnd)
-                && Objects.equals(this.stateTimerStart, corporationStructuresResponse.stateTimerStart)
-                && Objects.equals(this.structureId, corporationStructuresResponse.structureId)
-                && Objects.equals(this.systemId, corporationStructuresResponse.systemId)
+        return Objects.equals(this.structureId, corporationStructuresResponse.structureId)
                 && Objects.equals(this.typeId, corporationStructuresResponse.typeId)
+                && Objects.equals(this.corporationId, corporationStructuresResponse.corporationId)
+                && Objects.equals(this.systemId, corporationStructuresResponse.systemId)
+                && Objects.equals(this.profileId, corporationStructuresResponse.profileId)
+                && Objects.equals(this.currentVul, corporationStructuresResponse.currentVul)
+                && Objects.equals(this.nextVul, corporationStructuresResponse.nextVul)
+                && Objects.equals(this.fuelExpires, corporationStructuresResponse.fuelExpires)
+                && Objects.equals(this.services, corporationStructuresResponse.services)
+                && Objects.equals(this.stateTimerStart, corporationStructuresResponse.stateTimerStart)
+                && Objects.equals(this.stateTimerEnd, corporationStructuresResponse.stateTimerEnd)
                 && Objects.equals(this.unanchorsAt, corporationStructuresResponse.unanchorsAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corporationId, currentVul, fuelExpires, nextVul, profileId, services, stateTimerEnd,
-                stateTimerStart, structureId, systemId, typeId, unanchorsAt);
+        return Objects.hash(structureId, typeId, corporationId, systemId, profileId, currentVul, nextVul, fuelExpires,
+                services, stateTimerStart, stateTimerEnd, unanchorsAt);
     }
 
     @Override
@@ -343,17 +343,17 @@ public class CorporationStructuresResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStructuresResponse {\n");
 
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    currentVul: ").append(toIndentedString(currentVul)).append("\n");
-        sb.append("    fuelExpires: ").append(toIndentedString(fuelExpires)).append("\n");
-        sb.append("    nextVul: ").append(toIndentedString(nextVul)).append("\n");
-        sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-        sb.append("    services: ").append(toIndentedString(services)).append("\n");
-        sb.append("    stateTimerEnd: ").append(toIndentedString(stateTimerEnd)).append("\n");
-        sb.append("    stateTimerStart: ").append(toIndentedString(stateTimerStart)).append("\n");
         sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+        sb.append("    currentVul: ").append(toIndentedString(currentVul)).append("\n");
+        sb.append("    nextVul: ").append(toIndentedString(nextVul)).append("\n");
+        sb.append("    fuelExpires: ").append(toIndentedString(fuelExpires)).append("\n");
+        sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    stateTimerStart: ").append(toIndentedString(stateTimerStart)).append("\n");
+        sb.append("    stateTimerEnd: ").append(toIndentedString(stateTimerEnd)).append("\n");
         sb.append("    unanchorsAt: ").append(toIndentedString(unanchorsAt)).append("\n");
         sb.append("}");
         return sb.toString();

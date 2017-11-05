@@ -28,55 +28,17 @@ import java.io.Serializable;
 public class Mail implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("approved_cost")
-    private Long approvedCost = 0l;
-
-    @JsonProperty("body")
-    private String body = null;
-
     @JsonProperty("recipients")
     private List<Recipient> recipients = new ArrayList<Recipient>();
 
     @JsonProperty("subject")
     private String subject = null;
 
-    public Mail approvedCost(Long approvedCost) {
-        this.approvedCost = approvedCost;
-        return this;
-    }
+    @JsonProperty("body")
+    private String body = null;
 
-    /**
-     * approved_cost integer
-     * 
-     * @return approvedCost
-     **/
-    @ApiModelProperty(example = "null", value = "approved_cost integer")
-    public Long getApprovedCost() {
-        return approvedCost;
-    }
-
-    public void setApprovedCost(Long approvedCost) {
-        this.approvedCost = approvedCost;
-    }
-
-    public Mail body(String body) {
-        this.body = body;
-        return this;
-    }
-
-    /**
-     * body string
-     * 
-     * @return body
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "body string")
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
+    @JsonProperty("approved_cost")
+    private Long approvedCost = 0l;
 
     public Mail recipients(List<Recipient> recipients) {
         this.recipients = recipients;
@@ -121,6 +83,44 @@ public class Mail implements Serializable {
         this.subject = subject;
     }
 
+    public Mail body(String body) {
+        this.body = body;
+        return this;
+    }
+
+    /**
+     * body string
+     * 
+     * @return body
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "body string")
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Mail approvedCost(Long approvedCost) {
+        this.approvedCost = approvedCost;
+        return this;
+    }
+
+    /**
+     * approved_cost integer
+     * 
+     * @return approvedCost
+     **/
+    @ApiModelProperty(example = "null", value = "approved_cost integer")
+    public Long getApprovedCost() {
+        return approvedCost;
+    }
+
+    public void setApprovedCost(Long approvedCost) {
+        this.approvedCost = approvedCost;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -130,13 +130,13 @@ public class Mail implements Serializable {
             return false;
         }
         Mail mail = (Mail) o;
-        return Objects.equals(this.approvedCost, mail.approvedCost) && Objects.equals(this.body, mail.body)
-                && Objects.equals(this.recipients, mail.recipients) && Objects.equals(this.subject, mail.subject);
+        return Objects.equals(this.recipients, mail.recipients) && Objects.equals(this.subject, mail.subject)
+                && Objects.equals(this.body, mail.body) && Objects.equals(this.approvedCost, mail.approvedCost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(approvedCost, body, recipients, subject);
+        return Objects.hash(recipients, subject, body, approvedCost);
     }
 
     @Override
@@ -144,10 +144,10 @@ public class Mail implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Mail {\n");
 
-        sb.append("    approvedCost: ").append(toIndentedString(approvedCost)).append("\n");
-        sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
         sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+        sb.append("    body: ").append(toIndentedString(body)).append("\n");
+        sb.append("    approvedCost: ").append(toIndentedString(approvedCost)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -64,11 +64,11 @@ public class ChatChannelsMuted implements Serializable {
     @JsonProperty("accessor_type")
     private AccessorTypeEnum accessorType = null;
 
-    @JsonProperty("end_at")
-    private OffsetDateTime endAt = null;
-
     @JsonProperty("reason")
     private String reason = null;
+
+    @JsonProperty("end_at")
+    private OffsetDateTime endAt = null;
 
     public ChatChannelsMuted accessorId(Integer accessorId) {
         this.accessorId = accessorId;
@@ -108,25 +108,6 @@ public class ChatChannelsMuted implements Serializable {
         this.accessorType = accessorType;
     }
 
-    public ChatChannelsMuted endAt(OffsetDateTime endAt) {
-        this.endAt = endAt;
-        return this;
-    }
-
-    /**
-     * Time at which this accessor will no longer be muted
-     * 
-     * @return endAt
-     **/
-    @ApiModelProperty(example = "null", value = "Time at which this accessor will no longer be muted")
-    public OffsetDateTime getEndAt() {
-        return endAt;
-    }
-
-    public void setEndAt(OffsetDateTime endAt) {
-        this.endAt = endAt;
-    }
-
     public ChatChannelsMuted reason(String reason) {
         this.reason = reason;
         return this;
@@ -146,6 +127,25 @@ public class ChatChannelsMuted implements Serializable {
         this.reason = reason;
     }
 
+    public ChatChannelsMuted endAt(OffsetDateTime endAt) {
+        this.endAt = endAt;
+        return this;
+    }
+
+    /**
+     * Time at which this accessor will no longer be muted
+     * 
+     * @return endAt
+     **/
+    @ApiModelProperty(example = "null", value = "Time at which this accessor will no longer be muted")
+    public OffsetDateTime getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(OffsetDateTime endAt) {
+        this.endAt = endAt;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,13 +157,13 @@ public class ChatChannelsMuted implements Serializable {
         ChatChannelsMuted chatChannelsMuted = (ChatChannelsMuted) o;
         return Objects.equals(this.accessorId, chatChannelsMuted.accessorId)
                 && Objects.equals(this.accessorType, chatChannelsMuted.accessorType)
-                && Objects.equals(this.endAt, chatChannelsMuted.endAt)
-                && Objects.equals(this.reason, chatChannelsMuted.reason);
+                && Objects.equals(this.reason, chatChannelsMuted.reason)
+                && Objects.equals(this.endAt, chatChannelsMuted.endAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accessorId, accessorType, endAt, reason);
+        return Objects.hash(accessorId, accessorType, reason, endAt);
     }
 
     @Override
@@ -173,8 +173,8 @@ public class ChatChannelsMuted implements Serializable {
 
         sb.append("    accessorId: ").append(toIndentedString(accessorId)).append("\n");
         sb.append("    accessorType: ").append(toIndentedString(accessorType)).append("\n");
-        sb.append("    endAt: ").append(toIndentedString(endAt)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+        sb.append("    endAt: ").append(toIndentedString(endAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

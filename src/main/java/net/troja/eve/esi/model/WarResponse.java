@@ -31,23 +31,20 @@ import java.io.Serializable;
 public class WarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("aggressor")
-    private Aggressor aggressor = null;
-
-    @JsonProperty("allies")
-    private List<WarAlly> allies = new ArrayList<WarAlly>();
+    @JsonProperty("id")
+    private Integer id = null;
 
     @JsonProperty("declared")
     private OffsetDateTime declared = null;
 
-    @JsonProperty("defender")
-    private Defender defender = null;
+    @JsonProperty("started")
+    private OffsetDateTime started = null;
+
+    @JsonProperty("retracted")
+    private OffsetDateTime retracted = null;
 
     @JsonProperty("finished")
     private OffsetDateTime finished = null;
-
-    @JsonProperty("id")
-    private Integer id = null;
 
     @JsonProperty("mutual")
     private Boolean mutual = null;
@@ -55,54 +52,32 @@ public class WarResponse implements Serializable {
     @JsonProperty("open_for_allies")
     private Boolean openForAllies = null;
 
-    @JsonProperty("retracted")
-    private OffsetDateTime retracted = null;
+    @JsonProperty("aggressor")
+    private Aggressor aggressor = null;
 
-    @JsonProperty("started")
-    private OffsetDateTime started = null;
+    @JsonProperty("defender")
+    private Defender defender = null;
 
-    public WarResponse aggressor(Aggressor aggressor) {
-        this.aggressor = aggressor;
+    @JsonProperty("allies")
+    private List<WarAlly> allies = new ArrayList<WarAlly>();
+
+    public WarResponse id(Integer id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * Get aggressor
+     * ID of the specified war
      * 
-     * @return aggressor
+     * @return id
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public Aggressor getAggressor() {
-        return aggressor;
+    @ApiModelProperty(example = "null", required = true, value = "ID of the specified war")
+    public Integer getId() {
+        return id;
     }
 
-    public void setAggressor(Aggressor aggressor) {
-        this.aggressor = aggressor;
-    }
-
-    public WarResponse allies(List<WarAlly> allies) {
-        this.allies = allies;
-        return this;
-    }
-
-    public WarResponse addAlliesItem(WarAlly alliesItem) {
-        this.allies.add(alliesItem);
-        return this;
-    }
-
-    /**
-     * allied corporations or alliances, each object contains either
-     * corporation_id or alliance_id
-     * 
-     * @return allies
-     **/
-    @ApiModelProperty(example = "null", value = "allied corporations or alliances, each object contains either corporation_id or alliance_id")
-    public List<WarAlly> getAllies() {
-        return allies;
-    }
-
-    public void setAllies(List<WarAlly> allies) {
-        this.allies = allies;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public WarResponse declared(OffsetDateTime declared) {
@@ -124,23 +99,42 @@ public class WarResponse implements Serializable {
         this.declared = declared;
     }
 
-    public WarResponse defender(Defender defender) {
-        this.defender = defender;
+    public WarResponse started(OffsetDateTime started) {
+        this.started = started;
         return this;
     }
 
     /**
-     * Get defender
+     * Time when the war started and both sides could shoot each other
      * 
-     * @return defender
+     * @return started
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public Defender getDefender() {
-        return defender;
+    @ApiModelProperty(example = "null", value = "Time when the war started and both sides could shoot each other")
+    public OffsetDateTime getStarted() {
+        return started;
     }
 
-    public void setDefender(Defender defender) {
-        this.defender = defender;
+    public void setStarted(OffsetDateTime started) {
+        this.started = started;
+    }
+
+    public WarResponse retracted(OffsetDateTime retracted) {
+        this.retracted = retracted;
+        return this;
+    }
+
+    /**
+     * Time the war was retracted but both sides could still shoot each other
+     * 
+     * @return retracted
+     **/
+    @ApiModelProperty(example = "null", value = "Time the war was retracted but both sides could still shoot each other")
+    public OffsetDateTime getRetracted() {
+        return retracted;
+    }
+
+    public void setRetracted(OffsetDateTime retracted) {
+        this.retracted = retracted;
     }
 
     public WarResponse finished(OffsetDateTime finished) {
@@ -160,25 +154,6 @@ public class WarResponse implements Serializable {
 
     public void setFinished(OffsetDateTime finished) {
         this.finished = finished;
-    }
-
-    public WarResponse id(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * ID of the specified war
-     * 
-     * @return id
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the specified war")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public WarResponse mutual(Boolean mutual) {
@@ -219,42 +194,67 @@ public class WarResponse implements Serializable {
         this.openForAllies = openForAllies;
     }
 
-    public WarResponse retracted(OffsetDateTime retracted) {
-        this.retracted = retracted;
+    public WarResponse aggressor(Aggressor aggressor) {
+        this.aggressor = aggressor;
         return this;
     }
 
     /**
-     * Time the war was retracted but both sides could still shoot each other
+     * Get aggressor
      * 
-     * @return retracted
+     * @return aggressor
      **/
-    @ApiModelProperty(example = "null", value = "Time the war was retracted but both sides could still shoot each other")
-    public OffsetDateTime getRetracted() {
-        return retracted;
+    @ApiModelProperty(example = "null", value = "")
+    public Aggressor getAggressor() {
+        return aggressor;
     }
 
-    public void setRetracted(OffsetDateTime retracted) {
-        this.retracted = retracted;
+    public void setAggressor(Aggressor aggressor) {
+        this.aggressor = aggressor;
     }
 
-    public WarResponse started(OffsetDateTime started) {
-        this.started = started;
+    public WarResponse defender(Defender defender) {
+        this.defender = defender;
         return this;
     }
 
     /**
-     * Time when the war started and both sides could shoot each other
+     * Get defender
      * 
-     * @return started
+     * @return defender
      **/
-    @ApiModelProperty(example = "null", value = "Time when the war started and both sides could shoot each other")
-    public OffsetDateTime getStarted() {
-        return started;
+    @ApiModelProperty(example = "null", value = "")
+    public Defender getDefender() {
+        return defender;
     }
 
-    public void setStarted(OffsetDateTime started) {
-        this.started = started;
+    public void setDefender(Defender defender) {
+        this.defender = defender;
+    }
+
+    public WarResponse allies(List<WarAlly> allies) {
+        this.allies = allies;
+        return this;
+    }
+
+    public WarResponse addAlliesItem(WarAlly alliesItem) {
+        this.allies.add(alliesItem);
+        return this;
+    }
+
+    /**
+     * allied corporations or alliances, each object contains either
+     * corporation_id or alliance_id
+     * 
+     * @return allies
+     **/
+    @ApiModelProperty(example = "null", value = "allied corporations or alliances, each object contains either corporation_id or alliance_id")
+    public List<WarAlly> getAllies() {
+        return allies;
+    }
+
+    public void setAllies(List<WarAlly> allies) {
+        this.allies = allies;
     }
 
     @Override
@@ -266,20 +266,21 @@ public class WarResponse implements Serializable {
             return false;
         }
         WarResponse warResponse = (WarResponse) o;
-        return Objects.equals(this.aggressor, warResponse.aggressor) && Objects.equals(this.allies, warResponse.allies)
-                && Objects.equals(this.declared, warResponse.declared)
-                && Objects.equals(this.defender, warResponse.defender)
-                && Objects.equals(this.finished, warResponse.finished) && Objects.equals(this.id, warResponse.id)
+        return Objects.equals(this.id, warResponse.id) && Objects.equals(this.declared, warResponse.declared)
+                && Objects.equals(this.started, warResponse.started)
+                && Objects.equals(this.retracted, warResponse.retracted)
+                && Objects.equals(this.finished, warResponse.finished)
                 && Objects.equals(this.mutual, warResponse.mutual)
                 && Objects.equals(this.openForAllies, warResponse.openForAllies)
-                && Objects.equals(this.retracted, warResponse.retracted)
-                && Objects.equals(this.started, warResponse.started);
+                && Objects.equals(this.aggressor, warResponse.aggressor)
+                && Objects.equals(this.defender, warResponse.defender)
+                && Objects.equals(this.allies, warResponse.allies);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(aggressor, allies, declared, defender, finished, id, mutual, openForAllies, retracted,
-                started);
+        return Objects.hash(id, declared, started, retracted, finished, mutual, openForAllies, aggressor, defender,
+                allies);
     }
 
     @Override
@@ -287,16 +288,16 @@ public class WarResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class WarResponse {\n");
 
-        sb.append("    aggressor: ").append(toIndentedString(aggressor)).append("\n");
-        sb.append("    allies: ").append(toIndentedString(allies)).append("\n");
-        sb.append("    declared: ").append(toIndentedString(declared)).append("\n");
-        sb.append("    defender: ").append(toIndentedString(defender)).append("\n");
-        sb.append("    finished: ").append(toIndentedString(finished)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    declared: ").append(toIndentedString(declared)).append("\n");
+        sb.append("    started: ").append(toIndentedString(started)).append("\n");
+        sb.append("    retracted: ").append(toIndentedString(retracted)).append("\n");
+        sb.append("    finished: ").append(toIndentedString(finished)).append("\n");
         sb.append("    mutual: ").append(toIndentedString(mutual)).append("\n");
         sb.append("    openForAllies: ").append(toIndentedString(openForAllies)).append("\n");
-        sb.append("    retracted: ").append(toIndentedString(retracted)).append("\n");
-        sb.append("    started: ").append(toIndentedString(started)).append("\n");
+        sb.append("    aggressor: ").append(toIndentedString(aggressor)).append("\n");
+        sb.append("    defender: ").append(toIndentedString(defender)).append("\n");
+        sb.append("    allies: ").append(toIndentedString(allies)).append("\n");
         sb.append("}");
         return sb.toString();
     }

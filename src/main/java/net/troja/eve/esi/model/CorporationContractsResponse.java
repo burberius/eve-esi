@@ -26,27 +26,44 @@ import java.io.Serializable;
 public class CorporationContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("acceptor_id")
-    private Integer acceptorId = null;
+    @JsonProperty("contract_id")
+    private Integer contractId = null;
+
+    @JsonProperty("issuer_id")
+    private Integer issuerId = null;
+
+    @JsonProperty("issuer_corporation_id")
+    private Integer issuerCorporationId = null;
 
     @JsonProperty("assignee_id")
     private Integer assigneeId = null;
 
+    @JsonProperty("acceptor_id")
+    private Integer acceptorId = null;
+
+    @JsonProperty("start_location_id")
+    private Long startLocationId = null;
+
+    @JsonProperty("end_location_id")
+    private Long endLocationId = null;
+
     /**
-     * To whom the contract is available
+     * Type of the contract
      */
-    public enum AvailabilityEnum {
-        PUBLIC("public"),
+    public enum TypeEnum {
+        UNKNOWN("unknown"),
 
-        PERSONAL("personal"),
+        ITEM_EXCHANGE("item_exchange"),
 
-        CORPORATION("corporation"),
+        AUCTION("auction"),
 
-        ALLIANCE("alliance");
+        COURIER("courier"),
+
+        LOAN("loan");
 
         private String value;
 
-        AvailabilityEnum(String value) {
+        TypeEnum(String value) {
             this.value = value;
         }
 
@@ -56,8 +73,8 @@ public class CorporationContractsResponse implements Serializable {
         }
 
         @JsonCreator
-        public static AvailabilityEnum fromValue(String text) {
-            for (AvailabilityEnum b : AvailabilityEnum.values()) {
+        public static TypeEnum fromValue(String text) {
+            for (TypeEnum b : TypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -66,53 +83,8 @@ public class CorporationContractsResponse implements Serializable {
         }
     }
 
-    @JsonProperty("availability")
-    private AvailabilityEnum availability = null;
-
-    @JsonProperty("buyout")
-    private Float buyout = null;
-
-    @JsonProperty("collateral")
-    private Float collateral = null;
-
-    @JsonProperty("contract_id")
-    private Integer contractId = null;
-
-    @JsonProperty("date_accepted")
-    private OffsetDateTime dateAccepted = null;
-
-    @JsonProperty("date_completed")
-    private OffsetDateTime dateCompleted = null;
-
-    @JsonProperty("date_expired")
-    private OffsetDateTime dateExpired = null;
-
-    @JsonProperty("date_issued")
-    private OffsetDateTime dateIssued = null;
-
-    @JsonProperty("days_to_complete")
-    private Integer daysToComplete = null;
-
-    @JsonProperty("end_location_id")
-    private Long endLocationId = null;
-
-    @JsonProperty("for_corporation")
-    private Boolean forCorporation = null;
-
-    @JsonProperty("issuer_corporation_id")
-    private Integer issuerCorporationId = null;
-
-    @JsonProperty("issuer_id")
-    private Integer issuerId = null;
-
-    @JsonProperty("price")
-    private Float price = null;
-
-    @JsonProperty("reward")
-    private Float reward = null;
-
-    @JsonProperty("start_location_id")
-    private Long startLocationId = null;
+    @JsonProperty("type")
+    private TypeEnum type = null;
 
     /**
      * Status of the the contract
@@ -166,23 +138,24 @@ public class CorporationContractsResponse implements Serializable {
     @JsonProperty("title")
     private String title = null;
 
+    @JsonProperty("for_corporation")
+    private Boolean forCorporation = null;
+
     /**
-     * Type of the contract
+     * To whom the contract is available
      */
-    public enum TypeEnum {
-        UNKNOWN("unknown"),
+    public enum AvailabilityEnum {
+        PUBLIC("public"),
 
-        ITEM_EXCHANGE("item_exchange"),
+        PERSONAL("personal"),
 
-        AUCTION("auction"),
+        CORPORATION("corporation"),
 
-        COURIER("courier"),
-
-        LOAN("loan");
+        ALLIANCE("alliance");
 
         private String value;
 
-        TypeEnum(String value) {
+        AvailabilityEnum(String value) {
             this.value = value;
         }
 
@@ -192,8 +165,8 @@ public class CorporationContractsResponse implements Serializable {
         }
 
         @JsonCreator
-        public static TypeEnum fromValue(String text) {
-            for (TypeEnum b : TypeEnum.values()) {
+        public static AvailabilityEnum fromValue(String text) {
+            for (AvailabilityEnum b : AvailabilityEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -202,106 +175,38 @@ public class CorporationContractsResponse implements Serializable {
         }
     }
 
-    @JsonProperty("type")
-    private TypeEnum type = null;
+    @JsonProperty("availability")
+    private AvailabilityEnum availability = null;
+
+    @JsonProperty("date_issued")
+    private OffsetDateTime dateIssued = null;
+
+    @JsonProperty("date_expired")
+    private OffsetDateTime dateExpired = null;
+
+    @JsonProperty("date_accepted")
+    private OffsetDateTime dateAccepted = null;
+
+    @JsonProperty("days_to_complete")
+    private Integer daysToComplete = null;
+
+    @JsonProperty("date_completed")
+    private OffsetDateTime dateCompleted = null;
+
+    @JsonProperty("price")
+    private Float price = null;
+
+    @JsonProperty("reward")
+    private Float reward = null;
+
+    @JsonProperty("collateral")
+    private Float collateral = null;
+
+    @JsonProperty("buyout")
+    private Float buyout = null;
 
     @JsonProperty("volume")
     private Float volume = null;
-
-    public CorporationContractsResponse acceptorId(Integer acceptorId) {
-        this.acceptorId = acceptorId;
-        return this;
-    }
-
-    /**
-     * Who will accept the contract
-     * 
-     * @return acceptorId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Who will accept the contract")
-    public Integer getAcceptorId() {
-        return acceptorId;
-    }
-
-    public void setAcceptorId(Integer acceptorId) {
-        this.acceptorId = acceptorId;
-    }
-
-    public CorporationContractsResponse assigneeId(Integer assigneeId) {
-        this.assigneeId = assigneeId;
-        return this;
-    }
-
-    /**
-     * ID to whom the contract is assigned, can be corporation or character ID
-     * 
-     * @return assigneeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
-    public Integer getAssigneeId() {
-        return assigneeId;
-    }
-
-    public void setAssigneeId(Integer assigneeId) {
-        this.assigneeId = assigneeId;
-    }
-
-    public CorporationContractsResponse availability(AvailabilityEnum availability) {
-        this.availability = availability;
-        return this;
-    }
-
-    /**
-     * To whom the contract is available
-     * 
-     * @return availability
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "To whom the contract is available")
-    public AvailabilityEnum getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(AvailabilityEnum availability) {
-        this.availability = availability;
-    }
-
-    public CorporationContractsResponse buyout(Float buyout) {
-        this.buyout = buyout;
-        return this;
-    }
-
-    /**
-     * Buyout price (for Auctions only)
-     * 
-     * @return buyout
-     **/
-    @ApiModelProperty(example = "null", value = "Buyout price (for Auctions only)")
-    public Float getBuyout() {
-        return buyout;
-    }
-
-    public void setBuyout(Float buyout) {
-        this.buyout = buyout;
-    }
-
-    public CorporationContractsResponse collateral(Float collateral) {
-        this.collateral = collateral;
-        return this;
-    }
-
-    /**
-     * Collateral price (for Couriers only)
-     * 
-     * @return collateral
-     **/
-    @ApiModelProperty(example = "null", value = "Collateral price (for Couriers only)")
-    public Float getCollateral() {
-        return collateral;
-    }
-
-    public void setCollateral(Float collateral) {
-        this.collateral = collateral;
-    }
 
     public CorporationContractsResponse contractId(Integer contractId) {
         this.contractId = contractId;
@@ -320,158 +225,6 @@ public class CorporationContractsResponse implements Serializable {
 
     public void setContractId(Integer contractId) {
         this.contractId = contractId;
-    }
-
-    public CorporationContractsResponse dateAccepted(OffsetDateTime dateAccepted) {
-        this.dateAccepted = dateAccepted;
-        return this;
-    }
-
-    /**
-     * Date of confirmation of contract
-     * 
-     * @return dateAccepted
-     **/
-    @ApiModelProperty(example = "null", value = "Date of confirmation of contract")
-    public OffsetDateTime getDateAccepted() {
-        return dateAccepted;
-    }
-
-    public void setDateAccepted(OffsetDateTime dateAccepted) {
-        this.dateAccepted = dateAccepted;
-    }
-
-    public CorporationContractsResponse dateCompleted(OffsetDateTime dateCompleted) {
-        this.dateCompleted = dateCompleted;
-        return this;
-    }
-
-    /**
-     * Date of completed of contract
-     * 
-     * @return dateCompleted
-     **/
-    @ApiModelProperty(example = "null", value = "Date of completed of contract")
-    public OffsetDateTime getDateCompleted() {
-        return dateCompleted;
-    }
-
-    public void setDateCompleted(OffsetDateTime dateCompleted) {
-        this.dateCompleted = dateCompleted;
-    }
-
-    public CorporationContractsResponse dateExpired(OffsetDateTime dateExpired) {
-        this.dateExpired = dateExpired;
-        return this;
-    }
-
-    /**
-     * Expiration date of the contract
-     * 
-     * @return dateExpired
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Expiration date of the contract")
-    public OffsetDateTime getDateExpired() {
-        return dateExpired;
-    }
-
-    public void setDateExpired(OffsetDateTime dateExpired) {
-        this.dateExpired = dateExpired;
-    }
-
-    public CorporationContractsResponse dateIssued(OffsetDateTime dateIssued) {
-        this.dateIssued = dateIssued;
-        return this;
-    }
-
-    /**
-     * Сreation date of the contract
-     * 
-     * @return dateIssued
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Сreation date of the contract")
-    public OffsetDateTime getDateIssued() {
-        return dateIssued;
-    }
-
-    public void setDateIssued(OffsetDateTime dateIssued) {
-        this.dateIssued = dateIssued;
-    }
-
-    public CorporationContractsResponse daysToComplete(Integer daysToComplete) {
-        this.daysToComplete = daysToComplete;
-        return this;
-    }
-
-    /**
-     * Number of days to perform the contract
-     * 
-     * @return daysToComplete
-     **/
-    @ApiModelProperty(example = "null", value = "Number of days to perform the contract")
-    public Integer getDaysToComplete() {
-        return daysToComplete;
-    }
-
-    public void setDaysToComplete(Integer daysToComplete) {
-        this.daysToComplete = daysToComplete;
-    }
-
-    public CorporationContractsResponse endLocationId(Long endLocationId) {
-        this.endLocationId = endLocationId;
-        return this;
-    }
-
-    /**
-     * End location ID (for Couriers contract)
-     * 
-     * @return endLocationId
-     **/
-    @ApiModelProperty(example = "null", value = "End location ID (for Couriers contract)")
-    public Long getEndLocationId() {
-        return endLocationId;
-    }
-
-    public void setEndLocationId(Long endLocationId) {
-        this.endLocationId = endLocationId;
-    }
-
-    public CorporationContractsResponse forCorporation(Boolean forCorporation) {
-        this.forCorporation = forCorporation;
-        return this;
-    }
-
-    /**
-     * true if the contract was issued on behalf of the issuer's corporation
-     * 
-     * @return forCorporation
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
-    public Boolean getForCorporation() {
-        return forCorporation;
-    }
-
-    public void setForCorporation(Boolean forCorporation) {
-        this.forCorporation = forCorporation;
-    }
-
-    public CorporationContractsResponse issuerCorporationId(Integer issuerCorporationId) {
-        this.issuerCorporationId = issuerCorporationId;
-        return this;
-    }
-
-    /**
-     * Character's corporation ID for the issuer
-     * 
-     * @return issuerCorporationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Character's corporation ID for the issuer")
-    public Integer getIssuerCorporationId() {
-        return issuerCorporationId;
-    }
-
-    public void setIssuerCorporationId(Integer issuerCorporationId) {
-        this.issuerCorporationId = issuerCorporationId;
     }
 
     public CorporationContractsResponse issuerId(Integer issuerId) {
@@ -493,42 +246,61 @@ public class CorporationContractsResponse implements Serializable {
         this.issuerId = issuerId;
     }
 
-    public CorporationContractsResponse price(Float price) {
-        this.price = price;
+    public CorporationContractsResponse issuerCorporationId(Integer issuerCorporationId) {
+        this.issuerCorporationId = issuerCorporationId;
         return this;
     }
 
     /**
-     * Price of contract (for ItemsExchange and Auctions)
+     * Character's corporation ID for the issuer
      * 
-     * @return price
+     * @return issuerCorporationId
      **/
-    @ApiModelProperty(example = "null", value = "Price of contract (for ItemsExchange and Auctions)")
-    public Float getPrice() {
-        return price;
+    @ApiModelProperty(example = "null", required = true, value = "Character's corporation ID for the issuer")
+    public Integer getIssuerCorporationId() {
+        return issuerCorporationId;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
+    public void setIssuerCorporationId(Integer issuerCorporationId) {
+        this.issuerCorporationId = issuerCorporationId;
     }
 
-    public CorporationContractsResponse reward(Float reward) {
-        this.reward = reward;
+    public CorporationContractsResponse assigneeId(Integer assigneeId) {
+        this.assigneeId = assigneeId;
         return this;
     }
 
     /**
-     * Remuneration for contract (for Couriers only)
+     * ID to whom the contract is assigned, can be corporation or character ID
      * 
-     * @return reward
+     * @return assigneeId
      **/
-    @ApiModelProperty(example = "null", value = "Remuneration for contract (for Couriers only)")
-    public Float getReward() {
-        return reward;
+    @ApiModelProperty(example = "null", required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
+    public Integer getAssigneeId() {
+        return assigneeId;
     }
 
-    public void setReward(Float reward) {
-        this.reward = reward;
+    public void setAssigneeId(Integer assigneeId) {
+        this.assigneeId = assigneeId;
+    }
+
+    public CorporationContractsResponse acceptorId(Integer acceptorId) {
+        this.acceptorId = acceptorId;
+        return this;
+    }
+
+    /**
+     * Who will accept the contract
+     * 
+     * @return acceptorId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Who will accept the contract")
+    public Integer getAcceptorId() {
+        return acceptorId;
+    }
+
+    public void setAcceptorId(Integer acceptorId) {
+        this.acceptorId = acceptorId;
     }
 
     public CorporationContractsResponse startLocationId(Long startLocationId) {
@@ -548,6 +320,44 @@ public class CorporationContractsResponse implements Serializable {
 
     public void setStartLocationId(Long startLocationId) {
         this.startLocationId = startLocationId;
+    }
+
+    public CorporationContractsResponse endLocationId(Long endLocationId) {
+        this.endLocationId = endLocationId;
+        return this;
+    }
+
+    /**
+     * End location ID (for Couriers contract)
+     * 
+     * @return endLocationId
+     **/
+    @ApiModelProperty(example = "null", value = "End location ID (for Couriers contract)")
+    public Long getEndLocationId() {
+        return endLocationId;
+    }
+
+    public void setEndLocationId(Long endLocationId) {
+        this.endLocationId = endLocationId;
+    }
+
+    public CorporationContractsResponse type(TypeEnum type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Type of the contract
+     * 
+     * @return type
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Type of the contract")
+    public TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeEnum type) {
+        this.type = type;
     }
 
     public CorporationContractsResponse status(StatusEnum status) {
@@ -588,23 +398,213 @@ public class CorporationContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public CorporationContractsResponse type(TypeEnum type) {
-        this.type = type;
+    public CorporationContractsResponse forCorporation(Boolean forCorporation) {
+        this.forCorporation = forCorporation;
         return this;
     }
 
     /**
-     * Type of the contract
+     * true if the contract was issued on behalf of the issuer's corporation
      * 
-     * @return type
+     * @return forCorporation
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of the contract")
-    public TypeEnum getType() {
-        return type;
+    @ApiModelProperty(example = "null", required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
+    public Boolean getForCorporation() {
+        return forCorporation;
     }
 
-    public void setType(TypeEnum type) {
-        this.type = type;
+    public void setForCorporation(Boolean forCorporation) {
+        this.forCorporation = forCorporation;
+    }
+
+    public CorporationContractsResponse availability(AvailabilityEnum availability) {
+        this.availability = availability;
+        return this;
+    }
+
+    /**
+     * To whom the contract is available
+     * 
+     * @return availability
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "To whom the contract is available")
+    public AvailabilityEnum getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(AvailabilityEnum availability) {
+        this.availability = availability;
+    }
+
+    public CorporationContractsResponse dateIssued(OffsetDateTime dateIssued) {
+        this.dateIssued = dateIssued;
+        return this;
+    }
+
+    /**
+     * Сreation date of the contract
+     * 
+     * @return dateIssued
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Сreation date of the contract")
+    public OffsetDateTime getDateIssued() {
+        return dateIssued;
+    }
+
+    public void setDateIssued(OffsetDateTime dateIssued) {
+        this.dateIssued = dateIssued;
+    }
+
+    public CorporationContractsResponse dateExpired(OffsetDateTime dateExpired) {
+        this.dateExpired = dateExpired;
+        return this;
+    }
+
+    /**
+     * Expiration date of the contract
+     * 
+     * @return dateExpired
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Expiration date of the contract")
+    public OffsetDateTime getDateExpired() {
+        return dateExpired;
+    }
+
+    public void setDateExpired(OffsetDateTime dateExpired) {
+        this.dateExpired = dateExpired;
+    }
+
+    public CorporationContractsResponse dateAccepted(OffsetDateTime dateAccepted) {
+        this.dateAccepted = dateAccepted;
+        return this;
+    }
+
+    /**
+     * Date of confirmation of contract
+     * 
+     * @return dateAccepted
+     **/
+    @ApiModelProperty(example = "null", value = "Date of confirmation of contract")
+    public OffsetDateTime getDateAccepted() {
+        return dateAccepted;
+    }
+
+    public void setDateAccepted(OffsetDateTime dateAccepted) {
+        this.dateAccepted = dateAccepted;
+    }
+
+    public CorporationContractsResponse daysToComplete(Integer daysToComplete) {
+        this.daysToComplete = daysToComplete;
+        return this;
+    }
+
+    /**
+     * Number of days to perform the contract
+     * 
+     * @return daysToComplete
+     **/
+    @ApiModelProperty(example = "null", value = "Number of days to perform the contract")
+    public Integer getDaysToComplete() {
+        return daysToComplete;
+    }
+
+    public void setDaysToComplete(Integer daysToComplete) {
+        this.daysToComplete = daysToComplete;
+    }
+
+    public CorporationContractsResponse dateCompleted(OffsetDateTime dateCompleted) {
+        this.dateCompleted = dateCompleted;
+        return this;
+    }
+
+    /**
+     * Date of completed of contract
+     * 
+     * @return dateCompleted
+     **/
+    @ApiModelProperty(example = "null", value = "Date of completed of contract")
+    public OffsetDateTime getDateCompleted() {
+        return dateCompleted;
+    }
+
+    public void setDateCompleted(OffsetDateTime dateCompleted) {
+        this.dateCompleted = dateCompleted;
+    }
+
+    public CorporationContractsResponse price(Float price) {
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * Price of contract (for ItemsExchange and Auctions)
+     * 
+     * @return price
+     **/
+    @ApiModelProperty(example = "null", value = "Price of contract (for ItemsExchange and Auctions)")
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public CorporationContractsResponse reward(Float reward) {
+        this.reward = reward;
+        return this;
+    }
+
+    /**
+     * Remuneration for contract (for Couriers only)
+     * 
+     * @return reward
+     **/
+    @ApiModelProperty(example = "null", value = "Remuneration for contract (for Couriers only)")
+    public Float getReward() {
+        return reward;
+    }
+
+    public void setReward(Float reward) {
+        this.reward = reward;
+    }
+
+    public CorporationContractsResponse collateral(Float collateral) {
+        this.collateral = collateral;
+        return this;
+    }
+
+    /**
+     * Collateral price (for Couriers only)
+     * 
+     * @return collateral
+     **/
+    @ApiModelProperty(example = "null", value = "Collateral price (for Couriers only)")
+    public Float getCollateral() {
+        return collateral;
+    }
+
+    public void setCollateral(Float collateral) {
+        this.collateral = collateral;
+    }
+
+    public CorporationContractsResponse buyout(Float buyout) {
+        this.buyout = buyout;
+        return this;
+    }
+
+    /**
+     * Buyout price (for Auctions only)
+     * 
+     * @return buyout
+     **/
+    @ApiModelProperty(example = "null", value = "Buyout price (for Auctions only)")
+    public Float getBuyout() {
+        return buyout;
+    }
+
+    public void setBuyout(Float buyout) {
+        this.buyout = buyout;
     }
 
     public CorporationContractsResponse volume(Float volume) {
@@ -635,35 +635,35 @@ public class CorporationContractsResponse implements Serializable {
             return false;
         }
         CorporationContractsResponse corporationContractsResponse = (CorporationContractsResponse) o;
-        return Objects.equals(this.acceptorId, corporationContractsResponse.acceptorId)
-                && Objects.equals(this.assigneeId, corporationContractsResponse.assigneeId)
-                && Objects.equals(this.availability, corporationContractsResponse.availability)
-                && Objects.equals(this.buyout, corporationContractsResponse.buyout)
-                && Objects.equals(this.collateral, corporationContractsResponse.collateral)
-                && Objects.equals(this.contractId, corporationContractsResponse.contractId)
-                && Objects.equals(this.dateAccepted, corporationContractsResponse.dateAccepted)
-                && Objects.equals(this.dateCompleted, corporationContractsResponse.dateCompleted)
-                && Objects.equals(this.dateExpired, corporationContractsResponse.dateExpired)
-                && Objects.equals(this.dateIssued, corporationContractsResponse.dateIssued)
-                && Objects.equals(this.daysToComplete, corporationContractsResponse.daysToComplete)
-                && Objects.equals(this.endLocationId, corporationContractsResponse.endLocationId)
-                && Objects.equals(this.forCorporation, corporationContractsResponse.forCorporation)
-                && Objects.equals(this.issuerCorporationId, corporationContractsResponse.issuerCorporationId)
+        return Objects.equals(this.contractId, corporationContractsResponse.contractId)
                 && Objects.equals(this.issuerId, corporationContractsResponse.issuerId)
-                && Objects.equals(this.price, corporationContractsResponse.price)
-                && Objects.equals(this.reward, corporationContractsResponse.reward)
+                && Objects.equals(this.issuerCorporationId, corporationContractsResponse.issuerCorporationId)
+                && Objects.equals(this.assigneeId, corporationContractsResponse.assigneeId)
+                && Objects.equals(this.acceptorId, corporationContractsResponse.acceptorId)
                 && Objects.equals(this.startLocationId, corporationContractsResponse.startLocationId)
+                && Objects.equals(this.endLocationId, corporationContractsResponse.endLocationId)
+                && Objects.equals(this.type, corporationContractsResponse.type)
                 && Objects.equals(this.status, corporationContractsResponse.status)
                 && Objects.equals(this.title, corporationContractsResponse.title)
-                && Objects.equals(this.type, corporationContractsResponse.type)
+                && Objects.equals(this.forCorporation, corporationContractsResponse.forCorporation)
+                && Objects.equals(this.availability, corporationContractsResponse.availability)
+                && Objects.equals(this.dateIssued, corporationContractsResponse.dateIssued)
+                && Objects.equals(this.dateExpired, corporationContractsResponse.dateExpired)
+                && Objects.equals(this.dateAccepted, corporationContractsResponse.dateAccepted)
+                && Objects.equals(this.daysToComplete, corporationContractsResponse.daysToComplete)
+                && Objects.equals(this.dateCompleted, corporationContractsResponse.dateCompleted)
+                && Objects.equals(this.price, corporationContractsResponse.price)
+                && Objects.equals(this.reward, corporationContractsResponse.reward)
+                && Objects.equals(this.collateral, corporationContractsResponse.collateral)
+                && Objects.equals(this.buyout, corporationContractsResponse.buyout)
                 && Objects.equals(this.volume, corporationContractsResponse.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(acceptorId, assigneeId, availability, buyout, collateral, contractId, dateAccepted,
-                dateCompleted, dateExpired, dateIssued, daysToComplete, endLocationId, forCorporation,
-                issuerCorporationId, issuerId, price, reward, startLocationId, status, title, type, volume);
+        return Objects.hash(contractId, issuerId, issuerCorporationId, assigneeId, acceptorId, startLocationId,
+                endLocationId, type, status, title, forCorporation, availability, dateIssued, dateExpired,
+                dateAccepted, daysToComplete, dateCompleted, price, reward, collateral, buyout, volume);
     }
 
     @Override
@@ -671,27 +671,27 @@ public class CorporationContractsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContractsResponse {\n");
 
-        sb.append("    acceptorId: ").append(toIndentedString(acceptorId)).append("\n");
-        sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
-        sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
-        sb.append("    buyout: ").append(toIndentedString(buyout)).append("\n");
-        sb.append("    collateral: ").append(toIndentedString(collateral)).append("\n");
         sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
-        sb.append("    dateAccepted: ").append(toIndentedString(dateAccepted)).append("\n");
-        sb.append("    dateCompleted: ").append(toIndentedString(dateCompleted)).append("\n");
-        sb.append("    dateExpired: ").append(toIndentedString(dateExpired)).append("\n");
-        sb.append("    dateIssued: ").append(toIndentedString(dateIssued)).append("\n");
-        sb.append("    daysToComplete: ").append(toIndentedString(daysToComplete)).append("\n");
-        sb.append("    endLocationId: ").append(toIndentedString(endLocationId)).append("\n");
-        sb.append("    forCorporation: ").append(toIndentedString(forCorporation)).append("\n");
-        sb.append("    issuerCorporationId: ").append(toIndentedString(issuerCorporationId)).append("\n");
         sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
-        sb.append("    price: ").append(toIndentedString(price)).append("\n");
-        sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
+        sb.append("    issuerCorporationId: ").append(toIndentedString(issuerCorporationId)).append("\n");
+        sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
+        sb.append("    acceptorId: ").append(toIndentedString(acceptorId)).append("\n");
         sb.append("    startLocationId: ").append(toIndentedString(startLocationId)).append("\n");
+        sb.append("    endLocationId: ").append(toIndentedString(endLocationId)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
-        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    forCorporation: ").append(toIndentedString(forCorporation)).append("\n");
+        sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
+        sb.append("    dateIssued: ").append(toIndentedString(dateIssued)).append("\n");
+        sb.append("    dateExpired: ").append(toIndentedString(dateExpired)).append("\n");
+        sb.append("    dateAccepted: ").append(toIndentedString(dateAccepted)).append("\n");
+        sb.append("    daysToComplete: ").append(toIndentedString(daysToComplete)).append("\n");
+        sb.append("    dateCompleted: ").append(toIndentedString(dateCompleted)).append("\n");
+        sb.append("    price: ").append(toIndentedString(price)).append("\n");
+        sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
+        sb.append("    collateral: ").append(toIndentedString(collateral)).append("\n");
+        sb.append("    buyout: ").append(toIndentedString(buyout)).append("\n");
         sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("}");
         return sb.toString();

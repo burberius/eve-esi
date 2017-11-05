@@ -26,33 +26,14 @@ import java.io.Serializable;
 public class CharacterFatigueResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("jump_fatigue_expire_date")
-    private OffsetDateTime jumpFatigueExpireDate = null;
-
     @JsonProperty("last_jump_date")
     private OffsetDateTime lastJumpDate = null;
 
+    @JsonProperty("jump_fatigue_expire_date")
+    private OffsetDateTime jumpFatigueExpireDate = null;
+
     @JsonProperty("last_update_date")
     private OffsetDateTime lastUpdateDate = null;
-
-    public CharacterFatigueResponse jumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
-        this.jumpFatigueExpireDate = jumpFatigueExpireDate;
-        return this;
-    }
-
-    /**
-     * Character's jump fatigue expiry
-     * 
-     * @return jumpFatigueExpireDate
-     **/
-    @ApiModelProperty(example = "null", value = "Character's jump fatigue expiry")
-    public OffsetDateTime getJumpFatigueExpireDate() {
-        return jumpFatigueExpireDate;
-    }
-
-    public void setJumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
-        this.jumpFatigueExpireDate = jumpFatigueExpireDate;
-    }
 
     public CharacterFatigueResponse lastJumpDate(OffsetDateTime lastJumpDate) {
         this.lastJumpDate = lastJumpDate;
@@ -71,6 +52,25 @@ public class CharacterFatigueResponse implements Serializable {
 
     public void setLastJumpDate(OffsetDateTime lastJumpDate) {
         this.lastJumpDate = lastJumpDate;
+    }
+
+    public CharacterFatigueResponse jumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
+        this.jumpFatigueExpireDate = jumpFatigueExpireDate;
+        return this;
+    }
+
+    /**
+     * Character's jump fatigue expiry
+     * 
+     * @return jumpFatigueExpireDate
+     **/
+    @ApiModelProperty(example = "null", value = "Character's jump fatigue expiry")
+    public OffsetDateTime getJumpFatigueExpireDate() {
+        return jumpFatigueExpireDate;
+    }
+
+    public void setJumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
+        this.jumpFatigueExpireDate = jumpFatigueExpireDate;
     }
 
     public CharacterFatigueResponse lastUpdateDate(OffsetDateTime lastUpdateDate) {
@@ -101,14 +101,14 @@ public class CharacterFatigueResponse implements Serializable {
             return false;
         }
         CharacterFatigueResponse characterFatigueResponse = (CharacterFatigueResponse) o;
-        return Objects.equals(this.jumpFatigueExpireDate, characterFatigueResponse.jumpFatigueExpireDate)
-                && Objects.equals(this.lastJumpDate, characterFatigueResponse.lastJumpDate)
+        return Objects.equals(this.lastJumpDate, characterFatigueResponse.lastJumpDate)
+                && Objects.equals(this.jumpFatigueExpireDate, characterFatigueResponse.jumpFatigueExpireDate)
                 && Objects.equals(this.lastUpdateDate, characterFatigueResponse.lastUpdateDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jumpFatigueExpireDate, lastJumpDate, lastUpdateDate);
+        return Objects.hash(lastJumpDate, jumpFatigueExpireDate, lastUpdateDate);
     }
 
     @Override
@@ -116,8 +116,8 @@ public class CharacterFatigueResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFatigueResponse {\n");
 
-        sb.append("    jumpFatigueExpireDate: ").append(toIndentedString(jumpFatigueExpireDate)).append("\n");
         sb.append("    lastJumpDate: ").append(toIndentedString(lastJumpDate)).append("\n");
+        sb.append("    jumpFatigueExpireDate: ").append(toIndentedString(jumpFatigueExpireDate)).append("\n");
         sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");
         sb.append("}");
         return sb.toString();

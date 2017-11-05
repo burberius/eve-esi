@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class MailLabelSimple implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("name")
+    private String name = null;
+
     /**
      * Hexadecimal string representing label color, in RGB format
      */
@@ -90,8 +93,24 @@ public class MailLabelSimple implements Serializable {
     @JsonProperty("color")
     private ColorEnum color = ColorEnum.FFFFFF;
 
-    @JsonProperty("name")
-    private String name = null;
+    public MailLabelSimple name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public MailLabelSimple color(ColorEnum color) {
         this.color = color;
@@ -112,25 +131,6 @@ public class MailLabelSimple implements Serializable {
         this.color = color;
     }
 
-    public MailLabelSimple name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,12 +140,12 @@ public class MailLabelSimple implements Serializable {
             return false;
         }
         MailLabelSimple mailLabelSimple = (MailLabelSimple) o;
-        return Objects.equals(this.color, mailLabelSimple.color) && Objects.equals(this.name, mailLabelSimple.name);
+        return Objects.equals(this.name, mailLabelSimple.name) && Objects.equals(this.color, mailLabelSimple.color);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, name);
+        return Objects.hash(name, color);
     }
 
     @Override
@@ -153,8 +153,8 @@ public class MailLabelSimple implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabelSimple {\n");
 
-        sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("}");
         return sb.toString();
     }

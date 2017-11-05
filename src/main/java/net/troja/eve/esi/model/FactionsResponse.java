@@ -25,29 +25,26 @@ import java.io.Serializable;
 public class FactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
-    @JsonProperty("description")
-    private String description = null;
-
     @JsonProperty("faction_id")
     private Integer factionId = null;
-
-    @JsonProperty("is_unique")
-    private Boolean isUnique = null;
-
-    @JsonProperty("militia_corporation_id")
-    private Integer militiaCorporationId = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("size_factor")
-    private Float sizeFactor = null;
+    @JsonProperty("description")
+    private String description = null;
 
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
+
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
+
+    @JsonProperty("militia_corporation_id")
+    private Integer militiaCorporationId = null;
+
+    @JsonProperty("size_factor")
+    private Float sizeFactor = null;
 
     @JsonProperty("station_count")
     private Integer stationCount = null;
@@ -55,43 +52,8 @@ public class FactionsResponse implements Serializable {
     @JsonProperty("station_system_count")
     private Integer stationSystemCount = null;
 
-    public FactionsResponse corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-        return this;
-    }
-
-    /**
-     * corporation_id integer
-     * 
-     * @return corporationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-    }
-
-    public FactionsResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @JsonProperty("is_unique")
+    private Boolean isUnique = null;
 
     public FactionsResponse factionId(Integer factionId) {
         this.factionId = factionId;
@@ -110,44 +72,6 @@ public class FactionsResponse implements Serializable {
 
     public void setFactionId(Integer factionId) {
         this.factionId = factionId;
-    }
-
-    public FactionsResponse isUnique(Boolean isUnique) {
-        this.isUnique = isUnique;
-        return this;
-    }
-
-    /**
-     * is_unique boolean
-     * 
-     * @return isUnique
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "is_unique boolean")
-    public Boolean getIsUnique() {
-        return isUnique;
-    }
-
-    public void setIsUnique(Boolean isUnique) {
-        this.isUnique = isUnique;
-    }
-
-    public FactionsResponse militiaCorporationId(Integer militiaCorporationId) {
-        this.militiaCorporationId = militiaCorporationId;
-        return this;
-    }
-
-    /**
-     * militia_corporation_id integer
-     * 
-     * @return militiaCorporationId
-     **/
-    @ApiModelProperty(example = "null", value = "militia_corporation_id integer")
-    public Integer getMilitiaCorporationId() {
-        return militiaCorporationId;
-    }
-
-    public void setMilitiaCorporationId(Integer militiaCorporationId) {
-        this.militiaCorporationId = militiaCorporationId;
     }
 
     public FactionsResponse name(String name) {
@@ -169,23 +93,23 @@ public class FactionsResponse implements Serializable {
         this.name = name;
     }
 
-    public FactionsResponse sizeFactor(Float sizeFactor) {
-        this.sizeFactor = sizeFactor;
+    public FactionsResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * size_factor number
+     * description string
      * 
-     * @return sizeFactor
+     * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "size_factor number")
-    public Float getSizeFactor() {
-        return sizeFactor;
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setSizeFactor(Float sizeFactor) {
-        this.sizeFactor = sizeFactor;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public FactionsResponse solarSystemId(Integer solarSystemId) {
@@ -205,6 +129,63 @@ public class FactionsResponse implements Serializable {
 
     public void setSolarSystemId(Integer solarSystemId) {
         this.solarSystemId = solarSystemId;
+    }
+
+    public FactionsResponse corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+        return this;
+    }
+
+    /**
+     * corporation_id integer
+     * 
+     * @return corporationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    public Integer getCorporationId() {
+        return corporationId;
+    }
+
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+    }
+
+    public FactionsResponse militiaCorporationId(Integer militiaCorporationId) {
+        this.militiaCorporationId = militiaCorporationId;
+        return this;
+    }
+
+    /**
+     * militia_corporation_id integer
+     * 
+     * @return militiaCorporationId
+     **/
+    @ApiModelProperty(example = "null", value = "militia_corporation_id integer")
+    public Integer getMilitiaCorporationId() {
+        return militiaCorporationId;
+    }
+
+    public void setMilitiaCorporationId(Integer militiaCorporationId) {
+        this.militiaCorporationId = militiaCorporationId;
+    }
+
+    public FactionsResponse sizeFactor(Float sizeFactor) {
+        this.sizeFactor = sizeFactor;
+        return this;
+    }
+
+    /**
+     * size_factor number
+     * 
+     * @return sizeFactor
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "size_factor number")
+    public Float getSizeFactor() {
+        return sizeFactor;
+    }
+
+    public void setSizeFactor(Float sizeFactor) {
+        this.sizeFactor = sizeFactor;
     }
 
     public FactionsResponse stationCount(Integer stationCount) {
@@ -245,6 +226,25 @@ public class FactionsResponse implements Serializable {
         this.stationSystemCount = stationSystemCount;
     }
 
+    public FactionsResponse isUnique(Boolean isUnique) {
+        this.isUnique = isUnique;
+        return this;
+    }
+
+    /**
+     * is_unique boolean
+     * 
+     * @return isUnique
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "is_unique boolean")
+    public Boolean getIsUnique() {
+        return isUnique;
+    }
+
+    public void setIsUnique(Boolean isUnique) {
+        this.isUnique = isUnique;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -254,22 +254,22 @@ public class FactionsResponse implements Serializable {
             return false;
         }
         FactionsResponse factionsResponse = (FactionsResponse) o;
-        return Objects.equals(this.corporationId, factionsResponse.corporationId)
-                && Objects.equals(this.description, factionsResponse.description)
-                && Objects.equals(this.factionId, factionsResponse.factionId)
-                && Objects.equals(this.isUnique, factionsResponse.isUnique)
-                && Objects.equals(this.militiaCorporationId, factionsResponse.militiaCorporationId)
+        return Objects.equals(this.factionId, factionsResponse.factionId)
                 && Objects.equals(this.name, factionsResponse.name)
-                && Objects.equals(this.sizeFactor, factionsResponse.sizeFactor)
+                && Objects.equals(this.description, factionsResponse.description)
                 && Objects.equals(this.solarSystemId, factionsResponse.solarSystemId)
+                && Objects.equals(this.corporationId, factionsResponse.corporationId)
+                && Objects.equals(this.militiaCorporationId, factionsResponse.militiaCorporationId)
+                && Objects.equals(this.sizeFactor, factionsResponse.sizeFactor)
                 && Objects.equals(this.stationCount, factionsResponse.stationCount)
-                && Objects.equals(this.stationSystemCount, factionsResponse.stationSystemCount);
+                && Objects.equals(this.stationSystemCount, factionsResponse.stationSystemCount)
+                && Objects.equals(this.isUnique, factionsResponse.isUnique);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corporationId, description, factionId, isUnique, militiaCorporationId, name, sizeFactor,
-                solarSystemId, stationCount, stationSystemCount);
+        return Objects.hash(factionId, name, description, solarSystemId, corporationId, militiaCorporationId,
+                sizeFactor, stationCount, stationSystemCount, isUnique);
     }
 
     @Override
@@ -277,16 +277,16 @@ public class FactionsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionsResponse {\n");
 
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    isUnique: ").append(toIndentedString(isUnique)).append("\n");
-        sb.append("    militiaCorporationId: ").append(toIndentedString(militiaCorporationId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    sizeFactor: ").append(toIndentedString(sizeFactor)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    militiaCorporationId: ").append(toIndentedString(militiaCorporationId)).append("\n");
+        sb.append("    sizeFactor: ").append(toIndentedString(sizeFactor)).append("\n");
         sb.append("    stationCount: ").append(toIndentedString(stationCount)).append("\n");
         sb.append("    stationSystemCount: ").append(toIndentedString(stationSystemCount)).append("\n");
+        sb.append("    isUnique: ").append(toIndentedString(isUnique)).append("\n");
         sb.append("}");
         return sb.toString();
     }

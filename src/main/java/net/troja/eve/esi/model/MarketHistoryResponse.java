@@ -26,17 +26,8 @@ import java.io.Serializable;
 public class MarketHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("average")
-    private Float average = null;
-
     @JsonProperty("date")
     private LocalDate date = null;
-
-    @JsonProperty("highest")
-    private Float highest = null;
-
-    @JsonProperty("lowest")
-    private Float lowest = null;
 
     @JsonProperty("order_count")
     private Long orderCount = null;
@@ -44,24 +35,14 @@ public class MarketHistoryResponse implements Serializable {
     @JsonProperty("volume")
     private Long volume = null;
 
-    public MarketHistoryResponse average(Float average) {
-        this.average = average;
-        return this;
-    }
+    @JsonProperty("highest")
+    private Float highest = null;
 
-    /**
-     * average number
-     * 
-     * @return average
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "average number")
-    public Float getAverage() {
-        return average;
-    }
+    @JsonProperty("average")
+    private Float average = null;
 
-    public void setAverage(Float average) {
-        this.average = average;
-    }
+    @JsonProperty("lowest")
+    private Float lowest = null;
 
     public MarketHistoryResponse date(LocalDate date) {
         this.date = date;
@@ -80,44 +61,6 @@ public class MarketHistoryResponse implements Serializable {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public MarketHistoryResponse highest(Float highest) {
-        this.highest = highest;
-        return this;
-    }
-
-    /**
-     * highest number
-     * 
-     * @return highest
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "highest number")
-    public Float getHighest() {
-        return highest;
-    }
-
-    public void setHighest(Float highest) {
-        this.highest = highest;
-    }
-
-    public MarketHistoryResponse lowest(Float lowest) {
-        this.lowest = lowest;
-        return this;
-    }
-
-    /**
-     * lowest number
-     * 
-     * @return lowest
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "lowest number")
-    public Float getLowest() {
-        return lowest;
-    }
-
-    public void setLowest(Float lowest) {
-        this.lowest = lowest;
     }
 
     public MarketHistoryResponse orderCount(Long orderCount) {
@@ -158,6 +101,63 @@ public class MarketHistoryResponse implements Serializable {
         this.volume = volume;
     }
 
+    public MarketHistoryResponse highest(Float highest) {
+        this.highest = highest;
+        return this;
+    }
+
+    /**
+     * highest number
+     * 
+     * @return highest
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "highest number")
+    public Float getHighest() {
+        return highest;
+    }
+
+    public void setHighest(Float highest) {
+        this.highest = highest;
+    }
+
+    public MarketHistoryResponse average(Float average) {
+        this.average = average;
+        return this;
+    }
+
+    /**
+     * average number
+     * 
+     * @return average
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "average number")
+    public Float getAverage() {
+        return average;
+    }
+
+    public void setAverage(Float average) {
+        this.average = average;
+    }
+
+    public MarketHistoryResponse lowest(Float lowest) {
+        this.lowest = lowest;
+        return this;
+    }
+
+    /**
+     * lowest number
+     * 
+     * @return lowest
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "lowest number")
+    public Float getLowest() {
+        return lowest;
+    }
+
+    public void setLowest(Float lowest) {
+        this.lowest = lowest;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,17 +167,17 @@ public class MarketHistoryResponse implements Serializable {
             return false;
         }
         MarketHistoryResponse marketHistoryResponse = (MarketHistoryResponse) o;
-        return Objects.equals(this.average, marketHistoryResponse.average)
-                && Objects.equals(this.date, marketHistoryResponse.date)
-                && Objects.equals(this.highest, marketHistoryResponse.highest)
-                && Objects.equals(this.lowest, marketHistoryResponse.lowest)
+        return Objects.equals(this.date, marketHistoryResponse.date)
                 && Objects.equals(this.orderCount, marketHistoryResponse.orderCount)
-                && Objects.equals(this.volume, marketHistoryResponse.volume);
+                && Objects.equals(this.volume, marketHistoryResponse.volume)
+                && Objects.equals(this.highest, marketHistoryResponse.highest)
+                && Objects.equals(this.average, marketHistoryResponse.average)
+                && Objects.equals(this.lowest, marketHistoryResponse.lowest);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(average, date, highest, lowest, orderCount, volume);
+        return Objects.hash(date, orderCount, volume, highest, average, lowest);
     }
 
     @Override
@@ -185,12 +185,12 @@ public class MarketHistoryResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketHistoryResponse {\n");
 
-        sb.append("    average: ").append(toIndentedString(average)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
-        sb.append("    highest: ").append(toIndentedString(highest)).append("\n");
-        sb.append("    lowest: ").append(toIndentedString(lowest)).append("\n");
         sb.append("    orderCount: ").append(toIndentedString(orderCount)).append("\n");
         sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
+        sb.append("    highest: ").append(toIndentedString(highest)).append("\n");
+        sb.append("    average: ").append(toIndentedString(average)).append("\n");
+        sb.append("    lowest: ").append(toIndentedString(lowest)).append("\n");
         sb.append("}");
         return sb.toString();
     }

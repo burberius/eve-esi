@@ -25,54 +25,35 @@ import java.io.Serializable;
 public class CharacterMedalsGraphic implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("color")
-    private Integer color = null;
-
-    @JsonProperty("graphic")
-    private String graphic = null;
+    @JsonProperty("part")
+    private Integer part = null;
 
     @JsonProperty("layer")
     private Integer layer = null;
 
-    @JsonProperty("part")
-    private Integer part = null;
+    @JsonProperty("graphic")
+    private String graphic = null;
 
-    public CharacterMedalsGraphic color(Integer color) {
-        this.color = color;
+    @JsonProperty("color")
+    private Integer color = null;
+
+    public CharacterMedalsGraphic part(Integer part) {
+        this.part = part;
         return this;
     }
 
     /**
-     * color integer
+     * part integer
      * 
-     * @return color
+     * @return part
      **/
-    @ApiModelProperty(example = "null", value = "color integer")
-    public Integer getColor() {
-        return color;
+    @ApiModelProperty(example = "null", required = true, value = "part integer")
+    public Integer getPart() {
+        return part;
     }
 
-    public void setColor(Integer color) {
-        this.color = color;
-    }
-
-    public CharacterMedalsGraphic graphic(String graphic) {
-        this.graphic = graphic;
-        return this;
-    }
-
-    /**
-     * graphic string
-     * 
-     * @return graphic
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "graphic string")
-    public String getGraphic() {
-        return graphic;
-    }
-
-    public void setGraphic(String graphic) {
-        this.graphic = graphic;
+    public void setPart(Integer part) {
+        this.part = part;
     }
 
     public CharacterMedalsGraphic layer(Integer layer) {
@@ -94,23 +75,42 @@ public class CharacterMedalsGraphic implements Serializable {
         this.layer = layer;
     }
 
-    public CharacterMedalsGraphic part(Integer part) {
-        this.part = part;
+    public CharacterMedalsGraphic graphic(String graphic) {
+        this.graphic = graphic;
         return this;
     }
 
     /**
-     * part integer
+     * graphic string
      * 
-     * @return part
+     * @return graphic
      **/
-    @ApiModelProperty(example = "null", required = true, value = "part integer")
-    public Integer getPart() {
-        return part;
+    @ApiModelProperty(example = "null", required = true, value = "graphic string")
+    public String getGraphic() {
+        return graphic;
     }
 
-    public void setPart(Integer part) {
-        this.part = part;
+    public void setGraphic(String graphic) {
+        this.graphic = graphic;
+    }
+
+    public CharacterMedalsGraphic color(Integer color) {
+        this.color = color;
+        return this;
+    }
+
+    /**
+     * color integer
+     * 
+     * @return color
+     **/
+    @ApiModelProperty(example = "null", value = "color integer")
+    public Integer getColor() {
+        return color;
+    }
+
+    public void setColor(Integer color) {
+        this.color = color;
     }
 
     @Override
@@ -122,15 +122,15 @@ public class CharacterMedalsGraphic implements Serializable {
             return false;
         }
         CharacterMedalsGraphic characterMedalsGraphic = (CharacterMedalsGraphic) o;
-        return Objects.equals(this.color, characterMedalsGraphic.color)
-                && Objects.equals(this.graphic, characterMedalsGraphic.graphic)
+        return Objects.equals(this.part, characterMedalsGraphic.part)
                 && Objects.equals(this.layer, characterMedalsGraphic.layer)
-                && Objects.equals(this.part, characterMedalsGraphic.part);
+                && Objects.equals(this.graphic, characterMedalsGraphic.graphic)
+                && Objects.equals(this.color, characterMedalsGraphic.color);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, graphic, layer, part);
+        return Objects.hash(part, layer, graphic, color);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class CharacterMedalsGraphic implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterMedalsGraphic {\n");
 
-        sb.append("    color: ").append(toIndentedString(color)).append("\n");
-        sb.append("    graphic: ").append(toIndentedString(graphic)).append("\n");
-        sb.append("    layer: ").append(toIndentedString(layer)).append("\n");
         sb.append("    part: ").append(toIndentedString(part)).append("\n");
+        sb.append("    layer: ").append(toIndentedString(layer)).append("\n");
+        sb.append("    graphic: ").append(toIndentedString(graphic)).append("\n");
+        sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("}");
         return sb.toString();
     }

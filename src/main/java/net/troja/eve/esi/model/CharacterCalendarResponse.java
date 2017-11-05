@@ -26,11 +26,17 @@ import java.io.Serializable;
 public class CharacterCalendarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("event_id")
+    private Integer eventId = null;
+
     @JsonProperty("event_date")
     private OffsetDateTime eventDate = null;
 
-    @JsonProperty("event_id")
-    private Integer eventId = null;
+    @JsonProperty("title")
+    private String title = null;
+
+    @JsonProperty("importance")
+    private Integer importance = null;
 
     /**
      * event_response string
@@ -69,31 +75,6 @@ public class CharacterCalendarResponse implements Serializable {
     @JsonProperty("event_response")
     private EventResponseEnum eventResponse = null;
 
-    @JsonProperty("importance")
-    private Integer importance = null;
-
-    @JsonProperty("title")
-    private String title = null;
-
-    public CharacterCalendarResponse eventDate(OffsetDateTime eventDate) {
-        this.eventDate = eventDate;
-        return this;
-    }
-
-    /**
-     * event_date string
-     * 
-     * @return eventDate
-     **/
-    @ApiModelProperty(example = "null", value = "event_date string")
-    public OffsetDateTime getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(OffsetDateTime eventDate) {
-        this.eventDate = eventDate;
-    }
-
     public CharacterCalendarResponse eventId(Integer eventId) {
         this.eventId = eventId;
         return this;
@@ -113,42 +94,23 @@ public class CharacterCalendarResponse implements Serializable {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponse) {
-        this.eventResponse = eventResponse;
+    public CharacterCalendarResponse eventDate(OffsetDateTime eventDate) {
+        this.eventDate = eventDate;
         return this;
     }
 
     /**
-     * event_response string
+     * event_date string
      * 
-     * @return eventResponse
+     * @return eventDate
      **/
-    @ApiModelProperty(example = "null", value = "event_response string")
-    public EventResponseEnum getEventResponse() {
-        return eventResponse;
+    @ApiModelProperty(example = "null", value = "event_date string")
+    public OffsetDateTime getEventDate() {
+        return eventDate;
     }
 
-    public void setEventResponse(EventResponseEnum eventResponse) {
-        this.eventResponse = eventResponse;
-    }
-
-    public CharacterCalendarResponse importance(Integer importance) {
-        this.importance = importance;
-        return this;
-    }
-
-    /**
-     * importance integer
-     * 
-     * @return importance
-     **/
-    @ApiModelProperty(example = "null", value = "importance integer")
-    public Integer getImportance() {
-        return importance;
-    }
-
-    public void setImportance(Integer importance) {
-        this.importance = importance;
+    public void setEventDate(OffsetDateTime eventDate) {
+        this.eventDate = eventDate;
     }
 
     public CharacterCalendarResponse title(String title) {
@@ -170,6 +132,44 @@ public class CharacterCalendarResponse implements Serializable {
         this.title = title;
     }
 
+    public CharacterCalendarResponse importance(Integer importance) {
+        this.importance = importance;
+        return this;
+    }
+
+    /**
+     * importance integer
+     * 
+     * @return importance
+     **/
+    @ApiModelProperty(example = "null", value = "importance integer")
+    public Integer getImportance() {
+        return importance;
+    }
+
+    public void setImportance(Integer importance) {
+        this.importance = importance;
+    }
+
+    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponse) {
+        this.eventResponse = eventResponse;
+        return this;
+    }
+
+    /**
+     * event_response string
+     * 
+     * @return eventResponse
+     **/
+    @ApiModelProperty(example = "null", value = "event_response string")
+    public EventResponseEnum getEventResponse() {
+        return eventResponse;
+    }
+
+    public void setEventResponse(EventResponseEnum eventResponse) {
+        this.eventResponse = eventResponse;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -179,16 +179,16 @@ public class CharacterCalendarResponse implements Serializable {
             return false;
         }
         CharacterCalendarResponse characterCalendarResponse = (CharacterCalendarResponse) o;
-        return Objects.equals(this.eventDate, characterCalendarResponse.eventDate)
-                && Objects.equals(this.eventId, characterCalendarResponse.eventId)
-                && Objects.equals(this.eventResponse, characterCalendarResponse.eventResponse)
+        return Objects.equals(this.eventId, characterCalendarResponse.eventId)
+                && Objects.equals(this.eventDate, characterCalendarResponse.eventDate)
+                && Objects.equals(this.title, characterCalendarResponse.title)
                 && Objects.equals(this.importance, characterCalendarResponse.importance)
-                && Objects.equals(this.title, characterCalendarResponse.title);
+                && Objects.equals(this.eventResponse, characterCalendarResponse.eventResponse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventDate, eventId, eventResponse, importance, title);
+        return Objects.hash(eventId, eventDate, title, importance, eventResponse);
     }
 
     @Override
@@ -196,11 +196,11 @@ public class CharacterCalendarResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterCalendarResponse {\n");
 
-        sb.append("    eventDate: ").append(toIndentedString(eventDate)).append("\n");
         sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
-        sb.append("    eventResponse: ").append(toIndentedString(eventResponse)).append("\n");
-        sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
+        sb.append("    eventDate: ").append(toIndentedString(eventDate)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
+        sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
+        sb.append("    eventResponse: ").append(toIndentedString(eventResponse)).append("\n");
         sb.append("}");
         return sb.toString();
     }

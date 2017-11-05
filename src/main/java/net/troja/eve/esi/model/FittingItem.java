@@ -25,14 +25,33 @@ import java.io.Serializable;
 public class FittingItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
     @JsonProperty("flag")
     private Integer flag = null;
 
     @JsonProperty("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    public FittingItem typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 
     public FittingItem flag(Integer flag) {
         this.flag = flag;
@@ -72,25 +91,6 @@ public class FittingItem implements Serializable {
         this.quantity = quantity;
     }
 
-    public FittingItem typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,13 +100,13 @@ public class FittingItem implements Serializable {
             return false;
         }
         FittingItem fittingItem = (FittingItem) o;
-        return Objects.equals(this.flag, fittingItem.flag) && Objects.equals(this.quantity, fittingItem.quantity)
-                && Objects.equals(this.typeId, fittingItem.typeId);
+        return Objects.equals(this.typeId, fittingItem.typeId) && Objects.equals(this.flag, fittingItem.flag)
+                && Objects.equals(this.quantity, fittingItem.quantity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flag, quantity, typeId);
+        return Objects.hash(typeId, flag, quantity);
     }
 
     @Override
@@ -114,9 +114,9 @@ public class FittingItem implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FittingItem {\n");
 
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

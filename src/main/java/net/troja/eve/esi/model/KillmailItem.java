@@ -28,14 +28,8 @@ import java.io.Serializable;
 public class KillmailItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("flag")
-    private Integer flag = null;
-
     @JsonProperty("item_type_id")
     private Integer itemTypeId = null;
-
-    @JsonProperty("items")
-    private List<KillmailSubItem> items = new ArrayList<KillmailSubItem>();
 
     @JsonProperty("quantity_destroyed")
     private Long quantityDestroyed = null;
@@ -46,24 +40,11 @@ public class KillmailItem implements Serializable {
     @JsonProperty("singleton")
     private Integer singleton = null;
 
-    public KillmailItem flag(Integer flag) {
-        this.flag = flag;
-        return this;
-    }
+    @JsonProperty("flag")
+    private Integer flag = null;
 
-    /**
-     * Flag for the location of the item
-     * 
-     * @return flag
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Flag for the location of the item ")
-    public Integer getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
+    @JsonProperty("items")
+    private List<KillmailSubItem> items = new ArrayList<KillmailSubItem>();
 
     public KillmailItem itemTypeId(Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
@@ -82,30 +63,6 @@ public class KillmailItem implements Serializable {
 
     public void setItemTypeId(Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
-    }
-
-    public KillmailItem items(List<KillmailSubItem> items) {
-        this.items = items;
-        return this;
-    }
-
-    public KillmailItem addItemsItem(KillmailSubItem itemsItem) {
-        this.items.add(itemsItem);
-        return this;
-    }
-
-    /**
-     * items array
-     * 
-     * @return items
-     **/
-    @ApiModelProperty(example = "null", value = "items array")
-    public List<KillmailSubItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<KillmailSubItem> items) {
-        this.items = items;
     }
 
     public KillmailItem quantityDestroyed(Long quantityDestroyed) {
@@ -165,6 +122,49 @@ public class KillmailItem implements Serializable {
         this.singleton = singleton;
     }
 
+    public KillmailItem flag(Integer flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    /**
+     * Flag for the location of the item
+     * 
+     * @return flag
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Flag for the location of the item ")
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
+    public KillmailItem items(List<KillmailSubItem> items) {
+        this.items = items;
+        return this;
+    }
+
+    public KillmailItem addItemsItem(KillmailSubItem itemsItem) {
+        this.items.add(itemsItem);
+        return this;
+    }
+
+    /**
+     * items array
+     * 
+     * @return items
+     **/
+    @ApiModelProperty(example = "null", value = "items array")
+    public List<KillmailSubItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<KillmailSubItem> items) {
+        this.items = items;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,16 +174,16 @@ public class KillmailItem implements Serializable {
             return false;
         }
         KillmailItem killmailItem = (KillmailItem) o;
-        return Objects.equals(this.flag, killmailItem.flag) && Objects.equals(this.itemTypeId, killmailItem.itemTypeId)
-                && Objects.equals(this.items, killmailItem.items)
+        return Objects.equals(this.itemTypeId, killmailItem.itemTypeId)
                 && Objects.equals(this.quantityDestroyed, killmailItem.quantityDestroyed)
                 && Objects.equals(this.quantityDropped, killmailItem.quantityDropped)
-                && Objects.equals(this.singleton, killmailItem.singleton);
+                && Objects.equals(this.singleton, killmailItem.singleton)
+                && Objects.equals(this.flag, killmailItem.flag) && Objects.equals(this.items, killmailItem.items);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flag, itemTypeId, items, quantityDestroyed, quantityDropped, singleton);
+        return Objects.hash(itemTypeId, quantityDestroyed, quantityDropped, singleton, flag, items);
     }
 
     @Override
@@ -191,12 +191,12 @@ public class KillmailItem implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailItem {\n");
 
-        sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    itemTypeId: ").append(toIndentedString(itemTypeId)).append("\n");
-        sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    quantityDropped: ").append(toIndentedString(quantityDropped)).append("\n");
         sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
+        sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
+        sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("}");
         return sb.toString();
     }

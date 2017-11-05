@@ -29,14 +29,14 @@ public class AllianceResponse implements Serializable {
     @JsonProperty("alliance_name")
     private String allianceName = null;
 
-    @JsonProperty("date_founded")
-    private OffsetDateTime dateFounded = null;
+    @JsonProperty("ticker")
+    private String ticker = null;
 
     @JsonProperty("executor_corp")
     private Integer executorCorp = null;
 
-    @JsonProperty("ticker")
-    private String ticker = null;
+    @JsonProperty("date_founded")
+    private OffsetDateTime dateFounded = null;
 
     public AllianceResponse allianceName(String allianceName) {
         this.allianceName = allianceName;
@@ -55,44 +55,6 @@ public class AllianceResponse implements Serializable {
 
     public void setAllianceName(String allianceName) {
         this.allianceName = allianceName;
-    }
-
-    public AllianceResponse dateFounded(OffsetDateTime dateFounded) {
-        this.dateFounded = dateFounded;
-        return this;
-    }
-
-    /**
-     * date_founded string
-     * 
-     * @return dateFounded
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "date_founded string")
-    public OffsetDateTime getDateFounded() {
-        return dateFounded;
-    }
-
-    public void setDateFounded(OffsetDateTime dateFounded) {
-        this.dateFounded = dateFounded;
-    }
-
-    public AllianceResponse executorCorp(Integer executorCorp) {
-        this.executorCorp = executorCorp;
-        return this;
-    }
-
-    /**
-     * the executor corporation ID, if this alliance is not closed
-     * 
-     * @return executorCorp
-     **/
-    @ApiModelProperty(example = "null", value = "the executor corporation ID, if this alliance is not closed")
-    public Integer getExecutorCorp() {
-        return executorCorp;
-    }
-
-    public void setExecutorCorp(Integer executorCorp) {
-        this.executorCorp = executorCorp;
     }
 
     public AllianceResponse ticker(String ticker) {
@@ -114,6 +76,44 @@ public class AllianceResponse implements Serializable {
         this.ticker = ticker;
     }
 
+    public AllianceResponse executorCorp(Integer executorCorp) {
+        this.executorCorp = executorCorp;
+        return this;
+    }
+
+    /**
+     * the executor corporation ID, if this alliance is not closed
+     * 
+     * @return executorCorp
+     **/
+    @ApiModelProperty(example = "null", value = "the executor corporation ID, if this alliance is not closed")
+    public Integer getExecutorCorp() {
+        return executorCorp;
+    }
+
+    public void setExecutorCorp(Integer executorCorp) {
+        this.executorCorp = executorCorp;
+    }
+
+    public AllianceResponse dateFounded(OffsetDateTime dateFounded) {
+        this.dateFounded = dateFounded;
+        return this;
+    }
+
+    /**
+     * date_founded string
+     * 
+     * @return dateFounded
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "date_founded string")
+    public OffsetDateTime getDateFounded() {
+        return dateFounded;
+    }
+
+    public void setDateFounded(OffsetDateTime dateFounded) {
+        this.dateFounded = dateFounded;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,14 +124,14 @@ public class AllianceResponse implements Serializable {
         }
         AllianceResponse allianceResponse = (AllianceResponse) o;
         return Objects.equals(this.allianceName, allianceResponse.allianceName)
-                && Objects.equals(this.dateFounded, allianceResponse.dateFounded)
+                && Objects.equals(this.ticker, allianceResponse.ticker)
                 && Objects.equals(this.executorCorp, allianceResponse.executorCorp)
-                && Objects.equals(this.ticker, allianceResponse.ticker);
+                && Objects.equals(this.dateFounded, allianceResponse.dateFounded);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceName, dateFounded, executorCorp, ticker);
+        return Objects.hash(allianceName, ticker, executorCorp, dateFounded);
     }
 
     @Override
@@ -140,9 +140,9 @@ public class AllianceResponse implements Serializable {
         sb.append("class AllianceResponse {\n");
 
         sb.append("    allianceName: ").append(toIndentedString(allianceName)).append("\n");
-        sb.append("    dateFounded: ").append(toIndentedString(dateFounded)).append("\n");
-        sb.append("    executorCorp: ").append(toIndentedString(executorCorp)).append("\n");
         sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
+        sb.append("    executorCorp: ").append(toIndentedString(executorCorp)).append("\n");
+        sb.append("    dateFounded: ").append(toIndentedString(dateFounded)).append("\n");
         sb.append("}");
         return sb.toString();
     }

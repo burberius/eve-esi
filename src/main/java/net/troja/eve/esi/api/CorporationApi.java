@@ -11,14 +11,21 @@ import net.troja.eve.esi.model.CorporationAlliancesHistoryResponse;
 import net.troja.eve.esi.model.CorporationBlueprintsResponse;
 import net.troja.eve.esi.model.CorporationContainersLogsResponse;
 import net.troja.eve.esi.model.CorporationDivisionsResponse;
+import net.troja.eve.esi.model.CorporationFacilitiesResponse;
 import net.troja.eve.esi.model.CorporationIconsResponse;
+import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
+import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
 import net.troja.eve.esi.model.CorporationMembersResponse;
+import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationResponse;
+import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationRolesResponse;
 import net.troja.eve.esi.model.CorporationShareholdersResponse;
 import net.troja.eve.esi.model.CorporationStandingsResponse;
+import net.troja.eve.esi.model.CorporationStarbaseResponse;
+import net.troja.eve.esi.model.CorporationStarbasesResponse;
 import net.troja.eve.esi.model.CorporationStructuresResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
 import net.troja.eve.esi.model.Forbidden;
@@ -360,6 +367,68 @@ public class CorporationApi {
     }
 
     /**
+     * Get corporation facilities Return a corporation&#39;s facilities --- This
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_facilities.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationFacilitiesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationFacilitiesResponse> getCorporationsCorporationIdFacilities(Integer corporationId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdFacilities");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/facilities/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationFacilitiesResponse>> localVarReturnType = new GenericType<List<CorporationFacilitiesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get corporation icon Get the icon urls for a corporation --- This route
      * is cached for up to 3600 seconds
      * 
@@ -412,6 +481,136 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<CorporationIconsResponse> localVarReturnType = new GenericType<CorporationIconsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation medals Returns a corporation&#39;s medals --- This route
+     * is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_medals.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationMedalsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationMedalsResponse> getCorporationsCorporationIdMedals(Integer corporationId, String datasource,
+            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedals");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/medals/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationMedalsResponse>> localVarReturnType = new GenericType<List<CorporationMedalsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation issued medals Returns medals issued by a corporation ---
+     * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_medals.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationMedalsIssuedResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationMedalsIssuedResponse> getCorporationsCorporationIdMedalsIssued(Integer corporationId,
+            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedalsIssued");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/medals/issued/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationMedalsIssuedResponse>> localVarReturnType = new GenericType<List<CorporationMedalsIssuedResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -536,6 +735,68 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<Integer> localVarReturnType = new GenericType<Integer>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation&#39;s members&#39; titles Returns a corporation&#39;s
+     * members&#39; titles --- This route is cached for up to 3600 seconds SSO
+     * Scope: esi-corporations.read_titles.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationMembersTitlesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationMembersTitlesResponse> getCorporationsCorporationIdMembersTitles(Integer corporationId,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersTitles");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/members/titles/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationMembersTitlesResponse>> localVarReturnType = new GenericType<List<CorporationMembersTitlesResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -668,6 +929,72 @@ public class CorporationApi {
     }
 
     /**
+     * Get corporation member roles history Return how roles have changed for a
+     * coporation&#39;s members, up to a month --- This route is cached for up
+     * to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationRolesHistoryResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationRolesHistoryResponse> getCorporationsCorporationIdRolesHistory(Integer corporationId,
+            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdRolesHistory");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/roles/history/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationRolesHistoryResponse>> localVarReturnType = new GenericType<List<CorporationRolesHistoryResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get corporation members Return the current member list of a corporation,
      * the token&#39;s character need to be a member of the corporation. ---
      * This route is cached for up to 3600 seconds SSO Scope:
@@ -793,6 +1120,156 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CorporationStandingsResponse>> localVarReturnType = new GenericType<List<CorporationStandingsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get corporation starbases (POSes) Returns list of corporation starbases
+     * (POSes) --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_starbases.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;CorporationStarbasesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<CorporationStarbasesResponse> getCorporationsCorporationIdStarbases(Integer corporationId,
+            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStarbases");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/starbases/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<List<CorporationStarbasesResponse>> localVarReturnType = new GenericType<List<CorporationStarbasesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get starbase (POS) detail Returns various settings and fuels of a
+     * starbase (POS) --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_starbases.v1
+     * 
+     * @param corporationId
+     *            An EVE corporation ID (required)
+     * @param starbaseId
+     *            An EVE starbase (POS) ID (required)
+     * @param systemId
+     *            The solar system this starbase (POS) is located in, (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @param token
+     *            Access token to use if unable to set a header (optional)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return CorporationStarbaseResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public CorporationStarbaseResponse getCorporationsCorporationIdStarbasesStarbaseId(Integer corporationId,
+            Long starbaseId, Integer systemId, String datasource, Integer page, String token, String userAgent,
+            String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'corporationId' is set
+        if (corporationId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStarbasesStarbaseId");
+        }
+
+        // verify the required parameter 'starbaseId' is set
+        if (starbaseId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'starbaseId' when calling getCorporationsCorporationIdStarbasesStarbaseId");
+        }
+
+        // verify the required parameter 'systemId' is set
+        if (systemId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'systemId' when calling getCorporationsCorporationIdStarbasesStarbaseId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/corporations/{corporation_id}/starbases/{starbase_id}/"
+                .replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
+                .replaceAll("\\{" + "starbase_id" + "\\}", apiClient.escapeString(starbaseId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "system_id", systemId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] { "evesso" };
+
+        GenericType<CorporationStarbaseResponse> localVarReturnType = new GenericType<CorporationStarbaseResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

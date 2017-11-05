@@ -28,11 +28,30 @@ import java.io.Serializable;
 public class InsurancePricesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
     @JsonProperty("levels")
     private List<InsurancePriceLevel> levels = new ArrayList<InsurancePriceLevel>();
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    public InsurancePricesResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 
     public InsurancePricesResponse levels(List<InsurancePriceLevel> levels) {
         this.levels = levels;
@@ -58,25 +77,6 @@ public class InsurancePricesResponse implements Serializable {
         this.levels = levels;
     }
 
-    public InsurancePricesResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,13 +86,13 @@ public class InsurancePricesResponse implements Serializable {
             return false;
         }
         InsurancePricesResponse insurancePricesResponse = (InsurancePricesResponse) o;
-        return Objects.equals(this.levels, insurancePricesResponse.levels)
-                && Objects.equals(this.typeId, insurancePricesResponse.typeId);
+        return Objects.equals(this.typeId, insurancePricesResponse.typeId)
+                && Objects.equals(this.levels, insurancePricesResponse.levels);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(levels, typeId);
+        return Objects.hash(typeId, levels);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class InsurancePricesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class InsurancePricesResponse {\n");
 
-        sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -227,6 +227,23 @@ s/get_characters_character_id_mining_200_ok/CharacterMiningResponse/g
 s/get_corporation_corporation_id_mining_extractions_200_ok/CorporationMiningExtractionsResponse/g
 s/get_corporation_corporation_id_mining_observers_200_ok/CorporationMiningObserversResponse/g
 s/get_corporation_corporation_id_mining_observers_observer_id_200_ok/CorporationMiningObserverResponse/g
+s/get_alliances_alliance_id_contacts_200_ok/AllianceContactsResponse/g
+s/get_characters_character_id_fw_stats_kills/CharacterFwStatsKills/g
+s/get_characters_character_id_fw_stats_victory_points/CharacterFwStatsVictoryPoints/g
+s/get_characters_character_id_fw_stats_ok/CharacterFwStatsResponse/g
+s/get_characters_character_id_titles_200_ok/CharacterTitlesResponse/g
+s/get_corporations_corporation_id_customs_offices_200_ok/CorporationCustomsOfficesResponse/g
+s/get_corporations_corporation_id_facilities_200_ok/CorporationFacilitiesResponse/g
+s/get_corporations_corporation_id_fw_stats_kills/CorporationFwStatsKills/g
+s/get_corporations_corporation_id_fw_stats_ok/CorporationFwStatsResponse/g
+s/get_corporations_corporation_id_fw_stats_victory_points/CorporationFwStatsVictoryPoints/g
+s/get_corporations_corporation_id_medals_200_ok/CorporationMedalsResponse/g
+s/get_corporations_corporation_id_medals_issued_200_ok/CorporationMedalsIssuedResponse/g
+s/get_corporations_corporation_id_members_titles_200_ok/CorporationMembersTitlesResponse/g
+s/get_corporations_corporation_id_roles_history_200_ok/CorporationRolesHistoryResponse/g
+s/get_corporations_corporation_id_starbases_200_ok/CorporationStarbasesResponse/g
+s/get_corporations_corporation_id_starbases_starbase_id_fuel/CorporationStarbaseFuel/g
+s/get_corporations_corporation_id_starbases_starbase_id_ok/CorporationStarbaseResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

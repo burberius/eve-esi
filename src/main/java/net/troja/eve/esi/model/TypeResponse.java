@@ -29,11 +29,47 @@ import java.io.Serializable;
 public class TypeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("capacity")
-    private Float capacity = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    @JsonProperty("name")
+    private String name = null;
 
     @JsonProperty("description")
     private String description = null;
+
+    @JsonProperty("published")
+    private Boolean published = null;
+
+    @JsonProperty("group_id")
+    private Integer groupId = null;
+
+    @JsonProperty("market_group_id")
+    private Integer marketGroupId = null;
+
+    @JsonProperty("radius")
+    private Float radius = null;
+
+    @JsonProperty("volume")
+    private Float volume = null;
+
+    @JsonProperty("packaged_volume")
+    private Float packagedVolume = null;
+
+    @JsonProperty("icon_id")
+    private Integer iconId = null;
+
+    @JsonProperty("capacity")
+    private Float capacity = null;
+
+    @JsonProperty("portion_size")
+    private Integer portionSize = null;
+
+    @JsonProperty("mass")
+    private Float mass = null;
+
+    @JsonProperty("graphic_id")
+    private Integer graphicId = null;
 
     @JsonProperty("dogma_attributes")
     private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<TypeDogmaAttribute>();
@@ -41,41 +77,195 @@ public class TypeResponse implements Serializable {
     @JsonProperty("dogma_effects")
     private List<TypeDogmaEffect> dogmaEffects = new ArrayList<TypeDogmaEffect>();
 
-    @JsonProperty("graphic_id")
-    private Integer graphicId = null;
+    public TypeResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
 
-    @JsonProperty("group_id")
-    private Integer groupId = null;
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
 
-    @JsonProperty("icon_id")
-    private Integer iconId = null;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 
-    @JsonProperty("market_group_id")
-    private Integer marketGroupId = null;
+    public TypeResponse name(String name) {
+        this.name = name;
+        return this;
+    }
 
-    @JsonProperty("mass")
-    private Float mass = null;
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
 
-    @JsonProperty("name")
-    private String name = null;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    @JsonProperty("packaged_volume")
-    private Float packagedVolume = null;
+    public TypeResponse description(String description) {
+        this.description = description;
+        return this;
+    }
 
-    @JsonProperty("portion_size")
-    private Integer portionSize = null;
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
+    }
 
-    @JsonProperty("published")
-    private Boolean published = null;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    @JsonProperty("radius")
-    private Float radius = null;
+    public TypeResponse published(Boolean published) {
+        this.published = published;
+        return this;
+    }
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    /**
+     * published boolean
+     * 
+     * @return published
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "published boolean")
+    public Boolean getPublished() {
+        return published;
+    }
 
-    @JsonProperty("volume")
-    private Float volume = null;
+    public void setPublished(Boolean published) {
+        this.published = published;
+    }
+
+    public TypeResponse groupId(Integer groupId) {
+        this.groupId = groupId;
+        return this;
+    }
+
+    /**
+     * group_id integer
+     * 
+     * @return groupId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "group_id integer")
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+
+    public TypeResponse marketGroupId(Integer marketGroupId) {
+        this.marketGroupId = marketGroupId;
+        return this;
+    }
+
+    /**
+     * This only exists for types that can be put on the market
+     * 
+     * @return marketGroupId
+     **/
+    @ApiModelProperty(example = "null", value = "This only exists for types that can be put on the market")
+    public Integer getMarketGroupId() {
+        return marketGroupId;
+    }
+
+    public void setMarketGroupId(Integer marketGroupId) {
+        this.marketGroupId = marketGroupId;
+    }
+
+    public TypeResponse radius(Float radius) {
+        this.radius = radius;
+        return this;
+    }
+
+    /**
+     * radius number
+     * 
+     * @return radius
+     **/
+    @ApiModelProperty(example = "null", value = "radius number")
+    public Float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(Float radius) {
+        this.radius = radius;
+    }
+
+    public TypeResponse volume(Float volume) {
+        this.volume = volume;
+        return this;
+    }
+
+    /**
+     * volume number
+     * 
+     * @return volume
+     **/
+    @ApiModelProperty(example = "null", value = "volume number")
+    public Float getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Float volume) {
+        this.volume = volume;
+    }
+
+    public TypeResponse packagedVolume(Float packagedVolume) {
+        this.packagedVolume = packagedVolume;
+        return this;
+    }
+
+    /**
+     * packaged_volume number
+     * 
+     * @return packagedVolume
+     **/
+    @ApiModelProperty(example = "null", value = "packaged_volume number")
+    public Float getPackagedVolume() {
+        return packagedVolume;
+    }
+
+    public void setPackagedVolume(Float packagedVolume) {
+        this.packagedVolume = packagedVolume;
+    }
+
+    public TypeResponse iconId(Integer iconId) {
+        this.iconId = iconId;
+        return this;
+    }
+
+    /**
+     * icon_id integer
+     * 
+     * @return iconId
+     **/
+    @ApiModelProperty(example = "null", value = "icon_id integer")
+    public Integer getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(Integer iconId) {
+        this.iconId = iconId;
+    }
 
     public TypeResponse capacity(Float capacity) {
         this.capacity = capacity;
@@ -96,23 +286,61 @@ public class TypeResponse implements Serializable {
         this.capacity = capacity;
     }
 
-    public TypeResponse description(String description) {
-        this.description = description;
+    public TypeResponse portionSize(Integer portionSize) {
+        this.portionSize = portionSize;
         return this;
     }
 
     /**
-     * description string
+     * portion_size integer
      * 
-     * @return description
+     * @return portionSize
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
+    @ApiModelProperty(example = "null", value = "portion_size integer")
+    public Integer getPortionSize() {
+        return portionSize;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPortionSize(Integer portionSize) {
+        this.portionSize = portionSize;
+    }
+
+    public TypeResponse mass(Float mass) {
+        this.mass = mass;
+        return this;
+    }
+
+    /**
+     * mass number
+     * 
+     * @return mass
+     **/
+    @ApiModelProperty(example = "null", value = "mass number")
+    public Float getMass() {
+        return mass;
+    }
+
+    public void setMass(Float mass) {
+        this.mass = mass;
+    }
+
+    public TypeResponse graphicId(Integer graphicId) {
+        this.graphicId = graphicId;
+        return this;
+    }
+
+    /**
+     * graphic_id integer
+     * 
+     * @return graphicId
+     **/
+    @ApiModelProperty(example = "null", value = "graphic_id integer")
+    public Integer getGraphicId() {
+        return graphicId;
+    }
+
+    public void setGraphicId(Integer graphicId) {
+        this.graphicId = graphicId;
     }
 
     public TypeResponse dogmaAttributes(List<TypeDogmaAttribute> dogmaAttributes) {
@@ -163,234 +391,6 @@ public class TypeResponse implements Serializable {
         this.dogmaEffects = dogmaEffects;
     }
 
-    public TypeResponse graphicId(Integer graphicId) {
-        this.graphicId = graphicId;
-        return this;
-    }
-
-    /**
-     * graphic_id integer
-     * 
-     * @return graphicId
-     **/
-    @ApiModelProperty(example = "null", value = "graphic_id integer")
-    public Integer getGraphicId() {
-        return graphicId;
-    }
-
-    public void setGraphicId(Integer graphicId) {
-        this.graphicId = graphicId;
-    }
-
-    public TypeResponse groupId(Integer groupId) {
-        this.groupId = groupId;
-        return this;
-    }
-
-    /**
-     * group_id integer
-     * 
-     * @return groupId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "group_id integer")
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
-    public TypeResponse iconId(Integer iconId) {
-        this.iconId = iconId;
-        return this;
-    }
-
-    /**
-     * icon_id integer
-     * 
-     * @return iconId
-     **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
-    public Integer getIconId() {
-        return iconId;
-    }
-
-    public void setIconId(Integer iconId) {
-        this.iconId = iconId;
-    }
-
-    public TypeResponse marketGroupId(Integer marketGroupId) {
-        this.marketGroupId = marketGroupId;
-        return this;
-    }
-
-    /**
-     * This only exists for types that can be put on the market
-     * 
-     * @return marketGroupId
-     **/
-    @ApiModelProperty(example = "null", value = "This only exists for types that can be put on the market")
-    public Integer getMarketGroupId() {
-        return marketGroupId;
-    }
-
-    public void setMarketGroupId(Integer marketGroupId) {
-        this.marketGroupId = marketGroupId;
-    }
-
-    public TypeResponse mass(Float mass) {
-        this.mass = mass;
-        return this;
-    }
-
-    /**
-     * mass number
-     * 
-     * @return mass
-     **/
-    @ApiModelProperty(example = "null", value = "mass number")
-    public Float getMass() {
-        return mass;
-    }
-
-    public void setMass(Float mass) {
-        this.mass = mass;
-    }
-
-    public TypeResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public TypeResponse packagedVolume(Float packagedVolume) {
-        this.packagedVolume = packagedVolume;
-        return this;
-    }
-
-    /**
-     * packaged_volume number
-     * 
-     * @return packagedVolume
-     **/
-    @ApiModelProperty(example = "null", value = "packaged_volume number")
-    public Float getPackagedVolume() {
-        return packagedVolume;
-    }
-
-    public void setPackagedVolume(Float packagedVolume) {
-        this.packagedVolume = packagedVolume;
-    }
-
-    public TypeResponse portionSize(Integer portionSize) {
-        this.portionSize = portionSize;
-        return this;
-    }
-
-    /**
-     * portion_size integer
-     * 
-     * @return portionSize
-     **/
-    @ApiModelProperty(example = "null", value = "portion_size integer")
-    public Integer getPortionSize() {
-        return portionSize;
-    }
-
-    public void setPortionSize(Integer portionSize) {
-        this.portionSize = portionSize;
-    }
-
-    public TypeResponse published(Boolean published) {
-        this.published = published;
-        return this;
-    }
-
-    /**
-     * published boolean
-     * 
-     * @return published
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "published boolean")
-    public Boolean getPublished() {
-        return published;
-    }
-
-    public void setPublished(Boolean published) {
-        this.published = published;
-    }
-
-    public TypeResponse radius(Float radius) {
-        this.radius = radius;
-        return this;
-    }
-
-    /**
-     * radius number
-     * 
-     * @return radius
-     **/
-    @ApiModelProperty(example = "null", value = "radius number")
-    public Float getRadius() {
-        return radius;
-    }
-
-    public void setRadius(Float radius) {
-        this.radius = radius;
-    }
-
-    public TypeResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public TypeResponse volume(Float volume) {
-        this.volume = volume;
-        return this;
-    }
-
-    /**
-     * volume number
-     * 
-     * @return volume
-     **/
-    @ApiModelProperty(example = "null", value = "volume number")
-    public Float getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Float volume) {
-        this.volume = volume;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -400,26 +400,26 @@ public class TypeResponse implements Serializable {
             return false;
         }
         TypeResponse typeResponse = (TypeResponse) o;
-        return Objects.equals(this.capacity, typeResponse.capacity)
+        return Objects.equals(this.typeId, typeResponse.typeId) && Objects.equals(this.name, typeResponse.name)
                 && Objects.equals(this.description, typeResponse.description)
-                && Objects.equals(this.dogmaAttributes, typeResponse.dogmaAttributes)
-                && Objects.equals(this.dogmaEffects, typeResponse.dogmaEffects)
-                && Objects.equals(this.graphicId, typeResponse.graphicId)
-                && Objects.equals(this.groupId, typeResponse.groupId)
-                && Objects.equals(this.iconId, typeResponse.iconId)
-                && Objects.equals(this.marketGroupId, typeResponse.marketGroupId)
-                && Objects.equals(this.mass, typeResponse.mass) && Objects.equals(this.name, typeResponse.name)
-                && Objects.equals(this.packagedVolume, typeResponse.packagedVolume)
-                && Objects.equals(this.portionSize, typeResponse.portionSize)
                 && Objects.equals(this.published, typeResponse.published)
-                && Objects.equals(this.radius, typeResponse.radius) && Objects.equals(this.typeId, typeResponse.typeId)
-                && Objects.equals(this.volume, typeResponse.volume);
+                && Objects.equals(this.groupId, typeResponse.groupId)
+                && Objects.equals(this.marketGroupId, typeResponse.marketGroupId)
+                && Objects.equals(this.radius, typeResponse.radius) && Objects.equals(this.volume, typeResponse.volume)
+                && Objects.equals(this.packagedVolume, typeResponse.packagedVolume)
+                && Objects.equals(this.iconId, typeResponse.iconId)
+                && Objects.equals(this.capacity, typeResponse.capacity)
+                && Objects.equals(this.portionSize, typeResponse.portionSize)
+                && Objects.equals(this.mass, typeResponse.mass)
+                && Objects.equals(this.graphicId, typeResponse.graphicId)
+                && Objects.equals(this.dogmaAttributes, typeResponse.dogmaAttributes)
+                && Objects.equals(this.dogmaEffects, typeResponse.dogmaEffects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(capacity, description, dogmaAttributes, dogmaEffects, graphicId, groupId, iconId,
-                marketGroupId, mass, name, packagedVolume, portionSize, published, radius, typeId, volume);
+        return Objects.hash(typeId, name, description, published, groupId, marketGroupId, radius, volume,
+                packagedVolume, iconId, capacity, portionSize, mass, graphicId, dogmaAttributes, dogmaEffects);
     }
 
     @Override
@@ -427,22 +427,22 @@ public class TypeResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class TypeResponse {\n");
 
-        sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    published: ").append(toIndentedString(published)).append("\n");
+        sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+        sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
+        sb.append("    radius: ").append(toIndentedString(radius)).append("\n");
+        sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
+        sb.append("    packagedVolume: ").append(toIndentedString(packagedVolume)).append("\n");
+        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
+        sb.append("    capacity: ").append(toIndentedString(capacity)).append("\n");
+        sb.append("    portionSize: ").append(toIndentedString(portionSize)).append("\n");
+        sb.append("    mass: ").append(toIndentedString(mass)).append("\n");
+        sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
         sb.append("    dogmaAttributes: ").append(toIndentedString(dogmaAttributes)).append("\n");
         sb.append("    dogmaEffects: ").append(toIndentedString(dogmaEffects)).append("\n");
-        sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
-        sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
-        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
-        sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
-        sb.append("    mass: ").append(toIndentedString(mass)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    packagedVolume: ").append(toIndentedString(packagedVolume)).append("\n");
-        sb.append("    portionSize: ").append(toIndentedString(portionSize)).append("\n");
-        sb.append("    published: ").append(toIndentedString(published)).append("\n");
-        sb.append("    radius: ").append(toIndentedString(radius)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("}");
         return sb.toString();
     }

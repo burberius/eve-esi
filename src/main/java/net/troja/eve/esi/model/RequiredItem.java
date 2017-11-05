@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class RequiredItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public RequiredItem quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+    @JsonProperty("quantity")
+    private Integer quantity = null;
 
     public RequiredItem typeId(Integer typeId) {
         this.typeId = typeId;
@@ -69,6 +50,25 @@ public class RequiredItem implements Serializable {
         this.typeId = typeId;
     }
 
+    public RequiredItem quantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,12 +78,12 @@ public class RequiredItem implements Serializable {
             return false;
         }
         RequiredItem requiredItem = (RequiredItem) o;
-        return Objects.equals(this.quantity, requiredItem.quantity) && Objects.equals(this.typeId, requiredItem.typeId);
+        return Objects.equals(this.typeId, requiredItem.typeId) && Objects.equals(this.quantity, requiredItem.quantity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quantity, typeId);
+        return Objects.hash(typeId, quantity);
     }
 
     @Override
@@ -91,8 +91,8 @@ public class RequiredItem implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class RequiredItem {\n");
 
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("}");
         return sb.toString();
     }

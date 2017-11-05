@@ -25,6 +25,15 @@ import java.io.Serializable;
 public class MailLabel implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("unread_count")
+    private Integer unreadCount = null;
+
+    @JsonProperty("label_id")
+    private Integer labelId = null;
+
+    @JsonProperty("name")
+    private String name = null;
+
     /**
      * color string
      */
@@ -90,32 +99,23 @@ public class MailLabel implements Serializable {
     @JsonProperty("color")
     private ColorEnum color = ColorEnum.FFFFFF;
 
-    @JsonProperty("label_id")
-    private Integer labelId = null;
-
-    @JsonProperty("name")
-    private String name = null;
-
-    @JsonProperty("unread_count")
-    private Integer unreadCount = null;
-
-    public MailLabel color(ColorEnum color) {
-        this.color = color;
+    public MailLabel unreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
         return this;
     }
 
     /**
-     * color string
+     * unread_count integer minimum: 0
      * 
-     * @return color
+     * @return unreadCount
      **/
-    @ApiModelProperty(example = "null", value = "color string")
-    public ColorEnum getColor() {
-        return color;
+    @ApiModelProperty(example = "null", value = "unread_count integer")
+    public Integer getUnreadCount() {
+        return unreadCount;
     }
 
-    public void setColor(ColorEnum color) {
-        this.color = color;
+    public void setUnreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
     }
 
     public MailLabel labelId(Integer labelId) {
@@ -156,23 +156,23 @@ public class MailLabel implements Serializable {
         this.name = name;
     }
 
-    public MailLabel unreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
+    public MailLabel color(ColorEnum color) {
+        this.color = color;
         return this;
     }
 
     /**
-     * unread_count integer minimum: 0
+     * color string
      * 
-     * @return unreadCount
+     * @return color
      **/
-    @ApiModelProperty(example = "null", value = "unread_count integer")
-    public Integer getUnreadCount() {
-        return unreadCount;
+    @ApiModelProperty(example = "null", value = "color string")
+    public ColorEnum getColor() {
+        return color;
     }
 
-    public void setUnreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
+    public void setColor(ColorEnum color) {
+        this.color = color;
     }
 
     @Override
@@ -184,13 +184,14 @@ public class MailLabel implements Serializable {
             return false;
         }
         MailLabel mailLabel = (MailLabel) o;
-        return Objects.equals(this.color, mailLabel.color) && Objects.equals(this.labelId, mailLabel.labelId)
-                && Objects.equals(this.name, mailLabel.name) && Objects.equals(this.unreadCount, mailLabel.unreadCount);
+        return Objects.equals(this.unreadCount, mailLabel.unreadCount)
+                && Objects.equals(this.labelId, mailLabel.labelId) && Objects.equals(this.name, mailLabel.name)
+                && Objects.equals(this.color, mailLabel.color);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, labelId, name, unreadCount);
+        return Objects.hash(unreadCount, labelId, name, color);
     }
 
     @Override
@@ -198,10 +199,10 @@ public class MailLabel implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabel {\n");
 
-        sb.append("    color: ").append(toIndentedString(color)).append("\n");
+        sb.append("    unreadCount: ").append(toIndentedString(unreadCount)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    unreadCount: ").append(toIndentedString(unreadCount)).append("\n");
+        sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("}");
         return sb.toString();
     }
