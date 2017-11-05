@@ -26,26 +26,20 @@ import java.io.Serializable;
 public class CharacterResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
-    @JsonProperty("ancestry_id")
-    private Integer ancestryId = null;
-
-    @JsonProperty("birthday")
-    private OffsetDateTime birthday = null;
-
-    @JsonProperty("bloodline_id")
-    private Integer bloodlineId = null;
-
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
+    @JsonProperty("name")
+    private String name = null;
 
     @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("faction_id")
-    private Integer factionId = null;
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
+
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
+
+    @JsonProperty("birthday")
+    private OffsetDateTime birthday = null;
 
     /**
      * gender string
@@ -80,89 +74,57 @@ public class CharacterResponse implements Serializable {
     @JsonProperty("gender")
     private GenderEnum gender = null;
 
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("race_id")
     private Integer raceId = null;
+
+    @JsonProperty("bloodline_id")
+    private Integer bloodlineId = null;
+
+    @JsonProperty("ancestry_id")
+    private Integer ancestryId = null;
 
     @JsonProperty("security_status")
     private Float securityStatus = null;
 
-    public CharacterResponse allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
+
+    public CharacterResponse name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * The character's alliance ID
+     * name string
      * 
-     * @return allianceId
+     * @return name
      **/
-    @ApiModelProperty(example = "null", value = "The character's alliance ID")
-    public Integer getAllianceId() {
-        return allianceId;
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
     }
 
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public CharacterResponse ancestryId(Integer ancestryId) {
-        this.ancestryId = ancestryId;
+    public CharacterResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * ancestry_id integer
+     * description string
      * 
-     * @return ancestryId
+     * @return description
      **/
-    @ApiModelProperty(example = "null", value = "ancestry_id integer")
-    public Integer getAncestryId() {
-        return ancestryId;
+    @ApiModelProperty(example = "null", value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setAncestryId(Integer ancestryId) {
-        this.ancestryId = ancestryId;
-    }
-
-    public CharacterResponse birthday(OffsetDateTime birthday) {
-        this.birthday = birthday;
-        return this;
-    }
-
-    /**
-     * Creation date of the character
-     * 
-     * @return birthday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Creation date of the character")
-    public OffsetDateTime getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(OffsetDateTime birthday) {
-        this.birthday = birthday;
-    }
-
-    public CharacterResponse bloodlineId(Integer bloodlineId) {
-        this.bloodlineId = bloodlineId;
-        return this;
-    }
-
-    /**
-     * bloodline_id integer
-     * 
-     * @return bloodlineId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "bloodline_id integer")
-    public Integer getBloodlineId() {
-        return bloodlineId;
-    }
-
-    public void setBloodlineId(Integer bloodlineId) {
-        this.bloodlineId = bloodlineId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public CharacterResponse corporationId(Integer corporationId) {
@@ -184,23 +146,137 @@ public class CharacterResponse implements Serializable {
         this.corporationId = corporationId;
     }
 
-    public CharacterResponse description(String description) {
-        this.description = description;
+    public CharacterResponse allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
         return this;
     }
 
     /**
-     * description string
+     * The character's alliance ID
      * 
-     * @return description
+     * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "description string")
-    public String getDescription() {
-        return description;
+    @ApiModelProperty(example = "null", value = "The character's alliance ID")
+    public Integer getAllianceId() {
+        return allianceId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+    }
+
+    public CharacterResponse birthday(OffsetDateTime birthday) {
+        this.birthday = birthday;
+        return this;
+    }
+
+    /**
+     * Creation date of the character
+     * 
+     * @return birthday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Creation date of the character")
+    public OffsetDateTime getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(OffsetDateTime birthday) {
+        this.birthday = birthday;
+    }
+
+    public CharacterResponse gender(GenderEnum gender) {
+        this.gender = gender;
+        return this;
+    }
+
+    /**
+     * gender string
+     * 
+     * @return gender
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "gender string")
+    public GenderEnum getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnum gender) {
+        this.gender = gender;
+    }
+
+    public CharacterResponse raceId(Integer raceId) {
+        this.raceId = raceId;
+        return this;
+    }
+
+    /**
+     * race_id integer
+     * 
+     * @return raceId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
+    public Integer getRaceId() {
+        return raceId;
+    }
+
+    public void setRaceId(Integer raceId) {
+        this.raceId = raceId;
+    }
+
+    public CharacterResponse bloodlineId(Integer bloodlineId) {
+        this.bloodlineId = bloodlineId;
+        return this;
+    }
+
+    /**
+     * bloodline_id integer
+     * 
+     * @return bloodlineId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "bloodline_id integer")
+    public Integer getBloodlineId() {
+        return bloodlineId;
+    }
+
+    public void setBloodlineId(Integer bloodlineId) {
+        this.bloodlineId = bloodlineId;
+    }
+
+    public CharacterResponse ancestryId(Integer ancestryId) {
+        this.ancestryId = ancestryId;
+        return this;
+    }
+
+    /**
+     * ancestry_id integer
+     * 
+     * @return ancestryId
+     **/
+    @ApiModelProperty(example = "null", value = "ancestry_id integer")
+    public Integer getAncestryId() {
+        return ancestryId;
+    }
+
+    public void setAncestryId(Integer ancestryId) {
+        this.ancestryId = ancestryId;
+    }
+
+    public CharacterResponse securityStatus(Float securityStatus) {
+        this.securityStatus = securityStatus;
+        return this;
+    }
+
+    /**
+     * security_status number minimum: -10 maximum: 10
+     * 
+     * @return securityStatus
+     **/
+    @ApiModelProperty(example = "null", value = "security_status number")
+    public Float getSecurityStatus() {
+        return securityStatus;
+    }
+
+    public void setSecurityStatus(Float securityStatus) {
+        this.securityStatus = securityStatus;
     }
 
     public CharacterResponse factionId(Integer factionId) {
@@ -223,82 +299,6 @@ public class CharacterResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public CharacterResponse gender(GenderEnum gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    /**
-     * gender string
-     * 
-     * @return gender
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "gender string")
-    public GenderEnum getGender() {
-        return gender;
-    }
-
-    public void setGender(GenderEnum gender) {
-        this.gender = gender;
-    }
-
-    public CharacterResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public CharacterResponse raceId(Integer raceId) {
-        this.raceId = raceId;
-        return this;
-    }
-
-    /**
-     * race_id integer
-     * 
-     * @return raceId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
-    public Integer getRaceId() {
-        return raceId;
-    }
-
-    public void setRaceId(Integer raceId) {
-        this.raceId = raceId;
-    }
-
-    public CharacterResponse securityStatus(Float securityStatus) {
-        this.securityStatus = securityStatus;
-        return this;
-    }
-
-    /**
-     * security_status number minimum: -10 maximum: 10
-     * 
-     * @return securityStatus
-     **/
-    @ApiModelProperty(example = "null", value = "security_status number")
-    public Float getSecurityStatus() {
-        return securityStatus;
-    }
-
-    public void setSecurityStatus(Float securityStatus) {
-        this.securityStatus = securityStatus;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -308,23 +308,23 @@ public class CharacterResponse implements Serializable {
             return false;
         }
         CharacterResponse characterResponse = (CharacterResponse) o;
-        return Objects.equals(this.allianceId, characterResponse.allianceId)
-                && Objects.equals(this.ancestryId, characterResponse.ancestryId)
-                && Objects.equals(this.birthday, characterResponse.birthday)
-                && Objects.equals(this.bloodlineId, characterResponse.bloodlineId)
-                && Objects.equals(this.corporationId, characterResponse.corporationId)
+        return Objects.equals(this.name, characterResponse.name)
                 && Objects.equals(this.description, characterResponse.description)
-                && Objects.equals(this.factionId, characterResponse.factionId)
+                && Objects.equals(this.corporationId, characterResponse.corporationId)
+                && Objects.equals(this.allianceId, characterResponse.allianceId)
+                && Objects.equals(this.birthday, characterResponse.birthday)
                 && Objects.equals(this.gender, characterResponse.gender)
-                && Objects.equals(this.name, characterResponse.name)
                 && Objects.equals(this.raceId, characterResponse.raceId)
-                && Objects.equals(this.securityStatus, characterResponse.securityStatus);
+                && Objects.equals(this.bloodlineId, characterResponse.bloodlineId)
+                && Objects.equals(this.ancestryId, characterResponse.ancestryId)
+                && Objects.equals(this.securityStatus, characterResponse.securityStatus)
+                && Objects.equals(this.factionId, characterResponse.factionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, ancestryId, birthday, bloodlineId, corporationId, description, factionId,
-                gender, name, raceId, securityStatus);
+        return Objects.hash(name, description, corporationId, allianceId, birthday, gender, raceId, bloodlineId,
+                ancestryId, securityStatus, factionId);
     }
 
     @Override
@@ -332,17 +332,17 @@ public class CharacterResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterResponse {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    ancestryId: ").append(toIndentedString(ancestryId)).append("\n");
-        sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
-        sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
+        sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
+        sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
         sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
+        sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
+        sb.append("    ancestryId: ").append(toIndentedString(ancestryId)).append("\n");
         sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

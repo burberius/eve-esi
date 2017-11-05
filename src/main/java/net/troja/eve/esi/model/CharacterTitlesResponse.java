@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class CharacterTitlesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("title_id")
     private Integer titleId = null;
 
-    public CharacterTitlesResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonProperty("name")
+    private String name = null;
 
     public CharacterTitlesResponse titleId(Integer titleId) {
         this.titleId = titleId;
@@ -69,6 +50,25 @@ public class CharacterTitlesResponse implements Serializable {
         this.titleId = titleId;
     }
 
+    public CharacterTitlesResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class CharacterTitlesResponse implements Serializable {
             return false;
         }
         CharacterTitlesResponse characterTitlesResponse = (CharacterTitlesResponse) o;
-        return Objects.equals(this.name, characterTitlesResponse.name)
-                && Objects.equals(this.titleId, characterTitlesResponse.titleId);
+        return Objects.equals(this.titleId, characterTitlesResponse.titleId)
+                && Objects.equals(this.name, characterTitlesResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, titleId);
+        return Objects.hash(titleId, name);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class CharacterTitlesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterTitlesResponse {\n");
 
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    titleId: ").append(toIndentedString(titleId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

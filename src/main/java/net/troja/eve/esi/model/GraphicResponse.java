@@ -25,47 +25,47 @@ import java.io.Serializable;
 public class GraphicResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("collision_file")
-    private String collisionFile = null;
+    @JsonProperty("graphic_id")
+    private Integer graphicId = null;
 
     @JsonProperty("graphic_file")
     private String graphicFile = null;
 
-    @JsonProperty("graphic_id")
-    private Integer graphicId = null;
-
-    @JsonProperty("icon_folder")
-    private String iconFolder = null;
-
-    @JsonProperty("sof_dna")
-    private String sofDna = null;
+    @JsonProperty("sof_race_name")
+    private String sofRaceName = null;
 
     @JsonProperty("sof_fation_name")
     private String sofFationName = null;
 
+    @JsonProperty("sof_dna")
+    private String sofDna = null;
+
     @JsonProperty("sof_hull_name")
     private String sofHullName = null;
 
-    @JsonProperty("sof_race_name")
-    private String sofRaceName = null;
+    @JsonProperty("collision_file")
+    private String collisionFile = null;
 
-    public GraphicResponse collisionFile(String collisionFile) {
-        this.collisionFile = collisionFile;
+    @JsonProperty("icon_folder")
+    private String iconFolder = null;
+
+    public GraphicResponse graphicId(Integer graphicId) {
+        this.graphicId = graphicId;
         return this;
     }
 
     /**
-     * collision_file string
+     * graphic_id integer
      * 
-     * @return collisionFile
+     * @return graphicId
      **/
-    @ApiModelProperty(example = "null", value = "collision_file string")
-    public String getCollisionFile() {
-        return collisionFile;
+    @ApiModelProperty(example = "null", required = true, value = "graphic_id integer")
+    public Integer getGraphicId() {
+        return graphicId;
     }
 
-    public void setCollisionFile(String collisionFile) {
-        this.collisionFile = collisionFile;
+    public void setGraphicId(Integer graphicId) {
+        this.graphicId = graphicId;
     }
 
     public GraphicResponse graphicFile(String graphicFile) {
@@ -87,61 +87,23 @@ public class GraphicResponse implements Serializable {
         this.graphicFile = graphicFile;
     }
 
-    public GraphicResponse graphicId(Integer graphicId) {
-        this.graphicId = graphicId;
+    public GraphicResponse sofRaceName(String sofRaceName) {
+        this.sofRaceName = sofRaceName;
         return this;
     }
 
     /**
-     * graphic_id integer
+     * sof_race_name string
      * 
-     * @return graphicId
+     * @return sofRaceName
      **/
-    @ApiModelProperty(example = "null", required = true, value = "graphic_id integer")
-    public Integer getGraphicId() {
-        return graphicId;
+    @ApiModelProperty(example = "null", value = "sof_race_name string")
+    public String getSofRaceName() {
+        return sofRaceName;
     }
 
-    public void setGraphicId(Integer graphicId) {
-        this.graphicId = graphicId;
-    }
-
-    public GraphicResponse iconFolder(String iconFolder) {
-        this.iconFolder = iconFolder;
-        return this;
-    }
-
-    /**
-     * icon_folder string
-     * 
-     * @return iconFolder
-     **/
-    @ApiModelProperty(example = "null", value = "icon_folder string")
-    public String getIconFolder() {
-        return iconFolder;
-    }
-
-    public void setIconFolder(String iconFolder) {
-        this.iconFolder = iconFolder;
-    }
-
-    public GraphicResponse sofDna(String sofDna) {
-        this.sofDna = sofDna;
-        return this;
-    }
-
-    /**
-     * sof_dna string
-     * 
-     * @return sofDna
-     **/
-    @ApiModelProperty(example = "null", value = "sof_dna string")
-    public String getSofDna() {
-        return sofDna;
-    }
-
-    public void setSofDna(String sofDna) {
-        this.sofDna = sofDna;
+    public void setSofRaceName(String sofRaceName) {
+        this.sofRaceName = sofRaceName;
     }
 
     public GraphicResponse sofFationName(String sofFationName) {
@@ -163,6 +125,25 @@ public class GraphicResponse implements Serializable {
         this.sofFationName = sofFationName;
     }
 
+    public GraphicResponse sofDna(String sofDna) {
+        this.sofDna = sofDna;
+        return this;
+    }
+
+    /**
+     * sof_dna string
+     * 
+     * @return sofDna
+     **/
+    @ApiModelProperty(example = "null", value = "sof_dna string")
+    public String getSofDna() {
+        return sofDna;
+    }
+
+    public void setSofDna(String sofDna) {
+        this.sofDna = sofDna;
+    }
+
     public GraphicResponse sofHullName(String sofHullName) {
         this.sofHullName = sofHullName;
         return this;
@@ -182,23 +163,42 @@ public class GraphicResponse implements Serializable {
         this.sofHullName = sofHullName;
     }
 
-    public GraphicResponse sofRaceName(String sofRaceName) {
-        this.sofRaceName = sofRaceName;
+    public GraphicResponse collisionFile(String collisionFile) {
+        this.collisionFile = collisionFile;
         return this;
     }
 
     /**
-     * sof_race_name string
+     * collision_file string
      * 
-     * @return sofRaceName
+     * @return collisionFile
      **/
-    @ApiModelProperty(example = "null", value = "sof_race_name string")
-    public String getSofRaceName() {
-        return sofRaceName;
+    @ApiModelProperty(example = "null", value = "collision_file string")
+    public String getCollisionFile() {
+        return collisionFile;
     }
 
-    public void setSofRaceName(String sofRaceName) {
-        this.sofRaceName = sofRaceName;
+    public void setCollisionFile(String collisionFile) {
+        this.collisionFile = collisionFile;
+    }
+
+    public GraphicResponse iconFolder(String iconFolder) {
+        this.iconFolder = iconFolder;
+        return this;
+    }
+
+    /**
+     * icon_folder string
+     * 
+     * @return iconFolder
+     **/
+    @ApiModelProperty(example = "null", value = "icon_folder string")
+    public String getIconFolder() {
+        return iconFolder;
+    }
+
+    public void setIconFolder(String iconFolder) {
+        this.iconFolder = iconFolder;
     }
 
     @Override
@@ -210,20 +210,20 @@ public class GraphicResponse implements Serializable {
             return false;
         }
         GraphicResponse graphicResponse = (GraphicResponse) o;
-        return Objects.equals(this.collisionFile, graphicResponse.collisionFile)
+        return Objects.equals(this.graphicId, graphicResponse.graphicId)
                 && Objects.equals(this.graphicFile, graphicResponse.graphicFile)
-                && Objects.equals(this.graphicId, graphicResponse.graphicId)
-                && Objects.equals(this.iconFolder, graphicResponse.iconFolder)
-                && Objects.equals(this.sofDna, graphicResponse.sofDna)
+                && Objects.equals(this.sofRaceName, graphicResponse.sofRaceName)
                 && Objects.equals(this.sofFationName, graphicResponse.sofFationName)
+                && Objects.equals(this.sofDna, graphicResponse.sofDna)
                 && Objects.equals(this.sofHullName, graphicResponse.sofHullName)
-                && Objects.equals(this.sofRaceName, graphicResponse.sofRaceName);
+                && Objects.equals(this.collisionFile, graphicResponse.collisionFile)
+                && Objects.equals(this.iconFolder, graphicResponse.iconFolder);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(collisionFile, graphicFile, graphicId, iconFolder, sofDna, sofFationName, sofHullName,
-                sofRaceName);
+        return Objects.hash(graphicId, graphicFile, sofRaceName, sofFationName, sofDna, sofHullName, collisionFile,
+                iconFolder);
     }
 
     @Override
@@ -231,14 +231,14 @@ public class GraphicResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class GraphicResponse {\n");
 
-        sb.append("    collisionFile: ").append(toIndentedString(collisionFile)).append("\n");
-        sb.append("    graphicFile: ").append(toIndentedString(graphicFile)).append("\n");
         sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
-        sb.append("    iconFolder: ").append(toIndentedString(iconFolder)).append("\n");
-        sb.append("    sofDna: ").append(toIndentedString(sofDna)).append("\n");
-        sb.append("    sofFationName: ").append(toIndentedString(sofFationName)).append("\n");
-        sb.append("    sofHullName: ").append(toIndentedString(sofHullName)).append("\n");
+        sb.append("    graphicFile: ").append(toIndentedString(graphicFile)).append("\n");
         sb.append("    sofRaceName: ").append(toIndentedString(sofRaceName)).append("\n");
+        sb.append("    sofFationName: ").append(toIndentedString(sofFationName)).append("\n");
+        sb.append("    sofDna: ").append(toIndentedString(sofDna)).append("\n");
+        sb.append("    sofHullName: ").append(toIndentedString(sofHullName)).append("\n");
+        sb.append("    collisionFile: ").append(toIndentedString(collisionFile)).append("\n");
+        sb.append("    iconFolder: ").append(toIndentedString(iconFolder)).append("\n");
         sb.append("}");
         return sb.toString();
     }

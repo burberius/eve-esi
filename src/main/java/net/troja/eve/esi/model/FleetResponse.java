@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class FleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("motd")
+    private String motd = null;
+
     @JsonProperty("is_free_move")
     private Boolean isFreeMove = null;
 
@@ -34,8 +37,24 @@ public class FleetResponse implements Serializable {
     @JsonProperty("is_voice_enabled")
     private Boolean isVoiceEnabled = null;
 
-    @JsonProperty("motd")
-    private String motd = null;
+    public FleetResponse motd(String motd) {
+        this.motd = motd;
+        return this;
+    }
+
+    /**
+     * Fleet MOTD in CCP flavoured HTML
+     * 
+     * @return motd
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Fleet MOTD in CCP flavoured HTML")
+    public String getMotd() {
+        return motd;
+    }
+
+    public void setMotd(String motd) {
+        this.motd = motd;
+    }
 
     public FleetResponse isFreeMove(Boolean isFreeMove) {
         this.isFreeMove = isFreeMove;
@@ -94,25 +113,6 @@ public class FleetResponse implements Serializable {
         this.isVoiceEnabled = isVoiceEnabled;
     }
 
-    public FleetResponse motd(String motd) {
-        this.motd = motd;
-        return this;
-    }
-
-    /**
-     * Fleet MOTD in CCP flavoured HTML
-     * 
-     * @return motd
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Fleet MOTD in CCP flavoured HTML")
-    public String getMotd() {
-        return motd;
-    }
-
-    public void setMotd(String motd) {
-        this.motd = motd;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class FleetResponse implements Serializable {
             return false;
         }
         FleetResponse fleetResponse = (FleetResponse) o;
-        return Objects.equals(this.isFreeMove, fleetResponse.isFreeMove)
+        return Objects.equals(this.motd, fleetResponse.motd)
+                && Objects.equals(this.isFreeMove, fleetResponse.isFreeMove)
                 && Objects.equals(this.isRegistered, fleetResponse.isRegistered)
-                && Objects.equals(this.isVoiceEnabled, fleetResponse.isVoiceEnabled)
-                && Objects.equals(this.motd, fleetResponse.motd);
+                && Objects.equals(this.isVoiceEnabled, fleetResponse.isVoiceEnabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isFreeMove, isRegistered, isVoiceEnabled, motd);
+        return Objects.hash(motd, isFreeMove, isRegistered, isVoiceEnabled);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class FleetResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetResponse {\n");
 
+        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
         sb.append("    isRegistered: ").append(toIndentedString(isRegistered)).append("\n");
         sb.append("    isVoiceEnabled: ").append(toIndentedString(isVoiceEnabled)).append("\n");
-        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("}");
         return sb.toString();
     }

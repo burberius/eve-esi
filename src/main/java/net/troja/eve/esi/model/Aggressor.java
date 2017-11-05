@@ -26,36 +26,17 @@ import java.io.Serializable;
 public class Aggressor implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("isk_destroyed")
-    private Float iskDestroyed = null;
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
 
     @JsonProperty("ships_killed")
     private Integer shipsKilled = null;
 
-    public Aggressor allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-        return this;
-    }
-
-    /**
-     * Alliance ID if and only if the aggressor is an alliance
-     * 
-     * @return allianceId
-     **/
-    @ApiModelProperty(example = "null", value = "Alliance ID if and only if the aggressor is an alliance")
-    public Integer getAllianceId() {
-        return allianceId;
-    }
-
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-    }
+    @JsonProperty("isk_destroyed")
+    private Float iskDestroyed = null;
 
     public Aggressor corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -76,23 +57,23 @@ public class Aggressor implements Serializable {
         this.corporationId = corporationId;
     }
 
-    public Aggressor iskDestroyed(Float iskDestroyed) {
-        this.iskDestroyed = iskDestroyed;
+    public Aggressor allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
         return this;
     }
 
     /**
-     * ISK value of ships the aggressor has destroyed
+     * Alliance ID if and only if the aggressor is an alliance
      * 
-     * @return iskDestroyed
+     * @return allianceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ISK value of ships the aggressor has destroyed")
-    public Float getIskDestroyed() {
-        return iskDestroyed;
+    @ApiModelProperty(example = "null", value = "Alliance ID if and only if the aggressor is an alliance")
+    public Integer getAllianceId() {
+        return allianceId;
     }
 
-    public void setIskDestroyed(Float iskDestroyed) {
-        this.iskDestroyed = iskDestroyed;
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
     }
 
     public Aggressor shipsKilled(Integer shipsKilled) {
@@ -114,6 +95,25 @@ public class Aggressor implements Serializable {
         this.shipsKilled = shipsKilled;
     }
 
+    public Aggressor iskDestroyed(Float iskDestroyed) {
+        this.iskDestroyed = iskDestroyed;
+        return this;
+    }
+
+    /**
+     * ISK value of ships the aggressor has destroyed
+     * 
+     * @return iskDestroyed
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ISK value of ships the aggressor has destroyed")
+    public Float getIskDestroyed() {
+        return iskDestroyed;
+    }
+
+    public void setIskDestroyed(Float iskDestroyed) {
+        this.iskDestroyed = iskDestroyed;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,15 +123,15 @@ public class Aggressor implements Serializable {
             return false;
         }
         Aggressor aggressor = (Aggressor) o;
-        return Objects.equals(this.allianceId, aggressor.allianceId)
-                && Objects.equals(this.corporationId, aggressor.corporationId)
-                && Objects.equals(this.iskDestroyed, aggressor.iskDestroyed)
-                && Objects.equals(this.shipsKilled, aggressor.shipsKilled);
+        return Objects.equals(this.corporationId, aggressor.corporationId)
+                && Objects.equals(this.allianceId, aggressor.allianceId)
+                && Objects.equals(this.shipsKilled, aggressor.shipsKilled)
+                && Objects.equals(this.iskDestroyed, aggressor.iskDestroyed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, corporationId, iskDestroyed, shipsKilled);
+        return Objects.hash(corporationId, allianceId, shipsKilled, iskDestroyed);
     }
 
     @Override
@@ -139,10 +139,10 @@ public class Aggressor implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Aggressor {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    iskDestroyed: ").append(toIndentedString(iskDestroyed)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    shipsKilled: ").append(toIndentedString(shipsKilled)).append("\n");
+        sb.append("    iskDestroyed: ").append(toIndentedString(iskDestroyed)).append("\n");
         sb.append("}");
         return sb.toString();
     }

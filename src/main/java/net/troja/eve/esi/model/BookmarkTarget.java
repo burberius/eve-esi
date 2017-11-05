@@ -27,32 +27,32 @@ import java.io.Serializable;
 public class BookmarkTarget implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("coordinates")
-    private Position coordinates = null;
+    @JsonProperty("location_id")
+    private Long locationId = null;
 
     @JsonProperty("item")
     private CharacterBookmarkItem item = null;
 
-    @JsonProperty("location_id")
-    private Long locationId = null;
+    @JsonProperty("coordinates")
+    private Position coordinates = null;
 
-    public BookmarkTarget coordinates(Position coordinates) {
-        this.coordinates = coordinates;
+    public BookmarkTarget locationId(Long locationId) {
+        this.locationId = locationId;
         return this;
     }
 
     /**
-     * Get coordinates
+     * location_id integer
      * 
-     * @return coordinates
+     * @return locationId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public Position getCoordinates() {
-        return coordinates;
+    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setCoordinates(Position coordinates) {
-        this.coordinates = coordinates;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
     public BookmarkTarget item(CharacterBookmarkItem item) {
@@ -74,23 +74,23 @@ public class BookmarkTarget implements Serializable {
         this.item = item;
     }
 
-    public BookmarkTarget locationId(Long locationId) {
-        this.locationId = locationId;
+    public BookmarkTarget coordinates(Position coordinates) {
+        this.coordinates = coordinates;
         return this;
     }
 
     /**
-     * location_id integer
+     * Get coordinates
      * 
-     * @return locationId
+     * @return coordinates
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
-    public Long getLocationId() {
-        return locationId;
+    @ApiModelProperty(example = "null", value = "")
+    public Position getCoordinates() {
+        return coordinates;
     }
 
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
+    public void setCoordinates(Position coordinates) {
+        this.coordinates = coordinates;
     }
 
     @Override
@@ -102,14 +102,14 @@ public class BookmarkTarget implements Serializable {
             return false;
         }
         BookmarkTarget bookmarkTarget = (BookmarkTarget) o;
-        return Objects.equals(this.coordinates, bookmarkTarget.coordinates)
+        return Objects.equals(this.locationId, bookmarkTarget.locationId)
                 && Objects.equals(this.item, bookmarkTarget.item)
-                && Objects.equals(this.locationId, bookmarkTarget.locationId);
+                && Objects.equals(this.coordinates, bookmarkTarget.coordinates);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(coordinates, item, locationId);
+        return Objects.hash(locationId, item, coordinates);
     }
 
     @Override
@@ -117,9 +117,9 @@ public class BookmarkTarget implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class BookmarkTarget {\n");
 
-        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
-        sb.append("    item: ").append(toIndentedString(item)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    item: ").append(toIndentedString(item)).append("\n");
+        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -26,23 +26,35 @@ import java.io.Serializable;
 public class CorporationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
+    @JsonProperty("corporation_name")
+    private String corporationName = null;
+
+    @JsonProperty("ticker")
+    private String ticker = null;
+
+    @JsonProperty("member_count")
+    private Integer memberCount = null;
 
     @JsonProperty("ceo_id")
     private Integer ceoId = null;
 
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
+
     @JsonProperty("corporation_description")
     private String corporationDescription = null;
 
-    @JsonProperty("corporation_name")
-    private String corporationName = null;
+    @JsonProperty("tax_rate")
+    private Float taxRate = null;
 
     @JsonProperty("creation_date")
     private OffsetDateTime creationDate = null;
 
     @JsonProperty("creator_id")
     private Integer creatorId = null;
+
+    @JsonProperty("url")
+    private String url = null;
 
     /**
      * faction string
@@ -81,35 +93,61 @@ public class CorporationResponse implements Serializable {
     @JsonProperty("faction")
     private FactionEnum faction = null;
 
-    @JsonProperty("member_count")
-    private Integer memberCount = null;
-
-    @JsonProperty("tax_rate")
-    private Float taxRate = null;
-
-    @JsonProperty("ticker")
-    private String ticker = null;
-
-    @JsonProperty("url")
-    private String url = null;
-
-    public CorporationResponse allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
+    public CorporationResponse corporationName(String corporationName) {
+        this.corporationName = corporationName;
         return this;
     }
 
     /**
-     * id of alliance that corporation is a member of, if any
+     * the full name of the corporation
      * 
-     * @return allianceId
+     * @return corporationName
      **/
-    @ApiModelProperty(example = "null", value = "id of alliance that corporation is a member of, if any")
-    public Integer getAllianceId() {
-        return allianceId;
+    @ApiModelProperty(example = "null", required = true, value = "the full name of the corporation")
+    public String getCorporationName() {
+        return corporationName;
     }
 
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
+    public void setCorporationName(String corporationName) {
+        this.corporationName = corporationName;
+    }
+
+    public CorporationResponse ticker(String ticker) {
+        this.ticker = ticker;
+        return this;
+    }
+
+    /**
+     * the short name of the corporation
+     * 
+     * @return ticker
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "the short name of the corporation")
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
+    }
+
+    public CorporationResponse memberCount(Integer memberCount) {
+        this.memberCount = memberCount;
+        return this;
+    }
+
+    /**
+     * member_count integer
+     * 
+     * @return memberCount
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "member_count integer")
+    public Integer getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(Integer memberCount) {
+        this.memberCount = memberCount;
     }
 
     public CorporationResponse ceoId(Integer ceoId) {
@@ -131,6 +169,25 @@ public class CorporationResponse implements Serializable {
         this.ceoId = ceoId;
     }
 
+    public CorporationResponse allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+        return this;
+    }
+
+    /**
+     * id of alliance that corporation is a member of, if any
+     * 
+     * @return allianceId
+     **/
+    @ApiModelProperty(example = "null", value = "id of alliance that corporation is a member of, if any")
+    public Integer getAllianceId() {
+        return allianceId;
+    }
+
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+    }
+
     public CorporationResponse corporationDescription(String corporationDescription) {
         this.corporationDescription = corporationDescription;
         return this;
@@ -150,23 +207,23 @@ public class CorporationResponse implements Serializable {
         this.corporationDescription = corporationDescription;
     }
 
-    public CorporationResponse corporationName(String corporationName) {
-        this.corporationName = corporationName;
+    public CorporationResponse taxRate(Float taxRate) {
+        this.taxRate = taxRate;
         return this;
     }
 
     /**
-     * the full name of the corporation
+     * tax_rate number minimum: 0 maximum: 1
      * 
-     * @return corporationName
+     * @return taxRate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "the full name of the corporation")
-    public String getCorporationName() {
-        return corporationName;
+    @ApiModelProperty(example = "null", required = true, value = "tax_rate number")
+    public Float getTaxRate() {
+        return taxRate;
     }
 
-    public void setCorporationName(String corporationName) {
-        this.corporationName = corporationName;
+    public void setTaxRate(Float taxRate) {
+        this.taxRate = taxRate;
     }
 
     public CorporationResponse creationDate(OffsetDateTime creationDate) {
@@ -207,82 +264,6 @@ public class CorporationResponse implements Serializable {
         this.creatorId = creatorId;
     }
 
-    public CorporationResponse faction(FactionEnum faction) {
-        this.faction = faction;
-        return this;
-    }
-
-    /**
-     * faction string
-     * 
-     * @return faction
-     **/
-    @ApiModelProperty(example = "null", value = "faction string")
-    public FactionEnum getFaction() {
-        return faction;
-    }
-
-    public void setFaction(FactionEnum faction) {
-        this.faction = faction;
-    }
-
-    public CorporationResponse memberCount(Integer memberCount) {
-        this.memberCount = memberCount;
-        return this;
-    }
-
-    /**
-     * member_count integer
-     * 
-     * @return memberCount
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "member_count integer")
-    public Integer getMemberCount() {
-        return memberCount;
-    }
-
-    public void setMemberCount(Integer memberCount) {
-        this.memberCount = memberCount;
-    }
-
-    public CorporationResponse taxRate(Float taxRate) {
-        this.taxRate = taxRate;
-        return this;
-    }
-
-    /**
-     * tax_rate number minimum: 0 maximum: 1
-     * 
-     * @return taxRate
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "tax_rate number")
-    public Float getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(Float taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public CorporationResponse ticker(String ticker) {
-        this.ticker = ticker;
-        return this;
-    }
-
-    /**
-     * the short name of the corporation
-     * 
-     * @return ticker
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "the short name of the corporation")
-    public String getTicker() {
-        return ticker;
-    }
-
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
-    }
-
     public CorporationResponse url(String url) {
         this.url = url;
         return this;
@@ -302,6 +283,25 @@ public class CorporationResponse implements Serializable {
         this.url = url;
     }
 
+    public CorporationResponse faction(FactionEnum faction) {
+        this.faction = faction;
+        return this;
+    }
+
+    /**
+     * faction string
+     * 
+     * @return faction
+     **/
+    @ApiModelProperty(example = "null", value = "faction string")
+    public FactionEnum getFaction() {
+        return faction;
+    }
+
+    public void setFaction(FactionEnum faction) {
+        this.faction = faction;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -311,23 +311,23 @@ public class CorporationResponse implements Serializable {
             return false;
         }
         CorporationResponse corporationResponse = (CorporationResponse) o;
-        return Objects.equals(this.allianceId, corporationResponse.allianceId)
+        return Objects.equals(this.corporationName, corporationResponse.corporationName)
+                && Objects.equals(this.ticker, corporationResponse.ticker)
+                && Objects.equals(this.memberCount, corporationResponse.memberCount)
                 && Objects.equals(this.ceoId, corporationResponse.ceoId)
+                && Objects.equals(this.allianceId, corporationResponse.allianceId)
                 && Objects.equals(this.corporationDescription, corporationResponse.corporationDescription)
-                && Objects.equals(this.corporationName, corporationResponse.corporationName)
+                && Objects.equals(this.taxRate, corporationResponse.taxRate)
                 && Objects.equals(this.creationDate, corporationResponse.creationDate)
                 && Objects.equals(this.creatorId, corporationResponse.creatorId)
-                && Objects.equals(this.faction, corporationResponse.faction)
-                && Objects.equals(this.memberCount, corporationResponse.memberCount)
-                && Objects.equals(this.taxRate, corporationResponse.taxRate)
-                && Objects.equals(this.ticker, corporationResponse.ticker)
-                && Objects.equals(this.url, corporationResponse.url);
+                && Objects.equals(this.url, corporationResponse.url)
+                && Objects.equals(this.faction, corporationResponse.faction);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, ceoId, corporationDescription, corporationName, creationDate, creatorId,
-                faction, memberCount, taxRate, ticker, url);
+        return Objects.hash(corporationName, ticker, memberCount, ceoId, allianceId, corporationDescription, taxRate,
+                creationDate, creatorId, url, faction);
     }
 
     @Override
@@ -335,17 +335,17 @@ public class CorporationResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationResponse {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    ceoId: ").append(toIndentedString(ceoId)).append("\n");
-        sb.append("    corporationDescription: ").append(toIndentedString(corporationDescription)).append("\n");
         sb.append("    corporationName: ").append(toIndentedString(corporationName)).append("\n");
+        sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
+        sb.append("    memberCount: ").append(toIndentedString(memberCount)).append("\n");
+        sb.append("    ceoId: ").append(toIndentedString(ceoId)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
+        sb.append("    corporationDescription: ").append(toIndentedString(corporationDescription)).append("\n");
+        sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
         sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
-        sb.append("    faction: ").append(toIndentedString(faction)).append("\n");
-        sb.append("    memberCount: ").append(toIndentedString(memberCount)).append("\n");
-        sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
-        sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    faction: ").append(toIndentedString(faction)).append("\n");
         sb.append("}");
         return sb.toString();
     }

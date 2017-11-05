@@ -26,39 +26,57 @@ import java.io.Serializable;
 public class CorporationMiningExtractionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("chunk_arrival_time")
-    private OffsetDateTime chunkArrivalTime = null;
-
-    @JsonProperty("extraction_start_time")
-    private OffsetDateTime extractionStartTime = null;
+    @JsonProperty("structure_id")
+    private Long structureId = null;
 
     @JsonProperty("moon_id")
     private Integer moonId = null;
 
+    @JsonProperty("extraction_start_time")
+    private OffsetDateTime extractionStartTime = null;
+
+    @JsonProperty("chunk_arrival_time")
+    private OffsetDateTime chunkArrivalTime = null;
+
     @JsonProperty("natural_decay_time")
     private OffsetDateTime naturalDecayTime = null;
 
-    @JsonProperty("structure_id")
-    private Long structureId = null;
-
-    public CorporationMiningExtractionsResponse chunkArrivalTime(OffsetDateTime chunkArrivalTime) {
-        this.chunkArrivalTime = chunkArrivalTime;
+    public CorporationMiningExtractionsResponse structureId(Long structureId) {
+        this.structureId = structureId;
         return this;
     }
 
     /**
-     * The time at which the chunk being extracted will arrive and can be
-     * fractured by the moon mining drill.
+     * structure_id integer
      * 
-     * @return chunkArrivalTime
+     * @return structureId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill. ")
-    public OffsetDateTime getChunkArrivalTime() {
-        return chunkArrivalTime;
+    @ApiModelProperty(example = "null", required = true, value = "structure_id integer")
+    public Long getStructureId() {
+        return structureId;
     }
 
-    public void setChunkArrivalTime(OffsetDateTime chunkArrivalTime) {
-        this.chunkArrivalTime = chunkArrivalTime;
+    public void setStructureId(Long structureId) {
+        this.structureId = structureId;
+    }
+
+    public CorporationMiningExtractionsResponse moonId(Integer moonId) {
+        this.moonId = moonId;
+        return this;
+    }
+
+    /**
+     * moon_id integer
+     * 
+     * @return moonId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "moon_id integer")
+    public Integer getMoonId() {
+        return moonId;
+    }
+
+    public void setMoonId(Integer moonId) {
+        this.moonId = moonId;
     }
 
     public CorporationMiningExtractionsResponse extractionStartTime(OffsetDateTime extractionStartTime) {
@@ -80,23 +98,24 @@ public class CorporationMiningExtractionsResponse implements Serializable {
         this.extractionStartTime = extractionStartTime;
     }
 
-    public CorporationMiningExtractionsResponse moonId(Integer moonId) {
-        this.moonId = moonId;
+    public CorporationMiningExtractionsResponse chunkArrivalTime(OffsetDateTime chunkArrivalTime) {
+        this.chunkArrivalTime = chunkArrivalTime;
         return this;
     }
 
     /**
-     * moon_id integer
+     * The time at which the chunk being extracted will arrive and can be
+     * fractured by the moon mining drill.
      * 
-     * @return moonId
+     * @return chunkArrivalTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "moon_id integer")
-    public Integer getMoonId() {
-        return moonId;
+    @ApiModelProperty(example = "null", required = true, value = "The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill. ")
+    public OffsetDateTime getChunkArrivalTime() {
+        return chunkArrivalTime;
     }
 
-    public void setMoonId(Integer moonId) {
-        this.moonId = moonId;
+    public void setChunkArrivalTime(OffsetDateTime chunkArrivalTime) {
+        this.chunkArrivalTime = chunkArrivalTime;
     }
 
     public CorporationMiningExtractionsResponse naturalDecayTime(OffsetDateTime naturalDecayTime) {
@@ -119,25 +138,6 @@ public class CorporationMiningExtractionsResponse implements Serializable {
         this.naturalDecayTime = naturalDecayTime;
     }
 
-    public CorporationMiningExtractionsResponse structureId(Long structureId) {
-        this.structureId = structureId;
-        return this;
-    }
-
-    /**
-     * structure_id integer
-     * 
-     * @return structureId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "structure_id integer")
-    public Long getStructureId() {
-        return structureId;
-    }
-
-    public void setStructureId(Long structureId) {
-        this.structureId = structureId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,16 +147,16 @@ public class CorporationMiningExtractionsResponse implements Serializable {
             return false;
         }
         CorporationMiningExtractionsResponse corporationMiningExtractionsResponse = (CorporationMiningExtractionsResponse) o;
-        return Objects.equals(this.chunkArrivalTime, corporationMiningExtractionsResponse.chunkArrivalTime)
-                && Objects.equals(this.extractionStartTime, corporationMiningExtractionsResponse.extractionStartTime)
+        return Objects.equals(this.structureId, corporationMiningExtractionsResponse.structureId)
                 && Objects.equals(this.moonId, corporationMiningExtractionsResponse.moonId)
-                && Objects.equals(this.naturalDecayTime, corporationMiningExtractionsResponse.naturalDecayTime)
-                && Objects.equals(this.structureId, corporationMiningExtractionsResponse.structureId);
+                && Objects.equals(this.extractionStartTime, corporationMiningExtractionsResponse.extractionStartTime)
+                && Objects.equals(this.chunkArrivalTime, corporationMiningExtractionsResponse.chunkArrivalTime)
+                && Objects.equals(this.naturalDecayTime, corporationMiningExtractionsResponse.naturalDecayTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chunkArrivalTime, extractionStartTime, moonId, naturalDecayTime, structureId);
+        return Objects.hash(structureId, moonId, extractionStartTime, chunkArrivalTime, naturalDecayTime);
     }
 
     @Override
@@ -164,11 +164,11 @@ public class CorporationMiningExtractionsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMiningExtractionsResponse {\n");
 
-        sb.append("    chunkArrivalTime: ").append(toIndentedString(chunkArrivalTime)).append("\n");
-        sb.append("    extractionStartTime: ").append(toIndentedString(extractionStartTime)).append("\n");
-        sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
-        sb.append("    naturalDecayTime: ").append(toIndentedString(naturalDecayTime)).append("\n");
         sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
+        sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
+        sb.append("    extractionStartTime: ").append(toIndentedString(extractionStartTime)).append("\n");
+        sb.append("    chunkArrivalTime: ").append(toIndentedString(chunkArrivalTime)).append("\n");
+        sb.append("    naturalDecayTime: ").append(toIndentedString(naturalDecayTime)).append("\n");
         sb.append("}");
         return sb.toString();
     }

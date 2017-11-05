@@ -29,14 +29,14 @@ public class StructureResponse implements Serializable {
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("position")
-    private Position position = null;
-
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
 
     @JsonProperty("type_id")
     private Integer typeId = null;
+
+    @JsonProperty("position")
+    private Position position = null;
 
     public StructureResponse name(String name) {
         this.name = name;
@@ -55,25 +55,6 @@ public class StructureResponse implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public StructureResponse position(Position position) {
-        this.position = position;
-        return this;
-    }
-
-    /**
-     * Get position
-     * 
-     * @return position
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public StructureResponse solarSystemId(Integer solarSystemId) {
@@ -114,6 +95,25 @@ public class StructureResponse implements Serializable {
         this.typeId = typeId;
     }
 
+    public StructureResponse position(Position position) {
+        this.position = position;
+        return this;
+    }
+
+    /**
+     * Get position
+     * 
+     * @return position
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,14 +124,14 @@ public class StructureResponse implements Serializable {
         }
         StructureResponse structureResponse = (StructureResponse) o;
         return Objects.equals(this.name, structureResponse.name)
-                && Objects.equals(this.position, structureResponse.position)
                 && Objects.equals(this.solarSystemId, structureResponse.solarSystemId)
-                && Objects.equals(this.typeId, structureResponse.typeId);
+                && Objects.equals(this.typeId, structureResponse.typeId)
+                && Objects.equals(this.position, structureResponse.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position, solarSystemId, typeId);
+        return Objects.hash(name, solarSystemId, typeId, position);
     }
 
     @Override
@@ -140,9 +140,9 @@ public class StructureResponse implements Serializable {
         sb.append("class StructureResponse {\n");
 
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("}");
         return sb.toString();
     }

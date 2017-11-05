@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharactersYesterdayKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Integer amount = null;
-
     @JsonProperty("character_id")
     private Integer characterId = null;
 
-    public FactionWarfareLeaderboardCharactersYesterdayKills amount(Integer amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * Amount of kills
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", value = "Amount of kills")
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+    @JsonProperty("amount")
+    private Integer amount = null;
 
     public FactionWarfareLeaderboardCharactersYesterdayKills characterId(Integer characterId) {
         this.characterId = characterId;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCharactersYesterdayKills implements Serial
         this.characterId = characterId;
     }
 
+    public FactionWarfareLeaderboardCharactersYesterdayKills amount(Integer amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Amount of kills
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", value = "Amount of kills")
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FactionWarfareLeaderboardCharactersYesterdayKills implements Serial
             return false;
         }
         FactionWarfareLeaderboardCharactersYesterdayKills factionWarfareLeaderboardCharactersYesterdayKills = (FactionWarfareLeaderboardCharactersYesterdayKills) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersYesterdayKills.amount)
-                && Objects.equals(this.characterId, factionWarfareLeaderboardCharactersYesterdayKills.characterId);
+        return Objects.equals(this.characterId, factionWarfareLeaderboardCharactersYesterdayKills.characterId)
+                && Objects.equals(this.amount, factionWarfareLeaderboardCharactersYesterdayKills.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, characterId);
+        return Objects.hash(characterId, amount);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FactionWarfareLeaderboardCharactersYesterdayKills implements Serial
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersYesterdayKills {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

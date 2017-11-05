@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharactersLastWeekKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Integer amount = null;
-
     @JsonProperty("character_id")
     private Integer characterId = null;
 
-    public FactionWarfareLeaderboardCharactersLastWeekKills amount(Integer amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * Amount of kills
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", value = "Amount of kills")
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+    @JsonProperty("amount")
+    private Integer amount = null;
 
     public FactionWarfareLeaderboardCharactersLastWeekKills characterId(Integer characterId) {
         this.characterId = characterId;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
         this.characterId = characterId;
     }
 
+    public FactionWarfareLeaderboardCharactersLastWeekKills amount(Integer amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Amount of kills
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", value = "Amount of kills")
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
             return false;
         }
         FactionWarfareLeaderboardCharactersLastWeekKills factionWarfareLeaderboardCharactersLastWeekKills = (FactionWarfareLeaderboardCharactersLastWeekKills) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersLastWeekKills.amount)
-                && Objects.equals(this.characterId, factionWarfareLeaderboardCharactersLastWeekKills.characterId);
+        return Objects.equals(this.characterId, factionWarfareLeaderboardCharactersLastWeekKills.characterId)
+                && Objects.equals(this.amount, factionWarfareLeaderboardCharactersLastWeekKills.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, characterId);
+        return Objects.hash(characterId, amount);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersLastWeekKills {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -26,14 +26,33 @@ import java.io.Serializable;
 public class CorporationFwStatsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("yesterday")
+    private Integer yesterday = null;
+
     @JsonProperty("last_week")
     private Integer lastWeek = null;
 
     @JsonProperty("total")
     private Integer total = null;
 
-    @JsonProperty("yesterday")
-    private Integer yesterday = null;
+    public CorporationFwStatsVictoryPoints yesterday(Integer yesterday) {
+        this.yesterday = yesterday;
+        return this;
+    }
+
+    /**
+     * Yesterday's victory points gained by members of the given corporation
+     * 
+     * @return yesterday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Yesterday's victory points gained by members of the given corporation")
+    public Integer getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(Integer yesterday) {
+        this.yesterday = yesterday;
+    }
 
     public CorporationFwStatsVictoryPoints lastWeek(Integer lastWeek) {
         this.lastWeek = lastWeek;
@@ -73,25 +92,6 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
         this.total = total;
     }
 
-    public CorporationFwStatsVictoryPoints yesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-        return this;
-    }
-
-    /**
-     * Yesterday's victory points gained by members of the given corporation
-     * 
-     * @return yesterday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Yesterday's victory points gained by members of the given corporation")
-    public Integer getYesterday() {
-        return yesterday;
-    }
-
-    public void setYesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,14 +101,14 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
             return false;
         }
         CorporationFwStatsVictoryPoints corporationFwStatsVictoryPoints = (CorporationFwStatsVictoryPoints) o;
-        return Objects.equals(this.lastWeek, corporationFwStatsVictoryPoints.lastWeek)
-                && Objects.equals(this.total, corporationFwStatsVictoryPoints.total)
-                && Objects.equals(this.yesterday, corporationFwStatsVictoryPoints.yesterday);
+        return Objects.equals(this.yesterday, corporationFwStatsVictoryPoints.yesterday)
+                && Objects.equals(this.lastWeek, corporationFwStatsVictoryPoints.lastWeek)
+                && Objects.equals(this.total, corporationFwStatsVictoryPoints.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastWeek, total, yesterday);
+        return Objects.hash(yesterday, lastWeek, total);
     }
 
     @Override
@@ -116,9 +116,9 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationFwStatsVictoryPoints {\n");
 
+        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
         sb.append("    total: ").append(toIndentedString(total)).append("\n");
-        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("}");
         return sb.toString();
     }

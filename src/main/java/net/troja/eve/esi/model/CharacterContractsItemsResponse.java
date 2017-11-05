@@ -25,11 +25,11 @@ import java.io.Serializable;
 public class CharacterContractsItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_included")
-    private Boolean isIncluded = null;
+    @JsonProperty("record_id")
+    private Long recordId = null;
 
-    @JsonProperty("is_singleton")
-    private Boolean isSingleton = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
     @JsonProperty("quantity")
     private Integer quantity = null;
@@ -37,49 +37,48 @@ public class CharacterContractsItemsResponse implements Serializable {
     @JsonProperty("raw_quantity")
     private Integer rawQuantity = null;
 
-    @JsonProperty("record_id")
-    private Long recordId = null;
+    @JsonProperty("is_singleton")
+    private Boolean isSingleton = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("is_included")
+    private Boolean isIncluded = null;
 
-    public CharacterContractsItemsResponse isIncluded(Boolean isIncluded) {
-        this.isIncluded = isIncluded;
+    public CharacterContractsItemsResponse recordId(Long recordId) {
+        this.recordId = recordId;
         return this;
     }
 
     /**
-     * true if the contract issuer has submitted this item with the contract,
-     * false if the isser is asking for this item in the contract.
+     * Unique ID for the item
      * 
-     * @return isIncluded
+     * @return recordId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract.")
-    public Boolean getIsIncluded() {
-        return isIncluded;
+    @ApiModelProperty(example = "null", required = true, value = "Unique ID for the item")
+    public Long getRecordId() {
+        return recordId;
     }
 
-    public void setIsIncluded(Boolean isIncluded) {
-        this.isIncluded = isIncluded;
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
     }
 
-    public CharacterContractsItemsResponse isSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
+    public CharacterContractsItemsResponse typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * is_singleton boolean
+     * Type ID for item
      * 
-     * @return isSingleton
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
-        return isSingleton;
+    @ApiModelProperty(example = "null", required = true, value = "Type ID for item")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setIsSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public CharacterContractsItemsResponse quantity(Integer quantity) {
@@ -121,42 +120,43 @@ public class CharacterContractsItemsResponse implements Serializable {
         this.rawQuantity = rawQuantity;
     }
 
-    public CharacterContractsItemsResponse recordId(Long recordId) {
-        this.recordId = recordId;
+    public CharacterContractsItemsResponse isSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
         return this;
     }
 
     /**
-     * Unique ID for the item
+     * is_singleton boolean
      * 
-     * @return recordId
+     * @return isSingleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for the item")
-    public Long getRecordId() {
-        return recordId;
+    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
+    public Boolean getIsSingleton() {
+        return isSingleton;
     }
 
-    public void setRecordId(Long recordId) {
-        this.recordId = recordId;
+    public void setIsSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
     }
 
-    public CharacterContractsItemsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    public CharacterContractsItemsResponse isIncluded(Boolean isIncluded) {
+        this.isIncluded = isIncluded;
         return this;
     }
 
     /**
-     * Type ID for item
+     * true if the contract issuer has submitted this item with the contract,
+     * false if the isser is asking for this item in the contract.
      * 
-     * @return typeId
+     * @return isIncluded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type ID for item")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract.")
+    public Boolean getIsIncluded() {
+        return isIncluded;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setIsIncluded(Boolean isIncluded) {
+        this.isIncluded = isIncluded;
     }
 
     @Override
@@ -168,17 +168,17 @@ public class CharacterContractsItemsResponse implements Serializable {
             return false;
         }
         CharacterContractsItemsResponse characterContractsItemsResponse = (CharacterContractsItemsResponse) o;
-        return Objects.equals(this.isIncluded, characterContractsItemsResponse.isIncluded)
-                && Objects.equals(this.isSingleton, characterContractsItemsResponse.isSingleton)
+        return Objects.equals(this.recordId, characterContractsItemsResponse.recordId)
+                && Objects.equals(this.typeId, characterContractsItemsResponse.typeId)
                 && Objects.equals(this.quantity, characterContractsItemsResponse.quantity)
                 && Objects.equals(this.rawQuantity, characterContractsItemsResponse.rawQuantity)
-                && Objects.equals(this.recordId, characterContractsItemsResponse.recordId)
-                && Objects.equals(this.typeId, characterContractsItemsResponse.typeId);
+                && Objects.equals(this.isSingleton, characterContractsItemsResponse.isSingleton)
+                && Objects.equals(this.isIncluded, characterContractsItemsResponse.isIncluded);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isIncluded, isSingleton, quantity, rawQuantity, recordId, typeId);
+        return Objects.hash(recordId, typeId, quantity, rawQuantity, isSingleton, isIncluded);
     }
 
     @Override
@@ -186,12 +186,12 @@ public class CharacterContractsItemsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterContractsItemsResponse {\n");
 
-        sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
-        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    rawQuantity: ").append(toIndentedString(rawQuantity)).append("\n");
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    rawQuantity: ").append(toIndentedString(rawQuantity)).append("\n");
+        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
+        sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -64,11 +64,11 @@ public class ChatChannelsBlocked implements Serializable {
     @JsonProperty("accessor_type")
     private AccessorTypeEnum accessorType = null;
 
-    @JsonProperty("end_at")
-    private OffsetDateTime endAt = null;
-
     @JsonProperty("reason")
     private String reason = null;
+
+    @JsonProperty("end_at")
+    private OffsetDateTime endAt = null;
 
     public ChatChannelsBlocked accessorId(Integer accessorId) {
         this.accessorId = accessorId;
@@ -108,25 +108,6 @@ public class ChatChannelsBlocked implements Serializable {
         this.accessorType = accessorType;
     }
 
-    public ChatChannelsBlocked endAt(OffsetDateTime endAt) {
-        this.endAt = endAt;
-        return this;
-    }
-
-    /**
-     * Time at which this accessor will no longer be blocked
-     * 
-     * @return endAt
-     **/
-    @ApiModelProperty(example = "null", value = "Time at which this accessor will no longer be blocked")
-    public OffsetDateTime getEndAt() {
-        return endAt;
-    }
-
-    public void setEndAt(OffsetDateTime endAt) {
-        this.endAt = endAt;
-    }
-
     public ChatChannelsBlocked reason(String reason) {
         this.reason = reason;
         return this;
@@ -146,6 +127,25 @@ public class ChatChannelsBlocked implements Serializable {
         this.reason = reason;
     }
 
+    public ChatChannelsBlocked endAt(OffsetDateTime endAt) {
+        this.endAt = endAt;
+        return this;
+    }
+
+    /**
+     * Time at which this accessor will no longer be blocked
+     * 
+     * @return endAt
+     **/
+    @ApiModelProperty(example = "null", value = "Time at which this accessor will no longer be blocked")
+    public OffsetDateTime getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(OffsetDateTime endAt) {
+        this.endAt = endAt;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,13 +157,13 @@ public class ChatChannelsBlocked implements Serializable {
         ChatChannelsBlocked chatChannelsBlocked = (ChatChannelsBlocked) o;
         return Objects.equals(this.accessorId, chatChannelsBlocked.accessorId)
                 && Objects.equals(this.accessorType, chatChannelsBlocked.accessorType)
-                && Objects.equals(this.endAt, chatChannelsBlocked.endAt)
-                && Objects.equals(this.reason, chatChannelsBlocked.reason);
+                && Objects.equals(this.reason, chatChannelsBlocked.reason)
+                && Objects.equals(this.endAt, chatChannelsBlocked.endAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accessorId, accessorType, endAt, reason);
+        return Objects.hash(accessorId, accessorType, reason, endAt);
     }
 
     @Override
@@ -173,8 +173,8 @@ public class ChatChannelsBlocked implements Serializable {
 
         sb.append("    accessorId: ").append(toIndentedString(accessorId)).append("\n");
         sb.append("    accessorType: ").append(toIndentedString(accessorType)).append("\n");
-        sb.append("    endAt: ").append(toIndentedString(endAt)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+        sb.append("    endAt: ").append(toIndentedString(endAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

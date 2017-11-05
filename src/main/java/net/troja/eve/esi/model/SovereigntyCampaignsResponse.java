@@ -29,20 +29,17 @@ import java.io.Serializable;
 public class SovereigntyCampaignsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("attackers_score")
-    private Float attackersScore = null;
-
     @JsonProperty("campaign_id")
     private Integer campaignId = null;
 
+    @JsonProperty("structure_id")
+    private Long structureId = null;
+
+    @JsonProperty("solar_system_id")
+    private Integer solarSystemId = null;
+
     @JsonProperty("constellation_id")
     private Integer constellationId = null;
-
-    @JsonProperty("defender_id")
-    private Integer defenderId = null;
-
-    @JsonProperty("defender_score")
-    private Float defenderScore = null;
 
     /**
      * Type of event this campaign is for. tcu_defense, ihub_defense and
@@ -83,36 +80,20 @@ public class SovereigntyCampaignsResponse implements Serializable {
     @JsonProperty("event_type")
     private EventTypeEnum eventType = null;
 
-    @JsonProperty("participants")
-    private List<SovereigntyCampaignParticipant> participants = new ArrayList<SovereigntyCampaignParticipant>();
-
-    @JsonProperty("solar_system_id")
-    private Integer solarSystemId = null;
-
     @JsonProperty("start_time")
     private OffsetDateTime startTime = null;
 
-    @JsonProperty("structure_id")
-    private Long structureId = null;
+    @JsonProperty("defender_id")
+    private Integer defenderId = null;
 
-    public SovereigntyCampaignsResponse attackersScore(Float attackersScore) {
-        this.attackersScore = attackersScore;
-        return this;
-    }
+    @JsonProperty("defender_score")
+    private Float defenderScore = null;
 
-    /**
-     * Score for all attacking parties, only present in Defense Events.
-     * 
-     * @return attackersScore
-     **/
-    @ApiModelProperty(example = "null", value = "Score for all attacking parties, only present in Defense Events. ")
-    public Float getAttackersScore() {
-        return attackersScore;
-    }
+    @JsonProperty("attackers_score")
+    private Float attackersScore = null;
 
-    public void setAttackersScore(Float attackersScore) {
-        this.attackersScore = attackersScore;
-    }
+    @JsonProperty("participants")
+    private List<SovereigntyCampaignParticipant> participants = new ArrayList<SovereigntyCampaignParticipant>();
 
     public SovereigntyCampaignsResponse campaignId(Integer campaignId) {
         this.campaignId = campaignId;
@@ -133,6 +114,44 @@ public class SovereigntyCampaignsResponse implements Serializable {
         this.campaignId = campaignId;
     }
 
+    public SovereigntyCampaignsResponse structureId(Long structureId) {
+        this.structureId = structureId;
+        return this;
+    }
+
+    /**
+     * The structure item ID that is related to this campaign.
+     * 
+     * @return structureId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The structure item ID that is related to this campaign. ")
+    public Long getStructureId() {
+        return structureId;
+    }
+
+    public void setStructureId(Long structureId) {
+        this.structureId = structureId;
+    }
+
+    public SovereigntyCampaignsResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * The solar system the structure is located in.
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is located in. ")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
     public SovereigntyCampaignsResponse constellationId(Integer constellationId) {
         this.constellationId = constellationId;
         return this;
@@ -150,6 +169,46 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
     public void setConstellationId(Integer constellationId) {
         this.constellationId = constellationId;
+    }
+
+    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventType) {
+        this.eventType = eventType;
+        return this;
+    }
+
+    /**
+     * Type of event this campaign is for. tcu_defense, ihub_defense and
+     * station_defense are referred to as \"Defense Events\", station_freeport
+     * as \"Freeport Events\".
+     * 
+     * @return eventType
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
+    public EventTypeEnum getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventTypeEnum eventType) {
+        this.eventType = eventType;
+    }
+
+    public SovereigntyCampaignsResponse startTime(OffsetDateTime startTime) {
+        this.startTime = startTime;
+        return this;
+    }
+
+    /**
+     * Time the event is scheduled to start.
+     * 
+     * @return startTime
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Time the event is scheduled to start. ")
+    public OffsetDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(OffsetDateTime startTime) {
+        this.startTime = startTime;
     }
 
     public SovereigntyCampaignsResponse defenderId(Integer defenderId) {
@@ -190,25 +249,23 @@ public class SovereigntyCampaignsResponse implements Serializable {
         this.defenderScore = defenderScore;
     }
 
-    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventType) {
-        this.eventType = eventType;
+    public SovereigntyCampaignsResponse attackersScore(Float attackersScore) {
+        this.attackersScore = attackersScore;
         return this;
     }
 
     /**
-     * Type of event this campaign is for. tcu_defense, ihub_defense and
-     * station_defense are referred to as \"Defense Events\", station_freeport
-     * as \"Freeport Events\".
+     * Score for all attacking parties, only present in Defense Events.
      * 
-     * @return eventType
+     * @return attackersScore
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
-    public EventTypeEnum getEventType() {
-        return eventType;
+    @ApiModelProperty(example = "null", value = "Score for all attacking parties, only present in Defense Events. ")
+    public Float getAttackersScore() {
+        return attackersScore;
     }
 
-    public void setEventType(EventTypeEnum eventType) {
-        this.eventType = eventType;
+    public void setAttackersScore(Float attackersScore) {
+        this.attackersScore = attackersScore;
     }
 
     public SovereigntyCampaignsResponse participants(List<SovereigntyCampaignParticipant> participants) {
@@ -236,63 +293,6 @@ public class SovereigntyCampaignsResponse implements Serializable {
         this.participants = participants;
     }
 
-    public SovereigntyCampaignsResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * The solar system the structure is located in.
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is located in. ")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-    }
-
-    public SovereigntyCampaignsResponse startTime(OffsetDateTime startTime) {
-        this.startTime = startTime;
-        return this;
-    }
-
-    /**
-     * Time the event is scheduled to start.
-     * 
-     * @return startTime
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Time the event is scheduled to start. ")
-    public OffsetDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(OffsetDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public SovereigntyCampaignsResponse structureId(Long structureId) {
-        this.structureId = structureId;
-        return this;
-    }
-
-    /**
-     * The structure item ID that is related to this campaign.
-     * 
-     * @return structureId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The structure item ID that is related to this campaign. ")
-    public Long getStructureId() {
-        return structureId;
-    }
-
-    public void setStructureId(Long structureId) {
-        this.structureId = structureId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -302,22 +302,22 @@ public class SovereigntyCampaignsResponse implements Serializable {
             return false;
         }
         SovereigntyCampaignsResponse sovereigntyCampaignsResponse = (SovereigntyCampaignsResponse) o;
-        return Objects.equals(this.attackersScore, sovereigntyCampaignsResponse.attackersScore)
-                && Objects.equals(this.campaignId, sovereigntyCampaignsResponse.campaignId)
+        return Objects.equals(this.campaignId, sovereigntyCampaignsResponse.campaignId)
+                && Objects.equals(this.structureId, sovereigntyCampaignsResponse.structureId)
+                && Objects.equals(this.solarSystemId, sovereigntyCampaignsResponse.solarSystemId)
                 && Objects.equals(this.constellationId, sovereigntyCampaignsResponse.constellationId)
+                && Objects.equals(this.eventType, sovereigntyCampaignsResponse.eventType)
+                && Objects.equals(this.startTime, sovereigntyCampaignsResponse.startTime)
                 && Objects.equals(this.defenderId, sovereigntyCampaignsResponse.defenderId)
                 && Objects.equals(this.defenderScore, sovereigntyCampaignsResponse.defenderScore)
-                && Objects.equals(this.eventType, sovereigntyCampaignsResponse.eventType)
-                && Objects.equals(this.participants, sovereigntyCampaignsResponse.participants)
-                && Objects.equals(this.solarSystemId, sovereigntyCampaignsResponse.solarSystemId)
-                && Objects.equals(this.startTime, sovereigntyCampaignsResponse.startTime)
-                && Objects.equals(this.structureId, sovereigntyCampaignsResponse.structureId);
+                && Objects.equals(this.attackersScore, sovereigntyCampaignsResponse.attackersScore)
+                && Objects.equals(this.participants, sovereigntyCampaignsResponse.participants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attackersScore, campaignId, constellationId, defenderId, defenderScore, eventType,
-                participants, solarSystemId, startTime, structureId);
+        return Objects.hash(campaignId, structureId, solarSystemId, constellationId, eventType, startTime, defenderId,
+                defenderScore, attackersScore, participants);
     }
 
     @Override
@@ -325,16 +325,16 @@ public class SovereigntyCampaignsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyCampaignsResponse {\n");
 
-        sb.append("    attackersScore: ").append(toIndentedString(attackersScore)).append("\n");
         sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+        sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
+        sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+        sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
         sb.append("    defenderId: ").append(toIndentedString(defenderId)).append("\n");
         sb.append("    defenderScore: ").append(toIndentedString(defenderScore)).append("\n");
-        sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+        sb.append("    attackersScore: ").append(toIndentedString(attackersScore)).append("\n");
         sb.append("    participants: ").append(toIndentedString(participants)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
-        sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-        sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class AllianceIconsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("px128x128")
-    private String px128x128 = null;
-
     @JsonProperty("px64x64")
     private String px64x64 = null;
 
-    public AllianceIconsResponse px128x128(String px128x128) {
-        this.px128x128 = px128x128;
-        return this;
-    }
-
-    /**
-     * px128x128 string
-     * 
-     * @return px128x128
-     **/
-    @ApiModelProperty(example = "null", value = "px128x128 string")
-    public String getPx128x128() {
-        return px128x128;
-    }
-
-    public void setPx128x128(String px128x128) {
-        this.px128x128 = px128x128;
-    }
+    @JsonProperty("px128x128")
+    private String px128x128 = null;
 
     public AllianceIconsResponse px64x64(String px64x64) {
         this.px64x64 = px64x64;
@@ -69,6 +50,25 @@ public class AllianceIconsResponse implements Serializable {
         this.px64x64 = px64x64;
     }
 
+    public AllianceIconsResponse px128x128(String px128x128) {
+        this.px128x128 = px128x128;
+        return this;
+    }
+
+    /**
+     * px128x128 string
+     * 
+     * @return px128x128
+     **/
+    @ApiModelProperty(example = "null", value = "px128x128 string")
+    public String getPx128x128() {
+        return px128x128;
+    }
+
+    public void setPx128x128(String px128x128) {
+        this.px128x128 = px128x128;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class AllianceIconsResponse implements Serializable {
             return false;
         }
         AllianceIconsResponse allianceIconsResponse = (AllianceIconsResponse) o;
-        return Objects.equals(this.px128x128, allianceIconsResponse.px128x128)
-                && Objects.equals(this.px64x64, allianceIconsResponse.px64x64);
+        return Objects.equals(this.px64x64, allianceIconsResponse.px64x64)
+                && Objects.equals(this.px128x128, allianceIconsResponse.px128x128);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(px128x128, px64x64);
+        return Objects.hash(px64x64, px128x128);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class AllianceIconsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceIconsResponse {\n");
 
-        sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");
         sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
+        sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");
         sb.append("}");
         return sb.toString();
     }

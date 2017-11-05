@@ -29,41 +29,79 @@ import java.io.Serializable;
 public class LoyaltyStoreOffersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("isk_cost")
-    private BigDecimal iskCost = null;
-
-    @JsonProperty("lp_cost")
-    private Integer lpCost = null;
-
     @JsonProperty("offer_id")
     private Integer offerId = null;
-
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
-    @JsonProperty("required_items")
-    private List<RequiredItem> requiredItems = new ArrayList<RequiredItem>();
 
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public LoyaltyStoreOffersResponse iskCost(BigDecimal iskCost) {
-        this.iskCost = iskCost;
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("lp_cost")
+    private Integer lpCost = null;
+
+    @JsonProperty("isk_cost")
+    private BigDecimal iskCost = null;
+
+    @JsonProperty("required_items")
+    private List<RequiredItem> requiredItems = new ArrayList<RequiredItem>();
+
+    public LoyaltyStoreOffersResponse offerId(Integer offerId) {
+        this.offerId = offerId;
         return this;
     }
 
     /**
-     * isk_cost number
+     * offer_id integer
      * 
-     * @return iskCost
+     * @return offerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "isk_cost number")
-    public BigDecimal getIskCost() {
-        return iskCost;
+    @ApiModelProperty(example = "null", required = true, value = "offer_id integer")
+    public Integer getOfferId() {
+        return offerId;
     }
 
-    public void setIskCost(BigDecimal iskCost) {
-        this.iskCost = iskCost;
+    public void setOfferId(Integer offerId) {
+        this.offerId = offerId;
+    }
+
+    public LoyaltyStoreOffersResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public LoyaltyStoreOffersResponse quantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public LoyaltyStoreOffersResponse lpCost(Integer lpCost) {
@@ -85,42 +123,23 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         this.lpCost = lpCost;
     }
 
-    public LoyaltyStoreOffersResponse offerId(Integer offerId) {
-        this.offerId = offerId;
+    public LoyaltyStoreOffersResponse iskCost(BigDecimal iskCost) {
+        this.iskCost = iskCost;
         return this;
     }
 
     /**
-     * offer_id integer
+     * isk_cost number
      * 
-     * @return offerId
+     * @return iskCost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "offer_id integer")
-    public Integer getOfferId() {
-        return offerId;
+    @ApiModelProperty(example = "null", required = true, value = "isk_cost number")
+    public BigDecimal getIskCost() {
+        return iskCost;
     }
 
-    public void setOfferId(Integer offerId) {
-        this.offerId = offerId;
-    }
-
-    public LoyaltyStoreOffersResponse quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setIskCost(BigDecimal iskCost) {
+        this.iskCost = iskCost;
     }
 
     public LoyaltyStoreOffersResponse requiredItems(List<RequiredItem> requiredItems) {
@@ -147,25 +166,6 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         this.requiredItems = requiredItems;
     }
 
-    public LoyaltyStoreOffersResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -175,17 +175,17 @@ public class LoyaltyStoreOffersResponse implements Serializable {
             return false;
         }
         LoyaltyStoreOffersResponse loyaltyStoreOffersResponse = (LoyaltyStoreOffersResponse) o;
-        return Objects.equals(this.iskCost, loyaltyStoreOffersResponse.iskCost)
-                && Objects.equals(this.lpCost, loyaltyStoreOffersResponse.lpCost)
-                && Objects.equals(this.offerId, loyaltyStoreOffersResponse.offerId)
+        return Objects.equals(this.offerId, loyaltyStoreOffersResponse.offerId)
+                && Objects.equals(this.typeId, loyaltyStoreOffersResponse.typeId)
                 && Objects.equals(this.quantity, loyaltyStoreOffersResponse.quantity)
-                && Objects.equals(this.requiredItems, loyaltyStoreOffersResponse.requiredItems)
-                && Objects.equals(this.typeId, loyaltyStoreOffersResponse.typeId);
+                && Objects.equals(this.lpCost, loyaltyStoreOffersResponse.lpCost)
+                && Objects.equals(this.iskCost, loyaltyStoreOffersResponse.iskCost)
+                && Objects.equals(this.requiredItems, loyaltyStoreOffersResponse.requiredItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iskCost, lpCost, offerId, quantity, requiredItems, typeId);
+        return Objects.hash(offerId, typeId, quantity, lpCost, iskCost, requiredItems);
     }
 
     @Override
@@ -193,12 +193,12 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class LoyaltyStoreOffersResponse {\n");
 
-        sb.append("    iskCost: ").append(toIndentedString(iskCost)).append("\n");
-        sb.append("    lpCost: ").append(toIndentedString(lpCost)).append("\n");
         sb.append("    offerId: ").append(toIndentedString(offerId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    requiredItems: ").append(toIndentedString(requiredItems)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    lpCost: ").append(toIndentedString(lpCost)).append("\n");
+        sb.append("    iskCost: ").append(toIndentedString(iskCost)).append("\n");
+        sb.append("    requiredItems: ").append(toIndentedString(requiredItems)).append("\n");
         sb.append("}");
         return sb.toString();
     }

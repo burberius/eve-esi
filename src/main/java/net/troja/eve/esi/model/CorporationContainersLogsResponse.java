@@ -26,63 +26,20 @@ import java.io.Serializable;
 public class CorporationContainersLogsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * action string
-     */
-    public enum ActionEnum {
-        ADD("add"),
-
-        ASSEMBLE("assemble"),
-
-        CONFIGURE("configure"),
-
-        ENTER_PASSWORD("enter_password"),
-
-        LOCK("lock"),
-
-        MOVE("move"),
-
-        REPACKAGE("repackage"),
-
-        SET_NAME("set_name"),
-
-        SET_PASSWORD("set_password"),
-
-        UNLOCK("unlock");
-
-        private String value;
-
-        ActionEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ActionEnum fromValue(String text) {
-            for (ActionEnum b : ActionEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("action")
-    private ActionEnum action = null;
-
-    @JsonProperty("character_id")
-    private Integer characterId = null;
+    @JsonProperty("logged_at")
+    private OffsetDateTime loggedAt = null;
 
     @JsonProperty("container_id")
     private Long containerId = null;
 
     @JsonProperty("container_type_id")
     private Integer containerTypeId = null;
+
+    @JsonProperty("character_id")
+    private Integer characterId = null;
+
+    @JsonProperty("location_id")
+    private Long locationId = null;
 
     /**
      * location_flag string
@@ -343,17 +300,54 @@ public class CorporationContainersLogsResponse implements Serializable {
     @JsonProperty("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("location_id")
-    private Long locationId = null;
+    /**
+     * action string
+     */
+    public enum ActionEnum {
+        ADD("add"),
 
-    @JsonProperty("logged_at")
-    private OffsetDateTime loggedAt = null;
+        ASSEMBLE("assemble"),
 
-    @JsonProperty("new_config_bitmask")
-    private Integer newConfigBitmask = null;
+        CONFIGURE("configure"),
 
-    @JsonProperty("old_config_bitmask")
-    private Integer oldConfigBitmask = null;
+        ENTER_PASSWORD("enter_password"),
+
+        LOCK("lock"),
+
+        MOVE("move"),
+
+        REPACKAGE("repackage"),
+
+        SET_NAME("set_name"),
+
+        SET_PASSWORD("set_password"),
+
+        UNLOCK("unlock");
+
+        private String value;
+
+        ActionEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ActionEnum fromValue(String text) {
+            for (ActionEnum b : ActionEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    @JsonProperty("action")
+    private ActionEnum action = null;
 
     /**
      * Type of password set if action is of type SetPassword or EnterPassword
@@ -388,48 +382,35 @@ public class CorporationContainersLogsResponse implements Serializable {
     @JsonProperty("password_type")
     private PasswordTypeEnum passwordType = null;
 
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    public CorporationContainersLogsResponse action(ActionEnum action) {
-        this.action = action;
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("old_config_bitmask")
+    private Integer oldConfigBitmask = null;
+
+    @JsonProperty("new_config_bitmask")
+    private Integer newConfigBitmask = null;
+
+    public CorporationContainersLogsResponse loggedAt(OffsetDateTime loggedAt) {
+        this.loggedAt = loggedAt;
         return this;
     }
 
     /**
-     * action string
+     * Timestamp when this log was created
      * 
-     * @return action
+     * @return loggedAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "action string")
-    public ActionEnum getAction() {
-        return action;
+    @ApiModelProperty(example = "null", required = true, value = "Timestamp when this log was created")
+    public OffsetDateTime getLoggedAt() {
+        return loggedAt;
     }
 
-    public void setAction(ActionEnum action) {
-        this.action = action;
-    }
-
-    public CorporationContainersLogsResponse characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * ID of the character who performed the action.
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who performed the action.")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
+    public void setLoggedAt(OffsetDateTime loggedAt) {
+        this.loggedAt = loggedAt;
     }
 
     public CorporationContainersLogsResponse containerId(Long containerId) {
@@ -470,23 +451,23 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.containerTypeId = containerTypeId;
     }
 
-    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
+    public CorporationContainersLogsResponse characterId(Integer characterId) {
+        this.characterId = characterId;
         return this;
     }
 
     /**
-     * location_flag string
+     * ID of the character who performed the action.
      * 
-     * @return locationFlag
+     * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
-    public LocationFlagEnum getLocationFlag() {
-        return locationFlag;
+    @ApiModelProperty(example = "null", required = true, value = "ID of the character who performed the action.")
+    public Integer getCharacterId() {
+        return characterId;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
     }
 
     public CorporationContainersLogsResponse locationId(Long locationId) {
@@ -508,61 +489,42 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CorporationContainersLogsResponse loggedAt(OffsetDateTime loggedAt) {
-        this.loggedAt = loggedAt;
+    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
         return this;
     }
 
     /**
-     * Timestamp when this log was created
+     * location_flag string
      * 
-     * @return loggedAt
+     * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Timestamp when this log was created")
-    public OffsetDateTime getLoggedAt() {
-        return loggedAt;
+    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    public LocationFlagEnum getLocationFlag() {
+        return locationFlag;
     }
 
-    public void setLoggedAt(OffsetDateTime loggedAt) {
-        this.loggedAt = loggedAt;
+    public void setLocationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
     }
 
-    public CorporationContainersLogsResponse newConfigBitmask(Integer newConfigBitmask) {
-        this.newConfigBitmask = newConfigBitmask;
+    public CorporationContainersLogsResponse action(ActionEnum action) {
+        this.action = action;
         return this;
     }
 
     /**
-     * new_config_bitmask integer
+     * action string
      * 
-     * @return newConfigBitmask
+     * @return action
      **/
-    @ApiModelProperty(example = "null", value = "new_config_bitmask integer")
-    public Integer getNewConfigBitmask() {
-        return newConfigBitmask;
+    @ApiModelProperty(example = "null", required = true, value = "action string")
+    public ActionEnum getAction() {
+        return action;
     }
 
-    public void setNewConfigBitmask(Integer newConfigBitmask) {
-        this.newConfigBitmask = newConfigBitmask;
-    }
-
-    public CorporationContainersLogsResponse oldConfigBitmask(Integer oldConfigBitmask) {
-        this.oldConfigBitmask = oldConfigBitmask;
-        return this;
-    }
-
-    /**
-     * old_config_bitmask integer
-     * 
-     * @return oldConfigBitmask
-     **/
-    @ApiModelProperty(example = "null", value = "old_config_bitmask integer")
-    public Integer getOldConfigBitmask() {
-        return oldConfigBitmask;
-    }
-
-    public void setOldConfigBitmask(Integer oldConfigBitmask) {
-        this.oldConfigBitmask = oldConfigBitmask;
+    public void setAction(ActionEnum action) {
+        this.action = action;
     }
 
     public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordType) {
@@ -584,25 +546,6 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.passwordType = passwordType;
     }
 
-    public CorporationContainersLogsResponse quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * Quantity of the item being acted upon
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", value = "Quantity of the item being acted upon")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     public CorporationContainersLogsResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
@@ -622,6 +565,63 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.typeId = typeId;
     }
 
+    public CorporationContainersLogsResponse quantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * Quantity of the item being acted upon
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", value = "Quantity of the item being acted upon")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public CorporationContainersLogsResponse oldConfigBitmask(Integer oldConfigBitmask) {
+        this.oldConfigBitmask = oldConfigBitmask;
+        return this;
+    }
+
+    /**
+     * old_config_bitmask integer
+     * 
+     * @return oldConfigBitmask
+     **/
+    @ApiModelProperty(example = "null", value = "old_config_bitmask integer")
+    public Integer getOldConfigBitmask() {
+        return oldConfigBitmask;
+    }
+
+    public void setOldConfigBitmask(Integer oldConfigBitmask) {
+        this.oldConfigBitmask = oldConfigBitmask;
+    }
+
+    public CorporationContainersLogsResponse newConfigBitmask(Integer newConfigBitmask) {
+        this.newConfigBitmask = newConfigBitmask;
+        return this;
+    }
+
+    /**
+     * new_config_bitmask integer
+     * 
+     * @return newConfigBitmask
+     **/
+    @ApiModelProperty(example = "null", value = "new_config_bitmask integer")
+    public Integer getNewConfigBitmask() {
+        return newConfigBitmask;
+    }
+
+    public void setNewConfigBitmask(Integer newConfigBitmask) {
+        this.newConfigBitmask = newConfigBitmask;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -631,24 +631,24 @@ public class CorporationContainersLogsResponse implements Serializable {
             return false;
         }
         CorporationContainersLogsResponse corporationContainersLogsResponse = (CorporationContainersLogsResponse) o;
-        return Objects.equals(this.action, corporationContainersLogsResponse.action)
-                && Objects.equals(this.characterId, corporationContainersLogsResponse.characterId)
+        return Objects.equals(this.loggedAt, corporationContainersLogsResponse.loggedAt)
                 && Objects.equals(this.containerId, corporationContainersLogsResponse.containerId)
                 && Objects.equals(this.containerTypeId, corporationContainersLogsResponse.containerTypeId)
-                && Objects.equals(this.locationFlag, corporationContainersLogsResponse.locationFlag)
+                && Objects.equals(this.characterId, corporationContainersLogsResponse.characterId)
                 && Objects.equals(this.locationId, corporationContainersLogsResponse.locationId)
-                && Objects.equals(this.loggedAt, corporationContainersLogsResponse.loggedAt)
-                && Objects.equals(this.newConfigBitmask, corporationContainersLogsResponse.newConfigBitmask)
-                && Objects.equals(this.oldConfigBitmask, corporationContainersLogsResponse.oldConfigBitmask)
+                && Objects.equals(this.locationFlag, corporationContainersLogsResponse.locationFlag)
+                && Objects.equals(this.action, corporationContainersLogsResponse.action)
                 && Objects.equals(this.passwordType, corporationContainersLogsResponse.passwordType)
+                && Objects.equals(this.typeId, corporationContainersLogsResponse.typeId)
                 && Objects.equals(this.quantity, corporationContainersLogsResponse.quantity)
-                && Objects.equals(this.typeId, corporationContainersLogsResponse.typeId);
+                && Objects.equals(this.oldConfigBitmask, corporationContainersLogsResponse.oldConfigBitmask)
+                && Objects.equals(this.newConfigBitmask, corporationContainersLogsResponse.newConfigBitmask);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(action, characterId, containerId, containerTypeId, locationFlag, locationId, loggedAt,
-                newConfigBitmask, oldConfigBitmask, passwordType, quantity, typeId);
+        return Objects.hash(loggedAt, containerId, containerTypeId, characterId, locationId, locationFlag, action,
+                passwordType, typeId, quantity, oldConfigBitmask, newConfigBitmask);
     }
 
     @Override
@@ -656,18 +656,18 @@ public class CorporationContainersLogsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContainersLogsResponse {\n");
 
-        sb.append("    action: ").append(toIndentedString(action)).append("\n");
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    loggedAt: ").append(toIndentedString(loggedAt)).append("\n");
         sb.append("    containerId: ").append(toIndentedString(containerId)).append("\n");
         sb.append("    containerTypeId: ").append(toIndentedString(containerTypeId)).append("\n");
-        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    loggedAt: ").append(toIndentedString(loggedAt)).append("\n");
-        sb.append("    newConfigBitmask: ").append(toIndentedString(newConfigBitmask)).append("\n");
-        sb.append("    oldConfigBitmask: ").append(toIndentedString(oldConfigBitmask)).append("\n");
+        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
+        sb.append("    action: ").append(toIndentedString(action)).append("\n");
         sb.append("    passwordType: ").append(toIndentedString(passwordType)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    oldConfigBitmask: ").append(toIndentedString(oldConfigBitmask)).append("\n");
+        sb.append("    newConfigBitmask: ").append(toIndentedString(newConfigBitmask)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -26,39 +26,20 @@ import java.io.Serializable;
 public class NewContactNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("message")
-    private String message = null;
-
     @JsonProperty("notification_id")
     private Integer notificationId = null;
 
     @JsonProperty("send_date")
     private OffsetDateTime sendDate = null;
 
-    @JsonProperty("sender_character_id")
-    private Integer senderCharacterId = null;
-
     @JsonProperty("standing_level")
     private Float standingLevel = null;
 
-    public NewContactNotificationsResponse message(String message) {
-        this.message = message;
-        return this;
-    }
+    @JsonProperty("message")
+    private String message = null;
 
-    /**
-     * message string
-     * 
-     * @return message
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "message string")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+    @JsonProperty("sender_character_id")
+    private Integer senderCharacterId = null;
 
     public NewContactNotificationsResponse notificationId(Integer notificationId) {
         this.notificationId = notificationId;
@@ -98,25 +79,6 @@ public class NewContactNotificationsResponse implements Serializable {
         this.sendDate = sendDate;
     }
 
-    public NewContactNotificationsResponse senderCharacterId(Integer senderCharacterId) {
-        this.senderCharacterId = senderCharacterId;
-        return this;
-    }
-
-    /**
-     * sender_character_id integer
-     * 
-     * @return senderCharacterId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "sender_character_id integer")
-    public Integer getSenderCharacterId() {
-        return senderCharacterId;
-    }
-
-    public void setSenderCharacterId(Integer senderCharacterId) {
-        this.senderCharacterId = senderCharacterId;
-    }
-
     public NewContactNotificationsResponse standingLevel(Float standingLevel) {
         this.standingLevel = standingLevel;
         return this;
@@ -138,6 +100,44 @@ public class NewContactNotificationsResponse implements Serializable {
         this.standingLevel = standingLevel;
     }
 
+    public NewContactNotificationsResponse message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * message string
+     * 
+     * @return message
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "message string")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public NewContactNotificationsResponse senderCharacterId(Integer senderCharacterId) {
+        this.senderCharacterId = senderCharacterId;
+        return this;
+    }
+
+    /**
+     * sender_character_id integer
+     * 
+     * @return senderCharacterId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "sender_character_id integer")
+    public Integer getSenderCharacterId() {
+        return senderCharacterId;
+    }
+
+    public void setSenderCharacterId(Integer senderCharacterId) {
+        this.senderCharacterId = senderCharacterId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,16 +147,16 @@ public class NewContactNotificationsResponse implements Serializable {
             return false;
         }
         NewContactNotificationsResponse newContactNotificationsResponse = (NewContactNotificationsResponse) o;
-        return Objects.equals(this.message, newContactNotificationsResponse.message)
-                && Objects.equals(this.notificationId, newContactNotificationsResponse.notificationId)
+        return Objects.equals(this.notificationId, newContactNotificationsResponse.notificationId)
                 && Objects.equals(this.sendDate, newContactNotificationsResponse.sendDate)
-                && Objects.equals(this.senderCharacterId, newContactNotificationsResponse.senderCharacterId)
-                && Objects.equals(this.standingLevel, newContactNotificationsResponse.standingLevel);
+                && Objects.equals(this.standingLevel, newContactNotificationsResponse.standingLevel)
+                && Objects.equals(this.message, newContactNotificationsResponse.message)
+                && Objects.equals(this.senderCharacterId, newContactNotificationsResponse.senderCharacterId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(message, notificationId, sendDate, senderCharacterId, standingLevel);
+        return Objects.hash(notificationId, sendDate, standingLevel, message, senderCharacterId);
     }
 
     @Override
@@ -164,11 +164,11 @@ public class NewContactNotificationsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class NewContactNotificationsResponse {\n");
 
-        sb.append("    message: ").append(toIndentedString(message)).append("\n");
         sb.append("    notificationId: ").append(toIndentedString(notificationId)).append("\n");
         sb.append("    sendDate: ").append(toIndentedString(sendDate)).append("\n");
-        sb.append("    senderCharacterId: ").append(toIndentedString(senderCharacterId)).append("\n");
         sb.append("    standingLevel: ").append(toIndentedString(standingLevel)).append("\n");
+        sb.append("    message: ").append(toIndentedString(message)).append("\n");
+        sb.append("    senderCharacterId: ").append(toIndentedString(senderCharacterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

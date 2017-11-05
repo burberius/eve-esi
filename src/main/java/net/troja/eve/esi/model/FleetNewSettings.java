@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FleetNewSettings implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_free_move")
-    private Boolean isFreeMove = null;
-
     @JsonProperty("motd")
     private String motd = null;
 
-    public FleetNewSettings isFreeMove(Boolean isFreeMove) {
-        this.isFreeMove = isFreeMove;
-        return this;
-    }
-
-    /**
-     * Should free-move be enabled in the fleet
-     * 
-     * @return isFreeMove
-     **/
-    @ApiModelProperty(example = "null", value = "Should free-move be enabled in the fleet")
-    public Boolean getIsFreeMove() {
-        return isFreeMove;
-    }
-
-    public void setIsFreeMove(Boolean isFreeMove) {
-        this.isFreeMove = isFreeMove;
-    }
+    @JsonProperty("is_free_move")
+    private Boolean isFreeMove = null;
 
     public FleetNewSettings motd(String motd) {
         this.motd = motd;
@@ -69,6 +50,25 @@ public class FleetNewSettings implements Serializable {
         this.motd = motd;
     }
 
+    public FleetNewSettings isFreeMove(Boolean isFreeMove) {
+        this.isFreeMove = isFreeMove;
+        return this;
+    }
+
+    /**
+     * Should free-move be enabled in the fleet
+     * 
+     * @return isFreeMove
+     **/
+    @ApiModelProperty(example = "null", value = "Should free-move be enabled in the fleet")
+    public Boolean getIsFreeMove() {
+        return isFreeMove;
+    }
+
+    public void setIsFreeMove(Boolean isFreeMove) {
+        this.isFreeMove = isFreeMove;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FleetNewSettings implements Serializable {
             return false;
         }
         FleetNewSettings fleetNewSettings = (FleetNewSettings) o;
-        return Objects.equals(this.isFreeMove, fleetNewSettings.isFreeMove)
-                && Objects.equals(this.motd, fleetNewSettings.motd);
+        return Objects.equals(this.motd, fleetNewSettings.motd)
+                && Objects.equals(this.isFreeMove, fleetNewSettings.isFreeMove);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isFreeMove, motd);
+        return Objects.hash(motd, isFreeMove);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FleetNewSettings implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetNewSettings {\n");
 
-        sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
         sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
+        sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
         sb.append("}");
         return sb.toString();
     }

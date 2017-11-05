@@ -28,11 +28,11 @@ public class CorporationFacilitiesResponse implements Serializable {
     @JsonProperty("facility_id")
     private Long facilityId = null;
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
     @JsonProperty("type_id")
     private Integer typeId = null;
+
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
     public CorporationFacilitiesResponse facilityId(Long facilityId) {
         this.facilityId = facilityId;
@@ -51,25 +51,6 @@ public class CorporationFacilitiesResponse implements Serializable {
 
     public void setFacilityId(Long facilityId) {
         this.facilityId = facilityId;
-    }
-
-    public CorporationFacilitiesResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
     }
 
     public CorporationFacilitiesResponse typeId(Integer typeId) {
@@ -91,6 +72,25 @@ public class CorporationFacilitiesResponse implements Serializable {
         this.typeId = typeId;
     }
 
+    public CorporationFacilitiesResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,13 +101,13 @@ public class CorporationFacilitiesResponse implements Serializable {
         }
         CorporationFacilitiesResponse corporationFacilitiesResponse = (CorporationFacilitiesResponse) o;
         return Objects.equals(this.facilityId, corporationFacilitiesResponse.facilityId)
-                && Objects.equals(this.systemId, corporationFacilitiesResponse.systemId)
-                && Objects.equals(this.typeId, corporationFacilitiesResponse.typeId);
+                && Objects.equals(this.typeId, corporationFacilitiesResponse.typeId)
+                && Objects.equals(this.systemId, corporationFacilitiesResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(facilityId, systemId, typeId);
+        return Objects.hash(facilityId, typeId, systemId);
     }
 
     @Override
@@ -116,8 +116,8 @@ public class CorporationFacilitiesResponse implements Serializable {
         sb.append("class CorporationFacilitiesResponse {\n");
 
         sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

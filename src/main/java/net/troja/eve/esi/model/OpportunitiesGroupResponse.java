@@ -27,17 +27,14 @@ import java.io.Serializable;
 public class OpportunitiesGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("connected_groups")
-    private List<Integer> connectedGroups = new ArrayList<Integer>();
-
-    @JsonProperty("description")
-    private String description = null;
-
     @JsonProperty("group_id")
     private Integer groupId = null;
 
     @JsonProperty("name")
     private String name = null;
+
+    @JsonProperty("description")
+    private String description = null;
 
     @JsonProperty("notification")
     private String notification = null;
@@ -45,48 +42,8 @@ public class OpportunitiesGroupResponse implements Serializable {
     @JsonProperty("required_tasks")
     private List<Integer> requiredTasks = new ArrayList<Integer>();
 
-    public OpportunitiesGroupResponse connectedGroups(List<Integer> connectedGroups) {
-        this.connectedGroups = connectedGroups;
-        return this;
-    }
-
-    public OpportunitiesGroupResponse addConnectedGroupsItem(Integer connectedGroupsItem) {
-        this.connectedGroups.add(connectedGroupsItem);
-        return this;
-    }
-
-    /**
-     * The groups that are connected to this group on the opportunities map
-     * 
-     * @return connectedGroups
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The groups that are connected to this group on the opportunities map")
-    public List<Integer> getConnectedGroups() {
-        return connectedGroups;
-    }
-
-    public void setConnectedGroups(List<Integer> connectedGroups) {
-        this.connectedGroups = connectedGroups;
-    }
-
-    public OpportunitiesGroupResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @JsonProperty("connected_groups")
+    private List<Integer> connectedGroups = new ArrayList<Integer>();
 
     public OpportunitiesGroupResponse groupId(Integer groupId) {
         this.groupId = groupId;
@@ -124,6 +81,25 @@ public class OpportunitiesGroupResponse implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public OpportunitiesGroupResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public OpportunitiesGroupResponse notification(String notification) {
@@ -169,6 +145,30 @@ public class OpportunitiesGroupResponse implements Serializable {
         this.requiredTasks = requiredTasks;
     }
 
+    public OpportunitiesGroupResponse connectedGroups(List<Integer> connectedGroups) {
+        this.connectedGroups = connectedGroups;
+        return this;
+    }
+
+    public OpportunitiesGroupResponse addConnectedGroupsItem(Integer connectedGroupsItem) {
+        this.connectedGroups.add(connectedGroupsItem);
+        return this;
+    }
+
+    /**
+     * The groups that are connected to this group on the opportunities map
+     * 
+     * @return connectedGroups
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The groups that are connected to this group on the opportunities map")
+    public List<Integer> getConnectedGroups() {
+        return connectedGroups;
+    }
+
+    public void setConnectedGroups(List<Integer> connectedGroups) {
+        this.connectedGroups = connectedGroups;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -178,17 +178,17 @@ public class OpportunitiesGroupResponse implements Serializable {
             return false;
         }
         OpportunitiesGroupResponse opportunitiesGroupResponse = (OpportunitiesGroupResponse) o;
-        return Objects.equals(this.connectedGroups, opportunitiesGroupResponse.connectedGroups)
-                && Objects.equals(this.description, opportunitiesGroupResponse.description)
-                && Objects.equals(this.groupId, opportunitiesGroupResponse.groupId)
+        return Objects.equals(this.groupId, opportunitiesGroupResponse.groupId)
                 && Objects.equals(this.name, opportunitiesGroupResponse.name)
+                && Objects.equals(this.description, opportunitiesGroupResponse.description)
                 && Objects.equals(this.notification, opportunitiesGroupResponse.notification)
-                && Objects.equals(this.requiredTasks, opportunitiesGroupResponse.requiredTasks);
+                && Objects.equals(this.requiredTasks, opportunitiesGroupResponse.requiredTasks)
+                && Objects.equals(this.connectedGroups, opportunitiesGroupResponse.connectedGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(connectedGroups, description, groupId, name, notification, requiredTasks);
+        return Objects.hash(groupId, name, description, notification, requiredTasks, connectedGroups);
     }
 
     @Override
@@ -196,12 +196,12 @@ public class OpportunitiesGroupResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class OpportunitiesGroupResponse {\n");
 
-        sb.append("    connectedGroups: ").append(toIndentedString(connectedGroups)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
         sb.append("    requiredTasks: ").append(toIndentedString(requiredTasks)).append("\n");
+        sb.append("    connectedGroups: ").append(toIndentedString(connectedGroups)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -28,32 +28,32 @@ public class DogmaAttributeResponse implements Serializable {
     @JsonProperty("attribute_id")
     private Integer attributeId = null;
 
-    @JsonProperty("default_value")
-    private Float defaultValue = null;
+    @JsonProperty("name")
+    private String name = null;
 
     @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("display_name")
-    private String displayName = null;
-
-    @JsonProperty("high_is_good")
-    private Boolean highIsGood = null;
-
     @JsonProperty("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("name")
-    private String name = null;
+    @JsonProperty("default_value")
+    private Float defaultValue = null;
 
     @JsonProperty("published")
     private Boolean published = null;
 
-    @JsonProperty("stackable")
-    private Boolean stackable = null;
+    @JsonProperty("display_name")
+    private String displayName = null;
 
     @JsonProperty("unit_id")
     private Integer unitId = null;
+
+    @JsonProperty("stackable")
+    private Boolean stackable = null;
+
+    @JsonProperty("high_is_good")
+    private Boolean highIsGood = null;
 
     public DogmaAttributeResponse attributeId(Integer attributeId) {
         this.attributeId = attributeId;
@@ -72,101 +72,6 @@ public class DogmaAttributeResponse implements Serializable {
 
     public void setAttributeId(Integer attributeId) {
         this.attributeId = attributeId;
-    }
-
-    public DogmaAttributeResponse defaultValue(Float defaultValue) {
-        this.defaultValue = defaultValue;
-        return this;
-    }
-
-    /**
-     * default_value number
-     * 
-     * @return defaultValue
-     **/
-    @ApiModelProperty(example = "null", value = "default_value number")
-    public Float getDefaultValue() {
-        return defaultValue;
-    }
-
-    public void setDefaultValue(Float defaultValue) {
-        this.defaultValue = defaultValue;
-    }
-
-    public DogmaAttributeResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public DogmaAttributeResponse displayName(String displayName) {
-        this.displayName = displayName;
-        return this;
-    }
-
-    /**
-     * display_name string
-     * 
-     * @return displayName
-     **/
-    @ApiModelProperty(example = "null", value = "display_name string")
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public DogmaAttributeResponse highIsGood(Boolean highIsGood) {
-        this.highIsGood = highIsGood;
-        return this;
-    }
-
-    /**
-     * high_is_good boolean
-     * 
-     * @return highIsGood
-     **/
-    @ApiModelProperty(example = "null", value = "high_is_good boolean")
-    public Boolean getHighIsGood() {
-        return highIsGood;
-    }
-
-    public void setHighIsGood(Boolean highIsGood) {
-        this.highIsGood = highIsGood;
-    }
-
-    public DogmaAttributeResponse iconId(Integer iconId) {
-        this.iconId = iconId;
-        return this;
-    }
-
-    /**
-     * icon_id integer
-     * 
-     * @return iconId
-     **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
-    public Integer getIconId() {
-        return iconId;
-    }
-
-    public void setIconId(Integer iconId) {
-        this.iconId = iconId;
     }
 
     public DogmaAttributeResponse name(String name) {
@@ -188,6 +93,63 @@ public class DogmaAttributeResponse implements Serializable {
         this.name = name;
     }
 
+    public DogmaAttributeResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public DogmaAttributeResponse iconId(Integer iconId) {
+        this.iconId = iconId;
+        return this;
+    }
+
+    /**
+     * icon_id integer
+     * 
+     * @return iconId
+     **/
+    @ApiModelProperty(example = "null", value = "icon_id integer")
+    public Integer getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(Integer iconId) {
+        this.iconId = iconId;
+    }
+
+    public DogmaAttributeResponse defaultValue(Float defaultValue) {
+        this.defaultValue = defaultValue;
+        return this;
+    }
+
+    /**
+     * default_value number
+     * 
+     * @return defaultValue
+     **/
+    @ApiModelProperty(example = "null", value = "default_value number")
+    public Float getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(Float defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
     public DogmaAttributeResponse published(Boolean published) {
         this.published = published;
         return this;
@@ -207,23 +169,23 @@ public class DogmaAttributeResponse implements Serializable {
         this.published = published;
     }
 
-    public DogmaAttributeResponse stackable(Boolean stackable) {
-        this.stackable = stackable;
+    public DogmaAttributeResponse displayName(String displayName) {
+        this.displayName = displayName;
         return this;
     }
 
     /**
-     * stackable boolean
+     * display_name string
      * 
-     * @return stackable
+     * @return displayName
      **/
-    @ApiModelProperty(example = "null", value = "stackable boolean")
-    public Boolean getStackable() {
-        return stackable;
+    @ApiModelProperty(example = "null", value = "display_name string")
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setStackable(Boolean stackable) {
-        this.stackable = stackable;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public DogmaAttributeResponse unitId(Integer unitId) {
@@ -245,6 +207,44 @@ public class DogmaAttributeResponse implements Serializable {
         this.unitId = unitId;
     }
 
+    public DogmaAttributeResponse stackable(Boolean stackable) {
+        this.stackable = stackable;
+        return this;
+    }
+
+    /**
+     * stackable boolean
+     * 
+     * @return stackable
+     **/
+    @ApiModelProperty(example = "null", value = "stackable boolean")
+    public Boolean getStackable() {
+        return stackable;
+    }
+
+    public void setStackable(Boolean stackable) {
+        this.stackable = stackable;
+    }
+
+    public DogmaAttributeResponse highIsGood(Boolean highIsGood) {
+        this.highIsGood = highIsGood;
+        return this;
+    }
+
+    /**
+     * high_is_good boolean
+     * 
+     * @return highIsGood
+     **/
+    @ApiModelProperty(example = "null", value = "high_is_good boolean")
+    public Boolean getHighIsGood() {
+        return highIsGood;
+    }
+
+    public void setHighIsGood(Boolean highIsGood) {
+        this.highIsGood = highIsGood;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -255,21 +255,21 @@ public class DogmaAttributeResponse implements Serializable {
         }
         DogmaAttributeResponse dogmaAttributeResponse = (DogmaAttributeResponse) o;
         return Objects.equals(this.attributeId, dogmaAttributeResponse.attributeId)
-                && Objects.equals(this.defaultValue, dogmaAttributeResponse.defaultValue)
-                && Objects.equals(this.description, dogmaAttributeResponse.description)
-                && Objects.equals(this.displayName, dogmaAttributeResponse.displayName)
-                && Objects.equals(this.highIsGood, dogmaAttributeResponse.highIsGood)
-                && Objects.equals(this.iconId, dogmaAttributeResponse.iconId)
                 && Objects.equals(this.name, dogmaAttributeResponse.name)
+                && Objects.equals(this.description, dogmaAttributeResponse.description)
+                && Objects.equals(this.iconId, dogmaAttributeResponse.iconId)
+                && Objects.equals(this.defaultValue, dogmaAttributeResponse.defaultValue)
                 && Objects.equals(this.published, dogmaAttributeResponse.published)
+                && Objects.equals(this.displayName, dogmaAttributeResponse.displayName)
+                && Objects.equals(this.unitId, dogmaAttributeResponse.unitId)
                 && Objects.equals(this.stackable, dogmaAttributeResponse.stackable)
-                && Objects.equals(this.unitId, dogmaAttributeResponse.unitId);
+                && Objects.equals(this.highIsGood, dogmaAttributeResponse.highIsGood);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attributeId, defaultValue, description, displayName, highIsGood, iconId, name, published,
-                stackable, unitId);
+        return Objects.hash(attributeId, name, description, iconId, defaultValue, published, displayName, unitId,
+                stackable, highIsGood);
     }
 
     @Override
@@ -278,15 +278,15 @@ public class DogmaAttributeResponse implements Serializable {
         sb.append("class DogmaAttributeResponse {\n");
 
         sb.append("    attributeId: ").append(toIndentedString(attributeId)).append("\n");
-        sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-        sb.append("    highIsGood: ").append(toIndentedString(highIsGood)).append("\n");
-        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
+        sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
         sb.append("    published: ").append(toIndentedString(published)).append("\n");
-        sb.append("    stackable: ").append(toIndentedString(stackable)).append("\n");
+        sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
         sb.append("    unitId: ").append(toIndentedString(unitId)).append("\n");
+        sb.append("    stackable: ").append(toIndentedString(stackable)).append("\n");
+        sb.append("    highIsGood: ").append(toIndentedString(highIsGood)).append("\n");
         sb.append("}");
         return sb.toString();
     }

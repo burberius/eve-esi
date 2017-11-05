@@ -25,8 +25,8 @@ import java.io.Serializable;
 public class AllianceContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("contact_id")
-    private Integer contactId = null;
+    @JsonProperty("standing")
+    private Float standing = null;
 
     /**
      * contact_type string
@@ -65,29 +65,29 @@ public class AllianceContactsResponse implements Serializable {
     @JsonProperty("contact_type")
     private ContactTypeEnum contactType = null;
 
+    @JsonProperty("contact_id")
+    private Integer contactId = null;
+
     @JsonProperty("label_id")
     private Long labelId = null;
 
-    @JsonProperty("standing")
-    private Float standing = null;
-
-    public AllianceContactsResponse contactId(Integer contactId) {
-        this.contactId = contactId;
+    public AllianceContactsResponse standing(Float standing) {
+        this.standing = standing;
         return this;
     }
 
     /**
-     * contact_id integer
+     * Standing of the contact
      * 
-     * @return contactId
+     * @return standing
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contact_id integer")
-    public Integer getContactId() {
-        return contactId;
+    @ApiModelProperty(example = "null", required = true, value = "Standing of the contact")
+    public Float getStanding() {
+        return standing;
     }
 
-    public void setContactId(Integer contactId) {
-        this.contactId = contactId;
+    public void setStanding(Float standing) {
+        this.standing = standing;
     }
 
     public AllianceContactsResponse contactType(ContactTypeEnum contactType) {
@@ -109,6 +109,25 @@ public class AllianceContactsResponse implements Serializable {
         this.contactType = contactType;
     }
 
+    public AllianceContactsResponse contactId(Integer contactId) {
+        this.contactId = contactId;
+        return this;
+    }
+
+    /**
+     * contact_id integer
+     * 
+     * @return contactId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "contact_id integer")
+    public Integer getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(Integer contactId) {
+        this.contactId = contactId;
+    }
+
     public AllianceContactsResponse labelId(Long labelId) {
         this.labelId = labelId;
         return this;
@@ -128,25 +147,6 @@ public class AllianceContactsResponse implements Serializable {
         this.labelId = labelId;
     }
 
-    public AllianceContactsResponse standing(Float standing) {
-        this.standing = standing;
-        return this;
-    }
-
-    /**
-     * Standing of the contact
-     * 
-     * @return standing
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Standing of the contact")
-    public Float getStanding() {
-        return standing;
-    }
-
-    public void setStanding(Float standing) {
-        this.standing = standing;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -156,15 +156,15 @@ public class AllianceContactsResponse implements Serializable {
             return false;
         }
         AllianceContactsResponse allianceContactsResponse = (AllianceContactsResponse) o;
-        return Objects.equals(this.contactId, allianceContactsResponse.contactId)
+        return Objects.equals(this.standing, allianceContactsResponse.standing)
                 && Objects.equals(this.contactType, allianceContactsResponse.contactType)
-                && Objects.equals(this.labelId, allianceContactsResponse.labelId)
-                && Objects.equals(this.standing, allianceContactsResponse.standing);
+                && Objects.equals(this.contactId, allianceContactsResponse.contactId)
+                && Objects.equals(this.labelId, allianceContactsResponse.labelId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, contactType, labelId, standing);
+        return Objects.hash(standing, contactType, contactId, labelId);
     }
 
     @Override
@@ -172,10 +172,10 @@ public class AllianceContactsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceContactsResponse {\n");
 
-        sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
-        sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
-        sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
         sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
+        sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
+        sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
+        sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

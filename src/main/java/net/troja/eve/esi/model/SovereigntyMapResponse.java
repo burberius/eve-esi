@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class SovereigntyMapResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
     @JsonProperty("alliance_id")
     private Integer allianceId = null;
 
@@ -34,8 +37,24 @@ public class SovereigntyMapResponse implements Serializable {
     @JsonProperty("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
+    public SovereigntyMapResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
 
     public SovereigntyMapResponse allianceId(Integer allianceId) {
         this.allianceId = allianceId;
@@ -94,25 +113,6 @@ public class SovereigntyMapResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public SovereigntyMapResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class SovereigntyMapResponse implements Serializable {
             return false;
         }
         SovereigntyMapResponse sovereigntyMapResponse = (SovereigntyMapResponse) o;
-        return Objects.equals(this.allianceId, sovereigntyMapResponse.allianceId)
+        return Objects.equals(this.systemId, sovereigntyMapResponse.systemId)
+                && Objects.equals(this.allianceId, sovereigntyMapResponse.allianceId)
                 && Objects.equals(this.corporationId, sovereigntyMapResponse.corporationId)
-                && Objects.equals(this.factionId, sovereigntyMapResponse.factionId)
-                && Objects.equals(this.systemId, sovereigntyMapResponse.systemId);
+                && Objects.equals(this.factionId, sovereigntyMapResponse.factionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, corporationId, factionId, systemId);
+        return Objects.hash(systemId, allianceId, corporationId, factionId);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class SovereigntyMapResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyMapResponse {\n");
 
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

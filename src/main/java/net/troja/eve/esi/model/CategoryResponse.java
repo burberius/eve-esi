@@ -30,14 +30,14 @@ public class CategoryResponse implements Serializable {
     @JsonProperty("category_id")
     private Integer categoryId = null;
 
-    @JsonProperty("groups")
-    private List<Integer> groups = new ArrayList<Integer>();
-
     @JsonProperty("name")
     private String name = null;
 
     @JsonProperty("published")
     private Boolean published = null;
+
+    @JsonProperty("groups")
+    private List<Integer> groups = new ArrayList<Integer>();
 
     public CategoryResponse categoryId(Integer categoryId) {
         this.categoryId = categoryId;
@@ -56,30 +56,6 @@ public class CategoryResponse implements Serializable {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public CategoryResponse groups(List<Integer> groups) {
-        this.groups = groups;
-        return this;
-    }
-
-    public CategoryResponse addGroupsItem(Integer groupsItem) {
-        this.groups.add(groupsItem);
-        return this;
-    }
-
-    /**
-     * groups array
-     * 
-     * @return groups
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "groups array")
-    public List<Integer> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Integer> groups) {
-        this.groups = groups;
     }
 
     public CategoryResponse name(String name) {
@@ -120,6 +96,30 @@ public class CategoryResponse implements Serializable {
         this.published = published;
     }
 
+    public CategoryResponse groups(List<Integer> groups) {
+        this.groups = groups;
+        return this;
+    }
+
+    public CategoryResponse addGroupsItem(Integer groupsItem) {
+        this.groups.add(groupsItem);
+        return this;
+    }
+
+    /**
+     * groups array
+     * 
+     * @return groups
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "groups array")
+    public List<Integer> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Integer> groups) {
+        this.groups = groups;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -130,14 +130,14 @@ public class CategoryResponse implements Serializable {
         }
         CategoryResponse categoryResponse = (CategoryResponse) o;
         return Objects.equals(this.categoryId, categoryResponse.categoryId)
-                && Objects.equals(this.groups, categoryResponse.groups)
                 && Objects.equals(this.name, categoryResponse.name)
-                && Objects.equals(this.published, categoryResponse.published);
+                && Objects.equals(this.published, categoryResponse.published)
+                && Objects.equals(this.groups, categoryResponse.groups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, groups, name, published);
+        return Objects.hash(categoryId, name, published, groups);
     }
 
     @Override
@@ -146,9 +146,9 @@ public class CategoryResponse implements Serializable {
         sb.append("class CategoryResponse {\n");
 
         sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
-        sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    published: ").append(toIndentedString(published)).append("\n");
+        sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
         sb.append("}");
         return sb.toString();
     }

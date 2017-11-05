@@ -25,9 +25,6 @@ import java.io.Serializable;
 public class Recipient implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("recipient_id")
-    private Integer recipientId = null;
-
     /**
      * recipient_type string
      */
@@ -65,24 +62,8 @@ public class Recipient implements Serializable {
     @JsonProperty("recipient_type")
     private RecipientTypeEnum recipientType = null;
 
-    public Recipient recipientId(Integer recipientId) {
-        this.recipientId = recipientId;
-        return this;
-    }
-
-    /**
-     * recipient_id integer
-     * 
-     * @return recipientId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "recipient_id integer")
-    public Integer getRecipientId() {
-        return recipientId;
-    }
-
-    public void setRecipientId(Integer recipientId) {
-        this.recipientId = recipientId;
-    }
+    @JsonProperty("recipient_id")
+    private Integer recipientId = null;
 
     public Recipient recipientType(RecipientTypeEnum recipientType) {
         this.recipientType = recipientType;
@@ -103,6 +84,25 @@ public class Recipient implements Serializable {
         this.recipientType = recipientType;
     }
 
+    public Recipient recipientId(Integer recipientId) {
+        this.recipientId = recipientId;
+        return this;
+    }
+
+    /**
+     * recipient_id integer
+     * 
+     * @return recipientId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "recipient_id integer")
+    public Integer getRecipientId() {
+        return recipientId;
+    }
+
+    public void setRecipientId(Integer recipientId) {
+        this.recipientId = recipientId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,13 +112,13 @@ public class Recipient implements Serializable {
             return false;
         }
         Recipient recipient = (Recipient) o;
-        return Objects.equals(this.recipientId, recipient.recipientId)
-                && Objects.equals(this.recipientType, recipient.recipientType);
+        return Objects.equals(this.recipientType, recipient.recipientType)
+                && Objects.equals(this.recipientId, recipient.recipientId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(recipientId, recipientType);
+        return Objects.hash(recipientType, recipientId);
     }
 
     @Override
@@ -126,8 +126,8 @@ public class Recipient implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Recipient {\n");
 
-        sb.append("    recipientId: ").append(toIndentedString(recipientId)).append("\n");
         sb.append("    recipientType: ").append(toIndentedString(recipientType)).append("\n");
+        sb.append("    recipientId: ").append(toIndentedString(recipientId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -27,11 +27,30 @@ import java.io.Serializable;
 public class MailMetaData implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("read")
+    private Boolean read = null;
+
     @JsonProperty("labels")
     private List<Long> labels = new ArrayList<Long>();
 
-    @JsonProperty("read")
-    private Boolean read = null;
+    public MailMetaData read(Boolean read) {
+        this.read = read;
+        return this;
+    }
+
+    /**
+     * Whether the mail is flagged as read
+     * 
+     * @return read
+     **/
+    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
+    }
 
     public MailMetaData labels(List<Long> labels) {
         this.labels = labels;
@@ -57,25 +76,6 @@ public class MailMetaData implements Serializable {
         this.labels = labels;
     }
 
-    public MailMetaData read(Boolean read) {
-        this.read = read;
-        return this;
-    }
-
-    /**
-     * Whether the mail is flagged as read
-     * 
-     * @return read
-     **/
-    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
-    public Boolean getRead() {
-        return read;
-    }
-
-    public void setRead(Boolean read) {
-        this.read = read;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,12 +85,12 @@ public class MailMetaData implements Serializable {
             return false;
         }
         MailMetaData mailMetaData = (MailMetaData) o;
-        return Objects.equals(this.labels, mailMetaData.labels) && Objects.equals(this.read, mailMetaData.read);
+        return Objects.equals(this.read, mailMetaData.read) && Objects.equals(this.labels, mailMetaData.labels);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(labels, read);
+        return Objects.hash(read, labels);
     }
 
     @Override
@@ -98,8 +98,8 @@ public class MailMetaData implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailMetaData {\n");
 
-        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    read: ").append(toIndentedString(read)).append("\n");
+        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("}");
         return sb.toString();
     }

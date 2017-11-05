@@ -25,155 +25,41 @@ import java.io.Serializable;
 public class CorporationWalletJournalExtraInfoResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
-    @JsonProperty("character_id")
-    private Integer characterId = null;
-
-    @JsonProperty("contract_id")
-    private Integer contractId = null;
-
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
-    @JsonProperty("destroyed_ship_type_id")
-    private Integer destroyedShipTypeId = null;
-
-    @JsonProperty("job_id")
-    private Integer jobId = null;
-
     @JsonProperty("location_id")
     private Long locationId = null;
-
-    @JsonProperty("npc_id")
-    private Integer npcId = null;
-
-    @JsonProperty("npc_name")
-    private String npcName = null;
-
-    @JsonProperty("planet_id")
-    private Integer planetId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
 
     @JsonProperty("transaction_id")
     private Long transactionId = null;
 
-    public CorporationWalletJournalExtraInfoResponse allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-        return this;
-    }
+    @JsonProperty("npc_name")
+    private String npcName = null;
 
-    /**
-     * alliance_id integer
-     * 
-     * @return allianceId
-     **/
-    @ApiModelProperty(example = "null", value = "alliance_id integer")
-    public Integer getAllianceId() {
-        return allianceId;
-    }
+    @JsonProperty("npc_id")
+    private Integer npcId = null;
 
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-    }
+    @JsonProperty("destroyed_ship_type_id")
+    private Integer destroyedShipTypeId = null;
 
-    public CorporationWalletJournalExtraInfoResponse characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
-    /**
-     * character_id integer
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", value = "character_id integer")
-    public Integer getCharacterId() {
-        return characterId;
-    }
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
 
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
-    }
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
 
-    public CorporationWalletJournalExtraInfoResponse contractId(Integer contractId) {
-        this.contractId = contractId;
-        return this;
-    }
+    @JsonProperty("job_id")
+    private Integer jobId = null;
 
-    /**
-     * contract_id integer
-     * 
-     * @return contractId
-     **/
-    @ApiModelProperty(example = "null", value = "contract_id integer")
-    public Integer getContractId() {
-        return contractId;
-    }
+    @JsonProperty("contract_id")
+    private Integer contractId = null;
 
-    public void setContractId(Integer contractId) {
-        this.contractId = contractId;
-    }
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
-    public CorporationWalletJournalExtraInfoResponse corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-        return this;
-    }
-
-    /**
-     * corporation_id integer
-     * 
-     * @return corporationId
-     **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse destroyedShipTypeId(Integer destroyedShipTypeId) {
-        this.destroyedShipTypeId = destroyedShipTypeId;
-        return this;
-    }
-
-    /**
-     * destroyed_ship_type_id integer
-     * 
-     * @return destroyedShipTypeId
-     **/
-    @ApiModelProperty(example = "null", value = "destroyed_ship_type_id integer")
-    public Integer getDestroyedShipTypeId() {
-        return destroyedShipTypeId;
-    }
-
-    public void setDestroyedShipTypeId(Integer destroyedShipTypeId) {
-        this.destroyedShipTypeId = destroyedShipTypeId;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse jobId(Integer jobId) {
-        this.jobId = jobId;
-        return this;
-    }
-
-    /**
-     * job_id integer
-     * 
-     * @return jobId
-     **/
-    @ApiModelProperty(example = "null", value = "job_id integer")
-    public Integer getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
-    }
+    @JsonProperty("planet_id")
+    private Integer planetId = null;
 
     public CorporationWalletJournalExtraInfoResponse locationId(Long locationId) {
         this.locationId = locationId;
@@ -192,82 +78,6 @@ public class CorporationWalletJournalExtraInfoResponse implements Serializable {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse npcId(Integer npcId) {
-        this.npcId = npcId;
-        return this;
-    }
-
-    /**
-     * npc_id integer
-     * 
-     * @return npcId
-     **/
-    @ApiModelProperty(example = "null", value = "npc_id integer")
-    public Integer getNpcId() {
-        return npcId;
-    }
-
-    public void setNpcId(Integer npcId) {
-        this.npcId = npcId;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse npcName(String npcName) {
-        this.npcName = npcName;
-        return this;
-    }
-
-    /**
-     * npc_name string
-     * 
-     * @return npcName
-     **/
-    @ApiModelProperty(example = "null", value = "npc_name string")
-    public String getNpcName() {
-        return npcName;
-    }
-
-    public void setNpcName(String npcName) {
-        this.npcName = npcName;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse planetId(Integer planetId) {
-        this.planetId = planetId;
-        return this;
-    }
-
-    /**
-     * planet_id integer
-     * 
-     * @return planetId
-     **/
-    @ApiModelProperty(example = "null", value = "planet_id integer")
-    public Integer getPlanetId() {
-        return planetId;
-    }
-
-    public void setPlanetId(Integer planetId) {
-        this.planetId = planetId;
-    }
-
-    public CorporationWalletJournalExtraInfoResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
     }
 
     public CorporationWalletJournalExtraInfoResponse transactionId(Long transactionId) {
@@ -289,6 +99,196 @@ public class CorporationWalletJournalExtraInfoResponse implements Serializable {
         this.transactionId = transactionId;
     }
 
+    public CorporationWalletJournalExtraInfoResponse npcName(String npcName) {
+        this.npcName = npcName;
+        return this;
+    }
+
+    /**
+     * npc_name string
+     * 
+     * @return npcName
+     **/
+    @ApiModelProperty(example = "null", value = "npc_name string")
+    public String getNpcName() {
+        return npcName;
+    }
+
+    public void setNpcName(String npcName) {
+        this.npcName = npcName;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse npcId(Integer npcId) {
+        this.npcId = npcId;
+        return this;
+    }
+
+    /**
+     * npc_id integer
+     * 
+     * @return npcId
+     **/
+    @ApiModelProperty(example = "null", value = "npc_id integer")
+    public Integer getNpcId() {
+        return npcId;
+    }
+
+    public void setNpcId(Integer npcId) {
+        this.npcId = npcId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse destroyedShipTypeId(Integer destroyedShipTypeId) {
+        this.destroyedShipTypeId = destroyedShipTypeId;
+        return this;
+    }
+
+    /**
+     * destroyed_ship_type_id integer
+     * 
+     * @return destroyedShipTypeId
+     **/
+    @ApiModelProperty(example = "null", value = "destroyed_ship_type_id integer")
+    public Integer getDestroyedShipTypeId() {
+        return destroyedShipTypeId;
+    }
+
+    public void setDestroyedShipTypeId(Integer destroyedShipTypeId) {
+        this.destroyedShipTypeId = destroyedShipTypeId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse characterId(Integer characterId) {
+        this.characterId = characterId;
+        return this;
+    }
+
+    /**
+     * character_id integer
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(example = "null", value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+        return this;
+    }
+
+    /**
+     * corporation_id integer
+     * 
+     * @return corporationId
+     **/
+    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    public Integer getCorporationId() {
+        return corporationId;
+    }
+
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+        return this;
+    }
+
+    /**
+     * alliance_id integer
+     * 
+     * @return allianceId
+     **/
+    @ApiModelProperty(example = "null", value = "alliance_id integer")
+    public Integer getAllianceId() {
+        return allianceId;
+    }
+
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse jobId(Integer jobId) {
+        this.jobId = jobId;
+        return this;
+    }
+
+    /**
+     * job_id integer
+     * 
+     * @return jobId
+     **/
+    @ApiModelProperty(example = "null", value = "job_id integer")
+    public Integer getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse contractId(Integer contractId) {
+        this.contractId = contractId;
+        return this;
+    }
+
+    /**
+     * contract_id integer
+     * 
+     * @return contractId
+     **/
+    @ApiModelProperty(example = "null", value = "contract_id integer")
+    public Integer getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(Integer contractId) {
+        this.contractId = contractId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public CorporationWalletJournalExtraInfoResponse planetId(Integer planetId) {
+        this.planetId = planetId;
+        return this;
+    }
+
+    /**
+     * planet_id integer
+     * 
+     * @return planetId
+     **/
+    @ApiModelProperty(example = "null", value = "planet_id integer")
+    public Integer getPlanetId() {
+        return planetId;
+    }
+
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -298,25 +298,25 @@ public class CorporationWalletJournalExtraInfoResponse implements Serializable {
             return false;
         }
         CorporationWalletJournalExtraInfoResponse corporationWalletJournalExtraInfoResponse = (CorporationWalletJournalExtraInfoResponse) o;
-        return Objects.equals(this.allianceId, corporationWalletJournalExtraInfoResponse.allianceId)
-                && Objects.equals(this.characterId, corporationWalletJournalExtraInfoResponse.characterId)
-                && Objects.equals(this.contractId, corporationWalletJournalExtraInfoResponse.contractId)
-                && Objects.equals(this.corporationId, corporationWalletJournalExtraInfoResponse.corporationId)
+        return Objects.equals(this.locationId, corporationWalletJournalExtraInfoResponse.locationId)
+                && Objects.equals(this.transactionId, corporationWalletJournalExtraInfoResponse.transactionId)
+                && Objects.equals(this.npcName, corporationWalletJournalExtraInfoResponse.npcName)
+                && Objects.equals(this.npcId, corporationWalletJournalExtraInfoResponse.npcId)
                 && Objects.equals(this.destroyedShipTypeId,
                         corporationWalletJournalExtraInfoResponse.destroyedShipTypeId)
+                && Objects.equals(this.characterId, corporationWalletJournalExtraInfoResponse.characterId)
+                && Objects.equals(this.corporationId, corporationWalletJournalExtraInfoResponse.corporationId)
+                && Objects.equals(this.allianceId, corporationWalletJournalExtraInfoResponse.allianceId)
                 && Objects.equals(this.jobId, corporationWalletJournalExtraInfoResponse.jobId)
-                && Objects.equals(this.locationId, corporationWalletJournalExtraInfoResponse.locationId)
-                && Objects.equals(this.npcId, corporationWalletJournalExtraInfoResponse.npcId)
-                && Objects.equals(this.npcName, corporationWalletJournalExtraInfoResponse.npcName)
-                && Objects.equals(this.planetId, corporationWalletJournalExtraInfoResponse.planetId)
+                && Objects.equals(this.contractId, corporationWalletJournalExtraInfoResponse.contractId)
                 && Objects.equals(this.systemId, corporationWalletJournalExtraInfoResponse.systemId)
-                && Objects.equals(this.transactionId, corporationWalletJournalExtraInfoResponse.transactionId);
+                && Objects.equals(this.planetId, corporationWalletJournalExtraInfoResponse.planetId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, characterId, contractId, corporationId, destroyedShipTypeId, jobId, locationId,
-                npcId, npcName, planetId, systemId, transactionId);
+        return Objects.hash(locationId, transactionId, npcName, npcId, destroyedShipTypeId, characterId, corporationId,
+                allianceId, jobId, contractId, systemId, planetId);
     }
 
     @Override
@@ -324,18 +324,18 @@ public class CorporationWalletJournalExtraInfoResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletJournalExtraInfoResponse {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
-        sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    destroyedShipTypeId: ").append(toIndentedString(destroyedShipTypeId)).append("\n");
-        sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    npcId: ").append(toIndentedString(npcId)).append("\n");
-        sb.append("    npcName: ").append(toIndentedString(npcName)).append("\n");
-        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
+        sb.append("    npcName: ").append(toIndentedString(npcName)).append("\n");
+        sb.append("    npcId: ").append(toIndentedString(npcId)).append("\n");
+        sb.append("    destroyedShipTypeId: ").append(toIndentedString(destroyedShipTypeId)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
+        sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
+        sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
