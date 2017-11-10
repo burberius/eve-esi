@@ -25,33 +25,14 @@ import java.io.Serializable;
 public class CorporationBookmarkFoldersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("creator_id")
-    private Integer creatorId = null;
-
     @JsonProperty("folder_id")
     private Integer folderId = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    public CorporationBookmarkFoldersResponse creatorId(Integer creatorId) {
-        this.creatorId = creatorId;
-        return this;
-    }
-
-    /**
-     * creator_id integer
-     * 
-     * @return creatorId
-     **/
-    @ApiModelProperty(example = "null", value = "creator_id integer")
-    public Integer getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Integer creatorId) {
-        this.creatorId = creatorId;
-    }
+    @JsonProperty("creator_id")
+    private Integer creatorId = null;
 
     public CorporationBookmarkFoldersResponse folderId(Integer folderId) {
         this.folderId = folderId;
@@ -91,6 +72,25 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         this.name = name;
     }
 
+    public CorporationBookmarkFoldersResponse creatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+
+    /**
+     * creator_id integer
+     * 
+     * @return creatorId
+     **/
+    @ApiModelProperty(example = "null", value = "creator_id integer")
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,14 +100,14 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
             return false;
         }
         CorporationBookmarkFoldersResponse corporationBookmarkFoldersResponse = (CorporationBookmarkFoldersResponse) o;
-        return Objects.equals(this.creatorId, corporationBookmarkFoldersResponse.creatorId)
-                && Objects.equals(this.folderId, corporationBookmarkFoldersResponse.folderId)
-                && Objects.equals(this.name, corporationBookmarkFoldersResponse.name);
+        return Objects.equals(this.folderId, corporationBookmarkFoldersResponse.folderId)
+                && Objects.equals(this.name, corporationBookmarkFoldersResponse.name)
+                && Objects.equals(this.creatorId, corporationBookmarkFoldersResponse.creatorId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(creatorId, folderId, name);
+        return Objects.hash(folderId, name, creatorId);
     }
 
     @Override
@@ -115,9 +115,9 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationBookmarkFoldersResponse {\n");
 
-        sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

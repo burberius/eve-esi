@@ -26,11 +26,23 @@ import java.io.Serializable;
 public class CharacterSkillqueueResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("skill_id")
+    private Integer skillId = null;
+
     @JsonProperty("finish_date")
     private OffsetDateTime finishDate = null;
 
+    @JsonProperty("start_date")
+    private OffsetDateTime startDate = null;
+
     @JsonProperty("finished_level")
     private Integer finishedLevel = null;
+
+    @JsonProperty("queue_position")
+    private Integer queuePosition = null;
+
+    @JsonProperty("training_start_sp")
+    private Integer trainingStartSp = null;
 
     @JsonProperty("level_end_sp")
     private Integer levelEndSp = null;
@@ -38,17 +50,24 @@ public class CharacterSkillqueueResponse implements Serializable {
     @JsonProperty("level_start_sp")
     private Integer levelStartSp = null;
 
-    @JsonProperty("queue_position")
-    private Integer queuePosition = null;
+    public CharacterSkillqueueResponse skillId(Integer skillId) {
+        this.skillId = skillId;
+        return this;
+    }
 
-    @JsonProperty("skill_id")
-    private Integer skillId = null;
+    /**
+     * skill_id integer
+     * 
+     * @return skillId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "skill_id integer")
+    public Integer getSkillId() {
+        return skillId;
+    }
 
-    @JsonProperty("start_date")
-    private OffsetDateTime startDate = null;
-
-    @JsonProperty("training_start_sp")
-    private Integer trainingStartSp = null;
+    public void setSkillId(Integer skillId) {
+        this.skillId = skillId;
+    }
 
     public CharacterSkillqueueResponse finishDate(OffsetDateTime finishDate) {
         this.finishDate = finishDate;
@@ -69,6 +88,25 @@ public class CharacterSkillqueueResponse implements Serializable {
         this.finishDate = finishDate;
     }
 
+    public CharacterSkillqueueResponse startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    /**
+     * start_date string
+     * 
+     * @return startDate
+     **/
+    @ApiModelProperty(example = "null", value = "start_date string")
+    public OffsetDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+    }
+
     public CharacterSkillqueueResponse finishedLevel(Integer finishedLevel) {
         this.finishedLevel = finishedLevel;
         return this;
@@ -86,6 +124,44 @@ public class CharacterSkillqueueResponse implements Serializable {
 
     public void setFinishedLevel(Integer finishedLevel) {
         this.finishedLevel = finishedLevel;
+    }
+
+    public CharacterSkillqueueResponse queuePosition(Integer queuePosition) {
+        this.queuePosition = queuePosition;
+        return this;
+    }
+
+    /**
+     * queue_position integer
+     * 
+     * @return queuePosition
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "queue_position integer")
+    public Integer getQueuePosition() {
+        return queuePosition;
+    }
+
+    public void setQueuePosition(Integer queuePosition) {
+        this.queuePosition = queuePosition;
+    }
+
+    public CharacterSkillqueueResponse trainingStartSp(Integer trainingStartSp) {
+        this.trainingStartSp = trainingStartSp;
+        return this;
+    }
+
+    /**
+     * training_start_sp integer
+     * 
+     * @return trainingStartSp
+     **/
+    @ApiModelProperty(example = "null", value = "training_start_sp integer")
+    public Integer getTrainingStartSp() {
+        return trainingStartSp;
+    }
+
+    public void setTrainingStartSp(Integer trainingStartSp) {
+        this.trainingStartSp = trainingStartSp;
     }
 
     public CharacterSkillqueueResponse levelEndSp(Integer levelEndSp) {
@@ -127,82 +203,6 @@ public class CharacterSkillqueueResponse implements Serializable {
         this.levelStartSp = levelStartSp;
     }
 
-    public CharacterSkillqueueResponse queuePosition(Integer queuePosition) {
-        this.queuePosition = queuePosition;
-        return this;
-    }
-
-    /**
-     * queue_position integer
-     * 
-     * @return queuePosition
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "queue_position integer")
-    public Integer getQueuePosition() {
-        return queuePosition;
-    }
-
-    public void setQueuePosition(Integer queuePosition) {
-        this.queuePosition = queuePosition;
-    }
-
-    public CharacterSkillqueueResponse skillId(Integer skillId) {
-        this.skillId = skillId;
-        return this;
-    }
-
-    /**
-     * skill_id integer
-     * 
-     * @return skillId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "skill_id integer")
-    public Integer getSkillId() {
-        return skillId;
-    }
-
-    public void setSkillId(Integer skillId) {
-        this.skillId = skillId;
-    }
-
-    public CharacterSkillqueueResponse startDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-        return this;
-    }
-
-    /**
-     * start_date string
-     * 
-     * @return startDate
-     **/
-    @ApiModelProperty(example = "null", value = "start_date string")
-    public OffsetDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public CharacterSkillqueueResponse trainingStartSp(Integer trainingStartSp) {
-        this.trainingStartSp = trainingStartSp;
-        return this;
-    }
-
-    /**
-     * training_start_sp integer
-     * 
-     * @return trainingStartSp
-     **/
-    @ApiModelProperty(example = "null", value = "training_start_sp integer")
-    public Integer getTrainingStartSp() {
-        return trainingStartSp;
-    }
-
-    public void setTrainingStartSp(Integer trainingStartSp) {
-        this.trainingStartSp = trainingStartSp;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -212,20 +212,20 @@ public class CharacterSkillqueueResponse implements Serializable {
             return false;
         }
         CharacterSkillqueueResponse characterSkillqueueResponse = (CharacterSkillqueueResponse) o;
-        return Objects.equals(this.finishDate, characterSkillqueueResponse.finishDate)
-                && Objects.equals(this.finishedLevel, characterSkillqueueResponse.finishedLevel)
-                && Objects.equals(this.levelEndSp, characterSkillqueueResponse.levelEndSp)
-                && Objects.equals(this.levelStartSp, characterSkillqueueResponse.levelStartSp)
-                && Objects.equals(this.queuePosition, characterSkillqueueResponse.queuePosition)
-                && Objects.equals(this.skillId, characterSkillqueueResponse.skillId)
+        return Objects.equals(this.skillId, characterSkillqueueResponse.skillId)
+                && Objects.equals(this.finishDate, characterSkillqueueResponse.finishDate)
                 && Objects.equals(this.startDate, characterSkillqueueResponse.startDate)
-                && Objects.equals(this.trainingStartSp, characterSkillqueueResponse.trainingStartSp);
+                && Objects.equals(this.finishedLevel, characterSkillqueueResponse.finishedLevel)
+                && Objects.equals(this.queuePosition, characterSkillqueueResponse.queuePosition)
+                && Objects.equals(this.trainingStartSp, characterSkillqueueResponse.trainingStartSp)
+                && Objects.equals(this.levelEndSp, characterSkillqueueResponse.levelEndSp)
+                && Objects.equals(this.levelStartSp, characterSkillqueueResponse.levelStartSp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(finishDate, finishedLevel, levelEndSp, levelStartSp, queuePosition, skillId, startDate,
-                trainingStartSp);
+        return Objects.hash(skillId, finishDate, startDate, finishedLevel, queuePosition, trainingStartSp, levelEndSp,
+                levelStartSp);
     }
 
     @Override
@@ -233,14 +233,14 @@ public class CharacterSkillqueueResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterSkillqueueResponse {\n");
 
+        sb.append("    skillId: ").append(toIndentedString(skillId)).append("\n");
         sb.append("    finishDate: ").append(toIndentedString(finishDate)).append("\n");
+        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("    finishedLevel: ").append(toIndentedString(finishedLevel)).append("\n");
+        sb.append("    queuePosition: ").append(toIndentedString(queuePosition)).append("\n");
+        sb.append("    trainingStartSp: ").append(toIndentedString(trainingStartSp)).append("\n");
         sb.append("    levelEndSp: ").append(toIndentedString(levelEndSp)).append("\n");
         sb.append("    levelStartSp: ").append(toIndentedString(levelStartSp)).append("\n");
-        sb.append("    queuePosition: ").append(toIndentedString(queuePosition)).append("\n");
-        sb.append("    skillId: ").append(toIndentedString(skillId)).append("\n");
-        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-        sb.append("    trainingStartSp: ").append(toIndentedString(trainingStartSp)).append("\n");
         sb.append("}");
         return sb.toString();
     }

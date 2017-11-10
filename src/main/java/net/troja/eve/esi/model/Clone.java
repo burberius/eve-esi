@@ -27,9 +27,6 @@ import java.io.Serializable;
 public class Clone implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("implants")
-    private List<Integer> implants = new ArrayList<Integer>();
-
     @JsonProperty("location_id")
     private Long locationId = null;
 
@@ -66,29 +63,8 @@ public class Clone implements Serializable {
     @JsonProperty("location_type")
     private LocationTypeEnum locationType = null;
 
-    public Clone implants(List<Integer> implants) {
-        this.implants = implants;
-        return this;
-    }
-
-    public Clone addImplantsItem(Integer implantsItem) {
-        this.implants.add(implantsItem);
-        return this;
-    }
-
-    /**
-     * implants array
-     * 
-     * @return implants
-     **/
-    @ApiModelProperty(example = "null", value = "implants array")
-    public List<Integer> getImplants() {
-        return implants;
-    }
-
-    public void setImplants(List<Integer> implants) {
-        this.implants = implants;
-    }
+    @JsonProperty("implants")
+    private List<Integer> implants = new ArrayList<Integer>();
 
     public Clone locationId(Long locationId) {
         this.locationId = locationId;
@@ -128,6 +104,30 @@ public class Clone implements Serializable {
         this.locationType = locationType;
     }
 
+    public Clone implants(List<Integer> implants) {
+        this.implants = implants;
+        return this;
+    }
+
+    public Clone addImplantsItem(Integer implantsItem) {
+        this.implants.add(implantsItem);
+        return this;
+    }
+
+    /**
+     * implants array
+     * 
+     * @return implants
+     **/
+    @ApiModelProperty(example = "null", value = "implants array")
+    public List<Integer> getImplants() {
+        return implants;
+    }
+
+    public void setImplants(List<Integer> implants) {
+        this.implants = implants;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,13 +137,14 @@ public class Clone implements Serializable {
             return false;
         }
         Clone clone = (Clone) o;
-        return Objects.equals(this.implants, clone.implants) && Objects.equals(this.locationId, clone.locationId)
-                && Objects.equals(this.locationType, clone.locationType);
+        return Objects.equals(this.locationId, clone.locationId)
+                && Objects.equals(this.locationType, clone.locationType)
+                && Objects.equals(this.implants, clone.implants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(implants, locationId, locationType);
+        return Objects.hash(locationId, locationType, implants);
     }
 
     @Override
@@ -151,9 +152,9 @@ public class Clone implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Clone {\n");
 
-        sb.append("    implants: ").append(toIndentedString(implants)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
+        sb.append("    implants: ").append(toIndentedString(implants)).append("\n");
         sb.append("}");
         return sb.toString();
     }

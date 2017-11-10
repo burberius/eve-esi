@@ -26,11 +26,14 @@ import java.io.Serializable;
 public class PlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("planet_id")
+    private Integer planetId = null;
+
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("planet_id")
-    private Integer planetId = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
     @JsonProperty("position")
     private Position position = null;
@@ -38,8 +41,24 @@ public class PlanetResponse implements Serializable {
     @JsonProperty("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    public PlanetResponse planetId(Integer planetId) {
+        this.planetId = planetId;
+        return this;
+    }
+
+    /**
+     * planet_id integer
+     * 
+     * @return planetId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    public Integer getPlanetId() {
+        return planetId;
+    }
+
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
+    }
 
     public PlanetResponse name(String name) {
         this.name = name;
@@ -60,23 +79,23 @@ public class PlanetResponse implements Serializable {
         this.name = name;
     }
 
-    public PlanetResponse planetId(Integer planetId) {
-        this.planetId = planetId;
+    public PlanetResponse typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * planet_id integer
+     * type_id integer
      * 
-     * @return planetId
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
-    public Integer getPlanetId() {
-        return planetId;
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setPlanetId(Integer planetId) {
-        this.planetId = planetId;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public PlanetResponse position(Position position) {
@@ -117,25 +136,6 @@ public class PlanetResponse implements Serializable {
         this.systemId = systemId;
     }
 
-    public PlanetResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,15 +145,15 @@ public class PlanetResponse implements Serializable {
             return false;
         }
         PlanetResponse planetResponse = (PlanetResponse) o;
-        return Objects.equals(this.name, planetResponse.name) && Objects.equals(this.planetId, planetResponse.planetId)
+        return Objects.equals(this.planetId, planetResponse.planetId) && Objects.equals(this.name, planetResponse.name)
+                && Objects.equals(this.typeId, planetResponse.typeId)
                 && Objects.equals(this.position, planetResponse.position)
-                && Objects.equals(this.systemId, planetResponse.systemId)
-                && Objects.equals(this.typeId, planetResponse.typeId);
+                && Objects.equals(this.systemId, planetResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, planetId, position, systemId, typeId);
+        return Objects.hash(planetId, name, typeId, position, systemId);
     }
 
     @Override
@@ -161,11 +161,11 @@ public class PlanetResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetResponse {\n");
 
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

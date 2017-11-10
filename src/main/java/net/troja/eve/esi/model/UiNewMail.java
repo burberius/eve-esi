@@ -27,20 +27,39 @@ import java.io.Serializable;
 public class UiNewMail implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("subject")
+    private String subject = null;
+
     @JsonProperty("body")
     private String body = null;
 
     @JsonProperty("recipients")
     private List<Integer> recipients = new ArrayList<Integer>();
 
-    @JsonProperty("subject")
-    private String subject = null;
+    @JsonProperty("to_mailing_list_id")
+    private Integer toMailingListId = null;
 
     @JsonProperty("to_corp_or_alliance_id")
     private Integer toCorpOrAllianceId = null;
 
-    @JsonProperty("to_mailing_list_id")
-    private Integer toMailingListId = null;
+    public UiNewMail subject(String subject) {
+        this.subject = subject;
+        return this;
+    }
+
+    /**
+     * subject string
+     * 
+     * @return subject
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "subject string")
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public UiNewMail body(String body) {
         this.body = body;
@@ -85,44 +104,6 @@ public class UiNewMail implements Serializable {
         this.recipients = recipients;
     }
 
-    public UiNewMail subject(String subject) {
-        this.subject = subject;
-        return this;
-    }
-
-    /**
-     * subject string
-     * 
-     * @return subject
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "subject string")
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
-        this.toCorpOrAllianceId = toCorpOrAllianceId;
-        return this;
-    }
-
-    /**
-     * to_corp_or_alliance_id integer
-     * 
-     * @return toCorpOrAllianceId
-     **/
-    @ApiModelProperty(example = "null", value = "to_corp_or_alliance_id integer")
-    public Integer getToCorpOrAllianceId() {
-        return toCorpOrAllianceId;
-    }
-
-    public void setToCorpOrAllianceId(Integer toCorpOrAllianceId) {
-        this.toCorpOrAllianceId = toCorpOrAllianceId;
-    }
-
     public UiNewMail toMailingListId(Integer toMailingListId) {
         this.toMailingListId = toMailingListId;
         return this;
@@ -144,6 +125,25 @@ public class UiNewMail implements Serializable {
         this.toMailingListId = toMailingListId;
     }
 
+    public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
+        this.toCorpOrAllianceId = toCorpOrAllianceId;
+        return this;
+    }
+
+    /**
+     * to_corp_or_alliance_id integer
+     * 
+     * @return toCorpOrAllianceId
+     **/
+    @ApiModelProperty(example = "null", value = "to_corp_or_alliance_id integer")
+    public Integer getToCorpOrAllianceId() {
+        return toCorpOrAllianceId;
+    }
+
+    public void setToCorpOrAllianceId(Integer toCorpOrAllianceId) {
+        this.toCorpOrAllianceId = toCorpOrAllianceId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,15 +153,15 @@ public class UiNewMail implements Serializable {
             return false;
         }
         UiNewMail uiNewMail = (UiNewMail) o;
-        return Objects.equals(this.body, uiNewMail.body) && Objects.equals(this.recipients, uiNewMail.recipients)
-                && Objects.equals(this.subject, uiNewMail.subject)
-                && Objects.equals(this.toCorpOrAllianceId, uiNewMail.toCorpOrAllianceId)
-                && Objects.equals(this.toMailingListId, uiNewMail.toMailingListId);
+        return Objects.equals(this.subject, uiNewMail.subject) && Objects.equals(this.body, uiNewMail.body)
+                && Objects.equals(this.recipients, uiNewMail.recipients)
+                && Objects.equals(this.toMailingListId, uiNewMail.toMailingListId)
+                && Objects.equals(this.toCorpOrAllianceId, uiNewMail.toCorpOrAllianceId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(body, recipients, subject, toCorpOrAllianceId, toMailingListId);
+        return Objects.hash(subject, body, recipients, toMailingListId, toCorpOrAllianceId);
     }
 
     @Override
@@ -169,11 +169,11 @@ public class UiNewMail implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class UiNewMail {\n");
 
+        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
-        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
-        sb.append("    toCorpOrAllianceId: ").append(toIndentedString(toCorpOrAllianceId)).append("\n");
         sb.append("    toMailingListId: ").append(toIndentedString(toMailingListId)).append("\n");
+        sb.append("    toCorpOrAllianceId: ").append(toIndentedString(toCorpOrAllianceId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

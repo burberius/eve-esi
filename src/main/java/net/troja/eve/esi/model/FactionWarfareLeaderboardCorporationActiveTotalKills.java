@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationActiveTotalKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Integer amount = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    public FactionWarfareLeaderboardCorporationActiveTotalKills amount(Integer amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * Amount of kills
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", value = "Amount of kills")
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+    @JsonProperty("amount")
+    private Integer amount = null;
 
     public FactionWarfareLeaderboardCorporationActiveTotalKills corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCorporationActiveTotalKills implements Ser
         this.corporationId = corporationId;
     }
 
+    public FactionWarfareLeaderboardCorporationActiveTotalKills amount(Integer amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Amount of kills
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", value = "Amount of kills")
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,14 +78,13 @@ public class FactionWarfareLeaderboardCorporationActiveTotalKills implements Ser
             return false;
         }
         FactionWarfareLeaderboardCorporationActiveTotalKills factionWarfareLeaderboardCorporationActiveTotalKills = (FactionWarfareLeaderboardCorporationActiveTotalKills) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationActiveTotalKills.amount)
-                && Objects.equals(this.corporationId,
-                        factionWarfareLeaderboardCorporationActiveTotalKills.corporationId);
+        return Objects.equals(this.corporationId, factionWarfareLeaderboardCorporationActiveTotalKills.corporationId)
+                && Objects.equals(this.amount, factionWarfareLeaderboardCorporationActiveTotalKills.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, corporationId);
+        return Objects.hash(corporationId, amount);
     }
 
     @Override
@@ -93,8 +92,8 @@ public class FactionWarfareLeaderboardCorporationActiveTotalKills implements Ser
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationActiveTotalKills {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

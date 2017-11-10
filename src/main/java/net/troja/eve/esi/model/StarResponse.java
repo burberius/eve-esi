@@ -25,20 +25,23 @@ import java.io.Serializable;
 public class StarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("name")
+    private String name = null;
+
+    @JsonProperty("solar_system_id")
+    private Integer solarSystemId = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
     @JsonProperty("age")
     private Long age = null;
 
     @JsonProperty("luminosity")
     private Float luminosity = null;
 
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("radius")
     private Long radius = null;
-
-    @JsonProperty("solar_system_id")
-    private Integer solarSystemId = null;
 
     /**
      * spectral_class string
@@ -250,8 +253,62 @@ public class StarResponse implements Serializable {
     @JsonProperty("temperature")
     private Integer temperature = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    public StarResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public StarResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * solar_system_id integer
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
+    public StarResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 
     public StarResponse age(Long age) {
         this.age = age;
@@ -291,25 +348,6 @@ public class StarResponse implements Serializable {
         this.luminosity = luminosity;
     }
 
-    public StarResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public StarResponse radius(Long radius) {
         this.radius = radius;
         return this;
@@ -327,25 +365,6 @@ public class StarResponse implements Serializable {
 
     public void setRadius(Long radius) {
         this.radius = radius;
-    }
-
-    public StarResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * solar_system_id integer
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
     }
 
     public StarResponse spectralClass(SpectralClassEnum spectralClass) {
@@ -386,25 +405,6 @@ public class StarResponse implements Serializable {
         this.temperature = temperature;
     }
 
-    public StarResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -414,17 +414,18 @@ public class StarResponse implements Serializable {
             return false;
         }
         StarResponse starResponse = (StarResponse) o;
-        return Objects.equals(this.age, starResponse.age) && Objects.equals(this.luminosity, starResponse.luminosity)
-                && Objects.equals(this.name, starResponse.name) && Objects.equals(this.radius, starResponse.radius)
+        return Objects.equals(this.name, starResponse.name)
                 && Objects.equals(this.solarSystemId, starResponse.solarSystemId)
+                && Objects.equals(this.typeId, starResponse.typeId) && Objects.equals(this.age, starResponse.age)
+                && Objects.equals(this.luminosity, starResponse.luminosity)
+                && Objects.equals(this.radius, starResponse.radius)
                 && Objects.equals(this.spectralClass, starResponse.spectralClass)
-                && Objects.equals(this.temperature, starResponse.temperature)
-                && Objects.equals(this.typeId, starResponse.typeId);
+                && Objects.equals(this.temperature, starResponse.temperature);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, luminosity, name, radius, solarSystemId, spectralClass, temperature, typeId);
+        return Objects.hash(name, solarSystemId, typeId, age, luminosity, radius, spectralClass, temperature);
     }
 
     @Override
@@ -432,14 +433,14 @@ public class StarResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class StarResponse {\n");
 
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    age: ").append(toIndentedString(age)).append("\n");
         sb.append("    luminosity: ").append(toIndentedString(luminosity)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    radius: ").append(toIndentedString(radius)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    spectralClass: ").append(toIndentedString(spectralClass)).append("\n");
         sb.append("    temperature: ").append(toIndentedString(temperature)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

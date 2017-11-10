@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareWarsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("against_id")
-    private Integer againstId = null;
-
     @JsonProperty("faction_id")
     private Integer factionId = null;
 
-    public FactionWarfareWarsResponse againstId(Integer againstId) {
-        this.againstId = againstId;
-        return this;
-    }
-
-    /**
-     * The faction ID of the enemy faction.
-     * 
-     * @return againstId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The faction ID of the enemy faction.")
-    public Integer getAgainstId() {
-        return againstId;
-    }
-
-    public void setAgainstId(Integer againstId) {
-        this.againstId = againstId;
-    }
+    @JsonProperty("against_id")
+    private Integer againstId = null;
 
     public FactionWarfareWarsResponse factionId(Integer factionId) {
         this.factionId = factionId;
@@ -69,6 +50,25 @@ public class FactionWarfareWarsResponse implements Serializable {
         this.factionId = factionId;
     }
 
+    public FactionWarfareWarsResponse againstId(Integer againstId) {
+        this.againstId = againstId;
+        return this;
+    }
+
+    /**
+     * The faction ID of the enemy faction.
+     * 
+     * @return againstId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The faction ID of the enemy faction.")
+    public Integer getAgainstId() {
+        return againstId;
+    }
+
+    public void setAgainstId(Integer againstId) {
+        this.againstId = againstId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FactionWarfareWarsResponse implements Serializable {
             return false;
         }
         FactionWarfareWarsResponse factionWarfareWarsResponse = (FactionWarfareWarsResponse) o;
-        return Objects.equals(this.againstId, factionWarfareWarsResponse.againstId)
-                && Objects.equals(this.factionId, factionWarfareWarsResponse.factionId);
+        return Objects.equals(this.factionId, factionWarfareWarsResponse.factionId)
+                && Objects.equals(this.againstId, factionWarfareWarsResponse.againstId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(againstId, factionId);
+        return Objects.hash(factionId, againstId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FactionWarfareWarsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareWarsResponse {\n");
 
-        sb.append("    againstId: ").append(toIndentedString(againstId)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    againstId: ").append(toIndentedString(againstId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

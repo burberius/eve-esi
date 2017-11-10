@@ -26,11 +26,26 @@ import java.io.Serializable;
 public class CharacterWalletTransactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("client_id")
-    private Integer clientId = null;
+    @JsonProperty("transaction_id")
+    private Long transactionId = null;
 
     @JsonProperty("date")
     private OffsetDateTime date = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    @JsonProperty("location_id")
+    private Long locationId = null;
+
+    @JsonProperty("unit_price")
+    private Float unitPrice = null;
+
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("client_id")
+    private Integer clientId = null;
 
     @JsonProperty("is_buy")
     private Boolean isBuy = null;
@@ -41,38 +56,23 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     @JsonProperty("journal_ref_id")
     private Long journalRefId = null;
 
-    @JsonProperty("location_id")
-    private Long locationId = null;
-
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
-    @JsonProperty("transaction_id")
-    private Long transactionId = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("unit_price")
-    private Float unitPrice = null;
-
-    public CharacterWalletTransactionsResponse clientId(Integer clientId) {
-        this.clientId = clientId;
+    public CharacterWalletTransactionsResponse transactionId(Long transactionId) {
+        this.transactionId = transactionId;
         return this;
     }
 
     /**
-     * client_id integer
+     * Unique transaction ID
      * 
-     * @return clientId
+     * @return transactionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "client_id integer")
-    public Integer getClientId() {
-        return clientId;
+    @ApiModelProperty(example = "null", required = true, value = "Unique transaction ID")
+    public Long getTransactionId() {
+        return transactionId;
     }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
     }
 
     public CharacterWalletTransactionsResponse date(OffsetDateTime date) {
@@ -92,6 +92,101 @@ public class CharacterWalletTransactionsResponse implements Serializable {
 
     public void setDate(OffsetDateTime date) {
         this.date = date;
+    }
+
+    public CharacterWalletTransactionsResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public CharacterWalletTransactionsResponse locationId(Long locationId) {
+        this.locationId = locationId;
+        return this;
+    }
+
+    /**
+     * location_id integer
+     * 
+     * @return locationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public CharacterWalletTransactionsResponse unitPrice(Float unitPrice) {
+        this.unitPrice = unitPrice;
+        return this;
+    }
+
+    /**
+     * Amount paid per unit
+     * 
+     * @return unitPrice
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Amount paid per unit")
+    public Float getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public CharacterWalletTransactionsResponse quantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public CharacterWalletTransactionsResponse clientId(Integer clientId) {
+        this.clientId = clientId;
+        return this;
+    }
+
+    /**
+     * client_id integer
+     * 
+     * @return clientId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "client_id integer")
+    public Integer getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
     }
 
     public CharacterWalletTransactionsResponse isBuy(Boolean isBuy) {
@@ -151,101 +246,6 @@ public class CharacterWalletTransactionsResponse implements Serializable {
         this.journalRefId = journalRefId;
     }
 
-    public CharacterWalletTransactionsResponse locationId(Long locationId) {
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * location_id integer
-     * 
-     * @return locationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
-
-    public CharacterWalletTransactionsResponse quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public CharacterWalletTransactionsResponse transactionId(Long transactionId) {
-        this.transactionId = transactionId;
-        return this;
-    }
-
-    /**
-     * Unique transaction ID
-     * 
-     * @return transactionId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique transaction ID")
-    public Long getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public CharacterWalletTransactionsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public CharacterWalletTransactionsResponse unitPrice(Float unitPrice) {
-        this.unitPrice = unitPrice;
-        return this;
-    }
-
-    /**
-     * Amount paid per unit
-     * 
-     * @return unitPrice
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Amount paid per unit")
-    public Float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(Float unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -255,22 +255,22 @@ public class CharacterWalletTransactionsResponse implements Serializable {
             return false;
         }
         CharacterWalletTransactionsResponse characterWalletTransactionsResponse = (CharacterWalletTransactionsResponse) o;
-        return Objects.equals(this.clientId, characterWalletTransactionsResponse.clientId)
+        return Objects.equals(this.transactionId, characterWalletTransactionsResponse.transactionId)
                 && Objects.equals(this.date, characterWalletTransactionsResponse.date)
+                && Objects.equals(this.typeId, characterWalletTransactionsResponse.typeId)
+                && Objects.equals(this.locationId, characterWalletTransactionsResponse.locationId)
+                && Objects.equals(this.unitPrice, characterWalletTransactionsResponse.unitPrice)
+                && Objects.equals(this.quantity, characterWalletTransactionsResponse.quantity)
+                && Objects.equals(this.clientId, characterWalletTransactionsResponse.clientId)
                 && Objects.equals(this.isBuy, characterWalletTransactionsResponse.isBuy)
                 && Objects.equals(this.isPersonal, characterWalletTransactionsResponse.isPersonal)
-                && Objects.equals(this.journalRefId, characterWalletTransactionsResponse.journalRefId)
-                && Objects.equals(this.locationId, characterWalletTransactionsResponse.locationId)
-                && Objects.equals(this.quantity, characterWalletTransactionsResponse.quantity)
-                && Objects.equals(this.transactionId, characterWalletTransactionsResponse.transactionId)
-                && Objects.equals(this.typeId, characterWalletTransactionsResponse.typeId)
-                && Objects.equals(this.unitPrice, characterWalletTransactionsResponse.unitPrice);
+                && Objects.equals(this.journalRefId, characterWalletTransactionsResponse.journalRefId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clientId, date, isBuy, isPersonal, journalRefId, locationId, quantity, transactionId,
-                typeId, unitPrice);
+        return Objects.hash(transactionId, date, typeId, locationId, unitPrice, quantity, clientId, isBuy, isPersonal,
+                journalRefId);
     }
 
     @Override
@@ -278,16 +278,16 @@ public class CharacterWalletTransactionsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterWalletTransactionsResponse {\n");
 
-        sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+        sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    unitPrice: ").append(toIndentedString(unitPrice)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
         sb.append("    isBuy: ").append(toIndentedString(isBuy)).append("\n");
         sb.append("    isPersonal: ").append(toIndentedString(isPersonal)).append("\n");
         sb.append("    journalRefId: ").append(toIndentedString(journalRefId)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    unitPrice: ").append(toIndentedString(unitPrice)).append("\n");
         sb.append("}");
         return sb.toString();
     }

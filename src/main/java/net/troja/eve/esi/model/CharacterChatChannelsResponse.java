@@ -31,14 +31,14 @@ import java.io.Serializable;
 public class CharacterChatChannelsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("allowed")
-    private List<ChatChannelsAllowed> allowed = new ArrayList<ChatChannelsAllowed>();
-
-    @JsonProperty("blocked")
-    private List<ChatChannelsBlocked> blocked = new ArrayList<ChatChannelsBlocked>();
-
     @JsonProperty("channel_id")
     private Integer channelId = null;
+
+    @JsonProperty("name")
+    private String name = null;
+
+    @JsonProperty("owner_id")
+    private Integer ownerId = null;
 
     @JsonProperty("comparison_key")
     private String comparisonKey = null;
@@ -49,65 +49,17 @@ public class CharacterChatChannelsResponse implements Serializable {
     @JsonProperty("motd")
     private String motd = null;
 
-    @JsonProperty("muted")
-    private List<ChatChannelsMuted> muted = new ArrayList<ChatChannelsMuted>();
-
-    @JsonProperty("name")
-    private String name = null;
+    @JsonProperty("allowed")
+    private List<ChatChannelsAllowed> allowed = new ArrayList<ChatChannelsAllowed>();
 
     @JsonProperty("operators")
     private List<ChatChannelsOperator> operators = new ArrayList<ChatChannelsOperator>();
 
-    @JsonProperty("owner_id")
-    private Integer ownerId = null;
+    @JsonProperty("blocked")
+    private List<ChatChannelsBlocked> blocked = new ArrayList<ChatChannelsBlocked>();
 
-    public CharacterChatChannelsResponse allowed(List<ChatChannelsAllowed> allowed) {
-        this.allowed = allowed;
-        return this;
-    }
-
-    public CharacterChatChannelsResponse addAllowedItem(ChatChannelsAllowed allowedItem) {
-        this.allowed.add(allowedItem);
-        return this;
-    }
-
-    /**
-     * allowed array
-     * 
-     * @return allowed
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "allowed array")
-    public List<ChatChannelsAllowed> getAllowed() {
-        return allowed;
-    }
-
-    public void setAllowed(List<ChatChannelsAllowed> allowed) {
-        this.allowed = allowed;
-    }
-
-    public CharacterChatChannelsResponse blocked(List<ChatChannelsBlocked> blocked) {
-        this.blocked = blocked;
-        return this;
-    }
-
-    public CharacterChatChannelsResponse addBlockedItem(ChatChannelsBlocked blockedItem) {
-        this.blocked.add(blockedItem);
-        return this;
-    }
-
-    /**
-     * blocked array
-     * 
-     * @return blocked
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "blocked array")
-    public List<ChatChannelsBlocked> getBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(List<ChatChannelsBlocked> blocked) {
-        this.blocked = blocked;
-    }
+    @JsonProperty("muted")
+    private List<ChatChannelsMuted> muted = new ArrayList<ChatChannelsMuted>();
 
     public CharacterChatChannelsResponse channelId(Integer channelId) {
         this.channelId = channelId;
@@ -127,6 +79,44 @@ public class CharacterChatChannelsResponse implements Serializable {
 
     public void setChannelId(Integer channelId) {
         this.channelId = channelId;
+    }
+
+    public CharacterChatChannelsResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Displayed name of channel
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Displayed name of channel")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CharacterChatChannelsResponse ownerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    /**
+     * owner_id integer
+     * 
+     * @return ownerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public CharacterChatChannelsResponse comparisonKey(String comparisonKey) {
@@ -186,47 +176,28 @@ public class CharacterChatChannelsResponse implements Serializable {
         this.motd = motd;
     }
 
-    public CharacterChatChannelsResponse muted(List<ChatChannelsMuted> muted) {
-        this.muted = muted;
+    public CharacterChatChannelsResponse allowed(List<ChatChannelsAllowed> allowed) {
+        this.allowed = allowed;
         return this;
     }
 
-    public CharacterChatChannelsResponse addMutedItem(ChatChannelsMuted mutedItem) {
-        this.muted.add(mutedItem);
-        return this;
-    }
-
-    /**
-     * muted array
-     * 
-     * @return muted
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "muted array")
-    public List<ChatChannelsMuted> getMuted() {
-        return muted;
-    }
-
-    public void setMuted(List<ChatChannelsMuted> muted) {
-        this.muted = muted;
-    }
-
-    public CharacterChatChannelsResponse name(String name) {
-        this.name = name;
+    public CharacterChatChannelsResponse addAllowedItem(ChatChannelsAllowed allowedItem) {
+        this.allowed.add(allowedItem);
         return this;
     }
 
     /**
-     * Displayed name of channel
+     * allowed array
      * 
-     * @return name
+     * @return allowed
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Displayed name of channel")
-    public String getName() {
-        return name;
+    @ApiModelProperty(example = "null", required = true, value = "allowed array")
+    public List<ChatChannelsAllowed> getAllowed() {
+        return allowed;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAllowed(List<ChatChannelsAllowed> allowed) {
+        this.allowed = allowed;
     }
 
     public CharacterChatChannelsResponse operators(List<ChatChannelsOperator> operators) {
@@ -253,23 +224,52 @@ public class CharacterChatChannelsResponse implements Serializable {
         this.operators = operators;
     }
 
-    public CharacterChatChannelsResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public CharacterChatChannelsResponse blocked(List<ChatChannelsBlocked> blocked) {
+        this.blocked = blocked;
+        return this;
+    }
+
+    public CharacterChatChannelsResponse addBlockedItem(ChatChannelsBlocked blockedItem) {
+        this.blocked.add(blockedItem);
         return this;
     }
 
     /**
-     * owner_id integer
+     * blocked array
      * 
-     * @return ownerId
+     * @return blocked
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
-    public Integer getOwnerId() {
-        return ownerId;
+    @ApiModelProperty(example = "null", required = true, value = "blocked array")
+    public List<ChatChannelsBlocked> getBlocked() {
+        return blocked;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public void setBlocked(List<ChatChannelsBlocked> blocked) {
+        this.blocked = blocked;
+    }
+
+    public CharacterChatChannelsResponse muted(List<ChatChannelsMuted> muted) {
+        this.muted = muted;
+        return this;
+    }
+
+    public CharacterChatChannelsResponse addMutedItem(ChatChannelsMuted mutedItem) {
+        this.muted.add(mutedItem);
+        return this;
+    }
+
+    /**
+     * muted array
+     * 
+     * @return muted
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "muted array")
+    public List<ChatChannelsMuted> getMuted() {
+        return muted;
+    }
+
+    public void setMuted(List<ChatChannelsMuted> muted) {
+        this.muted = muted;
     }
 
     @Override
@@ -281,22 +281,22 @@ public class CharacterChatChannelsResponse implements Serializable {
             return false;
         }
         CharacterChatChannelsResponse characterChatChannelsResponse = (CharacterChatChannelsResponse) o;
-        return Objects.equals(this.allowed, characterChatChannelsResponse.allowed)
-                && Objects.equals(this.blocked, characterChatChannelsResponse.blocked)
-                && Objects.equals(this.channelId, characterChatChannelsResponse.channelId)
+        return Objects.equals(this.channelId, characterChatChannelsResponse.channelId)
+                && Objects.equals(this.name, characterChatChannelsResponse.name)
+                && Objects.equals(this.ownerId, characterChatChannelsResponse.ownerId)
                 && Objects.equals(this.comparisonKey, characterChatChannelsResponse.comparisonKey)
                 && Objects.equals(this.hasPassword, characterChatChannelsResponse.hasPassword)
                 && Objects.equals(this.motd, characterChatChannelsResponse.motd)
-                && Objects.equals(this.muted, characterChatChannelsResponse.muted)
-                && Objects.equals(this.name, characterChatChannelsResponse.name)
+                && Objects.equals(this.allowed, characterChatChannelsResponse.allowed)
                 && Objects.equals(this.operators, characterChatChannelsResponse.operators)
-                && Objects.equals(this.ownerId, characterChatChannelsResponse.ownerId);
+                && Objects.equals(this.blocked, characterChatChannelsResponse.blocked)
+                && Objects.equals(this.muted, characterChatChannelsResponse.muted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allowed, blocked, channelId, comparisonKey, hasPassword, motd, muted, name, operators,
-                ownerId);
+        return Objects.hash(channelId, name, ownerId, comparisonKey, hasPassword, motd, allowed, operators, blocked,
+                muted);
     }
 
     @Override
@@ -304,16 +304,16 @@ public class CharacterChatChannelsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterChatChannelsResponse {\n");
 
-        sb.append("    allowed: ").append(toIndentedString(allowed)).append("\n");
-        sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
         sb.append("    channelId: ").append(toIndentedString(channelId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    comparisonKey: ").append(toIndentedString(comparisonKey)).append("\n");
         sb.append("    hasPassword: ").append(toIndentedString(hasPassword)).append("\n");
         sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
-        sb.append("    muted: ").append(toIndentedString(muted)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    allowed: ").append(toIndentedString(allowed)).append("\n");
         sb.append("    operators: ").append(toIndentedString(operators)).append("\n");
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+        sb.append("    blocked: ").append(toIndentedString(blocked)).append("\n");
+        sb.append("    muted: ").append(toIndentedString(muted)).append("\n");
         sb.append("}");
         return sb.toString();
     }

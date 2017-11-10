@@ -26,59 +26,8 @@ import java.io.Serializable;
 public class CharacterNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_read")
-    private Boolean isRead = null;
-
     @JsonProperty("notification_id")
     private Long notificationId = null;
-
-    @JsonProperty("sender_id")
-    private Integer senderId = null;
-
-    /**
-     * sender_type string
-     */
-    public enum SenderTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction"),
-
-        OTHER("other");
-
-        private String value;
-
-        SenderTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static SenderTypeEnum fromValue(String text) {
-            for (SenderTypeEnum b : SenderTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("sender_type")
-    private SenderTypeEnum senderType = null;
-
-    @JsonProperty("text")
-    private String text = null;
-
-    @JsonProperty("timestamp")
-    private OffsetDateTime timestamp = null;
 
     /**
      * type string
@@ -461,24 +410,56 @@ public class CharacterNotificationsResponse implements Serializable {
     @JsonProperty("type")
     private TypeEnum type = null;
 
-    public CharacterNotificationsResponse isRead(Boolean isRead) {
-        this.isRead = isRead;
-        return this;
-    }
+    @JsonProperty("sender_id")
+    private Integer senderId = null;
 
     /**
-     * is_read boolean
-     * 
-     * @return isRead
-     **/
-    @ApiModelProperty(example = "null", value = "is_read boolean")
-    public Boolean getIsRead() {
-        return isRead;
+     * sender_type string
+     */
+    public enum SenderTypeEnum {
+        CHARACTER("character"),
+
+        CORPORATION("corporation"),
+
+        ALLIANCE("alliance"),
+
+        FACTION("faction"),
+
+        OTHER("other");
+
+        private String value;
+
+        SenderTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static SenderTypeEnum fromValue(String text) {
+            for (SenderTypeEnum b : SenderTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
     }
 
-    public void setIsRead(Boolean isRead) {
-        this.isRead = isRead;
-    }
+    @JsonProperty("sender_type")
+    private SenderTypeEnum senderType = null;
+
+    @JsonProperty("timestamp")
+    private OffsetDateTime timestamp = null;
+
+    @JsonProperty("is_read")
+    private Boolean isRead = null;
+
+    @JsonProperty("text")
+    private String text = null;
 
     public CharacterNotificationsResponse notificationId(Long notificationId) {
         this.notificationId = notificationId;
@@ -497,6 +478,25 @@ public class CharacterNotificationsResponse implements Serializable {
 
     public void setNotificationId(Long notificationId) {
         this.notificationId = notificationId;
+    }
+
+    public CharacterNotificationsResponse type(TypeEnum type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * type string
+     * 
+     * @return type
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type string")
+    public TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeEnum type) {
+        this.type = type;
     }
 
     public CharacterNotificationsResponse senderId(Integer senderId) {
@@ -537,25 +537,6 @@ public class CharacterNotificationsResponse implements Serializable {
         this.senderType = senderType;
     }
 
-    public CharacterNotificationsResponse text(String text) {
-        this.text = text;
-        return this;
-    }
-
-    /**
-     * text string
-     * 
-     * @return text
-     **/
-    @ApiModelProperty(example = "null", value = "text string")
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public CharacterNotificationsResponse timestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
@@ -575,23 +556,42 @@ public class CharacterNotificationsResponse implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public CharacterNotificationsResponse type(TypeEnum type) {
-        this.type = type;
+    public CharacterNotificationsResponse isRead(Boolean isRead) {
+        this.isRead = isRead;
         return this;
     }
 
     /**
-     * type string
+     * is_read boolean
      * 
-     * @return type
+     * @return isRead
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type string")
-    public TypeEnum getType() {
-        return type;
+    @ApiModelProperty(example = "null", value = "is_read boolean")
+    public Boolean getIsRead() {
+        return isRead;
     }
 
-    public void setType(TypeEnum type) {
-        this.type = type;
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
+    }
+
+    public CharacterNotificationsResponse text(String text) {
+        this.text = text;
+        return this;
+    }
+
+    /**
+     * text string
+     * 
+     * @return text
+     **/
+    @ApiModelProperty(example = "null", value = "text string")
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
@@ -603,18 +603,18 @@ public class CharacterNotificationsResponse implements Serializable {
             return false;
         }
         CharacterNotificationsResponse characterNotificationsResponse = (CharacterNotificationsResponse) o;
-        return Objects.equals(this.isRead, characterNotificationsResponse.isRead)
-                && Objects.equals(this.notificationId, characterNotificationsResponse.notificationId)
+        return Objects.equals(this.notificationId, characterNotificationsResponse.notificationId)
+                && Objects.equals(this.type, characterNotificationsResponse.type)
                 && Objects.equals(this.senderId, characterNotificationsResponse.senderId)
                 && Objects.equals(this.senderType, characterNotificationsResponse.senderType)
-                && Objects.equals(this.text, characterNotificationsResponse.text)
                 && Objects.equals(this.timestamp, characterNotificationsResponse.timestamp)
-                && Objects.equals(this.type, characterNotificationsResponse.type);
+                && Objects.equals(this.isRead, characterNotificationsResponse.isRead)
+                && Objects.equals(this.text, characterNotificationsResponse.text);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isRead, notificationId, senderId, senderType, text, timestamp, type);
+        return Objects.hash(notificationId, type, senderId, senderType, timestamp, isRead, text);
     }
 
     @Override
@@ -622,13 +622,13 @@ public class CharacterNotificationsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterNotificationsResponse {\n");
 
-        sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
         sb.append("    notificationId: ").append(toIndentedString(notificationId)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    senderId: ").append(toIndentedString(senderId)).append("\n");
         sb.append("    senderType: ").append(toIndentedString(senderType)).append("\n");
-        sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
+        sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("}");
         return sb.toString();
     }

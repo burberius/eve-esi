@@ -28,58 +28,20 @@ import java.io.Serializable;
 public class PlanetExtractorDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cycle_time")
-    private Integer cycleTime = null;
-
-    @JsonProperty("head_radius")
-    private Float headRadius = null;
-
     @JsonProperty("heads")
     private List<PlanetHead> heads = new ArrayList<PlanetHead>();
 
     @JsonProperty("product_type_id")
     private Integer productTypeId = null;
 
+    @JsonProperty("cycle_time")
+    private Integer cycleTime = null;
+
+    @JsonProperty("head_radius")
+    private Float headRadius = null;
+
     @JsonProperty("qty_per_cycle")
     private Integer qtyPerCycle = null;
-
-    public PlanetExtractorDetails cycleTime(Integer cycleTime) {
-        this.cycleTime = cycleTime;
-        return this;
-    }
-
-    /**
-     * in seconds
-     * 
-     * @return cycleTime
-     **/
-    @ApiModelProperty(example = "null", value = "in seconds")
-    public Integer getCycleTime() {
-        return cycleTime;
-    }
-
-    public void setCycleTime(Integer cycleTime) {
-        this.cycleTime = cycleTime;
-    }
-
-    public PlanetExtractorDetails headRadius(Float headRadius) {
-        this.headRadius = headRadius;
-        return this;
-    }
-
-    /**
-     * head_radius number
-     * 
-     * @return headRadius
-     **/
-    @ApiModelProperty(example = "null", value = "head_radius number")
-    public Float getHeadRadius() {
-        return headRadius;
-    }
-
-    public void setHeadRadius(Float headRadius) {
-        this.headRadius = headRadius;
-    }
 
     public PlanetExtractorDetails heads(List<PlanetHead> heads) {
         this.heads = heads;
@@ -124,6 +86,44 @@ public class PlanetExtractorDetails implements Serializable {
         this.productTypeId = productTypeId;
     }
 
+    public PlanetExtractorDetails cycleTime(Integer cycleTime) {
+        this.cycleTime = cycleTime;
+        return this;
+    }
+
+    /**
+     * in seconds
+     * 
+     * @return cycleTime
+     **/
+    @ApiModelProperty(example = "null", value = "in seconds")
+    public Integer getCycleTime() {
+        return cycleTime;
+    }
+
+    public void setCycleTime(Integer cycleTime) {
+        this.cycleTime = cycleTime;
+    }
+
+    public PlanetExtractorDetails headRadius(Float headRadius) {
+        this.headRadius = headRadius;
+        return this;
+    }
+
+    /**
+     * head_radius number
+     * 
+     * @return headRadius
+     **/
+    @ApiModelProperty(example = "null", value = "head_radius number")
+    public Float getHeadRadius() {
+        return headRadius;
+    }
+
+    public void setHeadRadius(Float headRadius) {
+        this.headRadius = headRadius;
+    }
+
     public PlanetExtractorDetails qtyPerCycle(Integer qtyPerCycle) {
         this.qtyPerCycle = qtyPerCycle;
         return this;
@@ -152,16 +152,16 @@ public class PlanetExtractorDetails implements Serializable {
             return false;
         }
         PlanetExtractorDetails planetExtractorDetails = (PlanetExtractorDetails) o;
-        return Objects.equals(this.cycleTime, planetExtractorDetails.cycleTime)
-                && Objects.equals(this.headRadius, planetExtractorDetails.headRadius)
-                && Objects.equals(this.heads, planetExtractorDetails.heads)
+        return Objects.equals(this.heads, planetExtractorDetails.heads)
                 && Objects.equals(this.productTypeId, planetExtractorDetails.productTypeId)
+                && Objects.equals(this.cycleTime, planetExtractorDetails.cycleTime)
+                && Objects.equals(this.headRadius, planetExtractorDetails.headRadius)
                 && Objects.equals(this.qtyPerCycle, planetExtractorDetails.qtyPerCycle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cycleTime, headRadius, heads, productTypeId, qtyPerCycle);
+        return Objects.hash(heads, productTypeId, cycleTime, headRadius, qtyPerCycle);
     }
 
     @Override
@@ -169,10 +169,10 @@ public class PlanetExtractorDetails implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetExtractorDetails {\n");
 
-        sb.append("    cycleTime: ").append(toIndentedString(cycleTime)).append("\n");
-        sb.append("    headRadius: ").append(toIndentedString(headRadius)).append("\n");
         sb.append("    heads: ").append(toIndentedString(heads)).append("\n");
         sb.append("    productTypeId: ").append(toIndentedString(productTypeId)).append("\n");
+        sb.append("    cycleTime: ").append(toIndentedString(cycleTime)).append("\n");
+        sb.append("    headRadius: ").append(toIndentedString(headRadius)).append("\n");
         sb.append("    qtyPerCycle: ").append(toIndentedString(qtyPerCycle)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -28,11 +28,30 @@ import java.io.Serializable;
 public class MailLabelsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("total_unread_count")
+    private Integer totalUnreadCount = null;
+
     @JsonProperty("labels")
     private List<MailLabel> labels = new ArrayList<MailLabel>();
 
-    @JsonProperty("total_unread_count")
-    private Integer totalUnreadCount = null;
+    public MailLabelsResponse totalUnreadCount(Integer totalUnreadCount) {
+        this.totalUnreadCount = totalUnreadCount;
+        return this;
+    }
+
+    /**
+     * total_unread_count integer minimum: 0
+     * 
+     * @return totalUnreadCount
+     **/
+    @ApiModelProperty(example = "null", value = "total_unread_count integer")
+    public Integer getTotalUnreadCount() {
+        return totalUnreadCount;
+    }
+
+    public void setTotalUnreadCount(Integer totalUnreadCount) {
+        this.totalUnreadCount = totalUnreadCount;
+    }
 
     public MailLabelsResponse labels(List<MailLabel> labels) {
         this.labels = labels;
@@ -58,25 +77,6 @@ public class MailLabelsResponse implements Serializable {
         this.labels = labels;
     }
 
-    public MailLabelsResponse totalUnreadCount(Integer totalUnreadCount) {
-        this.totalUnreadCount = totalUnreadCount;
-        return this;
-    }
-
-    /**
-     * total_unread_count integer minimum: 0
-     * 
-     * @return totalUnreadCount
-     **/
-    @ApiModelProperty(example = "null", value = "total_unread_count integer")
-    public Integer getTotalUnreadCount() {
-        return totalUnreadCount;
-    }
-
-    public void setTotalUnreadCount(Integer totalUnreadCount) {
-        this.totalUnreadCount = totalUnreadCount;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,13 +86,13 @@ public class MailLabelsResponse implements Serializable {
             return false;
         }
         MailLabelsResponse mailLabelsResponse = (MailLabelsResponse) o;
-        return Objects.equals(this.labels, mailLabelsResponse.labels)
-                && Objects.equals(this.totalUnreadCount, mailLabelsResponse.totalUnreadCount);
+        return Objects.equals(this.totalUnreadCount, mailLabelsResponse.totalUnreadCount)
+                && Objects.equals(this.labels, mailLabelsResponse.labels);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(labels, totalUnreadCount);
+        return Objects.hash(totalUnreadCount, labels);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class MailLabelsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabelsResponse {\n");
 
-        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    totalUnreadCount: ").append(toIndentedString(totalUnreadCount)).append("\n");
+        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -25,54 +25,35 @@ import java.io.Serializable;
 public class RacesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
-    private Integer allianceId = null;
-
-    @JsonProperty("description")
-    private String description = null;
+    @JsonProperty("race_id")
+    private Integer raceId = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("race_id")
-    private Integer raceId = null;
+    @JsonProperty("description")
+    private String description = null;
 
-    public RacesResponse allianceId(Integer allianceId) {
-        this.allianceId = allianceId;
+    @JsonProperty("alliance_id")
+    private Integer allianceId = null;
+
+    public RacesResponse raceId(Integer raceId) {
+        this.raceId = raceId;
         return this;
     }
 
     /**
-     * The alliance generally associated with this race
+     * race_id integer
      * 
-     * @return allianceId
+     * @return raceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The alliance generally associated with this race")
-    public Integer getAllianceId() {
-        return allianceId;
+    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
+    public Integer getRaceId() {
+        return raceId;
     }
 
-    public void setAllianceId(Integer allianceId) {
-        this.allianceId = allianceId;
-    }
-
-    public RacesResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRaceId(Integer raceId) {
+        this.raceId = raceId;
     }
 
     public RacesResponse name(String name) {
@@ -94,23 +75,42 @@ public class RacesResponse implements Serializable {
         this.name = name;
     }
 
-    public RacesResponse raceId(Integer raceId) {
-        this.raceId = raceId;
+    public RacesResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * race_id integer
+     * description string
      * 
-     * @return raceId
+     * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
-    public Integer getRaceId() {
-        return raceId;
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setRaceId(Integer raceId) {
-        this.raceId = raceId;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public RacesResponse allianceId(Integer allianceId) {
+        this.allianceId = allianceId;
+        return this;
+    }
+
+    /**
+     * The alliance generally associated with this race
+     * 
+     * @return allianceId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The alliance generally associated with this race")
+    public Integer getAllianceId() {
+        return allianceId;
+    }
+
+    public void setAllianceId(Integer allianceId) {
+        this.allianceId = allianceId;
     }
 
     @Override
@@ -122,14 +122,14 @@ public class RacesResponse implements Serializable {
             return false;
         }
         RacesResponse racesResponse = (RacesResponse) o;
-        return Objects.equals(this.allianceId, racesResponse.allianceId)
+        return Objects.equals(this.raceId, racesResponse.raceId) && Objects.equals(this.name, racesResponse.name)
                 && Objects.equals(this.description, racesResponse.description)
-                && Objects.equals(this.name, racesResponse.name) && Objects.equals(this.raceId, racesResponse.raceId);
+                && Objects.equals(this.allianceId, racesResponse.allianceId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, description, name, raceId);
+        return Objects.hash(raceId, name, description, allianceId);
     }
 
     @Override
@@ -137,10 +137,10 @@ public class RacesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class RacesResponse {\n");
 
-        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

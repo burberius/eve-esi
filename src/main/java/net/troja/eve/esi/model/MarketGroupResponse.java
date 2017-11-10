@@ -27,39 +27,20 @@ import java.io.Serializable;
 public class MarketGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("description")
-    private String description = null;
-
     @JsonProperty("market_group_id")
     private Integer marketGroupId = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("parent_group_id")
-    private Integer parentGroupId = null;
+    @JsonProperty("description")
+    private String description = null;
 
     @JsonProperty("types")
     private List<Integer> types = new ArrayList<Integer>();
 
-    public MarketGroupResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @JsonProperty("parent_group_id")
+    private Integer parentGroupId = null;
 
     public MarketGroupResponse marketGroupId(Integer marketGroupId) {
         this.marketGroupId = marketGroupId;
@@ -99,23 +80,23 @@ public class MarketGroupResponse implements Serializable {
         this.name = name;
     }
 
-    public MarketGroupResponse parentGroupId(Integer parentGroupId) {
-        this.parentGroupId = parentGroupId;
+    public MarketGroupResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * parent_group_id integer
+     * description string
      * 
-     * @return parentGroupId
+     * @return description
      **/
-    @ApiModelProperty(example = "null", value = "parent_group_id integer")
-    public Integer getParentGroupId() {
-        return parentGroupId;
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setParentGroupId(Integer parentGroupId) {
-        this.parentGroupId = parentGroupId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MarketGroupResponse types(List<Integer> types) {
@@ -142,6 +123,25 @@ public class MarketGroupResponse implements Serializable {
         this.types = types;
     }
 
+    public MarketGroupResponse parentGroupId(Integer parentGroupId) {
+        this.parentGroupId = parentGroupId;
+        return this;
+    }
+
+    /**
+     * parent_group_id integer
+     * 
+     * @return parentGroupId
+     **/
+    @ApiModelProperty(example = "null", value = "parent_group_id integer")
+    public Integer getParentGroupId() {
+        return parentGroupId;
+    }
+
+    public void setParentGroupId(Integer parentGroupId) {
+        this.parentGroupId = parentGroupId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -151,16 +151,16 @@ public class MarketGroupResponse implements Serializable {
             return false;
         }
         MarketGroupResponse marketGroupResponse = (MarketGroupResponse) o;
-        return Objects.equals(this.description, marketGroupResponse.description)
-                && Objects.equals(this.marketGroupId, marketGroupResponse.marketGroupId)
+        return Objects.equals(this.marketGroupId, marketGroupResponse.marketGroupId)
                 && Objects.equals(this.name, marketGroupResponse.name)
-                && Objects.equals(this.parentGroupId, marketGroupResponse.parentGroupId)
-                && Objects.equals(this.types, marketGroupResponse.types);
+                && Objects.equals(this.description, marketGroupResponse.description)
+                && Objects.equals(this.types, marketGroupResponse.types)
+                && Objects.equals(this.parentGroupId, marketGroupResponse.parentGroupId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, marketGroupId, name, parentGroupId, types);
+        return Objects.hash(marketGroupId, name, description, types, parentGroupId);
     }
 
     @Override
@@ -168,11 +168,11 @@ public class MarketGroupResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketGroupResponse {\n");
 
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    parentGroupId: ").append(toIndentedString(parentGroupId)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    types: ").append(toIndentedString(types)).append("\n");
+        sb.append("    parentGroupId: ").append(toIndentedString(parentGroupId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

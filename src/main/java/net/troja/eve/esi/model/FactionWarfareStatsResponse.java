@@ -30,14 +30,14 @@ public class FactionWarfareStatsResponse implements Serializable {
     @JsonProperty("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("kills")
-    private FactionWarfareStatsKills kills = null;
-
     @JsonProperty("pilots")
     private Integer pilots = null;
 
     @JsonProperty("systems_controlled")
     private Integer systemsControlled = null;
+
+    @JsonProperty("kills")
+    private FactionWarfareStatsKills kills = null;
 
     @JsonProperty("victory_points")
     private FactionWarfareStatsVictoryPoints victoryPoints = null;
@@ -59,25 +59,6 @@ public class FactionWarfareStatsResponse implements Serializable {
 
     public void setFactionId(Integer factionId) {
         this.factionId = factionId;
-    }
-
-    public FactionWarfareStatsResponse kills(FactionWarfareStatsKills kills) {
-        this.kills = kills;
-        return this;
-    }
-
-    /**
-     * Get kills
-     * 
-     * @return kills
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public FactionWarfareStatsKills getKills() {
-        return kills;
-    }
-
-    public void setKills(FactionWarfareStatsKills kills) {
-        this.kills = kills;
     }
 
     public FactionWarfareStatsResponse pilots(Integer pilots) {
@@ -118,6 +99,25 @@ public class FactionWarfareStatsResponse implements Serializable {
         this.systemsControlled = systemsControlled;
     }
 
+    public FactionWarfareStatsResponse kills(FactionWarfareStatsKills kills) {
+        this.kills = kills;
+        return this;
+    }
+
+    /**
+     * Get kills
+     * 
+     * @return kills
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public FactionWarfareStatsKills getKills() {
+        return kills;
+    }
+
+    public void setKills(FactionWarfareStatsKills kills) {
+        this.kills = kills;
+    }
+
     public FactionWarfareStatsResponse victoryPoints(FactionWarfareStatsVictoryPoints victoryPoints) {
         this.victoryPoints = victoryPoints;
         return this;
@@ -147,15 +147,15 @@ public class FactionWarfareStatsResponse implements Serializable {
         }
         FactionWarfareStatsResponse factionWarfareStatsResponse = (FactionWarfareStatsResponse) o;
         return Objects.equals(this.factionId, factionWarfareStatsResponse.factionId)
-                && Objects.equals(this.kills, factionWarfareStatsResponse.kills)
                 && Objects.equals(this.pilots, factionWarfareStatsResponse.pilots)
                 && Objects.equals(this.systemsControlled, factionWarfareStatsResponse.systemsControlled)
+                && Objects.equals(this.kills, factionWarfareStatsResponse.kills)
                 && Objects.equals(this.victoryPoints, factionWarfareStatsResponse.victoryPoints);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(factionId, kills, pilots, systemsControlled, victoryPoints);
+        return Objects.hash(factionId, pilots, systemsControlled, kills, victoryPoints);
     }
 
     @Override
@@ -164,9 +164,9 @@ public class FactionWarfareStatsResponse implements Serializable {
         sb.append("class FactionWarfareStatsResponse {\n");
 
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    pilots: ").append(toIndentedString(pilots)).append("\n");
         sb.append("    systemsControlled: ").append(toIndentedString(systemsControlled)).append("\n");
+        sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
         sb.append("}");
         return sb.toString();

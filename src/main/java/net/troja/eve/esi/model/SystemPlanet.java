@@ -27,11 +27,30 @@ import java.io.Serializable;
 public class SystemPlanet implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("planet_id")
+    private Integer planetId = null;
+
     @JsonProperty("moons")
     private List<Integer> moons = new ArrayList<Integer>();
 
-    @JsonProperty("planet_id")
-    private Integer planetId = null;
+    public SystemPlanet planetId(Integer planetId) {
+        this.planetId = planetId;
+        return this;
+    }
+
+    /**
+     * planet_id integer
+     * 
+     * @return planetId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    public Integer getPlanetId() {
+        return planetId;
+    }
+
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
+    }
 
     public SystemPlanet moons(List<Integer> moons) {
         this.moons = moons;
@@ -57,25 +76,6 @@ public class SystemPlanet implements Serializable {
         this.moons = moons;
     }
 
-    public SystemPlanet planetId(Integer planetId) {
-        this.planetId = planetId;
-        return this;
-    }
-
-    /**
-     * planet_id integer
-     * 
-     * @return planetId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
-    public Integer getPlanetId() {
-        return planetId;
-    }
-
-    public void setPlanetId(Integer planetId) {
-        this.planetId = planetId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,12 +85,12 @@ public class SystemPlanet implements Serializable {
             return false;
         }
         SystemPlanet systemPlanet = (SystemPlanet) o;
-        return Objects.equals(this.moons, systemPlanet.moons) && Objects.equals(this.planetId, systemPlanet.planetId);
+        return Objects.equals(this.planetId, systemPlanet.planetId) && Objects.equals(this.moons, systemPlanet.moons);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(moons, planetId);
+        return Objects.hash(planetId, moons);
     }
 
     @Override
@@ -98,8 +98,8 @@ public class SystemPlanet implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemPlanet {\n");
 
-        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
+        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
         sb.append("}");
         return sb.toString();
     }

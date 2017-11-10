@@ -29,26 +29,29 @@ import java.io.Serializable;
 public class SystemResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellation_id")
-    private Integer constellationId = null;
+    @JsonProperty("star_id")
+    private Integer starId = null;
+
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("planets")
-    private List<SystemPlanet> planets = new ArrayList<SystemPlanet>();
-
     @JsonProperty("position")
     private Position position = null;
-
-    @JsonProperty("security_class")
-    private String securityClass = null;
 
     @JsonProperty("security_status")
     private Float securityStatus = null;
 
-    @JsonProperty("star_id")
-    private Integer starId = null;
+    @JsonProperty("security_class")
+    private String securityClass = null;
+
+    @JsonProperty("constellation_id")
+    private Integer constellationId = null;
+
+    @JsonProperty("planets")
+    private List<SystemPlanet> planets = new ArrayList<SystemPlanet>();
 
     @JsonProperty("stargates")
     private List<Integer> stargates = new ArrayList<Integer>();
@@ -56,26 +59,42 @@ public class SystemResponse implements Serializable {
     @JsonProperty("stations")
     private List<Integer> stations = new ArrayList<Integer>();
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
-    public SystemResponse constellationId(Integer constellationId) {
-        this.constellationId = constellationId;
+    public SystemResponse starId(Integer starId) {
+        this.starId = starId;
         return this;
     }
 
     /**
-     * The constellation this solar system is in
+     * star_id integer
      * 
-     * @return constellationId
+     * @return starId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The constellation this solar system is in")
-    public Integer getConstellationId() {
-        return constellationId;
+    @ApiModelProperty(example = "null", required = true, value = "star_id integer")
+    public Integer getStarId() {
+        return starId;
     }
 
-    public void setConstellationId(Integer constellationId) {
-        this.constellationId = constellationId;
+    public void setStarId(Integer starId) {
+        this.starId = starId;
+    }
+
+    public SystemResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
     }
 
     public SystemResponse name(String name) {
@@ -95,6 +114,82 @@ public class SystemResponse implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public SystemResponse position(Position position) {
+        this.position = position;
+        return this;
+    }
+
+    /**
+     * Get position
+     * 
+     * @return position
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "")
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public SystemResponse securityStatus(Float securityStatus) {
+        this.securityStatus = securityStatus;
+        return this;
+    }
+
+    /**
+     * security_status number
+     * 
+     * @return securityStatus
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "security_status number")
+    public Float getSecurityStatus() {
+        return securityStatus;
+    }
+
+    public void setSecurityStatus(Float securityStatus) {
+        this.securityStatus = securityStatus;
+    }
+
+    public SystemResponse securityClass(String securityClass) {
+        this.securityClass = securityClass;
+        return this;
+    }
+
+    /**
+     * security_class string
+     * 
+     * @return securityClass
+     **/
+    @ApiModelProperty(example = "null", value = "security_class string")
+    public String getSecurityClass() {
+        return securityClass;
+    }
+
+    public void setSecurityClass(String securityClass) {
+        this.securityClass = securityClass;
+    }
+
+    public SystemResponse constellationId(Integer constellationId) {
+        this.constellationId = constellationId;
+        return this;
+    }
+
+    /**
+     * The constellation this solar system is in
+     * 
+     * @return constellationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The constellation this solar system is in")
+    public Integer getConstellationId() {
+        return constellationId;
+    }
+
+    public void setConstellationId(Integer constellationId) {
+        this.constellationId = constellationId;
     }
 
     public SystemResponse planets(List<SystemPlanet> planets) {
@@ -119,82 +214,6 @@ public class SystemResponse implements Serializable {
 
     public void setPlanets(List<SystemPlanet> planets) {
         this.planets = planets;
-    }
-
-    public SystemResponse position(Position position) {
-        this.position = position;
-        return this;
-    }
-
-    /**
-     * Get position
-     * 
-     * @return position
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "")
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public SystemResponse securityClass(String securityClass) {
-        this.securityClass = securityClass;
-        return this;
-    }
-
-    /**
-     * security_class string
-     * 
-     * @return securityClass
-     **/
-    @ApiModelProperty(example = "null", value = "security_class string")
-    public String getSecurityClass() {
-        return securityClass;
-    }
-
-    public void setSecurityClass(String securityClass) {
-        this.securityClass = securityClass;
-    }
-
-    public SystemResponse securityStatus(Float securityStatus) {
-        this.securityStatus = securityStatus;
-        return this;
-    }
-
-    /**
-     * security_status number
-     * 
-     * @return securityStatus
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "security_status number")
-    public Float getSecurityStatus() {
-        return securityStatus;
-    }
-
-    public void setSecurityStatus(Float securityStatus) {
-        this.securityStatus = securityStatus;
-    }
-
-    public SystemResponse starId(Integer starId) {
-        this.starId = starId;
-        return this;
-    }
-
-    /**
-     * star_id integer
-     * 
-     * @return starId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "star_id integer")
-    public Integer getStarId() {
-        return starId;
-    }
-
-    public void setStarId(Integer starId) {
-        this.starId = starId;
     }
 
     public SystemResponse stargates(List<Integer> stargates) {
@@ -245,25 +264,6 @@ public class SystemResponse implements Serializable {
         this.stations = stations;
     }
 
-    public SystemResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -273,22 +273,22 @@ public class SystemResponse implements Serializable {
             return false;
         }
         SystemResponse systemResponse = (SystemResponse) o;
-        return Objects.equals(this.constellationId, systemResponse.constellationId)
+        return Objects.equals(this.starId, systemResponse.starId)
+                && Objects.equals(this.systemId, systemResponse.systemId)
                 && Objects.equals(this.name, systemResponse.name)
-                && Objects.equals(this.planets, systemResponse.planets)
                 && Objects.equals(this.position, systemResponse.position)
-                && Objects.equals(this.securityClass, systemResponse.securityClass)
                 && Objects.equals(this.securityStatus, systemResponse.securityStatus)
-                && Objects.equals(this.starId, systemResponse.starId)
+                && Objects.equals(this.securityClass, systemResponse.securityClass)
+                && Objects.equals(this.constellationId, systemResponse.constellationId)
+                && Objects.equals(this.planets, systemResponse.planets)
                 && Objects.equals(this.stargates, systemResponse.stargates)
-                && Objects.equals(this.stations, systemResponse.stations)
-                && Objects.equals(this.systemId, systemResponse.systemId);
+                && Objects.equals(this.stations, systemResponse.stations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(constellationId, name, planets, position, securityClass, securityStatus, starId, stargates,
-                stations, systemId);
+        return Objects.hash(starId, systemId, name, position, securityStatus, securityClass, constellationId, planets,
+                stargates, stations);
     }
 
     @Override
@@ -296,16 +296,16 @@ public class SystemResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemResponse {\n");
 
-        sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    planets: ").append(toIndentedString(planets)).append("\n");
-        sb.append("    position: ").append(toIndentedString(position)).append("\n");
-        sb.append("    securityClass: ").append(toIndentedString(securityClass)).append("\n");
-        sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");
         sb.append("    starId: ").append(toIndentedString(starId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");
+        sb.append("    securityClass: ").append(toIndentedString(securityClass)).append("\n");
+        sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
+        sb.append("    planets: ").append(toIndentedString(planets)).append("\n");
         sb.append("    stargates: ").append(toIndentedString(stargates)).append("\n");
         sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

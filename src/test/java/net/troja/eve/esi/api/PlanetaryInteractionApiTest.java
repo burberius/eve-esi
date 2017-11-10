@@ -11,20 +11,19 @@
 
 package net.troja.eve.esi.api;
 
+import java.util.List;
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.CharacterPlanetResponse;
+import net.troja.eve.esi.model.CharacterPlanetsResponse;
+import net.troja.eve.esi.model.CorporationCustomsOfficesResponse;
+import net.troja.eve.esi.model.PlanetFactorySchematicResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
-
-import java.util.List;
-
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterPlanetResponse;
-import net.troja.eve.esi.model.CharacterPlanetsResponse;
-import net.troja.eve.esi.model.PlanetFactorySchematicResponse;
 
 /**
  * API tests for PlanetaryInteractionApi
@@ -93,6 +92,24 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         assertThat(response.getPins().size(), greaterThan(0));
+    }
+
+     /**
+     * List corporation customs offices
+     *
+     * List customs offices owned by a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-planets.read_customs_offices.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdCustomsOfficesTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationCustomsOfficesResponse> response = api.getCorporationsCorporationIdCustomsOffices(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

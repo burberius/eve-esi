@@ -31,14 +31,66 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints>();
+    @JsonProperty("yesterday")
+    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints>();
 
     @JsonProperty("last_week")
     private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek = new ArrayList<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints>();
 
-    @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints>();
+    @JsonProperty("active_total")
+    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints>();
+
+    public FactionWarfareLeaderboardCorporationsVictoryPoints yesterday(
+            List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
+        this.yesterday = yesterday;
+        return this;
+    }
+
+    public FactionWarfareLeaderboardCorporationsVictoryPoints addYesterdayItem(
+            FactionWarfareLeaderboardCorporationYesterdayVictoryPoints yesterdayItem) {
+        this.yesterday.add(yesterdayItem);
+        return this;
+    }
+
+    /**
+     * Top 10 ranking of corporations by victory points in the past day
+     * 
+     * @return yesterday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past day")
+    public List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
+        this.yesterday = yesterday;
+    }
+
+    public FactionWarfareLeaderboardCorporationsVictoryPoints lastWeek(
+            List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
+        this.lastWeek = lastWeek;
+        return this;
+    }
+
+    public FactionWarfareLeaderboardCorporationsVictoryPoints addLastWeekItem(
+            FactionWarfareLeaderboardCorporationLastWeekVictoryPoints lastWeekItem) {
+        this.lastWeek.add(lastWeekItem);
+        return this;
+    }
+
+    /**
+     * Top 10 ranking of corporations by victory points in the past week
+     * 
+     * @return lastWeek
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past week")
+    public List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> getLastWeek() {
+        return lastWeek;
+    }
+
+    public void setLastWeek(List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
+        this.lastWeek = lastWeek;
+    }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal) {
@@ -68,58 +120,6 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
         this.activeTotal = activeTotal;
     }
 
-    public FactionWarfareLeaderboardCorporationsVictoryPoints lastWeek(
-            List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
-        this.lastWeek = lastWeek;
-        return this;
-    }
-
-    public FactionWarfareLeaderboardCorporationsVictoryPoints addLastWeekItem(
-            FactionWarfareLeaderboardCorporationLastWeekVictoryPoints lastWeekItem) {
-        this.lastWeek.add(lastWeekItem);
-        return this;
-    }
-
-    /**
-     * Top 10 ranking of corporations by victory points in the past week
-     * 
-     * @return lastWeek
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past week")
-    public List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> getLastWeek() {
-        return lastWeek;
-    }
-
-    public void setLastWeek(List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek) {
-        this.lastWeek = lastWeek;
-    }
-
-    public FactionWarfareLeaderboardCorporationsVictoryPoints yesterday(
-            List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
-        this.yesterday = yesterday;
-        return this;
-    }
-
-    public FactionWarfareLeaderboardCorporationsVictoryPoints addYesterdayItem(
-            FactionWarfareLeaderboardCorporationYesterdayVictoryPoints yesterdayItem) {
-        this.yesterday.add(yesterdayItem);
-        return this;
-    }
-
-    /**
-     * Top 10 ranking of corporations by victory points in the past day
-     * 
-     * @return yesterday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past day")
-    public List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> getYesterday() {
-        return yesterday;
-    }
-
-    public void setYesterday(List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday) {
-        this.yesterday = yesterday;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,14 +129,14 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
             return false;
         }
         FactionWarfareLeaderboardCorporationsVictoryPoints factionWarfareLeaderboardCorporationsVictoryPoints = (FactionWarfareLeaderboardCorporationsVictoryPoints) o;
-        return Objects.equals(this.activeTotal, factionWarfareLeaderboardCorporationsVictoryPoints.activeTotal)
+        return Objects.equals(this.yesterday, factionWarfareLeaderboardCorporationsVictoryPoints.yesterday)
                 && Objects.equals(this.lastWeek, factionWarfareLeaderboardCorporationsVictoryPoints.lastWeek)
-                && Objects.equals(this.yesterday, factionWarfareLeaderboardCorporationsVictoryPoints.yesterday);
+                && Objects.equals(this.activeTotal, factionWarfareLeaderboardCorporationsVictoryPoints.activeTotal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(activeTotal, lastWeek, yesterday);
+        return Objects.hash(yesterday, lastWeek, activeTotal);
     }
 
     @Override
@@ -144,9 +144,9 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationsVictoryPoints {\n");
 
-        sb.append("    activeTotal: ").append(toIndentedString(activeTotal)).append("\n");
-        sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
         sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
+        sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
+        sb.append("    activeTotal: ").append(toIndentedString(activeTotal)).append("\n");
         sb.append("}");
         return sb.toString();
     }

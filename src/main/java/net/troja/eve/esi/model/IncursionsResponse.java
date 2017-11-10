@@ -27,23 +27,8 @@ import java.io.Serializable;
 public class IncursionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellation_id")
-    private Integer constellationId = null;
-
-    @JsonProperty("faction_id")
-    private Integer factionId = null;
-
-    @JsonProperty("has_boss")
-    private Boolean hasBoss = null;
-
-    @JsonProperty("infested_solar_systems")
-    private List<Integer> infestedSolarSystems = new ArrayList<Integer>();
-
-    @JsonProperty("influence")
-    private Float influence = null;
-
-    @JsonProperty("staging_solar_system_id")
-    private Integer stagingSolarSystemId = null;
+    @JsonProperty("type")
+    private String type = null;
 
     /**
      * The state of this incursion
@@ -80,26 +65,98 @@ public class IncursionsResponse implements Serializable {
     @JsonProperty("state")
     private StateEnum state = null;
 
-    @JsonProperty("type")
-    private String type = null;
+    @JsonProperty("influence")
+    private Float influence = null;
 
-    public IncursionsResponse constellationId(Integer constellationId) {
-        this.constellationId = constellationId;
+    @JsonProperty("has_boss")
+    private Boolean hasBoss = null;
+
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
+
+    @JsonProperty("constellation_id")
+    private Integer constellationId = null;
+
+    @JsonProperty("staging_solar_system_id")
+    private Integer stagingSolarSystemId = null;
+
+    @JsonProperty("infested_solar_systems")
+    private List<Integer> infestedSolarSystems = new ArrayList<Integer>();
+
+    public IncursionsResponse type(String type) {
+        this.type = type;
         return this;
     }
 
     /**
-     * The constellation id in which this incursion takes place
+     * The type of this incursion
      * 
-     * @return constellationId
+     * @return type
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The constellation id in which this incursion takes place")
-    public Integer getConstellationId() {
-        return constellationId;
+    @ApiModelProperty(example = "null", required = true, value = "The type of this incursion")
+    public String getType() {
+        return type;
     }
 
-    public void setConstellationId(Integer constellationId) {
-        this.constellationId = constellationId;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public IncursionsResponse state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * The state of this incursion
+     * 
+     * @return state
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The state of this incursion")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    public IncursionsResponse influence(Float influence) {
+        this.influence = influence;
+        return this;
+    }
+
+    /**
+     * Influence of this incursion as a float from 0 to 1
+     * 
+     * @return influence
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Influence of this incursion as a float from 0 to 1")
+    public Float getInfluence() {
+        return influence;
+    }
+
+    public void setInfluence(Float influence) {
+        this.influence = influence;
+    }
+
+    public IncursionsResponse hasBoss(Boolean hasBoss) {
+        this.hasBoss = hasBoss;
+        return this;
+    }
+
+    /**
+     * Whether the final encounter has boss or not
+     * 
+     * @return hasBoss
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Whether the final encounter has boss or not")
+    public Boolean getHasBoss() {
+        return hasBoss;
+    }
+
+    public void setHasBoss(Boolean hasBoss) {
+        this.hasBoss = hasBoss;
     }
 
     public IncursionsResponse factionId(Integer factionId) {
@@ -121,23 +178,42 @@ public class IncursionsResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public IncursionsResponse hasBoss(Boolean hasBoss) {
-        this.hasBoss = hasBoss;
+    public IncursionsResponse constellationId(Integer constellationId) {
+        this.constellationId = constellationId;
         return this;
     }
 
     /**
-     * Whether the final encounter has boss or not
+     * The constellation id in which this incursion takes place
      * 
-     * @return hasBoss
+     * @return constellationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Whether the final encounter has boss or not")
-    public Boolean getHasBoss() {
-        return hasBoss;
+    @ApiModelProperty(example = "null", required = true, value = "The constellation id in which this incursion takes place")
+    public Integer getConstellationId() {
+        return constellationId;
     }
 
-    public void setHasBoss(Boolean hasBoss) {
-        this.hasBoss = hasBoss;
+    public void setConstellationId(Integer constellationId) {
+        this.constellationId = constellationId;
+    }
+
+    public IncursionsResponse stagingSolarSystemId(Integer stagingSolarSystemId) {
+        this.stagingSolarSystemId = stagingSolarSystemId;
+        return this;
+    }
+
+    /**
+     * Staging solar system for this incursion
+     * 
+     * @return stagingSolarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Staging solar system for this incursion")
+    public Integer getStagingSolarSystemId() {
+        return stagingSolarSystemId;
+    }
+
+    public void setStagingSolarSystemId(Integer stagingSolarSystemId) {
+        this.stagingSolarSystemId = stagingSolarSystemId;
     }
 
     public IncursionsResponse infestedSolarSystems(List<Integer> infestedSolarSystems) {
@@ -164,82 +240,6 @@ public class IncursionsResponse implements Serializable {
         this.infestedSolarSystems = infestedSolarSystems;
     }
 
-    public IncursionsResponse influence(Float influence) {
-        this.influence = influence;
-        return this;
-    }
-
-    /**
-     * Influence of this incursion as a float from 0 to 1
-     * 
-     * @return influence
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Influence of this incursion as a float from 0 to 1")
-    public Float getInfluence() {
-        return influence;
-    }
-
-    public void setInfluence(Float influence) {
-        this.influence = influence;
-    }
-
-    public IncursionsResponse stagingSolarSystemId(Integer stagingSolarSystemId) {
-        this.stagingSolarSystemId = stagingSolarSystemId;
-        return this;
-    }
-
-    /**
-     * Staging solar system for this incursion
-     * 
-     * @return stagingSolarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Staging solar system for this incursion")
-    public Integer getStagingSolarSystemId() {
-        return stagingSolarSystemId;
-    }
-
-    public void setStagingSolarSystemId(Integer stagingSolarSystemId) {
-        this.stagingSolarSystemId = stagingSolarSystemId;
-    }
-
-    public IncursionsResponse state(StateEnum state) {
-        this.state = state;
-        return this;
-    }
-
-    /**
-     * The state of this incursion
-     * 
-     * @return state
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The state of this incursion")
-    public StateEnum getState() {
-        return state;
-    }
-
-    public void setState(StateEnum state) {
-        this.state = state;
-    }
-
-    public IncursionsResponse type(String type) {
-        this.type = type;
-        return this;
-    }
-
-    /**
-     * The type of this incursion
-     * 
-     * @return type
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The type of this incursion")
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -249,20 +249,20 @@ public class IncursionsResponse implements Serializable {
             return false;
         }
         IncursionsResponse incursionsResponse = (IncursionsResponse) o;
-        return Objects.equals(this.constellationId, incursionsResponse.constellationId)
-                && Objects.equals(this.factionId, incursionsResponse.factionId)
-                && Objects.equals(this.hasBoss, incursionsResponse.hasBoss)
-                && Objects.equals(this.infestedSolarSystems, incursionsResponse.infestedSolarSystems)
-                && Objects.equals(this.influence, incursionsResponse.influence)
-                && Objects.equals(this.stagingSolarSystemId, incursionsResponse.stagingSolarSystemId)
+        return Objects.equals(this.type, incursionsResponse.type)
                 && Objects.equals(this.state, incursionsResponse.state)
-                && Objects.equals(this.type, incursionsResponse.type);
+                && Objects.equals(this.influence, incursionsResponse.influence)
+                && Objects.equals(this.hasBoss, incursionsResponse.hasBoss)
+                && Objects.equals(this.factionId, incursionsResponse.factionId)
+                && Objects.equals(this.constellationId, incursionsResponse.constellationId)
+                && Objects.equals(this.stagingSolarSystemId, incursionsResponse.stagingSolarSystemId)
+                && Objects.equals(this.infestedSolarSystems, incursionsResponse.infestedSolarSystems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(constellationId, factionId, hasBoss, infestedSolarSystems, influence, stagingSolarSystemId,
-                state, type);
+        return Objects.hash(type, state, influence, hasBoss, factionId, constellationId, stagingSolarSystemId,
+                infestedSolarSystems);
     }
 
     @Override
@@ -270,14 +270,14 @@ public class IncursionsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class IncursionsResponse {\n");
 
-        sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
-        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    hasBoss: ").append(toIndentedString(hasBoss)).append("\n");
-        sb.append("    infestedSolarSystems: ").append(toIndentedString(infestedSolarSystems)).append("\n");
-        sb.append("    influence: ").append(toIndentedString(influence)).append("\n");
-        sb.append("    stagingSolarSystemId: ").append(toIndentedString(stagingSolarSystemId)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    influence: ").append(toIndentedString(influence)).append("\n");
+        sb.append("    hasBoss: ").append(toIndentedString(hasBoss)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
+        sb.append("    stagingSolarSystemId: ").append(toIndentedString(stagingSolarSystemId)).append("\n");
+        sb.append("    infestedSolarSystems: ").append(toIndentedString(infestedSolarSystems)).append("\n");
         sb.append("}");
         return sb.toString();
     }

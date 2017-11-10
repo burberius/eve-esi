@@ -28,6 +28,12 @@ public class CharacterFleetResponse implements Serializable {
     @JsonProperty("fleet_id")
     private Long fleetId = null;
 
+    @JsonProperty("wing_id")
+    private Long wingId = null;
+
+    @JsonProperty("squad_id")
+    private Long squadId = null;
+
     /**
      * Member’s role in fleet
      */
@@ -65,12 +71,6 @@ public class CharacterFleetResponse implements Serializable {
     @JsonProperty("role")
     private RoleEnum role = null;
 
-    @JsonProperty("squad_id")
-    private Long squadId = null;
-
-    @JsonProperty("wing_id")
-    private Long wingId = null;
-
     public CharacterFleetResponse fleetId(Long fleetId) {
         this.fleetId = fleetId;
         return this;
@@ -88,44 +88,6 @@ public class CharacterFleetResponse implements Serializable {
 
     public void setFleetId(Long fleetId) {
         this.fleetId = fleetId;
-    }
-
-    public CharacterFleetResponse role(RoleEnum role) {
-        this.role = role;
-        return this;
-    }
-
-    /**
-     * Member’s role in fleet
-     * 
-     * @return role
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Member’s role in fleet")
-    public RoleEnum getRole() {
-        return role;
-    }
-
-    public void setRole(RoleEnum role) {
-        this.role = role;
-    }
-
-    public CharacterFleetResponse squadId(Long squadId) {
-        this.squadId = squadId;
-        return this;
-    }
-
-    /**
-     * ID of the squad the member is in. If not applicable, will be set to -1
-     * 
-     * @return squadId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
-    public Long getSquadId() {
-        return squadId;
-    }
-
-    public void setSquadId(Long squadId) {
-        this.squadId = squadId;
     }
 
     public CharacterFleetResponse wingId(Long wingId) {
@@ -147,6 +109,44 @@ public class CharacterFleetResponse implements Serializable {
         this.wingId = wingId;
     }
 
+    public CharacterFleetResponse squadId(Long squadId) {
+        this.squadId = squadId;
+        return this;
+    }
+
+    /**
+     * ID of the squad the member is in. If not applicable, will be set to -1
+     * 
+     * @return squadId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
+    public Long getSquadId() {
+        return squadId;
+    }
+
+    public void setSquadId(Long squadId) {
+        this.squadId = squadId;
+    }
+
+    public CharacterFleetResponse role(RoleEnum role) {
+        this.role = role;
+        return this;
+    }
+
+    /**
+     * Member’s role in fleet
+     * 
+     * @return role
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Member’s role in fleet")
+    public RoleEnum getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEnum role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,14 +157,14 @@ public class CharacterFleetResponse implements Serializable {
         }
         CharacterFleetResponse characterFleetResponse = (CharacterFleetResponse) o;
         return Objects.equals(this.fleetId, characterFleetResponse.fleetId)
-                && Objects.equals(this.role, characterFleetResponse.role)
+                && Objects.equals(this.wingId, characterFleetResponse.wingId)
                 && Objects.equals(this.squadId, characterFleetResponse.squadId)
-                && Objects.equals(this.wingId, characterFleetResponse.wingId);
+                && Objects.equals(this.role, characterFleetResponse.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fleetId, role, squadId, wingId);
+        return Objects.hash(fleetId, wingId, squadId, role);
     }
 
     @Override
@@ -173,9 +173,9 @@ public class CharacterFleetResponse implements Serializable {
         sb.append("class CharacterFleetResponse {\n");
 
         sb.append("    fleetId: ").append(toIndentedString(fleetId)).append("\n");
-        sb.append("    role: ").append(toIndentedString(role)).append("\n");
-        sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
+        sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
+        sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("}");
         return sb.toString();
     }

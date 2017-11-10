@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
-    private Integer amount = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
-    public FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints amount(Integer amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * Amount of victory points
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", value = "Amount of victory points")
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
+    @JsonProperty("amount")
+    private Integer amount = null;
 
     public FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implem
         this.corporationId = corporationId;
     }
 
+    public FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints amount(Integer amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Amount of victory points
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", value = "Amount of victory points")
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,14 +78,14 @@ public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implem
             return false;
         }
         FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints factionWarfareLeaderboardCorporationActiveTotalVictoryPoints = (FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints) o;
-        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationActiveTotalVictoryPoints.amount)
-                && Objects.equals(this.corporationId,
-                        factionWarfareLeaderboardCorporationActiveTotalVictoryPoints.corporationId);
+        return Objects.equals(this.corporationId,
+                factionWarfareLeaderboardCorporationActiveTotalVictoryPoints.corporationId)
+                && Objects.equals(this.amount, factionWarfareLeaderboardCorporationActiveTotalVictoryPoints.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, corporationId);
+        return Objects.hash(corporationId, amount);
     }
 
     @Override
@@ -93,8 +93,8 @@ public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implem
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints {\n");
 
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }
