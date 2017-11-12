@@ -49,7 +49,6 @@ public class HeaderUtil {
         // Get header
         String header = getHeader(responseHeaders, EXPIRES);
         if (header == null) {
-            System.out.println("Header Null");
             return null;
         }
 
