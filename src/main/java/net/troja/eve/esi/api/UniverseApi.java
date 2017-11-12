@@ -346,7 +346,7 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/universe/factions/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/universe/factions/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

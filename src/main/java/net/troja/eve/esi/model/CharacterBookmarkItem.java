@@ -19,9 +19,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * item object
+ * Optional object that is returned if a bookmark was made on a particular item.
  */
-@ApiModel(description = "item object")
+@ApiModel(description = "Optional object that is returned if a bookmark was made on a particular item.")
 public class CharacterBookmarkItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
