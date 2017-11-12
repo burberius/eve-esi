@@ -39,7 +39,7 @@ public class BookmarksApi {
     }
 
     /**
-     * List bookmarks List your character&#39;s personal bookmarks --- This
+     * List bookmarks A list of your character&#39;s personal bookmarks --- This
      * route is cached for up to 3600 seconds SSO Scope:
      * esi-bookmarks.read_character_bookmarks.v1
      * 
@@ -48,6 +48,8 @@ public class BookmarksApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -59,7 +61,7 @@ public class BookmarksApi {
      *             if fails to make API call
      */
     public List<CharacterBookmarksResponse> getCharactersCharacterIdBookmarks(Integer characterId, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -69,7 +71,7 @@ public class BookmarksApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/bookmarks/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/bookmarks/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -78,6 +80,7 @@ public class BookmarksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
@@ -101,8 +104,8 @@ public class BookmarksApi {
     }
 
     /**
-     * List bookmark folders List your character&#39;s personal bookmark folders
-     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * List bookmark folders A list of your character&#39;s personal bookmark
+     * folders --- This route is cached for up to 3600 seconds SSO Scope:
      * esi-bookmarks.read_character_bookmarks.v1
      * 
      * @param characterId
@@ -110,6 +113,8 @@ public class BookmarksApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -121,7 +126,7 @@ public class BookmarksApi {
      *             if fails to make API call
      */
     public List<CharacterBookmarkFoldersResponse> getCharactersCharacterIdBookmarksFolders(Integer characterId,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -131,7 +136,7 @@ public class BookmarksApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/bookmarks/folders/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/characters/{character_id}/bookmarks/folders/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -140,6 +145,7 @@ public class BookmarksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
