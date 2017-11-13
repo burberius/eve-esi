@@ -85,4 +85,3 @@ When you get that exception with eve-esi, you have to add the following dependen
 ## Links
 * [EVE Swagger Interface](https://esi.tech.ccp.is/latest/)
 * [Eve Online SSO](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/index.html)
-
