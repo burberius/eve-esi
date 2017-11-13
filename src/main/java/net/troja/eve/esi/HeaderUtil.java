@@ -1,14 +1,16 @@
 package net.troja.eve.esi;
 
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class HeaderUtil {
 
-    private static final ISO8601DateFormat DATE_FORMAT = new ISO8601DateFormat();
+    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("[EEE, ]dd MMM yyyy HH:mm[:ss][ zzz][ xxxx]", Locale.ENGLISH);
     private static final String X_PAGES = "X-Pages";
     private static final String EXPIRES = "Expires";
 
@@ -43,7 +45,7 @@ public class HeaderUtil {
      *            ApiClient.getResponseHeaders()
      * @return
      */
-    public static Date getExpires(Map<String, List<String>> responseHeaders) {
+    public static OffsetDateTime getExpires(Map<String, List<String>> responseHeaders) {
         // Get header
         String header = getHeader(responseHeaders, EXPIRES);
         if (header == null) {
@@ -51,13 +53,11 @@ public class HeaderUtil {
         }
 
         // Convert
-        Date expires = null;
         try {
-            expires = DATE_FORMAT.parse(header);
-        } catch (ParseException ex) {
-
+            return ZonedDateTime.parse(header, DATE_FORMAT).toOffsetDateTime();
+        } catch (DateTimeParseException ex) {
+            return null;
         }
-        return expires;
     }
 
     /***

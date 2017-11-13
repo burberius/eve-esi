@@ -74,13 +74,13 @@ public class CorporationIndustryJobsResponse implements Serializable {
     public enum StatusEnum {
         ACTIVE("active"),
 
-        PAUSED("paused"),
-
-        READY("ready"),
+        CANCELLED("cancelled"),
 
         DELIVERED("delivered"),
 
-        CANCELLED("cancelled"),
+        PAUSED("paused"),
+
+        READY("ready"),
 
         REVERTED("reverted");
 

@@ -122,7 +122,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(example = "null", value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -141,7 +141,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    @ApiModelProperty(example = "null", value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
