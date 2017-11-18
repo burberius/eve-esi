@@ -10,7 +10,8 @@ import java.util.Map;
 
 public class HeaderUtil {
 
-    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("[EEE, ]dd MMM yyyy HH:mm[:ss][ zzz][ xxxx]", Locale.ENGLISH);
+    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern(
+            "[EEE, ]dd MMM yyyy HH:mm[:ss][ zzz][ xxxx]", Locale.ENGLISH);
     private static final String X_PAGES = "X-Pages";
     private static final String EXPIRES = "Expires";
 
