@@ -55,7 +55,7 @@ Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 
 ### Paging
 If you wonder how the paging with esi works, please have a look at the test
-*src/test/java/net/troja/eve/esi/api/MarketApiTest.java* there is a method *pagingExample* showing it.
+*[src/test/java/net/troja/eve/esi/api/MarketApiTest.java](https://github.com/burberius/eve-esi/blob/master/src/test/java/net/troja/eve/esi/api/MarketApiTest.java)* there is a method *pagingExample* showing it.
 
 ### java.lang.IllegalStateException: InjectionManagerFactory not found
 When you get that exception with eve-esi, you have to add the following dependency to your *pom.xml*
