@@ -77,6 +77,8 @@
   "/v1/corporations/{corporation_id}/members/titles/",
   "/v1/corporations/{corporation_id}/membertracking/",
   "/v1/corporations/{corporation_id}/orders/",
+  "/v1/corporations/{corporation_id}/outposts/",
+  "/v1/corporations/{corporation_id}/outposts/{outpost_id}/",
   "/v1/corporations/{corporation_id}/roles/",
   "/v1/corporations/{corporation_id}/roles/history/",
   "/v1/corporations/{corporation_id}/shareholders/",
