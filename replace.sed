@@ -245,6 +245,9 @@ s/get_corporations_corporation_id_starbases_200_ok/CorporationStarbasesResponse/
 s/get_corporations_corporation_id_starbases_starbase_id_fuel/CorporationStarbaseFuel/g
 s/get_corporations_corporation_id_starbases_starbase_id_ok/CorporationStarbaseResponse/g
 s/get_characters_character_id_bookmarks_coordinates/CharacterBookmarksCoordinates/g
+s/get_corporations_corporation_id_outposts_outpost_id_coordinates/CorporationOutpostCoordinates/g
+s/get_corporations_corporation_id_outposts_outpost_id_ok/CorporationOutpostResponse/g
+s/get_corporations_corporation_id_outposts_outpost_id_service/CorporationOutpostService/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
