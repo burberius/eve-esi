@@ -25,6 +25,7 @@ import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
 import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
+import net.troja.eve.esi.model.CorporationOutpostResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationShareholdersResponse;
@@ -296,6 +297,42 @@ public class CorporationApiTest extends GeneralApiTest {
         // List<CorporationMemberTrackingResponse> response =
         // api.getCorporationsCorporationIdMembertracking(corporationId,
         // datasource, token, userAgent, xUserAgent);
+    }
+
+    /**
+     * Get corporation outposts
+     *
+     * Get a list of corporation outpost IDs Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdOutpostsTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<Integer> response = api.getCorporationsCorporationIdOutposts(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Get corporation outpost details
+     *
+     * Get details about a given outpost. Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdOutpostsOutpostIdTest() throws ApiException {
+        Integer corporationId = null;
+        Integer outpostId = null;
+        CorporationOutpostResponse response = api.getCorporationsCorporationIdOutpostsOutpostId(corporationId, outpostId, DATASOURCE, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
