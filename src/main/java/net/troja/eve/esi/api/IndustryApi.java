@@ -177,7 +177,8 @@ public class IndustryApi {
     /**
      * Moon extraction timers Extraction timers for all moon chunks being
      * extracted by refineries belonging to a corporation. --- This route is
-     * cached for up to 1800 seconds SSO Scope:
+     * cached for up to 1800 seconds --- Requires one of the following EVE
+     * corporation role(s): Structure_manager SSO Scope:
      * esi-industry.read_corporation_mining.v1
      * 
      * @param corporationId
@@ -241,7 +242,8 @@ public class IndustryApi {
     /**
      * Corporation mining observers Paginated list of all entities capable of
      * observing and recording mining for a corporation --- This route is cached
-     * for up to 3600 seconds SSO Scope: esi-industry.read_corporation_mining.v1
+     * for up to 3600 seconds --- Requires one of the following EVE corporation
+     * role(s): Accountant SSO Scope: esi-industry.read_corporation_mining.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -305,7 +307,8 @@ public class IndustryApi {
 
     /**
      * Observed corporation mining Paginated record of all mining seen by an
-     * observer --- This route is cached for up to 3600 seconds SSO Scope:
+     * observer --- This route is cached for up to 3600 seconds --- Requires one
+     * of the following EVE corporation role(s): Accountant SSO Scope:
      * esi-industry.read_corporation_mining.v1
      * 
      * @param corporationId
@@ -381,7 +384,8 @@ public class IndustryApi {
 
     /**
      * List corporation industry jobs List industry jobs run by a corporation
-     * --- This route is cached for up to 300 seconds SSO Scope:
+     * --- This route is cached for up to 300 seconds --- Requires one of the
+     * following EVE corporation role(s): FactoryManager SSO Scope:
      * esi-industry.read_corporation_jobs.v1
      * 
      * @param corporationId
