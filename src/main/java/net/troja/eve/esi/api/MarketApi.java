@@ -105,8 +105,9 @@ public class MarketApi {
 
     /**
      * List orders from a corporation List market orders placed on behalf of a
-     * corporation --- This route is cached for up to 3600 seconds SSO Scope:
-     * esi-markets.read_corporation_orders.v1
+     * corporation --- This route is cached for up to 3600 seconds --- Requires
+     * one of the following EVE corporation role(s): Accountant, Trader SSO
+     * Scope: esi-markets.read_corporation_orders.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.StructureService;
@@ -52,19 +52,19 @@ public class CorporationStructuresResponse implements Serializable {
     private List<VulnerabilityWindow> nextVul = new ArrayList<VulnerabilityWindow>();
 
     @JsonProperty("fuel_expires")
-    private LocalDate fuelExpires = null;
+    private OffsetDateTime fuelExpires = null;
 
     @JsonProperty("services")
     private List<StructureService> services = new ArrayList<StructureService>();
 
     @JsonProperty("state_timer_start")
-    private LocalDate stateTimerStart = null;
+    private OffsetDateTime stateTimerStart = null;
 
     @JsonProperty("state_timer_end")
-    private LocalDate stateTimerEnd = null;
+    private OffsetDateTime stateTimerEnd = null;
 
     @JsonProperty("unanchors_at")
-    private LocalDate unanchorsAt = null;
+    private OffsetDateTime unanchorsAt = null;
 
     public CorporationStructuresResponse structureId(Long structureId) {
         this.structureId = structureId;
@@ -209,7 +209,7 @@ public class CorporationStructuresResponse implements Serializable {
         this.nextVul = nextVul;
     }
 
-    public CorporationStructuresResponse fuelExpires(LocalDate fuelExpires) {
+    public CorporationStructuresResponse fuelExpires(OffsetDateTime fuelExpires) {
         this.fuelExpires = fuelExpires;
         return this;
     }
@@ -220,11 +220,11 @@ public class CorporationStructuresResponse implements Serializable {
      * @return fuelExpires
      **/
     @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
-    public LocalDate getFuelExpires() {
+    public OffsetDateTime getFuelExpires() {
         return fuelExpires;
     }
 
-    public void setFuelExpires(LocalDate fuelExpires) {
+    public void setFuelExpires(OffsetDateTime fuelExpires) {
         this.fuelExpires = fuelExpires;
     }
 
@@ -252,7 +252,7 @@ public class CorporationStructuresResponse implements Serializable {
         this.services = services;
     }
 
-    public CorporationStructuresResponse stateTimerStart(LocalDate stateTimerStart) {
+    public CorporationStructuresResponse stateTimerStart(OffsetDateTime stateTimerStart) {
         this.stateTimerStart = stateTimerStart;
         return this;
     }
@@ -263,15 +263,15 @@ public class CorporationStructuresResponse implements Serializable {
      * @return stateTimerStart
      **/
     @ApiModelProperty(example = "null", value = "Date at which the structure entered it's current state")
-    public LocalDate getStateTimerStart() {
+    public OffsetDateTime getStateTimerStart() {
         return stateTimerStart;
     }
 
-    public void setStateTimerStart(LocalDate stateTimerStart) {
+    public void setStateTimerStart(OffsetDateTime stateTimerStart) {
         this.stateTimerStart = stateTimerStart;
     }
 
-    public CorporationStructuresResponse stateTimerEnd(LocalDate stateTimerEnd) {
+    public CorporationStructuresResponse stateTimerEnd(OffsetDateTime stateTimerEnd) {
         this.stateTimerEnd = stateTimerEnd;
         return this;
     }
@@ -282,15 +282,15 @@ public class CorporationStructuresResponse implements Serializable {
      * @return stateTimerEnd
      **/
     @ApiModelProperty(example = "null", value = "Date at which the structure will move to it's next state")
-    public LocalDate getStateTimerEnd() {
+    public OffsetDateTime getStateTimerEnd() {
         return stateTimerEnd;
     }
 
-    public void setStateTimerEnd(LocalDate stateTimerEnd) {
+    public void setStateTimerEnd(OffsetDateTime stateTimerEnd) {
         this.stateTimerEnd = stateTimerEnd;
     }
 
-    public CorporationStructuresResponse unanchorsAt(LocalDate unanchorsAt) {
+    public CorporationStructuresResponse unanchorsAt(OffsetDateTime unanchorsAt) {
         this.unanchorsAt = unanchorsAt;
         return this;
     }
@@ -301,11 +301,11 @@ public class CorporationStructuresResponse implements Serializable {
      * @return unanchorsAt
      **/
     @ApiModelProperty(example = "null", value = "Date at which the structure will unanchor")
-    public LocalDate getUnanchorsAt() {
+    public OffsetDateTime getUnanchorsAt() {
         return unanchorsAt;
     }
 
-    public void setUnanchorsAt(LocalDate unanchorsAt) {
+    public void setUnanchorsAt(OffsetDateTime unanchorsAt) {
         this.unanchorsAt = unanchorsAt;
     }
 
