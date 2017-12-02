@@ -50,7 +50,7 @@ public class SearchApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdSearchTest() throws ApiException {
         final List<String> categories = new ArrayList<>();
         categories.add("character");
-        final String search = "Chribba";
+        final String search = "GoldenGnu";
         final String language = "en-us";
         final Boolean strict = true;
         final String token = null;
@@ -60,7 +60,7 @@ public class SearchApiTest extends GeneralApiTest {
                 DATASOURCE, language, strict, token, userAgent, xUserAgent);
 
         assertThat(response.getCharacter().size(), equalTo(1));
-        assertThat(response.getCharacter().get(0), equalTo(CHARACTER_ID_CHRIBBA));
+        assertThat(response.getCharacter().get(0), equalTo(1652509239));
     }
 
     /**
