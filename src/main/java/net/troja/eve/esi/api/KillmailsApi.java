@@ -109,7 +109,8 @@ public class KillmailsApi {
 
     /**
      * Get corporation kills and losses Get a list of corporation&#39;s recent
-     * kills and losses --- This route is cached for up to 300 seconds SSO
+     * kills and losses --- This route is cached for up to 300 seconds ---
+     * Requires one of the following EVE corporation role(s): Director SSO
      * Scope: esi-killmails.read_corporation_killmails.v1
      * 
      * @param corporationId

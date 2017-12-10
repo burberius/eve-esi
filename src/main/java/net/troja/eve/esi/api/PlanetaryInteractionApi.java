@@ -176,7 +176,8 @@ public class PlanetaryInteractionApi {
 
     /**
      * List corporation customs offices List customs offices owned by a
-     * corporation --- This route is cached for up to 3600 seconds SSO Scope:
+     * corporation --- This route is cached for up to 3600 seconds --- Requires
+     * one of the following EVE corporation role(s): Director SSO Scope:
      * esi-planets.read_customs_offices.v1
      * 
      * @param corporationId

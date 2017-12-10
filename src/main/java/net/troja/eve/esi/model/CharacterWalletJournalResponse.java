@@ -314,7 +314,9 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         ALLIANCE("alliance"),
 
-        FACTION("faction");
+        FACTION("faction"),
+
+        SYSTEM("system");
 
         private String value;
 
@@ -354,7 +356,9 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         ALLIANCE("alliance"),
 
-        FACTION("faction");
+        FACTION("faction"),
+
+        SYSTEM("system");
 
         private String value;
 

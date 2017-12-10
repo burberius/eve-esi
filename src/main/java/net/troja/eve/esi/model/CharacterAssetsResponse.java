@@ -160,8 +160,6 @@ public class CharacterAssetsResponse implements Serializable {
 
         MEDSLOT7("MedSlot7"),
 
-        MODULE("Module"),
-
         QUAFEBAY("QuafeBay"),
 
         RIGSLOT0("RigSlot0"),
@@ -181,6 +179,8 @@ public class CharacterAssetsResponse implements Serializable {
         RIGSLOT7("RigSlot7"),
 
         SHIPHANGAR("ShipHangar"),
+
+        SKILL("Skill"),
 
         SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
 

@@ -175,7 +175,8 @@ public class CorporationApi {
 
     /**
      * Get corporation blueprints Returns a list of blueprints the corporation
-     * owns --- This route is cached for up to 3600 seconds SSO Scope:
+     * owns --- This route is cached for up to 3600 seconds --- Requires one of
+     * the following EVE corporation role(s): Director SSO Scope:
      * esi-corporations.read_blueprints.v1
      * 
      * @param corporationId
@@ -241,7 +242,8 @@ public class CorporationApi {
     /**
      * Get all corporation ALSC logs Returns logs recorded in the past seven
      * days from all audit log secure containers (ALSC) owned by a given
-     * corporation --- This route is cached for up to 600 seconds SSO Scope:
+     * corporation --- This route is cached for up to 600 seconds --- Requires
+     * one of the following EVE corporation role(s): Director SSO Scope:
      * esi-corporations.read_container_logs.v1
      * 
      * @param corporationId
@@ -307,7 +309,8 @@ public class CorporationApi {
     /**
      * Get corporation divisions Return corporation hangar and wallet division
      * names, only show if a division is not using the default name --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * route is cached for up to 3600 seconds --- Requires one of the following
+     * EVE corporation role(s): Director SSO Scope:
      * esi-corporations.read_divisions.v1
      * 
      * @param corporationId
@@ -369,7 +372,8 @@ public class CorporationApi {
 
     /**
      * Get corporation facilities Return a corporation&#39;s facilities --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * route is cached for up to 3600 seconds --- Requires one of the following
+     * EVE corporation role(s): Factory_Manager SSO Scope:
      * esi-corporations.read_facilities.v1
      * 
      * @param corporationId
@@ -554,7 +558,8 @@ public class CorporationApi {
 
     /**
      * Get corporation issued medals Returns medals issued by a corporation ---
-     * This route is cached for up to 3600 seconds SSO Scope:
+     * This route is cached for up to 3600 seconds --- Requires one of the
+     * following EVE corporation role(s): Director SSO Scope:
      * esi-corporations.read_medals.v1
      * 
      * @param corporationId
@@ -681,7 +686,8 @@ public class CorporationApi {
 
     /**
      * Get corporation member limit Return a corporation&#39;s member limit, not
-     * including CEO himself --- This route is cached for up to 3600 seconds SSO
+     * including CEO himself --- This route is cached for up to 3600 seconds ---
+     * Requires one of the following EVE corporation role(s): Director SSO
      * Scope: esi-corporations.track_members.v1
      * 
      * @param corporationId
@@ -743,7 +749,8 @@ public class CorporationApi {
 
     /**
      * Get corporation&#39;s members&#39; titles Returns a corporation&#39;s
-     * members&#39; titles --- This route is cached for up to 3600 seconds SSO
+     * members&#39; titles --- This route is cached for up to 3600 seconds ---
+     * Requires one of the following EVE corporation role(s): Director SSO
      * Scope: esi-corporations.read_titles.v1
      * 
      * @param corporationId
@@ -806,7 +813,8 @@ public class CorporationApi {
     /**
      * Track corporation members Returns additional information about a
      * corporation&#39;s members which helps tracking their activities --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * route is cached for up to 3600 seconds --- Requires one of the following
+     * EVE corporation role(s): Director SSO Scope:
      * esi-corporations.track_members.v1
      * 
      * @param corporationId
@@ -872,7 +880,8 @@ public class CorporationApi {
      * about in this blog:
      * https://community.eveonline.com/news/dev-blogs/the-next
      * -steps-in-structure-transition/ --- This route is cached for up to 3600
-     * seconds SSO Scope: esi-corporations.read_outposts.v1
+     * seconds --- Requires one of the following EVE corporation role(s):
+     * Director SSO Scope: esi-corporations.read_outposts.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -940,7 +949,8 @@ public class CorporationApi {
      * talked about in this blog:
      * https://community.eveonline.com/news/dev-blogs/
      * the-next-steps-in-structure-transition/ --- This route is cached for up
-     * to 3600 seconds SSO Scope: esi-corporations.read_outposts.v1
+     * to 3600 seconds --- Requires one of the following EVE corporation
+     * role(s): Director SSO Scope: esi-corporations.read_outposts.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1076,7 +1086,8 @@ public class CorporationApi {
     /**
      * Get corporation member roles history Return how roles have changed for a
      * coporation&#39;s members, up to a month --- This route is cached for up
-     * to 3600 seconds SSO Scope:
+     * to 3600 seconds --- Requires one of the following EVE corporation
+     * role(s): Director SSO Scope:
      * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
@@ -1272,7 +1283,8 @@ public class CorporationApi {
 
     /**
      * Get corporation starbases (POSes) Returns list of corporation starbases
-     * (POSes) --- This route is cached for up to 3600 seconds SSO Scope:
+     * (POSes) --- This route is cached for up to 3600 seconds --- Requires one
+     * of the following EVE corporation role(s): Director SSO Scope:
      * esi-corporations.read_starbases.v1
      * 
      * @param corporationId
@@ -1337,8 +1349,9 @@ public class CorporationApi {
 
     /**
      * Get starbase (POS) detail Returns various settings and fuels of a
-     * starbase (POS) --- This route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_starbases.v1
+     * starbase (POS) --- This route is cached for up to 3600 seconds ---
+     * Requires one of the following EVE corporation role(s): Director SSO
+     * Scope: esi-corporations.read_starbases.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1422,7 +1435,8 @@ public class CorporationApi {
 
     /**
      * Get corporation structures Get a list of corporation structures --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * route is cached for up to 3600 seconds --- Requires one of the following
+     * EVE corporation role(s): StationManager SSO Scope:
      * esi-corporations.read_structures.v1
      * 
      * @param corporationId
@@ -1491,8 +1505,8 @@ public class CorporationApi {
 
     /**
      * Get corporation titles Returns a corporation&#39;s titles --- This route
-     * is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_titles.v1
+     * is cached for up to 3600 seconds --- Requires one of the following EVE
+     * corporation role(s): Director SSO Scope: esi-corporations.read_titles.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)

@@ -73,7 +73,7 @@ public class AssetsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/assets/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/assets/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -107,7 +107,8 @@ public class AssetsApi {
 
     /**
      * Get corporation assets Return a list of the corporation assets --- This
-     * route is cached for up to 3600 seconds SSO Scope:
+     * route is cached for up to 3600 seconds --- Requires one of the following
+     * EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
@@ -317,7 +318,8 @@ public class AssetsApi {
     /**
      * Get corporation asset locations Return locations for a set of item ids,
      * which you can get from corporation assets endpoint. Coordinates for items
-     * in hangars or stations are set to (0,0,0) --- SSO Scope:
+     * in hangars or stations are set to (0,0,0) --- Requires one of the
+     * following EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
@@ -389,7 +391,8 @@ public class AssetsApi {
     /**
      * Get coporation asset names Return names for a set of item ids, which you
      * can get from corporation assets endpoint. Only valid for items that can
-     * customize names, like containers or ships. --- SSO Scope:
+     * customize names, like containers or ships. --- Requires one of the
+     * following EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
