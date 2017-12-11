@@ -95,7 +95,7 @@ public class CorporationOrdersResponse implements Serializable {
     private Boolean isBuyOrder = null;
 
     @JsonProperty("price")
-    private Float price = null;
+    private Double price = null;
 
     @JsonProperty("volume_total")
     private Integer volumeTotal = null;
@@ -273,7 +273,7 @@ public class CorporationOrdersResponse implements Serializable {
         this.isBuyOrder = isBuyOrder;
     }
 
-    public CorporationOrdersResponse price(Float price) {
+    public CorporationOrdersResponse price(Double price) {
         this.price = price;
         return this;
     }
@@ -284,11 +284,11 @@ public class CorporationOrdersResponse implements Serializable {
      * @return price
      **/
     @ApiModelProperty(example = "null", required = true, value = "Cost per unit for this order")
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

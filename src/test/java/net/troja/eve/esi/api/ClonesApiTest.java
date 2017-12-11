@@ -66,8 +66,7 @@ public class ClonesApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdImplantsTest() throws ApiException {
         List<Integer> response = api.getCharactersCharacterIdImplants(characterId, DATASOURCE, null, null, null);
-        assertThat(response.size(), greaterThan(0));
-        assertThat(response.get(0), greaterThan(0));
+        assertThat(response, notNullValue());
     }
 
 }

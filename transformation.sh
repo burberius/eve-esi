@@ -64,7 +64,15 @@ sed -i -e 's#get_characters_character_id_unprocessable_entity#UnprocessableEntit
 # Add SSO scope to description
 echo "Adding SSO scopes"
 jq ".paths[][] | select(.security[0].evesso) | [.description , .security[].evesso[0]] | @csv" work1.json > tmp.csv
-sed -e 's|"\\"\(.*\)\\",\\"\(.*\)\\""|s#\1#\1\\n\\nSSO Scope: \2#g|' -e 's#\\#\\\\#g' tmp.csv > scope.sed
+sed -i -e 's#\\#\\\\#g' tmp.csv
+sed -i -e 's#\/#\\\/#g' tmp.csv
+sed -i -e 's#\[#\\\[#g' tmp.csv
+sed -i -e 's#\]#\\\]#g' tmp.csv
+sed -i -e 's#\.#\\\.#g' tmp.csv
+sed -i -e 's#\$#\\\$#g' tmp.csv
+sed -i -e 's#\*#\\\*#g' tmp.csv
+sed -i -e 's#\^#\\\^#g' tmp.csv
+sed -e 's|"\\\\"\(.*\)\\\\",\\\\"\(.*\)\\\\""|s/\1/\1\\\\n\\\\nSSO Scope: \2/g|' tmp.csv > scope.sed
 sed -f scope.sed work1.json > esi.json
 
 # Clean up

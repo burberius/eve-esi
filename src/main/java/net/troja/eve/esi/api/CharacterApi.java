@@ -113,7 +113,7 @@ public class CharacterApi {
      * character. The formula for finding the current research points with an
      * agent is: currentPoints &#x3D; remainderPoints + pointsPerDay *
      * days(currentTime - researchStartDate) --- This route is cached for up to
-     * 3600 seconds
+     * 3600 seconds SSO Scope: esi-characters.read_agents_research.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -665,7 +665,10 @@ public class CharacterApi {
 
     /**
      * Get character corporation roles Returns a character&#39;s corporation
-     * roles --- This route is cached for up to 3600 seconds SSO Scope:
+     * roles --- This route is cached for up to 3600 seconds --- [This route has
+     * an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
+     * /{character_id}/roles/) SSO Scope:
      * esi-characters.read_corporation_roles.v1
      * 
      * @param characterId
@@ -967,7 +970,10 @@ public class CharacterApi {
     /**
      * Calculate a CSPA charge cost Takes a source character ID in the url and a
      * set of target character ID&#39;s in the body, returns a CSPA charge cost
-     * --- SSO Scope: esi-characters.read_contacts.v1
+     * --- [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest
+     * /dev/#POST-/characters/{character_id}/cspa/) SSO Scope:
+     * esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

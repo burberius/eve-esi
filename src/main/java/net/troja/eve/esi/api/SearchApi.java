@@ -38,8 +38,10 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * This route is cached for up to 3600 seconds SSO Scope:
-     * esi-search.search_structures.v1
+     * This route is cached for up to 3600 seconds --- [This route has an
+     * available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
+     * /{character_id}/search/) SSO Scope: esi-search.search_structures.v1
      * 
      * @param categories
      *            Type of entities to search for (required)
@@ -126,8 +128,8 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * This route is cached for up to 3600 seconds SSO Scope:
-     * esi-search.search_structures.v1
+     * This route is cached for up to 3600 seconds --- [This route has an
+     * available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/search/)
      * 
      * @param categories
      *            Type of entities to search for (required)

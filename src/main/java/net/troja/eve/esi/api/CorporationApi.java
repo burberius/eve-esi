@@ -59,7 +59,10 @@ public class CorporationApi {
 
     /**
      * Get corporation information Public information about a corporation ---
-     * This route is cached for up to 3600 seconds
+     * This route is cached for up to 3600 seconds --- [This route has an
+     * available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
+     * /{corporation_id}/)
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -625,7 +628,10 @@ public class CorporationApi {
     /**
      * Get corporation members Read the current list of members if the calling
      * character is a member. --- This route is cached for up to 3600 seconds
-     * SSO Scope: esi-corporations.read_corporation_membership.v1
+     * --- [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest
+     * /dev/#GET-/corporations/{corporation_id}/members/) SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1567,7 +1573,10 @@ public class CorporationApi {
 
     /**
      * Get corporation names Resolve a set of corporation IDs to corporation
-     * names --- This route is cached for up to 3600 seconds
+     * names --- This route is cached for up to 3600 seconds --- [This route has
+     * an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
+     * /names/)
      * 
      * @param corporationIds
      *            A comma separated list of corporation IDs (required)

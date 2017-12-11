@@ -429,7 +429,7 @@ public class CorporationBlueprintsResponse implements Serializable {
     }
 
     /**
-     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 10
+     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
      * 
      * @return materialEfficiency
      **/
