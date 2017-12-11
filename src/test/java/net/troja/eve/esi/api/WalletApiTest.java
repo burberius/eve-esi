@@ -46,9 +46,9 @@ public class WalletApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdWalletTest() throws ApiException {
-        final Float response = api.getCharactersCharacterIdWallet(characterId, DATASOURCE, null, null, null);
+        final Double response = api.getCharactersCharacterIdWallet(characterId, DATASOURCE, null, null, null);
 
-        assertThat(response, greaterThan(0f));
+        assertThat(response, greaterThan(0.0));
     }
 
     /**
@@ -70,7 +70,7 @@ public class WalletApiTest extends GeneralApiTest {
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
         final CharacterWalletJournalResponse characterWalletJournalResponse = response.get(0);
-        assertThat(characterWalletJournalResponse.getBalance(), greaterThan(0f));
+        assertThat(characterWalletJournalResponse.getBalance(), greaterThan(0.0));
     }
 
     /**
@@ -91,7 +91,7 @@ public class WalletApiTest extends GeneralApiTest {
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
         final CharacterWalletTransactionsResponse characterWalletTransactionsResponse = response.get(0);
-        assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0.0f));
+        assertThat(characterWalletTransactionsResponse.getUnitPrice(), greaterThan(0.0));
     }
 
     /**

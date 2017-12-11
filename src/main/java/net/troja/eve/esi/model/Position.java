@@ -27,15 +27,15 @@ public class Position implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonProperty("x")
-    private Float x = null;
+    private Double x = null;
 
     @JsonProperty("y")
-    private Float y = null;
+    private Double y = null;
 
     @JsonProperty("z")
-    private Float z = null;
+    private Double z = null;
 
-    public Position x(Float x) {
+    public Position x(Double x) {
         this.x = x;
         return this;
     }
@@ -46,15 +46,15 @@ public class Position implements Serializable {
      * @return x
      **/
     @ApiModelProperty(example = "null", required = true, value = "x number")
-    public Float getX() {
+    public Double getX() {
         return x;
     }
 
-    public void setX(Float x) {
+    public void setX(Double x) {
         this.x = x;
     }
 
-    public Position y(Float y) {
+    public Position y(Double y) {
         this.y = y;
         return this;
     }
@@ -65,15 +65,15 @@ public class Position implements Serializable {
      * @return y
      **/
     @ApiModelProperty(example = "null", required = true, value = "y number")
-    public Float getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(Float y) {
+    public void setY(Double y) {
         this.y = y;
     }
 
-    public Position z(Float z) {
+    public Position z(Double z) {
         this.z = z;
         return this;
     }
@@ -84,11 +84,11 @@ public class Position implements Serializable {
      * @return z
      **/
     @ApiModelProperty(example = "null", required = true, value = "z number")
-    public Float getZ() {
+    public Double getZ() {
         return z;
     }
 
-    public void setZ(Float z) {
+    public void setZ(Double z) {
         this.z = z;
     }
 

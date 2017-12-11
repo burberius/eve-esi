@@ -36,13 +36,13 @@ public class MarketHistoryResponse implements Serializable {
     private Long volume = null;
 
     @JsonProperty("highest")
-    private Float highest = null;
+    private Double highest = null;
 
     @JsonProperty("average")
-    private Float average = null;
+    private Double average = null;
 
     @JsonProperty("lowest")
-    private Float lowest = null;
+    private Double lowest = null;
 
     public MarketHistoryResponse date(LocalDate date) {
         this.date = date;
@@ -101,7 +101,7 @@ public class MarketHistoryResponse implements Serializable {
         this.volume = volume;
     }
 
-    public MarketHistoryResponse highest(Float highest) {
+    public MarketHistoryResponse highest(Double highest) {
         this.highest = highest;
         return this;
     }
@@ -112,15 +112,15 @@ public class MarketHistoryResponse implements Serializable {
      * @return highest
      **/
     @ApiModelProperty(example = "null", required = true, value = "highest number")
-    public Float getHighest() {
+    public Double getHighest() {
         return highest;
     }
 
-    public void setHighest(Float highest) {
+    public void setHighest(Double highest) {
         this.highest = highest;
     }
 
-    public MarketHistoryResponse average(Float average) {
+    public MarketHistoryResponse average(Double average) {
         this.average = average;
         return this;
     }
@@ -131,15 +131,15 @@ public class MarketHistoryResponse implements Serializable {
      * @return average
      **/
     @ApiModelProperty(example = "null", required = true, value = "average number")
-    public Float getAverage() {
+    public Double getAverage() {
         return average;
     }
 
-    public void setAverage(Float average) {
+    public void setAverage(Double average) {
         this.average = average;
     }
 
-    public MarketHistoryResponse lowest(Float lowest) {
+    public MarketHistoryResponse lowest(Double lowest) {
         this.lowest = lowest;
         return this;
     }
@@ -150,11 +150,11 @@ public class MarketHistoryResponse implements Serializable {
      * @return lowest
      **/
     @ApiModelProperty(example = "null", required = true, value = "lowest number")
-    public Float getLowest() {
+    public Double getLowest() {
         return lowest;
     }
 
-    public void setLowest(Float lowest) {
+    public void setLowest(Double lowest) {
         this.lowest = lowest;
     }
 

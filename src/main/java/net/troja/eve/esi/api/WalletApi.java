@@ -55,12 +55,12 @@ public class WalletApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return Float
+     * @return Double
      * @throws ApiException
      *             if fails to make API call
      */
-    public Float getCharactersCharacterIdWallet(Integer characterId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -95,7 +95,7 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<Float> localVarReturnType = new GenericType<Float>() {
+        GenericType<Double> localVarReturnType = new GenericType<Double>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -103,8 +103,10 @@ public class WalletApi {
 
     /**
      * Get character wallet journal Retrieve character wallet journal --- This
-     * route is cached for up to 3600 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * route is cached for up to 3600 seconds --- [This route has an available
+     * update
+     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
+     * }/wallet/journal/) SSO Scope: esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -299,7 +301,10 @@ public class WalletApi {
     /**
      * Get corporation wallet journal Retrieve corporation wallet journal ---
      * This route is cached for up to 3600 seconds --- Requires one of the
-     * following EVE corporation role(s): Accountant, Junior_Accountant SSO
+     * following EVE corporation role(s): Accountant, Junior_Accountant ---
+     * [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev
+     * /#GET-/corporations/{corporation_id}/wallets/{division}/journal/) SSO
      * Scope: esi-wallet.read_corporation_wallets.v1
      * 
      * @param corporationId

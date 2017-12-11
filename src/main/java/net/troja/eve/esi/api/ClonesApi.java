@@ -37,7 +37,10 @@ public class ClonesApi {
 
     /**
      * Get clones A list of the character&#39;s clones --- This route is cached
-     * for up to 120 seconds SSO Scope: esi-clones.read_clones.v1
+     * for up to 120 seconds --- [This route has an available
+     * update](https://esi
+     * .tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/clones/) SSO
+     * Scope: esi-clones.read_clones.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

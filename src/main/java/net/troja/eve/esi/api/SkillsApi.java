@@ -162,8 +162,10 @@ public class SkillsApi {
 
     /**
      * Get character skills List all trained skills for the given character ---
-     * This route is cached for up to 120 seconds SSO Scope:
-     * esi-skills.read_skills.v1
+     * This route is cached for up to 120 seconds --- [This route has an
+     * available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
+     * /{character_id}/skills/) SSO Scope: esi-skills.read_skills.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
