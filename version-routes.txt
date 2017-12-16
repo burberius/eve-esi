@@ -44,6 +44,7 @@
   "/v1/characters/{character_id}/roles/",
   "/v1/characters/{character_id}/ship/",
   "/v1/characters/{character_id}/standings/",
+  "/v1/characters/{character_id}/stats/",
   "/v1/characters/{character_id}/titles/",
   "/v1/characters/{character_id}/wallet/",
   "/v1/characters/{character_id}/wallet/transactions/",

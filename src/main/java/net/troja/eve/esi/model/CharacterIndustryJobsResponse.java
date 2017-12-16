@@ -57,7 +57,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
     private Integer runs = null;
 
     @JsonProperty("cost")
-    private Float cost = null;
+    private Double cost = null;
 
     @JsonProperty("licensed_runs")
     private Integer licensedRuns = null;
@@ -324,7 +324,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
         this.runs = runs;
     }
 
-    public CharacterIndustryJobsResponse cost(Float cost) {
+    public CharacterIndustryJobsResponse cost(Double cost) {
         this.cost = cost;
         return this;
     }
@@ -335,11 +335,11 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return cost
      **/
     @ApiModelProperty(example = "null", value = "The sume of job installation fee and industry facility tax")
-    public Float getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(Float cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 
