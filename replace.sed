@@ -248,6 +248,7 @@ s/get_characters_character_id_bookmarks_coordinates/CharacterBookmarksCoordinate
 s/get_corporations_corporation_id_outposts_outpost_id_coordinates/CorporationOutpostCoordinates/g
 s/get_corporations_corporation_id_outposts_outpost_id_ok/CorporationOutpostResponse/g
 s/get_corporations_corporation_id_outposts_outpost_id_service/CorporationOutpostService/g
+s/get_characters_character_id_stats_200_ok/CharacterStatsResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

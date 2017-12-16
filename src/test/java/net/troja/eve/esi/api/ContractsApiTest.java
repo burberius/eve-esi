@@ -49,7 +49,7 @@ public class ContractsApiTest extends GeneralApiTest {
 
         assertThat(response.size(), greaterThan(0));
         final CharacterContractsResponse characterContractsResponse = response.get(0);
-        assertThat(characterContractsResponse.getPrice(), greaterThan(0f));
+        assertThat(characterContractsResponse.getPrice(), greaterThan(0.0));
     }
     
     /**

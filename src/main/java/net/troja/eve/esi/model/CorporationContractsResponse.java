@@ -194,16 +194,16 @@ public class CorporationContractsResponse implements Serializable {
     private OffsetDateTime dateCompleted = null;
 
     @JsonProperty("price")
-    private Float price = null;
+    private Double price = null;
 
     @JsonProperty("reward")
-    private Float reward = null;
+    private Double reward = null;
 
     @JsonProperty("collateral")
-    private Float collateral = null;
+    private Double collateral = null;
 
     @JsonProperty("buyout")
-    private Float buyout = null;
+    private Double buyout = null;
 
     @JsonProperty("volume")
     private Float volume = null;
@@ -531,7 +531,7 @@ public class CorporationContractsResponse implements Serializable {
         this.dateCompleted = dateCompleted;
     }
 
-    public CorporationContractsResponse price(Float price) {
+    public CorporationContractsResponse price(Double price) {
         this.price = price;
         return this;
     }
@@ -542,15 +542,15 @@ public class CorporationContractsResponse implements Serializable {
      * @return price
      **/
     @ApiModelProperty(example = "null", value = "Price of contract (for ItemsExchange and Auctions)")
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public CorporationContractsResponse reward(Float reward) {
+    public CorporationContractsResponse reward(Double reward) {
         this.reward = reward;
         return this;
     }
@@ -561,15 +561,15 @@ public class CorporationContractsResponse implements Serializable {
      * @return reward
      **/
     @ApiModelProperty(example = "null", value = "Remuneration for contract (for Couriers only)")
-    public Float getReward() {
+    public Double getReward() {
         return reward;
     }
 
-    public void setReward(Float reward) {
+    public void setReward(Double reward) {
         this.reward = reward;
     }
 
-    public CorporationContractsResponse collateral(Float collateral) {
+    public CorporationContractsResponse collateral(Double collateral) {
         this.collateral = collateral;
         return this;
     }
@@ -580,15 +580,15 @@ public class CorporationContractsResponse implements Serializable {
      * @return collateral
      **/
     @ApiModelProperty(example = "null", value = "Collateral price (for Couriers only)")
-    public Float getCollateral() {
+    public Double getCollateral() {
         return collateral;
     }
 
-    public void setCollateral(Float collateral) {
+    public void setCollateral(Double collateral) {
         this.collateral = collateral;
     }
 
-    public CorporationContractsResponse buyout(Float buyout) {
+    public CorporationContractsResponse buyout(Double buyout) {
         this.buyout = buyout;
         return this;
     }
@@ -599,11 +599,11 @@ public class CorporationContractsResponse implements Serializable {
      * @return buyout
      **/
     @ApiModelProperty(example = "null", value = "Buyout price (for Auctions only)")
-    public Float getBuyout() {
+    public Double getBuyout() {
         return buyout;
     }
 
-    public void setBuyout(Float buyout) {
+    public void setBuyout(Double buyout) {
         this.buyout = buyout;
     }
 

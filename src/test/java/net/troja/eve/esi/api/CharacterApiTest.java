@@ -25,6 +25,7 @@ import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
+import net.troja.eve.esi.model.CharacterStatsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
 import net.troja.eve.esi.model.CspaCharacters;
 import net.troja.eve.esi.model.CspaCostResponse;
@@ -262,6 +263,22 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdStandingsTest() throws ApiException {
         final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE, null, null, null);
+
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Yearly aggregate stats
+     *
+     * Returns aggregate yearly stats for a character  ---  This route is cached for up to 86400 seconds  --- [This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/stats/)  SSO Scope: esi-characterstats.read.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdStatsTest() throws ApiException {
+        List<CharacterStatsResponse> response = api.getCharactersCharacterIdStats(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

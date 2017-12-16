@@ -157,7 +157,7 @@ public class CorporationOrdersResponse implements Serializable {
     private Integer duration = null;
 
     @JsonProperty("escrow")
-    private Float escrow = null;
+    private Double escrow = null;
 
     public CorporationOrdersResponse orderId(Long orderId) {
         this.orderId = orderId;
@@ -427,7 +427,7 @@ public class CorporationOrdersResponse implements Serializable {
         this.duration = duration;
     }
 
-    public CorporationOrdersResponse escrow(Float escrow) {
+    public CorporationOrdersResponse escrow(Double escrow) {
         this.escrow = escrow;
         return this;
     }
@@ -438,11 +438,11 @@ public class CorporationOrdersResponse implements Serializable {
      * @return escrow
      **/
     @ApiModelProperty(example = "null", required = true, value = "For buy orders, the amount of ISK in escrow")
-    public Float getEscrow() {
+    public Double getEscrow() {
         return escrow;
     }
 
-    public void setEscrow(Float escrow) {
+    public void setEscrow(Double escrow) {
         this.escrow = escrow;
     }
 
