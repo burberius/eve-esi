@@ -39,8 +39,9 @@ public class ContactsApi {
     }
 
     /**
-     * Delete contacts Bulk delete contacts --- SSO Scope:
-     * esi-characters.write_contacts.v1
+     * Delete contacts Bulk delete contacts --- [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#DELETE-/characters/{
+     * character_id}/contacts/) SSO Scope: esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

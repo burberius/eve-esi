@@ -29,10 +29,10 @@ public class MarketPricesResponse implements Serializable {
     private Integer typeId = null;
 
     @JsonProperty("average_price")
-    private Float averagePrice = null;
+    private Double averagePrice = null;
 
     @JsonProperty("adjusted_price")
-    private Float adjustedPrice = null;
+    private Double adjustedPrice = null;
 
     public MarketPricesResponse typeId(Integer typeId) {
         this.typeId = typeId;
@@ -53,7 +53,7 @@ public class MarketPricesResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public MarketPricesResponse averagePrice(Float averagePrice) {
+    public MarketPricesResponse averagePrice(Double averagePrice) {
         this.averagePrice = averagePrice;
         return this;
     }
@@ -64,15 +64,15 @@ public class MarketPricesResponse implements Serializable {
      * @return averagePrice
      **/
     @ApiModelProperty(example = "null", value = "average_price number")
-    public Float getAveragePrice() {
+    public Double getAveragePrice() {
         return averagePrice;
     }
 
-    public void setAveragePrice(Float averagePrice) {
+    public void setAveragePrice(Double averagePrice) {
         this.averagePrice = averagePrice;
     }
 
-    public MarketPricesResponse adjustedPrice(Float adjustedPrice) {
+    public MarketPricesResponse adjustedPrice(Double adjustedPrice) {
         this.adjustedPrice = adjustedPrice;
         return this;
     }
@@ -83,11 +83,11 @@ public class MarketPricesResponse implements Serializable {
      * @return adjustedPrice
      **/
     @ApiModelProperty(example = "null", value = "adjusted_price number")
-    public Float getAdjustedPrice() {
+    public Double getAdjustedPrice() {
         return adjustedPrice;
     }
 
-    public void setAdjustedPrice(Float adjustedPrice) {
+    public void setAdjustedPrice(Double adjustedPrice) {
         this.adjustedPrice = adjustedPrice;
     }
 

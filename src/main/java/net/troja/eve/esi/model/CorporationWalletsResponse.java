@@ -29,7 +29,7 @@ public class CorporationWalletsResponse implements Serializable {
     private Integer division = null;
 
     @JsonProperty("balance")
-    private Float balance = null;
+    private Double balance = null;
 
     public CorporationWalletsResponse division(Integer division) {
         this.division = division;
@@ -50,7 +50,7 @@ public class CorporationWalletsResponse implements Serializable {
         this.division = division;
     }
 
-    public CorporationWalletsResponse balance(Float balance) {
+    public CorporationWalletsResponse balance(Double balance) {
         this.balance = balance;
         return this;
     }
@@ -61,11 +61,11 @@ public class CorporationWalletsResponse implements Serializable {
      * @return balance
      **/
     @ApiModelProperty(example = "null", required = true, value = "balance number")
-    public Float getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Float balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

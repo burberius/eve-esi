@@ -386,10 +386,10 @@ public class CorporationWalletJournalResponse implements Serializable {
     private SecondPartyTypeEnum secondPartyType = null;
 
     @JsonProperty("amount")
-    private Float amount = null;
+    private Double amount = null;
 
     @JsonProperty("balance")
-    private Float balance = null;
+    private Double balance = null;
 
     @JsonProperty("reason")
     private String reason = null;
@@ -398,7 +398,7 @@ public class CorporationWalletJournalResponse implements Serializable {
     private Integer taxRecieverId = null;
 
     @JsonProperty("tax")
-    private Float tax = null;
+    private Double tax = null;
 
     @JsonProperty("extra_info")
     private CorporationWalletJournalExtraInfoResponse extraInfo = null;
@@ -541,7 +541,7 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.secondPartyType = secondPartyType;
     }
 
-    public CorporationWalletJournalResponse amount(Float amount) {
+    public CorporationWalletJournalResponse amount(Double amount) {
         this.amount = amount;
         return this;
     }
@@ -553,15 +553,15 @@ public class CorporationWalletJournalResponse implements Serializable {
      * @return amount
      **/
     @ApiModelProperty(example = "null", value = "Transaction amount. Positive when value transferred to the first party. Negative otherwise")
-    public Float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public CorporationWalletJournalResponse balance(Float balance) {
+    public CorporationWalletJournalResponse balance(Double balance) {
         this.balance = balance;
         return this;
     }
@@ -572,11 +572,11 @@ public class CorporationWalletJournalResponse implements Serializable {
      * @return balance
      **/
     @ApiModelProperty(example = "null", value = "Wallet balance after transaction occurred")
-    public Float getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Float balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -618,7 +618,7 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.taxRecieverId = taxRecieverId;
     }
 
-    public CorporationWalletJournalResponse tax(Float tax) {
+    public CorporationWalletJournalResponse tax(Double tax) {
         this.tax = tax;
         return this;
     }
@@ -629,11 +629,11 @@ public class CorporationWalletJournalResponse implements Serializable {
      * @return tax
      **/
     @ApiModelProperty(example = "null", value = "Tax amount received for tax related transactions")
-    public Float getTax() {
+    public Double getTax() {
         return tax;
     }
 
-    public void setTax(Float tax) {
+    public void setTax(Double tax) {
         this.tax = tax;
     }
 

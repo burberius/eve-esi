@@ -86,7 +86,9 @@ public class AllianceApi {
 
     /**
      * Get alliance information Public information about an alliance --- This
-     * route is cached for up to 3600 seconds
+     * route is cached for up to 3600 seconds --- [This route has an available
+     * update
+     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/{alliance_id}/)
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -260,7 +262,9 @@ public class AllianceApi {
 
     /**
      * Get alliance names Resolve a set of alliance IDs to alliance names ---
-     * This route is cached for up to 3600 seconds
+     * This route is cached for up to 3600 seconds --- [This route has an
+     * available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/names/)
      * 
      * @param allianceIds
      *            A comma separated list of alliance IDs (required)

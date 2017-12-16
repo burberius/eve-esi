@@ -45,7 +45,7 @@ public class MarketStructuresResponse implements Serializable {
     private Integer minVolume = null;
 
     @JsonProperty("price")
-    private Float price = null;
+    private Double price = null;
 
     @JsonProperty("is_buy_order")
     private Boolean isBuyOrder = null;
@@ -223,7 +223,7 @@ public class MarketStructuresResponse implements Serializable {
         this.minVolume = minVolume;
     }
 
-    public MarketStructuresResponse price(Float price) {
+    public MarketStructuresResponse price(Double price) {
         this.price = price;
         return this;
     }
@@ -234,11 +234,11 @@ public class MarketStructuresResponse implements Serializable {
      * @return price
      **/
     @ApiModelProperty(example = "null", required = true, value = "price number")
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

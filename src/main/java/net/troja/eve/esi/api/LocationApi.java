@@ -101,8 +101,10 @@ public class LocationApi {
 
     /**
      * Get character online Checks if the character is currently online --- This
-     * route is cached for up to 60 seconds SSO Scope:
-     * esi-location.read_online.v1
+     * route is cached for up to 60 seconds --- [This route has an available
+     * update
+     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
+     * }/online/) SSO Scope: esi-location.read_online.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

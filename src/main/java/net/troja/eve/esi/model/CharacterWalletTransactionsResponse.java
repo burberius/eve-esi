@@ -39,7 +39,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     private Long locationId = null;
 
     @JsonProperty("unit_price")
-    private Float unitPrice = null;
+    private Double unitPrice = null;
 
     @JsonProperty("quantity")
     private Integer quantity = null;
@@ -132,7 +132,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CharacterWalletTransactionsResponse unitPrice(Float unitPrice) {
+    public CharacterWalletTransactionsResponse unitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
         return this;
     }
@@ -143,11 +143,11 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * @return unitPrice
      **/
     @ApiModelProperty(example = "null", required = true, value = "Amount paid per unit")
-    public Float getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Float unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
