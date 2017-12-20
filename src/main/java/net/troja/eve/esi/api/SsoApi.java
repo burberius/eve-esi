@@ -19,7 +19,7 @@ import net.troja.eve.esi.auth.OAuth;
  * Api to retrieve the character information from the sso.
  */
 public class SsoApi {
-	private static final String URI_REVOKE = "https://login.eveonline.com";
+    private static final String URI_REVOKE = "https://login.eveonline.com";
     private static final String ACCESS_TOKEN = "access_token";
     private static final String REFRESH_TOKEN = "refresh_token";
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
@@ -75,7 +75,7 @@ public class SsoApi {
         }
     }
 
-	public void revokeRefreshToken(String refreshToken) throws ApiException {
+    public void revokeRefreshToken(String refreshToken) throws ApiException {
         revokeToken(refreshToken, REFRESH_TOKEN);
     }
 
@@ -97,11 +97,11 @@ public class SsoApi {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         String clientPair =  auth.getClientId() + ":" + auth.getClientSecret();
         String encoded;
-		try {
-			encoded = new String(Base64.getUrlEncoder().encode(clientPair.getBytes("UTF-8")));
-		} catch (UnsupportedEncodingException ex) {
-			throw new ApiException(ex);
-		}
+        try {
+            encoded = new String(Base64.getUrlEncoder().encode(clientPair.getBytes("UTF-8")));
+        } catch (UnsupportedEncodingException ex) {
+            throw new ApiException(ex);
+        }
         localVarHeaderParams.put("Authorization", "Basic " + encoded);
         localVarHeaderParams.put("Content-Type", "application/x-www-form-urlencoded");
         localVarHeaderParams.put("Host", "login.eveonline.com");

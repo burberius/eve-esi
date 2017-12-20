@@ -50,14 +50,14 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getIntellectualProperty(), equalTo("EVE"));
     }
 
-	@Test
-	public void revokeToken() throws ApiException {
+    @Test
+    public void revokeToken() throws ApiException {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
 
-		final SsoApi api = new SsoApi(client);
-		api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1");
+        final SsoApi api = new SsoApi(client);
+        api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1");
     }
 }
