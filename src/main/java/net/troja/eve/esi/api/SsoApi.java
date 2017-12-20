@@ -83,7 +83,7 @@ public class SsoApi {
         revokeToken(refreshToken, ACCESS_TOKEN);
     }
 
-    private void revokeToken(String refreshToken, String tokenTypeHint) throws ApiException {
+    private void revokeToken(String token, String tokenTypeHint) throws ApiException {
         final String basePath = apiClient.getBasePath(); // Save old basepath
         apiClient.setBasePath(URI_REVOKE); // Set new basepath
 
@@ -108,7 +108,7 @@ public class SsoApi {
 
         final Map<String, Object> localVarFormParams = new HashMap<>();
         localVarFormParams.put("token_type_hint", tokenTypeHint);
-        localVarFormParams.put("token", refreshToken);
+        localVarFormParams.put("token", token);
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
