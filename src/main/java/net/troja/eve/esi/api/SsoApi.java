@@ -83,7 +83,7 @@ public class SsoApi {
         revokeToken(refreshToken, ACCESS_TOKEN);
     }
 
-    public void revokeToken(String refreshToken, String tokenTypeHint) throws ApiException {
+    private void revokeToken(String refreshToken, String tokenTypeHint) throws ApiException {
         final String basePath = apiClient.getBasePath(); // Save old basepath
         apiClient.setBasePath(URI_REVOKE); // Set new basepath
 
