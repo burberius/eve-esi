@@ -9,17 +9,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
 import javax.ws.rs.ProcessingException;
-
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.Pair;
 import org.apache.commons.lang3.StringUtils;
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;
 import org.glassfish.jersey.client.oauth2.TokenResult;
-
-import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
     public static final String URI_OAUTH = "https://login.eveonline.com/oauth";
@@ -163,6 +160,23 @@ public class OAuth implements Authentication {
 
     public String getRefreshToken() {
         return refreshToken;
+    }
+
+	public String getClientId() {
+        return clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public String getAccessToken() {
+        AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
+        if (accessTokenData != null) {
+            return accessTokenData.getAccessToken();
+        } else {
+            return null;
+        }
     }
 
     private String getAuthKey() {
