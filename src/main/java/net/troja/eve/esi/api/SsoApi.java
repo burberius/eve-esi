@@ -79,8 +79,8 @@ public class SsoApi {
         revokeToken(refreshToken, REFRESH_TOKEN);
     }
 
-    public void revokeAccessToken(String refreshToken) throws ApiException {
-        revokeToken(refreshToken, ACCESS_TOKEN);
+    public void revokeAccessToken(String accessToken) throws ApiException {
+        revokeToken(accessToken, ACCESS_TOKEN);
     }
 
     private void revokeToken(String token, String tokenTypeHint) throws ApiException {
