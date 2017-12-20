@@ -107,7 +107,7 @@ public class SsoApi {
         localVarHeaderParams.put("Host", "login.eveonline.com");
 
         final Map<String, Object> localVarFormParams = new HashMap<>();
-        localVarFormParams.put("token_type_hint", "refresh_token");
+        localVarFormParams.put("token_type_hint", tokenTypeHint);
         localVarFormParams.put("token", refreshToken);
 
         final String[] localVarAccepts = { "application/json" };
