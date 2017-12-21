@@ -31,8 +31,11 @@ public class Skill implements Serializable {
     @JsonProperty("skillpoints_in_skill")
     private Long skillpointsInSkill = null;
 
-    @JsonProperty("current_skill_level")
-    private Integer currentSkillLevel = null;
+    @JsonProperty("trained_skill_level")
+    private Integer trainedSkillLevel = null;
+
+    @JsonProperty("active_skill_level")
+    private Integer activeSkillLevel = null;
 
     public Skill skillId(Integer skillId) {
         this.skillId = skillId;
@@ -44,7 +47,7 @@ public class Skill implements Serializable {
      * 
      * @return skillId
      **/
-    @ApiModelProperty(example = "null", value = "skill_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "skill_id integer")
     public Integer getSkillId() {
         return skillId;
     }
@@ -63,7 +66,7 @@ public class Skill implements Serializable {
      * 
      * @return skillpointsInSkill
      **/
-    @ApiModelProperty(example = "null", value = "skillpoints_in_skill integer")
+    @ApiModelProperty(example = "null", required = true, value = "skillpoints_in_skill integer")
     public Long getSkillpointsInSkill() {
         return skillpointsInSkill;
     }
@@ -72,23 +75,42 @@ public class Skill implements Serializable {
         this.skillpointsInSkill = skillpointsInSkill;
     }
 
-    public Skill currentSkillLevel(Integer currentSkillLevel) {
-        this.currentSkillLevel = currentSkillLevel;
+    public Skill trainedSkillLevel(Integer trainedSkillLevel) {
+        this.trainedSkillLevel = trainedSkillLevel;
         return this;
     }
 
     /**
-     * current_skill_level integer
+     * trained_skill_level integer
      * 
-     * @return currentSkillLevel
+     * @return trainedSkillLevel
      **/
-    @ApiModelProperty(example = "null", value = "current_skill_level integer")
-    public Integer getCurrentSkillLevel() {
-        return currentSkillLevel;
+    @ApiModelProperty(example = "null", required = true, value = "trained_skill_level integer")
+    public Integer getTrainedSkillLevel() {
+        return trainedSkillLevel;
     }
 
-    public void setCurrentSkillLevel(Integer currentSkillLevel) {
-        this.currentSkillLevel = currentSkillLevel;
+    public void setTrainedSkillLevel(Integer trainedSkillLevel) {
+        this.trainedSkillLevel = trainedSkillLevel;
+    }
+
+    public Skill activeSkillLevel(Integer activeSkillLevel) {
+        this.activeSkillLevel = activeSkillLevel;
+        return this;
+    }
+
+    /**
+     * active_skill_level integer
+     * 
+     * @return activeSkillLevel
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "active_skill_level integer")
+    public Integer getActiveSkillLevel() {
+        return activeSkillLevel;
+    }
+
+    public void setActiveSkillLevel(Integer activeSkillLevel) {
+        this.activeSkillLevel = activeSkillLevel;
     }
 
     @Override
@@ -102,12 +124,13 @@ public class Skill implements Serializable {
         Skill skill = (Skill) o;
         return Objects.equals(this.skillId, skill.skillId)
                 && Objects.equals(this.skillpointsInSkill, skill.skillpointsInSkill)
-                && Objects.equals(this.currentSkillLevel, skill.currentSkillLevel);
+                && Objects.equals(this.trainedSkillLevel, skill.trainedSkillLevel)
+                && Objects.equals(this.activeSkillLevel, skill.activeSkillLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skillId, skillpointsInSkill, currentSkillLevel);
+        return Objects.hash(skillId, skillpointsInSkill, trainedSkillLevel, activeSkillLevel);
     }
 
     @Override
@@ -117,7 +140,8 @@ public class Skill implements Serializable {
 
         sb.append("    skillId: ").append(toIndentedString(skillId)).append("\n");
         sb.append("    skillpointsInSkill: ").append(toIndentedString(skillpointsInSkill)).append("\n");
-        sb.append("    currentSkillLevel: ").append(toIndentedString(currentSkillLevel)).append("\n");
+        sb.append("    trainedSkillLevel: ").append(toIndentedString(trainedSkillLevel)).append("\n");
+        sb.append("    activeSkillLevel: ").append(toIndentedString(activeSkillLevel)).append("\n");
         sb.append("}");
         return sb.toString();
     }

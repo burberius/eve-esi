@@ -27,6 +27,12 @@ import java.io.Serializable;
 public class Clone implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("jump_clone_id")
+    private Integer jumpCloneId = null;
+
+    @JsonProperty("name")
+    private String name = null;
+
     @JsonProperty("location_id")
     private Long locationId = null;
 
@@ -66,6 +72,44 @@ public class Clone implements Serializable {
     @JsonProperty("implants")
     private List<Integer> implants = new ArrayList<Integer>();
 
+    public Clone jumpCloneId(Integer jumpCloneId) {
+        this.jumpCloneId = jumpCloneId;
+        return this;
+    }
+
+    /**
+     * jump_clone_id integer
+     * 
+     * @return jumpCloneId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "jump_clone_id integer")
+    public Integer getJumpCloneId() {
+        return jumpCloneId;
+    }
+
+    public void setJumpCloneId(Integer jumpCloneId) {
+        this.jumpCloneId = jumpCloneId;
+    }
+
+    public Clone name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Clone locationId(Long locationId) {
         this.locationId = locationId;
         return this;
@@ -76,7 +120,7 @@ public class Clone implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", value = "location_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -95,7 +139,7 @@ public class Clone implements Serializable {
      * 
      * @return locationType
      **/
-    @ApiModelProperty(example = "null", value = "location_type string")
+    @ApiModelProperty(example = "null", required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
         return locationType;
     }
@@ -119,7 +163,7 @@ public class Clone implements Serializable {
      * 
      * @return implants
      **/
-    @ApiModelProperty(example = "null", value = "implants array")
+    @ApiModelProperty(example = "null", required = true, value = "implants array")
     public List<Integer> getImplants() {
         return implants;
     }
@@ -137,14 +181,15 @@ public class Clone implements Serializable {
             return false;
         }
         Clone clone = (Clone) o;
-        return Objects.equals(this.locationId, clone.locationId)
+        return Objects.equals(this.jumpCloneId, clone.jumpCloneId) && Objects.equals(this.name, clone.name)
+                && Objects.equals(this.locationId, clone.locationId)
                 && Objects.equals(this.locationType, clone.locationType)
                 && Objects.equals(this.implants, clone.implants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(locationId, locationType, implants);
+        return Objects.hash(jumpCloneId, name, locationId, locationType, implants);
     }
 
     @Override
@@ -152,6 +197,8 @@ public class Clone implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Clone {\n");
 
+        sb.append("    jumpCloneId: ").append(toIndentedString(jumpCloneId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
         sb.append("    implants: ").append(toIndentedString(implants)).append("\n");

@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import net.troja.eve.esi.model.CharacterAssetsLocationsPosition;
 import java.io.Serializable;
 
 /**
@@ -28,14 +29,8 @@ public class CharacterAssetsLocationsResponse implements Serializable {
     @JsonProperty("item_id")
     private Long itemId = null;
 
-    @JsonProperty("x")
-    private Double x = null;
-
-    @JsonProperty("y")
-    private Double y = null;
-
-    @JsonProperty("z")
-    private Double z = null;
+    @JsonProperty("position")
+    private CharacterAssetsLocationsPosition position = null;
 
     public CharacterAssetsLocationsResponse itemId(Long itemId) {
         this.itemId = itemId;
@@ -56,61 +51,23 @@ public class CharacterAssetsLocationsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterAssetsLocationsResponse x(Double x) {
-        this.x = x;
+    public CharacterAssetsLocationsResponse position(CharacterAssetsLocationsPosition position) {
+        this.position = position;
         return this;
     }
 
     /**
-     * x number
+     * Get position
      * 
-     * @return x
+     * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "x number")
-    public Double getX() {
-        return x;
+    @ApiModelProperty(example = "null", value = "")
+    public CharacterAssetsLocationsPosition getPosition() {
+        return position;
     }
 
-    public void setX(Double x) {
-        this.x = x;
-    }
-
-    public CharacterAssetsLocationsResponse y(Double y) {
-        this.y = y;
-        return this;
-    }
-
-    /**
-     * y number
-     * 
-     * @return y
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "y number")
-    public Double getY() {
-        return y;
-    }
-
-    public void setY(Double y) {
-        this.y = y;
-    }
-
-    public CharacterAssetsLocationsResponse z(Double z) {
-        this.z = z;
-        return this;
-    }
-
-    /**
-     * z number
-     * 
-     * @return z
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "z number")
-    public Double getZ() {
-        return z;
-    }
-
-    public void setZ(Double z) {
-        this.z = z;
+    public void setPosition(CharacterAssetsLocationsPosition position) {
+        this.position = position;
     }
 
     @Override
@@ -123,14 +80,12 @@ public class CharacterAssetsLocationsResponse implements Serializable {
         }
         CharacterAssetsLocationsResponse characterAssetsLocationsResponse = (CharacterAssetsLocationsResponse) o;
         return Objects.equals(this.itemId, characterAssetsLocationsResponse.itemId)
-                && Objects.equals(this.x, characterAssetsLocationsResponse.x)
-                && Objects.equals(this.y, characterAssetsLocationsResponse.y)
-                && Objects.equals(this.z, characterAssetsLocationsResponse.z);
+                && Objects.equals(this.position, characterAssetsLocationsResponse.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, x, y, z);
+        return Objects.hash(itemId, position);
     }
 
     @Override
@@ -139,9 +94,7 @@ public class CharacterAssetsLocationsResponse implements Serializable {
         sb.append("class CharacterAssetsLocationsResponse {\n");
 
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-        sb.append("    x: ").append(toIndentedString(x)).append("\n");
-        sb.append("    y: ").append(toIndentedString(y)).append("\n");
-        sb.append("    z: ").append(toIndentedString(z)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("}");
         return sb.toString();
     }

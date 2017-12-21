@@ -363,7 +363,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", value = "quantity integer")
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
     }
