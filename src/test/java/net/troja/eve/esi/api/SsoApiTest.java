@@ -58,7 +58,7 @@ public class SsoApiTest extends GeneralApiTest {
         auth.setClientSecret(clientSecret);
 
         final SsoApi api = new SsoApi(client);
-        api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1");
+        api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1"); //Revoked Refresh Tokens (Already Invalid)
     }
 
     @Test
@@ -69,6 +69,6 @@ public class SsoApiTest extends GeneralApiTest {
         auth.setClientSecret(clientSecret);
 
         final SsoApi api = new SsoApi(client);
-        api.revokeAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+        api.revokeAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2"); //Revoked Access Tokens (Already Invalid)
     }
 }
