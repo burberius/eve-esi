@@ -48,6 +48,7 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getTokenType(), equalTo("Character"));
         assertThat(StringUtils.isBlank(info.getCharacterOwnerHash()), equalTo(false));
         assertThat(info.getIntellectualProperty(), equalTo("EVE"));
+        assertThat(info.getScopes().size(), greaterThan(10));
     }
 
     @Test
