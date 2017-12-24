@@ -103,10 +103,8 @@ public class WalletApi {
 
     /**
      * Get character wallet journal Retrieve character wallet journal --- This
-     * route is cached for up to 3600 seconds --- [This route has an available
-     * update
-     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
-     * }/wallet/journal/) SSO Scope: esi-wallet.read_character_wallet.v1
+     * route is cached for up to 3600 seconds SSO Scope:
+     * esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -137,7 +135,7 @@ public class WalletApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -301,10 +299,7 @@ public class WalletApi {
     /**
      * Get corporation wallet journal Retrieve corporation wallet journal ---
      * This route is cached for up to 3600 seconds --- Requires one of the
-     * following EVE corporation role(s): Accountant, Junior_Accountant ---
-     * [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev
-     * /#GET-/corporations/{corporation_id}/wallets/{division}/journal/) SSO
+     * following EVE corporation role(s): Accountant, Junior_Accountant SSO
      * Scope: esi-wallet.read_corporation_wallets.v1
      * 
      * @param corporationId
@@ -345,7 +340,7 @@ public class WalletApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/wallets/{division}/journal/"
+        String localVarPath = "/v2/corporations/{corporation_id}/wallets/{division}/journal/"
                 .replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
                 .replaceAll("\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));

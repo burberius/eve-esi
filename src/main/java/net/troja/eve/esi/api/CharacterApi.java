@@ -18,11 +18,10 @@ import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
+import net.troja.eve.esi.model.CharacterRolesResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CharacterStatsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
-import net.troja.eve.esi.model.CspaCharacters;
-import net.troja.eve.esi.model.CspaCostResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
@@ -666,10 +665,7 @@ public class CharacterApi {
 
     /**
      * Get character corporation roles Returns a character&#39;s corporation
-     * roles --- This route is cached for up to 3600 seconds --- [This route has
-     * an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
-     * /{character_id}/roles/) SSO Scope:
+     * roles --- This route is cached for up to 3600 seconds SSO Scope:
      * esi-characters.read_corporation_roles.v1
      * 
      * @param characterId
@@ -683,11 +679,11 @@ public class CharacterApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;String&gt;
+     * @return CharacterRolesResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<String> getCharactersCharacterIdRoles(Integer characterId, String datasource, String token,
+    public CharacterRolesResponse getCharactersCharacterIdRoles(Integer characterId, String datasource, String token,
             String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
@@ -698,7 +694,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/roles/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/roles/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -723,7 +719,7 @@ public class CharacterApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<String>> localVarReturnType = new GenericType<List<String>>() {
+        GenericType<CharacterRolesResponse> localVarReturnType = new GenericType<CharacterRolesResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -1035,10 +1031,7 @@ public class CharacterApi {
     /**
      * Calculate a CSPA charge cost Takes a source character ID in the url and a
      * set of target character ID&#39;s in the body, returns a CSPA charge cost
-     * --- [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest
-     * /dev/#POST-/characters/{character_id}/cspa/) SSO Scope:
-     * esi-characters.read_contacts.v1
+     * --- SSO Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -1053,12 +1046,12 @@ public class CharacterApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return CspaCostResponse
+     * @return Float
      * @throws ApiException
      *             if fails to make API call
      */
-    public CspaCostResponse postCharactersCharacterIdCspa(Integer characterId, CspaCharacters characters,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+    public Float postCharactersCharacterIdCspa(Integer characterId, List<Integer> characters, String datasource,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = characters;
 
         // verify the required parameter 'characterId' is set
@@ -1074,7 +1067,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/cspa/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v4/characters/{character_id}/cspa/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -1099,7 +1092,7 @@ public class CharacterApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<CspaCostResponse> localVarReturnType = new GenericType<CspaCostResponse>() {
+        GenericType<Float> localVarReturnType = new GenericType<Float>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

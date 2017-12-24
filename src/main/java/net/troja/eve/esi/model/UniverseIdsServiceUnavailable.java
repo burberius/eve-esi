@@ -16,42 +16,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 /**
- * characters object
+ * Service unavailable
  */
-@ApiModel(description = "characters object")
-public class CspaCharacters implements Serializable {
+@ApiModel(description = "Service unavailable")
+public class UniverseIdsServiceUnavailable implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("characters")
-    private List<Integer> characters = new ArrayList<Integer>();
+    @JsonProperty("error")
+    private String error = null;
 
-    public CspaCharacters characters(List<Integer> characters) {
-        this.characters = characters;
-        return this;
-    }
-
-    public CspaCharacters addCharactersItem(Integer charactersItem) {
-        this.characters.add(charactersItem);
+    public UniverseIdsServiceUnavailable error(String error) {
+        this.error = error;
         return this;
     }
 
     /**
-     * characters array
+     * Service unavailable message
      * 
-     * @return characters
+     * @return error
      **/
-    @ApiModelProperty(example = "null", required = true, value = "characters array")
-    public List<Integer> getCharacters() {
-        return characters;
+    @ApiModelProperty(example = "null", value = "Service unavailable message")
+    public String getError() {
+        return error;
     }
 
-    public void setCharacters(List<Integer> characters) {
-        this.characters = characters;
+    public void setError(String error) {
+        this.error = error;
     }
 
     @Override
@@ -62,21 +55,21 @@ public class CspaCharacters implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CspaCharacters cspaCharacters = (CspaCharacters) o;
-        return Objects.equals(this.characters, cspaCharacters.characters);
+        UniverseIdsServiceUnavailable universeIdsServiceUnavailable = (UniverseIdsServiceUnavailable) o;
+        return Objects.equals(this.error, universeIdsServiceUnavailable.error);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characters);
+        return Objects.hash(error);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CspaCharacters {\n");
+        sb.append("class UniverseIdsServiceUnavailable {\n");
 
-        sb.append("    characters: ").append(toIndentedString(characters)).append("\n");
+        sb.append("    error: ").append(toIndentedString(error)).append("\n");
         sb.append("}");
         return sb.toString();
     }

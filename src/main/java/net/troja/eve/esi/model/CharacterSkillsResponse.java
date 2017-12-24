@@ -34,6 +34,9 @@ public class CharacterSkillsResponse implements Serializable {
     @JsonProperty("total_sp")
     private Long totalSp = null;
 
+    @JsonProperty("unallocated_sp")
+    private Integer unallocatedSp = null;
+
     public CharacterSkillsResponse skills(List<Skill> skills) {
         this.skills = skills;
         return this;
@@ -49,7 +52,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return skills
      **/
-    @ApiModelProperty(example = "null", value = "skills array")
+    @ApiModelProperty(example = "null", required = true, value = "skills array")
     public List<Skill> getSkills() {
         return skills;
     }
@@ -68,13 +71,32 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return totalSp
      **/
-    @ApiModelProperty(example = "null", value = "total_sp integer")
+    @ApiModelProperty(example = "null", required = true, value = "total_sp integer")
     public Long getTotalSp() {
         return totalSp;
     }
 
     public void setTotalSp(Long totalSp) {
         this.totalSp = totalSp;
+    }
+
+    public CharacterSkillsResponse unallocatedSp(Integer unallocatedSp) {
+        this.unallocatedSp = unallocatedSp;
+        return this;
+    }
+
+    /**
+     * Skill points available to be assigned
+     * 
+     * @return unallocatedSp
+     **/
+    @ApiModelProperty(example = "null", value = "Skill points available to be assigned")
+    public Integer getUnallocatedSp() {
+        return unallocatedSp;
+    }
+
+    public void setUnallocatedSp(Integer unallocatedSp) {
+        this.unallocatedSp = unallocatedSp;
     }
 
     @Override
@@ -87,12 +109,13 @@ public class CharacterSkillsResponse implements Serializable {
         }
         CharacterSkillsResponse characterSkillsResponse = (CharacterSkillsResponse) o;
         return Objects.equals(this.skills, characterSkillsResponse.skills)
-                && Objects.equals(this.totalSp, characterSkillsResponse.totalSp);
+                && Objects.equals(this.totalSp, characterSkillsResponse.totalSp)
+                && Objects.equals(this.unallocatedSp, characterSkillsResponse.unallocatedSp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skills, totalSp);
+        return Objects.hash(skills, totalSp, unallocatedSp);
     }
 
     @Override
@@ -102,6 +125,7 @@ public class CharacterSkillsResponse implements Serializable {
 
         sb.append("    skills: ").append(toIndentedString(skills)).append("\n");
         sb.append("    totalSp: ").append(toIndentedString(totalSp)).append("\n");
+        sb.append("    unallocatedSp: ").append(toIndentedString(unallocatedSp)).append("\n");
         sb.append("}");
         return sb.toString();
     }

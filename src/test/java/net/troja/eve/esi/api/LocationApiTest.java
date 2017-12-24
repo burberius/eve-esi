@@ -20,6 +20,7 @@ import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterLocationResponse;
+import net.troja.eve.esi.model.CharacterOnlineResponse;
 import net.troja.eve.esi.model.CharacterShipResponse;
 
 /**
@@ -66,7 +67,7 @@ public class LocationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdOnlineTest() throws ApiException {
-        Boolean response = api.getCharactersCharacterIdOnline(characterId, DATASOURCE, null, null, null);
+        CharacterOnlineResponse response = api.getCharactersCharacterIdOnline(characterId, DATASOURCE, null, null, null);
         assertThat(response, notNullValue());
     }
     

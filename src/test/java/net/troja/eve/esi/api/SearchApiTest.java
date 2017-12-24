@@ -76,7 +76,7 @@ public class SearchApiTest extends GeneralApiTest {
     @Test
     public void getSearchTest() throws ApiException {
         final List<String> categories = new ArrayList<>();
-        categories.add("solarsystem");
+        categories.add("solar_system");
         final String search = "Jita";
         final String language = "en-us";
         final Boolean strict = null;
@@ -85,8 +85,8 @@ public class SearchApiTest extends GeneralApiTest {
         final SearchResponse response = api.getSearch(categories, search, DATASOURCE, language, strict, userAgent,
                 xUserAgent);
 
-        assertThat(response.getSolarsystem().size(), equalTo(1));
-        assertThat(response.getSolarsystem().get(0), equalTo(30000142));
+        assertThat(response.getSolarSystem().size(), equalTo(1));
+        assertThat(response.getSolarSystem().get(0), equalTo(30000142));
     }
 
 }

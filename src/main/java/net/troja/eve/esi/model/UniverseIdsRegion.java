@@ -19,32 +19,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * 201 created object
+ * region object
  */
-@ApiModel(description = "201 created object")
-public class CspaCostResponse implements Serializable {
+@ApiModel(description = "region object")
+public class UniverseIdsRegion implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cost")
-    private Long cost = null;
+    @JsonProperty("id")
+    private Integer id = null;
 
-    public CspaCostResponse cost(Long cost) {
-        this.cost = cost;
+    @JsonProperty("name")
+    private String name = null;
+
+    public UniverseIdsRegion id(Integer id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * cost integer
+     * id integer
      * 
-     * @return cost
+     * @return id
      **/
-    @ApiModelProperty(example = "null", value = "cost integer")
-    public Long getCost() {
-        return cost;
+    @ApiModelProperty(example = "null", value = "id integer")
+    public Integer getId() {
+        return id;
     }
 
-    public void setCost(Long cost) {
-        this.cost = cost;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public UniverseIdsRegion name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -55,21 +77,22 @@ public class CspaCostResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CspaCostResponse cspaCostResponse = (CspaCostResponse) o;
-        return Objects.equals(this.cost, cspaCostResponse.cost);
+        UniverseIdsRegion universeIdsRegion = (UniverseIdsRegion) o;
+        return Objects.equals(this.id, universeIdsRegion.id) && Objects.equals(this.name, universeIdsRegion.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cost);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CspaCostResponse {\n");
+        sb.append("class UniverseIdsRegion {\n");
 
-        sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

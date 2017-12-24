@@ -65,9 +65,9 @@ public class AllianceApiTest extends GeneralApiTest {
     public void getAlliancesAllianceIdTest() throws ApiException {
         final AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE, null, null);
 
-        assertThat(response.getAllianceName(), equalTo("Triumvirate."));
+        assertThat(response.getName(), equalTo("Triumvirate."));
         assertThat(response.getTicker(), equalTo("TRI"));
-        assertThat(response.getExecutorCorp(), equalTo(98435559));
+        assertThat(response.getExecutorCorporationId(), equalTo(98435559));
         assertThat(response.getDateFounded().toString(), equalTo("2006-07-14T18:53Z"));
     }
 
@@ -124,8 +124,8 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesNamesTest() throws ApiException {
-        final List<Long> allianceIds = new ArrayList<>();
-        allianceIds.add((long) ALLIANCE_ID_TRI);
+        final List<Integer> allianceIds = new ArrayList<>();
+        allianceIds.add(ALLIANCE_ID_TRI);
         final List<AllianceNamesResponse> response = api.getAlliancesNames(allianceIds, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(1));
