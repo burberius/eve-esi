@@ -26,8 +26,8 @@ import java.io.Serializable;
 public class CorporationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_name")
-    private String corporationName = null;
+    @JsonProperty("name")
+    private String name = null;
 
     @JsonProperty("ticker")
     private String ticker = null;
@@ -41,14 +41,14 @@ public class CorporationResponse implements Serializable {
     @JsonProperty("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("corporation_description")
-    private String corporationDescription = null;
+    @JsonProperty("description")
+    private String description = null;
 
     @JsonProperty("tax_rate")
     private Float taxRate = null;
 
-    @JsonProperty("creation_date")
-    private OffsetDateTime creationDate = null;
+    @JsonProperty("date_founded")
+    private OffsetDateTime dateFounded = null;
 
     @JsonProperty("creator_id")
     private Integer creatorId = null;
@@ -56,60 +56,32 @@ public class CorporationResponse implements Serializable {
     @JsonProperty("url")
     private String url = null;
 
-    /**
-     * faction string
-     */
-    public enum FactionEnum {
-        MINMATAR("Minmatar"),
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
 
-        GALLENTE("Gallente"),
+    @JsonProperty("home_station_id")
+    private Integer homeStationId = null;
 
-        CALDARI("Caldari"),
+    @JsonProperty("shares")
+    private Long shares = null;
 
-        AMARR("Amarr");
-
-        private String value;
-
-        FactionEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static FactionEnum fromValue(String text) {
-            for (FactionEnum b : FactionEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("faction")
-    private FactionEnum faction = null;
-
-    public CorporationResponse corporationName(String corporationName) {
-        this.corporationName = corporationName;
+    public CorporationResponse name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
      * the full name of the corporation
      * 
-     * @return corporationName
+     * @return name
      **/
     @ApiModelProperty(example = "null", required = true, value = "the full name of the corporation")
-    public String getCorporationName() {
-        return corporationName;
+    public String getName() {
+        return name;
     }
 
-    public void setCorporationName(String corporationName) {
-        this.corporationName = corporationName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public CorporationResponse ticker(String ticker) {
@@ -175,11 +147,11 @@ public class CorporationResponse implements Serializable {
     }
 
     /**
-     * id of alliance that corporation is a member of, if any
+     * ID of the alliance that corporation is a member of, if any
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "id of alliance that corporation is a member of, if any")
+    @ApiModelProperty(example = "null", value = "ID of the alliance that corporation is a member of, if any")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -188,23 +160,23 @@ public class CorporationResponse implements Serializable {
         this.allianceId = allianceId;
     }
 
-    public CorporationResponse corporationDescription(String corporationDescription) {
-        this.corporationDescription = corporationDescription;
+    public CorporationResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * corporation_description string
+     * description string
      * 
-     * @return corporationDescription
+     * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_description string")
-    public String getCorporationDescription() {
-        return corporationDescription;
+    @ApiModelProperty(example = "null", value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setCorporationDescription(String corporationDescription) {
-        this.corporationDescription = corporationDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public CorporationResponse taxRate(Float taxRate) {
@@ -226,23 +198,23 @@ public class CorporationResponse implements Serializable {
         this.taxRate = taxRate;
     }
 
-    public CorporationResponse creationDate(OffsetDateTime creationDate) {
-        this.creationDate = creationDate;
+    public CorporationResponse dateFounded(OffsetDateTime dateFounded) {
+        this.dateFounded = dateFounded;
         return this;
     }
 
     /**
-     * creation_date string
+     * date_founded string
      * 
-     * @return creationDate
+     * @return dateFounded
      **/
-    @ApiModelProperty(example = "null", value = "creation_date string")
-    public OffsetDateTime getCreationDate() {
-        return creationDate;
+    @ApiModelProperty(example = "null", value = "date_founded string")
+    public OffsetDateTime getDateFounded() {
+        return dateFounded;
     }
 
-    public void setCreationDate(OffsetDateTime creationDate) {
-        this.creationDate = creationDate;
+    public void setDateFounded(OffsetDateTime dateFounded) {
+        this.dateFounded = dateFounded;
     }
 
     public CorporationResponse creatorId(Integer creatorId) {
@@ -274,7 +246,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return url
      **/
-    @ApiModelProperty(example = "null", required = true, value = "url string")
+    @ApiModelProperty(example = "null", value = "url string")
     public String getUrl() {
         return url;
     }
@@ -283,23 +255,61 @@ public class CorporationResponse implements Serializable {
         this.url = url;
     }
 
-    public CorporationResponse faction(FactionEnum faction) {
-        this.faction = faction;
+    public CorporationResponse factionId(Integer factionId) {
+        this.factionId = factionId;
         return this;
     }
 
     /**
-     * faction string
+     * faction_id integer
      * 
-     * @return faction
+     * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "faction string")
-    public FactionEnum getFaction() {
-        return faction;
+    @ApiModelProperty(example = "null", value = "faction_id integer")
+    public Integer getFactionId() {
+        return factionId;
     }
 
-    public void setFaction(FactionEnum faction) {
-        this.faction = faction;
+    public void setFactionId(Integer factionId) {
+        this.factionId = factionId;
+    }
+
+    public CorporationResponse homeStationId(Integer homeStationId) {
+        this.homeStationId = homeStationId;
+        return this;
+    }
+
+    /**
+     * home_station_id integer
+     * 
+     * @return homeStationId
+     **/
+    @ApiModelProperty(example = "null", value = "home_station_id integer")
+    public Integer getHomeStationId() {
+        return homeStationId;
+    }
+
+    public void setHomeStationId(Integer homeStationId) {
+        this.homeStationId = homeStationId;
+    }
+
+    public CorporationResponse shares(Long shares) {
+        this.shares = shares;
+        return this;
+    }
+
+    /**
+     * shares integer
+     * 
+     * @return shares
+     **/
+    @ApiModelProperty(example = "null", value = "shares integer")
+    public Long getShares() {
+        return shares;
+    }
+
+    public void setShares(Long shares) {
+        this.shares = shares;
     }
 
     @Override
@@ -311,23 +321,25 @@ public class CorporationResponse implements Serializable {
             return false;
         }
         CorporationResponse corporationResponse = (CorporationResponse) o;
-        return Objects.equals(this.corporationName, corporationResponse.corporationName)
+        return Objects.equals(this.name, corporationResponse.name)
                 && Objects.equals(this.ticker, corporationResponse.ticker)
                 && Objects.equals(this.memberCount, corporationResponse.memberCount)
                 && Objects.equals(this.ceoId, corporationResponse.ceoId)
                 && Objects.equals(this.allianceId, corporationResponse.allianceId)
-                && Objects.equals(this.corporationDescription, corporationResponse.corporationDescription)
+                && Objects.equals(this.description, corporationResponse.description)
                 && Objects.equals(this.taxRate, corporationResponse.taxRate)
-                && Objects.equals(this.creationDate, corporationResponse.creationDate)
+                && Objects.equals(this.dateFounded, corporationResponse.dateFounded)
                 && Objects.equals(this.creatorId, corporationResponse.creatorId)
                 && Objects.equals(this.url, corporationResponse.url)
-                && Objects.equals(this.faction, corporationResponse.faction);
+                && Objects.equals(this.factionId, corporationResponse.factionId)
+                && Objects.equals(this.homeStationId, corporationResponse.homeStationId)
+                && Objects.equals(this.shares, corporationResponse.shares);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corporationName, ticker, memberCount, ceoId, allianceId, corporationDescription, taxRate,
-                creationDate, creatorId, url, faction);
+        return Objects.hash(name, ticker, memberCount, ceoId, allianceId, description, taxRate, dateFounded, creatorId,
+                url, factionId, homeStationId, shares);
     }
 
     @Override
@@ -335,17 +347,19 @@ public class CorporationResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationResponse {\n");
 
-        sb.append("    corporationName: ").append(toIndentedString(corporationName)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
         sb.append("    memberCount: ").append(toIndentedString(memberCount)).append("\n");
         sb.append("    ceoId: ").append(toIndentedString(ceoId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    corporationDescription: ").append(toIndentedString(corporationDescription)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
-        sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
+        sb.append("    dateFounded: ").append(toIndentedString(dateFounded)).append("\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
-        sb.append("    faction: ").append(toIndentedString(faction)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    homeStationId: ").append(toIndentedString(homeStationId)).append("\n");
+        sb.append("    shares: ").append(toIndentedString(shares)).append("\n");
         sb.append("}");
         return sb.toString();
     }

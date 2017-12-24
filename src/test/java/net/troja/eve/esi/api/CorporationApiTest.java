@@ -503,8 +503,8 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsNamesTest() throws ApiException {
-        final List<Long> corporationIds = new ArrayList<>();
-        corporationIds.add((long) CORPORATION_ID_AAC);
+        final List<Integer> corporationIds = new ArrayList<>();
+        corporationIds.add(CORPORATION_ID_AAC);
 
         final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null, null);
 

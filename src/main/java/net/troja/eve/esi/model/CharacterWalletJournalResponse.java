@@ -394,8 +394,8 @@ public class CharacterWalletJournalResponse implements Serializable {
     @JsonProperty("reason")
     private String reason = null;
 
-    @JsonProperty("tax_reciever_id")
-    private Integer taxRecieverId = null;
+    @JsonProperty("tax_receiver_id")
+    private Integer taxReceiverId = null;
 
     @JsonProperty("tax")
     private Double tax = null;
@@ -599,23 +599,23 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CharacterWalletJournalResponse taxRecieverId(Integer taxRecieverId) {
-        this.taxRecieverId = taxRecieverId;
+    public CharacterWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
+        this.taxReceiverId = taxReceiverId;
         return this;
     }
 
     /**
      * the corporation ID receiving any tax paid
      * 
-     * @return taxRecieverId
+     * @return taxReceiverId
      **/
     @ApiModelProperty(example = "null", value = "the corporation ID receiving any tax paid")
-    public Integer getTaxRecieverId() {
-        return taxRecieverId;
+    public Integer getTaxReceiverId() {
+        return taxReceiverId;
     }
 
-    public void setTaxRecieverId(Integer taxRecieverId) {
-        this.taxRecieverId = taxRecieverId;
+    public void setTaxReceiverId(Integer taxReceiverId) {
+        this.taxReceiverId = taxReceiverId;
     }
 
     public CharacterWalletJournalResponse tax(Double tax) {
@@ -675,7 +675,7 @@ public class CharacterWalletJournalResponse implements Serializable {
                 && Objects.equals(this.amount, characterWalletJournalResponse.amount)
                 && Objects.equals(this.balance, characterWalletJournalResponse.balance)
                 && Objects.equals(this.reason, characterWalletJournalResponse.reason)
-                && Objects.equals(this.taxRecieverId, characterWalletJournalResponse.taxRecieverId)
+                && Objects.equals(this.taxReceiverId, characterWalletJournalResponse.taxReceiverId)
                 && Objects.equals(this.tax, characterWalletJournalResponse.tax)
                 && Objects.equals(this.extraInfo, characterWalletJournalResponse.extraInfo);
     }
@@ -683,7 +683,7 @@ public class CharacterWalletJournalResponse implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(date, refId, refType, firstPartyId, firstPartyType, secondPartyId, secondPartyType, amount,
-                balance, reason, taxRecieverId, tax, extraInfo);
+                balance, reason, taxReceiverId, tax, extraInfo);
     }
 
     @Override
@@ -701,7 +701,7 @@ public class CharacterWalletJournalResponse implements Serializable {
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-        sb.append("    taxRecieverId: ").append(toIndentedString(taxRecieverId)).append("\n");
+        sb.append("    taxReceiverId: ").append(toIndentedString(taxReceiverId)).append("\n");
         sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
         sb.append("    extraInfo: ").append(toIndentedString(extraInfo)).append("\n");
         sb.append("}");

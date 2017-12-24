@@ -16,7 +16,6 @@ import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
 import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
-import net.troja.eve.esi.model.CorporationMembersResponse;
 import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
 import net.troja.eve.esi.model.CorporationNamesResponse;
 import net.troja.eve.esi.model.CorporationOutpostResponse;
@@ -59,10 +58,7 @@ public class CorporationApi {
 
     /**
      * Get corporation information Public information about a corporation ---
-     * This route is cached for up to 3600 seconds --- [This route has an
-     * available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
-     * /{corporation_id}/)
+     * This route is cached for up to 3600 seconds
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -88,7 +84,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v4/corporations/{corporation_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -626,12 +622,11 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation members Read the current list of members if the calling
-     * character is a member. --- This route is cached for up to 3600 seconds
-     * --- [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest
-     * /dev/#GET-/corporations/{corporation_id}/members/) SSO Scope:
-     * esi-corporations.read_corporation_membership.v1
+     * Get corporation members Return the current member list of a corporation,
+     * the token&#39;s character need to be a member of the corporation. ---
+     * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1 SSO Scope:
+     * esi-wallet.read_corporation_wallets.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -644,12 +639,12 @@ public class CorporationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CorporationMembersResponse&gt;
+     * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CorporationMembersResponse> getCorporationsCorporationIdMembers(Integer corporationId,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<Integer> getCorporationsCorporationIdMembers(Integer corporationId, String datasource, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -659,7 +654,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/members/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/corporations/{corporation_id}/members/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -684,7 +679,7 @@ public class CorporationApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<List<CorporationMembersResponse>> localVarReturnType = new GenericType<List<CorporationMembersResponse>>() {
+        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -1160,6 +1155,7 @@ public class CorporationApi {
      * Get corporation members Return the current member list of a corporation,
      * the token&#39;s character need to be a member of the corporation. ---
      * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-corporations.read_corporation_membership.v1 SSO Scope:
      * esi-wallet.read_corporation_wallets.v1
      * 
      * @param corporationId
@@ -1573,10 +1569,7 @@ public class CorporationApi {
 
     /**
      * Get corporation names Resolve a set of corporation IDs to corporation
-     * names --- This route is cached for up to 3600 seconds --- [This route has
-     * an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
-     * /names/)
+     * names --- This route is cached for up to 3600 seconds
      * 
      * @param corporationIds
      *            A comma separated list of corporation IDs (required)
@@ -1591,7 +1584,7 @@ public class CorporationApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CorporationNamesResponse> getCorporationsNames(List<Long> corporationIds, String datasource,
+    public List<CorporationNamesResponse> getCorporationsNames(List<Integer> corporationIds, String datasource,
             String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
@@ -1602,7 +1595,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/corporations/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

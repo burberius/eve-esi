@@ -45,23 +45,20 @@ public class CharacterSearchResponse implements Serializable {
     @JsonProperty("faction")
     private List<Integer> faction = new ArrayList<Integer>();
 
-    @JsonProperty("inventorytype")
-    private List<Integer> inventorytype = new ArrayList<Integer>();
+    @JsonProperty("inventory_type")
+    private List<Integer> inventoryType = new ArrayList<Integer>();
 
     @JsonProperty("region")
     private List<Integer> region = new ArrayList<Integer>();
 
-    @JsonProperty("solarsystem")
-    private List<Integer> solarsystem = new ArrayList<Integer>();
+    @JsonProperty("solar_system")
+    private List<Integer> solarSystem = new ArrayList<Integer>();
 
     @JsonProperty("station")
     private List<Integer> station = new ArrayList<Integer>();
 
     @JsonProperty("structure")
     private List<Long> structure = new ArrayList<Long>();
-
-    @JsonProperty("wormhole")
-    private List<Integer> wormhole = new ArrayList<Integer>();
 
     public CharacterSearchResponse agent(List<Integer> agent) {
         this.agent = agent;
@@ -207,28 +204,28 @@ public class CharacterSearchResponse implements Serializable {
         this.faction = faction;
     }
 
-    public CharacterSearchResponse inventorytype(List<Integer> inventorytype) {
-        this.inventorytype = inventorytype;
+    public CharacterSearchResponse inventoryType(List<Integer> inventoryType) {
+        this.inventoryType = inventoryType;
         return this;
     }
 
-    public CharacterSearchResponse addInventorytypeItem(Integer inventorytypeItem) {
-        this.inventorytype.add(inventorytypeItem);
+    public CharacterSearchResponse addInventoryTypeItem(Integer inventoryTypeItem) {
+        this.inventoryType.add(inventoryTypeItem);
         return this;
     }
 
     /**
-     * inventorytype array
+     * inventory_type array
      * 
-     * @return inventorytype
+     * @return inventoryType
      **/
-    @ApiModelProperty(example = "null", value = "inventorytype array")
-    public List<Integer> getInventorytype() {
-        return inventorytype;
+    @ApiModelProperty(example = "null", value = "inventory_type array")
+    public List<Integer> getInventoryType() {
+        return inventoryType;
     }
 
-    public void setInventorytype(List<Integer> inventorytype) {
-        this.inventorytype = inventorytype;
+    public void setInventoryType(List<Integer> inventoryType) {
+        this.inventoryType = inventoryType;
     }
 
     public CharacterSearchResponse region(List<Integer> region) {
@@ -255,28 +252,28 @@ public class CharacterSearchResponse implements Serializable {
         this.region = region;
     }
 
-    public CharacterSearchResponse solarsystem(List<Integer> solarsystem) {
-        this.solarsystem = solarsystem;
+    public CharacterSearchResponse solarSystem(List<Integer> solarSystem) {
+        this.solarSystem = solarSystem;
         return this;
     }
 
-    public CharacterSearchResponse addSolarsystemItem(Integer solarsystemItem) {
-        this.solarsystem.add(solarsystemItem);
+    public CharacterSearchResponse addSolarSystemItem(Integer solarSystemItem) {
+        this.solarSystem.add(solarSystemItem);
         return this;
     }
 
     /**
-     * solarsystem array
+     * solar_system array
      * 
-     * @return solarsystem
+     * @return solarSystem
      **/
-    @ApiModelProperty(example = "null", value = "solarsystem array")
-    public List<Integer> getSolarsystem() {
-        return solarsystem;
+    @ApiModelProperty(example = "null", value = "solar_system array")
+    public List<Integer> getSolarSystem() {
+        return solarSystem;
     }
 
-    public void setSolarsystem(List<Integer> solarsystem) {
-        this.solarsystem = solarsystem;
+    public void setSolarSystem(List<Integer> solarSystem) {
+        this.solarSystem = solarSystem;
     }
 
     public CharacterSearchResponse station(List<Integer> station) {
@@ -327,30 +324,6 @@ public class CharacterSearchResponse implements Serializable {
         this.structure = structure;
     }
 
-    public CharacterSearchResponse wormhole(List<Integer> wormhole) {
-        this.wormhole = wormhole;
-        return this;
-    }
-
-    public CharacterSearchResponse addWormholeItem(Integer wormholeItem) {
-        this.wormhole.add(wormholeItem);
-        return this;
-    }
-
-    /**
-     * wormhole array
-     * 
-     * @return wormhole
-     **/
-    @ApiModelProperty(example = "null", value = "wormhole array")
-    public List<Integer> getWormhole() {
-        return wormhole;
-    }
-
-    public void setWormhole(List<Integer> wormhole) {
-        this.wormhole = wormhole;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -366,18 +339,17 @@ public class CharacterSearchResponse implements Serializable {
                 && Objects.equals(this.constellation, characterSearchResponse.constellation)
                 && Objects.equals(this.corporation, characterSearchResponse.corporation)
                 && Objects.equals(this.faction, characterSearchResponse.faction)
-                && Objects.equals(this.inventorytype, characterSearchResponse.inventorytype)
+                && Objects.equals(this.inventoryType, characterSearchResponse.inventoryType)
                 && Objects.equals(this.region, characterSearchResponse.region)
-                && Objects.equals(this.solarsystem, characterSearchResponse.solarsystem)
+                && Objects.equals(this.solarSystem, characterSearchResponse.solarSystem)
                 && Objects.equals(this.station, characterSearchResponse.station)
-                && Objects.equals(this.structure, characterSearchResponse.structure)
-                && Objects.equals(this.wormhole, characterSearchResponse.wormhole);
+                && Objects.equals(this.structure, characterSearchResponse.structure);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(agent, alliance, character, constellation, corporation, faction, inventorytype, region,
-                solarsystem, station, structure, wormhole);
+        return Objects.hash(agent, alliance, character, constellation, corporation, faction, inventoryType, region,
+                solarSystem, station, structure);
     }
 
     @Override
@@ -391,12 +363,11 @@ public class CharacterSearchResponse implements Serializable {
         sb.append("    constellation: ").append(toIndentedString(constellation)).append("\n");
         sb.append("    corporation: ").append(toIndentedString(corporation)).append("\n");
         sb.append("    faction: ").append(toIndentedString(faction)).append("\n");
-        sb.append("    inventorytype: ").append(toIndentedString(inventorytype)).append("\n");
+        sb.append("    inventoryType: ").append(toIndentedString(inventoryType)).append("\n");
         sb.append("    region: ").append(toIndentedString(region)).append("\n");
-        sb.append("    solarsystem: ").append(toIndentedString(solarsystem)).append("\n");
+        sb.append("    solarSystem: ").append(toIndentedString(solarSystem)).append("\n");
         sb.append("    station: ").append(toIndentedString(station)).append("\n");
         sb.append("    structure: ").append(toIndentedString(structure)).append("\n");
-        sb.append("    wormhole: ").append(toIndentedString(wormhole)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -90,10 +90,10 @@ public class SsoApi {
         final String localVarPath = "/oauth/revoke";
 
         final List<Pair> localVarQueryParams = new ArrayList<>();
-        
+
         final Map<String, String> localVarHeaderParams = new HashMap<>();
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
-        String clientPair =  auth.getClientId() + ":" + auth.getClientSecret();
+        String clientPair = auth.getClientId() + ":" + auth.getClientSecret();
         String encoded;
         try {
             encoded = new String(Base64.getUrlEncoder().encode(clientPair.getBytes("UTF-8")));
@@ -117,9 +117,8 @@ public class SsoApi {
         final String[] localVarAuthNames = new String[0];
 
         try {
-            apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, null,
-                    localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames,
-                    null);
+            apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, null, localVarHeaderParams,
+                    localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
         } finally {
             apiClient.setBasePath(basePath); // load old basepath
         }

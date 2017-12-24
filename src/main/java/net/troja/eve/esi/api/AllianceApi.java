@@ -86,9 +86,7 @@ public class AllianceApi {
 
     /**
      * Get alliance information Public information about an alliance --- This
-     * route is cached for up to 3600 seconds --- [This route has an available
-     * update
-     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/{alliance_id}/)
+     * route is cached for up to 3600 seconds
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -114,7 +112,7 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/alliances/{alliance_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/alliances/{alliance_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
@@ -262,9 +260,7 @@ public class AllianceApi {
 
     /**
      * Get alliance names Resolve a set of alliance IDs to alliance names ---
-     * This route is cached for up to 3600 seconds --- [This route has an
-     * available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/names/)
+     * This route is cached for up to 3600 seconds
      * 
      * @param allianceIds
      *            A comma separated list of alliance IDs (required)
@@ -279,8 +275,8 @@ public class AllianceApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<AllianceNamesResponse> getAlliancesNames(List<Long> allianceIds, String datasource, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<AllianceNamesResponse> getAlliancesNames(List<Integer> allianceIds, String datasource,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceIds' is set
@@ -289,7 +285,7 @@ public class AllianceApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/alliances/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/alliances/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

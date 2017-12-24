@@ -31,6 +31,7 @@ import net.troja.eve.esi.model.SystemJumpsResponse;
 import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
+import net.troja.eve.esi.model.UniverseIdsResponse;
 import net.troja.eve.esi.model.UniverseNamesResponse;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -591,6 +592,41 @@ public class UniverseApiTest extends GeneralApiTest {
         final TypeResponse response = api.getUniverseTypesTypeId(typeId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
 
         assertThat(response.getName(), equalTo(NAME_VELDSPAR));
+    }
+
+    /**
+     * Bulk names to IDs
+     *
+     * Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours.  --- 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void postUniverseIdsTest() throws ApiException {
+        List<String> names = new ArrayList<>();
+        names.add("Aarnaras Wasken"); //Agents
+        names.add(ALLIANCE_NAME_TRI); //Alliances
+        names.add("GoldenGnu"); //Character
+        names.add("Kimotoro"); //Constellations
+        names.add(CORPORATION_NAME_AAC); //Corporations
+        names.add("Caldari State"); //Factions
+        names.add(NAME_VELDSPAR); //Inventory Types
+        names.add("The Forge"); //Regions
+        names.add("Jita"); //Systems
+        //names.add("Station - Jita IV - Moon 4 - Caldari Navy Assembly Plant "); //Stations
+        
+        UniverseIdsResponse response = api.postUniverseIds(names, DATASOURCE, null, null, null);
+        assertThat(response.getAgents().size(), greaterThan(0));
+        assertThat(response.getAlliances().size(), greaterThan(0));
+        assertThat(response.getCharacters().size(), greaterThan(0));
+        assertThat(response.getConstellations().size(), greaterThan(0));
+        assertThat(response.getCorporations().size(), greaterThan(0));
+        assertThat(response.getFactions().size(), greaterThan(0));
+        assertThat(response.getInventoryTypes().size(), greaterThan(0));
+        assertThat(response.getRegions().size(), greaterThan(0));
+        assertThat(response.getSystems().size(), greaterThan(0));
+        //assertThat(response.getStations().size(), greaterThan(0));
     }
 
     /**

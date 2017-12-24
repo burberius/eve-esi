@@ -45,20 +45,17 @@ public class SearchResponse implements Serializable {
     @JsonProperty("faction")
     private List<Integer> faction = new ArrayList<Integer>();
 
-    @JsonProperty("inventorytype")
-    private List<Integer> inventorytype = new ArrayList<Integer>();
+    @JsonProperty("inventory_type")
+    private List<Integer> inventoryType = new ArrayList<Integer>();
 
     @JsonProperty("region")
     private List<Integer> region = new ArrayList<Integer>();
 
-    @JsonProperty("solarsystem")
-    private List<Integer> solarsystem = new ArrayList<Integer>();
+    @JsonProperty("solar_system")
+    private List<Integer> solarSystem = new ArrayList<Integer>();
 
     @JsonProperty("station")
     private List<Integer> station = new ArrayList<Integer>();
-
-    @JsonProperty("wormhole")
-    private List<Integer> wormhole = new ArrayList<Integer>();
 
     public SearchResponse agent(List<Integer> agent) {
         this.agent = agent;
@@ -204,28 +201,28 @@ public class SearchResponse implements Serializable {
         this.faction = faction;
     }
 
-    public SearchResponse inventorytype(List<Integer> inventorytype) {
-        this.inventorytype = inventorytype;
+    public SearchResponse inventoryType(List<Integer> inventoryType) {
+        this.inventoryType = inventoryType;
         return this;
     }
 
-    public SearchResponse addInventorytypeItem(Integer inventorytypeItem) {
-        this.inventorytype.add(inventorytypeItem);
+    public SearchResponse addInventoryTypeItem(Integer inventoryTypeItem) {
+        this.inventoryType.add(inventoryTypeItem);
         return this;
     }
 
     /**
-     * inventorytype array
+     * inventory_type array
      * 
-     * @return inventorytype
+     * @return inventoryType
      **/
-    @ApiModelProperty(example = "null", value = "inventorytype array")
-    public List<Integer> getInventorytype() {
-        return inventorytype;
+    @ApiModelProperty(example = "null", value = "inventory_type array")
+    public List<Integer> getInventoryType() {
+        return inventoryType;
     }
 
-    public void setInventorytype(List<Integer> inventorytype) {
-        this.inventorytype = inventorytype;
+    public void setInventoryType(List<Integer> inventoryType) {
+        this.inventoryType = inventoryType;
     }
 
     public SearchResponse region(List<Integer> region) {
@@ -252,28 +249,28 @@ public class SearchResponse implements Serializable {
         this.region = region;
     }
 
-    public SearchResponse solarsystem(List<Integer> solarsystem) {
-        this.solarsystem = solarsystem;
+    public SearchResponse solarSystem(List<Integer> solarSystem) {
+        this.solarSystem = solarSystem;
         return this;
     }
 
-    public SearchResponse addSolarsystemItem(Integer solarsystemItem) {
-        this.solarsystem.add(solarsystemItem);
+    public SearchResponse addSolarSystemItem(Integer solarSystemItem) {
+        this.solarSystem.add(solarSystemItem);
         return this;
     }
 
     /**
-     * solarsystem array
+     * solar_system array
      * 
-     * @return solarsystem
+     * @return solarSystem
      **/
-    @ApiModelProperty(example = "null", value = "solarsystem array")
-    public List<Integer> getSolarsystem() {
-        return solarsystem;
+    @ApiModelProperty(example = "null", value = "solar_system array")
+    public List<Integer> getSolarSystem() {
+        return solarSystem;
     }
 
-    public void setSolarsystem(List<Integer> solarsystem) {
-        this.solarsystem = solarsystem;
+    public void setSolarSystem(List<Integer> solarSystem) {
+        this.solarSystem = solarSystem;
     }
 
     public SearchResponse station(List<Integer> station) {
@@ -300,30 +297,6 @@ public class SearchResponse implements Serializable {
         this.station = station;
     }
 
-    public SearchResponse wormhole(List<Integer> wormhole) {
-        this.wormhole = wormhole;
-        return this;
-    }
-
-    public SearchResponse addWormholeItem(Integer wormholeItem) {
-        this.wormhole.add(wormholeItem);
-        return this;
-    }
-
-    /**
-     * wormhole array
-     * 
-     * @return wormhole
-     **/
-    @ApiModelProperty(example = "null", value = "wormhole array")
-    public List<Integer> getWormhole() {
-        return wormhole;
-    }
-
-    public void setWormhole(List<Integer> wormhole) {
-        this.wormhole = wormhole;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -339,17 +312,16 @@ public class SearchResponse implements Serializable {
                 && Objects.equals(this.constellation, searchResponse.constellation)
                 && Objects.equals(this.corporation, searchResponse.corporation)
                 && Objects.equals(this.faction, searchResponse.faction)
-                && Objects.equals(this.inventorytype, searchResponse.inventorytype)
+                && Objects.equals(this.inventoryType, searchResponse.inventoryType)
                 && Objects.equals(this.region, searchResponse.region)
-                && Objects.equals(this.solarsystem, searchResponse.solarsystem)
-                && Objects.equals(this.station, searchResponse.station)
-                && Objects.equals(this.wormhole, searchResponse.wormhole);
+                && Objects.equals(this.solarSystem, searchResponse.solarSystem)
+                && Objects.equals(this.station, searchResponse.station);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(agent, alliance, character, constellation, corporation, faction, inventorytype, region,
-                solarsystem, station, wormhole);
+        return Objects.hash(agent, alliance, character, constellation, corporation, faction, inventoryType, region,
+                solarSystem, station);
     }
 
     @Override
@@ -363,11 +335,10 @@ public class SearchResponse implements Serializable {
         sb.append("    constellation: ").append(toIndentedString(constellation)).append("\n");
         sb.append("    corporation: ").append(toIndentedString(corporation)).append("\n");
         sb.append("    faction: ").append(toIndentedString(faction)).append("\n");
-        sb.append("    inventorytype: ").append(toIndentedString(inventorytype)).append("\n");
+        sb.append("    inventoryType: ").append(toIndentedString(inventoryType)).append("\n");
         sb.append("    region: ").append(toIndentedString(region)).append("\n");
-        sb.append("    solarsystem: ").append(toIndentedString(solarsystem)).append("\n");
+        sb.append("    solarSystem: ").append(toIndentedString(solarSystem)).append("\n");
         sb.append("    station: ").append(toIndentedString(station)).append("\n");
-        sb.append("    wormhole: ").append(toIndentedString(wormhole)).append("\n");
         sb.append("}");
         return sb.toString();
     }

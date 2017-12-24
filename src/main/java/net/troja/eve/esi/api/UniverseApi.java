@@ -27,6 +27,8 @@ import net.troja.eve.esi.model.SystemJumpsResponse;
 import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
+import net.troja.eve.esi.model.UniverseIdsResponse;
+import net.troja.eve.esi.model.UniverseIdsServiceUnavailable;
 import net.troja.eve.esi.model.UniverseNamesResponse;
 
 import java.util.ArrayList;
@@ -1472,6 +1474,68 @@ public class UniverseApi {
         GenericType<TypeResponse> localVarReturnType = new GenericType<TypeResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Bulk names to IDs Resolve a set of names to IDs in the following
+     * categories: agents, alliances, characters, constellations, corporations
+     * factions, inventory_types, regions, stations, and systems. Only exact
+     * matches will be returned. All names searched for are cached for 12 hours.
+     * ---
+     * 
+     * @param names
+     *            The names to resolve (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return UniverseIdsResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public UniverseIdsResponse postUniverseIds(List<String> names, String datasource, String language,
+            String userAgent, String xUserAgent) throws ApiException {
+        Object localVarPostBody = names;
+
+        // verify the required parameter 'names' is set
+        if (names == null) {
+            throw new ApiException(400, "Missing the required parameter 'names' when calling postUniverseIds");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/universe/ids/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<UniverseIdsResponse> localVarReturnType = new GenericType<UniverseIdsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 

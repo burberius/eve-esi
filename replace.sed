@@ -39,7 +39,6 @@ s/get_characters_character_id_bookmarks_item/CharacterBookmarkItem/g
 
 # Objects in post/put
 # jq '.paths[][].parameters[].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
-s/post_characters_character_id_cspa_characters/CspaCharacters/g
 s/post_characters_character_id_fittings_fitting/CharacterFitting/g
 s/post_characters_character_id_mail_labels_label/MailLabelSimple/g
 s/post_characters_character_id_mail_mail/Mail/g
@@ -99,7 +98,6 @@ s/post_universe_names_200_ok/UniverseNamesResponse/g
 # Post 201
 # jq '.paths[].post.responses["201"].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
 s/post_characters_character_id_contacts_created/AddContactsResponse/g
-s/post_characters_character_id_cspa_created/CspaCostResponse/g
 s/post_characters_character_id_fittings_created/CharacterFittingResponse/g
 s/post_characters_character_id_mail_created/SendMailResponse/g
 s/post_characters_character_id_mail_labels_created/CreateMailLabelResponse/g
@@ -149,7 +147,6 @@ s/get_characters_character_id_attributes_ok/CharacterAttributesResponse/g
 s/get_characters_character_id_fatigue_ok/CharacterFatigueResponse/g
 s/get_characters_names_200_ok/CharacterNamesResponse/g
 s/get_corporations_corporation_id_alliancehistory_200_ok/CorporationAlliancesHistoryResponse/g
-s/get_corporations_corporation_id_members_200_ok/CorporationMembersResponse/g
 s/get_corporations_corporation_id_membertracking_200_ok/CorporationMemberTrackingResponse/g
 s/get_corporations_corporation_id_roles_200_ok/CorporationRolesResponse/g
 s/get_corporations_corporation_id_structures_200_ok/CorporationStructuresResponse/g
@@ -249,6 +246,21 @@ s/get_corporations_corporation_id_outposts_outpost_id_coordinates/CorporationOut
 s/get_corporations_corporation_id_outposts_outpost_id_ok/CorporationOutpostResponse/g
 s/get_corporations_corporation_id_outposts_outpost_id_service/CorporationOutpostService/g
 s/get_characters_character_id_stats_200_ok/CharacterStatsResponse/g
+s/get_characters_character_id_roles_ok/CharacterRolesResponse/g
+s/post_characters_character_id_assets_locations_position/CharacterAssetsLocationsPosition/g
+s/post_corporations_corporation_id_assets_locations_position/CorporationAssetsLocationsPosition/g
+s/post_universe_ids_agent/UniverseIdsAgent/g
+s/post_universe_ids_alliance/UniverseIdsAlliance/g
+s/post_universe_ids_character/UniverseIdsCharacter/g
+s/post_universe_ids_constellation/UniverseIdsConstellation/g
+s/post_universe_ids_corporation/UniverseIdsCorporation/g
+s/post_universe_ids_faction/UniverseIdsFaction/g
+s/post_universe_ids_inventory_type/UniverseIdsInventoryType/g
+s/post_universe_ids_ok/UniverseIdsResponse/g
+s/post_universe_ids_region/UniverseIdsRegion/g
+s/post_universe_ids_service_unavailable/UniverseIdsServiceUnavailable/g
+s/post_universe_ids_station/UniverseIdsStation/g
+s/post_universe_ids_system/UniverseIdsSystem/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

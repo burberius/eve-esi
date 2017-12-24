@@ -37,10 +37,7 @@ public class ClonesApi {
 
     /**
      * Get clones A list of the character&#39;s clones --- This route is cached
-     * for up to 120 seconds --- [This route has an available
-     * update](https://esi
-     * .tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/clones/) SSO
-     * Scope: esi-clones.read_clones.v1
+     * for up to 120 seconds SSO Scope: esi-clones.read_clones.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -68,7 +65,7 @@ public class ClonesApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/clones/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/characters/{character_id}/clones/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -101,7 +98,7 @@ public class ClonesApi {
 
     /**
      * Get active implants Return implants on the active clone of a character
-     * --- This route is cached for up to 3600 seconds SSO Scope:
+     * --- This route is cached for up to 300 seconds SSO Scope:
      * esi-clones.read_implants.v1
      * 
      * @param characterId

@@ -19,32 +19,54 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * 200 ok object
+ * corporation object
  */
-@ApiModel(description = "200 ok object")
-public class CorporationMembersResponse implements Serializable {
+@ApiModel(description = "corporation object")
+public class UniverseIdsCorporation implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
-    private Integer characterId = null;
+    @JsonProperty("id")
+    private Integer id = null;
 
-    public CorporationMembersResponse characterId(Integer characterId) {
-        this.characterId = characterId;
+    @JsonProperty("name")
+    private String name = null;
+
+    public UniverseIdsCorporation id(Integer id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * character_id integer
+     * id integer
      * 
-     * @return characterId
+     * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
-    public Integer getCharacterId() {
-        return characterId;
+    @ApiModelProperty(example = "null", value = "id integer")
+    public Integer getId() {
+        return id;
     }
 
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public UniverseIdsCorporation name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -55,21 +77,23 @@ public class CorporationMembersResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CorporationMembersResponse corporationMembersResponse = (CorporationMembersResponse) o;
-        return Objects.equals(this.characterId, corporationMembersResponse.characterId);
+        UniverseIdsCorporation universeIdsCorporation = (UniverseIdsCorporation) o;
+        return Objects.equals(this.id, universeIdsCorporation.id)
+                && Objects.equals(this.name, universeIdsCorporation.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CorporationMembersResponse {\n");
+        sb.append("class UniverseIdsCorporation {\n");
 
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

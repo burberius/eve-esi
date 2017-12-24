@@ -24,11 +24,10 @@ import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
 import net.troja.eve.esi.model.CharacterResponse;
+import net.troja.eve.esi.model.CharacterRolesResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CharacterStatsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
-import net.troja.eve.esi.model.CspaCharacters;
-import net.troja.eve.esi.model.CspaCostResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
 import org.apache.commons.lang3.StringUtils;
 import static org.hamcrest.Matchers.equalTo;
@@ -245,7 +244,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdRolesTest() throws ApiException {
-        final List<String> response = api.getCharactersCharacterIdRoles(characterId, DATASOURCE, null, null, null);
+        CharacterRolesResponse response = api.getCharactersCharacterIdRoles(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
     }
@@ -351,12 +350,12 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdCspaTest() throws ApiException {
-        final CspaCharacters characters = new CspaCharacters();
-        characters.addCharactersItem(CHARACTER_ID_CHRIBBA);
+        final List<Integer> characters = new ArrayList<>();
+        characters.add(CHARACTER_ID_CHRIBBA);
 
-        final CspaCostResponse response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null, null, null);
+        Float response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null, null, null);
 
-        assertThat(response.getCost(), equalTo(0l));
+        assertThat(response, equalTo(0f));
     }
 
 }
