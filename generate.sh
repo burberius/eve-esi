@@ -54,6 +54,7 @@ FILE="src/main/java/net/troja/eve/esi/auth/SsoScopes.java"
 echo "package net.troja.eve.esi.auth;" > $FILE
 echo "" >> $FILE
 echo "import java.util.Arrays;" >> $FILE
+echo "import java.util.Collections;" >> $FILE
 echo "import java.util.HashSet;" >> $FILE
 echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
@@ -70,7 +71,7 @@ for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0]
 done
 echo -e "\nprivate static final String[] ALL_VALUES = {$ALL};" >> $FILE
 echo "" >> $FILE
-echo "    public static Set<String> ALL = new HashSet<>(Arrays.asList(ALL_VALUES));" >> $FILE
+echo "    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));" >> $FILE
 echo "" >> $FILE
 echo "}" >> $FILE
 

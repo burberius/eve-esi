@@ -74,7 +74,7 @@ public class CharacterInfo {
     public void setScopes(final String scopes) {
         if (scopes != null) {
             this.scopes = new HashSet<>(Arrays.asList(scopes.split(" ")));
-        } else { //null == no scopes
+        } else { // null == no scopes
             this.scopes = new HashSet<>();
         }
     }

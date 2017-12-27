@@ -1,6 +1,7 @@
 package net.troja.eve.esi.auth;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -104,6 +105,6 @@ public class SsoScopes {
             ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
             ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1 };
 
-    public static Set<String> ALL = new HashSet<>(Arrays.asList(ALL_VALUES));
+    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));
 
 }
