@@ -15,7 +15,7 @@ public class CharacterInfo {
     @JsonProperty("ExpiresOn")
     private Date expiresOn;
     @JsonProperty("Scopes")
-    private Set<String> scopes;
+    private Set<String> scopes = new HashSet<>();
     @JsonProperty("TokenType")
     private String TokenType;
     @JsonProperty("CharacterOwnerHash")
@@ -72,7 +72,11 @@ public class CharacterInfo {
     }
 
     public void setScopes(final String scopes) {
-        this.scopes = new HashSet<>(Arrays.asList(scopes.split(" ")));
+        if (scopes != null) {
+            this.scopes = new HashSet<>(Arrays.asList(scopes.split(" ")));
+        } else { //null == no scopes
+            this.scopes = new HashSet<>();
+        }
     }
 
     public String getTokenType() {
