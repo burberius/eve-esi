@@ -26,35 +26,82 @@ import java.io.Serializable;
 public class AllianceResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_name")
-    private String allianceName = null;
+    @JsonProperty("name")
+    private String name = null;
+
+    @JsonProperty("creator_id")
+    private Integer creatorId = null;
+
+    @JsonProperty("creator_corporation_id")
+    private Integer creatorCorporationId = null;
 
     @JsonProperty("ticker")
     private String ticker = null;
 
-    @JsonProperty("executor_corp")
-    private Integer executorCorp = null;
+    @JsonProperty("executor_corporation_id")
+    private Integer executorCorporationId = null;
 
     @JsonProperty("date_founded")
     private OffsetDateTime dateFounded = null;
 
-    public AllianceResponse allianceName(String allianceName) {
-        this.allianceName = allianceName;
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
+
+    public AllianceResponse name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
      * the full name of the alliance
      * 
-     * @return allianceName
+     * @return name
      **/
     @ApiModelProperty(example = "null", required = true, value = "the full name of the alliance")
-    public String getAllianceName() {
-        return allianceName;
+    public String getName() {
+        return name;
     }
 
-    public void setAllianceName(String allianceName) {
-        this.allianceName = allianceName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AllianceResponse creatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+
+    /**
+     * ID of the character that created the alliance
+     * 
+     * @return creatorId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the character that created the alliance")
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public AllianceResponse creatorCorporationId(Integer creatorCorporationId) {
+        this.creatorCorporationId = creatorCorporationId;
+        return this;
+    }
+
+    /**
+     * ID of the corporation that created the alliance
+     * 
+     * @return creatorCorporationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the corporation that created the alliance")
+    public Integer getCreatorCorporationId() {
+        return creatorCorporationId;
+    }
+
+    public void setCreatorCorporationId(Integer creatorCorporationId) {
+        this.creatorCorporationId = creatorCorporationId;
     }
 
     public AllianceResponse ticker(String ticker) {
@@ -76,23 +123,23 @@ public class AllianceResponse implements Serializable {
         this.ticker = ticker;
     }
 
-    public AllianceResponse executorCorp(Integer executorCorp) {
-        this.executorCorp = executorCorp;
+    public AllianceResponse executorCorporationId(Integer executorCorporationId) {
+        this.executorCorporationId = executorCorporationId;
         return this;
     }
 
     /**
      * the executor corporation ID, if this alliance is not closed
      * 
-     * @return executorCorp
+     * @return executorCorporationId
      **/
     @ApiModelProperty(example = "null", value = "the executor corporation ID, if this alliance is not closed")
-    public Integer getExecutorCorp() {
-        return executorCorp;
+    public Integer getExecutorCorporationId() {
+        return executorCorporationId;
     }
 
-    public void setExecutorCorp(Integer executorCorp) {
-        this.executorCorp = executorCorp;
+    public void setExecutorCorporationId(Integer executorCorporationId) {
+        this.executorCorporationId = executorCorporationId;
     }
 
     public AllianceResponse dateFounded(OffsetDateTime dateFounded) {
@@ -114,6 +161,26 @@ public class AllianceResponse implements Serializable {
         this.dateFounded = dateFounded;
     }
 
+    public AllianceResponse factionId(Integer factionId) {
+        this.factionId = factionId;
+        return this;
+    }
+
+    /**
+     * Faction ID this alliance is fighting for, if this alliance is enlisted in
+     * factional warfare
+     * 
+     * @return factionId
+     **/
+    @ApiModelProperty(example = "null", value = "Faction ID this alliance is fighting for, if this alliance is enlisted in factional warfare")
+    public Integer getFactionId() {
+        return factionId;
+    }
+
+    public void setFactionId(Integer factionId) {
+        this.factionId = factionId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,15 +190,19 @@ public class AllianceResponse implements Serializable {
             return false;
         }
         AllianceResponse allianceResponse = (AllianceResponse) o;
-        return Objects.equals(this.allianceName, allianceResponse.allianceName)
+        return Objects.equals(this.name, allianceResponse.name)
+                && Objects.equals(this.creatorId, allianceResponse.creatorId)
+                && Objects.equals(this.creatorCorporationId, allianceResponse.creatorCorporationId)
                 && Objects.equals(this.ticker, allianceResponse.ticker)
-                && Objects.equals(this.executorCorp, allianceResponse.executorCorp)
-                && Objects.equals(this.dateFounded, allianceResponse.dateFounded);
+                && Objects.equals(this.executorCorporationId, allianceResponse.executorCorporationId)
+                && Objects.equals(this.dateFounded, allianceResponse.dateFounded)
+                && Objects.equals(this.factionId, allianceResponse.factionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceName, ticker, executorCorp, dateFounded);
+        return Objects.hash(name, creatorId, creatorCorporationId, ticker, executorCorporationId, dateFounded,
+                factionId);
     }
 
     @Override
@@ -139,10 +210,13 @@ public class AllianceResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceResponse {\n");
 
-        sb.append("    allianceName: ").append(toIndentedString(allianceName)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
+        sb.append("    creatorCorporationId: ").append(toIndentedString(creatorCorporationId)).append("\n");
         sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
-        sb.append("    executorCorp: ").append(toIndentedString(executorCorp)).append("\n");
+        sb.append("    executorCorporationId: ").append(toIndentedString(executorCorporationId)).append("\n");
         sb.append("    dateFounded: ").append(toIndentedString(dateFounded)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

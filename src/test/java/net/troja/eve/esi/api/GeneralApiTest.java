@@ -17,7 +17,9 @@ public class GeneralApiTest {
     protected static final int CHARACTER_ID_CHRIBBA = 196379789;
     protected static final String CHARACTER_NAME_CHRIBBA = "Chribba";
     protected static final int CORPORATION_ID_AAC = 98008663;
+    protected static final String CORPORATION_NAME_AAC = "Angry Angels Constructions";
     protected static final int ALLIANCE_ID_TRI = 933731581;
+    protected static final String ALLIANCE_NAME_TRI = "Triumvirate.";
     protected final static int REGION_ID_THE_FORGE = 10000002;
     protected final static int TYPE_ID_VELDSPAR = 1230;
     protected static final String NAME_VELDSPAR = "Veldspar";

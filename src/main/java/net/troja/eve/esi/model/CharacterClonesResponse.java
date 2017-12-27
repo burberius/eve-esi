@@ -30,32 +30,35 @@ import java.io.Serializable;
 public class CharacterClonesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_jump_date")
-    private OffsetDateTime lastJumpDate = null;
+    @JsonProperty("last_clone_jump_date")
+    private OffsetDateTime lastCloneJumpDate = null;
 
     @JsonProperty("home_location")
     private CloneHomeLocation homeLocation = null;
 
+    @JsonProperty("last_station_change_date")
+    private OffsetDateTime lastStationChangeDate = null;
+
     @JsonProperty("jump_clones")
     private List<Clone> jumpClones = new ArrayList<Clone>();
 
-    public CharacterClonesResponse lastJumpDate(OffsetDateTime lastJumpDate) {
-        this.lastJumpDate = lastJumpDate;
+    public CharacterClonesResponse lastCloneJumpDate(OffsetDateTime lastCloneJumpDate) {
+        this.lastCloneJumpDate = lastCloneJumpDate;
         return this;
     }
 
     /**
-     * last_jump_date string
+     * last_clone_jump_date string
      * 
-     * @return lastJumpDate
+     * @return lastCloneJumpDate
      **/
-    @ApiModelProperty(example = "null", value = "last_jump_date string")
-    public OffsetDateTime getLastJumpDate() {
-        return lastJumpDate;
+    @ApiModelProperty(example = "null", value = "last_clone_jump_date string")
+    public OffsetDateTime getLastCloneJumpDate() {
+        return lastCloneJumpDate;
     }
 
-    public void setLastJumpDate(OffsetDateTime lastJumpDate) {
-        this.lastJumpDate = lastJumpDate;
+    public void setLastCloneJumpDate(OffsetDateTime lastCloneJumpDate) {
+        this.lastCloneJumpDate = lastCloneJumpDate;
     }
 
     public CharacterClonesResponse homeLocation(CloneHomeLocation homeLocation) {
@@ -75,6 +78,25 @@ public class CharacterClonesResponse implements Serializable {
 
     public void setHomeLocation(CloneHomeLocation homeLocation) {
         this.homeLocation = homeLocation;
+    }
+
+    public CharacterClonesResponse lastStationChangeDate(OffsetDateTime lastStationChangeDate) {
+        this.lastStationChangeDate = lastStationChangeDate;
+        return this;
+    }
+
+    /**
+     * last_station_change_date string
+     * 
+     * @return lastStationChangeDate
+     **/
+    @ApiModelProperty(example = "null", value = "last_station_change_date string")
+    public OffsetDateTime getLastStationChangeDate() {
+        return lastStationChangeDate;
+    }
+
+    public void setLastStationChangeDate(OffsetDateTime lastStationChangeDate) {
+        this.lastStationChangeDate = lastStationChangeDate;
     }
 
     public CharacterClonesResponse jumpClones(List<Clone> jumpClones) {
@@ -110,14 +132,15 @@ public class CharacterClonesResponse implements Serializable {
             return false;
         }
         CharacterClonesResponse characterClonesResponse = (CharacterClonesResponse) o;
-        return Objects.equals(this.lastJumpDate, characterClonesResponse.lastJumpDate)
+        return Objects.equals(this.lastCloneJumpDate, characterClonesResponse.lastCloneJumpDate)
                 && Objects.equals(this.homeLocation, characterClonesResponse.homeLocation)
+                && Objects.equals(this.lastStationChangeDate, characterClonesResponse.lastStationChangeDate)
                 && Objects.equals(this.jumpClones, characterClonesResponse.jumpClones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastJumpDate, homeLocation, jumpClones);
+        return Objects.hash(lastCloneJumpDate, homeLocation, lastStationChangeDate, jumpClones);
     }
 
     @Override
@@ -125,8 +148,9 @@ public class CharacterClonesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterClonesResponse {\n");
 
-        sb.append("    lastJumpDate: ").append(toIndentedString(lastJumpDate)).append("\n");
+        sb.append("    lastCloneJumpDate: ").append(toIndentedString(lastCloneJumpDate)).append("\n");
         sb.append("    homeLocation: ").append(toIndentedString(homeLocation)).append("\n");
+        sb.append("    lastStationChangeDate: ").append(toIndentedString(lastStationChangeDate)).append("\n");
         sb.append("    jumpClones: ").append(toIndentedString(jumpClones)).append("\n");
         sb.append("}");
         return sb.toString();

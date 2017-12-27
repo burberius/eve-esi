@@ -38,10 +38,8 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * This route is cached for up to 3600 seconds --- [This route has an
-     * available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
-     * /{character_id}/search/) SSO Scope: esi-search.search_structures.v1
+     * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-search.search_structures.v1
      * 
      * @param categories
      *            Type of entities to search for (required)
@@ -91,7 +89,7 @@ public class SearchApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/search/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v3/characters/{character_id}/search/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -128,8 +126,8 @@ public class SearchApi {
 
     /**
      * Search on a string Search for entities that match a given sub-string. ---
-     * This route is cached for up to 3600 seconds --- [This route has an
-     * available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/search/)
+     * This route is cached for up to 3600 seconds SSO Scope:
+     * esi-search.search_structures.v1
      * 
      * @param categories
      *            Type of entities to search for (required)
@@ -166,7 +164,7 @@ public class SearchApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/search/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/search/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

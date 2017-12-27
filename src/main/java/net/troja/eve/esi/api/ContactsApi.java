@@ -39,9 +39,8 @@ public class ContactsApi {
     }
 
     /**
-     * Delete contacts Bulk delete contacts --- [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#DELETE-/characters/{
-     * character_id}/contacts/) SSO Scope: esi-characters.write_contacts.v1
+     * Delete contacts Bulk delete contacts --- SSO Scope:
+     * esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -61,7 +60,7 @@ public class ContactsApi {
      */
     public void deleteCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, String datasource,
             String token, String userAgent, String xUserAgent) throws ApiException {
-        Object localVarPostBody = contactIds;
+        Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -76,7 +75,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -84,6 +83,7 @@ public class ContactsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "contact_ids", contactIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));

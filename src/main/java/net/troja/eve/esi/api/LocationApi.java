@@ -8,6 +8,7 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterLocationResponse;
+import net.troja.eve.esi.model.CharacterOnlineResponse;
 import net.troja.eve.esi.model.CharacterShipResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
@@ -101,10 +102,8 @@ public class LocationApi {
 
     /**
      * Get character online Checks if the character is currently online --- This
-     * route is cached for up to 60 seconds --- [This route has an available
-     * update
-     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
-     * }/online/) SSO Scope: esi-location.read_online.v1
+     * route is cached for up to 60 seconds SSO Scope:
+     * esi-location.read_online.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -117,11 +116,11 @@ public class LocationApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @return Boolean
+     * @return CharacterOnlineResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public Boolean getCharactersCharacterIdOnline(Integer characterId, String datasource, String token,
+    public CharacterOnlineResponse getCharactersCharacterIdOnline(Integer characterId, String datasource, String token,
             String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
@@ -132,7 +131,7 @@ public class LocationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/online/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/online/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -157,7 +156,7 @@ public class LocationApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
 
-        GenericType<Boolean> localVarReturnType = new GenericType<Boolean>() {
+        GenericType<CharacterOnlineResponse> localVarReturnType = new GenericType<CharacterOnlineResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
