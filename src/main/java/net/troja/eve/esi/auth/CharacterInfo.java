@@ -3,6 +3,9 @@ package net.troja.eve.esi.auth;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CharacterInfo {
     @JsonProperty("CharacterID")
@@ -12,7 +15,7 @@ public class CharacterInfo {
     @JsonProperty("ExpiresOn")
     private Date expiresOn;
     @JsonProperty("Scopes")
-    private String scopes;
+    private Set<String> scopes = new HashSet<>();
     @JsonProperty("TokenType")
     private String TokenType;
     @JsonProperty("CharacterOwnerHash")
@@ -64,12 +67,16 @@ public class CharacterInfo {
         this.expiresOn = expiresOn;
     }
 
-    public String getScopes() {
+    public Set<String> getScopes() {
         return scopes;
     }
 
     public void setScopes(final String scopes) {
-        this.scopes = scopes;
+        if (scopes != null) {
+            this.scopes = new HashSet<>(Arrays.asList(scopes.split(" ")));
+        } else { // null == no scopes
+            this.scopes = new HashSet<>();
+        }
     }
 
     public String getTokenType() {

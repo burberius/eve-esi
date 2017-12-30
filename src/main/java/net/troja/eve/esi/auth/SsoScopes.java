@@ -1,5 +1,10 @@
 package net.troja.eve.esi.auth;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 public class SsoScopes {
     public static final String ESI_ALLIANCES_READ_CONTACTS_V1 = "esi-alliances.read_contacts.v1";
     public static final String ESI_ASSETS_READ_ASSETS_V1 = "esi-assets.read_assets.v1";
@@ -72,7 +77,7 @@ public class SsoScopes {
     public static final String ESI_WALLET_READ_CHARACTER_WALLET_V1 = "esi-wallet.read_character_wallet.v1";
     public static final String ESI_WALLET_READ_CORPORATION_WALLETS_V1 = "esi-wallet.read_corporation_wallets.v1";
 
-    public static final String[] ALL = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
+    private static final String[] ALL_VALUES = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
             ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_BOOKMARKS_READ_CHARACTER_BOOKMARKS_V1,
             ESI_BOOKMARKS_READ_CORPORATION_BOOKMARKS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
             ESI_CALENDAR_RESPOND_CALENDAR_EVENTS_V1, ESI_CHARACTERS_READ_AGENTS_RESEARCH_V1,
@@ -99,4 +104,7 @@ public class SsoScopes {
             ESI_SEARCH_SEARCH_STRUCTURES_V1, ESI_SKILLS_READ_SKILLQUEUE_V1, ESI_SKILLS_READ_SKILLS_V1,
             ESI_UI_OPEN_WINDOW_V1, ESI_UI_WRITE_WAYPOINT_V1, ESI_UNIVERSE_READ_STRUCTURES_V1,
             ESI_WALLET_READ_CHARACTER_WALLET_V1, ESI_WALLET_READ_CORPORATION_WALLETS_V1 };
+
+    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));
+
 }
