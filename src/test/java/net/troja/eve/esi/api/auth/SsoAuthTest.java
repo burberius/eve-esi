@@ -151,7 +151,7 @@ public class SsoAuthTest extends GeneralApiTest {
             }
         }
 
-        final Set<String> scopes = new HashSet<>(Arrays.asList(SsoScopes.ALL));
+        final Set<String> scopes = SsoScopes.ALL;
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
