@@ -261,6 +261,18 @@ s/post_universe_ids_region/UniverseIdsRegion/g
 s/post_universe_ids_service_unavailable/UniverseIdsServiceUnavailable/g
 s/post_universe_ids_station/UniverseIdsStation/g
 s/post_universe_ids_system/UniverseIdsSystem/g
+s/get_characters_character_id_stats_character/CharacterStatsCharacter/g
+s/get_characters_character_id_stats_combat/CharacterStatsCombat/g
+s/get_characters_character_id_stats_industry/CharacterStatsIndustry/g
+s/get_characters_character_id_stats_inventory/CharacterStatsInventory/g
+s/get_characters_character_id_stats_isk/CharacterStatsIsk/g
+s/get_characters_character_id_stats_market/CharacterStatsMarket/g
+s/get_characters_character_id_stats_mining/CharacterStatsMining/g
+s/get_characters_character_id_stats_module/CharacterStatsModule/g
+s/get_characters_character_id_stats_orbital/CharacterStatsOrbital/g
+s/get_characters_character_id_stats_pve/CharacterStatsPve/g
+s/get_characters_character_id_stats_social/CharacterStatsSocial/g
+s/get_characters_character_id_stats_travel/CharacterStatsTravel/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
