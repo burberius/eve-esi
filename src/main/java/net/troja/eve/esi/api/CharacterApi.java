@@ -789,10 +789,8 @@ public class CharacterApi {
 
     /**
      * Yearly aggregate stats Returns aggregate yearly stats for a character ---
-     * This route is cached for up to 86400 seconds --- [This route has an
-     * available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
-     * /{character_id}/stats/) SSO Scope: esi-characterstats.read.v1
+     * This route is cached for up to 86400 seconds SSO Scope:
+     * esi-characterstats.read.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -820,7 +818,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/stats/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/stats/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
