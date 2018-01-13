@@ -87,7 +87,7 @@ public class UniverseApiTest extends GeneralApiTest {
         final String xUserAgent = null;
         final List<Integer> response = api.getUniverseCategories(DATASOURCE, userAgent, xUserAgent);
 
-        assertThat(response.size(), equalTo(42));
+        assertThat(response.size(), equalTo(43));
     }
 
     /**

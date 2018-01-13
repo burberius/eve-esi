@@ -19,9 +19,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
- * response schema
+ * response object
  */
-@ApiModel(description = "response schema")
+@ApiModel(description = "response object")
 public class CharacterCalendarEvent implements Serializable {
     private static final long serialVersionUID = 1L;
 
