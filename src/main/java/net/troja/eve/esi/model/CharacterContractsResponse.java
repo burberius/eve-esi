@@ -206,7 +206,7 @@ public class CharacterContractsResponse implements Serializable {
     private Double buyout = null;
 
     @JsonProperty("volume")
-    private Float volume = null;
+    private Double volume = null;
 
     public CharacterContractsResponse contractId(Integer contractId) {
         this.contractId = contractId;
@@ -607,7 +607,7 @@ public class CharacterContractsResponse implements Serializable {
         this.buyout = buyout;
     }
 
-    public CharacterContractsResponse volume(Float volume) {
+    public CharacterContractsResponse volume(Double volume) {
         this.volume = volume;
         return this;
     }
@@ -618,11 +618,11 @@ public class CharacterContractsResponse implements Serializable {
      * @return volume
      **/
     @ApiModelProperty(example = "null", value = "Volume of items in the contract")
-    public Float getVolume() {
+    public Double getVolume() {
         return volume;
     }
 
-    public void setVolume(Float volume) {
+    public void setVolume(Double volume) {
         this.volume = volume;
     }
 

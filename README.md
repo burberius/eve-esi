@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/net.troja.eve/eve-esi.svg?maxAge=2592000)](http://mvnrepository.com/artifact/net.troja.eve/eve-esi)
+[![Maven Central](https://img.shields.io/maven-central/v/net.troja.eve/eve-esi.svg?maxAge=86400)](http://mvnrepository.com/artifact/net.troja.eve/eve-esi)
 [![Build Status](http://jenkins.cyno.space/jenkins/job/GitHub%20eve-esi/badge/icon)](http://jenkins.cyno.space/jenkins/job/GitHub%20eve-esi/)
 
 # EVE-ESI
