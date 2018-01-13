@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.RequiredItem;
@@ -42,7 +41,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
     private Integer lpCost = null;
 
     @JsonProperty("isk_cost")
-    private BigDecimal iskCost = null;
+    private Long iskCost = null;
 
     @JsonProperty("required_items")
     private List<RequiredItem> requiredItems = new ArrayList<RequiredItem>();
@@ -123,22 +122,22 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         this.lpCost = lpCost;
     }
 
-    public LoyaltyStoreOffersResponse iskCost(BigDecimal iskCost) {
+    public LoyaltyStoreOffersResponse iskCost(Long iskCost) {
         this.iskCost = iskCost;
         return this;
     }
 
     /**
-     * isk_cost number
+     * isk_cost integer
      * 
      * @return iskCost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "isk_cost number")
-    public BigDecimal getIskCost() {
+    @ApiModelProperty(example = "null", required = true, value = "isk_cost integer")
+    public Long getIskCost() {
         return iskCost;
     }
 
-    public void setIskCost(BigDecimal iskCost) {
+    public void setIskCost(Long iskCost) {
         this.iskCost = iskCost;
     }
 

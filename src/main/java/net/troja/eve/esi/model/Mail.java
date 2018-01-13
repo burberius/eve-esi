@@ -22,9 +22,9 @@ import net.troja.eve.esi.model.Recipient;
 import java.io.Serializable;
 
 /**
- * mail schema
+ * mail object
  */
-@ApiModel(description = "mail schema")
+@ApiModel(description = "mail object")
 public class Mail implements Serializable {
     private static final long serialVersionUID = 1L;
 

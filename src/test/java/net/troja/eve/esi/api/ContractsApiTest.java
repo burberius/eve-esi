@@ -45,7 +45,8 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContractsTest() throws ApiException {
-        List<CharacterContractsResponse> response = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, null, null, null);
+        Integer page = null;
+        List<CharacterContractsResponse> response = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, page, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final CharacterContractsResponse characterContractsResponse = response.get(0);
@@ -62,7 +63,8 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContractsContractIdBidsTest() throws ApiException {
-        List<CharacterContractsResponse> characterContractsResponses = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, null, null, null);
+        Integer page = null;
+        List<CharacterContractsResponse> characterContractsResponses = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, page, null, null, null);
         assertThat(characterContractsResponses.size(), greaterThan(0));
         Integer contractId = null;
         for (CharacterContractsResponse characterContractsResponse : characterContractsResponses) {
@@ -89,7 +91,8 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContractsContractIdItemsTest() throws ApiException {
-        List<CharacterContractsResponse> characterContractsResponses = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, null, null, null);
+        Integer page = null;
+        List<CharacterContractsResponse> characterContractsResponses = api.getCharactersCharacterIdContracts(characterId, DATASOURCE, page, null, null, null);
         assertThat(characterContractsResponses.size(), greaterThan(0));
         Integer contractId = null;
         for (CharacterContractsResponse characterContractsResponse : characterContractsResponses) {
@@ -114,7 +117,8 @@ public class ContractsApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdContractsTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationContractsResponse> response = api.getCorporationsCorporationIdContracts(corporationId, DATASOURCE, null, null, null);
+        Integer page = null;
+        List<CorporationContractsResponse> response = api.getCorporationsCorporationIdContracts(corporationId, DATASOURCE, page, null, null, null);
 
         // TODO: test validations
     }
