@@ -176,7 +176,7 @@ public class KillmailsApi {
 
     /**
      * Get a single killmail Return a single killmail from its ID and hash ---
-     * This route is cached for up to 3600 seconds
+     * This route is cached for up to 1209600 seconds
      * 
      * @param killmailHash
      *            The killmail hash for verification (required)

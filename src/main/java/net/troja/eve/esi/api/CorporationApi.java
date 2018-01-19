@@ -625,8 +625,8 @@ public class CorporationApi {
      * Get corporation members Return the current member list of a corporation,
      * the token&#39;s character need to be a member of the corporation. ---
      * This route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1 SSO Scope:
-     * esi-wallet.read_corporation_wallets.v1
+     * esi-wallet.read_corporation_wallets.v1 SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1155,8 +1155,8 @@ public class CorporationApi {
      * Get corporation members Return the current member list of a corporation,
      * the token&#39;s character need to be a member of the corporation. ---
      * This route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1 SSO Scope:
-     * esi-wallet.read_corporation_wallets.v1
+     * esi-wallet.read_corporation_wallets.v1 SSO Scope:
+     * esi-corporations.read_corporation_membership.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1364,8 +1364,6 @@ public class CorporationApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param page
-     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -1377,8 +1375,8 @@ public class CorporationApi {
      *             if fails to make API call
      */
     public CorporationStarbaseResponse getCorporationsCorporationIdStarbasesStarbaseId(Integer corporationId,
-            Long starbaseId, Integer systemId, String datasource, Integer page, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            Long starbaseId, Integer systemId, String datasource, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1411,7 +1409,6 @@ public class CorporationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "system_id", systemId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
