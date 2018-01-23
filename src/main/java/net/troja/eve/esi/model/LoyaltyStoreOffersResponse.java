@@ -43,6 +43,9 @@ public class LoyaltyStoreOffersResponse implements Serializable {
     @JsonProperty("isk_cost")
     private Long iskCost = null;
 
+    @JsonProperty("ak_cost")
+    private Integer akCost = null;
+
     @JsonProperty("required_items")
     private List<RequiredItem> requiredItems = new ArrayList<RequiredItem>();
 
@@ -141,6 +144,25 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         this.iskCost = iskCost;
     }
 
+    public LoyaltyStoreOffersResponse akCost(Integer akCost) {
+        this.akCost = akCost;
+        return this;
+    }
+
+    /**
+     * Analysis kredit cost
+     * 
+     * @return akCost
+     **/
+    @ApiModelProperty(example = "null", value = "Analysis kredit cost")
+    public Integer getAkCost() {
+        return akCost;
+    }
+
+    public void setAkCost(Integer akCost) {
+        this.akCost = akCost;
+    }
+
     public LoyaltyStoreOffersResponse requiredItems(List<RequiredItem> requiredItems) {
         this.requiredItems = requiredItems;
         return this;
@@ -179,12 +201,13 @@ public class LoyaltyStoreOffersResponse implements Serializable {
                 && Objects.equals(this.quantity, loyaltyStoreOffersResponse.quantity)
                 && Objects.equals(this.lpCost, loyaltyStoreOffersResponse.lpCost)
                 && Objects.equals(this.iskCost, loyaltyStoreOffersResponse.iskCost)
+                && Objects.equals(this.akCost, loyaltyStoreOffersResponse.akCost)
                 && Objects.equals(this.requiredItems, loyaltyStoreOffersResponse.requiredItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(offerId, typeId, quantity, lpCost, iskCost, requiredItems);
+        return Objects.hash(offerId, typeId, quantity, lpCost, iskCost, akCost, requiredItems);
     }
 
     @Override
@@ -197,6 +220,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    lpCost: ").append(toIndentedString(lpCost)).append("\n");
         sb.append("    iskCost: ").append(toIndentedString(iskCost)).append("\n");
+        sb.append("    akCost: ").append(toIndentedString(akCost)).append("\n");
         sb.append("    requiredItems: ").append(toIndentedString(requiredItems)).append("\n");
         sb.append("}");
         return sb.toString();

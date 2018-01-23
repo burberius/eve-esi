@@ -441,8 +441,7 @@ public class CorporationApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Long starbaseId = null;
         Integer systemId = null;
-        Integer page = null;
-        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, page, null, null, null);
+        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, null, null, null);
 
         // TODO: test validations
     }
