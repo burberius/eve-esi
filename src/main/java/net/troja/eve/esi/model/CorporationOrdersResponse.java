@@ -394,11 +394,12 @@ public class CorporationOrdersResponse implements Serializable {
     }
 
     /**
-     * Wallet division of which this order used minimum: 1 maximum: 7
+     * The corporation wallet division used for this order. minimum: 1 maximum:
+     * 7
      * 
      * @return walletDivision
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Wallet division of which this order used")
+    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order.")
     public Integer getWalletDivision() {
         return walletDivision;
     }
@@ -413,12 +414,12 @@ public class CorporationOrdersResponse implements Serializable {
     }
 
     /**
-     * Numer of days for which order is valid (starting from the issued date).
-     * An order expires at time issued + duration
+     * Number of days the order is valid for (starting from the issued date). An
+     * order expires at time issued + duration
      * 
      * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Numer of days for which order is valid (starting from the issued date). An order expires at time issued + duration")
+    @ApiModelProperty(example = "null", required = true, value = "Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration")
     public Integer getDuration() {
         return duration;
     }
