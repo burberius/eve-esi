@@ -21,6 +21,8 @@ import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
 import net.troja.eve.esi.HeaderUtil;
+import net.troja.eve.esi.model.CharacterOrdersHistoryResponse;
+import net.troja.eve.esi.model.CorporationOrdersHistoryResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -80,6 +82,22 @@ public class MarketApiTest extends GeneralApiTest {
     }
 
     /**
+     * List historical orders by a character
+     *
+     * List cancelled and expired market orders placed by a character up to 90 days in the past.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-markets.read_character_orders.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdOrdersHistoryTest() throws ApiException {
+        Integer page = null;
+        List<CharacterOrdersHistoryResponse> response = api.getCharactersCharacterIdOrdersHistory(characterId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
      * List orders from a character
      *
      * List market orders placed by a character --- This route is cached for up
@@ -94,6 +112,24 @@ public class MarketApiTest extends GeneralApiTest {
                 null, null);
 
         assertThat(response, notNullValue());
+    }
+
+    /**
+     * List historical orders from a corporation
+     *
+     * List cancelled and expired market orders placed on behalf of a corporation up to 90 days in the past.  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Accountant, Trader  SSO Scope: esi-markets.read_corporation_orders.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdOrdersHistoryTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationOrdersHistoryResponse> response = api.getCorporationsCorporationIdOrdersHistory(corporationId, DATASOURCE, page, null, null, null);
+
+        // TODO: test validations
     }
 
     /**
