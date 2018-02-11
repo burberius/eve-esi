@@ -31,6 +31,7 @@ import net.troja.eve.esi.model.SystemJumpsResponse;
 import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
+import net.troja.eve.esi.model.UniverseAncestriesResponse;
 import net.troja.eve.esi.model.UniverseIdsResponse;
 import net.troja.eve.esi.model.UniverseNamesResponse;
 import static org.hamcrest.Matchers.equalTo;
@@ -45,6 +46,24 @@ import org.junit.Test;
 public class UniverseApiTest extends GeneralApiTest {
 
     private final UniverseApi api = new UniverseApi();
+
+    /**
+     * Get ancestries
+     *
+     * Get all character ancestries  ---  This route expires daily at 11:05
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUniverseAncestriesTest() throws ApiException {
+        String language = null;
+        List<UniverseAncestriesResponse> response = api.getUniverseAncestries(DATASOURCE, language, null, null);
+
+        assertThat(response.size(), equalTo(42));
+        final UniverseAncestriesResponse ancestriesResponse = response.get(0);
+        assertThat(ancestriesResponse.getBloodlineId(), greaterThan(0));
+    }
 
     /**
      * Get bloodlines
