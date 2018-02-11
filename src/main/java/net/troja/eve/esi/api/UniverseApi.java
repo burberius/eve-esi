@@ -27,6 +27,7 @@ import net.troja.eve.esi.model.SystemJumpsResponse;
 import net.troja.eve.esi.model.SystemKillsResponse;
 import net.troja.eve.esi.model.SystemResponse;
 import net.troja.eve.esi.model.TypeResponse;
+import net.troja.eve.esi.model.UniverseAncestriesResponse;
 import net.troja.eve.esi.model.UniverseIdsResponse;
 import net.troja.eve.esi.model.UniverseIdsServiceUnavailable;
 import net.troja.eve.esi.model.UniverseNamesResponse;
@@ -53,6 +54,58 @@ public class UniverseApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
+    }
+
+    /**
+     * Get ancestries Get all character ancestries --- This route expires daily
+     * at 11:05
+     * 
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param language
+     *            Language to use in the response (optional, default to en-us)
+     * @param userAgent
+     *            Client identifier, takes precedence over headers (optional)
+     * @param xUserAgent
+     *            Client identifier, takes precedence over User-Agent (optional)
+     * @return List&lt;UniverseAncestriesResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<UniverseAncestriesResponse> getUniverseAncestries(String datasource, String language, String userAgent,
+            String xUserAgent) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/universe/ancestries/".replaceAll("\\{format\\}", "json");
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
+
+        if (xUserAgent != null)
+            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<UniverseAncestriesResponse>> localVarReturnType = new GenericType<List<UniverseAncestriesResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**

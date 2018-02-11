@@ -275,6 +275,7 @@ s/get_characters_character_id_stats_social/CharacterStatsSocial/g
 s/get_characters_character_id_stats_travel/CharacterStatsTravel/g
 s/get_characters_character_id_orders_history_200_ok/CharacterOrdersHistoryResponse/g
 s/get_corporations_corporation_id_orders_history_200_ok/CorporationOrdersHistoryResponse/g
+s/get_universe_ancestries_200_ok/UniverseAncestriesResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'

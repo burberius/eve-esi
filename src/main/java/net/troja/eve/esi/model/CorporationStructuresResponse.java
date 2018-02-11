@@ -45,12 +45,6 @@ public class CorporationStructuresResponse implements Serializable {
     @JsonProperty("profile_id")
     private Integer profileId = null;
 
-    @JsonProperty("current_vul")
-    private List<VulnerabilityWindow> currentVul = new ArrayList<VulnerabilityWindow>();
-
-    @JsonProperty("next_vul")
-    private List<VulnerabilityWindow> nextVul = new ArrayList<VulnerabilityWindow>();
-
     @JsonProperty("fuel_expires")
     private OffsetDateTime fuelExpires = null;
 
@@ -65,6 +59,12 @@ public class CorporationStructuresResponse implements Serializable {
 
     @JsonProperty("unanchors_at")
     private OffsetDateTime unanchorsAt = null;
+
+    @JsonProperty("current_vul")
+    private List<VulnerabilityWindow> currentVul = new ArrayList<VulnerabilityWindow>();
+
+    @JsonProperty("next_vul")
+    private List<VulnerabilityWindow> nextVul = new ArrayList<VulnerabilityWindow>();
 
     public CorporationStructuresResponse structureId(Long structureId) {
         this.structureId = structureId;
@@ -159,54 +159,6 @@ public class CorporationStructuresResponse implements Serializable {
 
     public void setProfileId(Integer profileId) {
         this.profileId = profileId;
-    }
-
-    public CorporationStructuresResponse currentVul(List<VulnerabilityWindow> currentVul) {
-        this.currentVul = currentVul;
-        return this;
-    }
-
-    public CorporationStructuresResponse addCurrentVulItem(VulnerabilityWindow currentVulItem) {
-        this.currentVul.add(currentVulItem);
-        return this;
-    }
-
-    /**
-     * This week's vulnerability windows, Monday is day 0
-     * 
-     * @return currentVul
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "This week's vulnerability windows, Monday is day 0")
-    public List<VulnerabilityWindow> getCurrentVul() {
-        return currentVul;
-    }
-
-    public void setCurrentVul(List<VulnerabilityWindow> currentVul) {
-        this.currentVul = currentVul;
-    }
-
-    public CorporationStructuresResponse nextVul(List<VulnerabilityWindow> nextVul) {
-        this.nextVul = nextVul;
-        return this;
-    }
-
-    public CorporationStructuresResponse addNextVulItem(VulnerabilityWindow nextVulItem) {
-        this.nextVul.add(nextVulItem);
-        return this;
-    }
-
-    /**
-     * Next week's vulnerability windows, Monday is day 0
-     * 
-     * @return nextVul
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Next week's vulnerability windows, Monday is day 0")
-    public List<VulnerabilityWindow> getNextVul() {
-        return nextVul;
-    }
-
-    public void setNextVul(List<VulnerabilityWindow> nextVul) {
-        this.nextVul = nextVul;
     }
 
     public CorporationStructuresResponse fuelExpires(OffsetDateTime fuelExpires) {
@@ -309,6 +261,54 @@ public class CorporationStructuresResponse implements Serializable {
         this.unanchorsAt = unanchorsAt;
     }
 
+    public CorporationStructuresResponse currentVul(List<VulnerabilityWindow> currentVul) {
+        this.currentVul = currentVul;
+        return this;
+    }
+
+    public CorporationStructuresResponse addCurrentVulItem(VulnerabilityWindow currentVulItem) {
+        this.currentVul.add(currentVulItem);
+        return this;
+    }
+
+    /**
+     * This week's vulnerability windows, Monday is day 0
+     * 
+     * @return currentVul
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "This week's vulnerability windows, Monday is day 0")
+    public List<VulnerabilityWindow> getCurrentVul() {
+        return currentVul;
+    }
+
+    public void setCurrentVul(List<VulnerabilityWindow> currentVul) {
+        this.currentVul = currentVul;
+    }
+
+    public CorporationStructuresResponse nextVul(List<VulnerabilityWindow> nextVul) {
+        this.nextVul = nextVul;
+        return this;
+    }
+
+    public CorporationStructuresResponse addNextVulItem(VulnerabilityWindow nextVulItem) {
+        this.nextVul.add(nextVulItem);
+        return this;
+    }
+
+    /**
+     * Next week's vulnerability windows, Monday is day 0
+     * 
+     * @return nextVul
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Next week's vulnerability windows, Monday is day 0")
+    public List<VulnerabilityWindow> getNextVul() {
+        return nextVul;
+    }
+
+    public void setNextVul(List<VulnerabilityWindow> nextVul) {
+        this.nextVul = nextVul;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -323,19 +323,19 @@ public class CorporationStructuresResponse implements Serializable {
                 && Objects.equals(this.corporationId, corporationStructuresResponse.corporationId)
                 && Objects.equals(this.systemId, corporationStructuresResponse.systemId)
                 && Objects.equals(this.profileId, corporationStructuresResponse.profileId)
-                && Objects.equals(this.currentVul, corporationStructuresResponse.currentVul)
-                && Objects.equals(this.nextVul, corporationStructuresResponse.nextVul)
                 && Objects.equals(this.fuelExpires, corporationStructuresResponse.fuelExpires)
                 && Objects.equals(this.services, corporationStructuresResponse.services)
                 && Objects.equals(this.stateTimerStart, corporationStructuresResponse.stateTimerStart)
                 && Objects.equals(this.stateTimerEnd, corporationStructuresResponse.stateTimerEnd)
-                && Objects.equals(this.unanchorsAt, corporationStructuresResponse.unanchorsAt);
+                && Objects.equals(this.unanchorsAt, corporationStructuresResponse.unanchorsAt)
+                && Objects.equals(this.currentVul, corporationStructuresResponse.currentVul)
+                && Objects.equals(this.nextVul, corporationStructuresResponse.nextVul);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(structureId, typeId, corporationId, systemId, profileId, currentVul, nextVul, fuelExpires,
-                services, stateTimerStart, stateTimerEnd, unanchorsAt);
+        return Objects.hash(structureId, typeId, corporationId, systemId, profileId, fuelExpires, services,
+                stateTimerStart, stateTimerEnd, unanchorsAt, currentVul, nextVul);
     }
 
     @Override
@@ -348,13 +348,13 @@ public class CorporationStructuresResponse implements Serializable {
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
-        sb.append("    currentVul: ").append(toIndentedString(currentVul)).append("\n");
-        sb.append("    nextVul: ").append(toIndentedString(nextVul)).append("\n");
         sb.append("    fuelExpires: ").append(toIndentedString(fuelExpires)).append("\n");
         sb.append("    services: ").append(toIndentedString(services)).append("\n");
         sb.append("    stateTimerStart: ").append(toIndentedString(stateTimerStart)).append("\n");
         sb.append("    stateTimerEnd: ").append(toIndentedString(stateTimerEnd)).append("\n");
         sb.append("    unanchorsAt: ").append(toIndentedString(unanchorsAt)).append("\n");
+        sb.append("    currentVul: ").append(toIndentedString(currentVul)).append("\n");
+        sb.append("    nextVul: ").append(toIndentedString(nextVul)).append("\n");
         sb.append("}");
         return sb.toString();
     }

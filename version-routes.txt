@@ -126,6 +126,7 @@
   "/v1/ui/openwindow/information/",
   "/v1/ui/openwindow/marketdetails/",
   "/v1/ui/openwindow/newmail/",
+  "/v1/universe/ancestries/",
   "/v1/universe/bloodlines/",
   "/v1/universe/categories/",
   "/v1/universe/categories/{category_id}/",
