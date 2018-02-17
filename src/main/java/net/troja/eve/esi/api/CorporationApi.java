@@ -1433,7 +1433,9 @@ public class CorporationApi {
     /**
      * Get corporation structures Get a list of corporation structures --- This
      * route is cached for up to 3600 seconds --- Requires one of the following
-     * EVE corporation role(s): StationManager SSO Scope:
+     * EVE corporation role(s): StationManager --- [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{
+     * corporation_id}/structures/) SSO Scope:
      * esi-corporations.read_structures.v1
      * 
      * @param corporationId
