@@ -532,24 +532,4 @@ public class CorporationApiTest extends GeneralApiTest {
 
         assertThat(response.size(), equalTo(50));
     }
-
-    /**
-     * Update structure vulnerability schedule
-     *
-     * Update the vulnerability window schedule of a corporation structure ---
-     * Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/structures/{structure_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/structures/{structure_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/structures/{structure_id}/&#x60;
-     * SSO Scope: esi-corporations.write_structures.v1
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    @Ignore("Update can't be tested")
-    public void putCorporationsCorporationIdStructuresStructureIdTest() throws ApiException {
-    }
 }

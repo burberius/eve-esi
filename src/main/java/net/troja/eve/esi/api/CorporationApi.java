@@ -30,7 +30,6 @@ import net.troja.eve.esi.model.CorporationStructuresResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.InternalServerError;
-import net.troja.eve.esi.model.VulnerabilityWindow;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -1431,12 +1430,13 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation structures Get a list of corporation structures --- This
-     * route is cached for up to 3600 seconds --- Requires one of the following
-     * EVE corporation role(s): StationManager --- [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{
-     * corporation_id}/structures/) SSO Scope:
-     * esi-corporations.read_structures.v1
+     * Get corporation structures Get a list of corporation structures. This
+     * route&#39;s version includes the changes to structures detailed in this
+     * blog:
+     * https://www.eveonline.com/article/upwell-2.0-structures-changes-coming
+     * -on-february-13th --- This route is cached for up to 3600 seconds ---
+     * Requires one of the following EVE corporation role(s): StationManager SSO
+     * Scope: esi-corporations.read_structures.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -1469,7 +1469,7 @@ public class CorporationApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/structures/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/structures/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -1669,83 +1669,5 @@ public class CorporationApi {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Update structure vulnerability schedule Update the vulnerability window
-     * schedule of a corporation structure --- SSO Scope:
-     * esi-corporations.write_structures.v1
-     * 
-     * @param corporationId
-     *            An EVE corporation ID (required)
-     * @param newSchedule
-     *            New vulnerability window schedule for the structure (required)
-     * @param structureId
-     *            A structure ID (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public void putCorporationsCorporationIdStructuresStructureId(Integer corporationId,
-            List<VulnerabilityWindow> newSchedule, Long structureId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
-        Object localVarPostBody = newSchedule;
-
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling putCorporationsCorporationIdStructuresStructureId");
-        }
-
-        // verify the required parameter 'newSchedule' is set
-        if (newSchedule == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'newSchedule' when calling putCorporationsCorporationIdStructuresStructureId");
-        }
-
-        // verify the required parameter 'structureId' is set
-        if (structureId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'structureId' when calling putCorporationsCorporationIdStructuresStructureId");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/structures/{structure_id}/"
-                .replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
-                .replaceAll("\\{" + "structure_id" + "\\}", apiClient.escapeString(structureId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "evesso" };
-
-        apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
     }
 }

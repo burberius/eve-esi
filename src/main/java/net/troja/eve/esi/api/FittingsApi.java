@@ -171,11 +171,11 @@ public class FittingsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param fitting
+     *            Details about the new fitting (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fitting
-     *            Details about the new fitting (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -186,14 +186,20 @@ public class FittingsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public CharacterFittingResponse postCharactersCharacterIdFittings(Integer characterId, String datasource,
-            CharacterFitting fitting, String token, String userAgent, String xUserAgent) throws ApiException {
+    public CharacterFittingResponse postCharactersCharacterIdFittings(Integer characterId, CharacterFitting fitting,
+            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = fitting;
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdFittings");
+        }
+
+        // verify the required parameter 'fitting' is set
+        if (fitting == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'fitting' when calling postCharactersCharacterIdFittings");
         }
 
         // create path and map variables
