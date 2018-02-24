@@ -32,14 +32,6 @@ jq "(.paths[].get.responses.\"200\".schema.items.properties.items | select(.item
 jq "(.paths[].post.parameters[2].schema.properties.items | select(.title == \"post_characters_character_id_fittings_items\").items) = { \"\$ref\": \"#/definitions/fitting_item\" }" work1.json > work2.json
 mv work2.json work1.json
 
-# Vulnerability window
-echo "Transforming vulnerability windows"
-VULNERABILITY=$(jq ".paths[].get.responses.\"200\".schema.items.properties.current_vul | select(.items != null).items" esi.json)
-jq ".definitions.vulnerability_window = $VULNERABILITY" work1.json > work2.json
-jq "(.paths[].get.responses.\"200\".schema.items.properties.current_vul | select(.items != null).items) = { \"\$ref\": \"#/definitions/vulnerability_window\" }" work2.json > work1.json
-jq "(.paths[].get.responses.\"200\".schema.items.properties.next_vul | select(.items != null).items) = { \"\$ref\": \"#/definitions/vulnerability_window\" }" work1.json > work2.json
-jq "(.paths[].put | select(.parameters != null).parameters[] | select(.name == \"new_schedule\").schema.items) = { \"\$ref\": \"#/definitions/vulnerability_window\" }" work2.json > work1.json
-
 # Bad Request = 400
 echo "Transforming bad request"
 BADREQUEST=$(jq ".paths[][].responses[\"400\"] | select(.schema.title == \"post_characters_character_id_mail_bad_request\")" esi.json)

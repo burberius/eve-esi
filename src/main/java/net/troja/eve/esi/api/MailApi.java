@@ -516,11 +516,11 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param label
+     *            Label to create (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param label
-     *            Label to create (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -531,7 +531,7 @@ public class MailApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public Long postCharactersCharacterIdMailLabels(Integer characterId, String datasource, MailLabelSimple label,
+    public Long postCharactersCharacterIdMailLabels(Integer characterId, MailLabelSimple label, String datasource,
             String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = label;
 
@@ -539,6 +539,12 @@ public class MailApi {
         if (characterId == null) {
             throw new ApiException(400,
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdMailLabels");
+        }
+
+        // verify the required parameter 'label' is set
+        if (label == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'label' when calling postCharactersCharacterIdMailLabels");
         }
 
         // create path and map variables
