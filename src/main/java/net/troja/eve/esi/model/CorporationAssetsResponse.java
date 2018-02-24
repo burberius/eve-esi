@@ -72,6 +72,9 @@ public class CorporationAssetsResponse implements Serializable {
     @JsonProperty("item_id")
     private Long itemId = null;
 
+    @JsonProperty("is_singleton")
+    private Boolean isSingleton = null;
+
     /**
      * location_flag string
      */
@@ -331,9 +334,6 @@ public class CorporationAssetsResponse implements Serializable {
     @JsonProperty("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("is_singleton")
-    private Boolean isSingleton = null;
-
     public CorporationAssetsResponse typeId(Integer typeId) {
         this.typeId = typeId;
         return this;
@@ -429,25 +429,6 @@ public class CorporationAssetsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-        return this;
-    }
-
-    /**
-     * location_flag string
-     * 
-     * @return locationFlag
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
-    public LocationFlagEnum getLocationFlag() {
-        return locationFlag;
-    }
-
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-    }
-
     public CorporationAssetsResponse isSingleton(Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
@@ -467,6 +448,25 @@ public class CorporationAssetsResponse implements Serializable {
         this.isSingleton = isSingleton;
     }
 
+    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+        return this;
+    }
+
+    /**
+     * location_flag string
+     * 
+     * @return locationFlag
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    public LocationFlagEnum getLocationFlag() {
+        return locationFlag;
+    }
+
+    public void setLocationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -481,13 +481,13 @@ public class CorporationAssetsResponse implements Serializable {
                 && Objects.equals(this.locationId, corporationAssetsResponse.locationId)
                 && Objects.equals(this.locationType, corporationAssetsResponse.locationType)
                 && Objects.equals(this.itemId, corporationAssetsResponse.itemId)
-                && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag)
-                && Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton);
+                && Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton)
+                && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, quantity, locationId, locationType, itemId, locationFlag, isSingleton);
+        return Objects.hash(typeId, quantity, locationId, locationType, itemId, isSingleton, locationFlag);
     }
 
     @Override
@@ -500,8 +500,8 @@ public class CorporationAssetsResponse implements Serializable {
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
+        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("}");
         return sb.toString();
     }

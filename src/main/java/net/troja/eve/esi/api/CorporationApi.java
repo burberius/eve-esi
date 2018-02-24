@@ -174,7 +174,10 @@ public class CorporationApi {
     /**
      * Get corporation blueprints Returns a list of blueprints the corporation
      * owns --- This route is cached for up to 3600 seconds --- Requires one of
-     * the following EVE corporation role(s): Director SSO Scope:
+     * the following EVE corporation role(s): Director --- [This route has an
+     * available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
+     * /{corporation_id}/blueprints/) SSO Scope:
      * esi-corporations.read_blueprints.v1
      * 
      * @param corporationId
@@ -241,7 +244,10 @@ public class CorporationApi {
      * Get all corporation ALSC logs Returns logs recorded in the past seven
      * days from all audit log secure containers (ALSC) owned by a given
      * corporation --- This route is cached for up to 600 seconds --- Requires
-     * one of the following EVE corporation role(s): Director SSO Scope:
+     * one of the following EVE corporation role(s): Director --- [This route
+     * has an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations
+     * /{corporation_id}/containers/logs/) SSO Scope:
      * esi-corporations.read_container_logs.v1
      * 
      * @param corporationId

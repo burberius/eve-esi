@@ -108,8 +108,9 @@ public class AssetsApi {
     /**
      * Get corporation assets Return a list of the corporation assets --- This
      * route is cached for up to 3600 seconds --- Requires one of the following
-     * EVE corporation role(s): Director SSO Scope:
-     * esi-assets.read_corporation_assets.v1
+     * EVE corporation role(s): Director --- [This route has an available
+     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{
+     * corporation_id}/assets/) SSO Scope: esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
