@@ -34,6 +34,18 @@ public class CorporationBlueprintsResponse implements Serializable {
     @JsonProperty("location_id")
     private Long locationId = null;
 
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("time_efficiency")
+    private Integer timeEfficiency = null;
+
+    @JsonProperty("material_efficiency")
+    private Integer materialEfficiency = null;
+
+    @JsonProperty("runs")
+    private Integer runs = null;
+
     /**
      * Type of the location_id
      */
@@ -293,18 +305,6 @@ public class CorporationBlueprintsResponse implements Serializable {
     @JsonProperty("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
-    @JsonProperty("time_efficiency")
-    private Integer timeEfficiency = null;
-
-    @JsonProperty("material_efficiency")
-    private Integer materialEfficiency = null;
-
-    @JsonProperty("runs")
-    private Integer runs = null;
-
     public CorporationBlueprintsResponse itemId(Long itemId) {
         this.itemId = itemId;
         return this;
@@ -361,25 +361,6 @@ public class CorporationBlueprintsResponse implements Serializable {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
-    }
-
-    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-        return this;
-    }
-
-    /**
-     * Type of the location_id
-     * 
-     * @return locationFlag
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of the location_id")
-    public LocationFlagEnum getLocationFlag() {
-        return locationFlag;
-    }
-
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
     }
 
     public CorporationBlueprintsResponse quantity(Integer quantity) {
@@ -462,6 +443,25 @@ public class CorporationBlueprintsResponse implements Serializable {
         this.runs = runs;
     }
 
+    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+        return this;
+    }
+
+    /**
+     * Type of the location_id
+     * 
+     * @return locationFlag
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Type of the location_id")
+    public LocationFlagEnum getLocationFlag() {
+        return locationFlag;
+    }
+
+    public void setLocationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -474,17 +474,17 @@ public class CorporationBlueprintsResponse implements Serializable {
         return Objects.equals(this.itemId, corporationBlueprintsResponse.itemId)
                 && Objects.equals(this.typeId, corporationBlueprintsResponse.typeId)
                 && Objects.equals(this.locationId, corporationBlueprintsResponse.locationId)
-                && Objects.equals(this.locationFlag, corporationBlueprintsResponse.locationFlag)
                 && Objects.equals(this.quantity, corporationBlueprintsResponse.quantity)
                 && Objects.equals(this.timeEfficiency, corporationBlueprintsResponse.timeEfficiency)
                 && Objects.equals(this.materialEfficiency, corporationBlueprintsResponse.materialEfficiency)
-                && Objects.equals(this.runs, corporationBlueprintsResponse.runs);
+                && Objects.equals(this.runs, corporationBlueprintsResponse.runs)
+                && Objects.equals(this.locationFlag, corporationBlueprintsResponse.locationFlag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, typeId, locationId, locationFlag, quantity, timeEfficiency, materialEfficiency,
-                runs);
+        return Objects.hash(itemId, typeId, locationId, quantity, timeEfficiency, materialEfficiency, runs,
+                locationFlag);
     }
 
     @Override
@@ -495,11 +495,11 @@ public class CorporationBlueprintsResponse implements Serializable {
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    timeEfficiency: ").append(toIndentedString(timeEfficiency)).append("\n");
         sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
         sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
+        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("}");
         return sb.toString();
     }
