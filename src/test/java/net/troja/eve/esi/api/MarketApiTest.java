@@ -176,14 +176,14 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getMarketsGroupsMarketGroupIdTest() throws ApiException {
-        final Integer marketGroupId = 23;
+        final Integer marketGroupId = 2;
         final String userAgent = null;
         final String xUserAgent = null;
         final MarketGroupResponse response = api.getMarketsGroupsMarketGroupId(marketGroupId, DATASOURCE, LANGUAGE,
                 userAgent, xUserAgent);
 
         assertThat(response, notNullValue());
-        assertThat(response.getName(), equalTo("Passengers"));
+        assertThat(response.getName(), equalTo("Blueprints & Reactions"));
     }
 
     /**

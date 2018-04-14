@@ -482,10 +482,8 @@ public class CharacterApi {
 
     /**
      * Get character notifications Return character notifications --- This route
-     * is cached for up to 600 seconds --- [This route has an available
-     * update](https
-     * ://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
-     * }/notifications/) SSO Scope: esi-characters.read_notifications.v1
+     * is cached for up to 600 seconds SSO Scope:
+     * esi-characters.read_notifications.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -513,7 +511,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/notifications/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/characters/{character_id}/notifications/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params

@@ -326,6 +326,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         MOONMININGEXTRACTIONFINISHED("MoonminingExtractionFinished"),
 
+        MOONMININGEXTRACTIONSTARTED("MoonminingExtractionStarted"),
+
         MOONMININGLASERFIRED("MoonminingLaserFired"),
 
         NPCSTANDINGSGAINED("NPCStandingsGained"),
@@ -420,6 +422,12 @@ public class CharacterNotificationsResponse implements Serializable {
 
         STRUCTUREUNDERATTACK("StructureUnderAttack"),
 
+        STRUCTUREWENTHIGHPOWER("StructureWentHighPower"),
+
+        STRUCTUREWENTLOWPOWER("StructureWentLowPower"),
+
+        STRUCTURESREINFORCEMENTCHANGED("StructuresReinforcementChanged"),
+
         TOWERALERTMSG("TowerAlertMsg"),
 
         TOWERRESOURCEALERTMSG("TowerResourceAlertMsg"),
@@ -432,9 +440,7 @@ public class CharacterNotificationsResponse implements Serializable {
 
         WARSURRENDERDECLINEDMSG("WarSurrenderDeclinedMsg"),
 
-        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg"),
-
-        NOTIFICATIONTYPEMOONMININGEXTRACTIONSTARTED("notificationTypeMoonminingExtractionStarted");
+        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg");
 
         private String value;
 

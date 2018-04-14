@@ -153,7 +153,7 @@ public class CorporationAssetsResponse implements Serializable {
 
         HISLOT7("HiSlot7"),
 
-        HIDDENMODIFERS("HiddenModifers"),
+        HIDDENMODIFIERS("HiddenModifiers"),
 
         IMPLANT("Implant"),
 
@@ -285,6 +285,8 @@ public class CorporationAssetsResponse implements Serializable {
 
         STRUCTUREOFFLINE("StructureOffline"),
 
+        SUBSYSTEMBAY("SubSystemBay"),
+
         SUBSYSTEMSLOT0("SubSystemSlot0"),
 
         SUBSYSTEMSLOT1("SubSystemSlot1"),
@@ -300,8 +302,6 @@ public class CorporationAssetsResponse implements Serializable {
         SUBSYSTEMSLOT6("SubSystemSlot6"),
 
         SUBSYSTEMSLOT7("SubSystemSlot7"),
-
-        SUBSYSTEMBAY("SubsystemBay"),
 
         UNLOCKED("Unlocked"),
 
