@@ -87,7 +87,8 @@ public class IndustryApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationCorporationIdMiningExtractionsTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationMiningExtractionsResponse> response = api.getCorporationCorporationIdMiningExtractions(corporationId, DATASOURCE, null, null, null);
+        Integer page = null;
+        List<CorporationMiningExtractionsResponse> response = api.getCorporationCorporationIdMiningExtractions(corporationId, DATASOURCE, page, null, null, null);
 
         // TODO: test validations
     }

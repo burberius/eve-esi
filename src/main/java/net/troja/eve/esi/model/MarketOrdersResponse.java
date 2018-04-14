@@ -35,6 +35,9 @@ public class MarketOrdersResponse implements Serializable {
     @JsonProperty("location_id")
     private Long locationId = null;
 
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
     @JsonProperty("volume_total")
     private Integer volumeTotal = null;
 
@@ -164,6 +167,25 @@ public class MarketOrdersResponse implements Serializable {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
+    }
+
+    public MarketOrdersResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this order was placed
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system this order was placed")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
     }
 
     public MarketOrdersResponse volumeTotal(Integer volumeTotal) {
@@ -330,6 +352,7 @@ public class MarketOrdersResponse implements Serializable {
         return Objects.equals(this.orderId, marketOrdersResponse.orderId)
                 && Objects.equals(this.typeId, marketOrdersResponse.typeId)
                 && Objects.equals(this.locationId, marketOrdersResponse.locationId)
+                && Objects.equals(this.systemId, marketOrdersResponse.systemId)
                 && Objects.equals(this.volumeTotal, marketOrdersResponse.volumeTotal)
                 && Objects.equals(this.volumeRemain, marketOrdersResponse.volumeRemain)
                 && Objects.equals(this.minVolume, marketOrdersResponse.minVolume)
@@ -342,8 +365,8 @@ public class MarketOrdersResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, typeId, locationId, volumeTotal, volumeRemain, minVolume, price, isBuyOrder,
-                duration, issued, range);
+        return Objects.hash(orderId, typeId, locationId, systemId, volumeTotal, volumeRemain, minVolume, price,
+                isBuyOrder, duration, issued, range);
     }
 
     @Override
@@ -354,6 +377,7 @@ public class MarketOrdersResponse implements Serializable {
         sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
         sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
         sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
