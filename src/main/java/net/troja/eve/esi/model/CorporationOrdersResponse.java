@@ -91,9 +91,6 @@ public class CorporationOrdersResponse implements Serializable {
     @JsonProperty("range")
     private RangeEnum range = null;
 
-    @JsonProperty("is_buy_order")
-    private Boolean isBuyOrder = null;
-
     @JsonProperty("price")
     private Double price = null;
 
@@ -106,58 +103,20 @@ public class CorporationOrdersResponse implements Serializable {
     @JsonProperty("issued")
     private OffsetDateTime issued = null;
 
-    /**
-     * Current order state
-     */
-    public enum StateEnum {
-        CANCELLED("cancelled"),
-
-        CHARACTER_DELETED("character_deleted"),
-
-        CLOSED("closed"),
-
-        EXPIRED("expired"),
-
-        OPEN("open"),
-
-        PENDING("pending");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static StateEnum fromValue(String text) {
-            for (StateEnum b : StateEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("state")
-    private StateEnum state = null;
+    @JsonProperty("is_buy_order")
+    private Boolean isBuyOrder = null;
 
     @JsonProperty("min_volume")
     private Integer minVolume = null;
 
-    @JsonProperty("wallet_division")
-    private Integer walletDivision = null;
+    @JsonProperty("escrow")
+    private Double escrow = null;
 
     @JsonProperty("duration")
     private Integer duration = null;
 
-    @JsonProperty("escrow")
-    private Double escrow = null;
+    @JsonProperty("wallet_division")
+    private Integer walletDivision = null;
 
     public CorporationOrdersResponse orderId(Long orderId) {
         this.orderId = orderId;
@@ -254,25 +213,6 @@ public class CorporationOrdersResponse implements Serializable {
         this.range = range;
     }
 
-    public CorporationOrdersResponse isBuyOrder(Boolean isBuyOrder) {
-        this.isBuyOrder = isBuyOrder;
-        return this;
-    }
-
-    /**
-     * True for a bid (buy) order. False for an offer (sell) order
-     * 
-     * @return isBuyOrder
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "True for a bid (buy) order. False for an offer (sell) order")
-    public Boolean getIsBuyOrder() {
-        return isBuyOrder;
-    }
-
-    public void setIsBuyOrder(Boolean isBuyOrder) {
-        this.isBuyOrder = isBuyOrder;
-    }
-
     public CorporationOrdersResponse price(Double price) {
         this.price = price;
         return this;
@@ -349,23 +289,23 @@ public class CorporationOrdersResponse implements Serializable {
         this.issued = issued;
     }
 
-    public CorporationOrdersResponse state(StateEnum state) {
-        this.state = state;
+    public CorporationOrdersResponse isBuyOrder(Boolean isBuyOrder) {
+        this.isBuyOrder = isBuyOrder;
         return this;
     }
 
     /**
-     * Current order state
+     * True if the order is a bid (buy) order
      * 
-     * @return state
+     * @return isBuyOrder
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Current order state")
-    public StateEnum getState() {
-        return state;
+    @ApiModelProperty(example = "null", value = "True if the order is a bid (buy) order")
+    public Boolean getIsBuyOrder() {
+        return isBuyOrder;
     }
 
-    public void setState(StateEnum state) {
-        this.state = state;
+    public void setIsBuyOrder(Boolean isBuyOrder) {
+        this.isBuyOrder = isBuyOrder;
     }
 
     public CorporationOrdersResponse minVolume(Integer minVolume) {
@@ -374,18 +314,57 @@ public class CorporationOrdersResponse implements Serializable {
     }
 
     /**
-     * For bids (buy orders), the minimum quantity that will be accepted in a
-     * matching offer (sell order)
+     * For buy orders, the minimum quantity that will be accepted in a matching
+     * sell order
      * 
      * @return minVolume
      **/
-    @ApiModelProperty(example = "null", required = true, value = "For bids (buy orders), the minimum quantity that will be accepted in a matching offer (sell order)")
+    @ApiModelProperty(example = "null", value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
     public Integer getMinVolume() {
         return minVolume;
     }
 
     public void setMinVolume(Integer minVolume) {
         this.minVolume = minVolume;
+    }
+
+    public CorporationOrdersResponse escrow(Double escrow) {
+        this.escrow = escrow;
+        return this;
+    }
+
+    /**
+     * For buy orders, the amount of ISK in escrow
+     * 
+     * @return escrow
+     **/
+    @ApiModelProperty(example = "null", value = "For buy orders, the amount of ISK in escrow")
+    public Double getEscrow() {
+        return escrow;
+    }
+
+    public void setEscrow(Double escrow) {
+        this.escrow = escrow;
+    }
+
+    public CorporationOrdersResponse duration(Integer duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    /**
+     * Number of days for which order is valid (starting from the issued date).
+     * An order expires at time issued + duration
+     * 
+     * @return duration
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration")
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public CorporationOrdersResponse walletDivision(Integer walletDivision) {
@@ -408,45 +387,6 @@ public class CorporationOrdersResponse implements Serializable {
         this.walletDivision = walletDivision;
     }
 
-    public CorporationOrdersResponse duration(Integer duration) {
-        this.duration = duration;
-        return this;
-    }
-
-    /**
-     * Number of days the order is valid for (starting from the issued date). An
-     * order expires at time issued + duration
-     * 
-     * @return duration
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration")
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public CorporationOrdersResponse escrow(Double escrow) {
-        this.escrow = escrow;
-        return this;
-    }
-
-    /**
-     * For buy orders, the amount of ISK in escrow
-     * 
-     * @return escrow
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "For buy orders, the amount of ISK in escrow")
-    public Double getEscrow() {
-        return escrow;
-    }
-
-    public void setEscrow(Double escrow) {
-        this.escrow = escrow;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -461,22 +401,21 @@ public class CorporationOrdersResponse implements Serializable {
                 && Objects.equals(this.regionId, corporationOrdersResponse.regionId)
                 && Objects.equals(this.locationId, corporationOrdersResponse.locationId)
                 && Objects.equals(this.range, corporationOrdersResponse.range)
-                && Objects.equals(this.isBuyOrder, corporationOrdersResponse.isBuyOrder)
                 && Objects.equals(this.price, corporationOrdersResponse.price)
                 && Objects.equals(this.volumeTotal, corporationOrdersResponse.volumeTotal)
                 && Objects.equals(this.volumeRemain, corporationOrdersResponse.volumeRemain)
                 && Objects.equals(this.issued, corporationOrdersResponse.issued)
-                && Objects.equals(this.state, corporationOrdersResponse.state)
+                && Objects.equals(this.isBuyOrder, corporationOrdersResponse.isBuyOrder)
                 && Objects.equals(this.minVolume, corporationOrdersResponse.minVolume)
-                && Objects.equals(this.walletDivision, corporationOrdersResponse.walletDivision)
+                && Objects.equals(this.escrow, corporationOrdersResponse.escrow)
                 && Objects.equals(this.duration, corporationOrdersResponse.duration)
-                && Objects.equals(this.escrow, corporationOrdersResponse.escrow);
+                && Objects.equals(this.walletDivision, corporationOrdersResponse.walletDivision);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, typeId, regionId, locationId, range, isBuyOrder, price, volumeTotal, volumeRemain,
-                issued, state, minVolume, walletDivision, duration, escrow);
+        return Objects.hash(orderId, typeId, regionId, locationId, range, price, volumeTotal, volumeRemain, issued,
+                isBuyOrder, minVolume, escrow, duration, walletDivision);
     }
 
     @Override
@@ -489,16 +428,15 @@ public class CorporationOrdersResponse implements Serializable {
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    range: ").append(toIndentedString(range)).append("\n");
-        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    price: ").append(toIndentedString(price)).append("\n");
         sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
         sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
         sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
-        sb.append("    walletDivision: ").append(toIndentedString(walletDivision)).append("\n");
-        sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
         sb.append("    escrow: ").append(toIndentedString(escrow)).append("\n");
+        sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+        sb.append("    walletDivision: ").append(toIndentedString(walletDivision)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -213,7 +213,7 @@ public class CorporationContainersLogsResponse implements Serializable {
 
         HISLOT7("HiSlot7"),
 
-        HIDDENMODIFERS("HiddenModifers"),
+        HIDDENMODIFIERS("HiddenModifiers"),
 
         IMPLANT("Implant"),
 
@@ -345,6 +345,8 @@ public class CorporationContainersLogsResponse implements Serializable {
 
         STRUCTUREOFFLINE("StructureOffline"),
 
+        SUBSYSTEMBAY("SubSystemBay"),
+
         SUBSYSTEMSLOT0("SubSystemSlot0"),
 
         SUBSYSTEMSLOT1("SubSystemSlot1"),
@@ -360,8 +362,6 @@ public class CorporationContainersLogsResponse implements Serializable {
         SUBSYSTEMSLOT6("SubSystemSlot6"),
 
         SUBSYSTEMSLOT7("SubSystemSlot7"),
-
-        SUBSYSTEMBAY("SubsystemBay"),
 
         UNLOCKED("Unlocked"),
 

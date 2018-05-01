@@ -186,6 +186,8 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -197,7 +199,7 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CorporationMiningExtractionsResponse> getCorporationCorporationIdMiningExtractions(
-            Integer corporationId, String datasource, String token, String userAgent, String xUserAgent)
+            Integer corporationId, String datasource, Integer page, String token, String userAgent, String xUserAgent)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -217,6 +219,7 @@ public class IndustryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 

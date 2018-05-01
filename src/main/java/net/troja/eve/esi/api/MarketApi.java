@@ -44,11 +44,9 @@ public class MarketApi {
     }
 
     /**
-     * List open orders from a character List market orders placed by a
-     * character --- This route is cached for up to 3600 seconds --- [This route
-     * has an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters
-     * /{character_id}/orders/) SSO Scope: esi-markets.read_character_orders.v1
+     * List open orders from a character List open market orders placed by a
+     * character --- This route is cached for up to 1200 seconds SSO Scope:
+     * esi-markets.read_character_orders.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -76,7 +74,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/orders/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/orders/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -177,10 +175,7 @@ public class MarketApi {
      * List open orders from a corporation List open market orders placed on
      * behalf of a corporation --- This route is cached for up to 1200 seconds
      * --- Requires one of the following EVE corporation role(s): Accountant,
-     * Trader --- [This route has an available
-     * update](https://esi.tech.ccp.is/diff
-     * /latest/dev/#GET-/corporations/{corporation_id}/orders/) SSO Scope:
-     * esi-markets.read_corporation_orders.v1
+     * Trader SSO Scope: esi-markets.read_corporation_orders.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -210,7 +205,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/orders/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/orders/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params

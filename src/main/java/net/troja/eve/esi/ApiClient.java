@@ -736,11 +736,6 @@ public class ApiClient {
             }
         }
 
-        //Workaround for content-length not set if body is null
-        if (body == null) {
-            body = "";
-        }
-
         Entity<?> entity = serialize(body, formParams, contentType);
 
         Response response;

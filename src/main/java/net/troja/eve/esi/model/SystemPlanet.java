@@ -33,6 +33,9 @@ public class SystemPlanet implements Serializable {
     @JsonProperty("moons")
     private List<Integer> moons = new ArrayList<Integer>();
 
+    @JsonProperty("asteroid_belts")
+    private List<Integer> asteroidBelts = new ArrayList<Integer>();
+
     public SystemPlanet planetId(Integer planetId) {
         this.planetId = planetId;
         return this;
@@ -76,6 +79,30 @@ public class SystemPlanet implements Serializable {
         this.moons = moons;
     }
 
+    public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
+        this.asteroidBelts = asteroidBelts;
+        return this;
+    }
+
+    public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
+        this.asteroidBelts.add(asteroidBeltsItem);
+        return this;
+    }
+
+    /**
+     * asteroid_belts array
+     * 
+     * @return asteroidBelts
+     **/
+    @ApiModelProperty(example = "null", value = "asteroid_belts array")
+    public List<Integer> getAsteroidBelts() {
+        return asteroidBelts;
+    }
+
+    public void setAsteroidBelts(List<Integer> asteroidBelts) {
+        this.asteroidBelts = asteroidBelts;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,12 +112,13 @@ public class SystemPlanet implements Serializable {
             return false;
         }
         SystemPlanet systemPlanet = (SystemPlanet) o;
-        return Objects.equals(this.planetId, systemPlanet.planetId) && Objects.equals(this.moons, systemPlanet.moons);
+        return Objects.equals(this.planetId, systemPlanet.planetId) && Objects.equals(this.moons, systemPlanet.moons)
+                && Objects.equals(this.asteroidBelts, systemPlanet.asteroidBelts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(planetId, moons);
+        return Objects.hash(planetId, moons, asteroidBelts);
     }
 
     @Override
@@ -100,6 +128,7 @@ public class SystemPlanet implements Serializable {
 
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
+        sb.append("    asteroidBelts: ").append(toIndentedString(asteroidBelts)).append("\n");
         sb.append("}");
         return sb.toString();
     }
