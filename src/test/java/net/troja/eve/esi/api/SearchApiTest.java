@@ -53,11 +53,8 @@ public class SearchApiTest extends GeneralApiTest {
         final String search = "GoldenGnu";
         final String language = "en-us";
         final Boolean strict = true;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
         final CharacterSearchResponse response = api.getCharactersCharacterIdSearch(categories, characterId, search,
-                DATASOURCE, language, strict, token, userAgent, xUserAgent);
+                DATASOURCE, null, language, strict, null, null, null);
 
         assertThat(response.getCharacter().size(), equalTo(1));
         assertThat(response.getCharacter().get(0), equalTo(1652509239));
@@ -80,10 +77,8 @@ public class SearchApiTest extends GeneralApiTest {
         final String search = "Jita";
         final String language = "en-us";
         final Boolean strict = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final SearchResponse response = api.getSearch(categories, search, DATASOURCE, language, strict, userAgent,
-                xUserAgent);
+        final SearchResponse response = api.getSearch(categories, search, DATASOURCE, null, language, strict, null,
+                null);
 
         assertThat(response.getSolarSystem().size(), equalTo(1));
         assertThat(response.getSolarSystem().get(0), equalTo(30000142));

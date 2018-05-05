@@ -28,40 +28,20 @@ import java.io.Serializable;
 public class CorporationFwStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("faction_id")
-    private Integer factionId = null;
-
     @JsonProperty("enlisted_on")
     private OffsetDateTime enlistedOn = null;
 
-    @JsonProperty("pilots")
-    private Integer pilots = null;
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
 
     @JsonProperty("kills")
     private CorporationFwStatsKills kills = null;
 
+    @JsonProperty("pilots")
+    private Integer pilots = null;
+
     @JsonProperty("victory_points")
     private CorporationFwStatsVictoryPoints victoryPoints = null;
-
-    public CorporationFwStatsResponse factionId(Integer factionId) {
-        this.factionId = factionId;
-        return this;
-    }
-
-    /**
-     * The faction the given corporation is enlisted to fight for. Will not be
-     * included if corporation is not enlisted in faction warfare
-     * 
-     * @return factionId
-     **/
-    @ApiModelProperty(example = "null", value = "The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare")
-    public Integer getFactionId() {
-        return factionId;
-    }
-
-    public void setFactionId(Integer factionId) {
-        this.factionId = factionId;
-    }
 
     public CorporationFwStatsResponse enlistedOn(OffsetDateTime enlistedOn) {
         this.enlistedOn = enlistedOn;
@@ -83,24 +63,24 @@ public class CorporationFwStatsResponse implements Serializable {
         this.enlistedOn = enlistedOn;
     }
 
-    public CorporationFwStatsResponse pilots(Integer pilots) {
-        this.pilots = pilots;
+    public CorporationFwStatsResponse factionId(Integer factionId) {
+        this.factionId = factionId;
         return this;
     }
 
     /**
-     * How many pilots the enlisted corporation has. Will not be included if
-     * corporation is not enlisted in faction warfare
+     * The faction the given corporation is enlisted to fight for. Will not be
+     * included if corporation is not enlisted in faction warfare
      * 
-     * @return pilots
+     * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "How many pilots the enlisted corporation has. Will not be included if corporation is not enlisted in faction warfare")
-    public Integer getPilots() {
-        return pilots;
+    @ApiModelProperty(example = "null", value = "The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare")
+    public Integer getFactionId() {
+        return factionId;
     }
 
-    public void setPilots(Integer pilots) {
-        this.pilots = pilots;
+    public void setFactionId(Integer factionId) {
+        this.factionId = factionId;
     }
 
     public CorporationFwStatsResponse kills(CorporationFwStatsKills kills) {
@@ -120,6 +100,26 @@ public class CorporationFwStatsResponse implements Serializable {
 
     public void setKills(CorporationFwStatsKills kills) {
         this.kills = kills;
+    }
+
+    public CorporationFwStatsResponse pilots(Integer pilots) {
+        this.pilots = pilots;
+        return this;
+    }
+
+    /**
+     * How many pilots the enlisted corporation has. Will not be included if
+     * corporation is not enlisted in faction warfare
+     * 
+     * @return pilots
+     **/
+    @ApiModelProperty(example = "null", value = "How many pilots the enlisted corporation has. Will not be included if corporation is not enlisted in faction warfare")
+    public Integer getPilots() {
+        return pilots;
+    }
+
+    public void setPilots(Integer pilots) {
+        this.pilots = pilots;
     }
 
     public CorporationFwStatsResponse victoryPoints(CorporationFwStatsVictoryPoints victoryPoints) {
@@ -150,16 +150,16 @@ public class CorporationFwStatsResponse implements Serializable {
             return false;
         }
         CorporationFwStatsResponse corporationFwStatsResponse = (CorporationFwStatsResponse) o;
-        return Objects.equals(this.factionId, corporationFwStatsResponse.factionId)
-                && Objects.equals(this.enlistedOn, corporationFwStatsResponse.enlistedOn)
-                && Objects.equals(this.pilots, corporationFwStatsResponse.pilots)
+        return Objects.equals(this.enlistedOn, corporationFwStatsResponse.enlistedOn)
+                && Objects.equals(this.factionId, corporationFwStatsResponse.factionId)
                 && Objects.equals(this.kills, corporationFwStatsResponse.kills)
+                && Objects.equals(this.pilots, corporationFwStatsResponse.pilots)
                 && Objects.equals(this.victoryPoints, corporationFwStatsResponse.victoryPoints);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(factionId, enlistedOn, pilots, kills, victoryPoints);
+        return Objects.hash(enlistedOn, factionId, kills, pilots, victoryPoints);
     }
 
     @Override
@@ -167,10 +167,10 @@ public class CorporationFwStatsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationFwStatsResponse {\n");
 
-        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("    enlistedOn: ").append(toIndentedString(enlistedOn)).append("\n");
-        sb.append("    pilots: ").append(toIndentedString(pilots)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
+        sb.append("    pilots: ").append(toIndentedString(pilots)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
         sb.append("}");
         return sb.toString();

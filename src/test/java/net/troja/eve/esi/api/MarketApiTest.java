@@ -57,7 +57,7 @@ public class MarketApiTest extends GeneralApiTest {
     
         //Get assets
         List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
-                DATASOURCE, null, null, null, null);
+                DATASOURCE, null, null, null, null, null);
         result.addAll(response);
 
     //Step 2: Safely get X-Pages header
@@ -73,7 +73,7 @@ public class MarketApiTest extends GeneralApiTest {
         for (int page = 2; page <= xPages; page++) {
             //Get assets
             List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
-                DATASOURCE, page, null, null, null);
+                DATASOURCE, null, page, null, null, null);
             result.addAll(pageResponse);
         }
         
@@ -92,7 +92,7 @@ public class MarketApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdOrdersHistoryTest() throws ApiException {
         Integer page = null;
-        List<CharacterOrdersHistoryResponse> response = api.getCharactersCharacterIdOrdersHistory(characterId, DATASOURCE, page, null, null, null);
+        List<CharacterOrdersHistoryResponse> response = api.getCharactersCharacterIdOrdersHistory(characterId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -108,7 +108,7 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdOrdersTest() throws ApiException {
-        final List<CharacterOrdersResponse> response = api.getCharactersCharacterIdOrders(characterId, DATASOURCE, null,
+        final List<CharacterOrdersResponse> response = api.getCharactersCharacterIdOrders(characterId, DATASOURCE, null, null,
                 null, null);
 
         assertThat(response, notNullValue());
@@ -127,7 +127,7 @@ public class MarketApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdOrdersHistoryTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationOrdersHistoryResponse> response = api.getCorporationsCorporationIdOrdersHistory(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationOrdersHistoryResponse> response = api.getCorporationsCorporationIdOrdersHistory(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -145,7 +145,7 @@ public class MarketApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdOrdersTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationOrdersResponse> response = api.getCorporationsCorporationIdOrders(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationOrdersResponse> response = api.getCorporationsCorporationIdOrders(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -160,7 +160,7 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getMarketsGroupsTest() throws ApiException {
-        final List<Integer> response = api.getMarketsGroups(DATASOURCE, null, null);
+        final List<Integer> response = api.getMarketsGroups(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -177,10 +177,8 @@ public class MarketApiTest extends GeneralApiTest {
     @Test
     public void getMarketsGroupsMarketGroupIdTest() throws ApiException {
         final Integer marketGroupId = 2;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final MarketGroupResponse response = api.getMarketsGroupsMarketGroupId(marketGroupId, DATASOURCE, LANGUAGE,
-                userAgent, xUserAgent);
+        final MarketGroupResponse response = api.getMarketsGroupsMarketGroupId(marketGroupId, DATASOURCE, null, LANGUAGE,
+                null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getName(), equalTo("Blueprints & Reactions"));
@@ -200,9 +198,7 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getMarketsPricesTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<MarketPricesResponse> response = api.getMarketsPrices(DATASOURCE, userAgent, xUserAgent);
+        final List<MarketPricesResponse> response = api.getMarketsPrices(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final MarketPricesResponse market = response.get(0);
@@ -223,10 +219,8 @@ public class MarketApiTest extends GeneralApiTest {
      */
     @Test
     public void getMarketsRegionIdHistoryTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
         final List<MarketHistoryResponse> response = api.getMarketsRegionIdHistory(REGION_ID_THE_FORGE, TYPE_ID_VELDSPAR,
-                DATASOURCE, userAgent, xUserAgent);
+                DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final MarketHistoryResponse historyResponse = response.get(0);
@@ -249,10 +243,8 @@ public class MarketApiTest extends GeneralApiTest {
     public void getMarketsRegionIdOrdersTest() throws ApiException {
         final String orderType = "buy";
         final Integer page = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
         final List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE,
-                DATASOURCE, page, TYPE_ID_VELDSPAR, userAgent, xUserAgent);
+                DATASOURCE, null, page, TYPE_ID_VELDSPAR, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final MarketOrdersResponse ordersResponse = response.get(0);
@@ -271,7 +263,7 @@ public class MarketApiTest extends GeneralApiTest {
     public void getMarketsRegionIdTypesTest() throws ApiException {
         Integer regionId = 10000002;
         Integer page = null;
-        List<Integer> response = api.getMarketsRegionIdTypes(regionId, DATASOURCE, page, null, null);
+        List<Integer> response = api.getMarketsRegionIdTypes(regionId, DATASOURCE, null, page, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

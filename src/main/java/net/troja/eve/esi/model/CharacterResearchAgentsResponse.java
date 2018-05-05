@@ -29,17 +29,17 @@ public class CharacterResearchAgentsResponse implements Serializable {
     @JsonProperty("agent_id")
     private Integer agentId = null;
 
-    @JsonProperty("skill_type_id")
-    private Integer skillTypeId = null;
-
-    @JsonProperty("started_at")
-    private OffsetDateTime startedAt = null;
-
     @JsonProperty("points_per_day")
     private Float pointsPerDay = null;
 
     @JsonProperty("remainder_points")
     private Float remainderPoints = null;
+
+    @JsonProperty("skill_type_id")
+    private Integer skillTypeId = null;
+
+    @JsonProperty("started_at")
+    private OffsetDateTime startedAt = null;
 
     public CharacterResearchAgentsResponse agentId(Integer agentId) {
         this.agentId = agentId;
@@ -58,44 +58,6 @@ public class CharacterResearchAgentsResponse implements Serializable {
 
     public void setAgentId(Integer agentId) {
         this.agentId = agentId;
-    }
-
-    public CharacterResearchAgentsResponse skillTypeId(Integer skillTypeId) {
-        this.skillTypeId = skillTypeId;
-        return this;
-    }
-
-    /**
-     * skill_type_id integer
-     * 
-     * @return skillTypeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "skill_type_id integer")
-    public Integer getSkillTypeId() {
-        return skillTypeId;
-    }
-
-    public void setSkillTypeId(Integer skillTypeId) {
-        this.skillTypeId = skillTypeId;
-    }
-
-    public CharacterResearchAgentsResponse startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
-        return this;
-    }
-
-    /**
-     * started_at string
-     * 
-     * @return startedAt
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "started_at string")
-    public OffsetDateTime getStartedAt() {
-        return startedAt;
-    }
-
-    public void setStartedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
     }
 
     public CharacterResearchAgentsResponse pointsPerDay(Float pointsPerDay) {
@@ -136,6 +98,44 @@ public class CharacterResearchAgentsResponse implements Serializable {
         this.remainderPoints = remainderPoints;
     }
 
+    public CharacterResearchAgentsResponse skillTypeId(Integer skillTypeId) {
+        this.skillTypeId = skillTypeId;
+        return this;
+    }
+
+    /**
+     * skill_type_id integer
+     * 
+     * @return skillTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "skill_type_id integer")
+    public Integer getSkillTypeId() {
+        return skillTypeId;
+    }
+
+    public void setSkillTypeId(Integer skillTypeId) {
+        this.skillTypeId = skillTypeId;
+    }
+
+    public CharacterResearchAgentsResponse startedAt(OffsetDateTime startedAt) {
+        this.startedAt = startedAt;
+        return this;
+    }
+
+    /**
+     * started_at string
+     * 
+     * @return startedAt
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "started_at string")
+    public OffsetDateTime getStartedAt() {
+        return startedAt;
+    }
+
+    public void setStartedAt(OffsetDateTime startedAt) {
+        this.startedAt = startedAt;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -146,15 +146,15 @@ public class CharacterResearchAgentsResponse implements Serializable {
         }
         CharacterResearchAgentsResponse characterResearchAgentsResponse = (CharacterResearchAgentsResponse) o;
         return Objects.equals(this.agentId, characterResearchAgentsResponse.agentId)
-                && Objects.equals(this.skillTypeId, characterResearchAgentsResponse.skillTypeId)
-                && Objects.equals(this.startedAt, characterResearchAgentsResponse.startedAt)
                 && Objects.equals(this.pointsPerDay, characterResearchAgentsResponse.pointsPerDay)
-                && Objects.equals(this.remainderPoints, characterResearchAgentsResponse.remainderPoints);
+                && Objects.equals(this.remainderPoints, characterResearchAgentsResponse.remainderPoints)
+                && Objects.equals(this.skillTypeId, characterResearchAgentsResponse.skillTypeId)
+                && Objects.equals(this.startedAt, characterResearchAgentsResponse.startedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(agentId, skillTypeId, startedAt, pointsPerDay, remainderPoints);
+        return Objects.hash(agentId, pointsPerDay, remainderPoints, skillTypeId, startedAt);
     }
 
     @Override
@@ -163,10 +163,10 @@ public class CharacterResearchAgentsResponse implements Serializable {
         sb.append("class CharacterResearchAgentsResponse {\n");
 
         sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
-        sb.append("    skillTypeId: ").append(toIndentedString(skillTypeId)).append("\n");
-        sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
         sb.append("    pointsPerDay: ").append(toIndentedString(pointsPerDay)).append("\n");
         sb.append("    remainderPoints: ").append(toIndentedString(remainderPoints)).append("\n");
+        sb.append("    skillTypeId: ").append(toIndentedString(skillTypeId)).append("\n");
+        sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

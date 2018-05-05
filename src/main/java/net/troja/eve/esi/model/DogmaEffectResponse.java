@@ -28,125 +28,68 @@ import java.io.Serializable;
 public class DogmaEffectResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("effect_id")
-    private Integer effectId = null;
-
-    @JsonProperty("name")
-    private String name = null;
-
-    @JsonProperty("display_name")
-    private String displayName = null;
-
     @JsonProperty("description")
     private String description = null;
-
-    @JsonProperty("icon_id")
-    private Integer iconId = null;
-
-    @JsonProperty("effect_category")
-    private Integer effectCategory = null;
-
-    @JsonProperty("pre_expression")
-    private Integer preExpression = null;
-
-    @JsonProperty("post_expression")
-    private Integer postExpression = null;
-
-    @JsonProperty("is_offensive")
-    private Boolean isOffensive = null;
-
-    @JsonProperty("is_assistance")
-    private Boolean isAssistance = null;
 
     @JsonProperty("disallow_auto_repeat")
     private Boolean disallowAutoRepeat = null;
 
-    @JsonProperty("published")
-    private Boolean published = null;
+    @JsonProperty("discharge_attribute_id")
+    private Integer dischargeAttributeId = null;
 
-    @JsonProperty("is_warp_safe")
-    private Boolean isWarpSafe = null;
-
-    @JsonProperty("range_chance")
-    private Boolean rangeChance = null;
-
-    @JsonProperty("electronic_chance")
-    private Boolean electronicChance = null;
+    @JsonProperty("display_name")
+    private String displayName = null;
 
     @JsonProperty("duration_attribute_id")
     private Integer durationAttributeId = null;
 
-    @JsonProperty("tracking_speed_attribute_id")
-    private Integer trackingSpeedAttributeId = null;
+    @JsonProperty("effect_category")
+    private Integer effectCategory = null;
 
-    @JsonProperty("discharge_attribute_id")
-    private Integer dischargeAttributeId = null;
+    @JsonProperty("effect_id")
+    private Integer effectId = null;
 
-    @JsonProperty("range_attribute_id")
-    private Integer rangeAttributeId = null;
+    @JsonProperty("electronic_chance")
+    private Boolean electronicChance = null;
 
     @JsonProperty("falloff_attribute_id")
     private Integer falloffAttributeId = null;
 
+    @JsonProperty("icon_id")
+    private Integer iconId = null;
+
+    @JsonProperty("is_assistance")
+    private Boolean isAssistance = null;
+
+    @JsonProperty("is_offensive")
+    private Boolean isOffensive = null;
+
+    @JsonProperty("is_warp_safe")
+    private Boolean isWarpSafe = null;
+
     @JsonProperty("modifiers")
     private List<DogmaEffectModifier> modifiers = new ArrayList<DogmaEffectModifier>();
 
-    public DogmaEffectResponse effectId(Integer effectId) {
-        this.effectId = effectId;
-        return this;
-    }
+    @JsonProperty("name")
+    private String name = null;
 
-    /**
-     * effect_id integer
-     * 
-     * @return effectId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "effect_id integer")
-    public Integer getEffectId() {
-        return effectId;
-    }
+    @JsonProperty("post_expression")
+    private Integer postExpression = null;
 
-    public void setEffectId(Integer effectId) {
-        this.effectId = effectId;
-    }
+    @JsonProperty("pre_expression")
+    private Integer preExpression = null;
 
-    public DogmaEffectResponse name(String name) {
-        this.name = name;
-        return this;
-    }
+    @JsonProperty("published")
+    private Boolean published = null;
 
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", value = "name string")
-    public String getName() {
-        return name;
-    }
+    @JsonProperty("range_attribute_id")
+    private Integer rangeAttributeId = null;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonProperty("range_chance")
+    private Boolean rangeChance = null;
 
-    public DogmaEffectResponse displayName(String displayName) {
-        this.displayName = displayName;
-        return this;
-    }
-
-    /**
-     * display_name string
-     * 
-     * @return displayName
-     **/
-    @ApiModelProperty(example = "null", value = "display_name string")
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
+    @JsonProperty("tracking_speed_attribute_id")
+    private Integer trackingSpeedAttributeId = null;
 
     public DogmaEffectResponse description(String description) {
         this.description = description;
@@ -165,120 +108,6 @@ public class DogmaEffectResponse implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public DogmaEffectResponse iconId(Integer iconId) {
-        this.iconId = iconId;
-        return this;
-    }
-
-    /**
-     * icon_id integer
-     * 
-     * @return iconId
-     **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
-    public Integer getIconId() {
-        return iconId;
-    }
-
-    public void setIconId(Integer iconId) {
-        this.iconId = iconId;
-    }
-
-    public DogmaEffectResponse effectCategory(Integer effectCategory) {
-        this.effectCategory = effectCategory;
-        return this;
-    }
-
-    /**
-     * effect_category integer
-     * 
-     * @return effectCategory
-     **/
-    @ApiModelProperty(example = "null", value = "effect_category integer")
-    public Integer getEffectCategory() {
-        return effectCategory;
-    }
-
-    public void setEffectCategory(Integer effectCategory) {
-        this.effectCategory = effectCategory;
-    }
-
-    public DogmaEffectResponse preExpression(Integer preExpression) {
-        this.preExpression = preExpression;
-        return this;
-    }
-
-    /**
-     * pre_expression integer
-     * 
-     * @return preExpression
-     **/
-    @ApiModelProperty(example = "null", value = "pre_expression integer")
-    public Integer getPreExpression() {
-        return preExpression;
-    }
-
-    public void setPreExpression(Integer preExpression) {
-        this.preExpression = preExpression;
-    }
-
-    public DogmaEffectResponse postExpression(Integer postExpression) {
-        this.postExpression = postExpression;
-        return this;
-    }
-
-    /**
-     * post_expression integer
-     * 
-     * @return postExpression
-     **/
-    @ApiModelProperty(example = "null", value = "post_expression integer")
-    public Integer getPostExpression() {
-        return postExpression;
-    }
-
-    public void setPostExpression(Integer postExpression) {
-        this.postExpression = postExpression;
-    }
-
-    public DogmaEffectResponse isOffensive(Boolean isOffensive) {
-        this.isOffensive = isOffensive;
-        return this;
-    }
-
-    /**
-     * is_offensive boolean
-     * 
-     * @return isOffensive
-     **/
-    @ApiModelProperty(example = "null", value = "is_offensive boolean")
-    public Boolean getIsOffensive() {
-        return isOffensive;
-    }
-
-    public void setIsOffensive(Boolean isOffensive) {
-        this.isOffensive = isOffensive;
-    }
-
-    public DogmaEffectResponse isAssistance(Boolean isAssistance) {
-        this.isAssistance = isAssistance;
-        return this;
-    }
-
-    /**
-     * is_assistance boolean
-     * 
-     * @return isAssistance
-     **/
-    @ApiModelProperty(example = "null", value = "is_assistance boolean")
-    public Boolean getIsAssistance() {
-        return isAssistance;
-    }
-
-    public void setIsAssistance(Boolean isAssistance) {
-        this.isAssistance = isAssistance;
     }
 
     public DogmaEffectResponse disallowAutoRepeat(Boolean disallowAutoRepeat) {
@@ -300,80 +129,42 @@ public class DogmaEffectResponse implements Serializable {
         this.disallowAutoRepeat = disallowAutoRepeat;
     }
 
-    public DogmaEffectResponse published(Boolean published) {
-        this.published = published;
+    public DogmaEffectResponse dischargeAttributeId(Integer dischargeAttributeId) {
+        this.dischargeAttributeId = dischargeAttributeId;
         return this;
     }
 
     /**
-     * published boolean
+     * discharge_attribute_id integer
      * 
-     * @return published
+     * @return dischargeAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "published boolean")
-    public Boolean getPublished() {
-        return published;
+    @ApiModelProperty(example = "null", value = "discharge_attribute_id integer")
+    public Integer getDischargeAttributeId() {
+        return dischargeAttributeId;
     }
 
-    public void setPublished(Boolean published) {
-        this.published = published;
+    public void setDischargeAttributeId(Integer dischargeAttributeId) {
+        this.dischargeAttributeId = dischargeAttributeId;
     }
 
-    public DogmaEffectResponse isWarpSafe(Boolean isWarpSafe) {
-        this.isWarpSafe = isWarpSafe;
+    public DogmaEffectResponse displayName(String displayName) {
+        this.displayName = displayName;
         return this;
     }
 
     /**
-     * is_warp_safe boolean
+     * display_name string
      * 
-     * @return isWarpSafe
+     * @return displayName
      **/
-    @ApiModelProperty(example = "null", value = "is_warp_safe boolean")
-    public Boolean getIsWarpSafe() {
-        return isWarpSafe;
+    @ApiModelProperty(example = "null", value = "display_name string")
+    public String getDisplayName() {
+        return displayName;
     }
 
-    public void setIsWarpSafe(Boolean isWarpSafe) {
-        this.isWarpSafe = isWarpSafe;
-    }
-
-    public DogmaEffectResponse rangeChance(Boolean rangeChance) {
-        this.rangeChance = rangeChance;
-        return this;
-    }
-
-    /**
-     * range_chance boolean
-     * 
-     * @return rangeChance
-     **/
-    @ApiModelProperty(example = "null", value = "range_chance boolean")
-    public Boolean getRangeChance() {
-        return rangeChance;
-    }
-
-    public void setRangeChance(Boolean rangeChance) {
-        this.rangeChance = rangeChance;
-    }
-
-    public DogmaEffectResponse electronicChance(Boolean electronicChance) {
-        this.electronicChance = electronicChance;
-        return this;
-    }
-
-    /**
-     * electronic_chance boolean
-     * 
-     * @return electronicChance
-     **/
-    @ApiModelProperty(example = "null", value = "electronic_chance boolean")
-    public Boolean getElectronicChance() {
-        return electronicChance;
-    }
-
-    public void setElectronicChance(Boolean electronicChance) {
-        this.electronicChance = electronicChance;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public DogmaEffectResponse durationAttributeId(Integer durationAttributeId) {
@@ -395,61 +186,61 @@ public class DogmaEffectResponse implements Serializable {
         this.durationAttributeId = durationAttributeId;
     }
 
-    public DogmaEffectResponse trackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
-        this.trackingSpeedAttributeId = trackingSpeedAttributeId;
+    public DogmaEffectResponse effectCategory(Integer effectCategory) {
+        this.effectCategory = effectCategory;
         return this;
     }
 
     /**
-     * tracking_speed_attribute_id integer
+     * effect_category integer
      * 
-     * @return trackingSpeedAttributeId
+     * @return effectCategory
      **/
-    @ApiModelProperty(example = "null", value = "tracking_speed_attribute_id integer")
-    public Integer getTrackingSpeedAttributeId() {
-        return trackingSpeedAttributeId;
+    @ApiModelProperty(example = "null", value = "effect_category integer")
+    public Integer getEffectCategory() {
+        return effectCategory;
     }
 
-    public void setTrackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
-        this.trackingSpeedAttributeId = trackingSpeedAttributeId;
+    public void setEffectCategory(Integer effectCategory) {
+        this.effectCategory = effectCategory;
     }
 
-    public DogmaEffectResponse dischargeAttributeId(Integer dischargeAttributeId) {
-        this.dischargeAttributeId = dischargeAttributeId;
+    public DogmaEffectResponse effectId(Integer effectId) {
+        this.effectId = effectId;
         return this;
     }
 
     /**
-     * discharge_attribute_id integer
+     * effect_id integer
      * 
-     * @return dischargeAttributeId
+     * @return effectId
      **/
-    @ApiModelProperty(example = "null", value = "discharge_attribute_id integer")
-    public Integer getDischargeAttributeId() {
-        return dischargeAttributeId;
+    @ApiModelProperty(example = "null", required = true, value = "effect_id integer")
+    public Integer getEffectId() {
+        return effectId;
     }
 
-    public void setDischargeAttributeId(Integer dischargeAttributeId) {
-        this.dischargeAttributeId = dischargeAttributeId;
+    public void setEffectId(Integer effectId) {
+        this.effectId = effectId;
     }
 
-    public DogmaEffectResponse rangeAttributeId(Integer rangeAttributeId) {
-        this.rangeAttributeId = rangeAttributeId;
+    public DogmaEffectResponse electronicChance(Boolean electronicChance) {
+        this.electronicChance = electronicChance;
         return this;
     }
 
     /**
-     * range_attribute_id integer
+     * electronic_chance boolean
      * 
-     * @return rangeAttributeId
+     * @return electronicChance
      **/
-    @ApiModelProperty(example = "null", value = "range_attribute_id integer")
-    public Integer getRangeAttributeId() {
-        return rangeAttributeId;
+    @ApiModelProperty(example = "null", value = "electronic_chance boolean")
+    public Boolean getElectronicChance() {
+        return electronicChance;
     }
 
-    public void setRangeAttributeId(Integer rangeAttributeId) {
-        this.rangeAttributeId = rangeAttributeId;
+    public void setElectronicChance(Boolean electronicChance) {
+        this.electronicChance = electronicChance;
     }
 
     public DogmaEffectResponse falloffAttributeId(Integer falloffAttributeId) {
@@ -469,6 +260,82 @@ public class DogmaEffectResponse implements Serializable {
 
     public void setFalloffAttributeId(Integer falloffAttributeId) {
         this.falloffAttributeId = falloffAttributeId;
+    }
+
+    public DogmaEffectResponse iconId(Integer iconId) {
+        this.iconId = iconId;
+        return this;
+    }
+
+    /**
+     * icon_id integer
+     * 
+     * @return iconId
+     **/
+    @ApiModelProperty(example = "null", value = "icon_id integer")
+    public Integer getIconId() {
+        return iconId;
+    }
+
+    public void setIconId(Integer iconId) {
+        this.iconId = iconId;
+    }
+
+    public DogmaEffectResponse isAssistance(Boolean isAssistance) {
+        this.isAssistance = isAssistance;
+        return this;
+    }
+
+    /**
+     * is_assistance boolean
+     * 
+     * @return isAssistance
+     **/
+    @ApiModelProperty(example = "null", value = "is_assistance boolean")
+    public Boolean getIsAssistance() {
+        return isAssistance;
+    }
+
+    public void setIsAssistance(Boolean isAssistance) {
+        this.isAssistance = isAssistance;
+    }
+
+    public DogmaEffectResponse isOffensive(Boolean isOffensive) {
+        this.isOffensive = isOffensive;
+        return this;
+    }
+
+    /**
+     * is_offensive boolean
+     * 
+     * @return isOffensive
+     **/
+    @ApiModelProperty(example = "null", value = "is_offensive boolean")
+    public Boolean getIsOffensive() {
+        return isOffensive;
+    }
+
+    public void setIsOffensive(Boolean isOffensive) {
+        this.isOffensive = isOffensive;
+    }
+
+    public DogmaEffectResponse isWarpSafe(Boolean isWarpSafe) {
+        this.isWarpSafe = isWarpSafe;
+        return this;
+    }
+
+    /**
+     * is_warp_safe boolean
+     * 
+     * @return isWarpSafe
+     **/
+    @ApiModelProperty(example = "null", value = "is_warp_safe boolean")
+    public Boolean getIsWarpSafe() {
+        return isWarpSafe;
+    }
+
+    public void setIsWarpSafe(Boolean isWarpSafe) {
+        this.isWarpSafe = isWarpSafe;
     }
 
     public DogmaEffectResponse modifiers(List<DogmaEffectModifier> modifiers) {
@@ -495,6 +362,139 @@ public class DogmaEffectResponse implements Serializable {
         this.modifiers = modifiers;
     }
 
+    public DogmaEffectResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public DogmaEffectResponse postExpression(Integer postExpression) {
+        this.postExpression = postExpression;
+        return this;
+    }
+
+    /**
+     * post_expression integer
+     * 
+     * @return postExpression
+     **/
+    @ApiModelProperty(example = "null", value = "post_expression integer")
+    public Integer getPostExpression() {
+        return postExpression;
+    }
+
+    public void setPostExpression(Integer postExpression) {
+        this.postExpression = postExpression;
+    }
+
+    public DogmaEffectResponse preExpression(Integer preExpression) {
+        this.preExpression = preExpression;
+        return this;
+    }
+
+    /**
+     * pre_expression integer
+     * 
+     * @return preExpression
+     **/
+    @ApiModelProperty(example = "null", value = "pre_expression integer")
+    public Integer getPreExpression() {
+        return preExpression;
+    }
+
+    public void setPreExpression(Integer preExpression) {
+        this.preExpression = preExpression;
+    }
+
+    public DogmaEffectResponse published(Boolean published) {
+        this.published = published;
+        return this;
+    }
+
+    /**
+     * published boolean
+     * 
+     * @return published
+     **/
+    @ApiModelProperty(example = "null", value = "published boolean")
+    public Boolean getPublished() {
+        return published;
+    }
+
+    public void setPublished(Boolean published) {
+        this.published = published;
+    }
+
+    public DogmaEffectResponse rangeAttributeId(Integer rangeAttributeId) {
+        this.rangeAttributeId = rangeAttributeId;
+        return this;
+    }
+
+    /**
+     * range_attribute_id integer
+     * 
+     * @return rangeAttributeId
+     **/
+    @ApiModelProperty(example = "null", value = "range_attribute_id integer")
+    public Integer getRangeAttributeId() {
+        return rangeAttributeId;
+    }
+
+    public void setRangeAttributeId(Integer rangeAttributeId) {
+        this.rangeAttributeId = rangeAttributeId;
+    }
+
+    public DogmaEffectResponse rangeChance(Boolean rangeChance) {
+        this.rangeChance = rangeChance;
+        return this;
+    }
+
+    /**
+     * range_chance boolean
+     * 
+     * @return rangeChance
+     **/
+    @ApiModelProperty(example = "null", value = "range_chance boolean")
+    public Boolean getRangeChance() {
+        return rangeChance;
+    }
+
+    public void setRangeChance(Boolean rangeChance) {
+        this.rangeChance = rangeChance;
+    }
+
+    public DogmaEffectResponse trackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
+        this.trackingSpeedAttributeId = trackingSpeedAttributeId;
+        return this;
+    }
+
+    /**
+     * tracking_speed_attribute_id integer
+     * 
+     * @return trackingSpeedAttributeId
+     **/
+    @ApiModelProperty(example = "null", value = "tracking_speed_attribute_id integer")
+    public Integer getTrackingSpeedAttributeId() {
+        return trackingSpeedAttributeId;
+    }
+
+    public void setTrackingSpeedAttributeId(Integer trackingSpeedAttributeId) {
+        this.trackingSpeedAttributeId = trackingSpeedAttributeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -504,35 +504,35 @@ public class DogmaEffectResponse implements Serializable {
             return false;
         }
         DogmaEffectResponse dogmaEffectResponse = (DogmaEffectResponse) o;
-        return Objects.equals(this.effectId, dogmaEffectResponse.effectId)
-                && Objects.equals(this.name, dogmaEffectResponse.name)
-                && Objects.equals(this.displayName, dogmaEffectResponse.displayName)
-                && Objects.equals(this.description, dogmaEffectResponse.description)
-                && Objects.equals(this.iconId, dogmaEffectResponse.iconId)
-                && Objects.equals(this.effectCategory, dogmaEffectResponse.effectCategory)
-                && Objects.equals(this.preExpression, dogmaEffectResponse.preExpression)
-                && Objects.equals(this.postExpression, dogmaEffectResponse.postExpression)
-                && Objects.equals(this.isOffensive, dogmaEffectResponse.isOffensive)
-                && Objects.equals(this.isAssistance, dogmaEffectResponse.isAssistance)
+        return Objects.equals(this.description, dogmaEffectResponse.description)
                 && Objects.equals(this.disallowAutoRepeat, dogmaEffectResponse.disallowAutoRepeat)
-                && Objects.equals(this.published, dogmaEffectResponse.published)
-                && Objects.equals(this.isWarpSafe, dogmaEffectResponse.isWarpSafe)
-                && Objects.equals(this.rangeChance, dogmaEffectResponse.rangeChance)
-                && Objects.equals(this.electronicChance, dogmaEffectResponse.electronicChance)
-                && Objects.equals(this.durationAttributeId, dogmaEffectResponse.durationAttributeId)
-                && Objects.equals(this.trackingSpeedAttributeId, dogmaEffectResponse.trackingSpeedAttributeId)
                 && Objects.equals(this.dischargeAttributeId, dogmaEffectResponse.dischargeAttributeId)
-                && Objects.equals(this.rangeAttributeId, dogmaEffectResponse.rangeAttributeId)
+                && Objects.equals(this.displayName, dogmaEffectResponse.displayName)
+                && Objects.equals(this.durationAttributeId, dogmaEffectResponse.durationAttributeId)
+                && Objects.equals(this.effectCategory, dogmaEffectResponse.effectCategory)
+                && Objects.equals(this.effectId, dogmaEffectResponse.effectId)
+                && Objects.equals(this.electronicChance, dogmaEffectResponse.electronicChance)
                 && Objects.equals(this.falloffAttributeId, dogmaEffectResponse.falloffAttributeId)
-                && Objects.equals(this.modifiers, dogmaEffectResponse.modifiers);
+                && Objects.equals(this.iconId, dogmaEffectResponse.iconId)
+                && Objects.equals(this.isAssistance, dogmaEffectResponse.isAssistance)
+                && Objects.equals(this.isOffensive, dogmaEffectResponse.isOffensive)
+                && Objects.equals(this.isWarpSafe, dogmaEffectResponse.isWarpSafe)
+                && Objects.equals(this.modifiers, dogmaEffectResponse.modifiers)
+                && Objects.equals(this.name, dogmaEffectResponse.name)
+                && Objects.equals(this.postExpression, dogmaEffectResponse.postExpression)
+                && Objects.equals(this.preExpression, dogmaEffectResponse.preExpression)
+                && Objects.equals(this.published, dogmaEffectResponse.published)
+                && Objects.equals(this.rangeAttributeId, dogmaEffectResponse.rangeAttributeId)
+                && Objects.equals(this.rangeChance, dogmaEffectResponse.rangeChance)
+                && Objects.equals(this.trackingSpeedAttributeId, dogmaEffectResponse.trackingSpeedAttributeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(effectId, name, displayName, description, iconId, effectCategory, preExpression,
-                postExpression, isOffensive, isAssistance, disallowAutoRepeat, published, isWarpSafe, rangeChance,
-                electronicChance, durationAttributeId, trackingSpeedAttributeId, dischargeAttributeId,
-                rangeAttributeId, falloffAttributeId, modifiers);
+        return Objects.hash(description, disallowAutoRepeat, dischargeAttributeId, displayName, durationAttributeId,
+                effectCategory, effectId, electronicChance, falloffAttributeId, iconId, isAssistance, isOffensive,
+                isWarpSafe, modifiers, name, postExpression, preExpression, published, rangeAttributeId, rangeChance,
+                trackingSpeedAttributeId);
     }
 
     @Override
@@ -540,27 +540,27 @@ public class DogmaEffectResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaEffectResponse {\n");
 
-        sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
-        sb.append("    effectCategory: ").append(toIndentedString(effectCategory)).append("\n");
-        sb.append("    preExpression: ").append(toIndentedString(preExpression)).append("\n");
-        sb.append("    postExpression: ").append(toIndentedString(postExpression)).append("\n");
-        sb.append("    isOffensive: ").append(toIndentedString(isOffensive)).append("\n");
-        sb.append("    isAssistance: ").append(toIndentedString(isAssistance)).append("\n");
         sb.append("    disallowAutoRepeat: ").append(toIndentedString(disallowAutoRepeat)).append("\n");
-        sb.append("    published: ").append(toIndentedString(published)).append("\n");
-        sb.append("    isWarpSafe: ").append(toIndentedString(isWarpSafe)).append("\n");
-        sb.append("    rangeChance: ").append(toIndentedString(rangeChance)).append("\n");
-        sb.append("    electronicChance: ").append(toIndentedString(electronicChance)).append("\n");
-        sb.append("    durationAttributeId: ").append(toIndentedString(durationAttributeId)).append("\n");
-        sb.append("    trackingSpeedAttributeId: ").append(toIndentedString(trackingSpeedAttributeId)).append("\n");
         sb.append("    dischargeAttributeId: ").append(toIndentedString(dischargeAttributeId)).append("\n");
-        sb.append("    rangeAttributeId: ").append(toIndentedString(rangeAttributeId)).append("\n");
+        sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+        sb.append("    durationAttributeId: ").append(toIndentedString(durationAttributeId)).append("\n");
+        sb.append("    effectCategory: ").append(toIndentedString(effectCategory)).append("\n");
+        sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
+        sb.append("    electronicChance: ").append(toIndentedString(electronicChance)).append("\n");
         sb.append("    falloffAttributeId: ").append(toIndentedString(falloffAttributeId)).append("\n");
+        sb.append("    iconId: ").append(toIndentedString(iconId)).append("\n");
+        sb.append("    isAssistance: ").append(toIndentedString(isAssistance)).append("\n");
+        sb.append("    isOffensive: ").append(toIndentedString(isOffensive)).append("\n");
+        sb.append("    isWarpSafe: ").append(toIndentedString(isWarpSafe)).append("\n");
         sb.append("    modifiers: ").append(toIndentedString(modifiers)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    postExpression: ").append(toIndentedString(postExpression)).append("\n");
+        sb.append("    preExpression: ").append(toIndentedString(preExpression)).append("\n");
+        sb.append("    published: ").append(toIndentedString(published)).append("\n");
+        sb.append("    rangeAttributeId: ").append(toIndentedString(rangeAttributeId)).append("\n");
+        sb.append("    rangeChance: ").append(toIndentedString(rangeChance)).append("\n");
+        sb.append("    trackingSpeedAttributeId: ").append(toIndentedString(trackingSpeedAttributeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

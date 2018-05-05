@@ -41,11 +41,11 @@ public class SovereigntyStructuresResponse implements Serializable {
     @JsonProperty("vulnerability_occupancy_level")
     private Float vulnerabilityOccupancyLevel = null;
 
-    @JsonProperty("vulnerable_start_time")
-    private OffsetDateTime vulnerableStartTime = null;
-
     @JsonProperty("vulnerable_end_time")
     private OffsetDateTime vulnerableEndTime = null;
+
+    @JsonProperty("vulnerable_start_time")
+    private OffsetDateTime vulnerableStartTime = null;
 
     public SovereigntyStructuresResponse allianceId(Integer allianceId) {
         this.allianceId = allianceId;
@@ -146,27 +146,6 @@ public class SovereigntyStructuresResponse implements Serializable {
         this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
     }
 
-    public SovereigntyStructuresResponse vulnerableStartTime(OffsetDateTime vulnerableStartTime) {
-        this.vulnerableStartTime = vulnerableStartTime;
-        return this;
-    }
-
-    /**
-     * The next time at which the structure will become vulnerable. Or the start
-     * time of the current window if current time is between this and
-     * vulnerableEndTime.
-     * 
-     * @return vulnerableStartTime
-     **/
-    @ApiModelProperty(example = "null", value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
-    public OffsetDateTime getVulnerableStartTime() {
-        return vulnerableStartTime;
-    }
-
-    public void setVulnerableStartTime(OffsetDateTime vulnerableStartTime) {
-        this.vulnerableStartTime = vulnerableStartTime;
-    }
-
     public SovereigntyStructuresResponse vulnerableEndTime(OffsetDateTime vulnerableEndTime) {
         this.vulnerableEndTime = vulnerableEndTime;
         return this;
@@ -192,6 +171,27 @@ public class SovereigntyStructuresResponse implements Serializable {
         this.vulnerableEndTime = vulnerableEndTime;
     }
 
+    public SovereigntyStructuresResponse vulnerableStartTime(OffsetDateTime vulnerableStartTime) {
+        this.vulnerableStartTime = vulnerableStartTime;
+        return this;
+    }
+
+    /**
+     * The next time at which the structure will become vulnerable. Or the start
+     * time of the current window if current time is between this and
+     * vulnerableEndTime.
+     * 
+     * @return vulnerableStartTime
+     **/
+    @ApiModelProperty(example = "null", value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
+    public OffsetDateTime getVulnerableStartTime() {
+        return vulnerableStartTime;
+    }
+
+    public void setVulnerableStartTime(OffsetDateTime vulnerableStartTime) {
+        this.vulnerableStartTime = vulnerableStartTime;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -207,14 +207,14 @@ public class SovereigntyStructuresResponse implements Serializable {
                 && Objects.equals(this.structureTypeId, sovereigntyStructuresResponse.structureTypeId)
                 && Objects.equals(this.vulnerabilityOccupancyLevel,
                         sovereigntyStructuresResponse.vulnerabilityOccupancyLevel)
-                && Objects.equals(this.vulnerableStartTime, sovereigntyStructuresResponse.vulnerableStartTime)
-                && Objects.equals(this.vulnerableEndTime, sovereigntyStructuresResponse.vulnerableEndTime);
+                && Objects.equals(this.vulnerableEndTime, sovereigntyStructuresResponse.vulnerableEndTime)
+                && Objects.equals(this.vulnerableStartTime, sovereigntyStructuresResponse.vulnerableStartTime);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(allianceId, solarSystemId, structureId, structureTypeId, vulnerabilityOccupancyLevel,
-                vulnerableStartTime, vulnerableEndTime);
+                vulnerableEndTime, vulnerableStartTime);
     }
 
     @Override
@@ -228,8 +228,8 @@ public class SovereigntyStructuresResponse implements Serializable {
         sb.append("    structureTypeId: ").append(toIndentedString(structureTypeId)).append("\n");
         sb.append("    vulnerabilityOccupancyLevel: ").append(toIndentedString(vulnerabilityOccupancyLevel))
                 .append("\n");
-        sb.append("    vulnerableStartTime: ").append(toIndentedString(vulnerableStartTime)).append("\n");
         sb.append("    vulnerableEndTime: ").append(toIndentedString(vulnerableEndTime)).append("\n");
+        sb.append("    vulnerableStartTime: ").append(toIndentedString(vulnerableStartTime)).append("\n");
         sb.append("}");
         return sb.toString();
     }

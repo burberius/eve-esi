@@ -28,14 +28,14 @@ import java.io.Serializable;
 public class CharacterFwStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("faction_id")
-    private Integer factionId = null;
+    @JsonProperty("current_rank")
+    private Integer currentRank = null;
 
     @JsonProperty("enlisted_on")
     private OffsetDateTime enlistedOn = null;
 
-    @JsonProperty("current_rank")
-    private Integer currentRank = null;
+    @JsonProperty("faction_id")
+    private Integer factionId = null;
 
     @JsonProperty("highest_rank")
     private Integer highestRank = null;
@@ -46,24 +46,23 @@ public class CharacterFwStatsResponse implements Serializable {
     @JsonProperty("victory_points")
     private CharacterFwStatsVictoryPoints victoryPoints = null;
 
-    public CharacterFwStatsResponse factionId(Integer factionId) {
-        this.factionId = factionId;
+    public CharacterFwStatsResponse currentRank(Integer currentRank) {
+        this.currentRank = currentRank;
         return this;
     }
 
     /**
-     * The faction the given character is enlisted to fight for. Will not be
-     * included if character is not enlisted in faction warfare
+     * The given character's current faction rank minimum: 0 maximum: 9
      * 
-     * @return factionId
+     * @return currentRank
      **/
-    @ApiModelProperty(example = "null", value = "The faction the given character is enlisted to fight for. Will not be included if character is not enlisted in faction warfare")
-    public Integer getFactionId() {
-        return factionId;
+    @ApiModelProperty(example = "null", value = "The given character's current faction rank")
+    public Integer getCurrentRank() {
+        return currentRank;
     }
 
-    public void setFactionId(Integer factionId) {
-        this.factionId = factionId;
+    public void setCurrentRank(Integer currentRank) {
+        this.currentRank = currentRank;
     }
 
     public CharacterFwStatsResponse enlistedOn(OffsetDateTime enlistedOn) {
@@ -86,23 +85,24 @@ public class CharacterFwStatsResponse implements Serializable {
         this.enlistedOn = enlistedOn;
     }
 
-    public CharacterFwStatsResponse currentRank(Integer currentRank) {
-        this.currentRank = currentRank;
+    public CharacterFwStatsResponse factionId(Integer factionId) {
+        this.factionId = factionId;
         return this;
     }
 
     /**
-     * The given character's current faction rank minimum: 0 maximum: 9
+     * The faction the given character is enlisted to fight for. Will not be
+     * included if character is not enlisted in faction warfare
      * 
-     * @return currentRank
+     * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "The given character's current faction rank")
-    public Integer getCurrentRank() {
-        return currentRank;
+    @ApiModelProperty(example = "null", value = "The faction the given character is enlisted to fight for. Will not be included if character is not enlisted in faction warfare")
+    public Integer getFactionId() {
+        return factionId;
     }
 
-    public void setCurrentRank(Integer currentRank) {
-        this.currentRank = currentRank;
+    public void setFactionId(Integer factionId) {
+        this.factionId = factionId;
     }
 
     public CharacterFwStatsResponse highestRank(Integer highestRank) {
@@ -171,9 +171,9 @@ public class CharacterFwStatsResponse implements Serializable {
             return false;
         }
         CharacterFwStatsResponse characterFwStatsResponse = (CharacterFwStatsResponse) o;
-        return Objects.equals(this.factionId, characterFwStatsResponse.factionId)
+        return Objects.equals(this.currentRank, characterFwStatsResponse.currentRank)
                 && Objects.equals(this.enlistedOn, characterFwStatsResponse.enlistedOn)
-                && Objects.equals(this.currentRank, characterFwStatsResponse.currentRank)
+                && Objects.equals(this.factionId, characterFwStatsResponse.factionId)
                 && Objects.equals(this.highestRank, characterFwStatsResponse.highestRank)
                 && Objects.equals(this.kills, characterFwStatsResponse.kills)
                 && Objects.equals(this.victoryPoints, characterFwStatsResponse.victoryPoints);
@@ -181,7 +181,7 @@ public class CharacterFwStatsResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(factionId, enlistedOn, currentRank, highestRank, kills, victoryPoints);
+        return Objects.hash(currentRank, enlistedOn, factionId, highestRank, kills, victoryPoints);
     }
 
     @Override
@@ -189,9 +189,9 @@ public class CharacterFwStatsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFwStatsResponse {\n");
 
-        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    enlistedOn: ").append(toIndentedString(enlistedOn)).append("\n");
         sb.append("    currentRank: ").append(toIndentedString(currentRank)).append("\n");
+        sb.append("    enlistedOn: ").append(toIndentedString(enlistedOn)).append("\n");
+        sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("    highestRank: ").append(toIndentedString(highestRank)).append("\n");
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");

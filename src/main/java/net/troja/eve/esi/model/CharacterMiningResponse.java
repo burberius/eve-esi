@@ -29,14 +29,14 @@ public class CharacterMiningResponse implements Serializable {
     @JsonProperty("date")
     private LocalDate date = null;
 
+    @JsonProperty("quantity")
+    private Long quantity = null;
+
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
 
     @JsonProperty("type_id")
     private Integer typeId = null;
-
-    @JsonProperty("quantity")
-    private Long quantity = null;
 
     public CharacterMiningResponse date(LocalDate date) {
         this.date = date;
@@ -55,6 +55,25 @@ public class CharacterMiningResponse implements Serializable {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public CharacterMiningResponse quantity(Long quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     public CharacterMiningResponse solarSystemId(Integer solarSystemId) {
@@ -95,25 +114,6 @@ public class CharacterMiningResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public CharacterMiningResponse quantity(Long quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,14 +124,14 @@ public class CharacterMiningResponse implements Serializable {
         }
         CharacterMiningResponse characterMiningResponse = (CharacterMiningResponse) o;
         return Objects.equals(this.date, characterMiningResponse.date)
+                && Objects.equals(this.quantity, characterMiningResponse.quantity)
                 && Objects.equals(this.solarSystemId, characterMiningResponse.solarSystemId)
-                && Objects.equals(this.typeId, characterMiningResponse.typeId)
-                && Objects.equals(this.quantity, characterMiningResponse.quantity);
+                && Objects.equals(this.typeId, characterMiningResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, solarSystemId, typeId, quantity);
+        return Objects.hash(date, quantity, solarSystemId, typeId);
     }
 
     @Override
@@ -140,9 +140,9 @@ public class CharacterMiningResponse implements Serializable {
         sb.append("class CharacterMiningResponse {\n");
 
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("}");
         return sb.toString();
     }

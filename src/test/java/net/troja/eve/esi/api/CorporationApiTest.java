@@ -65,7 +65,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdTest() throws ApiException {
-        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null, null);
+        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null, null, null);
 
         assertThat(response.getTicker(), equalTo(".AAC."));
         assertThat(response.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
@@ -84,7 +84,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdBlueprintsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, null, page, null, null, null);
         // TODO: test validations
     }
 
@@ -101,7 +101,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdContainersLogsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationContainersLogsResponse> response = api.getCorporationsCorporationIdContainersLogs(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationContainersLogsResponse> response = api.getCorporationsCorporationIdContainersLogs(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -122,7 +122,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
-        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE,
+        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE, null,
                 null, null);
 
         assertThat(response.size(), greaterThan(0));
@@ -143,7 +143,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdDivisionsTest() throws ApiException {
         Integer corporationId = null;
-        CorporationDivisionsResponse response = api.getCorporationsCorporationIdDivisions(corporationId, DATASOURCE, null, null, null);
+        CorporationDivisionsResponse response = api.getCorporationsCorporationIdDivisions(corporationId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getHangar().size(), greaterThan(0));
@@ -162,7 +162,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdFacilitiesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationFacilitiesResponse> response = api.getCorporationsCorporationIdFacilities(corporationId, DATASOURCE, null, null, null);
+        List<CorporationFacilitiesResponse> response = api.getCorporationsCorporationIdFacilities(corporationId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -182,7 +182,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdIconsTest() throws ApiException {
-        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE, null, null);
+        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE, null, null, null);
 
         assertThat(response.getPx64x64(), notNullValue());
     }
@@ -200,7 +200,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdMedalsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMedalsResponse> response = api.getCorporationsCorporationIdMedals(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationMedalsResponse> response = api.getCorporationsCorporationIdMedals(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -218,7 +218,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdMedalsIssuedTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMedalsIssuedResponse> response = api.getCorporationsCorporationIdMedalsIssued(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationMedalsIssuedResponse> response = api.getCorporationsCorporationIdMedalsIssued(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -257,7 +257,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdMembersLimitTest() throws ApiException {
         Integer corporationId = null;
-        Integer response = api.getCorporationsCorporationIdMembersLimit(corporationId, DATASOURCE, null, null, null);
+        Integer response = api.getCorporationsCorporationIdMembersLimit(corporationId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response, greaterThan(0));
@@ -275,7 +275,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdMembersTitlesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationMembersTitlesResponse> response = api.getCorporationsCorporationIdMembersTitles(corporationId, DATASOURCE, null, null, null);
+        List<CorporationMembersTitlesResponse> response = api.getCorporationsCorporationIdMembersTitles(corporationId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -296,7 +296,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdMembertrackingTest() throws ApiException {
         // List<CorporationMemberTrackingResponse> response =
         // api.getCorporationsCorporationIdMembertracking(corporationId,
-        // datasource, token, userAgent, xUserAgent);
+        // DATASOURCE, null, null, null);
     }
 
     /**
@@ -312,7 +312,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdOutpostsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<Integer> response = api.getCorporationsCorporationIdOutposts(corporationId, DATASOURCE, page, null, null, null);
+        List<Integer> response = api.getCorporationsCorporationIdOutposts(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -330,7 +330,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdOutpostsOutpostIdTest() throws ApiException {
         Integer corporationId = null;
         Integer outpostId = null;
-        CorporationOutpostResponse response = api.getCorporationsCorporationIdOutpostsOutpostId(corporationId, outpostId, DATASOURCE, null, null, null);
+        CorporationOutpostResponse response = api.getCorporationsCorporationIdOutpostsOutpostId(corporationId, outpostId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -353,7 +353,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Testing these would need special rights in the corp")
     public void getCorporationsCorporationIdRolesTest() throws ApiException {
         // List<CorporationRolesResponse> response =
-        // api.getCorporationsCorporationIdRoles(corporationId, datasource);
+        // api.getCorporationsCorporationIdRoles(corporationId, DATASOURCE);
     }
 
     /**
@@ -369,7 +369,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdRolesHistoryTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -387,7 +387,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdShareholdersTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationShareholdersResponse> response = api.getCorporationsCorporationIdShareholders(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationShareholdersResponse> response = api.getCorporationsCorporationIdShareholders(corporationId, DATASOURCE, null, page, null, null, null);
         // TODO: test validations
     }
 
@@ -404,7 +404,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdStandingsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -422,7 +422,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdStarbasesTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationStarbasesResponse> response = api.getCorporationsCorporationIdStarbases(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationStarbasesResponse> response = api.getCorporationsCorporationIdStarbases(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -441,7 +441,7 @@ public class CorporationApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Long starbaseId = null;
         Integer systemId = null;
-        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, null, null, null);
+        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -485,7 +485,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdTitlesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null, null);
+        List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null, null, null);
     }
 
     /**
@@ -505,7 +505,7 @@ public class CorporationApiTest extends GeneralApiTest {
         final List<Integer> corporationIds = new ArrayList<>();
         corporationIds.add(CORPORATION_ID_AAC);
 
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null, null);
+        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));
@@ -526,9 +526,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Test
     @Ignore("Doesn't work?!?!")
     public void getCorporationsNpccorpsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getCorporationsNpccorps(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getCorporationsNpccorps(DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(50));
     }

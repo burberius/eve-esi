@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class CorporationWalletsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("division")
-    private Integer division = null;
-
     @JsonProperty("balance")
     private Double balance = null;
 
-    public CorporationWalletsResponse division(Integer division) {
-        this.division = division;
-        return this;
-    }
-
-    /**
-     * division integer minimum: 1 maximum: 7
-     * 
-     * @return division
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "division integer")
-    public Integer getDivision() {
-        return division;
-    }
-
-    public void setDivision(Integer division) {
-        this.division = division;
-    }
+    @JsonProperty("division")
+    private Integer division = null;
 
     public CorporationWalletsResponse balance(Double balance) {
         this.balance = balance;
@@ -69,6 +50,25 @@ public class CorporationWalletsResponse implements Serializable {
         this.balance = balance;
     }
 
+    public CorporationWalletsResponse division(Integer division) {
+        this.division = division;
+        return this;
+    }
+
+    /**
+     * division integer minimum: 1 maximum: 7
+     * 
+     * @return division
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "division integer")
+    public Integer getDivision() {
+        return division;
+    }
+
+    public void setDivision(Integer division) {
+        this.division = division;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class CorporationWalletsResponse implements Serializable {
             return false;
         }
         CorporationWalletsResponse corporationWalletsResponse = (CorporationWalletsResponse) o;
-        return Objects.equals(this.division, corporationWalletsResponse.division)
-                && Objects.equals(this.balance, corporationWalletsResponse.balance);
+        return Objects.equals(this.balance, corporationWalletsResponse.balance)
+                && Objects.equals(this.division, corporationWalletsResponse.division);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(division, balance);
+        return Objects.hash(balance, division);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class CorporationWalletsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletsResponse {\n");
 
-        sb.append("    division: ").append(toIndentedString(division)).append("\n");
         sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+        sb.append("    division: ").append(toIndentedString(division)).append("\n");
         sb.append("}");
         return sb.toString();
     }

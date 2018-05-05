@@ -27,11 +27,35 @@ import java.io.Serializable;
 public class MailMetaData implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("labels")
+    private List<Integer> labels = new ArrayList<Integer>();
+
     @JsonProperty("read")
     private Boolean read = null;
 
-    @JsonProperty("labels")
-    private List<Long> labels = new ArrayList<Long>();
+    public MailMetaData labels(List<Integer> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public MailMetaData addLabelsItem(Integer labelsItem) {
+        this.labels.add(labelsItem);
+        return this;
+    }
+
+    /**
+     * Labels to assign to the mail. Pre-existing labels are unassigned.
+     * 
+     * @return labels
+     **/
+    @ApiModelProperty(example = "null", value = "Labels to assign to the mail. Pre-existing labels are unassigned.")
+    public List<Integer> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<Integer> labels) {
+        this.labels = labels;
+    }
 
     public MailMetaData read(Boolean read) {
         this.read = read;
@@ -52,30 +76,6 @@ public class MailMetaData implements Serializable {
         this.read = read;
     }
 
-    public MailMetaData labels(List<Long> labels) {
-        this.labels = labels;
-        return this;
-    }
-
-    public MailMetaData addLabelsItem(Long labelsItem) {
-        this.labels.add(labelsItem);
-        return this;
-    }
-
-    /**
-     * Labels to assign to the mail. Pre-existing labels are unassigned.
-     * 
-     * @return labels
-     **/
-    @ApiModelProperty(example = "null", value = "Labels to assign to the mail. Pre-existing labels are unassigned.")
-    public List<Long> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<Long> labels) {
-        this.labels = labels;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,12 +85,12 @@ public class MailMetaData implements Serializable {
             return false;
         }
         MailMetaData mailMetaData = (MailMetaData) o;
-        return Objects.equals(this.read, mailMetaData.read) && Objects.equals(this.labels, mailMetaData.labels);
+        return Objects.equals(this.labels, mailMetaData.labels) && Objects.equals(this.read, mailMetaData.read);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(read, labels);
+        return Objects.hash(labels, read);
     }
 
     @Override
@@ -98,8 +98,8 @@ public class MailMetaData implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailMetaData {\n");
 
-        sb.append("    read: ").append(toIndentedString(read)).append("\n");
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+        sb.append("    read: ").append(toIndentedString(read)).append("\n");
         sb.append("}");
         return sb.toString();
     }

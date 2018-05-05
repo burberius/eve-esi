@@ -25,55 +25,17 @@ import java.io.Serializable;
 public class SystemKillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
-    @JsonProperty("ship_kills")
-    private Integer shipKills = null;
-
     @JsonProperty("npc_kills")
     private Integer npcKills = null;
 
     @JsonProperty("pod_kills")
     private Integer podKills = null;
 
-    public SystemKillsResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
+    @JsonProperty("ship_kills")
+    private Integer shipKills = null;
 
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
-    public SystemKillsResponse shipKills(Integer shipKills) {
-        this.shipKills = shipKills;
-        return this;
-    }
-
-    /**
-     * Number of player ships killed in this system
-     * 
-     * @return shipKills
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of player ships killed in this system")
-    public Integer getShipKills() {
-        return shipKills;
-    }
-
-    public void setShipKills(Integer shipKills) {
-        this.shipKills = shipKills;
-    }
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
     public SystemKillsResponse npcKills(Integer npcKills) {
         this.npcKills = npcKills;
@@ -113,6 +75,44 @@ public class SystemKillsResponse implements Serializable {
         this.podKills = podKills;
     }
 
+    public SystemKillsResponse shipKills(Integer shipKills) {
+        this.shipKills = shipKills;
+        return this;
+    }
+
+    /**
+     * Number of player ships killed in this system
+     * 
+     * @return shipKills
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Number of player ships killed in this system")
+    public Integer getShipKills() {
+        return shipKills;
+    }
+
+    public void setShipKills(Integer shipKills) {
+        this.shipKills = shipKills;
+    }
+
+    public SystemKillsResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class SystemKillsResponse implements Serializable {
             return false;
         }
         SystemKillsResponse systemKillsResponse = (SystemKillsResponse) o;
-        return Objects.equals(this.systemId, systemKillsResponse.systemId)
+        return Objects.equals(this.npcKills, systemKillsResponse.npcKills)
+                && Objects.equals(this.podKills, systemKillsResponse.podKills)
                 && Objects.equals(this.shipKills, systemKillsResponse.shipKills)
-                && Objects.equals(this.npcKills, systemKillsResponse.npcKills)
-                && Objects.equals(this.podKills, systemKillsResponse.podKills);
+                && Objects.equals(this.systemId, systemKillsResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemId, shipKills, npcKills, podKills);
+        return Objects.hash(npcKills, podKills, shipKills, systemId);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class SystemKillsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemKillsResponse {\n");
 
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
-        sb.append("    shipKills: ").append(toIndentedString(shipKills)).append("\n");
         sb.append("    npcKills: ").append(toIndentedString(npcKills)).append("\n");
         sb.append("    podKills: ").append(toIndentedString(podKills)).append("\n");
+        sb.append("    shipKills: ").append(toIndentedString(shipKills)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

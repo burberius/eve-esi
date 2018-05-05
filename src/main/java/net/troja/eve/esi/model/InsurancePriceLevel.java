@@ -28,11 +28,11 @@ public class InsurancePriceLevel implements Serializable {
     @JsonProperty("cost")
     private Float cost = null;
 
-    @JsonProperty("payout")
-    private Float payout = null;
-
     @JsonProperty("name")
     private String name = null;
+
+    @JsonProperty("payout")
+    private Float payout = null;
 
     public InsurancePriceLevel cost(Float cost) {
         this.cost = cost;
@@ -51,25 +51,6 @@ public class InsurancePriceLevel implements Serializable {
 
     public void setCost(Float cost) {
         this.cost = cost;
-    }
-
-    public InsurancePriceLevel payout(Float payout) {
-        this.payout = payout;
-        return this;
-    }
-
-    /**
-     * payout number
-     * 
-     * @return payout
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "payout number")
-    public Float getPayout() {
-        return payout;
-    }
-
-    public void setPayout(Float payout) {
-        this.payout = payout;
     }
 
     public InsurancePriceLevel name(String name) {
@@ -91,6 +72,25 @@ public class InsurancePriceLevel implements Serializable {
         this.name = name;
     }
 
+    public InsurancePriceLevel payout(Float payout) {
+        this.payout = payout;
+        return this;
+    }
+
+    /**
+     * payout number
+     * 
+     * @return payout
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "payout number")
+    public Float getPayout() {
+        return payout;
+    }
+
+    public void setPayout(Float payout) {
+        this.payout = payout;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,13 +101,13 @@ public class InsurancePriceLevel implements Serializable {
         }
         InsurancePriceLevel insurancePriceLevel = (InsurancePriceLevel) o;
         return Objects.equals(this.cost, insurancePriceLevel.cost)
-                && Objects.equals(this.payout, insurancePriceLevel.payout)
-                && Objects.equals(this.name, insurancePriceLevel.name);
+                && Objects.equals(this.name, insurancePriceLevel.name)
+                && Objects.equals(this.payout, insurancePriceLevel.payout);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cost, payout, name);
+        return Objects.hash(cost, name, payout);
     }
 
     @Override
@@ -116,8 +116,8 @@ public class InsurancePriceLevel implements Serializable {
         sb.append("class InsurancePriceLevel {\n");
 
         sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
-        sb.append("    payout: ").append(toIndentedString(payout)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    payout: ").append(toIndentedString(payout)).append("\n");
         sb.append("}");
         return sb.toString();
     }

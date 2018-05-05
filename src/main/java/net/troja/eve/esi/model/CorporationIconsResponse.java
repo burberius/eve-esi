@@ -25,33 +25,14 @@ import java.io.Serializable;
 public class CorporationIconsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("px64x64")
-    private String px64x64 = null;
-
     @JsonProperty("px128x128")
     private String px128x128 = null;
 
     @JsonProperty("px256x256")
     private String px256x256 = null;
 
-    public CorporationIconsResponse px64x64(String px64x64) {
-        this.px64x64 = px64x64;
-        return this;
-    }
-
-    /**
-     * px64x64 string
-     * 
-     * @return px64x64
-     **/
-    @ApiModelProperty(example = "null", value = "px64x64 string")
-    public String getPx64x64() {
-        return px64x64;
-    }
-
-    public void setPx64x64(String px64x64) {
-        this.px64x64 = px64x64;
-    }
+    @JsonProperty("px64x64")
+    private String px64x64 = null;
 
     public CorporationIconsResponse px128x128(String px128x128) {
         this.px128x128 = px128x128;
@@ -91,6 +72,25 @@ public class CorporationIconsResponse implements Serializable {
         this.px256x256 = px256x256;
     }
 
+    public CorporationIconsResponse px64x64(String px64x64) {
+        this.px64x64 = px64x64;
+        return this;
+    }
+
+    /**
+     * px64x64 string
+     * 
+     * @return px64x64
+     **/
+    @ApiModelProperty(example = "null", value = "px64x64 string")
+    public String getPx64x64() {
+        return px64x64;
+    }
+
+    public void setPx64x64(String px64x64) {
+        this.px64x64 = px64x64;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,14 +100,14 @@ public class CorporationIconsResponse implements Serializable {
             return false;
         }
         CorporationIconsResponse corporationIconsResponse = (CorporationIconsResponse) o;
-        return Objects.equals(this.px64x64, corporationIconsResponse.px64x64)
-                && Objects.equals(this.px128x128, corporationIconsResponse.px128x128)
-                && Objects.equals(this.px256x256, corporationIconsResponse.px256x256);
+        return Objects.equals(this.px128x128, corporationIconsResponse.px128x128)
+                && Objects.equals(this.px256x256, corporationIconsResponse.px256x256)
+                && Objects.equals(this.px64x64, corporationIconsResponse.px64x64);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(px64x64, px128x128, px256x256);
+        return Objects.hash(px128x128, px256x256, px64x64);
     }
 
     @Override
@@ -115,9 +115,9 @@ public class CorporationIconsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationIconsResponse {\n");
 
-        sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");
         sb.append("    px256x256: ").append(toIndentedString(px256x256)).append("\n");
+        sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -51,7 +51,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     @Ignore("Currently an internal error occures!")
     public void getCharactersCharacterIdOpportunitiesTest() throws ApiException {
         final List<CharacterOpportunitiesResponse> response = api.getCharactersCharacterIdOpportunities(characterId,
-                DATASOURCE, null, null, null);
+                DATASOURCE, null, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -67,7 +67,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
      */
     @Test
     public void getOpportunitiesGroupsTest() throws ApiException {
-        final List<Integer> response = api.getOpportunitiesGroups(DATASOURCE, null, null);
+        final List<Integer> response = api.getOpportunitiesGroups(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -85,7 +85,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     public void getOpportunitiesGroupsGroupIdTest() throws ApiException {
         final Integer groupId = 105;
 
-        final OpportunitiesGroupResponse response = api.getOpportunitiesGroupsGroupId(groupId, DATASOURCE, LANGUAGE,
+        final OpportunitiesGroupResponse response = api.getOpportunitiesGroupsGroupId(groupId, DATASOURCE, null, LANGUAGE,
                 null, null);
 
         assertThat(response.getName(), equalTo("Base of Operations"));
@@ -102,7 +102,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
      */
     @Test
     public void getOpportunitiesTasksTest() throws ApiException {
-        final List<Integer> response = api.getOpportunitiesTasks(DATASOURCE, null, null);
+        final List<Integer> response = api.getOpportunitiesTasks(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -119,7 +119,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     @Test
     public void getOpportunitiesTasksTaskIdTest() throws ApiException {
         final Integer taskId = 15;
-        final OpportunitiesTasksResponse response = api.getOpportunitiesTasksTaskId(taskId, DATASOURCE, null, null);
+        final OpportunitiesTasksResponse response = api.getOpportunitiesTasksTaskId(taskId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Complete a mission"));
     }

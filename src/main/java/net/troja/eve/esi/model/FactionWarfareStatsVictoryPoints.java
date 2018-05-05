@@ -25,33 +25,14 @@ import java.io.Serializable;
 public class FactionWarfareStatsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("yesterday")
-    private Integer yesterday = null;
-
     @JsonProperty("last_week")
     private Integer lastWeek = null;
 
     @JsonProperty("total")
     private Integer total = null;
 
-    public FactionWarfareStatsVictoryPoints yesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-        return this;
-    }
-
-    /**
-     * Yesterday's victory points gained
-     * 
-     * @return yesterday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Yesterday's victory points gained")
-    public Integer getYesterday() {
-        return yesterday;
-    }
-
-    public void setYesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-    }
+    @JsonProperty("yesterday")
+    private Integer yesterday = null;
 
     public FactionWarfareStatsVictoryPoints lastWeek(Integer lastWeek) {
         this.lastWeek = lastWeek;
@@ -91,6 +72,25 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
         this.total = total;
     }
 
+    public FactionWarfareStatsVictoryPoints yesterday(Integer yesterday) {
+        this.yesterday = yesterday;
+        return this;
+    }
+
+    /**
+     * Yesterday's victory points gained
+     * 
+     * @return yesterday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Yesterday's victory points gained")
+    public Integer getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(Integer yesterday) {
+        this.yesterday = yesterday;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,14 +100,14 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
             return false;
         }
         FactionWarfareStatsVictoryPoints factionWarfareStatsVictoryPoints = (FactionWarfareStatsVictoryPoints) o;
-        return Objects.equals(this.yesterday, factionWarfareStatsVictoryPoints.yesterday)
-                && Objects.equals(this.lastWeek, factionWarfareStatsVictoryPoints.lastWeek)
-                && Objects.equals(this.total, factionWarfareStatsVictoryPoints.total);
+        return Objects.equals(this.lastWeek, factionWarfareStatsVictoryPoints.lastWeek)
+                && Objects.equals(this.total, factionWarfareStatsVictoryPoints.total)
+                && Objects.equals(this.yesterday, factionWarfareStatsVictoryPoints.yesterday);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(yesterday, lastWeek, total);
+        return Objects.hash(lastWeek, total, yesterday);
     }
 
     @Override
@@ -115,9 +115,9 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareStatsVictoryPoints {\n");
 
-        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
         sb.append("    total: ").append(toIndentedString(total)).append("\n");
+        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("}");
         return sb.toString();
     }

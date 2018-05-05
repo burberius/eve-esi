@@ -90,9 +90,9 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdMailTest() throws ApiException {
-        final List<Long> labels = null;
+        final List<Integer> labels = null;
         final Integer lastMailId = null;
-        final List<MailHeadersResponse> response = api.getCharactersCharacterIdMail(characterId, DATASOURCE, labels,
+        final List<MailHeadersResponse> response = api.getCharactersCharacterIdMail(characterId, DATASOURCE, null, labels,
                 lastMailId, null, null, null);
 
         assertThat(response.size(), equalTo(50));
@@ -116,9 +116,8 @@ public class MailApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdMailLabelsTest() throws ApiException {
         final Integer characterId = null;
-        final String datasource = null;
         // MailLabelsResponse response =
-        // api.getCharactersCharacterIdMailLabels(characterId, datasource);
+        // api.getCharactersCharacterIdMailLabels(characterId, DATASOURCE);
 
         // TODO: test validations
     }
@@ -139,9 +138,8 @@ public class MailApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdMailListsTest() throws ApiException {
         final Integer characterId = null;
-        final String datasource = null;
         // List<CharacterMailinglistsResponse> response =
-        // api.getCharactersCharacterIdMailLists(characterId, datasource);
+        // api.getCharactersCharacterIdMailLists(characterId, DATASOURCE);
 
         // TODO: test validations
     }
@@ -163,10 +161,9 @@ public class MailApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdMailMailIdTest() throws ApiException {
         final Integer characterId = null;
         final Integer mailId = null;
-        final String datasource = null;
         // MailResponse response =
         // api.getCharactersCharacterIdMailMailId(characterId, mailId,
-        // datasource);
+        // DATASOURCE);
 
         // TODO: test validations
     }

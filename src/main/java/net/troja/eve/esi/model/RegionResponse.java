@@ -27,74 +27,17 @@ import java.io.Serializable;
 public class RegionResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("region_id")
-    private Integer regionId = null;
-
-    @JsonProperty("name")
-    private String name = null;
+    @JsonProperty("constellations")
+    private List<Integer> constellations = new ArrayList<Integer>();
 
     @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("constellations")
-    private List<Integer> constellations = new ArrayList<Integer>();
+    @JsonProperty("name")
+    private String name = null;
 
-    public RegionResponse regionId(Integer regionId) {
-        this.regionId = regionId;
-        return this;
-    }
-
-    /**
-     * region_id integer
-     * 
-     * @return regionId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "region_id integer")
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
-
-    public RegionResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public RegionResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @JsonProperty("region_id")
+    private Integer regionId = null;
 
     public RegionResponse constellations(List<Integer> constellations) {
         this.constellations = constellations;
@@ -120,6 +63,63 @@ public class RegionResponse implements Serializable {
         this.constellations = constellations;
     }
 
+    public RegionResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public RegionResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RegionResponse regionId(Integer regionId) {
+        this.regionId = regionId;
+        return this;
+    }
+
+    /**
+     * region_id integer
+     * 
+     * @return regionId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "region_id integer")
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,14 +129,15 @@ public class RegionResponse implements Serializable {
             return false;
         }
         RegionResponse regionResponse = (RegionResponse) o;
-        return Objects.equals(this.regionId, regionResponse.regionId) && Objects.equals(this.name, regionResponse.name)
+        return Objects.equals(this.constellations, regionResponse.constellations)
                 && Objects.equals(this.description, regionResponse.description)
-                && Objects.equals(this.constellations, regionResponse.constellations);
+                && Objects.equals(this.name, regionResponse.name)
+                && Objects.equals(this.regionId, regionResponse.regionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(regionId, name, description, constellations);
+        return Objects.hash(constellations, description, name, regionId);
     }
 
     @Override
@@ -144,10 +145,10 @@ public class RegionResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class RegionResponse {\n");
 
-        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    constellations: ").append(toIndentedString(constellations)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -10,7 +10,6 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.CharacterKillmailsResponse;
 import net.troja.eve.esi.model.CorporationKillmailsResponse;
 import net.troja.eve.esi.model.Forbidden;
-import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.KillmailResponse;
 
 import java.util.ArrayList;
@@ -47,6 +46,9 @@ public class KillmailsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param maxCount
      *            How many killmails to return at maximum (optional, default to
      *            50)
@@ -63,8 +65,8 @@ public class KillmailsApi {
      *             if fails to make API call
      */
     public List<CharacterKillmailsResponse> getCharactersCharacterIdKillmailsRecent(Integer characterId,
-            String datasource, Integer maxCount, Integer maxKillId, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer maxCount, Integer maxKillId, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -88,15 +90,15 @@ public class KillmailsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -118,6 +120,9 @@ public class KillmailsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param maxKillId
      *            Only return killmails with ID smaller than this (optional)
      * @param token
@@ -131,7 +136,7 @@ public class KillmailsApi {
      *             if fails to make API call
      */
     public List<CorporationKillmailsResponse> getCorporationsCorporationIdKillmailsRecent(Integer corporationId,
-            String datasource, Integer maxKillId, String token, String userAgent, String xUserAgent)
+            String datasource, String ifNoneMatch, Integer maxKillId, String token, String userAgent, String xUserAgent)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -155,15 +160,15 @@ public class KillmailsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -185,6 +190,9 @@ public class KillmailsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -194,7 +202,7 @@ public class KillmailsApi {
      *             if fails to make API call
      */
     public KillmailResponse getKillmailsKillmailIdKillmailHash(String killmailHash, Integer killmailId,
-            String datasource, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'killmailHash' is set
@@ -222,15 +230,15 @@ public class KillmailsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};

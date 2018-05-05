@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
-    private Integer characterId = null;
-
     @JsonProperty("amount")
     private Integer amount = null;
 
-    public FactionWarfareLeaderboardCharactersYesterdayVictoryPoints characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * character_id integer
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", value = "character_id integer")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
-    }
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
     public FactionWarfareLeaderboardCharactersYesterdayVictoryPoints amount(Integer amount) {
         this.amount = amount;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
         this.amount = amount;
     }
 
+    public FactionWarfareLeaderboardCharactersYesterdayVictoryPoints characterId(Integer characterId) {
+        this.characterId = characterId;
+        return this;
+    }
+
+    /**
+     * character_id integer
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(example = "null", value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,14 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
             return false;
         }
         FactionWarfareLeaderboardCharactersYesterdayVictoryPoints factionWarfareLeaderboardCharactersYesterdayVictoryPoints = (FactionWarfareLeaderboardCharactersYesterdayVictoryPoints) o;
-        return Objects.equals(this.characterId, factionWarfareLeaderboardCharactersYesterdayVictoryPoints.characterId)
-                && Objects.equals(this.amount, factionWarfareLeaderboardCharactersYesterdayVictoryPoints.amount);
+        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersYesterdayVictoryPoints.amount)
+                && Objects.equals(this.characterId,
+                        factionWarfareLeaderboardCharactersYesterdayVictoryPoints.characterId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, amount);
+        return Objects.hash(amount, characterId);
     }
 
     @Override
@@ -92,8 +93,8 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints {\n");
 
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

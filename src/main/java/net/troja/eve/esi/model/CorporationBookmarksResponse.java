@@ -31,29 +31,29 @@ public class CorporationBookmarksResponse implements Serializable {
     @JsonProperty("bookmark_id")
     private Integer bookmarkId = null;
 
+    @JsonProperty("coordinates")
+    private CorporationBookmarksCoordinates coordinates = null;
+
+    @JsonProperty("created")
+    private OffsetDateTime created = null;
+
     @JsonProperty("creator_id")
     private Integer creatorId = null;
 
     @JsonProperty("folder_id")
     private Integer folderId = null;
 
-    @JsonProperty("created")
-    private OffsetDateTime created = null;
+    @JsonProperty("item")
+    private CorporationBookmarkItem item = null;
 
     @JsonProperty("label")
     private String label = null;
 
-    @JsonProperty("notes")
-    private String notes = null;
-
     @JsonProperty("location_id")
     private Integer locationId = null;
 
-    @JsonProperty("item")
-    private CorporationBookmarkItem item = null;
-
-    @JsonProperty("coordinates")
-    private CorporationBookmarksCoordinates coordinates = null;
+    @JsonProperty("notes")
+    private String notes = null;
 
     public CorporationBookmarksResponse bookmarkId(Integer bookmarkId) {
         this.bookmarkId = bookmarkId;
@@ -72,6 +72,44 @@ public class CorporationBookmarksResponse implements Serializable {
 
     public void setBookmarkId(Integer bookmarkId) {
         this.bookmarkId = bookmarkId;
+    }
+
+    public CorporationBookmarksResponse coordinates(CorporationBookmarksCoordinates coordinates) {
+        this.coordinates = coordinates;
+        return this;
+    }
+
+    /**
+     * Get coordinates
+     * 
+     * @return coordinates
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public CorporationBookmarksCoordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(CorporationBookmarksCoordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public CorporationBookmarksResponse created(OffsetDateTime created) {
+        this.created = created;
+        return this;
+    }
+
+    /**
+     * created string
+     * 
+     * @return created
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "created string")
+    public OffsetDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(OffsetDateTime created) {
+        this.created = created;
     }
 
     public CorporationBookmarksResponse creatorId(Integer creatorId) {
@@ -112,23 +150,23 @@ public class CorporationBookmarksResponse implements Serializable {
         this.folderId = folderId;
     }
 
-    public CorporationBookmarksResponse created(OffsetDateTime created) {
-        this.created = created;
+    public CorporationBookmarksResponse item(CorporationBookmarkItem item) {
+        this.item = item;
         return this;
     }
 
     /**
-     * created string
+     * Get item
      * 
-     * @return created
+     * @return item
      **/
-    @ApiModelProperty(example = "null", required = true, value = "created string")
-    public OffsetDateTime getCreated() {
-        return created;
+    @ApiModelProperty(example = "null", value = "")
+    public CorporationBookmarkItem getItem() {
+        return item;
     }
 
-    public void setCreated(OffsetDateTime created) {
-        this.created = created;
+    public void setItem(CorporationBookmarkItem item) {
+        this.item = item;
     }
 
     public CorporationBookmarksResponse label(String label) {
@@ -150,25 +188,6 @@ public class CorporationBookmarksResponse implements Serializable {
         this.label = label;
     }
 
-    public CorporationBookmarksResponse notes(String notes) {
-        this.notes = notes;
-        return this;
-    }
-
-    /**
-     * notes string
-     * 
-     * @return notes
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "notes string")
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
     public CorporationBookmarksResponse locationId(Integer locationId) {
         this.locationId = locationId;
         return this;
@@ -188,42 +207,23 @@ public class CorporationBookmarksResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CorporationBookmarksResponse item(CorporationBookmarkItem item) {
-        this.item = item;
+    public CorporationBookmarksResponse notes(String notes) {
+        this.notes = notes;
         return this;
     }
 
     /**
-     * Get item
+     * notes string
      * 
-     * @return item
+     * @return notes
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public CorporationBookmarkItem getItem() {
-        return item;
+    @ApiModelProperty(example = "null", required = true, value = "notes string")
+    public String getNotes() {
+        return notes;
     }
 
-    public void setItem(CorporationBookmarkItem item) {
-        this.item = item;
-    }
-
-    public CorporationBookmarksResponse coordinates(CorporationBookmarksCoordinates coordinates) {
-        this.coordinates = coordinates;
-        return this;
-    }
-
-    /**
-     * Get coordinates
-     * 
-     * @return coordinates
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public CorporationBookmarksCoordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(CorporationBookmarksCoordinates coordinates) {
-        this.coordinates = coordinates;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
@@ -236,19 +236,19 @@ public class CorporationBookmarksResponse implements Serializable {
         }
         CorporationBookmarksResponse corporationBookmarksResponse = (CorporationBookmarksResponse) o;
         return Objects.equals(this.bookmarkId, corporationBookmarksResponse.bookmarkId)
+                && Objects.equals(this.coordinates, corporationBookmarksResponse.coordinates)
+                && Objects.equals(this.created, corporationBookmarksResponse.created)
                 && Objects.equals(this.creatorId, corporationBookmarksResponse.creatorId)
                 && Objects.equals(this.folderId, corporationBookmarksResponse.folderId)
-                && Objects.equals(this.created, corporationBookmarksResponse.created)
-                && Objects.equals(this.label, corporationBookmarksResponse.label)
-                && Objects.equals(this.notes, corporationBookmarksResponse.notes)
-                && Objects.equals(this.locationId, corporationBookmarksResponse.locationId)
                 && Objects.equals(this.item, corporationBookmarksResponse.item)
-                && Objects.equals(this.coordinates, corporationBookmarksResponse.coordinates);
+                && Objects.equals(this.label, corporationBookmarksResponse.label)
+                && Objects.equals(this.locationId, corporationBookmarksResponse.locationId)
+                && Objects.equals(this.notes, corporationBookmarksResponse.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookmarkId, creatorId, folderId, created, label, notes, locationId, item, coordinates);
+        return Objects.hash(bookmarkId, coordinates, created, creatorId, folderId, item, label, locationId, notes);
     }
 
     @Override
@@ -257,14 +257,14 @@ public class CorporationBookmarksResponse implements Serializable {
         sb.append("class CorporationBookmarksResponse {\n");
 
         sb.append("    bookmarkId: ").append(toIndentedString(bookmarkId)).append("\n");
+        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+        sb.append("    created: ").append(toIndentedString(created)).append("\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");
-        sb.append("    created: ").append(toIndentedString(created)).append("\n");
-        sb.append("    label: ").append(toIndentedString(label)).append("\n");
-        sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    item: ").append(toIndentedString(item)).append("\n");
-        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
+        sb.append("    label: ").append(toIndentedString(label)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
         sb.append("}");
         return sb.toString();
     }

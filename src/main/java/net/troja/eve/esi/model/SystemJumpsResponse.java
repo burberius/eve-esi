@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class SystemJumpsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
     @JsonProperty("ship_jumps")
     private Integer shipJumps = null;
 
-    public SystemJumpsResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * system_id integer
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
     public SystemJumpsResponse shipJumps(Integer shipJumps) {
         this.shipJumps = shipJumps;
@@ -69,6 +50,25 @@ public class SystemJumpsResponse implements Serializable {
         this.shipJumps = shipJumps;
     }
 
+    public SystemJumpsResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * system_id integer
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class SystemJumpsResponse implements Serializable {
             return false;
         }
         SystemJumpsResponse systemJumpsResponse = (SystemJumpsResponse) o;
-        return Objects.equals(this.systemId, systemJumpsResponse.systemId)
-                && Objects.equals(this.shipJumps, systemJumpsResponse.shipJumps);
+        return Objects.equals(this.shipJumps, systemJumpsResponse.shipJumps)
+                && Objects.equals(this.systemId, systemJumpsResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemId, shipJumps);
+        return Objects.hash(shipJumps, systemId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class SystemJumpsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemJumpsResponse {\n");
 
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    shipJumps: ").append(toIndentedString(shipJumps)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

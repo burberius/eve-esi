@@ -26,9 +26,6 @@ import java.io.Serializable;
 public class CharacterCorporationHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("start_date")
-    private OffsetDateTime startDate = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
 
@@ -38,24 +35,8 @@ public class CharacterCorporationHistoryResponse implements Serializable {
     @JsonProperty("record_id")
     private Integer recordId = null;
 
-    public CharacterCorporationHistoryResponse startDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-        return this;
-    }
-
-    /**
-     * start_date string
-     * 
-     * @return startDate
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "start_date string")
-    public OffsetDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-    }
+    @JsonProperty("start_date")
+    private OffsetDateTime startDate = null;
 
     public CharacterCorporationHistoryResponse corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -115,6 +96,25 @@ public class CharacterCorporationHistoryResponse implements Serializable {
         this.recordId = recordId;
     }
 
+    public CharacterCorporationHistoryResponse startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    /**
+     * start_date string
+     * 
+     * @return startDate
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "start_date string")
+    public OffsetDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,15 +124,15 @@ public class CharacterCorporationHistoryResponse implements Serializable {
             return false;
         }
         CharacterCorporationHistoryResponse characterCorporationHistoryResponse = (CharacterCorporationHistoryResponse) o;
-        return Objects.equals(this.startDate, characterCorporationHistoryResponse.startDate)
-                && Objects.equals(this.corporationId, characterCorporationHistoryResponse.corporationId)
+        return Objects.equals(this.corporationId, characterCorporationHistoryResponse.corporationId)
                 && Objects.equals(this.isDeleted, characterCorporationHistoryResponse.isDeleted)
-                && Objects.equals(this.recordId, characterCorporationHistoryResponse.recordId);
+                && Objects.equals(this.recordId, characterCorporationHistoryResponse.recordId)
+                && Objects.equals(this.startDate, characterCorporationHistoryResponse.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(startDate, corporationId, isDeleted, recordId);
+        return Objects.hash(corporationId, isDeleted, recordId, startDate);
     }
 
     @Override
@@ -140,10 +140,10 @@ public class CharacterCorporationHistoryResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterCorporationHistoryResponse {\n");
 
-        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    isDeleted: ").append(toIndentedString(isDeleted)).append("\n");
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
+        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("}");
         return sb.toString();
     }

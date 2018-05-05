@@ -26,47 +26,65 @@ import java.io.Serializable;
 public class CorporationIndustryJobsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("job_id")
-    private Integer jobId = null;
-
-    @JsonProperty("installer_id")
-    private Integer installerId = null;
-
-    @JsonProperty("facility_id")
-    private Long facilityId = null;
-
-    @JsonProperty("location_id")
-    private Long locationId = null;
-
     @JsonProperty("activity_id")
     private Integer activityId = null;
 
     @JsonProperty("blueprint_id")
     private Long blueprintId = null;
 
-    @JsonProperty("blueprint_type_id")
-    private Integer blueprintTypeId = null;
-
     @JsonProperty("blueprint_location_id")
     private Long blueprintLocationId = null;
 
-    @JsonProperty("output_location_id")
-    private Long outputLocationId = null;
+    @JsonProperty("blueprint_type_id")
+    private Integer blueprintTypeId = null;
 
-    @JsonProperty("runs")
-    private Integer runs = null;
+    @JsonProperty("completed_character_id")
+    private Integer completedCharacterId = null;
+
+    @JsonProperty("completed_date")
+    private OffsetDateTime completedDate = null;
 
     @JsonProperty("cost")
     private Double cost = null;
 
+    @JsonProperty("duration")
+    private Integer duration = null;
+
+    @JsonProperty("end_date")
+    private OffsetDateTime endDate = null;
+
+    @JsonProperty("facility_id")
+    private Long facilityId = null;
+
+    @JsonProperty("installer_id")
+    private Integer installerId = null;
+
+    @JsonProperty("job_id")
+    private Integer jobId = null;
+
     @JsonProperty("licensed_runs")
     private Integer licensedRuns = null;
+
+    @JsonProperty("location_id")
+    private Long locationId = null;
+
+    @JsonProperty("output_location_id")
+    private Long outputLocationId = null;
+
+    @JsonProperty("pause_date")
+    private OffsetDateTime pauseDate = null;
 
     @JsonProperty("probability")
     private Float probability = null;
 
     @JsonProperty("product_type_id")
     private Integer productTypeId = null;
+
+    @JsonProperty("runs")
+    private Integer runs = null;
+
+    @JsonProperty("start_date")
+    private OffsetDateTime startDate = null;
 
     /**
      * status string
@@ -109,102 +127,8 @@ public class CorporationIndustryJobsResponse implements Serializable {
     @JsonProperty("status")
     private StatusEnum status = null;
 
-    @JsonProperty("duration")
-    private Integer duration = null;
-
-    @JsonProperty("start_date")
-    private OffsetDateTime startDate = null;
-
-    @JsonProperty("end_date")
-    private OffsetDateTime endDate = null;
-
-    @JsonProperty("pause_date")
-    private OffsetDateTime pauseDate = null;
-
-    @JsonProperty("completed_date")
-    private OffsetDateTime completedDate = null;
-
-    @JsonProperty("completed_character_id")
-    private Integer completedCharacterId = null;
-
     @JsonProperty("successful_runs")
     private Integer successfulRuns = null;
-
-    public CorporationIndustryJobsResponse jobId(Integer jobId) {
-        this.jobId = jobId;
-        return this;
-    }
-
-    /**
-     * Unique job ID
-     * 
-     * @return jobId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique job ID")
-    public Integer getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
-    }
-
-    public CorporationIndustryJobsResponse installerId(Integer installerId) {
-        this.installerId = installerId;
-        return this;
-    }
-
-    /**
-     * ID of the character which installed this job
-     * 
-     * @return installerId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character which installed this job")
-    public Integer getInstallerId() {
-        return installerId;
-    }
-
-    public void setInstallerId(Integer installerId) {
-        this.installerId = installerId;
-    }
-
-    public CorporationIndustryJobsResponse facilityId(Long facilityId) {
-        this.facilityId = facilityId;
-        return this;
-    }
-
-    /**
-     * ID of the facility where this job is running
-     * 
-     * @return facilityId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the facility where this job is running")
-    public Long getFacilityId() {
-        return facilityId;
-    }
-
-    public void setFacilityId(Long facilityId) {
-        this.facilityId = facilityId;
-    }
-
-    public CorporationIndustryJobsResponse locationId(Long locationId) {
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * ID of the location for the industry facility
-     * 
-     * @return locationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the location for the industry facility")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
 
     public CorporationIndustryJobsResponse activityId(Integer activityId) {
         this.activityId = activityId;
@@ -244,25 +168,6 @@ public class CorporationIndustryJobsResponse implements Serializable {
         this.blueprintId = blueprintId;
     }
 
-    public CorporationIndustryJobsResponse blueprintTypeId(Integer blueprintTypeId) {
-        this.blueprintTypeId = blueprintTypeId;
-        return this;
-    }
-
-    /**
-     * blueprint_type_id integer
-     * 
-     * @return blueprintTypeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "blueprint_type_id integer")
-    public Integer getBlueprintTypeId() {
-        return blueprintTypeId;
-    }
-
-    public void setBlueprintTypeId(Integer blueprintTypeId) {
-        this.blueprintTypeId = blueprintTypeId;
-    }
-
     public CorporationIndustryJobsResponse blueprintLocationId(Long blueprintLocationId) {
         this.blueprintLocationId = blueprintLocationId;
         return this;
@@ -282,6 +187,215 @@ public class CorporationIndustryJobsResponse implements Serializable {
 
     public void setBlueprintLocationId(Long blueprintLocationId) {
         this.blueprintLocationId = blueprintLocationId;
+    }
+
+    public CorporationIndustryJobsResponse blueprintTypeId(Integer blueprintTypeId) {
+        this.blueprintTypeId = blueprintTypeId;
+        return this;
+    }
+
+    /**
+     * blueprint_type_id integer
+     * 
+     * @return blueprintTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "blueprint_type_id integer")
+    public Integer getBlueprintTypeId() {
+        return blueprintTypeId;
+    }
+
+    public void setBlueprintTypeId(Integer blueprintTypeId) {
+        this.blueprintTypeId = blueprintTypeId;
+    }
+
+    public CorporationIndustryJobsResponse completedCharacterId(Integer completedCharacterId) {
+        this.completedCharacterId = completedCharacterId;
+        return this;
+    }
+
+    /**
+     * ID of the character which completed this job
+     * 
+     * @return completedCharacterId
+     **/
+    @ApiModelProperty(example = "null", value = "ID of the character which completed this job")
+    public Integer getCompletedCharacterId() {
+        return completedCharacterId;
+    }
+
+    public void setCompletedCharacterId(Integer completedCharacterId) {
+        this.completedCharacterId = completedCharacterId;
+    }
+
+    public CorporationIndustryJobsResponse completedDate(OffsetDateTime completedDate) {
+        this.completedDate = completedDate;
+        return this;
+    }
+
+    /**
+     * Date and time when this job was completed
+     * 
+     * @return completedDate
+     **/
+    @ApiModelProperty(example = "null", value = "Date and time when this job was completed")
+    public OffsetDateTime getCompletedDate() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(OffsetDateTime completedDate) {
+        this.completedDate = completedDate;
+    }
+
+    public CorporationIndustryJobsResponse cost(Double cost) {
+        this.cost = cost;
+        return this;
+    }
+
+    /**
+     * The sume of job installation fee and industry facility tax
+     * 
+     * @return cost
+     **/
+    @ApiModelProperty(example = "null", value = "The sume of job installation fee and industry facility tax")
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
+
+    public CorporationIndustryJobsResponse duration(Integer duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    /**
+     * Job duration in seconds
+     * 
+     * @return duration
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Job duration in seconds")
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public CorporationIndustryJobsResponse endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
+    /**
+     * Date and time when this job finished
+     * 
+     * @return endDate
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Date and time when this job finished")
+    public OffsetDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public CorporationIndustryJobsResponse facilityId(Long facilityId) {
+        this.facilityId = facilityId;
+        return this;
+    }
+
+    /**
+     * ID of the facility where this job is running
+     * 
+     * @return facilityId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the facility where this job is running")
+    public Long getFacilityId() {
+        return facilityId;
+    }
+
+    public void setFacilityId(Long facilityId) {
+        this.facilityId = facilityId;
+    }
+
+    public CorporationIndustryJobsResponse installerId(Integer installerId) {
+        this.installerId = installerId;
+        return this;
+    }
+
+    /**
+     * ID of the character which installed this job
+     * 
+     * @return installerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the character which installed this job")
+    public Integer getInstallerId() {
+        return installerId;
+    }
+
+    public void setInstallerId(Integer installerId) {
+        this.installerId = installerId;
+    }
+
+    public CorporationIndustryJobsResponse jobId(Integer jobId) {
+        this.jobId = jobId;
+        return this;
+    }
+
+    /**
+     * Unique job ID
+     * 
+     * @return jobId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Unique job ID")
+    public Integer getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
+    }
+
+    public CorporationIndustryJobsResponse licensedRuns(Integer licensedRuns) {
+        this.licensedRuns = licensedRuns;
+        return this;
+    }
+
+    /**
+     * Number of runs blueprint is licensed for
+     * 
+     * @return licensedRuns
+     **/
+    @ApiModelProperty(example = "null", value = "Number of runs blueprint is licensed for")
+    public Integer getLicensedRuns() {
+        return licensedRuns;
+    }
+
+    public void setLicensedRuns(Integer licensedRuns) {
+        this.licensedRuns = licensedRuns;
+    }
+
+    public CorporationIndustryJobsResponse locationId(Long locationId) {
+        this.locationId = locationId;
+        return this;
+    }
+
+    /**
+     * ID of the location for the industry facility
+     * 
+     * @return locationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the location for the industry facility")
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
     public CorporationIndustryJobsResponse outputLocationId(Long outputLocationId) {
@@ -304,62 +418,24 @@ public class CorporationIndustryJobsResponse implements Serializable {
         this.outputLocationId = outputLocationId;
     }
 
-    public CorporationIndustryJobsResponse runs(Integer runs) {
-        this.runs = runs;
+    public CorporationIndustryJobsResponse pauseDate(OffsetDateTime pauseDate) {
+        this.pauseDate = pauseDate;
         return this;
     }
 
     /**
-     * Number of runs for a manufacturing job, or number of copies to make for a
-     * blueprint copy
+     * Date and time when this job was paused (i.e. time when the facility where
+     * this job was installed went offline)
      * 
-     * @return runs
+     * @return pauseDate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
-    public Integer getRuns() {
-        return runs;
+    @ApiModelProperty(example = "null", value = "Date and time when this job was paused (i.e. time when the facility where this job was installed went offline)")
+    public OffsetDateTime getPauseDate() {
+        return pauseDate;
     }
 
-    public void setRuns(Integer runs) {
-        this.runs = runs;
-    }
-
-    public CorporationIndustryJobsResponse cost(Double cost) {
-        this.cost = cost;
-        return this;
-    }
-
-    /**
-     * The sume of job installation fee and industry facility tax
-     * 
-     * @return cost
-     **/
-    @ApiModelProperty(example = "null", value = "The sume of job installation fee and industry facility tax")
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
-    public CorporationIndustryJobsResponse licensedRuns(Integer licensedRuns) {
-        this.licensedRuns = licensedRuns;
-        return this;
-    }
-
-    /**
-     * Number of runs blueprint is licensed for
-     * 
-     * @return licensedRuns
-     **/
-    @ApiModelProperty(example = "null", value = "Number of runs blueprint is licensed for")
-    public Integer getLicensedRuns() {
-        return licensedRuns;
-    }
-
-    public void setLicensedRuns(Integer licensedRuns) {
-        this.licensedRuns = licensedRuns;
+    public void setPauseDate(OffsetDateTime pauseDate) {
+        this.pauseDate = pauseDate;
     }
 
     public CorporationIndustryJobsResponse probability(Float probability) {
@@ -400,42 +476,24 @@ public class CorporationIndustryJobsResponse implements Serializable {
         this.productTypeId = productTypeId;
     }
 
-    public CorporationIndustryJobsResponse status(StatusEnum status) {
-        this.status = status;
+    public CorporationIndustryJobsResponse runs(Integer runs) {
+        this.runs = runs;
         return this;
     }
 
     /**
-     * status string
+     * Number of runs for a manufacturing job, or number of copies to make for a
+     * blueprint copy
      * 
-     * @return status
+     * @return runs
      **/
-    @ApiModelProperty(example = "null", required = true, value = "status string")
-    public StatusEnum getStatus() {
-        return status;
+    @ApiModelProperty(example = "null", required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
+    public Integer getRuns() {
+        return runs;
     }
 
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    public CorporationIndustryJobsResponse duration(Integer duration) {
-        this.duration = duration;
-        return this;
-    }
-
-    /**
-     * Job duration in seconds
-     * 
-     * @return duration
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Job duration in seconds")
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setRuns(Integer runs) {
+        this.runs = runs;
     }
 
     public CorporationIndustryJobsResponse startDate(OffsetDateTime startDate) {
@@ -457,81 +515,23 @@ public class CorporationIndustryJobsResponse implements Serializable {
         this.startDate = startDate;
     }
 
-    public CorporationIndustryJobsResponse endDate(OffsetDateTime endDate) {
-        this.endDate = endDate;
+    public CorporationIndustryJobsResponse status(StatusEnum status) {
+        this.status = status;
         return this;
     }
 
     /**
-     * Date and time when this job finished
+     * status string
      * 
-     * @return endDate
+     * @return status
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time when this job finished")
-    public OffsetDateTime getEndDate() {
-        return endDate;
+    @ApiModelProperty(example = "null", required = true, value = "status string")
+    public StatusEnum getStatus() {
+        return status;
     }
 
-    public void setEndDate(OffsetDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public CorporationIndustryJobsResponse pauseDate(OffsetDateTime pauseDate) {
-        this.pauseDate = pauseDate;
-        return this;
-    }
-
-    /**
-     * Date and time when this job was paused (i.e. time when the facility where
-     * this job was installed went offline)
-     * 
-     * @return pauseDate
-     **/
-    @ApiModelProperty(example = "null", value = "Date and time when this job was paused (i.e. time when the facility where this job was installed went offline)")
-    public OffsetDateTime getPauseDate() {
-        return pauseDate;
-    }
-
-    public void setPauseDate(OffsetDateTime pauseDate) {
-        this.pauseDate = pauseDate;
-    }
-
-    public CorporationIndustryJobsResponse completedDate(OffsetDateTime completedDate) {
-        this.completedDate = completedDate;
-        return this;
-    }
-
-    /**
-     * Date and time when this job was completed
-     * 
-     * @return completedDate
-     **/
-    @ApiModelProperty(example = "null", value = "Date and time when this job was completed")
-    public OffsetDateTime getCompletedDate() {
-        return completedDate;
-    }
-
-    public void setCompletedDate(OffsetDateTime completedDate) {
-        this.completedDate = completedDate;
-    }
-
-    public CorporationIndustryJobsResponse completedCharacterId(Integer completedCharacterId) {
-        this.completedCharacterId = completedCharacterId;
-        return this;
-    }
-
-    /**
-     * ID of the character which completed this job
-     * 
-     * @return completedCharacterId
-     **/
-    @ApiModelProperty(example = "null", value = "ID of the character which completed this job")
-    public Integer getCompletedCharacterId() {
-        return completedCharacterId;
-    }
-
-    public void setCompletedCharacterId(Integer completedCharacterId) {
-        this.completedCharacterId = completedCharacterId;
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     public CorporationIndustryJobsResponse successfulRuns(Integer successfulRuns) {
@@ -563,35 +563,35 @@ public class CorporationIndustryJobsResponse implements Serializable {
             return false;
         }
         CorporationIndustryJobsResponse corporationIndustryJobsResponse = (CorporationIndustryJobsResponse) o;
-        return Objects.equals(this.jobId, corporationIndustryJobsResponse.jobId)
-                && Objects.equals(this.installerId, corporationIndustryJobsResponse.installerId)
-                && Objects.equals(this.facilityId, corporationIndustryJobsResponse.facilityId)
-                && Objects.equals(this.locationId, corporationIndustryJobsResponse.locationId)
-                && Objects.equals(this.activityId, corporationIndustryJobsResponse.activityId)
+        return Objects.equals(this.activityId, corporationIndustryJobsResponse.activityId)
                 && Objects.equals(this.blueprintId, corporationIndustryJobsResponse.blueprintId)
-                && Objects.equals(this.blueprintTypeId, corporationIndustryJobsResponse.blueprintTypeId)
                 && Objects.equals(this.blueprintLocationId, corporationIndustryJobsResponse.blueprintLocationId)
-                && Objects.equals(this.outputLocationId, corporationIndustryJobsResponse.outputLocationId)
-                && Objects.equals(this.runs, corporationIndustryJobsResponse.runs)
+                && Objects.equals(this.blueprintTypeId, corporationIndustryJobsResponse.blueprintTypeId)
+                && Objects.equals(this.completedCharacterId, corporationIndustryJobsResponse.completedCharacterId)
+                && Objects.equals(this.completedDate, corporationIndustryJobsResponse.completedDate)
                 && Objects.equals(this.cost, corporationIndustryJobsResponse.cost)
+                && Objects.equals(this.duration, corporationIndustryJobsResponse.duration)
+                && Objects.equals(this.endDate, corporationIndustryJobsResponse.endDate)
+                && Objects.equals(this.facilityId, corporationIndustryJobsResponse.facilityId)
+                && Objects.equals(this.installerId, corporationIndustryJobsResponse.installerId)
+                && Objects.equals(this.jobId, corporationIndustryJobsResponse.jobId)
                 && Objects.equals(this.licensedRuns, corporationIndustryJobsResponse.licensedRuns)
+                && Objects.equals(this.locationId, corporationIndustryJobsResponse.locationId)
+                && Objects.equals(this.outputLocationId, corporationIndustryJobsResponse.outputLocationId)
+                && Objects.equals(this.pauseDate, corporationIndustryJobsResponse.pauseDate)
                 && Objects.equals(this.probability, corporationIndustryJobsResponse.probability)
                 && Objects.equals(this.productTypeId, corporationIndustryJobsResponse.productTypeId)
-                && Objects.equals(this.status, corporationIndustryJobsResponse.status)
-                && Objects.equals(this.duration, corporationIndustryJobsResponse.duration)
+                && Objects.equals(this.runs, corporationIndustryJobsResponse.runs)
                 && Objects.equals(this.startDate, corporationIndustryJobsResponse.startDate)
-                && Objects.equals(this.endDate, corporationIndustryJobsResponse.endDate)
-                && Objects.equals(this.pauseDate, corporationIndustryJobsResponse.pauseDate)
-                && Objects.equals(this.completedDate, corporationIndustryJobsResponse.completedDate)
-                && Objects.equals(this.completedCharacterId, corporationIndustryJobsResponse.completedCharacterId)
+                && Objects.equals(this.status, corporationIndustryJobsResponse.status)
                 && Objects.equals(this.successfulRuns, corporationIndustryJobsResponse.successfulRuns);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jobId, installerId, facilityId, locationId, activityId, blueprintId, blueprintTypeId,
-                blueprintLocationId, outputLocationId, runs, cost, licensedRuns, probability, productTypeId, status,
-                duration, startDate, endDate, pauseDate, completedDate, completedCharacterId, successfulRuns);
+        return Objects.hash(activityId, blueprintId, blueprintLocationId, blueprintTypeId, completedCharacterId,
+                completedDate, cost, duration, endDate, facilityId, installerId, jobId, licensedRuns, locationId,
+                outputLocationId, pauseDate, probability, productTypeId, runs, startDate, status, successfulRuns);
     }
 
     @Override
@@ -599,27 +599,27 @@ public class CorporationIndustryJobsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationIndustryJobsResponse {\n");
 
-        sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
-        sb.append("    installerId: ").append(toIndentedString(installerId)).append("\n");
-        sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    activityId: ").append(toIndentedString(activityId)).append("\n");
         sb.append("    blueprintId: ").append(toIndentedString(blueprintId)).append("\n");
-        sb.append("    blueprintTypeId: ").append(toIndentedString(blueprintTypeId)).append("\n");
         sb.append("    blueprintLocationId: ").append(toIndentedString(blueprintLocationId)).append("\n");
-        sb.append("    outputLocationId: ").append(toIndentedString(outputLocationId)).append("\n");
-        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
+        sb.append("    blueprintTypeId: ").append(toIndentedString(blueprintTypeId)).append("\n");
+        sb.append("    completedCharacterId: ").append(toIndentedString(completedCharacterId)).append("\n");
+        sb.append("    completedDate: ").append(toIndentedString(completedDate)).append("\n");
         sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
+        sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+        sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+        sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
+        sb.append("    installerId: ").append(toIndentedString(installerId)).append("\n");
+        sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
         sb.append("    licensedRuns: ").append(toIndentedString(licensedRuns)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    outputLocationId: ").append(toIndentedString(outputLocationId)).append("\n");
+        sb.append("    pauseDate: ").append(toIndentedString(pauseDate)).append("\n");
         sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
         sb.append("    productTypeId: ").append(toIndentedString(productTypeId)).append("\n");
-        sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
         sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-        sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-        sb.append("    pauseDate: ").append(toIndentedString(pauseDate)).append("\n");
-        sb.append("    completedDate: ").append(toIndentedString(completedDate)).append("\n");
-        sb.append("    completedCharacterId: ").append(toIndentedString(completedCharacterId)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    successfulRuns: ").append(toIndentedString(successfulRuns)).append("\n");
         sb.append("}");
         return sb.toString();

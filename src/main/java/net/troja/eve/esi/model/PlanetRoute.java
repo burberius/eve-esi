@@ -27,23 +27,80 @@ import java.io.Serializable;
 public class PlanetRoute implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("content_type_id")
+    private Integer contentTypeId = null;
+
+    @JsonProperty("destination_pin_id")
+    private Long destinationPinId = null;
+
+    @JsonProperty("quantity")
+    private Float quantity = null;
+
     @JsonProperty("route_id")
     private Long routeId = null;
 
     @JsonProperty("source_pin_id")
     private Long sourcePinId = null;
 
-    @JsonProperty("destination_pin_id")
-    private Long destinationPinId = null;
-
-    @JsonProperty("content_type_id")
-    private Integer contentTypeId = null;
-
-    @JsonProperty("quantity")
-    private Float quantity = null;
-
     @JsonProperty("waypoints")
     private List<Long> waypoints = new ArrayList<Long>();
+
+    public PlanetRoute contentTypeId(Integer contentTypeId) {
+        this.contentTypeId = contentTypeId;
+        return this;
+    }
+
+    /**
+     * content_type_id integer
+     * 
+     * @return contentTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "content_type_id integer")
+    public Integer getContentTypeId() {
+        return contentTypeId;
+    }
+
+    public void setContentTypeId(Integer contentTypeId) {
+        this.contentTypeId = contentTypeId;
+    }
+
+    public PlanetRoute destinationPinId(Long destinationPinId) {
+        this.destinationPinId = destinationPinId;
+        return this;
+    }
+
+    /**
+     * destination_pin_id integer
+     * 
+     * @return destinationPinId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "destination_pin_id integer")
+    public Long getDestinationPinId() {
+        return destinationPinId;
+    }
+
+    public void setDestinationPinId(Long destinationPinId) {
+        this.destinationPinId = destinationPinId;
+    }
+
+    public PlanetRoute quantity(Float quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity number
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity number")
+    public Float getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Float quantity) {
+        this.quantity = quantity;
+    }
 
     public PlanetRoute routeId(Long routeId) {
         this.routeId = routeId;
@@ -83,63 +140,6 @@ public class PlanetRoute implements Serializable {
         this.sourcePinId = sourcePinId;
     }
 
-    public PlanetRoute destinationPinId(Long destinationPinId) {
-        this.destinationPinId = destinationPinId;
-        return this;
-    }
-
-    /**
-     * destination_pin_id integer
-     * 
-     * @return destinationPinId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "destination_pin_id integer")
-    public Long getDestinationPinId() {
-        return destinationPinId;
-    }
-
-    public void setDestinationPinId(Long destinationPinId) {
-        this.destinationPinId = destinationPinId;
-    }
-
-    public PlanetRoute contentTypeId(Integer contentTypeId) {
-        this.contentTypeId = contentTypeId;
-        return this;
-    }
-
-    /**
-     * content_type_id integer
-     * 
-     * @return contentTypeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "content_type_id integer")
-    public Integer getContentTypeId() {
-        return contentTypeId;
-    }
-
-    public void setContentTypeId(Integer contentTypeId) {
-        this.contentTypeId = contentTypeId;
-    }
-
-    public PlanetRoute quantity(Float quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity number
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity number")
-    public Float getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Float quantity) {
-        this.quantity = quantity;
-    }
-
     public PlanetRoute waypoints(List<Long> waypoints) {
         this.waypoints = waypoints;
         return this;
@@ -173,17 +173,17 @@ public class PlanetRoute implements Serializable {
             return false;
         }
         PlanetRoute planetRoute = (PlanetRoute) o;
-        return Objects.equals(this.routeId, planetRoute.routeId)
-                && Objects.equals(this.sourcePinId, planetRoute.sourcePinId)
+        return Objects.equals(this.contentTypeId, planetRoute.contentTypeId)
                 && Objects.equals(this.destinationPinId, planetRoute.destinationPinId)
-                && Objects.equals(this.contentTypeId, planetRoute.contentTypeId)
                 && Objects.equals(this.quantity, planetRoute.quantity)
+                && Objects.equals(this.routeId, planetRoute.routeId)
+                && Objects.equals(this.sourcePinId, planetRoute.sourcePinId)
                 && Objects.equals(this.waypoints, planetRoute.waypoints);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(routeId, sourcePinId, destinationPinId, contentTypeId, quantity, waypoints);
+        return Objects.hash(contentTypeId, destinationPinId, quantity, routeId, sourcePinId, waypoints);
     }
 
     @Override
@@ -191,11 +191,11 @@ public class PlanetRoute implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetRoute {\n");
 
+        sb.append("    contentTypeId: ").append(toIndentedString(contentTypeId)).append("\n");
+        sb.append("    destinationPinId: ").append(toIndentedString(destinationPinId)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
         sb.append("    sourcePinId: ").append(toIndentedString(sourcePinId)).append("\n");
-        sb.append("    destinationPinId: ").append(toIndentedString(destinationPinId)).append("\n");
-        sb.append("    contentTypeId: ").append(toIndentedString(contentTypeId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    waypoints: ").append(toIndentedString(waypoints)).append("\n");
         sb.append("}");
         return sb.toString();

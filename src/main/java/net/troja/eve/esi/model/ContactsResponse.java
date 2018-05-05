@@ -25,8 +25,8 @@ import java.io.Serializable;
 public class ContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("standing")
-    private Float standing = null;
+    @JsonProperty("contact_id")
+    private Integer contactId = null;
 
     /**
      * contact_type string
@@ -65,55 +65,17 @@ public class ContactsResponse implements Serializable {
     @JsonProperty("contact_type")
     private ContactTypeEnum contactType = null;
 
-    @JsonProperty("contact_id")
-    private Integer contactId = null;
+    @JsonProperty("is_blocked")
+    private Boolean isBlocked = null;
 
     @JsonProperty("is_watched")
     private Boolean isWatched = null;
 
-    @JsonProperty("is_blocked")
-    private Boolean isBlocked = null;
-
     @JsonProperty("label_id")
     private Long labelId = null;
 
-    public ContactsResponse standing(Float standing) {
-        this.standing = standing;
-        return this;
-    }
-
-    /**
-     * Standing of the contact
-     * 
-     * @return standing
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Standing of the contact")
-    public Float getStanding() {
-        return standing;
-    }
-
-    public void setStanding(Float standing) {
-        this.standing = standing;
-    }
-
-    public ContactsResponse contactType(ContactTypeEnum contactType) {
-        this.contactType = contactType;
-        return this;
-    }
-
-    /**
-     * contact_type string
-     * 
-     * @return contactType
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "contact_type string")
-    public ContactTypeEnum getContactType() {
-        return contactType;
-    }
-
-    public void setContactType(ContactTypeEnum contactType) {
-        this.contactType = contactType;
-    }
+    @JsonProperty("standing")
+    private Float standing = null;
 
     public ContactsResponse contactId(Integer contactId) {
         this.contactId = contactId;
@@ -134,23 +96,23 @@ public class ContactsResponse implements Serializable {
         this.contactId = contactId;
     }
 
-    public ContactsResponse isWatched(Boolean isWatched) {
-        this.isWatched = isWatched;
+    public ContactsResponse contactType(ContactTypeEnum contactType) {
+        this.contactType = contactType;
         return this;
     }
 
     /**
-     * Whether this contact is being watched
+     * contact_type string
      * 
-     * @return isWatched
+     * @return contactType
      **/
-    @ApiModelProperty(example = "null", value = "Whether this contact is being watched")
-    public Boolean getIsWatched() {
-        return isWatched;
+    @ApiModelProperty(example = "null", required = true, value = "contact_type string")
+    public ContactTypeEnum getContactType() {
+        return contactType;
     }
 
-    public void setIsWatched(Boolean isWatched) {
-        this.isWatched = isWatched;
+    public void setContactType(ContactTypeEnum contactType) {
+        this.contactType = contactType;
     }
 
     public ContactsResponse isBlocked(Boolean isBlocked) {
@@ -173,6 +135,25 @@ public class ContactsResponse implements Serializable {
         this.isBlocked = isBlocked;
     }
 
+    public ContactsResponse isWatched(Boolean isWatched) {
+        this.isWatched = isWatched;
+        return this;
+    }
+
+    /**
+     * Whether this contact is being watched
+     * 
+     * @return isWatched
+     **/
+    @ApiModelProperty(example = "null", value = "Whether this contact is being watched")
+    public Boolean getIsWatched() {
+        return isWatched;
+    }
+
+    public void setIsWatched(Boolean isWatched) {
+        this.isWatched = isWatched;
+    }
+
     public ContactsResponse labelId(Long labelId) {
         this.labelId = labelId;
         return this;
@@ -192,6 +173,25 @@ public class ContactsResponse implements Serializable {
         this.labelId = labelId;
     }
 
+    public ContactsResponse standing(Float standing) {
+        this.standing = standing;
+        return this;
+    }
+
+    /**
+     * Standing of the contact
+     * 
+     * @return standing
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Standing of the contact")
+    public Float getStanding() {
+        return standing;
+    }
+
+    public void setStanding(Float standing) {
+        this.standing = standing;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -201,17 +201,17 @@ public class ContactsResponse implements Serializable {
             return false;
         }
         ContactsResponse contactsResponse = (ContactsResponse) o;
-        return Objects.equals(this.standing, contactsResponse.standing)
+        return Objects.equals(this.contactId, contactsResponse.contactId)
                 && Objects.equals(this.contactType, contactsResponse.contactType)
-                && Objects.equals(this.contactId, contactsResponse.contactId)
-                && Objects.equals(this.isWatched, contactsResponse.isWatched)
                 && Objects.equals(this.isBlocked, contactsResponse.isBlocked)
-                && Objects.equals(this.labelId, contactsResponse.labelId);
+                && Objects.equals(this.isWatched, contactsResponse.isWatched)
+                && Objects.equals(this.labelId, contactsResponse.labelId)
+                && Objects.equals(this.standing, contactsResponse.standing);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(standing, contactType, contactId, isWatched, isBlocked, labelId);
+        return Objects.hash(contactId, contactType, isBlocked, isWatched, labelId, standing);
     }
 
     @Override
@@ -219,12 +219,12 @@ public class ContactsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class ContactsResponse {\n");
 
-        sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
-        sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
         sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
-        sb.append("    isWatched: ").append(toIndentedString(isWatched)).append("\n");
+        sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
         sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
+        sb.append("    isWatched: ").append(toIndentedString(isWatched)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
+        sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
         sb.append("}");
         return sb.toString();
     }

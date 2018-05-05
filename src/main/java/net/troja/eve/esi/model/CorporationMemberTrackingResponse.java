@@ -26,64 +26,26 @@ import java.io.Serializable;
 public class CorporationMemberTrackingResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
-    private Integer characterId = null;
-
-    @JsonProperty("start_date")
-    private OffsetDateTime startDate = null;
-
     @JsonProperty("base_id")
     private Integer baseId = null;
 
-    @JsonProperty("logon_date")
-    private OffsetDateTime logonDate = null;
-
-    @JsonProperty("logoff_date")
-    private OffsetDateTime logoffDate = null;
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
     @JsonProperty("location_id")
     private Long locationId = null;
 
+    @JsonProperty("logoff_date")
+    private OffsetDateTime logoffDate = null;
+
+    @JsonProperty("logon_date")
+    private OffsetDateTime logonDate = null;
+
     @JsonProperty("ship_type_id")
     private Integer shipTypeId = null;
 
-    public CorporationMemberTrackingResponse characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * character_id integer
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
-    }
-
-    public CorporationMemberTrackingResponse startDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-        return this;
-    }
-
-    /**
-     * start_date string
-     * 
-     * @return startDate
-     **/
-    @ApiModelProperty(example = "null", value = "start_date string")
-    public OffsetDateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(OffsetDateTime startDate) {
-        this.startDate = startDate;
-    }
+    @JsonProperty("start_date")
+    private OffsetDateTime startDate = null;
 
     public CorporationMemberTrackingResponse baseId(Integer baseId) {
         this.baseId = baseId;
@@ -104,42 +66,23 @@ public class CorporationMemberTrackingResponse implements Serializable {
         this.baseId = baseId;
     }
 
-    public CorporationMemberTrackingResponse logonDate(OffsetDateTime logonDate) {
-        this.logonDate = logonDate;
+    public CorporationMemberTrackingResponse characterId(Integer characterId) {
+        this.characterId = characterId;
         return this;
     }
 
     /**
-     * logon_date string
+     * character_id integer
      * 
-     * @return logonDate
+     * @return characterId
      **/
-    @ApiModelProperty(example = "null", value = "logon_date string")
-    public OffsetDateTime getLogonDate() {
-        return logonDate;
+    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
     }
 
-    public void setLogonDate(OffsetDateTime logonDate) {
-        this.logonDate = logonDate;
-    }
-
-    public CorporationMemberTrackingResponse logoffDate(OffsetDateTime logoffDate) {
-        this.logoffDate = logoffDate;
-        return this;
-    }
-
-    /**
-     * logoff_date string
-     * 
-     * @return logoffDate
-     **/
-    @ApiModelProperty(example = "null", value = "logoff_date string")
-    public OffsetDateTime getLogoffDate() {
-        return logoffDate;
-    }
-
-    public void setLogoffDate(OffsetDateTime logoffDate) {
-        this.logoffDate = logoffDate;
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
     }
 
     public CorporationMemberTrackingResponse locationId(Long locationId) {
@@ -161,6 +104,44 @@ public class CorporationMemberTrackingResponse implements Serializable {
         this.locationId = locationId;
     }
 
+    public CorporationMemberTrackingResponse logoffDate(OffsetDateTime logoffDate) {
+        this.logoffDate = logoffDate;
+        return this;
+    }
+
+    /**
+     * logoff_date string
+     * 
+     * @return logoffDate
+     **/
+    @ApiModelProperty(example = "null", value = "logoff_date string")
+    public OffsetDateTime getLogoffDate() {
+        return logoffDate;
+    }
+
+    public void setLogoffDate(OffsetDateTime logoffDate) {
+        this.logoffDate = logoffDate;
+    }
+
+    public CorporationMemberTrackingResponse logonDate(OffsetDateTime logonDate) {
+        this.logonDate = logonDate;
+        return this;
+    }
+
+    /**
+     * logon_date string
+     * 
+     * @return logonDate
+     **/
+    @ApiModelProperty(example = "null", value = "logon_date string")
+    public OffsetDateTime getLogonDate() {
+        return logonDate;
+    }
+
+    public void setLogonDate(OffsetDateTime logonDate) {
+        this.logonDate = logonDate;
+    }
+
     public CorporationMemberTrackingResponse shipTypeId(Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
         return this;
@@ -180,6 +161,25 @@ public class CorporationMemberTrackingResponse implements Serializable {
         this.shipTypeId = shipTypeId;
     }
 
+    public CorporationMemberTrackingResponse startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    /**
+     * start_date string
+     * 
+     * @return startDate
+     **/
+    @ApiModelProperty(example = "null", value = "start_date string")
+    public OffsetDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -189,18 +189,18 @@ public class CorporationMemberTrackingResponse implements Serializable {
             return false;
         }
         CorporationMemberTrackingResponse corporationMemberTrackingResponse = (CorporationMemberTrackingResponse) o;
-        return Objects.equals(this.characterId, corporationMemberTrackingResponse.characterId)
-                && Objects.equals(this.startDate, corporationMemberTrackingResponse.startDate)
-                && Objects.equals(this.baseId, corporationMemberTrackingResponse.baseId)
-                && Objects.equals(this.logonDate, corporationMemberTrackingResponse.logonDate)
-                && Objects.equals(this.logoffDate, corporationMemberTrackingResponse.logoffDate)
+        return Objects.equals(this.baseId, corporationMemberTrackingResponse.baseId)
+                && Objects.equals(this.characterId, corporationMemberTrackingResponse.characterId)
                 && Objects.equals(this.locationId, corporationMemberTrackingResponse.locationId)
-                && Objects.equals(this.shipTypeId, corporationMemberTrackingResponse.shipTypeId);
+                && Objects.equals(this.logoffDate, corporationMemberTrackingResponse.logoffDate)
+                && Objects.equals(this.logonDate, corporationMemberTrackingResponse.logonDate)
+                && Objects.equals(this.shipTypeId, corporationMemberTrackingResponse.shipTypeId)
+                && Objects.equals(this.startDate, corporationMemberTrackingResponse.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, startDate, baseId, logonDate, logoffDate, locationId, shipTypeId);
+        return Objects.hash(baseId, characterId, locationId, logoffDate, logonDate, shipTypeId, startDate);
     }
 
     @Override
@@ -208,13 +208,13 @@ public class CorporationMemberTrackingResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMemberTrackingResponse {\n");
 
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
-        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("    baseId: ").append(toIndentedString(baseId)).append("\n");
-        sb.append("    logonDate: ").append(toIndentedString(logonDate)).append("\n");
-        sb.append("    logoffDate: ").append(toIndentedString(logoffDate)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    logoffDate: ").append(toIndentedString(logoffDate)).append("\n");
+        sb.append("    logonDate: ").append(toIndentedString(logonDate)).append("\n");
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
+        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("}");
         return sb.toString();
     }

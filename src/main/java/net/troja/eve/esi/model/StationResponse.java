@@ -28,38 +28,29 @@ import java.io.Serializable;
 public class StationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("station_id")
-    private Integer stationId = null;
+    @JsonProperty("max_dockable_ship_volume")
+    private Float maxDockableShipVolume = null;
 
     @JsonProperty("name")
     private String name = null;
 
+    @JsonProperty("office_rental_cost")
+    private Float officeRentalCost = null;
+
     @JsonProperty("owner")
     private Integer owner = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("race_id")
-    private Integer raceId = null;
 
     @JsonProperty("position")
     private Position position = null;
 
-    @JsonProperty("system_id")
-    private Integer systemId = null;
+    @JsonProperty("race_id")
+    private Integer raceId = null;
 
     @JsonProperty("reprocessing_efficiency")
     private Float reprocessingEfficiency = null;
 
     @JsonProperty("reprocessing_stations_take")
     private Float reprocessingStationsTake = null;
-
-    @JsonProperty("max_dockable_ship_volume")
-    private Float maxDockableShipVolume = null;
-
-    @JsonProperty("office_rental_cost")
-    private Float officeRentalCost = null;
 
     /**
      * service string
@@ -144,23 +135,32 @@ public class StationResponse implements Serializable {
     @JsonProperty("services")
     private List<ServicesEnum> services = new ArrayList<ServicesEnum>();
 
-    public StationResponse stationId(Integer stationId) {
-        this.stationId = stationId;
+    @JsonProperty("station_id")
+    private Integer stationId = null;
+
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    public StationResponse maxDockableShipVolume(Float maxDockableShipVolume) {
+        this.maxDockableShipVolume = maxDockableShipVolume;
         return this;
     }
 
     /**
-     * station_id integer
+     * max_dockable_ship_volume number
      * 
-     * @return stationId
+     * @return maxDockableShipVolume
      **/
-    @ApiModelProperty(example = "null", required = true, value = "station_id integer")
-    public Integer getStationId() {
-        return stationId;
+    @ApiModelProperty(example = "null", required = true, value = "max_dockable_ship_volume number")
+    public Float getMaxDockableShipVolume() {
+        return maxDockableShipVolume;
     }
 
-    public void setStationId(Integer stationId) {
-        this.stationId = stationId;
+    public void setMaxDockableShipVolume(Float maxDockableShipVolume) {
+        this.maxDockableShipVolume = maxDockableShipVolume;
     }
 
     public StationResponse name(String name) {
@@ -182,6 +182,25 @@ public class StationResponse implements Serializable {
         this.name = name;
     }
 
+    public StationResponse officeRentalCost(Float officeRentalCost) {
+        this.officeRentalCost = officeRentalCost;
+        return this;
+    }
+
+    /**
+     * office_rental_cost number
+     * 
+     * @return officeRentalCost
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "office_rental_cost number")
+    public Float getOfficeRentalCost() {
+        return officeRentalCost;
+    }
+
+    public void setOfficeRentalCost(Float officeRentalCost) {
+        this.officeRentalCost = officeRentalCost;
+    }
+
     public StationResponse owner(Integer owner) {
         this.owner = owner;
         return this;
@@ -199,44 +218,6 @@ public class StationResponse implements Serializable {
 
     public void setOwner(Integer owner) {
         this.owner = owner;
-    }
-
-    public StationResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public StationResponse raceId(Integer raceId) {
-        this.raceId = raceId;
-        return this;
-    }
-
-    /**
-     * race_id integer
-     * 
-     * @return raceId
-     **/
-    @ApiModelProperty(example = "null", value = "race_id integer")
-    public Integer getRaceId() {
-        return raceId;
-    }
-
-    public void setRaceId(Integer raceId) {
-        this.raceId = raceId;
     }
 
     public StationResponse position(Position position) {
@@ -258,23 +239,23 @@ public class StationResponse implements Serializable {
         this.position = position;
     }
 
-    public StationResponse systemId(Integer systemId) {
-        this.systemId = systemId;
+    public StationResponse raceId(Integer raceId) {
+        this.raceId = raceId;
         return this;
     }
 
     /**
-     * The solar system this station is in
+     * race_id integer
      * 
-     * @return systemId
+     * @return raceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this station is in")
-    public Integer getSystemId() {
-        return systemId;
+    @ApiModelProperty(example = "null", value = "race_id integer")
+    public Integer getRaceId() {
+        return raceId;
     }
 
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
+    public void setRaceId(Integer raceId) {
+        this.raceId = raceId;
     }
 
     public StationResponse reprocessingEfficiency(Float reprocessingEfficiency) {
@@ -315,44 +296,6 @@ public class StationResponse implements Serializable {
         this.reprocessingStationsTake = reprocessingStationsTake;
     }
 
-    public StationResponse maxDockableShipVolume(Float maxDockableShipVolume) {
-        this.maxDockableShipVolume = maxDockableShipVolume;
-        return this;
-    }
-
-    /**
-     * max_dockable_ship_volume number
-     * 
-     * @return maxDockableShipVolume
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "max_dockable_ship_volume number")
-    public Float getMaxDockableShipVolume() {
-        return maxDockableShipVolume;
-    }
-
-    public void setMaxDockableShipVolume(Float maxDockableShipVolume) {
-        this.maxDockableShipVolume = maxDockableShipVolume;
-    }
-
-    public StationResponse officeRentalCost(Float officeRentalCost) {
-        this.officeRentalCost = officeRentalCost;
-        return this;
-    }
-
-    /**
-     * office_rental_cost number
-     * 
-     * @return officeRentalCost
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "office_rental_cost number")
-    public Float getOfficeRentalCost() {
-        return officeRentalCost;
-    }
-
-    public void setOfficeRentalCost(Float officeRentalCost) {
-        this.officeRentalCost = officeRentalCost;
-    }
-
     public StationResponse services(List<ServicesEnum> services) {
         this.services = services;
         return this;
@@ -377,6 +320,63 @@ public class StationResponse implements Serializable {
         this.services = services;
     }
 
+    public StationResponse stationId(Integer stationId) {
+        this.stationId = stationId;
+        return this;
+    }
+
+    /**
+     * station_id integer
+     * 
+     * @return stationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "station_id integer")
+    public Integer getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
+    }
+
+    public StationResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this station is in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system this station is in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public StationResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -386,23 +386,24 @@ public class StationResponse implements Serializable {
             return false;
         }
         StationResponse stationResponse = (StationResponse) o;
-        return Objects.equals(this.stationId, stationResponse.stationId)
-                && Objects.equals(this.name, stationResponse.name) && Objects.equals(this.owner, stationResponse.owner)
-                && Objects.equals(this.typeId, stationResponse.typeId)
-                && Objects.equals(this.raceId, stationResponse.raceId)
+        return Objects.equals(this.maxDockableShipVolume, stationResponse.maxDockableShipVolume)
+                && Objects.equals(this.name, stationResponse.name)
+                && Objects.equals(this.officeRentalCost, stationResponse.officeRentalCost)
+                && Objects.equals(this.owner, stationResponse.owner)
                 && Objects.equals(this.position, stationResponse.position)
-                && Objects.equals(this.systemId, stationResponse.systemId)
+                && Objects.equals(this.raceId, stationResponse.raceId)
                 && Objects.equals(this.reprocessingEfficiency, stationResponse.reprocessingEfficiency)
                 && Objects.equals(this.reprocessingStationsTake, stationResponse.reprocessingStationsTake)
-                && Objects.equals(this.maxDockableShipVolume, stationResponse.maxDockableShipVolume)
-                && Objects.equals(this.officeRentalCost, stationResponse.officeRentalCost)
-                && Objects.equals(this.services, stationResponse.services);
+                && Objects.equals(this.services, stationResponse.services)
+                && Objects.equals(this.stationId, stationResponse.stationId)
+                && Objects.equals(this.systemId, stationResponse.systemId)
+                && Objects.equals(this.typeId, stationResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stationId, name, owner, typeId, raceId, position, systemId, reprocessingEfficiency,
-                reprocessingStationsTake, maxDockableShipVolume, officeRentalCost, services);
+        return Objects.hash(maxDockableShipVolume, name, officeRentalCost, owner, position, raceId,
+                reprocessingEfficiency, reprocessingStationsTake, services, stationId, systemId, typeId);
     }
 
     @Override
@@ -410,18 +411,18 @@ public class StationResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class StationResponse {\n");
 
-        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
+        sb.append("    maxDockableShipVolume: ").append(toIndentedString(maxDockableShipVolume)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");
         sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
         sb.append("    reprocessingEfficiency: ").append(toIndentedString(reprocessingEfficiency)).append("\n");
         sb.append("    reprocessingStationsTake: ").append(toIndentedString(reprocessingStationsTake)).append("\n");
-        sb.append("    maxDockableShipVolume: ").append(toIndentedString(maxDockableShipVolume)).append("\n");
-        sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");
         sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -26,11 +26,14 @@ import java.io.Serializable;
 public class CorporationMiningObserverResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("character_id")
+    private Integer characterId = null;
+
     @JsonProperty("last_updated")
     private LocalDate lastUpdated = null;
 
-    @JsonProperty("character_id")
-    private Integer characterId = null;
+    @JsonProperty("quantity")
+    private Long quantity = null;
 
     @JsonProperty("recorded_corporation_id")
     private Integer recordedCorporationId = null;
@@ -38,8 +41,24 @@ public class CorporationMiningObserverResponse implements Serializable {
     @JsonProperty("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("quantity")
-    private Long quantity = null;
+    public CorporationMiningObserverResponse characterId(Integer characterId) {
+        this.characterId = characterId;
+        return this;
+    }
+
+    /**
+     * The character that did the mining
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The character that did the mining ")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
 
     public CorporationMiningObserverResponse lastUpdated(LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
@@ -60,23 +79,23 @@ public class CorporationMiningObserverResponse implements Serializable {
         this.lastUpdated = lastUpdated;
     }
 
-    public CorporationMiningObserverResponse characterId(Integer characterId) {
-        this.characterId = characterId;
+    public CorporationMiningObserverResponse quantity(Long quantity) {
+        this.quantity = quantity;
         return this;
     }
 
     /**
-     * The character that did the mining
+     * quantity integer
      * 
-     * @return characterId
+     * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character that did the mining ")
-    public Integer getCharacterId() {
-        return characterId;
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Long getQuantity() {
+        return quantity;
     }
 
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     public CorporationMiningObserverResponse recordedCorporationId(Integer recordedCorporationId) {
@@ -117,25 +136,6 @@ public class CorporationMiningObserverResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public CorporationMiningObserverResponse quantity(Long quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,16 +145,16 @@ public class CorporationMiningObserverResponse implements Serializable {
             return false;
         }
         CorporationMiningObserverResponse corporationMiningObserverResponse = (CorporationMiningObserverResponse) o;
-        return Objects.equals(this.lastUpdated, corporationMiningObserverResponse.lastUpdated)
-                && Objects.equals(this.characterId, corporationMiningObserverResponse.characterId)
+        return Objects.equals(this.characterId, corporationMiningObserverResponse.characterId)
+                && Objects.equals(this.lastUpdated, corporationMiningObserverResponse.lastUpdated)
+                && Objects.equals(this.quantity, corporationMiningObserverResponse.quantity)
                 && Objects.equals(this.recordedCorporationId, corporationMiningObserverResponse.recordedCorporationId)
-                && Objects.equals(this.typeId, corporationMiningObserverResponse.typeId)
-                && Objects.equals(this.quantity, corporationMiningObserverResponse.quantity);
+                && Objects.equals(this.typeId, corporationMiningObserverResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastUpdated, characterId, recordedCorporationId, typeId, quantity);
+        return Objects.hash(characterId, lastUpdated, quantity, recordedCorporationId, typeId);
     }
 
     @Override
@@ -162,11 +162,11 @@ public class CorporationMiningObserverResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMiningObserverResponse {\n");
 
-        sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    recordedCorporationId: ").append(toIndentedString(recordedCorporationId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("}");
         return sb.toString();
     }
