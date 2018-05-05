@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBlueprintsResponse;
-import net.troja.eve.esi.model.CharacterChatChannelsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
