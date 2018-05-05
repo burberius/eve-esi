@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class KillmailSubItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("flag")
+    private Integer flag = null;
+
     @JsonProperty("item_type_id")
     private Integer itemTypeId = null;
 
@@ -37,8 +40,24 @@ public class KillmailSubItem implements Serializable {
     @JsonProperty("singleton")
     private Integer singleton = null;
 
-    @JsonProperty("flag")
-    private Integer flag = null;
+    public KillmailSubItem flag(Integer flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    /**
+     * flag integer
+     * 
+     * @return flag
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "flag integer")
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 
     public KillmailSubItem itemTypeId(Integer itemTypeId) {
         this.itemTypeId = itemTypeId;
@@ -116,25 +135,6 @@ public class KillmailSubItem implements Serializable {
         this.singleton = singleton;
     }
 
-    public KillmailSubItem flag(Integer flag) {
-        this.flag = flag;
-        return this;
-    }
-
-    /**
-     * flag integer
-     * 
-     * @return flag
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "flag integer")
-    public Integer getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -144,16 +144,16 @@ public class KillmailSubItem implements Serializable {
             return false;
         }
         KillmailSubItem killmailSubItem = (KillmailSubItem) o;
-        return Objects.equals(this.itemTypeId, killmailSubItem.itemTypeId)
+        return Objects.equals(this.flag, killmailSubItem.flag)
+                && Objects.equals(this.itemTypeId, killmailSubItem.itemTypeId)
                 && Objects.equals(this.quantityDestroyed, killmailSubItem.quantityDestroyed)
                 && Objects.equals(this.quantityDropped, killmailSubItem.quantityDropped)
-                && Objects.equals(this.singleton, killmailSubItem.singleton)
-                && Objects.equals(this.flag, killmailSubItem.flag);
+                && Objects.equals(this.singleton, killmailSubItem.singleton);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemTypeId, quantityDestroyed, quantityDropped, singleton, flag);
+        return Objects.hash(flag, itemTypeId, quantityDestroyed, quantityDropped, singleton);
     }
 
     @Override
@@ -161,11 +161,11 @@ public class KillmailSubItem implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailSubItem {\n");
 
+        sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    itemTypeId: ").append(toIndentedString(itemTypeId)).append("\n");
         sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    quantityDropped: ").append(toIndentedString(quantityDropped)).append("\n");
         sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
-        sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -29,11 +29,8 @@ import java.io.Serializable;
 public class CorporationOutpostResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("owner_id")
-    private Integer ownerId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
+    @JsonProperty("coordinates")
+    private CorporationOutpostCoordinates coordinates = null;
 
     @JsonProperty("docking_cost_per_ship_volume")
     private Float dockingCostPerShipVolume = null;
@@ -41,8 +38,8 @@ public class CorporationOutpostResponse implements Serializable {
     @JsonProperty("office_rental_cost")
     private Long officeRentalCost = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("owner_id")
+    private Integer ownerId = null;
 
     @JsonProperty("reprocessing_efficiency")
     private Float reprocessingEfficiency = null;
@@ -50,52 +47,35 @@ public class CorporationOutpostResponse implements Serializable {
     @JsonProperty("reprocessing_station_take")
     private Float reprocessingStationTake = null;
 
-    @JsonProperty("standing_owner_id")
-    private Integer standingOwnerId = null;
-
-    @JsonProperty("coordinates")
-    private CorporationOutpostCoordinates coordinates = null;
-
     @JsonProperty("services")
     private List<CorporationOutpostService> services = new ArrayList<CorporationOutpostService>();
 
-    public CorporationOutpostResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    @JsonProperty("standing_owner_id")
+    private Integer standingOwnerId = null;
+
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    public CorporationOutpostResponse coordinates(CorporationOutpostCoordinates coordinates) {
+        this.coordinates = coordinates;
         return this;
     }
 
     /**
-     * The entity that owns the station (e.g. the entity whose logo is on the
-     * station services bar)
+     * Get coordinates
      * 
-     * @return ownerId
+     * @return coordinates
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The entity that owns the station (e.g. the entity whose logo is on the station services bar)")
-    public Integer getOwnerId() {
-        return ownerId;
+    @ApiModelProperty(example = "null", value = "")
+    public CorporationOutpostCoordinates getCoordinates() {
+        return coordinates;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public CorporationOutpostResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The ID of the solar system the outpost rests in
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The ID of the solar system the outpost rests in")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
+    public void setCoordinates(CorporationOutpostCoordinates coordinates) {
+        this.coordinates = coordinates;
     }
 
     public CorporationOutpostResponse dockingCostPerShipVolume(Float dockingCostPerShipVolume) {
@@ -136,23 +116,24 @@ public class CorporationOutpostResponse implements Serializable {
         this.officeRentalCost = officeRentalCost;
     }
 
-    public CorporationOutpostResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    public CorporationOutpostResponse ownerId(Integer ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
     /**
-     * The type ID of the given outpost
+     * The entity that owns the station (e.g. the entity whose logo is on the
+     * station services bar)
      * 
-     * @return typeId
+     * @return ownerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type ID of the given outpost")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", required = true, value = "The entity that owns the station (e.g. the entity whose logo is on the station services bar)")
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public CorporationOutpostResponse reprocessingEfficiency(Float reprocessingEfficiency) {
@@ -193,45 +174,6 @@ public class CorporationOutpostResponse implements Serializable {
         this.reprocessingStationTake = reprocessingStationTake;
     }
 
-    public CorporationOutpostResponse standingOwnerId(Integer standingOwnerId) {
-        this.standingOwnerId = standingOwnerId;
-        return this;
-    }
-
-    /**
-     * The owner ID that sets the ability for someone to dock based on
-     * standings.
-     * 
-     * @return standingOwnerId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The owner ID that sets the ability for someone to dock based on standings.")
-    public Integer getStandingOwnerId() {
-        return standingOwnerId;
-    }
-
-    public void setStandingOwnerId(Integer standingOwnerId) {
-        this.standingOwnerId = standingOwnerId;
-    }
-
-    public CorporationOutpostResponse coordinates(CorporationOutpostCoordinates coordinates) {
-        this.coordinates = coordinates;
-        return this;
-    }
-
-    /**
-     * Get coordinates
-     * 
-     * @return coordinates
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public CorporationOutpostCoordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(CorporationOutpostCoordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
     public CorporationOutpostResponse services(List<CorporationOutpostService> services) {
         this.services = services;
         return this;
@@ -256,6 +198,64 @@ public class CorporationOutpostResponse implements Serializable {
         this.services = services;
     }
 
+    public CorporationOutpostResponse standingOwnerId(Integer standingOwnerId) {
+        this.standingOwnerId = standingOwnerId;
+        return this;
+    }
+
+    /**
+     * The owner ID that sets the ability for someone to dock based on
+     * standings.
+     * 
+     * @return standingOwnerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The owner ID that sets the ability for someone to dock based on standings.")
+    public Integer getStandingOwnerId() {
+        return standingOwnerId;
+    }
+
+    public void setStandingOwnerId(Integer standingOwnerId) {
+        this.standingOwnerId = standingOwnerId;
+    }
+
+    public CorporationOutpostResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The ID of the solar system the outpost rests in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The ID of the solar system the outpost rests in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public CorporationOutpostResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * The type ID of the given outpost
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The type ID of the given outpost")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -265,22 +265,22 @@ public class CorporationOutpostResponse implements Serializable {
             return false;
         }
         CorporationOutpostResponse corporationOutpostResponse = (CorporationOutpostResponse) o;
-        return Objects.equals(this.ownerId, corporationOutpostResponse.ownerId)
-                && Objects.equals(this.systemId, corporationOutpostResponse.systemId)
+        return Objects.equals(this.coordinates, corporationOutpostResponse.coordinates)
                 && Objects.equals(this.dockingCostPerShipVolume, corporationOutpostResponse.dockingCostPerShipVolume)
                 && Objects.equals(this.officeRentalCost, corporationOutpostResponse.officeRentalCost)
-                && Objects.equals(this.typeId, corporationOutpostResponse.typeId)
+                && Objects.equals(this.ownerId, corporationOutpostResponse.ownerId)
                 && Objects.equals(this.reprocessingEfficiency, corporationOutpostResponse.reprocessingEfficiency)
                 && Objects.equals(this.reprocessingStationTake, corporationOutpostResponse.reprocessingStationTake)
+                && Objects.equals(this.services, corporationOutpostResponse.services)
                 && Objects.equals(this.standingOwnerId, corporationOutpostResponse.standingOwnerId)
-                && Objects.equals(this.coordinates, corporationOutpostResponse.coordinates)
-                && Objects.equals(this.services, corporationOutpostResponse.services);
+                && Objects.equals(this.systemId, corporationOutpostResponse.systemId)
+                && Objects.equals(this.typeId, corporationOutpostResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerId, systemId, dockingCostPerShipVolume, officeRentalCost, typeId,
-                reprocessingEfficiency, reprocessingStationTake, standingOwnerId, coordinates, services);
+        return Objects.hash(coordinates, dockingCostPerShipVolume, officeRentalCost, ownerId, reprocessingEfficiency,
+                reprocessingStationTake, services, standingOwnerId, systemId, typeId);
     }
 
     @Override
@@ -288,16 +288,16 @@ public class CorporationOutpostResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationOutpostResponse {\n");
 
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
         sb.append("    dockingCostPerShipVolume: ").append(toIndentedString(dockingCostPerShipVolume)).append("\n");
         sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    reprocessingEfficiency: ").append(toIndentedString(reprocessingEfficiency)).append("\n");
         sb.append("    reprocessingStationTake: ").append(toIndentedString(reprocessingStationTake)).append("\n");
-        sb.append("    standingOwnerId: ").append(toIndentedString(standingOwnerId)).append("\n");
-        sb.append("    coordinates: ").append(toIndentedString(coordinates)).append("\n");
         sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    standingOwnerId: ").append(toIndentedString(standingOwnerId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

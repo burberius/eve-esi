@@ -13,7 +13,6 @@ import net.troja.eve.esi.model.CorporationWalletJournalResponse;
 import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
 import net.troja.eve.esi.model.CorporationWalletsResponse;
 import net.troja.eve.esi.model.Forbidden;
-import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +48,9 @@ public class WalletApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -59,8 +61,8 @@ public class WalletApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String ifNoneMatch,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -82,15 +84,15 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -102,20 +104,20 @@ public class WalletApi {
     }
 
     /**
-     * Get character wallet journal Retrieve character wallet journal --- This
-     * route is cached for up to 3600 seconds --- [This route has an available
-     * update
-     * ](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id
-     * }/wallet/journal/) SSO Scope: esi-wallet.read_character_wallet.v1
+     * Get character wallet journal Retrieve the given character&#39;s wallet
+     * journal going 30 days back --- This route is cached for up to 3600
+     * seconds SSO Scope: esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fromId
-     *            Only show journal entries happened before the transaction
-     *            referenced by this id (optional)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -127,7 +129,8 @@ public class WalletApi {
      *             if fails to make API call
      */
     public List<CharacterWalletJournalResponse> getCharactersCharacterIdWalletJournal(Integer characterId,
-            String datasource, Long fromId, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -137,7 +140,7 @@ public class WalletApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v4/characters/{character_id}/wallet/journal/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -146,19 +149,19 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -182,6 +185,9 @@ public class WalletApi {
      * @param fromId
      *            Only show transactions happened before the one referenced by
      *            this id (optional)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -193,7 +199,8 @@ public class WalletApi {
      *             if fails to make API call
      */
     public List<CharacterWalletTransactionsResponse> getCharactersCharacterIdWalletTransactions(Integer characterId,
-            String datasource, Long fromId, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, Long fromId, String ifNoneMatch, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -216,15 +223,15 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -246,6 +253,9 @@ public class WalletApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -257,7 +267,8 @@ public class WalletApi {
      *             if fails to make API call
      */
     public List<CorporationWalletsResponse> getCorporationsCorporationIdWallets(Integer corporationId,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -279,15 +290,15 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -299,13 +310,11 @@ public class WalletApi {
     }
 
     /**
-     * Get corporation wallet journal Retrieve corporation wallet journal ---
-     * This route is cached for up to 3600 seconds --- Requires one of the
-     * following EVE corporation role(s): Accountant, Junior_Accountant ---
-     * [This route has an available
-     * update](https://esi.tech.ccp.is/diff/latest/dev
-     * /#GET-/corporations/{corporation_id}/wallets/{division}/journal/) SSO
-     * Scope: esi-wallet.read_corporation_wallets.v1
+     * Get corporation wallet journal Retrieve the given corporation&#39;s
+     * wallet journal for the given division going 30 days back --- This route
+     * is cached for up to 3600 seconds --- Requires one of the following EVE
+     * corporation role(s): Accountant, Junior_Accountant SSO Scope:
+     * esi-wallet.read_corporation_wallets.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -314,9 +323,11 @@ public class WalletApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param fromId
-     *            Only show journal entries happened before the transaction
-     *            referenced by this id (optional)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -328,8 +339,8 @@ public class WalletApi {
      *             if fails to make API call
      */
     public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
-            Integer corporationId, Integer division, String datasource, Long fromId, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -345,7 +356,7 @@ public class WalletApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/wallets/{division}/journal/"
+        String localVarPath = "/v3/corporations/{corporation_id}/wallets/{division}/journal/"
                 .replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
                 .replaceAll("\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));
@@ -356,19 +367,19 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -395,6 +406,9 @@ public class WalletApi {
      * @param fromId
      *            Only show journal entries happened before the transaction
      *            referenced by this id (optional)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -406,8 +420,8 @@ public class WalletApi {
      *             if fails to make API call
      */
     public List<CorporationWalletTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
-            Integer corporationId, Integer division, String datasource, Long fromId, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -438,15 +452,15 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };

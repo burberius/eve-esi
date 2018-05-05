@@ -25,32 +25,32 @@ import java.io.Serializable;
 public class MarketPricesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("adjusted_price")
+    private Double adjustedPrice = null;
 
     @JsonProperty("average_price")
     private Double averagePrice = null;
 
-    @JsonProperty("adjusted_price")
-    private Double adjustedPrice = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
-    public MarketPricesResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    public MarketPricesResponse adjustedPrice(Double adjustedPrice) {
+        this.adjustedPrice = adjustedPrice;
         return this;
     }
 
     /**
-     * type_id integer
+     * adjusted_price number
      * 
-     * @return typeId
+     * @return adjustedPrice
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", value = "adjusted_price number")
+    public Double getAdjustedPrice() {
+        return adjustedPrice;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setAdjustedPrice(Double adjustedPrice) {
+        this.adjustedPrice = adjustedPrice;
     }
 
     public MarketPricesResponse averagePrice(Double averagePrice) {
@@ -72,23 +72,23 @@ public class MarketPricesResponse implements Serializable {
         this.averagePrice = averagePrice;
     }
 
-    public MarketPricesResponse adjustedPrice(Double adjustedPrice) {
-        this.adjustedPrice = adjustedPrice;
+    public MarketPricesResponse typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * adjusted_price number
+     * type_id integer
      * 
-     * @return adjustedPrice
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", value = "adjusted_price number")
-    public Double getAdjustedPrice() {
-        return adjustedPrice;
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setAdjustedPrice(Double adjustedPrice) {
-        this.adjustedPrice = adjustedPrice;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -100,14 +100,14 @@ public class MarketPricesResponse implements Serializable {
             return false;
         }
         MarketPricesResponse marketPricesResponse = (MarketPricesResponse) o;
-        return Objects.equals(this.typeId, marketPricesResponse.typeId)
+        return Objects.equals(this.adjustedPrice, marketPricesResponse.adjustedPrice)
                 && Objects.equals(this.averagePrice, marketPricesResponse.averagePrice)
-                && Objects.equals(this.adjustedPrice, marketPricesResponse.adjustedPrice);
+                && Objects.equals(this.typeId, marketPricesResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, averagePrice, adjustedPrice);
+        return Objects.hash(adjustedPrice, averagePrice, typeId);
     }
 
     @Override
@@ -115,9 +115,9 @@ public class MarketPricesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketPricesResponse {\n");
 
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    averagePrice: ").append(toIndentedString(averagePrice)).append("\n");
         sb.append("    adjustedPrice: ").append(toIndentedString(adjustedPrice)).append("\n");
+        sb.append("    averagePrice: ").append(toIndentedString(averagePrice)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

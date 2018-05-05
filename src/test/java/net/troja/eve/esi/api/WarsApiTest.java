@@ -50,9 +50,7 @@ public class WarsApiTest extends GeneralApiTest {
     @Test
     public void getWarsTest() throws ApiException {
         final Integer maxWarId = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getWars(DATASOURCE, maxWarId, userAgent, xUserAgent);
+        final List<Integer> response = api.getWars(DATASOURCE, null, maxWarId, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -71,10 +69,8 @@ public class WarsApiTest extends GeneralApiTest {
      */
     @Test
     public void getWarsWarIdTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final Integer warId = api.getWars(DATASOURCE, null, userAgent, xUserAgent).get(0);
-        final WarResponse response = api.getWarsWarId(warId, DATASOURCE, userAgent, xUserAgent);
+        final Integer warId = api.getWars(DATASOURCE, null, null, null, null).get(0);
+        final WarResponse response = api.getWarsWarId(warId, DATASOURCE, null, null, null);
 
         assertThat(response.getAggressor(), notNullValue());
         assertThat(response.getId(), equalTo(warId));
@@ -96,14 +92,12 @@ public class WarsApiTest extends GeneralApiTest {
     @Ignore("Takes too long")
     public void getWarsWarIdKillmailsTest() throws ApiException {
         // final Integer page = null;
-        // final String userAgent = null;
-        // final String xUserAgent = null;
-        // for (final Integer warId : api.getWars(DATASOURCE, null, userAgent,
-        // xUserAgent)) {
+        // for (final Integer warId : api.getWars(DATASOURCE, null, null,
+        // null)) {
         //
         // final List<WarKillmailsResponse> response =
-        // api.getWarsWarIdKillmails(warId, DATASOURCE, page, userAgent,
-        // xUserAgent);
+        // api.getWarsWarIdKillmails(warId, DATASOURCE, page, null,
+        // null);
         //
         // if (response.size() > 0) {
         // final WarKillmailsResponse killmailsResponse = response.get(0);

@@ -28,11 +28,26 @@ public class BloodlinesResponse implements Serializable {
     @JsonProperty("bloodline_id")
     private Integer bloodlineId = null;
 
-    @JsonProperty("name")
-    private String name = null;
+    @JsonProperty("charisma")
+    private Integer charisma = null;
+
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
 
     @JsonProperty("description")
     private String description = null;
+
+    @JsonProperty("intelligence")
+    private Integer intelligence = null;
+
+    @JsonProperty("memory")
+    private Integer memory = null;
+
+    @JsonProperty("name")
+    private String name = null;
+
+    @JsonProperty("perception")
+    private Integer perception = null;
 
     @JsonProperty("race_id")
     private Integer raceId = null;
@@ -40,23 +55,8 @@ public class BloodlinesResponse implements Serializable {
     @JsonProperty("ship_type_id")
     private Integer shipTypeId = null;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
-    @JsonProperty("perception")
-    private Integer perception = null;
-
     @JsonProperty("willpower")
     private Integer willpower = null;
-
-    @JsonProperty("charisma")
-    private Integer charisma = null;
-
-    @JsonProperty("memory")
-    private Integer memory = null;
-
-    @JsonProperty("intelligence")
-    private Integer intelligence = null;
 
     public BloodlinesResponse bloodlineId(Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
@@ -75,6 +75,101 @@ public class BloodlinesResponse implements Serializable {
 
     public void setBloodlineId(Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
+    }
+
+    public BloodlinesResponse charisma(Integer charisma) {
+        this.charisma = charisma;
+        return this;
+    }
+
+    /**
+     * charisma integer
+     * 
+     * @return charisma
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "charisma integer")
+    public Integer getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(Integer charisma) {
+        this.charisma = charisma;
+    }
+
+    public BloodlinesResponse corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+        return this;
+    }
+
+    /**
+     * corporation_id integer
+     * 
+     * @return corporationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    public Integer getCorporationId() {
+        return corporationId;
+    }
+
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+    }
+
+    public BloodlinesResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BloodlinesResponse intelligence(Integer intelligence) {
+        this.intelligence = intelligence;
+        return this;
+    }
+
+    /**
+     * intelligence integer
+     * 
+     * @return intelligence
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "intelligence integer")
+    public Integer getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(Integer intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public BloodlinesResponse memory(Integer memory) {
+        this.memory = memory;
+        return this;
+    }
+
+    /**
+     * memory integer
+     * 
+     * @return memory
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "memory integer")
+    public Integer getMemory() {
+        return memory;
+    }
+
+    public void setMemory(Integer memory) {
+        this.memory = memory;
     }
 
     public BloodlinesResponse name(String name) {
@@ -96,23 +191,23 @@ public class BloodlinesResponse implements Serializable {
         this.name = name;
     }
 
-    public BloodlinesResponse description(String description) {
-        this.description = description;
+    public BloodlinesResponse perception(Integer perception) {
+        this.perception = perception;
         return this;
     }
 
     /**
-     * description string
+     * perception integer
      * 
-     * @return description
+     * @return perception
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
+    @ApiModelProperty(example = "null", required = true, value = "perception integer")
+    public Integer getPerception() {
+        return perception;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPerception(Integer perception) {
+        this.perception = perception;
     }
 
     public BloodlinesResponse raceId(Integer raceId) {
@@ -153,44 +248,6 @@ public class BloodlinesResponse implements Serializable {
         this.shipTypeId = shipTypeId;
     }
 
-    public BloodlinesResponse corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-        return this;
-    }
-
-    /**
-     * corporation_id integer
-     * 
-     * @return corporationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-    }
-
-    public BloodlinesResponse perception(Integer perception) {
-        this.perception = perception;
-        return this;
-    }
-
-    /**
-     * perception integer
-     * 
-     * @return perception
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "perception integer")
-    public Integer getPerception() {
-        return perception;
-    }
-
-    public void setPerception(Integer perception) {
-        this.perception = perception;
-    }
-
     public BloodlinesResponse willpower(Integer willpower) {
         this.willpower = willpower;
         return this;
@@ -210,63 +267,6 @@ public class BloodlinesResponse implements Serializable {
         this.willpower = willpower;
     }
 
-    public BloodlinesResponse charisma(Integer charisma) {
-        this.charisma = charisma;
-        return this;
-    }
-
-    /**
-     * charisma integer
-     * 
-     * @return charisma
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "charisma integer")
-    public Integer getCharisma() {
-        return charisma;
-    }
-
-    public void setCharisma(Integer charisma) {
-        this.charisma = charisma;
-    }
-
-    public BloodlinesResponse memory(Integer memory) {
-        this.memory = memory;
-        return this;
-    }
-
-    /**
-     * memory integer
-     * 
-     * @return memory
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "memory integer")
-    public Integer getMemory() {
-        return memory;
-    }
-
-    public void setMemory(Integer memory) {
-        this.memory = memory;
-    }
-
-    public BloodlinesResponse intelligence(Integer intelligence) {
-        this.intelligence = intelligence;
-        return this;
-    }
-
-    /**
-     * intelligence integer
-     * 
-     * @return intelligence
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "intelligence integer")
-    public Integer getIntelligence() {
-        return intelligence;
-    }
-
-    public void setIntelligence(Integer intelligence) {
-        this.intelligence = intelligence;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -277,22 +277,22 @@ public class BloodlinesResponse implements Serializable {
         }
         BloodlinesResponse bloodlinesResponse = (BloodlinesResponse) o;
         return Objects.equals(this.bloodlineId, bloodlinesResponse.bloodlineId)
-                && Objects.equals(this.name, bloodlinesResponse.name)
+                && Objects.equals(this.charisma, bloodlinesResponse.charisma)
+                && Objects.equals(this.corporationId, bloodlinesResponse.corporationId)
                 && Objects.equals(this.description, bloodlinesResponse.description)
+                && Objects.equals(this.intelligence, bloodlinesResponse.intelligence)
+                && Objects.equals(this.memory, bloodlinesResponse.memory)
+                && Objects.equals(this.name, bloodlinesResponse.name)
+                && Objects.equals(this.perception, bloodlinesResponse.perception)
                 && Objects.equals(this.raceId, bloodlinesResponse.raceId)
                 && Objects.equals(this.shipTypeId, bloodlinesResponse.shipTypeId)
-                && Objects.equals(this.corporationId, bloodlinesResponse.corporationId)
-                && Objects.equals(this.perception, bloodlinesResponse.perception)
-                && Objects.equals(this.willpower, bloodlinesResponse.willpower)
-                && Objects.equals(this.charisma, bloodlinesResponse.charisma)
-                && Objects.equals(this.memory, bloodlinesResponse.memory)
-                && Objects.equals(this.intelligence, bloodlinesResponse.intelligence);
+                && Objects.equals(this.willpower, bloodlinesResponse.willpower);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bloodlineId, name, description, raceId, shipTypeId, corporationId, perception, willpower,
-                charisma, memory, intelligence);
+        return Objects.hash(bloodlineId, charisma, corporationId, description, intelligence, memory, name, perception,
+                raceId, shipTypeId, willpower);
     }
 
     @Override
@@ -301,16 +301,16 @@ public class BloodlinesResponse implements Serializable {
         sb.append("class BloodlinesResponse {\n");
 
         sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    charisma: ").append(toIndentedString(charisma)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    intelligence: ").append(toIndentedString(intelligence)).append("\n");
+        sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    perception: ").append(toIndentedString(perception)).append("\n");
         sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    perception: ").append(toIndentedString(perception)).append("\n");
         sb.append("    willpower: ").append(toIndentedString(willpower)).append("\n");
-        sb.append("    charisma: ").append(toIndentedString(charisma)).append("\n");
-        sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
-        sb.append("    intelligence: ").append(toIndentedString(intelligence)).append("\n");
         sb.append("}");
         return sb.toString();
     }

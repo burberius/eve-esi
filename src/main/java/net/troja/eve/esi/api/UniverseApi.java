@@ -14,7 +14,6 @@ import net.troja.eve.esi.model.FactionsResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.GraphicResponse;
 import net.troja.eve.esi.model.GroupResponse;
-import net.troja.eve.esi.model.InternalServerError;
 import net.troja.eve.esi.model.MoonResponse;
 import net.troja.eve.esi.model.PlanetResponse;
 import net.troja.eve.esi.model.RacesResponse;
@@ -30,7 +29,6 @@ import net.troja.eve.esi.model.TypeResponse;
 import net.troja.eve.esi.model.UniverseAncestriesResponse;
 import net.troja.eve.esi.model.UniverseAsteroidBeltsResponse;
 import net.troja.eve.esi.model.UniverseIdsResponse;
-import net.troja.eve.esi.model.UniverseIdsServiceUnavailable;
 import net.troja.eve.esi.model.UniverseNamesResponse;
 
 import java.util.ArrayList;
@@ -64,6 +62,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -74,8 +75,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<UniverseAncestriesResponse> getUniverseAncestries(String datasource, String language, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<UniverseAncestriesResponse> getUniverseAncestries(String datasource, String ifNoneMatch,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -90,15 +91,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -118,6 +119,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -127,7 +131,7 @@ public class UniverseApi {
      *             if fails to make API call
      */
     public UniverseAsteroidBeltsResponse getUniverseAsteroidBeltsAsteroidBeltId(Integer asteroidBeltId,
-            String datasource, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'asteroidBeltId' is set
@@ -148,15 +152,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -174,6 +178,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -184,8 +191,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<BloodlinesResponse> getUniverseBloodlines(String datasource, String language, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<BloodlinesResponse> getUniverseBloodlines(String datasource, String ifNoneMatch, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -200,15 +207,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -226,6 +233,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -234,8 +244,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseCategories(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getUniverseCategories(String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -249,15 +259,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -277,6 +287,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -287,8 +300,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String datasource, String language,
-            String userAgent, String xUserAgent) throws ApiException {
+    public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String datasource, String ifNoneMatch,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'categoryId' is set
@@ -310,15 +323,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -336,6 +349,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -344,8 +360,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseConstellations(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getUniverseConstellations(String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -359,15 +375,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -387,6 +403,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -398,7 +417,7 @@ public class UniverseApi {
      *             if fails to make API call
      */
     public ConstellationResponse getUniverseConstellationsConstellationId(Integer constellationId, String datasource,
-            String language, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'constellationId' is set
@@ -420,15 +439,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -445,6 +464,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -455,8 +477,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FactionsResponse> getUniverseFactions(String datasource, String language, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<FactionsResponse> getUniverseFactions(String datasource, String ifNoneMatch, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -471,15 +493,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -496,6 +518,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -504,7 +529,7 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseGraphics(String datasource, String userAgent, String xUserAgent)
+    public List<Integer> getUniverseGraphics(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -519,15 +544,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -547,6 +572,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -555,8 +583,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public GraphicResponse getUniverseGraphicsGraphicId(Integer graphicId, String datasource, String userAgent,
-            String xUserAgent) throws ApiException {
+    public GraphicResponse getUniverseGraphicsGraphicId(Integer graphicId, String datasource, String ifNoneMatch,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'graphicId' is set
@@ -577,15 +605,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -603,6 +631,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param userAgent
@@ -613,8 +644,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseGroups(String datasource, Integer page, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getUniverseGroups(String datasource, String ifNoneMatch, Integer page, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -629,15 +660,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -657,6 +688,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -667,8 +701,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public GroupResponse getUniverseGroupsGroupId(Integer groupId, String datasource, String language,
-            String userAgent, String xUserAgent) throws ApiException {
+    public GroupResponse getUniverseGroupsGroupId(Integer groupId, String datasource, String ifNoneMatch,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'groupId' is set
@@ -690,15 +724,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -718,6 +752,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -726,8 +763,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'moonId' is set
@@ -747,15 +784,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -775,6 +812,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -783,8 +823,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource, String userAgent,
-            String xUserAgent) throws ApiException {
+    public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource, String ifNoneMatch,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'planetId' is set
@@ -805,15 +845,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -831,6 +871,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -841,8 +884,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<RacesResponse> getUniverseRaces(String datasource, String language, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<RacesResponse> getUniverseRaces(String datasource, String ifNoneMatch, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -857,15 +900,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -882,6 +925,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -890,7 +936,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseRegions(String datasource, String userAgent, String xUserAgent) throws ApiException {
+    public List<Integer> getUniverseRegions(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -904,15 +951,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -932,6 +979,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -942,8 +992,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public RegionResponse getUniverseRegionsRegionId(Integer regionId, String datasource, String language,
-            String userAgent, String xUserAgent) throws ApiException {
+    public RegionResponse getUniverseRegionsRegionId(Integer regionId, String datasource, String ifNoneMatch,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'regionId' is set
@@ -965,15 +1015,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -993,6 +1043,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1001,8 +1054,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource, String userAgent,
-            String xUserAgent) throws ApiException {
+    public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource, String ifNoneMatch,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'stargateId' is set
@@ -1023,15 +1076,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1051,6 +1104,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1059,8 +1115,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public StarResponse getUniverseStarsStarId(Integer starId, String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public StarResponse getUniverseStarsStarId(Integer starId, String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'starId' is set
@@ -1080,15 +1136,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1100,14 +1156,17 @@ public class UniverseApi {
     }
 
     /**
-     * Get station information Get information on a station --- This route is
-     * cached for up to 300 seconds
+     * Get station information Get information on a station --- This route
+     * expires daily at 11:05
      * 
      * @param stationId
      *            station_id integer (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1116,8 +1175,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public StationResponse getUniverseStationsStationId(Integer stationId, String datasource, String userAgent,
-            String xUserAgent) throws ApiException {
+    public StationResponse getUniverseStationsStationId(Integer stationId, String datasource, String ifNoneMatch,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'stationId' is set
@@ -1138,15 +1197,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1164,6 +1223,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1172,7 +1234,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Long> getUniverseStructures(String datasource, String userAgent, String xUserAgent) throws ApiException {
+    public List<Long> getUniverseStructures(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1186,15 +1249,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1215,6 +1278,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -1225,8 +1291,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public StructureResponse getUniverseStructuresStructureId(Long structureId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public StructureResponse getUniverseStructuresStructureId(Long structureId, String datasource, String ifNoneMatch,
+            String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'structureId' is set
@@ -1248,15 +1314,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -1276,6 +1342,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1284,8 +1353,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<SystemJumpsResponse> getUniverseSystemJumps(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<SystemJumpsResponse> getUniverseSystemJumps(String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1299,15 +1368,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1327,6 +1396,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1335,8 +1407,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<SystemKillsResponse> getUniverseSystemKills(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<SystemKillsResponse> getUniverseSystemKills(String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1350,15 +1422,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1376,6 +1448,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -1384,7 +1459,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseSystems(String datasource, String userAgent, String xUserAgent) throws ApiException {
+    public List<Integer> getUniverseSystems(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1398,15 +1474,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1426,6 +1502,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -1436,8 +1515,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String datasource, String language,
-            String userAgent, String xUserAgent) throws ApiException {
+    public SystemResponse getUniverseSystemsSystemId(Integer systemId, String datasource, String ifNoneMatch,
+            String language, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'systemId' is set
@@ -1459,15 +1538,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1484,6 +1563,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param userAgent
@@ -1494,8 +1576,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getUniverseTypes(String datasource, Integer page, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getUniverseTypes(String datasource, String ifNoneMatch, Integer page, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1510,15 +1592,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1538,6 +1620,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param userAgent
@@ -1548,8 +1633,8 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public TypeResponse getUniverseTypesTypeId(Integer typeId, String datasource, String language, String userAgent,
-            String xUserAgent) throws ApiException {
+    public TypeResponse getUniverseTypesTypeId(Integer typeId, String datasource, String ifNoneMatch, String language,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'typeId' is set
@@ -1570,15 +1655,15 @@ public class UniverseApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1638,9 +1723,7 @@ public class UniverseApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -1696,9 +1779,7 @@ public class UniverseApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};

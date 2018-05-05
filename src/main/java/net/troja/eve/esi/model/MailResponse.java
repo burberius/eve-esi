@@ -29,44 +29,44 @@ import java.io.Serializable;
 public class MailResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("subject")
-    private String subject = null;
+    @JsonProperty("body")
+    private String body = null;
 
     @JsonProperty("from")
     private Integer from = null;
 
-    @JsonProperty("timestamp")
-    private OffsetDateTime timestamp = null;
-
-    @JsonProperty("recipients")
-    private List<Recipient> recipients = new ArrayList<Recipient>();
-
-    @JsonProperty("body")
-    private String body = null;
-
     @JsonProperty("labels")
-    private List<Long> labels = new ArrayList<Long>();
+    private List<Integer> labels = new ArrayList<Integer>();
 
     @JsonProperty("read")
     private Boolean read = null;
 
-    public MailResponse subject(String subject) {
-        this.subject = subject;
+    @JsonProperty("recipients")
+    private List<Recipient> recipients = new ArrayList<Recipient>();
+
+    @JsonProperty("subject")
+    private String subject = null;
+
+    @JsonProperty("timestamp")
+    private OffsetDateTime timestamp = null;
+
+    public MailResponse body(String body) {
+        this.body = body;
         return this;
     }
 
     /**
-     * Mail subject
+     * Mail's body
      * 
-     * @return subject
+     * @return body
      **/
-    @ApiModelProperty(example = "null", value = "Mail subject")
-    public String getSubject() {
-        return subject;
+    @ApiModelProperty(example = "null", value = "Mail's body")
+    public String getBody() {
+        return body;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public MailResponse from(Integer from) {
@@ -88,23 +88,47 @@ public class MailResponse implements Serializable {
         this.from = from;
     }
 
-    public MailResponse timestamp(OffsetDateTime timestamp) {
-        this.timestamp = timestamp;
+    public MailResponse labels(List<Integer> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public MailResponse addLabelsItem(Integer labelsItem) {
+        this.labels.add(labelsItem);
         return this;
     }
 
     /**
-     * When the mail was sent
+     * Labels attached to the mail
      * 
-     * @return timestamp
+     * @return labels
      **/
-    @ApiModelProperty(example = "null", value = "When the mail was sent")
-    public OffsetDateTime getTimestamp() {
-        return timestamp;
+    @ApiModelProperty(example = "null", value = "Labels attached to the mail")
+    public List<Integer> getLabels() {
+        return labels;
     }
 
-    public void setTimestamp(OffsetDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setLabels(List<Integer> labels) {
+        this.labels = labels;
+    }
+
+    public MailResponse read(Boolean read) {
+        this.read = read;
+        return this;
+    }
+
+    /**
+     * Whether the mail is flagged as read
+     * 
+     * @return read
+     **/
+    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
     }
 
     public MailResponse recipients(List<Recipient> recipients) {
@@ -131,66 +155,42 @@ public class MailResponse implements Serializable {
         this.recipients = recipients;
     }
 
-    public MailResponse body(String body) {
-        this.body = body;
+    public MailResponse subject(String subject) {
+        this.subject = subject;
         return this;
     }
 
     /**
-     * Mail's body
+     * Mail subject
      * 
-     * @return body
+     * @return subject
      **/
-    @ApiModelProperty(example = "null", value = "Mail's body")
-    public String getBody() {
-        return body;
+    @ApiModelProperty(example = "null", value = "Mail subject")
+    public String getSubject() {
+        return subject;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public MailResponse labels(List<Long> labels) {
-        this.labels = labels;
-        return this;
-    }
-
-    public MailResponse addLabelsItem(Long labelsItem) {
-        this.labels.add(labelsItem);
+    public MailResponse timestamp(OffsetDateTime timestamp) {
+        this.timestamp = timestamp;
         return this;
     }
 
     /**
-     * Labels attached to the mail
+     * When the mail was sent
      * 
-     * @return labels
+     * @return timestamp
      **/
-    @ApiModelProperty(example = "null", value = "Labels attached to the mail")
-    public List<Long> getLabels() {
-        return labels;
+    @ApiModelProperty(example = "null", value = "When the mail was sent")
+    public OffsetDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setLabels(List<Long> labels) {
-        this.labels = labels;
-    }
-
-    public MailResponse read(Boolean read) {
-        this.read = read;
-        return this;
-    }
-
-    /**
-     * Whether the mail is flagged as read
-     * 
-     * @return read
-     **/
-    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
-    public Boolean getRead() {
-        return read;
-    }
-
-    public void setRead(Boolean read) {
-        this.read = read;
+    public void setTimestamp(OffsetDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -202,16 +202,16 @@ public class MailResponse implements Serializable {
             return false;
         }
         MailResponse mailResponse = (MailResponse) o;
-        return Objects.equals(this.subject, mailResponse.subject) && Objects.equals(this.from, mailResponse.from)
-                && Objects.equals(this.timestamp, mailResponse.timestamp)
+        return Objects.equals(this.body, mailResponse.body) && Objects.equals(this.from, mailResponse.from)
+                && Objects.equals(this.labels, mailResponse.labels) && Objects.equals(this.read, mailResponse.read)
                 && Objects.equals(this.recipients, mailResponse.recipients)
-                && Objects.equals(this.body, mailResponse.body) && Objects.equals(this.labels, mailResponse.labels)
-                && Objects.equals(this.read, mailResponse.read);
+                && Objects.equals(this.subject, mailResponse.subject)
+                && Objects.equals(this.timestamp, mailResponse.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(subject, from, timestamp, recipients, body, labels, read);
+        return Objects.hash(body, from, labels, read, recipients, subject, timestamp);
     }
 
     @Override
@@ -219,13 +219,13 @@ public class MailResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailResponse {\n");
 
-        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
-        sb.append("    from: ").append(toIndentedString(from)).append("\n");
-        sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
-        sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
+        sb.append("    from: ").append(toIndentedString(from)).append("\n");
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    read: ").append(toIndentedString(read)).append("\n");
+        sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
+        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+        sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
         sb.append("}");
         return sb.toString();
     }

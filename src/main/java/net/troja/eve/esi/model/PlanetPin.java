@@ -31,6 +31,24 @@ import java.io.Serializable;
 public class PlanetPin implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("contents")
+    private List<PlanetContent> contents = new ArrayList<PlanetContent>();
+
+    @JsonProperty("expiry_time")
+    private OffsetDateTime expiryTime = null;
+
+    @JsonProperty("extractor_details")
+    private PlanetExtractorDetails extractorDetails = null;
+
+    @JsonProperty("factory_details")
+    private PlanetFactoryDetails factoryDetails = null;
+
+    @JsonProperty("install_time")
+    private OffsetDateTime installTime = null;
+
+    @JsonProperty("last_cycle_start")
+    private OffsetDateTime lastCycleStart = null;
+
     @JsonProperty("latitude")
     private Float latitude = null;
 
@@ -40,29 +58,130 @@ public class PlanetPin implements Serializable {
     @JsonProperty("pin_id")
     private Long pinId = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
     @JsonProperty("schematic_id")
     private Integer schematicId = null;
 
-    @JsonProperty("extractor_details")
-    private PlanetExtractorDetails extractorDetails = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
-    @JsonProperty("factory_details")
-    private PlanetFactoryDetails factoryDetails = null;
+    public PlanetPin contents(List<PlanetContent> contents) {
+        this.contents = contents;
+        return this;
+    }
 
-    @JsonProperty("contents")
-    private List<PlanetContent> contents = new ArrayList<PlanetContent>();
+    public PlanetPin addContentsItem(PlanetContent contentsItem) {
+        this.contents.add(contentsItem);
+        return this;
+    }
 
-    @JsonProperty("install_time")
-    private OffsetDateTime installTime = null;
+    /**
+     * contents array
+     * 
+     * @return contents
+     **/
+    @ApiModelProperty(example = "null", value = "contents array")
+    public List<PlanetContent> getContents() {
+        return contents;
+    }
 
-    @JsonProperty("expiry_time")
-    private OffsetDateTime expiryTime = null;
+    public void setContents(List<PlanetContent> contents) {
+        this.contents = contents;
+    }
 
-    @JsonProperty("last_cycle_start")
-    private OffsetDateTime lastCycleStart = null;
+    public PlanetPin expiryTime(OffsetDateTime expiryTime) {
+        this.expiryTime = expiryTime;
+        return this;
+    }
+
+    /**
+     * expiry_time string
+     * 
+     * @return expiryTime
+     **/
+    @ApiModelProperty(example = "null", value = "expiry_time string")
+    public OffsetDateTime getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(OffsetDateTime expiryTime) {
+        this.expiryTime = expiryTime;
+    }
+
+    public PlanetPin extractorDetails(PlanetExtractorDetails extractorDetails) {
+        this.extractorDetails = extractorDetails;
+        return this;
+    }
+
+    /**
+     * Get extractorDetails
+     * 
+     * @return extractorDetails
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public PlanetExtractorDetails getExtractorDetails() {
+        return extractorDetails;
+    }
+
+    public void setExtractorDetails(PlanetExtractorDetails extractorDetails) {
+        this.extractorDetails = extractorDetails;
+    }
+
+    public PlanetPin factoryDetails(PlanetFactoryDetails factoryDetails) {
+        this.factoryDetails = factoryDetails;
+        return this;
+    }
+
+    /**
+     * Get factoryDetails
+     * 
+     * @return factoryDetails
+     **/
+    @ApiModelProperty(example = "null", value = "")
+    public PlanetFactoryDetails getFactoryDetails() {
+        return factoryDetails;
+    }
+
+    public void setFactoryDetails(PlanetFactoryDetails factoryDetails) {
+        this.factoryDetails = factoryDetails;
+    }
+
+    public PlanetPin installTime(OffsetDateTime installTime) {
+        this.installTime = installTime;
+        return this;
+    }
+
+    /**
+     * install_time string
+     * 
+     * @return installTime
+     **/
+    @ApiModelProperty(example = "null", value = "install_time string")
+    public OffsetDateTime getInstallTime() {
+        return installTime;
+    }
+
+    public void setInstallTime(OffsetDateTime installTime) {
+        this.installTime = installTime;
+    }
+
+    public PlanetPin lastCycleStart(OffsetDateTime lastCycleStart) {
+        this.lastCycleStart = lastCycleStart;
+        return this;
+    }
+
+    /**
+     * last_cycle_start string
+     * 
+     * @return lastCycleStart
+     **/
+    @ApiModelProperty(example = "null", value = "last_cycle_start string")
+    public OffsetDateTime getLastCycleStart() {
+        return lastCycleStart;
+    }
+
+    public void setLastCycleStart(OffsetDateTime lastCycleStart) {
+        this.lastCycleStart = lastCycleStart;
+    }
 
     public PlanetPin latitude(Float latitude) {
         this.latitude = latitude;
@@ -121,25 +240,6 @@ public class PlanetPin implements Serializable {
         this.pinId = pinId;
     }
 
-    public PlanetPin typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     public PlanetPin schematicId(Integer schematicId) {
         this.schematicId = schematicId;
         return this;
@@ -159,123 +259,23 @@ public class PlanetPin implements Serializable {
         this.schematicId = schematicId;
     }
 
-    public PlanetPin extractorDetails(PlanetExtractorDetails extractorDetails) {
-        this.extractorDetails = extractorDetails;
+    public PlanetPin typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * Get extractorDetails
+     * type_id integer
      * 
-     * @return extractorDetails
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public PlanetExtractorDetails getExtractorDetails() {
-        return extractorDetails;
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setExtractorDetails(PlanetExtractorDetails extractorDetails) {
-        this.extractorDetails = extractorDetails;
-    }
-
-    public PlanetPin factoryDetails(PlanetFactoryDetails factoryDetails) {
-        this.factoryDetails = factoryDetails;
-        return this;
-    }
-
-    /**
-     * Get factoryDetails
-     * 
-     * @return factoryDetails
-     **/
-    @ApiModelProperty(example = "null", value = "")
-    public PlanetFactoryDetails getFactoryDetails() {
-        return factoryDetails;
-    }
-
-    public void setFactoryDetails(PlanetFactoryDetails factoryDetails) {
-        this.factoryDetails = factoryDetails;
-    }
-
-    public PlanetPin contents(List<PlanetContent> contents) {
-        this.contents = contents;
-        return this;
-    }
-
-    public PlanetPin addContentsItem(PlanetContent contentsItem) {
-        this.contents.add(contentsItem);
-        return this;
-    }
-
-    /**
-     * contents array
-     * 
-     * @return contents
-     **/
-    @ApiModelProperty(example = "null", value = "contents array")
-    public List<PlanetContent> getContents() {
-        return contents;
-    }
-
-    public void setContents(List<PlanetContent> contents) {
-        this.contents = contents;
-    }
-
-    public PlanetPin installTime(OffsetDateTime installTime) {
-        this.installTime = installTime;
-        return this;
-    }
-
-    /**
-     * install_time string
-     * 
-     * @return installTime
-     **/
-    @ApiModelProperty(example = "null", value = "install_time string")
-    public OffsetDateTime getInstallTime() {
-        return installTime;
-    }
-
-    public void setInstallTime(OffsetDateTime installTime) {
-        this.installTime = installTime;
-    }
-
-    public PlanetPin expiryTime(OffsetDateTime expiryTime) {
-        this.expiryTime = expiryTime;
-        return this;
-    }
-
-    /**
-     * expiry_time string
-     * 
-     * @return expiryTime
-     **/
-    @ApiModelProperty(example = "null", value = "expiry_time string")
-    public OffsetDateTime getExpiryTime() {
-        return expiryTime;
-    }
-
-    public void setExpiryTime(OffsetDateTime expiryTime) {
-        this.expiryTime = expiryTime;
-    }
-
-    public PlanetPin lastCycleStart(OffsetDateTime lastCycleStart) {
-        this.lastCycleStart = lastCycleStart;
-        return this;
-    }
-
-    /**
-     * last_cycle_start string
-     * 
-     * @return lastCycleStart
-     **/
-    @ApiModelProperty(example = "null", value = "last_cycle_start string")
-    public OffsetDateTime getLastCycleStart() {
-        return lastCycleStart;
-    }
-
-    public void setLastCycleStart(OffsetDateTime lastCycleStart) {
-        this.lastCycleStart = lastCycleStart;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -287,21 +287,22 @@ public class PlanetPin implements Serializable {
             return false;
         }
         PlanetPin planetPin = (PlanetPin) o;
-        return Objects.equals(this.latitude, planetPin.latitude) && Objects.equals(this.longitude, planetPin.longitude)
-                && Objects.equals(this.pinId, planetPin.pinId) && Objects.equals(this.typeId, planetPin.typeId)
-                && Objects.equals(this.schematicId, planetPin.schematicId)
+        return Objects.equals(this.contents, planetPin.contents)
+                && Objects.equals(this.expiryTime, planetPin.expiryTime)
                 && Objects.equals(this.extractorDetails, planetPin.extractorDetails)
                 && Objects.equals(this.factoryDetails, planetPin.factoryDetails)
-                && Objects.equals(this.contents, planetPin.contents)
                 && Objects.equals(this.installTime, planetPin.installTime)
-                && Objects.equals(this.expiryTime, planetPin.expiryTime)
-                && Objects.equals(this.lastCycleStart, planetPin.lastCycleStart);
+                && Objects.equals(this.lastCycleStart, planetPin.lastCycleStart)
+                && Objects.equals(this.latitude, planetPin.latitude)
+                && Objects.equals(this.longitude, planetPin.longitude) && Objects.equals(this.pinId, planetPin.pinId)
+                && Objects.equals(this.schematicId, planetPin.schematicId)
+                && Objects.equals(this.typeId, planetPin.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(latitude, longitude, pinId, typeId, schematicId, extractorDetails, factoryDetails,
-                contents, installTime, expiryTime, lastCycleStart);
+        return Objects.hash(contents, expiryTime, extractorDetails, factoryDetails, installTime, lastCycleStart,
+                latitude, longitude, pinId, schematicId, typeId);
     }
 
     @Override
@@ -309,17 +310,17 @@ public class PlanetPin implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetPin {\n");
 
+        sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
+        sb.append("    expiryTime: ").append(toIndentedString(expiryTime)).append("\n");
+        sb.append("    extractorDetails: ").append(toIndentedString(extractorDetails)).append("\n");
+        sb.append("    factoryDetails: ").append(toIndentedString(factoryDetails)).append("\n");
+        sb.append("    installTime: ").append(toIndentedString(installTime)).append("\n");
+        sb.append("    lastCycleStart: ").append(toIndentedString(lastCycleStart)).append("\n");
         sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
         sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
         sb.append("    pinId: ").append(toIndentedString(pinId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    schematicId: ").append(toIndentedString(schematicId)).append("\n");
-        sb.append("    extractorDetails: ").append(toIndentedString(extractorDetails)).append("\n");
-        sb.append("    factoryDetails: ").append(toIndentedString(factoryDetails)).append("\n");
-        sb.append("    contents: ").append(toIndentedString(contents)).append("\n");
-        sb.append("    installTime: ").append(toIndentedString(installTime)).append("\n");
-        sb.append("    expiryTime: ").append(toIndentedString(expiryTime)).append("\n");
-        sb.append("    lastCycleStart: ").append(toIndentedString(lastCycleStart)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

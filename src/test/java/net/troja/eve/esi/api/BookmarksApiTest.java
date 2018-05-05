@@ -52,7 +52,7 @@ public class BookmarksApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdBookmarksTest() throws ApiException {
         Integer page = null;
         ignoreTestFails(); //Endpoint not working
-        final List<CharacterBookmarksResponse> response = api.getCharactersCharacterIdBookmarks(characterId, DATASOURCE,
+        final List<CharacterBookmarksResponse> response = api.getCharactersCharacterIdBookmarks(characterId, DATASOURCE, null,
                 page, null, null, null);
 
         assertThat(response.size(), greaterThan(1));
@@ -76,7 +76,7 @@ public class BookmarksApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdBookmarksFoldersTest() throws ApiException {
         Integer page = null;
         final List<CharacterBookmarkFoldersResponse> response = api
-                .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE, page, null, null, null);
+                .getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE, null, page, null, null, null);
 
         assertThat(response.size(), greaterThan(1));
     }
@@ -94,7 +94,7 @@ public class BookmarksApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdBookmarksTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationBookmarksResponse> response = api.getCorporationsCorporationIdBookmarks(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationBookmarksResponse> response = api.getCorporationsCorporationIdBookmarks(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -112,7 +112,7 @@ public class BookmarksApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdBookmarksFoldersTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationBookmarkFoldersResponse> response = api.getCorporationsCorporationIdBookmarksFolders(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationBookmarkFoldersResponse> response = api.getCorporationsCorporationIdBookmarksFolders(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }

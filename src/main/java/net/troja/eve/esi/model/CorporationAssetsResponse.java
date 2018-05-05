@@ -25,55 +25,11 @@ import java.io.Serializable;
 public class CorporationAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
-    @JsonProperty("location_id")
-    private Long locationId = null;
-
-    /**
-     * location_type string
-     */
-    public enum LocationTypeEnum {
-        STATION("station"),
-
-        SOLAR_SYSTEM("solar_system"),
-
-        OTHER("other");
-
-        private String value;
-
-        LocationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static LocationTypeEnum fromValue(String text) {
-            for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("location_type")
-    private LocationTypeEnum locationType = null;
+    @JsonProperty("is_singleton")
+    private Boolean isSingleton = null;
 
     @JsonProperty("item_id")
     private Long itemId = null;
-
-    @JsonProperty("is_singleton")
-    private Boolean isSingleton = null;
 
     /**
      * location_flag string
@@ -334,42 +290,105 @@ public class CorporationAssetsResponse implements Serializable {
     @JsonProperty("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    public CorporationAssetsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    @JsonProperty("location_id")
+    private Long locationId = null;
+
+    /**
+     * location_type string
+     */
+    public enum LocationTypeEnum {
+        STATION("station"),
+
+        SOLAR_SYSTEM("solar_system"),
+
+        OTHER("other");
+
+        private String value;
+
+        LocationTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static LocationTypeEnum fromValue(String text) {
+            for (LocationTypeEnum b : LocationTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    @JsonProperty("location_type")
+    private LocationTypeEnum locationType = null;
+
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    public CorporationAssetsResponse isSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
         return this;
     }
 
     /**
-     * type_id integer
+     * is_singleton boolean
      * 
-     * @return typeId
+     * @return isSingleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
+    public Boolean getIsSingleton() {
+        return isSingleton;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setIsSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
     }
 
-    public CorporationAssetsResponse quantity(Integer quantity) {
-        this.quantity = quantity;
+    public CorporationAssetsResponse itemId(Long itemId) {
+        this.itemId = itemId;
         return this;
     }
 
     /**
-     * quantity integer
+     * item_id integer
      * 
-     * @return quantity
+     * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
+    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+        return this;
+    }
+
+    /**
+     * location_flag string
+     * 
+     * @return locationFlag
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    public LocationFlagEnum getLocationFlag() {
+        return locationFlag;
+    }
+
+    public void setLocationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
     }
 
     public CorporationAssetsResponse locationId(Long locationId) {
@@ -410,61 +429,42 @@ public class CorporationAssetsResponse implements Serializable {
         this.locationType = locationType;
     }
 
-    public CorporationAssetsResponse itemId(Long itemId) {
-        this.itemId = itemId;
+    public CorporationAssetsResponse quantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 
     /**
-     * item_id integer
+     * quantity integer
      * 
-     * @return itemId
+     * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
-    public Long getItemId() {
-        return itemId;
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public CorporationAssetsResponse isSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
+    public CorporationAssetsResponse typeId(Integer typeId) {
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * is_singleton boolean
+     * type_id integer
      * 
-     * @return isSingleton
+     * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
-        return isSingleton;
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setIsSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
-    }
-
-    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-        return this;
-    }
-
-    /**
-     * location_flag string
-     * 
-     * @return locationFlag
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
-    public LocationFlagEnum getLocationFlag() {
-        return locationFlag;
-    }
-
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -476,18 +476,18 @@ public class CorporationAssetsResponse implements Serializable {
             return false;
         }
         CorporationAssetsResponse corporationAssetsResponse = (CorporationAssetsResponse) o;
-        return Objects.equals(this.typeId, corporationAssetsResponse.typeId)
-                && Objects.equals(this.quantity, corporationAssetsResponse.quantity)
+        return Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton)
+                && Objects.equals(this.itemId, corporationAssetsResponse.itemId)
+                && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag)
                 && Objects.equals(this.locationId, corporationAssetsResponse.locationId)
                 && Objects.equals(this.locationType, corporationAssetsResponse.locationType)
-                && Objects.equals(this.itemId, corporationAssetsResponse.itemId)
-                && Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton)
-                && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag);
+                && Objects.equals(this.quantity, corporationAssetsResponse.quantity)
+                && Objects.equals(this.typeId, corporationAssetsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, quantity, locationId, locationType, itemId, isSingleton, locationFlag);
+        return Objects.hash(isSingleton, itemId, locationFlag, locationId, locationType, quantity, typeId);
     }
 
     @Override
@@ -495,13 +495,13 @@ public class CorporationAssetsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationAssetsResponse {\n");
 
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
+        sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
-        sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
-        sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

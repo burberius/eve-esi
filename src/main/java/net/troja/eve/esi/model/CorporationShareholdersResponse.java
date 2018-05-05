@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class CorporationShareholdersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("share_count")
+    private Long shareCount = null;
+
     @JsonProperty("shareholder_id")
     private Integer shareholderId = null;
 
@@ -61,8 +64,24 @@ public class CorporationShareholdersResponse implements Serializable {
     @JsonProperty("shareholder_type")
     private ShareholderTypeEnum shareholderType = null;
 
-    @JsonProperty("share_count")
-    private Long shareCount = null;
+    public CorporationShareholdersResponse shareCount(Long shareCount) {
+        this.shareCount = shareCount;
+        return this;
+    }
+
+    /**
+     * share_count integer
+     * 
+     * @return shareCount
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "share_count integer")
+    public Long getShareCount() {
+        return shareCount;
+    }
+
+    public void setShareCount(Long shareCount) {
+        this.shareCount = shareCount;
+    }
 
     public CorporationShareholdersResponse shareholderId(Integer shareholderId) {
         this.shareholderId = shareholderId;
@@ -102,25 +121,6 @@ public class CorporationShareholdersResponse implements Serializable {
         this.shareholderType = shareholderType;
     }
 
-    public CorporationShareholdersResponse shareCount(Long shareCount) {
-        this.shareCount = shareCount;
-        return this;
-    }
-
-    /**
-     * share_count integer
-     * 
-     * @return shareCount
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "share_count integer")
-    public Long getShareCount() {
-        return shareCount;
-    }
-
-    public void setShareCount(Long shareCount) {
-        this.shareCount = shareCount;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -130,14 +130,14 @@ public class CorporationShareholdersResponse implements Serializable {
             return false;
         }
         CorporationShareholdersResponse corporationShareholdersResponse = (CorporationShareholdersResponse) o;
-        return Objects.equals(this.shareholderId, corporationShareholdersResponse.shareholderId)
-                && Objects.equals(this.shareholderType, corporationShareholdersResponse.shareholderType)
-                && Objects.equals(this.shareCount, corporationShareholdersResponse.shareCount);
+        return Objects.equals(this.shareCount, corporationShareholdersResponse.shareCount)
+                && Objects.equals(this.shareholderId, corporationShareholdersResponse.shareholderId)
+                && Objects.equals(this.shareholderType, corporationShareholdersResponse.shareholderType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shareholderId, shareholderType, shareCount);
+        return Objects.hash(shareCount, shareholderId, shareholderType);
     }
 
     @Override
@@ -145,9 +145,9 @@ public class CorporationShareholdersResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationShareholdersResponse {\n");
 
+        sb.append("    shareCount: ").append(toIndentedString(shareCount)).append("\n");
         sb.append("    shareholderId: ").append(toIndentedString(shareholderId)).append("\n");
         sb.append("    shareholderType: ").append(toIndentedString(shareholderType)).append("\n");
-        sb.append("    shareCount: ").append(toIndentedString(shareCount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -26,17 +26,17 @@ import java.io.Serializable;
 public class CorporationStarbasesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("starbase_id")
-    private Long starbaseId = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
     @JsonProperty("moon_id")
     private Integer moonId = null;
+
+    @JsonProperty("onlined_since")
+    private OffsetDateTime onlinedSince = null;
+
+    @JsonProperty("reinforced_until")
+    private OffsetDateTime reinforcedUntil = null;
+
+    @JsonProperty("starbase_id")
+    private Long starbaseId = null;
 
     /**
      * state string
@@ -77,72 +77,14 @@ public class CorporationStarbasesResponse implements Serializable {
     @JsonProperty("state")
     private StateEnum state = null;
 
+    @JsonProperty("system_id")
+    private Integer systemId = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
     @JsonProperty("unanchor_at")
     private OffsetDateTime unanchorAt = null;
-
-    @JsonProperty("reinforced_until")
-    private OffsetDateTime reinforcedUntil = null;
-
-    @JsonProperty("onlined_since")
-    private OffsetDateTime onlinedSince = null;
-
-    public CorporationStarbasesResponse starbaseId(Long starbaseId) {
-        this.starbaseId = starbaseId;
-        return this;
-    }
-
-    /**
-     * Unique ID for this starbase (POS)
-     * 
-     * @return starbaseId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this starbase (POS)")
-    public Long getStarbaseId() {
-        return starbaseId;
-    }
-
-    public void setStarbaseId(Long starbaseId) {
-        this.starbaseId = starbaseId;
-    }
-
-    public CorporationStarbasesResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * Starbase (POS) type
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Starbase (POS) type")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public CorporationStarbasesResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The solar system this starbase (POS) is in, unanchored POSes have this
-     * information
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this starbase (POS) is in, unanchored POSes have this information")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
 
     public CorporationStarbasesResponse moonId(Integer moonId) {
         this.moonId = moonId;
@@ -164,43 +106,23 @@ public class CorporationStarbasesResponse implements Serializable {
         this.moonId = moonId;
     }
 
-    public CorporationStarbasesResponse state(StateEnum state) {
-        this.state = state;
+    public CorporationStarbasesResponse onlinedSince(OffsetDateTime onlinedSince) {
+        this.onlinedSince = onlinedSince;
         return this;
     }
 
     /**
-     * state string
+     * When the POS onlined, for starbases (POSes) in online state
      * 
-     * @return state
+     * @return onlinedSince
      **/
-    @ApiModelProperty(example = "null", value = "state string")
-    public StateEnum getState() {
-        return state;
+    @ApiModelProperty(example = "null", value = "When the POS onlined, for starbases (POSes) in online state")
+    public OffsetDateTime getOnlinedSince() {
+        return onlinedSince;
     }
 
-    public void setState(StateEnum state) {
-        this.state = state;
-    }
-
-    public CorporationStarbasesResponse unanchorAt(OffsetDateTime unanchorAt) {
-        this.unanchorAt = unanchorAt;
-        return this;
-    }
-
-    /**
-     * When the POS started unanchoring, for starbases (POSes) in unanchoring
-     * state
-     * 
-     * @return unanchorAt
-     **/
-    @ApiModelProperty(example = "null", value = "When the POS started unanchoring, for starbases (POSes) in unanchoring state")
-    public OffsetDateTime getUnanchorAt() {
-        return unanchorAt;
-    }
-
-    public void setUnanchorAt(OffsetDateTime unanchorAt) {
-        this.unanchorAt = unanchorAt;
+    public void setOnlinedSince(OffsetDateTime onlinedSince) {
+        this.onlinedSince = onlinedSince;
     }
 
     public CorporationStarbasesResponse reinforcedUntil(OffsetDateTime reinforcedUntil) {
@@ -223,23 +145,101 @@ public class CorporationStarbasesResponse implements Serializable {
         this.reinforcedUntil = reinforcedUntil;
     }
 
-    public CorporationStarbasesResponse onlinedSince(OffsetDateTime onlinedSince) {
-        this.onlinedSince = onlinedSince;
+    public CorporationStarbasesResponse starbaseId(Long starbaseId) {
+        this.starbaseId = starbaseId;
         return this;
     }
 
     /**
-     * When the POS onlined, for starbases (POSes) in online state
+     * Unique ID for this starbase (POS)
      * 
-     * @return onlinedSince
+     * @return starbaseId
      **/
-    @ApiModelProperty(example = "null", value = "When the POS onlined, for starbases (POSes) in online state")
-    public OffsetDateTime getOnlinedSince() {
-        return onlinedSince;
+    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this starbase (POS)")
+    public Long getStarbaseId() {
+        return starbaseId;
     }
 
-    public void setOnlinedSince(OffsetDateTime onlinedSince) {
-        this.onlinedSince = onlinedSince;
+    public void setStarbaseId(Long starbaseId) {
+        this.starbaseId = starbaseId;
+    }
+
+    public CorporationStarbasesResponse state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * state string
+     * 
+     * @return state
+     **/
+    @ApiModelProperty(example = "null", value = "state string")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    public CorporationStarbasesResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this starbase (POS) is in, unanchored POSes have this
+     * information
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system this starbase (POS) is in, unanchored POSes have this information")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public CorporationStarbasesResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * Starbase (POS) type
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Starbase (POS) type")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public CorporationStarbasesResponse unanchorAt(OffsetDateTime unanchorAt) {
+        this.unanchorAt = unanchorAt;
+        return this;
+    }
+
+    /**
+     * When the POS started unanchoring, for starbases (POSes) in unanchoring
+     * state
+     * 
+     * @return unanchorAt
+     **/
+    @ApiModelProperty(example = "null", value = "When the POS started unanchoring, for starbases (POSes) in unanchoring state")
+    public OffsetDateTime getUnanchorAt() {
+        return unanchorAt;
+    }
+
+    public void setUnanchorAt(OffsetDateTime unanchorAt) {
+        this.unanchorAt = unanchorAt;
     }
 
     @Override
@@ -251,19 +251,19 @@ public class CorporationStarbasesResponse implements Serializable {
             return false;
         }
         CorporationStarbasesResponse corporationStarbasesResponse = (CorporationStarbasesResponse) o;
-        return Objects.equals(this.starbaseId, corporationStarbasesResponse.starbaseId)
-                && Objects.equals(this.typeId, corporationStarbasesResponse.typeId)
-                && Objects.equals(this.systemId, corporationStarbasesResponse.systemId)
-                && Objects.equals(this.moonId, corporationStarbasesResponse.moonId)
-                && Objects.equals(this.state, corporationStarbasesResponse.state)
-                && Objects.equals(this.unanchorAt, corporationStarbasesResponse.unanchorAt)
+        return Objects.equals(this.moonId, corporationStarbasesResponse.moonId)
+                && Objects.equals(this.onlinedSince, corporationStarbasesResponse.onlinedSince)
                 && Objects.equals(this.reinforcedUntil, corporationStarbasesResponse.reinforcedUntil)
-                && Objects.equals(this.onlinedSince, corporationStarbasesResponse.onlinedSince);
+                && Objects.equals(this.starbaseId, corporationStarbasesResponse.starbaseId)
+                && Objects.equals(this.state, corporationStarbasesResponse.state)
+                && Objects.equals(this.systemId, corporationStarbasesResponse.systemId)
+                && Objects.equals(this.typeId, corporationStarbasesResponse.typeId)
+                && Objects.equals(this.unanchorAt, corporationStarbasesResponse.unanchorAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(starbaseId, typeId, systemId, moonId, state, unanchorAt, reinforcedUntil, onlinedSince);
+        return Objects.hash(moonId, onlinedSince, reinforcedUntil, starbaseId, state, systemId, typeId, unanchorAt);
     }
 
     @Override
@@ -271,14 +271,14 @@ public class CorporationStarbasesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStarbasesResponse {\n");
 
-        sb.append("    starbaseId: ").append(toIndentedString(starbaseId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
-        sb.append("    unanchorAt: ").append(toIndentedString(unanchorAt)).append("\n");
-        sb.append("    reinforcedUntil: ").append(toIndentedString(reinforcedUntil)).append("\n");
         sb.append("    onlinedSince: ").append(toIndentedString(onlinedSince)).append("\n");
+        sb.append("    reinforcedUntil: ").append(toIndentedString(reinforcedUntil)).append("\n");
+        sb.append("    starbaseId: ").append(toIndentedString(starbaseId)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    unanchorAt: ").append(toIndentedString(unanchorAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

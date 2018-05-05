@@ -28,58 +28,20 @@ import java.io.Serializable;
 public class CharacterFittingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("fitting_id")
-    private Integer fittingId = null;
-
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("ship_type_id")
-    private Integer shipTypeId = null;
+    @JsonProperty("fitting_id")
+    private Integer fittingId = null;
 
     @JsonProperty("items")
     private List<FittingItem> items = new ArrayList<FittingItem>();
 
-    public CharacterFittingsResponse fittingId(Integer fittingId) {
-        this.fittingId = fittingId;
-        return this;
-    }
+    @JsonProperty("name")
+    private String name = null;
 
-    /**
-     * fitting_id integer
-     * 
-     * @return fittingId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "fitting_id integer")
-    public Integer getFittingId() {
-        return fittingId;
-    }
-
-    public void setFittingId(Integer fittingId) {
-        this.fittingId = fittingId;
-    }
-
-    public CharacterFittingsResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonProperty("ship_type_id")
+    private Integer shipTypeId = null;
 
     public CharacterFittingsResponse description(String description) {
         this.description = description;
@@ -100,23 +62,23 @@ public class CharacterFittingsResponse implements Serializable {
         this.description = description;
     }
 
-    public CharacterFittingsResponse shipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
+    public CharacterFittingsResponse fittingId(Integer fittingId) {
+        this.fittingId = fittingId;
         return this;
     }
 
     /**
-     * ship_type_id integer
+     * fitting_id integer
      * 
-     * @return shipTypeId
+     * @return fittingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
-    public Integer getShipTypeId() {
-        return shipTypeId;
+    @ApiModelProperty(example = "null", required = true, value = "fitting_id integer")
+    public Integer getFittingId() {
+        return fittingId;
     }
 
-    public void setShipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
+    public void setFittingId(Integer fittingId) {
+        this.fittingId = fittingId;
     }
 
     public CharacterFittingsResponse items(List<FittingItem> items) {
@@ -143,6 +105,44 @@ public class CharacterFittingsResponse implements Serializable {
         this.items = items;
     }
 
+    public CharacterFittingsResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CharacterFittingsResponse shipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+        return this;
+    }
+
+    /**
+     * ship_type_id integer
+     * 
+     * @return shipTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    public Integer getShipTypeId() {
+        return shipTypeId;
+    }
+
+    public void setShipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,16 +152,16 @@ public class CharacterFittingsResponse implements Serializable {
             return false;
         }
         CharacterFittingsResponse characterFittingsResponse = (CharacterFittingsResponse) o;
-        return Objects.equals(this.fittingId, characterFittingsResponse.fittingId)
+        return Objects.equals(this.description, characterFittingsResponse.description)
+                && Objects.equals(this.fittingId, characterFittingsResponse.fittingId)
+                && Objects.equals(this.items, characterFittingsResponse.items)
                 && Objects.equals(this.name, characterFittingsResponse.name)
-                && Objects.equals(this.description, characterFittingsResponse.description)
-                && Objects.equals(this.shipTypeId, characterFittingsResponse.shipTypeId)
-                && Objects.equals(this.items, characterFittingsResponse.items);
+                && Objects.equals(this.shipTypeId, characterFittingsResponse.shipTypeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fittingId, name, description, shipTypeId, items);
+        return Objects.hash(description, fittingId, items, name, shipTypeId);
     }
 
     @Override
@@ -169,11 +169,11 @@ public class CharacterFittingsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFittingsResponse {\n");
 
-        sb.append("    fittingId: ").append(toIndentedString(fittingId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
+        sb.append("    fittingId: ").append(toIndentedString(fittingId)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -8,10 +8,8 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -78,7 +76,7 @@ public class SsoAuthTest extends GeneralApiTest {
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         AssetsApi api = new AssetsApi(client);
         try {
-            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null, null);
+            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex, notNullValue());
@@ -176,7 +174,7 @@ public class SsoAuthTest extends GeneralApiTest {
             try {
                 AssetsApi api = new AssetsApi();
                 Integer page = null;
-                final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, page, null, null, null);
+                final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null, null, null);
                 assertThat(response, notNullValue());
                 assertThat(response.size(), greaterThan(0));
             } catch (ApiException ex) {

@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
     @JsonProperty("amount")
     private Integer amount = null;
 
-    public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-        return this;
-    }
-
-    /**
-     * corporation_id integer
-     * 
-     * @return corporationId
-     **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-    }
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
 
     public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints amount(Integer amount) {
         this.amount = amount;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
         this.amount = amount;
     }
 
+    public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+        return this;
+    }
+
+    /**
+     * corporation_id integer
+     * 
+     * @return corporationId
+     **/
+    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    public Integer getCorporationId() {
+        return corporationId;
+    }
+
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,14 +78,14 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
             return false;
         }
         FactionWarfareLeaderboardCorporationYesterdayVictoryPoints factionWarfareLeaderboardCorporationYesterdayVictoryPoints = (FactionWarfareLeaderboardCorporationYesterdayVictoryPoints) o;
-        return Objects.equals(this.corporationId,
-                factionWarfareLeaderboardCorporationYesterdayVictoryPoints.corporationId)
-                && Objects.equals(this.amount, factionWarfareLeaderboardCorporationYesterdayVictoryPoints.amount);
+        return Objects.equals(this.amount, factionWarfareLeaderboardCorporationYesterdayVictoryPoints.amount)
+                && Objects.equals(this.corporationId,
+                        factionWarfareLeaderboardCorporationYesterdayVictoryPoints.corporationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corporationId, amount);
+        return Objects.hash(amount, corporationId);
     }
 
     @Override
@@ -93,8 +93,8 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints {\n");
 
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

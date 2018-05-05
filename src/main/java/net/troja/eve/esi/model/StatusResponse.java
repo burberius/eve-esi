@@ -26,36 +26,17 @@ import java.io.Serializable;
 public class StatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("start_time")
-    private OffsetDateTime startTime = null;
-
     @JsonProperty("players")
     private Integer players = null;
 
     @JsonProperty("server_version")
     private String serverVersion = null;
 
+    @JsonProperty("start_time")
+    private OffsetDateTime startTime = null;
+
     @JsonProperty("vip")
     private Boolean vip = null;
-
-    public StatusResponse startTime(OffsetDateTime startTime) {
-        this.startTime = startTime;
-        return this;
-    }
-
-    /**
-     * Server start timestamp
-     * 
-     * @return startTime
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Server start timestamp")
-    public OffsetDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(OffsetDateTime startTime) {
-        this.startTime = startTime;
-    }
 
     public StatusResponse players(Integer players) {
         this.players = players;
@@ -95,6 +76,25 @@ public class StatusResponse implements Serializable {
         this.serverVersion = serverVersion;
     }
 
+    public StatusResponse startTime(OffsetDateTime startTime) {
+        this.startTime = startTime;
+        return this;
+    }
+
+    /**
+     * Server start timestamp
+     * 
+     * @return startTime
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Server start timestamp")
+    public OffsetDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(OffsetDateTime startTime) {
+        this.startTime = startTime;
+    }
+
     public StatusResponse vip(Boolean vip) {
         this.vip = vip;
         return this;
@@ -123,15 +123,15 @@ public class StatusResponse implements Serializable {
             return false;
         }
         StatusResponse statusResponse = (StatusResponse) o;
-        return Objects.equals(this.startTime, statusResponse.startTime)
-                && Objects.equals(this.players, statusResponse.players)
+        return Objects.equals(this.players, statusResponse.players)
                 && Objects.equals(this.serverVersion, statusResponse.serverVersion)
+                && Objects.equals(this.startTime, statusResponse.startTime)
                 && Objects.equals(this.vip, statusResponse.vip);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(startTime, players, serverVersion, vip);
+        return Objects.hash(players, serverVersion, startTime, vip);
     }
 
     @Override
@@ -139,9 +139,9 @@ public class StatusResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class StatusResponse {\n");
 
-        sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
         sb.append("    players: ").append(toIndentedString(players)).append("\n");
         sb.append("    serverVersion: ").append(toIndentedString(serverVersion)).append("\n");
+        sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
         sb.append("    vip: ").append(toIndentedString(vip)).append("\n");
         sb.append("}");
         return sb.toString();

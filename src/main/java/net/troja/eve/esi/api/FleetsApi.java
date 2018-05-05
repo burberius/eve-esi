@@ -19,7 +19,6 @@ import net.troja.eve.esi.model.FleetWingCreatedResponse;
 import net.troja.eve.esi.model.FleetWingNaming;
 import net.troja.eve.esi.model.FleetWingsResponse;
 import net.troja.eve.esi.model.Forbidden;
-import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,9 +100,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -168,9 +165,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -236,9 +231,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -257,6 +250,9 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -267,8 +263,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public CharacterFleetResponse getCharactersCharacterIdFleet(Integer characterId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public CharacterFleetResponse getCharactersCharacterIdFleet(Integer characterId, String datasource,
+            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -290,15 +286,15 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -318,6 +314,9 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param userAgent
@@ -328,8 +327,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String ifNoneMatch, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -350,15 +349,15 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -378,6 +377,9 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param token
@@ -390,8 +392,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String datasource, String language,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String datasource, String ifNoneMatch,
+            String language, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -413,15 +415,15 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -441,6 +443,9 @@ public class FleetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param language
      *            Language to use in the response (optional, default to en-us)
      * @param token
@@ -453,8 +458,8 @@ public class FleetsApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String datasource, String language,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String datasource, String ifNoneMatch,
+            String language, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -476,15 +481,15 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -551,9 +556,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -609,9 +612,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -679,9 +680,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -745,9 +744,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -820,9 +817,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -895,9 +890,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -970,9 +963,7 @@ public class FleetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };

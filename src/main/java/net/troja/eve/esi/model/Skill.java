@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class Skill implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("active_skill_level")
+    private Integer activeSkillLevel = null;
+
     @JsonProperty("skill_id")
     private Integer skillId = null;
 
@@ -34,8 +37,24 @@ public class Skill implements Serializable {
     @JsonProperty("trained_skill_level")
     private Integer trainedSkillLevel = null;
 
-    @JsonProperty("active_skill_level")
-    private Integer activeSkillLevel = null;
+    public Skill activeSkillLevel(Integer activeSkillLevel) {
+        this.activeSkillLevel = activeSkillLevel;
+        return this;
+    }
+
+    /**
+     * active_skill_level integer
+     * 
+     * @return activeSkillLevel
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "active_skill_level integer")
+    public Integer getActiveSkillLevel() {
+        return activeSkillLevel;
+    }
+
+    public void setActiveSkillLevel(Integer activeSkillLevel) {
+        this.activeSkillLevel = activeSkillLevel;
+    }
 
     public Skill skillId(Integer skillId) {
         this.skillId = skillId;
@@ -94,25 +113,6 @@ public class Skill implements Serializable {
         this.trainedSkillLevel = trainedSkillLevel;
     }
 
-    public Skill activeSkillLevel(Integer activeSkillLevel) {
-        this.activeSkillLevel = activeSkillLevel;
-        return this;
-    }
-
-    /**
-     * active_skill_level integer
-     * 
-     * @return activeSkillLevel
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "active_skill_level integer")
-    public Integer getActiveSkillLevel() {
-        return activeSkillLevel;
-    }
-
-    public void setActiveSkillLevel(Integer activeSkillLevel) {
-        this.activeSkillLevel = activeSkillLevel;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class Skill implements Serializable {
             return false;
         }
         Skill skill = (Skill) o;
-        return Objects.equals(this.skillId, skill.skillId)
+        return Objects.equals(this.activeSkillLevel, skill.activeSkillLevel)
+                && Objects.equals(this.skillId, skill.skillId)
                 && Objects.equals(this.skillpointsInSkill, skill.skillpointsInSkill)
-                && Objects.equals(this.trainedSkillLevel, skill.trainedSkillLevel)
-                && Objects.equals(this.activeSkillLevel, skill.activeSkillLevel);
+                && Objects.equals(this.trainedSkillLevel, skill.trainedSkillLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skillId, skillpointsInSkill, trainedSkillLevel, activeSkillLevel);
+        return Objects.hash(activeSkillLevel, skillId, skillpointsInSkill, trainedSkillLevel);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class Skill implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Skill {\n");
 
+        sb.append("    activeSkillLevel: ").append(toIndentedString(activeSkillLevel)).append("\n");
         sb.append("    skillId: ").append(toIndentedString(skillId)).append("\n");
         sb.append("    skillpointsInSkill: ").append(toIndentedString(skillpointsInSkill)).append("\n");
         sb.append("    trainedSkillLevel: ").append(toIndentedString(trainedSkillLevel)).append("\n");
-        sb.append("    activeSkillLevel: ").append(toIndentedString(activeSkillLevel)).append("\n");
         sb.append("}");
         return sb.toString();
     }

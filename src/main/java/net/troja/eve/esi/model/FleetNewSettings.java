@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FleetNewSettings implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("motd")
-    private String motd = null;
-
     @JsonProperty("is_free_move")
     private Boolean isFreeMove = null;
 
-    public FleetNewSettings motd(String motd) {
-        this.motd = motd;
-        return this;
-    }
-
-    /**
-     * New fleet MOTD in CCP flavoured HTML
-     * 
-     * @return motd
-     **/
-    @ApiModelProperty(example = "null", value = "New fleet MOTD in CCP flavoured HTML")
-    public String getMotd() {
-        return motd;
-    }
-
-    public void setMotd(String motd) {
-        this.motd = motd;
-    }
+    @JsonProperty("motd")
+    private String motd = null;
 
     public FleetNewSettings isFreeMove(Boolean isFreeMove) {
         this.isFreeMove = isFreeMove;
@@ -69,6 +50,25 @@ public class FleetNewSettings implements Serializable {
         this.isFreeMove = isFreeMove;
     }
 
+    public FleetNewSettings motd(String motd) {
+        this.motd = motd;
+        return this;
+    }
+
+    /**
+     * New fleet MOTD in CCP flavoured HTML
+     * 
+     * @return motd
+     **/
+    @ApiModelProperty(example = "null", value = "New fleet MOTD in CCP flavoured HTML")
+    public String getMotd() {
+        return motd;
+    }
+
+    public void setMotd(String motd) {
+        this.motd = motd;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FleetNewSettings implements Serializable {
             return false;
         }
         FleetNewSettings fleetNewSettings = (FleetNewSettings) o;
-        return Objects.equals(this.motd, fleetNewSettings.motd)
-                && Objects.equals(this.isFreeMove, fleetNewSettings.isFreeMove);
+        return Objects.equals(this.isFreeMove, fleetNewSettings.isFreeMove)
+                && Objects.equals(this.motd, fleetNewSettings.motd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(motd, isFreeMove);
+        return Objects.hash(isFreeMove, motd);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FleetNewSettings implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetNewSettings {\n");
 
-        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
+        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("}");
         return sb.toString();
     }

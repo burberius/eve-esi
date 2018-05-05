@@ -25,49 +25,8 @@ import java.io.Serializable;
 public class CharacterAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("quantity")
-    private Integer quantity = null;
-
-    @JsonProperty("location_id")
-    private Long locationId = null;
-
-    /**
-     * location_type string
-     */
-    public enum LocationTypeEnum {
-        STATION("station"),
-
-        SOLAR_SYSTEM("solar_system"),
-
-        OTHER("other");
-
-        private String value;
-
-        LocationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static LocationTypeEnum fromValue(String text) {
-            for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("location_type")
-    private LocationTypeEnum locationType = null;
+    @JsonProperty("is_singleton")
+    private Boolean isSingleton = null;
 
     @JsonProperty("item_id")
     private Long itemId = null;
@@ -257,83 +216,67 @@ public class CharacterAssetsResponse implements Serializable {
     @JsonProperty("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("is_singleton")
-    private Boolean isSingleton = null;
-
-    public CharacterAssetsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public CharacterAssetsResponse quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public CharacterAssetsResponse locationId(Long locationId) {
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * location_id integer
-     * 
-     * @return locationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
-
-    public CharacterAssetsResponse locationType(LocationTypeEnum locationType) {
-        this.locationType = locationType;
-        return this;
-    }
+    @JsonProperty("location_id")
+    private Long locationId = null;
 
     /**
      * location_type string
-     * 
-     * @return locationType
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_type string")
-    public LocationTypeEnum getLocationType() {
-        return locationType;
+     */
+    public enum LocationTypeEnum {
+        STATION("station"),
+
+        SOLAR_SYSTEM("solar_system"),
+
+        OTHER("other");
+
+        private String value;
+
+        LocationTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static LocationTypeEnum fromValue(String text) {
+            for (LocationTypeEnum b : LocationTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
-        this.locationType = locationType;
+    @JsonProperty("location_type")
+    private LocationTypeEnum locationType = null;
+
+    @JsonProperty("quantity")
+    private Integer quantity = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
+        return this;
+    }
+
+    /**
+     * is_singleton boolean
+     * 
+     * @return isSingleton
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
+    public Boolean getIsSingleton() {
+        return isSingleton;
+    }
+
+    public void setIsSingleton(Boolean isSingleton) {
+        this.isSingleton = isSingleton;
     }
 
     public CharacterAssetsResponse itemId(Long itemId) {
@@ -374,23 +317,80 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationFlag = locationFlag;
     }
 
-    public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
+    public CharacterAssetsResponse locationId(Long locationId) {
+        this.locationId = locationId;
         return this;
     }
 
     /**
-     * is_singleton boolean
+     * location_id integer
      * 
-     * @return isSingleton
+     * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
-        return isSingleton;
+    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setIsSingleton(Boolean isSingleton) {
-        this.isSingleton = isSingleton;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public CharacterAssetsResponse locationType(LocationTypeEnum locationType) {
+        this.locationType = locationType;
+        return this;
+    }
+
+    /**
+     * location_type string
+     * 
+     * @return locationType
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "location_type string")
+    public LocationTypeEnum getLocationType() {
+        return locationType;
+    }
+
+    public void setLocationType(LocationTypeEnum locationType) {
+        this.locationType = locationType;
+    }
+
+    public CharacterAssetsResponse quantity(Integer quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public CharacterAssetsResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -402,18 +402,18 @@ public class CharacterAssetsResponse implements Serializable {
             return false;
         }
         CharacterAssetsResponse characterAssetsResponse = (CharacterAssetsResponse) o;
-        return Objects.equals(this.typeId, characterAssetsResponse.typeId)
-                && Objects.equals(this.quantity, characterAssetsResponse.quantity)
-                && Objects.equals(this.locationId, characterAssetsResponse.locationId)
-                && Objects.equals(this.locationType, characterAssetsResponse.locationType)
+        return Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton)
                 && Objects.equals(this.itemId, characterAssetsResponse.itemId)
                 && Objects.equals(this.locationFlag, characterAssetsResponse.locationFlag)
-                && Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton);
+                && Objects.equals(this.locationId, characterAssetsResponse.locationId)
+                && Objects.equals(this.locationType, characterAssetsResponse.locationType)
+                && Objects.equals(this.quantity, characterAssetsResponse.quantity)
+                && Objects.equals(this.typeId, characterAssetsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, quantity, locationId, locationType, itemId, locationFlag, isSingleton);
+        return Objects.hash(isSingleton, itemId, locationFlag, locationId, locationType, quantity, typeId);
     }
 
     @Override
@@ -421,13 +421,13 @@ public class CharacterAssetsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAssetsResponse {\n");
 
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
+        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
-        sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

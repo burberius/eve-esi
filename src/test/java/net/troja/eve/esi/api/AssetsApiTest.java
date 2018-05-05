@@ -56,7 +56,7 @@ public class AssetsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdAssetsTest() throws ApiException {
         Integer page = null;
-        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, page,
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page,
                 null, null, null);
 
         assertThat(response, notNullValue());
@@ -76,7 +76,7 @@ public class AssetsApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdAssetsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, null, page, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

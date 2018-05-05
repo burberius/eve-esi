@@ -27,39 +27,20 @@ import java.io.Serializable;
 public class UiNewMail implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("subject")
-    private String subject = null;
-
     @JsonProperty("body")
     private String body = null;
 
     @JsonProperty("recipients")
     private List<Integer> recipients = new ArrayList<Integer>();
 
-    @JsonProperty("to_mailing_list_id")
-    private Integer toMailingListId = null;
+    @JsonProperty("subject")
+    private String subject = null;
 
     @JsonProperty("to_corp_or_alliance_id")
     private Integer toCorpOrAllianceId = null;
 
-    public UiNewMail subject(String subject) {
-        this.subject = subject;
-        return this;
-    }
-
-    /**
-     * subject string
-     * 
-     * @return subject
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "subject string")
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
+    @JsonProperty("to_mailing_list_id")
+    private Integer toMailingListId = null;
 
     public UiNewMail body(String body) {
         this.body = body;
@@ -104,25 +85,23 @@ public class UiNewMail implements Serializable {
         this.recipients = recipients;
     }
 
-    public UiNewMail toMailingListId(Integer toMailingListId) {
-        this.toMailingListId = toMailingListId;
+    public UiNewMail subject(String subject) {
+        this.subject = subject;
         return this;
     }
 
     /**
-     * Corporations, alliances and mailing lists are all types of mailing
-     * groups. You may only send to one mailing group, at a time, so you may
-     * fill out either this field or the to_corp_or_alliance_ids field
+     * subject string
      * 
-     * @return toMailingListId
+     * @return subject
      **/
-    @ApiModelProperty(example = "null", value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
-    public Integer getToMailingListId() {
-        return toMailingListId;
+    @ApiModelProperty(example = "null", required = true, value = "subject string")
+    public String getSubject() {
+        return subject;
     }
 
-    public void setToMailingListId(Integer toMailingListId) {
-        this.toMailingListId = toMailingListId;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
@@ -144,6 +123,27 @@ public class UiNewMail implements Serializable {
         this.toCorpOrAllianceId = toCorpOrAllianceId;
     }
 
+    public UiNewMail toMailingListId(Integer toMailingListId) {
+        this.toMailingListId = toMailingListId;
+        return this;
+    }
+
+    /**
+     * Corporations, alliances and mailing lists are all types of mailing
+     * groups. You may only send to one mailing group, at a time, so you may
+     * fill out either this field or the to_corp_or_alliance_ids field
+     * 
+     * @return toMailingListId
+     **/
+    @ApiModelProperty(example = "null", value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
+    public Integer getToMailingListId() {
+        return toMailingListId;
+    }
+
+    public void setToMailingListId(Integer toMailingListId) {
+        this.toMailingListId = toMailingListId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,15 +153,15 @@ public class UiNewMail implements Serializable {
             return false;
         }
         UiNewMail uiNewMail = (UiNewMail) o;
-        return Objects.equals(this.subject, uiNewMail.subject) && Objects.equals(this.body, uiNewMail.body)
-                && Objects.equals(this.recipients, uiNewMail.recipients)
-                && Objects.equals(this.toMailingListId, uiNewMail.toMailingListId)
-                && Objects.equals(this.toCorpOrAllianceId, uiNewMail.toCorpOrAllianceId);
+        return Objects.equals(this.body, uiNewMail.body) && Objects.equals(this.recipients, uiNewMail.recipients)
+                && Objects.equals(this.subject, uiNewMail.subject)
+                && Objects.equals(this.toCorpOrAllianceId, uiNewMail.toCorpOrAllianceId)
+                && Objects.equals(this.toMailingListId, uiNewMail.toMailingListId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(subject, body, recipients, toMailingListId, toCorpOrAllianceId);
+        return Objects.hash(body, recipients, subject, toCorpOrAllianceId, toMailingListId);
     }
 
     @Override
@@ -169,11 +169,11 @@ public class UiNewMail implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class UiNewMail {\n");
 
-        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
-        sb.append("    toMailingListId: ").append(toIndentedString(toMailingListId)).append("\n");
+        sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
         sb.append("    toCorpOrAllianceId: ").append(toIndentedString(toCorpOrAllianceId)).append("\n");
+        sb.append("    toMailingListId: ").append(toIndentedString(toMailingListId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

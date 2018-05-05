@@ -28,33 +28,14 @@ import java.io.Serializable;
 public class FleetWingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("id")
     private Long id = null;
 
+    @JsonProperty("name")
+    private String name = null;
+
     @JsonProperty("squads")
     private List<Squad> squads = new ArrayList<Squad>();
-
-    public FleetWingsResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public FleetWingsResponse id(Long id) {
         this.id = id;
@@ -73,6 +54,25 @@ public class FleetWingsResponse implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public FleetWingsResponse name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public FleetWingsResponse squads(List<Squad> squads) {
@@ -108,13 +108,13 @@ public class FleetWingsResponse implements Serializable {
             return false;
         }
         FleetWingsResponse fleetWingsResponse = (FleetWingsResponse) o;
-        return Objects.equals(this.name, fleetWingsResponse.name) && Objects.equals(this.id, fleetWingsResponse.id)
+        return Objects.equals(this.id, fleetWingsResponse.id) && Objects.equals(this.name, fleetWingsResponse.name)
                 && Objects.equals(this.squads, fleetWingsResponse.squads);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, squads);
+        return Objects.hash(id, name, squads);
     }
 
     @Override
@@ -122,8 +122,8 @@ public class FleetWingsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetWingsResponse {\n");
 
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    squads: ").append(toIndentedString(squads)).append("\n");
         sb.append("}");
         return sb.toString();

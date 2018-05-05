@@ -30,26 +30,50 @@ import java.io.Serializable;
 public class KillmailResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("attackers")
+    private List<KillmailAttacker> attackers = new ArrayList<KillmailAttacker>();
+
     @JsonProperty("killmail_id")
     private Integer killmailId = null;
 
     @JsonProperty("killmail_time")
     private OffsetDateTime killmailTime = null;
 
-    @JsonProperty("victim")
-    private KillmailVictim victim = null;
-
-    @JsonProperty("attackers")
-    private List<KillmailAttacker> attackers = new ArrayList<KillmailAttacker>();
+    @JsonProperty("moon_id")
+    private Integer moonId = null;
 
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("moon_id")
-    private Integer moonId = null;
+    @JsonProperty("victim")
+    private KillmailVictim victim = null;
 
     @JsonProperty("war_id")
     private Integer warId = null;
+
+    public KillmailResponse attackers(List<KillmailAttacker> attackers) {
+        this.attackers = attackers;
+        return this;
+    }
+
+    public KillmailResponse addAttackersItem(KillmailAttacker attackersItem) {
+        this.attackers.add(attackersItem);
+        return this;
+    }
+
+    /**
+     * attackers array
+     * 
+     * @return attackers
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "attackers array")
+    public List<KillmailAttacker> getAttackers() {
+        return attackers;
+    }
+
+    public void setAttackers(List<KillmailAttacker> attackers) {
+        this.attackers = attackers;
+    }
 
     public KillmailResponse killmailId(Integer killmailId) {
         this.killmailId = killmailId;
@@ -89,47 +113,23 @@ public class KillmailResponse implements Serializable {
         this.killmailTime = killmailTime;
     }
 
-    public KillmailResponse victim(KillmailVictim victim) {
-        this.victim = victim;
+    public KillmailResponse moonId(Integer moonId) {
+        this.moonId = moonId;
         return this;
     }
 
     /**
-     * Get victim
+     * Moon if the kill took place at one
      * 
-     * @return victim
+     * @return moonId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public KillmailVictim getVictim() {
-        return victim;
+    @ApiModelProperty(example = "null", value = "Moon if the kill took place at one")
+    public Integer getMoonId() {
+        return moonId;
     }
 
-    public void setVictim(KillmailVictim victim) {
-        this.victim = victim;
-    }
-
-    public KillmailResponse attackers(List<KillmailAttacker> attackers) {
-        this.attackers = attackers;
-        return this;
-    }
-
-    public KillmailResponse addAttackersItem(KillmailAttacker attackersItem) {
-        this.attackers.add(attackersItem);
-        return this;
-    }
-
-    /**
-     * attackers array
-     * 
-     * @return attackers
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "attackers array")
-    public List<KillmailAttacker> getAttackers() {
-        return attackers;
-    }
-
-    public void setAttackers(List<KillmailAttacker> attackers) {
-        this.attackers = attackers;
+    public void setMoonId(Integer moonId) {
+        this.moonId = moonId;
     }
 
     public KillmailResponse solarSystemId(Integer solarSystemId) {
@@ -151,23 +151,23 @@ public class KillmailResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
-    public KillmailResponse moonId(Integer moonId) {
-        this.moonId = moonId;
+    public KillmailResponse victim(KillmailVictim victim) {
+        this.victim = victim;
         return this;
     }
 
     /**
-     * Moon if the kill took place at one
+     * Get victim
      * 
-     * @return moonId
+     * @return victim
      **/
-    @ApiModelProperty(example = "null", value = "Moon if the kill took place at one")
-    public Integer getMoonId() {
-        return moonId;
+    @ApiModelProperty(example = "null", value = "")
+    public KillmailVictim getVictim() {
+        return victim;
     }
 
-    public void setMoonId(Integer moonId) {
-        this.moonId = moonId;
+    public void setVictim(KillmailVictim victim) {
+        this.victim = victim;
     }
 
     public KillmailResponse warId(Integer warId) {
@@ -198,18 +198,18 @@ public class KillmailResponse implements Serializable {
             return false;
         }
         KillmailResponse killmailResponse = (KillmailResponse) o;
-        return Objects.equals(this.killmailId, killmailResponse.killmailId)
+        return Objects.equals(this.attackers, killmailResponse.attackers)
+                && Objects.equals(this.killmailId, killmailResponse.killmailId)
                 && Objects.equals(this.killmailTime, killmailResponse.killmailTime)
-                && Objects.equals(this.victim, killmailResponse.victim)
-                && Objects.equals(this.attackers, killmailResponse.attackers)
-                && Objects.equals(this.solarSystemId, killmailResponse.solarSystemId)
                 && Objects.equals(this.moonId, killmailResponse.moonId)
+                && Objects.equals(this.solarSystemId, killmailResponse.solarSystemId)
+                && Objects.equals(this.victim, killmailResponse.victim)
                 && Objects.equals(this.warId, killmailResponse.warId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(killmailId, killmailTime, victim, attackers, solarSystemId, moonId, warId);
+        return Objects.hash(attackers, killmailId, killmailTime, moonId, solarSystemId, victim, warId);
     }
 
     @Override
@@ -217,12 +217,12 @@ public class KillmailResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailResponse {\n");
 
+        sb.append("    attackers: ").append(toIndentedString(attackers)).append("\n");
         sb.append("    killmailId: ").append(toIndentedString(killmailId)).append("\n");
         sb.append("    killmailTime: ").append(toIndentedString(killmailTime)).append("\n");
-        sb.append("    victim: ").append(toIndentedString(victim)).append("\n");
-        sb.append("    attackers: ").append(toIndentedString(attackers)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    victim: ").append(toIndentedString(victim)).append("\n");
         sb.append("    warId: ").append(toIndentedString(warId)).append("\n");
         sb.append("}");
         return sb.toString();

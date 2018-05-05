@@ -50,7 +50,7 @@ import net.troja.eve.esi.auth.OAuth;
 
 public class ApiClient {
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
-    private String basePath = "https://esi.tech.ccp.is";
+    private String basePath = "https://esi.evetech.net";
     private boolean debugging = false;
     private int connectionTimeout = 0;
 
@@ -734,6 +734,11 @@ public class ApiClient {
                     invocationBuilder = invocationBuilder.header(key, value);
                 }
             }
+        }
+
+        //Workaround for content-length not set if body is null
+        if (body == null) {
+            body = "";
         }
 
         Entity<?> entity = serialize(body, formParams, contentType);

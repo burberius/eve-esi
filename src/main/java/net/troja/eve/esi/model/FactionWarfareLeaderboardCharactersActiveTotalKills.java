@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
-    private Integer characterId = null;
-
     @JsonProperty("amount")
     private Integer amount = null;
 
-    public FactionWarfareLeaderboardCharactersActiveTotalKills characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * character_id integer
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", value = "character_id integer")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
-    }
+    @JsonProperty("character_id")
+    private Integer characterId = null;
 
     public FactionWarfareLeaderboardCharactersActiveTotalKills amount(Integer amount) {
         this.amount = amount;
@@ -69,6 +50,25 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
         this.amount = amount;
     }
 
+    public FactionWarfareLeaderboardCharactersActiveTotalKills characterId(Integer characterId) {
+        this.characterId = characterId;
+        return this;
+    }
+
+    /**
+     * character_id integer
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(example = "null", value = "character_id integer")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
             return false;
         }
         FactionWarfareLeaderboardCharactersActiveTotalKills factionWarfareLeaderboardCharactersActiveTotalKills = (FactionWarfareLeaderboardCharactersActiveTotalKills) o;
-        return Objects.equals(this.characterId, factionWarfareLeaderboardCharactersActiveTotalKills.characterId)
-                && Objects.equals(this.amount, factionWarfareLeaderboardCharactersActiveTotalKills.amount);
+        return Objects.equals(this.amount, factionWarfareLeaderboardCharactersActiveTotalKills.amount)
+                && Objects.equals(this.characterId, factionWarfareLeaderboardCharactersActiveTotalKills.characterId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterId, amount);
+        return Objects.hash(amount, characterId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersActiveTotalKills {\n");
 
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

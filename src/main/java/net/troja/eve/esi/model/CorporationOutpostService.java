@@ -25,6 +25,12 @@ import java.io.Serializable;
 public class CorporationOutpostService implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("discount_per_good_standing")
+    private Double discountPerGoodStanding = null;
+
+    @JsonProperty("minimum_standing")
+    private Double minimumStanding = null;
+
     /**
      * service_name string
      */
@@ -108,32 +114,26 @@ public class CorporationOutpostService implements Serializable {
     @JsonProperty("service_name")
     private ServiceNameEnum serviceName = null;
 
-    @JsonProperty("minimum_standing")
-    private Double minimumStanding = null;
-
     @JsonProperty("surcharge_per_bad_standing")
     private Double surchargePerBadStanding = null;
 
-    @JsonProperty("discount_per_good_standing")
-    private Double discountPerGoodStanding = null;
-
-    public CorporationOutpostService serviceName(ServiceNameEnum serviceName) {
-        this.serviceName = serviceName;
+    public CorporationOutpostService discountPerGoodStanding(Double discountPerGoodStanding) {
+        this.discountPerGoodStanding = discountPerGoodStanding;
         return this;
     }
 
     /**
-     * service_name string
+     * discount_per_good_standing number
      * 
-     * @return serviceName
+     * @return discountPerGoodStanding
      **/
-    @ApiModelProperty(example = "null", required = true, value = "service_name string")
-    public ServiceNameEnum getServiceName() {
-        return serviceName;
+    @ApiModelProperty(example = "null", required = true, value = "discount_per_good_standing number")
+    public Double getDiscountPerGoodStanding() {
+        return discountPerGoodStanding;
     }
 
-    public void setServiceName(ServiceNameEnum serviceName) {
-        this.serviceName = serviceName;
+    public void setDiscountPerGoodStanding(Double discountPerGoodStanding) {
+        this.discountPerGoodStanding = discountPerGoodStanding;
     }
 
     public CorporationOutpostService minimumStanding(Double minimumStanding) {
@@ -155,6 +155,25 @@ public class CorporationOutpostService implements Serializable {
         this.minimumStanding = minimumStanding;
     }
 
+    public CorporationOutpostService serviceName(ServiceNameEnum serviceName) {
+        this.serviceName = serviceName;
+        return this;
+    }
+
+    /**
+     * service_name string
+     * 
+     * @return serviceName
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "service_name string")
+    public ServiceNameEnum getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(ServiceNameEnum serviceName) {
+        this.serviceName = serviceName;
+    }
+
     public CorporationOutpostService surchargePerBadStanding(Double surchargePerBadStanding) {
         this.surchargePerBadStanding = surchargePerBadStanding;
         return this;
@@ -174,25 +193,6 @@ public class CorporationOutpostService implements Serializable {
         this.surchargePerBadStanding = surchargePerBadStanding;
     }
 
-    public CorporationOutpostService discountPerGoodStanding(Double discountPerGoodStanding) {
-        this.discountPerGoodStanding = discountPerGoodStanding;
-        return this;
-    }
-
-    /**
-     * discount_per_good_standing number
-     * 
-     * @return discountPerGoodStanding
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "discount_per_good_standing number")
-    public Double getDiscountPerGoodStanding() {
-        return discountPerGoodStanding;
-    }
-
-    public void setDiscountPerGoodStanding(Double discountPerGoodStanding) {
-        this.discountPerGoodStanding = discountPerGoodStanding;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -202,15 +202,15 @@ public class CorporationOutpostService implements Serializable {
             return false;
         }
         CorporationOutpostService corporationOutpostService = (CorporationOutpostService) o;
-        return Objects.equals(this.serviceName, corporationOutpostService.serviceName)
+        return Objects.equals(this.discountPerGoodStanding, corporationOutpostService.discountPerGoodStanding)
                 && Objects.equals(this.minimumStanding, corporationOutpostService.minimumStanding)
-                && Objects.equals(this.surchargePerBadStanding, corporationOutpostService.surchargePerBadStanding)
-                && Objects.equals(this.discountPerGoodStanding, corporationOutpostService.discountPerGoodStanding);
+                && Objects.equals(this.serviceName, corporationOutpostService.serviceName)
+                && Objects.equals(this.surchargePerBadStanding, corporationOutpostService.surchargePerBadStanding);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceName, minimumStanding, surchargePerBadStanding, discountPerGoodStanding);
+        return Objects.hash(discountPerGoodStanding, minimumStanding, serviceName, surchargePerBadStanding);
     }
 
     @Override
@@ -218,10 +218,10 @@ public class CorporationOutpostService implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationOutpostService {\n");
 
-        sb.append("    serviceName: ").append(toIndentedString(serviceName)).append("\n");
-        sb.append("    minimumStanding: ").append(toIndentedString(minimumStanding)).append("\n");
-        sb.append("    surchargePerBadStanding: ").append(toIndentedString(surchargePerBadStanding)).append("\n");
         sb.append("    discountPerGoodStanding: ").append(toIndentedString(discountPerGoodStanding)).append("\n");
+        sb.append("    minimumStanding: ").append(toIndentedString(minimumStanding)).append("\n");
+        sb.append("    serviceName: ").append(toIndentedString(serviceName)).append("\n");
+        sb.append("    surchargePerBadStanding: ").append(toIndentedString(surchargePerBadStanding)).append("\n");
         sb.append("}");
         return sb.toString();
     }

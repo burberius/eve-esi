@@ -25,12 +25,6 @@ import java.io.Serializable;
 public class UniverseNamesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("id")
-    private Integer id = null;
-
-    @JsonProperty("name")
-    private String name = null;
-
     /**
      * category string
      */
@@ -76,6 +70,31 @@ public class UniverseNamesResponse implements Serializable {
     @JsonProperty("category")
     private CategoryEnum category = null;
 
+    @JsonProperty("id")
+    private Integer id = null;
+
+    @JsonProperty("name")
+    private String name = null;
+
+    public UniverseNamesResponse category(CategoryEnum category) {
+        this.category = category;
+        return this;
+    }
+
+    /**
+     * category string
+     * 
+     * @return category
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "category string")
+    public CategoryEnum getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEnum category) {
+        this.category = category;
+    }
+
     public UniverseNamesResponse id(Integer id) {
         this.id = id;
         return this;
@@ -114,25 +133,6 @@ public class UniverseNamesResponse implements Serializable {
         this.name = name;
     }
 
-    public UniverseNamesResponse category(CategoryEnum category) {
-        this.category = category;
-        return this;
-    }
-
-    /**
-     * category string
-     * 
-     * @return category
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "category string")
-    public CategoryEnum getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEnum category) {
-        this.category = category;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,14 +142,14 @@ public class UniverseNamesResponse implements Serializable {
             return false;
         }
         UniverseNamesResponse universeNamesResponse = (UniverseNamesResponse) o;
-        return Objects.equals(this.id, universeNamesResponse.id)
-                && Objects.equals(this.name, universeNamesResponse.name)
-                && Objects.equals(this.category, universeNamesResponse.category);
+        return Objects.equals(this.category, universeNamesResponse.category)
+                && Objects.equals(this.id, universeNamesResponse.id)
+                && Objects.equals(this.name, universeNamesResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, category);
+        return Objects.hash(category, id, name);
     }
 
     @Override
@@ -157,9 +157,9 @@ public class UniverseNamesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseNamesResponse {\n");
 
+        sb.append("    category: ").append(toIndentedString(category)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    category: ").append(toIndentedString(category)).append("\n");
         sb.append("}");
         return sb.toString();
     }

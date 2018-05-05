@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
-import net.troja.eve.esi.model.CharacterWalletJournalExtraInfoResponse;
 import java.io.Serializable;
 
 /**
@@ -27,19 +26,91 @@ import java.io.Serializable;
 public class CharacterWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("amount")
+    private Double amount = null;
+
+    @JsonProperty("balance")
+    private Double balance = null;
+
+    @JsonProperty("context_id")
+    private Long contextId = null;
+
+    /**
+     * The type of the given context_id if present
+     */
+    public enum ContextIdTypeEnum {
+        STRUCTURE_ID("structure_id"),
+
+        STATION_ID("station_id"),
+
+        MARKET_TRANSACTION_ID("market_transaction_id"),
+
+        CHARACTER_ID("character_id"),
+
+        CORPORATION_ID("corporation_id"),
+
+        ALLIANCE_ID("alliance_id"),
+
+        EVE_SYSTEM("eve_system"),
+
+        INDUSTRY_JOB_ID("industry_job_id"),
+
+        CONTRACT_ID("contract_id"),
+
+        PLANET_ID("planet_id"),
+
+        SYSTEM_ID("system_id"),
+
+        TYPE_ID("type_id");
+
+        private String value;
+
+        ContextIdTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ContextIdTypeEnum fromValue(String text) {
+            for (ContextIdTypeEnum b : ContextIdTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    @JsonProperty("context_id_type")
+    private ContextIdTypeEnum contextIdType = null;
+
     @JsonProperty("date")
     private OffsetDateTime date = null;
 
-    @JsonProperty("ref_id")
-    private Long refId = null;
+    @JsonProperty("description")
+    private String description = null;
+
+    @JsonProperty("first_party_id")
+    private Integer firstPartyId = null;
+
+    @JsonProperty("id")
+    private Long id = null;
+
+    @JsonProperty("reason")
+    private String reason = null;
 
     /**
-     * Transaction type, different type of transaction will populate different
-     * fields in `extra_info` Note: If you have an existing XML API application
-     * that is using ref_types, you will need to know which string ESI ref_type
-     * maps to which integer. You can use the following gist to see string->int
-     * mappings:
-     * https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec
+     * The transaction type for the given transaction. Different transaction
+     * types will populate different attributes. Note: If you have an existing
+     * XML API application that is using ref_types, you will need to know which
+     * string ESI ref_type maps to which integer. You can look at the following
+     * file to see string->int mappings:
+     * https://github.com/ccpgames/eve-glue/blob
+     * /master/eve_glue/wallet_journal_ref.py
      */
     public enum RefTypeEnum {
         ACCELERATION_GATE_FEE("acceleration_gate_fee"),
@@ -301,245 +372,14 @@ public class CharacterWalletJournalResponse implements Serializable {
     @JsonProperty("ref_type")
     private RefTypeEnum refType = null;
 
-    @JsonProperty("first_party_id")
-    private Integer firstPartyId = null;
-
-    /**
-     * first_party_type string
-     */
-    public enum FirstPartyTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction"),
-
-        SYSTEM("system");
-
-        private String value;
-
-        FirstPartyTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static FirstPartyTypeEnum fromValue(String text) {
-            for (FirstPartyTypeEnum b : FirstPartyTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("first_party_type")
-    private FirstPartyTypeEnum firstPartyType = null;
-
     @JsonProperty("second_party_id")
     private Integer secondPartyId = null;
-
-    /**
-     * second_party_type string
-     */
-    public enum SecondPartyTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction"),
-
-        SYSTEM("system");
-
-        private String value;
-
-        SecondPartyTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static SecondPartyTypeEnum fromValue(String text) {
-            for (SecondPartyTypeEnum b : SecondPartyTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("second_party_type")
-    private SecondPartyTypeEnum secondPartyType = null;
-
-    @JsonProperty("amount")
-    private Double amount = null;
-
-    @JsonProperty("balance")
-    private Double balance = null;
-
-    @JsonProperty("reason")
-    private String reason = null;
-
-    @JsonProperty("tax_receiver_id")
-    private Integer taxReceiverId = null;
 
     @JsonProperty("tax")
     private Double tax = null;
 
-    @JsonProperty("extra_info")
-    private CharacterWalletJournalExtraInfoResponse extraInfo = null;
-
-    public CharacterWalletJournalResponse date(OffsetDateTime date) {
-        this.date = date;
-        return this;
-    }
-
-    /**
-     * Date and time of transaction
-     * 
-     * @return date
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time of transaction")
-    public OffsetDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(OffsetDateTime date) {
-        this.date = date;
-    }
-
-    public CharacterWalletJournalResponse refId(Long refId) {
-        this.refId = refId;
-        return this;
-    }
-
-    /**
-     * Unique journal reference ID
-     * 
-     * @return refId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique journal reference ID")
-    public Long getRefId() {
-        return refId;
-    }
-
-    public void setRefId(Long refId) {
-        this.refId = refId;
-    }
-
-    public CharacterWalletJournalResponse refType(RefTypeEnum refType) {
-        this.refType = refType;
-        return this;
-    }
-
-    /**
-     * Transaction type, different type of transaction will populate different
-     * fields in `extra_info` Note: If you have an existing XML API application
-     * that is using ref_types, you will need to know which string ESI ref_type
-     * maps to which integer. You can use the following gist to see string->int
-     * mappings:
-     * https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec
-     * 
-     * @return refType
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Transaction type, different type of transaction will populate different fields in `extra_info` Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can use the following gist to see string->int mappings: https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec")
-    public RefTypeEnum getRefType() {
-        return refType;
-    }
-
-    public void setRefType(RefTypeEnum refType) {
-        this.refType = refType;
-    }
-
-    public CharacterWalletJournalResponse firstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-        return this;
-    }
-
-    /**
-     * first_party_id integer
-     * 
-     * @return firstPartyId
-     **/
-    @ApiModelProperty(example = "null", value = "first_party_id integer")
-    public Integer getFirstPartyId() {
-        return firstPartyId;
-    }
-
-    public void setFirstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-    }
-
-    public CharacterWalletJournalResponse firstPartyType(FirstPartyTypeEnum firstPartyType) {
-        this.firstPartyType = firstPartyType;
-        return this;
-    }
-
-    /**
-     * first_party_type string
-     * 
-     * @return firstPartyType
-     **/
-    @ApiModelProperty(example = "null", value = "first_party_type string")
-    public FirstPartyTypeEnum getFirstPartyType() {
-        return firstPartyType;
-    }
-
-    public void setFirstPartyType(FirstPartyTypeEnum firstPartyType) {
-        this.firstPartyType = firstPartyType;
-    }
-
-    public CharacterWalletJournalResponse secondPartyId(Integer secondPartyId) {
-        this.secondPartyId = secondPartyId;
-        return this;
-    }
-
-    /**
-     * second_party_id integer
-     * 
-     * @return secondPartyId
-     **/
-    @ApiModelProperty(example = "null", value = "second_party_id integer")
-    public Integer getSecondPartyId() {
-        return secondPartyId;
-    }
-
-    public void setSecondPartyId(Integer secondPartyId) {
-        this.secondPartyId = secondPartyId;
-    }
-
-    public CharacterWalletJournalResponse secondPartyType(SecondPartyTypeEnum secondPartyType) {
-        this.secondPartyType = secondPartyType;
-        return this;
-    }
-
-    /**
-     * second_party_type string
-     * 
-     * @return secondPartyType
-     **/
-    @ApiModelProperty(example = "null", value = "second_party_type string")
-    public SecondPartyTypeEnum getSecondPartyType() {
-        return secondPartyType;
-    }
-
-    public void setSecondPartyType(SecondPartyTypeEnum secondPartyType) {
-        this.secondPartyType = secondPartyType;
-    }
+    @JsonProperty("tax_receiver_id")
+    private Integer taxReceiverId = null;
 
     public CharacterWalletJournalResponse amount(Double amount) {
         this.amount = amount;
@@ -547,12 +387,13 @@ public class CharacterWalletJournalResponse implements Serializable {
     }
 
     /**
-     * Transaction amount. Positive when value transferred to the first party.
-     * Negative otherwise
+     * The amount of ISK given or taken from the wallet as a result of the given
+     * transaction. Positive when ISK is deposited into the wallet and negative
+     * when ISK is withdrawn
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Transaction amount. Positive when value transferred to the first party. Negative otherwise")
+    @ApiModelProperty(example = "null", value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
     public Double getAmount() {
         return amount;
     }
@@ -580,17 +421,138 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.balance = balance;
     }
 
+    public CharacterWalletJournalResponse contextId(Long contextId) {
+        this.contextId = contextId;
+        return this;
+    }
+
+    /**
+     * An ID that gives extra context to the particular transaction. Because of
+     * legacy reasons the context is completely different per ref_type and means
+     * different things. It is also possible to not have a context_id
+     * 
+     * @return contextId
+     **/
+    @ApiModelProperty(example = "null", value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
+    public Long getContextId() {
+        return contextId;
+    }
+
+    public void setContextId(Long contextId) {
+        this.contextId = contextId;
+    }
+
+    public CharacterWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdType) {
+        this.contextIdType = contextIdType;
+        return this;
+    }
+
+    /**
+     * The type of the given context_id if present
+     * 
+     * @return contextIdType
+     **/
+    @ApiModelProperty(example = "null", value = "The type of the given context_id if present")
+    public ContextIdTypeEnum getContextIdType() {
+        return contextIdType;
+    }
+
+    public void setContextIdType(ContextIdTypeEnum contextIdType) {
+        this.contextIdType = contextIdType;
+    }
+
+    public CharacterWalletJournalResponse date(OffsetDateTime date) {
+        this.date = date;
+        return this;
+    }
+
+    /**
+     * Date and time of transaction
+     * 
+     * @return date
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Date and time of transaction")
+    public OffsetDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(OffsetDateTime date) {
+        this.date = date;
+    }
+
+    public CharacterWalletJournalResponse description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * The reason for the transaction, mirrors what is seen in the client
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The reason for the transaction, mirrors what is seen in the client")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public CharacterWalletJournalResponse firstPartyId(Integer firstPartyId) {
+        this.firstPartyId = firstPartyId;
+        return this;
+    }
+
+    /**
+     * The id of the first party involved in the transaction. This attribute has
+     * no consistency and is different or non existant for particular ref_types.
+     * The description attribute will help make sense of what this attribute
+     * means. For more info about the given ID it can be dropped into the
+     * /universe/names/ ESI route to determine its type and name
+     * 
+     * @return firstPartyId
+     **/
+    @ApiModelProperty(example = "null", value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
+    public Integer getFirstPartyId() {
+        return firstPartyId;
+    }
+
+    public void setFirstPartyId(Integer firstPartyId) {
+        this.firstPartyId = firstPartyId;
+    }
+
+    public CharacterWalletJournalResponse id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Unique journal reference ID
+     * 
+     * @return id
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Unique journal reference ID")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public CharacterWalletJournalResponse reason(String reason) {
         this.reason = reason;
         return this;
     }
 
     /**
-     * reason string
+     * The user stated reason for the transaction. Only applies to some
+     * ref_types
      * 
      * @return reason
      **/
-    @ApiModelProperty(example = "null", value = "reason string")
+    @ApiModelProperty(example = "null", value = "The user stated reason for the transaction. Only applies to some ref_types")
     public String getReason() {
         return reason;
     }
@@ -599,23 +561,52 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CharacterWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
-        this.taxReceiverId = taxReceiverId;
+    public CharacterWalletJournalResponse refType(RefTypeEnum refType) {
+        this.refType = refType;
         return this;
     }
 
     /**
-     * the corporation ID receiving any tax paid
+     * The transaction type for the given transaction. Different transaction
+     * types will populate different attributes. Note: If you have an existing
+     * XML API application that is using ref_types, you will need to know which
+     * string ESI ref_type maps to which integer. You can look at the following
+     * file to see string->int mappings:
+     * https://github.com/ccpgames/eve-glue/blob
+     * /master/eve_glue/wallet_journal_ref.py
      * 
-     * @return taxReceiverId
+     * @return refType
      **/
-    @ApiModelProperty(example = "null", value = "the corporation ID receiving any tax paid")
-    public Integer getTaxReceiverId() {
-        return taxReceiverId;
+    @ApiModelProperty(example = "null", required = true, value = "The transaction type for the given transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py")
+    public RefTypeEnum getRefType() {
+        return refType;
     }
 
-    public void setTaxReceiverId(Integer taxReceiverId) {
-        this.taxReceiverId = taxReceiverId;
+    public void setRefType(RefTypeEnum refType) {
+        this.refType = refType;
+    }
+
+    public CharacterWalletJournalResponse secondPartyId(Integer secondPartyId) {
+        this.secondPartyId = secondPartyId;
+        return this;
+    }
+
+    /**
+     * The id of the second party involved in the transaction. This attribute
+     * has no consistency and is different or non existant for particular
+     * ref_types. The description attribute will help make sense of what this
+     * attribute means. For more info about the given ID it can be dropped into
+     * the /universe/names/ ESI route to determine its type and name
+     * 
+     * @return secondPartyId
+     **/
+    @ApiModelProperty(example = "null", value = "The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
+    public Integer getSecondPartyId() {
+        return secondPartyId;
+    }
+
+    public void setSecondPartyId(Integer secondPartyId) {
+        this.secondPartyId = secondPartyId;
     }
 
     public CharacterWalletJournalResponse tax(Double tax) {
@@ -624,11 +615,11 @@ public class CharacterWalletJournalResponse implements Serializable {
     }
 
     /**
-     * Tax amount received for tax related transactions
+     * Tax amount received. Only applies to tax related transactions
      * 
      * @return tax
      **/
-    @ApiModelProperty(example = "null", value = "Tax amount received for tax related transactions")
+    @ApiModelProperty(example = "null", value = "Tax amount received. Only applies to tax related transactions")
     public Double getTax() {
         return tax;
     }
@@ -637,23 +628,24 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.tax = tax;
     }
 
-    public CharacterWalletJournalResponse extraInfo(CharacterWalletJournalExtraInfoResponse extraInfo) {
-        this.extraInfo = extraInfo;
+    public CharacterWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
+        this.taxReceiverId = taxReceiverId;
         return this;
     }
 
     /**
-     * Get extraInfo
+     * The corporation ID receiving any tax paid. Only applies to tax related
+     * transactions
      * 
-     * @return extraInfo
+     * @return taxReceiverId
      **/
-    @ApiModelProperty(example = "null", value = "")
-    public CharacterWalletJournalExtraInfoResponse getExtraInfo() {
-        return extraInfo;
+    @ApiModelProperty(example = "null", value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
+    public Integer getTaxReceiverId() {
+        return taxReceiverId;
     }
 
-    public void setExtraInfo(CharacterWalletJournalExtraInfoResponse extraInfo) {
-        this.extraInfo = extraInfo;
+    public void setTaxReceiverId(Integer taxReceiverId) {
+        this.taxReceiverId = taxReceiverId;
     }
 
     @Override
@@ -665,25 +657,25 @@ public class CharacterWalletJournalResponse implements Serializable {
             return false;
         }
         CharacterWalletJournalResponse characterWalletJournalResponse = (CharacterWalletJournalResponse) o;
-        return Objects.equals(this.date, characterWalletJournalResponse.date)
-                && Objects.equals(this.refId, characterWalletJournalResponse.refId)
-                && Objects.equals(this.refType, characterWalletJournalResponse.refType)
-                && Objects.equals(this.firstPartyId, characterWalletJournalResponse.firstPartyId)
-                && Objects.equals(this.firstPartyType, characterWalletJournalResponse.firstPartyType)
-                && Objects.equals(this.secondPartyId, characterWalletJournalResponse.secondPartyId)
-                && Objects.equals(this.secondPartyType, characterWalletJournalResponse.secondPartyType)
-                && Objects.equals(this.amount, characterWalletJournalResponse.amount)
+        return Objects.equals(this.amount, characterWalletJournalResponse.amount)
                 && Objects.equals(this.balance, characterWalletJournalResponse.balance)
+                && Objects.equals(this.contextId, characterWalletJournalResponse.contextId)
+                && Objects.equals(this.contextIdType, characterWalletJournalResponse.contextIdType)
+                && Objects.equals(this.date, characterWalletJournalResponse.date)
+                && Objects.equals(this.description, characterWalletJournalResponse.description)
+                && Objects.equals(this.firstPartyId, characterWalletJournalResponse.firstPartyId)
+                && Objects.equals(this.id, characterWalletJournalResponse.id)
                 && Objects.equals(this.reason, characterWalletJournalResponse.reason)
-                && Objects.equals(this.taxReceiverId, characterWalletJournalResponse.taxReceiverId)
+                && Objects.equals(this.refType, characterWalletJournalResponse.refType)
+                && Objects.equals(this.secondPartyId, characterWalletJournalResponse.secondPartyId)
                 && Objects.equals(this.tax, characterWalletJournalResponse.tax)
-                && Objects.equals(this.extraInfo, characterWalletJournalResponse.extraInfo);
+                && Objects.equals(this.taxReceiverId, characterWalletJournalResponse.taxReceiverId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, refId, refType, firstPartyId, firstPartyType, secondPartyId, secondPartyType, amount,
-                balance, reason, taxReceiverId, tax, extraInfo);
+        return Objects.hash(amount, balance, contextId, contextIdType, date, description, firstPartyId, id, reason,
+                refType, secondPartyId, tax, taxReceiverId);
     }
 
     @Override
@@ -691,19 +683,19 @@ public class CharacterWalletJournalResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterWalletJournalResponse {\n");
 
-        sb.append("    date: ").append(toIndentedString(date)).append("\n");
-        sb.append("    refId: ").append(toIndentedString(refId)).append("\n");
-        sb.append("    refType: ").append(toIndentedString(refType)).append("\n");
-        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
-        sb.append("    firstPartyType: ").append(toIndentedString(firstPartyType)).append("\n");
-        sb.append("    secondPartyId: ").append(toIndentedString(secondPartyId)).append("\n");
-        sb.append("    secondPartyType: ").append(toIndentedString(secondPartyType)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+        sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");
+        sb.append("    contextIdType: ").append(toIndentedString(contextIdType)).append("\n");
+        sb.append("    date: ").append(toIndentedString(date)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
-        sb.append("    taxReceiverId: ").append(toIndentedString(taxReceiverId)).append("\n");
+        sb.append("    refType: ").append(toIndentedString(refType)).append("\n");
+        sb.append("    secondPartyId: ").append(toIndentedString(secondPartyId)).append("\n");
         sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
-        sb.append("    extraInfo: ").append(toIndentedString(extraInfo)).append("\n");
+        sb.append("    taxReceiverId: ").append(toIndentedString(taxReceiverId)).append("\n");
         sb.append("}");
         return sb.toString();
     }
