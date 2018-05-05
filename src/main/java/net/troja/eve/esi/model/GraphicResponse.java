@@ -25,47 +25,47 @@ import java.io.Serializable;
 public class GraphicResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("graphic_id")
-    private Integer graphicId = null;
+    @JsonProperty("collision_file")
+    private String collisionFile = null;
 
     @JsonProperty("graphic_file")
     private String graphicFile = null;
 
-    @JsonProperty("sof_race_name")
-    private String sofRaceName = null;
-
-    @JsonProperty("sof_fation_name")
-    private String sofFationName = null;
-
-    @JsonProperty("sof_dna")
-    private String sofDna = null;
-
-    @JsonProperty("sof_hull_name")
-    private String sofHullName = null;
-
-    @JsonProperty("collision_file")
-    private String collisionFile = null;
+    @JsonProperty("graphic_id")
+    private Integer graphicId = null;
 
     @JsonProperty("icon_folder")
     private String iconFolder = null;
 
-    public GraphicResponse graphicId(Integer graphicId) {
-        this.graphicId = graphicId;
+    @JsonProperty("sof_dna")
+    private String sofDna = null;
+
+    @JsonProperty("sof_fation_name")
+    private String sofFationName = null;
+
+    @JsonProperty("sof_hull_name")
+    private String sofHullName = null;
+
+    @JsonProperty("sof_race_name")
+    private String sofRaceName = null;
+
+    public GraphicResponse collisionFile(String collisionFile) {
+        this.collisionFile = collisionFile;
         return this;
     }
 
     /**
-     * graphic_id integer
+     * collision_file string
      * 
-     * @return graphicId
+     * @return collisionFile
      **/
-    @ApiModelProperty(example = "null", required = true, value = "graphic_id integer")
-    public Integer getGraphicId() {
-        return graphicId;
+    @ApiModelProperty(example = "null", value = "collision_file string")
+    public String getCollisionFile() {
+        return collisionFile;
     }
 
-    public void setGraphicId(Integer graphicId) {
-        this.graphicId = graphicId;
+    public void setCollisionFile(String collisionFile) {
+        this.collisionFile = collisionFile;
     }
 
     public GraphicResponse graphicFile(String graphicFile) {
@@ -87,99 +87,23 @@ public class GraphicResponse implements Serializable {
         this.graphicFile = graphicFile;
     }
 
-    public GraphicResponse sofRaceName(String sofRaceName) {
-        this.sofRaceName = sofRaceName;
+    public GraphicResponse graphicId(Integer graphicId) {
+        this.graphicId = graphicId;
         return this;
     }
 
     /**
-     * sof_race_name string
+     * graphic_id integer
      * 
-     * @return sofRaceName
+     * @return graphicId
      **/
-    @ApiModelProperty(example = "null", value = "sof_race_name string")
-    public String getSofRaceName() {
-        return sofRaceName;
+    @ApiModelProperty(example = "null", required = true, value = "graphic_id integer")
+    public Integer getGraphicId() {
+        return graphicId;
     }
 
-    public void setSofRaceName(String sofRaceName) {
-        this.sofRaceName = sofRaceName;
-    }
-
-    public GraphicResponse sofFationName(String sofFationName) {
-        this.sofFationName = sofFationName;
-        return this;
-    }
-
-    /**
-     * sof_fation_name string
-     * 
-     * @return sofFationName
-     **/
-    @ApiModelProperty(example = "null", value = "sof_fation_name string")
-    public String getSofFationName() {
-        return sofFationName;
-    }
-
-    public void setSofFationName(String sofFationName) {
-        this.sofFationName = sofFationName;
-    }
-
-    public GraphicResponse sofDna(String sofDna) {
-        this.sofDna = sofDna;
-        return this;
-    }
-
-    /**
-     * sof_dna string
-     * 
-     * @return sofDna
-     **/
-    @ApiModelProperty(example = "null", value = "sof_dna string")
-    public String getSofDna() {
-        return sofDna;
-    }
-
-    public void setSofDna(String sofDna) {
-        this.sofDna = sofDna;
-    }
-
-    public GraphicResponse sofHullName(String sofHullName) {
-        this.sofHullName = sofHullName;
-        return this;
-    }
-
-    /**
-     * sof_hull_name string
-     * 
-     * @return sofHullName
-     **/
-    @ApiModelProperty(example = "null", value = "sof_hull_name string")
-    public String getSofHullName() {
-        return sofHullName;
-    }
-
-    public void setSofHullName(String sofHullName) {
-        this.sofHullName = sofHullName;
-    }
-
-    public GraphicResponse collisionFile(String collisionFile) {
-        this.collisionFile = collisionFile;
-        return this;
-    }
-
-    /**
-     * collision_file string
-     * 
-     * @return collisionFile
-     **/
-    @ApiModelProperty(example = "null", value = "collision_file string")
-    public String getCollisionFile() {
-        return collisionFile;
-    }
-
-    public void setCollisionFile(String collisionFile) {
-        this.collisionFile = collisionFile;
+    public void setGraphicId(Integer graphicId) {
+        this.graphicId = graphicId;
     }
 
     public GraphicResponse iconFolder(String iconFolder) {
@@ -201,6 +125,82 @@ public class GraphicResponse implements Serializable {
         this.iconFolder = iconFolder;
     }
 
+    public GraphicResponse sofDna(String sofDna) {
+        this.sofDna = sofDna;
+        return this;
+    }
+
+    /**
+     * sof_dna string
+     * 
+     * @return sofDna
+     **/
+    @ApiModelProperty(example = "null", value = "sof_dna string")
+    public String getSofDna() {
+        return sofDna;
+    }
+
+    public void setSofDna(String sofDna) {
+        this.sofDna = sofDna;
+    }
+
+    public GraphicResponse sofFationName(String sofFationName) {
+        this.sofFationName = sofFationName;
+        return this;
+    }
+
+    /**
+     * sof_fation_name string
+     * 
+     * @return sofFationName
+     **/
+    @ApiModelProperty(example = "null", value = "sof_fation_name string")
+    public String getSofFationName() {
+        return sofFationName;
+    }
+
+    public void setSofFationName(String sofFationName) {
+        this.sofFationName = sofFationName;
+    }
+
+    public GraphicResponse sofHullName(String sofHullName) {
+        this.sofHullName = sofHullName;
+        return this;
+    }
+
+    /**
+     * sof_hull_name string
+     * 
+     * @return sofHullName
+     **/
+    @ApiModelProperty(example = "null", value = "sof_hull_name string")
+    public String getSofHullName() {
+        return sofHullName;
+    }
+
+    public void setSofHullName(String sofHullName) {
+        this.sofHullName = sofHullName;
+    }
+
+    public GraphicResponse sofRaceName(String sofRaceName) {
+        this.sofRaceName = sofRaceName;
+        return this;
+    }
+
+    /**
+     * sof_race_name string
+     * 
+     * @return sofRaceName
+     **/
+    @ApiModelProperty(example = "null", value = "sof_race_name string")
+    public String getSofRaceName() {
+        return sofRaceName;
+    }
+
+    public void setSofRaceName(String sofRaceName) {
+        this.sofRaceName = sofRaceName;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -210,20 +210,20 @@ public class GraphicResponse implements Serializable {
             return false;
         }
         GraphicResponse graphicResponse = (GraphicResponse) o;
-        return Objects.equals(this.graphicId, graphicResponse.graphicId)
+        return Objects.equals(this.collisionFile, graphicResponse.collisionFile)
                 && Objects.equals(this.graphicFile, graphicResponse.graphicFile)
-                && Objects.equals(this.sofRaceName, graphicResponse.sofRaceName)
-                && Objects.equals(this.sofFationName, graphicResponse.sofFationName)
+                && Objects.equals(this.graphicId, graphicResponse.graphicId)
+                && Objects.equals(this.iconFolder, graphicResponse.iconFolder)
                 && Objects.equals(this.sofDna, graphicResponse.sofDna)
+                && Objects.equals(this.sofFationName, graphicResponse.sofFationName)
                 && Objects.equals(this.sofHullName, graphicResponse.sofHullName)
-                && Objects.equals(this.collisionFile, graphicResponse.collisionFile)
-                && Objects.equals(this.iconFolder, graphicResponse.iconFolder);
+                && Objects.equals(this.sofRaceName, graphicResponse.sofRaceName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(graphicId, graphicFile, sofRaceName, sofFationName, sofDna, sofHullName, collisionFile,
-                iconFolder);
+        return Objects.hash(collisionFile, graphicFile, graphicId, iconFolder, sofDna, sofFationName, sofHullName,
+                sofRaceName);
     }
 
     @Override
@@ -231,14 +231,14 @@ public class GraphicResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class GraphicResponse {\n");
 
-        sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
-        sb.append("    graphicFile: ").append(toIndentedString(graphicFile)).append("\n");
-        sb.append("    sofRaceName: ").append(toIndentedString(sofRaceName)).append("\n");
-        sb.append("    sofFationName: ").append(toIndentedString(sofFationName)).append("\n");
-        sb.append("    sofDna: ").append(toIndentedString(sofDna)).append("\n");
-        sb.append("    sofHullName: ").append(toIndentedString(sofHullName)).append("\n");
         sb.append("    collisionFile: ").append(toIndentedString(collisionFile)).append("\n");
+        sb.append("    graphicFile: ").append(toIndentedString(graphicFile)).append("\n");
+        sb.append("    graphicId: ").append(toIndentedString(graphicId)).append("\n");
         sb.append("    iconFolder: ").append(toIndentedString(iconFolder)).append("\n");
+        sb.append("    sofDna: ").append(toIndentedString(sofDna)).append("\n");
+        sb.append("    sofFationName: ").append(toIndentedString(sofFationName)).append("\n");
+        sb.append("    sofHullName: ").append(toIndentedString(sofHullName)).append("\n");
+        sb.append("    sofRaceName: ").append(toIndentedString(sofRaceName)).append("\n");
         sb.append("}");
         return sb.toString();
     }

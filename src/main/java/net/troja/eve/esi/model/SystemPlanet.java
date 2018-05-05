@@ -27,32 +27,37 @@ import java.io.Serializable;
 public class SystemPlanet implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("planet_id")
-    private Integer planetId = null;
+    @JsonProperty("asteroid_belts")
+    private List<Integer> asteroidBelts = new ArrayList<Integer>();
 
     @JsonProperty("moons")
     private List<Integer> moons = new ArrayList<Integer>();
 
-    @JsonProperty("asteroid_belts")
-    private List<Integer> asteroidBelts = new ArrayList<Integer>();
+    @JsonProperty("planet_id")
+    private Integer planetId = null;
 
-    public SystemPlanet planetId(Integer planetId) {
-        this.planetId = planetId;
+    public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
+        this.asteroidBelts = asteroidBelts;
+        return this;
+    }
+
+    public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
+        this.asteroidBelts.add(asteroidBeltsItem);
         return this;
     }
 
     /**
-     * planet_id integer
+     * asteroid_belts array
      * 
-     * @return planetId
+     * @return asteroidBelts
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
-    public Integer getPlanetId() {
-        return planetId;
+    @ApiModelProperty(example = "null", value = "asteroid_belts array")
+    public List<Integer> getAsteroidBelts() {
+        return asteroidBelts;
     }
 
-    public void setPlanetId(Integer planetId) {
-        this.planetId = planetId;
+    public void setAsteroidBelts(List<Integer> asteroidBelts) {
+        this.asteroidBelts = asteroidBelts;
     }
 
     public SystemPlanet moons(List<Integer> moons) {
@@ -79,28 +84,23 @@ public class SystemPlanet implements Serializable {
         this.moons = moons;
     }
 
-    public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
-        this.asteroidBelts = asteroidBelts;
-        return this;
-    }
-
-    public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
-        this.asteroidBelts.add(asteroidBeltsItem);
+    public SystemPlanet planetId(Integer planetId) {
+        this.planetId = planetId;
         return this;
     }
 
     /**
-     * asteroid_belts array
+     * planet_id integer
      * 
-     * @return asteroidBelts
+     * @return planetId
      **/
-    @ApiModelProperty(example = "null", value = "asteroid_belts array")
-    public List<Integer> getAsteroidBelts() {
-        return asteroidBelts;
+    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    public Integer getPlanetId() {
+        return planetId;
     }
 
-    public void setAsteroidBelts(List<Integer> asteroidBelts) {
-        this.asteroidBelts = asteroidBelts;
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
     }
 
     @Override
@@ -112,13 +112,14 @@ public class SystemPlanet implements Serializable {
             return false;
         }
         SystemPlanet systemPlanet = (SystemPlanet) o;
-        return Objects.equals(this.planetId, systemPlanet.planetId) && Objects.equals(this.moons, systemPlanet.moons)
-                && Objects.equals(this.asteroidBelts, systemPlanet.asteroidBelts);
+        return Objects.equals(this.asteroidBelts, systemPlanet.asteroidBelts)
+                && Objects.equals(this.moons, systemPlanet.moons)
+                && Objects.equals(this.planetId, systemPlanet.planetId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(planetId, moons, asteroidBelts);
+        return Objects.hash(asteroidBelts, moons, planetId);
     }
 
     @Override
@@ -126,9 +127,9 @@ public class SystemPlanet implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemPlanet {\n");
 
-        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
-        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
         sb.append("    asteroidBelts: ").append(toIndentedString(asteroidBelts)).append("\n");
+        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
+        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

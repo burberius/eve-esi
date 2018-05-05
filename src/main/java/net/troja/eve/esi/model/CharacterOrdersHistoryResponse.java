@@ -26,17 +26,32 @@ import java.io.Serializable;
 public class CharacterOrdersHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("order_id")
-    private Long orderId = null;
+    @JsonProperty("duration")
+    private Integer duration = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("escrow")
+    private Double escrow = null;
 
-    @JsonProperty("region_id")
-    private Integer regionId = null;
+    @JsonProperty("is_buy_order")
+    private Boolean isBuyOrder = null;
+
+    @JsonProperty("is_corporation")
+    private Boolean isCorporation = null;
+
+    @JsonProperty("issued")
+    private OffsetDateTime issued = null;
 
     @JsonProperty("location_id")
     private Long locationId = null;
+
+    @JsonProperty("min_volume")
+    private Integer minVolume = null;
+
+    @JsonProperty("order_id")
+    private Long orderId = null;
+
+    @JsonProperty("price")
+    private Double price = null;
 
     /**
      * Valid order range, numbers are ranges in jumps
@@ -91,29 +106,8 @@ public class CharacterOrdersHistoryResponse implements Serializable {
     @JsonProperty("range")
     private RangeEnum range = null;
 
-    @JsonProperty("price")
-    private Double price = null;
-
-    @JsonProperty("volume_total")
-    private Integer volumeTotal = null;
-
-    @JsonProperty("volume_remain")
-    private Integer volumeRemain = null;
-
-    @JsonProperty("issued")
-    private OffsetDateTime issued = null;
-
-    @JsonProperty("is_buy_order")
-    private Boolean isBuyOrder = null;
-
-    @JsonProperty("min_volume")
-    private Integer minVolume = null;
-
-    @JsonProperty("escrow")
-    private Double escrow = null;
-
-    @JsonProperty("duration")
-    private Integer duration = null;
+    @JsonProperty("region_id")
+    private Integer regionId = null;
 
     /**
      * Current order state
@@ -148,237 +142,14 @@ public class CharacterOrdersHistoryResponse implements Serializable {
     @JsonProperty("state")
     private StateEnum state = null;
 
-    @JsonProperty("is_corporation")
-    private Boolean isCorporation = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
-    public CharacterOrdersHistoryResponse orderId(Long orderId) {
-        this.orderId = orderId;
-        return this;
-    }
+    @JsonProperty("volume_remain")
+    private Integer volumeRemain = null;
 
-    /**
-     * Unique order ID
-     * 
-     * @return orderId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique order ID")
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public CharacterOrdersHistoryResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * The type ID of the item transacted in this order
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The type ID of the item transacted in this order")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public CharacterOrdersHistoryResponse regionId(Integer regionId) {
-        this.regionId = regionId;
-        return this;
-    }
-
-    /**
-     * ID of the region where order was placed
-     * 
-     * @return regionId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the region where order was placed")
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
-
-    public CharacterOrdersHistoryResponse locationId(Long locationId) {
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * ID of the location where order was placed
-     * 
-     * @return locationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the location where order was placed")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
-
-    public CharacterOrdersHistoryResponse range(RangeEnum range) {
-        this.range = range;
-        return this;
-    }
-
-    /**
-     * Valid order range, numbers are ranges in jumps
-     * 
-     * @return range
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Valid order range, numbers are ranges in jumps")
-    public RangeEnum getRange() {
-        return range;
-    }
-
-    public void setRange(RangeEnum range) {
-        this.range = range;
-    }
-
-    public CharacterOrdersHistoryResponse price(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    /**
-     * Cost per unit for this order
-     * 
-     * @return price
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Cost per unit for this order")
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public CharacterOrdersHistoryResponse volumeTotal(Integer volumeTotal) {
-        this.volumeTotal = volumeTotal;
-        return this;
-    }
-
-    /**
-     * Quantity of items required or offered at time order was placed
-     * 
-     * @return volumeTotal
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Quantity of items required or offered at time order was placed")
-    public Integer getVolumeTotal() {
-        return volumeTotal;
-    }
-
-    public void setVolumeTotal(Integer volumeTotal) {
-        this.volumeTotal = volumeTotal;
-    }
-
-    public CharacterOrdersHistoryResponse volumeRemain(Integer volumeRemain) {
-        this.volumeRemain = volumeRemain;
-        return this;
-    }
-
-    /**
-     * Quantity of items still required or offered
-     * 
-     * @return volumeRemain
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Quantity of items still required or offered")
-    public Integer getVolumeRemain() {
-        return volumeRemain;
-    }
-
-    public void setVolumeRemain(Integer volumeRemain) {
-        this.volumeRemain = volumeRemain;
-    }
-
-    public CharacterOrdersHistoryResponse issued(OffsetDateTime issued) {
-        this.issued = issued;
-        return this;
-    }
-
-    /**
-     * Date and time when this order was issued
-     * 
-     * @return issued
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time when this order was issued")
-    public OffsetDateTime getIssued() {
-        return issued;
-    }
-
-    public void setIssued(OffsetDateTime issued) {
-        this.issued = issued;
-    }
-
-    public CharacterOrdersHistoryResponse isBuyOrder(Boolean isBuyOrder) {
-        this.isBuyOrder = isBuyOrder;
-        return this;
-    }
-
-    /**
-     * True if the order is a bid (buy) order
-     * 
-     * @return isBuyOrder
-     **/
-    @ApiModelProperty(example = "null", value = "True if the order is a bid (buy) order")
-    public Boolean getIsBuyOrder() {
-        return isBuyOrder;
-    }
-
-    public void setIsBuyOrder(Boolean isBuyOrder) {
-        this.isBuyOrder = isBuyOrder;
-    }
-
-    public CharacterOrdersHistoryResponse minVolume(Integer minVolume) {
-        this.minVolume = minVolume;
-        return this;
-    }
-
-    /**
-     * For buy orders, the minimum quantity that will be accepted in a matching
-     * sell order
-     * 
-     * @return minVolume
-     **/
-    @ApiModelProperty(example = "null", value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
-    public Integer getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(Integer minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public CharacterOrdersHistoryResponse escrow(Double escrow) {
-        this.escrow = escrow;
-        return this;
-    }
-
-    /**
-     * For buy orders, the amount of ISK in escrow
-     * 
-     * @return escrow
-     **/
-    @ApiModelProperty(example = "null", value = "For buy orders, the amount of ISK in escrow")
-    public Double getEscrow() {
-        return escrow;
-    }
-
-    public void setEscrow(Double escrow) {
-        this.escrow = escrow;
-    }
+    @JsonProperty("volume_total")
+    private Integer volumeTotal = null;
 
     public CharacterOrdersHistoryResponse duration(Integer duration) {
         this.duration = duration;
@@ -400,23 +171,42 @@ public class CharacterOrdersHistoryResponse implements Serializable {
         this.duration = duration;
     }
 
-    public CharacterOrdersHistoryResponse state(StateEnum state) {
-        this.state = state;
+    public CharacterOrdersHistoryResponse escrow(Double escrow) {
+        this.escrow = escrow;
         return this;
     }
 
     /**
-     * Current order state
+     * For buy orders, the amount of ISK in escrow
      * 
-     * @return state
+     * @return escrow
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Current order state")
-    public StateEnum getState() {
-        return state;
+    @ApiModelProperty(example = "null", value = "For buy orders, the amount of ISK in escrow")
+    public Double getEscrow() {
+        return escrow;
     }
 
-    public void setState(StateEnum state) {
-        this.state = state;
+    public void setEscrow(Double escrow) {
+        this.escrow = escrow;
+    }
+
+    public CharacterOrdersHistoryResponse isBuyOrder(Boolean isBuyOrder) {
+        this.isBuyOrder = isBuyOrder;
+        return this;
+    }
+
+    /**
+     * True if the order is a bid (buy) order
+     * 
+     * @return isBuyOrder
+     **/
+    @ApiModelProperty(example = "null", value = "True if the order is a bid (buy) order")
+    public Boolean getIsBuyOrder() {
+        return isBuyOrder;
+    }
+
+    public void setIsBuyOrder(Boolean isBuyOrder) {
+        this.isBuyOrder = isBuyOrder;
     }
 
     public CharacterOrdersHistoryResponse isCorporation(Boolean isCorporation) {
@@ -439,6 +229,216 @@ public class CharacterOrdersHistoryResponse implements Serializable {
         this.isCorporation = isCorporation;
     }
 
+    public CharacterOrdersHistoryResponse issued(OffsetDateTime issued) {
+        this.issued = issued;
+        return this;
+    }
+
+    /**
+     * Date and time when this order was issued
+     * 
+     * @return issued
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Date and time when this order was issued")
+    public OffsetDateTime getIssued() {
+        return issued;
+    }
+
+    public void setIssued(OffsetDateTime issued) {
+        this.issued = issued;
+    }
+
+    public CharacterOrdersHistoryResponse locationId(Long locationId) {
+        this.locationId = locationId;
+        return this;
+    }
+
+    /**
+     * ID of the location where order was placed
+     * 
+     * @return locationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the location where order was placed")
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public CharacterOrdersHistoryResponse minVolume(Integer minVolume) {
+        this.minVolume = minVolume;
+        return this;
+    }
+
+    /**
+     * For buy orders, the minimum quantity that will be accepted in a matching
+     * sell order
+     * 
+     * @return minVolume
+     **/
+    @ApiModelProperty(example = "null", value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
+    public Integer getMinVolume() {
+        return minVolume;
+    }
+
+    public void setMinVolume(Integer minVolume) {
+        this.minVolume = minVolume;
+    }
+
+    public CharacterOrdersHistoryResponse orderId(Long orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    /**
+     * Unique order ID
+     * 
+     * @return orderId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Unique order ID")
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public CharacterOrdersHistoryResponse price(Double price) {
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * Cost per unit for this order
+     * 
+     * @return price
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Cost per unit for this order")
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public CharacterOrdersHistoryResponse range(RangeEnum range) {
+        this.range = range;
+        return this;
+    }
+
+    /**
+     * Valid order range, numbers are ranges in jumps
+     * 
+     * @return range
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Valid order range, numbers are ranges in jumps")
+    public RangeEnum getRange() {
+        return range;
+    }
+
+    public void setRange(RangeEnum range) {
+        this.range = range;
+    }
+
+    public CharacterOrdersHistoryResponse regionId(Integer regionId) {
+        this.regionId = regionId;
+        return this;
+    }
+
+    /**
+     * ID of the region where order was placed
+     * 
+     * @return regionId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the region where order was placed")
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
+    }
+
+    public CharacterOrdersHistoryResponse state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * Current order state
+     * 
+     * @return state
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Current order state")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    public CharacterOrdersHistoryResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * The type ID of the item transacted in this order
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The type ID of the item transacted in this order")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public CharacterOrdersHistoryResponse volumeRemain(Integer volumeRemain) {
+        this.volumeRemain = volumeRemain;
+        return this;
+    }
+
+    /**
+     * Quantity of items still required or offered
+     * 
+     * @return volumeRemain
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Quantity of items still required or offered")
+    public Integer getVolumeRemain() {
+        return volumeRemain;
+    }
+
+    public void setVolumeRemain(Integer volumeRemain) {
+        this.volumeRemain = volumeRemain;
+    }
+
+    public CharacterOrdersHistoryResponse volumeTotal(Integer volumeTotal) {
+        this.volumeTotal = volumeTotal;
+        return this;
+    }
+
+    /**
+     * Quantity of items required or offered at time order was placed
+     * 
+     * @return volumeTotal
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Quantity of items required or offered at time order was placed")
+    public Integer getVolumeTotal() {
+        return volumeTotal;
+    }
+
+    public void setVolumeTotal(Integer volumeTotal) {
+        this.volumeTotal = volumeTotal;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -448,27 +448,27 @@ public class CharacterOrdersHistoryResponse implements Serializable {
             return false;
         }
         CharacterOrdersHistoryResponse characterOrdersHistoryResponse = (CharacterOrdersHistoryResponse) o;
-        return Objects.equals(this.orderId, characterOrdersHistoryResponse.orderId)
-                && Objects.equals(this.typeId, characterOrdersHistoryResponse.typeId)
-                && Objects.equals(this.regionId, characterOrdersHistoryResponse.regionId)
-                && Objects.equals(this.locationId, characterOrdersHistoryResponse.locationId)
-                && Objects.equals(this.range, characterOrdersHistoryResponse.range)
-                && Objects.equals(this.price, characterOrdersHistoryResponse.price)
-                && Objects.equals(this.volumeTotal, characterOrdersHistoryResponse.volumeTotal)
-                && Objects.equals(this.volumeRemain, characterOrdersHistoryResponse.volumeRemain)
-                && Objects.equals(this.issued, characterOrdersHistoryResponse.issued)
-                && Objects.equals(this.isBuyOrder, characterOrdersHistoryResponse.isBuyOrder)
-                && Objects.equals(this.minVolume, characterOrdersHistoryResponse.minVolume)
+        return Objects.equals(this.duration, characterOrdersHistoryResponse.duration)
                 && Objects.equals(this.escrow, characterOrdersHistoryResponse.escrow)
-                && Objects.equals(this.duration, characterOrdersHistoryResponse.duration)
+                && Objects.equals(this.isBuyOrder, characterOrdersHistoryResponse.isBuyOrder)
+                && Objects.equals(this.isCorporation, characterOrdersHistoryResponse.isCorporation)
+                && Objects.equals(this.issued, characterOrdersHistoryResponse.issued)
+                && Objects.equals(this.locationId, characterOrdersHistoryResponse.locationId)
+                && Objects.equals(this.minVolume, characterOrdersHistoryResponse.minVolume)
+                && Objects.equals(this.orderId, characterOrdersHistoryResponse.orderId)
+                && Objects.equals(this.price, characterOrdersHistoryResponse.price)
+                && Objects.equals(this.range, characterOrdersHistoryResponse.range)
+                && Objects.equals(this.regionId, characterOrdersHistoryResponse.regionId)
                 && Objects.equals(this.state, characterOrdersHistoryResponse.state)
-                && Objects.equals(this.isCorporation, characterOrdersHistoryResponse.isCorporation);
+                && Objects.equals(this.typeId, characterOrdersHistoryResponse.typeId)
+                && Objects.equals(this.volumeRemain, characterOrdersHistoryResponse.volumeRemain)
+                && Objects.equals(this.volumeTotal, characterOrdersHistoryResponse.volumeTotal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, typeId, regionId, locationId, range, price, volumeTotal, volumeRemain, issued,
-                isBuyOrder, minVolume, escrow, duration, state, isCorporation);
+        return Objects.hash(duration, escrow, isBuyOrder, isCorporation, issued, locationId, minVolume, orderId, price,
+                range, regionId, state, typeId, volumeRemain, volumeTotal);
     }
 
     @Override
@@ -476,21 +476,21 @@ public class CharacterOrdersHistoryResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOrdersHistoryResponse {\n");
 
-        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    range: ").append(toIndentedString(range)).append("\n");
-        sb.append("    price: ").append(toIndentedString(price)).append("\n");
-        sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
-        sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
-        sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
-        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
-        sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
-        sb.append("    escrow: ").append(toIndentedString(escrow)).append("\n");
         sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    escrow: ").append(toIndentedString(escrow)).append("\n");
+        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    isCorporation: ").append(toIndentedString(isCorporation)).append("\n");
+        sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
+        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+        sb.append("    price: ").append(toIndentedString(price)).append("\n");
+        sb.append("    range: ").append(toIndentedString(range)).append("\n");
+        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
+        sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
         sb.append("}");
         return sb.toString();
     }

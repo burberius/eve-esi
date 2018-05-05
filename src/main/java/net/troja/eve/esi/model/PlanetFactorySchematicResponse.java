@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class PlanetFactorySchematicResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("schematic_name")
-    private String schematicName = null;
-
     @JsonProperty("cycle_time")
     private Integer cycleTime = null;
 
-    public PlanetFactorySchematicResponse schematicName(String schematicName) {
-        this.schematicName = schematicName;
-        return this;
-    }
-
-    /**
-     * schematic_name string
-     * 
-     * @return schematicName
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "schematic_name string")
-    public String getSchematicName() {
-        return schematicName;
-    }
-
-    public void setSchematicName(String schematicName) {
-        this.schematicName = schematicName;
-    }
+    @JsonProperty("schematic_name")
+    private String schematicName = null;
 
     public PlanetFactorySchematicResponse cycleTime(Integer cycleTime) {
         this.cycleTime = cycleTime;
@@ -69,6 +50,25 @@ public class PlanetFactorySchematicResponse implements Serializable {
         this.cycleTime = cycleTime;
     }
 
+    public PlanetFactorySchematicResponse schematicName(String schematicName) {
+        this.schematicName = schematicName;
+        return this;
+    }
+
+    /**
+     * schematic_name string
+     * 
+     * @return schematicName
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "schematic_name string")
+    public String getSchematicName() {
+        return schematicName;
+    }
+
+    public void setSchematicName(String schematicName) {
+        this.schematicName = schematicName;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class PlanetFactorySchematicResponse implements Serializable {
             return false;
         }
         PlanetFactorySchematicResponse planetFactorySchematicResponse = (PlanetFactorySchematicResponse) o;
-        return Objects.equals(this.schematicName, planetFactorySchematicResponse.schematicName)
-                && Objects.equals(this.cycleTime, planetFactorySchematicResponse.cycleTime);
+        return Objects.equals(this.cycleTime, planetFactorySchematicResponse.cycleTime)
+                && Objects.equals(this.schematicName, planetFactorySchematicResponse.schematicName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(schematicName, cycleTime);
+        return Objects.hash(cycleTime, schematicName);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class PlanetFactorySchematicResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetFactorySchematicResponse {\n");
 
-        sb.append("    schematicName: ").append(toIndentedString(schematicName)).append("\n");
         sb.append("    cycleTime: ").append(toIndentedString(cycleTime)).append("\n");
+        sb.append("    schematicName: ").append(toIndentedString(schematicName)).append("\n");
         sb.append("}");
         return sb.toString();
     }

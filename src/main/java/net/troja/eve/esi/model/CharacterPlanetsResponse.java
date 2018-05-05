@@ -26,23 +26,17 @@ import java.io.Serializable;
 public class CharacterPlanetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("solar_system_id")
-    private Integer solarSystemId = null;
-
-    @JsonProperty("planet_id")
-    private Integer planetId = null;
-
-    @JsonProperty("owner_id")
-    private Integer ownerId = null;
-
-    @JsonProperty("upgrade_level")
-    private Integer upgradeLevel = null;
+    @JsonProperty("last_update")
+    private OffsetDateTime lastUpdate = null;
 
     @JsonProperty("num_pins")
     private Integer numPins = null;
 
-    @JsonProperty("last_update")
-    private OffsetDateTime lastUpdate = null;
+    @JsonProperty("owner_id")
+    private Integer ownerId = null;
+
+    @JsonProperty("planet_id")
+    private Integer planetId = null;
 
     /**
      * planet_type string
@@ -89,80 +83,29 @@ public class CharacterPlanetsResponse implements Serializable {
     @JsonProperty("planet_type")
     private PlanetTypeEnum planetType = null;
 
-    public CharacterPlanetsResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
+    @JsonProperty("solar_system_id")
+    private Integer solarSystemId = null;
+
+    @JsonProperty("upgrade_level")
+    private Integer upgradeLevel = null;
+
+    public CharacterPlanetsResponse lastUpdate(OffsetDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
         return this;
     }
 
     /**
-     * solar_system_id integer
+     * last_update string
      * 
-     * @return solarSystemId
+     * @return lastUpdate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
+    @ApiModelProperty(example = "null", required = true, value = "last_update string")
+    public OffsetDateTime getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-    }
-
-    public CharacterPlanetsResponse planetId(Integer planetId) {
-        this.planetId = planetId;
-        return this;
-    }
-
-    /**
-     * planet_id integer
-     * 
-     * @return planetId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
-    public Integer getPlanetId() {
-        return planetId;
-    }
-
-    public void setPlanetId(Integer planetId) {
-        this.planetId = planetId;
-    }
-
-    public CharacterPlanetsResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    /**
-     * owner_id integer
-     * 
-     * @return ownerId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public CharacterPlanetsResponse upgradeLevel(Integer upgradeLevel) {
-        this.upgradeLevel = upgradeLevel;
-        return this;
-    }
-
-    /**
-     * upgrade_level integer minimum: 0 maximum: 5
-     * 
-     * @return upgradeLevel
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "upgrade_level integer")
-    public Integer getUpgradeLevel() {
-        return upgradeLevel;
-    }
-
-    public void setUpgradeLevel(Integer upgradeLevel) {
-        this.upgradeLevel = upgradeLevel;
+    public void setLastUpdate(OffsetDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public CharacterPlanetsResponse numPins(Integer numPins) {
@@ -184,23 +127,42 @@ public class CharacterPlanetsResponse implements Serializable {
         this.numPins = numPins;
     }
 
-    public CharacterPlanetsResponse lastUpdate(OffsetDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public CharacterPlanetsResponse ownerId(Integer ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
     /**
-     * last_update string
+     * owner_id integer
      * 
-     * @return lastUpdate
+     * @return ownerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "last_update string")
-    public OffsetDateTime getLastUpdate() {
-        return lastUpdate;
+    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public void setLastUpdate(OffsetDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public CharacterPlanetsResponse planetId(Integer planetId) {
+        this.planetId = planetId;
+        return this;
+    }
+
+    /**
+     * planet_id integer
+     * 
+     * @return planetId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    public Integer getPlanetId() {
+        return planetId;
+    }
+
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
     }
 
     public CharacterPlanetsResponse planetType(PlanetTypeEnum planetType) {
@@ -222,6 +184,44 @@ public class CharacterPlanetsResponse implements Serializable {
         this.planetType = planetType;
     }
 
+    public CharacterPlanetsResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * solar_system_id integer
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
+    public CharacterPlanetsResponse upgradeLevel(Integer upgradeLevel) {
+        this.upgradeLevel = upgradeLevel;
+        return this;
+    }
+
+    /**
+     * upgrade_level integer minimum: 0 maximum: 5
+     * 
+     * @return upgradeLevel
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "upgrade_level integer")
+    public Integer getUpgradeLevel() {
+        return upgradeLevel;
+    }
+
+    public void setUpgradeLevel(Integer upgradeLevel) {
+        this.upgradeLevel = upgradeLevel;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -231,18 +231,18 @@ public class CharacterPlanetsResponse implements Serializable {
             return false;
         }
         CharacterPlanetsResponse characterPlanetsResponse = (CharacterPlanetsResponse) o;
-        return Objects.equals(this.solarSystemId, characterPlanetsResponse.solarSystemId)
-                && Objects.equals(this.planetId, characterPlanetsResponse.planetId)
-                && Objects.equals(this.ownerId, characterPlanetsResponse.ownerId)
-                && Objects.equals(this.upgradeLevel, characterPlanetsResponse.upgradeLevel)
+        return Objects.equals(this.lastUpdate, characterPlanetsResponse.lastUpdate)
                 && Objects.equals(this.numPins, characterPlanetsResponse.numPins)
-                && Objects.equals(this.lastUpdate, characterPlanetsResponse.lastUpdate)
-                && Objects.equals(this.planetType, characterPlanetsResponse.planetType);
+                && Objects.equals(this.ownerId, characterPlanetsResponse.ownerId)
+                && Objects.equals(this.planetId, characterPlanetsResponse.planetId)
+                && Objects.equals(this.planetType, characterPlanetsResponse.planetType)
+                && Objects.equals(this.solarSystemId, characterPlanetsResponse.solarSystemId)
+                && Objects.equals(this.upgradeLevel, characterPlanetsResponse.upgradeLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(solarSystemId, planetId, ownerId, upgradeLevel, numPins, lastUpdate, planetType);
+        return Objects.hash(lastUpdate, numPins, ownerId, planetId, planetType, solarSystemId, upgradeLevel);
     }
 
     @Override
@@ -250,13 +250,13 @@ public class CharacterPlanetsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterPlanetsResponse {\n");
 
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
-        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    upgradeLevel: ").append(toIndentedString(upgradeLevel)).append("\n");
-        sb.append("    numPins: ").append(toIndentedString(numPins)).append("\n");
         sb.append("    lastUpdate: ").append(toIndentedString(lastUpdate)).append("\n");
+        sb.append("    numPins: ").append(toIndentedString(numPins)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("    planetType: ").append(toIndentedString(planetType)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    upgradeLevel: ").append(toIndentedString(upgradeLevel)).append("\n");
         sb.append("}");
         return sb.toString();
     }

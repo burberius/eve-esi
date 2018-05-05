@@ -67,11 +67,11 @@ public class FleetMemberMovement implements Serializable {
     @JsonProperty("role")
     private RoleEnum role = null;
 
-    @JsonProperty("wing_id")
-    private Long wingId = null;
-
     @JsonProperty("squad_id")
     private Long squadId = null;
+
+    @JsonProperty("wing_id")
+    private Long wingId = null;
 
     public FleetMemberMovement role(RoleEnum role) {
         this.role = role;
@@ -97,25 +97,6 @@ public class FleetMemberMovement implements Serializable {
         this.role = role;
     }
 
-    public FleetMemberMovement wingId(Long wingId) {
-        this.wingId = wingId;
-        return this;
-    }
-
-    /**
-     * wing_id integer minimum: 0
-     * 
-     * @return wingId
-     **/
-    @ApiModelProperty(example = "null", value = "wing_id integer")
-    public Long getWingId() {
-        return wingId;
-    }
-
-    public void setWingId(Long wingId) {
-        this.wingId = wingId;
-    }
-
     public FleetMemberMovement squadId(Long squadId) {
         this.squadId = squadId;
         return this;
@@ -135,6 +116,25 @@ public class FleetMemberMovement implements Serializable {
         this.squadId = squadId;
     }
 
+    public FleetMemberMovement wingId(Long wingId) {
+        this.wingId = wingId;
+        return this;
+    }
+
+    /**
+     * wing_id integer minimum: 0
+     * 
+     * @return wingId
+     **/
+    @ApiModelProperty(example = "null", value = "wing_id integer")
+    public Long getWingId() {
+        return wingId;
+    }
+
+    public void setWingId(Long wingId) {
+        this.wingId = wingId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,13 +145,13 @@ public class FleetMemberMovement implements Serializable {
         }
         FleetMemberMovement fleetMemberMovement = (FleetMemberMovement) o;
         return Objects.equals(this.role, fleetMemberMovement.role)
-                && Objects.equals(this.wingId, fleetMemberMovement.wingId)
-                && Objects.equals(this.squadId, fleetMemberMovement.squadId);
+                && Objects.equals(this.squadId, fleetMemberMovement.squadId)
+                && Objects.equals(this.wingId, fleetMemberMovement.wingId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(role, wingId, squadId);
+        return Objects.hash(role, squadId, wingId);
     }
 
     @Override
@@ -160,8 +160,8 @@ public class FleetMemberMovement implements Serializable {
         sb.append("class FleetMemberMovement {\n");
 
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
-        sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
+        sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

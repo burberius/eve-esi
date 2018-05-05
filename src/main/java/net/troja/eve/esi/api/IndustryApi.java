@@ -16,7 +16,6 @@ import net.troja.eve.esi.model.CorporationMiningObserversResponse;
 import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.IndustryFacilitiesResponse;
 import net.troja.eve.esi.model.IndustrySystemsResponse;
-import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +51,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param includeCompleted
      *            Whether retrieve completed character industry jobs as well
      *            (optional)
@@ -66,8 +68,8 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CharacterIndustryJobsResponse> getCharactersCharacterIdIndustryJobs(Integer characterId,
-            String datasource, Boolean includeCompleted, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Boolean includeCompleted, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -90,15 +92,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -119,6 +121,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -132,7 +137,7 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CharacterMiningResponse> getCharactersCharacterIdMining(Integer characterId, String datasource,
-            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -155,15 +160,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -186,6 +191,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -199,8 +207,8 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CorporationMiningExtractionsResponse> getCorporationCorporationIdMiningExtractions(
-            Integer corporationId, String datasource, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -223,15 +231,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -253,6 +261,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -266,7 +277,8 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CorporationMiningObserversResponse> getCorporationCorporationIdMiningObservers(Integer corporationId,
-            String datasource, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -289,15 +301,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -321,6 +333,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -334,8 +349,8 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CorporationMiningObserverResponse> getCorporationCorporationIdMiningObserversObserverId(
-            Integer corporationId, Long observerId, String datasource, Integer page, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            Integer corporationId, Long observerId, String datasource, String ifNoneMatch, Integer page, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -366,15 +381,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -396,6 +411,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param includeCompleted
      *            Whether retrieve completed industry jobs as well (optional,
      *            default to false)
@@ -412,8 +430,8 @@ public class IndustryApi {
      *             if fails to make API call
      */
     public List<CorporationIndustryJobsResponse> getCorporationsCorporationIdIndustryJobs(Integer corporationId,
-            String datasource, Boolean includeCompleted, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Boolean includeCompleted, Integer page, String token,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -437,15 +455,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -463,6 +481,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -471,8 +492,8 @@ public class IndustryApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<IndustryFacilitiesResponse> getIndustryFacilities(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<IndustryFacilitiesResponse> getIndustryFacilities(String datasource, String ifNoneMatch,
+            String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -486,15 +507,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};
@@ -512,6 +533,9 @@ public class IndustryApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param userAgent
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
@@ -520,8 +544,8 @@ public class IndustryApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<IndustrySystemsResponse> getIndustrySystems(String datasource, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<IndustrySystemsResponse> getIndustrySystems(String datasource, String ifNoneMatch, String userAgent,
+            String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -535,15 +559,15 @@ public class IndustryApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] {};

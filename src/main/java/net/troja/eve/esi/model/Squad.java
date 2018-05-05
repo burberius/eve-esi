@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class Squad implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
-    private String name = null;
-
     @JsonProperty("id")
     private Long id = null;
 
-    public Squad name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @JsonProperty("name")
+    private String name = null;
 
     public Squad id(Long id) {
         this.id = id;
@@ -69,6 +50,25 @@ public class Squad implements Serializable {
         this.id = id;
     }
 
+    public Squad name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,12 +78,12 @@ public class Squad implements Serializable {
             return false;
         }
         Squad squad = (Squad) o;
-        return Objects.equals(this.name, squad.name) && Objects.equals(this.id, squad.id);
+        return Objects.equals(this.id, squad.id) && Objects.equals(this.name, squad.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -91,8 +91,8 @@ public class Squad implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Squad {\n");
 
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

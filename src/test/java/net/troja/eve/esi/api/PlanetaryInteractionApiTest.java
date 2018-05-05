@@ -52,11 +52,8 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdPlanetsTest() throws ApiException {
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<CharacterPlanetsResponse> response = api.getCharactersCharacterIdPlanets(characterId, DATASOURCE,
-                token, userAgent, xUserAgent);
+        final List<CharacterPlanetsResponse> response = api.getCharactersCharacterIdPlanets(characterId, DATASOURCE, null,
+                null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final CharacterPlanetsResponse planetsResponse = response.get(0);
@@ -81,14 +78,11 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdPlanetsPlanetIdTest() throws ApiException {
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<CharacterPlanetsResponse> planets = api.getCharactersCharacterIdPlanets(characterId, DATASOURCE,
-                token, userAgent, xUserAgent);
+        final List<CharacterPlanetsResponse> planets = api.getCharactersCharacterIdPlanets(characterId, DATASOURCE, null,
+                null, null, null);
 
         final CharacterPlanetResponse response = api.getCharactersCharacterIdPlanetsPlanetId(characterId,
-                planets.get(0).getPlanetId(), DATASOURCE, token, userAgent, xUserAgent);
+                planets.get(0).getPlanetId(), DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getPins().size(), greaterThan(0));
@@ -107,7 +101,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdCustomsOfficesTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationCustomsOfficesResponse> response = api.getCorporationsCorporationIdCustomsOffices(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationCustomsOfficesResponse> response = api.getCorporationsCorporationIdCustomsOffices(corporationId, DATASOURCE, null, page, null, null, null);
 
         // TODO: test validations
     }
@@ -127,10 +121,8 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     @Test
     public void getUniverseSchematicsSchematicIdTest() throws ApiException {
         final Integer schematicId = 131;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final PlanetFactorySchematicResponse response = api.getUniverseSchematicsSchematicId(schematicId, DATASOURCE,
-                userAgent, xUserAgent);
+        final PlanetFactorySchematicResponse response = api.getUniverseSchematicsSchematicId(schematicId, DATASOURCE, null,
+                null, null);
 
         assertThat(response.getCycleTime(), equalTo(1800));
         assertThat(response.getSchematicName(), equalTo("Bacteria"));

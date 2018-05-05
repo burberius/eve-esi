@@ -26,35 +26,26 @@ import java.io.Serializable;
 public class MarketStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("order_id")
-    private Long orderId = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
-    @JsonProperty("location_id")
-    private Long locationId = null;
-
-    @JsonProperty("volume_total")
-    private Integer volumeTotal = null;
-
-    @JsonProperty("volume_remain")
-    private Integer volumeRemain = null;
-
-    @JsonProperty("min_volume")
-    private Integer minVolume = null;
-
-    @JsonProperty("price")
-    private Double price = null;
+    @JsonProperty("duration")
+    private Integer duration = null;
 
     @JsonProperty("is_buy_order")
     private Boolean isBuyOrder = null;
 
-    @JsonProperty("duration")
-    private Integer duration = null;
-
     @JsonProperty("issued")
     private OffsetDateTime issued = null;
+
+    @JsonProperty("location_id")
+    private Long locationId = null;
+
+    @JsonProperty("min_volume")
+    private Integer minVolume = null;
+
+    @JsonProperty("order_id")
+    private Long orderId = null;
+
+    @JsonProperty("price")
+    private Double price = null;
 
     /**
      * range string
@@ -109,137 +100,32 @@ public class MarketStructuresResponse implements Serializable {
     @JsonProperty("range")
     private RangeEnum range = null;
 
-    public MarketStructuresResponse orderId(Long orderId) {
-        this.orderId = orderId;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
+
+    @JsonProperty("volume_remain")
+    private Integer volumeRemain = null;
+
+    @JsonProperty("volume_total")
+    private Integer volumeTotal = null;
+
+    public MarketStructuresResponse duration(Integer duration) {
+        this.duration = duration;
         return this;
     }
 
     /**
-     * order_id integer
+     * duration integer
      * 
-     * @return orderId
+     * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "order_id integer")
-    public Long getOrderId() {
-        return orderId;
+    @ApiModelProperty(example = "null", required = true, value = "duration integer")
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public MarketStructuresResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public MarketStructuresResponse locationId(Long locationId) {
-        this.locationId = locationId;
-        return this;
-    }
-
-    /**
-     * location_id integer
-     * 
-     * @return locationId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
-    public Long getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
-
-    public MarketStructuresResponse volumeTotal(Integer volumeTotal) {
-        this.volumeTotal = volumeTotal;
-        return this;
-    }
-
-    /**
-     * volume_total integer
-     * 
-     * @return volumeTotal
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "volume_total integer")
-    public Integer getVolumeTotal() {
-        return volumeTotal;
-    }
-
-    public void setVolumeTotal(Integer volumeTotal) {
-        this.volumeTotal = volumeTotal;
-    }
-
-    public MarketStructuresResponse volumeRemain(Integer volumeRemain) {
-        this.volumeRemain = volumeRemain;
-        return this;
-    }
-
-    /**
-     * volume_remain integer
-     * 
-     * @return volumeRemain
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "volume_remain integer")
-    public Integer getVolumeRemain() {
-        return volumeRemain;
-    }
-
-    public void setVolumeRemain(Integer volumeRemain) {
-        this.volumeRemain = volumeRemain;
-    }
-
-    public MarketStructuresResponse minVolume(Integer minVolume) {
-        this.minVolume = minVolume;
-        return this;
-    }
-
-    /**
-     * min_volume integer
-     * 
-     * @return minVolume
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "min_volume integer")
-    public Integer getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(Integer minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public MarketStructuresResponse price(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    /**
-     * price number
-     * 
-     * @return price
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "price number")
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public MarketStructuresResponse isBuyOrder(Boolean isBuyOrder) {
@@ -261,25 +147,6 @@ public class MarketStructuresResponse implements Serializable {
         this.isBuyOrder = isBuyOrder;
     }
 
-    public MarketStructuresResponse duration(Integer duration) {
-        this.duration = duration;
-        return this;
-    }
-
-    /**
-     * duration integer
-     * 
-     * @return duration
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "duration integer")
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
     public MarketStructuresResponse issued(OffsetDateTime issued) {
         this.issued = issued;
         return this;
@@ -297,6 +164,82 @@ public class MarketStructuresResponse implements Serializable {
 
     public void setIssued(OffsetDateTime issued) {
         this.issued = issued;
+    }
+
+    public MarketStructuresResponse locationId(Long locationId) {
+        this.locationId = locationId;
+        return this;
+    }
+
+    /**
+     * location_id integer
+     * 
+     * @return locationId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public MarketStructuresResponse minVolume(Integer minVolume) {
+        this.minVolume = minVolume;
+        return this;
+    }
+
+    /**
+     * min_volume integer
+     * 
+     * @return minVolume
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "min_volume integer")
+    public Integer getMinVolume() {
+        return minVolume;
+    }
+
+    public void setMinVolume(Integer minVolume) {
+        this.minVolume = minVolume;
+    }
+
+    public MarketStructuresResponse orderId(Long orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    /**
+     * order_id integer
+     * 
+     * @return orderId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "order_id integer")
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public MarketStructuresResponse price(Double price) {
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * price number
+     * 
+     * @return price
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "price number")
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public MarketStructuresResponse range(RangeEnum range) {
@@ -318,6 +261,63 @@ public class MarketStructuresResponse implements Serializable {
         this.range = range;
     }
 
+    public MarketStructuresResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public MarketStructuresResponse volumeRemain(Integer volumeRemain) {
+        this.volumeRemain = volumeRemain;
+        return this;
+    }
+
+    /**
+     * volume_remain integer
+     * 
+     * @return volumeRemain
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "volume_remain integer")
+    public Integer getVolumeRemain() {
+        return volumeRemain;
+    }
+
+    public void setVolumeRemain(Integer volumeRemain) {
+        this.volumeRemain = volumeRemain;
+    }
+
+    public MarketStructuresResponse volumeTotal(Integer volumeTotal) {
+        this.volumeTotal = volumeTotal;
+        return this;
+    }
+
+    /**
+     * volume_total integer
+     * 
+     * @return volumeTotal
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "volume_total integer")
+    public Integer getVolumeTotal() {
+        return volumeTotal;
+    }
+
+    public void setVolumeTotal(Integer volumeTotal) {
+        this.volumeTotal = volumeTotal;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -327,23 +327,23 @@ public class MarketStructuresResponse implements Serializable {
             return false;
         }
         MarketStructuresResponse marketStructuresResponse = (MarketStructuresResponse) o;
-        return Objects.equals(this.orderId, marketStructuresResponse.orderId)
-                && Objects.equals(this.typeId, marketStructuresResponse.typeId)
-                && Objects.equals(this.locationId, marketStructuresResponse.locationId)
-                && Objects.equals(this.volumeTotal, marketStructuresResponse.volumeTotal)
-                && Objects.equals(this.volumeRemain, marketStructuresResponse.volumeRemain)
-                && Objects.equals(this.minVolume, marketStructuresResponse.minVolume)
-                && Objects.equals(this.price, marketStructuresResponse.price)
+        return Objects.equals(this.duration, marketStructuresResponse.duration)
                 && Objects.equals(this.isBuyOrder, marketStructuresResponse.isBuyOrder)
-                && Objects.equals(this.duration, marketStructuresResponse.duration)
                 && Objects.equals(this.issued, marketStructuresResponse.issued)
-                && Objects.equals(this.range, marketStructuresResponse.range);
+                && Objects.equals(this.locationId, marketStructuresResponse.locationId)
+                && Objects.equals(this.minVolume, marketStructuresResponse.minVolume)
+                && Objects.equals(this.orderId, marketStructuresResponse.orderId)
+                && Objects.equals(this.price, marketStructuresResponse.price)
+                && Objects.equals(this.range, marketStructuresResponse.range)
+                && Objects.equals(this.typeId, marketStructuresResponse.typeId)
+                && Objects.equals(this.volumeRemain, marketStructuresResponse.volumeRemain)
+                && Objects.equals(this.volumeTotal, marketStructuresResponse.volumeTotal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, typeId, locationId, volumeTotal, volumeRemain, minVolume, price, isBuyOrder,
-                duration, issued, range);
+        return Objects.hash(duration, isBuyOrder, issued, locationId, minVolume, orderId, price, range, typeId,
+                volumeRemain, volumeTotal);
     }
 
     @Override
@@ -351,17 +351,17 @@ public class MarketStructuresResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketStructuresResponse {\n");
 
-        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
-        sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
-        sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
-        sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
-        sb.append("    price: ").append(toIndentedString(price)).append("\n");
-        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+        sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
+        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+        sb.append("    price: ").append(toIndentedString(price)).append("\n");
         sb.append("    range: ").append(toIndentedString(range)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    volumeRemain: ").append(toIndentedString(volumeRemain)).append("\n");
+        sb.append("    volumeTotal: ").append(toIndentedString(volumeTotal)).append("\n");
         sb.append("}");
         return sb.toString();
     }

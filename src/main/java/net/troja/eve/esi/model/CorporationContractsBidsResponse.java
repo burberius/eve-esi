@@ -26,6 +26,9 @@ import java.io.Serializable;
 public class CorporationContractsBidsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("amount")
+    private Float amount = null;
+
     @JsonProperty("bid_id")
     private Integer bidId = null;
 
@@ -35,8 +38,24 @@ public class CorporationContractsBidsResponse implements Serializable {
     @JsonProperty("date_bid")
     private OffsetDateTime dateBid = null;
 
-    @JsonProperty("amount")
-    private Float amount = null;
+    public CorporationContractsBidsResponse amount(Float amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * The amount bid, in ISK
+     * 
+     * @return amount
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The amount bid, in ISK")
+    public Float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Float amount) {
+        this.amount = amount;
+    }
 
     public CorporationContractsBidsResponse bidId(Integer bidId) {
         this.bidId = bidId;
@@ -95,25 +114,6 @@ public class CorporationContractsBidsResponse implements Serializable {
         this.dateBid = dateBid;
     }
 
-    public CorporationContractsBidsResponse amount(Float amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * The amount bid, in ISK
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The amount bid, in ISK")
-    public Float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,15 +123,15 @@ public class CorporationContractsBidsResponse implements Serializable {
             return false;
         }
         CorporationContractsBidsResponse corporationContractsBidsResponse = (CorporationContractsBidsResponse) o;
-        return Objects.equals(this.bidId, corporationContractsBidsResponse.bidId)
+        return Objects.equals(this.amount, corporationContractsBidsResponse.amount)
+                && Objects.equals(this.bidId, corporationContractsBidsResponse.bidId)
                 && Objects.equals(this.bidderId, corporationContractsBidsResponse.bidderId)
-                && Objects.equals(this.dateBid, corporationContractsBidsResponse.dateBid)
-                && Objects.equals(this.amount, corporationContractsBidsResponse.amount);
+                && Objects.equals(this.dateBid, corporationContractsBidsResponse.dateBid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bidId, bidderId, dateBid, amount);
+        return Objects.hash(amount, bidId, bidderId, dateBid);
     }
 
     @Override
@@ -139,10 +139,10 @@ public class CorporationContractsBidsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContractsBidsResponse {\n");
 
+        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    bidId: ").append(toIndentedString(bidId)).append("\n");
         sb.append("    bidderId: ").append(toIndentedString(bidderId)).append("\n");
         sb.append("    dateBid: ").append(toIndentedString(dateBid)).append("\n");
-        sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -28,30 +28,11 @@ import java.io.Serializable;
 public class IndustrySystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("solar_system_id")
-    private Integer solarSystemId = null;
-
     @JsonProperty("cost_indices")
     private List<SystemCostIndice> costIndices = new ArrayList<SystemCostIndice>();
 
-    public IndustrySystemsResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * solar_system_id integer
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-    }
+    @JsonProperty("solar_system_id")
+    private Integer solarSystemId = null;
 
     public IndustrySystemsResponse costIndices(List<SystemCostIndice> costIndices) {
         this.costIndices = costIndices;
@@ -77,6 +58,25 @@ public class IndustrySystemsResponse implements Serializable {
         this.costIndices = costIndices;
     }
 
+    public IndustrySystemsResponse solarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * solar_system_id integer
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,13 +86,13 @@ public class IndustrySystemsResponse implements Serializable {
             return false;
         }
         IndustrySystemsResponse industrySystemsResponse = (IndustrySystemsResponse) o;
-        return Objects.equals(this.solarSystemId, industrySystemsResponse.solarSystemId)
-                && Objects.equals(this.costIndices, industrySystemsResponse.costIndices);
+        return Objects.equals(this.costIndices, industrySystemsResponse.costIndices)
+                && Objects.equals(this.solarSystemId, industrySystemsResponse.solarSystemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(solarSystemId, costIndices);
+        return Objects.hash(costIndices, solarSystemId);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class IndustrySystemsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class IndustrySystemsResponse {\n");
 
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    costIndices: ").append(toIndentedString(costIndices)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

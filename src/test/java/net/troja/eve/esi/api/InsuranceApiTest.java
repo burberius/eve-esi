@@ -44,7 +44,7 @@ public class InsuranceApiTest extends GeneralApiTest {
     @Test
     public void getInsurancePricesTest() throws ApiException {
         final String language = "en-us";
-        final List<InsurancePricesResponse> response = api.getInsurancePrices(DATASOURCE, language, null, null);
+        final List<InsurancePricesResponse> response = api.getInsurancePrices(DATASOURCE, null, language, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final InsurancePricesResponse price = response.get(0);

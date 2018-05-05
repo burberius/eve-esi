@@ -48,7 +48,7 @@ public class ClonesApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdClonesTest() throws ApiException {
-        final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE, null, null,
+        final CharacterClonesResponse response = api.getCharactersCharacterIdClones(characterId, DATASOURCE, null, null, null,
                 null);
 
         assertThat(response, notNullValue());
@@ -65,7 +65,7 @@ public class ClonesApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdImplantsTest() throws ApiException {
-        List<Integer> response = api.getCharactersCharacterIdImplants(characterId, DATASOURCE, null, null, null);
+        List<Integer> response = api.getCharactersCharacterIdImplants(characterId, DATASOURCE, null, null, null, null);
         assertThat(response, notNullValue());
     }
 

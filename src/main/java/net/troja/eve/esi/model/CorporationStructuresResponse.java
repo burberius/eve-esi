@@ -29,35 +29,32 @@ import java.io.Serializable;
 public class CorporationStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("structure_id")
-    private Long structureId = null;
-
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
     @JsonProperty("corporation_id")
     private Integer corporationId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
-    @JsonProperty("profile_id")
-    private Integer profileId = null;
 
     @JsonProperty("fuel_expires")
     private OffsetDateTime fuelExpires = null;
 
+    @JsonProperty("next_reinforce_apply")
+    private OffsetDateTime nextReinforceApply = null;
+
+    @JsonProperty("next_reinforce_hour")
+    private Integer nextReinforceHour = null;
+
+    @JsonProperty("next_reinforce_weekday")
+    private Integer nextReinforceWeekday = null;
+
+    @JsonProperty("profile_id")
+    private Integer profileId = null;
+
+    @JsonProperty("reinforce_hour")
+    private Integer reinforceHour = null;
+
+    @JsonProperty("reinforce_weekday")
+    private Integer reinforceWeekday = null;
+
     @JsonProperty("services")
     private List<StructureService> services = new ArrayList<StructureService>();
-
-    @JsonProperty("state_timer_start")
-    private OffsetDateTime stateTimerStart = null;
-
-    @JsonProperty("state_timer_end")
-    private OffsetDateTime stateTimerEnd = null;
-
-    @JsonProperty("unanchors_at")
-    private OffsetDateTime unanchorsAt = null;
 
     /**
      * state string
@@ -112,58 +109,23 @@ public class CorporationStructuresResponse implements Serializable {
     @JsonProperty("state")
     private StateEnum state = null;
 
-    @JsonProperty("reinforce_weekday")
-    private Integer reinforceWeekday = null;
+    @JsonProperty("state_timer_end")
+    private OffsetDateTime stateTimerEnd = null;
 
-    @JsonProperty("reinforce_hour")
-    private Integer reinforceHour = null;
+    @JsonProperty("state_timer_start")
+    private OffsetDateTime stateTimerStart = null;
 
-    @JsonProperty("next_reinforce_weekday")
-    private Integer nextReinforceWeekday = null;
+    @JsonProperty("structure_id")
+    private Long structureId = null;
 
-    @JsonProperty("next_reinforce_hour")
-    private Integer nextReinforceHour = null;
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
-    @JsonProperty("next_reinforce_apply")
-    private OffsetDateTime nextReinforceApply = null;
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
-    public CorporationStructuresResponse structureId(Long structureId) {
-        this.structureId = structureId;
-        return this;
-    }
-
-    /**
-     * The Item ID of the structure
-     * 
-     * @return structureId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The Item ID of the structure")
-    public Long getStructureId() {
-        return structureId;
-    }
-
-    public void setStructureId(Long structureId) {
-        this.structureId = structureId;
-    }
-
-    public CorporationStructuresResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * The type id of the structure
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The type id of the structure")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+    @JsonProperty("unanchors_at")
+    private OffsetDateTime unanchorsAt = null;
 
     public CorporationStructuresResponse corporationId(Integer corporationId) {
         this.corporationId = corporationId;
@@ -184,23 +146,83 @@ public class CorporationStructuresResponse implements Serializable {
         this.corporationId = corporationId;
     }
 
-    public CorporationStructuresResponse systemId(Integer systemId) {
-        this.systemId = systemId;
+    public CorporationStructuresResponse fuelExpires(OffsetDateTime fuelExpires) {
+        this.fuelExpires = fuelExpires;
         return this;
     }
 
     /**
-     * The solar system the structure is in
+     * Date on which the structure will run out of fuel
      * 
-     * @return systemId
+     * @return fuelExpires
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is in")
-    public Integer getSystemId() {
-        return systemId;
+    @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
+    public OffsetDateTime getFuelExpires() {
+        return fuelExpires;
     }
 
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
+    public void setFuelExpires(OffsetDateTime fuelExpires) {
+        this.fuelExpires = fuelExpires;
+    }
+
+    public CorporationStructuresResponse nextReinforceApply(OffsetDateTime nextReinforceApply) {
+        this.nextReinforceApply = nextReinforceApply;
+        return this;
+    }
+
+    /**
+     * The date and time when the structure's newly requested reinforcement
+     * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.
+     * 
+     * @return nextReinforceApply
+     **/
+    @ApiModelProperty(example = "null", value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.")
+    public OffsetDateTime getNextReinforceApply() {
+        return nextReinforceApply;
+    }
+
+    public void setNextReinforceApply(OffsetDateTime nextReinforceApply) {
+        this.nextReinforceApply = nextReinforceApply;
+    }
+
+    public CorporationStructuresResponse nextReinforceHour(Integer nextReinforceHour) {
+        this.nextReinforceHour = nextReinforceHour;
+        return this;
+    }
+
+    /**
+     * The requested change to reinforce_hour that will take effect at the time
+     * shown by next_reinforce_apply. minimum: 0 maximum: 23
+     * 
+     * @return nextReinforceHour
+     **/
+    @ApiModelProperty(example = "null", value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply.")
+    public Integer getNextReinforceHour() {
+        return nextReinforceHour;
+    }
+
+    public void setNextReinforceHour(Integer nextReinforceHour) {
+        this.nextReinforceHour = nextReinforceHour;
+    }
+
+    public CorporationStructuresResponse nextReinforceWeekday(Integer nextReinforceWeekday) {
+        this.nextReinforceWeekday = nextReinforceWeekday;
+        return this;
+    }
+
+    /**
+     * The requested change to reinforce_weekday that will take effect at the
+     * time shown by next_reinforce_apply. minimum: 0 maximum: 6
+     * 
+     * @return nextReinforceWeekday
+     **/
+    @ApiModelProperty(example = "null", value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply.")
+    public Integer getNextReinforceWeekday() {
+        return nextReinforceWeekday;
+    }
+
+    public void setNextReinforceWeekday(Integer nextReinforceWeekday) {
+        this.nextReinforceWeekday = nextReinforceWeekday;
     }
 
     public CorporationStructuresResponse profileId(Integer profileId) {
@@ -222,23 +244,48 @@ public class CorporationStructuresResponse implements Serializable {
         this.profileId = profileId;
     }
 
-    public CorporationStructuresResponse fuelExpires(OffsetDateTime fuelExpires) {
-        this.fuelExpires = fuelExpires;
+    public CorporationStructuresResponse reinforceHour(Integer reinforceHour) {
+        this.reinforceHour = reinforceHour;
         return this;
     }
 
     /**
-     * Date on which the structure will run out of fuel
+     * The hour of day that determines the four hour window when the structure
+     * will randomly exit its reinforcement periods and become vulnerable to
+     * attack against its armor and/or hull. The structure will become
+     * vulnerable at a random time that is +/- 2 hours centered on the value of
+     * this property. minimum: 0 maximum: 23
      * 
-     * @return fuelExpires
+     * @return reinforceHour
      **/
-    @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
-    public OffsetDateTime getFuelExpires() {
-        return fuelExpires;
+    @ApiModelProperty(example = "null", required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property.")
+    public Integer getReinforceHour() {
+        return reinforceHour;
     }
 
-    public void setFuelExpires(OffsetDateTime fuelExpires) {
-        this.fuelExpires = fuelExpires;
+    public void setReinforceHour(Integer reinforceHour) {
+        this.reinforceHour = reinforceHour;
+    }
+
+    public CorporationStructuresResponse reinforceWeekday(Integer reinforceWeekday) {
+        this.reinforceWeekday = reinforceWeekday;
+        return this;
+    }
+
+    /**
+     * The day of the week when the structure exits its final reinforcement
+     * period and becomes vulnerable to attack against its hull. Monday is 0 and
+     * Sunday is 6. minimum: 0 maximum: 6
+     * 
+     * @return reinforceWeekday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6.")
+    public Integer getReinforceWeekday() {
+        return reinforceWeekday;
+    }
+
+    public void setReinforceWeekday(Integer reinforceWeekday) {
+        this.reinforceWeekday = reinforceWeekday;
     }
 
     public CorporationStructuresResponse services(List<StructureService> services) {
@@ -265,23 +312,23 @@ public class CorporationStructuresResponse implements Serializable {
         this.services = services;
     }
 
-    public CorporationStructuresResponse stateTimerStart(OffsetDateTime stateTimerStart) {
-        this.stateTimerStart = stateTimerStart;
+    public CorporationStructuresResponse state(StateEnum state) {
+        this.state = state;
         return this;
     }
 
     /**
-     * Date at which the structure entered it's current state
+     * state string
      * 
-     * @return stateTimerStart
+     * @return state
      **/
-    @ApiModelProperty(example = "null", value = "Date at which the structure entered it's current state")
-    public OffsetDateTime getStateTimerStart() {
-        return stateTimerStart;
+    @ApiModelProperty(example = "null", required = true, value = "state string")
+    public StateEnum getState() {
+        return state;
     }
 
-    public void setStateTimerStart(OffsetDateTime stateTimerStart) {
-        this.stateTimerStart = stateTimerStart;
+    public void setState(StateEnum state) {
+        this.state = state;
     }
 
     public CorporationStructuresResponse stateTimerEnd(OffsetDateTime stateTimerEnd) {
@@ -303,6 +350,82 @@ public class CorporationStructuresResponse implements Serializable {
         this.stateTimerEnd = stateTimerEnd;
     }
 
+    public CorporationStructuresResponse stateTimerStart(OffsetDateTime stateTimerStart) {
+        this.stateTimerStart = stateTimerStart;
+        return this;
+    }
+
+    /**
+     * Date at which the structure entered it's current state
+     * 
+     * @return stateTimerStart
+     **/
+    @ApiModelProperty(example = "null", value = "Date at which the structure entered it's current state")
+    public OffsetDateTime getStateTimerStart() {
+        return stateTimerStart;
+    }
+
+    public void setStateTimerStart(OffsetDateTime stateTimerStart) {
+        this.stateTimerStart = stateTimerStart;
+    }
+
+    public CorporationStructuresResponse structureId(Long structureId) {
+        this.structureId = structureId;
+        return this;
+    }
+
+    /**
+     * The Item ID of the structure
+     * 
+     * @return structureId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The Item ID of the structure")
+    public Long getStructureId() {
+        return structureId;
+    }
+
+    public void setStructureId(Long structureId) {
+        this.structureId = structureId;
+    }
+
+    public CorporationStructuresResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system the structure is in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public CorporationStructuresResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * The type id of the structure
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The type id of the structure")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     public CorporationStructuresResponse unanchorsAt(OffsetDateTime unanchorsAt) {
         this.unanchorsAt = unanchorsAt;
         return this;
@@ -322,129 +445,6 @@ public class CorporationStructuresResponse implements Serializable {
         this.unanchorsAt = unanchorsAt;
     }
 
-    public CorporationStructuresResponse state(StateEnum state) {
-        this.state = state;
-        return this;
-    }
-
-    /**
-     * state string
-     * 
-     * @return state
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "state string")
-    public StateEnum getState() {
-        return state;
-    }
-
-    public void setState(StateEnum state) {
-        this.state = state;
-    }
-
-    public CorporationStructuresResponse reinforceWeekday(Integer reinforceWeekday) {
-        this.reinforceWeekday = reinforceWeekday;
-        return this;
-    }
-
-    /**
-     * The day of the week when the structure exits its final reinforcement
-     * period and becomes vulnerable to attack against its hull. Monday is 0 and
-     * Sunday is 6. minimum: 0 maximum: 6
-     * 
-     * @return reinforceWeekday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6.")
-    public Integer getReinforceWeekday() {
-        return reinforceWeekday;
-    }
-
-    public void setReinforceWeekday(Integer reinforceWeekday) {
-        this.reinforceWeekday = reinforceWeekday;
-    }
-
-    public CorporationStructuresResponse reinforceHour(Integer reinforceHour) {
-        this.reinforceHour = reinforceHour;
-        return this;
-    }
-
-    /**
-     * The hour of day that determines the four hour window when the structure
-     * will randomly exit its reinforcement periods and become vulnerable to
-     * attack against its armor and/or hull. The structure will become
-     * vulnerable at a random time that is +/- 2 hours centered on the value of
-     * this property. minimum: 0 maximum: 23
-     * 
-     * @return reinforceHour
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property.")
-    public Integer getReinforceHour() {
-        return reinforceHour;
-    }
-
-    public void setReinforceHour(Integer reinforceHour) {
-        this.reinforceHour = reinforceHour;
-    }
-
-    public CorporationStructuresResponse nextReinforceWeekday(Integer nextReinforceWeekday) {
-        this.nextReinforceWeekday = nextReinforceWeekday;
-        return this;
-    }
-
-    /**
-     * The requested change to reinforce_weekday that will take effect at the
-     * time shown by next_reinforce_apply. minimum: 0 maximum: 6
-     * 
-     * @return nextReinforceWeekday
-     **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply.")
-    public Integer getNextReinforceWeekday() {
-        return nextReinforceWeekday;
-    }
-
-    public void setNextReinforceWeekday(Integer nextReinforceWeekday) {
-        this.nextReinforceWeekday = nextReinforceWeekday;
-    }
-
-    public CorporationStructuresResponse nextReinforceHour(Integer nextReinforceHour) {
-        this.nextReinforceHour = nextReinforceHour;
-        return this;
-    }
-
-    /**
-     * The requested change to reinforce_hour that will take effect at the time
-     * shown by next_reinforce_apply. minimum: 0 maximum: 23
-     * 
-     * @return nextReinforceHour
-     **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply.")
-    public Integer getNextReinforceHour() {
-        return nextReinforceHour;
-    }
-
-    public void setNextReinforceHour(Integer nextReinforceHour) {
-        this.nextReinforceHour = nextReinforceHour;
-    }
-
-    public CorporationStructuresResponse nextReinforceApply(OffsetDateTime nextReinforceApply) {
-        this.nextReinforceApply = nextReinforceApply;
-        return this;
-    }
-
-    /**
-     * The date and time when the structure's newly requested reinforcement
-     * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.
-     * 
-     * @return nextReinforceApply
-     **/
-    @ApiModelProperty(example = "null", value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.")
-    public OffsetDateTime getNextReinforceApply() {
-        return nextReinforceApply;
-    }
-
-    public void setNextReinforceApply(OffsetDateTime nextReinforceApply) {
-        this.nextReinforceApply = nextReinforceApply;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -454,29 +454,29 @@ public class CorporationStructuresResponse implements Serializable {
             return false;
         }
         CorporationStructuresResponse corporationStructuresResponse = (CorporationStructuresResponse) o;
-        return Objects.equals(this.structureId, corporationStructuresResponse.structureId)
-                && Objects.equals(this.typeId, corporationStructuresResponse.typeId)
-                && Objects.equals(this.corporationId, corporationStructuresResponse.corporationId)
-                && Objects.equals(this.systemId, corporationStructuresResponse.systemId)
-                && Objects.equals(this.profileId, corporationStructuresResponse.profileId)
+        return Objects.equals(this.corporationId, corporationStructuresResponse.corporationId)
                 && Objects.equals(this.fuelExpires, corporationStructuresResponse.fuelExpires)
-                && Objects.equals(this.services, corporationStructuresResponse.services)
-                && Objects.equals(this.stateTimerStart, corporationStructuresResponse.stateTimerStart)
-                && Objects.equals(this.stateTimerEnd, corporationStructuresResponse.stateTimerEnd)
-                && Objects.equals(this.unanchorsAt, corporationStructuresResponse.unanchorsAt)
-                && Objects.equals(this.state, corporationStructuresResponse.state)
-                && Objects.equals(this.reinforceWeekday, corporationStructuresResponse.reinforceWeekday)
-                && Objects.equals(this.reinforceHour, corporationStructuresResponse.reinforceHour)
-                && Objects.equals(this.nextReinforceWeekday, corporationStructuresResponse.nextReinforceWeekday)
+                && Objects.equals(this.nextReinforceApply, corporationStructuresResponse.nextReinforceApply)
                 && Objects.equals(this.nextReinforceHour, corporationStructuresResponse.nextReinforceHour)
-                && Objects.equals(this.nextReinforceApply, corporationStructuresResponse.nextReinforceApply);
+                && Objects.equals(this.nextReinforceWeekday, corporationStructuresResponse.nextReinforceWeekday)
+                && Objects.equals(this.profileId, corporationStructuresResponse.profileId)
+                && Objects.equals(this.reinforceHour, corporationStructuresResponse.reinforceHour)
+                && Objects.equals(this.reinforceWeekday, corporationStructuresResponse.reinforceWeekday)
+                && Objects.equals(this.services, corporationStructuresResponse.services)
+                && Objects.equals(this.state, corporationStructuresResponse.state)
+                && Objects.equals(this.stateTimerEnd, corporationStructuresResponse.stateTimerEnd)
+                && Objects.equals(this.stateTimerStart, corporationStructuresResponse.stateTimerStart)
+                && Objects.equals(this.structureId, corporationStructuresResponse.structureId)
+                && Objects.equals(this.systemId, corporationStructuresResponse.systemId)
+                && Objects.equals(this.typeId, corporationStructuresResponse.typeId)
+                && Objects.equals(this.unanchorsAt, corporationStructuresResponse.unanchorsAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(structureId, typeId, corporationId, systemId, profileId, fuelExpires, services,
-                stateTimerStart, stateTimerEnd, unanchorsAt, state, reinforceWeekday, reinforceHour,
-                nextReinforceWeekday, nextReinforceHour, nextReinforceApply);
+        return Objects.hash(corporationId, fuelExpires, nextReinforceApply, nextReinforceHour, nextReinforceWeekday,
+                profileId, reinforceHour, reinforceWeekday, services, state, stateTimerEnd, stateTimerStart,
+                structureId, systemId, typeId, unanchorsAt);
     }
 
     @Override
@@ -484,22 +484,22 @@ public class CorporationStructuresResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStructuresResponse {\n");
 
-        sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
-        sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
         sb.append("    fuelExpires: ").append(toIndentedString(fuelExpires)).append("\n");
-        sb.append("    services: ").append(toIndentedString(services)).append("\n");
-        sb.append("    stateTimerStart: ").append(toIndentedString(stateTimerStart)).append("\n");
-        sb.append("    stateTimerEnd: ").append(toIndentedString(stateTimerEnd)).append("\n");
-        sb.append("    unanchorsAt: ").append(toIndentedString(unanchorsAt)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
-        sb.append("    reinforceWeekday: ").append(toIndentedString(reinforceWeekday)).append("\n");
-        sb.append("    reinforceHour: ").append(toIndentedString(reinforceHour)).append("\n");
-        sb.append("    nextReinforceWeekday: ").append(toIndentedString(nextReinforceWeekday)).append("\n");
-        sb.append("    nextReinforceHour: ").append(toIndentedString(nextReinforceHour)).append("\n");
         sb.append("    nextReinforceApply: ").append(toIndentedString(nextReinforceApply)).append("\n");
+        sb.append("    nextReinforceHour: ").append(toIndentedString(nextReinforceHour)).append("\n");
+        sb.append("    nextReinforceWeekday: ").append(toIndentedString(nextReinforceWeekday)).append("\n");
+        sb.append("    profileId: ").append(toIndentedString(profileId)).append("\n");
+        sb.append("    reinforceHour: ").append(toIndentedString(reinforceHour)).append("\n");
+        sb.append("    reinforceWeekday: ").append(toIndentedString(reinforceWeekday)).append("\n");
+        sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    stateTimerEnd: ").append(toIndentedString(stateTimerEnd)).append("\n");
+        sb.append("    stateTimerStart: ").append(toIndentedString(stateTimerStart)).append("\n");
+        sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
+        sb.append("    unanchorsAt: ").append(toIndentedString(unanchorsAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

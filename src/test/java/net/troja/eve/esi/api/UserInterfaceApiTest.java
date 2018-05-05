@@ -47,12 +47,9 @@ public class UserInterfaceApiTest extends GeneralApiTest {
         final Boolean addToBeginning = true;
         final Boolean clearOtherWaypoints = true;
         final Long destinationId = 30000023l;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
         // api.postUiAutopilotWaypoint(addToBeginning, clearOtherWaypoints,
-        // destinationId, DATASOURCE, token, userAgent,
-        // xUserAgent);
+        // destinationId, DATASOURCE, null, null,
+        // null);
     }
 
     /**
@@ -70,12 +67,8 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     @Ignore("Can't test that without running eve")
     public void postUiOpenwindowContractTest() throws ApiException {
         final Integer contractId = null;
-        final String datasource = null;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        // api.postUiOpenwindowContract(contractId, datasource, token,
-        // userAgent, xUserAgent);
+        // api.postUiOpenwindowContract(contractId, DATASOURCE, null,
+        // null, null);
 
         // TODO: test validations
     }
@@ -97,12 +90,8 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     @Ignore("Can't test that without running eve")
     public void postUiOpenwindowInformationTest() throws ApiException {
         final Integer targetId = null;
-        final String datasource = null;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        // api.postUiOpenwindowInformation(targetId, datasource, token,
-        // userAgent, xUserAgent);
+        // api.postUiOpenwindowInformation(targetId, DATASOURCE, null,
+        // null, null);
 
         // TODO: test validations
     }
@@ -123,12 +112,8 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     @Ignore("Can't test that without running eve")
     public void postUiOpenwindowMarketdetailsTest() throws ApiException {
         final Integer typeId = null;
-        final String datasource = null;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        // api.postUiOpenwindowMarketdetails(typeId, datasource, token,
-        // userAgent, xUserAgent);
+        // api.postUiOpenwindowMarketdetails(typeId, DATASOURCE, null,
+        // null, null);
 
         // TODO: test validations
     }
@@ -149,12 +134,8 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     @Ignore("Can't test that without running eve")
     public void postUiOpenwindowNewmailTest() throws ApiException {
         final UiNewMail newMail = null;
-        final String datasource = null;
-        final String token = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        // api.postUiOpenwindowNewmail(newMail, datasource, token, userAgent,
-        // xUserAgent);
+        // api.postUiOpenwindowNewmail(newMail, DATASOURCE, null, null,
+        // null);
 
         // TODO: test validations
     }

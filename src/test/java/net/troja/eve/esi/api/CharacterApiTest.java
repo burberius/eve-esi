@@ -64,7 +64,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdTest() throws ApiException {
-        final CharacterResponse response = api.getCharactersCharacterId(characterId, DATASOURCE, null, null);
+        final CharacterResponse response = api.getCharactersCharacterId(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getName(), notNullValue());
@@ -83,7 +83,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdAgentsResearchTest() throws ApiException {
-        final List<CharacterResearchAgentsResponse> response = api.getCharactersCharacterIdAgentsResearch(characterId, DATASOURCE, null, null,
+        final List<CharacterResearchAgentsResponse> response = api.getCharactersCharacterIdAgentsResearch(characterId, DATASOURCE, null, null, null,
                 null);
 
         assertThat(response, notNullValue());
@@ -101,24 +101,7 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdBlueprintsTest() throws ApiException {
         Integer page = null;
-        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId, DATASOURCE, page, null, null, null);
-
-        assertThat(response, notNullValue());
-    }
-
-    /**
-     * Get chat channels
-     *
-     * Return chat channels that a character is the owner or an operator of ---
-     * This route is cached for up to 300 seconds SSO Scope:
-     * esi-characters.read_chat_channels.v1
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCharactersCharacterIdChatChannelsTest() throws ApiException {
-        final List<CharacterChatChannelsResponse> response = api.getCharactersCharacterIdChatChannels(characterId, DATASOURCE, null, null, null);
+        final List<CharacterBlueprintsResponse> response = api.getCharactersCharacterIdBlueprints(characterId, DATASOURCE, null, page, null, null, null);
 
         assertThat(response, notNullValue());
     }
@@ -139,7 +122,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdCorporationhistoryTest() throws ApiException {
-        final List<CharacterCorporationHistoryResponse> response = api.getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null,
+        final List<CharacterCorporationHistoryResponse> response = api.getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null, null,
                 null);
 
         assertThat(response.size(), greaterThan(0));
@@ -158,7 +141,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdFatigueTest() throws ApiException {
-        final CharacterFatigueResponse response = api.getCharactersCharacterIdFatigue(characterId, DATASOURCE, null, null, null);
+        final CharacterFatigueResponse response = api.getCharactersCharacterIdFatigue(characterId, DATASOURCE, null, null, null, null);
         assertThat(response, notNullValue());
     }
 
@@ -174,7 +157,7 @@ public class CharacterApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdMedalsTest() throws ApiException {
         ignoreTestFails();
-        final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null, null, null);
+        final List<CharacterMedalsResponse> response = api.getCharactersCharacterIdMedals(characterId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
     }
@@ -189,7 +172,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdNotificationsTest() throws ApiException {
-        List<CharacterNotificationsResponse> response = api.getCharactersCharacterIdNotifications(characterId, DATASOURCE, null, null, null);
+        List<CharacterNotificationsResponse> response = api.getCharactersCharacterIdNotifications(characterId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -207,7 +190,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdNotificationsContactsTest() throws ApiException {
-        final List<NewContactNotificationsResponse> response = api.getCharactersCharacterIdNotificationsContacts(characterId, DATASOURCE, null,
+        final List<NewContactNotificationsResponse> response = api.getCharactersCharacterIdNotificationsContacts(characterId, DATASOURCE, null, null,
                 null, null);
 
         assertThat(response, notNullValue());
@@ -226,7 +209,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdPortraitTest() throws ApiException {
-        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE, null, null);
+        final CharacterPortraitResponse response = api.getCharactersCharacterIdPortrait(characterId, DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         final String icon = response.getPx64x64();
@@ -244,7 +227,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdRolesTest() throws ApiException {
-        CharacterRolesResponse response = api.getCharactersCharacterIdRoles(characterId, DATASOURCE, null, null, null);
+        CharacterRolesResponse response = api.getCharactersCharacterIdRoles(characterId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
     }
@@ -261,7 +244,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdStandingsTest() throws ApiException {
-        final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE, null, null, null);
+        final List<CharacterStandingsResponse> response = api.getCharactersCharacterIdStandings(characterId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -277,7 +260,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdStatsTest() throws ApiException {
-        List<CharacterStatsResponse> response = api.getCharactersCharacterIdStats(characterId, DATASOURCE, null, null, null);
+        List<CharacterStatsResponse> response = api.getCharactersCharacterIdStats(characterId, DATASOURCE, null, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -293,7 +276,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdTitlesTest() throws ApiException {
-        List<CharacterTitlesResponse> response = api.getCharactersCharacterIdTitles(characterId, DATASOURCE, null, null, null);
+        List<CharacterTitlesResponse> response = api.getCharactersCharacterIdTitles(characterId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -315,7 +298,7 @@ public class CharacterApiTest extends GeneralApiTest {
         final List<Long> characterIds = new ArrayList<>();
         characterIds.add((long) characterId);
 
-        final List<CharacterNamesResponse> response = api.getCharactersNames(characterIds, DATASOURCE, null, null);
+        final List<CharacterNamesResponse> response = api.getCharactersNames(characterIds, DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(1));
         assertThat(response.get(0).getCharacterName(), equalTo(characterName));

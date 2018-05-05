@@ -27,11 +27,11 @@ import java.io.Serializable;
 public class Clone implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("implants")
+    private List<Integer> implants = new ArrayList<Integer>();
+
     @JsonProperty("jump_clone_id")
     private Integer jumpCloneId = null;
-
-    @JsonProperty("name")
-    private String name = null;
 
     @JsonProperty("location_id")
     private Long locationId = null;
@@ -69,8 +69,32 @@ public class Clone implements Serializable {
     @JsonProperty("location_type")
     private LocationTypeEnum locationType = null;
 
-    @JsonProperty("implants")
-    private List<Integer> implants = new ArrayList<Integer>();
+    @JsonProperty("name")
+    private String name = null;
+
+    public Clone implants(List<Integer> implants) {
+        this.implants = implants;
+        return this;
+    }
+
+    public Clone addImplantsItem(Integer implantsItem) {
+        this.implants.add(implantsItem);
+        return this;
+    }
+
+    /**
+     * implants array
+     * 
+     * @return implants
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "implants array")
+    public List<Integer> getImplants() {
+        return implants;
+    }
+
+    public void setImplants(List<Integer> implants) {
+        this.implants = implants;
+    }
 
     public Clone jumpCloneId(Integer jumpCloneId) {
         this.jumpCloneId = jumpCloneId;
@@ -89,25 +113,6 @@ public class Clone implements Serializable {
 
     public void setJumpCloneId(Integer jumpCloneId) {
         this.jumpCloneId = jumpCloneId;
-    }
-
-    public Clone name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(example = "null", value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Clone locationId(Long locationId) {
@@ -148,28 +153,23 @@ public class Clone implements Serializable {
         this.locationType = locationType;
     }
 
-    public Clone implants(List<Integer> implants) {
-        this.implants = implants;
-        return this;
-    }
-
-    public Clone addImplantsItem(Integer implantsItem) {
-        this.implants.add(implantsItem);
+    public Clone name(String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * implants array
+     * name string
      * 
-     * @return implants
+     * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "implants array")
-    public List<Integer> getImplants() {
-        return implants;
+    @ApiModelProperty(example = "null", value = "name string")
+    public String getName() {
+        return name;
     }
 
-    public void setImplants(List<Integer> implants) {
-        this.implants = implants;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -181,15 +181,14 @@ public class Clone implements Serializable {
             return false;
         }
         Clone clone = (Clone) o;
-        return Objects.equals(this.jumpCloneId, clone.jumpCloneId) && Objects.equals(this.name, clone.name)
+        return Objects.equals(this.implants, clone.implants) && Objects.equals(this.jumpCloneId, clone.jumpCloneId)
                 && Objects.equals(this.locationId, clone.locationId)
-                && Objects.equals(this.locationType, clone.locationType)
-                && Objects.equals(this.implants, clone.implants);
+                && Objects.equals(this.locationType, clone.locationType) && Objects.equals(this.name, clone.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(jumpCloneId, name, locationId, locationType, implants);
+        return Objects.hash(implants, jumpCloneId, locationId, locationType, name);
     }
 
     @Override
@@ -197,11 +196,11 @@ public class Clone implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Clone {\n");
 
+        sb.append("    implants: ").append(toIndentedString(implants)).append("\n");
         sb.append("    jumpCloneId: ").append(toIndentedString(jumpCloneId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
-        sb.append("    implants: ").append(toIndentedString(implants)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

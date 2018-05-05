@@ -25,29 +25,38 @@ import java.io.Serializable;
 public class CorporationCustomsOfficesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("office_id")
-    private Long officeId = null;
-
-    @JsonProperty("system_id")
-    private Integer systemId = null;
-
-    @JsonProperty("reinforce_exit_start")
-    private Integer reinforceExitStart = null;
-
-    @JsonProperty("reinforce_exit_end")
-    private Integer reinforceExitEnd = null;
-
-    @JsonProperty("corporation_tax_rate")
-    private Float corporationTaxRate = null;
-
-    @JsonProperty("allow_alliance_access")
-    private Boolean allowAllianceAccess = null;
-
     @JsonProperty("alliance_tax_rate")
     private Float allianceTaxRate = null;
 
     @JsonProperty("allow_access_with_standings")
     private Boolean allowAccessWithStandings = null;
+
+    @JsonProperty("allow_alliance_access")
+    private Boolean allowAllianceAccess = null;
+
+    @JsonProperty("bad_standing_tax_rate")
+    private Float badStandingTaxRate = null;
+
+    @JsonProperty("corporation_tax_rate")
+    private Float corporationTaxRate = null;
+
+    @JsonProperty("excellent_standing_tax_rate")
+    private Float excellentStandingTaxRate = null;
+
+    @JsonProperty("good_standing_tax_rate")
+    private Float goodStandingTaxRate = null;
+
+    @JsonProperty("neutral_standing_tax_rate")
+    private Float neutralStandingTaxRate = null;
+
+    @JsonProperty("office_id")
+    private Long officeId = null;
+
+    @JsonProperty("reinforce_exit_end")
+    private Integer reinforceExitEnd = null;
+
+    @JsonProperty("reinforce_exit_start")
+    private Integer reinforceExitStart = null;
 
     /**
      * Access is allowed only for entities with this level of standing or better
@@ -88,136 +97,11 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     @JsonProperty("standing_level")
     private StandingLevelEnum standingLevel = null;
 
-    @JsonProperty("excellent_standing_tax_rate")
-    private Float excellentStandingTaxRate = null;
-
-    @JsonProperty("good_standing_tax_rate")
-    private Float goodStandingTaxRate = null;
-
-    @JsonProperty("neutral_standing_tax_rate")
-    private Float neutralStandingTaxRate = null;
-
-    @JsonProperty("bad_standing_tax_rate")
-    private Float badStandingTaxRate = null;
+    @JsonProperty("system_id")
+    private Integer systemId = null;
 
     @JsonProperty("terrible_standing_tax_rate")
     private Float terribleStandingTaxRate = null;
-
-    public CorporationCustomsOfficesResponse officeId(Long officeId) {
-        this.officeId = officeId;
-        return this;
-    }
-
-    /**
-     * unique ID of this customs office
-     * 
-     * @return officeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "unique ID of this customs office")
-    public Long getOfficeId() {
-        return officeId;
-    }
-
-    public void setOfficeId(Long officeId) {
-        this.officeId = officeId;
-    }
-
-    public CorporationCustomsOfficesResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * ID of the solar system this customs office is located in
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the solar system this customs office is located in")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
-    public CorporationCustomsOfficesResponse reinforceExitStart(Integer reinforceExitStart) {
-        this.reinforceExitStart = reinforceExitStart;
-        return this;
-    }
-
-    /**
-     * Together with reinforce_exit_end, marks a 2-hour period where this
-     * customs office could exit reinforcement mode during the day after initial
-     * attack minimum: 0 maximum: 23
-     * 
-     * @return reinforceExitStart
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Together with reinforce_exit_end, marks a 2-hour period where this customs office could exit reinforcement mode during the day after initial attack")
-    public Integer getReinforceExitStart() {
-        return reinforceExitStart;
-    }
-
-    public void setReinforceExitStart(Integer reinforceExitStart) {
-        this.reinforceExitStart = reinforceExitStart;
-    }
-
-    public CorporationCustomsOfficesResponse reinforceExitEnd(Integer reinforceExitEnd) {
-        this.reinforceExitEnd = reinforceExitEnd;
-        return this;
-    }
-
-    /**
-     * reinforce_exit_end integer minimum: 0 maximum: 23
-     * 
-     * @return reinforceExitEnd
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "reinforce_exit_end integer")
-    public Integer getReinforceExitEnd() {
-        return reinforceExitEnd;
-    }
-
-    public void setReinforceExitEnd(Integer reinforceExitEnd) {
-        this.reinforceExitEnd = reinforceExitEnd;
-    }
-
-    public CorporationCustomsOfficesResponse corporationTaxRate(Float corporationTaxRate) {
-        this.corporationTaxRate = corporationTaxRate;
-        return this;
-    }
-
-    /**
-     * corporation_tax_rate number
-     * 
-     * @return corporationTaxRate
-     **/
-    @ApiModelProperty(example = "null", value = "corporation_tax_rate number")
-    public Float getCorporationTaxRate() {
-        return corporationTaxRate;
-    }
-
-    public void setCorporationTaxRate(Float corporationTaxRate) {
-        this.corporationTaxRate = corporationTaxRate;
-    }
-
-    public CorporationCustomsOfficesResponse allowAllianceAccess(Boolean allowAllianceAccess) {
-        this.allowAllianceAccess = allowAllianceAccess;
-        return this;
-    }
-
-    /**
-     * allow_alliance_access boolean
-     * 
-     * @return allowAllianceAccess
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "allow_alliance_access boolean")
-    public Boolean getAllowAllianceAccess() {
-        return allowAllianceAccess;
-    }
-
-    public void setAllowAllianceAccess(Boolean allowAllianceAccess) {
-        this.allowAllianceAccess = allowAllianceAccess;
-    }
 
     public CorporationCustomsOfficesResponse allianceTaxRate(Float allianceTaxRate) {
         this.allianceTaxRate = allianceTaxRate;
@@ -258,23 +142,61 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         this.allowAccessWithStandings = allowAccessWithStandings;
     }
 
-    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevel) {
-        this.standingLevel = standingLevel;
+    public CorporationCustomsOfficesResponse allowAllianceAccess(Boolean allowAllianceAccess) {
+        this.allowAllianceAccess = allowAllianceAccess;
         return this;
     }
 
     /**
-     * Access is allowed only for entities with this level of standing or better
+     * allow_alliance_access boolean
      * 
-     * @return standingLevel
+     * @return allowAllianceAccess
      **/
-    @ApiModelProperty(example = "null", value = "Access is allowed only for entities with this level of standing or better")
-    public StandingLevelEnum getStandingLevel() {
-        return standingLevel;
+    @ApiModelProperty(example = "null", required = true, value = "allow_alliance_access boolean")
+    public Boolean getAllowAllianceAccess() {
+        return allowAllianceAccess;
     }
 
-    public void setStandingLevel(StandingLevelEnum standingLevel) {
-        this.standingLevel = standingLevel;
+    public void setAllowAllianceAccess(Boolean allowAllianceAccess) {
+        this.allowAllianceAccess = allowAllianceAccess;
+    }
+
+    public CorporationCustomsOfficesResponse badStandingTaxRate(Float badStandingTaxRate) {
+        this.badStandingTaxRate = badStandingTaxRate;
+        return this;
+    }
+
+    /**
+     * bad_standing_tax_rate number
+     * 
+     * @return badStandingTaxRate
+     **/
+    @ApiModelProperty(example = "null", value = "bad_standing_tax_rate number")
+    public Float getBadStandingTaxRate() {
+        return badStandingTaxRate;
+    }
+
+    public void setBadStandingTaxRate(Float badStandingTaxRate) {
+        this.badStandingTaxRate = badStandingTaxRate;
+    }
+
+    public CorporationCustomsOfficesResponse corporationTaxRate(Float corporationTaxRate) {
+        this.corporationTaxRate = corporationTaxRate;
+        return this;
+    }
+
+    /**
+     * corporation_tax_rate number
+     * 
+     * @return corporationTaxRate
+     **/
+    @ApiModelProperty(example = "null", value = "corporation_tax_rate number")
+    public Float getCorporationTaxRate() {
+        return corporationTaxRate;
+    }
+
+    public void setCorporationTaxRate(Float corporationTaxRate) {
+        this.corporationTaxRate = corporationTaxRate;
     }
 
     public CorporationCustomsOfficesResponse excellentStandingTaxRate(Float excellentStandingTaxRate) {
@@ -335,23 +257,101 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         this.neutralStandingTaxRate = neutralStandingTaxRate;
     }
 
-    public CorporationCustomsOfficesResponse badStandingTaxRate(Float badStandingTaxRate) {
-        this.badStandingTaxRate = badStandingTaxRate;
+    public CorporationCustomsOfficesResponse officeId(Long officeId) {
+        this.officeId = officeId;
         return this;
     }
 
     /**
-     * bad_standing_tax_rate number
+     * unique ID of this customs office
      * 
-     * @return badStandingTaxRate
+     * @return officeId
      **/
-    @ApiModelProperty(example = "null", value = "bad_standing_tax_rate number")
-    public Float getBadStandingTaxRate() {
-        return badStandingTaxRate;
+    @ApiModelProperty(example = "null", required = true, value = "unique ID of this customs office")
+    public Long getOfficeId() {
+        return officeId;
     }
 
-    public void setBadStandingTaxRate(Float badStandingTaxRate) {
-        this.badStandingTaxRate = badStandingTaxRate;
+    public void setOfficeId(Long officeId) {
+        this.officeId = officeId;
+    }
+
+    public CorporationCustomsOfficesResponse reinforceExitEnd(Integer reinforceExitEnd) {
+        this.reinforceExitEnd = reinforceExitEnd;
+        return this;
+    }
+
+    /**
+     * reinforce_exit_end integer minimum: 0 maximum: 23
+     * 
+     * @return reinforceExitEnd
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "reinforce_exit_end integer")
+    public Integer getReinforceExitEnd() {
+        return reinforceExitEnd;
+    }
+
+    public void setReinforceExitEnd(Integer reinforceExitEnd) {
+        this.reinforceExitEnd = reinforceExitEnd;
+    }
+
+    public CorporationCustomsOfficesResponse reinforceExitStart(Integer reinforceExitStart) {
+        this.reinforceExitStart = reinforceExitStart;
+        return this;
+    }
+
+    /**
+     * Together with reinforce_exit_end, marks a 2-hour period where this
+     * customs office could exit reinforcement mode during the day after initial
+     * attack minimum: 0 maximum: 23
+     * 
+     * @return reinforceExitStart
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Together with reinforce_exit_end, marks a 2-hour period where this customs office could exit reinforcement mode during the day after initial attack")
+    public Integer getReinforceExitStart() {
+        return reinforceExitStart;
+    }
+
+    public void setReinforceExitStart(Integer reinforceExitStart) {
+        this.reinforceExitStart = reinforceExitStart;
+    }
+
+    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevel) {
+        this.standingLevel = standingLevel;
+        return this;
+    }
+
+    /**
+     * Access is allowed only for entities with this level of standing or better
+     * 
+     * @return standingLevel
+     **/
+    @ApiModelProperty(example = "null", value = "Access is allowed only for entities with this level of standing or better")
+    public StandingLevelEnum getStandingLevel() {
+        return standingLevel;
+    }
+
+    public void setStandingLevel(StandingLevelEnum standingLevel) {
+        this.standingLevel = standingLevel;
+    }
+
+    public CorporationCustomsOfficesResponse systemId(Integer systemId) {
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * ID of the solar system this customs office is located in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the solar system this customs office is located in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
     }
 
     public CorporationCustomsOfficesResponse terribleStandingTaxRate(Float terribleStandingTaxRate) {
@@ -382,32 +382,31 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             return false;
         }
         CorporationCustomsOfficesResponse corporationCustomsOfficesResponse = (CorporationCustomsOfficesResponse) o;
-        return Objects.equals(this.officeId, corporationCustomsOfficesResponse.officeId)
-                && Objects.equals(this.systemId, corporationCustomsOfficesResponse.systemId)
-                && Objects.equals(this.reinforceExitStart, corporationCustomsOfficesResponse.reinforceExitStart)
-                && Objects.equals(this.reinforceExitEnd, corporationCustomsOfficesResponse.reinforceExitEnd)
-                && Objects.equals(this.corporationTaxRate, corporationCustomsOfficesResponse.corporationTaxRate)
-                && Objects.equals(this.allowAllianceAccess, corporationCustomsOfficesResponse.allowAllianceAccess)
-                && Objects.equals(this.allianceTaxRate, corporationCustomsOfficesResponse.allianceTaxRate)
+        return Objects.equals(this.allianceTaxRate, corporationCustomsOfficesResponse.allianceTaxRate)
                 && Objects.equals(this.allowAccessWithStandings,
                         corporationCustomsOfficesResponse.allowAccessWithStandings)
-                && Objects.equals(this.standingLevel, corporationCustomsOfficesResponse.standingLevel)
+                && Objects.equals(this.allowAllianceAccess, corporationCustomsOfficesResponse.allowAllianceAccess)
+                && Objects.equals(this.badStandingTaxRate, corporationCustomsOfficesResponse.badStandingTaxRate)
+                && Objects.equals(this.corporationTaxRate, corporationCustomsOfficesResponse.corporationTaxRate)
                 && Objects.equals(this.excellentStandingTaxRate,
                         corporationCustomsOfficesResponse.excellentStandingTaxRate)
                 && Objects.equals(this.goodStandingTaxRate, corporationCustomsOfficesResponse.goodStandingTaxRate)
                 && Objects
                         .equals(this.neutralStandingTaxRate, corporationCustomsOfficesResponse.neutralStandingTaxRate)
-                && Objects.equals(this.badStandingTaxRate, corporationCustomsOfficesResponse.badStandingTaxRate)
+                && Objects.equals(this.officeId, corporationCustomsOfficesResponse.officeId)
+                && Objects.equals(this.reinforceExitEnd, corporationCustomsOfficesResponse.reinforceExitEnd)
+                && Objects.equals(this.reinforceExitStart, corporationCustomsOfficesResponse.reinforceExitStart)
+                && Objects.equals(this.standingLevel, corporationCustomsOfficesResponse.standingLevel)
+                && Objects.equals(this.systemId, corporationCustomsOfficesResponse.systemId)
                 && Objects.equals(this.terribleStandingTaxRate,
                         corporationCustomsOfficesResponse.terribleStandingTaxRate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(officeId, systemId, reinforceExitStart, reinforceExitEnd, corporationTaxRate,
-                allowAllianceAccess, allianceTaxRate, allowAccessWithStandings, standingLevel,
-                excellentStandingTaxRate, goodStandingTaxRate, neutralStandingTaxRate, badStandingTaxRate,
-                terribleStandingTaxRate);
+        return Objects.hash(allianceTaxRate, allowAccessWithStandings, allowAllianceAccess, badStandingTaxRate,
+                corporationTaxRate, excellentStandingTaxRate, goodStandingTaxRate, neutralStandingTaxRate, officeId,
+                reinforceExitEnd, reinforceExitStart, standingLevel, systemId, terribleStandingTaxRate);
     }
 
     @Override
@@ -415,19 +414,19 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationCustomsOfficesResponse {\n");
 
-        sb.append("    officeId: ").append(toIndentedString(officeId)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
-        sb.append("    reinforceExitStart: ").append(toIndentedString(reinforceExitStart)).append("\n");
-        sb.append("    reinforceExitEnd: ").append(toIndentedString(reinforceExitEnd)).append("\n");
-        sb.append("    corporationTaxRate: ").append(toIndentedString(corporationTaxRate)).append("\n");
-        sb.append("    allowAllianceAccess: ").append(toIndentedString(allowAllianceAccess)).append("\n");
         sb.append("    allianceTaxRate: ").append(toIndentedString(allianceTaxRate)).append("\n");
         sb.append("    allowAccessWithStandings: ").append(toIndentedString(allowAccessWithStandings)).append("\n");
-        sb.append("    standingLevel: ").append(toIndentedString(standingLevel)).append("\n");
+        sb.append("    allowAllianceAccess: ").append(toIndentedString(allowAllianceAccess)).append("\n");
+        sb.append("    badStandingTaxRate: ").append(toIndentedString(badStandingTaxRate)).append("\n");
+        sb.append("    corporationTaxRate: ").append(toIndentedString(corporationTaxRate)).append("\n");
         sb.append("    excellentStandingTaxRate: ").append(toIndentedString(excellentStandingTaxRate)).append("\n");
         sb.append("    goodStandingTaxRate: ").append(toIndentedString(goodStandingTaxRate)).append("\n");
         sb.append("    neutralStandingTaxRate: ").append(toIndentedString(neutralStandingTaxRate)).append("\n");
-        sb.append("    badStandingTaxRate: ").append(toIndentedString(badStandingTaxRate)).append("\n");
+        sb.append("    officeId: ").append(toIndentedString(officeId)).append("\n");
+        sb.append("    reinforceExitEnd: ").append(toIndentedString(reinforceExitEnd)).append("\n");
+        sb.append("    reinforceExitStart: ").append(toIndentedString(reinforceExitStart)).append("\n");
+        sb.append("    standingLevel: ").append(toIndentedString(standingLevel)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    terribleStandingTaxRate: ").append(toIndentedString(terribleStandingTaxRate)).append("\n");
         sb.append("}");
         return sb.toString();

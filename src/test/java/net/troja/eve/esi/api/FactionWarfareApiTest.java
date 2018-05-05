@@ -45,7 +45,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
     @Test
     @Ignore("Needs character in faction warfare")
     public void getCharactersCharacterIdFwStatsTest() throws ApiException {
-        CharacterFwStatsResponse response = api.getCharactersCharacterIdFwStats(characterId, DATASOURCE, null, null, null);
+        CharacterFwStatsResponse response = api.getCharactersCharacterIdFwStats(characterId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -62,7 +62,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
     @Ignore("Needs corporation in faction warfare")
     public void getCorporationsCorporationIdFwStatsTest() throws ApiException {
         Integer corporationId = null;
-        CorporationFwStatsResponse response = api.getCorporationsCorporationIdFwStats(corporationId, DATASOURCE, null, null, null);
+        CorporationFwStatsResponse response = api.getCorporationsCorporationIdFwStats(corporationId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -78,7 +78,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwLeaderboardsTest() throws ApiException {
-        final FactionWarfareLeaderboardResponse response = api.getFwLeaderboards(DATASOURCE, null, null);
+        final FactionWarfareLeaderboardResponse response = api.getFwLeaderboards(DATASOURCE, null, null, null);
 
         assertThat(response.getKills(), notNullValue());
         assertThat(response.getKills().getActiveTotal().size(), greaterThan(0));
@@ -95,7 +95,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwLeaderboardsCharactersTest() throws ApiException {
-        final FactionWarfareLeaderboardCharactersResponse response = api.getFwLeaderboardsCharacters(DATASOURCE, null, null);
+        final FactionWarfareLeaderboardCharactersResponse response = api.getFwLeaderboardsCharacters(DATASOURCE, null, null, null);
 
         assertThat(response.getKills(), notNullValue());
         assertThat(response.getKills().getActiveTotal().size(), greaterThan(0));
@@ -112,7 +112,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwLeaderboardsCorporationsTest() throws ApiException {
-        final FactionWarfareLeaderboardCorporationsResponse response = api.getFwLeaderboardsCorporations(DATASOURCE, null, null);
+        final FactionWarfareLeaderboardCorporationsResponse response = api.getFwLeaderboardsCorporations(DATASOURCE, null, null, null);
 
         assertThat(response.getKills(), notNullValue());
         assertThat(response.getKills().getActiveTotal().size(), greaterThan(0));
@@ -129,7 +129,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwStatsTest() throws ApiException {
-        final List<FactionWarfareStatsResponse> response = api.getFwStats(DATASOURCE, null, null);
+        final List<FactionWarfareStatsResponse> response = api.getFwStats(DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -146,7 +146,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwSystemsTest() throws ApiException {
-        final List<FactionWarfareSystemsResponse> response = api.getFwSystems(DATASOURCE, null, null);
+        final List<FactionWarfareSystemsResponse> response = api.getFwSystems(DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -163,7 +163,7 @@ public class FactionWarfareApiTest extends GeneralApiTest {
      */
     @Test
     public void getFwWarsTest() throws ApiException {
-        final List<FactionWarfareWarsResponse> response = api.getFwWars(DATASOURCE, null, null);
+        final List<FactionWarfareWarsResponse> response = api.getFwWars(DATASOURCE, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

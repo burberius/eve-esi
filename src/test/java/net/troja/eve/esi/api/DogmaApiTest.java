@@ -39,7 +39,7 @@ public class DogmaApiTest extends GeneralApiTest {
      */
     @Test
     public void getDogmaAttributesTest() throws ApiException {
-        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null, null);
+        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null, null, null);
 
         assertThat(response.size(), notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -57,10 +57,8 @@ public class DogmaApiTest extends GeneralApiTest {
     @Test
     public void getDogmaAttributesAttributeIdTest() throws ApiException {
         final Integer attributeId = 165;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final DogmaAttributeResponse response = api.getDogmaAttributesAttributeId(attributeId, DATASOURCE, userAgent,
-                xUserAgent);
+        final DogmaAttributeResponse response = api.getDogmaAttributesAttributeId(attributeId, DATASOURCE, null, null,
+                null);
 
         assertThat(response.getAttributeId(), equalTo(attributeId));
         assertThat(response.getName(), equalTo("intelligence"));
@@ -77,9 +75,7 @@ public class DogmaApiTest extends GeneralApiTest {
      */
     @Test
     public void getDogmaEffectsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getDogmaEffects(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getDogmaEffects(DATASOURCE, null, null, null);
 
         assertThat(response.size(), notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -97,9 +93,7 @@ public class DogmaApiTest extends GeneralApiTest {
     @Test
     public void getDogmaEffectsEffectIdTest() throws ApiException {
         final Integer effectId = 254;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final DogmaEffectResponse response = api.getDogmaEffectsEffectId(effectId, DATASOURCE, userAgent, xUserAgent);
+        final DogmaEffectResponse response = api.getDogmaEffectsEffectId(effectId, DATASOURCE, null, null, null);
 
         assertThat(response.getEffectId(), equalTo(effectId));
         assertThat(response.getName(), equalTo("shadowBarrageFalloffWithFalloffPostPercentBarrageFalloffMutator"));

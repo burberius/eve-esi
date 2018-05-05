@@ -37,9 +37,6 @@ import java.io.Serializable;
 public class CharacterStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("year")
-    private Integer year = null;
-
     @JsonProperty("character")
     private CharacterStatsCharacter character = null;
 
@@ -76,24 +73,8 @@ public class CharacterStatsResponse implements Serializable {
     @JsonProperty("travel")
     private CharacterStatsTravel travel = null;
 
-    public CharacterStatsResponse year(Integer year) {
-        this.year = year;
-        return this;
-    }
-
-    /**
-     * Gregorian year for this set of aggregates
-     * 
-     * @return year
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Gregorian year for this set of aggregates")
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
+    @JsonProperty("year")
+    private Integer year = null;
 
     public CharacterStatsResponse character(CharacterStatsCharacter character) {
         this.character = character;
@@ -323,6 +304,25 @@ public class CharacterStatsResponse implements Serializable {
         this.travel = travel;
     }
 
+    public CharacterStatsResponse year(Integer year) {
+        this.year = year;
+        return this;
+    }
+
+    /**
+     * Gregorian year for this set of aggregates
+     * 
+     * @return year
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Gregorian year for this set of aggregates")
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -332,8 +332,7 @@ public class CharacterStatsResponse implements Serializable {
             return false;
         }
         CharacterStatsResponse characterStatsResponse = (CharacterStatsResponse) o;
-        return Objects.equals(this.year, characterStatsResponse.year)
-                && Objects.equals(this.character, characterStatsResponse.character)
+        return Objects.equals(this.character, characterStatsResponse.character)
                 && Objects.equals(this.combat, characterStatsResponse.combat)
                 && Objects.equals(this.industry, characterStatsResponse.industry)
                 && Objects.equals(this.inventory, characterStatsResponse.inventory)
@@ -344,13 +343,14 @@ public class CharacterStatsResponse implements Serializable {
                 && Objects.equals(this.orbital, characterStatsResponse.orbital)
                 && Objects.equals(this.pve, characterStatsResponse.pve)
                 && Objects.equals(this.social, characterStatsResponse.social)
-                && Objects.equals(this.travel, characterStatsResponse.travel);
+                && Objects.equals(this.travel, characterStatsResponse.travel)
+                && Objects.equals(this.year, characterStatsResponse.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(year, character, combat, industry, inventory, isk, market, mining, module, orbital, pve,
-                social, travel);
+        return Objects.hash(character, combat, industry, inventory, isk, market, mining, module, orbital, pve, social,
+                travel, year);
     }
 
     @Override
@@ -358,7 +358,6 @@ public class CharacterStatsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsResponse {\n");
 
-        sb.append("    year: ").append(toIndentedString(year)).append("\n");
         sb.append("    character: ").append(toIndentedString(character)).append("\n");
         sb.append("    combat: ").append(toIndentedString(combat)).append("\n");
         sb.append("    industry: ").append(toIndentedString(industry)).append("\n");
@@ -371,6 +370,7 @@ public class CharacterStatsResponse implements Serializable {
         sb.append("    pve: ").append(toIndentedString(pve)).append("\n");
         sb.append("    social: ").append(toIndentedString(social)).append("\n");
         sb.append("    travel: ").append(toIndentedString(travel)).append("\n");
+        sb.append("    year: ").append(toIndentedString(year)).append("\n");
         sb.append("}");
         return sb.toString();
     }

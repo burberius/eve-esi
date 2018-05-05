@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class CorporationStarbaseFuel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
-
     @JsonProperty("quantity")
     private Integer quantity = null;
 
-    public CorporationStarbaseFuel typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
     public CorporationStarbaseFuel quantity(Integer quantity) {
         this.quantity = quantity;
@@ -69,6 +50,25 @@ public class CorporationStarbaseFuel implements Serializable {
         this.quantity = quantity;
     }
 
+    public CorporationStarbaseFuel typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class CorporationStarbaseFuel implements Serializable {
             return false;
         }
         CorporationStarbaseFuel corporationStarbaseFuel = (CorporationStarbaseFuel) o;
-        return Objects.equals(this.typeId, corporationStarbaseFuel.typeId)
-                && Objects.equals(this.quantity, corporationStarbaseFuel.quantity);
+        return Objects.equals(this.quantity, corporationStarbaseFuel.quantity)
+                && Objects.equals(this.typeId, corporationStarbaseFuel.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(typeId, quantity);
+        return Objects.hash(quantity, typeId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class CorporationStarbaseFuel implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStarbaseFuel {\n");
 
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

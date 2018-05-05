@@ -25,35 +25,35 @@ import java.io.Serializable;
 public class OpportunitiesTasksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("task_id")
-    private Integer taskId = null;
+    @JsonProperty("description")
+    private String description = null;
 
     @JsonProperty("name")
     private String name = null;
 
-    @JsonProperty("description")
-    private String description = null;
-
     @JsonProperty("notification")
     private String notification = null;
 
-    public OpportunitiesTasksResponse taskId(Integer taskId) {
-        this.taskId = taskId;
+    @JsonProperty("task_id")
+    private Integer taskId = null;
+
+    public OpportunitiesTasksResponse description(String description) {
+        this.description = description;
         return this;
     }
 
     /**
-     * task_id integer
+     * description string
      * 
-     * @return taskId
+     * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "task_id integer")
-    public Integer getTaskId() {
-        return taskId;
+    @ApiModelProperty(example = "null", required = true, value = "description string")
+    public String getDescription() {
+        return description;
     }
 
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public OpportunitiesTasksResponse name(String name) {
@@ -75,25 +75,6 @@ public class OpportunitiesTasksResponse implements Serializable {
         this.name = name;
     }
 
-    public OpportunitiesTasksResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public OpportunitiesTasksResponse notification(String notification) {
         this.notification = notification;
         return this;
@@ -113,6 +94,25 @@ public class OpportunitiesTasksResponse implements Serializable {
         this.notification = notification;
     }
 
+    public OpportunitiesTasksResponse taskId(Integer taskId) {
+        this.taskId = taskId;
+        return this;
+    }
+
+    /**
+     * task_id integer
+     * 
+     * @return taskId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "task_id integer")
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,15 +122,15 @@ public class OpportunitiesTasksResponse implements Serializable {
             return false;
         }
         OpportunitiesTasksResponse opportunitiesTasksResponse = (OpportunitiesTasksResponse) o;
-        return Objects.equals(this.taskId, opportunitiesTasksResponse.taskId)
+        return Objects.equals(this.description, opportunitiesTasksResponse.description)
                 && Objects.equals(this.name, opportunitiesTasksResponse.name)
-                && Objects.equals(this.description, opportunitiesTasksResponse.description)
-                && Objects.equals(this.notification, opportunitiesTasksResponse.notification);
+                && Objects.equals(this.notification, opportunitiesTasksResponse.notification)
+                && Objects.equals(this.taskId, opportunitiesTasksResponse.taskId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(taskId, name, description, notification);
+        return Objects.hash(description, name, notification, taskId);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class OpportunitiesTasksResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class OpportunitiesTasksResponse {\n");
 
-        sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
+        sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

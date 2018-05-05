@@ -26,30 +26,11 @@ import java.io.Serializable;
 public class CharacterOpportunitiesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("task_id")
-    private Integer taskId = null;
-
     @JsonProperty("completed_at")
     private OffsetDateTime completedAt = null;
 
-    public CharacterOpportunitiesResponse taskId(Integer taskId) {
-        this.taskId = taskId;
-        return this;
-    }
-
-    /**
-     * task_id integer
-     * 
-     * @return taskId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "task_id integer")
-    public Integer getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
-    }
+    @JsonProperty("task_id")
+    private Integer taskId = null;
 
     public CharacterOpportunitiesResponse completedAt(OffsetDateTime completedAt) {
         this.completedAt = completedAt;
@@ -70,6 +51,25 @@ public class CharacterOpportunitiesResponse implements Serializable {
         this.completedAt = completedAt;
     }
 
+    public CharacterOpportunitiesResponse taskId(Integer taskId) {
+        this.taskId = taskId;
+        return this;
+    }
+
+    /**
+     * task_id integer
+     * 
+     * @return taskId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "task_id integer")
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -79,13 +79,13 @@ public class CharacterOpportunitiesResponse implements Serializable {
             return false;
         }
         CharacterOpportunitiesResponse characterOpportunitiesResponse = (CharacterOpportunitiesResponse) o;
-        return Objects.equals(this.taskId, characterOpportunitiesResponse.taskId)
-                && Objects.equals(this.completedAt, characterOpportunitiesResponse.completedAt);
+        return Objects.equals(this.completedAt, characterOpportunitiesResponse.completedAt)
+                && Objects.equals(this.taskId, characterOpportunitiesResponse.taskId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(taskId, completedAt);
+        return Objects.hash(completedAt, taskId);
     }
 
     @Override
@@ -93,8 +93,8 @@ public class CharacterOpportunitiesResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOpportunitiesResponse {\n");
 
-        sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
         sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
+        sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

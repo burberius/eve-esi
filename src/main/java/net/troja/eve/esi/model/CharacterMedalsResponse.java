@@ -29,23 +29,23 @@ import java.io.Serializable;
 public class CharacterMedalsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("medal_id")
-    private Integer medalId = null;
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
 
-    @JsonProperty("title")
-    private String title = null;
+    @JsonProperty("date")
+    private OffsetDateTime date = null;
 
     @JsonProperty("description")
     private String description = null;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
+    @JsonProperty("graphics")
+    private List<CharacterMedalsGraphic> graphics = new ArrayList<CharacterMedalsGraphic>();
 
     @JsonProperty("issuer_id")
     private Integer issuerId = null;
 
-    @JsonProperty("date")
-    private OffsetDateTime date = null;
+    @JsonProperty("medal_id")
+    private Integer medalId = null;
 
     @JsonProperty("reason")
     private String reason = null;
@@ -83,45 +83,45 @@ public class CharacterMedalsResponse implements Serializable {
     @JsonProperty("status")
     private StatusEnum status = null;
 
-    @JsonProperty("graphics")
-    private List<CharacterMedalsGraphic> graphics = new ArrayList<CharacterMedalsGraphic>();
+    @JsonProperty("title")
+    private String title = null;
 
-    public CharacterMedalsResponse medalId(Integer medalId) {
-        this.medalId = medalId;
+    public CharacterMedalsResponse corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
         return this;
     }
 
     /**
-     * medal_id integer
+     * corporation_id integer
      * 
-     * @return medalId
+     * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "medal_id integer")
-    public Integer getMedalId() {
-        return medalId;
+    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    public Integer getCorporationId() {
+        return corporationId;
     }
 
-    public void setMedalId(Integer medalId) {
-        this.medalId = medalId;
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
     }
 
-    public CharacterMedalsResponse title(String title) {
-        this.title = title;
+    public CharacterMedalsResponse date(OffsetDateTime date) {
+        this.date = date;
         return this;
     }
 
     /**
-     * title string
+     * date string
      * 
-     * @return title
+     * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "title string")
-    public String getTitle() {
-        return title;
+    @ApiModelProperty(example = "null", required = true, value = "date string")
+    public OffsetDateTime getDate() {
+        return date;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDate(OffsetDateTime date) {
+        this.date = date;
     }
 
     public CharacterMedalsResponse description(String description) {
@@ -143,23 +143,28 @@ public class CharacterMedalsResponse implements Serializable {
         this.description = description;
     }
 
-    public CharacterMedalsResponse corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
+    public CharacterMedalsResponse graphics(List<CharacterMedalsGraphic> graphics) {
+        this.graphics = graphics;
+        return this;
+    }
+
+    public CharacterMedalsResponse addGraphicsItem(CharacterMedalsGraphic graphicsItem) {
+        this.graphics.add(graphicsItem);
         return this;
     }
 
     /**
-     * corporation_id integer
+     * graphics array
      * 
-     * @return corporationId
+     * @return graphics
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
-    public Integer getCorporationId() {
-        return corporationId;
+    @ApiModelProperty(example = "null", required = true, value = "graphics array")
+    public List<CharacterMedalsGraphic> getGraphics() {
+        return graphics;
     }
 
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
+    public void setGraphics(List<CharacterMedalsGraphic> graphics) {
+        this.graphics = graphics;
     }
 
     public CharacterMedalsResponse issuerId(Integer issuerId) {
@@ -181,23 +186,23 @@ public class CharacterMedalsResponse implements Serializable {
         this.issuerId = issuerId;
     }
 
-    public CharacterMedalsResponse date(OffsetDateTime date) {
-        this.date = date;
+    public CharacterMedalsResponse medalId(Integer medalId) {
+        this.medalId = medalId;
         return this;
     }
 
     /**
-     * date string
+     * medal_id integer
      * 
-     * @return date
+     * @return medalId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "date string")
-    public OffsetDateTime getDate() {
-        return date;
+    @ApiModelProperty(example = "null", required = true, value = "medal_id integer")
+    public Integer getMedalId() {
+        return medalId;
     }
 
-    public void setDate(OffsetDateTime date) {
-        this.date = date;
+    public void setMedalId(Integer medalId) {
+        this.medalId = medalId;
     }
 
     public CharacterMedalsResponse reason(String reason) {
@@ -238,28 +243,23 @@ public class CharacterMedalsResponse implements Serializable {
         this.status = status;
     }
 
-    public CharacterMedalsResponse graphics(List<CharacterMedalsGraphic> graphics) {
-        this.graphics = graphics;
-        return this;
-    }
-
-    public CharacterMedalsResponse addGraphicsItem(CharacterMedalsGraphic graphicsItem) {
-        this.graphics.add(graphicsItem);
+    public CharacterMedalsResponse title(String title) {
+        this.title = title;
         return this;
     }
 
     /**
-     * graphics array
+     * title string
      * 
-     * @return graphics
+     * @return title
      **/
-    @ApiModelProperty(example = "null", required = true, value = "graphics array")
-    public List<CharacterMedalsGraphic> getGraphics() {
-        return graphics;
+    @ApiModelProperty(example = "null", required = true, value = "title string")
+    public String getTitle() {
+        return title;
     }
 
-    public void setGraphics(List<CharacterMedalsGraphic> graphics) {
-        this.graphics = graphics;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
@@ -271,20 +271,20 @@ public class CharacterMedalsResponse implements Serializable {
             return false;
         }
         CharacterMedalsResponse characterMedalsResponse = (CharacterMedalsResponse) o;
-        return Objects.equals(this.medalId, characterMedalsResponse.medalId)
-                && Objects.equals(this.title, characterMedalsResponse.title)
-                && Objects.equals(this.description, characterMedalsResponse.description)
-                && Objects.equals(this.corporationId, characterMedalsResponse.corporationId)
-                && Objects.equals(this.issuerId, characterMedalsResponse.issuerId)
+        return Objects.equals(this.corporationId, characterMedalsResponse.corporationId)
                 && Objects.equals(this.date, characterMedalsResponse.date)
+                && Objects.equals(this.description, characterMedalsResponse.description)
+                && Objects.equals(this.graphics, characterMedalsResponse.graphics)
+                && Objects.equals(this.issuerId, characterMedalsResponse.issuerId)
+                && Objects.equals(this.medalId, characterMedalsResponse.medalId)
                 && Objects.equals(this.reason, characterMedalsResponse.reason)
                 && Objects.equals(this.status, characterMedalsResponse.status)
-                && Objects.equals(this.graphics, characterMedalsResponse.graphics);
+                && Objects.equals(this.title, characterMedalsResponse.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(medalId, title, description, corporationId, issuerId, date, reason, status, graphics);
+        return Objects.hash(corporationId, date, description, graphics, issuerId, medalId, reason, status, title);
     }
 
     @Override
@@ -292,15 +292,15 @@ public class CharacterMedalsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterMedalsResponse {\n");
 
-        sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
-        sb.append("    title: ").append(toIndentedString(title)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
-        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    graphics: ").append(toIndentedString(graphics)).append("\n");
+        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
+        sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    graphics: ").append(toIndentedString(graphics)).append("\n");
+        sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -60,7 +60,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseAncestriesTest() throws ApiException {
         String language = null;
-        List<UniverseAncestriesResponse> response = api.getUniverseAncestries(DATASOURCE, language, null, null);
+        List<UniverseAncestriesResponse> response = api.getUniverseAncestries(DATASOURCE, null, language, null, null);
 
         assertThat(response.size(), equalTo(42));
         final UniverseAncestriesResponse ancestriesResponse = response.get(0);
@@ -70,7 +70,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseAsteroidBeltsAsteroidBeltIdTest() throws ApiException {
         Integer asteroidBeltId = 40000018;
-        UniverseAsteroidBeltsResponse response = api.getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId, DATASOURCE, null, null);
+        UniverseAsteroidBeltsResponse response = api.getUniverseAsteroidBeltsAsteroidBeltId(asteroidBeltId, DATASOURCE, null, null, null);
         assertThat(response, notNullValue());
         assertThat(response.getSystemId(), equalTo(30000001));
     }
@@ -89,9 +89,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseBloodlinesTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<BloodlinesResponse> response = api.getUniverseBloodlines(DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final List<BloodlinesResponse> response = api.getUniverseBloodlines(DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.size(), equalTo(15));
         final BloodlinesResponse bloodlinesResponse = response.get(0);
@@ -112,9 +110,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseCategoriesTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseCategories(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseCategories(DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(43));
     }
@@ -134,9 +130,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseCategoriesCategoryIdTest() throws ApiException {
         final Integer categoryId = 8;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final CategoryResponse response = api.getUniverseCategoriesCategoryId(categoryId, DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.getName(), equalTo("Charge"));
     }
@@ -155,9 +149,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseConstellationsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseConstellations(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseConstellations(DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(1120));
     }
@@ -178,10 +170,8 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseConstellationsConstellationIdTest() throws ApiException {
         final Integer constellationId = 20000006;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, DATASOURCE, LANGUAGE, userAgent,
-                xUserAgent);
+        final ConstellationResponse response = api.getUniverseConstellationsConstellationId(constellationId, DATASOURCE, null, LANGUAGE, null,
+                null);
 
         assertThat(response.getName(), equalTo("Sazdih"));
     }
@@ -200,9 +190,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseFactionsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<FactionsResponse> response = api.getUniverseFactions(DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final List<FactionsResponse> response = api.getUniverseFactions(DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.size(), equalTo(22));
         final FactionsResponse factionsResponse = response.get(0);
@@ -223,9 +211,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseGraphicsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseGraphics(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseGraphics(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -245,9 +231,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseGraphicsGraphicIdTest() throws ApiException {
         final Integer graphicId = 1843;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final GraphicResponse response = api.getUniverseGraphicsGraphicId(graphicId, DATASOURCE, userAgent, xUserAgent);
+        final GraphicResponse response = api.getUniverseGraphicsGraphicId(graphicId, DATASOURCE, null, null, null);
 
         assertThat(response.getGraphicId(), equalTo(graphicId));
         assertThat(response.getSofFationName(), equalTo("creodron"));
@@ -268,9 +252,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseGroupsTest() throws ApiException {
         final Integer page = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseGroups(DATASOURCE, page, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseGroups(DATASOURCE, null, page, null, null);
 
         assertThat(response.size(), equalTo(1000));
     }
@@ -290,9 +272,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseGroupsGroupIdTest() throws ApiException {
         final Integer groupId = 5;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final GroupResponse response = api.getUniverseGroupsGroupId(groupId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final GroupResponse response = api.getUniverseGroupsGroupId(groupId, DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.getName(), equalTo("Solar System"));
     }
@@ -312,9 +292,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseMoonsMoonIdTest() throws ApiException {
         final Integer moonId = 40001588;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final MoonResponse response = api.getUniverseMoonsMoonId(moonId, DATASOURCE, userAgent, xUserAgent);
+        final MoonResponse response = api.getUniverseMoonsMoonId(moonId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Fovihi III - Moon 2"));
     }
@@ -334,9 +312,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniversePlanetsPlanetIdTest() throws ApiException {
         final Integer planetId = 40001593;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final PlanetResponse response = api.getUniversePlanetsPlanetId(planetId, DATASOURCE, userAgent, xUserAgent);
+        final PlanetResponse response = api.getUniversePlanetsPlanetId(planetId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Fovihi V"));
     }
@@ -355,9 +331,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseRacesTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<RacesResponse> response = api.getUniverseRaces(DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final List<RacesResponse> response = api.getUniverseRaces(DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.size(), equalTo(4));
         final RacesResponse racesResponse = response.get(0);
@@ -378,9 +352,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseRegionsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseRegions(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseRegions(DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(100));
     }
@@ -400,9 +372,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseRegionsRegionIdTest() throws ApiException {
         final Integer regionId = REGION_ID_THE_FORGE;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final RegionResponse response = api.getUniverseRegionsRegionId(regionId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final RegionResponse response = api.getUniverseRegionsRegionId(regionId, DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.getName(), equalTo("The Forge"));
     }
@@ -422,7 +392,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseStargatesStargateIdTest() throws ApiException {
         final Integer stargateId = 50000277;
-        final StargateResponse response = api.getUniverseStargatesStargateId(stargateId, DATASOURCE, null, null);
+        final StargateResponse response = api.getUniverseStargatesStargateId(stargateId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Stargate (Kiereend)"));
     }
@@ -438,7 +408,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseStarsStarIdTest() throws ApiException {
         final int starId = 40001581;
-        final StarResponse response = api.getUniverseStarsStarId(starId, DATASOURCE, null, null);
+        final StarResponse response = api.getUniverseStarsStarId(starId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Fovihi - Star"));
     }
@@ -457,9 +427,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseStationsStationIdTest() throws ApiException {
         final Integer stationId = 60012541;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final StationResponse response = api.getUniverseStationsStationId(stationId, DATASOURCE, userAgent, xUserAgent);
+        final StationResponse response = api.getUniverseStationsStationId(stationId, DATASOURCE, null, null, null);
 
         assertThat(response.getName(), equalTo("Fovihi V - Ammatar Consulate Bureau"));
     }
@@ -478,9 +446,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseStructuresTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Long> response = api.getUniverseStructures(DATASOURCE, userAgent, xUserAgent);
+        final List<Long> response = api.getUniverseStructures(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -514,7 +480,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseSystemJumpsTest() throws ApiException {
-        final List<SystemJumpsResponse> response = api.getUniverseSystemJumps(DATASOURCE, null, null);
+        final List<SystemJumpsResponse> response = api.getUniverseSystemJumps(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getSystemId(), greaterThan(30000));
@@ -532,7 +498,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseSystemKillsTest() throws ApiException {
-        final List<SystemKillsResponse> response = api.getUniverseSystemKills(DATASOURCE, null, null);
+        final List<SystemKillsResponse> response = api.getUniverseSystemKills(DATASOURCE, null, null, null);
 
         assertThat(response.size(), greaterThan(0));
         assertThat(response.get(0).getSystemId(), greaterThan(30000));
@@ -552,9 +518,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseSystemsTest() throws ApiException {
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseSystems(DATASOURCE, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseSystems(DATASOURCE, null, null, null);
 
         assertThat(response.size(), equalTo(8035));
     }
@@ -573,9 +537,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseSystemsSystemIdTest() throws ApiException {
         final Integer systemId = 30000023;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final SystemResponse response = api.getUniverseSystemsSystemId(systemId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final SystemResponse response = api.getUniverseSystemsSystemId(systemId, DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.getName(), equalTo("Fovihi"));
     }
@@ -595,9 +557,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseTypesTest() throws ApiException {
         final Integer page = null;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<Integer> response = api.getUniverseTypes(DATASOURCE, page, userAgent, xUserAgent);
+        final List<Integer> response = api.getUniverseTypes(DATASOURCE, null, page, null, null);
 
         assertThat(response.size(), equalTo(1000));
     }
@@ -616,9 +576,7 @@ public class UniverseApiTest extends GeneralApiTest {
     @Test
     public void getUniverseTypesTypeIdTest() throws ApiException {
         final Integer typeId = TYPE_ID_VELDSPAR;
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final TypeResponse response = api.getUniverseTypesTypeId(typeId, DATASOURCE, LANGUAGE, userAgent, xUserAgent);
+        final TypeResponse response = api.getUniverseTypesTypeId(typeId, DATASOURCE, null, LANGUAGE, null, null);
 
         assertThat(response.getName(), equalTo(NAME_VELDSPAR));
     }
@@ -674,9 +632,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void postUniverseNamesTest() throws ApiException {
         final List<Integer> ids = new ArrayList<>();
         ids.add(CHARACTER_ID_CHRIBBA);
-        final String userAgent = null;
-        final String xUserAgent = null;
-        final List<UniverseNamesResponse> response = api.postUniverseNames(ids, DATASOURCE, userAgent, xUserAgent);
+        final List<UniverseNamesResponse> response = api.postUniverseNames(ids, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(1));
         final UniverseNamesResponse result = response.get(0);

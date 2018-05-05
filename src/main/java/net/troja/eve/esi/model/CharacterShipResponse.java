@@ -25,33 +25,14 @@ import java.io.Serializable;
 public class CharacterShipResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("ship_type_id")
-    private Integer shipTypeId = null;
-
     @JsonProperty("ship_item_id")
     private Long shipItemId = null;
 
     @JsonProperty("ship_name")
     private String shipName = null;
 
-    public CharacterShipResponse shipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
-        return this;
-    }
-
-    /**
-     * ship_type_id integer
-     * 
-     * @return shipTypeId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
-    public Integer getShipTypeId() {
-        return shipTypeId;
-    }
-
-    public void setShipTypeId(Integer shipTypeId) {
-        this.shipTypeId = shipTypeId;
-    }
+    @JsonProperty("ship_type_id")
+    private Integer shipTypeId = null;
 
     public CharacterShipResponse shipItemId(Long shipItemId) {
         this.shipItemId = shipItemId;
@@ -93,6 +74,25 @@ public class CharacterShipResponse implements Serializable {
         this.shipName = shipName;
     }
 
+    public CharacterShipResponse shipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+        return this;
+    }
+
+    /**
+     * ship_type_id integer
+     * 
+     * @return shipTypeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    public Integer getShipTypeId() {
+        return shipTypeId;
+    }
+
+    public void setShipTypeId(Integer shipTypeId) {
+        this.shipTypeId = shipTypeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -102,14 +102,14 @@ public class CharacterShipResponse implements Serializable {
             return false;
         }
         CharacterShipResponse characterShipResponse = (CharacterShipResponse) o;
-        return Objects.equals(this.shipTypeId, characterShipResponse.shipTypeId)
-                && Objects.equals(this.shipItemId, characterShipResponse.shipItemId)
-                && Objects.equals(this.shipName, characterShipResponse.shipName);
+        return Objects.equals(this.shipItemId, characterShipResponse.shipItemId)
+                && Objects.equals(this.shipName, characterShipResponse.shipName)
+                && Objects.equals(this.shipTypeId, characterShipResponse.shipTypeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shipTypeId, shipItemId, shipName);
+        return Objects.hash(shipItemId, shipName, shipTypeId);
     }
 
     @Override
@@ -117,9 +117,9 @@ public class CharacterShipResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterShipResponse {\n");
 
-        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    shipItemId: ").append(toIndentedString(shipItemId)).append("\n");
         sb.append("    shipName: ").append(toIndentedString(shipName)).append("\n");
+        sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

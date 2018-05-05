@@ -14,7 +14,6 @@ import net.troja.eve.esi.model.CorporationAssetsLocationsResponse;
 import net.troja.eve.esi.model.CorporationAssetsNamesResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
 import net.troja.eve.esi.model.Forbidden;
-import net.troja.eve.esi.model.InternalServerError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +49,9 @@ public class AssetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -63,7 +65,7 @@ public class AssetsApi {
      *             if fails to make API call
      */
     public List<CharacterAssetsResponse> getCharactersCharacterIdAssets(Integer characterId, String datasource,
-            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -86,15 +88,15 @@ public class AssetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -116,6 +118,9 @@ public class AssetsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
@@ -129,7 +134,7 @@ public class AssetsApi {
      *             if fails to make API call
      */
     public List<CorporationAssetsResponse> getCorporationsCorporationIdAssets(Integer corporationId, String datasource,
-            Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -152,15 +157,15 @@ public class AssetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
         if (xUserAgent != null)
             localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -230,9 +235,7 @@ public class AssetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -302,9 +305,7 @@ public class AssetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -375,9 +376,7 @@ public class AssetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -448,9 +447,7 @@ public class AssetsApi {
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
         String[] localVarAuthNames = new String[] { "evesso" };

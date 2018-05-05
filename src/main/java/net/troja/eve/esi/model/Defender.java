@@ -26,36 +26,17 @@ import java.io.Serializable;
 public class Defender implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
-    private Integer corporationId = null;
-
     @JsonProperty("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("ships_killed")
-    private Integer shipsKilled = null;
+    @JsonProperty("corporation_id")
+    private Integer corporationId = null;
 
     @JsonProperty("isk_destroyed")
     private Float iskDestroyed = null;
 
-    public Defender corporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-        return this;
-    }
-
-    /**
-     * Corporation ID if and only if the defender is a corporation
-     * 
-     * @return corporationId
-     **/
-    @ApiModelProperty(example = "null", value = "Corporation ID if and only if the defender is a corporation")
-    public Integer getCorporationId() {
-        return corporationId;
-    }
-
-    public void setCorporationId(Integer corporationId) {
-        this.corporationId = corporationId;
-    }
+    @JsonProperty("ships_killed")
+    private Integer shipsKilled = null;
 
     public Defender allianceId(Integer allianceId) {
         this.allianceId = allianceId;
@@ -76,23 +57,23 @@ public class Defender implements Serializable {
         this.allianceId = allianceId;
     }
 
-    public Defender shipsKilled(Integer shipsKilled) {
-        this.shipsKilled = shipsKilled;
+    public Defender corporationId(Integer corporationId) {
+        this.corporationId = corporationId;
         return this;
     }
 
     /**
-     * The number of ships the defender has killed
+     * Corporation ID if and only if the defender is a corporation
      * 
-     * @return shipsKilled
+     * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The number of ships the defender has killed")
-    public Integer getShipsKilled() {
-        return shipsKilled;
+    @ApiModelProperty(example = "null", value = "Corporation ID if and only if the defender is a corporation")
+    public Integer getCorporationId() {
+        return corporationId;
     }
 
-    public void setShipsKilled(Integer shipsKilled) {
-        this.shipsKilled = shipsKilled;
+    public void setCorporationId(Integer corporationId) {
+        this.corporationId = corporationId;
     }
 
     public Defender iskDestroyed(Float iskDestroyed) {
@@ -114,6 +95,25 @@ public class Defender implements Serializable {
         this.iskDestroyed = iskDestroyed;
     }
 
+    public Defender shipsKilled(Integer shipsKilled) {
+        this.shipsKilled = shipsKilled;
+        return this;
+    }
+
+    /**
+     * The number of ships the defender has killed
+     * 
+     * @return shipsKilled
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The number of ships the defender has killed")
+    public Integer getShipsKilled() {
+        return shipsKilled;
+    }
+
+    public void setShipsKilled(Integer shipsKilled) {
+        this.shipsKilled = shipsKilled;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,15 +123,15 @@ public class Defender implements Serializable {
             return false;
         }
         Defender defender = (Defender) o;
-        return Objects.equals(this.corporationId, defender.corporationId)
-                && Objects.equals(this.allianceId, defender.allianceId)
-                && Objects.equals(this.shipsKilled, defender.shipsKilled)
-                && Objects.equals(this.iskDestroyed, defender.iskDestroyed);
+        return Objects.equals(this.allianceId, defender.allianceId)
+                && Objects.equals(this.corporationId, defender.corporationId)
+                && Objects.equals(this.iskDestroyed, defender.iskDestroyed)
+                && Objects.equals(this.shipsKilled, defender.shipsKilled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(corporationId, allianceId, shipsKilled, iskDestroyed);
+        return Objects.hash(allianceId, corporationId, iskDestroyed, shipsKilled);
     }
 
     @Override
@@ -139,10 +139,10 @@ public class Defender implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Defender {\n");
 
-        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    shipsKilled: ").append(toIndentedString(shipsKilled)).append("\n");
+        sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    iskDestroyed: ").append(toIndentedString(iskDestroyed)).append("\n");
+        sb.append("    shipsKilled: ").append(toIndentedString(shipsKilled)).append("\n");
         sb.append("}");
         return sb.toString();
     }

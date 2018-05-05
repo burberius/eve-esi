@@ -31,66 +31,14 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharacterKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterdayKills>();
+    @JsonProperty("active_total")
+    private List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotalKills>();
 
     @JsonProperty("last_week")
     private List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeekKills>();
 
-    @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotalKills>();
-
-    public FactionWarfareLeaderboardCharacterKills yesterday(
-            List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
-        this.yesterday = yesterday;
-        return this;
-    }
-
-    public FactionWarfareLeaderboardCharacterKills addYesterdayItem(
-            FactionWarfareLeaderboardCharactersYesterdayKills yesterdayItem) {
-        this.yesterday.add(yesterdayItem);
-        return this;
-    }
-
-    /**
-     * Top 100 ranking of pilots by kills in the past day
-     * 
-     * @return yesterday
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past day")
-    public List<FactionWarfareLeaderboardCharactersYesterdayKills> getYesterday() {
-        return yesterday;
-    }
-
-    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
-        this.yesterday = yesterday;
-    }
-
-    public FactionWarfareLeaderboardCharacterKills lastWeek(
-            List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
-        this.lastWeek = lastWeek;
-        return this;
-    }
-
-    public FactionWarfareLeaderboardCharacterKills addLastWeekItem(
-            FactionWarfareLeaderboardCharactersLastWeekKills lastWeekItem) {
-        this.lastWeek.add(lastWeekItem);
-        return this;
-    }
-
-    /**
-     * Top 100 ranking of pilots by kills in the past week
-     * 
-     * @return lastWeek
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past week")
-    public List<FactionWarfareLeaderboardCharactersLastWeekKills> getLastWeek() {
-        return lastWeek;
-    }
-
-    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
-        this.lastWeek = lastWeek;
-    }
+    @JsonProperty("yesterday")
+    private List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterdayKills>();
 
     public FactionWarfareLeaderboardCharacterKills activeTotal(
             List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal) {
@@ -120,6 +68,58 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
         this.activeTotal = activeTotal;
     }
 
+    public FactionWarfareLeaderboardCharacterKills lastWeek(
+            List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
+        this.lastWeek = lastWeek;
+        return this;
+    }
+
+    public FactionWarfareLeaderboardCharacterKills addLastWeekItem(
+            FactionWarfareLeaderboardCharactersLastWeekKills lastWeekItem) {
+        this.lastWeek.add(lastWeekItem);
+        return this;
+    }
+
+    /**
+     * Top 100 ranking of pilots by kills in the past week
+     * 
+     * @return lastWeek
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past week")
+    public List<FactionWarfareLeaderboardCharactersLastWeekKills> getLastWeek() {
+        return lastWeek;
+    }
+
+    public void setLastWeek(List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek) {
+        this.lastWeek = lastWeek;
+    }
+
+    public FactionWarfareLeaderboardCharacterKills yesterday(
+            List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
+        this.yesterday = yesterday;
+        return this;
+    }
+
+    public FactionWarfareLeaderboardCharacterKills addYesterdayItem(
+            FactionWarfareLeaderboardCharactersYesterdayKills yesterdayItem) {
+        this.yesterday.add(yesterdayItem);
+        return this;
+    }
+
+    /**
+     * Top 100 ranking of pilots by kills in the past day
+     * 
+     * @return yesterday
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by kills in the past day")
+    public List<FactionWarfareLeaderboardCharactersYesterdayKills> getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday) {
+        this.yesterday = yesterday;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,14 +129,14 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
             return false;
         }
         FactionWarfareLeaderboardCharacterKills factionWarfareLeaderboardCharacterKills = (FactionWarfareLeaderboardCharacterKills) o;
-        return Objects.equals(this.yesterday, factionWarfareLeaderboardCharacterKills.yesterday)
+        return Objects.equals(this.activeTotal, factionWarfareLeaderboardCharacterKills.activeTotal)
                 && Objects.equals(this.lastWeek, factionWarfareLeaderboardCharacterKills.lastWeek)
-                && Objects.equals(this.activeTotal, factionWarfareLeaderboardCharacterKills.activeTotal);
+                && Objects.equals(this.yesterday, factionWarfareLeaderboardCharacterKills.yesterday);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(yesterday, lastWeek, activeTotal);
+        return Objects.hash(activeTotal, lastWeek, yesterday);
     }
 
     @Override
@@ -144,9 +144,9 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharacterKills {\n");
 
-        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
-        sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
         sb.append("    activeTotal: ").append(toIndentedString(activeTotal)).append("\n");
+        sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
+        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -28,20 +28,20 @@ public class IndustryFacilitiesResponse implements Serializable {
     @JsonProperty("facility_id")
     private Long facilityId = null;
 
-    @JsonProperty("tax")
-    private Float tax = null;
-
     @JsonProperty("owner_id")
     private Integer ownerId = null;
 
-    @JsonProperty("type_id")
-    private Integer typeId = null;
+    @JsonProperty("region_id")
+    private Integer regionId = null;
 
     @JsonProperty("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("region_id")
-    private Integer regionId = null;
+    @JsonProperty("tax")
+    private Float tax = null;
+
+    @JsonProperty("type_id")
+    private Integer typeId = null;
 
     public IndustryFacilitiesResponse facilityId(Long facilityId) {
         this.facilityId = facilityId;
@@ -60,25 +60,6 @@ public class IndustryFacilitiesResponse implements Serializable {
 
     public void setFacilityId(Long facilityId) {
         this.facilityId = facilityId;
-    }
-
-    public IndustryFacilitiesResponse tax(Float tax) {
-        this.tax = tax;
-        return this;
-    }
-
-    /**
-     * Tax imposed by the facility
-     * 
-     * @return tax
-     **/
-    @ApiModelProperty(example = "null", value = "Tax imposed by the facility")
-    public Float getTax() {
-        return tax;
-    }
-
-    public void setTax(Float tax) {
-        this.tax = tax;
     }
 
     public IndustryFacilitiesResponse ownerId(Integer ownerId) {
@@ -100,23 +81,23 @@ public class IndustryFacilitiesResponse implements Serializable {
         this.ownerId = ownerId;
     }
 
-    public IndustryFacilitiesResponse typeId(Integer typeId) {
-        this.typeId = typeId;
+    public IndustryFacilitiesResponse regionId(Integer regionId) {
+        this.regionId = regionId;
         return this;
     }
 
     /**
-     * Type ID of the facility
+     * Region ID where the facility is
      * 
-     * @return typeId
+     * @return regionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type ID of the facility")
-    public Integer getTypeId() {
-        return typeId;
+    @ApiModelProperty(example = "null", required = true, value = "Region ID where the facility is")
+    public Integer getRegionId() {
+        return regionId;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 
     public IndustryFacilitiesResponse solarSystemId(Integer solarSystemId) {
@@ -138,23 +119,42 @@ public class IndustryFacilitiesResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
-    public IndustryFacilitiesResponse regionId(Integer regionId) {
-        this.regionId = regionId;
+    public IndustryFacilitiesResponse tax(Float tax) {
+        this.tax = tax;
         return this;
     }
 
     /**
-     * Region ID where the facility is
+     * Tax imposed by the facility
      * 
-     * @return regionId
+     * @return tax
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Region ID where the facility is")
-    public Integer getRegionId() {
-        return regionId;
+    @ApiModelProperty(example = "null", value = "Tax imposed by the facility")
+    public Float getTax() {
+        return tax;
     }
 
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
+    public void setTax(Float tax) {
+        this.tax = tax;
+    }
+
+    public IndustryFacilitiesResponse typeId(Integer typeId) {
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * Type ID of the facility
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "Type ID of the facility")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -167,16 +167,16 @@ public class IndustryFacilitiesResponse implements Serializable {
         }
         IndustryFacilitiesResponse industryFacilitiesResponse = (IndustryFacilitiesResponse) o;
         return Objects.equals(this.facilityId, industryFacilitiesResponse.facilityId)
-                && Objects.equals(this.tax, industryFacilitiesResponse.tax)
                 && Objects.equals(this.ownerId, industryFacilitiesResponse.ownerId)
-                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId)
+                && Objects.equals(this.regionId, industryFacilitiesResponse.regionId)
                 && Objects.equals(this.solarSystemId, industryFacilitiesResponse.solarSystemId)
-                && Objects.equals(this.regionId, industryFacilitiesResponse.regionId);
+                && Objects.equals(this.tax, industryFacilitiesResponse.tax)
+                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(facilityId, tax, ownerId, typeId, solarSystemId, regionId);
+        return Objects.hash(facilityId, ownerId, regionId, solarSystemId, tax, typeId);
     }
 
     @Override
@@ -185,11 +185,11 @@ public class IndustryFacilitiesResponse implements Serializable {
         sb.append("class IndustryFacilitiesResponse {\n");
 
         sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
-        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
         sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

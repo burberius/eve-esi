@@ -14,9 +14,11 @@ package net.troja.eve.esi.api;
 
 import java.util.List;
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.model.AllianceContactsLabelsResponse;
 import net.troja.eve.esi.model.AllianceContactsResponse;
 import net.troja.eve.esi.model.ContactLabelsResponse;
 import net.troja.eve.esi.model.ContactsResponse;
+import net.troja.eve.esi.model.CorporationContactsLabelsResponse;
 import net.troja.eve.esi.model.CorporationContactsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
@@ -67,7 +69,24 @@ public class ContactsApiTest extends GeneralApiTest {
     public void getAlliancesAllianceIdContactsTest() throws ApiException {
         Integer allianceId = null;
         Integer page = null;
-        List<AllianceContactsResponse> response = api.getAlliancesAllianceIdContacts(allianceId, DATASOURCE, page, null, null, null);
+        List<AllianceContactsResponse> response = api.getAlliancesAllianceIdContacts(allianceId, DATASOURCE, null, page, null, null, null);
+
+        // TODO: test validations
+    }
+
+    /**
+     * Get alliance contact labels
+     *
+     * Return custom labels for an alliance&#39;s contacts  ---  This route is cached for up to 300 seconds  SSO Scope: esi-alliances.read_contacts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs alliance with read access")
+    public void getAlliancesAllianceIdContactsLabelsTest() throws ApiException {
+        Integer allianceId = null;
+        List<AllianceContactsLabelsResponse> response = api.getAlliancesAllianceIdContactsLabels(allianceId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }
@@ -87,7 +106,7 @@ public class ContactsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdContactsTest() throws ApiException {
         final Integer page = null;
-        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, page,
+        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, null, page,
                 null, null, null);
 
         assertThat(response.size(), greaterThan(0));
@@ -109,7 +128,7 @@ public class ContactsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContactsLabelsTest() throws ApiException {
-        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE,
+        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE, null,
                 null, null, null);
 
         assertThat(response.size(), greaterThan(0));
@@ -128,10 +147,28 @@ public class ContactsApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdContactsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, page, null, null, null);
+        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, null, page, null, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
+     * Get corporation contact labels
+     *
+     * Return custom labels for a corporation&#39;s contacts  ---  This route is cached for up to 300 seconds  SSO Scope: esi-corporations.read_contacts.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdContactsLabelsTest() throws ApiException {
+        Integer corporationId = null;
+
+        List<CorporationContactsLabelsResponse> response = api.getCorporationsCorporationIdContactsLabels(corporationId, DATASOURCE, null, null, null, null);
+
+        // TODO: test validations
     }
 
     /**

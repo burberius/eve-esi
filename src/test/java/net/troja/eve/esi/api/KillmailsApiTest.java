@@ -54,7 +54,7 @@ public class KillmailsApiTest extends GeneralApiTest {
         final Integer maxCount = 2;
         final Integer maxKillId = null;
         final List<CharacterKillmailsResponse> response = api.getCharactersCharacterIdKillmailsRecent(characterId,
-                DATASOURCE, maxCount, maxKillId, null, null, null);
+                DATASOURCE, null, maxCount, maxKillId, null, null, null);
 
         assertThat(response.size(), equalTo(2));
         final CharacterKillmailsResponse killmail = response.get(0);
@@ -90,11 +90,11 @@ public class KillmailsApiTest extends GeneralApiTest {
     @Test
     public void getKillmailsKillmailIdKillmailHashTest() throws ApiException {
         final CharacterKillmailsResponse killmail = api
-                .getCharactersCharacterIdKillmailsRecent(characterId, DATASOURCE, 1, null, null, null, null).get(0);
+                .getCharactersCharacterIdKillmailsRecent(characterId, DATASOURCE, null, 1, null, null, null, null).get(0);
         final Integer killmailId = killmail.getKillmailId();
         final String killmailHash = killmail.getKillmailHash();
 
-        final KillmailResponse response = api.getKillmailsKillmailIdKillmailHash(killmailHash, killmailId, DATASOURCE,
+        final KillmailResponse response = api.getKillmailsKillmailIdKillmailHash(killmailHash, killmailId, DATASOURCE, null,
                 null, null);
 
         assertThat(response.getAttackers().size(), greaterThan(0));

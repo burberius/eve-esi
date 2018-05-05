@@ -26,11 +26,17 @@ import java.io.Serializable;
 public class CorporationMedalsIssuedResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("medal_id")
-    private Integer medalId = null;
-
     @JsonProperty("character_id")
     private Integer characterId = null;
+
+    @JsonProperty("issued_at")
+    private OffsetDateTime issuedAt = null;
+
+    @JsonProperty("issuer_id")
+    private Integer issuerId = null;
+
+    @JsonProperty("medal_id")
+    private Integer medalId = null;
 
     @JsonProperty("reason")
     private String reason = null;
@@ -68,11 +74,62 @@ public class CorporationMedalsIssuedResponse implements Serializable {
     @JsonProperty("status")
     private StatusEnum status = null;
 
-    @JsonProperty("issuer_id")
-    private Integer issuerId = null;
+    public CorporationMedalsIssuedResponse characterId(Integer characterId) {
+        this.characterId = characterId;
+        return this;
+    }
 
-    @JsonProperty("issued_at")
-    private OffsetDateTime issuedAt = null;
+    /**
+     * ID of the character who was rewarded this medal
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the character who was rewarded this medal")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
+
+    public CorporationMedalsIssuedResponse issuedAt(OffsetDateTime issuedAt) {
+        this.issuedAt = issuedAt;
+        return this;
+    }
+
+    /**
+     * issued_at string
+     * 
+     * @return issuedAt
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "issued_at string")
+    public OffsetDateTime getIssuedAt() {
+        return issuedAt;
+    }
+
+    public void setIssuedAt(OffsetDateTime issuedAt) {
+        this.issuedAt = issuedAt;
+    }
+
+    public CorporationMedalsIssuedResponse issuerId(Integer issuerId) {
+        this.issuerId = issuerId;
+        return this;
+    }
+
+    /**
+     * ID of the character who issued the medal
+     * 
+     * @return issuerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of the character who issued the medal")
+    public Integer getIssuerId() {
+        return issuerId;
+    }
+
+    public void setIssuerId(Integer issuerId) {
+        this.issuerId = issuerId;
+    }
 
     public CorporationMedalsIssuedResponse medalId(Integer medalId) {
         this.medalId = medalId;
@@ -91,25 +148,6 @@ public class CorporationMedalsIssuedResponse implements Serializable {
 
     public void setMedalId(Integer medalId) {
         this.medalId = medalId;
-    }
-
-    public CorporationMedalsIssuedResponse characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * ID of the character who was rewarded this medal
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who was rewarded this medal")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
     }
 
     public CorporationMedalsIssuedResponse reason(String reason) {
@@ -150,44 +188,6 @@ public class CorporationMedalsIssuedResponse implements Serializable {
         this.status = status;
     }
 
-    public CorporationMedalsIssuedResponse issuerId(Integer issuerId) {
-        this.issuerId = issuerId;
-        return this;
-    }
-
-    /**
-     * ID of the character who issued the medal
-     * 
-     * @return issuerId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who issued the medal")
-    public Integer getIssuerId() {
-        return issuerId;
-    }
-
-    public void setIssuerId(Integer issuerId) {
-        this.issuerId = issuerId;
-    }
-
-    public CorporationMedalsIssuedResponse issuedAt(OffsetDateTime issuedAt) {
-        this.issuedAt = issuedAt;
-        return this;
-    }
-
-    /**
-     * issued_at string
-     * 
-     * @return issuedAt
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "issued_at string")
-    public OffsetDateTime getIssuedAt() {
-        return issuedAt;
-    }
-
-    public void setIssuedAt(OffsetDateTime issuedAt) {
-        this.issuedAt = issuedAt;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -197,17 +197,17 @@ public class CorporationMedalsIssuedResponse implements Serializable {
             return false;
         }
         CorporationMedalsIssuedResponse corporationMedalsIssuedResponse = (CorporationMedalsIssuedResponse) o;
-        return Objects.equals(this.medalId, corporationMedalsIssuedResponse.medalId)
-                && Objects.equals(this.characterId, corporationMedalsIssuedResponse.characterId)
-                && Objects.equals(this.reason, corporationMedalsIssuedResponse.reason)
-                && Objects.equals(this.status, corporationMedalsIssuedResponse.status)
+        return Objects.equals(this.characterId, corporationMedalsIssuedResponse.characterId)
+                && Objects.equals(this.issuedAt, corporationMedalsIssuedResponse.issuedAt)
                 && Objects.equals(this.issuerId, corporationMedalsIssuedResponse.issuerId)
-                && Objects.equals(this.issuedAt, corporationMedalsIssuedResponse.issuedAt);
+                && Objects.equals(this.medalId, corporationMedalsIssuedResponse.medalId)
+                && Objects.equals(this.reason, corporationMedalsIssuedResponse.reason)
+                && Objects.equals(this.status, corporationMedalsIssuedResponse.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(medalId, characterId, reason, status, issuerId, issuedAt);
+        return Objects.hash(characterId, issuedAt, issuerId, medalId, reason, status);
     }
 
     @Override
@@ -215,12 +215,12 @@ public class CorporationMedalsIssuedResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMedalsIssuedResponse {\n");
 
-        sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    issuedAt: ").append(toIndentedString(issuedAt)).append("\n");
+        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
+        sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
-        sb.append("    issuedAt: ").append(toIndentedString(issuedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }

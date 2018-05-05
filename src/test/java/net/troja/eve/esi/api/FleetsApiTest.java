@@ -92,7 +92,7 @@ public class FleetsApiTest extends GeneralApiTest {
     @Test
     @Ignore("Can't test because you need to be in fleet")
     public void getCharactersCharacterIdFleetTest() throws ApiException {
-        CharacterFleetResponse response = api.getCharactersCharacterIdFleet(characterId, DATASOURCE, null, null, null);
+        CharacterFleetResponse response = api.getCharactersCharacterIdFleet(characterId, DATASOURCE, null, null, null, null);
 
         // TODO: test validations
     }

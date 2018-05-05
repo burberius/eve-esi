@@ -25,30 +25,11 @@ import java.io.Serializable;
 public class WarKillmailsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("killmail_id")
-    private Integer killmailId = null;
-
     @JsonProperty("killmail_hash")
     private String killmailHash = null;
 
-    public WarKillmailsResponse killmailId(Integer killmailId) {
-        this.killmailId = killmailId;
-        return this;
-    }
-
-    /**
-     * ID of this killmail
-     * 
-     * @return killmailId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of this killmail")
-    public Integer getKillmailId() {
-        return killmailId;
-    }
-
-    public void setKillmailId(Integer killmailId) {
-        this.killmailId = killmailId;
-    }
+    @JsonProperty("killmail_id")
+    private Integer killmailId = null;
 
     public WarKillmailsResponse killmailHash(String killmailHash) {
         this.killmailHash = killmailHash;
@@ -69,6 +50,25 @@ public class WarKillmailsResponse implements Serializable {
         this.killmailHash = killmailHash;
     }
 
+    public WarKillmailsResponse killmailId(Integer killmailId) {
+        this.killmailId = killmailId;
+        return this;
+    }
+
+    /**
+     * ID of this killmail
+     * 
+     * @return killmailId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "ID of this killmail")
+    public Integer getKillmailId() {
+        return killmailId;
+    }
+
+    public void setKillmailId(Integer killmailId) {
+        this.killmailId = killmailId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,13 +78,13 @@ public class WarKillmailsResponse implements Serializable {
             return false;
         }
         WarKillmailsResponse warKillmailsResponse = (WarKillmailsResponse) o;
-        return Objects.equals(this.killmailId, warKillmailsResponse.killmailId)
-                && Objects.equals(this.killmailHash, warKillmailsResponse.killmailHash);
+        return Objects.equals(this.killmailHash, warKillmailsResponse.killmailHash)
+                && Objects.equals(this.killmailId, warKillmailsResponse.killmailId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(killmailId, killmailHash);
+        return Objects.hash(killmailHash, killmailId);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class WarKillmailsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class WarKillmailsResponse {\n");
 
-        sb.append("    killmailId: ").append(toIndentedString(killmailId)).append("\n");
         sb.append("    killmailHash: ").append(toIndentedString(killmailHash)).append("\n");
+        sb.append("    killmailId: ").append(toIndentedString(killmailId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

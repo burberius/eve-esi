@@ -61,11 +61,11 @@ public class UniverseIdsResponse implements Serializable {
     @JsonProperty("regions")
     private List<UniverseIdsRegion> regions = new ArrayList<UniverseIdsRegion>();
 
-    @JsonProperty("systems")
-    private List<UniverseIdsSystem> systems = new ArrayList<UniverseIdsSystem>();
-
     @JsonProperty("stations")
     private List<UniverseIdsStation> stations = new ArrayList<UniverseIdsStation>();
+
+    @JsonProperty("systems")
+    private List<UniverseIdsSystem> systems = new ArrayList<UniverseIdsSystem>();
 
     public UniverseIdsResponse agents(List<UniverseIdsAgent> agents) {
         this.agents = agents;
@@ -259,30 +259,6 @@ public class UniverseIdsResponse implements Serializable {
         this.regions = regions;
     }
 
-    public UniverseIdsResponse systems(List<UniverseIdsSystem> systems) {
-        this.systems = systems;
-        return this;
-    }
-
-    public UniverseIdsResponse addSystemsItem(UniverseIdsSystem systemsItem) {
-        this.systems.add(systemsItem);
-        return this;
-    }
-
-    /**
-     * systems array
-     * 
-     * @return systems
-     **/
-    @ApiModelProperty(example = "null", value = "systems array")
-    public List<UniverseIdsSystem> getSystems() {
-        return systems;
-    }
-
-    public void setSystems(List<UniverseIdsSystem> systems) {
-        this.systems = systems;
-    }
-
     public UniverseIdsResponse stations(List<UniverseIdsStation> stations) {
         this.stations = stations;
         return this;
@@ -307,6 +283,30 @@ public class UniverseIdsResponse implements Serializable {
         this.stations = stations;
     }
 
+    public UniverseIdsResponse systems(List<UniverseIdsSystem> systems) {
+        this.systems = systems;
+        return this;
+    }
+
+    public UniverseIdsResponse addSystemsItem(UniverseIdsSystem systemsItem) {
+        this.systems.add(systemsItem);
+        return this;
+    }
+
+    /**
+     * systems array
+     * 
+     * @return systems
+     **/
+    @ApiModelProperty(example = "null", value = "systems array")
+    public List<UniverseIdsSystem> getSystems() {
+        return systems;
+    }
+
+    public void setSystems(List<UniverseIdsSystem> systems) {
+        this.systems = systems;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -324,14 +324,14 @@ public class UniverseIdsResponse implements Serializable {
                 && Objects.equals(this.factions, universeIdsResponse.factions)
                 && Objects.equals(this.inventoryTypes, universeIdsResponse.inventoryTypes)
                 && Objects.equals(this.regions, universeIdsResponse.regions)
-                && Objects.equals(this.systems, universeIdsResponse.systems)
-                && Objects.equals(this.stations, universeIdsResponse.stations);
+                && Objects.equals(this.stations, universeIdsResponse.stations)
+                && Objects.equals(this.systems, universeIdsResponse.systems);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(agents, alliances, characters, constellations, corporations, factions, inventoryTypes,
-                regions, systems, stations);
+                regions, stations, systems);
     }
 
     @Override
@@ -347,8 +347,8 @@ public class UniverseIdsResponse implements Serializable {
         sb.append("    factions: ").append(toIndentedString(factions)).append("\n");
         sb.append("    inventoryTypes: ").append(toIndentedString(inventoryTypes)).append("\n");
         sb.append("    regions: ").append(toIndentedString(regions)).append("\n");
-        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
         sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
+        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
         sb.append("}");
         return sb.toString();
     }
