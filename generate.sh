@@ -7,6 +7,11 @@ rm -f esi.json
 wget -q -O esi.json https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility
 
 #
+# Remove old model files in case something was removed
+#
+rm -r src/main/java/net/troja/eve/esi/model
+
+#
 # Get swagger code generator
 #
 #VERSION=$(git ls-remote --tags https://github.com/swagger-api/swagger-codegen.git | grep -o "refs/tags/v.*" | sort -rV | head -1 | sed -e 's#.*v##')
