@@ -80,6 +80,7 @@
   "/v1/corporations/{corporation_id}/wallets/{division}/transactions/",
   "/v1/dogma/attributes/",
   "/v1/dogma/attributes/{attribute_id}/",
+  "/v1/dogma/dynamic/items/{type_id}/{item_id}/",
   "/v1/dogma/effects/",
   "/v1/fleets/{fleet_id}/",
   "/v1/fleets/{fleet_id}/members/",

@@ -14,7 +14,9 @@ package net.troja.eve.esi.api;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.DogmaAttributeResponse;
+import net.troja.eve.esi.model.DogmaDynamicItemsResponse;
 import net.troja.eve.esi.model.DogmaEffectResponse;
+import org.junit.Ignore;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
@@ -39,7 +41,7 @@ public class DogmaApiTest extends GeneralApiTest {
      */
     @Test
     public void getDogmaAttributesTest() throws ApiException {
-        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null, null, null);
+        final List<Integer> response = api.getDogmaAttributes(DATASOURCE, null);
 
         assertThat(response.size(), notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -57,11 +59,28 @@ public class DogmaApiTest extends GeneralApiTest {
     @Test
     public void getDogmaAttributesAttributeIdTest() throws ApiException {
         final Integer attributeId = 165;
-        final DogmaAttributeResponse response = api.getDogmaAttributesAttributeId(attributeId, DATASOURCE, null, null,
-                null);
+        final DogmaAttributeResponse response = api.getDogmaAttributesAttributeId(attributeId, DATASOURCE, null);
 
         assertThat(response.getAttributeId(), equalTo(attributeId));
         assertThat(response.getName(), equalTo("intelligence"));
+    }
+
+	 /**
+     * Get dynamic item information
+     *
+     * Returns info about a dynamic item resulting from mutation with a mutaplasmid.  ---  This route expires daily at 11:05
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+	@Ignore("Needs dynamic dogma item to test")
+    @Test
+    public void getDogmaDynamicItemsTypeIdItemIdTest() throws ApiException {
+        Long itemId = null;
+        Integer typeId = null;
+        DogmaDynamicItemsResponse response = api.getDogmaDynamicItemsTypeIdItemId(itemId, typeId, DATASOURCE, null);
+
+        // TODO: test validations
     }
 
     /**
@@ -75,7 +94,7 @@ public class DogmaApiTest extends GeneralApiTest {
      */
     @Test
     public void getDogmaEffectsTest() throws ApiException {
-        final List<Integer> response = api.getDogmaEffects(DATASOURCE, null, null, null);
+        final List<Integer> response = api.getDogmaEffects(DATASOURCE, null);
 
         assertThat(response.size(), notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -93,7 +112,7 @@ public class DogmaApiTest extends GeneralApiTest {
     @Test
     public void getDogmaEffectsEffectIdTest() throws ApiException {
         final Integer effectId = 254;
-        final DogmaEffectResponse response = api.getDogmaEffectsEffectId(effectId, DATASOURCE, null, null, null);
+        final DogmaEffectResponse response = api.getDogmaEffectsEffectId(effectId, DATASOURCE, null);
 
         assertThat(response.getEffectId(), equalTo(effectId));
         assertThat(response.getName(), equalTo("shadowBarrageFalloffWithFalloffPostPercentBarrageFalloffMutator"));

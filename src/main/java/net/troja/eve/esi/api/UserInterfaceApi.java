@@ -7,7 +7,6 @@ import net.troja.eve.esi.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.UiNewMail;
 
 import java.util.ArrayList;
@@ -52,15 +51,11 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void postUiAutopilotWaypoint(Boolean addToBeginning, Boolean clearOtherWaypoints, Long destinationId,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'addToBeginning' is set
@@ -94,10 +89,6 @@ public class UserInterfaceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "destination_id", destinationId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -122,15 +113,10 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowContract(Integer contractId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public void postUiOpenwindowContract(Integer contractId, String datasource, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'contractId' is set
@@ -150,10 +136,6 @@ public class UserInterfaceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "contract_id", contractId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -179,15 +161,10 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowInformation(Integer targetId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public void postUiOpenwindowInformation(Integer targetId, String datasource, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'targetId' is set
@@ -207,10 +184,6 @@ public class UserInterfaceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "target_id", targetId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -235,15 +208,10 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowMarketdetails(Integer typeId, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public void postUiOpenwindowMarketdetails(Integer typeId, String datasource, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'typeId' is set
@@ -263,10 +231,6 @@ public class UserInterfaceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "type_id", typeId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -291,15 +255,10 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postUiOpenwindowNewmail(UiNewMail newMail, String datasource, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+    public void postUiOpenwindowNewmail(UiNewMail newMail, String datasource, String token) throws ApiException {
         Object localVarPostBody = newMail;
 
         // verify the required parameter 'newMail' is set
@@ -317,10 +276,6 @@ public class UserInterfaceApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

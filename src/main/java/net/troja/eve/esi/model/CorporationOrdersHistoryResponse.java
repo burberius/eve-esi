@@ -425,12 +425,11 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     }
 
     /**
-     * The corporation wallet division used for this order. minimum: 1 maximum:
-     * 7
+     * The corporation wallet division used for this order minimum: 1 maximum: 7
      * 
      * @return walletDivision
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order.")
+    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order")
     public Integer getWalletDivision() {
         return walletDivision;
     }

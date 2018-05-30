@@ -10,7 +10,6 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.CharacterAttributesResponse;
 import net.troja.eve.esi.model.CharacterSkillqueueResponse;
 import net.troja.eve.esi.model.CharacterSkillsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,16 +49,12 @@ public class SkillsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterAttributesResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterAttributesResponse getCharactersCharacterIdAttributes(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -79,12 +74,9 @@ public class SkillsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -115,16 +107,12 @@ public class SkillsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterSkillqueueResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterSkillqueueResponse> getCharactersCharacterIdSkillqueue(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -144,12 +132,9 @@ public class SkillsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -180,16 +165,12 @@ public class SkillsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterSkillsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterSkillsResponse getCharactersCharacterIdSkills(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -209,12 +190,9 @@ public class SkillsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

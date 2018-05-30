@@ -25,6 +25,9 @@ import java.io.Serializable;
 public class CharacterAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonProperty("is_blueprint_copy")
+    private Boolean isBlueprintCopy = null;
+
     @JsonProperty("is_singleton")
     private Boolean isSingleton = null;
 
@@ -260,6 +263,25 @@ public class CharacterAssetsResponse implements Serializable {
     @JsonProperty("type_id")
     private Integer typeId = null;
 
+    public CharacterAssetsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
+        this.isBlueprintCopy = isBlueprintCopy;
+        return this;
+    }
+
+    /**
+     * is_blueprint_copy boolean
+     * 
+     * @return isBlueprintCopy
+     **/
+    @ApiModelProperty(example = "null", value = "is_blueprint_copy boolean")
+    public Boolean getIsBlueprintCopy() {
+        return isBlueprintCopy;
+    }
+
+    public void setIsBlueprintCopy(Boolean isBlueprintCopy) {
+        this.isBlueprintCopy = isBlueprintCopy;
+    }
+
     public CharacterAssetsResponse isSingleton(Boolean isSingleton) {
         this.isSingleton = isSingleton;
         return this;
@@ -402,7 +424,8 @@ public class CharacterAssetsResponse implements Serializable {
             return false;
         }
         CharacterAssetsResponse characterAssetsResponse = (CharacterAssetsResponse) o;
-        return Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton)
+        return Objects.equals(this.isBlueprintCopy, characterAssetsResponse.isBlueprintCopy)
+                && Objects.equals(this.isSingleton, characterAssetsResponse.isSingleton)
                 && Objects.equals(this.itemId, characterAssetsResponse.itemId)
                 && Objects.equals(this.locationFlag, characterAssetsResponse.locationFlag)
                 && Objects.equals(this.locationId, characterAssetsResponse.locationId)
@@ -413,7 +436,8 @@ public class CharacterAssetsResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSingleton, itemId, locationFlag, locationId, locationType, quantity, typeId);
+        return Objects.hash(isBlueprintCopy, isSingleton, itemId, locationFlag, locationId, locationType, quantity,
+                typeId);
     }
 
     @Override
@@ -421,6 +445,7 @@ public class CharacterAssetsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAssetsResponse {\n");
 
+        sb.append("    isBlueprintCopy: ").append(toIndentedString(isBlueprintCopy)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");

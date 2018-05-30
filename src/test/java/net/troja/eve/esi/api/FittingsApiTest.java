@@ -68,8 +68,7 @@ public class FittingsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdFittingsTest() throws ApiException {
-        final List<CharacterFittingsResponse> response = api.getCharactersCharacterIdFittings(characterId, DATASOURCE, null,
-                null, null, null);
+        final List<CharacterFittingsResponse> response = api.getCharactersCharacterIdFittings(characterId, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final CharacterFittingsResponse fitting = response.get(0);

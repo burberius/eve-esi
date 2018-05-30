@@ -12,7 +12,6 @@ import net.troja.eve.esi.model.CharacterWalletTransactionsResponse;
 import net.troja.eve.esi.model.CorporationWalletJournalResponse;
 import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
 import net.troja.eve.esi.model.CorporationWalletsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,16 +52,12 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return Double
      * @throws ApiException
      *             if fails to make API call
      */
     public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String ifNoneMatch,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -82,12 +77,9 @@ public class WalletApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -120,17 +112,12 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterWalletJournalResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterWalletJournalResponse> getCharactersCharacterIdWalletJournal(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -151,12 +138,9 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -190,17 +174,12 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterWalletTransactionsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterWalletTransactionsResponse> getCharactersCharacterIdWalletTransactions(Integer characterId,
-            String datasource, Long fromId, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, Long fromId, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -221,12 +200,9 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -258,17 +234,12 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationWalletsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationWalletsResponse> getCorporationsCorporationIdWallets(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -288,12 +259,9 @@ public class WalletApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -330,17 +298,13 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationWalletJournalResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
-            Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+            Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -369,12 +333,9 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -411,17 +372,13 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationWalletTransactionsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationWalletTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
-            Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+            Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -450,12 +407,9 @@ public class WalletApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_id", fromId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

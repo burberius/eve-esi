@@ -8,6 +8,7 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.DogmaAttributeResponse;
+import net.troja.eve.esi.model.DogmaDynamicItemsResponse;
 import net.troja.eve.esi.model.DogmaEffectResponse;
 
 import java.util.ArrayList;
@@ -44,16 +45,11 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getDogmaAttributes(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getDogmaAttributes(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -65,12 +61,9 @@ public class DogmaApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -98,16 +91,12 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return DogmaAttributeResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public DogmaAttributeResponse getDogmaAttributesAttributeId(Integer attributeId, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'attributeId' is set
@@ -126,12 +115,9 @@ public class DogmaApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -148,6 +134,69 @@ public class DogmaApi {
     }
 
     /**
+     * Get dynamic item information Returns info about a dynamic item resulting
+     * from mutation with a mutaplasmid. --- This route expires daily at 11:05
+     * 
+     * @param itemId
+     *            item_id integer (required)
+     * @param typeId
+     *            type_id integer (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @return DogmaDynamicItemsResponse
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public DogmaDynamicItemsResponse getDogmaDynamicItemsTypeIdItemId(Long itemId, Integer typeId, String datasource,
+            String ifNoneMatch) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'itemId' when calling getDogmaDynamicItemsTypeIdItemId");
+        }
+
+        // verify the required parameter 'typeId' is set
+        if (typeId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'typeId' when calling getDogmaDynamicItemsTypeIdItemId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/dogma/dynamic/items/{type_id}/{item_id}/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()))
+                .replaceAll("\\{" + "type_id" + "\\}", apiClient.escapeString(typeId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<DogmaDynamicItemsResponse> localVarReturnType = new GenericType<DogmaDynamicItemsResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * Get effects Get a list of dogma effect ids --- This route expires daily
      * at 11:05
      * 
@@ -157,16 +206,11 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getDogmaEffects(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getDogmaEffects(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -178,12 +222,9 @@ public class DogmaApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -211,16 +252,12 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return DogmaEffectResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public DogmaEffectResponse getDogmaEffectsEffectId(Integer effectId, String datasource, String ifNoneMatch,
-            String userAgent, String xUserAgent) throws ApiException {
+    public DogmaEffectResponse getDogmaEffectsEffectId(Integer effectId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'effectId' is set
@@ -239,12 +276,9 @@ public class DogmaApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

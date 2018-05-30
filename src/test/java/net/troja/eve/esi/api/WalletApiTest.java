@@ -46,7 +46,7 @@ public class WalletApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdWalletTest() throws ApiException {
-        final Double response = api.getCharactersCharacterIdWallet(characterId, DATASOURCE, null, null, null, null);
+        final Double response = api.getCharactersCharacterIdWallet(characterId, DATASOURCE, null, null);
 
         assertThat(response, greaterThan(0.0));
     }
@@ -64,8 +64,7 @@ public class WalletApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdWalletJournalTest() throws ApiException {
         final Integer page = null;
-        final List<CharacterWalletJournalResponse> response = api.getCharactersCharacterIdWalletJournal(characterId, DATASOURCE, null, page, null, null,
-                null);
+        final List<CharacterWalletJournalResponse> response = api.getCharactersCharacterIdWalletJournal(characterId, DATASOURCE, null, page, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -85,8 +84,7 @@ public class WalletApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdWalletTransactionsTest() throws ApiException {
         final Long fromId = null;
-        final List<CharacterWalletTransactionsResponse> response = api.getCharactersCharacterIdWalletTransactions(characterId, DATASOURCE, fromId, null,
-                null, null, null);
+        final List<CharacterWalletTransactionsResponse> response = api.getCharactersCharacterIdWalletTransactions(characterId, DATASOURCE, fromId, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -135,7 +133,7 @@ public class WalletApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Integer division = 1;
         Long fromId = null;
-        List<CorporationWalletTransactionsResponse> response = api.getCorporationsCorporationIdWalletsDivisionTransactions(corporationId, division, DATASOURCE, fromId, null, null, null, null);
+        List<CorporationWalletTransactionsResponse> response = api.getCorporationsCorporationIdWalletsDivisionTransactions(corporationId, division, DATASOURCE, fromId, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

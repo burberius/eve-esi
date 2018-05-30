@@ -4,7 +4,7 @@
 # Get eve swagger file
 #
 rm -f esi.json
-wget -q -O esi.json https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility
+wget -q -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tranquility
 
 #
 # Remove old model files in case something was removed

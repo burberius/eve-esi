@@ -42,8 +42,7 @@ public class RoutesApiTest extends GeneralApiTest {
         final List<Integer> avoid = null;
         final List<List<Integer>> connections = null;
 
-        final List<Integer> response = api.getRouteOriginDestination(SOLARSYSTEM_ID_ALIKARA, SOLARSYSTEM_ID_JITA, avoid,
-                connections, DATASOURCE, null, null, null, null);
+        final List<Integer> response = api.getRouteOriginDestination(SOLARSYSTEM_ID_ALIKARA, SOLARSYSTEM_ID_JITA, avoid, connections, DATASOURCE, null, null);
 
         assertThat(response.size(), equalTo(3));
     }
