@@ -410,6 +410,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         STRUCTUREITEMSDELIVERED("StructureItemsDelivered"),
 
+        STRUCTUREITEMSMOVEDTOSAFETY("StructureItemsMovedToSafety"),
+
         STRUCTURELOSTARMOR("StructureLostArmor"),
 
         STRUCTURELOSTSHIELDS("StructureLostShields"),

@@ -42,6 +42,8 @@ public class CharacterAssetsResponse implements Serializable {
 
         AUTOFIT("AutoFit"),
 
+        BOOSTERBAY("BoosterBay"),
+
         CARGO("Cargo"),
 
         CORPSEBAY("CorpseBay"),

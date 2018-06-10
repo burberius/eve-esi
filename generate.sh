@@ -48,7 +48,6 @@ for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
 done
 
 # Fix route
-sed -i -e 's#https://esi.tech.ccp.is/#https://esi.tech.ccp.is#' src/main/java/net/troja/eve/esi/ApiClient.java
 jq ".paths | keys" esi.json > version-routes.txt
 
 #

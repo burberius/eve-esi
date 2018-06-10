@@ -97,11 +97,7 @@ public class ContactsApi {
 
     /**
      * Get alliance contacts Return contacts of an alliance --- This route is
-     * cached for up to 300 seconds --- Warning: This route has an upgrade
-     * available. --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff
-     * /latest/dev/#GET-/alliances/{alliance_id}/contacts/) SSO Scope:
-     * esi-alliances.read_contacts.v1
+     * cached for up to 300 seconds SSO Scope: esi-alliances.read_contacts.v1
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -130,7 +126,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/alliances/{alliance_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/alliances/{alliance_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
@@ -219,11 +215,7 @@ public class ContactsApi {
 
     /**
      * Get contacts Return contacts of a character --- This route is cached for
-     * up to 300 seconds --- Warning: This route has an upgrade available. ---
-     * [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET
-     * -/characters/{character_id}/contacts/) SSO Scope:
-     * esi-characters.read_contacts.v1
+     * up to 300 seconds SSO Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -252,7 +244,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -341,10 +333,7 @@ public class ContactsApi {
 
     /**
      * Get corporation contacts Return contacts of a corporation --- This route
-     * is cached for up to 300 seconds --- Warning: This route has an upgrade
-     * available. --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff
-     * /latest/dev/#GET-/corporations/{corporation_id}/contacts/) SSO Scope:
+     * is cached for up to 300 seconds SSO Scope:
      * esi-corporations.read_contacts.v1
      * 
      * @param corporationId
@@ -374,7 +363,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/contacts/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/contacts/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -462,11 +451,8 @@ public class ContactsApi {
     }
 
     /**
-     * Add contacts Bulk add contacts with same settings --- Warning: This route
-     * has an upgrade available. --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#POST-/characters/{character_id}/contacts/) SSO
-     * Scope: esi-characters.write_contacts.v1
+     * Add contacts Bulk add contacts with same settings --- SSO Scope:
+     * esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -477,8 +463,8 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param labelId
-     *            Add a custom label to the new contact (optional, default to 0)
+     * @param labelIds
+     *            Add custom labels to the new contact (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param watched
@@ -489,7 +475,7 @@ public class ContactsApi {
      *             if fails to make API call
      */
     public List<Integer> postCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds,
-            Float standing, String datasource, Long labelId, String token, Boolean watched) throws ApiException {
+            Float standing, String datasource, List<Long> labelIds, String token, Boolean watched) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -511,7 +497,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -520,7 +506,7 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
@@ -540,11 +526,8 @@ public class ContactsApi {
     }
 
     /**
-     * Edit contacts Bulk edit contacts with same settings --- Warning: This
-     * route has an upgrade available. --- [Diff of the upcoming
-     * changes](https:/
-     * /esi.evetech.net/diff/latest/dev/#PUT-/characters/{character_id
-     * }/contacts/) SSO Scope: esi-characters.write_contacts.v1
+     * Edit contacts Bulk edit contacts with same settings --- SSO Scope:
+     * esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -555,9 +538,8 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param labelId
-     *            Add a custom label to the contact, use 0 for clearing label
-     *            (optional, default to 0)
+     * @param labelIds
+     *            Add custom labels to the contact (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param watched
@@ -567,7 +549,7 @@ public class ContactsApi {
      *             if fails to make API call
      */
     public void putCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, Float standing,
-            String datasource, Long labelId, String token, Boolean watched) throws ApiException {
+            String datasource, List<Long> labelIds, String token, Boolean watched) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -589,7 +571,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -598,7 +580,7 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
