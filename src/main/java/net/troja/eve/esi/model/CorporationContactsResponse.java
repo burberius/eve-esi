@@ -16,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
 /**
@@ -68,8 +70,8 @@ public class CorporationContactsResponse implements Serializable {
     @JsonProperty("is_watched")
     private Boolean isWatched = null;
 
-    @JsonProperty("label_id")
-    private Long labelId = null;
+    @JsonProperty("label_ids")
+    private List<Long> labelIds = new ArrayList<Long>();
 
     @JsonProperty("standing")
     private Float standing = null;
@@ -131,23 +133,28 @@ public class CorporationContactsResponse implements Serializable {
         this.isWatched = isWatched;
     }
 
-    public CorporationContactsResponse labelId(Long labelId) {
-        this.labelId = labelId;
+    public CorporationContactsResponse labelIds(List<Long> labelIds) {
+        this.labelIds = labelIds;
+        return this;
+    }
+
+    public CorporationContactsResponse addLabelIdsItem(Long labelIdsItem) {
+        this.labelIds.add(labelIdsItem);
         return this;
     }
 
     /**
-     * Custom label of the contact
+     * label_ids array
      * 
-     * @return labelId
+     * @return labelIds
      **/
-    @ApiModelProperty(example = "null", value = "Custom label of the contact")
-    public Long getLabelId() {
-        return labelId;
+    @ApiModelProperty(example = "null", value = "label_ids array")
+    public List<Long> getLabelIds() {
+        return labelIds;
     }
 
-    public void setLabelId(Long labelId) {
-        this.labelId = labelId;
+    public void setLabelIds(List<Long> labelIds) {
+        this.labelIds = labelIds;
     }
 
     public CorporationContactsResponse standing(Float standing) {
@@ -181,13 +188,13 @@ public class CorporationContactsResponse implements Serializable {
         return Objects.equals(this.contactId, corporationContactsResponse.contactId)
                 && Objects.equals(this.contactType, corporationContactsResponse.contactType)
                 && Objects.equals(this.isWatched, corporationContactsResponse.isWatched)
-                && Objects.equals(this.labelId, corporationContactsResponse.labelId)
+                && Objects.equals(this.labelIds, corporationContactsResponse.labelIds)
                 && Objects.equals(this.standing, corporationContactsResponse.standing);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, contactType, isWatched, labelId, standing);
+        return Objects.hash(contactId, contactType, isWatched, labelIds, standing);
     }
 
     @Override
@@ -198,7 +205,7 @@ public class CorporationContactsResponse implements Serializable {
         sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
         sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
         sb.append("    isWatched: ").append(toIndentedString(isWatched)).append("\n");
-        sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
+        sb.append("    labelIds: ").append(toIndentedString(labelIds)).append("\n");
         sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
         sb.append("}");
         return sb.toString();

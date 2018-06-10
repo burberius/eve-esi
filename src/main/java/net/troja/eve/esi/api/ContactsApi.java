@@ -13,7 +13,6 @@ import net.troja.eve.esi.model.ContactLabelsResponse;
 import net.troja.eve.esi.model.ContactsResponse;
 import net.troja.eve.esi.model.CorporationContactsLabelsResponse;
 import net.troja.eve.esi.model.CorporationContactsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,15 +51,11 @@ public class ContactsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void deleteCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -87,10 +82,6 @@ public class ContactsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "contact_ids", contactIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -106,10 +97,7 @@ public class ContactsApi {
 
     /**
      * Get alliance contacts Return contacts of an alliance --- This route is
-     * cached for up to 300 seconds --- [This route has an available
-     * update](https
-     * ://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id
-     * }/contacts/) SSO Scope: esi-alliances.read_contacts.v1
+     * cached for up to 300 seconds SSO Scope: esi-alliances.read_contacts.v1
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -123,16 +111,12 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;AllianceContactsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<AllianceContactsResponse> getAlliancesAllianceIdContacts(Integer allianceId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -142,7 +126,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/alliances/{alliance_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/alliances/{alliance_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "alliance_id" + "\\}", apiClient.escapeString(allianceId.toString()));
 
         // query params
@@ -153,12 +137,9 @@ public class ContactsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -189,17 +170,12 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;AllianceContactsLabelsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<AllianceContactsLabelsResponse> getAlliancesAllianceIdContactsLabels(Integer allianceId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -219,12 +195,9 @@ public class ContactsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -242,10 +215,7 @@ public class ContactsApi {
 
     /**
      * Get contacts Return contacts of a character --- This route is cached for
-     * up to 300 seconds --- [This route has an available
-     * update](https://esi.evetech
-     * .net/diff/latest/dev/#GET-/characters/{character_id}/contacts/) SSO
-     * Scope: esi-characters.read_contacts.v1
+     * up to 300 seconds SSO Scope: esi-characters.read_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -259,16 +229,12 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;ContactsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<ContactsResponse> getCharactersCharacterIdContacts(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -278,7 +244,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -289,12 +255,9 @@ public class ContactsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -325,16 +288,12 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;ContactLabelsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<ContactLabelsResponse> getCharactersCharacterIdContactsLabels(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -354,12 +313,9 @@ public class ContactsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -377,10 +333,8 @@ public class ContactsApi {
 
     /**
      * Get corporation contacts Return contacts of a corporation --- This route
-     * is cached for up to 300 seconds --- [This route has an available
-     * update](https
-     * ://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id
-     * }/contacts/) SSO Scope: esi-corporations.read_contacts.v1
+     * is cached for up to 300 seconds SSO Scope:
+     * esi-corporations.read_contacts.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -394,17 +348,12 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContactsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContactsResponse> getCorporationsCorporationIdContacts(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -414,7 +363,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/contacts/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/contacts/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -425,12 +374,9 @@ public class ContactsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -461,17 +407,12 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContactsLabelsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContactsLabelsResponse> getCorporationsCorporationIdContactsLabels(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -491,12 +432,9 @@ public class ContactsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -513,10 +451,8 @@ public class ContactsApi {
     }
 
     /**
-     * Add contacts Bulk add contacts with same settings --- [This route has an
-     * available
-     * update](https://esi.evetech.net/diff/latest/dev/#POST-/characters
-     * /{character_id}/contacts/) SSO Scope: esi-characters.write_contacts.v1
+     * Add contacts Bulk add contacts with same settings --- SSO Scope:
+     * esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -527,24 +463,19 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param labelId
-     *            Add a custom label to the new contact (optional, default to 0)
+     * @param labelIds
+     *            Add custom labels to the new contact (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<Integer> postCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds,
-            Float standing, String datasource, Long labelId, String token, String userAgent, Boolean watched,
-            String xUserAgent) throws ApiException {
+            Float standing, String datasource, List<Long> labelIds, String token, Boolean watched) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -566,7 +497,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -575,14 +506,10 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -599,10 +526,8 @@ public class ContactsApi {
     }
 
     /**
-     * Edit contacts Bulk edit contacts with same settings --- [This route has
-     * an available
-     * update](https://esi.evetech.net/diff/latest/dev/#PUT-/characters
-     * /{character_id}/contacts/) SSO Scope: esi-characters.write_contacts.v1
+     * Edit contacts Bulk edit contacts with same settings --- SSO Scope:
+     * esi-characters.write_contacts.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -613,24 +538,18 @@ public class ContactsApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param labelId
-     *            Add a custom label to the contact, use 0 for clearing label
-     *            (optional, default to 0)
+     * @param labelIds
+     *            Add custom labels to the contact (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void putCharactersCharacterIdContacts(Integer characterId, List<Integer> contactIds, Float standing,
-            String datasource, Long labelId, String token, String userAgent, Boolean watched, String xUserAgent)
-            throws ApiException {
+            String datasource, List<Long> labelIds, String token, Boolean watched) throws ApiException {
         Object localVarPostBody = contactIds;
 
         // verify the required parameter 'characterId' is set
@@ -652,7 +571,7 @@ public class ContactsApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -661,14 +580,10 @@ public class ContactsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "label_id", labelId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "standing", standing));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "watched", watched));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

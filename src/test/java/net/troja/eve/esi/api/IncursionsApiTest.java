@@ -42,7 +42,7 @@ public class IncursionsApiTest extends GeneralApiTest {
      */
     @Test
     public void getIncursionsTest() throws ApiException {
-        final List<IncursionsResponse> response = api.getIncursions(DATASOURCE, null, null, null);
+        final List<IncursionsResponse> response = api.getIncursions(DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
         final IncursionsResponse incursionsResponse = response.get(0);

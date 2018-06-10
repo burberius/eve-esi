@@ -56,8 +56,7 @@ public class AssetsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdAssetsTest() throws ApiException {
         Integer page = null;
-        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page,
-                null, null, null);
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -76,7 +75,7 @@ public class AssetsApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdAssetsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationAssetsResponse> response = api.getCorporationsCorporationIdAssets(corporationId, DATASOURCE, null, page, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -99,7 +98,7 @@ public class AssetsApiTest extends GeneralApiTest {
         itemIds.add(1004329154088L);
         itemIds.add(1004329156651L);
 
-        List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null, null, null);
+        List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), equalTo(5));
@@ -121,7 +120,7 @@ public class AssetsApiTest extends GeneralApiTest {
         itemIds.add(1004329151505L);
         itemIds.add(1004329154088L);
         itemIds.add(1004329156651L);
-        List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null, null, null);
+        List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), equalTo(5));
@@ -140,7 +139,7 @@ public class AssetsApiTest extends GeneralApiTest {
     public void postCorporationsCorporationIdAssetsLocationsTest() throws ApiException {
         Integer corporationId = null;
         List<Long> itemIds = null;
-        List<CorporationAssetsLocationsResponse> response = api.postCorporationsCorporationIdAssetsLocations(corporationId, itemIds, DATASOURCE, null, null, null);
+        List<CorporationAssetsLocationsResponse> response = api.postCorporationsCorporationIdAssetsLocations(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
     }
@@ -158,7 +157,7 @@ public class AssetsApiTest extends GeneralApiTest {
     public void postCorporationsCorporationIdAssetsNamesTest() throws ApiException {
         Integer corporationId = null;
         List<Long> itemIds = null;
-        List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null, null, null);
+        List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
     }

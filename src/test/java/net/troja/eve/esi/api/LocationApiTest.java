@@ -51,8 +51,7 @@ public class LocationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdLocationTest() throws ApiException {
-        final CharacterLocationResponse response = api.getCharactersCharacterIdLocation(characterId, DATASOURCE, null, null,
-                null, null);
+        final CharacterLocationResponse response = api.getCharactersCharacterIdLocation(characterId, DATASOURCE, null, null);
 
         assertThat(response.getSolarSystemId(), greaterThan(0));
     }
@@ -67,7 +66,7 @@ public class LocationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdOnlineTest() throws ApiException {
-        CharacterOnlineResponse response = api.getCharactersCharacterIdOnline(characterId, DATASOURCE, null, null, null, null);
+        CharacterOnlineResponse response = api.getCharactersCharacterIdOnline(characterId, DATASOURCE, null, null);
         assertThat(response, notNullValue());
     }
     
@@ -85,8 +84,7 @@ public class LocationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdShipTest() throws ApiException {
-        final CharacterShipResponse response = api.getCharactersCharacterIdShip(characterId, DATASOURCE, null, null, null,
-                null);
+        final CharacterShipResponse response = api.getCharactersCharacterIdShip(characterId, DATASOURCE, null, null);
 
         assertThat(response.getShipItemId(), greaterThan(0l));
         assertThat(response.getShipTypeId(), greaterThan(0));

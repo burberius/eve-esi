@@ -45,16 +45,11 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getAlliances(String datasource, String ifNoneMatch, String userAgent, String xUserAgent)
-            throws ApiException {
+    public List<Integer> getAlliances(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -66,12 +61,9 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -99,16 +91,12 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return AllianceResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public AllianceResponse getAlliancesAllianceId(Integer allianceId, String datasource, String ifNoneMatch,
-            String userAgent, String xUserAgent) throws ApiException {
+    public AllianceResponse getAlliancesAllianceId(Integer allianceId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -127,12 +115,9 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -160,16 +145,12 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getAlliancesAllianceIdCorporations(Integer allianceId, String datasource, String ifNoneMatch,
-            String userAgent, String xUserAgent) throws ApiException {
+    public List<Integer> getAlliancesAllianceIdCorporations(Integer allianceId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -188,12 +169,9 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -221,16 +199,12 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return AllianceIconsResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public AllianceIconsResponse getAlliancesAllianceIdIcons(Integer allianceId, String datasource, String ifNoneMatch,
-            String userAgent, String xUserAgent) throws ApiException {
+    public AllianceIconsResponse getAlliancesAllianceIdIcons(Integer allianceId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceId' is set
@@ -249,12 +223,9 @@ public class AllianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -282,16 +253,12 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;AllianceNamesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<AllianceNamesResponse> getAlliancesNames(List<Integer> allianceIds, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'allianceIds' is set
@@ -309,12 +276,9 @@ public class AllianceApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "alliance_ids", allianceIds));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

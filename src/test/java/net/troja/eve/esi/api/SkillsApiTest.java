@@ -47,7 +47,7 @@ public class SkillsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdAttributesTest() throws ApiException {
-        CharacterAttributesResponse response = api.getCharactersCharacterIdAttributes(characterId, DATASOURCE, null, null, null, null);
+        CharacterAttributesResponse response = api.getCharactersCharacterIdAttributes(characterId, DATASOURCE, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getIntelligence(), greaterThan(0));
@@ -68,8 +68,7 @@ public class SkillsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdSkillqueueTest() throws ApiException {
-        final List<CharacterSkillqueueResponse> response = api.getCharactersCharacterIdSkillqueue(characterId,
-                DATASOURCE, null, null, null, null);
+        final List<CharacterSkillqueueResponse> response = api.getCharactersCharacterIdSkillqueue(characterId, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final CharacterSkillqueueResponse skillqueue = response.get(0);
@@ -89,8 +88,7 @@ public class SkillsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdSkillsTest() throws ApiException {
-        final CharacterSkillsResponse response = api.getCharactersCharacterIdSkills(characterId, DATASOURCE, null, null,
-                null, null);
+        final CharacterSkillsResponse response = api.getCharactersCharacterIdSkills(characterId, DATASOURCE, null, null);
 
         assertThat(response.getTotalSp(), greaterThan(0l));
         assertThat(response.getSkills().size(), greaterThan(0));

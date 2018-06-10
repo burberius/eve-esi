@@ -15,7 +15,6 @@ import net.troja.eve.esi.model.FactionWarfareLeaderboardResponse;
 import net.troja.eve.esi.model.FactionWarfareStatsResponse;
 import net.troja.eve.esi.model.FactionWarfareSystemsResponse;
 import net.troja.eve.esi.model.FactionWarfareWarsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,16 +55,12 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterFwStatsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterFwStatsResponse getCharactersCharacterIdFwStats(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -85,12 +80,9 @@ public class FactionWarfareApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -121,16 +113,12 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CorporationFwStatsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CorporationFwStatsResponse getCorporationsCorporationIdFwStats(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -150,12 +138,9 @@ public class FactionWarfareApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -182,16 +167,12 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FactionWarfareLeaderboardResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FactionWarfareLeaderboardResponse getFwLeaderboards(String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public FactionWarfareLeaderboardResponse getFwLeaderboards(String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -203,12 +184,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -235,16 +213,12 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FactionWarfareLeaderboardCharactersResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FactionWarfareLeaderboardCharactersResponse getFwLeaderboardsCharacters(String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+    public FactionWarfareLeaderboardCharactersResponse getFwLeaderboardsCharacters(String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -256,12 +230,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -288,16 +259,12 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FactionWarfareLeaderboardCorporationsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public FactionWarfareLeaderboardCorporationsResponse getFwLeaderboardsCorporations(String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -309,12 +276,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -341,16 +305,11 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;FactionWarfareStatsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FactionWarfareStatsResponse> getFwStats(String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<FactionWarfareStatsResponse> getFwStats(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -362,12 +321,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -386,7 +342,9 @@ public class FactionWarfareApi {
     /**
      * Ownership of faction warfare systems An overview of the current ownership
      * of faction warfare solar systems --- This route is cached for up to 1800
-     * seconds
+     * seconds --- Warning: This route has an upgrade available. --- [Diff of
+     * the upcoming
+     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/fw/systems/)
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -394,16 +352,11 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;FactionWarfareSystemsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FactionWarfareSystemsResponse> getFwSystems(String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<FactionWarfareSystemsResponse> getFwSystems(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -415,12 +368,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -446,16 +396,11 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;FactionWarfareWarsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FactionWarfareWarsResponse> getFwWars(String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<FactionWarfareWarsResponse> getFwWars(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -467,12 +412,9 @@ public class FactionWarfareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

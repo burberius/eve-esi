@@ -45,7 +45,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
      */
     @Test
     public void getSovereigntyCampaignsTest() throws ApiException {
-        final List<SovereigntyCampaignsResponse> response = api.getSovereigntyCampaigns(DATASOURCE, null, null, null);
+        final List<SovereigntyCampaignsResponse> response = api.getSovereigntyCampaigns(DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -64,7 +64,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
      */
     @Test
     public void getSovereigntyMapTest() throws ApiException {
-        final List<SovereigntyMapResponse> response = api.getSovereigntyMap(DATASOURCE, null, null, null);
+        final List<SovereigntyMapResponse> response = api.getSovereigntyMap(DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -83,7 +83,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
      */
     @Test
     public void getSovereigntyStructuresTest() throws ApiException {
-        final List<SovereigntyStructuresResponse> response = api.getSovereigntyStructures(DATASOURCE, null, null, null);
+        final List<SovereigntyStructuresResponse> response = api.getSovereigntyStructures(DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));

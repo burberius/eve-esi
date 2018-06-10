@@ -49,10 +49,10 @@ public class CalendarApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdCalendarEventIdAttendeesTest() throws ApiException {
         ignoreTestFails();
         final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, null,
-                null, null, null, null);
+                null, null);
         final Integer eventId = calendar.get(0).getEventId();
 
-        List<CharacterCalendarAttendeesResponse> response = api.getCharactersCharacterIdCalendarEventIdAttendees(characterId, eventId, DATASOURCE, null, null, null, null);
+        List<CharacterCalendarAttendeesResponse> response = api.getCharactersCharacterIdCalendarEventIdAttendees(characterId, eventId, DATASOURCE, null, null);
     }
 
     /**
@@ -74,8 +74,7 @@ public class CalendarApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdCalendarTest() throws ApiException {
         final Integer fromEvent = null;
-        final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE,
-                fromEvent, null, null, null, null);
+        final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, fromEvent, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -94,12 +93,10 @@ public class CalendarApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdCalendarEventIdTest() throws ApiException {
-        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE,
-                null, null, null, null, null);
+        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, null, null, null);
 
         final Integer eventId = calendar.get(0).getEventId();
-        final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId,
-                eventId, DATASOURCE, null, null, null, null);
+        final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId, eventId, DATASOURCE, null, null);
 
         assertThat(response.getEventId(), equalTo(eventId));
     }

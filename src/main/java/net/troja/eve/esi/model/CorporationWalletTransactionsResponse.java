@@ -116,11 +116,11 @@ public class CorporationWalletTransactionsResponse implements Serializable {
     }
 
     /**
-     * journal_ref_id integer
+     * -1 if there is no corresponding wallet journal entry
      * 
      * @return journalRefId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "journal_ref_id integer")
+    @ApiModelProperty(example = "null", required = true, value = "-1 if there is no corresponding wallet journal entry")
     public Long getJournalRefId() {
         return journalRefId;
     }

@@ -69,7 +69,7 @@ public class ContactsApiTest extends GeneralApiTest {
     public void getAlliancesAllianceIdContactsTest() throws ApiException {
         Integer allianceId = null;
         Integer page = null;
-        List<AllianceContactsResponse> response = api.getAlliancesAllianceIdContacts(allianceId, DATASOURCE, null, page, null, null, null);
+        List<AllianceContactsResponse> response = api.getAlliancesAllianceIdContacts(allianceId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -86,7 +86,7 @@ public class ContactsApiTest extends GeneralApiTest {
     @Ignore("Needs alliance with read access")
     public void getAlliancesAllianceIdContactsLabelsTest() throws ApiException {
         Integer allianceId = null;
-        List<AllianceContactsLabelsResponse> response = api.getAlliancesAllianceIdContactsLabels(allianceId, DATASOURCE, null, null, null, null);
+        List<AllianceContactsLabelsResponse> response = api.getAlliancesAllianceIdContactsLabels(allianceId, DATASOURCE, null, null);
 
         // TODO: test validations
     }
@@ -106,8 +106,7 @@ public class ContactsApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdContactsTest() throws ApiException {
         final Integer page = null;
-        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, null, page,
-                null, null, null);
+        final List<ContactsResponse> response = api.getCharactersCharacterIdContacts(characterId, DATASOURCE, null, page, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -128,8 +127,7 @@ public class ContactsApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdContactsLabelsTest() throws ApiException {
-        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE, null,
-                null, null, null);
+        final List<ContactLabelsResponse> response = api.getCharactersCharacterIdContactsLabels(characterId, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -147,7 +145,7 @@ public class ContactsApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdContactsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationContactsResponse> response = api.getCorporationsCorporationIdContacts(corporationId, DATASOURCE, null, page, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
@@ -166,7 +164,7 @@ public class ContactsApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdContactsLabelsTest() throws ApiException {
         Integer corporationId = null;
 
-        List<CorporationContactsLabelsResponse> response = api.getCorporationsCorporationIdContactsLabels(corporationId, DATASOURCE, null, null, null, null);
+        List<CorporationContactsLabelsResponse> response = api.getCorporationsCorporationIdContactsLabels(corporationId, DATASOURCE, null, null);
 
         // TODO: test validations
     }

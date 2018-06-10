@@ -279,6 +279,9 @@ s/get_universe_ancestries_200_ok/UniverseAncestriesResponse/g
 s/get_universe_asteroid_belts_asteroid_belt_id_ok/UniverseAsteroidBeltsResponse/g
 s/get_alliances_alliance_id_contacts_labels_200_ok/AllianceContactsLabelsResponse/g
 s/get_corporations_corporation_id_contacts_labels_200_ok/CorporationContactsLabelsResponse/g
+s/get_dogma_dynamic_items_type_id_item_id_dogma_attribute/DogmaDynamicAttribute/g
+s/get_dogma_dynamic_items_type_id_item_id_dogma_effect/DogmaDynamicEffect/g
+s/get_dogma_dynamic_items_type_id_item_id_ok/DogmaDynamicItemsResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
