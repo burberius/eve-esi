@@ -112,7 +112,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return planets
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planets array")
+    @ApiModelProperty(example = "null", value = "planets array")
     public List<SystemPlanet> getPlanets() {
         return planets;
     }
@@ -188,7 +188,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return starId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "star_id integer")
+    @ApiModelProperty(example = "null", value = "star_id integer")
     public Integer getStarId() {
         return starId;
     }

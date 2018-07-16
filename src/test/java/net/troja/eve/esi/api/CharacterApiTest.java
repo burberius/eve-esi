@@ -18,7 +18,6 @@ import net.troja.eve.esi.model.CharacterBlueprintsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
-import net.troja.eve.esi.model.CharacterNamesResponse;
 import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
@@ -275,29 +274,6 @@ public class CharacterApiTest extends GeneralApiTest {
         List<CharacterTitlesResponse> response = api.getCharactersCharacterIdTitles(characterId, DATASOURCE, null, null);
 
         // TODO: test validations
-    }
-
-    /**
-     * Get character names
-     *
-     * Resolve a set of character IDs to character names --- Alternate route:
-     * &#x60;/v1/characters/names/&#x60; Alternate route:
-     * &#x60;/legacy/characters/names/&#x60; Alternate route:
-     * &#x60;/dev/characters/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCharactersNamesTest() throws ApiException {
-        final List<Long> characterIds = new ArrayList<>();
-        characterIds.add((long) characterId);
-
-        final List<CharacterNamesResponse> response = api.getCharactersNames(characterIds, DATASOURCE, null);
-
-        assertThat(response.size(), equalTo(1));
-        assertThat(response.get(0).getCharacterName(), equalTo(characterName));
     }
 
     /**

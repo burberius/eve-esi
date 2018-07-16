@@ -38,6 +38,9 @@ public class CorporationOrdersResponse implements Serializable {
     @JsonProperty("issued")
     private OffsetDateTime issued = null;
 
+    @JsonProperty("issued_by")
+    private Integer issuedBy = null;
+
     @JsonProperty("location_id")
     private Long locationId = null;
 
@@ -193,6 +196,25 @@ public class CorporationOrdersResponse implements Serializable {
 
     public void setIssued(OffsetDateTime issued) {
         this.issued = issued;
+    }
+
+    public CorporationOrdersResponse issuedBy(Integer issuedBy) {
+        this.issuedBy = issuedBy;
+        return this;
+    }
+
+    /**
+     * The character who issued this order
+     * 
+     * @return issuedBy
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The character who issued this order")
+    public Integer getIssuedBy() {
+        return issuedBy;
+    }
+
+    public void setIssuedBy(Integer issuedBy) {
+        this.issuedBy = issuedBy;
     }
 
     public CorporationOrdersResponse locationId(Long locationId) {
@@ -400,6 +422,7 @@ public class CorporationOrdersResponse implements Serializable {
                 && Objects.equals(this.escrow, corporationOrdersResponse.escrow)
                 && Objects.equals(this.isBuyOrder, corporationOrdersResponse.isBuyOrder)
                 && Objects.equals(this.issued, corporationOrdersResponse.issued)
+                && Objects.equals(this.issuedBy, corporationOrdersResponse.issuedBy)
                 && Objects.equals(this.locationId, corporationOrdersResponse.locationId)
                 && Objects.equals(this.minVolume, corporationOrdersResponse.minVolume)
                 && Objects.equals(this.orderId, corporationOrdersResponse.orderId)
@@ -414,8 +437,8 @@ public class CorporationOrdersResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration, escrow, isBuyOrder, issued, locationId, minVolume, orderId, price, range,
-                regionId, typeId, volumeRemain, volumeTotal, walletDivision);
+        return Objects.hash(duration, escrow, isBuyOrder, issued, issuedBy, locationId, minVolume, orderId, price,
+                range, regionId, typeId, volumeRemain, volumeTotal, walletDivision);
     }
 
     @Override
@@ -427,6 +450,7 @@ public class CorporationOrdersResponse implements Serializable {
         sb.append("    escrow: ").append(toIndentedString(escrow)).append("\n");
         sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
+        sb.append("    issuedBy: ").append(toIndentedString(issuedBy)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
         sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");

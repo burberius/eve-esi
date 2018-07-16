@@ -1155,13 +1155,9 @@ public class UniverseApi {
     }
 
     /**
-     * Get structure information Returns information on requested structure, if
+     * Get structure information Returns information on requested structure if
      * you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all
-     * inputs. --- This route is cached for up to 3600 seconds --- Warning: This
-     * route has an upgrade available. --- [Diff of the upcoming
-     * changes](https:/
-     * /esi.evetech.net/diff/latest/dev/#GET-/universe/structures
-     * /{structure_id}/)
+     * inputs. --- This route is cached for up to 3600 seconds
      * 
      * @param structureId
      *            An Eve structure ID (required)
@@ -1188,7 +1184,7 @@ public class UniverseApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/universe/structures/{structure_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v2/universe/structures/{structure_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "structure_id" + "\\}", apiClient.escapeString(structureId.toString()));
 
         // query params
@@ -1353,12 +1349,8 @@ public class UniverseApi {
     }
 
     /**
-     * Get solar system information Get information on a solar system. NOTE:
-     * This route does not work with abyssal systems. --- This route expires
-     * daily at 11:05 --- Warning: This route has an upgrade available. ---
-     * [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET
-     * -/universe/systems/{system_id}/)
+     * Get solar system information Get information on a solar system. --- This
+     * route expires daily at 11:05
      * 
      * @param systemId
      *            system_id integer (required)
@@ -1388,7 +1380,7 @@ public class UniverseApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v3/universe/systems/{system_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+        String localVarPath = "/v4/universe/systems/{system_id}/".replaceAll("\\{format\\}", "json").replaceAll(
                 "\\{" + "system_id" + "\\}", apiClient.escapeString(systemId.toString()));
 
         // query params

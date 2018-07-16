@@ -8,7 +8,6 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.AllianceIconsResponse;
-import net.troja.eve.esi.model.AllianceNamesResponse;
 import net.troja.eve.esi.model.AllianceResponse;
 
 import java.util.ArrayList;
@@ -236,59 +235,6 @@ public class AllianceApi {
         String[] localVarAuthNames = new String[] {};
 
         GenericType<AllianceIconsResponse> localVarReturnType = new GenericType<AllianceIconsResponse>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Get alliance names Resolve a set of alliance IDs to alliance names ---
-     * This route is cached for up to 3600 seconds
-     * 
-     * @param allianceIds
-     *            A comma separated list of alliance IDs (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @return List&lt;AllianceNamesResponse&gt;
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public List<AllianceNamesResponse> getAlliancesNames(List<Integer> allianceIds, String datasource,
-            String ifNoneMatch) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'allianceIds' is set
-        if (allianceIds == null) {
-            throw new ApiException(400, "Missing the required parameter 'allianceIds' when calling getAlliancesNames");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v2/alliances/names/".replaceAll("\\{format\\}", "json");
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "alliance_ids", allianceIds));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] {};
-
-        GenericType<List<AllianceNamesResponse>> localVarReturnType = new GenericType<List<AllianceNamesResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
