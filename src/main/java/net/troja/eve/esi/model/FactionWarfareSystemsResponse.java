@@ -25,8 +25,42 @@ import java.io.Serializable;
 public class FactionWarfareSystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /**
+     * contested string
+     */
+    public enum ContestedEnum {
+        CAPTURED("captured"),
+
+        CONTESTED("contested"),
+
+        UNCONTESTED("uncontested"),
+
+        VULNERABLE("vulnerable");
+
+        private String value;
+
+        ContestedEnum(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ContestedEnum fromValue(String text) {
+            for (ContestedEnum b : ContestedEnum.values()) {
+                if (String.valueOf(b.value).equals(text)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
     @JsonProperty("contested")
-    private Boolean contested = null;
+    private ContestedEnum contested = null;
 
     @JsonProperty("occupier_faction_id")
     private Integer occupierFactionId = null;
@@ -43,22 +77,22 @@ public class FactionWarfareSystemsResponse implements Serializable {
     @JsonProperty("victory_points_threshold")
     private Integer victoryPointsThreshold = null;
 
-    public FactionWarfareSystemsResponse contested(Boolean contested) {
+    public FactionWarfareSystemsResponse contested(ContestedEnum contested) {
         this.contested = contested;
         return this;
     }
 
     /**
-     * contested boolean
+     * contested string
      * 
      * @return contested
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contested boolean")
-    public Boolean getContested() {
+    @ApiModelProperty(example = "null", required = true, value = "contested string")
+    public ContestedEnum getContested() {
         return contested;
     }
 
-    public void setContested(Boolean contested) {
+    public void setContested(ContestedEnum contested) {
         this.contested = contested;
     }
 

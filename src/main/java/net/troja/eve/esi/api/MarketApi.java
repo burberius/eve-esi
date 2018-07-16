@@ -165,11 +165,7 @@ public class MarketApi {
      * List open orders from a corporation List open market orders placed on
      * behalf of a corporation --- This route is cached for up to 1200 seconds
      * --- Requires one of the following EVE corporation role(s): Accountant,
-     * Trader --- Warning: This route has an upgrade available. --- [Diff of the
-     * upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations
-     * /{corporation_id}/orders/) SSO Scope:
-     * esi-markets.read_corporation_orders.v1
+     * Trader SSO Scope: esi-markets.read_corporation_orders.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -198,7 +194,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/orders/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v3/corporations/{corporation_id}/orders/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params
@@ -231,11 +227,8 @@ public class MarketApi {
      * List historical orders from a corporation List cancelled and expired
      * market orders placed on behalf of a corporation up to 90 days in the
      * past. --- This route is cached for up to 3600 seconds --- Requires one of
-     * the following EVE corporation role(s): Accountant, Trader --- Warning:
-     * This route has an upgrade available. --- [Diff of the upcoming
-     * changes](https
-     * ://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id
-     * }/orders/history/) SSO Scope: esi-markets.read_corporation_orders.v1
+     * the following EVE corporation role(s): Accountant, Trader SSO Scope:
+     * esi-markets.read_corporation_orders.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -264,7 +257,7 @@ public class MarketApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/orders/history/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v2/corporations/{corporation_id}/orders/history/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
 
         // query params

@@ -342,9 +342,7 @@ public class FactionWarfareApi {
     /**
      * Ownership of faction warfare systems An overview of the current ownership
      * of faction warfare solar systems --- This route is cached for up to 1800
-     * seconds --- Warning: This route has an upgrade available. --- [Diff of
-     * the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/fw/systems/)
+     * seconds
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -360,7 +358,7 @@ public class FactionWarfareApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/fw/systems/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v2/fw/systems/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

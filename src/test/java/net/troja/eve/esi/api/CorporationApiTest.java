@@ -11,7 +11,6 @@
 
 package net.troja.eve.esi.api;
 
-import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
@@ -24,8 +23,6 @@ import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
 import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
-import net.troja.eve.esi.model.CorporationNamesResponse;
-import net.troja.eve.esi.model.CorporationOutpostResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationShareholdersResponse;
@@ -299,42 +296,6 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get corporation outposts
-     *
-     * Get a list of corporation outpost IDs Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    @Ignore("Needs corporation with read access")
-    public void getCorporationsCorporationIdOutpostsTest() throws ApiException {
-        Integer corporationId = null;
-        Integer page = null;
-        List<Integer> response = api.getCorporationsCorporationIdOutposts(corporationId, DATASOURCE, null, page, null);
-
-        // TODO: test validations
-    }
-
-    /**
-     * Get corporation outpost details
-     *
-     * Get details about a given outpost. Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    @Ignore("Needs corporation with read access")
-    public void getCorporationsCorporationIdOutpostsOutpostIdTest() throws ApiException {
-        Integer corporationId = null;
-        Integer outpostId = null;
-        CorporationOutpostResponse response = api.getCorporationsCorporationIdOutpostsOutpostId(corporationId, outpostId, DATASOURCE, null, null);
-
-        // TODO: test validations
-    }
-
-    /**
      * Get corporation member roles
      *
      * Return the roles of all members if the character has the personnel
@@ -485,29 +446,6 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdTitlesTest() throws ApiException {
         Integer corporationId = null;
         List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null);
-    }
-
-    /**
-     * Get corporation names
-     *
-     * Resolve a set of corporation IDs to corporation names --- Alternate
-     * route: &#x60;/v1/corporations/names/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/names/&#x60; Alternate route:
-     * &#x60;/dev/corporations/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCorporationsNamesTest() throws ApiException {
-        final List<Integer> corporationIds = new ArrayList<>();
-        corporationIds.add(CORPORATION_ID_TBD);
-
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null);
-
-        assertThat(response.size(), equalTo(1));
-        assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_TBD));
     }
 
     /**
