@@ -12,7 +12,6 @@ import net.troja.eve.esi.model.CharacterBlueprintsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
 import net.troja.eve.esi.model.CharacterFatigueResponse;
 import net.troja.eve.esi.model.CharacterMedalsResponse;
-import net.troja.eve.esi.model.CharacterNamesResponse;
 import net.troja.eve.esi.model.CharacterNotificationsResponse;
 import net.troja.eve.esi.model.CharacterPortraitResponse;
 import net.troja.eve.esi.model.CharacterResearchAgentsResponse;
@@ -21,7 +20,6 @@ import net.troja.eve.esi.model.CharacterRolesResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CharacterStatsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
 
 import java.util.ArrayList;
@@ -60,16 +58,12 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public CharacterResponse getCharactersCharacterId(Integer characterId, String datasource, String ifNoneMatch,
-            String userAgent, String xUserAgent) throws ApiException {
+    public CharacterResponse getCharactersCharacterId(Integer characterId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -88,12 +82,9 @@ public class CharacterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -126,17 +117,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterResearchAgentsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterResearchAgentsResponse> getCharactersCharacterIdAgentsResearch(Integer characterId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -156,12 +142,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -194,16 +177,12 @@ public class CharacterApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterBlueprintsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterBlueprintsResponse> getCharactersCharacterIdBlueprints(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -224,12 +203,9 @@ public class CharacterApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -257,16 +233,12 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterCorporationHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterCorporationHistoryResponse> getCharactersCharacterIdCorporationhistory(Integer characterId,
-            String datasource, String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -285,12 +257,9 @@ public class CharacterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -321,16 +290,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterFatigueResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterFatigueResponse getCharactersCharacterIdFatigue(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -350,12 +315,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -385,16 +347,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterMedalsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterMedalsResponse> getCharactersCharacterIdMedals(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -414,12 +372,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -450,17 +405,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterNotificationsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterNotificationsResponse> getCharactersCharacterIdNotifications(Integer characterId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -480,12 +430,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -516,17 +463,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;NewContactNotificationsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<NewContactNotificationsResponse> getCharactersCharacterIdNotificationsContacts(Integer characterId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -547,12 +489,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -580,16 +519,12 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterPortraitResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterPortraitResponse getCharactersCharacterIdPortrait(Integer characterId, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -608,12 +543,9 @@ public class CharacterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -644,16 +576,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterRolesResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterRolesResponse getCharactersCharacterIdRoles(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -673,12 +601,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -709,16 +634,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterStandingsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterStandingsResponse> getCharactersCharacterIdStandings(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -738,12 +659,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -774,16 +692,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterStatsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterStatsResponse> getCharactersCharacterIdStats(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -803,12 +717,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -839,16 +750,12 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterTitlesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterTitlesResponse> getCharactersCharacterIdTitles(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -868,12 +775,9 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -890,66 +794,6 @@ public class CharacterApi {
     }
 
     /**
-     * Get character names Resolve a set of character IDs to character names ---
-     * This route is cached for up to 3600 seconds
-     * 
-     * @param characterIds
-     *            A comma separated list of character IDs (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CharacterNamesResponse&gt;
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public List<CharacterNamesResponse> getCharactersNames(List<Long> characterIds, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'characterIds' is set
-        if (characterIds == null) {
-            throw new ApiException(400, "Missing the required parameter 'characterIds' when calling getCharactersNames");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v1/characters/names/".replaceAll("\\{format\\}", "json");
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "character_ids", characterIds));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] {};
-
-        GenericType<List<CharacterNamesResponse>> localVarReturnType = new GenericType<List<CharacterNamesResponse>>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
      * Character affiliation Bulk lookup of character IDs to corporation,
      * alliance and faction --- This route is cached for up to 3600 seconds
      * 
@@ -959,19 +803,12 @@ public class CharacterApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterAffiliationResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> characters, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> characters, String datasource)
+            throws ApiException {
         Object localVarPostBody = characters;
 
         // verify the required parameter 'characters' is set
@@ -989,12 +826,6 @@ public class CharacterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1024,16 +855,12 @@ public class CharacterApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return Float
      * @throws ApiException
      *             if fails to make API call
      */
     public Float postCharactersCharacterIdCspa(Integer characterId, List<Integer> characters, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = characters;
 
         // verify the required parameter 'characterId' is set
@@ -1059,10 +886,6 @@ public class CharacterApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

@@ -10,7 +10,6 @@ import javax.ws.rs.core.GenericType;
 import net.troja.eve.esi.model.CharacterPlanetResponse;
 import net.troja.eve.esi.model.CharacterPlanetsResponse;
 import net.troja.eve.esi.model.CorporationCustomsOfficesResponse;
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.PlanetFactorySchematicResponse;
 
 import java.util.ArrayList;
@@ -52,16 +51,12 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterPlanetsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterPlanetsResponse> getCharactersCharacterIdPlanets(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -81,12 +76,9 @@ public class PlanetaryInteractionApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -122,17 +114,12 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterPlanetResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterPlanetResponse getCharactersCharacterIdPlanetsPlanetId(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -159,12 +146,9 @@ public class PlanetaryInteractionApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -198,17 +182,12 @@ public class PlanetaryInteractionApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationCustomsOfficesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationCustomsOfficesResponse> getCorporationsCorporationIdCustomsOffices(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -229,12 +208,9 @@ public class PlanetaryInteractionApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -262,16 +238,12 @@ public class PlanetaryInteractionApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return PlanetFactorySchematicResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public PlanetFactorySchematicResponse getUniverseSchematicsSchematicId(Integer schematicId, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'schematicId' is set
@@ -290,12 +262,9 @@ public class PlanetaryInteractionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

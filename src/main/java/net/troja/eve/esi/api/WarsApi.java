@@ -46,16 +46,11 @@ public class WarsApi {
      *            matches the current ETag (optional)
      * @param maxWarId
      *            Only return wars with ID smaller than this. (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getWars(String datasource, String ifNoneMatch, Integer maxWarId, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<Integer> getWars(String datasource, String ifNoneMatch, Integer maxWarId) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -68,12 +63,9 @@ public class WarsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_war_id", maxWarId));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -101,16 +93,11 @@ public class WarsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return WarResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public WarResponse getWarsWarId(Integer warId, String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public WarResponse getWarsWarId(Integer warId, String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'warId' is set
@@ -128,12 +115,9 @@ public class WarsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -163,16 +147,12 @@ public class WarsApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;WarKillmailsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<WarKillmailsResponse> getWarsWarIdKillmails(Integer warId, String datasource, String ifNoneMatch,
-            Integer page, String userAgent, String xUserAgent) throws ApiException {
+            Integer page) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'warId' is set
@@ -191,12 +171,9 @@ public class WarsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

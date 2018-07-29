@@ -11,7 +11,6 @@
 
 package net.troja.eve.esi.api;
 
-import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
@@ -24,8 +23,6 @@ import net.troja.eve.esi.model.CorporationIconsResponse;
 import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
 import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
-import net.troja.eve.esi.model.CorporationNamesResponse;
-import net.troja.eve.esi.model.CorporationOutpostResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationShareholdersResponse;
@@ -65,9 +62,9 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdTest() throws ApiException {
-        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_AAC, DATASOURCE, null, null, null);
+        final CorporationResponse response = api.getCorporationsCorporationId(CORPORATION_ID_TBD, DATASOURCE, null);
 
-        assertThat(response.getTicker(), equalTo(".AAC."));
+        assertThat(response.getTicker(), equalTo("BDNUT"));
         assertThat(response.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
     }
 
@@ -84,7 +81,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdBlueprintsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationBlueprintsResponse> response = api.getCorporationsCorporationIdBlueprints(corporationId, DATASOURCE, null, page, null);
         // TODO: test validations
     }
 
@@ -101,7 +98,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdContainersLogsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationContainersLogsResponse> response = api.getCorporationsCorporationIdContainersLogs(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationContainersLogsResponse> response = api.getCorporationsCorporationIdContainersLogs(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -122,13 +119,12 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
-        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_AAC, DATASOURCE, null,
-                null, null);
+        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_TBD, DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
         // The last entry is without alliance!
         final CorporationAlliancesHistoryResponse alliance = response.get(response.size() - 2);
-        assertThat(alliance.getAllianceId(), equalTo(1804089170));
+        assertThat(alliance.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
     }
 
     /**
@@ -143,7 +139,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdDivisionsTest() throws ApiException {
         Integer corporationId = null;
-        CorporationDivisionsResponse response = api.getCorporationsCorporationIdDivisions(corporationId, DATASOURCE, null, null, null, null);
+        CorporationDivisionsResponse response = api.getCorporationsCorporationIdDivisions(corporationId, DATASOURCE, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getHangar().size(), greaterThan(0));
@@ -162,7 +158,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdFacilitiesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationFacilitiesResponse> response = api.getCorporationsCorporationIdFacilities(corporationId, DATASOURCE, null, null, null, null);
+        List<CorporationFacilitiesResponse> response = api.getCorporationsCorporationIdFacilities(corporationId, DATASOURCE, null, null);
 
         // TODO: test validations
     }
@@ -182,7 +178,7 @@ public class CorporationApiTest extends GeneralApiTest {
      */
     @Test
     public void getCorporationsCorporationIdIconsTest() throws ApiException {
-        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_AAC, DATASOURCE, null, null, null);
+        final CorporationIconsResponse response = api.getCorporationsCorporationIdIcons(CORPORATION_ID_TBD, DATASOURCE, null);
 
         assertThat(response.getPx64x64(), notNullValue());
     }
@@ -200,7 +196,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdMedalsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMedalsResponse> response = api.getCorporationsCorporationIdMedals(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationMedalsResponse> response = api.getCorporationsCorporationIdMedals(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -218,7 +214,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdMedalsIssuedTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMedalsIssuedResponse> response = api.getCorporationsCorporationIdMedalsIssued(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationMedalsIssuedResponse> response = api.getCorporationsCorporationIdMedalsIssued(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -257,7 +253,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdMembersLimitTest() throws ApiException {
         Integer corporationId = null;
-        Integer response = api.getCorporationsCorporationIdMembersLimit(corporationId, DATASOURCE, null, null, null, null);
+        Integer response = api.getCorporationsCorporationIdMembersLimit(corporationId, DATASOURCE, null, null);
 
         assertThat(response, notNullValue());
         assertThat(response, greaterThan(0));
@@ -275,7 +271,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdMembersTitlesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationMembersTitlesResponse> response = api.getCorporationsCorporationIdMembersTitles(corporationId, DATASOURCE, null, null, null, null);
+        List<CorporationMembersTitlesResponse> response = api.getCorporationsCorporationIdMembersTitles(corporationId, DATASOURCE, null, null);
 
         // TODO: test validations
     }
@@ -297,42 +293,6 @@ public class CorporationApiTest extends GeneralApiTest {
         // List<CorporationMemberTrackingResponse> response =
         // api.getCorporationsCorporationIdMembertracking(corporationId,
         // DATASOURCE, null, null, null);
-    }
-
-    /**
-     * Get corporation outposts
-     *
-     * Get a list of corporation outpost IDs Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    @Ignore("Needs corporation with read access")
-    public void getCorporationsCorporationIdOutpostsTest() throws ApiException {
-        Integer corporationId = null;
-        Integer page = null;
-        List<Integer> response = api.getCorporationsCorporationIdOutposts(corporationId, DATASOURCE, null, page, null, null, null);
-
-        // TODO: test validations
-    }
-
-    /**
-     * Get corporation outpost details
-     *
-     * Get details about a given outpost. Note: This endpoint will be removed once outposts are migrated to Citadels as talked about in this blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_outposts.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    @Ignore("Needs corporation with read access")
-    public void getCorporationsCorporationIdOutpostsOutpostIdTest() throws ApiException {
-        Integer corporationId = null;
-        Integer outpostId = null;
-        CorporationOutpostResponse response = api.getCorporationsCorporationIdOutpostsOutpostId(corporationId, outpostId, DATASOURCE, null, null, null, null);
-
-        // TODO: test validations
     }
 
     /**
@@ -369,7 +329,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdRolesHistoryTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationRolesHistoryResponse> response = api.getCorporationsCorporationIdRolesHistory(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -387,7 +347,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdShareholdersTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationShareholdersResponse> response = api.getCorporationsCorporationIdShareholders(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationShareholdersResponse> response = api.getCorporationsCorporationIdShareholders(corporationId, DATASOURCE, null, page, null);
         // TODO: test validations
     }
 
@@ -404,7 +364,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdStandingsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationStandingsResponse> response = api.getCorporationsCorporationIdStandings(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -422,7 +382,7 @@ public class CorporationApiTest extends GeneralApiTest {
     public void getCorporationsCorporationIdStarbasesTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationStarbasesResponse> response = api.getCorporationsCorporationIdStarbases(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationStarbasesResponse> response = api.getCorporationsCorporationIdStarbases(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -441,7 +401,7 @@ public class CorporationApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Long starbaseId = null;
         Integer systemId = null;
-        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, null, null, null, null);
+        CorporationStarbaseResponse response = api.getCorporationsCorporationIdStarbasesStarbaseId(corporationId, starbaseId, systemId, DATASOURCE, null, null);
 
         // TODO: test validations
     }
@@ -485,30 +445,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void getCorporationsCorporationIdTitlesTest() throws ApiException {
         Integer corporationId = null;
-        List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null, null, null);
-    }
-
-    /**
-     * Get corporation names
-     *
-     * Resolve a set of corporation IDs to corporation names --- Alternate
-     * route: &#x60;/v1/corporations/names/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/names/&#x60; Alternate route:
-     * &#x60;/dev/corporations/names/&#x60; --- This route is cached for up to
-     * 3600 seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCorporationsNamesTest() throws ApiException {
-        final List<Integer> corporationIds = new ArrayList<>();
-        corporationIds.add(CORPORATION_ID_AAC);
-
-        final List<CorporationNamesResponse> response = api.getCorporationsNames(corporationIds, DATASOURCE, null, null, null);
-
-        assertThat(response.size(), equalTo(1));
-        assertThat(response.get(0).getCorporationId(), equalTo(CORPORATION_ID_AAC));
+        List<CorporationTitlesResponse> response = api.getCorporationsCorporationIdTitles(corporationId, DATASOURCE, null, null);
     }
 
     /**
@@ -526,7 +463,7 @@ public class CorporationApiTest extends GeneralApiTest {
     @Test
     @Ignore("Doesn't work?!?!")
     public void getCorporationsNpccorpsTest() throws ApiException {
-        final List<Integer> response = api.getCorporationsNpccorps(DATASOURCE, null, null, null);
+        final List<Integer> response = api.getCorporationsNpccorps(DATASOURCE, null);
 
         assertThat(response.size(), equalTo(50));
     }

@@ -18,7 +18,6 @@ import net.troja.eve.esi.model.FleetSquadNaming;
 import net.troja.eve.esi.model.FleetWingCreatedResponse;
 import net.troja.eve.esi.model.FleetWingNaming;
 import net.troja.eve.esi.model.FleetWingsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,15 +56,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public void deleteFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -92,10 +87,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -122,15 +113,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public void deleteFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -157,10 +144,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -188,15 +171,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void deleteFleetsFleetIdWingsWingId(Long fleetId, Long wingId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public void deleteFleetsFleetIdWingsWingId(Long fleetId, Long wingId, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -223,10 +202,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -255,16 +230,12 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterFleetResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterFleetResponse getCharactersCharacterIdFleet(Integer characterId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -284,12 +255,9 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -319,16 +287,12 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String ifNoneMatch, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String ifNoneMatch, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -347,12 +311,9 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -374,6 +335,8 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param acceptLanguage
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -381,19 +344,16 @@ public class FleetsApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param language
-     *            Language to use in the response (optional, default to en-us)
+     *            Language to use in the response, takes precedence over
+     *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;FleetMembersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String datasource, String ifNoneMatch,
-            String language, String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -413,12 +373,11 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (acceptLanguage != null)
+            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -440,6 +399,8 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param acceptLanguage
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -447,19 +408,16 @@ public class FleetsApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param language
-     *            Language to use in the response (optional, default to en-us)
+     *            Language to use in the response, takes precedence over
+     *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;FleetWingsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String datasource, String ifNoneMatch,
-            String language, String token, String userAgent, String xUserAgent) throws ApiException {
+    public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -479,12 +437,11 @@ public class FleetsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (acceptLanguage != null)
+            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -514,15 +471,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = invitation;
 
         // verify the required parameter 'fleetId' is set
@@ -548,10 +501,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -576,16 +525,12 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetWingCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -604,10 +549,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -636,16 +577,12 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return FleetSquadCreatedResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public FleetSquadCreatedResponse postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'fleetId' is set
@@ -672,10 +609,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -704,15 +637,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
-    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource, String token)
+            throws ApiException {
         Object localVarPostBody = newSettings;
 
         // verify the required parameter 'fleetId' is set
@@ -736,10 +665,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -768,15 +693,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, FleetMemberMovement movement,
-            String datasource, String token, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String token) throws ApiException {
         Object localVarPostBody = movement;
 
         // verify the required parameter 'fleetId' is set
@@ -809,10 +730,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -841,15 +758,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void putFleetsFleetIdSquadsSquadId(Long fleetId, FleetSquadNaming naming, Long squadId, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set
@@ -882,10 +795,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -914,15 +823,11 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @throws ApiException
      *             if fails to make API call
      */
     public void putFleetsFleetIdWingsWingId(Long fleetId, FleetWingNaming naming, Long wingId, String datasource,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            String token) throws ApiException {
         Object localVarPostBody = naming;
 
         // verify the required parameter 'fleetId' is set
@@ -955,10 +860,6 @@ public class FleetsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

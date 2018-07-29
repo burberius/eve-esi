@@ -16,14 +16,12 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.AllianceIconsResponse;
-import net.troja.eve.esi.model.AllianceNamesResponse;
 import net.troja.eve.esi.model.AllianceResponse;
 
 /**
@@ -46,7 +44,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesTest() throws ApiException {
-        final List<Integer> response = api.getAlliances(DATASOURCE, null, null, null);
+        final List<Integer> response = api.getAlliances(DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(1));
     }
@@ -63,7 +61,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdTest() throws ApiException {
-        final AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE, null, null, null);
+        final AllianceResponse response = api.getAlliancesAllianceId(ALLIANCE_ID_TRI, DATASOURCE, null);
 
         assertThat(response.getName(), equalTo("Triumvirate."));
         assertThat(response.getTicker(), equalTo("TRI"));
@@ -85,7 +83,7 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdCorporationsTest() throws ApiException {
-        final List<Integer> response = api.getAlliancesAllianceIdCorporations(ALLIANCE_ID_TRI, DATASOURCE, null, null, null);
+        final List<Integer> response = api.getAlliancesAllianceIdCorporations(ALLIANCE_ID_TRI, DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(1));
         assertThat(response, hasItem(98435559));
@@ -105,32 +103,8 @@ public class AllianceApiTest extends GeneralApiTest {
      */
     @Test
     public void getAlliancesAllianceIdIconsTest() throws ApiException {
-        final AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE, null, null, null);
+        final AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE, null);
 
         assertThat(response.getPx128x128(), equalTo("http://image.eveonline.com/Alliance/933731581_128.png"));
-    }
-
-    /**
-     * Get alliance names
-     *
-     * Resolve a set of alliance IDs to alliance names --- Alternate route:
-     * &#x60;/v1/alliances/names/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/names/&#x60; Alternate route:
-     * &#x60;/dev/alliances/names/&#x60; --- This route is cached for up to 3600
-     * seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getAlliancesNamesTest() throws ApiException {
-        final List<Integer> allianceIds = new ArrayList<>();
-        allianceIds.add(ALLIANCE_ID_TRI);
-        final List<AllianceNamesResponse> response = api.getAlliancesNames(allianceIds, DATASOURCE, null, null, null);
-
-        assertThat(response.size(), equalTo(1));
-        final AllianceNamesResponse alliance = response.get(0);
-        assertThat(alliance.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
-        assertThat(alliance.getAllianceName(), equalTo("Triumvirate."));
     }
 }

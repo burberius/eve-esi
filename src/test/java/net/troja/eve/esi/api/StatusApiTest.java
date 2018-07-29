@@ -36,7 +36,7 @@ public class StatusApiTest extends GeneralApiTest {
      */
     @Test
     public void getStatusTest() throws ApiException {
-        final StatusResponse response = api.getStatus(DATASOURCE, null, null, null);
+        final StatusResponse response = api.getStatus(DATASOURCE, null);
 
         assertThat(response.getPlayers(), greaterThan(0));
     }

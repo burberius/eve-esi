@@ -52,8 +52,7 @@ public class IndustryApiTest extends GeneralApiTest {
     @Test
     public void getCharactersCharacterIdIndustryJobsTest() throws ApiException {
         final Boolean includeCompleted = null;
-        final List<CharacterIndustryJobsResponse> response = api.getCharactersCharacterIdIndustryJobs(characterId,
-                DATASOURCE, null, includeCompleted, null, null, null);
+        final List<CharacterIndustryJobsResponse> response = api.getCharactersCharacterIdIndustryJobs(characterId, DATASOURCE, null, includeCompleted, null);
 
         assertThat(response, notNullValue());
     }
@@ -70,7 +69,7 @@ public class IndustryApiTest extends GeneralApiTest {
     @Ignore("No test data")
     public void getCharactersCharacterIdMiningTest() throws ApiException {
         Integer page = null;
-        List<CharacterMiningResponse> response = api.getCharactersCharacterIdMining(characterId, DATASOURCE, null, page, null, null, null);
+        List<CharacterMiningResponse> response = api.getCharactersCharacterIdMining(characterId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -88,7 +87,7 @@ public class IndustryApiTest extends GeneralApiTest {
     public void getCorporationCorporationIdMiningExtractionsTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMiningExtractionsResponse> response = api.getCorporationCorporationIdMiningExtractions(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationMiningExtractionsResponse> response = api.getCorporationCorporationIdMiningExtractions(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -106,7 +105,7 @@ public class IndustryApiTest extends GeneralApiTest {
     public void getCorporationCorporationIdMiningObserversTest() throws ApiException {
         Integer corporationId = null;
         Integer page = null;
-        List<CorporationMiningObserversResponse> response = api.getCorporationCorporationIdMiningObservers(corporationId, DATASOURCE, null, page, null, null, null);
+        List<CorporationMiningObserversResponse> response = api.getCorporationCorporationIdMiningObservers(corporationId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -125,7 +124,7 @@ public class IndustryApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Long observerId = null;
         Integer page = null;
-        List<CorporationMiningObserverResponse> response = api.getCorporationCorporationIdMiningObserversObserverId(corporationId, observerId, DATASOURCE, null, page, null, null, null);
+        List<CorporationMiningObserverResponse> response = api.getCorporationCorporationIdMiningObserversObserverId(corporationId, observerId, DATASOURCE, null, page, null);
 
         // TODO: test validations
     }
@@ -144,7 +143,7 @@ public class IndustryApiTest extends GeneralApiTest {
         Integer corporationId = null;
         Boolean includeCompleted = null;
         Integer page = null;
-        List<CorporationIndustryJobsResponse> response = api.getCorporationsCorporationIdIndustryJobs(corporationId, DATASOURCE, null, includeCompleted, page, null, null, null);
+        List<CorporationIndustryJobsResponse> response = api.getCorporationsCorporationIdIndustryJobs(corporationId, DATASOURCE, null, includeCompleted, page, null);
 
         // TODO: test validations
     }
@@ -163,7 +162,7 @@ public class IndustryApiTest extends GeneralApiTest {
      */
     @Test
     public void getIndustryFacilitiesTest() throws ApiException {
-        final List<IndustryFacilitiesResponse> response = api.getIndustryFacilities(DATASOURCE, null, null, null);
+        final List<IndustryFacilitiesResponse> response = api.getIndustryFacilities(DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
         final IndustryFacilitiesResponse facility = response.get(0);
@@ -184,7 +183,7 @@ public class IndustryApiTest extends GeneralApiTest {
      */
     @Test
     public void getIndustrySystemsTest() throws ApiException {
-        final List<IndustrySystemsResponse> response = api.getIndustrySystems(DATASOURCE, null, null, null);
+        final List<IndustrySystemsResponse> response = api.getIndustrySystems(DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
         final IndustrySystemsResponse system = response.get(0);

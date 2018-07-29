@@ -110,7 +110,7 @@ public class CorporationStandingsResponse implements Serializable {
     }
 
     /**
-     * standing number minimum: -10 maximum: 10
+     * standing number
      * 
      * @return standing
      **/

@@ -50,7 +50,7 @@ public class WarsApiTest extends GeneralApiTest {
     @Test
     public void getWarsTest() throws ApiException {
         final Integer maxWarId = null;
-        final List<Integer> response = api.getWars(DATASOURCE, null, maxWarId, null, null);
+        final List<Integer> response = api.getWars(DATASOURCE, null, maxWarId);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -69,8 +69,8 @@ public class WarsApiTest extends GeneralApiTest {
      */
     @Test
     public void getWarsWarIdTest() throws ApiException {
-        final Integer warId = api.getWars(DATASOURCE, null, null, null, null).get(0);
-        final WarResponse response = api.getWarsWarId(warId, DATASOURCE, null, null, null);
+        final Integer warId = api.getWars(DATASOURCE, null, null).get(0);
+        final WarResponse response = api.getWarsWarId(warId, DATASOURCE, null);
 
         assertThat(response.getAggressor(), notNullValue());
         assertThat(response.getId(), equalTo(warId));

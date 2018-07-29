@@ -9,7 +9,6 @@ import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterKillmailsResponse;
 import net.troja.eve.esi.model.CorporationKillmailsResponse;
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.KillmailResponse;
 
 import java.util.ArrayList;
@@ -37,9 +36,9 @@ public class KillmailsApi {
     }
 
     /**
-     * Get character kills and losses Return a list of character&#39;s recent
-     * kills and losses --- This route is cached for up to 120 seconds SSO
-     * Scope: esi-killmails.read_killmails.v1
+     * Get a character&#39;s recent kills and losses Return a list of a
+     * character&#39;s kills and losses going back 90 days --- This route is
+     * cached for up to 300 seconds SSO Scope: esi-killmails.read_killmails.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -49,24 +48,16 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param maxCount
-     *            How many killmails to return at maximum (optional, default to
-     *            50)
-     * @param maxKillId
-     *            Only return killmails with ID smaller than this. (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterKillmailsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterKillmailsResponse> getCharactersCharacterIdKillmailsRecent(Integer characterId,
-            String datasource, String ifNoneMatch, Integer maxCount, Integer maxKillId, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -85,15 +76,11 @@ public class KillmailsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_count", maxCount));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_kill_id", maxKillId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -110,10 +97,11 @@ public class KillmailsApi {
     }
 
     /**
-     * Get corporation kills and losses Get a list of corporation&#39;s recent
-     * kills and losses --- This route is cached for up to 300 seconds ---
-     * Requires one of the following EVE corporation role(s): Director SSO
-     * Scope: esi-killmails.read_corporation_killmails.v1
+     * Get a corporation&#39;s recent kills and losses Get a list of a
+     * corporation&#39;s kills and losses going back 90 days --- This route is
+     * cached for up to 300 seconds --- Requires one of the following EVE
+     * corporation role(s): Director SSO Scope:
+     * esi-killmails.read_corporation_killmails.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -123,21 +111,16 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param maxKillId
-     *            Only return killmails with ID smaller than this (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationKillmailsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationKillmailsResponse> getCorporationsCorporationIdKillmailsRecent(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer maxKillId, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -156,14 +139,11 @@ public class KillmailsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "max_kill_id", maxKillId));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -193,16 +173,12 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return KillmailResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public KillmailResponse getKillmailsKillmailIdKillmailHash(String killmailHash, Integer killmailId,
-            String datasource, String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'killmailHash' is set
@@ -228,12 +204,9 @@ public class KillmailsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

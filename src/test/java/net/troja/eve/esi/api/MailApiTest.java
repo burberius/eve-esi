@@ -92,8 +92,7 @@ public class MailApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdMailTest() throws ApiException {
         final List<Integer> labels = null;
         final Integer lastMailId = null;
-        final List<MailHeadersResponse> response = api.getCharactersCharacterIdMail(characterId, DATASOURCE, null, labels,
-                lastMailId, null, null, null);
+        final List<MailHeadersResponse> response = api.getCharactersCharacterIdMail(characterId, DATASOURCE, null, labels, lastMailId, null);
 
         assertThat(response.size(), equalTo(50));
         final MailHeadersResponse headers = response.get(0);

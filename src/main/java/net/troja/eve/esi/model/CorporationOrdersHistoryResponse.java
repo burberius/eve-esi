@@ -38,6 +38,9 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     @JsonProperty("issued")
     private OffsetDateTime issued = null;
 
+    @JsonProperty("issued_by")
+    private Integer issuedBy = null;
+
     @JsonProperty("location_id")
     private Long locationId = null;
 
@@ -226,6 +229,25 @@ public class CorporationOrdersHistoryResponse implements Serializable {
 
     public void setIssued(OffsetDateTime issued) {
         this.issued = issued;
+    }
+
+    public CorporationOrdersHistoryResponse issuedBy(Integer issuedBy) {
+        this.issuedBy = issuedBy;
+        return this;
+    }
+
+    /**
+     * The character who issued this order
+     * 
+     * @return issuedBy
+     **/
+    @ApiModelProperty(example = "null", value = "The character who issued this order")
+    public Integer getIssuedBy() {
+        return issuedBy;
+    }
+
+    public void setIssuedBy(Integer issuedBy) {
+        this.issuedBy = issuedBy;
     }
 
     public CorporationOrdersHistoryResponse locationId(Long locationId) {
@@ -425,12 +447,11 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     }
 
     /**
-     * The corporation wallet division used for this order. minimum: 1 maximum:
-     * 7
+     * The corporation wallet division used for this order minimum: 1 maximum: 7
      * 
      * @return walletDivision
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order.")
+    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order")
     public Integer getWalletDivision() {
         return walletDivision;
     }
@@ -452,6 +473,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
                 && Objects.equals(this.escrow, corporationOrdersHistoryResponse.escrow)
                 && Objects.equals(this.isBuyOrder, corporationOrdersHistoryResponse.isBuyOrder)
                 && Objects.equals(this.issued, corporationOrdersHistoryResponse.issued)
+                && Objects.equals(this.issuedBy, corporationOrdersHistoryResponse.issuedBy)
                 && Objects.equals(this.locationId, corporationOrdersHistoryResponse.locationId)
                 && Objects.equals(this.minVolume, corporationOrdersHistoryResponse.minVolume)
                 && Objects.equals(this.orderId, corporationOrdersHistoryResponse.orderId)
@@ -467,8 +489,8 @@ public class CorporationOrdersHistoryResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration, escrow, isBuyOrder, issued, locationId, minVolume, orderId, price, range,
-                regionId, state, typeId, volumeRemain, volumeTotal, walletDivision);
+        return Objects.hash(duration, escrow, isBuyOrder, issued, issuedBy, locationId, minVolume, orderId, price,
+                range, regionId, state, typeId, volumeRemain, volumeTotal, walletDivision);
     }
 
     @Override
@@ -480,6 +502,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
         sb.append("    escrow: ").append(toIndentedString(escrow)).append("\n");
         sb.append("    isBuyOrder: ").append(toIndentedString(isBuyOrder)).append("\n");
         sb.append("    issued: ").append(toIndentedString(issued)).append("\n");
+        sb.append("    issuedBy: ").append(toIndentedString(issuedBy)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    minVolume: ").append(toIndentedString(minVolume)).append("\n");
         sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");

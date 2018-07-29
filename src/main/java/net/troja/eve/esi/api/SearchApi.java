@@ -8,7 +8,6 @@ import net.troja.eve.esi.Pair;
 import javax.ws.rs.core.GenericType;
 
 import net.troja.eve.esi.model.CharacterSearchResponse;
-import net.troja.eve.esi.model.Forbidden;
 import net.troja.eve.esi.model.SearchResponse;
 
 import java.util.ArrayList;
@@ -46,6 +45,8 @@ public class SearchApi {
      *            An EVE character ID (required)
      * @param search
      *            The string to search on (required)
+     * @param acceptLanguage
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -53,23 +54,20 @@ public class SearchApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param language
-     *            Language to use in the response (optional, default to en-us)
+     *            Language to use in the response, takes precedence over
+     *            Accept-Language (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CharacterSearchResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CharacterSearchResponse getCharactersCharacterIdSearch(List<String> categories, Integer characterId,
-            String search, String datasource, String ifNoneMatch, String language, Boolean strict, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+            String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
+            Boolean strict, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'categories' is set
@@ -105,12 +103,11 @@ public class SearchApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (acceptLanguage != null)
+            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -135,6 +132,8 @@ public class SearchApi {
      *            Type of entities to search for (required)
      * @param search
      *            The string to search on (required)
+     * @param acceptLanguage
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -142,20 +141,17 @@ public class SearchApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param language
-     *            Language to use in the response (optional, default to en-us)
+     *            Language to use in the response, takes precedence over
+     *            Accept-Language (optional, default to en-us)
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return SearchResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public SearchResponse getSearch(List<String> categories, String search, String datasource, String ifNoneMatch,
-            String language, Boolean strict, String userAgent, String xUserAgent) throws ApiException {
+    public SearchResponse getSearch(List<String> categories, String search, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, Boolean strict) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'categories' is set
@@ -181,12 +177,11 @@ public class SearchApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "search", search));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "strict", strict));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (acceptLanguage != null)
+            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

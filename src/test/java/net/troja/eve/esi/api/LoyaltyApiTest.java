@@ -51,8 +51,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdLoyaltyPointsTest() throws ApiException {
-        final List<CharacterLoyaltyPointsResponse> response = api.getCharactersCharacterIdLoyaltyPoints(characterId,
-                DATASOURCE, null, null, null, null);
+        final List<CharacterLoyaltyPointsResponse> response = api.getCharactersCharacterIdLoyaltyPoints(characterId, DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
         final CharacterLoyaltyPointsResponse pointsResponse = response.get(0);
@@ -75,8 +74,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
     @Test
     public void getLoyaltyStoresCorporationIdOffersTest() throws ApiException {
         final Integer corporationId = 1000035;
-        final List<LoyaltyStoreOffersResponse> response = api.getLoyaltyStoresCorporationIdOffers(corporationId,
-                DATASOURCE, null, null, null);
+        final List<LoyaltyStoreOffersResponse> response = api.getLoyaltyStoresCorporationIdOffers(corporationId, DATASOURCE, null);
 
         assertThat(response.size(), greaterThan(0));
         final LoyaltyStoreOffersResponse offersResponse = response.get(0);

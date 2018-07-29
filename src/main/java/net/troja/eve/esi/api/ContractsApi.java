@@ -13,7 +13,6 @@ import net.troja.eve.esi.model.CharacterContractsResponse;
 import net.troja.eve.esi.model.CorporationContractsBidsResponse;
 import net.troja.eve.esi.model.CorporationContractsItemsResponse;
 import net.troja.eve.esi.model.CorporationContractsResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,16 +56,12 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterContractsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterContractsResponse> getCharactersCharacterIdContracts(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -87,12 +82,9 @@ public class ContractsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -125,17 +117,12 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterContractsBidsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterContractsBidsResponse> getCharactersCharacterIdContractsContractIdBids(Integer characterId,
-            Integer contractId, String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            Integer contractId, String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -163,12 +150,9 @@ public class ContractsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -202,17 +186,12 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CharacterContractsItemsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CharacterContractsItemsResponse> getCharactersCharacterIdContractsContractIdItems(Integer characterId,
-            Integer contractId, String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            Integer contractId, String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'characterId' is set
@@ -240,12 +219,9 @@ public class ContractsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -262,7 +238,7 @@ public class ContractsApi {
     }
 
     /**
-     * Get coporation contracts Returns contracts available to a coporation,
+     * Get corporation contracts Returns contracts available to a corporation,
      * only if the corporation is issuer, acceptor or assignee. Only returns
      * contracts no older than 30 days, or if the status is
      * \&quot;in_progress\&quot;. --- This route is cached for up to 300 seconds
@@ -279,17 +255,12 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContractsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContractsResponse> getCorporationsCorporationIdContracts(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -310,12 +281,9 @@ public class ContractsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -350,17 +318,13 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContractsBidsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContractsBidsResponse> getCorporationsCorporationIdContractsContractIdBids(
-            Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, Integer page,
-            String token, String userAgent, String xUserAgent) throws ApiException {
+            Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'contractId' is set
@@ -389,12 +353,9 @@ public class ContractsApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -428,17 +389,13 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContractsItemsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContractsItemsResponse> getCorporationsCorporationIdContractsContractIdItems(
-            Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, String token,
-            String userAgent, String xUserAgent) throws ApiException {
+            Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'contractId' is set
@@ -466,12 +423,9 @@ public class ContractsApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

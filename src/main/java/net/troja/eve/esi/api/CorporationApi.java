@@ -17,8 +17,6 @@ import net.troja.eve.esi.model.CorporationMedalsIssuedResponse;
 import net.troja.eve.esi.model.CorporationMedalsResponse;
 import net.troja.eve.esi.model.CorporationMemberTrackingResponse;
 import net.troja.eve.esi.model.CorporationMembersTitlesResponse;
-import net.troja.eve.esi.model.CorporationNamesResponse;
-import net.troja.eve.esi.model.CorporationOutpostResponse;
 import net.troja.eve.esi.model.CorporationResponse;
 import net.troja.eve.esi.model.CorporationRolesHistoryResponse;
 import net.troja.eve.esi.model.CorporationRolesResponse;
@@ -28,7 +26,6 @@ import net.troja.eve.esi.model.CorporationStarbaseResponse;
 import net.troja.eve.esi.model.CorporationStarbasesResponse;
 import net.troja.eve.esi.model.CorporationStructuresResponse;
 import net.troja.eve.esi.model.CorporationTitlesResponse;
-import net.troja.eve.esi.model.Forbidden;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,16 +63,12 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CorporationResponse
      * @throws ApiException
      *             if fails to make API call
      */
-    public CorporationResponse getCorporationsCorporationId(Integer corporationId, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+    public CorporationResponse getCorporationsCorporationId(Integer corporationId, String datasource, String ifNoneMatch)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -94,12 +87,9 @@ public class CorporationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -127,16 +117,12 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationAlliancesHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationAlliancesHistoryResponse> getCorporationsCorporationIdAlliancehistory(Integer corporationId,
-            String datasource, String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -155,12 +141,9 @@ public class CorporationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -194,17 +177,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationBlueprintsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationBlueprintsResponse> getCorporationsCorporationIdBlueprints(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -225,12 +203,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -265,17 +240,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationContainersLogsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationContainersLogsResponse> getCorporationsCorporationIdContainersLogs(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -296,12 +266,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -334,16 +301,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CorporationDivisionsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CorporationDivisionsResponse getCorporationsCorporationIdDivisions(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -363,12 +326,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -400,17 +360,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationFacilitiesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationFacilitiesResponse> getCorporationsCorporationIdFacilities(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -430,12 +385,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -463,16 +415,12 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CorporationIconsResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CorporationIconsResponse getCorporationsCorporationIdIcons(Integer corporationId, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -491,12 +439,9 @@ public class CorporationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -529,16 +474,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationMedalsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationMedalsResponse> getCorporationsCorporationIdMedals(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -559,12 +500,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -598,17 +536,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationMedalsIssuedResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationMedalsIssuedResponse> getCorporationsCorporationIdMedalsIssued(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -629,12 +562,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -666,16 +596,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<Integer> getCorporationsCorporationIdMembers(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -695,12 +621,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -732,16 +655,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return Integer
      * @throws ApiException
      *             if fails to make API call
      */
     public Integer getCorporationsCorporationIdMembersLimit(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -761,12 +680,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -798,17 +714,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationMembersTitlesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationMembersTitlesResponse> getCorporationsCorporationIdMembersTitles(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -828,12 +739,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -866,17 +774,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationMemberTrackingResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationMemberTrackingResponse> getCorporationsCorporationIdMembertracking(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -896,12 +799,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -912,158 +812,6 @@ public class CorporationApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CorporationMemberTrackingResponse>> localVarReturnType = new GenericType<List<CorporationMemberTrackingResponse>>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Get corporation outposts Get a list of corporation outpost IDs Note: This
-     * endpoint will be removed once outposts are migrated to Citadels as talked
-     * about in this blog:
-     * https://community.eveonline.com/news/dev-blogs/the-next
-     * -steps-in-structure-transition/ --- This route is cached for up to 3600
-     * seconds --- Requires one of the following EVE corporation role(s):
-     * Director SSO Scope: esi-corporations.read_outposts.v1
-     * 
-     * @param corporationId
-     *            An EVE corporation ID (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @param page
-     *            Which page of results to return (optional, default to 1)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;Integer&gt;
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public List<Integer> getCorporationsCorporationIdOutposts(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdOutposts");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/outposts/".replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "evesso" };
-
-        GenericType<List<Integer>> localVarReturnType = new GenericType<List<Integer>>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Get corporation outpost details Get details about a given outpost. Note:
-     * This endpoint will be removed once outposts are migrated to Citadels as
-     * talked about in this blog:
-     * https://community.eveonline.com/news/dev-blogs/
-     * the-next-steps-in-structure-transition/ --- This route is cached for up
-     * to 3600 seconds --- Requires one of the following EVE corporation
-     * role(s): Director SSO Scope: esi-corporations.read_outposts.v1
-     * 
-     * @param corporationId
-     *            An EVE corporation ID (required)
-     * @param outpostId
-     *            A station (outpost) ID (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @param token
-     *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @return CorporationOutpostResponse
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public CorporationOutpostResponse getCorporationsCorporationIdOutpostsOutpostId(Integer corporationId,
-            Integer outpostId, String datasource, String ifNoneMatch, String token, String userAgent, String xUserAgent)
-            throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'corporationId' is set
-        if (corporationId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdOutpostsOutpostId");
-        }
-
-        // verify the required parameter 'outpostId' is set
-        if (outpostId == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'outpostId' when calling getCorporationsCorporationIdOutpostsOutpostId");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/outposts/{outpost_id}/"
-                .replaceAll("\\{format\\}", "json")
-                .replaceAll("\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()))
-                .replaceAll("\\{" + "outpost_id" + "\\}", apiClient.escapeString(outpostId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "evesso" };
-
-        GenericType<CorporationOutpostResponse> localVarReturnType = new GenericType<CorporationOutpostResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -1085,16 +833,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationRolesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationRolesResponse> getCorporationsCorporationIdRoles(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1114,12 +858,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1154,17 +895,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationRolesHistoryResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationRolesHistoryResponse> getCorporationsCorporationIdRolesHistory(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1185,12 +921,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1224,17 +957,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationShareholdersResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationShareholdersResponse> getCorporationsCorporationIdShareholders(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1255,12 +983,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1293,17 +1018,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationStandingsResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationStandingsResponse> getCorporationsCorporationIdStandings(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1324,12 +1044,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1363,17 +1080,12 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationStarbasesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationStarbasesResponse> getCorporationsCorporationIdStarbases(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, String userAgent, String xUserAgent)
-            throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1394,12 +1106,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1435,17 +1144,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return CorporationStarbaseResponse
      * @throws ApiException
      *             if fails to make API call
      */
     public CorporationStarbaseResponse getCorporationsCorporationIdStarbasesStarbaseId(Integer corporationId,
-            Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1480,12 +1184,9 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "system_id", systemId));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1512,6 +1213,8 @@ public class CorporationApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
+     * @param acceptLanguage
+     *            Language to use in the response (optional, default to en-us)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
@@ -1519,22 +1222,19 @@ public class CorporationApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param language
-     *            Language to use in the response (optional, default to en-us)
+     *            Language to use in the response, takes precedence over
+     *            Accept-Language (optional, default to en-us)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationStructuresResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationStructuresResponse> getCorporationsCorporationIdStructures(Integer corporationId,
-            String datasource, String ifNoneMatch, String language, Integer page, String token, String userAgent,
-            String xUserAgent) throws ApiException {
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token)
+            throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1556,12 +1256,11 @@ public class CorporationApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "language", language));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
+        if (acceptLanguage != null)
+            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1592,16 +1291,12 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;CorporationTitlesResponse&gt;
      * @throws ApiException
      *             if fails to make API call
      */
     public List<CorporationTitlesResponse> getCorporationsCorporationIdTitles(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, String userAgent, String xUserAgent) throws ApiException {
+            String ifNoneMatch, String token) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'corporationId' is set
@@ -1621,12 +1316,9 @@ public class CorporationApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "token", token));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
@@ -1643,67 +1335,6 @@ public class CorporationApi {
     }
 
     /**
-     * Get corporation names Resolve a set of corporation IDs to corporation
-     * names --- This route is cached for up to 3600 seconds
-     * 
-     * @param corporationIds
-     *            A comma separated list of corporation IDs (required)
-     * @param datasource
-     *            The server name you would like data from (optional, default to
-     *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
-     * @return List&lt;CorporationNamesResponse&gt;
-     * @throws ApiException
-     *             if fails to make API call
-     */
-    public List<CorporationNamesResponse> getCorporationsNames(List<Integer> corporationIds, String datasource,
-            String ifNoneMatch, String userAgent, String xUserAgent) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'corporationIds' is set
-        if (corporationIds == null) {
-            throw new ApiException(400,
-                    "Missing the required parameter 'corporationIds' when calling getCorporationsNames");
-        }
-
-        // create path and map variables
-        String localVarPath = "/v2/corporations/names/".replaceAll("\\{format\\}", "json");
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("csv", "corporation_ids", corporationIds));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
-
-        if (ifNoneMatch != null)
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] {};
-
-        GenericType<List<CorporationNamesResponse>> localVarReturnType = new GenericType<List<CorporationNamesResponse>>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
-                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
      * Get npc corporations Get a list of npc corporations --- This route
      * expires daily at 11:05
      * 
@@ -1713,16 +1344,11 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param userAgent
-     *            Client identifier, takes precedence over headers (optional)
-     * @param xUserAgent
-     *            Client identifier, takes precedence over User-Agent (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Integer> getCorporationsNpccorps(String datasource, String ifNoneMatch, String userAgent,
-            String xUserAgent) throws ApiException {
+    public List<Integer> getCorporationsNpccorps(String datasource, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1734,12 +1360,9 @@ public class CorporationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "user_agent", userAgent));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
-        if (xUserAgent != null)
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);

@@ -29,6 +29,9 @@ public class StructureResponse implements Serializable {
     @JsonProperty("name")
     private String name = null;
 
+    @JsonProperty("owner_id")
+    private Integer ownerId = null;
+
     @JsonProperty("position")
     private Position position = null;
 
@@ -55,6 +58,25 @@ public class StructureResponse implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public StructureResponse ownerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    /**
+     * The ID of the corporation who owns this particular structure
+     * 
+     * @return ownerId
+     **/
+    @ApiModelProperty(example = "null", required = true, value = "The ID of the corporation who owns this particular structure")
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public StructureResponse position(Position position) {
@@ -124,6 +146,7 @@ public class StructureResponse implements Serializable {
         }
         StructureResponse structureResponse = (StructureResponse) o;
         return Objects.equals(this.name, structureResponse.name)
+                && Objects.equals(this.ownerId, structureResponse.ownerId)
                 && Objects.equals(this.position, structureResponse.position)
                 && Objects.equals(this.solarSystemId, structureResponse.solarSystemId)
                 && Objects.equals(this.typeId, structureResponse.typeId);
@@ -131,7 +154,7 @@ public class StructureResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position, solarSystemId, typeId);
+        return Objects.hash(name, ownerId, position, solarSystemId, typeId);
     }
 
     @Override
@@ -140,6 +163,7 @@ public class StructureResponse implements Serializable {
         sb.append("class StructureResponse {\n");
 
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
