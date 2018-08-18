@@ -36,151 +36,167 @@ import static org.junit.Assert.fail;
 
 public class SsoAuthTest extends GeneralApiTest {
 
-    @Test
-    public void threads() throws ApiException {
-        final int threads = 10;
-        List<Callable<Void>> runnables = new ArrayList<>();
-        for (int i = 0; i < threads; i++) {
-            runnables.add(new UpdateThread());
-        }
-        ExecutorService threadPool = Executors.newFixedThreadPool(threads);
-        try {
-            threadPool.invokeAll(runnables);
-        } catch (InterruptedException ex) {
-            fail(ex.getMessage());
-        }
-    }
+	@Test
+	public void threads() throws ApiException {
+		final int threads = 10;
+		List<Callable<Void>> runnables = new ArrayList<>();
+		for (int i = 0; i < threads; i++) {
+			runnables.add(new UpdateThread());
+		}
+		ExecutorService threadPool = Executors.newFixedThreadPool(threads);
+		try {
+			threadPool.invokeAll(runnables);
+		} catch (InterruptedException ex) {
+			fail(ex.getMessage());
+		}
+	}
 
-    @Test
-    public void refreshToken() throws ApiException {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
+	@Test
+	public void refreshToken() throws ApiException {
+		final ApiClient client = new ApiClient();
+		final OAuth auth = (OAuth) client.getAuthentication("evesso");
+		auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
 
-        auth.setRefreshToken(refreshToken);
+		auth.setRefreshToken(refreshToken);
 
-        final Map<String, String> headerParams = new HashMap<>();
-        auth.applyToParams(null, headerParams);
+		final Map<String, String> headerParams = new HashMap<>();
+		auth.applyToParams(null, headerParams);
 
-        assertThat(headerParams.size(), equalTo(1));
-    }
+		assertThat(headerParams.size(), equalTo(1));
+	}
 
-    @Test
-    public void expiredAccessTokenAssets() {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
+	@Test
+	public void expiredAccessTokenAssets() {
+		final ApiClient client = new ApiClient();
+		final OAuth auth = (OAuth) client.getAuthentication("evesso");
+		auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
-        auth.setRefreshToken(null);
-        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
-        AssetsApi api = new AssetsApi(client);
-        try {
-            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
-            fail("Must fail with ApiException");
-        } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
-        }
-    }
+		auth.setRefreshToken(null);
+		auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+		AssetsApi api = new AssetsApi(client);
+		try {
+			api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+			fail("Must fail with ApiException");
+		} catch (ApiException ex) {
+			assertThat(ex, notNullValue());
+			assertThat(ex.getCode(), notNullValue());
+		}
+	}
 
-    @Test
-    public void expiredAccessTokenSso() {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
+	@Test
+	public void getJwtTest() {
+		final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+		OAuth.JWT jwt = auth.getJWT();
+		assertThat(jwt, notNullValue());
+		assertThat(jwt.getAzp(), notNullValue());
+		assertThat(jwt.getExp(), notNullValue());
+		assertThat(jwt.getIss(), notNullValue());
+		assertThat(jwt.getJti(), notNullValue());
+		assertThat(jwt.getKid(), notNullValue());
+		assertThat(jwt.getName(), notNullValue());
+		assertThat(jwt.getOwner(), notNullValue());
+		assertThat(jwt.getSub(), notNullValue());
+		assertThat(jwt.getScopes(), notNullValue());
+		assertThat(jwt.getCharacterID(), notNullValue());
+		assertThat(jwt.getCharacterID(), equalTo(characterId));
+	}
+
+	@Test
+	public void expiredAccessTokenSso() {
+		final ApiClient client = new ApiClient();
+		final OAuth auth = (OAuth) client.getAuthentication("evesso");
+		auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
-        auth.setRefreshToken(null);
-        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
-        final SsoApi api = new SsoApi(client);
-        try {
-            api.getCharacterInfo();
-            fail("Must fail with ApiException");
-        } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
-        }
-    }
+		auth.setRefreshToken(null);
+		auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+		final SsoApi api = new SsoApi(client);
+		try {
+			api.getCharacterInfo();
+			fail("Must fail with ApiException");
+		} catch (ApiException ex) {
+			assertThat(ex, notNullValue());
+			assertThat(ex.getCode(), notNullValue());
+		}
+	}
 
-    @Test
-    public void finishFlowFail() {
-        OAuth oAuth = new OAuth();
-        oAuth.setClientId("");
+	@Test
+	public void finishFlowFail() {
+		OAuth oAuth = new OAuth();
+		oAuth.setClientId("");
         oAuth.setClientSecret("");
-        final String state = "TESTING";
-        oAuth.getAuthorizationUri("", Collections.singleton(""), state);
-        try {
-            oAuth.finishFlow("", state);
-            fail("Must fail with ApiException");
-        } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
-        }
-    }
+		final String state = "TESTING";
+		oAuth.getAuthorizationUri("", Collections.singleton(""), state);
+		try {
+			oAuth.finishFlow("", state);
+			fail("Must fail with ApiException");
+		} catch (ApiException ex) {
+			assertThat(ex, notNullValue());
+			assertThat(ex.getCode(), notNullValue());
+		}
+	}
 
-    /**
-     * This main method can be used to generate a refresh token to run the unit
-     * tests that need authentication. It is also an example how to use SSO in
-     * an implementation.
-     *
-     * More description is in the README.md
-     *
+	/**
+	 * This main method can be used to generate a refresh token to run the unit
+	 * tests that need authentication. It is also an example how to use SSO in
+	 * an implementation.
+	 *
+	 * More description is in the README.md
+	 *
      * @param args
      *            The client id and client secret.
-     * @throws IOException
-     * @throws URISyntaxException
-     * @throws net.troja.eve.esi.ApiException
-     */
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 * @throws net.troja.eve.esi.ApiException
+	 */
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
-        final String state = "somesecret";
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        if (args.length == 2) {
-            auth.setClientId(args[0]);
-            auth.setClientSecret(args[1]);
-        } else {
-            initClass();
-            if (clientId != null && clientSecret != null) {
-                auth.setClientId(clientId);
-                auth.setClientSecret(clientSecret);
-            } else {
-                System.err.println("ClientId and ClientSecret missing");
-                System.exit(-1);
-            }
-        }
+		final String state = "somesecret";
+		final ApiClient client = new ApiClient();
+		final OAuth auth = (OAuth) client.getAuthentication("evesso");
+		if (args.length == 2) {
+			auth.setClientId(args[0]);
+		} else {
+			initClass();
+            if (clientId != null) {
+				auth.setClientId(clientId);
+			} else {
+				System.err.println("ClientId and ClientSecret missing");
+				System.exit(-1);
+			}
+		}
 
-        final Set<String> scopes = SsoScopes.ALL;
-        String redirectUri;
-        if (System.getenv().get("SSO_CALLBACK_URL") != null) {
-            redirectUri = System.getenv().get("SSO_CALLBACK_URL");
-        } else {
-            redirectUri = "http://localhost";
-        }
-        final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
-        System.out.println("Authorization URL: " + authorizationUri);
-        Desktop.getDesktop().browse(new URI(authorizationUri));
+		final Set<String> scopes = SsoScopes.ALL;
+		String redirectUri;
+		if (System.getenv().get("SSO_CALLBACK_URL") != null) {
+			redirectUri = System.getenv().get("SSO_CALLBACK_URL");
+		} else {
+			redirectUri = "http://localhost";
+		}
+		final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
+		System.out.println("Authorization URL: " + authorizationUri);
+		Desktop.getDesktop().browse(new URI(authorizationUri));
 
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Code from Answer: ");
         final String code = br.readLine();
-        auth.finishFlow(code, state);
-        System.out.println("Refresh Token: " + auth.getRefreshToken());
-    }
+		auth.finishFlow(code, state);
+		System.out.println("Refresh Token: " + auth.getRefreshToken());
+	}
 
-    private static class UpdateThread implements Callable<Void> {
+	private static class UpdateThread implements Callable<Void> {
 
-        @Override
-        public Void call() throws Exception {
-            try {
-                AssetsApi api = new AssetsApi();
-                Integer page = null;
-                final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
-                assertThat(response, notNullValue());
-                assertThat(response.size(), greaterThan(0));
-            } catch (ApiException ex) {
-                fail(ex.getMessage());
-            }
-            return null;
-        }
-    }
+		@Override
+		public Void call() throws Exception {
+			try {
+				AssetsApi api = new AssetsApi();
+				Integer page = null;
+				final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
+				assertThat(response, notNullValue());
+				assertThat(response.size(), greaterThan(0));
+			} catch (ApiException ex) {
+				fail(ex.getMessage());
+			}
+			return null;
+		}
+	}
 }
