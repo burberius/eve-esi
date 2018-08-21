@@ -87,7 +87,7 @@ public class SsoApi {
         final String basePath = apiClient.getBasePath(); // Save old basepath
         apiClient.setBasePath(URI_REVOKE); // Set new basepath
 
-        final String localVarPath = "/oauth/revoke";
+        final String localVarPath = "/v2/oauth/revoke";
 
         final List<Pair> localVarQueryParams = new ArrayList<>();
 

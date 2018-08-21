@@ -28,6 +28,7 @@ import javax.net.ssl.HttpsURLConnection;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 
+
 public class OAuth implements Authentication {
 	private static final String URI_OAUTH = "https://login.eveonline.com/v2/oauth";
 	private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
@@ -88,8 +89,15 @@ public class OAuth implements Authentication {
         }
     }
 
+	/**
+	 * Get JWT (JSON Web Token)
+	 * WARNING: The JWT is unverified.
+	 * Verifying the JWT is beyond the scope of this library.
+	 * As ESI will verify the token when used.
+	 * @return Unverified JWT or null
+	 */
 	public JWT getJWT() {
-		AccessTokenData accessTokenData = getAccessTokenData();
+		AccessTokenData accessTokenData = getAccessTokenData(); //Update access token if needed;
         if (accessTokenData == null) {
 			return null;
 		}
@@ -99,9 +107,11 @@ public class OAuth implements Authentication {
 			if (parts.length != 3) {
 				return null;
 			}
-			String payload = new String(Base64.getUrlDecoder().decode(parts[1]));
 			ObjectMapper objectMapper = new ObjectMapper();
-			return objectMapper.readValue(payload, JWT.class);
+			JWT.Header header  = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[0])), JWT.Header.class);
+			JWT.Payload payload = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[1])), JWT.Payload.class);
+			String signature = parts[2];
+			return new JWT(header, payload, signature);
 		} catch (IOException ex) {
 			return null;
 		}
@@ -297,7 +307,7 @@ public class OAuth implements Authentication {
 		}
 	}
 
-	public static class Result {
+	private static class Result {
 
 		@JsonProperty("access_token")
 		private String accessToken;
@@ -338,102 +348,6 @@ public class OAuth implements Authentication {
 
 		public void setRefreshToken(String refreshToken) {
 			this.refreshToken = refreshToken;
-		}
-	}
-
-	public static class JWT {
-		@JsonProperty("scp")
-		private List<String> scopes;
-
-		private String jti;
-		private String kid;
-		private String sub;
-		private String azp;
-		private String name;
-		private String owner;
-		private String exp;
-		private String iss;
-		private Integer characterID;
-
-		public List<String> getScopes() {
-			return scopes;
-		}
-
-		public void setScopes(List<String> scopes) {
-			this.scopes = scopes;
-		}
-
-		public String getJti() {
-			return jti;
-		}
-
-		public void setJti(String jti) {
-			this.jti = jti;
-		}
-
-		public String getKid() {
-			return kid;
-		}
-
-		public void setKid(String kid) {
-			this.kid = kid;
-		}
-
-		public String getSub() {
-			return sub;
-		}
-
-		public void setSub(String sub) {
-			this.sub = sub;
-			try {
-				characterID = Integer.valueOf(sub.replace("CHARACTER:EVE:", ""));
-			} catch (NumberFormatException ex) {
-				characterID = null;
-			}
-		}
-
-		public Integer getCharacterID() {
-			return characterID;
-		}
-
-		public String getAzp() {
-			return azp;
-		}
-
-		public void setAzp(String azp) {
-			this.azp = azp;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public String getOwner() {
-			return owner;
-		}
-
-		public void setOwner(String owner) {
-			this.owner = owner;
-		}
-
-		public String getExp() {
-			return exp;
-		}
-
-		public void setExp(String exp) {
-			this.exp = exp;
-		}
-
-		public String getIss() {
-			return iss;
-		}
-
-		public void setIss(String iss) {
-			this.iss = iss;
 		}
 	}
 }

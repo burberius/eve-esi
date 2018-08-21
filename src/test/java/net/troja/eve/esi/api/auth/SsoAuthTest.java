@@ -25,6 +25,7 @@ import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
 import static net.troja.eve.esi.api.GeneralApiTest.initClass;
 import net.troja.eve.esi.api.SsoApi;
+import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
@@ -87,19 +88,26 @@ public class SsoAuthTest extends GeneralApiTest {
 	@Test
 	public void getJwtTest() {
 		final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
-		OAuth.JWT jwt = auth.getJWT();
+		JWT jwt = auth.getJWT();
 		assertThat(jwt, notNullValue());
-		assertThat(jwt.getAzp(), notNullValue());
-		assertThat(jwt.getExp(), notNullValue());
-		assertThat(jwt.getIss(), notNullValue());
-		assertThat(jwt.getJti(), notNullValue());
-		assertThat(jwt.getKid(), notNullValue());
-		assertThat(jwt.getName(), notNullValue());
-		assertThat(jwt.getOwner(), notNullValue());
-		assertThat(jwt.getSub(), notNullValue());
-		assertThat(jwt.getScopes(), notNullValue());
-		assertThat(jwt.getCharacterID(), notNullValue());
-		assertThat(jwt.getCharacterID(), equalTo(characterId));
+		JWT.Header header = jwt.getHeader();
+		assertThat(header, notNullValue());
+		assertThat(header.getAlg(), notNullValue());
+		assertThat(header.getTyp(), notNullValue());
+		JWT.Payload payload = jwt.getPayload();
+		assertThat(payload, notNullValue());
+		assertThat(payload.getAzp(), notNullValue());
+		assertThat(payload.getExp(), notNullValue());
+		assertThat(payload.getIss(), notNullValue());
+		assertThat(payload.getJti(), notNullValue());
+		assertThat(payload.getKid(), notNullValue());
+		assertThat(payload.getName(), notNullValue());
+		assertThat(payload.getOwner(), notNullValue());
+		assertThat(payload.getSub(), notNullValue());
+		assertThat(payload.getScopes(), notNullValue());
+		assertThat(payload.getScopes().size(), greaterThan(10));
+		assertThat(payload.getCharacterID(), notNullValue());
+		assertThat(payload.getCharacterID(), equalTo(characterId));
 	}
 
 	@Test
