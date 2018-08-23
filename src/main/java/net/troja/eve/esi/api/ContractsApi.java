@@ -13,6 +13,9 @@ import net.troja.eve.esi.model.CharacterContractsResponse;
 import net.troja.eve.esi.model.CorporationContractsBidsResponse;
 import net.troja.eve.esi.model.CorporationContractsItemsResponse;
 import net.troja.eve.esi.model.CorporationContractsResponse;
+import net.troja.eve.esi.model.PublicContractsBidsResponse;
+import net.troja.eve.esi.model.PublicContractsItemsResponse;
+import net.troja.eve.esi.model.PublicContractsResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -232,6 +235,177 @@ public class ContractsApi {
         String[] localVarAuthNames = new String[] { "evesso" };
 
         GenericType<List<CharacterContractsItemsResponse>> localVarReturnType = new GenericType<List<CharacterContractsItemsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get public contract bids Lists bids on a public auction contract --- This
+     * route is cached for up to 300 seconds
+     * 
+     * @param contractId
+     *            ID of a contract (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @return List&lt;PublicContractsBidsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<PublicContractsBidsResponse> getContractsPublicBidsContractId(Integer contractId, String datasource,
+            String ifNoneMatch, Integer page) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'contractId' is set
+        if (contractId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'contractId' when calling getContractsPublicBidsContractId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/contracts/public/bids/{contract_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "contract_id" + "\\}", apiClient.escapeString(contractId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<PublicContractsBidsResponse>> localVarReturnType = new GenericType<List<PublicContractsBidsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get public contract items Lists items of a public contract --- This route
+     * is cached for up to 3600 seconds
+     * 
+     * @param contractId
+     *            ID of a contract (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @return List&lt;PublicContractsItemsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<PublicContractsItemsResponse> getContractsPublicItemsContractId(Integer contractId, String datasource,
+            String ifNoneMatch, Integer page) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'contractId' is set
+        if (contractId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'contractId' when calling getContractsPublicItemsContractId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/contracts/public/items/{contract_id}/".replaceAll("\\{format\\}", "json")
+                .replaceAll("\\{" + "contract_id" + "\\}", apiClient.escapeString(contractId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<PublicContractsItemsResponse>> localVarReturnType = new GenericType<List<PublicContractsItemsResponse>>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Get public contracts Returns a paginated list of all public contracts in
+     * the given region --- This route is cached for up to 1800 seconds
+     * 
+     * @param regionId
+     *            An EVE region id (required)
+     * @param datasource
+     *            The server name you would like data from (optional, default to
+     *            tranquility)
+     * @param ifNoneMatch
+     *            ETag from a previous request. A 304 will be returned if this
+     *            matches the current ETag (optional)
+     * @param page
+     *            Which page of results to return (optional, default to 1)
+     * @return List&lt;PublicContractsResponse&gt;
+     * @throws ApiException
+     *             if fails to make API call
+     */
+    public List<PublicContractsResponse> getContractsPublicRegionId(Integer regionId, String datasource,
+            String ifNoneMatch, Integer page) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'regionId' is set
+        if (regionId == null) {
+            throw new ApiException(400,
+                    "Missing the required parameter 'regionId' when calling getContractsPublicRegionId");
+        }
+
+        // create path and map variables
+        String localVarPath = "/v1/contracts/public/{region_id}/".replaceAll("\\{format\\}", "json").replaceAll(
+                "\\{" + "region_id" + "\\}", apiClient.escapeString(regionId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+
+        if (ifNoneMatch != null)
+            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[] {};
+
+        GenericType<List<PublicContractsResponse>> localVarReturnType = new GenericType<List<PublicContractsResponse>>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
                 localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
