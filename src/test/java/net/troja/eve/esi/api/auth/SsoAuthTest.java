@@ -139,7 +139,7 @@ public class SsoAuthTest extends GeneralApiTest {
             auth.setClientId(args[0]);
             auth.setClientSecret(args[1]);
         } else {
-            initClass();
+            initData();
             if (clientId != null && clientSecret != null) {
                 auth.setClientId(clientId);
                 auth.setClientSecret(clientSecret);
