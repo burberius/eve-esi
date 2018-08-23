@@ -20,6 +20,9 @@ import net.troja.eve.esi.model.CharacterContractsResponse;
 import net.troja.eve.esi.model.CorporationContractsBidsResponse;
 import net.troja.eve.esi.model.CorporationContractsItemsResponse;
 import net.troja.eve.esi.model.CorporationContractsResponse;
+import net.troja.eve.esi.model.PublicContractsBidsResponse;
+import net.troja.eve.esi.model.PublicContractsItemsResponse;
+import net.troja.eve.esi.model.PublicContractsResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
@@ -99,13 +102,88 @@ public class ContractsApiTest extends GeneralApiTest {
             if (characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.AUCTION
                     || characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.ITEM_EXCHANGE) {
                 contractId = characterContractsResponse.getContractId();
+				break;
             }
         }
         assertThat(contractId, notNullValue());
         List<CharacterContractsItemsResponse> response = api.getCharactersCharacterIdContractsContractIdItems(characterId, contractId, DATASOURCE, null, null);
+		assertThat(response, notNullValue());
+		assertThat(response.size(), greaterThan(0));
     }
 
-        /**
+	/**
+     * Get public contract bids
+     *
+     * Lists bids on a public auction contract  ---  This route is cached for up to 300 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getContractsPublicBidsContractIdTest() throws ApiException {
+		Integer page = null;
+		Integer regionId = 10000002;
+		List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
+		assertThat(contracts, notNullValue());
+		Integer contractId = null;
+        for (PublicContractsResponse contractsResponse : contracts) {
+            if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION) {
+                contractId = contractsResponse.getContractId();
+				break;
+            }
+        }
+		assertThat(contractId, notNullValue());
+        List<PublicContractsBidsResponse> response = api.getContractsPublicBidsContractId(contractId, DATASOURCE, null, page);
+		assertThat(response, notNullValue());
+		assertThat(response.size(), greaterThan(0));
+        // TODO: test validations
+    }
+
+	/**
+     * Get public contract items
+     *
+     * Lists items of a public contract  ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getContractsPublicItemsContractIdTest() throws ApiException {
+		Integer page = null;
+		Integer regionId = 10000002;
+		List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
+		assertThat(contracts, notNullValue());
+		Integer contractId = null;
+        for (PublicContractsResponse contractsResponse : contracts) {
+            if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION || contractsResponse.getType() == PublicContractsResponse.TypeEnum.ITEM_EXCHANGE) {
+                contractId = contractsResponse.getContractId();
+				break;
+            }
+        }
+		assertThat(contractId, notNullValue());
+        List<PublicContractsItemsResponse> response = api.getContractsPublicItemsContractId(contractId, DATASOURCE, null, page);
+		assertThat(response, notNullValue());
+		assertThat(response.size(), greaterThan(0));
+    }
+    
+    /**
+     * Get public contracts
+     *
+     * Returns a paginated list of all public contracts in the given region  ---  This route is cached for up to 1800 seconds
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getContractsPublicRegionIdTest() throws ApiException {
+		Integer page = null;
+        Integer regionId = 10000002;
+        List<PublicContractsResponse> response = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
+		assertThat(response, notNullValue());
+		assertThat(response.size(), greaterThan(0));
+    }
+
+    /**
      * Get coporation contracts
      *
      * Returns contracts available to a coporation, only if the corporation is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is \&quot;in_progress\&quot;.  ---  This route is cached for up to 3600 seconds

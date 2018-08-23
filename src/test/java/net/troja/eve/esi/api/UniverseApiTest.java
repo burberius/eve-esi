@@ -150,7 +150,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseConstellationsTest() throws ApiException {
         final List<Integer> response = api.getUniverseConstellations(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(1145));
+        assertThat(response.size(), equalTo(1146));
     }
 
     /**
@@ -352,7 +352,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseRegionsTest() throws ApiException {
         final List<Integer> response = api.getUniverseRegions(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(105));
+        assertThat(response.size(), equalTo(106));
     }
 
     /**
@@ -518,7 +518,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseSystemsTest() throws ApiException {
         final List<Integer> response = api.getUniverseSystems(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(8235));
+        assertThat(response.size(), equalTo(8285));
     }
 
     /**

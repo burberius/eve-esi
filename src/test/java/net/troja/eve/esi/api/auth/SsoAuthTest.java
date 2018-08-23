@@ -158,31 +158,31 @@ public class SsoAuthTest extends GeneralApiTest {
 	 * @throws net.troja.eve.esi.ApiException
 	 */
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
-		final String state = "somesecret";
-		final ApiClient client = new ApiClient();
-		final OAuth auth = (OAuth) client.getAuthentication("evesso");
-		if (args.length == 2) {
-			auth.setClientId(args[0]);
-		} else {
-			initClass();
+        final String state = "somesecret";
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        if (args.length == 2) {
+            auth.setClientId(args[0]);
+        } else {
+            initData();
             if (clientId != null) {
-				auth.setClientId(clientId);
-			} else {
-				System.err.println("ClientId and ClientSecret missing");
-				System.exit(-1);
-			}
-		}
+                auth.setClientId(clientId);
+            } else {
+                System.err.println("ClientId and ClientSecret missing");
+                System.exit(-1);
+            }
+        }
 
-		final Set<String> scopes = SsoScopes.ALL;
-		String redirectUri;
-		if (System.getenv().get("SSO_CALLBACK_URL") != null) {
-			redirectUri = System.getenv().get("SSO_CALLBACK_URL");
-		} else {
-			redirectUri = "http://localhost";
-		}
-		final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
-		System.out.println("Authorization URL: " + authorizationUri);
-		Desktop.getDesktop().browse(new URI(authorizationUri));
+        final Set<String> scopes = SsoScopes.ALL;
+        String redirectUri;
+        if (System.getenv().get("SSO_CALLBACK_URL") != null) {
+            redirectUri = System.getenv().get("SSO_CALLBACK_URL");
+        } else {
+            redirectUri = "http://localhost";
+        }
+        final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
+        System.out.println("Authorization URL: " + authorizationUri);
+        Desktop.getDesktop().browse(new URI(authorizationUri));
 
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Code from Answer: ");
