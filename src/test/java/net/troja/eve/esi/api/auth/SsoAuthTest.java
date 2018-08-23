@@ -23,7 +23,6 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
-import static net.troja.eve.esi.api.GeneralApiTest.initClass;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
