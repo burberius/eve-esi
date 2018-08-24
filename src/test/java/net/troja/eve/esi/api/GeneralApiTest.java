@@ -38,8 +38,8 @@ public class GeneralApiTest {
         getCharacterId();
     }
 
-	public static void initData() {
-		final Map<String, String> env = System.getenv();
+    public static void initData() {
+        final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);
         refreshToken = env.get(SSO_REFRESH_TOKEN);
@@ -48,7 +48,7 @@ public class GeneralApiTest {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         auth.setClientId(clientId);
         auth.setRefreshToken(refreshToken);
-	}
+    }
 
     private static void getCharacterId() throws ApiException {
         final ApiClient client = new ApiClient();
