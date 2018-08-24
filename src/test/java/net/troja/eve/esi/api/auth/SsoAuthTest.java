@@ -23,7 +23,6 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
-import static net.troja.eve.esi.api.GeneralApiTest.initClass;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
@@ -139,7 +138,7 @@ public class SsoAuthTest extends GeneralApiTest {
             auth.setClientId(args[0]);
             auth.setClientSecret(args[1]);
         } else {
-            initClass();
+            initData();
             if (clientId != null && clientSecret != null) {
                 auth.setClientId(clientId);
                 auth.setClientSecret(clientSecret);

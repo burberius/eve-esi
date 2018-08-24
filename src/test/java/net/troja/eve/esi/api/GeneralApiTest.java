@@ -36,7 +36,12 @@ public class GeneralApiTest {
 
     @BeforeClass
     public static void initClass() throws ApiException {
-        final Map<String, String> env = System.getenv();
+        initData();
+        getCharacterId();
+    }
+
+	public static void initData() {
+		final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);
         clientSecret = env.get(SSO_CLIENT_SECRET);
@@ -47,9 +52,7 @@ public class GeneralApiTest {
         auth.setClientId(clientId);
         auth.setClientSecret(clientSecret);
         auth.setRefreshToken(refreshToken);
-
-        getCharacterId();
-    }
+	}
 
     private static void getCharacterId() throws ApiException {
         final ApiClient client = new ApiClient();

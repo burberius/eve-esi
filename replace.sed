@@ -282,6 +282,9 @@ s/get_corporations_corporation_id_contacts_labels_200_ok/CorporationContactsLabe
 s/get_dogma_dynamic_items_type_id_item_id_dogma_attribute/DogmaDynamicAttribute/g
 s/get_dogma_dynamic_items_type_id_item_id_dogma_effect/DogmaDynamicEffect/g
 s/get_dogma_dynamic_items_type_id_item_id_ok/DogmaDynamicItemsResponse/g
+s/get_contracts_public_region_id_200_ok/PublicContractsResponse/g
+s/get_contracts_public_items_contract_id_200_ok/PublicContractsItemsResponse/g
+s/get_contracts_public_bids_contract_id_200_ok/PublicContractsBidsResponse/g
 
 # Responses Array
 # jq '.paths[].get.responses["200"].schema | select(.type != "array") | .title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
