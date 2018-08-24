@@ -1,10 +1,8 @@
 package net.troja.eve.esi.api;
 
-import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,19 +91,12 @@ public class SsoApi {
 
         final Map<String, String> localVarHeaderParams = new HashMap<>();
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
-        String clientPair = auth.getClientId() + ":" + auth.getClientSecret();
-        String encoded;
-        try {
-            encoded = new String(Base64.getUrlEncoder().encode(clientPair.getBytes("UTF-8")));
-        } catch (UnsupportedEncodingException ex) {
-            throw new ApiException(ex);
-        }
-        localVarHeaderParams.put("Authorization", "Basic " + encoded);
         localVarHeaderParams.put("Content-Type", "application/x-www-form-urlencoded");
         localVarHeaderParams.put("Host", "login.eveonline.com");
 
         final Map<String, Object> localVarFormParams = new HashMap<>();
         localVarFormParams.put("token_type_hint", tokenTypeHint);
+        localVarFormParams.put("client_id", auth.getClientId());
         localVarFormParams.put("token", token);
 
         final String[] localVarAccepts = { "application/json" };

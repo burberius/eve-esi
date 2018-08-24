@@ -39,7 +39,6 @@ public class OAuth implements Authentication {
 
     private String refreshToken;
     private String clientId;
-    private String clientSecret;
     private String codeVerifier;
     private static final Map<String, AccessTokenData> ACCESS_TOKEN_CACHE = new ConcurrentHashMap<>();
 
@@ -64,10 +63,6 @@ public class OAuth implements Authentication {
         this.clientId = clientId;
     }
 
-	public void setClientSecret(String clientSecret) {
-		this.clientSecret = clientSecret;
-	}
-
     public String getRefreshToken() {
         return refreshToken;
     }
@@ -75,10 +70,6 @@ public class OAuth implements Authentication {
     public String getClientId() {
         return clientId;
     }
-
-	public String getClientSecret() {
-		return clientSecret;
-	}
 
     public String getAccessToken() {
         AccessTokenData accessTokenData = getAccessTokenData();
@@ -181,23 +172,33 @@ public class OAuth implements Authentication {
      * @throws net.troja.eve.esi.ApiException
      */
     public void finishFlow(final String code, final String state) throws ApiException {
-		StringBuilder builder = new StringBuilder();
-		builder.append("grant_type=authorization_code");
-		builder.append("&client_id=");
-		builder.append(clientId);
-		builder.append("&code=");
-		builder.append(code);
-		builder.append("&code_verifier=");
-		builder.append(codeVerifier);
-		update(builder.toString(), false);
+		try {
+			StringBuilder builder = new StringBuilder();
+			builder.append("grant_type=authorization_code");
+			builder.append("&client_id=");
+			builder.append(URLEncoder.encode(clientId, "UTF-8"));
+			builder.append("&code=");
+			builder.append(code);
+			builder.append("&code_verifier=");
+			builder.append(codeVerifier);
+			update(builder.toString(), false);
+		} catch (UnsupportedEncodingException ex) {
+			throw new ApiException(ex);
+		}
     }
 
     private void refreshToken() throws ApiException {
-		StringBuilder builder = new StringBuilder();
-		builder.append("grant_type=refresh_token");
-		builder.append("&refresh_token=");
-		builder.append(refreshToken);
-		update(builder.toString(), true);
+		try {
+			StringBuilder builder = new StringBuilder();
+			builder.append("grant_type=refresh_token");
+			builder.append("&client_id=");
+			builder.append(URLEncoder.encode(clientId, "UTF-8"));
+			builder.append("&refresh_token=");
+			builder.append(URLEncoder.encode(refreshToken, "UTF-8"));
+			update(builder.toString(), false);
+		} catch (UnsupportedEncodingException ex) {
+			throw new ApiException(ex);
+		}
     }
 
 	/**
@@ -213,10 +214,6 @@ public class OAuth implements Authentication {
 
 			// add request header
 			con.setRequestMethod("POST");
-			if (basic) {
-				String usernamePassword = clientId + ":" + clientSecret;
-				con.setRequestProperty("Authorization", "Basic " + Base64.getEncoder().encodeToString(usernamePassword.getBytes()));
-			}
 			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			con.setRequestProperty("Host", "login.eveonline.com");
 

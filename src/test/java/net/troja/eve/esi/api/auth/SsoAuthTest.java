@@ -56,8 +56,6 @@ public class SsoAuthTest extends GeneralApiTest {
 		final ApiClient client = new ApiClient();
 		final OAuth auth = (OAuth) client.getAuthentication("evesso");
 		auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
-
 		auth.setRefreshToken(refreshToken);
 
 		final Map<String, String> headerParams = new HashMap<>();
@@ -71,7 +69,6 @@ public class SsoAuthTest extends GeneralApiTest {
 		final ApiClient client = new ApiClient();
 		final OAuth auth = (OAuth) client.getAuthentication("evesso");
 		auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
 		auth.setRefreshToken(null);
 		auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
 		AssetsApi api = new AssetsApi(client);
@@ -114,7 +111,6 @@ public class SsoAuthTest extends GeneralApiTest {
 		final ApiClient client = new ApiClient();
 		final OAuth auth = (OAuth) client.getAuthentication("evesso");
 		auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
 		auth.setRefreshToken(null);
 		auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
 		final SsoApi api = new SsoApi(client);
@@ -131,7 +127,6 @@ public class SsoAuthTest extends GeneralApiTest {
 	public void finishFlowFail() {
 		OAuth oAuth = new OAuth();
 		oAuth.setClientId("");
-        oAuth.setClientSecret("");
 		final String state = "TESTING";
 		oAuth.getAuthorizationUri("", Collections.singleton(""), state);
 		try {
