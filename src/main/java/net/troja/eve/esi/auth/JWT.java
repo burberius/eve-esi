@@ -6,146 +6,146 @@ import java.util.Set;
 
 public class JWT {
 
-	private final Header header;
-	private final Payload payload;
-	private final String signature;
+    private final Header header;
+    private final Payload payload;
+    private final String signature;
 
-	public JWT(Header header, Payload payload, String signature) {
-		this.header = header;
-		this.payload = payload;
-		this.signature = signature;
-	}
+    public JWT(Header header, Payload payload, String signature) {
+        this.header = header;
+        this.payload = payload;
+        this.signature = signature;
+    }
 
-	public Header getHeader() {
-		return header;
-	}
+    public Header getHeader() {
+        return header;
+    }
 
-	public Payload getPayload() {
-		return payload;
-	}
+    public Payload getPayload() {
+        return payload;
+    }
 
-	public String getSignature() {
-		return signature;
-	}
+    public String getSignature() {
+        return signature;
+    }
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Header {
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Header {
 
-		private String alg;
-		private String typ;
+        private String alg;
+        private String typ;
 
-		public String getAlg() {
-			return alg;
-		}
+        public String getAlg() {
+            return alg;
+        }
 
-		public void setAlg(String alg) {
-			this.alg = alg;
-		}
+        public void setAlg(String alg) {
+            this.alg = alg;
+        }
 
-		public String getTyp() {
-			return typ;
-		}
+        public String getTyp() {
+            return typ;
+        }
 
-		public void setTyp(String typ) {
-			this.typ = typ;
-		}
-	}
+        public void setTyp(String typ) {
+            this.typ = typ;
+        }
+    }
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Payload {
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Payload {
 
-		@JsonProperty("scp")
-		private Set<String> scopes;
+        @JsonProperty("scp")
+        private Set<String> scopes;
 
-		private String jti;
-		private String kid;
-		private String sub;
-		private String azp;
-		private String name;
-		private String owner;
-		private String exp;
-		private String iss;
-		private Integer characterID;
+        private String jti;
+        private String kid;
+        private String sub;
+        private String azp;
+        private String name;
+        private String owner;
+        private String exp;
+        private String iss;
+        private Integer characterID;
 
-		public Set<String> getScopes() {
-			return scopes;
-		}
+        public Set<String> getScopes() {
+            return scopes;
+        }
 
-		public void setScopes(Set<String> scopes) {
-			this.scopes = scopes;
-		}
+        public void setScopes(Set<String> scopes) {
+            this.scopes = scopes;
+        }
 
-		public String getJti() {
-			return jti;
-		}
+        public String getJti() {
+            return jti;
+        }
 
-		public void setJti(String jti) {
-			this.jti = jti;
-		}
+        public void setJti(String jti) {
+            this.jti = jti;
+        }
 
-		public String getKid() {
-			return kid;
-		}
+        public String getKid() {
+            return kid;
+        }
 
-		public void setKid(String kid) {
-			this.kid = kid;
-		}
+        public void setKid(String kid) {
+            this.kid = kid;
+        }
 
-		public String getSub() {
-			return sub;
-		}
+        public String getSub() {
+            return sub;
+        }
 
-		public void setSub(String sub) {
-			this.sub = sub;
-			try {
-				characterID = Integer.valueOf(sub.replace("CHARACTER:EVE:", ""));
-			} catch (NumberFormatException ex) {
-				characterID = null;
-			}
-		}
+        public void setSub(String sub) {
+            this.sub = sub;
+            try {
+                characterID = Integer.valueOf(sub.replace("CHARACTER:EVE:", ""));
+            } catch (NumberFormatException ex) {
+                characterID = null;
+            }
+        }
 
-		public Integer getCharacterID() {
-			return characterID;
-		}
+        public Integer getCharacterID() {
+            return characterID;
+        }
 
-		public String getAzp() {
-			return azp;
-		}
+        public String getAzp() {
+            return azp;
+        }
 
-		public void setAzp(String azp) {
-			this.azp = azp;
-		}
+        public void setAzp(String azp) {
+            this.azp = azp;
+        }
 
-		public String getName() {
-			return name;
-		}
+        public String getName() {
+            return name;
+        }
 
-		public void setName(String name) {
-			this.name = name;
-		}
+        public void setName(String name) {
+            this.name = name;
+        }
 
-		public String getOwner() {
-			return owner;
-		}
+        public String getOwner() {
+            return owner;
+        }
 
-		public void setOwner(String owner) {
-			this.owner = owner;
-		}
+        public void setOwner(String owner) {
+            this.owner = owner;
+        }
 
-		public String getExp() {
-			return exp;
-		}
+        public String getExp() {
+            return exp;
+        }
 
-		public void setExp(String exp) {
-			this.exp = exp;
-		}
+        public void setExp(String exp) {
+            this.exp = exp;
+        }
 
-		public String getIss() {
-			return iss;
-		}
+        public String getIss() {
+            return iss;
+        }
 
-		public void setIss(String iss) {
-			this.iss = iss;
-		}
-	}
+        public void setIss(String iss) {
+            this.iss = iss;
+        }
+    }
 }
