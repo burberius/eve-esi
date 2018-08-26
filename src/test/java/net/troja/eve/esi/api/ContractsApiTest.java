@@ -37,7 +37,7 @@ public class ContractsApiTest extends GeneralApiTest {
 
     private final ContractsApi api = new ContractsApi();
 
-    
+
     /**
      * Get contracts
      *
@@ -55,7 +55,7 @@ public class ContractsApiTest extends GeneralApiTest {
         final CharacterContractsResponse characterContractsResponse = response.get(0);
         assertThat(characterContractsResponse.getPrice(), greaterThan(0.0));
     }
-    
+
     /**
      * Get contract bids
      *
@@ -81,9 +81,9 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(response.size(), greaterThan(0));
         final CharacterContractsBidsResponse characterContractsResponse = response.get(0);
         assertThat(characterContractsResponse.getAmount(), greaterThan(0f));
-        
+
     }
-    
+
     /**
      * Get contract items
      *
@@ -102,16 +102,16 @@ public class ContractsApiTest extends GeneralApiTest {
             if (characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.AUCTION
                     || characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.ITEM_EXCHANGE) {
                 contractId = characterContractsResponse.getContractId();
-				break;
+                break;
             }
         }
         assertThat(contractId, notNullValue());
         List<CharacterContractsItemsResponse> response = api.getCharactersCharacterIdContractsContractIdItems(characterId, contractId, DATASOURCE, null, null);
-		assertThat(response, notNullValue());
-		assertThat(response.size(), greaterThan(0));
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 
-	/**
+    /**
      * Get public contract bids
      *
      * Lists bids on a public auction contract  ---  This route is cached for up to 300 seconds
@@ -121,25 +121,25 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getContractsPublicBidsContractIdTest() throws ApiException {
-		Integer page = null;
-		Integer regionId = 10000002;
-		List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
-		assertThat(contracts, notNullValue());
-		Integer contractId = null;
+        Integer page = null;
+        Integer regionId = 10000002;
+        List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
+        assertThat(contracts, notNullValue());
+        Integer contractId = null;
         for (PublicContractsResponse contractsResponse : contracts) {
             if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION) {
                 contractId = contractsResponse.getContractId();
-				break;
+                break;
             }
         }
-		assertThat(contractId, notNullValue());
+        assertThat(contractId, notNullValue());
         List<PublicContractsBidsResponse> response = api.getContractsPublicBidsContractId(contractId, DATASOURCE, null, page);
-		assertThat(response, notNullValue());
-		assertThat(response.size(), greaterThan(0));
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
         // TODO: test validations
     }
 
-	/**
+    /**
      * Get public contract items
      *
      * Lists items of a public contract  ---  This route is cached for up to 3600 seconds
@@ -149,23 +149,23 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getContractsPublicItemsContractIdTest() throws ApiException {
-		Integer page = null;
-		Integer regionId = 10000002;
-		List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
-		assertThat(contracts, notNullValue());
-		Integer contractId = null;
+        Integer page = null;
+        Integer regionId = 10000002;
+        List<PublicContractsResponse> contracts = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
+        assertThat(contracts, notNullValue());
+        Integer contractId = null;
         for (PublicContractsResponse contractsResponse : contracts) {
             if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION || contractsResponse.getType() == PublicContractsResponse.TypeEnum.ITEM_EXCHANGE) {
                 contractId = contractsResponse.getContractId();
-				break;
+                break;
             }
         }
-		assertThat(contractId, notNullValue());
+        assertThat(contractId, notNullValue());
         List<PublicContractsItemsResponse> response = api.getContractsPublicItemsContractId(contractId, DATASOURCE, null, page);
-		assertThat(response, notNullValue());
-		assertThat(response.size(), greaterThan(0));
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
-    
+
     /**
      * Get public contracts
      *
@@ -176,11 +176,11 @@ public class ContractsApiTest extends GeneralApiTest {
      */
     @Test
     public void getContractsPublicRegionIdTest() throws ApiException {
-		Integer page = null;
+        Integer page = null;
         Integer regionId = 10000002;
         List<PublicContractsResponse> response = api.getContractsPublicRegionId(regionId, DATASOURCE, null, page);
-		assertThat(response, notNullValue());
-		assertThat(response.size(), greaterThan(0));
+        assertThat(response, notNullValue());
+        assertThat(response.size(), greaterThan(0));
     }
 
     /**
@@ -200,7 +200,7 @@ public class ContractsApiTest extends GeneralApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Get corporation contract bids
      *
@@ -219,7 +219,7 @@ public class ContractsApiTest extends GeneralApiTest {
 
         // TODO: test validations
     }
-    
+
     /**
      * Get corporation contract items
      *

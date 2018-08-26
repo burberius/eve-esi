@@ -24,6 +24,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.GeneralApiTest;
 import net.troja.eve.esi.api.SsoApi;
+import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
@@ -55,8 +56,6 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
-
         auth.setRefreshToken(refreshToken);
 
         final Map<String, String> headerParams = new HashMap<>();
@@ -70,7 +69,6 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
         auth.setRefreshToken(null);
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         AssetsApi api = new AssetsApi(client);
@@ -84,11 +82,35 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
+    public void getJwtTest() {
+        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        JWT jwt = auth.getJWT();
+        assertThat(jwt, notNullValue());
+        JWT.Header header = jwt.getHeader();
+        assertThat(header, notNullValue());
+        assertThat(header.getAlg(), notNullValue());
+        assertThat(header.getTyp(), notNullValue());
+        JWT.Payload payload = jwt.getPayload();
+        assertThat(payload, notNullValue());
+        assertThat(payload.getAzp(), notNullValue());
+        assertThat(payload.getExp(), notNullValue());
+        assertThat(payload.getIss(), notNullValue());
+        assertThat(payload.getJti(), notNullValue());
+        assertThat(payload.getKid(), notNullValue());
+        assertThat(payload.getName(), notNullValue());
+        assertThat(payload.getOwner(), notNullValue());
+        assertThat(payload.getSub(), notNullValue());
+        assertThat(payload.getScopes(), notNullValue());
+        assertThat(payload.getScopes().size(), greaterThan(10));
+        assertThat(payload.getCharacterID(), notNullValue());
+        assertThat(payload.getCharacterID(), equalTo(characterId));
+    }
+
+    @Test
     public void expiredAccessTokenSso() {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
         auth.setRefreshToken(null);
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         final SsoApi api = new SsoApi(client);
@@ -105,7 +127,6 @@ public class SsoAuthTest extends GeneralApiTest {
     public void finishFlowFail() {
         OAuth oAuth = new OAuth();
         oAuth.setClientId("");
-        oAuth.setClientSecret("");
         final String state = "TESTING";
         oAuth.getAuthorizationUri("", Collections.singleton(""), state);
         try {
@@ -136,12 +157,10 @@ public class SsoAuthTest extends GeneralApiTest {
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         if (args.length == 2) {
             auth.setClientId(args[0]);
-            auth.setClientSecret(args[1]);
         } else {
             initData();
-            if (clientId != null && clientSecret != null) {
+            if (clientId != null) {
                 auth.setClientId(clientId);
-                auth.setClientSecret(clientSecret);
             } else {
                 System.err.println("ClientId and ClientSecret missing");
                 System.exit(-1);
