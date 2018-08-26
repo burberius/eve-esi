@@ -55,11 +55,11 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
     /**
      * Top 4 ranking of factions active in faction warfare by total victory
      * points. A faction is considered \"active\" if they have participated in
-     * faction warfare in the past 14 days.
+     * faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 4 ranking of factions active in faction warfare by total victory points. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days.")
+    @ApiModelProperty(example = "null", required = true, value = "Top 4 ranking of factions active in faction warfare by total victory points. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }

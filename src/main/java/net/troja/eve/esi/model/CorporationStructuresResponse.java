@@ -172,11 +172,11 @@ public class CorporationStructuresResponse implements Serializable {
 
     /**
      * The date and time when the structure's newly requested reinforcement
-     * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.
+     * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect
      * 
      * @return nextReinforceApply
      **/
-    @ApiModelProperty(example = "null", value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect.")
+    @ApiModelProperty(example = "null", value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect")
     public OffsetDateTime getNextReinforceApply() {
         return nextReinforceApply;
     }
@@ -192,11 +192,11 @@ public class CorporationStructuresResponse implements Serializable {
 
     /**
      * The requested change to reinforce_hour that will take effect at the time
-     * shown by next_reinforce_apply. minimum: 0 maximum: 23
+     * shown by next_reinforce_apply minimum: 0 maximum: 23
      * 
      * @return nextReinforceHour
      **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply.")
+    @ApiModelProperty(example = "null", value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply")
     public Integer getNextReinforceHour() {
         return nextReinforceHour;
     }
@@ -212,11 +212,11 @@ public class CorporationStructuresResponse implements Serializable {
 
     /**
      * The requested change to reinforce_weekday that will take effect at the
-     * time shown by next_reinforce_apply. minimum: 0 maximum: 6
+     * time shown by next_reinforce_apply minimum: 0 maximum: 6
      * 
      * @return nextReinforceWeekday
      **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply.")
+    @ApiModelProperty(example = "null", value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply")
     public Integer getNextReinforceWeekday() {
         return nextReinforceWeekday;
     }
@@ -254,11 +254,11 @@ public class CorporationStructuresResponse implements Serializable {
      * will randomly exit its reinforcement periods and become vulnerable to
      * attack against its armor and/or hull. The structure will become
      * vulnerable at a random time that is +/- 2 hours centered on the value of
-     * this property. minimum: 0 maximum: 23
+     * this property minimum: 0 maximum: 23
      * 
      * @return reinforceHour
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property.")
+    @ApiModelProperty(example = "null", required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property")
     public Integer getReinforceHour() {
         return reinforceHour;
     }
@@ -275,11 +275,11 @@ public class CorporationStructuresResponse implements Serializable {
     /**
      * The day of the week when the structure exits its final reinforcement
      * period and becomes vulnerable to attack against its hull. Monday is 0 and
-     * Sunday is 6. minimum: 0 maximum: 6
+     * Sunday is 6 minimum: 0 maximum: 6
      * 
      * @return reinforceWeekday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6.")
+    @ApiModelProperty(example = "null", required = true, value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6")
     public Integer getReinforceWeekday() {
         return reinforceWeekday;
     }

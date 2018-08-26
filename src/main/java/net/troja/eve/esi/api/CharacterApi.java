@@ -393,9 +393,9 @@ public class CharacterApi {
     /**
      * Get character notifications Return character notifications --- This route
      * is cached for up to 600 seconds --- Warning: This route has an upgrade
-     * available. --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff
-     * /latest/dev/#GET-/characters/{character_id}/notifications/) SSO Scope:
+     * available --- [Diff of the upcoming
+     * changes](https://esi.evetech.net/diff/
+     * latest/dev/#GET-/characters/{character_id}/notifications/) SSO Scope:
      * esi-characters.read_notifications.v1
      * 
      * @param characterId
@@ -802,7 +802,7 @@ public class CharacterApi {
      * 
      * @param characters
      *            The character IDs to fetch affiliations for. All characters
-     *            must exist, or none will be returned. (required)
+     *            must exist, or none will be returned (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)

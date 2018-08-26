@@ -25,9 +25,9 @@ import java.io.Serializable;
 
 /**
  * Top 4 rankings of factions by number of kills from yesterday, last week and
- * in total.
+ * in total
  */
-@ApiModel(description = "Top 4 rankings of factions by number of kills from yesterday, last week and in total.")
+@ApiModel(description = "Top 4 rankings of factions by number of kills from yesterday, last week and in total")
 public class FactionWarfareLeaderboardKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -53,11 +53,11 @@ public class FactionWarfareLeaderboardKills implements Serializable {
     /**
      * Top 4 ranking of factions active in faction warfare by total kills. A
      * faction is considered \"active\" if they have participated in faction
-     * warfare in the past 14 days.
+     * warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 4 ranking of factions active in faction warfare by total kills. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days.")
+    @ApiModelProperty(example = "null", required = true, value = "Top 4 ranking of factions active in faction warfare by total kills. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardActiveTotalKills> getActiveTotal() {
         return activeTotal;
     }

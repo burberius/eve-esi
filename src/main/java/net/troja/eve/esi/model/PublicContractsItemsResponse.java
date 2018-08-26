@@ -78,11 +78,11 @@ public class PublicContractsItemsResponse implements Serializable {
 
     /**
      * true if the contract issuer has submitted this item with the contract,
-     * false if the isser is asking for this item in the contract.
+     * false if the isser is asking for this item in the contract
      * 
      * @return isIncluded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract.")
+    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
     public Boolean getIsIncluded() {
         return isIncluded;
     }
@@ -98,11 +98,11 @@ public class PublicContractsItemsResponse implements Serializable {
 
     /**
      * Unique ID for the item being sold. Not present if item is being requested
-     * by contract rather than sold with contract.
+     * by contract rather than sold with contract
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract.")
+    @ApiModelProperty(example = "null", value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract")
     public Long getItemId() {
         return itemId;
     }
@@ -117,11 +117,11 @@ public class PublicContractsItemsResponse implements Serializable {
     }
 
     /**
-     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
+     * Material Efficiency Level of the blueprint minimum: 0 maximum: 25
      * 
      * @return materialEfficiency
      **/
-    @ApiModelProperty(example = "null", value = "Material Efficiency Level of the blueprint.")
+    @ApiModelProperty(example = "null", value = "Material Efficiency Level of the blueprint")
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
@@ -175,11 +175,11 @@ public class PublicContractsItemsResponse implements Serializable {
 
     /**
      * Number of runs remaining if the blueprint is a copy, -1 if it is an
-     * original. minimum: -1
+     * original minimum: -1
      * 
      * @return runs
      **/
-    @ApiModelProperty(example = "null", value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original.")
+    @ApiModelProperty(example = "null", value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original")
     public Integer getRuns() {
         return runs;
     }
@@ -194,11 +194,11 @@ public class PublicContractsItemsResponse implements Serializable {
     }
 
     /**
-     * Time Efficiency Level of the blueprint. minimum: 0 maximum: 20
+     * Time Efficiency Level of the blueprint minimum: 0 maximum: 20
      * 
      * @return timeEfficiency
      **/
-    @ApiModelProperty(example = "null", value = "Time Efficiency Level of the blueprint.")
+    @ApiModelProperty(example = "null", value = "Time Efficiency Level of the blueprint")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }

@@ -55,11 +55,11 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
     /**
      * Top 100 ranking of pilots active in faction warfare by total victory
      * points. A pilot is considered \"active\" if they have participated in
-     * faction warfare in the past 14 days.
+     * faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days.")
+    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }

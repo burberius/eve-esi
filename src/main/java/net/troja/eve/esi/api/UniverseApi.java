@@ -1521,7 +1521,7 @@ public class UniverseApi {
      * Bulk names to IDs Resolve a set of names to IDs in the following
      * categories: agents, alliances, characters, constellations, corporations
      * factions, inventory_types, regions, stations, and systems. Only exact
-     * matches will be returned. All names searched for are cached for 12 hours.
+     * matches will be returned. All names searched for are cached for 12 hours
      * ---
      * 
      * @param names
@@ -1579,7 +1579,7 @@ public class UniverseApi {
      * Get names and categories for a set of ID&#39;s Resolve a set of IDs to
      * names and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types. ---
+     * Regions, Types ---
      * 
      * @param ids
      *            The ids to resolve (required)
