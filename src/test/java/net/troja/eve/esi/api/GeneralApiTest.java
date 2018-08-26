@@ -13,6 +13,7 @@ public class GeneralApiTest {
     protected static final String LANGUAGE = "en-us";
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
     protected static final String SSO_REFRESH_TOKEN = "SSO_REFRESH_TOKEN";
+    protected static final String SSO_REFRESH_TOKEN_PUBLIC_DATA = "SSO_REFRESH_TOKEN_PUBLIC_DATA";
     protected static final int CHARACTER_ID_CHRIBBA = 196379789;
     protected static final String CHARACTER_NAME_CHRIBBA = "Chribba";
     protected static final int CORPORATION_ID_TBD = 98435559;
@@ -27,6 +28,7 @@ public class GeneralApiTest {
 
     protected static String clientId;
     protected static String refreshToken;
+    protected static String refreshTokenPublicData;
     protected static int characterId;
     protected static String characterName;
 
@@ -43,6 +45,7 @@ public class GeneralApiTest {
 
         clientId = env.get(SSO_CLIENT_ID);
         refreshToken = env.get(SSO_REFRESH_TOKEN);
+        refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
         apiClient = new ApiClient();
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");

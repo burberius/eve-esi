@@ -33,6 +33,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeTrue;
 
 public class SsoAuthTest extends GeneralApiTest {
 
@@ -82,6 +83,36 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
+    public void singleScopeJWT() {
+        assumeTrue(refreshTokenPublicData != null);
+        final ApiClient client = new ApiClient();
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        auth.setClientId(clientId);
+        auth.setRefreshToken(refreshTokenPublicData); //Public Scope
+        JWT jwt = auth.getJWT();
+        assertThat(jwt, notNullValue());
+        JWT.Header header = jwt.getHeader();
+        assertThat(header, notNullValue());
+        assertThat(header.getAlg(), notNullValue());
+        assertThat(header.getTyp(), notNullValue());
+        JWT.Payload payload = jwt.getPayload();
+        assertThat(payload, notNullValue());
+        assertThat(payload.getAzp(), notNullValue());
+        assertThat(payload.getExp(), notNullValue());
+        assertThat(payload.getIss(), notNullValue());
+        assertThat(payload.getJti(), notNullValue());
+        assertThat(payload.getKid(), notNullValue());
+        assertThat(payload.getName(), notNullValue());
+        assertThat(payload.getOwner(), notNullValue());
+        assertThat(payload.getSub(), notNullValue());
+        assertThat(payload.getScopes(), notNullValue());
+        assertThat(payload.getScopes().size(), equalTo(1));
+        assertThat(payload.getScopes().iterator().next(), equalTo("publicData"));
+        assertThat(payload.getCharacterID(), notNullValue());
+        assertThat(payload.getCharacterID(), equalTo(characterId));
+    }
+
+    @Test
     public void getJwtTest() {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
@@ -101,7 +132,7 @@ public class SsoAuthTest extends GeneralApiTest {
         assertThat(payload.getOwner(), notNullValue());
         assertThat(payload.getSub(), notNullValue());
         assertThat(payload.getScopes(), notNullValue());
-        assertThat(payload.getScopes().size(), greaterThan(10));
+        assertThat(payload.getScopes().size(), equalTo(SsoScopes.ALL.size()));
         assertThat(payload.getCharacterID(), notNullValue());
         assertThat(payload.getCharacterID(), equalTo(characterId));
     }
