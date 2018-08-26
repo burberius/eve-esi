@@ -55,7 +55,7 @@ public class IndustryApi {
      *            matches the current ETag (optional)
      * @param includeCompleted
      *            Whether to retrieve completed character industry jobs. Only
-     *            includes jobs from the past 90 days. (optional)
+     *            includes jobs from the past 90 days (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @return List&lt;CharacterIndustryJobsResponse&gt;
@@ -167,7 +167,7 @@ public class IndustryApi {
      * Moon extraction timers Extraction timers for all moon chunks being
      * extracted by refineries belonging to a corporation. --- This route is
      * cached for up to 1800 seconds --- Requires one of the following EVE
-     * corporation role(s): Structure_manager SSO Scope:
+     * corporation role(s): Station_Manager SSO Scope:
      * esi-industry.read_corporation_mining.v1
      * 
      * @param corporationId
@@ -365,7 +365,7 @@ public class IndustryApi {
     /**
      * List corporation industry jobs List industry jobs run by a corporation
      * --- This route is cached for up to 300 seconds --- Requires one of the
-     * following EVE corporation role(s): FactoryManager SSO Scope:
+     * following EVE corporation role(s): Factory_Manager SSO Scope:
      * esi-industry.read_corporation_jobs.v1
      * 
      * @param corporationId
@@ -378,7 +378,7 @@ public class IndustryApi {
      *            matches the current ETag (optional)
      * @param includeCompleted
      *            Whether to retrieve completed corporation industry jobs. Only
-     *            includes jobs from the past 90 days. (optional, default to
+     *            includes jobs from the past 90 days (optional, default to
      *            false)
      * @param page
      *            Which page of results to return (optional, default to 1)

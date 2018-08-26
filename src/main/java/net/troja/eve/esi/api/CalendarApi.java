@@ -41,7 +41,7 @@ public class CalendarApi {
      * If no from_event ID is given, the resource will return the next 50
      * chronological event summaries from now. If a from_event ID is specified,
      * it will return the next 50 chronological event summaries from after that
-     * event. --- This route is cached for up to 5 seconds SSO Scope:
+     * event --- This route is cached for up to 5 seconds SSO Scope:
      * esi-calendar.read_calendar_events.v1
      * 
      * @param characterId
@@ -245,8 +245,7 @@ public class CalendarApi {
      * @param eventId
      *            The ID of the event requested (required)
      * @param response
-     *            The response value to set, overriding current value.
-     *            (required)
+     *            The response value to set, overriding current value (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)

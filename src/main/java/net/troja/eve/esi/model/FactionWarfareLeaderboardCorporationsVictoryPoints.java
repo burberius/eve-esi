@@ -55,11 +55,11 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
     /**
      * Top 10 ranking of corporations active in faction warfare by total victory
      * points. A corporation is considered \"active\" if they have participated
-     * in faction warfare in the past 14 days.
+     * in faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days.")
+    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }

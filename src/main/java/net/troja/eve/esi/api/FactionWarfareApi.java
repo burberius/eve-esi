@@ -158,7 +158,7 @@ public class FactionWarfareApi {
 
     /**
      * List of the top factions in faction warfare Top 4 leaderboard of factions
-     * for kills and victory points separated by total, last week and yesterday.
+     * for kills and victory points separated by total, last week and yesterday
      * --- This route expires daily at 11:05
      * 
      * @param datasource
@@ -204,7 +204,7 @@ public class FactionWarfareApi {
 
     /**
      * List of the top pilots in faction warfare Top 100 leaderboard of pilots
-     * for kills and victory points separated by total, last week and yesterday.
+     * for kills and victory points separated by total, last week and yesterday
      * --- This route expires daily at 11:05
      * 
      * @param datasource
@@ -251,7 +251,7 @@ public class FactionWarfareApi {
     /**
      * List of the top corporations in faction warfare Top 10 leaderboard of
      * corporations for kills and victory points separated by total, last week
-     * and yesterday. --- This route expires daily at 11:05
+     * and yesterday --- This route expires daily at 11:05
      * 
      * @param datasource
      *            The server name you would like data from (optional, default to

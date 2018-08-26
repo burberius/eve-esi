@@ -50,11 +50,11 @@ public class CorporationContractsItemsResponse implements Serializable {
 
     /**
      * true if the contract issuer has submitted this item with the contract,
-     * false if the isser is asking for this item in the contract.
+     * false if the isser is asking for this item in the contract
      * 
      * @return isIncluded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract.")
+    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
     public Boolean getIsIncluded() {
         return isIncluded;
     }
