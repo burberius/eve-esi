@@ -54,8 +54,8 @@ public class IndustryApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param includeCompleted
-     *            Whether retrieve completed character industry jobs as well
-     *            (optional)
+     *            Whether to retrieve completed character industry jobs. Only
+     *            includes jobs from the past 90 days. (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @return List&lt;CharacterIndustryJobsResponse&gt;
@@ -377,8 +377,9 @@ public class IndustryApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param includeCompleted
-     *            Whether retrieve completed industry jobs as well (optional,
-     *            default to false)
+     *            Whether to retrieve completed corporation industry jobs. Only
+     *            includes jobs from the past 90 days. (optional, default to
+     *            false)
      * @param page
      *            Which page of results to return (optional, default to 1)
      * @param token

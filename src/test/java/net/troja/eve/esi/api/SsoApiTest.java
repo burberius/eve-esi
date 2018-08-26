@@ -34,7 +34,6 @@ public class SsoApiTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
         auth.setRefreshToken(refreshToken);
 
         final SsoApi api = new SsoApi(client);
@@ -44,10 +43,8 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getCharacterId(), greaterThan(100000));
         assertThat(StringUtils.isBlank(info.getCharacterName()), equalTo(false));
         assertThat(info.getExpiresOn(), notNullValue());
-        assertThat(StringUtils.isBlank(info.getCharacterName()), equalTo(false));
-        assertThat(info.getTokenType(), equalTo("Character"));
+        assertThat(info.getTokenType(), equalTo("JWT"));
         assertThat(StringUtils.isBlank(info.getCharacterOwnerHash()), equalTo(false));
-        assertThat(info.getIntellectualProperty(), equalTo("EVE"));
         assertThat(info.getScopes().size(), greaterThan(10));
     }
 
@@ -56,7 +53,6 @@ public class SsoApiTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
 
         final SsoApi api = new SsoApi(client);
         api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1"); //Revoked Refresh Tokens (Already Invalid)
@@ -67,7 +63,6 @@ public class SsoApiTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setClientSecret(clientSecret);
 
         final SsoApi api = new SsoApi(client);
         api.revokeAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2"); //Revoked Access Tokens (Already Invalid)

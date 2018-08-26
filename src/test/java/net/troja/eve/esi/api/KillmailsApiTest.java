@@ -82,9 +82,9 @@ public class KillmailsApiTest extends GeneralApiTest {
      *             if the Api call fails
      */
     @Test
-	@Ignore("Needs killmails to test")
+    @Ignore("Needs killmails to test")
     public void getKillmailsKillmailIdKillmailHashTest() throws ApiException {
-		final Integer page = null;
+        final Integer page = null;
         final CharacterKillmailsResponse killmail = api
                 .getCharactersCharacterIdKillmailsRecent(characterId, DATASOURCE, null, page, null).get(0);
         final Integer killmailId = killmail.getKillmailId();

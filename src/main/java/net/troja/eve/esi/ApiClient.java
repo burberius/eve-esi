@@ -72,7 +72,12 @@ public class ApiClient {
         this.dateFormat = new RFC3339DateFormat();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/1.0.0/java");
+        String userAgent = System.getProperty("http.agent");
+        if (userAgent != null && !userAgent.isEmpty()) {
+            setUserAgent(userAgent);
+        } else {
+            setUserAgent("eve-esi/slack:@goldengnu");
+        }
 
         // Setup authentications (key: authentication name, value:
         // authentication).

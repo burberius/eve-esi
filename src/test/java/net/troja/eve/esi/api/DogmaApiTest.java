@@ -65,7 +65,7 @@ public class DogmaApiTest extends GeneralApiTest {
         assertThat(response.getName(), equalTo("intelligence"));
     }
 
-	 /**
+    /**
      * Get dynamic item information
      *
      * Returns info about a dynamic item resulting from mutation with a mutaplasmid.  ---  This route expires daily at 11:05
@@ -73,7 +73,7 @@ public class DogmaApiTest extends GeneralApiTest {
      * @throws ApiException
      *          if the Api call fails
      */
-	@Ignore("Needs dynamic dogma item to test")
+    @Ignore("Needs dynamic dogma item to test")
     @Test
     public void getDogmaDynamicItemsTypeIdItemIdTest() throws ApiException {
         Long itemId = null;
