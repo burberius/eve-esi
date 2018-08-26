@@ -2,6 +2,15 @@ package net.troja.eve.esi.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -63,6 +72,7 @@ public class JWT {
     public static class Payload {
 
         @JsonProperty("scp")
+        @JsonDeserialize(using = ArrayStringDeserializer.class)
         private Set<String> scopes;
 
         private String jti;
@@ -156,4 +166,18 @@ public class JWT {
             this.iss = iss;
         }
     }
+
+    public static class ArrayStringDeserializer extends JsonDeserializer<Set<String>> { 
+
+        private static final TypeReference<Set<String>> LIST_TYPE = new TypeReference<Set<String>>() {};
+        
+        @Override
+		public Set<String> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+            try {
+                return jp.readValueAs(LIST_TYPE); //Assume Array of Scopes
+            } catch (IOException ex) { //On error it's a single scope AKA just a String
+                return new HashSet<>(Collections.singleton(jp.getText()));
+            }
+		}
+	}
 }
