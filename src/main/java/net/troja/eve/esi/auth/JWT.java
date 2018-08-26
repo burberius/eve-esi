@@ -14,13 +14,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
-* JWT (JSON Web Token)
-* WARNING: The JWT is unverified.
-* Verifying the JWT is beyond the scope of this library.
-* As ESI will verify the token when used.
-* See the SSO documentation for JWT Token validation for details:
-* https://github.com/ccpgames/eveonline-third-party-documentation/blob/master/docs/sso/jwt-validation.md
-*/
+ * JWT (JSON Web Token) WARNING: The JWT is unverified. Verifying the JWT is
+ * beyond the scope of this library. As ESI will verify the token when used. See
+ * the SSO documentation for JWT Token validation for details:
+ * https://github.com/ccpgames/eveonline-third-party-documentation/blob/master/docs/sso/jwt-validation.md
+ */
 public class JWT {
 
     private final Header header;
@@ -167,17 +165,20 @@ public class JWT {
         }
     }
 
-    public static class ArrayStringDeserializer extends JsonDeserializer<Set<String>> { 
+    public static class ArrayStringDeserializer extends JsonDeserializer<Set<String>> {
 
-        private static final TypeReference<Set<String>> LIST_TYPE = new TypeReference<Set<String>>() {};
-        
+        private static final TypeReference<Set<String>> LIST_TYPE = new TypeReference<Set<String>>() {
+        };
+
         @Override
-		public Set<String> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        public Set<String> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
+                JsonProcessingException {
             try {
-                return jp.readValueAs(LIST_TYPE); //Assume Array of Scopes
-            } catch (IOException ex) { //On error it's a single scope AKA just a String
+                return jp.readValueAs(LIST_TYPE); // Assume Array of Scopes
+            } catch (IOException ex) { // On error it's a single scope AKA just
+                                       // a String
                 return new HashSet<>(Collections.singleton(jp.getText()));
             }
-		}
-	}
+        }
+    }
 }
