@@ -1208,8 +1208,8 @@ public class CorporationApi {
      * blog:
      * https://www.eveonline.com/article/upwell-2.0-structures-changes-coming
      * -on-february-13th --- This route is cached for up to 3600 seconds ---
-     * Requires one of the following EVE corporation role(s): StationManager SSO
-     * Scope: esi-corporations.read_structures.v1
+     * Requires one of the following EVE corporation role(s): Station_Manager
+     * SSO Scope: esi-corporations.read_structures.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)

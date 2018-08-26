@@ -45,7 +45,7 @@ public class WarsApi {
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
      * @param maxWarId
-     *            Only return wars with ID smaller than this. (optional)
+     *            Only return wars with ID smaller than this (optional)
      * @return List&lt;Integer&gt;
      * @throws ApiException
      *             if fails to make API call

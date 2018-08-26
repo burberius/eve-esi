@@ -28,7 +28,6 @@ import javax.net.ssl.HttpsURLConnection;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 
-
 public class OAuth implements Authentication {
     private static final String URI_OAUTH = "https://login.eveonline.com/v2/oauth";
     private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
@@ -81,16 +80,18 @@ public class OAuth implements Authentication {
     }
 
     /**
-     * Get JWT (JSON Web Token)
-     * WARNING: The JWT is unverified.
-     * Verifying the JWT is beyond the scope of this library.
-     * As ESI will verify the token when used.
-     * See the SSO documentation for JWT Token validation for details:
+     * Get JWT (JSON Web Token) WARNING: The JWT is unverified. Verifying the
+     * JWT is beyond the scope of this library. As ESI will verify the token
+     * when used. See the SSO documentation for JWT Token validation for
+     * details:
      * https://github.com/ccpgames/eveonline-third-party-documentation/blob/master/docs/sso/jwt-validation.md
+     * 
      * @return Unverified JWT or null
      */
     public JWT getJWT() {
-        AccessTokenData accessTokenData = getAccessTokenData(); //Update access token if needed;
+        AccessTokenData accessTokenData = getAccessTokenData(); // Update access
+                                                                // token if
+                                                                // needed;
         if (accessTokenData == null) {
             return null;
         }
@@ -101,8 +102,10 @@ public class OAuth implements Authentication {
                 return null;
             }
             ObjectMapper objectMapper = new ObjectMapper();
-            JWT.Header header  = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[0])), JWT.Header.class);
-            JWT.Payload payload = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[1])), JWT.Payload.class);
+            JWT.Header header = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[0])),
+                    JWT.Header.class);
+            JWT.Payload payload = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[1])),
+                    JWT.Payload.class);
             String signature = parts[2];
             return new JWT(header, payload, signature);
         } catch (IOException ex) {
@@ -183,7 +186,7 @@ public class OAuth implements Authentication {
             builder.append(code);
             builder.append("&code_verifier=");
             builder.append(codeVerifier);
-            update(builder.toString(), false);
+            update(builder.toString());
         } catch (UnsupportedEncodingException ex) {
             throw new ApiException(ex);
         }
@@ -197,19 +200,13 @@ public class OAuth implements Authentication {
             builder.append(URLEncoder.encode(clientId, "UTF-8"));
             builder.append("&refresh_token=");
             builder.append(URLEncoder.encode(refreshToken, "UTF-8"));
-            update(builder.toString(), false);
+            update(builder.toString());
         } catch (UnsupportedEncodingException ex) {
             throw new ApiException(ex);
         }
     }
 
-    /**
-     * 
-     * @param urlParameters
-     * @param basic Temporary workaround for having to send basic auth when refreshing access tokens
-     * @throws ApiException 
-     */
-    private void update(String urlParameters, boolean basic) throws ApiException {
+    private void update(String urlParameters) throws ApiException {
         try {
             URL obj = new URL(URI_ACCESS_TOKEN);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -227,8 +224,7 @@ public class OAuth implements Authentication {
             }
 
             StringBuilder response;
-            try (BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()))) {
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String inputLine;
                 response = new StringBuilder();
                 while ((inputLine = in.readLine()) != null) {
@@ -237,9 +233,9 @@ public class OAuth implements Authentication {
             }
             // read json
             ObjectMapper objectMapper = new ObjectMapper();
-            Result result = objectMapper.readValue(response.toString(), Result.class);  
+            Result result = objectMapper.readValue(response.toString(), Result.class);
 
-            //set data
+            // set data
             refreshToken = result.getRefreshToken();
             String accessToken = result.getAccessToken();
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;

@@ -1,4 +1,3 @@
-
 package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class MetaApi {
         this.apiClient = apiClient;
     }
 
-    public Map<String,String> getHeaders() throws ApiException {
+    public Map<String, String> getHeaders() throws ApiException {
         final Object localVarPostBody = null;
 
         final String localVarPath = "/headers/";
@@ -50,12 +49,10 @@ public class MetaApi {
 
         final String[] localVarAuthNames = new String[] { "evesso" };
 
-        final GenericType<Map<String,String>> localVarReturnType = new GenericType<Map<String,String>>() {
+        final GenericType<Map<String, String>> localVarReturnType = new GenericType<Map<String, String>>() {
         };
 
-        
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody,
-                    localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames,
-                    localVarReturnType);
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams,
+                localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 }

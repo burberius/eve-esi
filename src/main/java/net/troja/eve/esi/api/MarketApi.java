@@ -507,7 +507,7 @@ public class MarketApi {
      * @param orderType
      *            Filter buy/sell orders, return all orders by default. If you
      *            query without type_id, we always return both buy and sell
-     *            orders. (required)
+     *            orders (required)
      * @param regionId
      *            Return orders in this region (required)
      * @param datasource

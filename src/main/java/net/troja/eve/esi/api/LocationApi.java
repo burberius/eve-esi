@@ -38,7 +38,7 @@ public class LocationApi {
     /**
      * Get character location Information about the characters current location.
      * Returns the current solar system id, and also the current station or
-     * structure ID if applicable. --- This route is cached for up to 5 seconds
+     * structure ID if applicable --- This route is cached for up to 5 seconds
      * SSO Scope: esi-location.read_location.v1
      * 
      * @param characterId

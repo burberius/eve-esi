@@ -346,9 +346,9 @@ public class AssetsApi {
     }
 
     /**
-     * Get coporation asset names Return names for a set of item ids, which you
+     * Get corporation asset names Return names for a set of item ids, which you
      * can get from corporation assets endpoint. Only valid for items that can
-     * customize names, like containers or ships. --- Requires one of the
+     * customize names, like containers or ships --- Requires one of the
      * following EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
