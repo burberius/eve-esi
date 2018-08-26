@@ -85,6 +85,8 @@ public class OAuth implements Authentication {
      * WARNING: The JWT is unverified.
      * Verifying the JWT is beyond the scope of this library.
      * As ESI will verify the token when used.
+     * See the SSO documentation for JWT Token validation for details:
+     * https://github.com/ccpgames/eveonline-third-party-documentation/blob/master/docs/sso/jwt-validation.md
      * @return Unverified JWT or null
      */
     public JWT getJWT() {
