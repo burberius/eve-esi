@@ -98,7 +98,7 @@ public class JWT {
         public void setSub(String sub) {
             this.sub = sub;
             try {
-                characterID = Integer.valueOf(sub.replace("CHARACTER:EVE:", ""));
+                characterID = Integer.valueOf(sub.substring("CHARACTER:EVE:".length()));
             } catch (NumberFormatException ex) {
                 characterID = null;
             }
