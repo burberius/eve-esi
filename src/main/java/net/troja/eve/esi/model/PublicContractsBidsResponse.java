@@ -32,9 +32,6 @@ public class PublicContractsBidsResponse implements Serializable {
     @JsonProperty("bid_id")
     private Integer bidId = null;
 
-    @JsonProperty("bidder_id")
-    private Integer bidderId = null;
-
     @JsonProperty("date_bid")
     private OffsetDateTime dateBid = null;
 
@@ -76,25 +73,6 @@ public class PublicContractsBidsResponse implements Serializable {
         this.bidId = bidId;
     }
 
-    public PublicContractsBidsResponse bidderId(Integer bidderId) {
-        this.bidderId = bidderId;
-        return this;
-    }
-
-    /**
-     * Character ID of the bidder
-     * 
-     * @return bidderId
-     **/
-    @ApiModelProperty(example = "null", required = true, value = "Character ID of the bidder")
-    public Integer getBidderId() {
-        return bidderId;
-    }
-
-    public void setBidderId(Integer bidderId) {
-        this.bidderId = bidderId;
-    }
-
     public PublicContractsBidsResponse dateBid(OffsetDateTime dateBid) {
         this.dateBid = dateBid;
         return this;
@@ -125,13 +103,12 @@ public class PublicContractsBidsResponse implements Serializable {
         PublicContractsBidsResponse publicContractsBidsResponse = (PublicContractsBidsResponse) o;
         return Objects.equals(this.amount, publicContractsBidsResponse.amount)
                 && Objects.equals(this.bidId, publicContractsBidsResponse.bidId)
-                && Objects.equals(this.bidderId, publicContractsBidsResponse.bidderId)
                 && Objects.equals(this.dateBid, publicContractsBidsResponse.dateBid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, bidId, bidderId, dateBid);
+        return Objects.hash(amount, bidId, dateBid);
     }
 
     @Override
@@ -141,7 +118,6 @@ public class PublicContractsBidsResponse implements Serializable {
 
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    bidId: ").append(toIndentedString(bidId)).append("\n");
-        sb.append("    bidderId: ").append(toIndentedString(bidderId)).append("\n");
         sb.append("    dateBid: ").append(toIndentedString(dateBid)).append("\n");
         sb.append("}");
         return sb.toString();
