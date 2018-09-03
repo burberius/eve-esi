@@ -151,18 +151,20 @@ public class OAuth implements Authentication {
         StringBuilder builder = new StringBuilder();
         builder.append(URI_AUTHENTICATION);
         builder.append("?");
-        builder.append("response_type=code");
+        builder.append("response_type=");
+        builder.append(encode("code"));
         builder.append("&redirect_uri=");
-        builder.append(redirectUri);
+        builder.append(encode(redirectUri));
         builder.append("&client_id=");
-        builder.append(clientId);
+        builder.append(encode(clientId));
         builder.append("&scope=");
-        builder.append(getScopesString(scopes));
+        builder.append(encode(getScopesString(scopes)));
         builder.append("&state=");
-        builder.append(state);
+        builder.append(encode(state));
         builder.append("&code_challenge");
-        builder.append(getCodeChallenge());
-        builder.append("&code_challenge_method=S256");
+        builder.append(getCodeChallenge()); //Already url encoded
+        builder.append("&code_challenge_method=");
+        builder.append(encode("S256"));
         return builder.toString();
     }
 
@@ -177,33 +179,27 @@ public class OAuth implements Authentication {
      * @throws net.troja.eve.esi.ApiException
      */
     public void finishFlow(final String code, final String state) throws ApiException {
-        try {
-            StringBuilder builder = new StringBuilder();
-            builder.append("grant_type=authorization_code");
-            builder.append("&client_id=");
-            builder.append(URLEncoder.encode(clientId, "UTF-8"));
-            builder.append("&code=");
-            builder.append(code);
-            builder.append("&code_verifier=");
-            builder.append(codeVerifier);
-            update(builder.toString());
-        } catch (UnsupportedEncodingException ex) {
-            throw new ApiException(ex);
-        }
+        StringBuilder builder = new StringBuilder();
+        builder.append("grant_type=");
+        builder.append(encode("authorization_code"));
+        builder.append("&client_id=");
+        builder.append(encode(clientId));
+        builder.append("&code=");
+        builder.append(encode(code));
+        builder.append("&code_verifier=");
+        builder.append(encode(codeVerifier));
+        update(builder.toString());
     }
 
     private void refreshToken() throws ApiException {
-        try {
-            StringBuilder builder = new StringBuilder();
-            builder.append("grant_type=refresh_token");
-            builder.append("&client_id=");
-            builder.append(URLEncoder.encode(clientId, "UTF-8"));
-            builder.append("&refresh_token=");
-            builder.append(URLEncoder.encode(refreshToken, "UTF-8"));
-            update(builder.toString());
-        } catch (UnsupportedEncodingException ex) {
-            throw new ApiException(ex);
-        }
+        StringBuilder builder = new StringBuilder();
+        builder.append("grant_type=");
+        builder.append(encode("refresh_token"));
+        builder.append("&client_id=");
+        builder.append(encode(clientId));
+        builder.append("&refresh_token=");
+        builder.append(encode(refreshToken));
+        update(builder.toString());
     }
 
     private void update(String urlParameters) throws ApiException {
@@ -257,11 +253,7 @@ public class OAuth implements Authentication {
                 scopesString.append(scope);
             }
         }
-        try {
-            return URLEncoder.encode(scopesString.toString(), "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-            return null;
-        }
+        return scopesString.toString();
     }
 
     private String getAuthKey() {
@@ -298,6 +290,14 @@ public class OAuth implements Authentication {
             byte[] sha = digest.digest(ascii);
             return Base64.getUrlEncoder().encodeToString(sha);
         } catch (NoSuchAlgorithmException ex) {
+            return null;
+        }
+    }
+
+    private String encode(String parameter) {
+        try {
+            return URLEncoder.encode(parameter, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
             return null;
         }
     }
