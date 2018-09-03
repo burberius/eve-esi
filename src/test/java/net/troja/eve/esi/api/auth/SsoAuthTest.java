@@ -177,7 +177,7 @@ public class SsoAuthTest extends GeneralApiTest {
      * More description is in the README.md
      *
      * @param args
-     *            The client id and client secret.
+     *            The client id.
      * @throws IOException
      * @throws URISyntaxException
      * @throws net.troja.eve.esi.ApiException
@@ -186,18 +186,17 @@ public class SsoAuthTest extends GeneralApiTest {
         final String state = "somesecret";
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        if (args.length == 2) {
+        if (args.length == 1) {
             auth.setClientId(args[0]);
         } else {
             initData();
             if (clientId != null) {
                 auth.setClientId(clientId);
             } else {
-                System.err.println("ClientId and ClientSecret missing");
+                System.err.println("ClientId missing");
                 System.exit(-1);
             }
         }
-
         final Set<String> scopes = SsoScopes.ALL;
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
