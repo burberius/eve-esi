@@ -162,7 +162,7 @@ public class OAuth implements Authentication {
         builder.append("&state=");
         builder.append(encode(state));
         builder.append("&code_challenge");
-        builder.append(getCodeChallenge()); //Already url encoded
+        builder.append(getCodeChallenge()); // Already url encoded
         builder.append("&code_challenge_method=");
         builder.append(encode("S256"));
         return builder.toString();
