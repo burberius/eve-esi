@@ -428,6 +428,10 @@ public class CharacterNotificationsResponse implements Serializable {
 
         STRUCTUREWENTLOWPOWER("StructureWentLowPower"),
 
+        STRUCTURESJOBSCANCELLED("StructuresJobsCancelled"),
+
+        STRUCTURESJOBSPAUSED("StructuresJobsPaused"),
+
         STRUCTURESREINFORCEMENTCHANGED("StructuresReinforcementChanged"),
 
         TOWERALERTMSG("TowerAlertMsg"),
