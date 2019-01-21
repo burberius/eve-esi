@@ -187,8 +187,8 @@ public class AllianceApi {
     }
 
     /**
-     * Get alliance icon Get the icon urls for a alliance --- This route is
-     * cached for up to 3600 seconds
+     * Get alliance icon Get the icon urls for a alliance --- This route expires
+     * daily at 11:05
      * 
      * @param allianceId
      *            An EVE alliance ID (required)

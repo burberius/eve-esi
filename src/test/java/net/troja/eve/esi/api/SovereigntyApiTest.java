@@ -34,11 +34,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
     /**
      * List sovereignty campaigns
      *
-     * Shows sovereignty data for campaigns. --- Alternate route:
-     * &#x60;/v1/sovereignty/campaigns/&#x60; Alternate route:
-     * &#x60;/legacy/sovereignty/campaigns/&#x60; Alternate route:
-     * &#x60;/dev/sovereignty/campaigns/&#x60; --- This route is cached for up
-     * to 5 seconds
+     * Shows sovereignty data for campaigns.  ---  This route is cached for up to 5 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -56,8 +52,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
     /**
      * List sovereignty of systems
      *
-     * Shows sovereignty information for solar systems --- This route is cached
-     * for up to 3600 seconds
+     * Shows sovereignty information for solar systems  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -72,11 +67,7 @@ public class SovereigntyApiTest extends GeneralApiTest {
     /**
      * List sovereignty structures
      *
-     * Shows sovereignty data for structures. --- Alternate route:
-     * &#x60;/v1/sovereignty/structures/&#x60; Alternate route:
-     * &#x60;/legacy/sovereignty/structures/&#x60; Alternate route:
-     * &#x60;/dev/sovereignty/structures/&#x60; --- This route is cached for up
-     * to 120 seconds
+     * Shows sovereignty data for structures.  ---  This route is cached for up to 120 seconds
      *
      * @throws ApiException
      *             if the Api call fails

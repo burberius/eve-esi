@@ -92,7 +92,7 @@ public class ClonesApi {
 
     /**
      * Get active implants Return implants on the active clone of a character
-     * --- This route is cached for up to 300 seconds SSO Scope:
+     * --- This route is cached for up to 120 seconds SSO Scope:
      * esi-clones.read_implants.v1
      * 
      * @param characterId

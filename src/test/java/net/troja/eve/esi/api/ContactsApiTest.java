@@ -42,11 +42,7 @@ public class ContactsApiTest extends GeneralApiTest {
     /**
      * Delete contacts
      *
-     * Bulk delete contacts --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/contacts/&#x60; SSO Scope:
-     * esi-characters.write_contacts.v1
+     * Bulk delete contacts  ---   SSO Scope: esi-characters.write_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -94,11 +90,7 @@ public class ContactsApiTest extends GeneralApiTest {
     /**
      * Get contacts
      *
-     * Return contacts of a character --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/contacts/&#x60; --- This route is
-     * cached for up to 300 seconds SSO Scope: esi-characters.read_contacts.v1
+     * Return contacts of a character  ---  This route is cached for up to 300 seconds  SSO Scope: esi-characters.read_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -114,13 +106,7 @@ public class ContactsApiTest extends GeneralApiTest {
     /**
      * Get contact labels
      *
-     * Return custom labels for contacts the character defined --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/contacts/labels/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/contacts/labels/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/contacts/labels/&#x60; ---
-     * This route is cached for up to 300 seconds SSO Scope:
-     * esi-characters.read_contacts.v1
+     * Return custom labels for a character&#39;s contacts  ---  This route is cached for up to 300 seconds  SSO Scope: esi-characters.read_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -172,11 +158,7 @@ public class ContactsApiTest extends GeneralApiTest {
     /**
      * Add contacts
      *
-     * Bulk add contacts with same settings --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/contacts/&#x60; SSO Scope:
-     * esi-characters.write_contacts.v1
+     * Bulk add contacts with same settings  ---   SSO Scope: esi-characters.write_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -189,11 +171,7 @@ public class ContactsApiTest extends GeneralApiTest {
     /**
      * Edit contacts
      *
-     * Bulk edit contacts with same settings --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/contacts/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/contacts/&#x60; SSO Scope:
-     * esi-characters.write_contacts.v1
+     * Bulk edit contacts with same settings  ---   SSO Scope: esi-characters.write_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails

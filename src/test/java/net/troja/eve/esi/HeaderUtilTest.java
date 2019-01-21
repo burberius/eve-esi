@@ -7,6 +7,8 @@ import java.util.Map;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+
+import net.troja.eve.esi.HeaderUtil;
 import org.junit.Test;
 
 

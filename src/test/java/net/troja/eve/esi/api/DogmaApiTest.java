@@ -33,8 +33,7 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get attributes
      *
-     * Get a list of dogma attribute ids --- This route is cached for up to 3600
-     * seconds
+     * Get a list of dogma attribute ids  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -50,8 +49,7 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get attribute information
      *
-     * Get information on a dogma attribute --- This route is cached for up to
-     * 3600 seconds
+     * Get information on a dogma attribute  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -86,8 +84,7 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get effects
      *
-     * Get a list of dogma effect ids --- This route is cached for up to 3600
-     * seconds
+     * Get a list of dogma effect ids  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -103,8 +100,7 @@ public class DogmaApiTest extends GeneralApiTest {
     /**
      * Get effect information
      *
-     * Get information on a dogma effect --- This route is cached for up to 3600
-     * seconds
+     * Get information on a dogma effect  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails

@@ -40,7 +40,7 @@ public class SkillsApiTest extends GeneralApiTest {
     /**
      * Get character attributes
      *
-     * Return attributes of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-skills.read_skills.v1
+     * Return attributes of a character  ---  This route is cached for up to 120 seconds  SSO Scope: esi-skills.read_skills.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -56,12 +56,7 @@ public class SkillsApiTest extends GeneralApiTest {
     /**
      * Get character&#39;s skill queue
      *
-     * List the configured skill queue for the given character --- Alternate
-     * route: &#x60;/v2/characters/{character_id}/skillqueue/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/skillqueue/&#x60;
-     * Alternate route: &#x60;/dev/characters/{character_id}/skillqueue/&#x60;
-     * --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-skills.read_skillqueue.v1
+     * List the configured skill queue for the given character  ---  This route is cached for up to 120 seconds  SSO Scope: esi-skills.read_skillqueue.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -78,10 +73,7 @@ public class SkillsApiTest extends GeneralApiTest {
     /**
      * Get character skills
      *
-     * List all trained skills for the given character --- Alternate route:
-     * &#x60;/v3/characters/{character_id}/skills/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/skills/&#x60; --- This route is
-     * cached for up to 120 seconds SSO Scope: esi-skills.read_skills.v1
+     * List all trained skills for the given character  ---  This route is cached for up to 120 seconds  SSO Scope: esi-skills.read_skills.v1
      *
      * @throws ApiException
      *             if the Api call fails

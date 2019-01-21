@@ -38,35 +38,9 @@ public class CalendarApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get attendees
-     *
-     * Get all invited attendees for a given event  ---  This route is cached for up to 600 seconds  SSO Scope: esi-calendar.read_calendar_events.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCharactersCharacterIdCalendarEventIdAttendeesTest() throws ApiException {
-        ignoreTestFails();
-        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, null,
-                null, null);
-        final Integer eventId = calendar.get(0).getEventId();
-
-        List<CharacterCalendarAttendeesResponse> response = api.getCharactersCharacterIdCalendarEventIdAttendees(characterId, eventId, DATASOURCE, null, null);
-    }
-
-    /**
      * List calendar event summaries
      *
-     * Get 50 event summaries from the calendar. If no event ID is given, the
-     * resource will return the next 50 chronological event summaries from now.
-     * If an event ID is specified, it will return the next 50 chronological
-     * event summaries from after that event. --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/calendar/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/calendar/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/calendar/&#x60; --- This route is
-     * cached for up to 5 seconds SSO Scope:
-     * esi-calendar.read_calendar_events.v1
+     * Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event  ---  This route is cached for up to 5 seconds  SSO Scope: esi-calendar.read_calendar_events.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -82,11 +56,7 @@ public class CalendarApiTest extends GeneralApiTest {
     /**
      * Get an event
      *
-     * Get all the information for a specific event --- Alternate route:
-     * &#x60;/v3/characters/{character_id}/calendar/{event_id}/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/calendar/{event_id}/&#x60;
-     * --- This route is cached for up to 5 seconds SSO Scope:
-     * esi-calendar.read_calendar_events.v1
+     * Get all the information for a specific event  ---  This route is cached for up to 5 seconds  SSO Scope: esi-calendar.read_calendar_events.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -99,6 +69,24 @@ public class CalendarApiTest extends GeneralApiTest {
         final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId, eventId, DATASOURCE, null, null);
 
         assertThat(response.getEventId(), equalTo(eventId));
+    }
+
+    /**
+     * Get attendees
+     *
+     * Get all invited attendees for a given event  ---  This route is cached for up to 600 seconds  SSO Scope: esi-calendar.read_calendar_events.v1
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCharactersCharacterIdCalendarEventIdAttendeesTest() throws ApiException {
+        ignoreTestFails();
+        final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, null,
+                null, null);
+        final Integer eventId = calendar.get(0).getEventId();
+
+        List<CharacterCalendarAttendeesResponse> response = api.getCharactersCharacterIdCalendarEventIdAttendees(characterId, eventId, DATASOURCE, null, null);
     }
 
     /**

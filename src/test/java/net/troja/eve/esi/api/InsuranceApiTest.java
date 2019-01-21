@@ -32,11 +32,7 @@ public class InsuranceApiTest extends GeneralApiTest {
     /**
      * List insurance levels
      *
-     * Return available insurance levels for all ship types --- Alternate route:
-     * &#x60;/v1/insurance/prices/&#x60; Alternate route:
-     * &#x60;/legacy/insurance/prices/&#x60; Alternate route:
-     * &#x60;/dev/insurance/prices/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Return available insurance levels for all ship types  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails

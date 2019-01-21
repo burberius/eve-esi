@@ -65,6 +65,9 @@ public class CorporationResponse implements Serializable {
     @JsonProperty("url")
     private String url = null;
 
+    @JsonProperty("war_eligible")
+    private Boolean warEligible = null;
+
     public CorporationResponse allianceId(Integer allianceId) {
         this.allianceId = allianceId;
         return this;
@@ -312,6 +315,25 @@ public class CorporationResponse implements Serializable {
         this.url = url;
     }
 
+    public CorporationResponse warEligible(Boolean warEligible) {
+        this.warEligible = warEligible;
+        return this;
+    }
+
+    /**
+     * war_eligible boolean
+     * 
+     * @return warEligible
+     **/
+    @ApiModelProperty(example = "null", value = "war_eligible boolean")
+    public Boolean getWarEligible() {
+        return warEligible;
+    }
+
+    public void setWarEligible(Boolean warEligible) {
+        this.warEligible = warEligible;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -333,13 +355,14 @@ public class CorporationResponse implements Serializable {
                 && Objects.equals(this.shares, corporationResponse.shares)
                 && Objects.equals(this.taxRate, corporationResponse.taxRate)
                 && Objects.equals(this.ticker, corporationResponse.ticker)
-                && Objects.equals(this.url, corporationResponse.url);
+                && Objects.equals(this.url, corporationResponse.url)
+                && Objects.equals(this.warEligible, corporationResponse.warEligible);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(allianceId, ceoId, creatorId, dateFounded, description, factionId, homeStationId,
-                memberCount, name, shares, taxRate, ticker, url);
+                memberCount, name, shares, taxRate, ticker, url, warEligible);
     }
 
     @Override
@@ -360,6 +383,7 @@ public class CorporationResponse implements Serializable {
         sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
         sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    warEligible: ").append(toIndentedString(warEligible)).append("\n");
         sb.append("}");
         return sb.toString();
     }

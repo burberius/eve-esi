@@ -33,11 +33,7 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * List all alliances
      *
-     * List all active player alliances --- Alternate route:
-     * &#x60;/v1/alliances/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/&#x60; Alternate route:
-     * &#x60;/dev/alliances/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * List all active player alliances --- This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -52,9 +48,7 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * Get alliance information
      *
-     * Public information about an alliance --- Alternate route:
-     * &#x60;/v2/alliances/{alliance_id}/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * Public information about an alliance --- This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -72,11 +66,7 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * List alliance&#39;s corporations
      *
-     * List all current member corporations of an alliance --- Alternate route:
-     * &#x60;/v1/alliances/{alliance_id}/corporations/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/{alliance_id}/corporations/&#x60; Alternate
-     * route: &#x60;/dev/alliances/{alliance_id}/corporations/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * List all current member corporations of an alliance --- This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -92,11 +82,7 @@ public class AllianceApiTest extends GeneralApiTest {
     /**
      * Get alliance icon
      *
-     * Get the icon urls for a alliance --- Alternate route:
-     * &#x60;/v1/alliances/{alliance_id}/icons/&#x60; Alternate route:
-     * &#x60;/legacy/alliances/{alliance_id}/icons/&#x60; Alternate route:
-     * &#x60;/dev/alliances/{alliance_id}/icons/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get the icon urls for a alliance --- This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails

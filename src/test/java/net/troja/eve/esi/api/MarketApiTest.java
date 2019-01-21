@@ -44,39 +44,18 @@ public class MarketApiTest extends GeneralApiTest {
     }
 
     /**
-     * X-Pages example
-     * @throws ApiException 
+     * List open orders from a character
+     *
+     * List open market orders placed by a character  ---  This route is cached for up to 1200 seconds  SSO Scope: esi-markets.read_character_orders.v1
+     *
+     * @throws ApiException
+     *             if the Api call fails
      */
     @Test
-    public void pagingExample() throws ApiException {
-        final String orderType = "all";
-        //Save all results in this List
-        final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
+    public void getCharactersCharacterIdOrdersTest() throws ApiException {
+        final List<CharacterOrdersResponse> response = api.getCharactersCharacterIdOrders(characterId, DATASOURCE, null, null);
 
-    //Step 1: Get first page
-    
-        //Get market orders
-        List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
-        result.addAll(response);
-
-    //Step 2: Safely get X-Pages header
-
-        Integer xPages = HeaderUtil.getXPages(apiClient.getResponseHeaders());
-        if (xPages == null || xPages < 2) { //Better safe than sorry
-            return;
-        }
-
-    //Step 3: Get the rest of the pages
-
-        //For each page greater than one. This can be done in threads, but, require a new ApiClient and MarketApi for each thread
-        for (int page = 2; page <= xPages; page++) {
-            //Get market orders
-            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
-            result.addAll(pageResponse);
-        }
-        
-        assertThat(result, notNullValue());
-        assertThat(result.size(), greaterThan(0));
+        assertThat(response, notNullValue());
     }
 
     /**
@@ -96,19 +75,21 @@ public class MarketApiTest extends GeneralApiTest {
     }
 
     /**
-     * List orders from a character
+     * List open orders from a corporation
      *
-     * List market orders placed by a character --- This route is cached for up
-     * to 3600 seconds SSO Scope: esi-markets.read_character_orders.v1
+     * List open market orders placed on behalf of a corporation  ---  This route is cached for up to 1200 seconds  --- Requires one of the following EVE corporation role(s): Accountant, Trader  SSO Scope: esi-markets.read_corporation_orders.v1
      *
      * @throws ApiException
-     *             if the Api call fails
+     *          if the Api call fails
      */
     @Test
-    public void getCharactersCharacterIdOrdersTest() throws ApiException {
-        final List<CharacterOrdersResponse> response = api.getCharactersCharacterIdOrders(characterId, DATASOURCE, null, null);
+    @Ignore("Needs corporation with read access")
+    public void getCorporationsCorporationIdOrdersTest() throws ApiException {
+        Integer corporationId = null;
+        Integer page = null;
+        List<CorporationOrdersResponse> response = api.getCorporationsCorporationIdOrders(corporationId, DATASOURCE, null, page, null);
 
-        assertThat(response, notNullValue());
+        // TODO: test validations
     }
 
     /**
@@ -130,27 +111,9 @@ public class MarketApiTest extends GeneralApiTest {
     }
 
     /**
-     * List orders from a corporation
-     *
-     * List market orders placed on behalf of a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-markets.read_corporation_orders.v1
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    @Ignore("Needs corporation with read access")
-    public void getCorporationsCorporationIdOrdersTest() throws ApiException {
-        Integer corporationId = null;
-        Integer page = null;
-        List<CorporationOrdersResponse> response = api.getCorporationsCorporationIdOrders(corporationId, DATASOURCE, null, page, null);
-
-        // TODO: test validations
-    }
-
-    /**
      * Get item groups
      *
-     * Get a list of item groups --- This route is cached for up to 3600 seconds
+     * Get a list of item groups  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -165,8 +128,7 @@ public class MarketApiTest extends GeneralApiTest {
     /**
      * Get item group information
      *
-     * Get information on an item group --- This route is cached for up to 3600
-     * seconds
+     * Get information on an item group  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -183,11 +145,7 @@ public class MarketApiTest extends GeneralApiTest {
     /**
      * List market prices
      *
-     * Return a list of prices --- Alternate route:
-     * &#x60;/v1/markets/prices/&#x60; Alternate route:
-     * &#x60;/legacy/markets/prices/&#x60; Alternate route:
-     * &#x60;/dev/markets/prices/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Return a list of prices  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -204,11 +162,7 @@ public class MarketApiTest extends GeneralApiTest {
     /**
      * List historical market statistics in a region
      *
-     * Return a list of historical market statistics for the specified type in a
-     * region --- Alternate route: &#x60;/v1/markets/{region_id}/history/&#x60;
-     * Alternate route: &#x60;/legacy/markets/{region_id}/history/&#x60;
-     * Alternate route: &#x60;/dev/markets/{region_id}/history/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Return a list of historical market statistics for the specified type in a region  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -225,11 +179,7 @@ public class MarketApiTest extends GeneralApiTest {
     /**
      * List orders in a region
      *
-     * Return a list of orders in a region --- Alternate route:
-     * &#x60;/v1/markets/{region_id}/orders/&#x60; Alternate route:
-     * &#x60;/legacy/markets/{region_id}/orders/&#x60; Alternate route:
-     * &#x60;/dev/markets/{region_id}/orders/&#x60; --- This route is cached for
-     * up to 300 seconds
+     * Return a list of orders in a region  ---  This route is cached for up to 300 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -266,11 +216,7 @@ public class MarketApiTest extends GeneralApiTest {
     /**
      * List orders in a structure
      *
-     * Return all orders in a structure --- Alternate route:
-     * &#x60;/v1/markets/structures/{structure_id}/&#x60; Alternate route:
-     * &#x60;/legacy/markets/structures/{structure_id}/&#x60; Alternate route:
-     * &#x60;/dev/markets/structures/{structure_id}/&#x60; --- This route is
-     * cached for up to 300 seconds SSO Scope: esi-markets.structure_markets.v1
+     * Return all orders in a structure  ---  This route is cached for up to 300 seconds  SSO Scope: esi-markets.structure_markets.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -278,5 +224,41 @@ public class MarketApiTest extends GeneralApiTest {
     @Test
     @Ignore("No static structure to use here")
     public void getMarketsStructuresStructureIdTest() throws ApiException {
+    }
+
+    /**
+     * X-Pages example
+     * @throws ApiException
+     */
+    @Test
+    public void pagingExample() throws ApiException {
+        final String orderType = "all";
+        //Save all results in this List
+        final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
+
+        //Step 1: Get first page
+
+        //Get market orders
+        List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
+        result.addAll(response);
+
+        //Step 2: Safely get X-Pages header
+
+        Integer xPages = HeaderUtil.getXPages(apiClient.getResponseHeaders());
+        if (xPages == null || xPages < 2) { //Better safe than sorry
+            return;
+        }
+
+        //Step 3: Get the rest of the pages
+
+        //For each page greater than one. This can be done in threads, but, require a new ApiClient and MarketApi for each thread
+        for (int page = 2; page <= xPages; page++) {
+            //Get market orders
+            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
+            result.addAll(pageResponse);
+        }
+
+        assertThat(result, notNullValue());
+        assertThat(result.size(), greaterThan(0));
     }
 }

@@ -38,8 +38,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Get a character&#39;s wallet balance
      *
-     * Returns a character&#39;s wallet_id and balance --- This route is cached
-     * for up to 120 seconds SSO Scope: esi-wallet.read_character_wallet.v1
+     * Returns a character&#39;s wallet balance  ---  This route is cached for up to 120 seconds  SSO Scope: esi-wallet.read_character_wallet.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -54,9 +53,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Get character wallet journal
      *
-     * Retrieve character wallet journal --- This route is cached for up to 3600
-     * seconds SSO Scope: esi-wallet.read_character_wallet.v1 SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * Retrieve the given character&#39;s wallet journal going 30 days back  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_character_wallet.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -75,8 +72,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Get wallet transactions
      *
-     * Get wallet transactions of a character --- This route is cached for up to
-     * 3600 seconds SSO Scope: esi-wallet.read_character_wallet.v1
+     * Get wallet transactions of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_character_wallet.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -92,8 +88,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Returns a corporation&#39;s wallet balance
      *
-     * Get a corporation&#39;s wallets --- This route is cached for up to 300
-     * seconds SSO Scope: esi-wallet.read_corporation_wallets.v1
+     * Get a corporation&#39;s wallets  ---  This route is cached for up to 300 seconds  --- Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant  SSO Scope: esi-wallet.read_corporation_wallets.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -106,7 +101,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Get character wallet journal
      *
-     * Retrieve corporation wallet journal  ---  This route is cached for up to 300 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     * Retrieve the given corporation&#39;s wallet journal for the given division going 30 days back  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant  SSO Scope: esi-wallet.read_corporation_wallets.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -119,7 +114,7 @@ public class WalletApiTest extends GeneralApiTest {
     /**
      * Get corporation wallet transactions
      *
-     * Get wallet transactions of a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     * Get wallet transactions of a corporation  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Accountant, Junior_Accountant  SSO Scope: esi-wallet.read_corporation_wallets.v1
      *
      * @throws ApiException
      *          if the Api call fails

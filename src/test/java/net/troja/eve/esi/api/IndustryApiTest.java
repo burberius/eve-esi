@@ -43,8 +43,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * List character industry jobs
      *
-     * List industry jobs placed by a character --- This route is cached for up
-     * to 300 seconds SSO Scope: esi-industry.read_character_jobs.v1
+     * List industry jobs placed by a character  ---  This route is cached for up to 300 seconds  SSO Scope: esi-industry.read_character_jobs.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -77,7 +76,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * Moon extraction timers
      *
-     * Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.  ---  This route is cached for up to 1800 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     * Extraction timers for all moon chunks being extracted by refineries belonging to a corporation.  ---  This route is cached for up to 1800 seconds  --- Requires one of the following EVE corporation role(s): Station_Manager  SSO Scope: esi-industry.read_corporation_mining.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -95,7 +94,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * Corporation mining observers
      *
-     * Paginated list of all entities capable of observing and recording mining for a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     * Paginated list of all entities capable of observing and recording mining for a corporation  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Accountant  SSO Scope: esi-industry.read_corporation_mining.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -113,7 +112,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * Observed corporation mining
      *
-     * Paginated record of all mining seen by an observer  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-industry.read_corporation_mining.v1
+     * Paginated record of all mining seen by an observer  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Accountant  SSO Scope: esi-industry.read_corporation_mining.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -132,7 +131,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * List corporation industry jobs
      *
-     * List industry jobs run by a corporation  ---  This route is cached for up to 300 seconds  SSO Scope: esi-industry.read_corporation_jobs.v1
+     * List industry jobs run by a corporation  ---  This route is cached for up to 300 seconds  --- Requires one of the following EVE corporation role(s): Factory_Manager  SSO Scope: esi-industry.read_corporation_jobs.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -151,11 +150,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * List industry facilities
      *
-     * Return a list of industry facilities --- Alternate route:
-     * &#x60;/v1/industry/facilities/&#x60; Alternate route:
-     * &#x60;/legacy/industry/facilities/&#x60; Alternate route:
-     * &#x60;/dev/industry/facilities/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Return a list of industry facilities  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -172,11 +167,7 @@ public class IndustryApiTest extends GeneralApiTest {
     /**
      * List solar system cost indices
      *
-     * Return cost indices for solar systems --- Alternate route:
-     * &#x60;/v1/industry/systems/&#x60; Alternate route:
-     * &#x60;/legacy/industry/systems/&#x60; Alternate route:
-     * &#x60;/dev/industry/systems/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Return cost indices for solar systems  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails

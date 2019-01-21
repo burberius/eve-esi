@@ -53,9 +53,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation information
      *
-     * Public information about a corporation --- Alternate route:
-     * &#x60;/v2/corporations/{corporation_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Public information about a corporation  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -69,9 +67,27 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
+     * Get alliance history
+     *
+     * Get a list of all the alliances a corporation has been a member of  ---  This route is cached for up to 3600 seconds
+     *
+     * @throws ApiException
+     *             if the Api call fails
+     */
+    @Test
+    public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
+        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_TBD, DATASOURCE, null);
+
+        assertThat(response.size(), greaterThan(0));
+        // The last entry is without alliance!
+        final CorporationAlliancesHistoryResponse alliance = response.get(response.size() - 2);
+        assertThat(alliance.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
+    }
+
+    /**
      * Get corporation blueprints
      *
-     * Returns a list of blueprints the corporation owns  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_blueprints.v1
+     * Returns a list of blueprints the corporation owns  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_blueprints.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -88,7 +104,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get all corporation ALSC logs
      *
-     * Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation  ---  This route is cached for up to 600 seconds  SSO Scope: esi-corporations.read_container_logs.v1
+     * Returns logs recorded in the past seven days from all audit log secure containers (ALSC) owned by a given corporation  ---  This route is cached for up to 600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_container_logs.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -104,33 +120,9 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get alliance history
-     *
-     * Get a list of all the alliances a corporation has been a member of ---
-     * Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/alliancehistory/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/alliancehistory/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/alliancehistory/&#x60; --- This
-     * route is cached for up to 3600 seconds
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getCorporationsCorporationIdAlliancehistoryTest() throws ApiException {
-        final List<CorporationAlliancesHistoryResponse> response = api.getCorporationsCorporationIdAlliancehistory(CORPORATION_ID_TBD, DATASOURCE, null);
-
-        assertThat(response.size(), greaterThan(0));
-        // The last entry is without alliance!
-        final CorporationAlliancesHistoryResponse alliance = response.get(response.size() - 2);
-        assertThat(alliance.getAllianceId(), equalTo(ALLIANCE_ID_TRI));
-    }
-
-    /**
      * Get corporation divisions
      *
-     * Return corporation hangar and wallet division names, only show if a division is not using the default name  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_divisions.v1
+     * Return corporation hangar and wallet division names, only show if a division is not using the default name  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_divisions.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -149,7 +141,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation facilities
      *
-     * Return a corporation&#39;s facilities  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_facilities.v1
+     * Return a corporation&#39;s facilities  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Factory_Manager  SSO Scope: esi-corporations.read_facilities.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -167,11 +159,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation icon
      *
-     * Get the icon urls for a corporation --- Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/icons/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/icons/&#x60; Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/icons/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get the icon urls for a corporation  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -204,7 +192,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation issued medals
      *
-     * Returns medals issued by a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_medals.v1
+     * Returns medals issued by a corporation  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_medals.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -222,13 +210,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation members
      *
-     * Read the current list of members if the calling character is a member.
-     * --- Alternate route:
-     * &#x60;/v2/corporations/{corporation_id}/members/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/members/&#x60; Alternate
-     * route: &#x60;/dev/corporations/{corporation_id}/members/&#x60; --- This
-     * route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1
+     * Return the current member list of a corporation, the token&#39;s character need to be a member of the corporation.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_corporation_membership.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -244,7 +226,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation member limit
      *
-     * Return a corporation&#39;s member limit, not including CEO himself  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.track_members.v1
+     * Return a corporation&#39;s member limit, not including CEO himself  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.track_members.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -262,7 +244,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation&#39;s members&#39; titles
      *
-     * Returns a corporation&#39;s members&#39; titles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_titles.v1
+     * Returns a corporation&#39;s members&#39; titles  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_titles.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -277,12 +259,9 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get corporation members
+     * Track corporation members
      *
-     * Read the current list of members if the calling character is a member.
-     * --- This route is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1 SSO Scope:
-     * esi-corporations.track_members.v1
+     * Returns additional information about a corporation&#39;s members which helps tracking their activities  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.track_members.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -298,13 +277,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation member roles
      *
-     * Return the roles of all members if the character has the personnel
-     * manager role or any grantable role. --- Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/roles/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/{corporation_id}/roles/&#x60; Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/roles/&#x60; --- This route is
-     * cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_corporation_membership.v1
+     * Return the roles of all members if the character has the personnel manager role or any grantable role.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_corporation_membership.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -319,7 +292,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation member roles history
      *
-     * Return how roles have changed for a coporation&#39;s members, up to a month  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_corporation_membership.v1
+     * Return how roles have changed for a coporation&#39;s members, up to a month  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_corporation_membership.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -335,9 +308,9 @@ public class CorporationApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get corporation members
+     * Get corporation shareholders
      *
-     * Return the current member list of a corporation, the token&#39;s character need to be a member of the corporation.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-wallet.read_corporation_wallets.v1
+     * Return the current shareholders of a corporation.  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-wallet.read_corporation_wallets.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -372,7 +345,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation starbases (POSes)
      *
-     * Returns list of corporation starbases (POSes)  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_starbases.v1
+     * Returns list of corporation starbases (POSes)  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_starbases.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -390,7 +363,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get starbase (POS) detail
      *
-     * Returns various settings and fuels of a starbase (POS)  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_starbases.v1
+     * Returns various settings and fuels of a starbase (POS)  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_starbases.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -409,13 +382,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get corporation structures
      *
-     * Get a list of corporation structures --- Alternate route:
-     * &#x60;/v1/corporations/{corporation_id}/structures/&#x60; Alternate
-     * route: &#x60;/legacy/corporations/{corporation_id}/structures/&#x60;
-     * Alternate route:
-     * &#x60;/dev/corporations/{corporation_id}/structures/&#x60; --- This route
-     * is cached for up to 3600 seconds SSO Scope:
-     * esi-corporations.read_structures.v1
+     * Get a list of corporation structures. This route&#39;s version includes the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Station_Manager  SSO Scope: esi-corporations.read_structures.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -423,20 +390,12 @@ public class CorporationApiTest extends GeneralApiTest {
     @Test
     @Ignore("Can't test that")
     public void getCorporationsCorporationIdStructuresTest() throws ApiException {
-        // final Integer corporationId = null;
-        // final Integer page = null;
-        // final String token = null;
-        // final String userAgent = null;
-        // final String xUserAgent = null;
-        // final List<CorporationStructuresResponse> response =
-        // api.getCorporationsCorporationIdStructures(corporationId,
-        // DATASOURCE, LANGUAGE, page, token, userAgent, xUserAgent);
     }
 
     /**
      * Get corporation titles
      *
-     * Returns a corporation&#39;s titles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-corporations.read_titles.v1
+     * Returns a corporation&#39;s titles  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-corporations.read_titles.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -451,11 +410,7 @@ public class CorporationApiTest extends GeneralApiTest {
     /**
      * Get npc corporations
      *
-     * Get a list of npc corporations --- Alternate route:
-     * &#x60;/v1/corporations/npccorps/&#x60; Alternate route:
-     * &#x60;/legacy/corporations/npccorps/&#x60; Alternate route:
-     * &#x60;/dev/corporations/npccorps/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * Get a list of npc corporations  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails

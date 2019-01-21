@@ -35,15 +35,9 @@ public class KillmailsApiTest extends GeneralApiTest {
     }
 
     /**
-     * List kills and losses
+     * Get a character&#39;s recent kills and losses
      *
-     * Return a list of character&#39;s recent kills and losses --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/killmails/recent/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/killmails/recent/&#x60; Alternate
-     * route: &#x60;/dev/characters/{character_id}/killmails/recent/&#x60; ---
-     * This route is cached for up to 120 seconds SSO Scope:
-     * esi-killmails.read_killmails.v1
+     * Return a list of a character&#39;s kills and losses going back 90 days  ---  This route is cached for up to 300 seconds  SSO Scope: esi-killmails.read_killmails.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -57,9 +51,9 @@ public class KillmailsApiTest extends GeneralApiTest {
     }
 
     /**
-     * Get corporation kills and losses
+     * Get a corporation&#39;s recent kills and losses
      *
-     * Get a list of corporation&#39;s recent kills and losses  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-killmails.read_corporation_killmails.v1
+     * Get a list of a corporation&#39;s kills and losses going back 90 days  ---  This route is cached for up to 300 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-killmails.read_corporation_killmails.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -72,11 +66,7 @@ public class KillmailsApiTest extends GeneralApiTest {
     /**
      * Get a single killmail
      *
-     * Return a single killmail from its ID and hash --- Alternate route:
-     * &#x60;/v1/killmails/{killmail_id}/{killmail_hash}/&#x60; Alternate route:
-     * &#x60;/legacy/killmails/{killmail_id}/{killmail_hash}/&#x60; Alternate
-     * route: &#x60;/dev/killmails/{killmail_id}/{killmail_hash}/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Return a single killmail from its ID and hash  ---  This route is cached for up to 1209600 seconds
      *
      * @throws ApiException
      *             if the Api call fails

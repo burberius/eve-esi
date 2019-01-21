@@ -1117,6 +1117,9 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
+     * @param filter
+     *            Only list public structures that have this service online
+     *            (optional)
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
@@ -1124,7 +1127,7 @@ public class UniverseApi {
      * @throws ApiException
      *             if fails to make API call
      */
-    public List<Long> getUniverseStructures(String datasource, String ifNoneMatch) throws ApiException {
+    public List<Long> getUniverseStructures(String datasource, String filter, String ifNoneMatch) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1136,6 +1139,7 @@ public class UniverseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "datasource", datasource));
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
         if (ifNoneMatch != null)
             localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));

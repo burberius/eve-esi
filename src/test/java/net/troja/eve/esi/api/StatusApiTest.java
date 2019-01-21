@@ -29,7 +29,7 @@ public class StatusApiTest extends GeneralApiTest {
     /**
      * Retrieve the uptime and player counts
      *
-     * EVE Server status --- This route is cached for up to 30 seconds
+     * EVE Server status  ---  This route is cached for up to 30 seconds
      *
      * @throws ApiException
      *             if the Api call fails

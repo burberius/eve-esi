@@ -160,6 +160,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         CLONEREVOKEDMSG2("CloneRevokedMsg2"),
 
+        COMBATOPERATIONFINISHED("CombatOperationFinished"),
+
         CONTACTADD("ContactAdd"),
 
         CONTACTEDIT("ContactEdit"),
@@ -273,6 +275,8 @@ public class CharacterNotificationsResponse implements Serializable {
         IHUBDESTROYEDBYBILLFAILURE("IHubDestroyedByBillFailure"),
 
         INCURSIONCOMPLETEDMSG("IncursionCompletedMsg"),
+
+        INDUSTRYOPERATIONFINISHED("IndustryOperationFinished"),
 
         INDUSTRYTEAMAUCTIONLOST("IndustryTeamAuctionLost"),
 

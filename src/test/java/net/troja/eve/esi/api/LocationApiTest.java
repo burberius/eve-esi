@@ -38,13 +38,7 @@ public class LocationApiTest extends GeneralApiTest {
     /**
      * Get character location
      *
-     * Information about the characters current location. Returns the current
-     * solar system id, and also the current station or structure ID if
-     * applicable. --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/location/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/location/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/location/&#x60; --- This route is
-     * cached for up to 5 seconds SSO Scope: esi-location.read_location.v1
+     * Information about the characters current location. Returns the current solar system id, and also the current station or structure ID if applicable  ---  This route is cached for up to 5 seconds  SSO Scope: esi-location.read_location.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -73,11 +67,7 @@ public class LocationApiTest extends GeneralApiTest {
     /**
      * Get current ship
      *
-     * Get the current ship type, name and id --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/ship/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/ship/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/ship/&#x60; --- This route is cached
-     * for up to 5 seconds SSO Scope: esi-location.read_ship_type.v1
+     * Get the current ship type, name and id  ---  This route is cached for up to 5 seconds  SSO Scope: esi-location.read_ship_type.v1
      *
      * @throws ApiException
      *             if the Api call fails
