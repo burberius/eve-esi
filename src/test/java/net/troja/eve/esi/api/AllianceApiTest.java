@@ -91,6 +91,6 @@ public class AllianceApiTest extends GeneralApiTest {
     public void getAlliancesAllianceIdIconsTest() throws ApiException {
         final AllianceIconsResponse response = api.getAlliancesAllianceIdIcons(ALLIANCE_ID_TRI, DATASOURCE, null);
 
-        assertThat(response.getPx128x128(), equalTo("http://image.eveonline.com/Alliance/933731581_128.png"));
+        assertThat(response.getPx128x128(), equalTo("http://imageserver.eveonline.com/Alliance/933731581_128.png"));
     }
 }
