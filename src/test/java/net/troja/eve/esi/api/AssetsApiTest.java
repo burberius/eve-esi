@@ -13,8 +13,9 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import net.troja.eve.esi.ApiException;
-import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
 import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
@@ -87,12 +88,7 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsLocationsTest() throws ApiException {
-        List<Long> itemIds = new ArrayList<>();
-        itemIds.add(1021792628250L);
-        itemIds.add(1004353009292L);
-        itemIds.add(1004329151505L);
-        itemIds.add(1004329154088L);
-        itemIds.add(1004329156651L);
+        List<Long> itemIds = get5AssetIds();
 
         List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null);
 
@@ -110,12 +106,8 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsNamesTest() throws ApiException {
-        List<Long> itemIds = new ArrayList<>();
-        itemIds.add(1021792628250L);
-        itemIds.add(1004353009292L);
-        itemIds.add(1004329151505L);
-        itemIds.add(1004329154088L);
-        itemIds.add(1004329156651L);
+        List<Long> itemIds = get5AssetIds();
+
         List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null);
 
         assertThat(response, notNullValue());
@@ -156,5 +148,11 @@ public class AssetsApiTest extends GeneralApiTest {
         List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
+    }
+
+    private List<Long> get5AssetIds() throws ApiException {
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+
+        return response.stream().limit(5).map(p -> p.getItemId()).collect(Collectors.toList());
     }
 }
