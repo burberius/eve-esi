@@ -56,8 +56,7 @@ public class SsoAuthTest extends GeneralApiTest {
     public void refreshToken() throws ApiException {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setRefreshToken(refreshToken);
+        auth.setAuth(clientId, refreshToken);
 
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams);
@@ -70,7 +69,6 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setRefreshToken(null);
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         AssetsApi api = new AssetsApi(client);
         try {
@@ -87,8 +85,7 @@ public class SsoAuthTest extends GeneralApiTest {
         assumeTrue(refreshTokenPublicData != null);
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setRefreshToken(refreshTokenPublicData); //Public Scope
+        auth.setAuth(clientId, refreshTokenPublicData); //Public Scope
         JWT jwt = auth.getJWT();
         assertThat(jwt, notNullValue());
         JWT.Header header = jwt.getHeader();
@@ -142,7 +139,6 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setClientId(clientId);
-        auth.setRefreshToken(null);
         auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
         final SsoApi api = new SsoApi(client);
         try {

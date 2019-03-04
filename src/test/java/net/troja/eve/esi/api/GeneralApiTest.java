@@ -49,15 +49,13 @@ public class GeneralApiTest {
 
         apiClient = new ApiClient();
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setRefreshToken(refreshToken);
+        auth.setAuth(clientId, refreshToken);
     }
 
     private static void getCharacterId() throws ApiException {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setRefreshToken(refreshToken);
+        auth.setAuth(clientId, refreshToken);
 
         final SsoApi api = new SsoApi(client);
         final CharacterInfo info = api.getCharacterInfo();

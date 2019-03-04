@@ -33,8 +33,7 @@ public class SsoApiTest extends GeneralApiTest {
     public void getCharacterInfoTest() throws ApiException {
         final ApiClient client = new ApiClient();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setRefreshToken(refreshToken);
+        auth.setAuth(clientId, refreshToken);
 
         final SsoApi api = new SsoApi(client);
         final CharacterInfo info = api.getCharacterInfo();
