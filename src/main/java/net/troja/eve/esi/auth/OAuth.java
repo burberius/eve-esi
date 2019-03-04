@@ -74,15 +74,17 @@ public class OAuth implements Authentication {
 
     public void setAuth(final String clientId, final String refreshToken) {
         final String authKey = clientId + refreshToken;
-        AccountData accountData = ACCOUNTS.get(authKey);
-        if (accountData == null) {
-            accountData = new AccountData(clientId, refreshToken);
-            ACCOUNTS.put(authKey, accountData);
+        synchronized (ACCOUNTS) { //Sync here to avoid multiple instances being made of this account - better safe than sorry
+            AccountData accountData = ACCOUNTS.get(authKey);
+            if (accountData == null) {
+                accountData = new AccountData(clientId, refreshToken);
+                ACCOUNTS.put(authKey, accountData);
+            }
+            if (account != null) {
+                accountData.setAccessToken(account.getAccessToken());
+            }
+            account = accountData;
         }
-        if (account != null) {
-            accountData.setAccessToken(account.getAccessToken());
-        }
-        account = accountData;
     }
 
     public void setClientId(final String clientId) {
@@ -115,6 +117,9 @@ public class OAuth implements Authentication {
         }
         try {
             String accessToken = accountData.getAccessToken();
+            if (accessToken == null) {
+                return null;
+            }
             String[] parts = accessToken.split("\\.");
             if (parts.length != 3) {
                 return null;
@@ -220,6 +225,8 @@ public class OAuth implements Authentication {
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             con.setRequestProperty("Host", "login.eveonline.com");
+            con.setConnectTimeout(10000);
+            con.setReadTimeout(10000);
 
             // Send post request
             con.setDoOutput(true);
@@ -241,11 +248,11 @@ public class OAuth implements Authentication {
             Result result = objectMapper.readValue(response.toString(), Result.class);
 
             // set data
-            String accessToken = result.getAccessToken();
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
-            accountData.setAccessToken(accessToken);
+            accountData.setAccessToken(result.getAccessToken());
             accountData.setValidUntil(validUntil);
             accountData.setRefreshToken(result.getRefreshToken());
+            ACCOUNTS.put(accountData.getKey(), accountData); //Update map in case the Refresh Token (AKA Key) have been changed
         } catch (MalformedURLException ex) {
             throw new ApiException(ex);
         } catch (IOException ex) {
