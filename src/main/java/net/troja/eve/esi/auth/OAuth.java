@@ -51,7 +51,7 @@ public class OAuth implements Authentication {
 
     public void setAccessToken(final String accessToken) {
         if (account == null) {
-            account = new AccountData("", "");
+            account = new AccountData(null, null);
         }
         account.setAccessToken(accessToken);
     }
@@ -161,6 +161,7 @@ public class OAuth implements Authentication {
      */
     public String getAuthorizationUri(final String redirectUri, final Set<String> scopes, final String state) {
         if (account == null) throw new IllegalArgumentException("Auth is not set");
+        if (account.getClientId() == null) throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append(URI_AUTHENTICATION);
         builder.append("?");
@@ -192,7 +193,9 @@ public class OAuth implements Authentication {
      * @throws net.troja.eve.esi.ApiException
      */
     public void finishFlow(final String code, final String state) throws ApiException {
-        if (account == null) throw new IllegalArgumentException("ClientID/Refresh Token is not set");
+        if (account == null) throw new IllegalArgumentException("Auth is not set");
+        if (codeVerifier == null) throw new IllegalArgumentException("code_verifier is not set");
+        if (account.getClientId() == null) throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("authorization_code"));
