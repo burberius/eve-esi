@@ -38,13 +38,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
     /**
      * Get loyalty points
      *
-     * Return a list of loyalty points for all corporations the character has
-     * worked for --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/loyalty/points/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/loyalty/points/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/loyalty/points/&#x60; SSO Scope:
-     * esi-characters.read_loyalty.v1
+     * Return a list of loyalty points for all corporations the character has worked for  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_loyalty.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -61,12 +55,7 @@ public class LoyaltyApiTest extends GeneralApiTest {
     /**
      * List loyalty store offers
      *
-     * Return a list of offers from a specific corporation&#39;s loyalty store
-     * --- Alternate route:
-     * &#x60;/v1/loyalty/stores/{corporation_id}/offers/&#x60; Alternate route:
-     * &#x60;/legacy/loyalty/stores/{corporation_id}/offers/&#x60; Alternate
-     * route: &#x60;/dev/loyalty/stores/{corporation_id}/offers/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Return a list of offers from a specific corporation&#39;s loyalty store  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails

@@ -40,12 +40,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     /**
      * Get colonies
      *
-     * Returns a list of all planetary colonies owned by a character. ---
-     * Alternate route: &#x60;/v1/characters/{character_id}/planets/&#x60;
-     * Alternate route: &#x60;/legacy/characters/{character_id}/planets/&#x60;
-     * Alternate route: &#x60;/dev/characters/{character_id}/planets/&#x60; ---
-     * This route is cached for up to 600 seconds SSO Scope:
-     * esi-planets.manage_planets.v1
+     * Returns a list of all planetary colonies owned by a character.  ---  This route is cached for up to 600 seconds  SSO Scope: esi-planets.manage_planets.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -62,15 +57,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     /**
      * Get colony layout
      *
-     * Returns full details on the layout of a single planetary colony,
-     * including links, pins and routes. Note: Planetary information is only
-     * recalculated when the colony is viewed through the client. Information on
-     * this endpoint will not update until this criteria is met. --- Alternate
-     * route: &#x60;/v1/characters/{character_id}/planets/{planet_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/planets/{planet_id}/&#x60; ---
-     * This route is cached for up to 600 seconds SSO Scope:
-     * esi-planets.manage_planets.v1
+     * Returns full details on the layout of a single planetary colony, including links, pins and routes. Note: Planetary information is only recalculated when the colony is viewed through the client. Information will not update until this criteria is met.  ---  This route is cached for up to 600 seconds  SSO Scope: esi-planets.manage_planets.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -88,7 +75,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
      /**
      * List corporation customs offices
      *
-     * List customs offices owned by a corporation  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-planets.read_customs_offices.v1
+     * List customs offices owned by a corporation  ---  This route is cached for up to 3600 seconds  --- Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-planets.read_customs_offices.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -106,11 +93,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     /**
      * Get schematic information
      *
-     * Get information on a planetary factory schematic --- Alternate route:
-     * &#x60;/v1/universe/schematics/{schematic_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/schematics/{schematic_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/schematics/{schematic_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get information on a planetary factory schematic  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails

@@ -87,7 +87,7 @@ public class ContractsApiTest extends GeneralApiTest {
     /**
      * Get contract items
      *
-     * Lists Items and details of a particular contract  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-contracts.read_character_contracts.v1
+     * Lists items of a particular contract  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-contracts.read_corporation_contracts.v1  SSO Scope: esi-contracts.read_character_contracts.v1
      *
      * @throws ApiException
      *          if the Api call fails

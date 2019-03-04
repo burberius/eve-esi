@@ -66,6 +66,14 @@ public class UniverseApiTest extends GeneralApiTest {
         assertThat(ancestriesResponse.getBloodlineId(), greaterThan(0));
     }
 
+    /**
+     * Get asteroid belt information
+     *
+     * Get information on an asteroid belt  ---  This route expires daily at 11:05
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
     @Test
     public void getUniverseAsteroidBeltsAsteroidBeltIdTest() throws ApiException {
         Integer asteroidBeltId = 40000018;
@@ -77,11 +85,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get bloodlines
      *
-     * Get a list of bloodlines --- Alternate route:
-     * &#x60;/v1/universe/bloodlines/&#x60; Alternate route:
-     * &#x60;/legacy/universe/bloodlines/&#x60; Alternate route:
-     * &#x60;/dev/universe/bloodlines/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of bloodlines  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -98,11 +102,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get item categories
      *
-     * Get a list of item categories --- Alternate route:
-     * &#x60;/v1/universe/categories/&#x60; Alternate route:
-     * &#x60;/legacy/universe/categories/&#x60; Alternate route:
-     * &#x60;/dev/universe/categories/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of item categories  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -117,11 +117,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get item category information
      *
-     * Get information of an item category --- Alternate route:
-     * &#x60;/v1/universe/categories/{category_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/categories/{category_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/categories/{category_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get information of an item category  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -137,11 +133,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get constellations
      *
-     * Get a list of constellations --- Alternate route:
-     * &#x60;/v1/universe/constellations/&#x60; Alternate route:
-     * &#x60;/legacy/universe/constellations/&#x60; Alternate route:
-     * &#x60;/dev/universe/constellations/&#x60; --- This route is cached for up
-     * to 3600 seconds
+     * Get a list of constellations  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -156,12 +148,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get constellation information
      *
-     * Get information on a constellation --- Alternate route:
-     * &#x60;/v1/universe/constellations/{constellation_id}/&#x60; Alternate
-     * route: &#x60;/legacy/universe/constellations/{constellation_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/universe/constellations/{constellation_id}/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Get information on a constellation  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -177,11 +164,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get factions
      *
-     * Get a list of factions --- Alternate route:
-     * &#x60;/v1/universe/factions/&#x60; Alternate route:
-     * &#x60;/legacy/universe/factions/&#x60; Alternate route:
-     * &#x60;/dev/universe/factions/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of factions  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -198,11 +181,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get graphics
      *
-     * Get a list of graphics --- Alternate route:
-     * &#x60;/v1/universe/graphics/&#x60; Alternate route:
-     * &#x60;/legacy/universe/graphics/&#x60; Alternate route:
-     * &#x60;/dev/universe/graphics/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of graphics  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -217,11 +196,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get graphic information
      *
-     * Get information on a graphic --- Alternate route:
-     * &#x60;/v1/universe/graphics/{graphic_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/graphics/{graphic_id}/&#x60; Alternate route:
-     * &#x60;/dev/univ erse/graphics/{graphic_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get information on a graphic  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -238,11 +213,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get item groups
      *
-     * Get a list of item groups --- Alternate route:
-     * &#x60;/v1/universe/groups/&#x60; Alternate route:
-     * &#x60;/legacy/universe/groups/&#x60; Alternate route:
-     * &#x60;/dev/universe/groups/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get a list of item groups  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -258,11 +229,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get item group information
      *
-     * Get information on an item group --- Alternate route:
-     * &#x60;/v1/universe/groups/{group_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/groups/{group_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/groups/{group_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get information on an item group  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -278,11 +245,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get moon information
      *
-     * Get information on a moon --- Alternate route:
-     * &#x60;/v1/universe/moons/{moon_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/moons/{moon_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/moons/{moon_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get information on a moon  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -298,11 +261,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get planet information
      *
-     * Get information on a planet --- Alternate route:
-     * &#x60;/v1/universe/planets/{planet_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/planets/{planet_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/planets/{planet_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get information on a planet  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -318,11 +277,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get character races
      *
-     * Get a list of character races --- Alternate route:
-     * &#x60;/v1/universe/races/&#x60; Alternate route:
-     * &#x60;/legacy/universe/races/&#x60; Alternate route:
-     * &#x60;/dev/universe/races/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get a list of character races  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -339,11 +294,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get regions
      *
-     * Get a list of regions --- Alternate route:
-     * &#x60;/v1/universe/regions/&#x60; Alternate route:
-     * &#x60;/legacy/universe/regions/&#x60; Alternate route:
-     * &#x60;/dev/universe/regions/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of regions  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -358,11 +309,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get region information
      *
-     * Get information on a region --- Alternate route:
-     * &#x60;/v1/universe/regions/{region_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/regions/{region_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/regions/{region_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get information on a region  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -378,11 +325,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get stargate information
      *
-     * Get information on a stargate --- Alternate route:
-     * &#x60;/v1/universe/stargates/{stargate_id}/&#x60; Alternate route:
-     * &#x60;/legacy/universe/stargates/{stargate_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/stargates/{stargate_id}/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get information on a stargate  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -398,7 +341,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get star information
      *
-     * Get information on a star --- This route expires daily at 11:05
+     * Get information on a star  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -414,10 +357,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get station information
      *
-     * Get information on a station --- Alternate route:
-     * &#x60;/v2/universe/stations/{station_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/stations/{station_id}/&#x60; --- This route is cached
-     * for up to 300 seconds
+     * Get information on a station  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -433,18 +373,14 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * List all public structures
      *
-     * List all public structures --- Alternate route:
-     * &#x60;/v1/universe/structures/&#x60; Alternate route:
-     * &#x60;/legacy/universe/structures/&#x60; Alternate route:
-     * &#x60;/dev/universe/structures/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * List all public structures  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
      */
     @Test
     public void getUniverseStructuresTest() throws ApiException {
-        final List<Long> response = api.getUniverseStructures(DATASOURCE, null);
+        final List<Long> response = api.getUniverseStructures(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -452,11 +388,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get structure information
      *
-     * Returns information on requested structure, if you are on the ACL.
-     * Otherwise, returns \&quot;Forbidden\&quot; for all inputs. --- Alternate
-     * route: &#x60;/v1/universe/structures/{structure_id}/&#x60; Alternate
-     * route: &#x60;/legacy/universe/structures/{structure_id}/&#x60; Alternate
-     * route: &#x60;/dev/universe/structures/{structure_id}/&#x60;
+     * Returns information on requested structure if you are on the ACL. Otherwise, returns \&quot;Forbidden\&quot; for all inputs.  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -469,9 +401,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get system jumps
      *
-     * Get the number of jumps in solar systems within the last hour, excluding
-     * wormhole space. Only systems with jumps will be listed --- This route is
-     * cached for up to 3600 seconds
+     * Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -487,9 +417,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get system kills
      *
-     * Get the number of ship, pod and NPC kills per solar system within the
-     * last hour, excluding wormhole space. Only systems with kills will be
-     * listed --- This route is cached for up to 3600 seconds
+     * Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -505,11 +433,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get solar systems
      *
-     * Get a list of solar systems --- Alternate route:
-     * &#x60;/v1/universe/systems/&#x60; Alternate route:
-     * &#x60;/legacy/universe/systems/&#x60; Alternate route:
-     * &#x60;/dev/universe/systems/&#x60; --- This route is cached for up to
-     * 3600 seconds
+     * Get a list of solar systems  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -524,10 +448,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get solar system information
      *
-     * Get information on a solar system --- Alternate route:
-     * &#x60;/v2/universe/systems/{system_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/systems/{system_id}/&#x60; --- This route is cached
-     * for up to 3600 seconds
+     * Get information on a solar system.  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -543,11 +464,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get types
      *
-     * Get a list of type ids --- Alternate route:
-     * &#x60;/v1/universe/types/&#x60; Alternate route:
-     * &#x60;/legacy/universe/types/&#x60; Alternate route:
-     * &#x60;/dev/universe/types/&#x60; --- This route is cached for up to 3600
-     * seconds
+     * Get information on a solar system.  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -563,10 +480,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get type information
      *
-     * Get information on a type --- Alternate route:
-     * &#x60;/v2/universe/types/{type_id}/&#x60; Alternate route:
-     * &#x60;/dev/universe/types/{type_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Get information on a type  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -582,7 +496,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Bulk names to IDs
      *
-     * Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours.  --- 
+     * Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours  ---
      *
      * @throws ApiException
      *          if the Api call fails
@@ -600,7 +514,7 @@ public class UniverseApiTest extends GeneralApiTest {
         names.add("The Forge"); //Regions
         //names.add("Jita"); //Systems
         //names.add("Station - Jita IV - Moon 4 - Caldari Navy Assembly Plant"); //Stations
-        
+
         UniverseIdsResponse response = api.postUniverseIds(names, LANGUAGE, DATASOURCE, LANGUAGE);
         assertThat(response.getAgents().size(), greaterThan(0));
         assertThat(response.getAlliances().size(), greaterThan(0));
@@ -617,11 +531,7 @@ public class UniverseApiTest extends GeneralApiTest {
     /**
      * Get names and categories for a set of ID&#39;s
      *
-     * Resolve a set of IDs to names and categories. Supported ID&#39;s for
-     * resolving are: Characters, Corporations, Alliances, Stations, Solar
-     * Systems, Constellations, Regions, Types. --- Alternate route:
-     * &#x60;/v2/universe/names/&#x60; Alternate route:
-     * &#x60;/dev/universe/names/&#x60;
+     * Resolve a set of IDs to names and categories. Supported ID&#39;s for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types  ---
      *
      * @throws ApiException
      *             if the Api call fails

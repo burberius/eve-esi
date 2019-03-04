@@ -33,10 +33,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     /**
      * Set Autopilot Waypoint
      *
-     * Set a solar system as autopilot waypoint --- Alternate route:
-     * &#x60;/v2/ui/autopilot/waypoint/&#x60; Alternate route:
-     * &#x60;/dev/ui/autopilot/waypoint/&#x60; SSO Scope:
-     * esi-ui.write_waypoint.v1
+     * Set a solar system as autopilot waypoint  ---   SSO Scope: esi-ui.write_waypoint.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -55,10 +52,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     /**
      * Open Contract Window
      *
-     * Open the contract window inside the client --- Alternate route:
-     * &#x60;/v1/ui/openwindow/contract/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/contract/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/contract/&#x60; SSO Scope: esi-ui.open_window.v1
+     * Open the contract window inside the client  ---   SSO Scope: esi-ui.open_window.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -76,12 +70,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     /**
      * Open Information Window
      *
-     * Open the information window for a character, corporation or alliance
-     * inside the client --- Alternate route:
-     * &#x60;/v1/ui/openwindow/information/&#x60; Alternate route:
-     * &#x60;/legacy/ui/openwindow/information/&#x60; Alternate route:
-     * &#x60;/dev/ui/openwindow/information/&#x60; SSO Scope:
-     * esi-ui.open_window.v1
+     * Open the information window for a character, corporation or alliance inside the client  ---   SSO Scope: esi-ui.open_window.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -99,11 +88,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     /**
      * Open Market Details
      *
-     * Open the market details window for a specific typeID inside the client
-     * --- Alternate route: &#x60;/v1/ui/openwindow/marketdetails/&#x60;
-     * Alternate route: &#x60;/legacy/ui/openwindow/marketdetails/&#x60;
-     * Alternate route: &#x60;/dev/ui/openwindow/marketdetails/&#x60; SSO Scope:
-     * esi-ui.open_window.v1
+     * Open the market details window for a specific typeID inside the client  ---   SSO Scope: esi-ui.open_window.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -121,11 +106,7 @@ public class UserInterfaceApiTest extends GeneralApiTest {
     /**
      * Open New Mail Window
      *
-     * Open the New Mail window, according to settings from the request if
-     * applicable --- Alternate route: &#x60;/v1/ui/openwindow/newmail/&#x60;
-     * Alternate route: &#x60;/legacy/ui/openwindow/newmail/&#x60; Alternate
-     * route: &#x60;/dev/ui/openwindow/newmail/&#x60; SSO Scope:
-     * esi-ui.open_window.v1
+     * Open the New Mail window, according to settings from the request if applicable  ---   SSO Scope: esi-ui.open_window.v1
      *
      * @throws ApiException
      *             if the Api call fails

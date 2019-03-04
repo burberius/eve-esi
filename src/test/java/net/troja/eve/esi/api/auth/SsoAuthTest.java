@@ -17,12 +17,12 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import net.troja.eve.esi.api.GeneralApiTest;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
-import net.troja.eve.esi.api.GeneralApiTest;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
@@ -106,7 +106,7 @@ public class SsoAuthTest extends GeneralApiTest {
         assertThat(payload.getScopes().size(), equalTo(1));
         assertThat(payload.getScopes().iterator().next(), equalTo("publicData"));
         assertThat(payload.getCharacterID(), notNullValue());
-        assertThat(payload.getCharacterID(), equalTo(characterId));
+        assertThat(payload.getCharacterID(), equalTo(92676770));
     }
 
     @Test

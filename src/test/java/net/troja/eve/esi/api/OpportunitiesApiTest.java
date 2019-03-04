@@ -41,8 +41,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     /**
      * Get a character&#39;s completed tasks
      *
-     * Return a list of tasks finished by a character --- This route is cached
-     * for up to 3600 seconds SSO Scope: esi-characters.read_opportunities.v1
+     * Return a list of tasks finished by a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_opportunities.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -58,8 +57,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     /**
      * Get opportunities groups
      *
-     * Return a list of opportunities groups --- This route is cached for up to
-     * 3600 seconds
+     * Return a list of opportunities groups  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -74,8 +72,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     /**
      * Get opportunities group
      *
-     * Return information of an opportunities group --- This route is cached for
-     * up to 3600 seconds
+     * Return information of an opportunities group  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -92,8 +89,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     /**
      * Get opportunities tasks
      *
-     * Return a list of opportunities tasks --- This route is cached for up to
-     * 3600 seconds
+     * Return a list of opportunities tasks  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -108,8 +104,7 @@ public class OpportunitiesApiTest extends GeneralApiTest {
     /**
      * Get opportunities task
      *
-     * Return information of an opportunities task --- This route is cached for
-     * up to 3600 seconds
+     * Return information of an opportunities task  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails

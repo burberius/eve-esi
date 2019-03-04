@@ -23,6 +23,8 @@ bin
 .project
 .classpath
 .settings
+.idea
+eve-esi.iml
 
 # joe backup files
 *~

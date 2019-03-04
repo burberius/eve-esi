@@ -38,10 +38,7 @@ public class ClonesApiTest extends GeneralApiTest {
     /**
      * Get clones
      *
-     * A list of the character&#39;s clones --- Alternate route:
-     * &#x60;/v2/characters/{character_id}/clones/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/clones/&#x60; --- This route is
-     * cached for up to 120 seconds
+     * Takes a source character ID in the url and a set of target character ID&#39;s in the body, returns a CSPA charge cost  ---   SSO Scope: esi-characters.read_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -57,7 +54,7 @@ public class ClonesApiTest extends GeneralApiTest {
     /**
      * Get active implants
      *
-     * Return implants on the active clone of a character  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-clones.read_implants.v1
+     * Return implants on the active clone of a character  ---  This route is cached for up to 120 seconds  SSO Scope: esi-clones.read_implants.v1
      *
      * @throws ApiException
      *          if the Api call fails

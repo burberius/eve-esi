@@ -51,11 +51,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get character&#39;s public information
      *
-     * Public information about a character --- Alternate route:
-     * &#x60;/v3/characters/{character_id}/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/&#x60; --- This route is cached for
-     * up to 3600 seconds
+     * Public information about a character  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -71,10 +67,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get agents research
      *
-     * Return a list of agents research information for a character. The formula
-     * for finding the current research points with an agent is: currentPoints
-     * &#x3D; remainderPoints + pointsPerDay * days(currentTime -
-     * researchStartDate) --- This route is cached for up to 3600 seconds
+     * Return a list of agents research information for a character. The formula for finding the current research points with an agent is: currentPoints &#x3D; remainderPoints + pointsPerDay * days(currentTime - researchStartDate)  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_agents_research.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -89,8 +82,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get blueprints
      *
-     * Return a list of blueprints the character has --- This route is cached
-     * for up to 3600 seconds SSO Scope: esi-characters.read_blueprints.v1
+     * Return a list of blueprints the character owns  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_blueprints.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -106,13 +98,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get corporation history
      *
-     * Get a list of all the corporations a character has been a member of ---
-     * Alternate route:
-     * &#x60;/v1/characters/{character_id}/corporationhistory/&#x60; Alternate
-     * route: &#x60;/legacy/characters/{character_id}/corporationhistory/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/corporationhistory/&#x60; --- This
-     * route is cached for up to 3600 seconds
+     * Get a list of all the corporations a character has been a member of  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -128,9 +114,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get jump fatigue
      *
-     * Return a character&#39;s jump activation and fatigue information --- This
-     * route is cached for up to 300 seconds SSO Scope:
-     * esi-characters.read_fatigue.v1
+     * Return a character&#39;s jump activation and fatigue information  ---  This route is cached for up to 300 seconds  SSO Scope: esi-characters.read_fatigue.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -144,8 +128,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get medals
      *
-     * Return a list of medals the character has --- This route is cached for up
-     * to 3600 seconds SSO Scope: esi-characters.read_medals.v1
+     * Return a list of medals the character has  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_medals.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -161,7 +144,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get character notifications
      *
-     * Return character notifications  ---  This route is cached for up to 1800 seconds  SSO Scope: esi-characters.read_notifications.v1
+     * Return character notifications  ---  This route is cached for up to 600 seconds  SSO Scope: esi-characters.read_notifications.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -177,9 +160,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get new contact notifications
      *
-     * Return notifications about having been added to someone&#39;s contact
-     * list --- This route is cached for up to 600 seconds SSO Scope:
-     * esi-characters.read_notifications.v1
+     * Return notifications about having been added to someone&#39;s contact list  ---  This route is cached for up to 600 seconds  SSO Scope: esi-characters.read_notifications.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -194,10 +175,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get character portraits
      *
-     * Get portrait urls for a character --- Alternate route:
-     * &#x60;/v2/characters/{character_id}/portrait/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/portrait/&#x60; --- This route is
-     * cached for up to 3600 seconds
+     * Get portrait urls for a character  ---  This route expires daily at 11:05
      *
      * @throws ApiException
      *             if the Api call fails
@@ -214,8 +192,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get character corporation roles
      *
-     * Returns a character&#39;s corporation roles --- This route is cached for
-     * up to 3600 seconds SSO Scope: esi-characters.read_corporation_roles.v1
+     * Returns a character&#39;s corporation roles  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_corporation_roles.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -230,9 +207,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Get standings
      *
-     * Return character standings from agents, NPC corporations, and factions
-     * --- This route is cached for up to 3600 seconds SSO Scope:
-     * esi-characters.read_standings.v1
+     * Return character standings from agents, NPC corporations, and factions  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-characters.read_standings.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -248,7 +223,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Yearly aggregate stats
      *
-     * Returns aggregate yearly stats for a character  ---  This route is cached for up to 86400 seconds  --- [This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/stats/)  SSO Scope: esi-characterstats.read.v1
+     * RReturns aggregate yearly stats for a character  ---  This route is cached for up to 86400 seconds  SSO Scope: esi-characterstats.read.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -279,8 +254,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Character affiliation
      *
-     * Bulk lookup of character IDs to corporation, alliance and faction ---
-     * This route is cached for up to 3600 seconds
+     * Bulk lookup of character IDs to corporation, alliance and faction  ---  This route is cached for up to 3600 seconds
      *
      * @throws ApiException
      *             if the Api call fails
@@ -293,12 +267,7 @@ public class CharacterApiTest extends GeneralApiTest {
     /**
      * Calculate a CSPA charge cost
      *
-     * Takes a source character ID in the url and a set of target character
-     * ID&#39;s in the body, returns a CSPA charge cost --- Alternate route:
-     * &#x60;/v3/characters/{character_id}/cspa/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/cspa/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/cspa/&#x60; SSO Scope:
-     * esi-characters.read_contacts.v1
+     * Takes a source character ID in the url and a set of target character ID&#39;s in the body, returns a CSPA charge cost  ---   SSO Scope: esi-characters.read_contacts.v1
      *
      * @throws ApiException
      *             if the Api call fails

@@ -420,7 +420,7 @@ public class CharacterApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/notifications/".replaceAll("\\{format\\}", "json")
+        String localVarPath = "/v4/characters/{character_id}/notifications/".replaceAll("\\{format\\}", "json")
                 .replaceAll("\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         // query params
@@ -509,7 +509,7 @@ public class CharacterApi {
 
     /**
      * Get character portraits Get portrait urls for a character --- This route
-     * is cached for up to 3600 seconds
+     * expires daily at 11:05
      * 
      * @param characterId
      *            An EVE character ID (required)

@@ -17,7 +17,9 @@ import java.util.Set;
  * JWT (JSON Web Token) WARNING: The JWT is unverified. Verifying the JWT is
  * beyond the scope of this library. As ESI will verify the token when used. See
  * the SSO documentation for JWT Token validation for details:
- * https://github.com/ccpgames/eveonline-third-party-documentation/blob/master/docs/sso/jwt-validation.md
+ * https://github.com
+ * /ccpgames/eveonline-third-party-documentation/blob/master/docs
+ * /sso/jwt-validation.md
  */
 public class JWT {
 

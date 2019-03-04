@@ -38,13 +38,7 @@ public class FittingsApiTest extends GeneralApiTest {
     /**
      * Delete fitting
      *
-     * Delete a fitting from a character --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/fittings/{fitting_id}/&#x60;
-     * Alternate route:
-     * &#x60;/legacy/characters/{character_id}/fittings/{fitting_id}/&#x60;
-     * Alternate route:
-     * &#x60;/dev/characters/{character_id}/fittings/{fitting_id}/&#x60; SSO
-     * Scope: esi-fittings.write_fittings.v1
+     * Delete a fitting from a character  ---   SSO Scope: esi-fittings.write_fittings.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -57,11 +51,7 @@ public class FittingsApiTest extends GeneralApiTest {
     /**
      * Get fittings
      *
-     * Return fittings of a character --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/fittings/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/fittings/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/fittings/&#x60; --- This route is
-     * cached for up to 300 seconds SSO Scope: esi-fittings.read_fittings.v1
+     * Return fittings of a character  ---  This route is cached for up to 300 seconds  SSO Scope: esi-fittings.read_fittings.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -78,11 +68,7 @@ public class FittingsApiTest extends GeneralApiTest {
     /**
      * Create fitting
      *
-     * Save a new fitting for a character --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/fittings/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/fittings/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/fittings/&#x60; SSO Scope:
-     * esi-fittings.write_fittings.v1
+     * Save a new fitting for a character  ---   SSO Scope: esi-fittings.write_fittings.v1
      *
      * @throws ApiException
      *             if the Api call fails

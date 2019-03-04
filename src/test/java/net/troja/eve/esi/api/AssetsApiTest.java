@@ -13,8 +13,9 @@ package net.troja.eve.esi.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import net.troja.eve.esi.ApiException;
-import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.CharacterAssetsLocationsResponse;
 import net.troja.eve.esi.model.CharacterAssetsNamesResponse;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
@@ -44,11 +45,7 @@ public class AssetsApiTest extends GeneralApiTest {
     /**
      * Get character assets
      *
-     * Return a list of the characters assets --- Alternate route:
-     * &#x60;/v1/characters/{character_id}/assets/&#x60; Alternate route:
-     * &#x60;/legacy/characters/{character_id}/assets/&#x60; Alternate route:
-     * &#x60;/dev/characters/{character_id}/assets/&#x60; --- This route is
-     * cached for up to 3600 seconds SSO Scope: esi-assets.read_assets.v1
+     * Return a list of the characters assets --- This route is cached for up to 3600 seconds  SSO Scope: esi-assets.read_assets.v1
      *
      * @throws ApiException
      *             if the Api call fails
@@ -65,7 +62,7 @@ public class AssetsApiTest extends GeneralApiTest {
     /**
      * Get corporation assets
      *
-     * Return a list of the corporation assets  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-assets.read_corporation_assets.v1
+     * Return a list of the corporation assets  ---  This route is cached for up to 3600 seconds  ---  Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-assets.read_corporation_assets.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -91,12 +88,7 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsLocationsTest() throws ApiException {
-        List<Long> itemIds = new ArrayList<>();
-        itemIds.add(1021792628250L);
-        itemIds.add(1004353009292L);
-        itemIds.add(1004329151505L);
-        itemIds.add(1004329154088L);
-        itemIds.add(1004329156651L);
+        List<Long> itemIds = get5AssetIds();
 
         List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null);
 
@@ -114,22 +106,18 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsNamesTest() throws ApiException {
-        List<Long> itemIds = new ArrayList<>();
-        itemIds.add(1021792628250L);
-        itemIds.add(1004353009292L);
-        itemIds.add(1004329151505L);
-        itemIds.add(1004329154088L);
-        itemIds.add(1004329156651L);
+        List<Long> itemIds = get5AssetIds();
+
         List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.size(), equalTo(5));
     }
 
-        /**
+    /**
      * Get corporation asset locations
      *
-     * Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)  ---   SSO Scope: esi-assets.read_corporation_assets.v1
+     * Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships  ---  Requires one of the following EVE corporation role(s): Director  SSO Scope: esi-assets.read_corporation_assets.v1
      *
      * @throws ApiException
      *          if the Api call fails
@@ -160,5 +148,11 @@ public class AssetsApiTest extends GeneralApiTest {
         List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
+    }
+
+    private List<Long> get5AssetIds() throws ApiException {
+        final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+
+        return response.stream().limit(5).map(p -> p.getItemId()).collect(Collectors.toList());
     }
 }

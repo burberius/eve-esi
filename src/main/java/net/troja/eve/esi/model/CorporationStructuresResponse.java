@@ -68,6 +68,8 @@ public class CorporationStructuresResponse implements Serializable {
 
         ARMOR_VULNERABLE("armor_vulnerable"),
 
+        DEPLOY_VULNERABLE("deploy_vulnerable"),
+
         FITTING_INVULNERABLE("fitting_invulnerable"),
 
         HULL_REINFORCE("hull_reinforce"),
@@ -279,7 +281,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return reinforceWeekday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6")
+    @ApiModelProperty(example = "null", value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6")
     public Integer getReinforceWeekday() {
         return reinforceWeekday;
     }
