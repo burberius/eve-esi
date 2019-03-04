@@ -74,7 +74,9 @@ public class OAuth implements Authentication {
 
     public void setAuth(final String clientId, final String refreshToken) {
         final String authKey = clientId + refreshToken;
-        synchronized (ACCOUNTS) { //Sync here to avoid multiple instances being made of this account - better safe than sorry
+        synchronized (ACCOUNTS) { // Sync here to avoid multiple instances being
+                                  // made of this account - better safe than
+                                  // sorry
             AccountData accountData = ACCOUNTS.get(authKey);
             if (accountData == null) {
                 accountData = new AccountData(clientId, refreshToken);
@@ -92,7 +94,8 @@ public class OAuth implements Authentication {
     }
 
     public String getAccessToken() {
-        AccountData accessTokenData = getAccountData();
+        AccountData accessTokenData = getAccountData(); // Update access token
+                                                        // if needed
         if (accessTokenData != null) {
             return accessTokenData.getAccessToken();
         } else {
@@ -111,7 +114,8 @@ public class OAuth implements Authentication {
      * @return Unverified JWT or null
      */
     public JWT getJWT() {
-        AccountData accountData = getAccountData(); // Update access token if needed;
+        AccountData accountData = getAccountData(); // Update access token if
+                                                    // needed
         if (accountData == null) {
             return null;
         }
@@ -144,6 +148,7 @@ public class OAuth implements Authentication {
             return account;
         }
     }
+
     /**
      * Get the authorization uri, where the user logs in.
      *
@@ -160,8 +165,10 @@ public class OAuth implements Authentication {
      * @return
      */
     public String getAuthorizationUri(final String redirectUri, final Set<String> scopes, final String state) {
-        if (account == null) throw new IllegalArgumentException("Auth is not set");
-        if (account.getClientId() == null) throw new IllegalArgumentException("client_id is not set");
+        if (account == null)
+            throw new IllegalArgumentException("Auth is not set");
+        if (account.getClientId() == null)
+            throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append(URI_AUTHENTICATION);
         builder.append("?");
@@ -193,9 +200,12 @@ public class OAuth implements Authentication {
      * @throws net.troja.eve.esi.ApiException
      */
     public void finishFlow(final String code, final String state) throws ApiException {
-        if (account == null) throw new IllegalArgumentException("Auth is not set");
-        if (codeVerifier == null) throw new IllegalArgumentException("code_verifier is not set");
-        if (account.getClientId() == null) throw new IllegalArgumentException("client_id is not set");
+        if (account == null)
+            throw new IllegalArgumentException("Auth is not set");
+        if (codeVerifier == null)
+            throw new IllegalArgumentException("code_verifier is not set");
+        if (account.getClientId() == null)
+            throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("authorization_code"));
@@ -255,7 +265,11 @@ public class OAuth implements Authentication {
             accountData.setAccessToken(result.getAccessToken());
             accountData.setValidUntil(validUntil);
             accountData.setRefreshToken(result.getRefreshToken());
-            ACCOUNTS.put(accountData.getKey(), accountData); //Update map in case the Refresh Token (AKA Key) have been changed
+            ACCOUNTS.put(accountData.getKey(), accountData); // Update map in
+                                                             // case the Refresh
+                                                             // Token (AKA Key)
+                                                             // have been
+                                                             // changed
         } catch (MalformedURLException ex) {
             throw new ApiException(ex);
         } catch (IOException ex) {
@@ -320,7 +334,8 @@ public class OAuth implements Authentication {
                 try {
                     OAuth.refreshToken(this);
                 } catch (final ApiException ex) {
-                   // This error will be handled by ESI once the request is made
+                    // This error will be handled by ESI once the request is
+                    // made
                 }
             }
         }

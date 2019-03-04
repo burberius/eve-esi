@@ -741,7 +741,7 @@ public class ApiClient {
             }
         }
 
-        //Workaround for content-length not set if body is null
+        // Workaround for content-length not set if body is null
         if (body == null) {
             body = "";
         }
