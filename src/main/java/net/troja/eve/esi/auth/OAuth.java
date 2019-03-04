@@ -73,20 +73,15 @@ public class OAuth implements Authentication {
     }
 
     public void setAuth(final String clientId, final String refreshToken) {
-        final String authKey = clientId + refreshToken;
-        synchronized (ACCOUNTS) { // Sync here to avoid multiple instances being
-                                  // made of this account - better safe than
-                                  // sorry
-            AccountData accountData = ACCOUNTS.get(authKey);
-            if (accountData == null) {
-                accountData = new AccountData(clientId, refreshToken);
-                ACCOUNTS.put(authKey, accountData);
-            }
-            if (account != null) {
-                accountData.setAccessToken(account.getAccessToken());
-            }
-            account = accountData;
+        AccountData accountData = new AccountData(clientId, refreshToken);
+        AccountData old = ACCOUNTS.putIfAbsent(accountData.getKey(), accountData);
+        if (old != null) {
+            accountData = old;
         }
+        if (account != null) {
+            accountData.setAccessToken(account.getAccessToken());
+        }
+        account = accountData;
     }
 
     public void setClientId(final String clientId) {
