@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,7 @@ public class UniverseNamesResponse implements Serializable {
     /**
      * category string
      */
+    @JsonAdapter(CategoryEnum.Adapter.class)
     public enum CategoryEnum {
         ALLIANCE("alliance"),
 
@@ -51,12 +56,15 @@ public class UniverseNamesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static CategoryEnum fromValue(String text) {
             for (CategoryEnum b : CategoryEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -65,15 +73,28 @@ public class UniverseNamesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<CategoryEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final CategoryEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public CategoryEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return CategoryEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("category")
+    @SerializedName("category")
     private CategoryEnum category = null;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Integer id = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     public UniverseNamesResponse category(CategoryEnum category) {
@@ -86,7 +107,7 @@ public class UniverseNamesResponse implements Serializable {
      * 
      * @return category
      **/
-    @ApiModelProperty(example = "null", required = true, value = "category string")
+    @ApiModelProperty(required = true, value = "category string")
     public CategoryEnum getCategory() {
         return category;
     }
@@ -105,7 +126,7 @@ public class UniverseNamesResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "id integer")
+    @ApiModelProperty(required = true, value = "id integer")
     public Integer getId() {
         return id;
     }
@@ -124,7 +145,7 @@ public class UniverseNamesResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }

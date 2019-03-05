@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.KillmailSubItem;
@@ -28,22 +32,22 @@ import java.io.Serializable;
 public class KillmailItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("flag")
+    @SerializedName("flag")
     private Integer flag = null;
 
-    @JsonProperty("item_type_id")
+    @SerializedName("item_type_id")
     private Integer itemTypeId = null;
 
-    @JsonProperty("items")
-    private List<KillmailSubItem> items = new ArrayList<KillmailSubItem>();
+    @SerializedName("items")
+    private List<KillmailSubItem> items = null;
 
-    @JsonProperty("quantity_destroyed")
+    @SerializedName("quantity_destroyed")
     private Long quantityDestroyed = null;
 
-    @JsonProperty("quantity_dropped")
+    @SerializedName("quantity_dropped")
     private Long quantityDropped = null;
 
-    @JsonProperty("singleton")
+    @SerializedName("singleton")
     private Integer singleton = null;
 
     public KillmailItem flag(Integer flag) {
@@ -56,7 +60,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return flag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Flag for the location of the item ")
+    @ApiModelProperty(required = true, value = "Flag for the location of the item ")
     public Integer getFlag() {
         return flag;
     }
@@ -75,7 +79,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return itemTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_type_id integer")
+    @ApiModelProperty(required = true, value = "item_type_id integer")
     public Integer getItemTypeId() {
         return itemTypeId;
     }
@@ -90,6 +94,9 @@ public class KillmailItem implements Serializable {
     }
 
     public KillmailItem addItemsItem(KillmailSubItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
         this.items.add(itemsItem);
         return this;
     }
@@ -99,7 +106,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return items
      **/
-    @ApiModelProperty(example = "null", value = "items array")
+    @ApiModelProperty(value = "items array")
     public List<KillmailSubItem> getItems() {
         return items;
     }
@@ -118,7 +125,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return quantityDestroyed
      **/
-    @ApiModelProperty(example = "null", value = "How many of the item were destroyed if any ")
+    @ApiModelProperty(value = "How many of the item were destroyed if any ")
     public Long getQuantityDestroyed() {
         return quantityDestroyed;
     }
@@ -137,7 +144,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return quantityDropped
      **/
-    @ApiModelProperty(example = "null", value = "How many of the item were dropped if any ")
+    @ApiModelProperty(value = "How many of the item were dropped if any ")
     public Long getQuantityDropped() {
         return quantityDropped;
     }
@@ -156,7 +163,7 @@ public class KillmailItem implements Serializable {
      * 
      * @return singleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "singleton integer")
+    @ApiModelProperty(required = true, value = "singleton integer")
     public Integer getSingleton() {
         return singleton;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,21 +30,22 @@ import java.io.Serializable;
 public class CharacterPlanetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_update")
+    @SerializedName("last_update")
     private OffsetDateTime lastUpdate = null;
 
-    @JsonProperty("num_pins")
+    @SerializedName("num_pins")
     private Integer numPins = null;
 
-    @JsonProperty("owner_id")
+    @SerializedName("owner_id")
     private Integer ownerId = null;
 
-    @JsonProperty("planet_id")
+    @SerializedName("planet_id")
     private Integer planetId = null;
 
     /**
      * planet_type string
      */
+    @JsonAdapter(PlanetTypeEnum.Adapter.class)
     public enum PlanetTypeEnum {
         TEMPERATE("temperate"),
 
@@ -64,12 +69,15 @@ public class CharacterPlanetsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static PlanetTypeEnum fromValue(String text) {
             for (PlanetTypeEnum b : PlanetTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -78,15 +86,28 @@ public class CharacterPlanetsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<PlanetTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final PlanetTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public PlanetTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return PlanetTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("planet_type")
+    @SerializedName("planet_type")
     private PlanetTypeEnum planetType = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("upgrade_level")
+    @SerializedName("upgrade_level")
     private Integer upgradeLevel = null;
 
     public CharacterPlanetsResponse lastUpdate(OffsetDateTime lastUpdate) {
@@ -99,7 +120,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return lastUpdate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "last_update string")
+    @ApiModelProperty(required = true, value = "last_update string")
     public OffsetDateTime getLastUpdate() {
         return lastUpdate;
     }
@@ -118,7 +139,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return numPins
      **/
-    @ApiModelProperty(example = "null", required = true, value = "num_pins integer")
+    @ApiModelProperty(required = true, value = "num_pins integer")
     public Integer getNumPins() {
         return numPins;
     }
@@ -137,7 +158,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return ownerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
+    @ApiModelProperty(required = true, value = "owner_id integer")
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -156,7 +177,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return planetId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    @ApiModelProperty(required = true, value = "planet_id integer")
     public Integer getPlanetId() {
         return planetId;
     }
@@ -175,7 +196,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return planetType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_type string")
+    @ApiModelProperty(required = true, value = "planet_type string")
     public PlanetTypeEnum getPlanetType() {
         return planetType;
     }
@@ -194,7 +215,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -213,7 +234,7 @@ public class CharacterPlanetsResponse implements Serializable {
      * 
      * @return upgradeLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "upgrade_level integer")
+    @ApiModelProperty(required = true, value = "upgrade_level integer")
     public Integer getUpgradeLevel() {
         return upgradeLevel;
     }

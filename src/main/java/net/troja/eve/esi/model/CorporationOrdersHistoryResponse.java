@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,36 +30,37 @@ import java.io.Serializable;
 public class CorporationOrdersHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("duration")
+    @SerializedName("duration")
     private Integer duration = null;
 
-    @JsonProperty("escrow")
+    @SerializedName("escrow")
     private Double escrow = null;
 
-    @JsonProperty("is_buy_order")
+    @SerializedName("is_buy_order")
     private Boolean isBuyOrder = null;
 
-    @JsonProperty("issued")
+    @SerializedName("issued")
     private OffsetDateTime issued = null;
 
-    @JsonProperty("issued_by")
+    @SerializedName("issued_by")
     private Integer issuedBy = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("min_volume")
+    @SerializedName("min_volume")
     private Integer minVolume = null;
 
-    @JsonProperty("order_id")
+    @SerializedName("order_id")
     private Long orderId = null;
 
-    @JsonProperty("price")
+    @SerializedName("price")
     private Double price = null;
 
     /**
      * Valid order range, numbers are ranges in jumps
      */
+    @JsonAdapter(RangeEnum.Adapter.class)
     public enum RangeEnum {
         _1("1"),
 
@@ -87,12 +92,15 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RangeEnum fromValue(String text) {
             for (RangeEnum b : RangeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -101,17 +109,31 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RangeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RangeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RangeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RangeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("range")
+    @SerializedName("range")
     private RangeEnum range = null;
 
-    @JsonProperty("region_id")
+    @SerializedName("region_id")
     private Integer regionId = null;
 
     /**
      * Current order state
      */
+    @JsonAdapter(StateEnum.Adapter.class)
     public enum StateEnum {
         CANCELLED("cancelled"),
 
@@ -123,12 +145,15 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StateEnum fromValue(String text) {
             for (StateEnum b : StateEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -137,21 +162,34 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StateEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StateEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StateEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("state")
+    @SerializedName("state")
     private StateEnum state = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("volume_remain")
+    @SerializedName("volume_remain")
     private Integer volumeRemain = null;
 
-    @JsonProperty("volume_total")
+    @SerializedName("volume_total")
     private Integer volumeTotal = null;
 
-    @JsonProperty("wallet_division")
+    @SerializedName("wallet_division")
     private Integer walletDivision = null;
 
     public CorporationOrdersHistoryResponse duration(Integer duration) {
@@ -165,7 +203,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of days the order was valid for (starting from the issued date). An order expires at time issued + duration")
+    @ApiModelProperty(required = true, value = "Number of days the order was valid for (starting from the issued date). An order expires at time issued + duration")
     public Integer getDuration() {
         return duration;
     }
@@ -184,7 +222,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return escrow
      **/
-    @ApiModelProperty(example = "null", value = "For buy orders, the amount of ISK in escrow")
+    @ApiModelProperty(value = "For buy orders, the amount of ISK in escrow")
     public Double getEscrow() {
         return escrow;
     }
@@ -203,8 +241,8 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return isBuyOrder
      **/
-    @ApiModelProperty(example = "null", value = "True if the order is a bid (buy) order")
-    public Boolean getIsBuyOrder() {
+    @ApiModelProperty(value = "True if the order is a bid (buy) order")
+    public Boolean isIsBuyOrder() {
         return isBuyOrder;
     }
 
@@ -222,7 +260,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return issued
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time when this order was issued")
+    @ApiModelProperty(required = true, value = "Date and time when this order was issued")
     public OffsetDateTime getIssued() {
         return issued;
     }
@@ -241,7 +279,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return issuedBy
      **/
-    @ApiModelProperty(example = "null", value = "The character who issued this order")
+    @ApiModelProperty(value = "The character who issued this order")
     public Integer getIssuedBy() {
         return issuedBy;
     }
@@ -260,7 +298,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the location where order was placed")
+    @ApiModelProperty(required = true, value = "ID of the location where order was placed")
     public Long getLocationId() {
         return locationId;
     }
@@ -280,7 +318,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return minVolume
      **/
-    @ApiModelProperty(example = "null", value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
+    @ApiModelProperty(value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
     public Integer getMinVolume() {
         return minVolume;
     }
@@ -299,7 +337,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return orderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique order ID")
+    @ApiModelProperty(required = true, value = "Unique order ID")
     public Long getOrderId() {
         return orderId;
     }
@@ -318,7 +356,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return price
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Cost per unit for this order")
+    @ApiModelProperty(required = true, value = "Cost per unit for this order")
     public Double getPrice() {
         return price;
     }
@@ -337,7 +375,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return range
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Valid order range, numbers are ranges in jumps")
+    @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
     public RangeEnum getRange() {
         return range;
     }
@@ -356,7 +394,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return regionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the region where order was placed")
+    @ApiModelProperty(required = true, value = "ID of the region where order was placed")
     public Integer getRegionId() {
         return regionId;
     }
@@ -375,7 +413,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Current order state")
+    @ApiModelProperty(required = true, value = "Current order state")
     public StateEnum getState() {
         return state;
     }
@@ -394,7 +432,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type ID of the item transacted in this order")
+    @ApiModelProperty(required = true, value = "The type ID of the item transacted in this order")
     public Integer getTypeId() {
         return typeId;
     }
@@ -413,7 +451,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Quantity of items still required or offered")
+    @ApiModelProperty(required = true, value = "Quantity of items still required or offered")
     public Integer getVolumeRemain() {
         return volumeRemain;
     }
@@ -432,7 +470,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Quantity of items required or offered at time order was placed")
+    @ApiModelProperty(required = true, value = "Quantity of items required or offered at time order was placed")
     public Integer getVolumeTotal() {
         return volumeTotal;
     }
@@ -451,7 +489,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return walletDivision
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The corporation wallet division used for this order")
+    @ApiModelProperty(required = true, value = "The corporation wallet division used for this order")
     public Integer getWalletDivision() {
         return walletDivision;
     }

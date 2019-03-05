@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class CharacterBlueprintsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("item_id")
+    @SerializedName("item_id")
     private Long itemId = null;
 
     /**
      * Type of the location_id
      */
+    @JsonAdapter(LocationFlagEnum.Adapter.class)
     public enum LocationFlagEnum {
         AUTOFIT("AutoFit"),
 
@@ -190,12 +195,15 @@ public class CharacterBlueprintsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationFlagEnum fromValue(String text) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -204,27 +212,40 @@ public class CharacterBlueprintsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationFlagEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_flag")
+    @SerializedName("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("material_efficiency")
+    @SerializedName("material_efficiency")
     private Integer materialEfficiency = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("runs")
+    @SerializedName("runs")
     private Integer runs = null;
 
-    @JsonProperty("time_efficiency")
+    @SerializedName("time_efficiency")
     private Integer timeEfficiency = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CharacterBlueprintsResponse itemId(Long itemId) {
@@ -237,7 +258,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this item.")
+    @ApiModelProperty(required = true, value = "Unique ID for this item.")
     public Long getItemId() {
         return itemId;
     }
@@ -256,7 +277,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of the location_id")
+    @ApiModelProperty(required = true, value = "Type of the location_id")
     public LocationFlagEnum getLocationFlag() {
         return locationFlag;
     }
@@ -278,7 +299,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "References a solar system, station or item_id if this blueprint is located within a container. If the return value is an item_id, then the Character AssetList API must be queried to find the container using the given item_id to determine the correct location of the Blueprint.")
+    @ApiModelProperty(required = true, value = "References a solar system, station or item_id if this blueprint is located within a container. If the return value is an item_id, then the Character AssetList API must be queried to find the container using the given item_id to determine the correct location of the Blueprint.")
     public Long getLocationId() {
         return locationId;
     }
@@ -297,7 +318,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return materialEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Material Efficiency Level of the blueprint.")
+    @ApiModelProperty(required = true, value = "Material Efficiency Level of the blueprint.")
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
@@ -319,7 +340,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A range of numbers with a minimum of -2 and no maximum value where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (e.g. no activities performed on them yet).")
+    @ApiModelProperty(required = true, value = "A range of numbers with a minimum of -2 and no maximum value where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (e.g. no activities performed on them yet).")
     public Integer getQuantity() {
         return quantity;
     }
@@ -339,7 +360,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return runs
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original.")
+    @ApiModelProperty(required = true, value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original.")
     public Integer getRuns() {
         return runs;
     }
@@ -358,7 +379,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return timeEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time Efficiency Level of the blueprint.")
+    @ApiModelProperty(required = true, value = "Time Efficiency Level of the blueprint.")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }
@@ -377,7 +398,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

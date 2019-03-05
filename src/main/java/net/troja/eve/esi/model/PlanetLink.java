@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class PlanetLink implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("destination_pin_id")
+    @SerializedName("destination_pin_id")
     private Long destinationPinId = null;
 
-    @JsonProperty("link_level")
+    @SerializedName("link_level")
     private Integer linkLevel = null;
 
-    @JsonProperty("source_pin_id")
+    @SerializedName("source_pin_id")
     private Long sourcePinId = null;
 
     public PlanetLink destinationPinId(Long destinationPinId) {
@@ -44,7 +48,7 @@ public class PlanetLink implements Serializable {
      * 
      * @return destinationPinId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "destination_pin_id integer")
+    @ApiModelProperty(required = true, value = "destination_pin_id integer")
     public Long getDestinationPinId() {
         return destinationPinId;
     }
@@ -63,7 +67,7 @@ public class PlanetLink implements Serializable {
      * 
      * @return linkLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "link_level integer")
+    @ApiModelProperty(required = true, value = "link_level integer")
     public Integer getLinkLevel() {
         return linkLevel;
     }
@@ -82,7 +86,7 @@ public class PlanetLink implements Serializable {
      * 
      * @return sourcePinId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "source_pin_id integer")
+    @ApiModelProperty(required = true, value = "source_pin_id integer")
     public Long getSourcePinId() {
         return sourcePinId;
     }

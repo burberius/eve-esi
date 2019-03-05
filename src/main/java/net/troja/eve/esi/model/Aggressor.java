@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class Aggressor implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("isk_destroyed")
+    @SerializedName("isk_destroyed")
     private Float iskDestroyed = null;
 
-    @JsonProperty("ships_killed")
+    @SerializedName("ships_killed")
     private Integer shipsKilled = null;
 
     public Aggressor allianceId(Integer allianceId) {
@@ -48,7 +52,7 @@ public class Aggressor implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "Alliance ID if and only if the aggressor is an alliance")
+    @ApiModelProperty(value = "Alliance ID if and only if the aggressor is an alliance")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -67,7 +71,7 @@ public class Aggressor implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "Corporation ID if and only if the aggressor is a corporation")
+    @ApiModelProperty(value = "Corporation ID if and only if the aggressor is a corporation")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -86,7 +90,7 @@ public class Aggressor implements Serializable {
      * 
      * @return iskDestroyed
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ISK value of ships the aggressor has destroyed")
+    @ApiModelProperty(required = true, value = "ISK value of ships the aggressor has destroyed")
     public Float getIskDestroyed() {
         return iskDestroyed;
     }
@@ -105,7 +109,7 @@ public class Aggressor implements Serializable {
      * 
      * @return shipsKilled
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The number of ships the aggressor has killed")
+    @ApiModelProperty(required = true, value = "The number of ships the aggressor has killed")
     public Integer getShipsKilled() {
         return shipsKilled;
     }

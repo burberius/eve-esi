@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +34,16 @@ import java.io.Serializable;
 public class CharacterClonesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("home_location")
+    @SerializedName("home_location")
     private CloneHomeLocation homeLocation = null;
 
-    @JsonProperty("jump_clones")
-    private List<Clone> jumpClones = new ArrayList<Clone>();
+    @SerializedName("jump_clones")
+    private List<Clone> jumpClones = new ArrayList<>();
 
-    @JsonProperty("last_clone_jump_date")
+    @SerializedName("last_clone_jump_date")
     private OffsetDateTime lastCloneJumpDate = null;
 
-    @JsonProperty("last_station_change_date")
+    @SerializedName("last_station_change_date")
     private OffsetDateTime lastStationChangeDate = null;
 
     public CharacterClonesResponse homeLocation(CloneHomeLocation homeLocation) {
@@ -52,7 +56,7 @@ public class CharacterClonesResponse implements Serializable {
      * 
      * @return homeLocation
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CloneHomeLocation getHomeLocation() {
         return homeLocation;
     }
@@ -76,7 +80,7 @@ public class CharacterClonesResponse implements Serializable {
      * 
      * @return jumpClones
      **/
-    @ApiModelProperty(example = "null", required = true, value = "jump_clones array")
+    @ApiModelProperty(required = true, value = "jump_clones array")
     public List<Clone> getJumpClones() {
         return jumpClones;
     }
@@ -95,7 +99,7 @@ public class CharacterClonesResponse implements Serializable {
      * 
      * @return lastCloneJumpDate
      **/
-    @ApiModelProperty(example = "null", value = "last_clone_jump_date string")
+    @ApiModelProperty(value = "last_clone_jump_date string")
     public OffsetDateTime getLastCloneJumpDate() {
         return lastCloneJumpDate;
     }
@@ -114,7 +118,7 @@ public class CharacterClonesResponse implements Serializable {
      * 
      * @return lastStationChangeDate
      **/
-    @ApiModelProperty(example = "null", value = "last_station_change_date string")
+    @ApiModelProperty(value = "last_station_change_date string")
     public OffsetDateTime getLastStationChangeDate() {
         return lastStationChangeDate;
     }

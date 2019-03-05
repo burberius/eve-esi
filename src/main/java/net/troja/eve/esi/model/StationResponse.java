@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Position;
@@ -28,33 +32,34 @@ import java.io.Serializable;
 public class StationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("max_dockable_ship_volume")
+    @SerializedName("max_dockable_ship_volume")
     private Float maxDockableShipVolume = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("office_rental_cost")
+    @SerializedName("office_rental_cost")
     private Float officeRentalCost = null;
 
-    @JsonProperty("owner")
+    @SerializedName("owner")
     private Integer owner = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("race_id")
+    @SerializedName("race_id")
     private Integer raceId = null;
 
-    @JsonProperty("reprocessing_efficiency")
+    @SerializedName("reprocessing_efficiency")
     private Float reprocessingEfficiency = null;
 
-    @JsonProperty("reprocessing_stations_take")
+    @SerializedName("reprocessing_stations_take")
     private Float reprocessingStationsTake = null;
 
     /**
      * service string
      */
+    @JsonAdapter(ServicesEnum.Adapter.class)
     public enum ServicesEnum {
         BOUNTY_MISSIONS("bounty-missions"),
 
@@ -116,12 +121,15 @@ public class StationResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ServicesEnum fromValue(String text) {
             for (ServicesEnum b : ServicesEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -130,18 +138,31 @@ public class StationResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ServicesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ServicesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ServicesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ServicesEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("services")
-    private List<ServicesEnum> services = new ArrayList<ServicesEnum>();
+    @SerializedName("services")
+    private List<ServicesEnum> services = new ArrayList<>();
 
-    @JsonProperty("station_id")
+    @SerializedName("station_id")
     private Integer stationId = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public StationResponse maxDockableShipVolume(Float maxDockableShipVolume) {
@@ -154,7 +175,7 @@ public class StationResponse implements Serializable {
      * 
      * @return maxDockableShipVolume
      **/
-    @ApiModelProperty(example = "null", required = true, value = "max_dockable_ship_volume number")
+    @ApiModelProperty(required = true, value = "max_dockable_ship_volume number")
     public Float getMaxDockableShipVolume() {
         return maxDockableShipVolume;
     }
@@ -173,7 +194,7 @@ public class StationResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -192,7 +213,7 @@ public class StationResponse implements Serializable {
      * 
      * @return officeRentalCost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "office_rental_cost number")
+    @ApiModelProperty(required = true, value = "office_rental_cost number")
     public Float getOfficeRentalCost() {
         return officeRentalCost;
     }
@@ -211,7 +232,7 @@ public class StationResponse implements Serializable {
      * 
      * @return owner
      **/
-    @ApiModelProperty(example = "null", value = "ID of the corporation that controls this station")
+    @ApiModelProperty(value = "ID of the corporation that controls this station")
     public Integer getOwner() {
         return owner;
     }
@@ -230,7 +251,7 @@ public class StationResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -249,7 +270,7 @@ public class StationResponse implements Serializable {
      * 
      * @return raceId
      **/
-    @ApiModelProperty(example = "null", value = "race_id integer")
+    @ApiModelProperty(value = "race_id integer")
     public Integer getRaceId() {
         return raceId;
     }
@@ -268,7 +289,7 @@ public class StationResponse implements Serializable {
      * 
      * @return reprocessingEfficiency
      **/
-    @ApiModelProperty(example = "null", required = true, value = "reprocessing_efficiency number")
+    @ApiModelProperty(required = true, value = "reprocessing_efficiency number")
     public Float getReprocessingEfficiency() {
         return reprocessingEfficiency;
     }
@@ -287,7 +308,7 @@ public class StationResponse implements Serializable {
      * 
      * @return reprocessingStationsTake
      **/
-    @ApiModelProperty(example = "null", required = true, value = "reprocessing_stations_take number")
+    @ApiModelProperty(required = true, value = "reprocessing_stations_take number")
     public Float getReprocessingStationsTake() {
         return reprocessingStationsTake;
     }
@@ -311,7 +332,7 @@ public class StationResponse implements Serializable {
      * 
      * @return services
      **/
-    @ApiModelProperty(example = "null", required = true, value = "services array")
+    @ApiModelProperty(required = true, value = "services array")
     public List<ServicesEnum> getServices() {
         return services;
     }
@@ -330,7 +351,7 @@ public class StationResponse implements Serializable {
      * 
      * @return stationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "station_id integer")
+    @ApiModelProperty(required = true, value = "station_id integer")
     public Integer getStationId() {
         return stationId;
     }
@@ -349,7 +370,7 @@ public class StationResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this station is in")
+    @ApiModelProperty(required = true, value = "The solar system this station is in")
     public Integer getSystemId() {
         return systemId;
     }
@@ -368,7 +389,7 @@ public class StationResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

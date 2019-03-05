@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,23 +31,23 @@ import java.io.Serializable;
 public class PlanetRoute implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("content_type_id")
+    @SerializedName("content_type_id")
     private Integer contentTypeId = null;
 
-    @JsonProperty("destination_pin_id")
+    @SerializedName("destination_pin_id")
     private Long destinationPinId = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Float quantity = null;
 
-    @JsonProperty("route_id")
+    @SerializedName("route_id")
     private Long routeId = null;
 
-    @JsonProperty("source_pin_id")
+    @SerializedName("source_pin_id")
     private Long sourcePinId = null;
 
-    @JsonProperty("waypoints")
-    private List<Long> waypoints = new ArrayList<Long>();
+    @SerializedName("waypoints")
+    private List<Long> waypoints = null;
 
     public PlanetRoute contentTypeId(Integer contentTypeId) {
         this.contentTypeId = contentTypeId;
@@ -55,7 +59,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return contentTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "content_type_id integer")
+    @ApiModelProperty(required = true, value = "content_type_id integer")
     public Integer getContentTypeId() {
         return contentTypeId;
     }
@@ -74,7 +78,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return destinationPinId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "destination_pin_id integer")
+    @ApiModelProperty(required = true, value = "destination_pin_id integer")
     public Long getDestinationPinId() {
         return destinationPinId;
     }
@@ -93,7 +97,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity number")
+    @ApiModelProperty(required = true, value = "quantity number")
     public Float getQuantity() {
         return quantity;
     }
@@ -112,7 +116,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return routeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "route_id integer")
+    @ApiModelProperty(required = true, value = "route_id integer")
     public Long getRouteId() {
         return routeId;
     }
@@ -131,7 +135,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return sourcePinId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "source_pin_id integer")
+    @ApiModelProperty(required = true, value = "source_pin_id integer")
     public Long getSourcePinId() {
         return sourcePinId;
     }
@@ -146,6 +150,9 @@ public class PlanetRoute implements Serializable {
     }
 
     public PlanetRoute addWaypointsItem(Long waypointsItem) {
+        if (this.waypoints == null) {
+            this.waypoints = new ArrayList<>();
+        }
         this.waypoints.add(waypointsItem);
         return this;
     }
@@ -155,7 +162,7 @@ public class PlanetRoute implements Serializable {
      * 
      * @return waypoints
      **/
-    @ApiModelProperty(example = "null", value = "list of pin ID waypoints")
+    @ApiModelProperty(value = "list of pin ID waypoints")
     public List<Long> getWaypoints() {
         return waypoints;
     }

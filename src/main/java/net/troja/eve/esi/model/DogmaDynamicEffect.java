@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class DogmaDynamicEffect implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("effect_id")
+    @SerializedName("effect_id")
     private Integer effectId = null;
 
-    @JsonProperty("is_default")
+    @SerializedName("is_default")
     private Boolean isDefault = null;
 
     public DogmaDynamicEffect effectId(Integer effectId) {
@@ -41,7 +45,7 @@ public class DogmaDynamicEffect implements Serializable {
      * 
      * @return effectId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "effect_id integer")
+    @ApiModelProperty(required = true, value = "effect_id integer")
     public Integer getEffectId() {
         return effectId;
     }
@@ -60,8 +64,8 @@ public class DogmaDynamicEffect implements Serializable {
      * 
      * @return isDefault
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_default boolean")
-    public Boolean getIsDefault() {
+    @ApiModelProperty(required = true, value = "is_default boolean")
+    public Boolean isIsDefault() {
         return isDefault;
     }
 

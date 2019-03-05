@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,10 +31,10 @@ import java.io.Serializable;
 public class MailMetaData implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("labels")
-    private List<Integer> labels = new ArrayList<Integer>();
+    @SerializedName("labels")
+    private List<Integer> labels = null;
 
-    @JsonProperty("read")
+    @SerializedName("read")
     private Boolean read = null;
 
     public MailMetaData labels(List<Integer> labels) {
@@ -39,6 +43,9 @@ public class MailMetaData implements Serializable {
     }
 
     public MailMetaData addLabelsItem(Integer labelsItem) {
+        if (this.labels == null) {
+            this.labels = new ArrayList<>();
+        }
         this.labels.add(labelsItem);
         return this;
     }
@@ -48,7 +55,7 @@ public class MailMetaData implements Serializable {
      * 
      * @return labels
      **/
-    @ApiModelProperty(example = "null", value = "Labels to assign to the mail. Pre-existing labels are unassigned.")
+    @ApiModelProperty(value = "Labels to assign to the mail. Pre-existing labels are unassigned.")
     public List<Integer> getLabels() {
         return labels;
     }
@@ -67,8 +74,8 @@ public class MailMetaData implements Serializable {
      * 
      * @return read
      **/
-    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
-    public Boolean getRead() {
+    @ApiModelProperty(value = "Whether the mail is flagged as read")
+    public Boolean isRead() {
         return read;
     }
 

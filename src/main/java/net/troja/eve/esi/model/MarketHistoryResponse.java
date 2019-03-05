@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.io.Serializable;
 
@@ -26,22 +30,22 @@ import java.io.Serializable;
 public class MarketHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("average")
+    @SerializedName("average")
     private Double average = null;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private LocalDate date = null;
 
-    @JsonProperty("highest")
+    @SerializedName("highest")
     private Double highest = null;
 
-    @JsonProperty("lowest")
+    @SerializedName("lowest")
     private Double lowest = null;
 
-    @JsonProperty("order_count")
+    @SerializedName("order_count")
     private Long orderCount = null;
 
-    @JsonProperty("volume")
+    @SerializedName("volume")
     private Long volume = null;
 
     public MarketHistoryResponse average(Double average) {
@@ -54,7 +58,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return average
      **/
-    @ApiModelProperty(example = "null", required = true, value = "average number")
+    @ApiModelProperty(required = true, value = "average number")
     public Double getAverage() {
         return average;
     }
@@ -73,7 +77,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The date of this historical statistic entry")
+    @ApiModelProperty(required = true, value = "The date of this historical statistic entry")
     public LocalDate getDate() {
         return date;
     }
@@ -92,7 +96,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return highest
      **/
-    @ApiModelProperty(example = "null", required = true, value = "highest number")
+    @ApiModelProperty(required = true, value = "highest number")
     public Double getHighest() {
         return highest;
     }
@@ -111,7 +115,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return lowest
      **/
-    @ApiModelProperty(example = "null", required = true, value = "lowest number")
+    @ApiModelProperty(required = true, value = "lowest number")
     public Double getLowest() {
         return lowest;
     }
@@ -130,7 +134,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return orderCount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Total number of orders happened that day")
+    @ApiModelProperty(required = true, value = "Total number of orders happened that day")
     public Long getOrderCount() {
         return orderCount;
     }
@@ -149,7 +153,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return volume
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Total")
+    @ApiModelProperty(required = true, value = "Total")
     public Long getVolume() {
         return volume;
     }

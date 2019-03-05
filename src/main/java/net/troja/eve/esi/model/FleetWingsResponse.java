@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Squad;
@@ -28,14 +32,14 @@ import java.io.Serializable;
 public class FleetWingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Long id = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("squads")
-    private List<Squad> squads = new ArrayList<Squad>();
+    @SerializedName("squads")
+    private List<Squad> squads = new ArrayList<>();
 
     public FleetWingsResponse id(Long id) {
         this.id = id;
@@ -47,7 +51,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "id integer")
+    @ApiModelProperty(required = true, value = "id integer")
     public Long getId() {
         return id;
     }
@@ -66,7 +70,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -90,7 +94,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return squads
      **/
-    @ApiModelProperty(example = "null", required = true, value = "squads array")
+    @ApiModelProperty(required = true, value = "squads array")
     public List<Squad> getSquads() {
         return squads;
     }

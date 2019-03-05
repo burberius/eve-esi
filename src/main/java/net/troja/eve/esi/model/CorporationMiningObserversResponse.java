@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.io.Serializable;
 
@@ -26,15 +30,16 @@ import java.io.Serializable;
 public class CorporationMiningObserversResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_updated")
+    @SerializedName("last_updated")
     private LocalDate lastUpdated = null;
 
-    @JsonProperty("observer_id")
+    @SerializedName("observer_id")
     private Long observerId = null;
 
     /**
      * The category of the observing entity
      */
+    @JsonAdapter(ObserverTypeEnum.Adapter.class)
     public enum ObserverTypeEnum {
         STRUCTURE("structure");
 
@@ -44,12 +49,15 @@ public class CorporationMiningObserversResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ObserverTypeEnum fromValue(String text) {
             for (ObserverTypeEnum b : ObserverTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -58,9 +66,22 @@ public class CorporationMiningObserversResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ObserverTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ObserverTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ObserverTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ObserverTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("observer_type")
+    @SerializedName("observer_type")
     private ObserverTypeEnum observerType = null;
 
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
@@ -73,7 +94,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return lastUpdated
      **/
-    @ApiModelProperty(example = "null", required = true, value = "last_updated string")
+    @ApiModelProperty(required = true, value = "last_updated string")
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
@@ -92,7 +113,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The entity that was observing the asteroid field when it was mined. ")
+    @ApiModelProperty(required = true, value = "The entity that was observing the asteroid field when it was mined. ")
     public Long getObserverId() {
         return observerId;
     }
@@ -111,7 +132,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The category of the observing entity")
+    @ApiModelProperty(required = true, value = "The category of the observing entity")
     public ObserverTypeEnum getObserverType() {
         return observerType;
     }

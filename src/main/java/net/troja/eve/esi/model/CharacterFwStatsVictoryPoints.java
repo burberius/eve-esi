@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -26,13 +30,13 @@ import java.io.Serializable;
 public class CharacterFwStatsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_week")
+    @SerializedName("last_week")
     private Integer lastWeek = null;
 
-    @JsonProperty("total")
+    @SerializedName("total")
     private Integer total = null;
 
-    @JsonProperty("yesterday")
+    @SerializedName("yesterday")
     private Integer yesterday = null;
 
     public CharacterFwStatsVictoryPoints lastWeek(Integer lastWeek) {
@@ -41,11 +45,11 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
     }
 
     /**
-     * Last week's victory points gained by the given character
+     * Last week&#39;s victory points gained by the given character
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Last week's victory points gained by the given character")
+    @ApiModelProperty(required = true, value = "Last week's victory points gained by the given character")
     public Integer getLastWeek() {
         return lastWeek;
     }
@@ -64,7 +68,7 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
      * 
      * @return total
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Total victory points gained since the given character enlisted")
+    @ApiModelProperty(required = true, value = "Total victory points gained since the given character enlisted")
     public Integer getTotal() {
         return total;
     }
@@ -79,11 +83,11 @@ public class CharacterFwStatsVictoryPoints implements Serializable {
     }
 
     /**
-     * Yesterday's victory points gained by the given character
+     * Yesterday&#39;s victory points gained by the given character
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Yesterday's victory points gained by the given character")
+    @ApiModelProperty(required = true, value = "Yesterday's victory points gained by the given character")
     public Integer getYesterday() {
         return yesterday;
     }

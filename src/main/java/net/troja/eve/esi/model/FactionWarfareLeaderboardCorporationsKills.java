@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationActiveTotalKills;
@@ -31,14 +35,14 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationsKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCorporationActiveTotalKills> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotalKills>();
+    @SerializedName("active_total")
+    private List<FactionWarfareLeaderboardCorporationActiveTotalKills> activeTotal = new ArrayList<>();
 
-    @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCorporationLastWeekKills> lastWeek = new ArrayList<FactionWarfareLeaderboardCorporationLastWeekKills>();
+    @SerializedName("last_week")
+    private List<FactionWarfareLeaderboardCorporationLastWeekKills> lastWeek = new ArrayList<>();
 
-    @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCorporationYesterdayKills> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterdayKills>();
+    @SerializedName("yesterday")
+    private List<FactionWarfareLeaderboardCorporationYesterdayKills> yesterday = new ArrayList<>();
 
     public FactionWarfareLeaderboardCorporationsKills activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalKills> activeTotal) {
@@ -54,12 +58,12 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
 
     /**
      * Top 10 ranking of corporations active in faction warfare by total kills.
-     * A corporation is considered \"active\" if they have participated in
-     * faction warfare in the past 14 days
+     * A corporation is considered \&quot;active\&quot; if they have
+     * participated in faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations active in faction warfare by total kills. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations active in faction warfare by total kills. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCorporationActiveTotalKills> getActiveTotal() {
         return activeTotal;
     }
@@ -85,7 +89,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by kills in the past week")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past week")
     public List<FactionWarfareLeaderboardCorporationLastWeekKills> getLastWeek() {
         return lastWeek;
     }
@@ -111,7 +115,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by kills in the past day")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past day")
     public List<FactionWarfareLeaderboardCorporationYesterdayKills> getYesterday() {
         return yesterday;
     }

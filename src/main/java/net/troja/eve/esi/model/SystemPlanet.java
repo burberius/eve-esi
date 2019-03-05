@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,13 +31,13 @@ import java.io.Serializable;
 public class SystemPlanet implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("asteroid_belts")
-    private List<Integer> asteroidBelts = new ArrayList<Integer>();
+    @SerializedName("asteroid_belts")
+    private List<Integer> asteroidBelts = null;
 
-    @JsonProperty("moons")
-    private List<Integer> moons = new ArrayList<Integer>();
+    @SerializedName("moons")
+    private List<Integer> moons = null;
 
-    @JsonProperty("planet_id")
+    @SerializedName("planet_id")
     private Integer planetId = null;
 
     public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
@@ -42,6 +46,9 @@ public class SystemPlanet implements Serializable {
     }
 
     public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
+        if (this.asteroidBelts == null) {
+            this.asteroidBelts = new ArrayList<>();
+        }
         this.asteroidBelts.add(asteroidBeltsItem);
         return this;
     }
@@ -51,7 +58,7 @@ public class SystemPlanet implements Serializable {
      * 
      * @return asteroidBelts
      **/
-    @ApiModelProperty(example = "null", value = "asteroid_belts array")
+    @ApiModelProperty(value = "asteroid_belts array")
     public List<Integer> getAsteroidBelts() {
         return asteroidBelts;
     }
@@ -66,6 +73,9 @@ public class SystemPlanet implements Serializable {
     }
 
     public SystemPlanet addMoonsItem(Integer moonsItem) {
+        if (this.moons == null) {
+            this.moons = new ArrayList<>();
+        }
         this.moons.add(moonsItem);
         return this;
     }
@@ -75,7 +85,7 @@ public class SystemPlanet implements Serializable {
      * 
      * @return moons
      **/
-    @ApiModelProperty(example = "null", value = "moons array")
+    @ApiModelProperty(value = "moons array")
     public List<Integer> getMoons() {
         return moons;
     }
@@ -94,7 +104,7 @@ public class SystemPlanet implements Serializable {
      * 
      * @return planetId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    @ApiModelProperty(required = true, value = "planet_id integer")
     public Integer getPlanetId() {
         return planetId;
     }

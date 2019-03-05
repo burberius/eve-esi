@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.RequiredItem;
@@ -28,25 +32,25 @@ import java.io.Serializable;
 public class LoyaltyStoreOffersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("ak_cost")
+    @SerializedName("ak_cost")
     private Integer akCost = null;
 
-    @JsonProperty("isk_cost")
+    @SerializedName("isk_cost")
     private Long iskCost = null;
 
-    @JsonProperty("lp_cost")
+    @SerializedName("lp_cost")
     private Integer lpCost = null;
 
-    @JsonProperty("offer_id")
+    @SerializedName("offer_id")
     private Integer offerId = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("required_items")
-    private List<RequiredItem> requiredItems = new ArrayList<RequiredItem>();
+    @SerializedName("required_items")
+    private List<RequiredItem> requiredItems = new ArrayList<>();
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public LoyaltyStoreOffersResponse akCost(Integer akCost) {
@@ -59,7 +63,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return akCost
      **/
-    @ApiModelProperty(example = "null", value = "Analysis kredit cost")
+    @ApiModelProperty(value = "Analysis kredit cost")
     public Integer getAkCost() {
         return akCost;
     }
@@ -78,7 +82,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return iskCost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "isk_cost integer")
+    @ApiModelProperty(required = true, value = "isk_cost integer")
     public Long getIskCost() {
         return iskCost;
     }
@@ -97,7 +101,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return lpCost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "lp_cost integer")
+    @ApiModelProperty(required = true, value = "lp_cost integer")
     public Integer getLpCost() {
         return lpCost;
     }
@@ -116,7 +120,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return offerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "offer_id integer")
+    @ApiModelProperty(required = true, value = "offer_id integer")
     public Integer getOfferId() {
         return offerId;
     }
@@ -135,7 +139,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
     }
@@ -159,7 +163,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return requiredItems
      **/
-    @ApiModelProperty(example = "null", required = true, value = "required_items array")
+    @ApiModelProperty(required = true, value = "required_items array")
     public List<RequiredItem> getRequiredItems() {
         return requiredItems;
     }
@@ -178,7 +182,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

@@ -9,7 +9,13 @@ wget -q -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tran
 #
 # Remove old model files in case something was removed
 #
+mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
+mv src/main/java/net/troja/eve/esi/model/EsiStatus.java src/main/java/net/troja/eve/esi/EsiStatus.java
 rm -r src/main/java/net/troja/eve/esi/model
+
+mv src/main/java/net/troja/eve/esi/api/MetaApi.java src/main/java/net/troja/eve/esi/MetaApi.java
+mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
+rm -r src/main/java/net/troja/eve/esi/api
 
 #
 # Get swagger code generator
@@ -36,12 +42,16 @@ sed -i -f replace.sed esi.json
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-java -jar swagger-codegen-cli.jar generate \
+java -jar swagger-codegen-cli-2.3.1.jar generate \
   -i esi.json \
   -l java \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
+mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi//model/CharacterInfo.java
+mv src/main/java/net/troja/eve/esi/EsiStatus.java src/main/java/net/troja/eve/esi/model/EsiStatus.java
+mv src/main/java/net/troja/eve/esi/MetaApi.java src/main/java/net/troja/eve/esi/api/MetaApi.java
+mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
   sed -i -e '/OpenAPI spec version/d' $I

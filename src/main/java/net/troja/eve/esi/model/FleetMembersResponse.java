@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,15 +30,16 @@ import java.io.Serializable;
 public class FleetMembersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("join_time")
+    @SerializedName("join_time")
     private OffsetDateTime joinTime = null;
 
     /**
      * Member’s role in fleet
      */
+    @JsonAdapter(RoleEnum.Adapter.class)
     public enum RoleEnum {
         FLEET_COMMANDER("fleet_commander"),
 
@@ -50,12 +55,15 @@ public class FleetMembersResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RoleEnum fromValue(String text) {
             for (RoleEnum b : RoleEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -64,30 +72,43 @@ public class FleetMembersResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RoleEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RoleEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RoleEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("role")
+    @SerializedName("role")
     private RoleEnum role = null;
 
-    @JsonProperty("role_name")
+    @SerializedName("role_name")
     private String roleName = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("squad_id")
+    @SerializedName("squad_id")
     private Long squadId = null;
 
-    @JsonProperty("station_id")
+    @SerializedName("station_id")
     private Long stationId = null;
 
-    @JsonProperty("takes_fleet_warp")
+    @SerializedName("takes_fleet_warp")
     private Boolean takesFleetWarp = null;
 
-    @JsonProperty("wing_id")
+    @SerializedName("wing_id")
     private Long wingId = null;
 
     public FleetMembersResponse characterId(Integer characterId) {
@@ -100,7 +121,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
+    @ApiModelProperty(required = true, value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -119,7 +140,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return joinTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "join_time string")
+    @ApiModelProperty(required = true, value = "join_time string")
     public OffsetDateTime getJoinTime() {
         return joinTime;
     }
@@ -138,7 +159,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return role
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Member’s role in fleet")
+    @ApiModelProperty(required = true, value = "Member’s role in fleet")
     public RoleEnum getRole() {
         return role;
     }
@@ -157,7 +178,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return roleName
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Localized role names")
+    @ApiModelProperty(required = true, value = "Localized role names")
     public String getRoleName() {
         return roleName;
     }
@@ -176,7 +197,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    @ApiModelProperty(required = true, value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
     }
@@ -195,7 +216,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Solar system the member is located in")
+    @ApiModelProperty(required = true, value = "Solar system the member is located in")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -214,7 +235,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return squadId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
+    @ApiModelProperty(required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
     public Long getSquadId() {
         return squadId;
     }
@@ -233,7 +254,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return stationId
      **/
-    @ApiModelProperty(example = "null", value = "Station in which the member is docked in, if applicable")
+    @ApiModelProperty(value = "Station in which the member is docked in, if applicable")
     public Long getStationId() {
         return stationId;
     }
@@ -252,8 +273,8 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return takesFleetWarp
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Whether the member take fleet warps")
-    public Boolean getTakesFleetWarp() {
+    @ApiModelProperty(required = true, value = "Whether the member take fleet warps")
+    public Boolean isTakesFleetWarp() {
         return takesFleetWarp;
     }
 
@@ -271,7 +292,7 @@ public class FleetMembersResponse implements Serializable {
      * 
      * @return wingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
+    @ApiModelProperty(required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
     public Long getWingId() {
         return wingId;
     }

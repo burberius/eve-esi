@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,25 +34,25 @@ import java.io.Serializable;
 public class KillmailResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("attackers")
-    private List<KillmailAttacker> attackers = new ArrayList<KillmailAttacker>();
+    @SerializedName("attackers")
+    private List<KillmailAttacker> attackers = new ArrayList<>();
 
-    @JsonProperty("killmail_id")
+    @SerializedName("killmail_id")
     private Integer killmailId = null;
 
-    @JsonProperty("killmail_time")
+    @SerializedName("killmail_time")
     private OffsetDateTime killmailTime = null;
 
-    @JsonProperty("moon_id")
+    @SerializedName("moon_id")
     private Integer moonId = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("victim")
+    @SerializedName("victim")
     private KillmailVictim victim = null;
 
-    @JsonProperty("war_id")
+    @SerializedName("war_id")
     private Integer warId = null;
 
     public KillmailResponse attackers(List<KillmailAttacker> attackers) {
@@ -66,7 +70,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return attackers
      **/
-    @ApiModelProperty(example = "null", required = true, value = "attackers array")
+    @ApiModelProperty(required = true, value = "attackers array")
     public List<KillmailAttacker> getAttackers() {
         return attackers;
     }
@@ -85,7 +89,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return killmailId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the killmail")
+    @ApiModelProperty(required = true, value = "ID of the killmail")
     public Integer getKillmailId() {
         return killmailId;
     }
@@ -104,7 +108,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return killmailTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time that the victim was killed and the killmail generated ")
+    @ApiModelProperty(required = true, value = "Time that the victim was killed and the killmail generated ")
     public OffsetDateTime getKillmailTime() {
         return killmailTime;
     }
@@ -123,7 +127,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return moonId
      **/
-    @ApiModelProperty(example = "null", value = "Moon if the kill took place at one")
+    @ApiModelProperty(value = "Moon if the kill took place at one")
     public Integer getMoonId() {
         return moonId;
     }
@@ -142,7 +146,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Solar system that the kill took place in ")
+    @ApiModelProperty(required = true, value = "Solar system that the kill took place in ")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -161,7 +165,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return victim
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public KillmailVictim getVictim() {
         return victim;
     }
@@ -180,7 +184,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return warId
      **/
-    @ApiModelProperty(example = "null", value = "War if the killmail is generated in relation to an official war ")
+    @ApiModelProperty(value = "War if the killmail is generated in relation to an official war ")
     public Integer getWarId() {
         return warId;
     }

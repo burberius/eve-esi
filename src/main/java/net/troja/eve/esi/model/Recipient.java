@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class Recipient implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("recipient_id")
+    @SerializedName("recipient_id")
     private Integer recipientId = null;
 
     /**
      * recipient_type string
      */
+    @JsonAdapter(RecipientTypeEnum.Adapter.class)
     public enum RecipientTypeEnum {
         ALLIANCE("alliance"),
 
@@ -46,12 +51,15 @@ public class Recipient implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RecipientTypeEnum fromValue(String text) {
             for (RecipientTypeEnum b : RecipientTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -60,9 +68,22 @@ public class Recipient implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RecipientTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RecipientTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RecipientTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RecipientTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("recipient_type")
+    @SerializedName("recipient_type")
     private RecipientTypeEnum recipientType = null;
 
     public Recipient recipientId(Integer recipientId) {
@@ -75,7 +96,7 @@ public class Recipient implements Serializable {
      * 
      * @return recipientId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "recipient_id integer")
+    @ApiModelProperty(required = true, value = "recipient_id integer")
     public Integer getRecipientId() {
         return recipientId;
     }
@@ -94,7 +115,7 @@ public class Recipient implements Serializable {
      * 
      * @return recipientType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "recipient_type string")
+    @ApiModelProperty(required = true, value = "recipient_type string")
     public RecipientTypeEnum getRecipientType() {
         return recipientType;
     }

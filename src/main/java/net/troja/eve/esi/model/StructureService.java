@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class StructureService implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     /**
      * state string
      */
+    @JsonAdapter(StateEnum.Adapter.class)
     public enum StateEnum {
         ONLINE("online"),
 
@@ -44,12 +49,15 @@ public class StructureService implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StateEnum fromValue(String text) {
             for (StateEnum b : StateEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -58,9 +66,22 @@ public class StructureService implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StateEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StateEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StateEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("state")
+    @SerializedName("state")
     private StateEnum state = null;
 
     public StructureService name(String name) {
@@ -73,7 +94,7 @@ public class StructureService implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -92,7 +113,7 @@ public class StructureService implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(example = "null", required = true, value = "state string")
+    @ApiModelProperty(required = true, value = "state string")
     public StateEnum getState() {
         return state;
     }

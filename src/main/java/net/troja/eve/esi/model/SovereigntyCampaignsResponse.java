@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,26 +33,27 @@ import java.io.Serializable;
 public class SovereigntyCampaignsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("attackers_score")
+    @SerializedName("attackers_score")
     private Float attackersScore = null;
 
-    @JsonProperty("campaign_id")
+    @SerializedName("campaign_id")
     private Integer campaignId = null;
 
-    @JsonProperty("constellation_id")
+    @SerializedName("constellation_id")
     private Integer constellationId = null;
 
-    @JsonProperty("defender_id")
+    @SerializedName("defender_id")
     private Integer defenderId = null;
 
-    @JsonProperty("defender_score")
+    @SerializedName("defender_score")
     private Float defenderScore = null;
 
     /**
      * Type of event this campaign is for. tcu_defense, ihub_defense and
-     * station_defense are referred to as \"Defense Events\", station_freeport
-     * as \"Freeport Events\".
+     * station_defense are referred to as \&quot;Defense Events\&quot;,
+     * station_freeport as \&quot;Freeport Events\&quot;.
      */
+    @JsonAdapter(EventTypeEnum.Adapter.class)
     public enum EventTypeEnum {
         TCU_DEFENSE("tcu_defense"),
 
@@ -64,12 +69,15 @@ public class SovereigntyCampaignsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static EventTypeEnum fromValue(String text) {
             for (EventTypeEnum b : EventTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -78,21 +86,34 @@ public class SovereigntyCampaignsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<EventTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final EventTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public EventTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return EventTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("event_type")
+    @SerializedName("event_type")
     private EventTypeEnum eventType = null;
 
-    @JsonProperty("participants")
-    private List<SovereigntyCampaignParticipant> participants = new ArrayList<SovereigntyCampaignParticipant>();
+    @SerializedName("participants")
+    private List<SovereigntyCampaignParticipant> participants = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("start_time")
+    @SerializedName("start_time")
     private OffsetDateTime startTime = null;
 
-    @JsonProperty("structure_id")
+    @SerializedName("structure_id")
     private Long structureId = null;
 
     public SovereigntyCampaignsResponse attackersScore(Float attackersScore) {
@@ -105,7 +126,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return attackersScore
      **/
-    @ApiModelProperty(example = "null", value = "Score for all attacking parties, only present in Defense Events. ")
+    @ApiModelProperty(value = "Score for all attacking parties, only present in Defense Events. ")
     public Float getAttackersScore() {
         return attackersScore;
     }
@@ -124,7 +145,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return campaignId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this campaign.")
+    @ApiModelProperty(required = true, value = "Unique ID for this campaign.")
     public Integer getCampaignId() {
         return campaignId;
     }
@@ -143,7 +164,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return constellationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The constellation in which the campaign will take place. ")
+    @ApiModelProperty(required = true, value = "The constellation in which the campaign will take place. ")
     public Integer getConstellationId() {
         return constellationId;
     }
@@ -162,7 +183,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return defenderId
      **/
-    @ApiModelProperty(example = "null", value = "Defending alliance, only present in Defense Events ")
+    @ApiModelProperty(value = "Defending alliance, only present in Defense Events ")
     public Integer getDefenderId() {
         return defenderId;
     }
@@ -181,7 +202,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return defenderScore
      **/
-    @ApiModelProperty(example = "null", value = "Score for the defending alliance, only present in Defense Events. ")
+    @ApiModelProperty(value = "Score for the defending alliance, only present in Defense Events. ")
     public Float getDefenderScore() {
         return defenderScore;
     }
@@ -197,12 +218,12 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
     /**
      * Type of event this campaign is for. tcu_defense, ihub_defense and
-     * station_defense are referred to as \"Defense Events\", station_freeport
-     * as \"Freeport Events\".
+     * station_defense are referred to as \&quot;Defense Events\&quot;,
+     * station_freeport as \&quot;Freeport Events\&quot;.
      * 
      * @return eventType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
+    @ApiModelProperty(required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
     public EventTypeEnum getEventType() {
         return eventType;
     }
@@ -217,6 +238,9 @@ public class SovereigntyCampaignsResponse implements Serializable {
     }
 
     public SovereigntyCampaignsResponse addParticipantsItem(SovereigntyCampaignParticipant participantsItem) {
+        if (this.participants == null) {
+            this.participants = new ArrayList<>();
+        }
         this.participants.add(participantsItem);
         return this;
     }
@@ -227,7 +251,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return participants
      **/
-    @ApiModelProperty(example = "null", value = "Alliance participating and their respective scores, only present in Freeport Events. ")
+    @ApiModelProperty(value = "Alliance participating and their respective scores, only present in Freeport Events. ")
     public List<SovereigntyCampaignParticipant> getParticipants() {
         return participants;
     }
@@ -246,7 +270,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is located in. ")
+    @ApiModelProperty(required = true, value = "The solar system the structure is located in. ")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -265,7 +289,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return startTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time the event is scheduled to start. ")
+    @ApiModelProperty(required = true, value = "Time the event is scheduled to start. ")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -284,7 +308,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return structureId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The structure item ID that is related to this campaign. ")
+    @ApiModelProperty(required = true, value = "The structure item ID that is related to this campaign. ")
     public Long getStructureId() {
         return structureId;
     }

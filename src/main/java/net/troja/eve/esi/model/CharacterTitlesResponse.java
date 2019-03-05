@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterTitlesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("title_id")
+    @SerializedName("title_id")
     private Integer titleId = null;
 
     public CharacterTitlesResponse name(String name) {
@@ -41,7 +45,7 @@ public class CharacterTitlesResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -60,7 +64,7 @@ public class CharacterTitlesResponse implements Serializable {
      * 
      * @return titleId
      **/
-    @ApiModelProperty(example = "null", value = "title_id integer")
+    @ApiModelProperty(value = "title_id integer")
     public Integer getTitleId() {
         return titleId;
     }

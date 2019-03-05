@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,7 @@ public class MailLabel implements Serializable {
     /**
      * color string
      */
+    @JsonAdapter(ColorEnum.Adapter.class)
     public enum ColorEnum {
         _0000FE("#0000fe"),
 
@@ -71,12 +76,15 @@ public class MailLabel implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ColorEnum fromValue(String text) {
             for (ColorEnum b : ColorEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -85,18 +93,31 @@ public class MailLabel implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ColorEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ColorEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ColorEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ColorEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("color")
+    @SerializedName("color")
     private ColorEnum color = ColorEnum.FFFFFF;
 
-    @JsonProperty("label_id")
+    @SerializedName("label_id")
     private Integer labelId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("unread_count")
+    @SerializedName("unread_count")
     private Integer unreadCount = null;
 
     public MailLabel color(ColorEnum color) {
@@ -109,7 +130,7 @@ public class MailLabel implements Serializable {
      * 
      * @return color
      **/
-    @ApiModelProperty(example = "null", value = "color string")
+    @ApiModelProperty(value = "color string")
     public ColorEnum getColor() {
         return color;
     }
@@ -128,7 +149,7 @@ public class MailLabel implements Serializable {
      * 
      * @return labelId
      **/
-    @ApiModelProperty(example = "null", value = "label_id integer")
+    @ApiModelProperty(value = "label_id integer")
     public Integer getLabelId() {
         return labelId;
     }
@@ -147,7 +168,7 @@ public class MailLabel implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -166,7 +187,7 @@ public class MailLabel implements Serializable {
      * 
      * @return unreadCount
      **/
-    @ApiModelProperty(example = "null", value = "unread_count integer")
+    @ApiModelProperty(value = "unread_count integer")
     public Integer getUnreadCount() {
         return unreadCount;
     }

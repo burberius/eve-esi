@@ -3,8 +3,8 @@ package net.troja.eve.esi.api;
 import java.util.Map;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
+import net.troja.eve.esi.model.CharacterInfo;
 import static org.junit.Assume.assumeFalse;
 import org.junit.BeforeClass;
 
@@ -61,7 +61,7 @@ public class GeneralApiTest {
         final CharacterInfo info = api.getCharacterInfo();
 
         characterName = info.getCharacterName();
-        characterId = info.getCharacterId();
+        characterId = info.getCharacterID();
     }
 
     protected void ignoreTestFails() {

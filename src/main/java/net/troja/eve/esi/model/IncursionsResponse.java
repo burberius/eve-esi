@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,27 +31,28 @@ import java.io.Serializable;
 public class IncursionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellation_id")
+    @SerializedName("constellation_id")
     private Integer constellationId = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("has_boss")
+    @SerializedName("has_boss")
     private Boolean hasBoss = null;
 
-    @JsonProperty("infested_solar_systems")
-    private List<Integer> infestedSolarSystems = new ArrayList<Integer>();
+    @SerializedName("infested_solar_systems")
+    private List<Integer> infestedSolarSystems = new ArrayList<>();
 
-    @JsonProperty("influence")
+    @SerializedName("influence")
     private Float influence = null;
 
-    @JsonProperty("staging_solar_system_id")
+    @SerializedName("staging_solar_system_id")
     private Integer stagingSolarSystemId = null;
 
     /**
      * The state of this incursion
      */
+    @JsonAdapter(StateEnum.Adapter.class)
     public enum StateEnum {
         WITHDRAWING("withdrawing"),
 
@@ -61,12 +66,15 @@ public class IncursionsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StateEnum fromValue(String text) {
             for (StateEnum b : StateEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -75,12 +83,25 @@ public class IncursionsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StateEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StateEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StateEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("state")
+    @SerializedName("state")
     private StateEnum state = null;
 
-    @JsonProperty("type")
+    @SerializedName("type")
     private String type = null;
 
     public IncursionsResponse constellationId(Integer constellationId) {
@@ -93,7 +114,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return constellationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The constellation id in which this incursion takes place")
+    @ApiModelProperty(required = true, value = "The constellation id in which this incursion takes place")
     public Integer getConstellationId() {
         return constellationId;
     }
@@ -108,11 +129,11 @@ public class IncursionsResponse implements Serializable {
     }
 
     /**
-     * The attacking faction's id
+     * The attacking faction&#39;s id
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The attacking faction's id")
+    @ApiModelProperty(required = true, value = "The attacking faction's id")
     public Integer getFactionId() {
         return factionId;
     }
@@ -131,8 +152,8 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return hasBoss
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Whether the final encounter has boss or not")
-    public Boolean getHasBoss() {
+    @ApiModelProperty(required = true, value = "Whether the final encounter has boss or not")
+    public Boolean isHasBoss() {
         return hasBoss;
     }
 
@@ -155,7 +176,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return infestedSolarSystems
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A list of infested solar system ids that are a part of this incursion")
+    @ApiModelProperty(required = true, value = "A list of infested solar system ids that are a part of this incursion")
     public List<Integer> getInfestedSolarSystems() {
         return infestedSolarSystems;
     }
@@ -174,7 +195,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return influence
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Influence of this incursion as a float from 0 to 1")
+    @ApiModelProperty(required = true, value = "Influence of this incursion as a float from 0 to 1")
     public Float getInfluence() {
         return influence;
     }
@@ -193,7 +214,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return stagingSolarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Staging solar system for this incursion")
+    @ApiModelProperty(required = true, value = "Staging solar system for this incursion")
     public Integer getStagingSolarSystemId() {
         return stagingSolarSystemId;
     }
@@ -212,7 +233,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The state of this incursion")
+    @ApiModelProperty(required = true, value = "The state of this incursion")
     public StateEnum getState() {
         return state;
     }
@@ -231,7 +252,7 @@ public class IncursionsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type of this incursion")
+    @ApiModelProperty(required = true, value = "The type of this incursion")
     public String getType() {
         return type;
     }

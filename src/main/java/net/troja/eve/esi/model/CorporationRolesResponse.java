@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,12 +31,13 @@ import java.io.Serializable;
 public class CorporationRolesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
     /**
      * grantable_role string
      */
+    @JsonAdapter(GrantableRolesEnum.Adapter.class)
     public enum GrantableRolesEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -140,12 +145,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static GrantableRolesEnum fromValue(String text) {
             for (GrantableRolesEnum b : GrantableRolesEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -154,14 +162,28 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<GrantableRolesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final GrantableRolesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public GrantableRolesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return GrantableRolesEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("grantable_roles")
-    private List<GrantableRolesEnum> grantableRoles = new ArrayList<GrantableRolesEnum>();
+    @SerializedName("grantable_roles")
+    private List<GrantableRolesEnum> grantableRoles = null;
 
     /**
      * grantable_roles_at_base string
      */
+    @JsonAdapter(GrantableRolesAtBaseEnum.Adapter.class)
     public enum GrantableRolesAtBaseEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -269,12 +291,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static GrantableRolesAtBaseEnum fromValue(String text) {
             for (GrantableRolesAtBaseEnum b : GrantableRolesAtBaseEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -283,14 +308,29 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<GrantableRolesAtBaseEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final GrantableRolesAtBaseEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public GrantableRolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return GrantableRolesAtBaseEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("grantable_roles_at_base")
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = new ArrayList<GrantableRolesAtBaseEnum>();
+    @SerializedName("grantable_roles_at_base")
+    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = null;
 
     /**
      * grantable_roles_at_hq string
      */
+    @JsonAdapter(GrantableRolesAtHqEnum.Adapter.class)
     public enum GrantableRolesAtHqEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -398,12 +438,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static GrantableRolesAtHqEnum fromValue(String text) {
             for (GrantableRolesAtHqEnum b : GrantableRolesAtHqEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -412,14 +455,28 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<GrantableRolesAtHqEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final GrantableRolesAtHqEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public GrantableRolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return GrantableRolesAtHqEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("grantable_roles_at_hq")
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = new ArrayList<GrantableRolesAtHqEnum>();
+    @SerializedName("grantable_roles_at_hq")
+    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = null;
 
     /**
      * grantable_roles_at_other string
      */
+    @JsonAdapter(GrantableRolesAtOtherEnum.Adapter.class)
     public enum GrantableRolesAtOtherEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -527,12 +584,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static GrantableRolesAtOtherEnum fromValue(String text) {
             for (GrantableRolesAtOtherEnum b : GrantableRolesAtOtherEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -541,14 +601,29 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<GrantableRolesAtOtherEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final GrantableRolesAtOtherEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public GrantableRolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return GrantableRolesAtOtherEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("grantable_roles_at_other")
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = new ArrayList<GrantableRolesAtOtherEnum>();
+    @SerializedName("grantable_roles_at_other")
+    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = null;
 
     /**
      * role string
      */
+    @JsonAdapter(RolesEnum.Adapter.class)
     public enum RolesEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -656,12 +731,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RolesEnum fromValue(String text) {
             for (RolesEnum b : RolesEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -670,14 +748,28 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RolesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RolesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RolesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RolesEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("roles")
-    private List<RolesEnum> roles = new ArrayList<RolesEnum>();
+    @SerializedName("roles")
+    private List<RolesEnum> roles = null;
 
     /**
      * roles_at_base string
      */
+    @JsonAdapter(RolesAtBaseEnum.Adapter.class)
     public enum RolesAtBaseEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -785,12 +877,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RolesAtBaseEnum fromValue(String text) {
             for (RolesAtBaseEnum b : RolesAtBaseEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -799,14 +894,28 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RolesAtBaseEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RolesAtBaseEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RolesAtBaseEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("roles_at_base")
-    private List<RolesAtBaseEnum> rolesAtBase = new ArrayList<RolesAtBaseEnum>();
+    @SerializedName("roles_at_base")
+    private List<RolesAtBaseEnum> rolesAtBase = null;
 
     /**
      * roles_at_hq string
      */
+    @JsonAdapter(RolesAtHqEnum.Adapter.class)
     public enum RolesAtHqEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -914,12 +1023,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RolesAtHqEnum fromValue(String text) {
             for (RolesAtHqEnum b : RolesAtHqEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -928,14 +1040,28 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RolesAtHqEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RolesAtHqEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RolesAtHqEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("roles_at_hq")
-    private List<RolesAtHqEnum> rolesAtHq = new ArrayList<RolesAtHqEnum>();
+    @SerializedName("roles_at_hq")
+    private List<RolesAtHqEnum> rolesAtHq = null;
 
     /**
      * roles_at_other string
      */
+    @JsonAdapter(RolesAtOtherEnum.Adapter.class)
     public enum RolesAtOtherEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -1043,12 +1169,15 @@ public class CorporationRolesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RolesAtOtherEnum fromValue(String text) {
             for (RolesAtOtherEnum b : RolesAtOtherEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -1057,10 +1186,23 @@ public class CorporationRolesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RolesAtOtherEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RolesAtOtherEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RolesAtOtherEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("roles_at_other")
-    private List<RolesAtOtherEnum> rolesAtOther = new ArrayList<RolesAtOtherEnum>();
+    @SerializedName("roles_at_other")
+    private List<RolesAtOtherEnum> rolesAtOther = null;
 
     public CorporationRolesResponse characterId(Integer characterId) {
         this.characterId = characterId;
@@ -1072,7 +1214,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
+    @ApiModelProperty(required = true, value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -1087,6 +1229,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addGrantableRolesItem(GrantableRolesEnum grantableRolesItem) {
+        if (this.grantableRoles == null) {
+            this.grantableRoles = new ArrayList<>();
+        }
         this.grantableRoles.add(grantableRolesItem);
         return this;
     }
@@ -1096,7 +1241,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return grantableRoles
      **/
-    @ApiModelProperty(example = "null", value = "grantable_roles array")
+    @ApiModelProperty(value = "grantable_roles array")
     public List<GrantableRolesEnum> getGrantableRoles() {
         return grantableRoles;
     }
@@ -1111,6 +1256,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addGrantableRolesAtBaseItem(GrantableRolesAtBaseEnum grantableRolesAtBaseItem) {
+        if (this.grantableRolesAtBase == null) {
+            this.grantableRolesAtBase = new ArrayList<>();
+        }
         this.grantableRolesAtBase.add(grantableRolesAtBaseItem);
         return this;
     }
@@ -1120,7 +1268,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return grantableRolesAtBase
      **/
-    @ApiModelProperty(example = "null", value = "grantable_roles_at_base array")
+    @ApiModelProperty(value = "grantable_roles_at_base array")
     public List<GrantableRolesAtBaseEnum> getGrantableRolesAtBase() {
         return grantableRolesAtBase;
     }
@@ -1135,6 +1283,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addGrantableRolesAtHqItem(GrantableRolesAtHqEnum grantableRolesAtHqItem) {
+        if (this.grantableRolesAtHq == null) {
+            this.grantableRolesAtHq = new ArrayList<>();
+        }
         this.grantableRolesAtHq.add(grantableRolesAtHqItem);
         return this;
     }
@@ -1144,7 +1295,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return grantableRolesAtHq
      **/
-    @ApiModelProperty(example = "null", value = "grantable_roles_at_hq array")
+    @ApiModelProperty(value = "grantable_roles_at_hq array")
     public List<GrantableRolesAtHqEnum> getGrantableRolesAtHq() {
         return grantableRolesAtHq;
     }
@@ -1159,6 +1310,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addGrantableRolesAtOtherItem(GrantableRolesAtOtherEnum grantableRolesAtOtherItem) {
+        if (this.grantableRolesAtOther == null) {
+            this.grantableRolesAtOther = new ArrayList<>();
+        }
         this.grantableRolesAtOther.add(grantableRolesAtOtherItem);
         return this;
     }
@@ -1168,7 +1322,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return grantableRolesAtOther
      **/
-    @ApiModelProperty(example = "null", value = "grantable_roles_at_other array")
+    @ApiModelProperty(value = "grantable_roles_at_other array")
     public List<GrantableRolesAtOtherEnum> getGrantableRolesAtOther() {
         return grantableRolesAtOther;
     }
@@ -1183,6 +1337,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addRolesItem(RolesEnum rolesItem) {
+        if (this.roles == null) {
+            this.roles = new ArrayList<>();
+        }
         this.roles.add(rolesItem);
         return this;
     }
@@ -1192,7 +1349,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return roles
      **/
-    @ApiModelProperty(example = "null", value = "roles array")
+    @ApiModelProperty(value = "roles array")
     public List<RolesEnum> getRoles() {
         return roles;
     }
@@ -1207,6 +1364,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addRolesAtBaseItem(RolesAtBaseEnum rolesAtBaseItem) {
+        if (this.rolesAtBase == null) {
+            this.rolesAtBase = new ArrayList<>();
+        }
         this.rolesAtBase.add(rolesAtBaseItem);
         return this;
     }
@@ -1216,7 +1376,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return rolesAtBase
      **/
-    @ApiModelProperty(example = "null", value = "roles_at_base array")
+    @ApiModelProperty(value = "roles_at_base array")
     public List<RolesAtBaseEnum> getRolesAtBase() {
         return rolesAtBase;
     }
@@ -1231,6 +1391,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addRolesAtHqItem(RolesAtHqEnum rolesAtHqItem) {
+        if (this.rolesAtHq == null) {
+            this.rolesAtHq = new ArrayList<>();
+        }
         this.rolesAtHq.add(rolesAtHqItem);
         return this;
     }
@@ -1240,7 +1403,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return rolesAtHq
      **/
-    @ApiModelProperty(example = "null", value = "roles_at_hq array")
+    @ApiModelProperty(value = "roles_at_hq array")
     public List<RolesAtHqEnum> getRolesAtHq() {
         return rolesAtHq;
     }
@@ -1255,6 +1418,9 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     public CorporationRolesResponse addRolesAtOtherItem(RolesAtOtherEnum rolesAtOtherItem) {
+        if (this.rolesAtOther == null) {
+            this.rolesAtOther = new ArrayList<>();
+        }
         this.rolesAtOther.add(rolesAtOtherItem);
         return this;
     }
@@ -1264,7 +1430,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return rolesAtOther
      **/
-    @ApiModelProperty(example = "null", value = "roles_at_other array")
+    @ApiModelProperty(value = "roles_at_other array")
     public List<RolesAtOtherEnum> getRolesAtOther() {
         return rolesAtOther;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class CharacterCalendarAttendeesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
     /**
      * event_response string
      */
+    @JsonAdapter(EventResponseEnum.Adapter.class)
     public enum EventResponseEnum {
         DECLINED("declined"),
 
@@ -46,12 +51,15 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static EventResponseEnum fromValue(String text) {
             for (EventResponseEnum b : EventResponseEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -60,9 +68,22 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<EventResponseEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final EventResponseEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public EventResponseEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return EventResponseEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("event_response")
+    @SerializedName("event_response")
     private EventResponseEnum eventResponse = null;
 
     public CharacterCalendarAttendeesResponse characterId(Integer characterId) {
@@ -75,7 +96,7 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", value = "character_id integer")
+    @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -94,7 +115,7 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
      * 
      * @return eventResponse
      **/
-    @ApiModelProperty(example = "null", value = "event_response string")
+    @ApiModelProperty(value = "event_response string")
     public EventResponseEnum getEventResponse() {
         return eventResponse;
     }

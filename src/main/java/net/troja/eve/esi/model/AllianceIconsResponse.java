@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class AllianceIconsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("px128x128")
+    @SerializedName("px128x128")
     private String px128x128 = null;
 
-    @JsonProperty("px64x64")
+    @SerializedName("px64x64")
     private String px64x64 = null;
 
     public AllianceIconsResponse px128x128(String px128x128) {
@@ -41,7 +45,7 @@ public class AllianceIconsResponse implements Serializable {
      * 
      * @return px128x128
      **/
-    @ApiModelProperty(example = "null", value = "px128x128 string")
+    @ApiModelProperty(value = "px128x128 string")
     public String getPx128x128() {
         return px128x128;
     }
@@ -60,7 +64,7 @@ public class AllianceIconsResponse implements Serializable {
      * 
      * @return px64x64
      **/
-    @ApiModelProperty(example = "null", value = "px64x64 string")
+    @ApiModelProperty(value = "px64x64 string")
     public String getPx64x64() {
         return px64x64;
     }

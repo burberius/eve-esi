@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class CharacterResearchAgentsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("agent_id")
+    @SerializedName("agent_id")
     private Integer agentId = null;
 
-    @JsonProperty("points_per_day")
+    @SerializedName("points_per_day")
     private Float pointsPerDay = null;
 
-    @JsonProperty("remainder_points")
+    @SerializedName("remainder_points")
     private Float remainderPoints = null;
 
-    @JsonProperty("skill_type_id")
+    @SerializedName("skill_type_id")
     private Integer skillTypeId = null;
 
-    @JsonProperty("started_at")
+    @SerializedName("started_at")
     private OffsetDateTime startedAt = null;
 
     public CharacterResearchAgentsResponse agentId(Integer agentId) {
@@ -51,7 +55,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
      * 
      * @return agentId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "agent_id integer")
+    @ApiModelProperty(required = true, value = "agent_id integer")
     public Integer getAgentId() {
         return agentId;
     }
@@ -70,7 +74,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
      * 
      * @return pointsPerDay
      **/
-    @ApiModelProperty(example = "null", required = true, value = "points_per_day number")
+    @ApiModelProperty(required = true, value = "points_per_day number")
     public Float getPointsPerDay() {
         return pointsPerDay;
     }
@@ -89,7 +93,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
      * 
      * @return remainderPoints
      **/
-    @ApiModelProperty(example = "null", required = true, value = "remainder_points number")
+    @ApiModelProperty(required = true, value = "remainder_points number")
     public Float getRemainderPoints() {
         return remainderPoints;
     }
@@ -108,7 +112,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
      * 
      * @return skillTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "skill_type_id integer")
+    @ApiModelProperty(required = true, value = "skill_type_id integer")
     public Integer getSkillTypeId() {
         return skillTypeId;
     }
@@ -127,7 +131,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
      * 
      * @return startedAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "started_at string")
+    @ApiModelProperty(required = true, value = "started_at string")
     public OffsetDateTime getStartedAt() {
         return startedAt;
     }

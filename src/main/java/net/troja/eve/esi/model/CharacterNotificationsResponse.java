@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,18 +30,19 @@ import java.io.Serializable;
 public class CharacterNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_read")
+    @SerializedName("is_read")
     private Boolean isRead = null;
 
-    @JsonProperty("notification_id")
+    @SerializedName("notification_id")
     private Long notificationId = null;
 
-    @JsonProperty("sender_id")
+    @SerializedName("sender_id")
     private Integer senderId = null;
 
     /**
      * sender_type string
      */
+    @JsonAdapter(SenderTypeEnum.Adapter.class)
     public enum SenderTypeEnum {
         CHARACTER("character"),
 
@@ -55,12 +60,15 @@ public class CharacterNotificationsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static SenderTypeEnum fromValue(String text) {
             for (SenderTypeEnum b : SenderTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -69,20 +77,34 @@ public class CharacterNotificationsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<SenderTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final SenderTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public SenderTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return SenderTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("sender_type")
+    @SerializedName("sender_type")
     private SenderTypeEnum senderType = null;
 
-    @JsonProperty("text")
+    @SerializedName("text")
     private String text = null;
 
-    @JsonProperty("timestamp")
+    @SerializedName("timestamp")
     private OffsetDateTime timestamp = null;
 
     /**
      * type string
      */
+    @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
         ACCEPTEDALLY("AcceptedAlly"),
 
@@ -458,12 +480,15 @@ public class CharacterNotificationsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static TypeEnum fromValue(String text) {
             for (TypeEnum b : TypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -472,9 +497,22 @@ public class CharacterNotificationsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<TypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public TypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("type")
+    @SerializedName("type")
     private TypeEnum type = null;
 
     public CharacterNotificationsResponse isRead(Boolean isRead) {
@@ -487,8 +525,8 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return isRead
      **/
-    @ApiModelProperty(example = "null", value = "is_read boolean")
-    public Boolean getIsRead() {
+    @ApiModelProperty(value = "is_read boolean")
+    public Boolean isIsRead() {
         return isRead;
     }
 
@@ -506,7 +544,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return notificationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "notification_id integer")
+    @ApiModelProperty(required = true, value = "notification_id integer")
     public Long getNotificationId() {
         return notificationId;
     }
@@ -525,7 +563,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "sender_id integer")
+    @ApiModelProperty(required = true, value = "sender_id integer")
     public Integer getSenderId() {
         return senderId;
     }
@@ -544,7 +582,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "sender_type string")
+    @ApiModelProperty(required = true, value = "sender_type string")
     public SenderTypeEnum getSenderType() {
         return senderType;
     }
@@ -563,7 +601,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return text
      **/
-    @ApiModelProperty(example = "null", value = "text string")
+    @ApiModelProperty(value = "text string")
     public String getText() {
         return text;
     }
@@ -582,7 +620,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return timestamp
      **/
-    @ApiModelProperty(example = "null", required = true, value = "timestamp string")
+    @ApiModelProperty(required = true, value = "timestamp string")
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }
@@ -601,7 +639,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type string")
+    @ApiModelProperty(required = true, value = "type string")
     public TypeEnum getType() {
         return type;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,25 +30,25 @@ import java.io.Serializable;
 public class SovereigntyStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("structure_id")
+    @SerializedName("structure_id")
     private Long structureId = null;
 
-    @JsonProperty("structure_type_id")
+    @SerializedName("structure_type_id")
     private Integer structureTypeId = null;
 
-    @JsonProperty("vulnerability_occupancy_level")
+    @SerializedName("vulnerability_occupancy_level")
     private Float vulnerabilityOccupancyLevel = null;
 
-    @JsonProperty("vulnerable_end_time")
+    @SerializedName("vulnerable_end_time")
     private OffsetDateTime vulnerableEndTime = null;
 
-    @JsonProperty("vulnerable_start_time")
+    @SerializedName("vulnerable_start_time")
     private OffsetDateTime vulnerableStartTime = null;
 
     public SovereigntyStructuresResponse allianceId(Integer allianceId) {
@@ -57,7 +61,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The alliance that owns the structure. ")
+    @ApiModelProperty(required = true, value = "The alliance that owns the structure. ")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -76,7 +80,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Solar system in which the structure is located. ")
+    @ApiModelProperty(required = true, value = "Solar system in which the structure is located. ")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -95,7 +99,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return structureId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique item ID for this structure.")
+    @ApiModelProperty(required = true, value = "Unique item ID for this structure.")
     public Long getStructureId() {
         return structureId;
     }
@@ -114,7 +118,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return structureTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A reference to the type of structure this is. ")
+    @ApiModelProperty(required = true, value = "A reference to the type of structure this is. ")
     public Integer getStructureTypeId() {
         return structureTypeId;
     }
@@ -137,7 +141,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return vulnerabilityOccupancyLevel
      **/
-    @ApiModelProperty(example = "null", value = "The occupancy level for the next or current vulnerability window. This takes into account all development indexes and capital system bonuses. Also known as Activity Defense Multiplier from in the client. It increases the time that attackers must spend using their entosis links on the structure. ")
+    @ApiModelProperty(value = "The occupancy level for the next or current vulnerability window. This takes into account all development indexes and capital system bonuses. Also known as Activity Defense Multiplier from in the client. It increases the time that attackers must spend using their entosis links on the structure. ")
     public Float getVulnerabilityOccupancyLevel() {
         return vulnerabilityOccupancyLevel;
     }
@@ -155,14 +159,14 @@ public class SovereigntyStructuresResponse implements Serializable {
      * The time at which the next or current vulnerability window ends. At the
      * end of a vulnerability window the next window is recalculated and locked
      * in along with the vulnerabilityOccupancyLevel. If the structure is not in
-     * 100% entosis control of the defender, it will go in to 'overtime' and
-     * stay vulnerable for as long as that situation persists. Only once the
+     * 100% entosis control of the defender, it will go in to &#39;overtime&#39;
+     * and stay vulnerable for as long as that situation persists. Only once the
      * defenders have 100% entosis control and has the vulnerableEndTime passed
      * does the vulnerability interval expire and a new one is calculated.
      * 
      * @return vulnerableEndTime
      **/
-    @ApiModelProperty(example = "null", value = "The time at which the next or current vulnerability window ends. At the end of a vulnerability window the next window is recalculated and locked in along with the vulnerabilityOccupancyLevel. If the structure is not in 100% entosis control of the defender, it will go in to 'overtime' and stay vulnerable for as long as that situation persists. Only once the defenders have 100% entosis control and has the vulnerableEndTime passed does the vulnerability interval expire and a new one is calculated. ")
+    @ApiModelProperty(value = "The time at which the next or current vulnerability window ends. At the end of a vulnerability window the next window is recalculated and locked in along with the vulnerabilityOccupancyLevel. If the structure is not in 100% entosis control of the defender, it will go in to 'overtime' and stay vulnerable for as long as that situation persists. Only once the defenders have 100% entosis control and has the vulnerableEndTime passed does the vulnerability interval expire and a new one is calculated. ")
     public OffsetDateTime getVulnerableEndTime() {
         return vulnerableEndTime;
     }
@@ -183,7 +187,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return vulnerableStartTime
      **/
-    @ApiModelProperty(example = "null", value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
+    @ApiModelProperty(value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
     public OffsetDateTime getVulnerableStartTime() {
         return vulnerableStartTime;
     }

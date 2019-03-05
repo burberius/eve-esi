@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,51 +30,52 @@ import java.io.Serializable;
 public class PublicContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("buyout")
+    @SerializedName("buyout")
     private Double buyout = null;
 
-    @JsonProperty("collateral")
+    @SerializedName("collateral")
     private Double collateral = null;
 
-    @JsonProperty("contract_id")
+    @SerializedName("contract_id")
     private Integer contractId = null;
 
-    @JsonProperty("date_expired")
+    @SerializedName("date_expired")
     private OffsetDateTime dateExpired = null;
 
-    @JsonProperty("date_issued")
+    @SerializedName("date_issued")
     private OffsetDateTime dateIssued = null;
 
-    @JsonProperty("days_to_complete")
+    @SerializedName("days_to_complete")
     private Integer daysToComplete = null;
 
-    @JsonProperty("end_location_id")
+    @SerializedName("end_location_id")
     private Long endLocationId = null;
 
-    @JsonProperty("for_corporation")
+    @SerializedName("for_corporation")
     private Boolean forCorporation = null;
 
-    @JsonProperty("issuer_corporation_id")
+    @SerializedName("issuer_corporation_id")
     private Integer issuerCorporationId = null;
 
-    @JsonProperty("issuer_id")
+    @SerializedName("issuer_id")
     private Integer issuerId = null;
 
-    @JsonProperty("price")
+    @SerializedName("price")
     private Double price = null;
 
-    @JsonProperty("reward")
+    @SerializedName("reward")
     private Double reward = null;
 
-    @JsonProperty("start_location_id")
+    @SerializedName("start_location_id")
     private Long startLocationId = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     /**
      * Type of the contract
      */
+    @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
         UNKNOWN("unknown"),
 
@@ -88,12 +93,15 @@ public class PublicContractsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static TypeEnum fromValue(String text) {
             for (TypeEnum b : TypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -102,12 +110,25 @@ public class PublicContractsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<TypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public TypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("type")
+    @SerializedName("type")
     private TypeEnum type = null;
 
-    @JsonProperty("volume")
+    @SerializedName("volume")
     private Double volume = null;
 
     public PublicContractsResponse buyout(Double buyout) {
@@ -120,7 +141,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return buyout
      **/
-    @ApiModelProperty(example = "null", value = "Buyout price (for Auctions only)")
+    @ApiModelProperty(value = "Buyout price (for Auctions only)")
     public Double getBuyout() {
         return buyout;
     }
@@ -139,7 +160,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return collateral
      **/
-    @ApiModelProperty(example = "null", value = "Collateral price (for Couriers only)")
+    @ApiModelProperty(value = "Collateral price (for Couriers only)")
     public Double getCollateral() {
         return collateral;
     }
@@ -158,7 +179,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return contractId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contract_id integer")
+    @ApiModelProperty(required = true, value = "contract_id integer")
     public Integer getContractId() {
         return contractId;
     }
@@ -177,7 +198,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return dateExpired
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Expiration date of the contract")
+    @ApiModelProperty(required = true, value = "Expiration date of the contract")
     public OffsetDateTime getDateExpired() {
         return dateExpired;
     }
@@ -196,7 +217,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return dateIssued
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Сreation date of the contract")
+    @ApiModelProperty(required = true, value = "Сreation date of the contract")
     public OffsetDateTime getDateIssued() {
         return dateIssued;
     }
@@ -215,7 +236,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return daysToComplete
      **/
-    @ApiModelProperty(example = "null", value = "Number of days to perform the contract")
+    @ApiModelProperty(value = "Number of days to perform the contract")
     public Integer getDaysToComplete() {
         return daysToComplete;
     }
@@ -234,7 +255,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return endLocationId
      **/
-    @ApiModelProperty(example = "null", value = "End location ID (for Couriers contract)")
+    @ApiModelProperty(value = "End location ID (for Couriers contract)")
     public Long getEndLocationId() {
         return endLocationId;
     }
@@ -249,12 +270,12 @@ public class PublicContractsResponse implements Serializable {
     }
 
     /**
-     * true if the contract was issued on behalf of the issuer's corporation
+     * true if the contract was issued on behalf of the issuer&#39;s corporation
      * 
      * @return forCorporation
      **/
-    @ApiModelProperty(example = "null", value = "true if the contract was issued on behalf of the issuer's corporation")
-    public Boolean getForCorporation() {
+    @ApiModelProperty(value = "true if the contract was issued on behalf of the issuer's corporation")
+    public Boolean isForCorporation() {
         return forCorporation;
     }
 
@@ -268,11 +289,11 @@ public class PublicContractsResponse implements Serializable {
     }
 
     /**
-     * Character's corporation ID for the issuer
+     * Character&#39;s corporation ID for the issuer
      * 
      * @return issuerCorporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Character's corporation ID for the issuer")
+    @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
     public Integer getIssuerCorporationId() {
         return issuerCorporationId;
     }
@@ -291,7 +312,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Character ID for the issuer")
+    @ApiModelProperty(required = true, value = "Character ID for the issuer")
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -310,7 +331,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return price
      **/
-    @ApiModelProperty(example = "null", value = "Price of contract (for ItemsExchange and Auctions)")
+    @ApiModelProperty(value = "Price of contract (for ItemsExchange and Auctions)")
     public Double getPrice() {
         return price;
     }
@@ -329,7 +350,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return reward
      **/
-    @ApiModelProperty(example = "null", value = "Remuneration for contract (for Couriers only)")
+    @ApiModelProperty(value = "Remuneration for contract (for Couriers only)")
     public Double getReward() {
         return reward;
     }
@@ -348,7 +369,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return startLocationId
      **/
-    @ApiModelProperty(example = "null", value = "Start location ID (for Couriers contract)")
+    @ApiModelProperty(value = "Start location ID (for Couriers contract)")
     public Long getStartLocationId() {
         return startLocationId;
     }
@@ -367,7 +388,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", value = "Title of the contract")
+    @ApiModelProperty(value = "Title of the contract")
     public String getTitle() {
         return title;
     }
@@ -386,7 +407,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of the contract")
+    @ApiModelProperty(required = true, value = "Type of the contract")
     public TypeEnum getType() {
         return type;
     }
@@ -405,7 +426,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return volume
      **/
-    @ApiModelProperty(example = "null", value = "Volume of items in the contract")
+    @ApiModelProperty(value = "Volume of items in the contract")
     public Double getVolume() {
         return volume;
     }

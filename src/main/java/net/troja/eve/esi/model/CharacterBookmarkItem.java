@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterBookmarkItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("item_id")
+    @SerializedName("item_id")
     private Long itemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CharacterBookmarkItem itemId(Long itemId) {
@@ -41,7 +45,7 @@ public class CharacterBookmarkItem implements Serializable {
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
+    @ApiModelProperty(required = true, value = "item_id integer")
     public Long getItemId() {
         return itemId;
     }
@@ -60,7 +64,7 @@ public class CharacterBookmarkItem implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

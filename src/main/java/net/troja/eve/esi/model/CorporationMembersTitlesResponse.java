@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,11 +31,11 @@ import java.io.Serializable;
 public class CorporationMembersTitlesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("titles")
-    private List<Integer> titles = new ArrayList<Integer>();
+    @SerializedName("titles")
+    private List<Integer> titles = new ArrayList<>();
 
     public CorporationMembersTitlesResponse characterId(Integer characterId) {
         this.characterId = characterId;
@@ -43,7 +47,7 @@ public class CorporationMembersTitlesResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
+    @ApiModelProperty(required = true, value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -67,7 +71,7 @@ public class CorporationMembersTitlesResponse implements Serializable {
      * 
      * @return titles
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A list of title_id")
+    @ApiModelProperty(required = true, value = "A list of title_id")
     public List<Integer> getTitles() {
         return titles;
     }

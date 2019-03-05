@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterLoyaltyPointsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("loyalty_points")
+    @SerializedName("loyalty_points")
     private Integer loyaltyPoints = null;
 
     public CharacterLoyaltyPointsResponse corporationId(Integer corporationId) {
@@ -41,7 +45,7 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    @ApiModelProperty(required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -60,7 +64,7 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
      * 
      * @return loyaltyPoints
      **/
-    @ApiModelProperty(example = "null", required = true, value = "loyalty_points integer")
+    @ApiModelProperty(required = true, value = "loyalty_points integer")
     public Integer getLoyaltyPoints() {
         return loyaltyPoints;
     }

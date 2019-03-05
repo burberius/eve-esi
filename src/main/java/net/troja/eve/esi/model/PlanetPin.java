@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,37 +35,37 @@ import java.io.Serializable;
 public class PlanetPin implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("contents")
-    private List<PlanetContent> contents = new ArrayList<PlanetContent>();
+    @SerializedName("contents")
+    private List<PlanetContent> contents = null;
 
-    @JsonProperty("expiry_time")
+    @SerializedName("expiry_time")
     private OffsetDateTime expiryTime = null;
 
-    @JsonProperty("extractor_details")
+    @SerializedName("extractor_details")
     private PlanetExtractorDetails extractorDetails = null;
 
-    @JsonProperty("factory_details")
+    @SerializedName("factory_details")
     private PlanetFactoryDetails factoryDetails = null;
 
-    @JsonProperty("install_time")
+    @SerializedName("install_time")
     private OffsetDateTime installTime = null;
 
-    @JsonProperty("last_cycle_start")
+    @SerializedName("last_cycle_start")
     private OffsetDateTime lastCycleStart = null;
 
-    @JsonProperty("latitude")
+    @SerializedName("latitude")
     private Float latitude = null;
 
-    @JsonProperty("longitude")
+    @SerializedName("longitude")
     private Float longitude = null;
 
-    @JsonProperty("pin_id")
+    @SerializedName("pin_id")
     private Long pinId = null;
 
-    @JsonProperty("schematic_id")
+    @SerializedName("schematic_id")
     private Integer schematicId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public PlanetPin contents(List<PlanetContent> contents) {
@@ -70,6 +74,9 @@ public class PlanetPin implements Serializable {
     }
 
     public PlanetPin addContentsItem(PlanetContent contentsItem) {
+        if (this.contents == null) {
+            this.contents = new ArrayList<>();
+        }
         this.contents.add(contentsItem);
         return this;
     }
@@ -79,7 +86,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return contents
      **/
-    @ApiModelProperty(example = "null", value = "contents array")
+    @ApiModelProperty(value = "contents array")
     public List<PlanetContent> getContents() {
         return contents;
     }
@@ -98,7 +105,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return expiryTime
      **/
-    @ApiModelProperty(example = "null", value = "expiry_time string")
+    @ApiModelProperty(value = "expiry_time string")
     public OffsetDateTime getExpiryTime() {
         return expiryTime;
     }
@@ -117,7 +124,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return extractorDetails
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public PlanetExtractorDetails getExtractorDetails() {
         return extractorDetails;
     }
@@ -136,7 +143,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return factoryDetails
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public PlanetFactoryDetails getFactoryDetails() {
         return factoryDetails;
     }
@@ -155,7 +162,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return installTime
      **/
-    @ApiModelProperty(example = "null", value = "install_time string")
+    @ApiModelProperty(value = "install_time string")
     public OffsetDateTime getInstallTime() {
         return installTime;
     }
@@ -174,7 +181,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return lastCycleStart
      **/
-    @ApiModelProperty(example = "null", value = "last_cycle_start string")
+    @ApiModelProperty(value = "last_cycle_start string")
     public OffsetDateTime getLastCycleStart() {
         return lastCycleStart;
     }
@@ -193,7 +200,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return latitude
      **/
-    @ApiModelProperty(example = "null", required = true, value = "latitude number")
+    @ApiModelProperty(required = true, value = "latitude number")
     public Float getLatitude() {
         return latitude;
     }
@@ -212,7 +219,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return longitude
      **/
-    @ApiModelProperty(example = "null", required = true, value = "longitude number")
+    @ApiModelProperty(required = true, value = "longitude number")
     public Float getLongitude() {
         return longitude;
     }
@@ -231,7 +238,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return pinId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "pin_id integer")
+    @ApiModelProperty(required = true, value = "pin_id integer")
     public Long getPinId() {
         return pinId;
     }
@@ -250,7 +257,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return schematicId
      **/
-    @ApiModelProperty(example = "null", value = "schematic_id integer")
+    @ApiModelProperty(value = "schematic_id integer")
     public Integer getSchematicId() {
         return schematicId;
     }
@@ -269,7 +276,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

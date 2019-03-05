@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.KillmailItem;
@@ -29,28 +33,28 @@ import java.io.Serializable;
 public class KillmailVictim implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("damage_taken")
+    @SerializedName("damage_taken")
     private Integer damageTaken = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("items")
-    private List<KillmailItem> items = new ArrayList<KillmailItem>();
+    @SerializedName("items")
+    private List<KillmailItem> items = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
     public KillmailVictim allianceId(Integer allianceId) {
@@ -63,7 +67,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "alliance_id integer")
+    @ApiModelProperty(value = "alliance_id integer")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -82,7 +86,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", value = "character_id integer")
+    @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -101,7 +105,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -120,7 +124,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return damageTaken
      **/
-    @ApiModelProperty(example = "null", required = true, value = "How much total damage was taken by the victim ")
+    @ApiModelProperty(required = true, value = "How much total damage was taken by the victim ")
     public Integer getDamageTaken() {
         return damageTaken;
     }
@@ -139,7 +143,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "faction_id integer")
+    @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -154,6 +158,9 @@ public class KillmailVictim implements Serializable {
     }
 
     public KillmailVictim addItemsItem(KillmailItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
         this.items.add(itemsItem);
         return this;
     }
@@ -163,7 +170,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return items
      **/
-    @ApiModelProperty(example = "null", value = "items array")
+    @ApiModelProperty(value = "items array")
     public List<KillmailItem> getItems() {
         return items;
     }
@@ -182,7 +189,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public Position getPosition() {
         return position;
     }
@@ -201,7 +208,7 @@ public class KillmailVictim implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The ship that the victim was piloting and was destroyed ")
+    @ApiModelProperty(required = true, value = "The ship that the victim was piloting and was destroyed ")
     public Integer getShipTypeId() {
         return shipTypeId;
     }

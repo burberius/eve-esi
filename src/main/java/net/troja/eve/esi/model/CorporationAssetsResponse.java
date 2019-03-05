@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,18 +29,19 @@ import java.io.Serializable;
 public class CorporationAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_blueprint_copy")
+    @SerializedName("is_blueprint_copy")
     private Boolean isBlueprintCopy = null;
 
-    @JsonProperty("is_singleton")
+    @SerializedName("is_singleton")
     private Boolean isSingleton = null;
 
-    @JsonProperty("item_id")
+    @SerializedName("item_id")
     private Long itemId = null;
 
     /**
      * location_flag string
      */
+    @JsonAdapter(LocationFlagEnum.Adapter.class)
     public enum LocationFlagEnum {
         ASSETSAFETY("AssetSafety"),
 
@@ -274,12 +279,15 @@ public class CorporationAssetsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationFlagEnum fromValue(String text) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -288,17 +296,31 @@ public class CorporationAssetsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationFlagEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_flag")
+    @SerializedName("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
     /**
      * location_type string
      */
+    @JsonAdapter(LocationTypeEnum.Adapter.class)
     public enum LocationTypeEnum {
         STATION("station"),
 
@@ -312,12 +334,15 @@ public class CorporationAssetsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationTypeEnum fromValue(String text) {
             for (LocationTypeEnum b : LocationTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -326,15 +351,28 @@ public class CorporationAssetsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_type")
+    @SerializedName("location_type")
     private LocationTypeEnum locationType = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CorporationAssetsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
@@ -347,8 +385,8 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return isBlueprintCopy
      **/
-    @ApiModelProperty(example = "null", value = "is_blueprint_copy boolean")
-    public Boolean getIsBlueprintCopy() {
+    @ApiModelProperty(value = "is_blueprint_copy boolean")
+    public Boolean isIsBlueprintCopy() {
         return isBlueprintCopy;
     }
 
@@ -366,8 +404,8 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return isSingleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
+    @ApiModelProperty(required = true, value = "is_singleton boolean")
+    public Boolean isIsSingleton() {
         return isSingleton;
     }
 
@@ -385,7 +423,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
+    @ApiModelProperty(required = true, value = "item_id integer")
     public Long getItemId() {
         return itemId;
     }
@@ -404,7 +442,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    @ApiModelProperty(required = true, value = "location_flag string")
     public LocationFlagEnum getLocationFlag() {
         return locationFlag;
     }
@@ -423,7 +461,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -442,7 +480,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_type string")
+    @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
         return locationType;
     }
@@ -461,7 +499,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
     }
@@ -480,7 +518,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

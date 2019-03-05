@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,19 +31,19 @@ import java.io.Serializable;
 public class UiNewMail implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("body")
+    @SerializedName("body")
     private String body = null;
 
-    @JsonProperty("recipients")
-    private List<Integer> recipients = new ArrayList<Integer>();
+    @SerializedName("recipients")
+    private List<Integer> recipients = new ArrayList<>();
 
-    @JsonProperty("subject")
+    @SerializedName("subject")
     private String subject = null;
 
-    @JsonProperty("to_corp_or_alliance_id")
+    @SerializedName("to_corp_or_alliance_id")
     private Integer toCorpOrAllianceId = null;
 
-    @JsonProperty("to_mailing_list_id")
+    @SerializedName("to_mailing_list_id")
     private Integer toMailingListId = null;
 
     public UiNewMail body(String body) {
@@ -52,7 +56,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return body
      **/
-    @ApiModelProperty(example = "null", required = true, value = "body string")
+    @ApiModelProperty(required = true, value = "body string")
     public String getBody() {
         return body;
     }
@@ -76,7 +80,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return recipients
      **/
-    @ApiModelProperty(example = "null", required = true, value = "recipients array")
+    @ApiModelProperty(required = true, value = "recipients array")
     public List<Integer> getRecipients() {
         return recipients;
     }
@@ -95,7 +99,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return subject
      **/
-    @ApiModelProperty(example = "null", required = true, value = "subject string")
+    @ApiModelProperty(required = true, value = "subject string")
     public String getSubject() {
         return subject;
     }
@@ -114,7 +118,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return toCorpOrAllianceId
      **/
-    @ApiModelProperty(example = "null", value = "to_corp_or_alliance_id integer")
+    @ApiModelProperty(value = "to_corp_or_alliance_id integer")
     public Integer getToCorpOrAllianceId() {
         return toCorpOrAllianceId;
     }
@@ -135,7 +139,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return toMailingListId
      **/
-    @ApiModelProperty(example = "null", value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
+    @ApiModelProperty(value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
     public Integer getToMailingListId() {
         return toMailingListId;
     }

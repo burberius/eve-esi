@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,35 +31,35 @@ import java.io.Serializable;
 public class SearchResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("agent")
-    private List<Integer> agent = new ArrayList<Integer>();
+    @SerializedName("agent")
+    private List<Integer> agent = null;
 
-    @JsonProperty("alliance")
-    private List<Integer> alliance = new ArrayList<Integer>();
+    @SerializedName("alliance")
+    private List<Integer> alliance = null;
 
-    @JsonProperty("character")
-    private List<Integer> character = new ArrayList<Integer>();
+    @SerializedName("character")
+    private List<Integer> character = null;
 
-    @JsonProperty("constellation")
-    private List<Integer> constellation = new ArrayList<Integer>();
+    @SerializedName("constellation")
+    private List<Integer> constellation = null;
 
-    @JsonProperty("corporation")
-    private List<Integer> corporation = new ArrayList<Integer>();
+    @SerializedName("corporation")
+    private List<Integer> corporation = null;
 
-    @JsonProperty("faction")
-    private List<Integer> faction = new ArrayList<Integer>();
+    @SerializedName("faction")
+    private List<Integer> faction = null;
 
-    @JsonProperty("inventory_type")
-    private List<Integer> inventoryType = new ArrayList<Integer>();
+    @SerializedName("inventory_type")
+    private List<Integer> inventoryType = null;
 
-    @JsonProperty("region")
-    private List<Integer> region = new ArrayList<Integer>();
+    @SerializedName("region")
+    private List<Integer> region = null;
 
-    @JsonProperty("solar_system")
-    private List<Integer> solarSystem = new ArrayList<Integer>();
+    @SerializedName("solar_system")
+    private List<Integer> solarSystem = null;
 
-    @JsonProperty("station")
-    private List<Integer> station = new ArrayList<Integer>();
+    @SerializedName("station")
+    private List<Integer> station = null;
 
     public SearchResponse agent(List<Integer> agent) {
         this.agent = agent;
@@ -63,6 +67,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addAgentItem(Integer agentItem) {
+        if (this.agent == null) {
+            this.agent = new ArrayList<>();
+        }
         this.agent.add(agentItem);
         return this;
     }
@@ -72,7 +79,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return agent
      **/
-    @ApiModelProperty(example = "null", value = "agent array")
+    @ApiModelProperty(value = "agent array")
     public List<Integer> getAgent() {
         return agent;
     }
@@ -87,6 +94,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addAllianceItem(Integer allianceItem) {
+        if (this.alliance == null) {
+            this.alliance = new ArrayList<>();
+        }
         this.alliance.add(allianceItem);
         return this;
     }
@@ -96,7 +106,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return alliance
      **/
-    @ApiModelProperty(example = "null", value = "alliance array")
+    @ApiModelProperty(value = "alliance array")
     public List<Integer> getAlliance() {
         return alliance;
     }
@@ -111,6 +121,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addCharacterItem(Integer characterItem) {
+        if (this.character == null) {
+            this.character = new ArrayList<>();
+        }
         this.character.add(characterItem);
         return this;
     }
@@ -120,7 +133,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return character
      **/
-    @ApiModelProperty(example = "null", value = "character array")
+    @ApiModelProperty(value = "character array")
     public List<Integer> getCharacter() {
         return character;
     }
@@ -135,6 +148,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addConstellationItem(Integer constellationItem) {
+        if (this.constellation == null) {
+            this.constellation = new ArrayList<>();
+        }
         this.constellation.add(constellationItem);
         return this;
     }
@@ -144,7 +160,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return constellation
      **/
-    @ApiModelProperty(example = "null", value = "constellation array")
+    @ApiModelProperty(value = "constellation array")
     public List<Integer> getConstellation() {
         return constellation;
     }
@@ -159,6 +175,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addCorporationItem(Integer corporationItem) {
+        if (this.corporation == null) {
+            this.corporation = new ArrayList<>();
+        }
         this.corporation.add(corporationItem);
         return this;
     }
@@ -168,7 +187,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return corporation
      **/
-    @ApiModelProperty(example = "null", value = "corporation array")
+    @ApiModelProperty(value = "corporation array")
     public List<Integer> getCorporation() {
         return corporation;
     }
@@ -183,6 +202,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addFactionItem(Integer factionItem) {
+        if (this.faction == null) {
+            this.faction = new ArrayList<>();
+        }
         this.faction.add(factionItem);
         return this;
     }
@@ -192,7 +214,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return faction
      **/
-    @ApiModelProperty(example = "null", value = "faction array")
+    @ApiModelProperty(value = "faction array")
     public List<Integer> getFaction() {
         return faction;
     }
@@ -207,6 +229,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addInventoryTypeItem(Integer inventoryTypeItem) {
+        if (this.inventoryType == null) {
+            this.inventoryType = new ArrayList<>();
+        }
         this.inventoryType.add(inventoryTypeItem);
         return this;
     }
@@ -216,7 +241,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return inventoryType
      **/
-    @ApiModelProperty(example = "null", value = "inventory_type array")
+    @ApiModelProperty(value = "inventory_type array")
     public List<Integer> getInventoryType() {
         return inventoryType;
     }
@@ -231,6 +256,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addRegionItem(Integer regionItem) {
+        if (this.region == null) {
+            this.region = new ArrayList<>();
+        }
         this.region.add(regionItem);
         return this;
     }
@@ -240,7 +268,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return region
      **/
-    @ApiModelProperty(example = "null", value = "region array")
+    @ApiModelProperty(value = "region array")
     public List<Integer> getRegion() {
         return region;
     }
@@ -255,6 +283,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addSolarSystemItem(Integer solarSystemItem) {
+        if (this.solarSystem == null) {
+            this.solarSystem = new ArrayList<>();
+        }
         this.solarSystem.add(solarSystemItem);
         return this;
     }
@@ -264,7 +295,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return solarSystem
      **/
-    @ApiModelProperty(example = "null", value = "solar_system array")
+    @ApiModelProperty(value = "solar_system array")
     public List<Integer> getSolarSystem() {
         return solarSystem;
     }
@@ -279,6 +310,9 @@ public class SearchResponse implements Serializable {
     }
 
     public SearchResponse addStationItem(Integer stationItem) {
+        if (this.station == null) {
+            this.station = new ArrayList<>();
+        }
         this.station.add(stationItem);
         return this;
     }
@@ -288,7 +322,7 @@ public class SearchResponse implements Serializable {
      * 
      * @return station
      **/
-    @ApiModelProperty(example = "null", value = "station array")
+    @ApiModelProperty(value = "station array")
     public List<Integer> getStation() {
         return station;
     }

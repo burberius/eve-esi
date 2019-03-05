@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,13 +30,13 @@ import java.io.Serializable;
 public class CharacterFatigueResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("jump_fatigue_expire_date")
+    @SerializedName("jump_fatigue_expire_date")
     private OffsetDateTime jumpFatigueExpireDate = null;
 
-    @JsonProperty("last_jump_date")
+    @SerializedName("last_jump_date")
     private OffsetDateTime lastJumpDate = null;
 
-    @JsonProperty("last_update_date")
+    @SerializedName("last_update_date")
     private OffsetDateTime lastUpdateDate = null;
 
     public CharacterFatigueResponse jumpFatigueExpireDate(OffsetDateTime jumpFatigueExpireDate) {
@@ -41,11 +45,11 @@ public class CharacterFatigueResponse implements Serializable {
     }
 
     /**
-     * Character's jump fatigue expiry
+     * Character&#39;s jump fatigue expiry
      * 
      * @return jumpFatigueExpireDate
      **/
-    @ApiModelProperty(example = "null", value = "Character's jump fatigue expiry")
+    @ApiModelProperty(value = "Character's jump fatigue expiry")
     public OffsetDateTime getJumpFatigueExpireDate() {
         return jumpFatigueExpireDate;
     }
@@ -60,11 +64,11 @@ public class CharacterFatigueResponse implements Serializable {
     }
 
     /**
-     * Character's last jump activation
+     * Character&#39;s last jump activation
      * 
      * @return lastJumpDate
      **/
-    @ApiModelProperty(example = "null", value = "Character's last jump activation")
+    @ApiModelProperty(value = "Character's last jump activation")
     public OffsetDateTime getLastJumpDate() {
         return lastJumpDate;
     }
@@ -79,11 +83,11 @@ public class CharacterFatigueResponse implements Serializable {
     }
 
     /**
-     * Character's last jump update
+     * Character&#39;s last jump update
      * 
      * @return lastUpdateDate
      **/
-    @ApiModelProperty(example = "null", value = "Character's last jump update")
+    @ApiModelProperty(value = "Character's last jump update")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }

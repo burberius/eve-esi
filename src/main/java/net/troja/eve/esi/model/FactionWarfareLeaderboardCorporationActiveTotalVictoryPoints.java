@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
+    @SerializedName("amount")
     private Integer amount = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
     public FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints amount(Integer amount) {
@@ -41,7 +45,7 @@ public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implem
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "Amount of victory points")
+    @ApiModelProperty(value = "Amount of victory points")
     public Integer getAmount() {
         return amount;
     }
@@ -60,7 +64,7 @@ public class FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints implem
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }

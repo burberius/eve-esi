@@ -14,6 +14,7 @@ package net.troja.eve.esi.api;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.model.CharacterOrdersResponse;
 import net.troja.eve.esi.model.CorporationOrdersResponse;
 import net.troja.eve.esi.model.MarketGroupResponse;
@@ -236,15 +237,14 @@ public class MarketApiTest extends GeneralApiTest {
         //Save all results in this List
         final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
 
-        //Step 1: Get first page
-
-        //Get market orders
-        List<MarketOrdersResponse> response = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
-        result.addAll(response);
+		//Step 1: Get first page
+		//Get market orders
+		ApiResponse<List<MarketOrdersResponse>> response = api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
+        result.addAll(response.getData());
 
         //Step 2: Safely get X-Pages header
-
-        Integer xPages = HeaderUtil.getXPages(apiClient.getResponseHeaders());
+		
+        Integer xPages = HeaderUtil.getXPages(response.getHeaders());
         if (xPages == null || xPages < 2) { //Better safe than sorry
             return;
         }

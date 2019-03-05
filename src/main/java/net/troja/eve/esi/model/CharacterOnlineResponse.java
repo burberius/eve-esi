@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class CharacterOnlineResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_login")
+    @SerializedName("last_login")
     private OffsetDateTime lastLogin = null;
 
-    @JsonProperty("last_logout")
+    @SerializedName("last_logout")
     private OffsetDateTime lastLogout = null;
 
-    @JsonProperty("logins")
+    @SerializedName("logins")
     private Integer logins = null;
 
-    @JsonProperty("online")
+    @SerializedName("online")
     private Boolean online = null;
 
     public CharacterOnlineResponse lastLogin(OffsetDateTime lastLogin) {
@@ -48,7 +52,7 @@ public class CharacterOnlineResponse implements Serializable {
      * 
      * @return lastLogin
      **/
-    @ApiModelProperty(example = "null", value = "Timestamp of the last login")
+    @ApiModelProperty(value = "Timestamp of the last login")
     public OffsetDateTime getLastLogin() {
         return lastLogin;
     }
@@ -67,7 +71,7 @@ public class CharacterOnlineResponse implements Serializable {
      * 
      * @return lastLogout
      **/
-    @ApiModelProperty(example = "null", value = "Timestamp of the last logout")
+    @ApiModelProperty(value = "Timestamp of the last logout")
     public OffsetDateTime getLastLogout() {
         return lastLogout;
     }
@@ -86,7 +90,7 @@ public class CharacterOnlineResponse implements Serializable {
      * 
      * @return logins
      **/
-    @ApiModelProperty(example = "null", value = "Total number of times the character has logged in")
+    @ApiModelProperty(value = "Total number of times the character has logged in")
     public Integer getLogins() {
         return logins;
     }
@@ -105,8 +109,8 @@ public class CharacterOnlineResponse implements Serializable {
      * 
      * @return online
      **/
-    @ApiModelProperty(example = "null", required = true, value = "If the character is online")
-    public Boolean getOnline() {
+    @ApiModelProperty(required = true, value = "If the character is online")
+    public Boolean isOnline() {
         return online;
     }
 

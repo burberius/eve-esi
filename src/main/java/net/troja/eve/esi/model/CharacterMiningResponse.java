@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class CharacterMiningResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private LocalDate date = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Long quantity = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CharacterMiningResponse date(LocalDate date) {
@@ -48,7 +52,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "date string")
+    @ApiModelProperty(required = true, value = "date string")
     public LocalDate getDate() {
         return date;
     }
@@ -67,7 +71,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Long getQuantity() {
         return quantity;
     }
@@ -86,7 +90,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -105,7 +109,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

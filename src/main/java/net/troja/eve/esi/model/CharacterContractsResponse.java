@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,15 +30,16 @@ import java.io.Serializable;
 public class CharacterContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("acceptor_id")
+    @SerializedName("acceptor_id")
     private Integer acceptorId = null;
 
-    @JsonProperty("assignee_id")
+    @SerializedName("assignee_id")
     private Integer assigneeId = null;
 
     /**
      * To whom the contract is available
      */
+    @JsonAdapter(AvailabilityEnum.Adapter.class)
     public enum AvailabilityEnum {
         PUBLIC("public"),
 
@@ -50,12 +55,15 @@ public class CharacterContractsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static AvailabilityEnum fromValue(String text) {
             for (AvailabilityEnum b : AvailabilityEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -64,59 +72,73 @@ public class CharacterContractsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<AvailabilityEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final AvailabilityEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public AvailabilityEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return AvailabilityEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("availability")
+    @SerializedName("availability")
     private AvailabilityEnum availability = null;
 
-    @JsonProperty("buyout")
+    @SerializedName("buyout")
     private Double buyout = null;
 
-    @JsonProperty("collateral")
+    @SerializedName("collateral")
     private Double collateral = null;
 
-    @JsonProperty("contract_id")
+    @SerializedName("contract_id")
     private Integer contractId = null;
 
-    @JsonProperty("date_accepted")
+    @SerializedName("date_accepted")
     private OffsetDateTime dateAccepted = null;
 
-    @JsonProperty("date_completed")
+    @SerializedName("date_completed")
     private OffsetDateTime dateCompleted = null;
 
-    @JsonProperty("date_expired")
+    @SerializedName("date_expired")
     private OffsetDateTime dateExpired = null;
 
-    @JsonProperty("date_issued")
+    @SerializedName("date_issued")
     private OffsetDateTime dateIssued = null;
 
-    @JsonProperty("days_to_complete")
+    @SerializedName("days_to_complete")
     private Integer daysToComplete = null;
 
-    @JsonProperty("end_location_id")
+    @SerializedName("end_location_id")
     private Long endLocationId = null;
 
-    @JsonProperty("for_corporation")
+    @SerializedName("for_corporation")
     private Boolean forCorporation = null;
 
-    @JsonProperty("issuer_corporation_id")
+    @SerializedName("issuer_corporation_id")
     private Integer issuerCorporationId = null;
 
-    @JsonProperty("issuer_id")
+    @SerializedName("issuer_id")
     private Integer issuerId = null;
 
-    @JsonProperty("price")
+    @SerializedName("price")
     private Double price = null;
 
-    @JsonProperty("reward")
+    @SerializedName("reward")
     private Double reward = null;
 
-    @JsonProperty("start_location_id")
+    @SerializedName("start_location_id")
     private Long startLocationId = null;
 
     /**
      * Status of the the contract
      */
+    @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
         OUTSTANDING("outstanding"),
 
@@ -144,12 +166,15 @@ public class CharacterContractsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StatusEnum fromValue(String text) {
             for (StatusEnum b : StatusEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -158,17 +183,31 @@ public class CharacterContractsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("status")
+    @SerializedName("status")
     private StatusEnum status = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     /**
      * Type of the contract
      */
+    @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
         UNKNOWN("unknown"),
 
@@ -186,12 +225,15 @@ public class CharacterContractsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static TypeEnum fromValue(String text) {
             for (TypeEnum b : TypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -200,12 +242,25 @@ public class CharacterContractsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<TypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public TypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("type")
+    @SerializedName("type")
     private TypeEnum type = null;
 
-    @JsonProperty("volume")
+    @SerializedName("volume")
     private Double volume = null;
 
     public CharacterContractsResponse acceptorId(Integer acceptorId) {
@@ -218,7 +273,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return acceptorId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who will accept the contract")
+    @ApiModelProperty(required = true, value = "Who will accept the contract")
     public Integer getAcceptorId() {
         return acceptorId;
     }
@@ -237,7 +292,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return assigneeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
+    @ApiModelProperty(required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
     public Integer getAssigneeId() {
         return assigneeId;
     }
@@ -256,7 +311,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return availability
      **/
-    @ApiModelProperty(example = "null", required = true, value = "To whom the contract is available")
+    @ApiModelProperty(required = true, value = "To whom the contract is available")
     public AvailabilityEnum getAvailability() {
         return availability;
     }
@@ -275,7 +330,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return buyout
      **/
-    @ApiModelProperty(example = "null", value = "Buyout price (for Auctions only)")
+    @ApiModelProperty(value = "Buyout price (for Auctions only)")
     public Double getBuyout() {
         return buyout;
     }
@@ -294,7 +349,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return collateral
      **/
-    @ApiModelProperty(example = "null", value = "Collateral price (for Couriers only)")
+    @ApiModelProperty(value = "Collateral price (for Couriers only)")
     public Double getCollateral() {
         return collateral;
     }
@@ -313,7 +368,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return contractId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contract_id integer")
+    @ApiModelProperty(required = true, value = "contract_id integer")
     public Integer getContractId() {
         return contractId;
     }
@@ -332,7 +387,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return dateAccepted
      **/
-    @ApiModelProperty(example = "null", value = "Date of confirmation of contract")
+    @ApiModelProperty(value = "Date of confirmation of contract")
     public OffsetDateTime getDateAccepted() {
         return dateAccepted;
     }
@@ -351,7 +406,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return dateCompleted
      **/
-    @ApiModelProperty(example = "null", value = "Date of completed of contract")
+    @ApiModelProperty(value = "Date of completed of contract")
     public OffsetDateTime getDateCompleted() {
         return dateCompleted;
     }
@@ -370,7 +425,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return dateExpired
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Expiration date of the contract")
+    @ApiModelProperty(required = true, value = "Expiration date of the contract")
     public OffsetDateTime getDateExpired() {
         return dateExpired;
     }
@@ -389,7 +444,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return dateIssued
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Сreation date of the contract")
+    @ApiModelProperty(required = true, value = "Сreation date of the contract")
     public OffsetDateTime getDateIssued() {
         return dateIssued;
     }
@@ -408,7 +463,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return daysToComplete
      **/
-    @ApiModelProperty(example = "null", value = "Number of days to perform the contract")
+    @ApiModelProperty(value = "Number of days to perform the contract")
     public Integer getDaysToComplete() {
         return daysToComplete;
     }
@@ -427,7 +482,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return endLocationId
      **/
-    @ApiModelProperty(example = "null", value = "End location ID (for Couriers contract)")
+    @ApiModelProperty(value = "End location ID (for Couriers contract)")
     public Long getEndLocationId() {
         return endLocationId;
     }
@@ -442,12 +497,12 @@ public class CharacterContractsResponse implements Serializable {
     }
 
     /**
-     * true if the contract was issued on behalf of the issuer's corporation
+     * true if the contract was issued on behalf of the issuer&#39;s corporation
      * 
      * @return forCorporation
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
-    public Boolean getForCorporation() {
+    @ApiModelProperty(required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
+    public Boolean isForCorporation() {
         return forCorporation;
     }
 
@@ -461,11 +516,11 @@ public class CharacterContractsResponse implements Serializable {
     }
 
     /**
-     * Character's corporation ID for the issuer
+     * Character&#39;s corporation ID for the issuer
      * 
      * @return issuerCorporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Character's corporation ID for the issuer")
+    @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
     public Integer getIssuerCorporationId() {
         return issuerCorporationId;
     }
@@ -484,7 +539,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Character ID for the issuer")
+    @ApiModelProperty(required = true, value = "Character ID for the issuer")
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -503,7 +558,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return price
      **/
-    @ApiModelProperty(example = "null", value = "Price of contract (for ItemsExchange and Auctions)")
+    @ApiModelProperty(value = "Price of contract (for ItemsExchange and Auctions)")
     public Double getPrice() {
         return price;
     }
@@ -522,7 +577,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return reward
      **/
-    @ApiModelProperty(example = "null", value = "Remuneration for contract (for Couriers only)")
+    @ApiModelProperty(value = "Remuneration for contract (for Couriers only)")
     public Double getReward() {
         return reward;
     }
@@ -541,7 +596,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return startLocationId
      **/
-    @ApiModelProperty(example = "null", value = "Start location ID (for Couriers contract)")
+    @ApiModelProperty(value = "Start location ID (for Couriers contract)")
     public Long getStartLocationId() {
         return startLocationId;
     }
@@ -560,7 +615,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Status of the the contract")
+    @ApiModelProperty(required = true, value = "Status of the the contract")
     public StatusEnum getStatus() {
         return status;
     }
@@ -579,7 +634,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", value = "Title of the contract")
+    @ApiModelProperty(value = "Title of the contract")
     public String getTitle() {
         return title;
     }
@@ -598,7 +653,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type of the contract")
+    @ApiModelProperty(required = true, value = "Type of the contract")
     public TypeEnum getType() {
         return type;
     }
@@ -617,7 +672,7 @@ public class CharacterContractsResponse implements Serializable {
      * 
      * @return volume
      **/
-    @ApiModelProperty(example = "null", value = "Volume of items in the contract")
+    @ApiModelProperty(value = "Volume of items in the contract")
     public Double getVolume() {
         return volume;
     }

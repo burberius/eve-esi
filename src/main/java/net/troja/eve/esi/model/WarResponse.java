@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,34 +35,34 @@ import java.io.Serializable;
 public class WarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("aggressor")
+    @SerializedName("aggressor")
     private Aggressor aggressor = null;
 
-    @JsonProperty("allies")
-    private List<WarAlly> allies = new ArrayList<WarAlly>();
+    @SerializedName("allies")
+    private List<WarAlly> allies = null;
 
-    @JsonProperty("declared")
+    @SerializedName("declared")
     private OffsetDateTime declared = null;
 
-    @JsonProperty("defender")
+    @SerializedName("defender")
     private Defender defender = null;
 
-    @JsonProperty("finished")
+    @SerializedName("finished")
     private OffsetDateTime finished = null;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Integer id = null;
 
-    @JsonProperty("mutual")
+    @SerializedName("mutual")
     private Boolean mutual = null;
 
-    @JsonProperty("open_for_allies")
+    @SerializedName("open_for_allies")
     private Boolean openForAllies = null;
 
-    @JsonProperty("retracted")
+    @SerializedName("retracted")
     private OffsetDateTime retracted = null;
 
-    @JsonProperty("started")
+    @SerializedName("started")
     private OffsetDateTime started = null;
 
     public WarResponse aggressor(Aggressor aggressor) {
@@ -71,7 +75,7 @@ public class WarResponse implements Serializable {
      * 
      * @return aggressor
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public Aggressor getAggressor() {
         return aggressor;
     }
@@ -86,6 +90,9 @@ public class WarResponse implements Serializable {
     }
 
     public WarResponse addAlliesItem(WarAlly alliesItem) {
+        if (this.allies == null) {
+            this.allies = new ArrayList<>();
+        }
         this.allies.add(alliesItem);
         return this;
     }
@@ -96,7 +103,7 @@ public class WarResponse implements Serializable {
      * 
      * @return allies
      **/
-    @ApiModelProperty(example = "null", value = "allied corporations or alliances, each object contains either corporation_id or alliance_id")
+    @ApiModelProperty(value = "allied corporations or alliances, each object contains either corporation_id or alliance_id")
     public List<WarAlly> getAllies() {
         return allies;
     }
@@ -115,7 +122,7 @@ public class WarResponse implements Serializable {
      * 
      * @return declared
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time that the war was declared")
+    @ApiModelProperty(required = true, value = "Time that the war was declared")
     public OffsetDateTime getDeclared() {
         return declared;
     }
@@ -134,7 +141,7 @@ public class WarResponse implements Serializable {
      * 
      * @return defender
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public Defender getDefender() {
         return defender;
     }
@@ -153,7 +160,7 @@ public class WarResponse implements Serializable {
      * 
      * @return finished
      **/
-    @ApiModelProperty(example = "null", value = "Time the war ended and shooting was no longer allowed")
+    @ApiModelProperty(value = "Time the war ended and shooting was no longer allowed")
     public OffsetDateTime getFinished() {
         return finished;
     }
@@ -172,7 +179,7 @@ public class WarResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the specified war")
+    @ApiModelProperty(required = true, value = "ID of the specified war")
     public Integer getId() {
         return id;
     }
@@ -191,8 +198,8 @@ public class WarResponse implements Serializable {
      * 
      * @return mutual
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Was the war declared mutual by both parties")
-    public Boolean getMutual() {
+    @ApiModelProperty(required = true, value = "Was the war declared mutual by both parties")
+    public Boolean isMutual() {
         return mutual;
     }
 
@@ -210,8 +217,8 @@ public class WarResponse implements Serializable {
      * 
      * @return openForAllies
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Is the war currently open for allies or not")
-    public Boolean getOpenForAllies() {
+    @ApiModelProperty(required = true, value = "Is the war currently open for allies or not")
+    public Boolean isOpenForAllies() {
         return openForAllies;
     }
 
@@ -229,7 +236,7 @@ public class WarResponse implements Serializable {
      * 
      * @return retracted
      **/
-    @ApiModelProperty(example = "null", value = "Time the war was retracted but both sides could still shoot each other")
+    @ApiModelProperty(value = "Time the war was retracted but both sides could still shoot each other")
     public OffsetDateTime getRetracted() {
         return retracted;
     }
@@ -248,7 +255,7 @@ public class WarResponse implements Serializable {
      * 
      * @return started
      **/
-    @ApiModelProperty(example = "null", value = "Time when the war started and both sides could shoot each other")
+    @ApiModelProperty(value = "Time when the war started and both sides could shoot each other")
     public OffsetDateTime getStarted() {
         return started;
     }

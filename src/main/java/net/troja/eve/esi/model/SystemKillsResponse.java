@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class SystemKillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("npc_kills")
+    @SerializedName("npc_kills")
     private Integer npcKills = null;
 
-    @JsonProperty("pod_kills")
+    @SerializedName("pod_kills")
     private Integer podKills = null;
 
-    @JsonProperty("ship_kills")
+    @SerializedName("ship_kills")
     private Integer shipKills = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public SystemKillsResponse npcKills(Integer npcKills) {
@@ -47,7 +51,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return npcKills
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of NPC ships killed in this system")
+    @ApiModelProperty(required = true, value = "Number of NPC ships killed in this system")
     public Integer getNpcKills() {
         return npcKills;
     }
@@ -66,7 +70,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return podKills
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of pods killed in this system")
+    @ApiModelProperty(required = true, value = "Number of pods killed in this system")
     public Integer getPodKills() {
         return podKills;
     }
@@ -85,7 +89,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return shipKills
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of player ships killed in this system")
+    @ApiModelProperty(required = true, value = "Number of player ships killed in this system")
     public Integer getShipKills() {
         return shipKills;
     }
@@ -104,7 +108,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
     }

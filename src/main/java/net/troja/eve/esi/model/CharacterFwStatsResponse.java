@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import net.troja.eve.esi.model.CharacterFwStatsKills;
 import net.troja.eve.esi.model.CharacterFwStatsVictoryPoints;
@@ -28,22 +32,22 @@ import java.io.Serializable;
 public class CharacterFwStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("current_rank")
+    @SerializedName("current_rank")
     private Integer currentRank = null;
 
-    @JsonProperty("enlisted_on")
+    @SerializedName("enlisted_on")
     private OffsetDateTime enlistedOn = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("highest_rank")
+    @SerializedName("highest_rank")
     private Integer highestRank = null;
 
-    @JsonProperty("kills")
+    @SerializedName("kills")
     private CharacterFwStatsKills kills = null;
 
-    @JsonProperty("victory_points")
+    @SerializedName("victory_points")
     private CharacterFwStatsVictoryPoints victoryPoints = null;
 
     public CharacterFwStatsResponse currentRank(Integer currentRank) {
@@ -52,11 +56,11 @@ public class CharacterFwStatsResponse implements Serializable {
     }
 
     /**
-     * The given character's current faction rank minimum: 0 maximum: 9
+     * The given character&#39;s current faction rank minimum: 0 maximum: 9
      * 
      * @return currentRank
      **/
-    @ApiModelProperty(example = "null", value = "The given character's current faction rank")
+    @ApiModelProperty(value = "The given character's current faction rank")
     public Integer getCurrentRank() {
         return currentRank;
     }
@@ -76,7 +80,7 @@ public class CharacterFwStatsResponse implements Serializable {
      * 
      * @return enlistedOn
      **/
-    @ApiModelProperty(example = "null", value = "The enlistment date of the given character into faction warfare. Will not be included if character is not enlisted in faction warfare")
+    @ApiModelProperty(value = "The enlistment date of the given character into faction warfare. Will not be included if character is not enlisted in faction warfare")
     public OffsetDateTime getEnlistedOn() {
         return enlistedOn;
     }
@@ -96,7 +100,7 @@ public class CharacterFwStatsResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "The faction the given character is enlisted to fight for. Will not be included if character is not enlisted in faction warfare")
+    @ApiModelProperty(value = "The faction the given character is enlisted to fight for. Will not be included if character is not enlisted in faction warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -111,11 +115,12 @@ public class CharacterFwStatsResponse implements Serializable {
     }
 
     /**
-     * The given character's highest faction rank achieved minimum: 0 maximum: 9
+     * The given character&#39;s highest faction rank achieved minimum: 0
+     * maximum: 9
      * 
      * @return highestRank
      **/
-    @ApiModelProperty(example = "null", value = "The given character's highest faction rank achieved")
+    @ApiModelProperty(value = "The given character's highest faction rank achieved")
     public Integer getHighestRank() {
         return highestRank;
     }
@@ -134,7 +139,7 @@ public class CharacterFwStatsResponse implements Serializable {
      * 
      * @return kills
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public CharacterFwStatsKills getKills() {
         return kills;
     }
@@ -153,7 +158,7 @@ public class CharacterFwStatsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public CharacterFwStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }

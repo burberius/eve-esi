@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.CorporationStarbaseFuel;
@@ -28,15 +32,16 @@ import java.io.Serializable;
 public class CorporationStarbaseResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("allow_alliance_members")
+    @SerializedName("allow_alliance_members")
     private Boolean allowAllianceMembers = null;
 
-    @JsonProperty("allow_corporation_members")
+    @SerializedName("allow_corporation_members")
     private Boolean allowCorporationMembers = null;
 
     /**
      * Who can anchor starbase (POS) and its structures
      */
+    @JsonAdapter(AnchorEnum.Adapter.class)
     public enum AnchorEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -52,12 +57,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static AnchorEnum fromValue(String text) {
             for (AnchorEnum b : AnchorEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -66,26 +74,40 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<AnchorEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final AnchorEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public AnchorEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return AnchorEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("anchor")
+    @SerializedName("anchor")
     private AnchorEnum anchor = null;
 
-    @JsonProperty("attack_if_at_war")
+    @SerializedName("attack_if_at_war")
     private Boolean attackIfAtWar = null;
 
-    @JsonProperty("attack_if_other_security_status_dropping")
+    @SerializedName("attack_if_other_security_status_dropping")
     private Boolean attackIfOtherSecurityStatusDropping = null;
 
-    @JsonProperty("attack_security_status_threshold")
+    @SerializedName("attack_security_status_threshold")
     private Float attackSecurityStatusThreshold = null;
 
-    @JsonProperty("attack_standing_threshold")
+    @SerializedName("attack_standing_threshold")
     private Float attackStandingThreshold = null;
 
     /**
-     * Who can take fuel blocks out of the starbase (POS)'s fuel bay
+     * Who can take fuel blocks out of the starbase (POS)&#39;s fuel bay
      */
+    @JsonAdapter(FuelBayTakeEnum.Adapter.class)
     public enum FuelBayTakeEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -101,12 +123,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static FuelBayTakeEnum fromValue(String text) {
             for (FuelBayTakeEnum b : FuelBayTakeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -115,17 +140,31 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<FuelBayTakeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final FuelBayTakeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public FuelBayTakeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return FuelBayTakeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("fuel_bay_take")
+    @SerializedName("fuel_bay_take")
     private FuelBayTakeEnum fuelBayTake = null;
 
     /**
-     * Who can view the starbase (POS)'s fule bay. Characters either need to
-     * have required role or belong to the starbase (POS) owner's corporation or
-     * alliance, as described by the enum, all other access settings follows the
-     * same scheme
+     * Who can view the starbase (POS)&#39;s fule bay. Characters either need to
+     * have required role or belong to the starbase (POS) owner&#39;s
+     * corporation or alliance, as described by the enum, all other access
+     * settings follows the same scheme
      */
+    @JsonAdapter(FuelBayViewEnum.Adapter.class)
     public enum FuelBayViewEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -141,12 +180,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static FuelBayViewEnum fromValue(String text) {
             for (FuelBayViewEnum b : FuelBayViewEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -155,17 +197,31 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<FuelBayViewEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final FuelBayViewEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public FuelBayViewEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return FuelBayViewEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("fuel_bay_view")
+    @SerializedName("fuel_bay_view")
     private FuelBayViewEnum fuelBayView = null;
 
-    @JsonProperty("fuels")
-    private List<CorporationStarbaseFuel> fuels = new ArrayList<CorporationStarbaseFuel>();
+    @SerializedName("fuels")
+    private List<CorporationStarbaseFuel> fuels = null;
 
     /**
      * Who can offline starbase (POS) and its structures
      */
+    @JsonAdapter(OfflineEnum.Adapter.class)
     public enum OfflineEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -181,12 +237,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static OfflineEnum fromValue(String text) {
             for (OfflineEnum b : OfflineEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -195,14 +254,28 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<OfflineEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final OfflineEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public OfflineEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return OfflineEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("offline")
+    @SerializedName("offline")
     private OfflineEnum offline = null;
 
     /**
      * Who can online starbase (POS) and its structures
      */
+    @JsonAdapter(OnlineEnum.Adapter.class)
     public enum OnlineEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -218,12 +291,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static OnlineEnum fromValue(String text) {
             for (OnlineEnum b : OnlineEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -232,14 +308,28 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<OnlineEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final OnlineEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public OnlineEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return OnlineEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("online")
+    @SerializedName("online")
     private OnlineEnum online = null;
 
     /**
      * Who can unanchor starbase (POS) and its structures
      */
+    @JsonAdapter(UnanchorEnum.Adapter.class)
     public enum UnanchorEnum {
         ALLIANCE_MEMBER("alliance_member"),
 
@@ -255,12 +345,15 @@ public class CorporationStarbaseResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static UnanchorEnum fromValue(String text) {
             for (UnanchorEnum b : UnanchorEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -269,12 +362,25 @@ public class CorporationStarbaseResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<UnanchorEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final UnanchorEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public UnanchorEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return UnanchorEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("unanchor")
+    @SerializedName("unanchor")
     private UnanchorEnum unanchor = null;
 
-    @JsonProperty("use_alliance_standings")
+    @SerializedName("use_alliance_standings")
     private Boolean useAllianceStandings = null;
 
     public CorporationStarbaseResponse allowAllianceMembers(Boolean allowAllianceMembers) {
@@ -287,8 +393,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return allowAllianceMembers
      **/
-    @ApiModelProperty(example = "null", required = true, value = "allow_alliance_members boolean")
-    public Boolean getAllowAllianceMembers() {
+    @ApiModelProperty(required = true, value = "allow_alliance_members boolean")
+    public Boolean isAllowAllianceMembers() {
         return allowAllianceMembers;
     }
 
@@ -306,8 +412,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return allowCorporationMembers
      **/
-    @ApiModelProperty(example = "null", required = true, value = "allow_corporation_members boolean")
-    public Boolean getAllowCorporationMembers() {
+    @ApiModelProperty(required = true, value = "allow_corporation_members boolean")
+    public Boolean isAllowCorporationMembers() {
         return allowCorporationMembers;
     }
 
@@ -325,7 +431,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return anchor
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can anchor starbase (POS) and its structures")
+    @ApiModelProperty(required = true, value = "Who can anchor starbase (POS) and its structures")
     public AnchorEnum getAnchor() {
         return anchor;
     }
@@ -344,8 +450,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return attackIfAtWar
      **/
-    @ApiModelProperty(example = "null", required = true, value = "attack_if_at_war boolean")
-    public Boolean getAttackIfAtWar() {
+    @ApiModelProperty(required = true, value = "attack_if_at_war boolean")
+    public Boolean isAttackIfAtWar() {
         return attackIfAtWar;
     }
 
@@ -363,8 +469,8 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return attackIfOtherSecurityStatusDropping
      **/
-    @ApiModelProperty(example = "null", required = true, value = "attack_if_other_security_status_dropping boolean")
-    public Boolean getAttackIfOtherSecurityStatusDropping() {
+    @ApiModelProperty(required = true, value = "attack_if_other_security_status_dropping boolean")
+    public Boolean isAttackIfOtherSecurityStatusDropping() {
         return attackIfOtherSecurityStatusDropping;
     }
 
@@ -378,12 +484,12 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     /**
-     * Starbase (POS) will attack if target's security standing is lower than
-     * this value
+     * Starbase (POS) will attack if target&#39;s security standing is lower
+     * than this value
      * 
      * @return attackSecurityStatusThreshold
      **/
-    @ApiModelProperty(example = "null", value = "Starbase (POS) will attack if target's security standing is lower than this value")
+    @ApiModelProperty(value = "Starbase (POS) will attack if target's security standing is lower than this value")
     public Float getAttackSecurityStatusThreshold() {
         return attackSecurityStatusThreshold;
     }
@@ -398,11 +504,12 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     /**
-     * Starbase (POS) will attack if target's standing is lower than this value
+     * Starbase (POS) will attack if target&#39;s standing is lower than this
+     * value
      * 
      * @return attackStandingThreshold
      **/
-    @ApiModelProperty(example = "null", value = "Starbase (POS) will attack if target's standing is lower than this value")
+    @ApiModelProperty(value = "Starbase (POS) will attack if target's standing is lower than this value")
     public Float getAttackStandingThreshold() {
         return attackStandingThreshold;
     }
@@ -417,11 +524,11 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     /**
-     * Who can take fuel blocks out of the starbase (POS)'s fuel bay
+     * Who can take fuel blocks out of the starbase (POS)&#39;s fuel bay
      * 
      * @return fuelBayTake
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can take fuel blocks out of the starbase (POS)'s fuel bay")
+    @ApiModelProperty(required = true, value = "Who can take fuel blocks out of the starbase (POS)'s fuel bay")
     public FuelBayTakeEnum getFuelBayTake() {
         return fuelBayTake;
     }
@@ -436,14 +543,14 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     /**
-     * Who can view the starbase (POS)'s fule bay. Characters either need to
-     * have required role or belong to the starbase (POS) owner's corporation or
-     * alliance, as described by the enum, all other access settings follows the
-     * same scheme
+     * Who can view the starbase (POS)&#39;s fule bay. Characters either need to
+     * have required role or belong to the starbase (POS) owner&#39;s
+     * corporation or alliance, as described by the enum, all other access
+     * settings follows the same scheme
      * 
      * @return fuelBayView
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can view the starbase (POS)'s fule bay. Characters either need to have required role or belong to the starbase (POS) owner's corporation or alliance, as described by the enum, all other access settings follows the same scheme")
+    @ApiModelProperty(required = true, value = "Who can view the starbase (POS)'s fule bay. Characters either need to have required role or belong to the starbase (POS) owner's corporation or alliance, as described by the enum, all other access settings follows the same scheme")
     public FuelBayViewEnum getFuelBayView() {
         return fuelBayView;
     }
@@ -458,6 +565,9 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     public CorporationStarbaseResponse addFuelsItem(CorporationStarbaseFuel fuelsItem) {
+        if (this.fuels == null) {
+            this.fuels = new ArrayList<>();
+        }
         this.fuels.add(fuelsItem);
         return this;
     }
@@ -468,7 +578,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return fuels
      **/
-    @ApiModelProperty(example = "null", value = "Fuel blocks and other things that will be consumed when operating a starbase (POS)")
+    @ApiModelProperty(value = "Fuel blocks and other things that will be consumed when operating a starbase (POS)")
     public List<CorporationStarbaseFuel> getFuels() {
         return fuels;
     }
@@ -487,7 +597,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return offline
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can offline starbase (POS) and its structures")
+    @ApiModelProperty(required = true, value = "Who can offline starbase (POS) and its structures")
     public OfflineEnum getOffline() {
         return offline;
     }
@@ -506,7 +616,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return online
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can online starbase (POS) and its structures")
+    @ApiModelProperty(required = true, value = "Who can online starbase (POS) and its structures")
     public OnlineEnum getOnline() {
         return online;
     }
@@ -525,7 +635,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return unanchor
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Who can unanchor starbase (POS) and its structures")
+    @ApiModelProperty(required = true, value = "Who can unanchor starbase (POS) and its structures")
     public UnanchorEnum getUnanchor() {
         return unanchor;
     }
@@ -541,12 +651,12 @@ public class CorporationStarbaseResponse implements Serializable {
 
     /**
      * True if the starbase (POS) is using alliance standings, otherwise using
-     * corporation's
+     * corporation&#39;s
      * 
      * @return useAllianceStandings
      **/
-    @ApiModelProperty(example = "null", required = true, value = "True if the starbase (POS) is using alliance standings, otherwise using corporation's")
-    public Boolean getUseAllianceStandings() {
+    @ApiModelProperty(required = true, value = "True if the starbase (POS) is using alliance standings, otherwise using corporation's")
+    public Boolean isUseAllianceStandings() {
         return useAllianceStandings;
     }
 

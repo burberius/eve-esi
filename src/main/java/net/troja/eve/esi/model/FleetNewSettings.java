@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class FleetNewSettings implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_free_move")
+    @SerializedName("is_free_move")
     private Boolean isFreeMove = null;
 
-    @JsonProperty("motd")
+    @SerializedName("motd")
     private String motd = null;
 
     public FleetNewSettings isFreeMove(Boolean isFreeMove) {
@@ -41,8 +45,8 @@ public class FleetNewSettings implements Serializable {
      * 
      * @return isFreeMove
      **/
-    @ApiModelProperty(example = "null", value = "Should free-move be enabled in the fleet")
-    public Boolean getIsFreeMove() {
+    @ApiModelProperty(value = "Should free-move be enabled in the fleet")
+    public Boolean isIsFreeMove() {
         return isFreeMove;
     }
 
@@ -60,7 +64,7 @@ public class FleetNewSettings implements Serializable {
      * 
      * @return motd
      **/
-    @ApiModelProperty(example = "null", value = "New fleet MOTD in CCP flavoured HTML")
+    @ApiModelProperty(value = "New fleet MOTD in CCP flavoured HTML")
     public String getMotd() {
         return motd;
     }

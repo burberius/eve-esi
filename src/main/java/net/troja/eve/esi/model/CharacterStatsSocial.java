@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,79 +29,79 @@ import java.io.Serializable;
 public class CharacterStatsSocial implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("add_contact_bad")
+    @SerializedName("add_contact_bad")
     private Long addContactBad = null;
 
-    @JsonProperty("add_contact_good")
+    @SerializedName("add_contact_good")
     private Long addContactGood = null;
 
-    @JsonProperty("add_contact_high")
+    @SerializedName("add_contact_high")
     private Long addContactHigh = null;
 
-    @JsonProperty("add_contact_horrible")
+    @SerializedName("add_contact_horrible")
     private Long addContactHorrible = null;
 
-    @JsonProperty("add_contact_neutral")
+    @SerializedName("add_contact_neutral")
     private Long addContactNeutral = null;
 
-    @JsonProperty("add_note")
+    @SerializedName("add_note")
     private Long addNote = null;
 
-    @JsonProperty("added_as_contact_bad")
+    @SerializedName("added_as_contact_bad")
     private Long addedAsContactBad = null;
 
-    @JsonProperty("added_as_contact_good")
+    @SerializedName("added_as_contact_good")
     private Long addedAsContactGood = null;
 
-    @JsonProperty("added_as_contact_high")
+    @SerializedName("added_as_contact_high")
     private Long addedAsContactHigh = null;
 
-    @JsonProperty("added_as_contact_horrible")
+    @SerializedName("added_as_contact_horrible")
     private Long addedAsContactHorrible = null;
 
-    @JsonProperty("added_as_contact_neutral")
+    @SerializedName("added_as_contact_neutral")
     private Long addedAsContactNeutral = null;
 
-    @JsonProperty("calendar_event_created")
+    @SerializedName("calendar_event_created")
     private Long calendarEventCreated = null;
 
-    @JsonProperty("chat_messages_alliance")
+    @SerializedName("chat_messages_alliance")
     private Long chatMessagesAlliance = null;
 
-    @JsonProperty("chat_messages_constellation")
+    @SerializedName("chat_messages_constellation")
     private Long chatMessagesConstellation = null;
 
-    @JsonProperty("chat_messages_corporation")
+    @SerializedName("chat_messages_corporation")
     private Long chatMessagesCorporation = null;
 
-    @JsonProperty("chat_messages_fleet")
+    @SerializedName("chat_messages_fleet")
     private Long chatMessagesFleet = null;
 
-    @JsonProperty("chat_messages_region")
+    @SerializedName("chat_messages_region")
     private Long chatMessagesRegion = null;
 
-    @JsonProperty("chat_messages_solarsystem")
+    @SerializedName("chat_messages_solarsystem")
     private Long chatMessagesSolarsystem = null;
 
-    @JsonProperty("chat_messages_warfaction")
+    @SerializedName("chat_messages_warfaction")
     private Long chatMessagesWarfaction = null;
 
-    @JsonProperty("chat_total_message_length")
+    @SerializedName("chat_total_message_length")
     private Long chatTotalMessageLength = null;
 
-    @JsonProperty("direct_trades")
+    @SerializedName("direct_trades")
     private Long directTrades = null;
 
-    @JsonProperty("fleet_broadcasts")
+    @SerializedName("fleet_broadcasts")
     private Long fleetBroadcasts = null;
 
-    @JsonProperty("fleet_joins")
+    @SerializedName("fleet_joins")
     private Long fleetJoins = null;
 
-    @JsonProperty("mails_received")
+    @SerializedName("mails_received")
     private Long mailsReceived = null;
 
-    @JsonProperty("mails_sent")
+    @SerializedName("mails_sent")
     private Long mailsSent = null;
 
     public CharacterStatsSocial addContactBad(Long addContactBad) {
@@ -110,7 +114,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactBad
      **/
-    @ApiModelProperty(example = "null", value = "add_contact_bad integer")
+    @ApiModelProperty(value = "add_contact_bad integer")
     public Long getAddContactBad() {
         return addContactBad;
     }
@@ -129,7 +133,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactGood
      **/
-    @ApiModelProperty(example = "null", value = "add_contact_good integer")
+    @ApiModelProperty(value = "add_contact_good integer")
     public Long getAddContactGood() {
         return addContactGood;
     }
@@ -148,7 +152,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactHigh
      **/
-    @ApiModelProperty(example = "null", value = "add_contact_high integer")
+    @ApiModelProperty(value = "add_contact_high integer")
     public Long getAddContactHigh() {
         return addContactHigh;
     }
@@ -167,7 +171,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactHorrible
      **/
-    @ApiModelProperty(example = "null", value = "add_contact_horrible integer")
+    @ApiModelProperty(value = "add_contact_horrible integer")
     public Long getAddContactHorrible() {
         return addContactHorrible;
     }
@@ -186,7 +190,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactNeutral
      **/
-    @ApiModelProperty(example = "null", value = "add_contact_neutral integer")
+    @ApiModelProperty(value = "add_contact_neutral integer")
     public Long getAddContactNeutral() {
         return addContactNeutral;
     }
@@ -205,7 +209,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addNote
      **/
-    @ApiModelProperty(example = "null", value = "add_note integer")
+    @ApiModelProperty(value = "add_note integer")
     public Long getAddNote() {
         return addNote;
     }
@@ -224,7 +228,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addedAsContactBad
      **/
-    @ApiModelProperty(example = "null", value = "added_as_contact_bad integer")
+    @ApiModelProperty(value = "added_as_contact_bad integer")
     public Long getAddedAsContactBad() {
         return addedAsContactBad;
     }
@@ -243,7 +247,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addedAsContactGood
      **/
-    @ApiModelProperty(example = "null", value = "added_as_contact_good integer")
+    @ApiModelProperty(value = "added_as_contact_good integer")
     public Long getAddedAsContactGood() {
         return addedAsContactGood;
     }
@@ -262,7 +266,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addedAsContactHigh
      **/
-    @ApiModelProperty(example = "null", value = "added_as_contact_high integer")
+    @ApiModelProperty(value = "added_as_contact_high integer")
     public Long getAddedAsContactHigh() {
         return addedAsContactHigh;
     }
@@ -281,7 +285,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addedAsContactHorrible
      **/
-    @ApiModelProperty(example = "null", value = "added_as_contact_horrible integer")
+    @ApiModelProperty(value = "added_as_contact_horrible integer")
     public Long getAddedAsContactHorrible() {
         return addedAsContactHorrible;
     }
@@ -300,7 +304,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addedAsContactNeutral
      **/
-    @ApiModelProperty(example = "null", value = "added_as_contact_neutral integer")
+    @ApiModelProperty(value = "added_as_contact_neutral integer")
     public Long getAddedAsContactNeutral() {
         return addedAsContactNeutral;
     }
@@ -319,7 +323,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return calendarEventCreated
      **/
-    @ApiModelProperty(example = "null", value = "calendar_event_created integer")
+    @ApiModelProperty(value = "calendar_event_created integer")
     public Long getCalendarEventCreated() {
         return calendarEventCreated;
     }
@@ -338,7 +342,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesAlliance
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_alliance integer")
+    @ApiModelProperty(value = "chat_messages_alliance integer")
     public Long getChatMessagesAlliance() {
         return chatMessagesAlliance;
     }
@@ -357,7 +361,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesConstellation
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_constellation integer")
+    @ApiModelProperty(value = "chat_messages_constellation integer")
     public Long getChatMessagesConstellation() {
         return chatMessagesConstellation;
     }
@@ -376,7 +380,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesCorporation
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_corporation integer")
+    @ApiModelProperty(value = "chat_messages_corporation integer")
     public Long getChatMessagesCorporation() {
         return chatMessagesCorporation;
     }
@@ -395,7 +399,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesFleet
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_fleet integer")
+    @ApiModelProperty(value = "chat_messages_fleet integer")
     public Long getChatMessagesFleet() {
         return chatMessagesFleet;
     }
@@ -414,7 +418,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesRegion
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_region integer")
+    @ApiModelProperty(value = "chat_messages_region integer")
     public Long getChatMessagesRegion() {
         return chatMessagesRegion;
     }
@@ -433,7 +437,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesSolarsystem
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_solarsystem integer")
+    @ApiModelProperty(value = "chat_messages_solarsystem integer")
     public Long getChatMessagesSolarsystem() {
         return chatMessagesSolarsystem;
     }
@@ -452,7 +456,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatMessagesWarfaction
      **/
-    @ApiModelProperty(example = "null", value = "chat_messages_warfaction integer")
+    @ApiModelProperty(value = "chat_messages_warfaction integer")
     public Long getChatMessagesWarfaction() {
         return chatMessagesWarfaction;
     }
@@ -471,7 +475,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return chatTotalMessageLength
      **/
-    @ApiModelProperty(example = "null", value = "chat_total_message_length integer")
+    @ApiModelProperty(value = "chat_total_message_length integer")
     public Long getChatTotalMessageLength() {
         return chatTotalMessageLength;
     }
@@ -490,7 +494,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return directTrades
      **/
-    @ApiModelProperty(example = "null", value = "direct_trades integer")
+    @ApiModelProperty(value = "direct_trades integer")
     public Long getDirectTrades() {
         return directTrades;
     }
@@ -509,7 +513,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return fleetBroadcasts
      **/
-    @ApiModelProperty(example = "null", value = "fleet_broadcasts integer")
+    @ApiModelProperty(value = "fleet_broadcasts integer")
     public Long getFleetBroadcasts() {
         return fleetBroadcasts;
     }
@@ -528,7 +532,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return fleetJoins
      **/
-    @ApiModelProperty(example = "null", value = "fleet_joins integer")
+    @ApiModelProperty(value = "fleet_joins integer")
     public Long getFleetJoins() {
         return fleetJoins;
     }
@@ -547,7 +551,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return mailsReceived
      **/
-    @ApiModelProperty(example = "null", value = "mails_received integer")
+    @ApiModelProperty(value = "mails_received integer")
     public Long getMailsReceived() {
         return mailsReceived;
     }
@@ -566,7 +570,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return mailsSent
      **/
-    @ApiModelProperty(example = "null", value = "mails_sent integer")
+    @ApiModelProperty(value = "mails_sent integer")
     public Long getMailsSent() {
         return mailsSent;
     }

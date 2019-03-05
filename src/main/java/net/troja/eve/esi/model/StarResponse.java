@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,24 +29,25 @@ import java.io.Serializable;
 public class StarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("age")
+    @SerializedName("age")
     private Long age = null;
 
-    @JsonProperty("luminosity")
+    @SerializedName("luminosity")
     private Float luminosity = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("radius")
+    @SerializedName("radius")
     private Long radius = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
     /**
      * spectral_class string
      */
+    @JsonAdapter(SpectralClassEnum.Adapter.class)
     public enum SpectralClassEnum {
         K2_V("K2 V"),
 
@@ -228,12 +233,15 @@ public class StarResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static SpectralClassEnum fromValue(String text) {
             for (SpectralClassEnum b : SpectralClassEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -242,15 +250,28 @@ public class StarResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<SpectralClassEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final SpectralClassEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public SpectralClassEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return SpectralClassEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("spectral_class")
+    @SerializedName("spectral_class")
     private SpectralClassEnum spectralClass = null;
 
-    @JsonProperty("temperature")
+    @SerializedName("temperature")
     private Integer temperature = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public StarResponse age(Long age) {
@@ -263,7 +284,7 @@ public class StarResponse implements Serializable {
      * 
      * @return age
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Age of star in years")
+    @ApiModelProperty(required = true, value = "Age of star in years")
     public Long getAge() {
         return age;
     }
@@ -282,7 +303,7 @@ public class StarResponse implements Serializable {
      * 
      * @return luminosity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "luminosity number")
+    @ApiModelProperty(required = true, value = "luminosity number")
     public Float getLuminosity() {
         return luminosity;
     }
@@ -301,7 +322,7 @@ public class StarResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -320,7 +341,7 @@ public class StarResponse implements Serializable {
      * 
      * @return radius
      **/
-    @ApiModelProperty(example = "null", required = true, value = "radius integer")
+    @ApiModelProperty(required = true, value = "radius integer")
     public Long getRadius() {
         return radius;
     }
@@ -339,7 +360,7 @@ public class StarResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -358,7 +379,7 @@ public class StarResponse implements Serializable {
      * 
      * @return spectralClass
      **/
-    @ApiModelProperty(example = "null", required = true, value = "spectral_class string")
+    @ApiModelProperty(required = true, value = "spectral_class string")
     public SpectralClassEnum getSpectralClass() {
         return spectralClass;
     }
@@ -377,7 +398,7 @@ public class StarResponse implements Serializable {
      * 
      * @return temperature
      **/
-    @ApiModelProperty(example = "null", required = true, value = "temperature integer")
+    @ApiModelProperty(required = true, value = "temperature integer")
     public Integer getTemperature() {
         return temperature;
     }
@@ -396,7 +417,7 @@ public class StarResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

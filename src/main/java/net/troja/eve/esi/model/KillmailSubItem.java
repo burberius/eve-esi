@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,19 +29,19 @@ import java.io.Serializable;
 public class KillmailSubItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("flag")
+    @SerializedName("flag")
     private Integer flag = null;
 
-    @JsonProperty("item_type_id")
+    @SerializedName("item_type_id")
     private Integer itemTypeId = null;
 
-    @JsonProperty("quantity_destroyed")
+    @SerializedName("quantity_destroyed")
     private Long quantityDestroyed = null;
 
-    @JsonProperty("quantity_dropped")
+    @SerializedName("quantity_dropped")
     private Long quantityDropped = null;
 
-    @JsonProperty("singleton")
+    @SerializedName("singleton")
     private Integer singleton = null;
 
     public KillmailSubItem flag(Integer flag) {
@@ -50,7 +54,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return flag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "flag integer")
+    @ApiModelProperty(required = true, value = "flag integer")
     public Integer getFlag() {
         return flag;
     }
@@ -69,7 +73,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return itemTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_type_id integer")
+    @ApiModelProperty(required = true, value = "item_type_id integer")
     public Integer getItemTypeId() {
         return itemTypeId;
     }
@@ -88,7 +92,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return quantityDestroyed
      **/
-    @ApiModelProperty(example = "null", value = "quantity_destroyed integer")
+    @ApiModelProperty(value = "quantity_destroyed integer")
     public Long getQuantityDestroyed() {
         return quantityDestroyed;
     }
@@ -107,7 +111,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return quantityDropped
      **/
-    @ApiModelProperty(example = "null", value = "quantity_dropped integer")
+    @ApiModelProperty(value = "quantity_dropped integer")
     public Long getQuantityDropped() {
         return quantityDropped;
     }
@@ -126,7 +130,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return singleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "singleton integer")
+    @ApiModelProperty(required = true, value = "singleton integer")
     public Integer getSingleton() {
         return singleton;
     }

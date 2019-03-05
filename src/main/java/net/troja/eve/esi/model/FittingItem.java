@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class FittingItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("flag")
+    @SerializedName("flag")
     private Integer flag = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public FittingItem flag(Integer flag) {
@@ -44,7 +48,7 @@ public class FittingItem implements Serializable {
      * 
      * @return flag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "flag integer")
+    @ApiModelProperty(required = true, value = "flag integer")
     public Integer getFlag() {
         return flag;
     }
@@ -63,7 +67,7 @@ public class FittingItem implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
     }
@@ -82,7 +86,7 @@ public class FittingItem implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

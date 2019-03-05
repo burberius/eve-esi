@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterKillmailsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("killmail_hash")
+    @SerializedName("killmail_hash")
     private String killmailHash = null;
 
-    @JsonProperty("killmail_id")
+    @SerializedName("killmail_id")
     private Integer killmailId = null;
 
     public CharacterKillmailsResponse killmailHash(String killmailHash) {
@@ -41,7 +45,7 @@ public class CharacterKillmailsResponse implements Serializable {
      * 
      * @return killmailHash
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A hash of this killmail")
+    @ApiModelProperty(required = true, value = "A hash of this killmail")
     public String getKillmailHash() {
         return killmailHash;
     }
@@ -60,7 +64,7 @@ public class CharacterKillmailsResponse implements Serializable {
      * 
      * @return killmailId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of this killmail")
+    @ApiModelProperty(required = true, value = "ID of this killmail")
     public Integer getKillmailId() {
         return killmailId;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class CorporationMiningObserverResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("last_updated")
+    @SerializedName("last_updated")
     private LocalDate lastUpdated = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Long quantity = null;
 
-    @JsonProperty("recorded_corporation_id")
+    @SerializedName("recorded_corporation_id")
     private Integer recordedCorporationId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CorporationMiningObserverResponse characterId(Integer characterId) {
@@ -51,7 +55,7 @@ public class CorporationMiningObserverResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character that did the mining ")
+    @ApiModelProperty(required = true, value = "The character that did the mining ")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -70,7 +74,7 @@ public class CorporationMiningObserverResponse implements Serializable {
      * 
      * @return lastUpdated
      **/
-    @ApiModelProperty(example = "null", required = true, value = "last_updated string")
+    @ApiModelProperty(required = true, value = "last_updated string")
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
@@ -89,7 +93,7 @@ public class CorporationMiningObserverResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Long getQuantity() {
         return quantity;
     }
@@ -108,7 +112,7 @@ public class CorporationMiningObserverResponse implements Serializable {
      * 
      * @return recordedCorporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The corporation id of the character at the time data was recorded. ")
+    @ApiModelProperty(required = true, value = "The corporation id of the character at the time data was recorded. ")
     public Integer getRecordedCorporationId() {
         return recordedCorporationId;
     }
@@ -127,7 +131,7 @@ public class CorporationMiningObserverResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

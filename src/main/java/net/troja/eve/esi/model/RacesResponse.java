@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class RacesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("race_id")
+    @SerializedName("race_id")
     private Integer raceId = null;
 
     public RacesResponse allianceId(Integer allianceId) {
@@ -47,7 +51,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The alliance generally associated with this race")
+    @ApiModelProperty(required = true, value = "The alliance generally associated with this race")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -66,7 +70,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -85,7 +89,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -104,7 +108,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return raceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
+    @ApiModelProperty(required = true, value = "race_id integer")
     public Integer getRaceId() {
         return raceId;
     }

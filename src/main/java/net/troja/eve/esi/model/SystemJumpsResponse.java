@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class SystemJumpsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("ship_jumps")
+    @SerializedName("ship_jumps")
     private Integer shipJumps = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public SystemJumpsResponse shipJumps(Integer shipJumps) {
@@ -41,7 +45,7 @@ public class SystemJumpsResponse implements Serializable {
      * 
      * @return shipJumps
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_jumps integer")
+    @ApiModelProperty(required = true, value = "ship_jumps integer")
     public Integer getShipJumps() {
         return shipJumps;
     }
@@ -60,7 +64,7 @@ public class SystemJumpsResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
     }

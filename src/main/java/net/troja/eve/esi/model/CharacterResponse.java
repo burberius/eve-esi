@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,30 +30,31 @@ import java.io.Serializable;
 public class CharacterResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("ancestry_id")
+    @SerializedName("ancestry_id")
     private Integer ancestryId = null;
 
-    @JsonProperty("birthday")
+    @SerializedName("birthday")
     private OffsetDateTime birthday = null;
 
-    @JsonProperty("bloodline_id")
+    @SerializedName("bloodline_id")
     private Integer bloodlineId = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
     /**
      * gender string
      */
+    @JsonAdapter(GenderEnum.Adapter.class)
     public enum GenderEnum {
         FEMALE("female"),
 
@@ -61,12 +66,15 @@ public class CharacterResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static GenderEnum fromValue(String text) {
             for (GenderEnum b : GenderEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -75,18 +83,31 @@ public class CharacterResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<GenderEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final GenderEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public GenderEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return GenderEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("gender")
+    @SerializedName("gender")
     private GenderEnum gender = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("race_id")
+    @SerializedName("race_id")
     private Integer raceId = null;
 
-    @JsonProperty("security_status")
+    @SerializedName("security_status")
     private Float securityStatus = null;
 
     public CharacterResponse allianceId(Integer allianceId) {
@@ -95,11 +116,11 @@ public class CharacterResponse implements Serializable {
     }
 
     /**
-     * The character's alliance ID
+     * The character&#39;s alliance ID
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "The character's alliance ID")
+    @ApiModelProperty(value = "The character's alliance ID")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -118,7 +139,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return ancestryId
      **/
-    @ApiModelProperty(example = "null", value = "ancestry_id integer")
+    @ApiModelProperty(value = "ancestry_id integer")
     public Integer getAncestryId() {
         return ancestryId;
     }
@@ -137,7 +158,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return birthday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Creation date of the character")
+    @ApiModelProperty(required = true, value = "Creation date of the character")
     public OffsetDateTime getBirthday() {
         return birthday;
     }
@@ -156,7 +177,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return bloodlineId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "bloodline_id integer")
+    @ApiModelProperty(required = true, value = "bloodline_id integer")
     public Integer getBloodlineId() {
         return bloodlineId;
     }
@@ -171,11 +192,11 @@ public class CharacterResponse implements Serializable {
     }
 
     /**
-     * The character's corporation ID
+     * The character&#39;s corporation ID
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character's corporation ID")
+    @ApiModelProperty(required = true, value = "The character's corporation ID")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -194,7 +215,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", value = "description string")
+    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -214,7 +235,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "ID of the faction the character is fighting for, if the character is enlisted in Factional Warfare")
+    @ApiModelProperty(value = "ID of the faction the character is fighting for, if the character is enlisted in Factional Warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -233,7 +254,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return gender
      **/
-    @ApiModelProperty(example = "null", required = true, value = "gender string")
+    @ApiModelProperty(required = true, value = "gender string")
     public GenderEnum getGender() {
         return gender;
     }
@@ -252,7 +273,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -271,7 +292,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return raceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
+    @ApiModelProperty(required = true, value = "race_id integer")
     public Integer getRaceId() {
         return raceId;
     }
@@ -290,7 +311,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return securityStatus
      **/
-    @ApiModelProperty(example = "null", value = "security_status number")
+    @ApiModelProperty(value = "security_status number")
     public Float getSecurityStatus() {
         return securityStatus;
     }

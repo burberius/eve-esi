@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,112 +29,112 @@ import java.io.Serializable;
 public class CharacterStatsIndustry implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("hacking_successes")
+    @SerializedName("hacking_successes")
     private Long hackingSuccesses = null;
 
-    @JsonProperty("jobs_cancelled")
+    @SerializedName("jobs_cancelled")
     private Long jobsCancelled = null;
 
-    @JsonProperty("jobs_completed_copy_blueprint")
+    @SerializedName("jobs_completed_copy_blueprint")
     private Long jobsCompletedCopyBlueprint = null;
 
-    @JsonProperty("jobs_completed_invention")
+    @SerializedName("jobs_completed_invention")
     private Long jobsCompletedInvention = null;
 
-    @JsonProperty("jobs_completed_manufacture")
+    @SerializedName("jobs_completed_manufacture")
     private Long jobsCompletedManufacture = null;
 
-    @JsonProperty("jobs_completed_manufacture_asteroid")
+    @SerializedName("jobs_completed_manufacture_asteroid")
     private Long jobsCompletedManufactureAsteroid = null;
 
-    @JsonProperty("jobs_completed_manufacture_asteroid_quantity")
+    @SerializedName("jobs_completed_manufacture_asteroid_quantity")
     private Long jobsCompletedManufactureAsteroidQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_charge")
+    @SerializedName("jobs_completed_manufacture_charge")
     private Long jobsCompletedManufactureCharge = null;
 
-    @JsonProperty("jobs_completed_manufacture_charge_quantity")
+    @SerializedName("jobs_completed_manufacture_charge_quantity")
     private Long jobsCompletedManufactureChargeQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_commodity")
+    @SerializedName("jobs_completed_manufacture_commodity")
     private Long jobsCompletedManufactureCommodity = null;
 
-    @JsonProperty("jobs_completed_manufacture_commodity_quantity")
+    @SerializedName("jobs_completed_manufacture_commodity_quantity")
     private Long jobsCompletedManufactureCommodityQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_deployable")
+    @SerializedName("jobs_completed_manufacture_deployable")
     private Long jobsCompletedManufactureDeployable = null;
 
-    @JsonProperty("jobs_completed_manufacture_deployable_quantity")
+    @SerializedName("jobs_completed_manufacture_deployable_quantity")
     private Long jobsCompletedManufactureDeployableQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_drone")
+    @SerializedName("jobs_completed_manufacture_drone")
     private Long jobsCompletedManufactureDrone = null;
 
-    @JsonProperty("jobs_completed_manufacture_drone_quantity")
+    @SerializedName("jobs_completed_manufacture_drone_quantity")
     private Long jobsCompletedManufactureDroneQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_implant")
+    @SerializedName("jobs_completed_manufacture_implant")
     private Long jobsCompletedManufactureImplant = null;
 
-    @JsonProperty("jobs_completed_manufacture_implant_quantity")
+    @SerializedName("jobs_completed_manufacture_implant_quantity")
     private Long jobsCompletedManufactureImplantQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_module")
+    @SerializedName("jobs_completed_manufacture_module")
     private Long jobsCompletedManufactureModule = null;
 
-    @JsonProperty("jobs_completed_manufacture_module_quantity")
+    @SerializedName("jobs_completed_manufacture_module_quantity")
     private Long jobsCompletedManufactureModuleQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_other")
+    @SerializedName("jobs_completed_manufacture_other")
     private Long jobsCompletedManufactureOther = null;
 
-    @JsonProperty("jobs_completed_manufacture_other_quantity")
+    @SerializedName("jobs_completed_manufacture_other_quantity")
     private Long jobsCompletedManufactureOtherQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_ship")
+    @SerializedName("jobs_completed_manufacture_ship")
     private Long jobsCompletedManufactureShip = null;
 
-    @JsonProperty("jobs_completed_manufacture_ship_quantity")
+    @SerializedName("jobs_completed_manufacture_ship_quantity")
     private Long jobsCompletedManufactureShipQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_structure")
+    @SerializedName("jobs_completed_manufacture_structure")
     private Long jobsCompletedManufactureStructure = null;
 
-    @JsonProperty("jobs_completed_manufacture_structure_quantity")
+    @SerializedName("jobs_completed_manufacture_structure_quantity")
     private Long jobsCompletedManufactureStructureQuantity = null;
 
-    @JsonProperty("jobs_completed_manufacture_subsystem")
+    @SerializedName("jobs_completed_manufacture_subsystem")
     private Long jobsCompletedManufactureSubsystem = null;
 
-    @JsonProperty("jobs_completed_manufacture_subsystem_quantity")
+    @SerializedName("jobs_completed_manufacture_subsystem_quantity")
     private Long jobsCompletedManufactureSubsystemQuantity = null;
 
-    @JsonProperty("jobs_completed_material_productivity")
+    @SerializedName("jobs_completed_material_productivity")
     private Long jobsCompletedMaterialProductivity = null;
 
-    @JsonProperty("jobs_completed_time_productivity")
+    @SerializedName("jobs_completed_time_productivity")
     private Long jobsCompletedTimeProductivity = null;
 
-    @JsonProperty("jobs_started_copy_blueprint")
+    @SerializedName("jobs_started_copy_blueprint")
     private Long jobsStartedCopyBlueprint = null;
 
-    @JsonProperty("jobs_started_invention")
+    @SerializedName("jobs_started_invention")
     private Long jobsStartedInvention = null;
 
-    @JsonProperty("jobs_started_manufacture")
+    @SerializedName("jobs_started_manufacture")
     private Long jobsStartedManufacture = null;
 
-    @JsonProperty("jobs_started_material_productivity")
+    @SerializedName("jobs_started_material_productivity")
     private Long jobsStartedMaterialProductivity = null;
 
-    @JsonProperty("jobs_started_time_productivity")
+    @SerializedName("jobs_started_time_productivity")
     private Long jobsStartedTimeProductivity = null;
 
-    @JsonProperty("reprocess_item")
+    @SerializedName("reprocess_item")
     private Long reprocessItem = null;
 
-    @JsonProperty("reprocess_item_quantity")
+    @SerializedName("reprocess_item_quantity")
     private Long reprocessItemQuantity = null;
 
     public CharacterStatsIndustry hackingSuccesses(Long hackingSuccesses) {
@@ -143,7 +147,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return hackingSuccesses
      **/
-    @ApiModelProperty(example = "null", value = "hacking_successes integer")
+    @ApiModelProperty(value = "hacking_successes integer")
     public Long getHackingSuccesses() {
         return hackingSuccesses;
     }
@@ -162,7 +166,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCancelled
      **/
-    @ApiModelProperty(example = "null", value = "jobs_cancelled integer")
+    @ApiModelProperty(value = "jobs_cancelled integer")
     public Long getJobsCancelled() {
         return jobsCancelled;
     }
@@ -181,7 +185,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedCopyBlueprint
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_copy_blueprint integer")
+    @ApiModelProperty(value = "jobs_completed_copy_blueprint integer")
     public Long getJobsCompletedCopyBlueprint() {
         return jobsCompletedCopyBlueprint;
     }
@@ -200,7 +204,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedInvention
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_invention integer")
+    @ApiModelProperty(value = "jobs_completed_invention integer")
     public Long getJobsCompletedInvention() {
         return jobsCompletedInvention;
     }
@@ -219,7 +223,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufacture
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture integer")
     public Long getJobsCompletedManufacture() {
         return jobsCompletedManufacture;
     }
@@ -238,7 +242,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureAsteroid
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_asteroid integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid integer")
     public Long getJobsCompletedManufactureAsteroid() {
         return jobsCompletedManufactureAsteroid;
     }
@@ -257,7 +261,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureAsteroidQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_asteroid_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid_quantity integer")
     public Long getJobsCompletedManufactureAsteroidQuantity() {
         return jobsCompletedManufactureAsteroidQuantity;
     }
@@ -276,7 +280,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureCharge
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_charge integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_charge integer")
     public Long getJobsCompletedManufactureCharge() {
         return jobsCompletedManufactureCharge;
     }
@@ -295,7 +299,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureChargeQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_charge_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_charge_quantity integer")
     public Long getJobsCompletedManufactureChargeQuantity() {
         return jobsCompletedManufactureChargeQuantity;
     }
@@ -314,7 +318,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureCommodity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_commodity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_commodity integer")
     public Long getJobsCompletedManufactureCommodity() {
         return jobsCompletedManufactureCommodity;
     }
@@ -334,7 +338,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureCommodityQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_commodity_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_commodity_quantity integer")
     public Long getJobsCompletedManufactureCommodityQuantity() {
         return jobsCompletedManufactureCommodityQuantity;
     }
@@ -353,7 +357,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureDeployable
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_deployable integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_deployable integer")
     public Long getJobsCompletedManufactureDeployable() {
         return jobsCompletedManufactureDeployable;
     }
@@ -373,7 +377,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureDeployableQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_deployable_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_deployable_quantity integer")
     public Long getJobsCompletedManufactureDeployableQuantity() {
         return jobsCompletedManufactureDeployableQuantity;
     }
@@ -392,7 +396,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureDrone
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_drone integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_drone integer")
     public Long getJobsCompletedManufactureDrone() {
         return jobsCompletedManufactureDrone;
     }
@@ -411,7 +415,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureDroneQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_drone_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_drone_quantity integer")
     public Long getJobsCompletedManufactureDroneQuantity() {
         return jobsCompletedManufactureDroneQuantity;
     }
@@ -430,7 +434,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureImplant
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_implant integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_implant integer")
     public Long getJobsCompletedManufactureImplant() {
         return jobsCompletedManufactureImplant;
     }
@@ -449,7 +453,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureImplantQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_implant_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_implant_quantity integer")
     public Long getJobsCompletedManufactureImplantQuantity() {
         return jobsCompletedManufactureImplantQuantity;
     }
@@ -468,7 +472,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureModule
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_module integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_module integer")
     public Long getJobsCompletedManufactureModule() {
         return jobsCompletedManufactureModule;
     }
@@ -487,7 +491,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureModuleQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_module_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_module_quantity integer")
     public Long getJobsCompletedManufactureModuleQuantity() {
         return jobsCompletedManufactureModuleQuantity;
     }
@@ -506,7 +510,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureOther
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_other integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_other integer")
     public Long getJobsCompletedManufactureOther() {
         return jobsCompletedManufactureOther;
     }
@@ -525,7 +529,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureOtherQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_other_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_other_quantity integer")
     public Long getJobsCompletedManufactureOtherQuantity() {
         return jobsCompletedManufactureOtherQuantity;
     }
@@ -544,7 +548,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureShip
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_ship integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_ship integer")
     public Long getJobsCompletedManufactureShip() {
         return jobsCompletedManufactureShip;
     }
@@ -563,7 +567,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureShipQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_ship_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_ship_quantity integer")
     public Long getJobsCompletedManufactureShipQuantity() {
         return jobsCompletedManufactureShipQuantity;
     }
@@ -582,7 +586,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureStructure
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_structure integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_structure integer")
     public Long getJobsCompletedManufactureStructure() {
         return jobsCompletedManufactureStructure;
     }
@@ -602,7 +606,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureStructureQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_structure_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_structure_quantity integer")
     public Long getJobsCompletedManufactureStructureQuantity() {
         return jobsCompletedManufactureStructureQuantity;
     }
@@ -621,7 +625,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureSubsystem
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_subsystem integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem integer")
     public Long getJobsCompletedManufactureSubsystem() {
         return jobsCompletedManufactureSubsystem;
     }
@@ -641,7 +645,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureSubsystemQuantity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_manufacture_subsystem_quantity integer")
+    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem_quantity integer")
     public Long getJobsCompletedManufactureSubsystemQuantity() {
         return jobsCompletedManufactureSubsystemQuantity;
     }
@@ -660,7 +664,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedMaterialProductivity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_material_productivity integer")
+    @ApiModelProperty(value = "jobs_completed_material_productivity integer")
     public Long getJobsCompletedMaterialProductivity() {
         return jobsCompletedMaterialProductivity;
     }
@@ -679,7 +683,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedTimeProductivity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_completed_time_productivity integer")
+    @ApiModelProperty(value = "jobs_completed_time_productivity integer")
     public Long getJobsCompletedTimeProductivity() {
         return jobsCompletedTimeProductivity;
     }
@@ -698,7 +702,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsStartedCopyBlueprint
      **/
-    @ApiModelProperty(example = "null", value = "jobs_started_copy_blueprint integer")
+    @ApiModelProperty(value = "jobs_started_copy_blueprint integer")
     public Long getJobsStartedCopyBlueprint() {
         return jobsStartedCopyBlueprint;
     }
@@ -717,7 +721,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsStartedInvention
      **/
-    @ApiModelProperty(example = "null", value = "jobs_started_invention integer")
+    @ApiModelProperty(value = "jobs_started_invention integer")
     public Long getJobsStartedInvention() {
         return jobsStartedInvention;
     }
@@ -736,7 +740,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsStartedManufacture
      **/
-    @ApiModelProperty(example = "null", value = "jobs_started_manufacture integer")
+    @ApiModelProperty(value = "jobs_started_manufacture integer")
     public Long getJobsStartedManufacture() {
         return jobsStartedManufacture;
     }
@@ -755,7 +759,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsStartedMaterialProductivity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_started_material_productivity integer")
+    @ApiModelProperty(value = "jobs_started_material_productivity integer")
     public Long getJobsStartedMaterialProductivity() {
         return jobsStartedMaterialProductivity;
     }
@@ -774,7 +778,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsStartedTimeProductivity
      **/
-    @ApiModelProperty(example = "null", value = "jobs_started_time_productivity integer")
+    @ApiModelProperty(value = "jobs_started_time_productivity integer")
     public Long getJobsStartedTimeProductivity() {
         return jobsStartedTimeProductivity;
     }
@@ -793,7 +797,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return reprocessItem
      **/
-    @ApiModelProperty(example = "null", value = "reprocess_item integer")
+    @ApiModelProperty(value = "reprocess_item integer")
     public Long getReprocessItem() {
         return reprocessItem;
     }
@@ -812,7 +816,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return reprocessItemQuantity
      **/
-    @ApiModelProperty(example = "null", value = "reprocess_item_quantity integer")
+    @ApiModelProperty(value = "reprocess_item_quantity integer")
     public Long getReprocessItemQuantity() {
         return reprocessItemQuantity;
     }

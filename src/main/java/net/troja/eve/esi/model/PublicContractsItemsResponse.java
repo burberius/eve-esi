@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,31 +29,31 @@ import java.io.Serializable;
 public class PublicContractsItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_blueprint_copy")
+    @SerializedName("is_blueprint_copy")
     private Boolean isBlueprintCopy = null;
 
-    @JsonProperty("is_included")
+    @SerializedName("is_included")
     private Boolean isIncluded = null;
 
-    @JsonProperty("item_id")
+    @SerializedName("item_id")
     private Long itemId = null;
 
-    @JsonProperty("material_efficiency")
+    @SerializedName("material_efficiency")
     private Integer materialEfficiency = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("record_id")
+    @SerializedName("record_id")
     private Long recordId = null;
 
-    @JsonProperty("runs")
+    @SerializedName("runs")
     private Integer runs = null;
 
-    @JsonProperty("time_efficiency")
+    @SerializedName("time_efficiency")
     private Integer timeEfficiency = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public PublicContractsItemsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
@@ -62,8 +66,8 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return isBlueprintCopy
      **/
-    @ApiModelProperty(example = "null", value = "is_blueprint_copy boolean")
-    public Boolean getIsBlueprintCopy() {
+    @ApiModelProperty(value = "is_blueprint_copy boolean")
+    public Boolean isIsBlueprintCopy() {
         return isBlueprintCopy;
     }
 
@@ -82,8 +86,8 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return isIncluded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
-    public Boolean getIsIncluded() {
+    @ApiModelProperty(required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
+    public Boolean isIsIncluded() {
         return isIncluded;
     }
 
@@ -102,7 +106,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract")
+    @ApiModelProperty(value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract")
     public Long getItemId() {
         return itemId;
     }
@@ -121,7 +125,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return materialEfficiency
      **/
-    @ApiModelProperty(example = "null", value = "Material Efficiency Level of the blueprint")
+    @ApiModelProperty(value = "Material Efficiency Level of the blueprint")
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
     }
@@ -140,7 +144,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of items in the stack")
+    @ApiModelProperty(required = true, value = "Number of items in the stack")
     public Integer getQuantity() {
         return quantity;
     }
@@ -159,7 +163,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return recordId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for the item, used by the contract system")
+    @ApiModelProperty(required = true, value = "Unique ID for the item, used by the contract system")
     public Long getRecordId() {
         return recordId;
     }
@@ -179,7 +183,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return runs
      **/
-    @ApiModelProperty(example = "null", value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original")
+    @ApiModelProperty(value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original")
     public Integer getRuns() {
         return runs;
     }
@@ -198,7 +202,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return timeEfficiency
      **/
-    @ApiModelProperty(example = "null", value = "Time Efficiency Level of the blueprint")
+    @ApiModelProperty(value = "Time Efficiency Level of the blueprint")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
     }
@@ -217,7 +221,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type ID for item")
+    @ApiModelProperty(required = true, value = "Type ID for item")
     public Integer getTypeId() {
         return typeId;
     }

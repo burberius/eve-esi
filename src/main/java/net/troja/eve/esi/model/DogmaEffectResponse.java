@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.DogmaEffectModifier;
@@ -28,67 +32,67 @@ import java.io.Serializable;
 public class DogmaEffectResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("disallow_auto_repeat")
+    @SerializedName("disallow_auto_repeat")
     private Boolean disallowAutoRepeat = null;
 
-    @JsonProperty("discharge_attribute_id")
+    @SerializedName("discharge_attribute_id")
     private Integer dischargeAttributeId = null;
 
-    @JsonProperty("display_name")
+    @SerializedName("display_name")
     private String displayName = null;
 
-    @JsonProperty("duration_attribute_id")
+    @SerializedName("duration_attribute_id")
     private Integer durationAttributeId = null;
 
-    @JsonProperty("effect_category")
+    @SerializedName("effect_category")
     private Integer effectCategory = null;
 
-    @JsonProperty("effect_id")
+    @SerializedName("effect_id")
     private Integer effectId = null;
 
-    @JsonProperty("electronic_chance")
+    @SerializedName("electronic_chance")
     private Boolean electronicChance = null;
 
-    @JsonProperty("falloff_attribute_id")
+    @SerializedName("falloff_attribute_id")
     private Integer falloffAttributeId = null;
 
-    @JsonProperty("icon_id")
+    @SerializedName("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("is_assistance")
+    @SerializedName("is_assistance")
     private Boolean isAssistance = null;
 
-    @JsonProperty("is_offensive")
+    @SerializedName("is_offensive")
     private Boolean isOffensive = null;
 
-    @JsonProperty("is_warp_safe")
+    @SerializedName("is_warp_safe")
     private Boolean isWarpSafe = null;
 
-    @JsonProperty("modifiers")
-    private List<DogmaEffectModifier> modifiers = new ArrayList<DogmaEffectModifier>();
+    @SerializedName("modifiers")
+    private List<DogmaEffectModifier> modifiers = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("post_expression")
+    @SerializedName("post_expression")
     private Integer postExpression = null;
 
-    @JsonProperty("pre_expression")
+    @SerializedName("pre_expression")
     private Integer preExpression = null;
 
-    @JsonProperty("published")
+    @SerializedName("published")
     private Boolean published = null;
 
-    @JsonProperty("range_attribute_id")
+    @SerializedName("range_attribute_id")
     private Integer rangeAttributeId = null;
 
-    @JsonProperty("range_chance")
+    @SerializedName("range_chance")
     private Boolean rangeChance = null;
 
-    @JsonProperty("tracking_speed_attribute_id")
+    @SerializedName("tracking_speed_attribute_id")
     private Integer trackingSpeedAttributeId = null;
 
     public DogmaEffectResponse description(String description) {
@@ -101,7 +105,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", value = "description string")
+    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -120,8 +124,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return disallowAutoRepeat
      **/
-    @ApiModelProperty(example = "null", value = "disallow_auto_repeat boolean")
-    public Boolean getDisallowAutoRepeat() {
+    @ApiModelProperty(value = "disallow_auto_repeat boolean")
+    public Boolean isDisallowAutoRepeat() {
         return disallowAutoRepeat;
     }
 
@@ -139,7 +143,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return dischargeAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "discharge_attribute_id integer")
+    @ApiModelProperty(value = "discharge_attribute_id integer")
     public Integer getDischargeAttributeId() {
         return dischargeAttributeId;
     }
@@ -158,7 +162,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return displayName
      **/
-    @ApiModelProperty(example = "null", value = "display_name string")
+    @ApiModelProperty(value = "display_name string")
     public String getDisplayName() {
         return displayName;
     }
@@ -177,7 +181,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return durationAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "duration_attribute_id integer")
+    @ApiModelProperty(value = "duration_attribute_id integer")
     public Integer getDurationAttributeId() {
         return durationAttributeId;
     }
@@ -196,7 +200,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return effectCategory
      **/
-    @ApiModelProperty(example = "null", value = "effect_category integer")
+    @ApiModelProperty(value = "effect_category integer")
     public Integer getEffectCategory() {
         return effectCategory;
     }
@@ -215,7 +219,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return effectId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "effect_id integer")
+    @ApiModelProperty(required = true, value = "effect_id integer")
     public Integer getEffectId() {
         return effectId;
     }
@@ -234,8 +238,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return electronicChance
      **/
-    @ApiModelProperty(example = "null", value = "electronic_chance boolean")
-    public Boolean getElectronicChance() {
+    @ApiModelProperty(value = "electronic_chance boolean")
+    public Boolean isElectronicChance() {
         return electronicChance;
     }
 
@@ -253,7 +257,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return falloffAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "falloff_attribute_id integer")
+    @ApiModelProperty(value = "falloff_attribute_id integer")
     public Integer getFalloffAttributeId() {
         return falloffAttributeId;
     }
@@ -272,7 +276,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return iconId
      **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
+    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -291,8 +295,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return isAssistance
      **/
-    @ApiModelProperty(example = "null", value = "is_assistance boolean")
-    public Boolean getIsAssistance() {
+    @ApiModelProperty(value = "is_assistance boolean")
+    public Boolean isIsAssistance() {
         return isAssistance;
     }
 
@@ -310,8 +314,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return isOffensive
      **/
-    @ApiModelProperty(example = "null", value = "is_offensive boolean")
-    public Boolean getIsOffensive() {
+    @ApiModelProperty(value = "is_offensive boolean")
+    public Boolean isIsOffensive() {
         return isOffensive;
     }
 
@@ -329,8 +333,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return isWarpSafe
      **/
-    @ApiModelProperty(example = "null", value = "is_warp_safe boolean")
-    public Boolean getIsWarpSafe() {
+    @ApiModelProperty(value = "is_warp_safe boolean")
+    public Boolean isIsWarpSafe() {
         return isWarpSafe;
     }
 
@@ -344,6 +348,9 @@ public class DogmaEffectResponse implements Serializable {
     }
 
     public DogmaEffectResponse addModifiersItem(DogmaEffectModifier modifiersItem) {
+        if (this.modifiers == null) {
+            this.modifiers = new ArrayList<>();
+        }
         this.modifiers.add(modifiersItem);
         return this;
     }
@@ -353,7 +360,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return modifiers
      **/
-    @ApiModelProperty(example = "null", value = "modifiers array")
+    @ApiModelProperty(value = "modifiers array")
     public List<DogmaEffectModifier> getModifiers() {
         return modifiers;
     }
@@ -372,7 +379,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -391,7 +398,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return postExpression
      **/
-    @ApiModelProperty(example = "null", value = "post_expression integer")
+    @ApiModelProperty(value = "post_expression integer")
     public Integer getPostExpression() {
         return postExpression;
     }
@@ -410,7 +417,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return preExpression
      **/
-    @ApiModelProperty(example = "null", value = "pre_expression integer")
+    @ApiModelProperty(value = "pre_expression integer")
     public Integer getPreExpression() {
         return preExpression;
     }
@@ -429,8 +436,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(example = "null", value = "published boolean")
-    public Boolean getPublished() {
+    @ApiModelProperty(value = "published boolean")
+    public Boolean isPublished() {
         return published;
     }
 
@@ -448,7 +455,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return rangeAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "range_attribute_id integer")
+    @ApiModelProperty(value = "range_attribute_id integer")
     public Integer getRangeAttributeId() {
         return rangeAttributeId;
     }
@@ -467,8 +474,8 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return rangeChance
      **/
-    @ApiModelProperty(example = "null", value = "range_chance boolean")
-    public Boolean getRangeChance() {
+    @ApiModelProperty(value = "range_chance boolean")
+    public Boolean isRangeChance() {
         return rangeChance;
     }
 
@@ -486,7 +493,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return trackingSpeedAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "tracking_speed_attribute_id integer")
+    @ApiModelProperty(value = "tracking_speed_attribute_id integer")
     public Integer getTrackingSpeedAttributeId() {
         return trackingSpeedAttributeId;
     }

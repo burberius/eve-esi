@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class CloneHomeLocation implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
     /**
      * location_type string
      */
+    @JsonAdapter(LocationTypeEnum.Adapter.class)
     public enum LocationTypeEnum {
         STATION("station"),
 
@@ -42,12 +47,15 @@ public class CloneHomeLocation implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationTypeEnum fromValue(String text) {
             for (LocationTypeEnum b : LocationTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -56,9 +64,22 @@ public class CloneHomeLocation implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_type")
+    @SerializedName("location_type")
     private LocationTypeEnum locationType = null;
 
     public CloneHomeLocation locationId(Long locationId) {
@@ -71,7 +92,7 @@ public class CloneHomeLocation implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", value = "location_id integer")
+    @ApiModelProperty(value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -90,7 +111,7 @@ public class CloneHomeLocation implements Serializable {
      * 
      * @return locationType
      **/
-    @ApiModelProperty(example = "null", value = "location_type string")
+    @ApiModelProperty(value = "location_type string")
     public LocationTypeEnum getLocationType() {
         return locationType;
     }

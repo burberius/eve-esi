@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.FittingItem;
@@ -28,16 +32,16 @@ import java.io.Serializable;
 public class CharacterFitting implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("items")
-    private List<FittingItem> items = new ArrayList<FittingItem>();
+    @SerializedName("items")
+    private List<FittingItem> items = new ArrayList<>();
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
     public CharacterFitting description(String description) {
@@ -50,7 +54,7 @@ public class CharacterFitting implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -74,7 +78,7 @@ public class CharacterFitting implements Serializable {
      * 
      * @return items
      **/
-    @ApiModelProperty(example = "null", required = true, value = "items array")
+    @ApiModelProperty(required = true, value = "items array")
     public List<FittingItem> getItems() {
         return items;
     }
@@ -93,7 +97,7 @@ public class CharacterFitting implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -112,7 +116,7 @@ public class CharacterFitting implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    @ApiModelProperty(required = true, value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
     }

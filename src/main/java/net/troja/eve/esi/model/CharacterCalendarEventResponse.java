@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,27 +30,28 @@ import java.io.Serializable;
 public class CharacterCalendarEventResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private OffsetDateTime date = null;
 
-    @JsonProperty("duration")
+    @SerializedName("duration")
     private Integer duration = null;
 
-    @JsonProperty("event_id")
+    @SerializedName("event_id")
     private Integer eventId = null;
 
-    @JsonProperty("importance")
+    @SerializedName("importance")
     private Integer importance = null;
 
-    @JsonProperty("owner_id")
+    @SerializedName("owner_id")
     private Integer ownerId = null;
 
-    @JsonProperty("owner_name")
+    @SerializedName("owner_name")
     private String ownerName = null;
 
     /**
      * owner_type string
      */
+    @JsonAdapter(OwnerTypeEnum.Adapter.class)
     public enum OwnerTypeEnum {
         EVE_SERVER("eve_server"),
 
@@ -64,12 +69,15 @@ public class CharacterCalendarEventResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static OwnerTypeEnum fromValue(String text) {
             for (OwnerTypeEnum b : OwnerTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -78,18 +86,31 @@ public class CharacterCalendarEventResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<OwnerTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final OwnerTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public OwnerTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return OwnerTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("owner_type")
+    @SerializedName("owner_type")
     private OwnerTypeEnum ownerType = null;
 
-    @JsonProperty("response")
+    @SerializedName("response")
     private String response = null;
 
-    @JsonProperty("text")
+    @SerializedName("text")
     private String text = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     public CharacterCalendarEventResponse date(OffsetDateTime date) {
@@ -102,7 +123,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "date string")
+    @ApiModelProperty(required = true, value = "date string")
     public OffsetDateTime getDate() {
         return date;
     }
@@ -121,7 +142,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Length in minutes")
+    @ApiModelProperty(required = true, value = "Length in minutes")
     public Integer getDuration() {
         return duration;
     }
@@ -140,7 +161,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return eventId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "event_id integer")
+    @ApiModelProperty(required = true, value = "event_id integer")
     public Integer getEventId() {
         return eventId;
     }
@@ -159,7 +180,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return importance
      **/
-    @ApiModelProperty(example = "null", required = true, value = "importance integer")
+    @ApiModelProperty(required = true, value = "importance integer")
     public Integer getImportance() {
         return importance;
     }
@@ -178,7 +199,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_id integer")
+    @ApiModelProperty(required = true, value = "owner_id integer")
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -197,7 +218,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerName
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_name string")
+    @ApiModelProperty(required = true, value = "owner_name string")
     public String getOwnerName() {
         return ownerName;
     }
@@ -216,7 +237,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_type string")
+    @ApiModelProperty(required = true, value = "owner_type string")
     public OwnerTypeEnum getOwnerType() {
         return ownerType;
     }
@@ -235,7 +256,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return response
      **/
-    @ApiModelProperty(example = "null", required = true, value = "response string")
+    @ApiModelProperty(required = true, value = "response string")
     public String getResponse() {
         return response;
     }
@@ -254,7 +275,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return text
      **/
-    @ApiModelProperty(example = "null", required = true, value = "text string")
+    @ApiModelProperty(required = true, value = "text string")
     public String getText() {
         return text;
     }
@@ -273,7 +294,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", required = true, value = "title string")
+    @ApiModelProperty(required = true, value = "title string")
     public String getTitle() {
         return title;
     }

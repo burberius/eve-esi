@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,25 +33,25 @@ import java.io.Serializable;
 public class MailResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("body")
+    @SerializedName("body")
     private String body = null;
 
-    @JsonProperty("from")
+    @SerializedName("from")
     private Integer from = null;
 
-    @JsonProperty("labels")
-    private List<Integer> labels = new ArrayList<Integer>();
+    @SerializedName("labels")
+    private List<Integer> labels = null;
 
-    @JsonProperty("read")
+    @SerializedName("read")
     private Boolean read = null;
 
-    @JsonProperty("recipients")
-    private List<Recipient> recipients = new ArrayList<Recipient>();
+    @SerializedName("recipients")
+    private List<Recipient> recipients = null;
 
-    @JsonProperty("subject")
+    @SerializedName("subject")
     private String subject = null;
 
-    @JsonProperty("timestamp")
+    @SerializedName("timestamp")
     private OffsetDateTime timestamp = null;
 
     public MailResponse body(String body) {
@@ -56,11 +60,11 @@ public class MailResponse implements Serializable {
     }
 
     /**
-     * Mail's body
+     * Mail&#39;s body
      * 
      * @return body
      **/
-    @ApiModelProperty(example = "null", value = "Mail's body")
+    @ApiModelProperty(value = "Mail's body")
     public String getBody() {
         return body;
     }
@@ -79,7 +83,7 @@ public class MailResponse implements Serializable {
      * 
      * @return from
      **/
-    @ApiModelProperty(example = "null", value = "From whom the mail was sent")
+    @ApiModelProperty(value = "From whom the mail was sent")
     public Integer getFrom() {
         return from;
     }
@@ -94,6 +98,9 @@ public class MailResponse implements Serializable {
     }
 
     public MailResponse addLabelsItem(Integer labelsItem) {
+        if (this.labels == null) {
+            this.labels = new ArrayList<>();
+        }
         this.labels.add(labelsItem);
         return this;
     }
@@ -103,7 +110,7 @@ public class MailResponse implements Serializable {
      * 
      * @return labels
      **/
-    @ApiModelProperty(example = "null", value = "Labels attached to the mail")
+    @ApiModelProperty(value = "Labels attached to the mail")
     public List<Integer> getLabels() {
         return labels;
     }
@@ -122,8 +129,8 @@ public class MailResponse implements Serializable {
      * 
      * @return read
      **/
-    @ApiModelProperty(example = "null", value = "Whether the mail is flagged as read")
-    public Boolean getRead() {
+    @ApiModelProperty(value = "Whether the mail is flagged as read")
+    public Boolean isRead() {
         return read;
     }
 
@@ -137,6 +144,9 @@ public class MailResponse implements Serializable {
     }
 
     public MailResponse addRecipientsItem(Recipient recipientsItem) {
+        if (this.recipients == null) {
+            this.recipients = new ArrayList<>();
+        }
         this.recipients.add(recipientsItem);
         return this;
     }
@@ -146,7 +156,7 @@ public class MailResponse implements Serializable {
      * 
      * @return recipients
      **/
-    @ApiModelProperty(example = "null", value = "Recipients of the mail")
+    @ApiModelProperty(value = "Recipients of the mail")
     public List<Recipient> getRecipients() {
         return recipients;
     }
@@ -165,7 +175,7 @@ public class MailResponse implements Serializable {
      * 
      * @return subject
      **/
-    @ApiModelProperty(example = "null", value = "Mail subject")
+    @ApiModelProperty(value = "Mail subject")
     public String getSubject() {
         return subject;
     }
@@ -184,7 +194,7 @@ public class MailResponse implements Serializable {
      * 
      * @return timestamp
      **/
-    @ApiModelProperty(example = "null", value = "When the mail was sent")
+    @ApiModelProperty(value = "When the mail was sent")
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }

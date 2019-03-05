@@ -13,7 +13,7 @@ package net.troja.eve.esi.auth;
 
 import net.troja.eve.esi.Pair;
 
-import com.migcomponents.migbase64.Base64;
+import com.squareup.okhttp.Credentials;
 
 import java.util.Map;
 import java.util.List;
@@ -45,11 +45,7 @@ public class HttpBasicAuth implements Authentication {
         if (username == null && password == null) {
             return;
         }
-        String str = (username == null ? "" : username) + ":" + (password == null ? "" : password);
-        try {
-            headerParams.put("Authorization", "Basic " + Base64.encodeToString(str.getBytes("UTF-8"), false));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
+        headerParams.put("Authorization",
+                Credentials.basic(username == null ? "" : username, password == null ? "" : password));
     }
 }

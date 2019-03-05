@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class CorporationMedalsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("created_at")
+    @SerializedName("created_at")
     private OffsetDateTime createdAt = null;
 
-    @JsonProperty("creator_id")
+    @SerializedName("creator_id")
     private Integer creatorId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("medal_id")
+    @SerializedName("medal_id")
     private Integer medalId = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     public CorporationMedalsResponse createdAt(OffsetDateTime createdAt) {
@@ -51,7 +55,7 @@ public class CorporationMedalsResponse implements Serializable {
      * 
      * @return createdAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "created_at string")
+    @ApiModelProperty(required = true, value = "created_at string")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -70,7 +74,7 @@ public class CorporationMedalsResponse implements Serializable {
      * 
      * @return creatorId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who created this medal")
+    @ApiModelProperty(required = true, value = "ID of the character who created this medal")
     public Integer getCreatorId() {
         return creatorId;
     }
@@ -89,7 +93,7 @@ public class CorporationMedalsResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -108,7 +112,7 @@ public class CorporationMedalsResponse implements Serializable {
      * 
      * @return medalId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "medal_id integer")
+    @ApiModelProperty(required = true, value = "medal_id integer")
     public Integer getMedalId() {
         return medalId;
     }
@@ -127,7 +131,7 @@ public class CorporationMedalsResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", required = true, value = "title string")
+    @ApiModelProperty(required = true, value = "title string")
     public String getTitle() {
         return title;
     }

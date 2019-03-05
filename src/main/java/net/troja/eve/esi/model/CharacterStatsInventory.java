@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterStatsInventory implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("abandon_loot_quantity")
+    @SerializedName("abandon_loot_quantity")
     private Long abandonLootQuantity = null;
 
-    @JsonProperty("trash_item_quantity")
+    @SerializedName("trash_item_quantity")
     private Long trashItemQuantity = null;
 
     public CharacterStatsInventory abandonLootQuantity(Long abandonLootQuantity) {
@@ -41,7 +45,7 @@ public class CharacterStatsInventory implements Serializable {
      * 
      * @return abandonLootQuantity
      **/
-    @ApiModelProperty(example = "null", value = "abandon_loot_quantity integer")
+    @ApiModelProperty(value = "abandon_loot_quantity integer")
     public Long getAbandonLootQuantity() {
         return abandonLootQuantity;
     }
@@ -60,7 +64,7 @@ public class CharacterStatsInventory implements Serializable {
      * 
      * @return trashItemQuantity
      **/
-    @ApiModelProperty(example = "null", value = "trash_item_quantity integer")
+    @ApiModelProperty(value = "trash_item_quantity integer")
     public Long getTrashItemQuantity() {
         return trashItemQuantity;
     }

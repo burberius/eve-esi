@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class SovereigntyMapResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public SovereigntyMapResponse allianceId(Integer allianceId) {
@@ -47,7 +51,7 @@ public class SovereigntyMapResponse implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "alliance_id integer")
+    @ApiModelProperty(value = "alliance_id integer")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -66,7 +70,7 @@ public class SovereigntyMapResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -85,7 +89,7 @@ public class SovereigntyMapResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "faction_id integer")
+    @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -104,7 +108,7 @@ public class SovereigntyMapResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
     }

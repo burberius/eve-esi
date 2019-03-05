@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,34 +29,34 @@ import java.io.Serializable;
 public class DogmaAttributeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("attribute_id")
+    @SerializedName("attribute_id")
     private Integer attributeId = null;
 
-    @JsonProperty("default_value")
+    @SerializedName("default_value")
     private Float defaultValue = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("display_name")
+    @SerializedName("display_name")
     private String displayName = null;
 
-    @JsonProperty("high_is_good")
+    @SerializedName("high_is_good")
     private Boolean highIsGood = null;
 
-    @JsonProperty("icon_id")
+    @SerializedName("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("published")
+    @SerializedName("published")
     private Boolean published = null;
 
-    @JsonProperty("stackable")
+    @SerializedName("stackable")
     private Boolean stackable = null;
 
-    @JsonProperty("unit_id")
+    @SerializedName("unit_id")
     private Integer unitId = null;
 
     public DogmaAttributeResponse attributeId(Integer attributeId) {
@@ -65,7 +69,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return attributeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "attribute_id integer")
+    @ApiModelProperty(required = true, value = "attribute_id integer")
     public Integer getAttributeId() {
         return attributeId;
     }
@@ -84,7 +88,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return defaultValue
      **/
-    @ApiModelProperty(example = "null", value = "default_value number")
+    @ApiModelProperty(value = "default_value number")
     public Float getDefaultValue() {
         return defaultValue;
     }
@@ -103,7 +107,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", value = "description string")
+    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -122,7 +126,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return displayName
      **/
-    @ApiModelProperty(example = "null", value = "display_name string")
+    @ApiModelProperty(value = "display_name string")
     public String getDisplayName() {
         return displayName;
     }
@@ -141,8 +145,8 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return highIsGood
      **/
-    @ApiModelProperty(example = "null", value = "high_is_good boolean")
-    public Boolean getHighIsGood() {
+    @ApiModelProperty(value = "high_is_good boolean")
+    public Boolean isHighIsGood() {
         return highIsGood;
     }
 
@@ -160,7 +164,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return iconId
      **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
+    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -179,7 +183,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -198,8 +202,8 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(example = "null", value = "published boolean")
-    public Boolean getPublished() {
+    @ApiModelProperty(value = "published boolean")
+    public Boolean isPublished() {
         return published;
     }
 
@@ -217,8 +221,8 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return stackable
      **/
-    @ApiModelProperty(example = "null", value = "stackable boolean")
-    public Boolean getStackable() {
+    @ApiModelProperty(value = "stackable boolean")
+    public Boolean isStackable() {
         return stackable;
     }
 
@@ -236,7 +240,7 @@ public class DogmaAttributeResponse implements Serializable {
      * 
      * @return unitId
      **/
-    @ApiModelProperty(example = "null", value = "unit_id integer")
+    @ApiModelProperty(value = "unit_id integer")
     public Integer getUnitId() {
         return unitId;
     }

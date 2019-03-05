@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
     /**
      * contested string
      */
+    @JsonAdapter(ContestedEnum.Adapter.class)
     public enum ContestedEnum {
         CAPTURED("captured"),
 
@@ -43,12 +48,15 @@ public class FactionWarfareSystemsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ContestedEnum fromValue(String text) {
             for (ContestedEnum b : ContestedEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -57,24 +65,37 @@ public class FactionWarfareSystemsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ContestedEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ContestedEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ContestedEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ContestedEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("contested")
+    @SerializedName("contested")
     private ContestedEnum contested = null;
 
-    @JsonProperty("occupier_faction_id")
+    @SerializedName("occupier_faction_id")
     private Integer occupierFactionId = null;
 
-    @JsonProperty("owner_faction_id")
+    @SerializedName("owner_faction_id")
     private Integer ownerFactionId = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("victory_points")
+    @SerializedName("victory_points")
     private Integer victoryPoints = null;
 
-    @JsonProperty("victory_points_threshold")
+    @SerializedName("victory_points_threshold")
     private Integer victoryPointsThreshold = null;
 
     public FactionWarfareSystemsResponse contested(ContestedEnum contested) {
@@ -87,7 +108,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return contested
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contested string")
+    @ApiModelProperty(required = true, value = "contested string")
     public ContestedEnum getContested() {
         return contested;
     }
@@ -106,7 +127,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return occupierFactionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "occupier_faction_id integer")
+    @ApiModelProperty(required = true, value = "occupier_faction_id integer")
     public Integer getOccupierFactionId() {
         return occupierFactionId;
     }
@@ -125,7 +146,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return ownerFactionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "owner_faction_id integer")
+    @ApiModelProperty(required = true, value = "owner_faction_id integer")
     public Integer getOwnerFactionId() {
         return ownerFactionId;
     }
@@ -144,7 +165,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -163,7 +184,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(example = "null", required = true, value = "victory_points integer")
+    @ApiModelProperty(required = true, value = "victory_points integer")
     public Integer getVictoryPoints() {
         return victoryPoints;
     }
@@ -182,7 +203,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return victoryPointsThreshold
      **/
-    @ApiModelProperty(example = "null", required = true, value = "victory_points_threshold integer")
+    @ApiModelProperty(required = true, value = "victory_points_threshold integer")
     public Integer getVictoryPointsThreshold() {
         return victoryPointsThreshold;
     }

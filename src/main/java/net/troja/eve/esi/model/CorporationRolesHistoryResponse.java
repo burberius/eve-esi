@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,18 +32,19 @@ import java.io.Serializable;
 public class CorporationRolesHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("changed_at")
+    @SerializedName("changed_at")
     private OffsetDateTime changedAt = null;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("issuer_id")
+    @SerializedName("issuer_id")
     private Integer issuerId = null;
 
     /**
      * new_role string
      */
+    @JsonAdapter(NewRolesEnum.Adapter.class)
     public enum NewRolesEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -147,12 +152,15 @@ public class CorporationRolesHistoryResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static NewRolesEnum fromValue(String text) {
             for (NewRolesEnum b : NewRolesEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -161,14 +169,28 @@ public class CorporationRolesHistoryResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<NewRolesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final NewRolesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public NewRolesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return NewRolesEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("new_roles")
-    private List<NewRolesEnum> newRoles = new ArrayList<NewRolesEnum>();
+    @SerializedName("new_roles")
+    private List<NewRolesEnum> newRoles = new ArrayList<>();
 
     /**
      * old_role string
      */
+    @JsonAdapter(OldRolesEnum.Adapter.class)
     public enum OldRolesEnum {
         ACCOUNT_TAKE_1("Account_Take_1"),
 
@@ -276,12 +298,15 @@ public class CorporationRolesHistoryResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static OldRolesEnum fromValue(String text) {
             for (OldRolesEnum b : OldRolesEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -290,14 +315,28 @@ public class CorporationRolesHistoryResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<OldRolesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final OldRolesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public OldRolesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return OldRolesEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("old_roles")
-    private List<OldRolesEnum> oldRoles = new ArrayList<OldRolesEnum>();
+    @SerializedName("old_roles")
+    private List<OldRolesEnum> oldRoles = new ArrayList<>();
 
     /**
      * role_type string
      */
+    @JsonAdapter(RoleTypeEnum.Adapter.class)
     public enum RoleTypeEnum {
         GRANTABLE_ROLES("grantable_roles"),
 
@@ -321,12 +360,15 @@ public class CorporationRolesHistoryResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RoleTypeEnum fromValue(String text) {
             for (RoleTypeEnum b : RoleTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -335,9 +377,22 @@ public class CorporationRolesHistoryResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RoleTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RoleTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RoleTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RoleTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("role_type")
+    @SerializedName("role_type")
     private RoleTypeEnum roleType = null;
 
     public CorporationRolesHistoryResponse changedAt(OffsetDateTime changedAt) {
@@ -350,7 +405,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return changedAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "changed_at string")
+    @ApiModelProperty(required = true, value = "changed_at string")
     public OffsetDateTime getChangedAt() {
         return changedAt;
     }
@@ -369,7 +424,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character whose roles are changed")
+    @ApiModelProperty(required = true, value = "The character whose roles are changed")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -388,7 +443,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who issued this change")
+    @ApiModelProperty(required = true, value = "ID of the character who issued this change")
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -412,7 +467,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return newRoles
      **/
-    @ApiModelProperty(example = "null", required = true, value = "new_roles array")
+    @ApiModelProperty(required = true, value = "new_roles array")
     public List<NewRolesEnum> getNewRoles() {
         return newRoles;
     }
@@ -436,7 +491,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return oldRoles
      **/
-    @ApiModelProperty(example = "null", required = true, value = "old_roles array")
+    @ApiModelProperty(required = true, value = "old_roles array")
     public List<OldRolesEnum> getOldRoles() {
         return oldRoles;
     }
@@ -455,7 +510,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return roleType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "role_type string")
+    @ApiModelProperty(required = true, value = "role_type string")
     public RoleTypeEnum getRoleType() {
         return roleType;
     }

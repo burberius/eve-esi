@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class CharacterFleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("fleet_id")
+    @SerializedName("fleet_id")
     private Long fleetId = null;
 
     /**
      * Member’s role in fleet
      */
+    @JsonAdapter(RoleEnum.Adapter.class)
     public enum RoleEnum {
         FLEET_COMMANDER("fleet_commander"),
 
@@ -46,12 +51,15 @@ public class CharacterFleetResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RoleEnum fromValue(String text) {
             for (RoleEnum b : RoleEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -60,15 +68,28 @@ public class CharacterFleetResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RoleEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RoleEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RoleEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("role")
+    @SerializedName("role")
     private RoleEnum role = null;
 
-    @JsonProperty("squad_id")
+    @SerializedName("squad_id")
     private Long squadId = null;
 
-    @JsonProperty("wing_id")
+    @SerializedName("wing_id")
     private Long wingId = null;
 
     public CharacterFleetResponse fleetId(Long fleetId) {
@@ -77,11 +98,11 @@ public class CharacterFleetResponse implements Serializable {
     }
 
     /**
-     * The character's current fleet ID
+     * The character&#39;s current fleet ID
      * 
      * @return fleetId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character's current fleet ID")
+    @ApiModelProperty(required = true, value = "The character's current fleet ID")
     public Long getFleetId() {
         return fleetId;
     }
@@ -100,7 +121,7 @@ public class CharacterFleetResponse implements Serializable {
      * 
      * @return role
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Member’s role in fleet")
+    @ApiModelProperty(required = true, value = "Member’s role in fleet")
     public RoleEnum getRole() {
         return role;
     }
@@ -119,7 +140,7 @@ public class CharacterFleetResponse implements Serializable {
      * 
      * @return squadId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
+    @ApiModelProperty(required = true, value = "ID of the squad the member is in. If not applicable, will be set to -1")
     public Long getSquadId() {
         return squadId;
     }
@@ -138,7 +159,7 @@ public class CharacterFleetResponse implements Serializable {
      * 
      * @return wingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
+    @ApiModelProperty(required = true, value = "ID of the wing the member is in. If not applicable, will be set to -1")
     public Long getWingId() {
         return wingId;
     }

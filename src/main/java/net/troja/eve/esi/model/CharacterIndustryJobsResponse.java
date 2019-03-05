@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,69 +30,70 @@ import java.io.Serializable;
 public class CharacterIndustryJobsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("activity_id")
+    @SerializedName("activity_id")
     private Integer activityId = null;
 
-    @JsonProperty("blueprint_id")
+    @SerializedName("blueprint_id")
     private Long blueprintId = null;
 
-    @JsonProperty("blueprint_location_id")
+    @SerializedName("blueprint_location_id")
     private Long blueprintLocationId = null;
 
-    @JsonProperty("blueprint_type_id")
+    @SerializedName("blueprint_type_id")
     private Integer blueprintTypeId = null;
 
-    @JsonProperty("completed_character_id")
+    @SerializedName("completed_character_id")
     private Integer completedCharacterId = null;
 
-    @JsonProperty("completed_date")
+    @SerializedName("completed_date")
     private OffsetDateTime completedDate = null;
 
-    @JsonProperty("cost")
+    @SerializedName("cost")
     private Double cost = null;
 
-    @JsonProperty("duration")
+    @SerializedName("duration")
     private Integer duration = null;
 
-    @JsonProperty("end_date")
+    @SerializedName("end_date")
     private OffsetDateTime endDate = null;
 
-    @JsonProperty("facility_id")
+    @SerializedName("facility_id")
     private Long facilityId = null;
 
-    @JsonProperty("installer_id")
+    @SerializedName("installer_id")
     private Integer installerId = null;
 
-    @JsonProperty("job_id")
+    @SerializedName("job_id")
     private Integer jobId = null;
 
-    @JsonProperty("licensed_runs")
+    @SerializedName("licensed_runs")
     private Integer licensedRuns = null;
 
-    @JsonProperty("output_location_id")
+    @SerializedName("output_location_id")
     private Long outputLocationId = null;
 
-    @JsonProperty("pause_date")
+    @SerializedName("pause_date")
     private OffsetDateTime pauseDate = null;
 
-    @JsonProperty("probability")
+    @SerializedName("probability")
     private Float probability = null;
 
-    @JsonProperty("product_type_id")
+    @SerializedName("product_type_id")
     private Integer productTypeId = null;
 
-    @JsonProperty("runs")
+    @SerializedName("runs")
     private Integer runs = null;
 
-    @JsonProperty("start_date")
+    @SerializedName("start_date")
     private OffsetDateTime startDate = null;
 
-    @JsonProperty("station_id")
+    @SerializedName("station_id")
     private Long stationId = null;
 
     /**
      * status string
      */
+    @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
         ACTIVE("active"),
 
@@ -108,12 +113,15 @@ public class CharacterIndustryJobsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StatusEnum fromValue(String text) {
             for (StatusEnum b : StatusEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -122,12 +130,25 @@ public class CharacterIndustryJobsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("status")
+    @SerializedName("status")
     private StatusEnum status = null;
 
-    @JsonProperty("successful_runs")
+    @SerializedName("successful_runs")
     private Integer successfulRuns = null;
 
     public CharacterIndustryJobsResponse activityId(Integer activityId) {
@@ -140,7 +161,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return activityId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Job activity ID")
+    @ApiModelProperty(required = true, value = "Job activity ID")
     public Integer getActivityId() {
         return activityId;
     }
@@ -159,7 +180,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "blueprint_id integer")
+    @ApiModelProperty(required = true, value = "blueprint_id integer")
     public Long getBlueprintId() {
         return blueprintId;
     }
@@ -180,7 +201,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintLocationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Location ID of the location from which the blueprint was installed. Normally a station ID, but can also be an asset (e.g. container) or corporation facility")
+    @ApiModelProperty(required = true, value = "Location ID of the location from which the blueprint was installed. Normally a station ID, but can also be an asset (e.g. container) or corporation facility")
     public Long getBlueprintLocationId() {
         return blueprintLocationId;
     }
@@ -199,7 +220,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "blueprint_type_id integer")
+    @ApiModelProperty(required = true, value = "blueprint_type_id integer")
     public Integer getBlueprintTypeId() {
         return blueprintTypeId;
     }
@@ -218,7 +239,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return completedCharacterId
      **/
-    @ApiModelProperty(example = "null", value = "ID of the character which completed this job")
+    @ApiModelProperty(value = "ID of the character which completed this job")
     public Integer getCompletedCharacterId() {
         return completedCharacterId;
     }
@@ -237,7 +258,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return completedDate
      **/
-    @ApiModelProperty(example = "null", value = "Date and time when this job was completed")
+    @ApiModelProperty(value = "Date and time when this job was completed")
     public OffsetDateTime getCompletedDate() {
         return completedDate;
     }
@@ -256,7 +277,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return cost
      **/
-    @ApiModelProperty(example = "null", value = "The sume of job installation fee and industry facility tax")
+    @ApiModelProperty(value = "The sume of job installation fee and industry facility tax")
     public Double getCost() {
         return cost;
     }
@@ -275,7 +296,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Job duration in seconds")
+    @ApiModelProperty(required = true, value = "Job duration in seconds")
     public Integer getDuration() {
         return duration;
     }
@@ -294,7 +315,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return endDate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time when this job finished")
+    @ApiModelProperty(required = true, value = "Date and time when this job finished")
     public OffsetDateTime getEndDate() {
         return endDate;
     }
@@ -313,7 +334,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return facilityId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the facility where this job is running")
+    @ApiModelProperty(required = true, value = "ID of the facility where this job is running")
     public Long getFacilityId() {
         return facilityId;
     }
@@ -332,7 +353,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return installerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character which installed this job")
+    @ApiModelProperty(required = true, value = "ID of the character which installed this job")
     public Integer getInstallerId() {
         return installerId;
     }
@@ -351,7 +372,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return jobId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique job ID")
+    @ApiModelProperty(required = true, value = "Unique job ID")
     public Integer getJobId() {
         return jobId;
     }
@@ -370,7 +391,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return licensedRuns
      **/
-    @ApiModelProperty(example = "null", value = "Number of runs blueprint is licensed for")
+    @ApiModelProperty(value = "Number of runs blueprint is licensed for")
     public Integer getLicensedRuns() {
         return licensedRuns;
     }
@@ -390,7 +411,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return outputLocationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Location ID of the location to which the output of the job will be delivered. Normally a station ID, but can also be a corporation facility")
+    @ApiModelProperty(required = true, value = "Location ID of the location to which the output of the job will be delivered. Normally a station ID, but can also be a corporation facility")
     public Long getOutputLocationId() {
         return outputLocationId;
     }
@@ -410,7 +431,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return pauseDate
      **/
-    @ApiModelProperty(example = "null", value = "Date and time when this job was paused (i.e. time when the facility where this job was installed went offline)")
+    @ApiModelProperty(value = "Date and time when this job was paused (i.e. time when the facility where this job was installed went offline)")
     public OffsetDateTime getPauseDate() {
         return pauseDate;
     }
@@ -429,7 +450,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return probability
      **/
-    @ApiModelProperty(example = "null", value = "Chance of success for invention")
+    @ApiModelProperty(value = "Chance of success for invention")
     public Float getProbability() {
         return probability;
     }
@@ -448,7 +469,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return productTypeId
      **/
-    @ApiModelProperty(example = "null", value = "Type ID of product (manufactured, copied or invented)")
+    @ApiModelProperty(value = "Type ID of product (manufactured, copied or invented)")
     public Integer getProductTypeId() {
         return productTypeId;
     }
@@ -468,7 +489,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return runs
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
+    @ApiModelProperty(required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
     public Integer getRuns() {
         return runs;
     }
@@ -487,7 +508,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time when this job started")
+    @ApiModelProperty(required = true, value = "Date and time when this job started")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -506,7 +527,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return stationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the station where industry facility is located")
+    @ApiModelProperty(required = true, value = "ID of the station where industry facility is located")
     public Long getStationId() {
         return stationId;
     }
@@ -525,7 +546,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(example = "null", required = true, value = "status string")
+    @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
         return status;
     }
@@ -545,7 +566,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return successfulRuns
      **/
-    @ApiModelProperty(example = "null", value = "Number of successful runs for this job. Equal to runs unless this is an invention job")
+    @ApiModelProperty(value = "Number of successful runs for this job. Equal to runs unless this is an invention job")
     public Integer getSuccessfulRuns() {
         return successfulRuns;
     }

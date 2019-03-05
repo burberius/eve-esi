@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,25 +30,25 @@ import java.io.Serializable;
 public class CorporationMemberTrackingResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("base_id")
+    @SerializedName("base_id")
     private Integer baseId = null;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("logoff_date")
+    @SerializedName("logoff_date")
     private OffsetDateTime logoffDate = null;
 
-    @JsonProperty("logon_date")
+    @SerializedName("logon_date")
     private OffsetDateTime logonDate = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
-    @JsonProperty("start_date")
+    @SerializedName("start_date")
     private OffsetDateTime startDate = null;
 
     public CorporationMemberTrackingResponse baseId(Integer baseId) {
@@ -57,7 +61,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return baseId
      **/
-    @ApiModelProperty(example = "null", value = "base_id integer")
+    @ApiModelProperty(value = "base_id integer")
     public Integer getBaseId() {
         return baseId;
     }
@@ -76,7 +80,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "character_id integer")
+    @ApiModelProperty(required = true, value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -95,7 +99,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", value = "location_id integer")
+    @ApiModelProperty(value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -114,7 +118,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return logoffDate
      **/
-    @ApiModelProperty(example = "null", value = "logoff_date string")
+    @ApiModelProperty(value = "logoff_date string")
     public OffsetDateTime getLogoffDate() {
         return logoffDate;
     }
@@ -133,7 +137,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return logonDate
      **/
-    @ApiModelProperty(example = "null", value = "logon_date string")
+    @ApiModelProperty(value = "logon_date string")
     public OffsetDateTime getLogonDate() {
         return logonDate;
     }
@@ -152,7 +156,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", value = "ship_type_id integer")
+    @ApiModelProperty(value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
     }
@@ -171,7 +175,7 @@ public class CorporationMemberTrackingResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(example = "null", value = "start_date string")
+    @ApiModelProperty(value = "start_date string")
     public OffsetDateTime getStartDate() {
         return startDate;
     }

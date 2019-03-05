@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class SovereigntyCampaignParticipant implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("score")
+    @SerializedName("score")
     private Float score = null;
 
     public SovereigntyCampaignParticipant allianceId(Integer allianceId) {
@@ -41,7 +45,7 @@ public class SovereigntyCampaignParticipant implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "alliance_id integer")
+    @ApiModelProperty(required = true, value = "alliance_id integer")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -60,7 +64,7 @@ public class SovereigntyCampaignParticipant implements Serializable {
      * 
      * @return score
      **/
-    @ApiModelProperty(example = "null", required = true, value = "score number")
+    @ApiModelProperty(required = true, value = "score number")
     public Float getScore() {
         return score;
     }

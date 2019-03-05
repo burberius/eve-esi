@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Skill;
@@ -28,13 +32,13 @@ import java.io.Serializable;
 public class CharacterSkillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("skills")
-    private List<Skill> skills = new ArrayList<Skill>();
+    @SerializedName("skills")
+    private List<Skill> skills = new ArrayList<>();
 
-    @JsonProperty("total_sp")
+    @SerializedName("total_sp")
     private Long totalSp = null;
 
-    @JsonProperty("unallocated_sp")
+    @SerializedName("unallocated_sp")
     private Integer unallocatedSp = null;
 
     public CharacterSkillsResponse skills(List<Skill> skills) {
@@ -52,7 +56,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return skills
      **/
-    @ApiModelProperty(example = "null", required = true, value = "skills array")
+    @ApiModelProperty(required = true, value = "skills array")
     public List<Skill> getSkills() {
         return skills;
     }
@@ -71,7 +75,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return totalSp
      **/
-    @ApiModelProperty(example = "null", required = true, value = "total_sp integer")
+    @ApiModelProperty(required = true, value = "total_sp integer")
     public Long getTotalSp() {
         return totalSp;
     }
@@ -90,7 +94,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return unallocatedSp
      **/
-    @ApiModelProperty(example = "null", value = "Skill points available to be assigned")
+    @ApiModelProperty(value = "Skill points available to be assigned")
     public Integer getUnallocatedSp() {
         return unallocatedSp;
     }

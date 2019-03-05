@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,28 +29,28 @@ import java.io.Serializable;
 public class GraphicResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("collision_file")
+    @SerializedName("collision_file")
     private String collisionFile = null;
 
-    @JsonProperty("graphic_file")
+    @SerializedName("graphic_file")
     private String graphicFile = null;
 
-    @JsonProperty("graphic_id")
+    @SerializedName("graphic_id")
     private Integer graphicId = null;
 
-    @JsonProperty("icon_folder")
+    @SerializedName("icon_folder")
     private String iconFolder = null;
 
-    @JsonProperty("sof_dna")
+    @SerializedName("sof_dna")
     private String sofDna = null;
 
-    @JsonProperty("sof_fation_name")
+    @SerializedName("sof_fation_name")
     private String sofFationName = null;
 
-    @JsonProperty("sof_hull_name")
+    @SerializedName("sof_hull_name")
     private String sofHullName = null;
 
-    @JsonProperty("sof_race_name")
+    @SerializedName("sof_race_name")
     private String sofRaceName = null;
 
     public GraphicResponse collisionFile(String collisionFile) {
@@ -59,7 +63,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return collisionFile
      **/
-    @ApiModelProperty(example = "null", value = "collision_file string")
+    @ApiModelProperty(value = "collision_file string")
     public String getCollisionFile() {
         return collisionFile;
     }
@@ -78,7 +82,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return graphicFile
      **/
-    @ApiModelProperty(example = "null", value = "graphic_file string")
+    @ApiModelProperty(value = "graphic_file string")
     public String getGraphicFile() {
         return graphicFile;
     }
@@ -97,7 +101,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return graphicId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "graphic_id integer")
+    @ApiModelProperty(required = true, value = "graphic_id integer")
     public Integer getGraphicId() {
         return graphicId;
     }
@@ -116,7 +120,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return iconFolder
      **/
-    @ApiModelProperty(example = "null", value = "icon_folder string")
+    @ApiModelProperty(value = "icon_folder string")
     public String getIconFolder() {
         return iconFolder;
     }
@@ -135,7 +139,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return sofDna
      **/
-    @ApiModelProperty(example = "null", value = "sof_dna string")
+    @ApiModelProperty(value = "sof_dna string")
     public String getSofDna() {
         return sofDna;
     }
@@ -154,7 +158,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return sofFationName
      **/
-    @ApiModelProperty(example = "null", value = "sof_fation_name string")
+    @ApiModelProperty(value = "sof_fation_name string")
     public String getSofFationName() {
         return sofFationName;
     }
@@ -173,7 +177,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return sofHullName
      **/
-    @ApiModelProperty(example = "null", value = "sof_hull_name string")
+    @ApiModelProperty(value = "sof_hull_name string")
     public String getSofHullName() {
         return sofHullName;
     }
@@ -192,7 +196,7 @@ public class GraphicResponse implements Serializable {
      * 
      * @return sofRaceName
      **/
-    @ApiModelProperty(example = "null", value = "sof_race_name string")
+    @ApiModelProperty(value = "sof_race_name string")
     public String getSofRaceName() {
         return sofRaceName;
     }

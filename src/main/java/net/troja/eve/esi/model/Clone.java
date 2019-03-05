@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,18 +31,19 @@ import java.io.Serializable;
 public class Clone implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("implants")
-    private List<Integer> implants = new ArrayList<Integer>();
+    @SerializedName("implants")
+    private List<Integer> implants = new ArrayList<>();
 
-    @JsonProperty("jump_clone_id")
+    @SerializedName("jump_clone_id")
     private Integer jumpCloneId = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
     /**
      * location_type string
      */
+    @JsonAdapter(LocationTypeEnum.Adapter.class)
     public enum LocationTypeEnum {
         STATION("station"),
 
@@ -50,12 +55,15 @@ public class Clone implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationTypeEnum fromValue(String text) {
             for (LocationTypeEnum b : LocationTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -64,12 +72,25 @@ public class Clone implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_type")
+    @SerializedName("location_type")
     private LocationTypeEnum locationType = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     public Clone implants(List<Integer> implants) {
@@ -87,7 +108,7 @@ public class Clone implements Serializable {
      * 
      * @return implants
      **/
-    @ApiModelProperty(example = "null", required = true, value = "implants array")
+    @ApiModelProperty(required = true, value = "implants array")
     public List<Integer> getImplants() {
         return implants;
     }
@@ -106,7 +127,7 @@ public class Clone implements Serializable {
      * 
      * @return jumpCloneId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "jump_clone_id integer")
+    @ApiModelProperty(required = true, value = "jump_clone_id integer")
     public Integer getJumpCloneId() {
         return jumpCloneId;
     }
@@ -125,7 +146,7 @@ public class Clone implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -144,7 +165,7 @@ public class Clone implements Serializable {
      * 
      * @return locationType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_type string")
+    @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
         return locationType;
     }
@@ -163,7 +184,7 @@ public class Clone implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }

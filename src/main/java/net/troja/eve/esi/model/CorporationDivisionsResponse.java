@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.CorporationDivisionsHangar;
@@ -29,11 +33,11 @@ import java.io.Serializable;
 public class CorporationDivisionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("hangar")
-    private List<CorporationDivisionsHangar> hangar = new ArrayList<CorporationDivisionsHangar>();
+    @SerializedName("hangar")
+    private List<CorporationDivisionsHangar> hangar = null;
 
-    @JsonProperty("wallet")
-    private List<CorporationDivisionsWallet> wallet = new ArrayList<CorporationDivisionsWallet>();
+    @SerializedName("wallet")
+    private List<CorporationDivisionsWallet> wallet = null;
 
     public CorporationDivisionsResponse hangar(List<CorporationDivisionsHangar> hangar) {
         this.hangar = hangar;
@@ -41,6 +45,9 @@ public class CorporationDivisionsResponse implements Serializable {
     }
 
     public CorporationDivisionsResponse addHangarItem(CorporationDivisionsHangar hangarItem) {
+        if (this.hangar == null) {
+            this.hangar = new ArrayList<>();
+        }
         this.hangar.add(hangarItem);
         return this;
     }
@@ -50,7 +57,7 @@ public class CorporationDivisionsResponse implements Serializable {
      * 
      * @return hangar
      **/
-    @ApiModelProperty(example = "null", value = "hangar array")
+    @ApiModelProperty(value = "hangar array")
     public List<CorporationDivisionsHangar> getHangar() {
         return hangar;
     }
@@ -65,6 +72,9 @@ public class CorporationDivisionsResponse implements Serializable {
     }
 
     public CorporationDivisionsResponse addWalletItem(CorporationDivisionsWallet walletItem) {
+        if (this.wallet == null) {
+            this.wallet = new ArrayList<>();
+        }
         this.wallet.add(walletItem);
         return this;
     }
@@ -74,7 +84,7 @@ public class CorporationDivisionsResponse implements Serializable {
      * 
      * @return wallet
      **/
-    @ApiModelProperty(example = "null", value = "wallet array")
+    @ApiModelProperty(value = "wallet array")
     public List<CorporationDivisionsWallet> getWallet() {
         return wallet;
     }

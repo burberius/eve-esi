@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,25 +30,25 @@ import java.io.Serializable;
 public class AllianceResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("creator_corporation_id")
+    @SerializedName("creator_corporation_id")
     private Integer creatorCorporationId = null;
 
-    @JsonProperty("creator_id")
+    @SerializedName("creator_id")
     private Integer creatorId = null;
 
-    @JsonProperty("date_founded")
+    @SerializedName("date_founded")
     private OffsetDateTime dateFounded = null;
 
-    @JsonProperty("executor_corporation_id")
+    @SerializedName("executor_corporation_id")
     private Integer executorCorporationId = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("ticker")
+    @SerializedName("ticker")
     private String ticker = null;
 
     public AllianceResponse creatorCorporationId(Integer creatorCorporationId) {
@@ -57,7 +61,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return creatorCorporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the corporation that created the alliance")
+    @ApiModelProperty(required = true, value = "ID of the corporation that created the alliance")
     public Integer getCreatorCorporationId() {
         return creatorCorporationId;
     }
@@ -76,7 +80,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return creatorId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character that created the alliance")
+    @ApiModelProperty(required = true, value = "ID of the character that created the alliance")
     public Integer getCreatorId() {
         return creatorId;
     }
@@ -95,7 +99,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return dateFounded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "date_founded string")
+    @ApiModelProperty(required = true, value = "date_founded string")
     public OffsetDateTime getDateFounded() {
         return dateFounded;
     }
@@ -114,7 +118,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return executorCorporationId
      **/
-    @ApiModelProperty(example = "null", value = "the executor corporation ID, if this alliance is not closed")
+    @ApiModelProperty(value = "the executor corporation ID, if this alliance is not closed")
     public Integer getExecutorCorporationId() {
         return executorCorporationId;
     }
@@ -134,7 +138,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "Faction ID this alliance is fighting for, if this alliance is enlisted in factional warfare")
+    @ApiModelProperty(value = "Faction ID this alliance is fighting for, if this alliance is enlisted in factional warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -153,7 +157,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "the full name of the alliance")
+    @ApiModelProperty(required = true, value = "the full name of the alliance")
     public String getName() {
         return name;
     }
@@ -172,7 +176,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return ticker
      **/
-    @ApiModelProperty(example = "null", required = true, value = "the short name of the alliance")
+    @ApiModelProperty(required = true, value = "the short name of the alliance")
     public String getTicker() {
         return ticker;
     }

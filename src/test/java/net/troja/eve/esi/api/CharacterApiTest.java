@@ -27,7 +27,6 @@ import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CharacterStatsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
-import org.apache.commons.lang3.StringUtils;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
@@ -186,7 +185,8 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         final String icon = response.getPx64x64();
-        assertThat(StringUtils.isNotBlank(icon), equalTo(true));
+		assertThat(icon, notNullValue());
+        assertThat(!icon.isEmpty(), equalTo(true));
     }
 
     /**

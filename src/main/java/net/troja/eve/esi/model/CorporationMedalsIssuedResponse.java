@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,24 +30,25 @@ import java.io.Serializable;
 public class CorporationMedalsIssuedResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("issued_at")
+    @SerializedName("issued_at")
     private OffsetDateTime issuedAt = null;
 
-    @JsonProperty("issuer_id")
+    @SerializedName("issuer_id")
     private Integer issuerId = null;
 
-    @JsonProperty("medal_id")
+    @SerializedName("medal_id")
     private Integer medalId = null;
 
-    @JsonProperty("reason")
+    @SerializedName("reason")
     private String reason = null;
 
     /**
      * status string
      */
+    @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
         PRIVATE("private"),
 
@@ -55,12 +60,15 @@ public class CorporationMedalsIssuedResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StatusEnum fromValue(String text) {
             for (StatusEnum b : StatusEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -69,9 +77,22 @@ public class CorporationMedalsIssuedResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("status")
+    @SerializedName("status")
     private StatusEnum status = null;
 
     public CorporationMedalsIssuedResponse characterId(Integer characterId) {
@@ -84,7 +105,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who was rewarded this medal")
+    @ApiModelProperty(required = true, value = "ID of the character who was rewarded this medal")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -103,7 +124,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return issuedAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "issued_at string")
+    @ApiModelProperty(required = true, value = "issued_at string")
     public OffsetDateTime getIssuedAt() {
         return issuedAt;
     }
@@ -122,7 +143,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who issued the medal")
+    @ApiModelProperty(required = true, value = "ID of the character who issued the medal")
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -141,7 +162,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return medalId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "medal_id integer")
+    @ApiModelProperty(required = true, value = "medal_id integer")
     public Integer getMedalId() {
         return medalId;
     }
@@ -160,7 +181,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return reason
      **/
-    @ApiModelProperty(example = "null", required = true, value = "reason string")
+    @ApiModelProperty(required = true, value = "reason string")
     public String getReason() {
         return reason;
     }
@@ -179,7 +200,7 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(example = "null", required = true, value = "status string")
+    @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
         return status;
     }

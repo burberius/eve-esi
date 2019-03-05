@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,61 +29,61 @@ import java.io.Serializable;
 public class CharacterStatsMining implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("drone_mine")
+    @SerializedName("drone_mine")
     private Long droneMine = null;
 
-    @JsonProperty("ore_arkonor")
+    @SerializedName("ore_arkonor")
     private Long oreArkonor = null;
 
-    @JsonProperty("ore_bistot")
+    @SerializedName("ore_bistot")
     private Long oreBistot = null;
 
-    @JsonProperty("ore_crokite")
+    @SerializedName("ore_crokite")
     private Long oreCrokite = null;
 
-    @JsonProperty("ore_dark_ochre")
+    @SerializedName("ore_dark_ochre")
     private Long oreDarkOchre = null;
 
-    @JsonProperty("ore_gneiss")
+    @SerializedName("ore_gneiss")
     private Long oreGneiss = null;
 
-    @JsonProperty("ore_harvestable_cloud")
+    @SerializedName("ore_harvestable_cloud")
     private Long oreHarvestableCloud = null;
 
-    @JsonProperty("ore_hedbergite")
+    @SerializedName("ore_hedbergite")
     private Long oreHedbergite = null;
 
-    @JsonProperty("ore_hemorphite")
+    @SerializedName("ore_hemorphite")
     private Long oreHemorphite = null;
 
-    @JsonProperty("ore_ice")
+    @SerializedName("ore_ice")
     private Long oreIce = null;
 
-    @JsonProperty("ore_jaspet")
+    @SerializedName("ore_jaspet")
     private Long oreJaspet = null;
 
-    @JsonProperty("ore_kernite")
+    @SerializedName("ore_kernite")
     private Long oreKernite = null;
 
-    @JsonProperty("ore_mercoxit")
+    @SerializedName("ore_mercoxit")
     private Long oreMercoxit = null;
 
-    @JsonProperty("ore_omber")
+    @SerializedName("ore_omber")
     private Long oreOmber = null;
 
-    @JsonProperty("ore_plagioclase")
+    @SerializedName("ore_plagioclase")
     private Long orePlagioclase = null;
 
-    @JsonProperty("ore_pyroxeres")
+    @SerializedName("ore_pyroxeres")
     private Long orePyroxeres = null;
 
-    @JsonProperty("ore_scordite")
+    @SerializedName("ore_scordite")
     private Long oreScordite = null;
 
-    @JsonProperty("ore_spodumain")
+    @SerializedName("ore_spodumain")
     private Long oreSpodumain = null;
 
-    @JsonProperty("ore_veldspar")
+    @SerializedName("ore_veldspar")
     private Long oreVeldspar = null;
 
     public CharacterStatsMining droneMine(Long droneMine) {
@@ -92,7 +96,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return droneMine
      **/
-    @ApiModelProperty(example = "null", value = "drone_mine integer")
+    @ApiModelProperty(value = "drone_mine integer")
     public Long getDroneMine() {
         return droneMine;
     }
@@ -111,7 +115,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreArkonor
      **/
-    @ApiModelProperty(example = "null", value = "ore_arkonor integer")
+    @ApiModelProperty(value = "ore_arkonor integer")
     public Long getOreArkonor() {
         return oreArkonor;
     }
@@ -130,7 +134,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreBistot
      **/
-    @ApiModelProperty(example = "null", value = "ore_bistot integer")
+    @ApiModelProperty(value = "ore_bistot integer")
     public Long getOreBistot() {
         return oreBistot;
     }
@@ -149,7 +153,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreCrokite
      **/
-    @ApiModelProperty(example = "null", value = "ore_crokite integer")
+    @ApiModelProperty(value = "ore_crokite integer")
     public Long getOreCrokite() {
         return oreCrokite;
     }
@@ -168,7 +172,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreDarkOchre
      **/
-    @ApiModelProperty(example = "null", value = "ore_dark_ochre integer")
+    @ApiModelProperty(value = "ore_dark_ochre integer")
     public Long getOreDarkOchre() {
         return oreDarkOchre;
     }
@@ -187,7 +191,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreGneiss
      **/
-    @ApiModelProperty(example = "null", value = "ore_gneiss integer")
+    @ApiModelProperty(value = "ore_gneiss integer")
     public Long getOreGneiss() {
         return oreGneiss;
     }
@@ -206,7 +210,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreHarvestableCloud
      **/
-    @ApiModelProperty(example = "null", value = "ore_harvestable_cloud integer")
+    @ApiModelProperty(value = "ore_harvestable_cloud integer")
     public Long getOreHarvestableCloud() {
         return oreHarvestableCloud;
     }
@@ -225,7 +229,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreHedbergite
      **/
-    @ApiModelProperty(example = "null", value = "ore_hedbergite integer")
+    @ApiModelProperty(value = "ore_hedbergite integer")
     public Long getOreHedbergite() {
         return oreHedbergite;
     }
@@ -244,7 +248,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreHemorphite
      **/
-    @ApiModelProperty(example = "null", value = "ore_hemorphite integer")
+    @ApiModelProperty(value = "ore_hemorphite integer")
     public Long getOreHemorphite() {
         return oreHemorphite;
     }
@@ -263,7 +267,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreIce
      **/
-    @ApiModelProperty(example = "null", value = "ore_ice integer")
+    @ApiModelProperty(value = "ore_ice integer")
     public Long getOreIce() {
         return oreIce;
     }
@@ -282,7 +286,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreJaspet
      **/
-    @ApiModelProperty(example = "null", value = "ore_jaspet integer")
+    @ApiModelProperty(value = "ore_jaspet integer")
     public Long getOreJaspet() {
         return oreJaspet;
     }
@@ -301,7 +305,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreKernite
      **/
-    @ApiModelProperty(example = "null", value = "ore_kernite integer")
+    @ApiModelProperty(value = "ore_kernite integer")
     public Long getOreKernite() {
         return oreKernite;
     }
@@ -320,7 +324,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreMercoxit
      **/
-    @ApiModelProperty(example = "null", value = "ore_mercoxit integer")
+    @ApiModelProperty(value = "ore_mercoxit integer")
     public Long getOreMercoxit() {
         return oreMercoxit;
     }
@@ -339,7 +343,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreOmber
      **/
-    @ApiModelProperty(example = "null", value = "ore_omber integer")
+    @ApiModelProperty(value = "ore_omber integer")
     public Long getOreOmber() {
         return oreOmber;
     }
@@ -358,7 +362,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return orePlagioclase
      **/
-    @ApiModelProperty(example = "null", value = "ore_plagioclase integer")
+    @ApiModelProperty(value = "ore_plagioclase integer")
     public Long getOrePlagioclase() {
         return orePlagioclase;
     }
@@ -377,7 +381,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return orePyroxeres
      **/
-    @ApiModelProperty(example = "null", value = "ore_pyroxeres integer")
+    @ApiModelProperty(value = "ore_pyroxeres integer")
     public Long getOrePyroxeres() {
         return orePyroxeres;
     }
@@ -396,7 +400,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreScordite
      **/
-    @ApiModelProperty(example = "null", value = "ore_scordite integer")
+    @ApiModelProperty(value = "ore_scordite integer")
     public Long getOreScordite() {
         return oreScordite;
     }
@@ -415,7 +419,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreSpodumain
      **/
-    @ApiModelProperty(example = "null", value = "ore_spodumain integer")
+    @ApiModelProperty(value = "ore_spodumain integer")
     public Long getOreSpodumain() {
         return oreSpodumain;
     }
@@ -434,7 +438,7 @@ public class CharacterStatsMining implements Serializable {
      * 
      * @return oreVeldspar
      **/
-    @ApiModelProperty(example = "null", value = "ore_veldspar integer")
+    @ApiModelProperty(value = "ore_veldspar integer")
     public Long getOreVeldspar() {
         return oreVeldspar;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class UniverseIdsConstellation implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Integer id = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     public UniverseIdsConstellation id(Integer id) {
@@ -41,7 +45,7 @@ public class UniverseIdsConstellation implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", value = "id integer")
+    @ApiModelProperty(value = "id integer")
     public Integer getId() {
         return id;
     }
@@ -60,7 +64,7 @@ public class UniverseIdsConstellation implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,16 +31,16 @@ import java.io.Serializable;
 public class CategoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("category_id")
+    @SerializedName("category_id")
     private Integer categoryId = null;
 
-    @JsonProperty("groups")
-    private List<Integer> groups = new ArrayList<Integer>();
+    @SerializedName("groups")
+    private List<Integer> groups = new ArrayList<>();
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("published")
+    @SerializedName("published")
     private Boolean published = null;
 
     public CategoryResponse categoryId(Integer categoryId) {
@@ -49,7 +53,7 @@ public class CategoryResponse implements Serializable {
      * 
      * @return categoryId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "category_id integer")
+    @ApiModelProperty(required = true, value = "category_id integer")
     public Integer getCategoryId() {
         return categoryId;
     }
@@ -73,7 +77,7 @@ public class CategoryResponse implements Serializable {
      * 
      * @return groups
      **/
-    @ApiModelProperty(example = "null", required = true, value = "groups array")
+    @ApiModelProperty(required = true, value = "groups array")
     public List<Integer> getGroups() {
         return groups;
     }
@@ -92,7 +96,7 @@ public class CategoryResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -111,8 +115,8 @@ public class CategoryResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(example = "null", required = true, value = "published boolean")
-    public Boolean getPublished() {
+    @ApiModelProperty(required = true, value = "published boolean")
+    public Boolean isPublished() {
         return published;
     }
 

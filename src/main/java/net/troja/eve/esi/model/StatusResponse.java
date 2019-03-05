@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class StatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("players")
+    @SerializedName("players")
     private Integer players = null;
 
-    @JsonProperty("server_version")
+    @SerializedName("server_version")
     private String serverVersion = null;
 
-    @JsonProperty("start_time")
+    @SerializedName("start_time")
     private OffsetDateTime startTime = null;
 
-    @JsonProperty("vip")
+    @SerializedName("vip")
     private Boolean vip = null;
 
     public StatusResponse players(Integer players) {
@@ -48,7 +52,7 @@ public class StatusResponse implements Serializable {
      * 
      * @return players
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Current online player count")
+    @ApiModelProperty(required = true, value = "Current online player count")
     public Integer getPlayers() {
         return players;
     }
@@ -67,7 +71,7 @@ public class StatusResponse implements Serializable {
      * 
      * @return serverVersion
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Running version as string")
+    @ApiModelProperty(required = true, value = "Running version as string")
     public String getServerVersion() {
         return serverVersion;
     }
@@ -86,7 +90,7 @@ public class StatusResponse implements Serializable {
      * 
      * @return startTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Server start timestamp")
+    @ApiModelProperty(required = true, value = "Server start timestamp")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -105,8 +109,8 @@ public class StatusResponse implements Serializable {
      * 
      * @return vip
      **/
-    @ApiModelProperty(example = "null", value = "If the server is in VIP mode")
-    public Boolean getVip() {
+    @ApiModelProperty(value = "If the server is in VIP mode")
+    public Boolean isVip() {
         return vip;
     }
 

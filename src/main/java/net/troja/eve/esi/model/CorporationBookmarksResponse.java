@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import net.troja.eve.esi.model.CorporationBookmarkItem;
 import net.troja.eve.esi.model.CorporationBookmarksCoordinates;
@@ -28,31 +32,31 @@ import java.io.Serializable;
 public class CorporationBookmarksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("bookmark_id")
+    @SerializedName("bookmark_id")
     private Integer bookmarkId = null;
 
-    @JsonProperty("coordinates")
+    @SerializedName("coordinates")
     private CorporationBookmarksCoordinates coordinates = null;
 
-    @JsonProperty("created")
+    @SerializedName("created")
     private OffsetDateTime created = null;
 
-    @JsonProperty("creator_id")
+    @SerializedName("creator_id")
     private Integer creatorId = null;
 
-    @JsonProperty("folder_id")
+    @SerializedName("folder_id")
     private Integer folderId = null;
 
-    @JsonProperty("item")
+    @SerializedName("item")
     private CorporationBookmarkItem item = null;
 
-    @JsonProperty("label")
+    @SerializedName("label")
     private String label = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Integer locationId = null;
 
-    @JsonProperty("notes")
+    @SerializedName("notes")
     private String notes = null;
 
     public CorporationBookmarksResponse bookmarkId(Integer bookmarkId) {
@@ -65,7 +69,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return bookmarkId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "bookmark_id integer")
+    @ApiModelProperty(required = true, value = "bookmark_id integer")
     public Integer getBookmarkId() {
         return bookmarkId;
     }
@@ -84,7 +88,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return coordinates
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CorporationBookmarksCoordinates getCoordinates() {
         return coordinates;
     }
@@ -103,7 +107,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return created
      **/
-    @ApiModelProperty(example = "null", required = true, value = "created string")
+    @ApiModelProperty(required = true, value = "created string")
     public OffsetDateTime getCreated() {
         return created;
     }
@@ -122,7 +126,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return creatorId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "creator_id integer")
+    @ApiModelProperty(required = true, value = "creator_id integer")
     public Integer getCreatorId() {
         return creatorId;
     }
@@ -141,7 +145,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return folderId
      **/
-    @ApiModelProperty(example = "null", value = "folder_id integer")
+    @ApiModelProperty(value = "folder_id integer")
     public Integer getFolderId() {
         return folderId;
     }
@@ -160,7 +164,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return item
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CorporationBookmarkItem getItem() {
         return item;
     }
@@ -179,7 +183,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return label
      **/
-    @ApiModelProperty(example = "null", required = true, value = "label string")
+    @ApiModelProperty(required = true, value = "label string")
     public String getLabel() {
         return label;
     }
@@ -198,7 +202,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Integer getLocationId() {
         return locationId;
     }
@@ -217,7 +221,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return notes
      **/
-    @ApiModelProperty(example = "null", required = true, value = "notes string")
+    @ApiModelProperty(required = true, value = "notes string")
     public String getNotes() {
         return notes;
     }

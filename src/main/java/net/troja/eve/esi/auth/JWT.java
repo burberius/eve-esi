@@ -1,15 +1,11 @@
 package net.troja.eve.esi.auth;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import java.io.IOException;
-import java.util.Collections;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,7 +41,6 @@ public class JWT {
         return signature;
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Header {
 
         private String alg;
@@ -68,12 +63,9 @@ public class JWT {
         }
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Payload {
 
-        @JsonProperty("scp")
-        @JsonDeserialize(using = ArrayStringDeserializer.class)
-        private Set<String> scopes;
+        private Set<String> scopes = new HashSet<>();
 
         private String jti;
         private String kid;
@@ -97,16 +89,8 @@ public class JWT {
             return jti;
         }
 
-        public void setJti(String jti) {
-            this.jti = jti;
-        }
-
         public String getKid() {
             return kid;
-        }
-
-        public void setKid(String kid) {
-            this.kid = kid;
         }
 
         public String getSub() {
@@ -115,11 +99,7 @@ public class JWT {
 
         public void setSub(String sub) {
             this.sub = sub;
-            try {
-                characterID = Integer.valueOf(sub.substring("CHARACTER:EVE:".length()));
-            } catch (NumberFormatException ex) {
-                characterID = null;
-            }
+
         }
 
         public Integer getCharacterID() {
@@ -130,57 +110,54 @@ public class JWT {
             return azp;
         }
 
-        public void setAzp(String azp) {
-            this.azp = azp;
-        }
-
         public String getName() {
             return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
 
         public String getOwner() {
             return owner;
         }
 
-        public void setOwner(String owner) {
-            this.owner = owner;
-        }
-
         public String getExp() {
             return exp;
-        }
-
-        public void setExp(String exp) {
-            this.exp = exp;
         }
 
         public String getIss() {
             return iss;
         }
-
-        public void setIss(String iss) {
-            this.iss = iss;
-        }
     }
 
-    public static class ArrayStringDeserializer extends JsonDeserializer<Set<String>> {
-
-        private static final TypeReference<Set<String>> LIST_TYPE = new TypeReference<Set<String>>() {
-        };
+    public static class PayloadDeserializer implements JsonDeserializer<Payload> {
 
         @Override
-        public Set<String> deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException,
-                JsonProcessingException {
-            try {
-                return jp.readValueAs(LIST_TYPE); // Assume Array of Scopes
-            } catch (IOException ex) { // On error it's a single scope AKA just
-                                       // a String
-                return new HashSet<>(Collections.singleton(jp.getText()));
+        public Payload deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
+            JsonObject jsonObject = json.getAsJsonObject();
+            Payload payload = new Payload();
+            JsonElement element = jsonObject.get("scp");
+            if (element.isJsonArray()) {
+                for (JsonElement item : element.getAsJsonArray()) {
+                    payload.scopes.add(item.getAsString());
+                }
+            } else {
+                payload.scopes.add(element.getAsString());
             }
+
+            payload.jti = jsonObject.get("jti").getAsString();
+            payload.kid = jsonObject.get("kid").getAsString();
+            payload.sub = jsonObject.get("sub").getAsString();
+            try {
+                payload.characterID = Integer.valueOf(payload.sub.substring("CHARACTER:EVE:".length()));
+            } catch (NumberFormatException ex) {
+                payload.characterID = null;
+            }
+            payload.azp = jsonObject.get("azp").getAsString();
+            payload.name = jsonObject.get("name").getAsString();
+            payload.owner = jsonObject.get("owner").getAsString();
+            payload.jti = jsonObject.get("jti").getAsString();
+            payload.exp = jsonObject.get("exp").getAsString();
+            payload.iss = jsonObject.get("iss").getAsString();
+            return payload;
         }
     }
 }

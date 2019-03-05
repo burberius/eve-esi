@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,20 +31,20 @@ import java.io.Serializable;
 public class MarketGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("market_group_id")
+    @SerializedName("market_group_id")
     private Integer marketGroupId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("parent_group_id")
+    @SerializedName("parent_group_id")
     private Integer parentGroupId = null;
 
-    @JsonProperty("types")
-    private List<Integer> types = new ArrayList<Integer>();
+    @SerializedName("types")
+    private List<Integer> types = new ArrayList<>();
 
     public MarketGroupResponse description(String description) {
         this.description = description;
@@ -52,7 +56,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -71,7 +75,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return marketGroupId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "market_group_id integer")
+    @ApiModelProperty(required = true, value = "market_group_id integer")
     public Integer getMarketGroupId() {
         return marketGroupId;
     }
@@ -90,7 +94,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -109,7 +113,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return parentGroupId
      **/
-    @ApiModelProperty(example = "null", value = "parent_group_id integer")
+    @ApiModelProperty(value = "parent_group_id integer")
     public Integer getParentGroupId() {
         return parentGroupId;
     }
@@ -133,7 +137,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return types
      **/
-    @ApiModelProperty(example = "null", required = true, value = "types array")
+    @ApiModelProperty(required = true, value = "types array")
     public List<Integer> getTypes() {
         return types;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class PlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("planet_id")
+    @SerializedName("planet_id")
     private Integer planetId = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public PlanetResponse name(String name) {
@@ -51,7 +55,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -70,7 +74,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return planetId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "planet_id integer")
+    @ApiModelProperty(required = true, value = "planet_id integer")
     public Integer getPlanetId() {
         return planetId;
     }
@@ -89,7 +93,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -108,7 +112,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this planet is in")
+    @ApiModelProperty(required = true, value = "The solar system this planet is in")
     public Integer getSystemId() {
         return systemId;
     }
@@ -127,7 +131,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

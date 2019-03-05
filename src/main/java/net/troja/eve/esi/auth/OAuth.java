@@ -5,8 +5,10 @@
 
 package net.troja.eve.esi.auth;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.annotations.SerializedName;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -123,14 +125,13 @@ public class OAuth implements Authentication {
             if (parts.length != 3) {
                 return null;
             }
-            ObjectMapper objectMapper = new ObjectMapper();
-            JWT.Header header = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[0])),
-                    JWT.Header.class);
-            JWT.Payload payload = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[1])),
-                    JWT.Payload.class);
+            Gson gson = new GsonBuilder().registerTypeAdapter(JWT.Payload.class, new JWT.PayloadDeserializer())
+                    .create();
+            JWT.Header header = gson.fromJson(new String(Base64.getUrlDecoder().decode(parts[0])), JWT.Header.class);
+            JWT.Payload payload = gson.fromJson(new String(Base64.getUrlDecoder().decode(parts[1])), JWT.Payload.class);
             String signature = parts[2];
             return new JWT(header, payload, signature);
-        } catch (IOException ex) {
+        } catch (JsonSyntaxException ex) {
             return null;
         }
     }
@@ -252,8 +253,8 @@ public class OAuth implements Authentication {
                 }
             }
             // read json
-            ObjectMapper objectMapper = new ObjectMapper();
-            Result result = objectMapper.readValue(response.toString(), Result.class);
+            Gson gson = new GsonBuilder().create();
+            Result result = gson.fromJson(response.toString(), Result.class);
 
             // set data
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
@@ -265,6 +266,8 @@ public class OAuth implements Authentication {
                                                              // Token (AKA Key)
                                                              // have been
                                                              // changed
+        } catch (JsonSyntaxException ex) {
+            throw new ApiException(ex);
         } catch (MalformedURLException ex) {
             throw new ApiException(ex);
         } catch (IOException ex) {
@@ -289,7 +292,7 @@ public class OAuth implements Authentication {
         private final String clientId;
         private String refreshToken;
         private String accessToken;
-        private long validUntil;
+        private long validUntil = 0;
 
         public AccountData(String clientId, String refreshToken) {
             this.clientId = clientId;
@@ -366,13 +369,13 @@ public class OAuth implements Authentication {
 
     private static class Result {
 
-        @JsonProperty("access_token")
+        @SerializedName("access_token")
         private String accessToken;
-        @JsonProperty("expires_in")
+        @SerializedName("expires_in")
         private Long expiresIn;
-        @JsonProperty("token_type")
+        @SerializedName("token_type")
         private String tokenType;
-        @JsonProperty("refresh_token")
+        @SerializedName("refresh_token")
         private String refreshToken;
 
         public String getAccessToken() {

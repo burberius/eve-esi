@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -26,13 +30,13 @@ import java.io.Serializable;
 public class Position implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("x")
+    @SerializedName("x")
     private Double x = null;
 
-    @JsonProperty("y")
+    @SerializedName("y")
     private Double y = null;
 
-    @JsonProperty("z")
+    @SerializedName("z")
     private Double z = null;
 
     public Position x(Double x) {
@@ -45,7 +49,7 @@ public class Position implements Serializable {
      * 
      * @return x
      **/
-    @ApiModelProperty(example = "null", required = true, value = "x number")
+    @ApiModelProperty(required = true, value = "x number")
     public Double getX() {
         return x;
     }
@@ -64,7 +68,7 @@ public class Position implements Serializable {
      * 
      * @return y
      **/
-    @ApiModelProperty(example = "null", required = true, value = "y number")
+    @ApiModelProperty(required = true, value = "y number")
     public Double getY() {
         return y;
     }
@@ -83,7 +87,7 @@ public class Position implements Serializable {
      * 
      * @return z
      **/
-    @ApiModelProperty(example = "null", required = true, value = "z number")
+    @ApiModelProperty(required = true, value = "z number")
     public Double getZ() {
         return z;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,30 +30,31 @@ import java.io.Serializable;
 public class MarketStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("duration")
+    @SerializedName("duration")
     private Integer duration = null;
 
-    @JsonProperty("is_buy_order")
+    @SerializedName("is_buy_order")
     private Boolean isBuyOrder = null;
 
-    @JsonProperty("issued")
+    @SerializedName("issued")
     private OffsetDateTime issued = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("min_volume")
+    @SerializedName("min_volume")
     private Integer minVolume = null;
 
-    @JsonProperty("order_id")
+    @SerializedName("order_id")
     private Long orderId = null;
 
-    @JsonProperty("price")
+    @SerializedName("price")
     private Double price = null;
 
     /**
      * range string
      */
+    @JsonAdapter(RangeEnum.Adapter.class)
     public enum RangeEnum {
         STATION("station"),
 
@@ -81,12 +86,15 @@ public class MarketStructuresResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RangeEnum fromValue(String text) {
             for (RangeEnum b : RangeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -95,18 +103,31 @@ public class MarketStructuresResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RangeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RangeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RangeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RangeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("range")
+    @SerializedName("range")
     private RangeEnum range = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("volume_remain")
+    @SerializedName("volume_remain")
     private Integer volumeRemain = null;
 
-    @JsonProperty("volume_total")
+    @SerializedName("volume_total")
     private Integer volumeTotal = null;
 
     public MarketStructuresResponse duration(Integer duration) {
@@ -119,7 +140,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(example = "null", required = true, value = "duration integer")
+    @ApiModelProperty(required = true, value = "duration integer")
     public Integer getDuration() {
         return duration;
     }
@@ -138,8 +159,8 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return isBuyOrder
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_buy_order boolean")
-    public Boolean getIsBuyOrder() {
+    @ApiModelProperty(required = true, value = "is_buy_order boolean")
+    public Boolean isIsBuyOrder() {
         return isBuyOrder;
     }
 
@@ -157,7 +178,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return issued
      **/
-    @ApiModelProperty(example = "null", required = true, value = "issued string")
+    @ApiModelProperty(required = true, value = "issued string")
     public OffsetDateTime getIssued() {
         return issued;
     }
@@ -176,7 +197,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -195,7 +216,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return minVolume
      **/
-    @ApiModelProperty(example = "null", required = true, value = "min_volume integer")
+    @ApiModelProperty(required = true, value = "min_volume integer")
     public Integer getMinVolume() {
         return minVolume;
     }
@@ -214,7 +235,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return orderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "order_id integer")
+    @ApiModelProperty(required = true, value = "order_id integer")
     public Long getOrderId() {
         return orderId;
     }
@@ -233,7 +254,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return price
      **/
-    @ApiModelProperty(example = "null", required = true, value = "price number")
+    @ApiModelProperty(required = true, value = "price number")
     public Double getPrice() {
         return price;
     }
@@ -252,7 +273,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return range
      **/
-    @ApiModelProperty(example = "null", required = true, value = "range string")
+    @ApiModelProperty(required = true, value = "range string")
     public RangeEnum getRange() {
         return range;
     }
@@ -271,7 +292,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }
@@ -290,7 +311,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
-    @ApiModelProperty(example = "null", required = true, value = "volume_remain integer")
+    @ApiModelProperty(required = true, value = "volume_remain integer")
     public Integer getVolumeRemain() {
         return volumeRemain;
     }
@@ -309,7 +330,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "volume_total integer")
+    @ApiModelProperty(required = true, value = "volume_total integer")
     public Integer getVolumeTotal() {
         return volumeTotal;
     }

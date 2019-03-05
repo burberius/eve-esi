@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,16 +31,16 @@ import java.io.Serializable;
 public class RegionResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellations")
-    private List<Integer> constellations = new ArrayList<Integer>();
+    @SerializedName("constellations")
+    private List<Integer> constellations = new ArrayList<>();
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("region_id")
+    @SerializedName("region_id")
     private Integer regionId = null;
 
     public RegionResponse constellations(List<Integer> constellations) {
@@ -54,7 +58,7 @@ public class RegionResponse implements Serializable {
      * 
      * @return constellations
      **/
-    @ApiModelProperty(example = "null", required = true, value = "constellations array")
+    @ApiModelProperty(required = true, value = "constellations array")
     public List<Integer> getConstellations() {
         return constellations;
     }
@@ -73,7 +77,7 @@ public class RegionResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", value = "description string")
+    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -92,7 +96,7 @@ public class RegionResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -111,7 +115,7 @@ public class RegionResponse implements Serializable {
      * 
      * @return regionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "region_id integer")
+    @ApiModelProperty(required = true, value = "region_id integer")
     public Integer getRegionId() {
         return regionId;
     }

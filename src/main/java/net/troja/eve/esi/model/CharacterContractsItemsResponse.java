@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,22 +29,22 @@ import java.io.Serializable;
 public class CharacterContractsItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_included")
+    @SerializedName("is_included")
     private Boolean isIncluded = null;
 
-    @JsonProperty("is_singleton")
+    @SerializedName("is_singleton")
     private Boolean isSingleton = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("raw_quantity")
+    @SerializedName("raw_quantity")
     private Integer rawQuantity = null;
 
-    @JsonProperty("record_id")
+    @SerializedName("record_id")
     private Long recordId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CharacterContractsItemsResponse isIncluded(Boolean isIncluded) {
@@ -54,8 +58,8 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return isIncluded
      **/
-    @ApiModelProperty(example = "null", required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
-    public Boolean getIsIncluded() {
+    @ApiModelProperty(required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
+    public Boolean isIsIncluded() {
         return isIncluded;
     }
 
@@ -73,8 +77,8 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return isSingleton
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_singleton boolean")
-    public Boolean getIsSingleton() {
+    @ApiModelProperty(required = true, value = "is_singleton boolean")
+    public Boolean isIsSingleton() {
         return isSingleton;
     }
 
@@ -92,7 +96,7 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Number of items in the stack")
+    @ApiModelProperty(required = true, value = "Number of items in the stack")
     public Integer getQuantity() {
         return quantity;
     }
@@ -112,7 +116,7 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return rawQuantity
      **/
-    @ApiModelProperty(example = "null", value = "-1 indicates that the item is a singleton (non-stackable). If the item happens to be a Blueprint, -1 is an Original and -2 is a Blueprint Copy")
+    @ApiModelProperty(value = "-1 indicates that the item is a singleton (non-stackable). If the item happens to be a Blueprint, -1 is an Original and -2 is a Blueprint Copy")
     public Integer getRawQuantity() {
         return rawQuantity;
     }
@@ -131,7 +135,7 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return recordId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for the item")
+    @ApiModelProperty(required = true, value = "Unique ID for the item")
     public Long getRecordId() {
         return recordId;
     }
@@ -150,7 +154,7 @@ public class CharacterContractsItemsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type ID for item")
+    @ApiModelProperty(required = true, value = "Type ID for item")
     public Integer getTypeId() {
         return typeId;
     }

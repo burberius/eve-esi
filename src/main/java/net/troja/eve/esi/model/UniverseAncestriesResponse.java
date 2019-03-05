@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,22 +29,22 @@ import java.io.Serializable;
 public class UniverseAncestriesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("bloodline_id")
+    @SerializedName("bloodline_id")
     private Integer bloodlineId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("icon_id")
+    @SerializedName("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Integer id = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("short_description")
+    @SerializedName("short_description")
     private String shortDescription = null;
 
     public UniverseAncestriesResponse bloodlineId(Integer bloodlineId) {
@@ -53,7 +57,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return bloodlineId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The bloodline associated with this ancestry")
+    @ApiModelProperty(required = true, value = "The bloodline associated with this ancestry")
     public Integer getBloodlineId() {
         return bloodlineId;
     }
@@ -72,7 +76,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -91,7 +95,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return iconId
      **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
+    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -110,7 +114,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "id integer")
+    @ApiModelProperty(required = true, value = "id integer")
     public Integer getId() {
         return id;
     }
@@ -129,7 +133,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -148,7 +152,7 @@ public class UniverseAncestriesResponse implements Serializable {
      * 
      * @return shortDescription
      **/
-    @ApiModelProperty(example = "null", value = "short_description string")
+    @ApiModelProperty(value = "short_description string")
     public String getShortDescription() {
         return shortDescription;
     }

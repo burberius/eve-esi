@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,28 +30,28 @@ import java.io.Serializable;
 public class CharacterSkillqueueResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("finish_date")
+    @SerializedName("finish_date")
     private OffsetDateTime finishDate = null;
 
-    @JsonProperty("finished_level")
+    @SerializedName("finished_level")
     private Integer finishedLevel = null;
 
-    @JsonProperty("level_end_sp")
+    @SerializedName("level_end_sp")
     private Integer levelEndSp = null;
 
-    @JsonProperty("level_start_sp")
+    @SerializedName("level_start_sp")
     private Integer levelStartSp = null;
 
-    @JsonProperty("queue_position")
+    @SerializedName("queue_position")
     private Integer queuePosition = null;
 
-    @JsonProperty("skill_id")
+    @SerializedName("skill_id")
     private Integer skillId = null;
 
-    @JsonProperty("start_date")
+    @SerializedName("start_date")
     private OffsetDateTime startDate = null;
 
-    @JsonProperty("training_start_sp")
+    @SerializedName("training_start_sp")
     private Integer trainingStartSp = null;
 
     public CharacterSkillqueueResponse finishDate(OffsetDateTime finishDate) {
@@ -60,7 +64,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return finishDate
      **/
-    @ApiModelProperty(example = "null", value = "finish_date string")
+    @ApiModelProperty(value = "finish_date string")
     public OffsetDateTime getFinishDate() {
         return finishDate;
     }
@@ -79,7 +83,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return finishedLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "finished_level integer")
+    @ApiModelProperty(required = true, value = "finished_level integer")
     public Integer getFinishedLevel() {
         return finishedLevel;
     }
@@ -98,7 +102,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return levelEndSp
      **/
-    @ApiModelProperty(example = "null", value = "level_end_sp integer")
+    @ApiModelProperty(value = "level_end_sp integer")
     public Integer getLevelEndSp() {
         return levelEndSp;
     }
@@ -113,12 +117,12 @@ public class CharacterSkillqueueResponse implements Serializable {
     }
 
     /**
-     * Amount of SP that was in the skill when it started training it's current
-     * level. Used to calculate % of current level complete.
+     * Amount of SP that was in the skill when it started training it&#39;s
+     * current level. Used to calculate % of current level complete.
      * 
      * @return levelStartSp
      **/
-    @ApiModelProperty(example = "null", value = "Amount of SP that was in the skill when it started training it's current level. Used to calculate % of current level complete.")
+    @ApiModelProperty(value = "Amount of SP that was in the skill when it started training it's current level. Used to calculate % of current level complete.")
     public Integer getLevelStartSp() {
         return levelStartSp;
     }
@@ -137,7 +141,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return queuePosition
      **/
-    @ApiModelProperty(example = "null", required = true, value = "queue_position integer")
+    @ApiModelProperty(required = true, value = "queue_position integer")
     public Integer getQueuePosition() {
         return queuePosition;
     }
@@ -156,7 +160,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return skillId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "skill_id integer")
+    @ApiModelProperty(required = true, value = "skill_id integer")
     public Integer getSkillId() {
         return skillId;
     }
@@ -175,7 +179,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(example = "null", value = "start_date string")
+    @ApiModelProperty(value = "start_date string")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -194,7 +198,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return trainingStartSp
      **/
-    @ApiModelProperty(example = "null", value = "training_start_sp integer")
+    @ApiModelProperty(value = "training_start_sp integer")
     public Integer getTrainingStartSp() {
         return trainingStartSp;
     }

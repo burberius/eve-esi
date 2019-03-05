@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class CorporationMiningExtractionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("chunk_arrival_time")
+    @SerializedName("chunk_arrival_time")
     private OffsetDateTime chunkArrivalTime = null;
 
-    @JsonProperty("extraction_start_time")
+    @SerializedName("extraction_start_time")
     private OffsetDateTime extractionStartTime = null;
 
-    @JsonProperty("moon_id")
+    @SerializedName("moon_id")
     private Integer moonId = null;
 
-    @JsonProperty("natural_decay_time")
+    @SerializedName("natural_decay_time")
     private OffsetDateTime naturalDecayTime = null;
 
-    @JsonProperty("structure_id")
+    @SerializedName("structure_id")
     private Long structureId = null;
 
     public CorporationMiningExtractionsResponse chunkArrivalTime(OffsetDateTime chunkArrivalTime) {
@@ -52,7 +56,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return chunkArrivalTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill. ")
+    @ApiModelProperty(required = true, value = "The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill. ")
     public OffsetDateTime getChunkArrivalTime() {
         return chunkArrivalTime;
     }
@@ -71,7 +75,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return extractionStartTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The time at which the current extraction was initiated. ")
+    @ApiModelProperty(required = true, value = "The time at which the current extraction was initiated. ")
     public OffsetDateTime getExtractionStartTime() {
         return extractionStartTime;
     }
@@ -90,7 +94,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return moonId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "moon_id integer")
+    @ApiModelProperty(required = true, value = "moon_id integer")
     public Integer getMoonId() {
         return moonId;
     }
@@ -110,7 +114,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return naturalDecayTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The time at which the chunk being extracted will naturally fracture if it is not first fractured by the moon mining drill. ")
+    @ApiModelProperty(required = true, value = "The time at which the chunk being extracted will naturally fracture if it is not first fractured by the moon mining drill. ")
     public OffsetDateTime getNaturalDecayTime() {
         return naturalDecayTime;
     }
@@ -129,7 +133,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return structureId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "structure_id integer")
+    @ApiModelProperty(required = true, value = "structure_id integer")
     public Long getStructureId() {
         return structureId;
     }

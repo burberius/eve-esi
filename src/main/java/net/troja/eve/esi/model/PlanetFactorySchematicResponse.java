@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class PlanetFactorySchematicResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cycle_time")
+    @SerializedName("cycle_time")
     private Integer cycleTime = null;
 
-    @JsonProperty("schematic_name")
+    @SerializedName("schematic_name")
     private String schematicName = null;
 
     public PlanetFactorySchematicResponse cycleTime(Integer cycleTime) {
@@ -41,7 +45,7 @@ public class PlanetFactorySchematicResponse implements Serializable {
      * 
      * @return cycleTime
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Time in seconds to process a run")
+    @ApiModelProperty(required = true, value = "Time in seconds to process a run")
     public Integer getCycleTime() {
         return cycleTime;
     }
@@ -60,7 +64,7 @@ public class PlanetFactorySchematicResponse implements Serializable {
      * 
      * @return schematicName
      **/
-    @ApiModelProperty(example = "null", required = true, value = "schematic_name string")
+    @ApiModelProperty(required = true, value = "schematic_name string")
     public String getSchematicName() {
         return schematicName;
     }

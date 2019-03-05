@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class CorporationIconsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("px128x128")
+    @SerializedName("px128x128")
     private String px128x128 = null;
 
-    @JsonProperty("px256x256")
+    @SerializedName("px256x256")
     private String px256x256 = null;
 
-    @JsonProperty("px64x64")
+    @SerializedName("px64x64")
     private String px64x64 = null;
 
     public CorporationIconsResponse px128x128(String px128x128) {
@@ -44,7 +48,7 @@ public class CorporationIconsResponse implements Serializable {
      * 
      * @return px128x128
      **/
-    @ApiModelProperty(example = "null", value = "px128x128 string")
+    @ApiModelProperty(value = "px128x128 string")
     public String getPx128x128() {
         return px128x128;
     }
@@ -63,7 +67,7 @@ public class CorporationIconsResponse implements Serializable {
      * 
      * @return px256x256
      **/
-    @ApiModelProperty(example = "null", value = "px256x256 string")
+    @ApiModelProperty(value = "px256x256 string")
     public String getPx256x256() {
         return px256x256;
     }
@@ -82,7 +86,7 @@ public class CorporationIconsResponse implements Serializable {
      * 
      * @return px64x64
      **/
-    @ApiModelProperty(example = "null", value = "px64x64 string")
+    @ApiModelProperty(value = "px64x64 string")
     public String getPx64x64() {
         return px64x64;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class CharacterContractsBidsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
+    @SerializedName("amount")
     private Float amount = null;
 
-    @JsonProperty("bid_id")
+    @SerializedName("bid_id")
     private Integer bidId = null;
 
-    @JsonProperty("bidder_id")
+    @SerializedName("bidder_id")
     private Integer bidderId = null;
 
-    @JsonProperty("date_bid")
+    @SerializedName("date_bid")
     private OffsetDateTime dateBid = null;
 
     public CharacterContractsBidsResponse amount(Float amount) {
@@ -48,7 +52,7 @@ public class CharacterContractsBidsResponse implements Serializable {
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The amount bid, in ISK")
+    @ApiModelProperty(required = true, value = "The amount bid, in ISK")
     public Float getAmount() {
         return amount;
     }
@@ -67,7 +71,7 @@ public class CharacterContractsBidsResponse implements Serializable {
      * 
      * @return bidId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for the bid")
+    @ApiModelProperty(required = true, value = "Unique ID for the bid")
     public Integer getBidId() {
         return bidId;
     }
@@ -86,7 +90,7 @@ public class CharacterContractsBidsResponse implements Serializable {
      * 
      * @return bidderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Character ID of the bidder")
+    @ApiModelProperty(required = true, value = "Character ID of the bidder")
     public Integer getBidderId() {
         return bidderId;
     }
@@ -105,7 +109,7 @@ public class CharacterContractsBidsResponse implements Serializable {
      * 
      * @return dateBid
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Datetime when the bid was placed")
+    @ApiModelProperty(required = true, value = "Datetime when the bid was placed")
     public OffsetDateTime getDateBid() {
         return dateBid;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Position;
@@ -29,34 +33,34 @@ import java.io.Serializable;
 public class SystemResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellation_id")
+    @SerializedName("constellation_id")
     private Integer constellationId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("planets")
-    private List<SystemPlanet> planets = new ArrayList<SystemPlanet>();
+    @SerializedName("planets")
+    private List<SystemPlanet> planets = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("security_class")
+    @SerializedName("security_class")
     private String securityClass = null;
 
-    @JsonProperty("security_status")
+    @SerializedName("security_status")
     private Float securityStatus = null;
 
-    @JsonProperty("star_id")
+    @SerializedName("star_id")
     private Integer starId = null;
 
-    @JsonProperty("stargates")
-    private List<Integer> stargates = new ArrayList<Integer>();
+    @SerializedName("stargates")
+    private List<Integer> stargates = null;
 
-    @JsonProperty("stations")
-    private List<Integer> stations = new ArrayList<Integer>();
+    @SerializedName("stations")
+    private List<Integer> stations = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public SystemResponse constellationId(Integer constellationId) {
@@ -69,7 +73,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return constellationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The constellation this solar system is in")
+    @ApiModelProperty(required = true, value = "The constellation this solar system is in")
     public Integer getConstellationId() {
         return constellationId;
     }
@@ -88,7 +92,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -103,6 +107,9 @@ public class SystemResponse implements Serializable {
     }
 
     public SystemResponse addPlanetsItem(SystemPlanet planetsItem) {
+        if (this.planets == null) {
+            this.planets = new ArrayList<>();
+        }
         this.planets.add(planetsItem);
         return this;
     }
@@ -112,7 +119,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return planets
      **/
-    @ApiModelProperty(example = "null", value = "planets array")
+    @ApiModelProperty(value = "planets array")
     public List<SystemPlanet> getPlanets() {
         return planets;
     }
@@ -131,7 +138,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -150,7 +157,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return securityClass
      **/
-    @ApiModelProperty(example = "null", value = "security_class string")
+    @ApiModelProperty(value = "security_class string")
     public String getSecurityClass() {
         return securityClass;
     }
@@ -169,7 +176,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return securityStatus
      **/
-    @ApiModelProperty(example = "null", required = true, value = "security_status number")
+    @ApiModelProperty(required = true, value = "security_status number")
     public Float getSecurityStatus() {
         return securityStatus;
     }
@@ -188,7 +195,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return starId
      **/
-    @ApiModelProperty(example = "null", value = "star_id integer")
+    @ApiModelProperty(value = "star_id integer")
     public Integer getStarId() {
         return starId;
     }
@@ -203,6 +210,9 @@ public class SystemResponse implements Serializable {
     }
 
     public SystemResponse addStargatesItem(Integer stargatesItem) {
+        if (this.stargates == null) {
+            this.stargates = new ArrayList<>();
+        }
         this.stargates.add(stargatesItem);
         return this;
     }
@@ -212,7 +222,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return stargates
      **/
-    @ApiModelProperty(example = "null", value = "stargates array")
+    @ApiModelProperty(value = "stargates array")
     public List<Integer> getStargates() {
         return stargates;
     }
@@ -227,6 +237,9 @@ public class SystemResponse implements Serializable {
     }
 
     public SystemResponse addStationsItem(Integer stationsItem) {
+        if (this.stations == null) {
+            this.stations = new ArrayList<>();
+        }
         this.stations.add(stationsItem);
         return this;
     }
@@ -236,7 +249,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return stations
      **/
-    @ApiModelProperty(example = "null", value = "stations array")
+    @ApiModelProperty(value = "stations array")
     public List<Integer> getStations() {
         return stations;
     }
@@ -255,7 +268,7 @@ public class SystemResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CharacterBookmarkFoldersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("folder_id")
+    @SerializedName("folder_id")
     private Integer folderId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     public CharacterBookmarkFoldersResponse folderId(Integer folderId) {
@@ -41,7 +45,7 @@ public class CharacterBookmarkFoldersResponse implements Serializable {
      * 
      * @return folderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "folder_id integer")
+    @ApiModelProperty(required = true, value = "folder_id integer")
     public Integer getFolderId() {
         return folderId;
     }
@@ -60,7 +64,7 @@ public class CharacterBookmarkFoldersResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }

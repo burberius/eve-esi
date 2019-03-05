@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class FactionWarfareWarsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("against_id")
+    @SerializedName("against_id")
     private Integer againstId = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
     public FactionWarfareWarsResponse againstId(Integer againstId) {
@@ -41,7 +45,7 @@ public class FactionWarfareWarsResponse implements Serializable {
      * 
      * @return againstId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The faction ID of the enemy faction.")
+    @ApiModelProperty(required = true, value = "The faction ID of the enemy faction.")
     public Integer getAgainstId() {
         return againstId;
     }
@@ -60,7 +64,7 @@ public class FactionWarfareWarsResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "faction_id integer")
+    @ApiModelProperty(required = true, value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }

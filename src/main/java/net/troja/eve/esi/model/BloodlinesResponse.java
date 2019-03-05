@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,37 +29,37 @@ import java.io.Serializable;
 public class BloodlinesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("bloodline_id")
+    @SerializedName("bloodline_id")
     private Integer bloodlineId = null;
 
-    @JsonProperty("charisma")
+    @SerializedName("charisma")
     private Integer charisma = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("intelligence")
+    @SerializedName("intelligence")
     private Integer intelligence = null;
 
-    @JsonProperty("memory")
+    @SerializedName("memory")
     private Integer memory = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("perception")
+    @SerializedName("perception")
     private Integer perception = null;
 
-    @JsonProperty("race_id")
+    @SerializedName("race_id")
     private Integer raceId = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
-    @JsonProperty("willpower")
+    @SerializedName("willpower")
     private Integer willpower = null;
 
     public BloodlinesResponse bloodlineId(Integer bloodlineId) {
@@ -68,7 +72,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return bloodlineId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "bloodline_id integer")
+    @ApiModelProperty(required = true, value = "bloodline_id integer")
     public Integer getBloodlineId() {
         return bloodlineId;
     }
@@ -87,7 +91,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return charisma
      **/
-    @ApiModelProperty(example = "null", required = true, value = "charisma integer")
+    @ApiModelProperty(required = true, value = "charisma integer")
     public Integer getCharisma() {
         return charisma;
     }
@@ -106,7 +110,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    @ApiModelProperty(required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -125,7 +129,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -144,7 +148,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return intelligence
      **/
-    @ApiModelProperty(example = "null", required = true, value = "intelligence integer")
+    @ApiModelProperty(required = true, value = "intelligence integer")
     public Integer getIntelligence() {
         return intelligence;
     }
@@ -163,7 +167,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return memory
      **/
-    @ApiModelProperty(example = "null", required = true, value = "memory integer")
+    @ApiModelProperty(required = true, value = "memory integer")
     public Integer getMemory() {
         return memory;
     }
@@ -182,7 +186,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -201,7 +205,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return perception
      **/
-    @ApiModelProperty(example = "null", required = true, value = "perception integer")
+    @ApiModelProperty(required = true, value = "perception integer")
     public Integer getPerception() {
         return perception;
     }
@@ -220,7 +224,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return raceId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "race_id integer")
+    @ApiModelProperty(required = true, value = "race_id integer")
     public Integer getRaceId() {
         return raceId;
     }
@@ -239,7 +243,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    @ApiModelProperty(required = true, value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
     }
@@ -258,7 +262,7 @@ public class BloodlinesResponse implements Serializable {
      * 
      * @return willpower
      **/
-    @ApiModelProperty(example = "null", required = true, value = "willpower integer")
+    @ApiModelProperty(required = true, value = "willpower integer")
     public Integer getWillpower() {
         return willpower;
     }

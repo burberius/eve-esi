@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.DogmaDynamicAttribute;
@@ -29,19 +33,19 @@ import java.io.Serializable;
 public class DogmaDynamicItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("created_by")
+    @SerializedName("created_by")
     private Integer createdBy = null;
 
-    @JsonProperty("dogma_attributes")
-    private List<DogmaDynamicAttribute> dogmaAttributes = new ArrayList<DogmaDynamicAttribute>();
+    @SerializedName("dogma_attributes")
+    private List<DogmaDynamicAttribute> dogmaAttributes = new ArrayList<>();
 
-    @JsonProperty("dogma_effects")
-    private List<DogmaDynamicEffect> dogmaEffects = new ArrayList<DogmaDynamicEffect>();
+    @SerializedName("dogma_effects")
+    private List<DogmaDynamicEffect> dogmaEffects = new ArrayList<>();
 
-    @JsonProperty("mutator_type_id")
+    @SerializedName("mutator_type_id")
     private Integer mutatorTypeId = null;
 
-    @JsonProperty("source_type_id")
+    @SerializedName("source_type_id")
     private Integer sourceTypeId = null;
 
     public DogmaDynamicItemsResponse createdBy(Integer createdBy) {
@@ -54,7 +58,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * 
      * @return createdBy
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The ID of the character who created the item")
+    @ApiModelProperty(required = true, value = "The ID of the character who created the item")
     public Integer getCreatedBy() {
         return createdBy;
     }
@@ -78,7 +82,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * 
      * @return dogmaAttributes
      **/
-    @ApiModelProperty(example = "null", required = true, value = "dogma_attributes array")
+    @ApiModelProperty(required = true, value = "dogma_attributes array")
     public List<DogmaDynamicAttribute> getDogmaAttributes() {
         return dogmaAttributes;
     }
@@ -102,7 +106,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * 
      * @return dogmaEffects
      **/
-    @ApiModelProperty(example = "null", required = true, value = "dogma_effects array")
+    @ApiModelProperty(required = true, value = "dogma_effects array")
     public List<DogmaDynamicEffect> getDogmaEffects() {
         return dogmaEffects;
     }
@@ -121,7 +125,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * 
      * @return mutatorTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type ID of the mutator used to generate the dynamic item.")
+    @ApiModelProperty(required = true, value = "The type ID of the mutator used to generate the dynamic item.")
     public Integer getMutatorTypeId() {
         return mutatorTypeId;
     }
@@ -141,7 +145,7 @@ public class DogmaDynamicItemsResponse implements Serializable {
      * 
      * @return sourceTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type ID of the source item the mutator was applied to create the dynamic item.")
+    @ApiModelProperty(required = true, value = "The type ID of the source item the mutator was applied to create the dynamic item.")
     public Integer getSourceTypeId() {
         return sourceTypeId;
     }

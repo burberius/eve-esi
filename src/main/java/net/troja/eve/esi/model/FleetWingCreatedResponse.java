@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,7 +29,7 @@ import java.io.Serializable;
 public class FleetWingCreatedResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("wing_id")
+    @SerializedName("wing_id")
     private Long wingId = null;
 
     public FleetWingCreatedResponse wingId(Long wingId) {
@@ -38,7 +42,7 @@ public class FleetWingCreatedResponse implements Serializable {
      * 
      * @return wingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The wing_id of the newly created wing")
+    @ApiModelProperty(required = true, value = "The wing_id of the newly created wing")
     public Long getWingId() {
         return wingId;
     }

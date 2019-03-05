@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class CharacterShipResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("ship_item_id")
+    @SerializedName("ship_item_id")
     private Long shipItemId = null;
 
-    @JsonProperty("ship_name")
+    @SerializedName("ship_name")
     private String shipName = null;
 
-    @JsonProperty("ship_type_id")
+    @SerializedName("ship_type_id")
     private Integer shipTypeId = null;
 
     public CharacterShipResponse shipItemId(Long shipItemId) {
@@ -40,13 +44,13 @@ public class CharacterShipResponse implements Serializable {
     }
 
     /**
-     * Item id's are unique to a ship and persist until it is repackaged. This
-     * value can be used to track repeated uses of a ship, or detect when a
+     * Item id&#39;s are unique to a ship and persist until it is repackaged.
+     * This value can be used to track repeated uses of a ship, or detect when a
      * pilot changes into a different instance of the same ship type.
      * 
      * @return shipItemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.")
+    @ApiModelProperty(required = true, value = "Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.")
     public Long getShipItemId() {
         return shipItemId;
     }
@@ -65,7 +69,7 @@ public class CharacterShipResponse implements Serializable {
      * 
      * @return shipName
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_name string")
+    @ApiModelProperty(required = true, value = "ship_name string")
     public String getShipName() {
         return shipName;
     }
@@ -84,7 +88,7 @@ public class CharacterShipResponse implements Serializable {
      * 
      * @return shipTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ship_type_id integer")
+    @ApiModelProperty(required = true, value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
     }

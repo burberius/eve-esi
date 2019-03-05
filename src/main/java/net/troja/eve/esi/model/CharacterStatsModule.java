@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,211 +29,211 @@ import java.io.Serializable;
 public class CharacterStatsModule implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("activations_armor_hardener")
+    @SerializedName("activations_armor_hardener")
     private Long activationsArmorHardener = null;
 
-    @JsonProperty("activations_armor_repair_unit")
+    @SerializedName("activations_armor_repair_unit")
     private Long activationsArmorRepairUnit = null;
 
-    @JsonProperty("activations_armor_resistance_shift_hardener")
+    @SerializedName("activations_armor_resistance_shift_hardener")
     private Long activationsArmorResistanceShiftHardener = null;
 
-    @JsonProperty("activations_automated_targeting_system")
+    @SerializedName("activations_automated_targeting_system")
     private Long activationsAutomatedTargetingSystem = null;
 
-    @JsonProperty("activations_bastion")
+    @SerializedName("activations_bastion")
     private Long activationsBastion = null;
 
-    @JsonProperty("activations_bomb_launcher")
+    @SerializedName("activations_bomb_launcher")
     private Long activationsBombLauncher = null;
 
-    @JsonProperty("activations_capacitor_booster")
+    @SerializedName("activations_capacitor_booster")
     private Long activationsCapacitorBooster = null;
 
-    @JsonProperty("activations_cargo_scanner")
+    @SerializedName("activations_cargo_scanner")
     private Long activationsCargoScanner = null;
 
-    @JsonProperty("activations_cloaking_device")
+    @SerializedName("activations_cloaking_device")
     private Long activationsCloakingDevice = null;
 
-    @JsonProperty("activations_clone_vat_bay")
+    @SerializedName("activations_clone_vat_bay")
     private Long activationsCloneVatBay = null;
 
-    @JsonProperty("activations_cynosural_field")
+    @SerializedName("activations_cynosural_field")
     private Long activationsCynosuralField = null;
 
-    @JsonProperty("activations_damage_control")
+    @SerializedName("activations_damage_control")
     private Long activationsDamageControl = null;
 
-    @JsonProperty("activations_data_miners")
+    @SerializedName("activations_data_miners")
     private Long activationsDataMiners = null;
 
-    @JsonProperty("activations_drone_control_unit")
+    @SerializedName("activations_drone_control_unit")
     private Long activationsDroneControlUnit = null;
 
-    @JsonProperty("activations_drone_tracking_modules")
+    @SerializedName("activations_drone_tracking_modules")
     private Long activationsDroneTrackingModules = null;
 
-    @JsonProperty("activations_eccm")
+    @SerializedName("activations_eccm")
     private Long activationsEccm = null;
 
-    @JsonProperty("activations_ecm")
+    @SerializedName("activations_ecm")
     private Long activationsEcm = null;
 
-    @JsonProperty("activations_ecm_burst")
+    @SerializedName("activations_ecm_burst")
     private Long activationsEcmBurst = null;
 
-    @JsonProperty("activations_energy_destabilizer")
+    @SerializedName("activations_energy_destabilizer")
     private Long activationsEnergyDestabilizer = null;
 
-    @JsonProperty("activations_energy_vampire")
+    @SerializedName("activations_energy_vampire")
     private Long activationsEnergyVampire = null;
 
-    @JsonProperty("activations_energy_weapon")
+    @SerializedName("activations_energy_weapon")
     private Long activationsEnergyWeapon = null;
 
-    @JsonProperty("activations_festival_launcher")
+    @SerializedName("activations_festival_launcher")
     private Long activationsFestivalLauncher = null;
 
-    @JsonProperty("activations_frequency_mining_laser")
+    @SerializedName("activations_frequency_mining_laser")
     private Long activationsFrequencyMiningLaser = null;
 
-    @JsonProperty("activations_fueled_armor_repairer")
+    @SerializedName("activations_fueled_armor_repairer")
     private Long activationsFueledArmorRepairer = null;
 
-    @JsonProperty("activations_fueled_shield_booster")
+    @SerializedName("activations_fueled_shield_booster")
     private Long activationsFueledShieldBooster = null;
 
-    @JsonProperty("activations_gang_coordinator")
+    @SerializedName("activations_gang_coordinator")
     private Long activationsGangCoordinator = null;
 
-    @JsonProperty("activations_gas_cloud_harvester")
+    @SerializedName("activations_gas_cloud_harvester")
     private Long activationsGasCloudHarvester = null;
 
-    @JsonProperty("activations_hull_repair_unit")
+    @SerializedName("activations_hull_repair_unit")
     private Long activationsHullRepairUnit = null;
 
-    @JsonProperty("activations_hybrid_weapon")
+    @SerializedName("activations_hybrid_weapon")
     private Long activationsHybridWeapon = null;
 
-    @JsonProperty("activations_industrial_core")
+    @SerializedName("activations_industrial_core")
     private Long activationsIndustrialCore = null;
 
-    @JsonProperty("activations_interdiction_sphere_launcher")
+    @SerializedName("activations_interdiction_sphere_launcher")
     private Long activationsInterdictionSphereLauncher = null;
 
-    @JsonProperty("activations_micro_jump_drive")
+    @SerializedName("activations_micro_jump_drive")
     private Long activationsMicroJumpDrive = null;
 
-    @JsonProperty("activations_mining_laser")
+    @SerializedName("activations_mining_laser")
     private Long activationsMiningLaser = null;
 
-    @JsonProperty("activations_missile_launcher")
+    @SerializedName("activations_missile_launcher")
     private Long activationsMissileLauncher = null;
 
-    @JsonProperty("activations_passive_targeting_system")
+    @SerializedName("activations_passive_targeting_system")
     private Long activationsPassiveTargetingSystem = null;
 
-    @JsonProperty("activations_probe_launcher")
+    @SerializedName("activations_probe_launcher")
     private Long activationsProbeLauncher = null;
 
-    @JsonProperty("activations_projected_eccm")
+    @SerializedName("activations_projected_eccm")
     private Long activationsProjectedEccm = null;
 
-    @JsonProperty("activations_projectile_weapon")
+    @SerializedName("activations_projectile_weapon")
     private Long activationsProjectileWeapon = null;
 
-    @JsonProperty("activations_propulsion_module")
+    @SerializedName("activations_propulsion_module")
     private Long activationsPropulsionModule = null;
 
-    @JsonProperty("activations_remote_armor_repairer")
+    @SerializedName("activations_remote_armor_repairer")
     private Long activationsRemoteArmorRepairer = null;
 
-    @JsonProperty("activations_remote_capacitor_transmitter")
+    @SerializedName("activations_remote_capacitor_transmitter")
     private Long activationsRemoteCapacitorTransmitter = null;
 
-    @JsonProperty("activations_remote_ecm_burst")
+    @SerializedName("activations_remote_ecm_burst")
     private Long activationsRemoteEcmBurst = null;
 
-    @JsonProperty("activations_remote_hull_repairer")
+    @SerializedName("activations_remote_hull_repairer")
     private Long activationsRemoteHullRepairer = null;
 
-    @JsonProperty("activations_remote_sensor_booster")
+    @SerializedName("activations_remote_sensor_booster")
     private Long activationsRemoteSensorBooster = null;
 
-    @JsonProperty("activations_remote_sensor_damper")
+    @SerializedName("activations_remote_sensor_damper")
     private Long activationsRemoteSensorDamper = null;
 
-    @JsonProperty("activations_remote_shield_booster")
+    @SerializedName("activations_remote_shield_booster")
     private Long activationsRemoteShieldBooster = null;
 
-    @JsonProperty("activations_remote_tracking_computer")
+    @SerializedName("activations_remote_tracking_computer")
     private Long activationsRemoteTrackingComputer = null;
 
-    @JsonProperty("activations_salvager")
+    @SerializedName("activations_salvager")
     private Long activationsSalvager = null;
 
-    @JsonProperty("activations_sensor_booster")
+    @SerializedName("activations_sensor_booster")
     private Long activationsSensorBooster = null;
 
-    @JsonProperty("activations_shield_booster")
+    @SerializedName("activations_shield_booster")
     private Long activationsShieldBooster = null;
 
-    @JsonProperty("activations_shield_hardener")
+    @SerializedName("activations_shield_hardener")
     private Long activationsShieldHardener = null;
 
-    @JsonProperty("activations_ship_scanner")
+    @SerializedName("activations_ship_scanner")
     private Long activationsShipScanner = null;
 
-    @JsonProperty("activations_siege")
+    @SerializedName("activations_siege")
     private Long activationsSiege = null;
 
-    @JsonProperty("activations_smart_bomb")
+    @SerializedName("activations_smart_bomb")
     private Long activationsSmartBomb = null;
 
-    @JsonProperty("activations_stasis_web")
+    @SerializedName("activations_stasis_web")
     private Long activationsStasisWeb = null;
 
-    @JsonProperty("activations_strip_miner")
+    @SerializedName("activations_strip_miner")
     private Long activationsStripMiner = null;
 
-    @JsonProperty("activations_super_weapon")
+    @SerializedName("activations_super_weapon")
     private Long activationsSuperWeapon = null;
 
-    @JsonProperty("activations_survey_scanner")
+    @SerializedName("activations_survey_scanner")
     private Long activationsSurveyScanner = null;
 
-    @JsonProperty("activations_target_breaker")
+    @SerializedName("activations_target_breaker")
     private Long activationsTargetBreaker = null;
 
-    @JsonProperty("activations_target_painter")
+    @SerializedName("activations_target_painter")
     private Long activationsTargetPainter = null;
 
-    @JsonProperty("activations_tracking_computer")
+    @SerializedName("activations_tracking_computer")
     private Long activationsTrackingComputer = null;
 
-    @JsonProperty("activations_tracking_disruptor")
+    @SerializedName("activations_tracking_disruptor")
     private Long activationsTrackingDisruptor = null;
 
-    @JsonProperty("activations_tractor_beam")
+    @SerializedName("activations_tractor_beam")
     private Long activationsTractorBeam = null;
 
-    @JsonProperty("activations_triage")
+    @SerializedName("activations_triage")
     private Long activationsTriage = null;
 
-    @JsonProperty("activations_warp_disrupt_field_generator")
+    @SerializedName("activations_warp_disrupt_field_generator")
     private Long activationsWarpDisruptFieldGenerator = null;
 
-    @JsonProperty("activations_warp_scrambler")
+    @SerializedName("activations_warp_scrambler")
     private Long activationsWarpScrambler = null;
 
-    @JsonProperty("link_weapons")
+    @SerializedName("link_weapons")
     private Long linkWeapons = null;
 
-    @JsonProperty("overload")
+    @SerializedName("overload")
     private Long overload = null;
 
-    @JsonProperty("repairs")
+    @SerializedName("repairs")
     private Long repairs = null;
 
     public CharacterStatsModule activationsArmorHardener(Long activationsArmorHardener) {
@@ -242,7 +246,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsArmorHardener
      **/
-    @ApiModelProperty(example = "null", value = "activations_armor_hardener integer")
+    @ApiModelProperty(value = "activations_armor_hardener integer")
     public Long getActivationsArmorHardener() {
         return activationsArmorHardener;
     }
@@ -261,7 +265,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsArmorRepairUnit
      **/
-    @ApiModelProperty(example = "null", value = "activations_armor_repair_unit integer")
+    @ApiModelProperty(value = "activations_armor_repair_unit integer")
     public Long getActivationsArmorRepairUnit() {
         return activationsArmorRepairUnit;
     }
@@ -280,7 +284,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsArmorResistanceShiftHardener
      **/
-    @ApiModelProperty(example = "null", value = "activations_armor_resistance_shift_hardener integer")
+    @ApiModelProperty(value = "activations_armor_resistance_shift_hardener integer")
     public Long getActivationsArmorResistanceShiftHardener() {
         return activationsArmorResistanceShiftHardener;
     }
@@ -299,7 +303,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsAutomatedTargetingSystem
      **/
-    @ApiModelProperty(example = "null", value = "activations_automated_targeting_system integer")
+    @ApiModelProperty(value = "activations_automated_targeting_system integer")
     public Long getActivationsAutomatedTargetingSystem() {
         return activationsAutomatedTargetingSystem;
     }
@@ -318,7 +322,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsBastion
      **/
-    @ApiModelProperty(example = "null", value = "activations_bastion integer")
+    @ApiModelProperty(value = "activations_bastion integer")
     public Long getActivationsBastion() {
         return activationsBastion;
     }
@@ -337,7 +341,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsBombLauncher
      **/
-    @ApiModelProperty(example = "null", value = "activations_bomb_launcher integer")
+    @ApiModelProperty(value = "activations_bomb_launcher integer")
     public Long getActivationsBombLauncher() {
         return activationsBombLauncher;
     }
@@ -356,7 +360,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsCapacitorBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_capacitor_booster integer")
+    @ApiModelProperty(value = "activations_capacitor_booster integer")
     public Long getActivationsCapacitorBooster() {
         return activationsCapacitorBooster;
     }
@@ -375,7 +379,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsCargoScanner
      **/
-    @ApiModelProperty(example = "null", value = "activations_cargo_scanner integer")
+    @ApiModelProperty(value = "activations_cargo_scanner integer")
     public Long getActivationsCargoScanner() {
         return activationsCargoScanner;
     }
@@ -394,7 +398,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsCloakingDevice
      **/
-    @ApiModelProperty(example = "null", value = "activations_cloaking_device integer")
+    @ApiModelProperty(value = "activations_cloaking_device integer")
     public Long getActivationsCloakingDevice() {
         return activationsCloakingDevice;
     }
@@ -413,7 +417,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsCloneVatBay
      **/
-    @ApiModelProperty(example = "null", value = "activations_clone_vat_bay integer")
+    @ApiModelProperty(value = "activations_clone_vat_bay integer")
     public Long getActivationsCloneVatBay() {
         return activationsCloneVatBay;
     }
@@ -432,7 +436,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsCynosuralField
      **/
-    @ApiModelProperty(example = "null", value = "activations_cynosural_field integer")
+    @ApiModelProperty(value = "activations_cynosural_field integer")
     public Long getActivationsCynosuralField() {
         return activationsCynosuralField;
     }
@@ -451,7 +455,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsDamageControl
      **/
-    @ApiModelProperty(example = "null", value = "activations_damage_control integer")
+    @ApiModelProperty(value = "activations_damage_control integer")
     public Long getActivationsDamageControl() {
         return activationsDamageControl;
     }
@@ -470,7 +474,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsDataMiners
      **/
-    @ApiModelProperty(example = "null", value = "activations_data_miners integer")
+    @ApiModelProperty(value = "activations_data_miners integer")
     public Long getActivationsDataMiners() {
         return activationsDataMiners;
     }
@@ -489,7 +493,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsDroneControlUnit
      **/
-    @ApiModelProperty(example = "null", value = "activations_drone_control_unit integer")
+    @ApiModelProperty(value = "activations_drone_control_unit integer")
     public Long getActivationsDroneControlUnit() {
         return activationsDroneControlUnit;
     }
@@ -508,7 +512,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsDroneTrackingModules
      **/
-    @ApiModelProperty(example = "null", value = "activations_drone_tracking_modules integer")
+    @ApiModelProperty(value = "activations_drone_tracking_modules integer")
     public Long getActivationsDroneTrackingModules() {
         return activationsDroneTrackingModules;
     }
@@ -527,7 +531,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEccm
      **/
-    @ApiModelProperty(example = "null", value = "activations_eccm integer")
+    @ApiModelProperty(value = "activations_eccm integer")
     public Long getActivationsEccm() {
         return activationsEccm;
     }
@@ -546,7 +550,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEcm
      **/
-    @ApiModelProperty(example = "null", value = "activations_ecm integer")
+    @ApiModelProperty(value = "activations_ecm integer")
     public Long getActivationsEcm() {
         return activationsEcm;
     }
@@ -565,7 +569,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEcmBurst
      **/
-    @ApiModelProperty(example = "null", value = "activations_ecm_burst integer")
+    @ApiModelProperty(value = "activations_ecm_burst integer")
     public Long getActivationsEcmBurst() {
         return activationsEcmBurst;
     }
@@ -584,7 +588,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEnergyDestabilizer
      **/
-    @ApiModelProperty(example = "null", value = "activations_energy_destabilizer integer")
+    @ApiModelProperty(value = "activations_energy_destabilizer integer")
     public Long getActivationsEnergyDestabilizer() {
         return activationsEnergyDestabilizer;
     }
@@ -603,7 +607,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEnergyVampire
      **/
-    @ApiModelProperty(example = "null", value = "activations_energy_vampire integer")
+    @ApiModelProperty(value = "activations_energy_vampire integer")
     public Long getActivationsEnergyVampire() {
         return activationsEnergyVampire;
     }
@@ -622,7 +626,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsEnergyWeapon
      **/
-    @ApiModelProperty(example = "null", value = "activations_energy_weapon integer")
+    @ApiModelProperty(value = "activations_energy_weapon integer")
     public Long getActivationsEnergyWeapon() {
         return activationsEnergyWeapon;
     }
@@ -641,7 +645,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsFestivalLauncher
      **/
-    @ApiModelProperty(example = "null", value = "activations_festival_launcher integer")
+    @ApiModelProperty(value = "activations_festival_launcher integer")
     public Long getActivationsFestivalLauncher() {
         return activationsFestivalLauncher;
     }
@@ -660,7 +664,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsFrequencyMiningLaser
      **/
-    @ApiModelProperty(example = "null", value = "activations_frequency_mining_laser integer")
+    @ApiModelProperty(value = "activations_frequency_mining_laser integer")
     public Long getActivationsFrequencyMiningLaser() {
         return activationsFrequencyMiningLaser;
     }
@@ -679,7 +683,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsFueledArmorRepairer
      **/
-    @ApiModelProperty(example = "null", value = "activations_fueled_armor_repairer integer")
+    @ApiModelProperty(value = "activations_fueled_armor_repairer integer")
     public Long getActivationsFueledArmorRepairer() {
         return activationsFueledArmorRepairer;
     }
@@ -698,7 +702,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsFueledShieldBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_fueled_shield_booster integer")
+    @ApiModelProperty(value = "activations_fueled_shield_booster integer")
     public Long getActivationsFueledShieldBooster() {
         return activationsFueledShieldBooster;
     }
@@ -717,7 +721,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsGangCoordinator
      **/
-    @ApiModelProperty(example = "null", value = "activations_gang_coordinator integer")
+    @ApiModelProperty(value = "activations_gang_coordinator integer")
     public Long getActivationsGangCoordinator() {
         return activationsGangCoordinator;
     }
@@ -736,7 +740,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsGasCloudHarvester
      **/
-    @ApiModelProperty(example = "null", value = "activations_gas_cloud_harvester integer")
+    @ApiModelProperty(value = "activations_gas_cloud_harvester integer")
     public Long getActivationsGasCloudHarvester() {
         return activationsGasCloudHarvester;
     }
@@ -755,7 +759,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsHullRepairUnit
      **/
-    @ApiModelProperty(example = "null", value = "activations_hull_repair_unit integer")
+    @ApiModelProperty(value = "activations_hull_repair_unit integer")
     public Long getActivationsHullRepairUnit() {
         return activationsHullRepairUnit;
     }
@@ -774,7 +778,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsHybridWeapon
      **/
-    @ApiModelProperty(example = "null", value = "activations_hybrid_weapon integer")
+    @ApiModelProperty(value = "activations_hybrid_weapon integer")
     public Long getActivationsHybridWeapon() {
         return activationsHybridWeapon;
     }
@@ -793,7 +797,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsIndustrialCore
      **/
-    @ApiModelProperty(example = "null", value = "activations_industrial_core integer")
+    @ApiModelProperty(value = "activations_industrial_core integer")
     public Long getActivationsIndustrialCore() {
         return activationsIndustrialCore;
     }
@@ -812,7 +816,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsInterdictionSphereLauncher
      **/
-    @ApiModelProperty(example = "null", value = "activations_interdiction_sphere_launcher integer")
+    @ApiModelProperty(value = "activations_interdiction_sphere_launcher integer")
     public Long getActivationsInterdictionSphereLauncher() {
         return activationsInterdictionSphereLauncher;
     }
@@ -831,7 +835,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsMicroJumpDrive
      **/
-    @ApiModelProperty(example = "null", value = "activations_micro_jump_drive integer")
+    @ApiModelProperty(value = "activations_micro_jump_drive integer")
     public Long getActivationsMicroJumpDrive() {
         return activationsMicroJumpDrive;
     }
@@ -850,7 +854,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsMiningLaser
      **/
-    @ApiModelProperty(example = "null", value = "activations_mining_laser integer")
+    @ApiModelProperty(value = "activations_mining_laser integer")
     public Long getActivationsMiningLaser() {
         return activationsMiningLaser;
     }
@@ -869,7 +873,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsMissileLauncher
      **/
-    @ApiModelProperty(example = "null", value = "activations_missile_launcher integer")
+    @ApiModelProperty(value = "activations_missile_launcher integer")
     public Long getActivationsMissileLauncher() {
         return activationsMissileLauncher;
     }
@@ -888,7 +892,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsPassiveTargetingSystem
      **/
-    @ApiModelProperty(example = "null", value = "activations_passive_targeting_system integer")
+    @ApiModelProperty(value = "activations_passive_targeting_system integer")
     public Long getActivationsPassiveTargetingSystem() {
         return activationsPassiveTargetingSystem;
     }
@@ -907,7 +911,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsProbeLauncher
      **/
-    @ApiModelProperty(example = "null", value = "activations_probe_launcher integer")
+    @ApiModelProperty(value = "activations_probe_launcher integer")
     public Long getActivationsProbeLauncher() {
         return activationsProbeLauncher;
     }
@@ -926,7 +930,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsProjectedEccm
      **/
-    @ApiModelProperty(example = "null", value = "activations_projected_eccm integer")
+    @ApiModelProperty(value = "activations_projected_eccm integer")
     public Long getActivationsProjectedEccm() {
         return activationsProjectedEccm;
     }
@@ -945,7 +949,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsProjectileWeapon
      **/
-    @ApiModelProperty(example = "null", value = "activations_projectile_weapon integer")
+    @ApiModelProperty(value = "activations_projectile_weapon integer")
     public Long getActivationsProjectileWeapon() {
         return activationsProjectileWeapon;
     }
@@ -964,7 +968,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsPropulsionModule
      **/
-    @ApiModelProperty(example = "null", value = "activations_propulsion_module integer")
+    @ApiModelProperty(value = "activations_propulsion_module integer")
     public Long getActivationsPropulsionModule() {
         return activationsPropulsionModule;
     }
@@ -983,7 +987,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteArmorRepairer
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_armor_repairer integer")
+    @ApiModelProperty(value = "activations_remote_armor_repairer integer")
     public Long getActivationsRemoteArmorRepairer() {
         return activationsRemoteArmorRepairer;
     }
@@ -1002,7 +1006,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteCapacitorTransmitter
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_capacitor_transmitter integer")
+    @ApiModelProperty(value = "activations_remote_capacitor_transmitter integer")
     public Long getActivationsRemoteCapacitorTransmitter() {
         return activationsRemoteCapacitorTransmitter;
     }
@@ -1021,7 +1025,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteEcmBurst
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_ecm_burst integer")
+    @ApiModelProperty(value = "activations_remote_ecm_burst integer")
     public Long getActivationsRemoteEcmBurst() {
         return activationsRemoteEcmBurst;
     }
@@ -1040,7 +1044,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteHullRepairer
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_hull_repairer integer")
+    @ApiModelProperty(value = "activations_remote_hull_repairer integer")
     public Long getActivationsRemoteHullRepairer() {
         return activationsRemoteHullRepairer;
     }
@@ -1059,7 +1063,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteSensorBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_sensor_booster integer")
+    @ApiModelProperty(value = "activations_remote_sensor_booster integer")
     public Long getActivationsRemoteSensorBooster() {
         return activationsRemoteSensorBooster;
     }
@@ -1078,7 +1082,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteSensorDamper
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_sensor_damper integer")
+    @ApiModelProperty(value = "activations_remote_sensor_damper integer")
     public Long getActivationsRemoteSensorDamper() {
         return activationsRemoteSensorDamper;
     }
@@ -1097,7 +1101,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteShieldBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_shield_booster integer")
+    @ApiModelProperty(value = "activations_remote_shield_booster integer")
     public Long getActivationsRemoteShieldBooster() {
         return activationsRemoteShieldBooster;
     }
@@ -1116,7 +1120,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsRemoteTrackingComputer
      **/
-    @ApiModelProperty(example = "null", value = "activations_remote_tracking_computer integer")
+    @ApiModelProperty(value = "activations_remote_tracking_computer integer")
     public Long getActivationsRemoteTrackingComputer() {
         return activationsRemoteTrackingComputer;
     }
@@ -1135,7 +1139,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSalvager
      **/
-    @ApiModelProperty(example = "null", value = "activations_salvager integer")
+    @ApiModelProperty(value = "activations_salvager integer")
     public Long getActivationsSalvager() {
         return activationsSalvager;
     }
@@ -1154,7 +1158,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSensorBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_sensor_booster integer")
+    @ApiModelProperty(value = "activations_sensor_booster integer")
     public Long getActivationsSensorBooster() {
         return activationsSensorBooster;
     }
@@ -1173,7 +1177,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsShieldBooster
      **/
-    @ApiModelProperty(example = "null", value = "activations_shield_booster integer")
+    @ApiModelProperty(value = "activations_shield_booster integer")
     public Long getActivationsShieldBooster() {
         return activationsShieldBooster;
     }
@@ -1192,7 +1196,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsShieldHardener
      **/
-    @ApiModelProperty(example = "null", value = "activations_shield_hardener integer")
+    @ApiModelProperty(value = "activations_shield_hardener integer")
     public Long getActivationsShieldHardener() {
         return activationsShieldHardener;
     }
@@ -1211,7 +1215,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsShipScanner
      **/
-    @ApiModelProperty(example = "null", value = "activations_ship_scanner integer")
+    @ApiModelProperty(value = "activations_ship_scanner integer")
     public Long getActivationsShipScanner() {
         return activationsShipScanner;
     }
@@ -1230,7 +1234,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSiege
      **/
-    @ApiModelProperty(example = "null", value = "activations_siege integer")
+    @ApiModelProperty(value = "activations_siege integer")
     public Long getActivationsSiege() {
         return activationsSiege;
     }
@@ -1249,7 +1253,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSmartBomb
      **/
-    @ApiModelProperty(example = "null", value = "activations_smart_bomb integer")
+    @ApiModelProperty(value = "activations_smart_bomb integer")
     public Long getActivationsSmartBomb() {
         return activationsSmartBomb;
     }
@@ -1268,7 +1272,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsStasisWeb
      **/
-    @ApiModelProperty(example = "null", value = "activations_stasis_web integer")
+    @ApiModelProperty(value = "activations_stasis_web integer")
     public Long getActivationsStasisWeb() {
         return activationsStasisWeb;
     }
@@ -1287,7 +1291,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsStripMiner
      **/
-    @ApiModelProperty(example = "null", value = "activations_strip_miner integer")
+    @ApiModelProperty(value = "activations_strip_miner integer")
     public Long getActivationsStripMiner() {
         return activationsStripMiner;
     }
@@ -1306,7 +1310,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSuperWeapon
      **/
-    @ApiModelProperty(example = "null", value = "activations_super_weapon integer")
+    @ApiModelProperty(value = "activations_super_weapon integer")
     public Long getActivationsSuperWeapon() {
         return activationsSuperWeapon;
     }
@@ -1325,7 +1329,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsSurveyScanner
      **/
-    @ApiModelProperty(example = "null", value = "activations_survey_scanner integer")
+    @ApiModelProperty(value = "activations_survey_scanner integer")
     public Long getActivationsSurveyScanner() {
         return activationsSurveyScanner;
     }
@@ -1344,7 +1348,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTargetBreaker
      **/
-    @ApiModelProperty(example = "null", value = "activations_target_breaker integer")
+    @ApiModelProperty(value = "activations_target_breaker integer")
     public Long getActivationsTargetBreaker() {
         return activationsTargetBreaker;
     }
@@ -1363,7 +1367,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTargetPainter
      **/
-    @ApiModelProperty(example = "null", value = "activations_target_painter integer")
+    @ApiModelProperty(value = "activations_target_painter integer")
     public Long getActivationsTargetPainter() {
         return activationsTargetPainter;
     }
@@ -1382,7 +1386,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTrackingComputer
      **/
-    @ApiModelProperty(example = "null", value = "activations_tracking_computer integer")
+    @ApiModelProperty(value = "activations_tracking_computer integer")
     public Long getActivationsTrackingComputer() {
         return activationsTrackingComputer;
     }
@@ -1401,7 +1405,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTrackingDisruptor
      **/
-    @ApiModelProperty(example = "null", value = "activations_tracking_disruptor integer")
+    @ApiModelProperty(value = "activations_tracking_disruptor integer")
     public Long getActivationsTrackingDisruptor() {
         return activationsTrackingDisruptor;
     }
@@ -1420,7 +1424,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTractorBeam
      **/
-    @ApiModelProperty(example = "null", value = "activations_tractor_beam integer")
+    @ApiModelProperty(value = "activations_tractor_beam integer")
     public Long getActivationsTractorBeam() {
         return activationsTractorBeam;
     }
@@ -1439,7 +1443,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsTriage
      **/
-    @ApiModelProperty(example = "null", value = "activations_triage integer")
+    @ApiModelProperty(value = "activations_triage integer")
     public Long getActivationsTriage() {
         return activationsTriage;
     }
@@ -1458,7 +1462,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsWarpDisruptFieldGenerator
      **/
-    @ApiModelProperty(example = "null", value = "activations_warp_disrupt_field_generator integer")
+    @ApiModelProperty(value = "activations_warp_disrupt_field_generator integer")
     public Long getActivationsWarpDisruptFieldGenerator() {
         return activationsWarpDisruptFieldGenerator;
     }
@@ -1477,7 +1481,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return activationsWarpScrambler
      **/
-    @ApiModelProperty(example = "null", value = "activations_warp_scrambler integer")
+    @ApiModelProperty(value = "activations_warp_scrambler integer")
     public Long getActivationsWarpScrambler() {
         return activationsWarpScrambler;
     }
@@ -1496,7 +1500,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return linkWeapons
      **/
-    @ApiModelProperty(example = "null", value = "link_weapons integer")
+    @ApiModelProperty(value = "link_weapons integer")
     public Long getLinkWeapons() {
         return linkWeapons;
     }
@@ -1515,7 +1519,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return overload
      **/
-    @ApiModelProperty(example = "null", value = "overload integer")
+    @ApiModelProperty(value = "overload integer")
     public Long getOverload() {
         return overload;
     }
@@ -1534,7 +1538,7 @@ public class CharacterStatsModule implements Serializable {
      * 
      * @return repairs
      **/
-    @ApiModelProperty(example = "null", value = "repairs integer")
+    @ApiModelProperty(value = "repairs integer")
     public Long getRepairs() {
         return repairs;
     }

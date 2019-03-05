@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.PlanetLink;
@@ -30,14 +34,14 @@ import java.io.Serializable;
 public class CharacterPlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("links")
-    private List<PlanetLink> links = new ArrayList<PlanetLink>();
+    @SerializedName("links")
+    private List<PlanetLink> links = new ArrayList<>();
 
-    @JsonProperty("pins")
-    private List<PlanetPin> pins = new ArrayList<PlanetPin>();
+    @SerializedName("pins")
+    private List<PlanetPin> pins = new ArrayList<>();
 
-    @JsonProperty("routes")
-    private List<PlanetRoute> routes = new ArrayList<PlanetRoute>();
+    @SerializedName("routes")
+    private List<PlanetRoute> routes = new ArrayList<>();
 
     public CharacterPlanetResponse links(List<PlanetLink> links) {
         this.links = links;
@@ -54,7 +58,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return links
      **/
-    @ApiModelProperty(example = "null", required = true, value = "links array")
+    @ApiModelProperty(required = true, value = "links array")
     public List<PlanetLink> getLinks() {
         return links;
     }
@@ -78,7 +82,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return pins
      **/
-    @ApiModelProperty(example = "null", required = true, value = "pins array")
+    @ApiModelProperty(required = true, value = "pins array")
     public List<PlanetPin> getPins() {
         return pins;
     }
@@ -102,7 +106,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return routes
      **/
-    @ApiModelProperty(example = "null", required = true, value = "routes array")
+    @ApiModelProperty(required = true, value = "routes array")
     public List<PlanetRoute> getRoutes() {
         return routes;
     }

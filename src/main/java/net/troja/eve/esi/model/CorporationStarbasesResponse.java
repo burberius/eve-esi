@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,21 +30,22 @@ import java.io.Serializable;
 public class CorporationStarbasesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("moon_id")
+    @SerializedName("moon_id")
     private Integer moonId = null;
 
-    @JsonProperty("onlined_since")
+    @SerializedName("onlined_since")
     private OffsetDateTime onlinedSince = null;
 
-    @JsonProperty("reinforced_until")
+    @SerializedName("reinforced_until")
     private OffsetDateTime reinforcedUntil = null;
 
-    @JsonProperty("starbase_id")
+    @SerializedName("starbase_id")
     private Long starbaseId = null;
 
     /**
      * state string
      */
+    @JsonAdapter(StateEnum.Adapter.class)
     public enum StateEnum {
         OFFLINE("offline"),
 
@@ -58,12 +63,15 @@ public class CorporationStarbasesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StateEnum fromValue(String text) {
             for (StateEnum b : StateEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -72,18 +80,31 @@ public class CorporationStarbasesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StateEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StateEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StateEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("state")
+    @SerializedName("state")
     private StateEnum state = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("unanchor_at")
+    @SerializedName("unanchor_at")
     private OffsetDateTime unanchorAt = null;
 
     public CorporationStarbasesResponse moonId(Integer moonId) {
@@ -97,7 +118,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return moonId
      **/
-    @ApiModelProperty(example = "null", value = "The moon this starbase (POS) is anchored on, unanchored POSes do not have this information")
+    @ApiModelProperty(value = "The moon this starbase (POS) is anchored on, unanchored POSes do not have this information")
     public Integer getMoonId() {
         return moonId;
     }
@@ -116,7 +137,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return onlinedSince
      **/
-    @ApiModelProperty(example = "null", value = "When the POS onlined, for starbases (POSes) in online state")
+    @ApiModelProperty(value = "When the POS onlined, for starbases (POSes) in online state")
     public OffsetDateTime getOnlinedSince() {
         return onlinedSince;
     }
@@ -136,7 +157,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return reinforcedUntil
      **/
-    @ApiModelProperty(example = "null", value = "When the POS will be out of reinforcement, for starbases (POSes) in reinforced state")
+    @ApiModelProperty(value = "When the POS will be out of reinforcement, for starbases (POSes) in reinforced state")
     public OffsetDateTime getReinforcedUntil() {
         return reinforcedUntil;
     }
@@ -155,7 +176,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return starbaseId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique ID for this starbase (POS)")
+    @ApiModelProperty(required = true, value = "Unique ID for this starbase (POS)")
     public Long getStarbaseId() {
         return starbaseId;
     }
@@ -174,7 +195,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(example = "null", value = "state string")
+    @ApiModelProperty(value = "state string")
     public StateEnum getState() {
         return state;
     }
@@ -194,7 +215,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this starbase (POS) is in, unanchored POSes have this information")
+    @ApiModelProperty(required = true, value = "The solar system this starbase (POS) is in, unanchored POSes have this information")
     public Integer getSystemId() {
         return systemId;
     }
@@ -213,7 +234,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Starbase (POS) type")
+    @ApiModelProperty(required = true, value = "Starbase (POS) type")
     public Integer getTypeId() {
         return typeId;
     }
@@ -233,7 +254,7 @@ public class CorporationStarbasesResponse implements Serializable {
      * 
      * @return unanchorAt
      **/
-    @ApiModelProperty(example = "null", value = "When the POS started unanchoring, for starbases (POSes) in unanchoring state")
+    @ApiModelProperty(value = "When the POS started unanchoring, for starbases (POSes) in unanchoring state")
     public OffsetDateTime getUnanchorAt() {
         return unanchorAt;
     }

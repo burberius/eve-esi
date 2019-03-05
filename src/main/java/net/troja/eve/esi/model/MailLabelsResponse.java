@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.MailLabel;
@@ -28,10 +32,10 @@ import java.io.Serializable;
 public class MailLabelsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("labels")
-    private List<MailLabel> labels = new ArrayList<MailLabel>();
+    @SerializedName("labels")
+    private List<MailLabel> labels = null;
 
-    @JsonProperty("total_unread_count")
+    @SerializedName("total_unread_count")
     private Integer totalUnreadCount = null;
 
     public MailLabelsResponse labels(List<MailLabel> labels) {
@@ -40,6 +44,9 @@ public class MailLabelsResponse implements Serializable {
     }
 
     public MailLabelsResponse addLabelsItem(MailLabel labelsItem) {
+        if (this.labels == null) {
+            this.labels = new ArrayList<>();
+        }
         this.labels.add(labelsItem);
         return this;
     }
@@ -49,7 +56,7 @@ public class MailLabelsResponse implements Serializable {
      * 
      * @return labels
      **/
-    @ApiModelProperty(example = "null", value = "labels array")
+    @ApiModelProperty(value = "labels array")
     public List<MailLabel> getLabels() {
         return labels;
     }
@@ -68,7 +75,7 @@ public class MailLabelsResponse implements Serializable {
      * 
      * @return totalUnreadCount
      **/
-    @ApiModelProperty(example = "null", value = "total_unread_count integer")
+    @ApiModelProperty(value = "total_unread_count integer")
     public Integer getTotalUnreadCount() {
         return totalUnreadCount;
     }

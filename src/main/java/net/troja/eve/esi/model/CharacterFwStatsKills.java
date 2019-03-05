@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class CharacterFwStatsKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("last_week")
+    @SerializedName("last_week")
     private Integer lastWeek = null;
 
-    @JsonProperty("total")
+    @SerializedName("total")
     private Integer total = null;
 
-    @JsonProperty("yesterday")
+    @SerializedName("yesterday")
     private Integer yesterday = null;
 
     public CharacterFwStatsKills lastWeek(Integer lastWeek) {
@@ -40,12 +44,12 @@ public class CharacterFwStatsKills implements Serializable {
     }
 
     /**
-     * Last week's total number of kills by a given character against enemy
+     * Last week&#39;s total number of kills by a given character against enemy
      * factions
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Last week's total number of kills by a given character against enemy factions")
+    @ApiModelProperty(required = true, value = "Last week's total number of kills by a given character against enemy factions")
     public Integer getLastWeek() {
         return lastWeek;
     }
@@ -65,7 +69,7 @@ public class CharacterFwStatsKills implements Serializable {
      * 
      * @return total
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Total number of kills by a given character against enemy factions since the character enlisted")
+    @ApiModelProperty(required = true, value = "Total number of kills by a given character against enemy factions since the character enlisted")
     public Integer getTotal() {
         return total;
     }
@@ -80,12 +84,12 @@ public class CharacterFwStatsKills implements Serializable {
     }
 
     /**
-     * Yesterday's total number of kills by a given character against enemy
+     * Yesterday&#39;s total number of kills by a given character against enemy
      * factions
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Yesterday's total number of kills by a given character against enemy factions")
+    @ApiModelProperty(required = true, value = "Yesterday's total number of kills by a given character against enemy factions")
     public Integer getYesterday() {
         return yesterday;
     }

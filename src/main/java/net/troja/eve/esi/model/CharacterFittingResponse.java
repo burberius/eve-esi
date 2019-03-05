@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,7 +29,7 @@ import java.io.Serializable;
 public class CharacterFittingResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("fitting_id")
+    @SerializedName("fitting_id")
     private Integer fittingId = null;
 
     public CharacterFittingResponse fittingId(Integer fittingId) {
@@ -38,7 +42,7 @@ public class CharacterFittingResponse implements Serializable {
      * 
      * @return fittingId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "fitting_id integer")
+    @ApiModelProperty(required = true, value = "fitting_id integer")
     public Integer getFittingId() {
         return fittingId;
     }

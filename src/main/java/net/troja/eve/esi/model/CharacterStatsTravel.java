@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,67 +29,67 @@ import java.io.Serializable;
 public class CharacterStatsTravel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("acceleration_gate_activations")
+    @SerializedName("acceleration_gate_activations")
     private Long accelerationGateActivations = null;
 
-    @JsonProperty("align_to")
+    @SerializedName("align_to")
     private Long alignTo = null;
 
-    @JsonProperty("distance_warped_high_sec")
+    @SerializedName("distance_warped_high_sec")
     private Long distanceWarpedHighSec = null;
 
-    @JsonProperty("distance_warped_low_sec")
+    @SerializedName("distance_warped_low_sec")
     private Long distanceWarpedLowSec = null;
 
-    @JsonProperty("distance_warped_null_sec")
+    @SerializedName("distance_warped_null_sec")
     private Long distanceWarpedNullSec = null;
 
-    @JsonProperty("distance_warped_wormhole")
+    @SerializedName("distance_warped_wormhole")
     private Long distanceWarpedWormhole = null;
 
-    @JsonProperty("docks_high_sec")
+    @SerializedName("docks_high_sec")
     private Long docksHighSec = null;
 
-    @JsonProperty("docks_low_sec")
+    @SerializedName("docks_low_sec")
     private Long docksLowSec = null;
 
-    @JsonProperty("docks_null_sec")
+    @SerializedName("docks_null_sec")
     private Long docksNullSec = null;
 
-    @JsonProperty("jumps_stargate_high_sec")
+    @SerializedName("jumps_stargate_high_sec")
     private Long jumpsStargateHighSec = null;
 
-    @JsonProperty("jumps_stargate_low_sec")
+    @SerializedName("jumps_stargate_low_sec")
     private Long jumpsStargateLowSec = null;
 
-    @JsonProperty("jumps_stargate_null_sec")
+    @SerializedName("jumps_stargate_null_sec")
     private Long jumpsStargateNullSec = null;
 
-    @JsonProperty("jumps_wormhole")
+    @SerializedName("jumps_wormhole")
     private Long jumpsWormhole = null;
 
-    @JsonProperty("warps_high_sec")
+    @SerializedName("warps_high_sec")
     private Long warpsHighSec = null;
 
-    @JsonProperty("warps_low_sec")
+    @SerializedName("warps_low_sec")
     private Long warpsLowSec = null;
 
-    @JsonProperty("warps_null_sec")
+    @SerializedName("warps_null_sec")
     private Long warpsNullSec = null;
 
-    @JsonProperty("warps_to_bookmark")
+    @SerializedName("warps_to_bookmark")
     private Long warpsToBookmark = null;
 
-    @JsonProperty("warps_to_celestial")
+    @SerializedName("warps_to_celestial")
     private Long warpsToCelestial = null;
 
-    @JsonProperty("warps_to_fleet_member")
+    @SerializedName("warps_to_fleet_member")
     private Long warpsToFleetMember = null;
 
-    @JsonProperty("warps_to_scan_result")
+    @SerializedName("warps_to_scan_result")
     private Long warpsToScanResult = null;
 
-    @JsonProperty("warps_wormhole")
+    @SerializedName("warps_wormhole")
     private Long warpsWormhole = null;
 
     public CharacterStatsTravel accelerationGateActivations(Long accelerationGateActivations) {
@@ -98,7 +102,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return accelerationGateActivations
      **/
-    @ApiModelProperty(example = "null", value = "acceleration_gate_activations integer")
+    @ApiModelProperty(value = "acceleration_gate_activations integer")
     public Long getAccelerationGateActivations() {
         return accelerationGateActivations;
     }
@@ -117,7 +121,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return alignTo
      **/
-    @ApiModelProperty(example = "null", value = "align_to integer")
+    @ApiModelProperty(value = "align_to integer")
     public Long getAlignTo() {
         return alignTo;
     }
@@ -136,7 +140,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return distanceWarpedHighSec
      **/
-    @ApiModelProperty(example = "null", value = "distance_warped_high_sec integer")
+    @ApiModelProperty(value = "distance_warped_high_sec integer")
     public Long getDistanceWarpedHighSec() {
         return distanceWarpedHighSec;
     }
@@ -155,7 +159,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return distanceWarpedLowSec
      **/
-    @ApiModelProperty(example = "null", value = "distance_warped_low_sec integer")
+    @ApiModelProperty(value = "distance_warped_low_sec integer")
     public Long getDistanceWarpedLowSec() {
         return distanceWarpedLowSec;
     }
@@ -174,7 +178,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return distanceWarpedNullSec
      **/
-    @ApiModelProperty(example = "null", value = "distance_warped_null_sec integer")
+    @ApiModelProperty(value = "distance_warped_null_sec integer")
     public Long getDistanceWarpedNullSec() {
         return distanceWarpedNullSec;
     }
@@ -193,7 +197,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return distanceWarpedWormhole
      **/
-    @ApiModelProperty(example = "null", value = "distance_warped_wormhole integer")
+    @ApiModelProperty(value = "distance_warped_wormhole integer")
     public Long getDistanceWarpedWormhole() {
         return distanceWarpedWormhole;
     }
@@ -212,7 +216,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return docksHighSec
      **/
-    @ApiModelProperty(example = "null", value = "docks_high_sec integer")
+    @ApiModelProperty(value = "docks_high_sec integer")
     public Long getDocksHighSec() {
         return docksHighSec;
     }
@@ -231,7 +235,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return docksLowSec
      **/
-    @ApiModelProperty(example = "null", value = "docks_low_sec integer")
+    @ApiModelProperty(value = "docks_low_sec integer")
     public Long getDocksLowSec() {
         return docksLowSec;
     }
@@ -250,7 +254,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return docksNullSec
      **/
-    @ApiModelProperty(example = "null", value = "docks_null_sec integer")
+    @ApiModelProperty(value = "docks_null_sec integer")
     public Long getDocksNullSec() {
         return docksNullSec;
     }
@@ -269,7 +273,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return jumpsStargateHighSec
      **/
-    @ApiModelProperty(example = "null", value = "jumps_stargate_high_sec integer")
+    @ApiModelProperty(value = "jumps_stargate_high_sec integer")
     public Long getJumpsStargateHighSec() {
         return jumpsStargateHighSec;
     }
@@ -288,7 +292,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return jumpsStargateLowSec
      **/
-    @ApiModelProperty(example = "null", value = "jumps_stargate_low_sec integer")
+    @ApiModelProperty(value = "jumps_stargate_low_sec integer")
     public Long getJumpsStargateLowSec() {
         return jumpsStargateLowSec;
     }
@@ -307,7 +311,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return jumpsStargateNullSec
      **/
-    @ApiModelProperty(example = "null", value = "jumps_stargate_null_sec integer")
+    @ApiModelProperty(value = "jumps_stargate_null_sec integer")
     public Long getJumpsStargateNullSec() {
         return jumpsStargateNullSec;
     }
@@ -326,7 +330,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return jumpsWormhole
      **/
-    @ApiModelProperty(example = "null", value = "jumps_wormhole integer")
+    @ApiModelProperty(value = "jumps_wormhole integer")
     public Long getJumpsWormhole() {
         return jumpsWormhole;
     }
@@ -345,7 +349,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsHighSec
      **/
-    @ApiModelProperty(example = "null", value = "warps_high_sec integer")
+    @ApiModelProperty(value = "warps_high_sec integer")
     public Long getWarpsHighSec() {
         return warpsHighSec;
     }
@@ -364,7 +368,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsLowSec
      **/
-    @ApiModelProperty(example = "null", value = "warps_low_sec integer")
+    @ApiModelProperty(value = "warps_low_sec integer")
     public Long getWarpsLowSec() {
         return warpsLowSec;
     }
@@ -383,7 +387,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsNullSec
      **/
-    @ApiModelProperty(example = "null", value = "warps_null_sec integer")
+    @ApiModelProperty(value = "warps_null_sec integer")
     public Long getWarpsNullSec() {
         return warpsNullSec;
     }
@@ -402,7 +406,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsToBookmark
      **/
-    @ApiModelProperty(example = "null", value = "warps_to_bookmark integer")
+    @ApiModelProperty(value = "warps_to_bookmark integer")
     public Long getWarpsToBookmark() {
         return warpsToBookmark;
     }
@@ -421,7 +425,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsToCelestial
      **/
-    @ApiModelProperty(example = "null", value = "warps_to_celestial integer")
+    @ApiModelProperty(value = "warps_to_celestial integer")
     public Long getWarpsToCelestial() {
         return warpsToCelestial;
     }
@@ -440,7 +444,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsToFleetMember
      **/
-    @ApiModelProperty(example = "null", value = "warps_to_fleet_member integer")
+    @ApiModelProperty(value = "warps_to_fleet_member integer")
     public Long getWarpsToFleetMember() {
         return warpsToFleetMember;
     }
@@ -459,7 +463,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsToScanResult
      **/
-    @ApiModelProperty(example = "null", value = "warps_to_scan_result integer")
+    @ApiModelProperty(value = "warps_to_scan_result integer")
     public Long getWarpsToScanResult() {
         return warpsToScanResult;
     }
@@ -478,7 +482,7 @@ public class CharacterStatsTravel implements Serializable {
      * 
      * @return warpsWormhole
      **/
-    @ApiModelProperty(example = "null", value = "warps_wormhole integer")
+    @ApiModelProperty(value = "warps_wormhole integer")
     public Long getWarpsWormhole() {
         return warpsWormhole;
     }

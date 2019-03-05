@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class CharacterCorporationHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("is_deleted")
+    @SerializedName("is_deleted")
     private Boolean isDeleted = null;
 
-    @JsonProperty("record_id")
+    @SerializedName("record_id")
     private Integer recordId = null;
 
-    @JsonProperty("start_date")
+    @SerializedName("start_date")
     private OffsetDateTime startDate = null;
 
     public CharacterCorporationHistoryResponse corporationId(Integer corporationId) {
@@ -48,7 +52,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    @ApiModelProperty(required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -67,8 +71,8 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return isDeleted
      **/
-    @ApiModelProperty(example = "null", value = "True if the corporation has been deleted")
-    public Boolean getIsDeleted() {
+    @ApiModelProperty(value = "True if the corporation has been deleted")
+    public Boolean isIsDeleted() {
         return isDeleted;
     }
 
@@ -87,7 +91,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return recordId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous")
+    @ApiModelProperty(required = true, value = "An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous")
     public Integer getRecordId() {
         return recordId;
     }
@@ -106,7 +110,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "start_date string")
+    @ApiModelProperty(required = true, value = "start_date string")
     public OffsetDateTime getStartDate() {
         return startDate;
     }

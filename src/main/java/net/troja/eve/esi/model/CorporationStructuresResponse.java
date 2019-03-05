@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,36 +33,37 @@ import java.io.Serializable;
 public class CorporationStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("fuel_expires")
+    @SerializedName("fuel_expires")
     private OffsetDateTime fuelExpires = null;
 
-    @JsonProperty("next_reinforce_apply")
+    @SerializedName("next_reinforce_apply")
     private OffsetDateTime nextReinforceApply = null;
 
-    @JsonProperty("next_reinforce_hour")
+    @SerializedName("next_reinforce_hour")
     private Integer nextReinforceHour = null;
 
-    @JsonProperty("next_reinforce_weekday")
+    @SerializedName("next_reinforce_weekday")
     private Integer nextReinforceWeekday = null;
 
-    @JsonProperty("profile_id")
+    @SerializedName("profile_id")
     private Integer profileId = null;
 
-    @JsonProperty("reinforce_hour")
+    @SerializedName("reinforce_hour")
     private Integer reinforceHour = null;
 
-    @JsonProperty("reinforce_weekday")
+    @SerializedName("reinforce_weekday")
     private Integer reinforceWeekday = null;
 
-    @JsonProperty("services")
-    private List<StructureService> services = new ArrayList<StructureService>();
+    @SerializedName("services")
+    private List<StructureService> services = null;
 
     /**
      * state string
      */
+    @JsonAdapter(StateEnum.Adapter.class)
     public enum StateEnum {
         ANCHOR_VULNERABLE("anchor_vulnerable"),
 
@@ -92,12 +97,15 @@ public class CorporationStructuresResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StateEnum fromValue(String text) {
             for (StateEnum b : StateEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -106,27 +114,40 @@ public class CorporationStructuresResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StateEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StateEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StateEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("state")
+    @SerializedName("state")
     private StateEnum state = null;
 
-    @JsonProperty("state_timer_end")
+    @SerializedName("state_timer_end")
     private OffsetDateTime stateTimerEnd = null;
 
-    @JsonProperty("state_timer_start")
+    @SerializedName("state_timer_start")
     private OffsetDateTime stateTimerStart = null;
 
-    @JsonProperty("structure_id")
+    @SerializedName("structure_id")
     private Long structureId = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("unanchors_at")
+    @SerializedName("unanchors_at")
     private OffsetDateTime unanchorsAt = null;
 
     public CorporationStructuresResponse corporationId(Integer corporationId) {
@@ -139,7 +160,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the corporation that owns the structure")
+    @ApiModelProperty(required = true, value = "ID of the corporation that owns the structure")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -158,7 +179,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return fuelExpires
      **/
-    @ApiModelProperty(example = "null", value = "Date on which the structure will run out of fuel")
+    @ApiModelProperty(value = "Date on which the structure will run out of fuel")
     public OffsetDateTime getFuelExpires() {
         return fuelExpires;
     }
@@ -173,12 +194,12 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     /**
-     * The date and time when the structure's newly requested reinforcement
+     * The date and time when the structure&#39;s newly requested reinforcement
      * times (e.g. next_reinforce_hour and next_reinforce_day) will take effect
      * 
      * @return nextReinforceApply
      **/
-    @ApiModelProperty(example = "null", value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect")
+    @ApiModelProperty(value = "The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect")
     public OffsetDateTime getNextReinforceApply() {
         return nextReinforceApply;
     }
@@ -198,7 +219,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return nextReinforceHour
      **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply")
+    @ApiModelProperty(value = "The requested change to reinforce_hour that will take effect at the time shown by next_reinforce_apply")
     public Integer getNextReinforceHour() {
         return nextReinforceHour;
     }
@@ -218,7 +239,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return nextReinforceWeekday
      **/
-    @ApiModelProperty(example = "null", value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply")
+    @ApiModelProperty(value = "The requested change to reinforce_weekday that will take effect at the time shown by next_reinforce_apply")
     public Integer getNextReinforceWeekday() {
         return nextReinforceWeekday;
     }
@@ -237,7 +258,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return profileId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The id of the ACL profile for this citadel")
+    @ApiModelProperty(required = true, value = "The id of the ACL profile for this citadel")
     public Integer getProfileId() {
         return profileId;
     }
@@ -260,7 +281,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return reinforceHour
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property")
+    @ApiModelProperty(required = true, value = "The hour of day that determines the four hour window when the structure will randomly exit its reinforcement periods and become vulnerable to attack against its armor and/or hull. The structure will become vulnerable at a random time that is +/- 2 hours centered on the value of this property")
     public Integer getReinforceHour() {
         return reinforceHour;
     }
@@ -281,7 +302,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return reinforceWeekday
      **/
-    @ApiModelProperty(example = "null", value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6")
+    @ApiModelProperty(value = "The day of the week when the structure exits its final reinforcement period and becomes vulnerable to attack against its hull. Monday is 0 and Sunday is 6")
     public Integer getReinforceWeekday() {
         return reinforceWeekday;
     }
@@ -296,6 +317,9 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     public CorporationStructuresResponse addServicesItem(StructureService servicesItem) {
+        if (this.services == null) {
+            this.services = new ArrayList<>();
+        }
         this.services.add(servicesItem);
         return this;
     }
@@ -305,7 +329,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return services
      **/
-    @ApiModelProperty(example = "null", value = "Contains a list of service upgrades, and their state")
+    @ApiModelProperty(value = "Contains a list of service upgrades, and their state")
     public List<StructureService> getServices() {
         return services;
     }
@@ -324,7 +348,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(example = "null", required = true, value = "state string")
+    @ApiModelProperty(required = true, value = "state string")
     public StateEnum getState() {
         return state;
     }
@@ -339,11 +363,11 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     /**
-     * Date at which the structure will move to it's next state
+     * Date at which the structure will move to it&#39;s next state
      * 
      * @return stateTimerEnd
      **/
-    @ApiModelProperty(example = "null", value = "Date at which the structure will move to it's next state")
+    @ApiModelProperty(value = "Date at which the structure will move to it's next state")
     public OffsetDateTime getStateTimerEnd() {
         return stateTimerEnd;
     }
@@ -358,11 +382,11 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     /**
-     * Date at which the structure entered it's current state
+     * Date at which the structure entered it&#39;s current state
      * 
      * @return stateTimerStart
      **/
-    @ApiModelProperty(example = "null", value = "Date at which the structure entered it's current state")
+    @ApiModelProperty(value = "Date at which the structure entered it's current state")
     public OffsetDateTime getStateTimerStart() {
         return stateTimerStart;
     }
@@ -381,7 +405,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return structureId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The Item ID of the structure")
+    @ApiModelProperty(required = true, value = "The Item ID of the structure")
     public Long getStructureId() {
         return structureId;
     }
@@ -400,7 +424,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system the structure is in")
+    @ApiModelProperty(required = true, value = "The solar system the structure is in")
     public Integer getSystemId() {
         return systemId;
     }
@@ -419,7 +443,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The type id of the structure")
+    @ApiModelProperty(required = true, value = "The type id of the structure")
     public Integer getTypeId() {
         return typeId;
     }
@@ -438,7 +462,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return unanchorsAt
      **/
-    @ApiModelProperty(example = "null", value = "Date at which the structure will unanchor")
+    @ApiModelProperty(value = "Date at which the structure will unanchor")
     public OffsetDateTime getUnanchorsAt() {
         return unanchorsAt;
     }

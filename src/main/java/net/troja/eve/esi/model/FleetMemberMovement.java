@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -26,13 +30,16 @@ public class FleetMemberMovement implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * If a character is moved to the `fleet_commander` role, neither `wing_id`
-     * or `squad_id` should be specified. If a character is moved to the
-     * `wing_commander` role, only `wing_id` should be specified. If a character
-     * is moved to the `squad_commander` role, both `wing_id` and `squad_id`
-     * should be specified. If a character is moved to the `squad_member` role,
-     * both `wing_id` and `squad_id` should be specified.
+     * If a character is moved to the &#x60;fleet_commander&#x60; role, neither
+     * &#x60;wing_id&#x60; or &#x60;squad_id&#x60; should be specified. If a
+     * character is moved to the &#x60;wing_commander&#x60; role, only
+     * &#x60;wing_id&#x60; should be specified. If a character is moved to the
+     * &#x60;squad_commander&#x60; role, both &#x60;wing_id&#x60; and
+     * &#x60;squad_id&#x60; should be specified. If a character is moved to the
+     * &#x60;squad_member&#x60; role, both &#x60;wing_id&#x60; and
+     * &#x60;squad_id&#x60; should be specified.
      */
+    @JsonAdapter(RoleEnum.Adapter.class)
     public enum RoleEnum {
         FLEET_COMMANDER("fleet_commander"),
 
@@ -48,12 +55,15 @@ public class FleetMemberMovement implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RoleEnum fromValue(String text) {
             for (RoleEnum b : RoleEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -62,15 +72,28 @@ public class FleetMemberMovement implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RoleEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RoleEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RoleEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("role")
+    @SerializedName("role")
     private RoleEnum role = null;
 
-    @JsonProperty("squad_id")
+    @SerializedName("squad_id")
     private Long squadId = null;
 
-    @JsonProperty("wing_id")
+    @SerializedName("wing_id")
     private Long wingId = null;
 
     public FleetMemberMovement role(RoleEnum role) {
@@ -79,16 +102,18 @@ public class FleetMemberMovement implements Serializable {
     }
 
     /**
-     * If a character is moved to the `fleet_commander` role, neither `wing_id`
-     * or `squad_id` should be specified. If a character is moved to the
-     * `wing_commander` role, only `wing_id` should be specified. If a character
-     * is moved to the `squad_commander` role, both `wing_id` and `squad_id`
-     * should be specified. If a character is moved to the `squad_member` role,
-     * both `wing_id` and `squad_id` should be specified.
+     * If a character is moved to the &#x60;fleet_commander&#x60; role, neither
+     * &#x60;wing_id&#x60; or &#x60;squad_id&#x60; should be specified. If a
+     * character is moved to the &#x60;wing_commander&#x60; role, only
+     * &#x60;wing_id&#x60; should be specified. If a character is moved to the
+     * &#x60;squad_commander&#x60; role, both &#x60;wing_id&#x60; and
+     * &#x60;squad_id&#x60; should be specified. If a character is moved to the
+     * &#x60;squad_member&#x60; role, both &#x60;wing_id&#x60; and
+     * &#x60;squad_id&#x60; should be specified.
      * 
      * @return role
      **/
-    @ApiModelProperty(example = "null", required = true, value = "If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.")
+    @ApiModelProperty(required = true, value = "If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.")
     public RoleEnum getRole() {
         return role;
     }
@@ -107,7 +132,7 @@ public class FleetMemberMovement implements Serializable {
      * 
      * @return squadId
      **/
-    @ApiModelProperty(example = "null", value = "squad_id integer")
+    @ApiModelProperty(value = "squad_id integer")
     public Long getSquadId() {
         return squadId;
     }
@@ -126,7 +151,7 @@ public class FleetMemberMovement implements Serializable {
      * 
      * @return wingId
      **/
-    @ApiModelProperty(example = "null", value = "wing_id integer")
+    @ApiModelProperty(value = "wing_id integer")
     public Long getWingId() {
         return wingId;
     }

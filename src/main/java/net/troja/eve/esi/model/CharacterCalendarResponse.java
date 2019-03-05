@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,15 +30,16 @@ import java.io.Serializable;
 public class CharacterCalendarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("event_date")
+    @SerializedName("event_date")
     private OffsetDateTime eventDate = null;
 
-    @JsonProperty("event_id")
+    @SerializedName("event_id")
     private Integer eventId = null;
 
     /**
      * event_response string
      */
+    @JsonAdapter(EventResponseEnum.Adapter.class)
     public enum EventResponseEnum {
         DECLINED("declined"),
 
@@ -50,12 +55,15 @@ public class CharacterCalendarResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static EventResponseEnum fromValue(String text) {
             for (EventResponseEnum b : EventResponseEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -64,15 +72,28 @@ public class CharacterCalendarResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<EventResponseEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final EventResponseEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public EventResponseEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return EventResponseEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("event_response")
+    @SerializedName("event_response")
     private EventResponseEnum eventResponse = null;
 
-    @JsonProperty("importance")
+    @SerializedName("importance")
     private Integer importance = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     public CharacterCalendarResponse eventDate(OffsetDateTime eventDate) {
@@ -85,7 +106,7 @@ public class CharacterCalendarResponse implements Serializable {
      * 
      * @return eventDate
      **/
-    @ApiModelProperty(example = "null", value = "event_date string")
+    @ApiModelProperty(value = "event_date string")
     public OffsetDateTime getEventDate() {
         return eventDate;
     }
@@ -104,7 +125,7 @@ public class CharacterCalendarResponse implements Serializable {
      * 
      * @return eventId
      **/
-    @ApiModelProperty(example = "null", value = "event_id integer")
+    @ApiModelProperty(value = "event_id integer")
     public Integer getEventId() {
         return eventId;
     }
@@ -123,7 +144,7 @@ public class CharacterCalendarResponse implements Serializable {
      * 
      * @return eventResponse
      **/
-    @ApiModelProperty(example = "null", value = "event_response string")
+    @ApiModelProperty(value = "event_response string")
     public EventResponseEnum getEventResponse() {
         return eventResponse;
     }
@@ -142,7 +163,7 @@ public class CharacterCalendarResponse implements Serializable {
      * 
      * @return importance
      **/
-    @ApiModelProperty(example = "null", value = "importance integer")
+    @ApiModelProperty(value = "importance integer")
     public Integer getImportance() {
         return importance;
     }
@@ -161,7 +182,7 @@ public class CharacterCalendarResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", value = "title string")
+    @ApiModelProperty(value = "title string")
     public String getTitle() {
         return title;
     }

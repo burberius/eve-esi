@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints;
@@ -31,14 +35,14 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints>();
+    @SerializedName("active_total")
+    private List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal = new ArrayList<>();
 
-    @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek = new ArrayList<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints>();
+    @SerializedName("last_week")
+    private List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> lastWeek = new ArrayList<>();
 
-    @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints>();
+    @SerializedName("yesterday")
+    private List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday = new ArrayList<>();
 
     public FactionWarfareLeaderboardCharacterVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
@@ -54,12 +58,12 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
     /**
      * Top 100 ranking of pilots active in faction warfare by total victory
-     * points. A pilot is considered \"active\" if they have participated in
-     * faction warfare in the past 14 days
+     * points. A pilot is considered \&quot;active\&quot; if they have
+     * participated in faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days")
+    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
@@ -85,7 +89,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by victory points in the past week")
+    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots by victory points in the past week")
     public List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
@@ -111,7 +115,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 100 ranking of pilots by victory points in the past day")
+    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots by victory points in the past day")
     public List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }

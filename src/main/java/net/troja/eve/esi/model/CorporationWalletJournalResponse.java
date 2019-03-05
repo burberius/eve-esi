@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,18 +30,19 @@ import java.io.Serializable;
 public class CorporationWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("amount")
+    @SerializedName("amount")
     private Double amount = null;
 
-    @JsonProperty("balance")
+    @SerializedName("balance")
     private Double balance = null;
 
-    @JsonProperty("context_id")
+    @SerializedName("context_id")
     private Long contextId = null;
 
     /**
      * The type of the given context_id if present
      */
+    @JsonAdapter(ContextIdTypeEnum.Adapter.class)
     public enum ContextIdTypeEnum {
         STRUCTURE_ID("structure_id"),
 
@@ -69,12 +74,15 @@ public class CorporationWalletJournalResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ContextIdTypeEnum fromValue(String text) {
             for (ContextIdTypeEnum b : ContextIdTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -83,35 +91,49 @@ public class CorporationWalletJournalResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ContextIdTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ContextIdTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ContextIdTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ContextIdTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("context_id_type")
+    @SerializedName("context_id_type")
     private ContextIdTypeEnum contextIdType = null;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private OffsetDateTime date = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("first_party_id")
+    @SerializedName("first_party_id")
     private Integer firstPartyId = null;
 
-    @JsonProperty("id")
+    @SerializedName("id")
     private Long id = null;
 
-    @JsonProperty("reason")
+    @SerializedName("reason")
     private String reason = null;
 
     /**
-     * \"The transaction type for the given. transaction. Different transaction
-     * types will populate different attributes. Note: If you have an existing
-     * XML API application that is using ref_types, you will need to know which
-     * string ESI ref_type maps to which integer. You can look at the following
-     * file to see string->int mappings:
-     * https://github.com/ccpgames/eve-glue/blob
-     * /master/eve_glue/wallet_journal_ref.py\"
+     * \&quot;The transaction type for the given. transaction. Different
+     * transaction types will populate different attributes. Note: If you have
+     * an existing XML API application that is using ref_types, you will need to
+     * know which string ESI ref_type maps to which integer. You can look at the
+     * following file to see string-&gt;int mappings:
+     * https://github.com/ccpgames
+     * /eve-glue/blob/master/eve_glue/wallet_journal_ref.py\&quot;
      */
+    @JsonAdapter(RefTypeEnum.Adapter.class)
     public enum RefTypeEnum {
         ACCELERATION_GATE_FEE("acceleration_gate_fee"),
 
@@ -355,12 +377,15 @@ public class CorporationWalletJournalResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static RefTypeEnum fromValue(String text) {
             for (RefTypeEnum b : RefTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -369,18 +394,31 @@ public class CorporationWalletJournalResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<RefTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final RefTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public RefTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return RefTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("ref_type")
+    @SerializedName("ref_type")
     private RefTypeEnum refType = null;
 
-    @JsonProperty("second_party_id")
+    @SerializedName("second_party_id")
     private Integer secondPartyId = null;
 
-    @JsonProperty("tax")
+    @SerializedName("tax")
     private Double tax = null;
 
-    @JsonProperty("tax_receiver_id")
+    @SerializedName("tax_receiver_id")
     private Integer taxReceiverId = null;
 
     public CorporationWalletJournalResponse amount(Double amount) {
@@ -395,7 +433,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return amount
      **/
-    @ApiModelProperty(example = "null", value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
+    @ApiModelProperty(value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
     public Double getAmount() {
         return amount;
     }
@@ -414,7 +452,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return balance
      **/
-    @ApiModelProperty(example = "null", value = "Wallet balance after transaction occurred")
+    @ApiModelProperty(value = "Wallet balance after transaction occurred")
     public Double getBalance() {
         return balance;
     }
@@ -435,7 +473,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return contextId
      **/
-    @ApiModelProperty(example = "null", value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
+    @ApiModelProperty(value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
     public Long getContextId() {
         return contextId;
     }
@@ -454,7 +492,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return contextIdType
      **/
-    @ApiModelProperty(example = "null", value = "The type of the given context_id if present")
+    @ApiModelProperty(value = "The type of the given context_id if present")
     public ContextIdTypeEnum getContextIdType() {
         return contextIdType;
     }
@@ -473,7 +511,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time of transaction")
+    @ApiModelProperty(required = true, value = "Date and time of transaction")
     public OffsetDateTime getDate() {
         return date;
     }
@@ -492,7 +530,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The reason for the transaction, mirrors what is seen in the client")
+    @ApiModelProperty(required = true, value = "The reason for the transaction, mirrors what is seen in the client")
     public String getDescription() {
         return description;
     }
@@ -515,7 +553,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return firstPartyId
      **/
-    @ApiModelProperty(example = "null", value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
+    @ApiModelProperty(value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
     public Integer getFirstPartyId() {
         return firstPartyId;
     }
@@ -534,7 +572,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique journal reference ID")
+    @ApiModelProperty(required = true, value = "Unique journal reference ID")
     public Long getId() {
         return id;
     }
@@ -554,7 +592,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return reason
      **/
-    @ApiModelProperty(example = "null", value = "The user stated reason for the transaction. Only applies to some ref_types")
+    @ApiModelProperty(value = "The user stated reason for the transaction. Only applies to some ref_types")
     public String getReason() {
         return reason;
     }
@@ -569,17 +607,17 @@ public class CorporationWalletJournalResponse implements Serializable {
     }
 
     /**
-     * \"The transaction type for the given. transaction. Different transaction
-     * types will populate different attributes. Note: If you have an existing
-     * XML API application that is using ref_types, you will need to know which
-     * string ESI ref_type maps to which integer. You can look at the following
-     * file to see string->int mappings:
-     * https://github.com/ccpgames/eve-glue/blob
-     * /master/eve_glue/wallet_journal_ref.py\"
+     * \&quot;The transaction type for the given. transaction. Different
+     * transaction types will populate different attributes. Note: If you have
+     * an existing XML API application that is using ref_types, you will need to
+     * know which string ESI ref_type maps to which integer. You can look at the
+     * following file to see string-&gt;int mappings:
+     * https://github.com/ccpgames
+     * /eve-glue/blob/master/eve_glue/wallet_journal_ref.py\&quot;
      * 
      * @return refType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\"")
+    @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\"")
     public RefTypeEnum getRefType() {
         return refType;
     }
@@ -602,7 +640,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return secondPartyId
      **/
-    @ApiModelProperty(example = "null", value = "The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
+    @ApiModelProperty(value = "The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
     public Integer getSecondPartyId() {
         return secondPartyId;
     }
@@ -621,7 +659,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return tax
      **/
-    @ApiModelProperty(example = "null", value = "Tax amount received. Only applies to tax related transactions")
+    @ApiModelProperty(value = "Tax amount received. Only applies to tax related transactions")
     public Double getTax() {
         return tax;
     }
@@ -641,7 +679,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return taxReceiverId
      **/
-    @ApiModelProperty(example = "null", value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
+    @ApiModelProperty(value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
     public Integer getTaxReceiverId() {
         return taxReceiverId;
     }

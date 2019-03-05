@@ -5,9 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.auth.CharacterInfo;
 import net.troja.eve.esi.auth.OAuth;
-import org.apache.commons.lang3.StringUtils;
+import net.troja.eve.esi.model.CharacterInfo;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -39,12 +38,12 @@ public class SsoApiTest extends GeneralApiTest {
         final CharacterInfo info = api.getCharacterInfo();
 
         assertThat(info, notNullValue());
-        assertThat(info.getCharacterId(), greaterThan(100000));
-        assertThat(StringUtils.isBlank(info.getCharacterName()), equalTo(false));
+        assertThat(info.getCharacterID(), greaterThan(100000));
+        assertThat(info.getCharacterName().isEmpty(), equalTo(false));
         assertThat(info.getExpiresOn(), notNullValue());
         assertThat(info.getTokenType(), equalTo("JWT"));
-        assertThat(StringUtils.isBlank(info.getCharacterOwnerHash()), equalTo(false));
-        assertThat(info.getScopes().size(), greaterThan(10));
+        assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
+        assertThat(info.getScopes().split(" ").length, greaterThan(10));
     }
 
     @Test

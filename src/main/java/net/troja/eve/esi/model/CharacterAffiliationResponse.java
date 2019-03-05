@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class CharacterAffiliationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
     public CharacterAffiliationResponse allianceId(Integer allianceId) {
@@ -43,11 +47,11 @@ public class CharacterAffiliationResponse implements Serializable {
     }
 
     /**
-     * The character's alliance ID, if their corporation is in an alliance
+     * The character&#39;s alliance ID, if their corporation is in an alliance
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "The character's alliance ID, if their corporation is in an alliance")
+    @ApiModelProperty(value = "The character's alliance ID, if their corporation is in an alliance")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -62,11 +66,11 @@ public class CharacterAffiliationResponse implements Serializable {
     }
 
     /**
-     * The character's ID
+     * The character&#39;s ID
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character's ID")
+    @ApiModelProperty(required = true, value = "The character's ID")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -81,11 +85,11 @@ public class CharacterAffiliationResponse implements Serializable {
     }
 
     /**
-     * The character's corporation ID
+     * The character&#39;s corporation ID
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The character's corporation ID")
+    @ApiModelProperty(required = true, value = "The character's corporation ID")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -100,11 +104,11 @@ public class CharacterAffiliationResponse implements Serializable {
     }
 
     /**
-     * The character's faction ID, if their corporation is in a faction
+     * The character&#39;s faction ID, if their corporation is in a faction
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "The character's faction ID, if their corporation is in a faction")
+    @ApiModelProperty(value = "The character's faction ID, if their corporation is in a faction")
     public Integer getFactionId() {
         return factionId;
     }

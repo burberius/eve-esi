@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,12 +31,13 @@ import java.io.Serializable;
 public class CorporationContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("contact_id")
+    @SerializedName("contact_id")
     private Integer contactId = null;
 
     /**
      * contact_type string
      */
+    @JsonAdapter(ContactTypeEnum.Adapter.class)
     public enum ContactTypeEnum {
         CHARACTER("character"),
 
@@ -48,12 +53,15 @@ public class CorporationContactsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ContactTypeEnum fromValue(String text) {
             for (ContactTypeEnum b : ContactTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -62,18 +70,31 @@ public class CorporationContactsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ContactTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ContactTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ContactTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ContactTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("contact_type")
+    @SerializedName("contact_type")
     private ContactTypeEnum contactType = null;
 
-    @JsonProperty("is_watched")
+    @SerializedName("is_watched")
     private Boolean isWatched = null;
 
-    @JsonProperty("label_ids")
-    private List<Long> labelIds = new ArrayList<Long>();
+    @SerializedName("label_ids")
+    private List<Long> labelIds = null;
 
-    @JsonProperty("standing")
+    @SerializedName("standing")
     private Float standing = null;
 
     public CorporationContactsResponse contactId(Integer contactId) {
@@ -86,7 +107,7 @@ public class CorporationContactsResponse implements Serializable {
      * 
      * @return contactId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contact_id integer")
+    @ApiModelProperty(required = true, value = "contact_id integer")
     public Integer getContactId() {
         return contactId;
     }
@@ -105,7 +126,7 @@ public class CorporationContactsResponse implements Serializable {
      * 
      * @return contactType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "contact_type string")
+    @ApiModelProperty(required = true, value = "contact_type string")
     public ContactTypeEnum getContactType() {
         return contactType;
     }
@@ -124,8 +145,8 @@ public class CorporationContactsResponse implements Serializable {
      * 
      * @return isWatched
      **/
-    @ApiModelProperty(example = "null", value = "Whether this contact is being watched")
-    public Boolean getIsWatched() {
+    @ApiModelProperty(value = "Whether this contact is being watched")
+    public Boolean isIsWatched() {
         return isWatched;
     }
 
@@ -139,6 +160,9 @@ public class CorporationContactsResponse implements Serializable {
     }
 
     public CorporationContactsResponse addLabelIdsItem(Long labelIdsItem) {
+        if (this.labelIds == null) {
+            this.labelIds = new ArrayList<>();
+        }
         this.labelIds.add(labelIdsItem);
         return this;
     }
@@ -148,7 +172,7 @@ public class CorporationContactsResponse implements Serializable {
      * 
      * @return labelIds
      **/
-    @ApiModelProperty(example = "null", value = "label_ids array")
+    @ApiModelProperty(value = "label_ids array")
     public List<Long> getLabelIds() {
         return labelIds;
     }
@@ -167,7 +191,7 @@ public class CorporationContactsResponse implements Serializable {
      * 
      * @return standing
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Standing of the contact")
+    @ApiModelProperty(required = true, value = "Standing of the contact")
     public Float getStanding() {
         return standing;
     }

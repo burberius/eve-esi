@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,28 +30,28 @@ import java.io.Serializable;
 public class CharacterAttributesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("accrued_remap_cooldown_date")
+    @SerializedName("accrued_remap_cooldown_date")
     private OffsetDateTime accruedRemapCooldownDate = null;
 
-    @JsonProperty("bonus_remaps")
+    @SerializedName("bonus_remaps")
     private Integer bonusRemaps = null;
 
-    @JsonProperty("charisma")
+    @SerializedName("charisma")
     private Integer charisma = null;
 
-    @JsonProperty("intelligence")
+    @SerializedName("intelligence")
     private Integer intelligence = null;
 
-    @JsonProperty("last_remap_date")
+    @SerializedName("last_remap_date")
     private OffsetDateTime lastRemapDate = null;
 
-    @JsonProperty("memory")
+    @SerializedName("memory")
     private Integer memory = null;
 
-    @JsonProperty("perception")
+    @SerializedName("perception")
     private Integer perception = null;
 
-    @JsonProperty("willpower")
+    @SerializedName("willpower")
     private Integer willpower = null;
 
     public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
@@ -60,7 +64,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return accruedRemapCooldownDate
      **/
-    @ApiModelProperty(example = "null", value = "Neural remapping cooldown after a character uses remap accrued over time")
+    @ApiModelProperty(value = "Neural remapping cooldown after a character uses remap accrued over time")
     public OffsetDateTime getAccruedRemapCooldownDate() {
         return accruedRemapCooldownDate;
     }
@@ -79,7 +83,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return bonusRemaps
      **/
-    @ApiModelProperty(example = "null", value = "Number of available bonus character neural remaps")
+    @ApiModelProperty(value = "Number of available bonus character neural remaps")
     public Integer getBonusRemaps() {
         return bonusRemaps;
     }
@@ -98,7 +102,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return charisma
      **/
-    @ApiModelProperty(example = "null", required = true, value = "charisma integer")
+    @ApiModelProperty(required = true, value = "charisma integer")
     public Integer getCharisma() {
         return charisma;
     }
@@ -117,7 +121,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return intelligence
      **/
-    @ApiModelProperty(example = "null", required = true, value = "intelligence integer")
+    @ApiModelProperty(required = true, value = "intelligence integer")
     public Integer getIntelligence() {
         return intelligence;
     }
@@ -136,7 +140,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return lastRemapDate
      **/
-    @ApiModelProperty(example = "null", value = "Datetime of last neural remap, including usage of bonus remaps")
+    @ApiModelProperty(value = "Datetime of last neural remap, including usage of bonus remaps")
     public OffsetDateTime getLastRemapDate() {
         return lastRemapDate;
     }
@@ -155,7 +159,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return memory
      **/
-    @ApiModelProperty(example = "null", required = true, value = "memory integer")
+    @ApiModelProperty(required = true, value = "memory integer")
     public Integer getMemory() {
         return memory;
     }
@@ -174,7 +178,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return perception
      **/
-    @ApiModelProperty(example = "null", required = true, value = "perception integer")
+    @ApiModelProperty(required = true, value = "perception integer")
     public Integer getPerception() {
         return perception;
     }
@@ -193,7 +197,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return willpower
      **/
-    @ApiModelProperty(example = "null", required = true, value = "willpower integer")
+    @ApiModelProperty(required = true, value = "willpower integer")
     public Integer getWillpower() {
         return willpower;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,12 +29,13 @@ import java.io.Serializable;
 public class CorporationStandingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("from_id")
+    @SerializedName("from_id")
     private Integer fromId = null;
 
     /**
      * from_type string
      */
+    @JsonAdapter(FromTypeEnum.Adapter.class)
     public enum FromTypeEnum {
         AGENT("agent"),
 
@@ -44,12 +49,15 @@ public class CorporationStandingsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static FromTypeEnum fromValue(String text) {
             for (FromTypeEnum b : FromTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -58,12 +66,25 @@ public class CorporationStandingsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<FromTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final FromTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public FromTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return FromTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("from_type")
+    @SerializedName("from_type")
     private FromTypeEnum fromType = null;
 
-    @JsonProperty("standing")
+    @SerializedName("standing")
     private Float standing = null;
 
     public CorporationStandingsResponse fromId(Integer fromId) {
@@ -76,7 +97,7 @@ public class CorporationStandingsResponse implements Serializable {
      * 
      * @return fromId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "from_id integer")
+    @ApiModelProperty(required = true, value = "from_id integer")
     public Integer getFromId() {
         return fromId;
     }
@@ -95,7 +116,7 @@ public class CorporationStandingsResponse implements Serializable {
      * 
      * @return fromType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "from_type string")
+    @ApiModelProperty(required = true, value = "from_type string")
     public FromTypeEnum getFromType() {
         return fromType;
     }
@@ -114,7 +135,7 @@ public class CorporationStandingsResponse implements Serializable {
      * 
      * @return standing
      **/
-    @ApiModelProperty(example = "null", required = true, value = "standing number")
+    @ApiModelProperty(required = true, value = "standing number")
     public Float getStanding() {
         return standing;
     }

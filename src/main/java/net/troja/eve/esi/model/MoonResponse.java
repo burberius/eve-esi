@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
@@ -26,16 +30,16 @@ import java.io.Serializable;
 public class MoonResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("moon_id")
+    @SerializedName("moon_id")
     private Integer moonId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public MoonResponse moonId(Integer moonId) {
@@ -48,7 +52,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return moonId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "moon_id integer")
+    @ApiModelProperty(required = true, value = "moon_id integer")
     public Integer getMoonId() {
         return moonId;
     }
@@ -67,7 +71,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -86,7 +90,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -105,7 +109,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this moon is in")
+    @ApiModelProperty(required = true, value = "The solar system this moon is in")
     public Integer getSystemId() {
         return systemId;
     }

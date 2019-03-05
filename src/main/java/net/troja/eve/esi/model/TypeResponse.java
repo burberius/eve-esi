@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.TypeDogmaAttribute;
@@ -29,52 +33,52 @@ import java.io.Serializable;
 public class TypeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("capacity")
+    @SerializedName("capacity")
     private Float capacity = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("dogma_attributes")
-    private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<TypeDogmaAttribute>();
+    @SerializedName("dogma_attributes")
+    private List<TypeDogmaAttribute> dogmaAttributes = null;
 
-    @JsonProperty("dogma_effects")
-    private List<TypeDogmaEffect> dogmaEffects = new ArrayList<TypeDogmaEffect>();
+    @SerializedName("dogma_effects")
+    private List<TypeDogmaEffect> dogmaEffects = null;
 
-    @JsonProperty("graphic_id")
+    @SerializedName("graphic_id")
     private Integer graphicId = null;
 
-    @JsonProperty("group_id")
+    @SerializedName("group_id")
     private Integer groupId = null;
 
-    @JsonProperty("icon_id")
+    @SerializedName("icon_id")
     private Integer iconId = null;
 
-    @JsonProperty("market_group_id")
+    @SerializedName("market_group_id")
     private Integer marketGroupId = null;
 
-    @JsonProperty("mass")
+    @SerializedName("mass")
     private Float mass = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("packaged_volume")
+    @SerializedName("packaged_volume")
     private Float packagedVolume = null;
 
-    @JsonProperty("portion_size")
+    @SerializedName("portion_size")
     private Integer portionSize = null;
 
-    @JsonProperty("published")
+    @SerializedName("published")
     private Boolean published = null;
 
-    @JsonProperty("radius")
+    @SerializedName("radius")
     private Float radius = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("volume")
+    @SerializedName("volume")
     private Float volume = null;
 
     public TypeResponse capacity(Float capacity) {
@@ -87,7 +91,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return capacity
      **/
-    @ApiModelProperty(example = "null", value = "capacity number")
+    @ApiModelProperty(value = "capacity number")
     public Float getCapacity() {
         return capacity;
     }
@@ -106,7 +110,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -121,6 +125,9 @@ public class TypeResponse implements Serializable {
     }
 
     public TypeResponse addDogmaAttributesItem(TypeDogmaAttribute dogmaAttributesItem) {
+        if (this.dogmaAttributes == null) {
+            this.dogmaAttributes = new ArrayList<>();
+        }
         this.dogmaAttributes.add(dogmaAttributesItem);
         return this;
     }
@@ -130,7 +137,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return dogmaAttributes
      **/
-    @ApiModelProperty(example = "null", value = "dogma_attributes array")
+    @ApiModelProperty(value = "dogma_attributes array")
     public List<TypeDogmaAttribute> getDogmaAttributes() {
         return dogmaAttributes;
     }
@@ -145,6 +152,9 @@ public class TypeResponse implements Serializable {
     }
 
     public TypeResponse addDogmaEffectsItem(TypeDogmaEffect dogmaEffectsItem) {
+        if (this.dogmaEffects == null) {
+            this.dogmaEffects = new ArrayList<>();
+        }
         this.dogmaEffects.add(dogmaEffectsItem);
         return this;
     }
@@ -154,7 +164,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return dogmaEffects
      **/
-    @ApiModelProperty(example = "null", value = "dogma_effects array")
+    @ApiModelProperty(value = "dogma_effects array")
     public List<TypeDogmaEffect> getDogmaEffects() {
         return dogmaEffects;
     }
@@ -173,7 +183,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return graphicId
      **/
-    @ApiModelProperty(example = "null", value = "graphic_id integer")
+    @ApiModelProperty(value = "graphic_id integer")
     public Integer getGraphicId() {
         return graphicId;
     }
@@ -192,7 +202,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return groupId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "group_id integer")
+    @ApiModelProperty(required = true, value = "group_id integer")
     public Integer getGroupId() {
         return groupId;
     }
@@ -211,7 +221,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return iconId
      **/
-    @ApiModelProperty(example = "null", value = "icon_id integer")
+    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -230,7 +240,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return marketGroupId
      **/
-    @ApiModelProperty(example = "null", value = "This only exists for types that can be put on the market")
+    @ApiModelProperty(value = "This only exists for types that can be put on the market")
     public Integer getMarketGroupId() {
         return marketGroupId;
     }
@@ -249,7 +259,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return mass
      **/
-    @ApiModelProperty(example = "null", value = "mass number")
+    @ApiModelProperty(value = "mass number")
     public Float getMass() {
         return mass;
     }
@@ -268,7 +278,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -287,7 +297,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return packagedVolume
      **/
-    @ApiModelProperty(example = "null", value = "packaged_volume number")
+    @ApiModelProperty(value = "packaged_volume number")
     public Float getPackagedVolume() {
         return packagedVolume;
     }
@@ -306,7 +316,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return portionSize
      **/
-    @ApiModelProperty(example = "null", value = "portion_size integer")
+    @ApiModelProperty(value = "portion_size integer")
     public Integer getPortionSize() {
         return portionSize;
     }
@@ -325,8 +335,8 @@ public class TypeResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(example = "null", required = true, value = "published boolean")
-    public Boolean getPublished() {
+    @ApiModelProperty(required = true, value = "published boolean")
+    public Boolean isPublished() {
         return published;
     }
 
@@ -344,7 +354,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return radius
      **/
-    @ApiModelProperty(example = "null", value = "radius number")
+    @ApiModelProperty(value = "radius number")
     public Float getRadius() {
         return radius;
     }
@@ -363,7 +373,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }
@@ -382,7 +392,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return volume
      **/
-    @ApiModelProperty(example = "null", value = "volume number")
+    @ApiModelProperty(value = "volume number")
     public Float getVolume() {
         return volume;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
@@ -26,13 +30,13 @@ import java.io.Serializable;
 public class UniverseAsteroidBeltsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
     public UniverseAsteroidBeltsResponse name(String name) {
@@ -45,7 +49,7 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -64,7 +68,7 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -83,7 +87,7 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The solar system this asteroid belt is in")
+    @ApiModelProperty(required = true, value = "The solar system this asteroid belt is in")
     public Integer getSystemId() {
         return systemId;
     }

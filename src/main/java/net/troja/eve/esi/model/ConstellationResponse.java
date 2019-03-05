@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Position;
@@ -28,20 +32,20 @@ import java.io.Serializable;
 public class ConstellationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("constellation_id")
+    @SerializedName("constellation_id")
     private Integer constellationId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private Position position = null;
 
-    @JsonProperty("region_id")
+    @SerializedName("region_id")
     private Integer regionId = null;
 
-    @JsonProperty("systems")
-    private List<Integer> systems = new ArrayList<Integer>();
+    @SerializedName("systems")
+    private List<Integer> systems = new ArrayList<>();
 
     public ConstellationResponse constellationId(Integer constellationId) {
         this.constellationId = constellationId;
@@ -53,7 +57,7 @@ public class ConstellationResponse implements Serializable {
      * 
      * @return constellationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "constellation_id integer")
+    @ApiModelProperty(required = true, value = "constellation_id integer")
     public Integer getConstellationId() {
         return constellationId;
     }
@@ -72,7 +76,7 @@ public class ConstellationResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -91,7 +95,7 @@ public class ConstellationResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", required = true, value = "")
+    @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
     }
@@ -110,7 +114,7 @@ public class ConstellationResponse implements Serializable {
      * 
      * @return regionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The region this constellation is in")
+    @ApiModelProperty(required = true, value = "The region this constellation is in")
     public Integer getRegionId() {
         return regionId;
     }
@@ -134,7 +138,7 @@ public class ConstellationResponse implements Serializable {
      * 
      * @return systems
      **/
-    @ApiModelProperty(example = "null", required = true, value = "systems array")
+    @ApiModelProperty(required = true, value = "systems array")
     public List<Integer> getSystems() {
         return systems;
     }

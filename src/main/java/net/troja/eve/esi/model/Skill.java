@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class Skill implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("active_skill_level")
+    @SerializedName("active_skill_level")
     private Integer activeSkillLevel = null;
 
-    @JsonProperty("skill_id")
+    @SerializedName("skill_id")
     private Integer skillId = null;
 
-    @JsonProperty("skillpoints_in_skill")
+    @SerializedName("skillpoints_in_skill")
     private Long skillpointsInSkill = null;
 
-    @JsonProperty("trained_skill_level")
+    @SerializedName("trained_skill_level")
     private Integer trainedSkillLevel = null;
 
     public Skill activeSkillLevel(Integer activeSkillLevel) {
@@ -47,7 +51,7 @@ public class Skill implements Serializable {
      * 
      * @return activeSkillLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "active_skill_level integer")
+    @ApiModelProperty(required = true, value = "active_skill_level integer")
     public Integer getActiveSkillLevel() {
         return activeSkillLevel;
     }
@@ -66,7 +70,7 @@ public class Skill implements Serializable {
      * 
      * @return skillId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "skill_id integer")
+    @ApiModelProperty(required = true, value = "skill_id integer")
     public Integer getSkillId() {
         return skillId;
     }
@@ -85,7 +89,7 @@ public class Skill implements Serializable {
      * 
      * @return skillpointsInSkill
      **/
-    @ApiModelProperty(example = "null", required = true, value = "skillpoints_in_skill integer")
+    @ApiModelProperty(required = true, value = "skillpoints_in_skill integer")
     public Long getSkillpointsInSkill() {
         return skillpointsInSkill;
     }
@@ -104,7 +108,7 @@ public class Skill implements Serializable {
      * 
      * @return trainedSkillLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "trained_skill_level integer")
+    @ApiModelProperty(required = true, value = "trained_skill_level integer")
     public Integer getTrainedSkillLevel() {
         return trainedSkillLevel;
     }

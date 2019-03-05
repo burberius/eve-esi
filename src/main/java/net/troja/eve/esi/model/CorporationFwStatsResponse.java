@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import net.troja.eve.esi.model.CorporationFwStatsKills;
 import net.troja.eve.esi.model.CorporationFwStatsVictoryPoints;
@@ -28,19 +32,19 @@ import java.io.Serializable;
 public class CorporationFwStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("enlisted_on")
+    @SerializedName("enlisted_on")
     private OffsetDateTime enlistedOn = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("kills")
+    @SerializedName("kills")
     private CorporationFwStatsKills kills = null;
 
-    @JsonProperty("pilots")
+    @SerializedName("pilots")
     private Integer pilots = null;
 
-    @JsonProperty("victory_points")
+    @SerializedName("victory_points")
     private CorporationFwStatsVictoryPoints victoryPoints = null;
 
     public CorporationFwStatsResponse enlistedOn(OffsetDateTime enlistedOn) {
@@ -54,7 +58,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return enlistedOn
      **/
-    @ApiModelProperty(example = "null", value = "The enlistment date of the given corporation into faction warfare. Will not be included if corporation is not enlisted in faction warfare")
+    @ApiModelProperty(value = "The enlistment date of the given corporation into faction warfare. Will not be included if corporation is not enlisted in faction warfare")
     public OffsetDateTime getEnlistedOn() {
         return enlistedOn;
     }
@@ -74,7 +78,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare")
+    @ApiModelProperty(value = "The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -93,7 +97,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return kills
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public CorporationFwStatsKills getKills() {
         return kills;
     }
@@ -113,7 +117,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return pilots
      **/
-    @ApiModelProperty(example = "null", value = "How many pilots the enlisted corporation has. Will not be included if corporation is not enlisted in faction warfare")
+    @ApiModelProperty(value = "How many pilots the enlisted corporation has. Will not be included if corporation is not enlisted in faction warfare")
     public Integer getPilots() {
         return pilots;
     }
@@ -132,7 +136,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public CorporationFwStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }

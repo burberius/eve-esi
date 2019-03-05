@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,30 +33,31 @@ import java.io.Serializable;
 public class CharacterMedalsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private OffsetDateTime date = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("graphics")
-    private List<CharacterMedalsGraphic> graphics = new ArrayList<CharacterMedalsGraphic>();
+    @SerializedName("graphics")
+    private List<CharacterMedalsGraphic> graphics = new ArrayList<>();
 
-    @JsonProperty("issuer_id")
+    @SerializedName("issuer_id")
     private Integer issuerId = null;
 
-    @JsonProperty("medal_id")
+    @SerializedName("medal_id")
     private Integer medalId = null;
 
-    @JsonProperty("reason")
+    @SerializedName("reason")
     private String reason = null;
 
     /**
      * status string
      */
+    @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
         PUBLIC("public"),
 
@@ -64,12 +69,15 @@ public class CharacterMedalsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StatusEnum fromValue(String text) {
             for (StatusEnum b : StatusEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -78,12 +86,25 @@ public class CharacterMedalsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StatusEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StatusEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("status")
+    @SerializedName("status")
     private StatusEnum status = null;
 
-    @JsonProperty("title")
+    @SerializedName("title")
     private String title = null;
 
     public CharacterMedalsResponse corporationId(Integer corporationId) {
@@ -96,7 +117,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "corporation_id integer")
+    @ApiModelProperty(required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -115,7 +136,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "date string")
+    @ApiModelProperty(required = true, value = "date string")
     public OffsetDateTime getDate() {
         return date;
     }
@@ -134,7 +155,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -158,7 +179,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return graphics
      **/
-    @ApiModelProperty(example = "null", required = true, value = "graphics array")
+    @ApiModelProperty(required = true, value = "graphics array")
     public List<CharacterMedalsGraphic> getGraphics() {
         return graphics;
     }
@@ -177,7 +198,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "issuer_id integer")
+    @ApiModelProperty(required = true, value = "issuer_id integer")
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -196,7 +217,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return medalId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "medal_id integer")
+    @ApiModelProperty(required = true, value = "medal_id integer")
     public Integer getMedalId() {
         return medalId;
     }
@@ -215,7 +236,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return reason
      **/
-    @ApiModelProperty(example = "null", required = true, value = "reason string")
+    @ApiModelProperty(required = true, value = "reason string")
     public String getReason() {
         return reason;
     }
@@ -234,7 +255,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(example = "null", required = true, value = "status string")
+    @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
         return status;
     }
@@ -253,7 +274,7 @@ public class CharacterMedalsResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "null", required = true, value = "title string")
+    @ApiModelProperty(required = true, value = "title string")
     public String getTitle() {
         return title;
     }

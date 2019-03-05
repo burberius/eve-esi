@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,19 +30,19 @@ import java.io.Serializable;
 public class NewContactNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("message")
+    @SerializedName("message")
     private String message = null;
 
-    @JsonProperty("notification_id")
+    @SerializedName("notification_id")
     private Integer notificationId = null;
 
-    @JsonProperty("send_date")
+    @SerializedName("send_date")
     private OffsetDateTime sendDate = null;
 
-    @JsonProperty("sender_character_id")
+    @SerializedName("sender_character_id")
     private Integer senderCharacterId = null;
 
-    @JsonProperty("standing_level")
+    @SerializedName("standing_level")
     private Float standingLevel = null;
 
     public NewContactNotificationsResponse message(String message) {
@@ -51,7 +55,7 @@ public class NewContactNotificationsResponse implements Serializable {
      * 
      * @return message
      **/
-    @ApiModelProperty(example = "null", required = true, value = "message string")
+    @ApiModelProperty(required = true, value = "message string")
     public String getMessage() {
         return message;
     }
@@ -70,7 +74,7 @@ public class NewContactNotificationsResponse implements Serializable {
      * 
      * @return notificationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "notification_id integer")
+    @ApiModelProperty(required = true, value = "notification_id integer")
     public Integer getNotificationId() {
         return notificationId;
     }
@@ -89,7 +93,7 @@ public class NewContactNotificationsResponse implements Serializable {
      * 
      * @return sendDate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "send_date string")
+    @ApiModelProperty(required = true, value = "send_date string")
     public OffsetDateTime getSendDate() {
         return sendDate;
     }
@@ -108,7 +112,7 @@ public class NewContactNotificationsResponse implements Serializable {
      * 
      * @return senderCharacterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "sender_character_id integer")
+    @ApiModelProperty(required = true, value = "sender_character_id integer")
     public Integer getSenderCharacterId() {
         return senderCharacterId;
     }
@@ -124,12 +128,12 @@ public class NewContactNotificationsResponse implements Serializable {
 
     /**
      * A number representing the standing level the receiver has been added at
-     * by the sender. The standing levels are as follows: -10 -> Terrible | -5
-     * -> Bad | 0 -> Neutral | 5 -> Good | 10 -> Excellent
+     * by the sender. The standing levels are as follows: -10 -&gt; Terrible |
+     * -5 -&gt; Bad | 0 -&gt; Neutral | 5 -&gt; Good | 10 -&gt; Excellent
      * 
      * @return standingLevel
      **/
-    @ApiModelProperty(example = "null", required = true, value = "A number representing the standing level the receiver has been added at by the sender. The standing levels are as follows: -10 -> Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent")
+    @ApiModelProperty(required = true, value = "A number representing the standing level the receiver has been added at by the sender. The standing levels are as follows: -10 -> Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent")
     public Float getStandingLevel() {
         return standingLevel;
     }

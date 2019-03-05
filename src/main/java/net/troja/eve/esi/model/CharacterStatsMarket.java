@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,43 +29,43 @@ import java.io.Serializable;
 public class CharacterStatsMarket implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("accept_contracts_courier")
+    @SerializedName("accept_contracts_courier")
     private Long acceptContractsCourier = null;
 
-    @JsonProperty("accept_contracts_item_exchange")
+    @SerializedName("accept_contracts_item_exchange")
     private Long acceptContractsItemExchange = null;
 
-    @JsonProperty("buy_orders_placed")
+    @SerializedName("buy_orders_placed")
     private Long buyOrdersPlaced = null;
 
-    @JsonProperty("cancel_market_order")
+    @SerializedName("cancel_market_order")
     private Long cancelMarketOrder = null;
 
-    @JsonProperty("create_contracts_auction")
+    @SerializedName("create_contracts_auction")
     private Long createContractsAuction = null;
 
-    @JsonProperty("create_contracts_courier")
+    @SerializedName("create_contracts_courier")
     private Long createContractsCourier = null;
 
-    @JsonProperty("create_contracts_item_exchange")
+    @SerializedName("create_contracts_item_exchange")
     private Long createContractsItemExchange = null;
 
-    @JsonProperty("deliver_courier_contract")
+    @SerializedName("deliver_courier_contract")
     private Long deliverCourierContract = null;
 
-    @JsonProperty("isk_gained")
+    @SerializedName("isk_gained")
     private Long iskGained = null;
 
-    @JsonProperty("isk_spent")
+    @SerializedName("isk_spent")
     private Long iskSpent = null;
 
-    @JsonProperty("modify_market_order")
+    @SerializedName("modify_market_order")
     private Long modifyMarketOrder = null;
 
-    @JsonProperty("search_contracts")
+    @SerializedName("search_contracts")
     private Long searchContracts = null;
 
-    @JsonProperty("sell_orders_placed")
+    @SerializedName("sell_orders_placed")
     private Long sellOrdersPlaced = null;
 
     public CharacterStatsMarket acceptContractsCourier(Long acceptContractsCourier) {
@@ -74,7 +78,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return acceptContractsCourier
      **/
-    @ApiModelProperty(example = "null", value = "accept_contracts_courier integer")
+    @ApiModelProperty(value = "accept_contracts_courier integer")
     public Long getAcceptContractsCourier() {
         return acceptContractsCourier;
     }
@@ -93,7 +97,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return acceptContractsItemExchange
      **/
-    @ApiModelProperty(example = "null", value = "accept_contracts_item_exchange integer")
+    @ApiModelProperty(value = "accept_contracts_item_exchange integer")
     public Long getAcceptContractsItemExchange() {
         return acceptContractsItemExchange;
     }
@@ -112,7 +116,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return buyOrdersPlaced
      **/
-    @ApiModelProperty(example = "null", value = "buy_orders_placed integer")
+    @ApiModelProperty(value = "buy_orders_placed integer")
     public Long getBuyOrdersPlaced() {
         return buyOrdersPlaced;
     }
@@ -131,7 +135,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return cancelMarketOrder
      **/
-    @ApiModelProperty(example = "null", value = "cancel_market_order integer")
+    @ApiModelProperty(value = "cancel_market_order integer")
     public Long getCancelMarketOrder() {
         return cancelMarketOrder;
     }
@@ -150,7 +154,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return createContractsAuction
      **/
-    @ApiModelProperty(example = "null", value = "create_contracts_auction integer")
+    @ApiModelProperty(value = "create_contracts_auction integer")
     public Long getCreateContractsAuction() {
         return createContractsAuction;
     }
@@ -169,7 +173,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return createContractsCourier
      **/
-    @ApiModelProperty(example = "null", value = "create_contracts_courier integer")
+    @ApiModelProperty(value = "create_contracts_courier integer")
     public Long getCreateContractsCourier() {
         return createContractsCourier;
     }
@@ -188,7 +192,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return createContractsItemExchange
      **/
-    @ApiModelProperty(example = "null", value = "create_contracts_item_exchange integer")
+    @ApiModelProperty(value = "create_contracts_item_exchange integer")
     public Long getCreateContractsItemExchange() {
         return createContractsItemExchange;
     }
@@ -207,7 +211,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return deliverCourierContract
      **/
-    @ApiModelProperty(example = "null", value = "deliver_courier_contract integer")
+    @ApiModelProperty(value = "deliver_courier_contract integer")
     public Long getDeliverCourierContract() {
         return deliverCourierContract;
     }
@@ -226,7 +230,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return iskGained
      **/
-    @ApiModelProperty(example = "null", value = "isk_gained integer")
+    @ApiModelProperty(value = "isk_gained integer")
     public Long getIskGained() {
         return iskGained;
     }
@@ -245,7 +249,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return iskSpent
      **/
-    @ApiModelProperty(example = "null", value = "isk_spent integer")
+    @ApiModelProperty(value = "isk_spent integer")
     public Long getIskSpent() {
         return iskSpent;
     }
@@ -264,7 +268,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return modifyMarketOrder
      **/
-    @ApiModelProperty(example = "null", value = "modify_market_order integer")
+    @ApiModelProperty(value = "modify_market_order integer")
     public Long getModifyMarketOrder() {
         return modifyMarketOrder;
     }
@@ -283,7 +287,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return searchContracts
      **/
-    @ApiModelProperty(example = "null", value = "search_contracts integer")
+    @ApiModelProperty(value = "search_contracts integer")
     public Long getSearchContracts() {
         return searchContracts;
     }
@@ -302,7 +306,7 @@ public class CharacterStatsMarket implements Serializable {
      * 
      * @return sellOrdersPlaced
      **/
-    @ApiModelProperty(example = "null", value = "sell_orders_placed integer")
+    @ApiModelProperty(value = "sell_orders_placed integer")
     public Long getSellOrdersPlaced() {
         return sellOrdersPlaced;
     }

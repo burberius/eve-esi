@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,34 +29,34 @@ import java.io.Serializable;
 public class FactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("corporation_id")
+    @SerializedName("corporation_id")
     private Integer corporationId = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("is_unique")
+    @SerializedName("is_unique")
     private Boolean isUnique = null;
 
-    @JsonProperty("militia_corporation_id")
+    @SerializedName("militia_corporation_id")
     private Integer militiaCorporationId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("size_factor")
+    @SerializedName("size_factor")
     private Float sizeFactor = null;
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
-    @JsonProperty("station_count")
+    @SerializedName("station_count")
     private Integer stationCount = null;
 
-    @JsonProperty("station_system_count")
+    @SerializedName("station_system_count")
     private Integer stationSystemCount = null;
 
     public FactionsResponse corporationId(Integer corporationId) {
@@ -65,7 +69,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(example = "null", value = "corporation_id integer")
+    @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -84,7 +88,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -103,7 +107,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "faction_id integer")
+    @ApiModelProperty(required = true, value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -122,8 +126,8 @@ public class FactionsResponse implements Serializable {
      * 
      * @return isUnique
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_unique boolean")
-    public Boolean getIsUnique() {
+    @ApiModelProperty(required = true, value = "is_unique boolean")
+    public Boolean isIsUnique() {
         return isUnique;
     }
 
@@ -141,7 +145,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return militiaCorporationId
      **/
-    @ApiModelProperty(example = "null", value = "militia_corporation_id integer")
+    @ApiModelProperty(value = "militia_corporation_id integer")
     public Integer getMilitiaCorporationId() {
         return militiaCorporationId;
     }
@@ -160,7 +164,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -179,7 +183,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return sizeFactor
      **/
-    @ApiModelProperty(example = "null", required = true, value = "size_factor number")
+    @ApiModelProperty(required = true, value = "size_factor number")
     public Float getSizeFactor() {
         return sizeFactor;
     }
@@ -198,7 +202,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", value = "solar_system_id integer")
+    @ApiModelProperty(value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -217,7 +221,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return stationCount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "station_count integer")
+    @ApiModelProperty(required = true, value = "station_count integer")
     public Integer getStationCount() {
         return stationCount;
     }
@@ -236,7 +240,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return stationSystemCount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "station_system_count integer")
+    @ApiModelProperty(required = true, value = "station_system_count integer")
     public Integer getStationSystemCount() {
         return stationSystemCount;
     }

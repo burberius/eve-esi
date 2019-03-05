@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,7 @@ public class CharacterCalendarEvent implements Serializable {
     /**
      * response string
      */
+    @JsonAdapter(ResponseEnum.Adapter.class)
     public enum ResponseEnum {
         ACCEPTED("accepted"),
 
@@ -41,12 +46,15 @@ public class CharacterCalendarEvent implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ResponseEnum fromValue(String text) {
             for (ResponseEnum b : ResponseEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -55,9 +63,22 @@ public class CharacterCalendarEvent implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ResponseEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ResponseEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ResponseEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ResponseEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("response")
+    @SerializedName("response")
     private ResponseEnum response = null;
 
     public CharacterCalendarEvent response(ResponseEnum response) {
@@ -70,7 +91,7 @@ public class CharacterCalendarEvent implements Serializable {
      * 
      * @return response
      **/
-    @ApiModelProperty(example = "null", required = true, value = "response string")
+    @ApiModelProperty(required = true, value = "response string")
     public ResponseEnum getResponse() {
         return response;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class InsurancePriceLevel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cost")
+    @SerializedName("cost")
     private Float cost = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("payout")
+    @SerializedName("payout")
     private Float payout = null;
 
     public InsurancePriceLevel cost(Float cost) {
@@ -44,7 +48,7 @@ public class InsurancePriceLevel implements Serializable {
      * 
      * @return cost
      **/
-    @ApiModelProperty(example = "null", required = true, value = "cost number")
+    @ApiModelProperty(required = true, value = "cost number")
     public Float getCost() {
         return cost;
     }
@@ -63,7 +67,7 @@ public class InsurancePriceLevel implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Localized insurance level")
+    @ApiModelProperty(required = true, value = "Localized insurance level")
     public String getName() {
         return name;
     }
@@ -82,7 +86,7 @@ public class InsurancePriceLevel implements Serializable {
      * 
      * @return payout
      **/
-    @ApiModelProperty(example = "null", required = true, value = "payout number")
+    @ApiModelProperty(required = true, value = "payout number")
     public Float getPayout() {
         return payout;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,20 +31,20 @@ import java.io.Serializable;
 public class GroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("category_id")
+    @SerializedName("category_id")
     private Integer categoryId = null;
 
-    @JsonProperty("group_id")
+    @SerializedName("group_id")
     private Integer groupId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("published")
+    @SerializedName("published")
     private Boolean published = null;
 
-    @JsonProperty("types")
-    private List<Integer> types = new ArrayList<Integer>();
+    @SerializedName("types")
+    private List<Integer> types = new ArrayList<>();
 
     public GroupResponse categoryId(Integer categoryId) {
         this.categoryId = categoryId;
@@ -52,7 +56,7 @@ public class GroupResponse implements Serializable {
      * 
      * @return categoryId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "category_id integer")
+    @ApiModelProperty(required = true, value = "category_id integer")
     public Integer getCategoryId() {
         return categoryId;
     }
@@ -71,7 +75,7 @@ public class GroupResponse implements Serializable {
      * 
      * @return groupId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "group_id integer")
+    @ApiModelProperty(required = true, value = "group_id integer")
     public Integer getGroupId() {
         return groupId;
     }
@@ -90,7 +94,7 @@ public class GroupResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -109,8 +113,8 @@ public class GroupResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(example = "null", required = true, value = "published boolean")
-    public Boolean getPublished() {
+    @ApiModelProperty(required = true, value = "published boolean")
+    public Boolean isPublished() {
         return published;
     }
 
@@ -133,7 +137,7 @@ public class GroupResponse implements Serializable {
      * 
      * @return types
      **/
-    @ApiModelProperty(example = "null", required = true, value = "types array")
+    @ApiModelProperty(required = true, value = "types array")
     public List<Integer> getTypes() {
         return types;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class FleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("is_free_move")
+    @SerializedName("is_free_move")
     private Boolean isFreeMove = null;
 
-    @JsonProperty("is_registered")
+    @SerializedName("is_registered")
     private Boolean isRegistered = null;
 
-    @JsonProperty("is_voice_enabled")
+    @SerializedName("is_voice_enabled")
     private Boolean isVoiceEnabled = null;
 
-    @JsonProperty("motd")
+    @SerializedName("motd")
     private String motd = null;
 
     public FleetResponse isFreeMove(Boolean isFreeMove) {
@@ -47,8 +51,8 @@ public class FleetResponse implements Serializable {
      * 
      * @return isFreeMove
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Is free-move enabled")
-    public Boolean getIsFreeMove() {
+    @ApiModelProperty(required = true, value = "Is free-move enabled")
+    public Boolean isIsFreeMove() {
         return isFreeMove;
     }
 
@@ -66,8 +70,8 @@ public class FleetResponse implements Serializable {
      * 
      * @return isRegistered
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Does the fleet have an active fleet advertisement")
-    public Boolean getIsRegistered() {
+    @ApiModelProperty(required = true, value = "Does the fleet have an active fleet advertisement")
+    public Boolean isIsRegistered() {
         return isRegistered;
     }
 
@@ -85,8 +89,8 @@ public class FleetResponse implements Serializable {
      * 
      * @return isVoiceEnabled
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Is EVE Voice enabled")
-    public Boolean getIsVoiceEnabled() {
+    @ApiModelProperty(required = true, value = "Is EVE Voice enabled")
+    public Boolean isIsVoiceEnabled() {
         return isVoiceEnabled;
     }
 
@@ -104,7 +108,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return motd
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Fleet MOTD in CCP flavoured HTML")
+    @ApiModelProperty(required = true, value = "Fleet MOTD in CCP flavoured HTML")
     public String getMotd() {
         return motd;
     }

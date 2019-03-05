@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,7 @@ public class SystemCostIndice implements Serializable {
     /**
      * activity string
      */
+    @JsonAdapter(ActivityEnum.Adapter.class)
     public enum ActivityEnum {
         COPYING("copying"),
 
@@ -55,12 +60,15 @@ public class SystemCostIndice implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ActivityEnum fromValue(String text) {
             for (ActivityEnum b : ActivityEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -69,12 +77,25 @@ public class SystemCostIndice implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ActivityEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ActivityEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ActivityEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ActivityEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("activity")
+    @SerializedName("activity")
     private ActivityEnum activity = null;
 
-    @JsonProperty("cost_index")
+    @SerializedName("cost_index")
     private Float costIndex = null;
 
     public SystemCostIndice activity(ActivityEnum activity) {
@@ -87,7 +108,7 @@ public class SystemCostIndice implements Serializable {
      * 
      * @return activity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "activity string")
+    @ApiModelProperty(required = true, value = "activity string")
     public ActivityEnum getActivity() {
         return activity;
     }
@@ -106,7 +127,7 @@ public class SystemCostIndice implements Serializable {
      * 
      * @return costIndex
      **/
-    @ApiModelProperty(example = "null", required = true, value = "cost_index number")
+    @ApiModelProperty(required = true, value = "cost_index number")
     public Float getCostIndex() {
         return costIndex;
     }

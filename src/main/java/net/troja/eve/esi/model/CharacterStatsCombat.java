@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,286 +29,286 @@ import java.io.Serializable;
 public class CharacterStatsCombat implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cap_drainedby_npc")
+    @SerializedName("cap_drainedby_npc")
     private Long capDrainedbyNpc = null;
 
-    @JsonProperty("cap_drainedby_pc")
+    @SerializedName("cap_drainedby_pc")
     private Long capDrainedbyPc = null;
 
-    @JsonProperty("cap_draining_pc")
+    @SerializedName("cap_draining_pc")
     private Long capDrainingPc = null;
 
-    @JsonProperty("criminal_flag_set")
+    @SerializedName("criminal_flag_set")
     private Long criminalFlagSet = null;
 
-    @JsonProperty("damage_from_np_cs_amount")
+    @SerializedName("damage_from_np_cs_amount")
     private Long damageFromNpCsAmount = null;
 
-    @JsonProperty("damage_from_np_cs_num_shots")
+    @SerializedName("damage_from_np_cs_num_shots")
     private Long damageFromNpCsNumShots = null;
 
-    @JsonProperty("damage_from_players_bomb_amount")
+    @SerializedName("damage_from_players_bomb_amount")
     private Long damageFromPlayersBombAmount = null;
 
-    @JsonProperty("damage_from_players_bomb_num_shots")
+    @SerializedName("damage_from_players_bomb_num_shots")
     private Long damageFromPlayersBombNumShots = null;
 
-    @JsonProperty("damage_from_players_combat_drone_amount")
+    @SerializedName("damage_from_players_combat_drone_amount")
     private Long damageFromPlayersCombatDroneAmount = null;
 
-    @JsonProperty("damage_from_players_combat_drone_num_shots")
+    @SerializedName("damage_from_players_combat_drone_num_shots")
     private Long damageFromPlayersCombatDroneNumShots = null;
 
-    @JsonProperty("damage_from_players_energy_amount")
+    @SerializedName("damage_from_players_energy_amount")
     private Long damageFromPlayersEnergyAmount = null;
 
-    @JsonProperty("damage_from_players_energy_num_shots")
+    @SerializedName("damage_from_players_energy_num_shots")
     private Long damageFromPlayersEnergyNumShots = null;
 
-    @JsonProperty("damage_from_players_fighter_bomber_amount")
+    @SerializedName("damage_from_players_fighter_bomber_amount")
     private Long damageFromPlayersFighterBomberAmount = null;
 
-    @JsonProperty("damage_from_players_fighter_bomber_num_shots")
+    @SerializedName("damage_from_players_fighter_bomber_num_shots")
     private Long damageFromPlayersFighterBomberNumShots = null;
 
-    @JsonProperty("damage_from_players_fighter_drone_amount")
+    @SerializedName("damage_from_players_fighter_drone_amount")
     private Long damageFromPlayersFighterDroneAmount = null;
 
-    @JsonProperty("damage_from_players_fighter_drone_num_shots")
+    @SerializedName("damage_from_players_fighter_drone_num_shots")
     private Long damageFromPlayersFighterDroneNumShots = null;
 
-    @JsonProperty("damage_from_players_hybrid_amount")
+    @SerializedName("damage_from_players_hybrid_amount")
     private Long damageFromPlayersHybridAmount = null;
 
-    @JsonProperty("damage_from_players_hybrid_num_shots")
+    @SerializedName("damage_from_players_hybrid_num_shots")
     private Long damageFromPlayersHybridNumShots = null;
 
-    @JsonProperty("damage_from_players_missile_amount")
+    @SerializedName("damage_from_players_missile_amount")
     private Long damageFromPlayersMissileAmount = null;
 
-    @JsonProperty("damage_from_players_missile_num_shots")
+    @SerializedName("damage_from_players_missile_num_shots")
     private Long damageFromPlayersMissileNumShots = null;
 
-    @JsonProperty("damage_from_players_projectile_amount")
+    @SerializedName("damage_from_players_projectile_amount")
     private Long damageFromPlayersProjectileAmount = null;
 
-    @JsonProperty("damage_from_players_projectile_num_shots")
+    @SerializedName("damage_from_players_projectile_num_shots")
     private Long damageFromPlayersProjectileNumShots = null;
 
-    @JsonProperty("damage_from_players_smart_bomb_amount")
+    @SerializedName("damage_from_players_smart_bomb_amount")
     private Long damageFromPlayersSmartBombAmount = null;
 
-    @JsonProperty("damage_from_players_smart_bomb_num_shots")
+    @SerializedName("damage_from_players_smart_bomb_num_shots")
     private Long damageFromPlayersSmartBombNumShots = null;
 
-    @JsonProperty("damage_from_players_super_amount")
+    @SerializedName("damage_from_players_super_amount")
     private Long damageFromPlayersSuperAmount = null;
 
-    @JsonProperty("damage_from_players_super_num_shots")
+    @SerializedName("damage_from_players_super_num_shots")
     private Long damageFromPlayersSuperNumShots = null;
 
-    @JsonProperty("damage_from_structures_total_amount")
+    @SerializedName("damage_from_structures_total_amount")
     private Long damageFromStructuresTotalAmount = null;
 
-    @JsonProperty("damage_from_structures_total_num_shots")
+    @SerializedName("damage_from_structures_total_num_shots")
     private Long damageFromStructuresTotalNumShots = null;
 
-    @JsonProperty("damage_to_players_bomb_amount")
+    @SerializedName("damage_to_players_bomb_amount")
     private Long damageToPlayersBombAmount = null;
 
-    @JsonProperty("damage_to_players_bomb_num_shots")
+    @SerializedName("damage_to_players_bomb_num_shots")
     private Long damageToPlayersBombNumShots = null;
 
-    @JsonProperty("damage_to_players_combat_drone_amount")
+    @SerializedName("damage_to_players_combat_drone_amount")
     private Long damageToPlayersCombatDroneAmount = null;
 
-    @JsonProperty("damage_to_players_combat_drone_num_shots")
+    @SerializedName("damage_to_players_combat_drone_num_shots")
     private Long damageToPlayersCombatDroneNumShots = null;
 
-    @JsonProperty("damage_to_players_energy_amount")
+    @SerializedName("damage_to_players_energy_amount")
     private Long damageToPlayersEnergyAmount = null;
 
-    @JsonProperty("damage_to_players_energy_num_shots")
+    @SerializedName("damage_to_players_energy_num_shots")
     private Long damageToPlayersEnergyNumShots = null;
 
-    @JsonProperty("damage_to_players_fighter_bomber_amount")
+    @SerializedName("damage_to_players_fighter_bomber_amount")
     private Long damageToPlayersFighterBomberAmount = null;
 
-    @JsonProperty("damage_to_players_fighter_bomber_num_shots")
+    @SerializedName("damage_to_players_fighter_bomber_num_shots")
     private Long damageToPlayersFighterBomberNumShots = null;
 
-    @JsonProperty("damage_to_players_fighter_drone_amount")
+    @SerializedName("damage_to_players_fighter_drone_amount")
     private Long damageToPlayersFighterDroneAmount = null;
 
-    @JsonProperty("damage_to_players_fighter_drone_num_shots")
+    @SerializedName("damage_to_players_fighter_drone_num_shots")
     private Long damageToPlayersFighterDroneNumShots = null;
 
-    @JsonProperty("damage_to_players_hybrid_amount")
+    @SerializedName("damage_to_players_hybrid_amount")
     private Long damageToPlayersHybridAmount = null;
 
-    @JsonProperty("damage_to_players_hybrid_num_shots")
+    @SerializedName("damage_to_players_hybrid_num_shots")
     private Long damageToPlayersHybridNumShots = null;
 
-    @JsonProperty("damage_to_players_missile_amount")
+    @SerializedName("damage_to_players_missile_amount")
     private Long damageToPlayersMissileAmount = null;
 
-    @JsonProperty("damage_to_players_missile_num_shots")
+    @SerializedName("damage_to_players_missile_num_shots")
     private Long damageToPlayersMissileNumShots = null;
 
-    @JsonProperty("damage_to_players_projectile_amount")
+    @SerializedName("damage_to_players_projectile_amount")
     private Long damageToPlayersProjectileAmount = null;
 
-    @JsonProperty("damage_to_players_projectile_num_shots")
+    @SerializedName("damage_to_players_projectile_num_shots")
     private Long damageToPlayersProjectileNumShots = null;
 
-    @JsonProperty("damage_to_players_smart_bomb_amount")
+    @SerializedName("damage_to_players_smart_bomb_amount")
     private Long damageToPlayersSmartBombAmount = null;
 
-    @JsonProperty("damage_to_players_smart_bomb_num_shots")
+    @SerializedName("damage_to_players_smart_bomb_num_shots")
     private Long damageToPlayersSmartBombNumShots = null;
 
-    @JsonProperty("damage_to_players_super_amount")
+    @SerializedName("damage_to_players_super_amount")
     private Long damageToPlayersSuperAmount = null;
 
-    @JsonProperty("damage_to_players_super_num_shots")
+    @SerializedName("damage_to_players_super_num_shots")
     private Long damageToPlayersSuperNumShots = null;
 
-    @JsonProperty("damage_to_structures_total_amount")
+    @SerializedName("damage_to_structures_total_amount")
     private Long damageToStructuresTotalAmount = null;
 
-    @JsonProperty("damage_to_structures_total_num_shots")
+    @SerializedName("damage_to_structures_total_num_shots")
     private Long damageToStructuresTotalNumShots = null;
 
-    @JsonProperty("deaths_high_sec")
+    @SerializedName("deaths_high_sec")
     private Long deathsHighSec = null;
 
-    @JsonProperty("deaths_low_sec")
+    @SerializedName("deaths_low_sec")
     private Long deathsLowSec = null;
 
-    @JsonProperty("deaths_null_sec")
+    @SerializedName("deaths_null_sec")
     private Long deathsNullSec = null;
 
-    @JsonProperty("deaths_pod_high_sec")
+    @SerializedName("deaths_pod_high_sec")
     private Long deathsPodHighSec = null;
 
-    @JsonProperty("deaths_pod_low_sec")
+    @SerializedName("deaths_pod_low_sec")
     private Long deathsPodLowSec = null;
 
-    @JsonProperty("deaths_pod_null_sec")
+    @SerializedName("deaths_pod_null_sec")
     private Long deathsPodNullSec = null;
 
-    @JsonProperty("deaths_pod_wormhole")
+    @SerializedName("deaths_pod_wormhole")
     private Long deathsPodWormhole = null;
 
-    @JsonProperty("deaths_wormhole")
+    @SerializedName("deaths_wormhole")
     private Long deathsWormhole = null;
 
-    @JsonProperty("drone_engage")
+    @SerializedName("drone_engage")
     private Long droneEngage = null;
 
-    @JsonProperty("dscans")
+    @SerializedName("dscans")
     private Long dscans = null;
 
-    @JsonProperty("duel_requested")
+    @SerializedName("duel_requested")
     private Long duelRequested = null;
 
-    @JsonProperty("engagement_register")
+    @SerializedName("engagement_register")
     private Long engagementRegister = null;
 
-    @JsonProperty("kills_assists")
+    @SerializedName("kills_assists")
     private Long killsAssists = null;
 
-    @JsonProperty("kills_high_sec")
+    @SerializedName("kills_high_sec")
     private Long killsHighSec = null;
 
-    @JsonProperty("kills_low_sec")
+    @SerializedName("kills_low_sec")
     private Long killsLowSec = null;
 
-    @JsonProperty("kills_null_sec")
+    @SerializedName("kills_null_sec")
     private Long killsNullSec = null;
 
-    @JsonProperty("kills_pod_high_sec")
+    @SerializedName("kills_pod_high_sec")
     private Long killsPodHighSec = null;
 
-    @JsonProperty("kills_pod_low_sec")
+    @SerializedName("kills_pod_low_sec")
     private Long killsPodLowSec = null;
 
-    @JsonProperty("kills_pod_null_sec")
+    @SerializedName("kills_pod_null_sec")
     private Long killsPodNullSec = null;
 
-    @JsonProperty("kills_pod_wormhole")
+    @SerializedName("kills_pod_wormhole")
     private Long killsPodWormhole = null;
 
-    @JsonProperty("kills_wormhole")
+    @SerializedName("kills_wormhole")
     private Long killsWormhole = null;
 
-    @JsonProperty("npc_flag_set")
+    @SerializedName("npc_flag_set")
     private Long npcFlagSet = null;
 
-    @JsonProperty("probe_scans")
+    @SerializedName("probe_scans")
     private Long probeScans = null;
 
-    @JsonProperty("pvp_flag_set")
+    @SerializedName("pvp_flag_set")
     private Long pvpFlagSet = null;
 
-    @JsonProperty("repair_armor_by_remote_amount")
+    @SerializedName("repair_armor_by_remote_amount")
     private Long repairArmorByRemoteAmount = null;
 
-    @JsonProperty("repair_armor_remote_amount")
+    @SerializedName("repair_armor_remote_amount")
     private Long repairArmorRemoteAmount = null;
 
-    @JsonProperty("repair_armor_self_amount")
+    @SerializedName("repair_armor_self_amount")
     private Long repairArmorSelfAmount = null;
 
-    @JsonProperty("repair_capacitor_by_remote_amount")
+    @SerializedName("repair_capacitor_by_remote_amount")
     private Long repairCapacitorByRemoteAmount = null;
 
-    @JsonProperty("repair_capacitor_remote_amount")
+    @SerializedName("repair_capacitor_remote_amount")
     private Long repairCapacitorRemoteAmount = null;
 
-    @JsonProperty("repair_capacitor_self_amount")
+    @SerializedName("repair_capacitor_self_amount")
     private Long repairCapacitorSelfAmount = null;
 
-    @JsonProperty("repair_hull_by_remote_amount")
+    @SerializedName("repair_hull_by_remote_amount")
     private Long repairHullByRemoteAmount = null;
 
-    @JsonProperty("repair_hull_remote_amount")
+    @SerializedName("repair_hull_remote_amount")
     private Long repairHullRemoteAmount = null;
 
-    @JsonProperty("repair_hull_self_amount")
+    @SerializedName("repair_hull_self_amount")
     private Long repairHullSelfAmount = null;
 
-    @JsonProperty("repair_shield_by_remote_amount")
+    @SerializedName("repair_shield_by_remote_amount")
     private Long repairShieldByRemoteAmount = null;
 
-    @JsonProperty("repair_shield_remote_amount")
+    @SerializedName("repair_shield_remote_amount")
     private Long repairShieldRemoteAmount = null;
 
-    @JsonProperty("repair_shield_self_amount")
+    @SerializedName("repair_shield_self_amount")
     private Long repairShieldSelfAmount = null;
 
-    @JsonProperty("self_destructs")
+    @SerializedName("self_destructs")
     private Long selfDestructs = null;
 
-    @JsonProperty("warp_scramble_pc")
+    @SerializedName("warp_scramble_pc")
     private Long warpScramblePc = null;
 
-    @JsonProperty("warp_scrambledby_npc")
+    @SerializedName("warp_scrambledby_npc")
     private Long warpScrambledbyNpc = null;
 
-    @JsonProperty("warp_scrambledby_pc")
+    @SerializedName("warp_scrambledby_pc")
     private Long warpScrambledbyPc = null;
 
-    @JsonProperty("weapon_flag_set")
+    @SerializedName("weapon_flag_set")
     private Long weaponFlagSet = null;
 
-    @JsonProperty("webifiedby_npc")
+    @SerializedName("webifiedby_npc")
     private Long webifiedbyNpc = null;
 
-    @JsonProperty("webifiedby_pc")
+    @SerializedName("webifiedby_pc")
     private Long webifiedbyPc = null;
 
-    @JsonProperty("webifying_pc")
+    @SerializedName("webifying_pc")
     private Long webifyingPc = null;
 
     public CharacterStatsCombat capDrainedbyNpc(Long capDrainedbyNpc) {
@@ -317,7 +321,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return capDrainedbyNpc
      **/
-    @ApiModelProperty(example = "null", value = "cap_drainedby_npc integer")
+    @ApiModelProperty(value = "cap_drainedby_npc integer")
     public Long getCapDrainedbyNpc() {
         return capDrainedbyNpc;
     }
@@ -336,7 +340,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return capDrainedbyPc
      **/
-    @ApiModelProperty(example = "null", value = "cap_drainedby_pc integer")
+    @ApiModelProperty(value = "cap_drainedby_pc integer")
     public Long getCapDrainedbyPc() {
         return capDrainedbyPc;
     }
@@ -355,7 +359,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return capDrainingPc
      **/
-    @ApiModelProperty(example = "null", value = "cap_draining_pc integer")
+    @ApiModelProperty(value = "cap_draining_pc integer")
     public Long getCapDrainingPc() {
         return capDrainingPc;
     }
@@ -374,7 +378,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return criminalFlagSet
      **/
-    @ApiModelProperty(example = "null", value = "criminal_flag_set integer")
+    @ApiModelProperty(value = "criminal_flag_set integer")
     public Long getCriminalFlagSet() {
         return criminalFlagSet;
     }
@@ -393,7 +397,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromNpCsAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_np_cs_amount integer")
+    @ApiModelProperty(value = "damage_from_np_cs_amount integer")
     public Long getDamageFromNpCsAmount() {
         return damageFromNpCsAmount;
     }
@@ -412,7 +416,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromNpCsNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_np_cs_num_shots integer")
+    @ApiModelProperty(value = "damage_from_np_cs_num_shots integer")
     public Long getDamageFromNpCsNumShots() {
         return damageFromNpCsNumShots;
     }
@@ -431,7 +435,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersBombAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_bomb_amount integer")
+    @ApiModelProperty(value = "damage_from_players_bomb_amount integer")
     public Long getDamageFromPlayersBombAmount() {
         return damageFromPlayersBombAmount;
     }
@@ -450,7 +454,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersBombNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_bomb_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_bomb_num_shots integer")
     public Long getDamageFromPlayersBombNumShots() {
         return damageFromPlayersBombNumShots;
     }
@@ -469,7 +473,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersCombatDroneAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_combat_drone_amount integer")
+    @ApiModelProperty(value = "damage_from_players_combat_drone_amount integer")
     public Long getDamageFromPlayersCombatDroneAmount() {
         return damageFromPlayersCombatDroneAmount;
     }
@@ -488,7 +492,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersCombatDroneNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_combat_drone_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_combat_drone_num_shots integer")
     public Long getDamageFromPlayersCombatDroneNumShots() {
         return damageFromPlayersCombatDroneNumShots;
     }
@@ -507,7 +511,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersEnergyAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_energy_amount integer")
+    @ApiModelProperty(value = "damage_from_players_energy_amount integer")
     public Long getDamageFromPlayersEnergyAmount() {
         return damageFromPlayersEnergyAmount;
     }
@@ -526,7 +530,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersEnergyNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_energy_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_energy_num_shots integer")
     public Long getDamageFromPlayersEnergyNumShots() {
         return damageFromPlayersEnergyNumShots;
     }
@@ -545,7 +549,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersFighterBomberAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_fighter_bomber_amount integer")
+    @ApiModelProperty(value = "damage_from_players_fighter_bomber_amount integer")
     public Long getDamageFromPlayersFighterBomberAmount() {
         return damageFromPlayersFighterBomberAmount;
     }
@@ -564,7 +568,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersFighterBomberNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_fighter_bomber_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_fighter_bomber_num_shots integer")
     public Long getDamageFromPlayersFighterBomberNumShots() {
         return damageFromPlayersFighterBomberNumShots;
     }
@@ -583,7 +587,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersFighterDroneAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_fighter_drone_amount integer")
+    @ApiModelProperty(value = "damage_from_players_fighter_drone_amount integer")
     public Long getDamageFromPlayersFighterDroneAmount() {
         return damageFromPlayersFighterDroneAmount;
     }
@@ -602,7 +606,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersFighterDroneNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_fighter_drone_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_fighter_drone_num_shots integer")
     public Long getDamageFromPlayersFighterDroneNumShots() {
         return damageFromPlayersFighterDroneNumShots;
     }
@@ -621,7 +625,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersHybridAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_hybrid_amount integer")
+    @ApiModelProperty(value = "damage_from_players_hybrid_amount integer")
     public Long getDamageFromPlayersHybridAmount() {
         return damageFromPlayersHybridAmount;
     }
@@ -640,7 +644,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersHybridNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_hybrid_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_hybrid_num_shots integer")
     public Long getDamageFromPlayersHybridNumShots() {
         return damageFromPlayersHybridNumShots;
     }
@@ -659,7 +663,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersMissileAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_missile_amount integer")
+    @ApiModelProperty(value = "damage_from_players_missile_amount integer")
     public Long getDamageFromPlayersMissileAmount() {
         return damageFromPlayersMissileAmount;
     }
@@ -678,7 +682,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersMissileNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_missile_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_missile_num_shots integer")
     public Long getDamageFromPlayersMissileNumShots() {
         return damageFromPlayersMissileNumShots;
     }
@@ -697,7 +701,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersProjectileAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_projectile_amount integer")
+    @ApiModelProperty(value = "damage_from_players_projectile_amount integer")
     public Long getDamageFromPlayersProjectileAmount() {
         return damageFromPlayersProjectileAmount;
     }
@@ -716,7 +720,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersProjectileNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_projectile_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_projectile_num_shots integer")
     public Long getDamageFromPlayersProjectileNumShots() {
         return damageFromPlayersProjectileNumShots;
     }
@@ -735,7 +739,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersSmartBombAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_smart_bomb_amount integer")
+    @ApiModelProperty(value = "damage_from_players_smart_bomb_amount integer")
     public Long getDamageFromPlayersSmartBombAmount() {
         return damageFromPlayersSmartBombAmount;
     }
@@ -754,7 +758,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersSmartBombNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_smart_bomb_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_smart_bomb_num_shots integer")
     public Long getDamageFromPlayersSmartBombNumShots() {
         return damageFromPlayersSmartBombNumShots;
     }
@@ -773,7 +777,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersSuperAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_super_amount integer")
+    @ApiModelProperty(value = "damage_from_players_super_amount integer")
     public Long getDamageFromPlayersSuperAmount() {
         return damageFromPlayersSuperAmount;
     }
@@ -792,7 +796,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromPlayersSuperNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_players_super_num_shots integer")
+    @ApiModelProperty(value = "damage_from_players_super_num_shots integer")
     public Long getDamageFromPlayersSuperNumShots() {
         return damageFromPlayersSuperNumShots;
     }
@@ -811,7 +815,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromStructuresTotalAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_structures_total_amount integer")
+    @ApiModelProperty(value = "damage_from_structures_total_amount integer")
     public Long getDamageFromStructuresTotalAmount() {
         return damageFromStructuresTotalAmount;
     }
@@ -830,7 +834,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageFromStructuresTotalNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_from_structures_total_num_shots integer")
+    @ApiModelProperty(value = "damage_from_structures_total_num_shots integer")
     public Long getDamageFromStructuresTotalNumShots() {
         return damageFromStructuresTotalNumShots;
     }
@@ -849,7 +853,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersBombAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_bomb_amount integer")
+    @ApiModelProperty(value = "damage_to_players_bomb_amount integer")
     public Long getDamageToPlayersBombAmount() {
         return damageToPlayersBombAmount;
     }
@@ -868,7 +872,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersBombNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_bomb_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_bomb_num_shots integer")
     public Long getDamageToPlayersBombNumShots() {
         return damageToPlayersBombNumShots;
     }
@@ -887,7 +891,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersCombatDroneAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_combat_drone_amount integer")
+    @ApiModelProperty(value = "damage_to_players_combat_drone_amount integer")
     public Long getDamageToPlayersCombatDroneAmount() {
         return damageToPlayersCombatDroneAmount;
     }
@@ -906,7 +910,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersCombatDroneNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_combat_drone_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_combat_drone_num_shots integer")
     public Long getDamageToPlayersCombatDroneNumShots() {
         return damageToPlayersCombatDroneNumShots;
     }
@@ -925,7 +929,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersEnergyAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_energy_amount integer")
+    @ApiModelProperty(value = "damage_to_players_energy_amount integer")
     public Long getDamageToPlayersEnergyAmount() {
         return damageToPlayersEnergyAmount;
     }
@@ -944,7 +948,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersEnergyNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_energy_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_energy_num_shots integer")
     public Long getDamageToPlayersEnergyNumShots() {
         return damageToPlayersEnergyNumShots;
     }
@@ -963,7 +967,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersFighterBomberAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_fighter_bomber_amount integer")
+    @ApiModelProperty(value = "damage_to_players_fighter_bomber_amount integer")
     public Long getDamageToPlayersFighterBomberAmount() {
         return damageToPlayersFighterBomberAmount;
     }
@@ -982,7 +986,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersFighterBomberNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_fighter_bomber_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_fighter_bomber_num_shots integer")
     public Long getDamageToPlayersFighterBomberNumShots() {
         return damageToPlayersFighterBomberNumShots;
     }
@@ -1001,7 +1005,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersFighterDroneAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_fighter_drone_amount integer")
+    @ApiModelProperty(value = "damage_to_players_fighter_drone_amount integer")
     public Long getDamageToPlayersFighterDroneAmount() {
         return damageToPlayersFighterDroneAmount;
     }
@@ -1020,7 +1024,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersFighterDroneNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_fighter_drone_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_fighter_drone_num_shots integer")
     public Long getDamageToPlayersFighterDroneNumShots() {
         return damageToPlayersFighterDroneNumShots;
     }
@@ -1039,7 +1043,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersHybridAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_hybrid_amount integer")
+    @ApiModelProperty(value = "damage_to_players_hybrid_amount integer")
     public Long getDamageToPlayersHybridAmount() {
         return damageToPlayersHybridAmount;
     }
@@ -1058,7 +1062,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersHybridNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_hybrid_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_hybrid_num_shots integer")
     public Long getDamageToPlayersHybridNumShots() {
         return damageToPlayersHybridNumShots;
     }
@@ -1077,7 +1081,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersMissileAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_missile_amount integer")
+    @ApiModelProperty(value = "damage_to_players_missile_amount integer")
     public Long getDamageToPlayersMissileAmount() {
         return damageToPlayersMissileAmount;
     }
@@ -1096,7 +1100,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersMissileNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_missile_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_missile_num_shots integer")
     public Long getDamageToPlayersMissileNumShots() {
         return damageToPlayersMissileNumShots;
     }
@@ -1115,7 +1119,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersProjectileAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_projectile_amount integer")
+    @ApiModelProperty(value = "damage_to_players_projectile_amount integer")
     public Long getDamageToPlayersProjectileAmount() {
         return damageToPlayersProjectileAmount;
     }
@@ -1134,7 +1138,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersProjectileNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_projectile_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_projectile_num_shots integer")
     public Long getDamageToPlayersProjectileNumShots() {
         return damageToPlayersProjectileNumShots;
     }
@@ -1153,7 +1157,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersSmartBombAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_smart_bomb_amount integer")
+    @ApiModelProperty(value = "damage_to_players_smart_bomb_amount integer")
     public Long getDamageToPlayersSmartBombAmount() {
         return damageToPlayersSmartBombAmount;
     }
@@ -1172,7 +1176,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersSmartBombNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_smart_bomb_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_smart_bomb_num_shots integer")
     public Long getDamageToPlayersSmartBombNumShots() {
         return damageToPlayersSmartBombNumShots;
     }
@@ -1191,7 +1195,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersSuperAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_super_amount integer")
+    @ApiModelProperty(value = "damage_to_players_super_amount integer")
     public Long getDamageToPlayersSuperAmount() {
         return damageToPlayersSuperAmount;
     }
@@ -1210,7 +1214,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToPlayersSuperNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_players_super_num_shots integer")
+    @ApiModelProperty(value = "damage_to_players_super_num_shots integer")
     public Long getDamageToPlayersSuperNumShots() {
         return damageToPlayersSuperNumShots;
     }
@@ -1229,7 +1233,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToStructuresTotalAmount
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_structures_total_amount integer")
+    @ApiModelProperty(value = "damage_to_structures_total_amount integer")
     public Long getDamageToStructuresTotalAmount() {
         return damageToStructuresTotalAmount;
     }
@@ -1248,7 +1252,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return damageToStructuresTotalNumShots
      **/
-    @ApiModelProperty(example = "null", value = "damage_to_structures_total_num_shots integer")
+    @ApiModelProperty(value = "damage_to_structures_total_num_shots integer")
     public Long getDamageToStructuresTotalNumShots() {
         return damageToStructuresTotalNumShots;
     }
@@ -1267,7 +1271,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsHighSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_high_sec integer")
+    @ApiModelProperty(value = "deaths_high_sec integer")
     public Long getDeathsHighSec() {
         return deathsHighSec;
     }
@@ -1286,7 +1290,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsLowSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_low_sec integer")
+    @ApiModelProperty(value = "deaths_low_sec integer")
     public Long getDeathsLowSec() {
         return deathsLowSec;
     }
@@ -1305,7 +1309,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsNullSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_null_sec integer")
+    @ApiModelProperty(value = "deaths_null_sec integer")
     public Long getDeathsNullSec() {
         return deathsNullSec;
     }
@@ -1324,7 +1328,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsPodHighSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_pod_high_sec integer")
+    @ApiModelProperty(value = "deaths_pod_high_sec integer")
     public Long getDeathsPodHighSec() {
         return deathsPodHighSec;
     }
@@ -1343,7 +1347,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsPodLowSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_pod_low_sec integer")
+    @ApiModelProperty(value = "deaths_pod_low_sec integer")
     public Long getDeathsPodLowSec() {
         return deathsPodLowSec;
     }
@@ -1362,7 +1366,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsPodNullSec
      **/
-    @ApiModelProperty(example = "null", value = "deaths_pod_null_sec integer")
+    @ApiModelProperty(value = "deaths_pod_null_sec integer")
     public Long getDeathsPodNullSec() {
         return deathsPodNullSec;
     }
@@ -1381,7 +1385,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsPodWormhole
      **/
-    @ApiModelProperty(example = "null", value = "deaths_pod_wormhole integer")
+    @ApiModelProperty(value = "deaths_pod_wormhole integer")
     public Long getDeathsPodWormhole() {
         return deathsPodWormhole;
     }
@@ -1400,7 +1404,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return deathsWormhole
      **/
-    @ApiModelProperty(example = "null", value = "deaths_wormhole integer")
+    @ApiModelProperty(value = "deaths_wormhole integer")
     public Long getDeathsWormhole() {
         return deathsWormhole;
     }
@@ -1419,7 +1423,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return droneEngage
      **/
-    @ApiModelProperty(example = "null", value = "drone_engage integer")
+    @ApiModelProperty(value = "drone_engage integer")
     public Long getDroneEngage() {
         return droneEngage;
     }
@@ -1438,7 +1442,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return dscans
      **/
-    @ApiModelProperty(example = "null", value = "dscans integer")
+    @ApiModelProperty(value = "dscans integer")
     public Long getDscans() {
         return dscans;
     }
@@ -1457,7 +1461,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return duelRequested
      **/
-    @ApiModelProperty(example = "null", value = "duel_requested integer")
+    @ApiModelProperty(value = "duel_requested integer")
     public Long getDuelRequested() {
         return duelRequested;
     }
@@ -1476,7 +1480,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return engagementRegister
      **/
-    @ApiModelProperty(example = "null", value = "engagement_register integer")
+    @ApiModelProperty(value = "engagement_register integer")
     public Long getEngagementRegister() {
         return engagementRegister;
     }
@@ -1495,7 +1499,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsAssists
      **/
-    @ApiModelProperty(example = "null", value = "kills_assists integer")
+    @ApiModelProperty(value = "kills_assists integer")
     public Long getKillsAssists() {
         return killsAssists;
     }
@@ -1514,7 +1518,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsHighSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_high_sec integer")
+    @ApiModelProperty(value = "kills_high_sec integer")
     public Long getKillsHighSec() {
         return killsHighSec;
     }
@@ -1533,7 +1537,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsLowSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_low_sec integer")
+    @ApiModelProperty(value = "kills_low_sec integer")
     public Long getKillsLowSec() {
         return killsLowSec;
     }
@@ -1552,7 +1556,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsNullSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_null_sec integer")
+    @ApiModelProperty(value = "kills_null_sec integer")
     public Long getKillsNullSec() {
         return killsNullSec;
     }
@@ -1571,7 +1575,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsPodHighSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_pod_high_sec integer")
+    @ApiModelProperty(value = "kills_pod_high_sec integer")
     public Long getKillsPodHighSec() {
         return killsPodHighSec;
     }
@@ -1590,7 +1594,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsPodLowSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_pod_low_sec integer")
+    @ApiModelProperty(value = "kills_pod_low_sec integer")
     public Long getKillsPodLowSec() {
         return killsPodLowSec;
     }
@@ -1609,7 +1613,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsPodNullSec
      **/
-    @ApiModelProperty(example = "null", value = "kills_pod_null_sec integer")
+    @ApiModelProperty(value = "kills_pod_null_sec integer")
     public Long getKillsPodNullSec() {
         return killsPodNullSec;
     }
@@ -1628,7 +1632,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsPodWormhole
      **/
-    @ApiModelProperty(example = "null", value = "kills_pod_wormhole integer")
+    @ApiModelProperty(value = "kills_pod_wormhole integer")
     public Long getKillsPodWormhole() {
         return killsPodWormhole;
     }
@@ -1647,7 +1651,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return killsWormhole
      **/
-    @ApiModelProperty(example = "null", value = "kills_wormhole integer")
+    @ApiModelProperty(value = "kills_wormhole integer")
     public Long getKillsWormhole() {
         return killsWormhole;
     }
@@ -1666,7 +1670,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return npcFlagSet
      **/
-    @ApiModelProperty(example = "null", value = "npc_flag_set integer")
+    @ApiModelProperty(value = "npc_flag_set integer")
     public Long getNpcFlagSet() {
         return npcFlagSet;
     }
@@ -1685,7 +1689,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return probeScans
      **/
-    @ApiModelProperty(example = "null", value = "probe_scans integer")
+    @ApiModelProperty(value = "probe_scans integer")
     public Long getProbeScans() {
         return probeScans;
     }
@@ -1704,7 +1708,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return pvpFlagSet
      **/
-    @ApiModelProperty(example = "null", value = "pvp_flag_set integer")
+    @ApiModelProperty(value = "pvp_flag_set integer")
     public Long getPvpFlagSet() {
         return pvpFlagSet;
     }
@@ -1723,7 +1727,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairArmorByRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_armor_by_remote_amount integer")
+    @ApiModelProperty(value = "repair_armor_by_remote_amount integer")
     public Long getRepairArmorByRemoteAmount() {
         return repairArmorByRemoteAmount;
     }
@@ -1742,7 +1746,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairArmorRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_armor_remote_amount integer")
+    @ApiModelProperty(value = "repair_armor_remote_amount integer")
     public Long getRepairArmorRemoteAmount() {
         return repairArmorRemoteAmount;
     }
@@ -1761,7 +1765,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairArmorSelfAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_armor_self_amount integer")
+    @ApiModelProperty(value = "repair_armor_self_amount integer")
     public Long getRepairArmorSelfAmount() {
         return repairArmorSelfAmount;
     }
@@ -1780,7 +1784,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairCapacitorByRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_capacitor_by_remote_amount integer")
+    @ApiModelProperty(value = "repair_capacitor_by_remote_amount integer")
     public Long getRepairCapacitorByRemoteAmount() {
         return repairCapacitorByRemoteAmount;
     }
@@ -1799,7 +1803,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairCapacitorRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_capacitor_remote_amount integer")
+    @ApiModelProperty(value = "repair_capacitor_remote_amount integer")
     public Long getRepairCapacitorRemoteAmount() {
         return repairCapacitorRemoteAmount;
     }
@@ -1818,7 +1822,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairCapacitorSelfAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_capacitor_self_amount integer")
+    @ApiModelProperty(value = "repair_capacitor_self_amount integer")
     public Long getRepairCapacitorSelfAmount() {
         return repairCapacitorSelfAmount;
     }
@@ -1837,7 +1841,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairHullByRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_hull_by_remote_amount integer")
+    @ApiModelProperty(value = "repair_hull_by_remote_amount integer")
     public Long getRepairHullByRemoteAmount() {
         return repairHullByRemoteAmount;
     }
@@ -1856,7 +1860,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairHullRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_hull_remote_amount integer")
+    @ApiModelProperty(value = "repair_hull_remote_amount integer")
     public Long getRepairHullRemoteAmount() {
         return repairHullRemoteAmount;
     }
@@ -1875,7 +1879,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairHullSelfAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_hull_self_amount integer")
+    @ApiModelProperty(value = "repair_hull_self_amount integer")
     public Long getRepairHullSelfAmount() {
         return repairHullSelfAmount;
     }
@@ -1894,7 +1898,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairShieldByRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_shield_by_remote_amount integer")
+    @ApiModelProperty(value = "repair_shield_by_remote_amount integer")
     public Long getRepairShieldByRemoteAmount() {
         return repairShieldByRemoteAmount;
     }
@@ -1913,7 +1917,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairShieldRemoteAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_shield_remote_amount integer")
+    @ApiModelProperty(value = "repair_shield_remote_amount integer")
     public Long getRepairShieldRemoteAmount() {
         return repairShieldRemoteAmount;
     }
@@ -1932,7 +1936,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return repairShieldSelfAmount
      **/
-    @ApiModelProperty(example = "null", value = "repair_shield_self_amount integer")
+    @ApiModelProperty(value = "repair_shield_self_amount integer")
     public Long getRepairShieldSelfAmount() {
         return repairShieldSelfAmount;
     }
@@ -1951,7 +1955,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return selfDestructs
      **/
-    @ApiModelProperty(example = "null", value = "self_destructs integer")
+    @ApiModelProperty(value = "self_destructs integer")
     public Long getSelfDestructs() {
         return selfDestructs;
     }
@@ -1970,7 +1974,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return warpScramblePc
      **/
-    @ApiModelProperty(example = "null", value = "warp_scramble_pc integer")
+    @ApiModelProperty(value = "warp_scramble_pc integer")
     public Long getWarpScramblePc() {
         return warpScramblePc;
     }
@@ -1989,7 +1993,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return warpScrambledbyNpc
      **/
-    @ApiModelProperty(example = "null", value = "warp_scrambledby_npc integer")
+    @ApiModelProperty(value = "warp_scrambledby_npc integer")
     public Long getWarpScrambledbyNpc() {
         return warpScrambledbyNpc;
     }
@@ -2008,7 +2012,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return warpScrambledbyPc
      **/
-    @ApiModelProperty(example = "null", value = "warp_scrambledby_pc integer")
+    @ApiModelProperty(value = "warp_scrambledby_pc integer")
     public Long getWarpScrambledbyPc() {
         return warpScrambledbyPc;
     }
@@ -2027,7 +2031,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return weaponFlagSet
      **/
-    @ApiModelProperty(example = "null", value = "weapon_flag_set integer")
+    @ApiModelProperty(value = "weapon_flag_set integer")
     public Long getWeaponFlagSet() {
         return weaponFlagSet;
     }
@@ -2046,7 +2050,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return webifiedbyNpc
      **/
-    @ApiModelProperty(example = "null", value = "webifiedby_npc integer")
+    @ApiModelProperty(value = "webifiedby_npc integer")
     public Long getWebifiedbyNpc() {
         return webifiedbyNpc;
     }
@@ -2065,7 +2069,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return webifiedbyPc
      **/
-    @ApiModelProperty(example = "null", value = "webifiedby_pc integer")
+    @ApiModelProperty(value = "webifiedby_pc integer")
     public Long getWebifiedbyPc() {
         return webifiedbyPc;
     }
@@ -2084,7 +2088,7 @@ public class CharacterStatsCombat implements Serializable {
      * 
      * @return webifyingPc
      **/
-    @ApiModelProperty(example = "null", value = "webifying_pc integer")
+    @ApiModelProperty(value = "webifying_pc integer")
     public Long getWebifyingPc() {
         return webifyingPc;
     }

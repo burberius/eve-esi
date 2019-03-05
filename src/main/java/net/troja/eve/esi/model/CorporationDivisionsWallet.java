@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,10 +29,10 @@ import java.io.Serializable;
 public class CorporationDivisionsWallet implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("division")
+    @SerializedName("division")
     private Integer division = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
     public CorporationDivisionsWallet division(Integer division) {
@@ -41,7 +45,7 @@ public class CorporationDivisionsWallet implements Serializable {
      * 
      * @return division
      **/
-    @ApiModelProperty(example = "null", value = "division integer")
+    @ApiModelProperty(value = "division integer")
     public Integer getDivision() {
         return division;
     }
@@ -60,7 +64,7 @@ public class CorporationDivisionsWallet implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", value = "name string")
+    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }

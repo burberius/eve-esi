@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import net.troja.eve.esi.model.CharacterAssetsLocationsPosition;
 import java.io.Serializable;
 
@@ -26,10 +30,10 @@ import java.io.Serializable;
 public class CharacterAssetsLocationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("item_id")
+    @SerializedName("item_id")
     private Long itemId = null;
 
-    @JsonProperty("position")
+    @SerializedName("position")
     private CharacterAssetsLocationsPosition position = null;
 
     public CharacterAssetsLocationsResponse itemId(Long itemId) {
@@ -42,7 +46,7 @@ public class CharacterAssetsLocationsResponse implements Serializable {
      * 
      * @return itemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "item_id integer")
+    @ApiModelProperty(required = true, value = "item_id integer")
     public Long getItemId() {
         return itemId;
     }
@@ -61,7 +65,7 @@ public class CharacterAssetsLocationsResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(required = true, value = "")
     public CharacterAssetsLocationsPosition getPosition() {
         return position;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class CharacterStatsCharacter implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("days_of_activity")
+    @SerializedName("days_of_activity")
     private Long daysOfActivity = null;
 
-    @JsonProperty("minutes")
+    @SerializedName("minutes")
     private Long minutes = null;
 
-    @JsonProperty("sessions_started")
+    @SerializedName("sessions_started")
     private Long sessionsStarted = null;
 
     public CharacterStatsCharacter daysOfActivity(Long daysOfActivity) {
@@ -44,7 +48,7 @@ public class CharacterStatsCharacter implements Serializable {
      * 
      * @return daysOfActivity
      **/
-    @ApiModelProperty(example = "null", value = "days_of_activity integer")
+    @ApiModelProperty(value = "days_of_activity integer")
     public Long getDaysOfActivity() {
         return daysOfActivity;
     }
@@ -63,7 +67,7 @@ public class CharacterStatsCharacter implements Serializable {
      * 
      * @return minutes
      **/
-    @ApiModelProperty(example = "null", value = "minutes integer")
+    @ApiModelProperty(value = "minutes integer")
     public Long getMinutes() {
         return minutes;
     }
@@ -82,7 +86,7 @@ public class CharacterStatsCharacter implements Serializable {
      * 
      * @return sessionsStarted
      **/
-    @ApiModelProperty(example = "null", value = "sessions_started integer")
+    @ApiModelProperty(value = "sessions_started integer")
     public Long getSessionsStarted() {
         return sessionsStarted;
     }

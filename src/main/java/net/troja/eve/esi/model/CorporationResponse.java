@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,46 +30,46 @@ import java.io.Serializable;
 public class CorporationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_id")
+    @SerializedName("alliance_id")
     private Integer allianceId = null;
 
-    @JsonProperty("ceo_id")
+    @SerializedName("ceo_id")
     private Integer ceoId = null;
 
-    @JsonProperty("creator_id")
+    @SerializedName("creator_id")
     private Integer creatorId = null;
 
-    @JsonProperty("date_founded")
+    @SerializedName("date_founded")
     private OffsetDateTime dateFounded = null;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("faction_id")
+    @SerializedName("faction_id")
     private Integer factionId = null;
 
-    @JsonProperty("home_station_id")
+    @SerializedName("home_station_id")
     private Integer homeStationId = null;
 
-    @JsonProperty("member_count")
+    @SerializedName("member_count")
     private Integer memberCount = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("shares")
+    @SerializedName("shares")
     private Long shares = null;
 
-    @JsonProperty("tax_rate")
+    @SerializedName("tax_rate")
     private Float taxRate = null;
 
-    @JsonProperty("ticker")
+    @SerializedName("ticker")
     private String ticker = null;
 
-    @JsonProperty("url")
+    @SerializedName("url")
     private String url = null;
 
-    @JsonProperty("war_eligible")
+    @SerializedName("war_eligible")
     private Boolean warEligible = null;
 
     public CorporationResponse allianceId(Integer allianceId) {
@@ -78,7 +82,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return allianceId
      **/
-    @ApiModelProperty(example = "null", value = "ID of the alliance that corporation is a member of, if any")
+    @ApiModelProperty(value = "ID of the alliance that corporation is a member of, if any")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -97,7 +101,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ceoId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ceo_id integer")
+    @ApiModelProperty(required = true, value = "ceo_id integer")
     public Integer getCeoId() {
         return ceoId;
     }
@@ -116,7 +120,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return creatorId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "creator_id integer")
+    @ApiModelProperty(required = true, value = "creator_id integer")
     public Integer getCreatorId() {
         return creatorId;
     }
@@ -135,7 +139,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return dateFounded
      **/
-    @ApiModelProperty(example = "null", value = "date_founded string")
+    @ApiModelProperty(value = "date_founded string")
     public OffsetDateTime getDateFounded() {
         return dateFounded;
     }
@@ -154,7 +158,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", value = "description string")
+    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -173,7 +177,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(example = "null", value = "faction_id integer")
+    @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -192,7 +196,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return homeStationId
      **/
-    @ApiModelProperty(example = "null", value = "home_station_id integer")
+    @ApiModelProperty(value = "home_station_id integer")
     public Integer getHomeStationId() {
         return homeStationId;
     }
@@ -211,7 +215,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return memberCount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "member_count integer")
+    @ApiModelProperty(required = true, value = "member_count integer")
     public Integer getMemberCount() {
         return memberCount;
     }
@@ -230,7 +234,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "the full name of the corporation")
+    @ApiModelProperty(required = true, value = "the full name of the corporation")
     public String getName() {
         return name;
     }
@@ -249,7 +253,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return shares
      **/
-    @ApiModelProperty(example = "null", value = "shares integer")
+    @ApiModelProperty(value = "shares integer")
     public Long getShares() {
         return shares;
     }
@@ -268,7 +272,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return taxRate
      **/
-    @ApiModelProperty(example = "null", required = true, value = "tax_rate number")
+    @ApiModelProperty(required = true, value = "tax_rate number")
     public Float getTaxRate() {
         return taxRate;
     }
@@ -287,7 +291,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ticker
      **/
-    @ApiModelProperty(example = "null", required = true, value = "the short name of the corporation")
+    @ApiModelProperty(required = true, value = "the short name of the corporation")
     public String getTicker() {
         return ticker;
     }
@@ -306,7 +310,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return url
      **/
-    @ApiModelProperty(example = "null", value = "url string")
+    @ApiModelProperty(value = "url string")
     public String getUrl() {
         return url;
     }
@@ -325,8 +329,8 @@ public class CorporationResponse implements Serializable {
      * 
      * @return warEligible
      **/
-    @ApiModelProperty(example = "null", value = "war_eligible boolean")
-    public Boolean getWarEligible() {
+    @ApiModelProperty(value = "war_eligible boolean")
+    public Boolean isWarEligible() {
         return warEligible;
     }
 

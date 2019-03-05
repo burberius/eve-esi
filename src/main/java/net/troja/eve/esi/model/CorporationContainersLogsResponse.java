@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -29,6 +33,7 @@ public class CorporationContainersLogsResponse implements Serializable {
     /**
      * action string
      */
+    @JsonAdapter(ActionEnum.Adapter.class)
     public enum ActionEnum {
         ADD("add"),
 
@@ -56,12 +61,15 @@ public class CorporationContainersLogsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ActionEnum fromValue(String text) {
             for (ActionEnum b : ActionEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -70,23 +78,37 @@ public class CorporationContainersLogsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ActionEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ActionEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ActionEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("action")
+    @SerializedName("action")
     private ActionEnum action = null;
 
-    @JsonProperty("character_id")
+    @SerializedName("character_id")
     private Integer characterId = null;
 
-    @JsonProperty("container_id")
+    @SerializedName("container_id")
     private Long containerId = null;
 
-    @JsonProperty("container_type_id")
+    @SerializedName("container_type_id")
     private Integer containerTypeId = null;
 
     /**
      * location_flag string
      */
+    @JsonAdapter(LocationFlagEnum.Adapter.class)
     public enum LocationFlagEnum {
         ASSETSAFETY("AssetSafety"),
 
@@ -324,12 +346,15 @@ public class CorporationContainersLogsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static LocationFlagEnum fromValue(String text) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -338,26 +363,40 @@ public class CorporationContainersLogsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LocationFlagEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("location_flag")
+    @SerializedName("location_flag")
     private LocationFlagEnum locationFlag = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("logged_at")
+    @SerializedName("logged_at")
     private OffsetDateTime loggedAt = null;
 
-    @JsonProperty("new_config_bitmask")
+    @SerializedName("new_config_bitmask")
     private Integer newConfigBitmask = null;
 
-    @JsonProperty("old_config_bitmask")
+    @SerializedName("old_config_bitmask")
     private Integer oldConfigBitmask = null;
 
     /**
      * Type of password set if action is of type SetPassword or EnterPassword
      */
+    @JsonAdapter(PasswordTypeEnum.Adapter.class)
     public enum PasswordTypeEnum {
         CONFIG("config"),
 
@@ -369,12 +408,15 @@ public class CorporationContainersLogsResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static PasswordTypeEnum fromValue(String text) {
             for (PasswordTypeEnum b : PasswordTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -383,15 +425,28 @@ public class CorporationContainersLogsResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<PasswordTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final PasswordTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public PasswordTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return PasswordTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("password_type")
+    @SerializedName("password_type")
     private PasswordTypeEnum passwordType = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CorporationContainersLogsResponse action(ActionEnum action) {
@@ -404,7 +459,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return action
      **/
-    @ApiModelProperty(example = "null", required = true, value = "action string")
+    @ApiModelProperty(required = true, value = "action string")
     public ActionEnum getAction() {
         return action;
     }
@@ -423,7 +478,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the character who performed the action.")
+    @ApiModelProperty(required = true, value = "ID of the character who performed the action.")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -442,7 +497,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return containerId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the container")
+    @ApiModelProperty(required = true, value = "ID of the container")
     public Long getContainerId() {
         return containerId;
     }
@@ -461,7 +516,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return containerTypeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Type ID of the container")
+    @ApiModelProperty(required = true, value = "Type ID of the container")
     public Integer getContainerTypeId() {
         return containerTypeId;
     }
@@ -480,7 +535,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_flag string")
+    @ApiModelProperty(required = true, value = "location_flag string")
     public LocationFlagEnum getLocationFlag() {
         return locationFlag;
     }
@@ -499,7 +554,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -518,7 +573,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return loggedAt
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Timestamp when this log was created")
+    @ApiModelProperty(required = true, value = "Timestamp when this log was created")
     public OffsetDateTime getLoggedAt() {
         return loggedAt;
     }
@@ -537,7 +592,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return newConfigBitmask
      **/
-    @ApiModelProperty(example = "null", value = "new_config_bitmask integer")
+    @ApiModelProperty(value = "new_config_bitmask integer")
     public Integer getNewConfigBitmask() {
         return newConfigBitmask;
     }
@@ -556,7 +611,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return oldConfigBitmask
      **/
-    @ApiModelProperty(example = "null", value = "old_config_bitmask integer")
+    @ApiModelProperty(value = "old_config_bitmask integer")
     public Integer getOldConfigBitmask() {
         return oldConfigBitmask;
     }
@@ -575,7 +630,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return passwordType
      **/
-    @ApiModelProperty(example = "null", value = "Type of password set if action is of type SetPassword or EnterPassword")
+    @ApiModelProperty(value = "Type of password set if action is of type SetPassword or EnterPassword")
     public PasswordTypeEnum getPasswordType() {
         return passwordType;
     }
@@ -594,7 +649,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", value = "Quantity of the item being acted upon")
+    @ApiModelProperty(value = "Quantity of the item being acted upon")
     public Integer getQuantity() {
         return quantity;
     }
@@ -613,7 +668,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", value = "Type ID of the item being acted upon")
+    @ApiModelProperty(value = "Type ID of the item being acted upon")
     public Integer getTypeId() {
         return typeId;
     }

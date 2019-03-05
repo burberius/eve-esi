@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints;
@@ -31,14 +35,14 @@ import java.io.Serializable;
 public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("active_total")
-    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints>();
+    @SerializedName("active_total")
+    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<>();
 
-    @JsonProperty("last_week")
-    private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek = new ArrayList<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints>();
+    @SerializedName("last_week")
+    private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek = new ArrayList<>();
 
-    @JsonProperty("yesterday")
-    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints>();
+    @SerializedName("yesterday")
+    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<>();
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal) {
@@ -54,12 +58,12 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
 
     /**
      * Top 10 ranking of corporations active in faction warfare by total victory
-     * points. A corporation is considered \"active\" if they have participated
-     * in faction warfare in the past 14 days
+     * points. A corporation is considered \&quot;active\&quot; if they have
+     * participated in faction warfare in the past 14 days
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
@@ -85,7 +89,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past week")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by victory points in the past week")
     public List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
@@ -111,7 +115,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Top 10 ranking of corporations by victory points in the past day")
+    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by victory points in the past day")
     public List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }

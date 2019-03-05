@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.SystemCostIndice;
@@ -28,10 +32,10 @@ import java.io.Serializable;
 public class IndustrySystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cost_indices")
-    private List<SystemCostIndice> costIndices = new ArrayList<SystemCostIndice>();
+    @SerializedName("cost_indices")
+    private List<SystemCostIndice> costIndices = new ArrayList<>();
 
-    @JsonProperty("solar_system_id")
+    @SerializedName("solar_system_id")
     private Integer solarSystemId = null;
 
     public IndustrySystemsResponse costIndices(List<SystemCostIndice> costIndices) {
@@ -49,7 +53,7 @@ public class IndustrySystemsResponse implements Serializable {
      * 
      * @return costIndices
      **/
-    @ApiModelProperty(example = "null", required = true, value = "cost_indices array")
+    @ApiModelProperty(required = true, value = "cost_indices array")
     public List<SystemCostIndice> getCostIndices() {
         return costIndices;
     }
@@ -68,7 +72,7 @@ public class IndustrySystemsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "solar_system_id integer")
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
     }

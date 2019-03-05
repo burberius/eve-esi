@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import net.troja.eve.esi.model.CharacterStatsCharacter;
 import net.troja.eve.esi.model.CharacterStatsCombat;
 import net.troja.eve.esi.model.CharacterStatsIndustry;
@@ -37,43 +41,43 @@ import java.io.Serializable;
 public class CharacterStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("character")
+    @SerializedName("character")
     private CharacterStatsCharacter character = null;
 
-    @JsonProperty("combat")
+    @SerializedName("combat")
     private CharacterStatsCombat combat = null;
 
-    @JsonProperty("industry")
+    @SerializedName("industry")
     private CharacterStatsIndustry industry = null;
 
-    @JsonProperty("inventory")
+    @SerializedName("inventory")
     private CharacterStatsInventory inventory = null;
 
-    @JsonProperty("isk")
+    @SerializedName("isk")
     private CharacterStatsIsk isk = null;
 
-    @JsonProperty("market")
+    @SerializedName("market")
     private CharacterStatsMarket market = null;
 
-    @JsonProperty("mining")
+    @SerializedName("mining")
     private CharacterStatsMining mining = null;
 
-    @JsonProperty("module")
+    @SerializedName("module")
     private CharacterStatsModule module = null;
 
-    @JsonProperty("orbital")
+    @SerializedName("orbital")
     private CharacterStatsOrbital orbital = null;
 
-    @JsonProperty("pve")
+    @SerializedName("pve")
     private CharacterStatsPve pve = null;
 
-    @JsonProperty("social")
+    @SerializedName("social")
     private CharacterStatsSocial social = null;
 
-    @JsonProperty("travel")
+    @SerializedName("travel")
     private CharacterStatsTravel travel = null;
 
-    @JsonProperty("year")
+    @SerializedName("year")
     private Integer year = null;
 
     public CharacterStatsResponse character(CharacterStatsCharacter character) {
@@ -86,7 +90,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return character
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsCharacter getCharacter() {
         return character;
     }
@@ -105,7 +109,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return combat
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsCombat getCombat() {
         return combat;
     }
@@ -124,7 +128,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return industry
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsIndustry getIndustry() {
         return industry;
     }
@@ -143,7 +147,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return inventory
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsInventory getInventory() {
         return inventory;
     }
@@ -162,7 +166,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return isk
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsIsk getIsk() {
         return isk;
     }
@@ -181,7 +185,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return market
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsMarket getMarket() {
         return market;
     }
@@ -200,7 +204,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return mining
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsMining getMining() {
         return mining;
     }
@@ -219,7 +223,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return module
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsModule getModule() {
         return module;
     }
@@ -238,7 +242,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return orbital
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsOrbital getOrbital() {
         return orbital;
     }
@@ -257,7 +261,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return pve
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsPve getPve() {
         return pve;
     }
@@ -276,7 +280,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return social
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsSocial getSocial() {
         return social;
     }
@@ -295,7 +299,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return travel
      **/
-    @ApiModelProperty(example = "null", value = "")
+    @ApiModelProperty(value = "")
     public CharacterStatsTravel getTravel() {
         return travel;
     }
@@ -314,7 +318,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return year
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Gregorian year for this set of aggregates")
+    @ApiModelProperty(required = true, value = "Gregorian year for this set of aggregates")
     public Integer getYear() {
         return year;
     }

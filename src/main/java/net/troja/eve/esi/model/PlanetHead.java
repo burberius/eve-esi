@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class PlanetHead implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("head_id")
+    @SerializedName("head_id")
     private Integer headId = null;
 
-    @JsonProperty("latitude")
+    @SerializedName("latitude")
     private Float latitude = null;
 
-    @JsonProperty("longitude")
+    @SerializedName("longitude")
     private Float longitude = null;
 
     public PlanetHead headId(Integer headId) {
@@ -44,7 +48,7 @@ public class PlanetHead implements Serializable {
      * 
      * @return headId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "head_id integer")
+    @ApiModelProperty(required = true, value = "head_id integer")
     public Integer getHeadId() {
         return headId;
     }
@@ -63,7 +67,7 @@ public class PlanetHead implements Serializable {
      * 
      * @return latitude
      **/
-    @ApiModelProperty(example = "null", required = true, value = "latitude number")
+    @ApiModelProperty(required = true, value = "latitude number")
     public Float getLatitude() {
         return latitude;
     }
@@ -82,7 +86,7 @@ public class PlanetHead implements Serializable {
      * 
      * @return longitude
      **/
-    @ApiModelProperty(example = "null", required = true, value = "longitude number")
+    @ApiModelProperty(required = true, value = "longitude number")
     public Float getLongitude() {
         return longitude;
     }

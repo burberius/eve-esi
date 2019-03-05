@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,13 +29,13 @@ import java.io.Serializable;
 public class CorporationFacilitiesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("facility_id")
+    @SerializedName("facility_id")
     private Long facilityId = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
     public CorporationFacilitiesResponse facilityId(Long facilityId) {
@@ -44,7 +48,7 @@ public class CorporationFacilitiesResponse implements Serializable {
      * 
      * @return facilityId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "facility_id integer")
+    @ApiModelProperty(required = true, value = "facility_id integer")
     public Long getFacilityId() {
         return facilityId;
     }
@@ -63,7 +67,7 @@ public class CorporationFacilitiesResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "system_id integer")
+    @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
     }
@@ -82,7 +86,7 @@ public class CorporationFacilitiesResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }

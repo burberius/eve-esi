@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class OpportunitiesTasksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("notification")
+    @SerializedName("notification")
     private String notification = null;
 
-    @JsonProperty("task_id")
+    @SerializedName("task_id")
     private Integer taskId = null;
 
     public OpportunitiesTasksResponse description(String description) {
@@ -47,7 +51,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -66,7 +70,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -85,7 +89,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return notification
      **/
-    @ApiModelProperty(example = "null", required = true, value = "notification string")
+    @ApiModelProperty(required = true, value = "notification string")
     public String getNotification() {
         return notification;
     }
@@ -104,7 +108,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return taskId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "task_id integer")
+    @ApiModelProperty(required = true, value = "task_id integer")
     public Integer getTaskId() {
         return taskId;
     }

@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.PlanetHead;
@@ -28,19 +32,19 @@ import java.io.Serializable;
 public class PlanetExtractorDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("cycle_time")
+    @SerializedName("cycle_time")
     private Integer cycleTime = null;
 
-    @JsonProperty("head_radius")
+    @SerializedName("head_radius")
     private Float headRadius = null;
 
-    @JsonProperty("heads")
-    private List<PlanetHead> heads = new ArrayList<PlanetHead>();
+    @SerializedName("heads")
+    private List<PlanetHead> heads = new ArrayList<>();
 
-    @JsonProperty("product_type_id")
+    @SerializedName("product_type_id")
     private Integer productTypeId = null;
 
-    @JsonProperty("qty_per_cycle")
+    @SerializedName("qty_per_cycle")
     private Integer qtyPerCycle = null;
 
     public PlanetExtractorDetails cycleTime(Integer cycleTime) {
@@ -53,7 +57,7 @@ public class PlanetExtractorDetails implements Serializable {
      * 
      * @return cycleTime
      **/
-    @ApiModelProperty(example = "null", value = "in seconds")
+    @ApiModelProperty(value = "in seconds")
     public Integer getCycleTime() {
         return cycleTime;
     }
@@ -72,7 +76,7 @@ public class PlanetExtractorDetails implements Serializable {
      * 
      * @return headRadius
      **/
-    @ApiModelProperty(example = "null", value = "head_radius number")
+    @ApiModelProperty(value = "head_radius number")
     public Float getHeadRadius() {
         return headRadius;
     }
@@ -96,7 +100,7 @@ public class PlanetExtractorDetails implements Serializable {
      * 
      * @return heads
      **/
-    @ApiModelProperty(example = "null", required = true, value = "heads array")
+    @ApiModelProperty(required = true, value = "heads array")
     public List<PlanetHead> getHeads() {
         return heads;
     }
@@ -115,7 +119,7 @@ public class PlanetExtractorDetails implements Serializable {
      * 
      * @return productTypeId
      **/
-    @ApiModelProperty(example = "null", value = "product_type_id integer")
+    @ApiModelProperty(value = "product_type_id integer")
     public Integer getProductTypeId() {
         return productTypeId;
     }
@@ -134,7 +138,7 @@ public class PlanetExtractorDetails implements Serializable {
      * 
      * @return qtyPerCycle
      **/
-    @ApiModelProperty(example = "null", value = "qty_per_cycle integer")
+    @ApiModelProperty(value = "qty_per_cycle integer")
     public Integer getQtyPerCycle() {
         return qtyPerCycle;
     }

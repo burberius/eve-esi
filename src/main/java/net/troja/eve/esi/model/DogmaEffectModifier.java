@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,22 +29,22 @@ import java.io.Serializable;
 public class DogmaEffectModifier implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("domain")
+    @SerializedName("domain")
     private String domain = null;
 
-    @JsonProperty("effect_id")
+    @SerializedName("effect_id")
     private Integer effectId = null;
 
-    @JsonProperty("func")
+    @SerializedName("func")
     private String func = null;
 
-    @JsonProperty("modified_attribute_id")
+    @SerializedName("modified_attribute_id")
     private Integer modifiedAttributeId = null;
 
-    @JsonProperty("modifying_attribute_id")
+    @SerializedName("modifying_attribute_id")
     private Integer modifyingAttributeId = null;
 
-    @JsonProperty("operator")
+    @SerializedName("operator")
     private Integer operator = null;
 
     public DogmaEffectModifier domain(String domain) {
@@ -53,7 +57,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return domain
      **/
-    @ApiModelProperty(example = "null", value = "domain string")
+    @ApiModelProperty(value = "domain string")
     public String getDomain() {
         return domain;
     }
@@ -72,7 +76,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return effectId
      **/
-    @ApiModelProperty(example = "null", value = "effect_id integer")
+    @ApiModelProperty(value = "effect_id integer")
     public Integer getEffectId() {
         return effectId;
     }
@@ -91,7 +95,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return func
      **/
-    @ApiModelProperty(example = "null", required = true, value = "func string")
+    @ApiModelProperty(required = true, value = "func string")
     public String getFunc() {
         return func;
     }
@@ -110,7 +114,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return modifiedAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "modified_attribute_id integer")
+    @ApiModelProperty(value = "modified_attribute_id integer")
     public Integer getModifiedAttributeId() {
         return modifiedAttributeId;
     }
@@ -129,7 +133,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return modifyingAttributeId
      **/
-    @ApiModelProperty(example = "null", value = "modifying_attribute_id integer")
+    @ApiModelProperty(value = "modifying_attribute_id integer")
     public Integer getModifyingAttributeId() {
         return modifyingAttributeId;
     }
@@ -148,7 +152,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return operator
      **/
-    @ApiModelProperty(example = "null", value = "operator integer")
+    @ApiModelProperty(value = "operator integer")
     public Integer getOperator() {
         return operator;
     }

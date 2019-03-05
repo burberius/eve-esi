@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,15 +29,16 @@ import java.io.Serializable;
 public class CorporationShareholdersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("share_count")
+    @SerializedName("share_count")
     private Long shareCount = null;
 
-    @JsonProperty("shareholder_id")
+    @SerializedName("shareholder_id")
     private Integer shareholderId = null;
 
     /**
      * shareholder_type string
      */
+    @JsonAdapter(ShareholderTypeEnum.Adapter.class)
     public enum ShareholderTypeEnum {
         CHARACTER("character"),
 
@@ -45,12 +50,15 @@ public class CorporationShareholdersResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static ShareholderTypeEnum fromValue(String text) {
             for (ShareholderTypeEnum b : ShareholderTypeEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -59,9 +67,22 @@ public class CorporationShareholdersResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<ShareholderTypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final ShareholderTypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public ShareholderTypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return ShareholderTypeEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("shareholder_type")
+    @SerializedName("shareholder_type")
     private ShareholderTypeEnum shareholderType = null;
 
     public CorporationShareholdersResponse shareCount(Long shareCount) {
@@ -74,7 +95,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareCount
      **/
-    @ApiModelProperty(example = "null", required = true, value = "share_count integer")
+    @ApiModelProperty(required = true, value = "share_count integer")
     public Long getShareCount() {
         return shareCount;
     }
@@ -93,7 +114,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareholderId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "shareholder_id integer")
+    @ApiModelProperty(required = true, value = "shareholder_id integer")
     public Integer getShareholderId() {
         return shareholderId;
     }
@@ -112,7 +133,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareholderType
      **/
-    @ApiModelProperty(example = "null", required = true, value = "shareholder_type string")
+    @ApiModelProperty(required = true, value = "shareholder_type string")
     public ShareholderTypeEnum getShareholderType() {
         return shareholderType;
     }

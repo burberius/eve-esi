@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -27,23 +31,23 @@ import java.io.Serializable;
 public class OpportunitiesGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("connected_groups")
-    private List<Integer> connectedGroups = new ArrayList<Integer>();
+    @SerializedName("connected_groups")
+    private List<Integer> connectedGroups = new ArrayList<>();
 
-    @JsonProperty("description")
+    @SerializedName("description")
     private String description = null;
 
-    @JsonProperty("group_id")
+    @SerializedName("group_id")
     private Integer groupId = null;
 
-    @JsonProperty("name")
+    @SerializedName("name")
     private String name = null;
 
-    @JsonProperty("notification")
+    @SerializedName("notification")
     private String notification = null;
 
-    @JsonProperty("required_tasks")
-    private List<Integer> requiredTasks = new ArrayList<Integer>();
+    @SerializedName("required_tasks")
+    private List<Integer> requiredTasks = new ArrayList<>();
 
     public OpportunitiesGroupResponse connectedGroups(List<Integer> connectedGroups) {
         this.connectedGroups = connectedGroups;
@@ -60,7 +64,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return connectedGroups
      **/
-    @ApiModelProperty(example = "null", required = true, value = "The groups that are connected to this group on the opportunities map")
+    @ApiModelProperty(required = true, value = "The groups that are connected to this group on the opportunities map")
     public List<Integer> getConnectedGroups() {
         return connectedGroups;
     }
@@ -79,7 +83,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(example = "null", required = true, value = "description string")
+    @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
     }
@@ -98,7 +102,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return groupId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "group_id integer")
+    @ApiModelProperty(required = true, value = "group_id integer")
     public Integer getGroupId() {
         return groupId;
     }
@@ -117,7 +121,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(example = "null", required = true, value = "name string")
+    @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
     }
@@ -136,7 +140,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return notification
      **/
-    @ApiModelProperty(example = "null", required = true, value = "notification string")
+    @ApiModelProperty(required = true, value = "notification string")
     public String getNotification() {
         return notification;
     }
@@ -160,7 +164,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return requiredTasks
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Tasks need to complete for this group")
+    @ApiModelProperty(required = true, value = "Tasks need to complete for this group")
     public List<Integer> getRequiredTasks() {
         return requiredTasks;
     }

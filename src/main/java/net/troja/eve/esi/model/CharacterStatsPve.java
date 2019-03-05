@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,16 +29,16 @@ import java.io.Serializable;
 public class CharacterStatsPve implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("dungeons_completed_agent")
+    @SerializedName("dungeons_completed_agent")
     private Long dungeonsCompletedAgent = null;
 
-    @JsonProperty("dungeons_completed_distribution")
+    @SerializedName("dungeons_completed_distribution")
     private Long dungeonsCompletedDistribution = null;
 
-    @JsonProperty("missions_succeeded")
+    @SerializedName("missions_succeeded")
     private Long missionsSucceeded = null;
 
-    @JsonProperty("missions_succeeded_epic_arc")
+    @SerializedName("missions_succeeded_epic_arc")
     private Long missionsSucceededEpicArc = null;
 
     public CharacterStatsPve dungeonsCompletedAgent(Long dungeonsCompletedAgent) {
@@ -47,7 +51,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return dungeonsCompletedAgent
      **/
-    @ApiModelProperty(example = "null", value = "dungeons_completed_agent integer")
+    @ApiModelProperty(value = "dungeons_completed_agent integer")
     public Long getDungeonsCompletedAgent() {
         return dungeonsCompletedAgent;
     }
@@ -66,7 +70,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return dungeonsCompletedDistribution
      **/
-    @ApiModelProperty(example = "null", value = "dungeons_completed_distribution integer")
+    @ApiModelProperty(value = "dungeons_completed_distribution integer")
     public Long getDungeonsCompletedDistribution() {
         return dungeonsCompletedDistribution;
     }
@@ -85,7 +89,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return missionsSucceeded
      **/
-    @ApiModelProperty(example = "null", value = "missions_succeeded integer")
+    @ApiModelProperty(value = "missions_succeeded integer")
     public Long getMissionsSucceeded() {
         return missionsSucceeded;
     }
@@ -104,7 +108,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return missionsSucceededEpicArc
      **/
-    @ApiModelProperty(example = "null", value = "missions_succeeded_epic_arc integer")
+    @ApiModelProperty(value = "missions_succeeded_epic_arc integer")
     public Long getMissionsSucceededEpicArc() {
         return missionsSucceededEpicArc;
     }

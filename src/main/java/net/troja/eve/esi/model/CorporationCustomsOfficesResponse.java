@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,42 +29,43 @@ import java.io.Serializable;
 public class CorporationCustomsOfficesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("alliance_tax_rate")
+    @SerializedName("alliance_tax_rate")
     private Float allianceTaxRate = null;
 
-    @JsonProperty("allow_access_with_standings")
+    @SerializedName("allow_access_with_standings")
     private Boolean allowAccessWithStandings = null;
 
-    @JsonProperty("allow_alliance_access")
+    @SerializedName("allow_alliance_access")
     private Boolean allowAllianceAccess = null;
 
-    @JsonProperty("bad_standing_tax_rate")
+    @SerializedName("bad_standing_tax_rate")
     private Float badStandingTaxRate = null;
 
-    @JsonProperty("corporation_tax_rate")
+    @SerializedName("corporation_tax_rate")
     private Float corporationTaxRate = null;
 
-    @JsonProperty("excellent_standing_tax_rate")
+    @SerializedName("excellent_standing_tax_rate")
     private Float excellentStandingTaxRate = null;
 
-    @JsonProperty("good_standing_tax_rate")
+    @SerializedName("good_standing_tax_rate")
     private Float goodStandingTaxRate = null;
 
-    @JsonProperty("neutral_standing_tax_rate")
+    @SerializedName("neutral_standing_tax_rate")
     private Float neutralStandingTaxRate = null;
 
-    @JsonProperty("office_id")
+    @SerializedName("office_id")
     private Long officeId = null;
 
-    @JsonProperty("reinforce_exit_end")
+    @SerializedName("reinforce_exit_end")
     private Integer reinforceExitEnd = null;
 
-    @JsonProperty("reinforce_exit_start")
+    @SerializedName("reinforce_exit_start")
     private Integer reinforceExitStart = null;
 
     /**
      * Access is allowed only for entities with this level of standing or better
      */
+    @JsonAdapter(StandingLevelEnum.Adapter.class)
     public enum StandingLevelEnum {
         BAD("bad"),
 
@@ -78,12 +83,15 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             this.value = value;
         }
 
+        public String getValue() {
+            return value;
+        }
+
         @Override
         public String toString() {
             return String.valueOf(value);
         }
 
-        @JsonCreator
         public static StandingLevelEnum fromValue(String text) {
             for (StandingLevelEnum b : StandingLevelEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
@@ -92,15 +100,28 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             }
             return null;
         }
+
+        public static class Adapter extends TypeAdapter<StandingLevelEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final StandingLevelEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public StandingLevelEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return StandingLevelEnum.fromValue(String.valueOf(value));
+            }
+        }
     }
 
-    @JsonProperty("standing_level")
+    @SerializedName("standing_level")
     private StandingLevelEnum standingLevel = null;
 
-    @JsonProperty("system_id")
+    @SerializedName("system_id")
     private Integer systemId = null;
 
-    @JsonProperty("terrible_standing_tax_rate")
+    @SerializedName("terrible_standing_tax_rate")
     private Float terribleStandingTaxRate = null;
 
     public CorporationCustomsOfficesResponse allianceTaxRate(Float allianceTaxRate) {
@@ -113,7 +134,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return allianceTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "Only present if alliance access is allowed")
+    @ApiModelProperty(value = "Only present if alliance access is allowed")
     public Float getAllianceTaxRate() {
         return allianceTaxRate;
     }
@@ -133,8 +154,8 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return allowAccessWithStandings
      **/
-    @ApiModelProperty(example = "null", required = true, value = "standing_level and any standing related tax rate only present when this is true")
-    public Boolean getAllowAccessWithStandings() {
+    @ApiModelProperty(required = true, value = "standing_level and any standing related tax rate only present when this is true")
+    public Boolean isAllowAccessWithStandings() {
         return allowAccessWithStandings;
     }
 
@@ -152,8 +173,8 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return allowAllianceAccess
      **/
-    @ApiModelProperty(example = "null", required = true, value = "allow_alliance_access boolean")
-    public Boolean getAllowAllianceAccess() {
+    @ApiModelProperty(required = true, value = "allow_alliance_access boolean")
+    public Boolean isAllowAllianceAccess() {
         return allowAllianceAccess;
     }
 
@@ -171,7 +192,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return badStandingTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "bad_standing_tax_rate number")
+    @ApiModelProperty(value = "bad_standing_tax_rate number")
     public Float getBadStandingTaxRate() {
         return badStandingTaxRate;
     }
@@ -190,7 +211,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return corporationTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "corporation_tax_rate number")
+    @ApiModelProperty(value = "corporation_tax_rate number")
     public Float getCorporationTaxRate() {
         return corporationTaxRate;
     }
@@ -210,7 +231,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return excellentStandingTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "Tax rate for entities with excellent level of standing, only present if this level is allowed, same for all other standing related tax rates")
+    @ApiModelProperty(value = "Tax rate for entities with excellent level of standing, only present if this level is allowed, same for all other standing related tax rates")
     public Float getExcellentStandingTaxRate() {
         return excellentStandingTaxRate;
     }
@@ -229,7 +250,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return goodStandingTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "good_standing_tax_rate number")
+    @ApiModelProperty(value = "good_standing_tax_rate number")
     public Float getGoodStandingTaxRate() {
         return goodStandingTaxRate;
     }
@@ -248,7 +269,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return neutralStandingTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "neutral_standing_tax_rate number")
+    @ApiModelProperty(value = "neutral_standing_tax_rate number")
     public Float getNeutralStandingTaxRate() {
         return neutralStandingTaxRate;
     }
@@ -267,7 +288,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return officeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "unique ID of this customs office")
+    @ApiModelProperty(required = true, value = "unique ID of this customs office")
     public Long getOfficeId() {
         return officeId;
     }
@@ -286,7 +307,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return reinforceExitEnd
      **/
-    @ApiModelProperty(example = "null", required = true, value = "reinforce_exit_end integer")
+    @ApiModelProperty(required = true, value = "reinforce_exit_end integer")
     public Integer getReinforceExitEnd() {
         return reinforceExitEnd;
     }
@@ -307,7 +328,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return reinforceExitStart
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Together with reinforce_exit_end, marks a 2-hour period where this customs office could exit reinforcement mode during the day after initial attack")
+    @ApiModelProperty(required = true, value = "Together with reinforce_exit_end, marks a 2-hour period where this customs office could exit reinforcement mode during the day after initial attack")
     public Integer getReinforceExitStart() {
         return reinforceExitStart;
     }
@@ -326,7 +347,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return standingLevel
      **/
-    @ApiModelProperty(example = "null", value = "Access is allowed only for entities with this level of standing or better")
+    @ApiModelProperty(value = "Access is allowed only for entities with this level of standing or better")
     public StandingLevelEnum getStandingLevel() {
         return standingLevel;
     }
@@ -345,7 +366,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "ID of the solar system this customs office is located in")
+    @ApiModelProperty(required = true, value = "ID of the solar system this customs office is located in")
     public Integer getSystemId() {
         return systemId;
     }
@@ -364,7 +385,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return terribleStandingTaxRate
      **/
-    @ApiModelProperty(example = "null", value = "terrible_standing_tax_rate number")
+    @ApiModelProperty(value = "terrible_standing_tax_rate number")
     public Float getTerribleStandingTaxRate() {
         return terribleStandingTaxRate;
     }

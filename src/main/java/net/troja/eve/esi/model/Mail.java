@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Recipient;
@@ -28,16 +32,16 @@ import java.io.Serializable;
 public class Mail implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("approved_cost")
+    @SerializedName("approved_cost")
     private Long approvedCost = 0l;
 
-    @JsonProperty("body")
+    @SerializedName("body")
     private String body = null;
 
-    @JsonProperty("recipients")
-    private List<Recipient> recipients = new ArrayList<Recipient>();
+    @SerializedName("recipients")
+    private List<Recipient> recipients = new ArrayList<>();
 
-    @JsonProperty("subject")
+    @SerializedName("subject")
     private String subject = null;
 
     public Mail approvedCost(Long approvedCost) {
@@ -50,7 +54,7 @@ public class Mail implements Serializable {
      * 
      * @return approvedCost
      **/
-    @ApiModelProperty(example = "null", value = "approved_cost integer")
+    @ApiModelProperty(value = "approved_cost integer")
     public Long getApprovedCost() {
         return approvedCost;
     }
@@ -69,7 +73,7 @@ public class Mail implements Serializable {
      * 
      * @return body
      **/
-    @ApiModelProperty(example = "null", required = true, value = "body string")
+    @ApiModelProperty(required = true, value = "body string")
     public String getBody() {
         return body;
     }
@@ -93,7 +97,7 @@ public class Mail implements Serializable {
      * 
      * @return recipients
      **/
-    @ApiModelProperty(example = "null", required = true, value = "recipients array")
+    @ApiModelProperty(required = true, value = "recipients array")
     public List<Recipient> getRecipients() {
         return recipients;
     }
@@ -112,7 +116,7 @@ public class Mail implements Serializable {
      * 
      * @return subject
      **/
-    @ApiModelProperty(example = "null", required = true, value = "subject string")
+    @ApiModelProperty(required = true, value = "subject string")
     public String getSubject() {
         return subject;
     }

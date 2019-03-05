@@ -12,10 +12,14 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
@@ -26,34 +30,34 @@ import java.io.Serializable;
 public class CharacterWalletTransactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("client_id")
+    @SerializedName("client_id")
     private Integer clientId = null;
 
-    @JsonProperty("date")
+    @SerializedName("date")
     private OffsetDateTime date = null;
 
-    @JsonProperty("is_buy")
+    @SerializedName("is_buy")
     private Boolean isBuy = null;
 
-    @JsonProperty("is_personal")
+    @SerializedName("is_personal")
     private Boolean isPersonal = null;
 
-    @JsonProperty("journal_ref_id")
+    @SerializedName("journal_ref_id")
     private Long journalRefId = null;
 
-    @JsonProperty("location_id")
+    @SerializedName("location_id")
     private Long locationId = null;
 
-    @JsonProperty("quantity")
+    @SerializedName("quantity")
     private Integer quantity = null;
 
-    @JsonProperty("transaction_id")
+    @SerializedName("transaction_id")
     private Long transactionId = null;
 
-    @JsonProperty("type_id")
+    @SerializedName("type_id")
     private Integer typeId = null;
 
-    @JsonProperty("unit_price")
+    @SerializedName("unit_price")
     private Double unitPrice = null;
 
     public CharacterWalletTransactionsResponse clientId(Integer clientId) {
@@ -66,7 +70,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return clientId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "client_id integer")
+    @ApiModelProperty(required = true, value = "client_id integer")
     public Integer getClientId() {
         return clientId;
     }
@@ -85,7 +89,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Date and time of transaction")
+    @ApiModelProperty(required = true, value = "Date and time of transaction")
     public OffsetDateTime getDate() {
         return date;
     }
@@ -104,8 +108,8 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return isBuy
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_buy boolean")
-    public Boolean getIsBuy() {
+    @ApiModelProperty(required = true, value = "is_buy boolean")
+    public Boolean isIsBuy() {
         return isBuy;
     }
 
@@ -123,8 +127,8 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return isPersonal
      **/
-    @ApiModelProperty(example = "null", required = true, value = "is_personal boolean")
-    public Boolean getIsPersonal() {
+    @ApiModelProperty(required = true, value = "is_personal boolean")
+    public Boolean isIsPersonal() {
         return isPersonal;
     }
 
@@ -142,7 +146,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return journalRefId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "journal_ref_id integer")
+    @ApiModelProperty(required = true, value = "journal_ref_id integer")
     public Long getJournalRefId() {
         return journalRefId;
     }
@@ -161,7 +165,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "location_id integer")
+    @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
     }
@@ -180,7 +184,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return quantity
      **/
-    @ApiModelProperty(example = "null", required = true, value = "quantity integer")
+    @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
     }
@@ -199,7 +203,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return transactionId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Unique transaction ID")
+    @ApiModelProperty(required = true, value = "Unique transaction ID")
     public Long getTransactionId() {
         return transactionId;
     }
@@ -218,7 +222,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(example = "null", required = true, value = "type_id integer")
+    @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
     }
@@ -237,7 +241,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return unitPrice
      **/
-    @ApiModelProperty(example = "null", required = true, value = "Amount paid per unit")
+    @ApiModelProperty(required = true, value = "Amount paid per unit")
     public Double getUnitPrice() {
         return unitPrice;
     }
