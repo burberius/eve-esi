@@ -42,7 +42,7 @@ sed -i -f replace.sed esi.json
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-java -jar swagger-codegen-cli-2.3.1.jar generate \
+java -jar swagger-codegen-cli.jar generate \
   -i esi.json \
   -l java \
   -c config.json
