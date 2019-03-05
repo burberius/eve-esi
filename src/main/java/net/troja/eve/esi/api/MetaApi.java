@@ -24,8 +24,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import net.troja.eve.esi.model.CharacterInfo;
-import net.troja.eve.esi.model.EsiStatus;
+import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.EsiStatusResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -393,13 +393,13 @@ public class MetaApi {
      * @param version
      *            The version of metrics to request. Note that alternate
      *            versions are grouped together (optional, default to latest)
-     * @return List&lt;EsiStatus&gt;
+     * @return List&lt;EsiStatusResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public List<EsiStatus> getStatus(String version) throws ApiException {
-        ApiResponse<List<EsiStatus>> resp = getStatusWithHttpInfo(version);
+    public List<EsiStatusResponse> getStatus(String version) throws ApiException {
+        ApiResponse<List<EsiStatusResponse>> resp = getStatusWithHttpInfo(version);
         return resp.getData();
     }
 
@@ -410,14 +410,14 @@ public class MetaApi {
      * @param version
      *            The version of metrics to request. Note that alternate
      *            versions are grouped together (optional, default to latest)
-     * @return ApiResponse&lt;List&lt;EsiStatus&gt;&gt;
+     * @return ApiResponse&lt;List&lt;EsiStatusResponse&gt;&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<List<EsiStatus>> getStatusWithHttpInfo(String version) throws ApiException {
+    public ApiResponse<List<EsiStatusResponse>> getStatusWithHttpInfo(String version) throws ApiException {
         com.squareup.okhttp.Call call = getStatusValidateBeforeCall(version, null, null);
-        Type localVarReturnType = new TypeToken<List<EsiStatus>>() {
+        Type localVarReturnType = new TypeToken<List<EsiStatusResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -436,7 +436,7 @@ public class MetaApi {
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getStatusAsync(String version, final ApiCallback<List<EsiStatus>> callback)
+    public com.squareup.okhttp.Call getStatusAsync(String version, final ApiCallback<List<EsiStatusResponse>> callback)
             throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -459,7 +459,7 @@ public class MetaApi {
         }
 
         com.squareup.okhttp.Call call = getStatusValidateBeforeCall(version, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<EsiStatus>>() {
+        Type localVarReturnType = new TypeToken<List<EsiStatusResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -529,27 +529,27 @@ public class MetaApi {
     /**
      * Verify access token Verify authorization tokens in ESI&#39;s auth cache
      * 
-     * @return CharacterInfo
+     * @return VerifyResponse
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public CharacterInfo getVerify() throws ApiException {
-        ApiResponse<CharacterInfo> resp = getVerifyWithHttpInfo();
+    public VerifyResponse getVerify() throws ApiException {
+        ApiResponse<VerifyResponse> resp = getVerifyWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Verify access token Verify authorization tokens in ESI&#39;s auth cache
      * 
-     * @return ApiResponse&lt;CharacterInfo&gt;
+     * @return ApiResponse&lt;VerifyResponse&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<CharacterInfo> getVerifyWithHttpInfo() throws ApiException {
+    public ApiResponse<VerifyResponse> getVerifyWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getVerifyValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<CharacterInfo>() {
+        Type localVarReturnType = new TypeToken<VerifyResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -578,7 +578,7 @@ public class MetaApi {
      *             body object
      */
     public com.squareup.okhttp.Call getVerifyAsync(String userAgent, String xUserAgent, String datasource,
-            String token, String authorization, final ApiCallback<CharacterInfo> callback) throws ApiException {
+            String token, String authorization, final ApiCallback<VerifyResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -600,7 +600,7 @@ public class MetaApi {
         }
 
         com.squareup.okhttp.Call call = getVerifyValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<CharacterInfo>() {
+        Type localVarReturnType = new TypeToken<VerifyResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

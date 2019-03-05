@@ -28,7 +28,7 @@ import java.io.Serializable;
  * Per route status
  */
 @ApiModel(description = "Per route status")
-public class EsiStatus implements Serializable {
+public class EsiStatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @SerializedName("endpoint")
@@ -97,7 +97,7 @@ public class EsiStatus implements Serializable {
     @SerializedName("tags")
     private List<String> tags = new ArrayList<>();
 
-    public EsiStatus endpoint(String endpoint) {
+    public EsiStatusResponse endpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
     }
@@ -116,7 +116,7 @@ public class EsiStatus implements Serializable {
         this.endpoint = endpoint;
     }
 
-    public EsiStatus method(String method) {
+    public EsiStatusResponse method(String method) {
         this.method = method;
         return this;
     }
@@ -135,7 +135,7 @@ public class EsiStatus implements Serializable {
         this.method = method;
     }
 
-    public EsiStatus route(String route) {
+    public EsiStatusResponse route(String route) {
         this.route = route;
         return this;
     }
@@ -154,7 +154,7 @@ public class EsiStatus implements Serializable {
         this.route = route;
     }
 
-    public EsiStatus status(StatusEnum status) {
+    public EsiStatusResponse status(StatusEnum status) {
         this.status = status;
         return this;
     }
@@ -175,12 +175,12 @@ public class EsiStatus implements Serializable {
         this.status = status;
     }
 
-    public EsiStatus tags(List<String> tags) {
+    public EsiStatusResponse tags(List<String> tags) {
         this.tags = tags;
         return this;
     }
 
-    public EsiStatus addTagsItem(String tagsItem) {
+    public EsiStatusResponse addTagsItem(String tagsItem) {
         this.tags.add(tagsItem);
         return this;
     }
@@ -207,10 +207,10 @@ public class EsiStatus implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        EsiStatus esiStatus = (EsiStatus) o;
-        return Objects.equals(this.endpoint, esiStatus.endpoint) && Objects.equals(this.method, esiStatus.method)
-                && Objects.equals(this.route, esiStatus.route) && Objects.equals(this.status, esiStatus.status)
-                && Objects.equals(this.tags, esiStatus.tags);
+        EsiStatusResponse esiStatusResponse = (EsiStatusResponse) o;
+        return Objects.equals(this.endpoint, esiStatusResponse.endpoint) && Objects.equals(this.method, esiStatusResponse.method)
+                && Objects.equals(this.route, esiStatusResponse.route) && Objects.equals(this.status, esiStatusResponse.status)
+                && Objects.equals(this.tags, esiStatusResponse.tags);
     }
 
     @Override
@@ -221,7 +221,7 @@ public class EsiStatus implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class EsiStatus {\n");
+        sb.append("class EsiStatusResponse {\n");
 
         sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
         sb.append("    method: ").append(toIndentedString(method)).append("\n");

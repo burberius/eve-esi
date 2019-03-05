@@ -12,21 +12,19 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * SSO /verify JSON
  */
 @ApiModel(description = "SSO /verify JSON")
-public class CharacterInfo implements Serializable {
+public class VerifyResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @SerializedName("CharacterID")
@@ -47,10 +45,12 @@ public class CharacterInfo implements Serializable {
     @SerializedName("Scopes")
     private String scopes = null;
 
+    private Set<String> scopesSet = null;
+
     @SerializedName("TokenType")
     private String tokenType = null;
 
-    public CharacterInfo characterID(Integer characterID) {
+    public VerifyResponse characterID(Integer characterID) {
         this.characterID = characterID;
         return this;
     }
@@ -69,7 +69,7 @@ public class CharacterInfo implements Serializable {
         this.characterID = characterID;
     }
 
-    public CharacterInfo characterName(String characterName) {
+    public VerifyResponse characterName(String characterName) {
         this.characterName = characterName;
         return this;
     }
@@ -88,7 +88,7 @@ public class CharacterInfo implements Serializable {
         this.characterName = characterName;
     }
 
-    public CharacterInfo characterOwnerHash(String characterOwnerHash) {
+    public VerifyResponse characterOwnerHash(String characterOwnerHash) {
         this.characterOwnerHash = characterOwnerHash;
         return this;
     }
@@ -108,7 +108,7 @@ public class CharacterInfo implements Serializable {
         this.characterOwnerHash = characterOwnerHash;
     }
 
-    public CharacterInfo expiresOn(String expiresOn) {
+    public VerifyResponse expiresOn(String expiresOn) {
         this.expiresOn = expiresOn;
         return this;
     }
@@ -127,7 +127,7 @@ public class CharacterInfo implements Serializable {
         this.expiresOn = expiresOn;
     }
 
-    public CharacterInfo intellectualProperty(String intellectualProperty) {
+    public VerifyResponse intellectualProperty(String intellectualProperty) {
         this.intellectualProperty = intellectualProperty;
         return this;
     }
@@ -146,26 +146,38 @@ public class CharacterInfo implements Serializable {
         this.intellectualProperty = intellectualProperty;
     }
 
-    public CharacterInfo scopes(String scopes) {
-        this.scopes = scopes;
+    public VerifyResponse scopes(String scopes) {
+        setScopes(scopes);
         return this;
     }
 
     /**
-     * Space separated list of scopes the token is valid for
+     * Set of scopes the token is valid for
      * 
      * @return scopes
      **/
-    @ApiModelProperty(value = "Space separated list of scopes the token is valid for")
-    public String getScopes() {
-        return scopes;
+    @ApiModelProperty(value = "Set of scopes the token is valid for")
+    public Set<String> getScopes() {
+        if (scopesSet == null) {
+            updateScopesSet();
+        }
+        return scopesSet;
     }
 
     public void setScopes(String scopes) {
         this.scopes = scopes;
+        updateScopesSet();
     }
 
-    public CharacterInfo tokenType(String tokenType) {
+    private void updateScopesSet() {
+        if (scopes != null) {
+            this.scopesSet = new HashSet<>(Arrays.asList(scopes.split(" ")));
+        } else {
+            this.scopesSet = new HashSet<>();
+        }
+    }
+
+    public VerifyResponse tokenType(String tokenType) {
         this.tokenType = tokenType;
         return this;
     }
@@ -192,33 +204,33 @@ public class CharacterInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CharacterInfo characterInfo = (CharacterInfo) o;
-        return Objects.equals(this.characterID, characterInfo.characterID)
-                && Objects.equals(this.characterName, characterInfo.characterName)
-                && Objects.equals(this.characterOwnerHash, characterInfo.characterOwnerHash)
-                && Objects.equals(this.expiresOn, characterInfo.expiresOn)
-                && Objects.equals(this.intellectualProperty, characterInfo.intellectualProperty)
-                && Objects.equals(this.scopes, characterInfo.scopes)
-                && Objects.equals(this.tokenType, characterInfo.tokenType);
+        VerifyResponse verifyResponse = (VerifyResponse) o;
+        return Objects.equals(this.characterID, verifyResponse.characterID)
+                && Objects.equals(this.characterName, verifyResponse.characterName)
+                && Objects.equals(this.characterOwnerHash, verifyResponse.characterOwnerHash)
+                && Objects.equals(this.expiresOn, verifyResponse.expiresOn)
+                && Objects.equals(this.intellectualProperty, verifyResponse.intellectualProperty)
+                && Objects.equals(this.scopesSet, verifyResponse.scopesSet)
+                && Objects.equals(this.tokenType, verifyResponse.tokenType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characterID, characterName, characterOwnerHash, expiresOn, intellectualProperty, scopes,
+        return Objects.hash(characterID, characterName, characterOwnerHash, expiresOn, intellectualProperty, scopesSet,
                 tokenType);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CharacterInfo {\n");
+        sb.append("class VerifyResponse {\n");
 
         sb.append("    characterID: ").append(toIndentedString(characterID)).append("\n");
         sb.append("    characterName: ").append(toIndentedString(characterName)).append("\n");
         sb.append("    characterOwnerHash: ").append(toIndentedString(characterOwnerHash)).append("\n");
         sb.append("    expiresOn: ").append(toIndentedString(expiresOn)).append("\n");
         sb.append("    intellectualProperty: ").append(toIndentedString(intellectualProperty)).append("\n");
-        sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");
+        sb.append("    scopes: ").append(toIndentedString(scopesSet)).append("\n");
         sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
         sb.append("}");
         return sb.toString();

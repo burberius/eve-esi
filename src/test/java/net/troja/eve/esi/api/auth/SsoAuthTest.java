@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import net.troja.eve.esi.api.GeneralApiTest;
 import org.junit.Test;
@@ -39,15 +41,22 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void threads() throws ApiException {
+        AssetsApi api = new AssetsApi(apiClient);
         final int threads = 10;
+
         List<Callable<Void>> runnables = new ArrayList<>();
         for (int i = 0; i < threads; i++) {
-            runnables.add(new UpdateThread());
+            runnables.add(new UpdateThread(api));
         }
         ExecutorService threadPool = Executors.newFixedThreadPool(threads);
         try {
-            threadPool.invokeAll(runnables);
+            List<Future<Void>> tasks = threadPool.invokeAll(runnables);
+            for (Future<Void> task : tasks) {
+                task.get();
+            }
         } catch (InterruptedException ex) {
+            fail(ex.getMessage());
+        } catch (ExecutionException ex) {
             fail(ex.getMessage());
         }
     }
@@ -213,17 +222,18 @@ public class SsoAuthTest extends GeneralApiTest {
 
     private static class UpdateThread implements Callable<Void> {
 
+        private final AssetsApi api;
+
+        public UpdateThread(AssetsApi api) {
+            this.api = api;
+        }
+
         @Override
         public Void call() throws Exception {
-            try {
-                AssetsApi api = new AssetsApi();
-                Integer page = null;
-                final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
-                assertThat(response, notNullValue());
-                assertThat(response.size(), greaterThan(0));
-            } catch (ApiException ex) {
-                fail(ex.getMessage());
-            }
+            Integer page = null;
+            final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
+            assertThat(response, notNullValue());
+            assertThat(response.size(), greaterThan(0));
             return null;
         }
     }
