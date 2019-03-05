@@ -257,6 +257,10 @@ public class OAuth implements Authentication {
 
             // set data
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
+            ACCOUNTS.remove(accountData.getKey()); // Remove old value - or we
+                                                   // can match a random refresh
+                                                   // token with just the
+                                                   // clientID
             accountData.setAccessToken(result.getAccessToken());
             accountData.setValidUntil(validUntil);
             accountData.setRefreshToken(result.getRefreshToken());
