@@ -64,7 +64,8 @@ public class SsoApi {
         postRevokeToken(accessToken, ACCESS_TOKEN);
     }
 
-    private com.squareup.okhttp.Call postRevokeTokenCall(String token, String tokenTypeHint, final ProgressResponseBody.ProgressListener progressListener,
+    private com.squareup.okhttp.Call postRevokeTokenCall(String token, String tokenTypeHint,
+            final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
@@ -76,8 +77,7 @@ public class SsoApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        localVarHeaderParams.put("Content-Type",
-                "application/x-www-form-urlencoded");
+        localVarHeaderParams.put("Content-Type", "application/x-www-form-urlencoded");
         localVarHeaderParams.put("Host", "login.eveonline.com");
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -90,11 +90,10 @@ public class SsoApi {
         if (localVarAccept != null)
             localVarHeaderParams.put("Accept", localVarAccept);
 
-        final String[] localVarContentTypes = {"application/x-www-form-urlencoded"};
-        
+        final String[] localVarContentTypes = { "application/x-www-form-urlencoded" };
+
         final String localVarContentType = revokeApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        
 
         if (progressListener != null) {
             revokeApiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -114,17 +113,17 @@ public class SsoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postRevokeTokenValidateBeforeCall(
-            final String token, final String tokenTypeHint,
+    private com.squareup.okhttp.Call postRevokeTokenValidateBeforeCall(final String token, final String tokenTypeHint,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
 
-        com.squareup.okhttp.Call call = postRevokeTokenCall(token, tokenTypeHint, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postRevokeTokenCall(token, tokenTypeHint, progressListener,
+                progressRequestListener);
         return call;
 
     }
 
-    private void postRevokeToken(String token, String tokenTypeHint)throws ApiException {
+    private void postRevokeToken(String token, String tokenTypeHint) throws ApiException {
         postRevokeTokenWithHttpInfo(token, tokenTypeHint);
     }
 

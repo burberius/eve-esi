@@ -208,8 +208,10 @@ public class EsiStatusResponse implements Serializable {
             return false;
         }
         EsiStatusResponse esiStatusResponse = (EsiStatusResponse) o;
-        return Objects.equals(this.endpoint, esiStatusResponse.endpoint) && Objects.equals(this.method, esiStatusResponse.method)
-                && Objects.equals(this.route, esiStatusResponse.route) && Objects.equals(this.status, esiStatusResponse.status)
+        return Objects.equals(this.endpoint, esiStatusResponse.endpoint)
+                && Objects.equals(this.method, esiStatusResponse.method)
+                && Objects.equals(this.route, esiStatusResponse.route)
+                && Objects.equals(this.status, esiStatusResponse.status)
                 && Objects.equals(this.tags, esiStatusResponse.tags);
     }
 
