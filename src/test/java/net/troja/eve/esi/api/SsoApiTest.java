@@ -1,12 +1,14 @@
 package net.troja.eve.esi.api;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.CharacterInfo;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -28,6 +30,23 @@ public class SsoApiTest extends GeneralApiTest {
         }
     }
 
+    private void test(Class<?> c) {
+		Method methods[] = c.getMethods();
+		for (Method method : methods) {
+			if (method.getDeclaringClass() != c
+					&& method.getDeclaringClass() != Object.class
+					&& ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC)
+					&& ((method.getModifiers() & Modifier.FINAL) != Modifier.FINAL)) {
+				fail(c.getSimpleName()+" - overwrite method: "+method.toString());
+			}
+		}
+	}
+	
+	@Test
+	public void testOverwrite() {
+		test(CharacterInfo.class);
+	}
+
     @Test
     public void getCharacterInfoTest() throws ApiException {
         final ApiClient client = new ApiClient();
@@ -35,7 +54,7 @@ public class SsoApiTest extends GeneralApiTest {
         auth.setAuth(clientId, refreshToken);
 
         final SsoApi api = new SsoApi(client);
-        final VerifyResponse info = api.getCharacterInfo();
+        CharacterInfo info = api.getCharacterInfo();
 
         assertThat(info, notNullValue());
         assertThat(info.getCharacterID(), greaterThan(100000));
@@ -43,7 +62,7 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getExpiresOn(), notNullValue());
         assertThat(info.getTokenType(), equalTo("JWT"));
         assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
-        assertThat(info.getScopes().size(), greaterThan(10));
+        assertThat(info.getScopesSet().size(), greaterThan(10));
     }
 
     @Test

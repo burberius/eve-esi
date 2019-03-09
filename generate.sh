@@ -4,16 +4,14 @@
 # Get eve swagger file
 #
 rm -f esi.json
-wget -q -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tranquility
+wget -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tranquility
+wget -O meta.json https://esi.evetech.net/swagger.json
 
 #
 # Remove old model files in case something was removed
 #
-mv src/main/java/net/troja/eve/esi/model/VerifyResponse.java src/main/java/net/troja/eve/esi/VerifyResponse.java
-mv src/main/java/net/troja/eve/esi/model/EsiStatusResponse.java src/main/java/net/troja/eve/esi/EsiStatusResponse.java
+mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
 rm -r src/main/java/net/troja/eve/esi/model
-
-mv src/main/java/net/troja/eve/esi/api/MetaApi.java src/main/java/net/troja/eve/esi/MetaApi.java
 mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
 rm -r src/main/java/net/troja/eve/esi/api
 
@@ -35,6 +33,7 @@ rm -r src/main/java/net/troja/eve/esi/api
 # Transform and beautify swagger file
 #
 sed -i -f replace.sed esi.json
+sed -i -f meta_replace.sed meta.json
 ./transformation.sh
 #
 # Generate code
@@ -42,15 +41,19 @@ sed -i -f replace.sed esi.json
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-java -jar swagger-codegen-cli.jar generate \
+java -jar openapi-generator-cli-3.3.4.jar generate \
+  --skip-validate-spec  \
+  -i meta.json \
+  -g java \
+  -c config.json
+java -jar openapi-generator-cli-3.3.4.jar generate \
+  --skip-validate-spec  \
   -i esi.json \
-  -l java \
+  -g java \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
-mv src/main/java/net/troja/eve/esi/VerifyResponse.java src/main/java/net/troja/eve/esi//model/VerifyResponse.java
-mv src/main/java/net/troja/eve/esi/EsiStatusResponse.java src/main/java/net/troja/eve/esi/model/EsiStatusResponse.java
-mv src/main/java/net/troja/eve/esi/MetaApi.java src/main/java/net/troja/eve/esi/api/MetaApi.java
+mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi//model/CharacterInfo.java
 mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do

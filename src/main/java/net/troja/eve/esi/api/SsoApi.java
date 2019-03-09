@@ -12,7 +12,7 @@ import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.ProgressRequestBody;
 import net.troja.eve.esi.ProgressResponseBody;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.CharacterInfo;
 
 /**
  * Api to retrieve the character information from the sso.
@@ -21,6 +21,7 @@ public class SsoApi {
     private static final String URI_REVOKE = "https://login.eveonline.com";
     private static final String ACCESS_TOKEN = "access_token";
     private static final String REFRESH_TOKEN = "refresh_token";
+    private static final String DATASOURCE = "tranquility";
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
     private final ApiClient revokeApiClient = new ApiClient();
     private ApiClient apiClient;
@@ -51,9 +52,8 @@ public class SsoApi {
      * @return
      * @throws ApiException
      */
-    @Deprecated
-    public VerifyResponse getCharacterInfo() throws ApiException {
-        return metaApi.getVerify();
+    public CharacterInfo getCharacterInfo() throws ApiException {
+        return new CharacterInfo(metaApi.getVerify(null, null, DATASOURCE, null, null));
     }
 
     public void revokeRefreshToken(String refreshToken) throws ApiException {

@@ -4,7 +4,7 @@ import java.util.Map;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.CharacterInfo;
 import static org.junit.Assume.assumeFalse;
 import org.junit.BeforeClass;
 
@@ -57,11 +57,11 @@ public class GeneralApiTest {
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         auth.setAuth(clientId, refreshToken);
 
-        final MetaApi api = new MetaApi(client);
-        final VerifyResponse verify = api.getVerify();
+        final SsoApi api = new SsoApi(client);
+        CharacterInfo info = api.getCharacterInfo();
 
-        characterName = verify.getCharacterName();
-        characterId = verify.getCharacterID();
+        characterName = info.getCharacterName();
+        characterId = info.getCharacterID();
     }
 
     protected void ignoreTestFails() {
