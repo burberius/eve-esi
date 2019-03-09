@@ -64,10 +64,10 @@ public class SsoApi {
         postRevokeToken(accessToken, ACCESS_TOKEN);
     }
 
-    private com.squareup.okhttp.Call postRevokeTokenCall(String token, String tokenTypeHint,
+    private com.squareup.okhttp.Call postRevokeTokenCall(final String token, final String tokenTypeHint,
             final ProgressResponseBody.ProgressListener progressListener,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         // create path and map variables
@@ -87,8 +87,9 @@ public class SsoApi {
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = revokeApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null)
+        if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
+        }
 
         final String[] localVarContentTypes = { "application/x-www-form-urlencoded" };
 
@@ -123,11 +124,12 @@ public class SsoApi {
 
     }
 
-    private void postRevokeToken(String token, String tokenTypeHint) throws ApiException {
+    private void postRevokeToken(final String token, final String tokenTypeHint) throws ApiException {
         postRevokeTokenWithHttpInfo(token, tokenTypeHint);
     }
 
-    private ApiResponse<Void> postRevokeTokenWithHttpInfo(String token, String tokenTypeHint) throws ApiException {
+    private ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
+            throws ApiException {
         com.squareup.okhttp.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null, null);
         return revokeApiClient.execute(call);
     }
