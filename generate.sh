@@ -34,6 +34,7 @@ rm -r src/main/java/net/troja/eve/esi/api
 #
 sed -i -f replace.sed esi.json
 sed -i -f meta_replace.sed meta.json
+./meta_transformation.sh
 ./transformation.sh
 #
 # Generate code
