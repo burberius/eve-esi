@@ -2,9 +2,9 @@ package net.troja.eve.esi.api;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeParseException;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.auth.OAuth;
@@ -21,11 +21,10 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void dateFormatTest() {
-        DateFormat simpleDateFormat = new SimpleDateFormat(SsoApi.DATE_FORMAT);
         try {
-            simpleDateFormat.parse("2017-10-07T17:37:43.120");
-            simpleDateFormat.parse("2017-10-07T17:37:43");
-        } catch (ParseException ex) {
+            LocalDateTime.parse("2017-10-07T17:37:43.120");
+            LocalDateTime.parse("2017-10-07T17:37:43");
+        } catch (DateTimeParseException ex) {
             fail(ex.getMessage());
         }
     }
@@ -60,6 +59,8 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getCharacterID(), greaterThan(100000));
         assertThat(info.getCharacterName().isEmpty(), equalTo(false));
         assertThat(info.getExpiresOn(), notNullValue());
+        assertThat(info.getExpiresOnDate(), notNullValue());
+        assertThat(info.getExpiresOnDate().isAfter(OffsetDateTime.now()), equalTo(true));
         assertThat(info.getTokenType(), equalTo("JWT"));
         assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
         assertThat(info.getScopesSet().size(), greaterThan(10));

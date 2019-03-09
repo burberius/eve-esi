@@ -1,5 +1,8 @@
 package net.troja.eve.esi.model;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +10,7 @@ import java.util.Set;
 public class CharacterInfo extends EsiVerifyResponse {
 
     private final EsiVerifyResponse response;
+    private OffsetDateTime expiresDate;
     private Set<String> scopesSet = null;
 
     public CharacterInfo(EsiVerifyResponse response) {
@@ -62,6 +66,13 @@ public class CharacterInfo extends EsiVerifyResponse {
     @Override
     public String getExpiresOn() {
         return response.getExpiresOn();
+    }
+
+    public OffsetDateTime getExpiresOnDate() {
+        if (expiresDate == null) {
+            expiresDate = OffsetDateTime.of(LocalDateTime.parse(getExpiresOn()), ZoneOffset.UTC);
+        }
+        return expiresDate;
     }
 
     @Override
