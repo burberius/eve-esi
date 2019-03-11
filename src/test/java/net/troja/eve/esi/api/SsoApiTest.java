@@ -1,12 +1,14 @@
 package net.troja.eve.esi.api;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeParseException;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.CharacterInfo;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -19,14 +21,30 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void dateFormatTest() {
-        DateFormat simpleDateFormat = new SimpleDateFormat(SsoApi.DATE_FORMAT);
         try {
-            simpleDateFormat.parse("2017-10-07T17:37:43.120");
-            simpleDateFormat.parse("2017-10-07T17:37:43");
-        } catch (ParseException ex) {
+            LocalDateTime.parse("2017-10-07T17:37:43.120");
+            LocalDateTime.parse("2017-10-07T17:37:43");
+        } catch (DateTimeParseException ex) {
             fail(ex.getMessage());
         }
     }
+
+    private void test(Class<?> c) {
+		Method methods[] = c.getMethods();
+		for (Method method : methods) {
+			if (method.getDeclaringClass() != c
+					&& method.getDeclaringClass() != Object.class
+					&& ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC)
+					&& ((method.getModifiers() & Modifier.FINAL) != Modifier.FINAL)) {
+				fail(c.getSimpleName()+" - overwrite method: "+method.toString());
+			}
+		}
+	}
+	
+	@Test
+	public void testOverwrite() {
+		test(CharacterInfo.class);
+	}
 
     @Test
     public void getCharacterInfoTest() throws ApiException {
@@ -35,15 +53,17 @@ public class SsoApiTest extends GeneralApiTest {
         auth.setAuth(clientId, refreshToken);
 
         final SsoApi api = new SsoApi(client);
-        final VerifyResponse info = api.getCharacterInfo();
+        CharacterInfo info = api.getCharacterInfo();
 
         assertThat(info, notNullValue());
         assertThat(info.getCharacterID(), greaterThan(100000));
         assertThat(info.getCharacterName().isEmpty(), equalTo(false));
         assertThat(info.getExpiresOn(), notNullValue());
+        assertThat(info.getExpiresOnDate(), notNullValue());
+        assertThat(info.getExpiresOnDate().isAfter(OffsetDateTime.now()), equalTo(true));
         assertThat(info.getTokenType(), equalTo("JWT"));
         assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
-        assertThat(info.getScopes().size(), greaterThan(10));
+        assertThat(info.getScopesSet().size(), greaterThan(10));
     }
 
     @Test

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import static net.troja.eve.esi.api.GeneralApiTest.apiClient;
 import net.troja.eve.esi.model.EsiStatusResponse;
-import net.troja.eve.esi.model.VerifyResponse;
+import net.troja.eve.esi.model.EsiVerifyResponse;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
@@ -60,7 +60,7 @@ public class MetaApiTest extends GeneralApiTest {
 
     @Test
     public void testGetVerify() throws Exception {
-        VerifyResponse verify = api.getVerify();
+        EsiVerifyResponse verify = api.getVerify(null, null, DATASOURCE, null, null);
         assertThat(verify, notNullValue());
         assertThat(verify.getCharacterID(), notNullValue());
         assertThat(verify.getCharacterID(), equalTo(characterId));
@@ -70,7 +70,7 @@ public class MetaApiTest extends GeneralApiTest {
         assertThat(verify.getExpiresOn(), notNullValue());
         //assertThat(verify.getIntellectualProperty(), notNullValue());
         assertThat(verify.getScopes(), notNullValue());
-        assertThat(verify.getScopes().size(), greaterThan(0));
+        assertThat(verify.getScopes().split(" ").length, greaterThan(0));
         assertThat(verify.getTokenType(), notNullValue());
         
     }
