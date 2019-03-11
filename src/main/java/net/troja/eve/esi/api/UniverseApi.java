@@ -1580,10 +1580,10 @@ public class UniverseApi {
     }
 
     /**
-     * Get names and categories for a set of ID&#39;s Resolve a set of IDs to
-     * names and categories. Supported ID&#39;s for resolving are: Characters,
+     * Get names and categories for a set of IDs Resolve a set of IDs to names
+     * and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types ---
+     * Regions, Types, Factions ---
      * 
      * @param ids
      *            The ids to resolve (required)
@@ -1603,7 +1603,7 @@ public class UniverseApi {
         }
 
         // create path and map variables
-        String localVarPath = "/v2/universe/names/".replaceAll("\\{format\\}", "json");
+        String localVarPath = "/v3/universe/names/".replaceAll("\\{format\\}", "json");
 
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
