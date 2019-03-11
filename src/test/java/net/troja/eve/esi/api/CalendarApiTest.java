@@ -19,8 +19,9 @@ import net.troja.eve.esi.model.CharacterCalendarAttendeesResponse;
 import net.troja.eve.esi.model.CharacterCalendarEventResponse;
 import net.troja.eve.esi.model.CharacterCalendarResponse;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assume.assumeFalse;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -50,7 +51,7 @@ public class CalendarApiTest extends GeneralApiTest {
         final Integer fromEvent = null;
         final List<CharacterCalendarResponse> response = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, fromEvent, null, null);
 
-        assertThat(response.size(), greaterThan(0));
+        assertThat(response, notNullValue());
     }
     
     /**
@@ -65,6 +66,8 @@ public class CalendarApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdCalendarEventIdTest() throws ApiException {
         final List<CharacterCalendarResponse> calendar = api.getCharactersCharacterIdCalendar(characterId, DATASOURCE, null, null, null);
 
+        assumeFalse(calendar.isEmpty());
+        
         final Integer eventId = calendar.get(0).getEventId();
         final CharacterCalendarEventResponse response = api.getCharactersCharacterIdCalendarEventId(characterId, eventId, DATASOURCE, null, null);
 
