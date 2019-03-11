@@ -77,18 +77,15 @@ public class SearchApi {
      *            to false)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdSearchCall(List<String> categories, Integer characterId,
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            Boolean strict, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Boolean strict, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -143,29 +140,15 @@ public class SearchApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdSearchValidateBeforeCall(List<String> categories,
             Integer characterId, String search, String acceptLanguage, String datasource, String ifNoneMatch,
-            String language, Boolean strict, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String language, Boolean strict, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'categories' is set
         if (categories == null) {
@@ -186,8 +169,7 @@ public class SearchApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdSearchCall(categories, characterId, search,
-                acceptLanguage, datasource, ifNoneMatch, language, strict, token, progressListener,
-                progressRequestListener);
+                acceptLanguage, datasource, ifNoneMatch, language, strict, token, callback);
         return call;
 
     }
@@ -268,7 +250,7 @@ public class SearchApi {
             Integer characterId, String search, String acceptLanguage, String datasource, String ifNoneMatch,
             String language, Boolean strict, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId,
-                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, null, null);
+                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, null);
         Type localVarReturnType = new TypeToken<CharacterSearchResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -312,28 +294,8 @@ public class SearchApi {
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
             Boolean strict, String token, final ApiCallback<CharacterSearchResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId,
-                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, progressListener,
-                progressRequestListener);
+                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, callback);
         Type localVarReturnType = new TypeToken<CharacterSearchResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -361,18 +323,15 @@ public class SearchApi {
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSearchCall(List<String> categories, String search, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, Boolean strict,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, Boolean strict, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -422,28 +381,15 @@ public class SearchApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSearchValidateBeforeCall(List<String> categories, String search,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'categories' is set
         if (categories == null) {
@@ -456,7 +402,7 @@ public class SearchApi {
         }
 
         com.squareup.okhttp.Call call = getSearchCall(categories, search, acceptLanguage, datasource, ifNoneMatch,
-                language, strict, progressListener, progressRequestListener);
+                language, strict, callback);
         return call;
 
     }
@@ -528,7 +474,7 @@ public class SearchApi {
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict)
             throws ApiException {
         com.squareup.okhttp.Call call = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
-                ifNoneMatch, language, strict, null, null);
+                ifNoneMatch, language, strict, null);
         Type localVarReturnType = new TypeToken<SearchResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -568,27 +514,8 @@ public class SearchApi {
             String datasource, String ifNoneMatch, String language, Boolean strict,
             final ApiCallback<SearchResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
-                ifNoneMatch, language, strict, progressListener, progressRequestListener);
+                ifNoneMatch, language, strict, callback);
         Type localVarReturnType = new TypeToken<SearchResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

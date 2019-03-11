@@ -65,18 +65,14 @@ public class FittingsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteCharactersCharacterIdFittingsFittingIdCall(Integer characterId,
-            Integer fittingId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer fittingId, String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -110,28 +106,15 @@ public class FittingsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteCharactersCharacterIdFittingsFittingIdValidateBeforeCall(
-            Integer characterId, Integer fittingId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer characterId, Integer fittingId, String datasource, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -146,7 +129,7 @@ public class FittingsApi {
         }
 
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdFittingsFittingIdCall(characterId, fittingId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         return call;
 
     }
@@ -194,7 +177,7 @@ public class FittingsApi {
     public ApiResponse<Void> deleteCharactersCharacterIdFittingsFittingIdWithHttpInfo(Integer characterId,
             Integer fittingId, String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdFittingsFittingIdValidateBeforeCall(characterId,
-                fittingId, datasource, token, null, null);
+                fittingId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -221,27 +204,8 @@ public class FittingsApi {
     public com.squareup.okhttp.Call deleteCharactersCharacterIdFittingsFittingIdAsync(Integer characterId,
             Integer fittingId, String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdFittingsFittingIdValidateBeforeCall(characterId,
-                fittingId, datasource, token, progressListener, progressRequestListener);
+                fittingId, datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -259,17 +223,14 @@ public class FittingsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdFittingsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -304,28 +265,14 @@ public class FittingsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdFittingsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -334,7 +281,7 @@ public class FittingsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdFittingsCall(characterId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -395,7 +342,7 @@ public class FittingsApi {
     public ApiResponse<List<CharacterFittingsResponse>> getCharactersCharacterIdFittingsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdFittingsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterFittingsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -430,27 +377,8 @@ public class FittingsApi {
             String ifNoneMatch, String token, final ApiCallback<List<CharacterFittingsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdFittingsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterFittingsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -469,18 +397,14 @@ public class FittingsApi {
      *            Access token to use if unable to set a header (optional)
      * @param characterFitting
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postCharactersCharacterIdFittingsCall(Integer characterId, String datasource,
-            String token, CharacterFitting characterFitting,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, CharacterFitting characterFitting, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = characterFitting;
 
         // create path and map variables
@@ -509,28 +433,15 @@ public class FittingsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postCharactersCharacterIdFittingsValidateBeforeCall(Integer characterId,
-            String datasource, String token, CharacterFitting characterFitting,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, CharacterFitting characterFitting, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -539,7 +450,7 @@ public class FittingsApi {
         }
 
         com.squareup.okhttp.Call call = postCharactersCharacterIdFittingsCall(characterId, datasource, token,
-                characterFitting, progressListener, progressRequestListener);
+                characterFitting, callback);
         return call;
 
     }
@@ -596,7 +507,7 @@ public class FittingsApi {
     public ApiResponse<CharacterFittingResponse> postCharactersCharacterIdFittingsWithHttpInfo(Integer characterId,
             String datasource, String token, CharacterFitting characterFitting) throws ApiException {
         com.squareup.okhttp.Call call = postCharactersCharacterIdFittingsValidateBeforeCall(characterId, datasource,
-                token, characterFitting, null, null);
+                token, characterFitting, null);
         Type localVarReturnType = new TypeToken<CharacterFittingResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -628,27 +539,8 @@ public class FittingsApi {
             String token, CharacterFitting characterFitting, final ApiCallback<CharacterFittingResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postCharactersCharacterIdFittingsValidateBeforeCall(characterId, datasource,
-                token, characterFitting, progressListener, progressRequestListener);
+                token, characterFitting, callback);
         Type localVarReturnType = new TypeToken<CharacterFittingResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

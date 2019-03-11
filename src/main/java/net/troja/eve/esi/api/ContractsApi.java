@@ -74,18 +74,14 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdContractsCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -124,28 +120,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdContractsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -154,7 +137,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsCall(characterId, datasource, ifNoneMatch,
-                page, token, progressListener, progressRequestListener);
+                page, token, callback);
         return call;
 
     }
@@ -215,7 +198,7 @@ public class ContractsApi {
     public ApiResponse<List<CharacterContractsResponse>> getCharactersCharacterIdContractsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, null, null);
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterContractsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -250,27 +233,8 @@ public class ContractsApi {
             String ifNoneMatch, Integer page, String token, final ApiCallback<List<CharacterContractsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, progressListener, progressRequestListener);
+                ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterContractsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -292,18 +256,15 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdContractsContractIdBidsCall(Integer characterId,
-            Integer contractId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer contractId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -339,28 +300,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdContractsContractIdBidsValidateBeforeCall(
             Integer characterId, Integer contractId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -375,7 +323,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdBidsCall(characterId, contractId,
-                datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, token, callback);
         return call;
 
     }
@@ -435,7 +383,7 @@ public class ContractsApi {
             Integer characterId, Integer contractId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdBidsValidateBeforeCall(characterId,
-                contractId, datasource, ifNoneMatch, token, null, null);
+                contractId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterContractsBidsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -469,27 +417,8 @@ public class ContractsApi {
             Integer contractId, String datasource, String ifNoneMatch, String token,
             final ApiCallback<List<CharacterContractsBidsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdBidsValidateBeforeCall(characterId,
-                contractId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                contractId, datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterContractsBidsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -511,18 +440,15 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdContractsContractIdItemsCall(Integer characterId,
-            Integer contractId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer contractId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -558,28 +484,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdContractsContractIdItemsValidateBeforeCall(
             Integer characterId, Integer contractId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -594,7 +507,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdItemsCall(characterId, contractId,
-                datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, token, callback);
         return call;
 
     }
@@ -656,7 +569,7 @@ public class ContractsApi {
             Integer characterId, Integer contractId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdItemsValidateBeforeCall(characterId,
-                contractId, datasource, ifNoneMatch, token, null, null);
+                contractId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterContractsItemsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -691,27 +604,8 @@ public class ContractsApi {
             Integer contractId, String datasource, String ifNoneMatch, String token,
             final ApiCallback<List<CharacterContractsItemsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdContractsContractIdItemsValidateBeforeCall(characterId,
-                contractId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                contractId, datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterContractsItemsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -731,17 +625,14 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getContractsPublicBidsContractIdCall(Integer contractId, String datasource,
-            String ifNoneMatch, Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -776,28 +667,14 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getContractsPublicBidsContractIdValidateBeforeCall(Integer contractId,
-            String datasource, String ifNoneMatch, Integer page,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -806,7 +683,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getContractsPublicBidsContractIdCall(contractId, datasource, ifNoneMatch, page,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -859,7 +736,7 @@ public class ContractsApi {
     public ApiResponse<List<PublicContractsBidsResponse>> getContractsPublicBidsContractIdWithHttpInfo(
             Integer contractId, String datasource, String ifNoneMatch, Integer page) throws ApiException {
         com.squareup.okhttp.Call call = getContractsPublicBidsContractIdValidateBeforeCall(contractId, datasource,
-                ifNoneMatch, page, null, null);
+                ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<PublicContractsBidsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -890,27 +767,8 @@ public class ContractsApi {
             String ifNoneMatch, Integer page, final ApiCallback<List<PublicContractsBidsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getContractsPublicBidsContractIdValidateBeforeCall(contractId, datasource,
-                ifNoneMatch, page, progressListener, progressRequestListener);
+                ifNoneMatch, page, callback);
         Type localVarReturnType = new TypeToken<List<PublicContractsBidsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -930,17 +788,14 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getContractsPublicItemsContractIdCall(Integer contractId, String datasource,
-            String ifNoneMatch, Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -975,28 +830,14 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getContractsPublicItemsContractIdValidateBeforeCall(Integer contractId,
-            String datasource, String ifNoneMatch, Integer page,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -1005,7 +846,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getContractsPublicItemsContractIdCall(contractId, datasource, ifNoneMatch,
-                page, progressListener, progressRequestListener);
+                page, callback);
         return call;
 
     }
@@ -1058,7 +899,7 @@ public class ContractsApi {
     public ApiResponse<List<PublicContractsItemsResponse>> getContractsPublicItemsContractIdWithHttpInfo(
             Integer contractId, String datasource, String ifNoneMatch, Integer page) throws ApiException {
         com.squareup.okhttp.Call call = getContractsPublicItemsContractIdValidateBeforeCall(contractId, datasource,
-                ifNoneMatch, page, null, null);
+                ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<PublicContractsItemsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1089,27 +930,8 @@ public class ContractsApi {
             String ifNoneMatch, Integer page, final ApiCallback<List<PublicContractsItemsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getContractsPublicItemsContractIdValidateBeforeCall(contractId, datasource,
-                ifNoneMatch, page, progressListener, progressRequestListener);
+                ifNoneMatch, page, callback);
         Type localVarReturnType = new TypeToken<List<PublicContractsItemsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1129,17 +951,14 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getContractsPublicRegionIdCall(Integer regionId, String datasource,
-            String ifNoneMatch, Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1174,27 +993,14 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getContractsPublicRegionIdValidateBeforeCall(Integer regionId, String datasource,
-            String ifNoneMatch, Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
@@ -1203,7 +1009,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getContractsPublicRegionIdCall(regionId, datasource, ifNoneMatch, page,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -1256,7 +1062,7 @@ public class ContractsApi {
     public ApiResponse<List<PublicContractsResponse>> getContractsPublicRegionIdWithHttpInfo(Integer regionId,
             String datasource, String ifNoneMatch, Integer page) throws ApiException {
         com.squareup.okhttp.Call call = getContractsPublicRegionIdValidateBeforeCall(regionId, datasource, ifNoneMatch,
-                page, null, null);
+                page, null);
         Type localVarReturnType = new TypeToken<List<PublicContractsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1288,27 +1094,8 @@ public class ContractsApi {
             String ifNoneMatch, Integer page, final ApiCallback<List<PublicContractsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getContractsPublicRegionIdValidateBeforeCall(regionId, datasource, ifNoneMatch,
-                page, progressListener, progressRequestListener);
+                page, callback);
         Type localVarReturnType = new TypeToken<List<PublicContractsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1330,18 +1117,14 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCorporationsCorporationIdContractsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1380,28 +1163,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCorporationsCorporationIdContractsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1410,7 +1180,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsCall(corporationId, datasource,
-                ifNoneMatch, page, token, progressListener, progressRequestListener);
+                ifNoneMatch, page, token, callback);
         return call;
 
     }
@@ -1472,7 +1242,7 @@ public class ContractsApi {
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null, null);
+                datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContractsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1507,27 +1277,8 @@ public class ContractsApi {
             String datasource, String ifNoneMatch, Integer page, String token,
             final ApiCallback<List<CorporationContractsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CorporationContractsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1551,18 +1302,15 @@ public class ContractsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCorporationsCorporationIdContractsContractIdBidsCall(Integer contractId,
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1602,28 +1350,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCorporationsCorporationIdContractsContractIdBidsValidateBeforeCall(
             Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, Integer page,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -1638,7 +1373,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdBidsCall(contractId,
-                corporationId, datasource, ifNoneMatch, page, token, progressListener, progressRequestListener);
+                corporationId, datasource, ifNoneMatch, page, token, callback);
         return call;
 
     }
@@ -1703,7 +1438,7 @@ public class ContractsApi {
             Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdBidsValidateBeforeCall(
-                contractId, corporationId, datasource, ifNoneMatch, page, token, null, null);
+                contractId, corporationId, datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContractsBidsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1739,28 +1474,8 @@ public class ContractsApi {
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
             final ApiCallback<List<CorporationContractsBidsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdBidsValidateBeforeCall(
-                contractId, corporationId, datasource, ifNoneMatch, page, token, progressListener,
-                progressRequestListener);
+                contractId, corporationId, datasource, ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CorporationContractsBidsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1782,18 +1497,15 @@ public class ContractsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCorporationsCorporationIdContractsContractIdItemsCall(Integer contractId,
-            Integer corporationId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer corporationId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1829,28 +1541,15 @@ public class ContractsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCorporationsCorporationIdContractsContractIdItemsValidateBeforeCall(
             Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -1865,7 +1564,7 @@ public class ContractsApi {
         }
 
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdItemsCall(contractId,
-                corporationId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                corporationId, datasource, ifNoneMatch, token, callback);
         return call;
 
     }
@@ -1928,7 +1627,7 @@ public class ContractsApi {
             Integer contractId, Integer corporationId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdItemsValidateBeforeCall(
-                contractId, corporationId, datasource, ifNoneMatch, token, null, null);
+                contractId, corporationId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContractsItemsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1963,27 +1662,8 @@ public class ContractsApi {
             Integer corporationId, String datasource, String ifNoneMatch, String token,
             final ApiCallback<List<CorporationContractsItemsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCorporationsCorporationIdContractsContractIdItemsValidateBeforeCall(
-                contractId, corporationId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                contractId, corporationId, datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CorporationContractsItemsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

@@ -68,18 +68,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUiAutopilotWaypointCall(Boolean addToBeginning, Boolean clearOtherWaypoints,
-            Long destinationId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Long destinationId, String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -123,28 +119,15 @@ public class UserInterfaceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUiAutopilotWaypointValidateBeforeCall(Boolean addToBeginning,
-            Boolean clearOtherWaypoints, Long destinationId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Boolean clearOtherWaypoints, Long destinationId, String datasource, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'addToBeginning' is set
         if (addToBeginning == null) {
@@ -165,7 +148,7 @@ public class UserInterfaceApi {
         }
 
         com.squareup.okhttp.Call call = postUiAutopilotWaypointCall(addToBeginning, clearOtherWaypoints, destinationId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         return call;
 
     }
@@ -223,7 +206,7 @@ public class UserInterfaceApi {
     public ApiResponse<Void> postUiAutopilotWaypointWithHttpInfo(Boolean addToBeginning, Boolean clearOtherWaypoints,
             Long destinationId, String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
-                destinationId, datasource, token, null, null);
+                destinationId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -255,27 +238,8 @@ public class UserInterfaceApi {
     public com.squareup.okhttp.Call postUiAutopilotWaypointAsync(Boolean addToBeginning, Boolean clearOtherWaypoints,
             Long destinationId, String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
-                destinationId, datasource, token, progressListener, progressRequestListener);
+                destinationId, datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -290,17 +254,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUiOpenwindowContractCall(Integer contractId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -336,27 +297,14 @@ public class UserInterfaceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUiOpenwindowContractValidateBeforeCall(Integer contractId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -364,8 +312,7 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'contractId' when calling postUiOpenwindowContract(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowContractCall(contractId, datasource, token, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUiOpenwindowContractCall(contractId, datasource, token, callback);
         return call;
 
     }
@@ -407,8 +354,7 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowContractWithHttpInfo(Integer contractId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token, null,
-                null);
+        com.squareup.okhttp.Call call = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -433,27 +379,8 @@ public class UserInterfaceApi {
     public com.squareup.okhttp.Call postUiOpenwindowContractAsync(Integer contractId, String datasource, String token,
             final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -468,17 +395,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUiOpenwindowInformationCall(Integer targetId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -514,27 +438,14 @@ public class UserInterfaceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUiOpenwindowInformationValidateBeforeCall(Integer targetId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'targetId' is set
         if (targetId == null) {
@@ -542,8 +453,7 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'targetId' when calling postUiOpenwindowInformation(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowInformationCall(targetId, datasource, token, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUiOpenwindowInformationCall(targetId, datasource, token, callback);
         return call;
 
     }
@@ -587,8 +497,7 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowInformationWithHttpInfo(Integer targetId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token,
-                null, null);
+        com.squareup.okhttp.Call call = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -614,27 +523,8 @@ public class UserInterfaceApi {
     public com.squareup.okhttp.Call postUiOpenwindowInformationAsync(Integer targetId, String datasource, String token,
             final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -649,17 +539,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUiOpenwindowMarketdetailsCall(Integer typeId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -695,27 +582,14 @@ public class UserInterfaceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUiOpenwindowMarketdetailsValidateBeforeCall(Integer typeId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'typeId' is set
         if (typeId == null) {
@@ -723,8 +597,7 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'typeId' when calling postUiOpenwindowMarketdetails(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsCall(typeId, datasource, token, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsCall(typeId, datasource, token, callback);
         return call;
 
     }
@@ -766,8 +639,7 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowMarketdetailsWithHttpInfo(Integer typeId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token,
-                null, null);
+        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -792,27 +664,8 @@ public class UserInterfaceApi {
     public com.squareup.okhttp.Call postUiOpenwindowMarketdetailsAsync(Integer typeId, String datasource, String token,
             final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -827,17 +680,14 @@ public class UserInterfaceApi {
      *            Access token to use if unable to set a header (optional)
      * @param uiNewMail
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUiOpenwindowNewmailCall(String datasource, String token, UiNewMail uiNewMail,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = uiNewMail;
 
         // create path and map variables
@@ -867,30 +717,16 @@ public class UserInterfaceApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUiOpenwindowNewmailValidateBeforeCall(String datasource, String token,
-            UiNewMail uiNewMail, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            UiNewMail uiNewMail, final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowNewmailCall(datasource, token, uiNewMail, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUiOpenwindowNewmailCall(datasource, token, uiNewMail, callback);
         return call;
 
     }
@@ -932,8 +768,7 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowNewmailWithHttpInfo(String datasource, String token, UiNewMail uiNewMail)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowNewmailValidateBeforeCall(datasource, token, uiNewMail, null,
-                null);
+        com.squareup.okhttp.Call call = postUiOpenwindowNewmailValidateBeforeCall(datasource, token, uiNewMail, null);
         return apiClient.execute(call);
     }
 
@@ -959,27 +794,8 @@ public class UserInterfaceApi {
     public com.squareup.okhttp.Call postUiOpenwindowNewmailAsync(String datasource, String token, UiNewMail uiNewMail,
             final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUiOpenwindowNewmailValidateBeforeCall(datasource, token, uiNewMail,
-                progressListener, progressRequestListener);
+                callback);
         apiClient.executeAsync(call, callback);
         return call;
     }

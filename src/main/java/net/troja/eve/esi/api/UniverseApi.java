@@ -86,17 +86,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseAncestriesCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -134,30 +131,17 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseAncestriesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         com.squareup.okhttp.Call call = getUniverseAncestriesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -212,7 +196,7 @@ public class UniverseApi {
     public ApiResponse<List<UniverseAncestriesResponse>> getUniverseAncestriesWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, null, null);
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -244,27 +228,8 @@ public class UniverseApi {
             String ifNoneMatch, String language, final ApiCallback<List<UniverseAncestriesResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -282,17 +247,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseAsteroidBeltsAsteroidBeltIdCall(Integer asteroidBeltId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -323,27 +285,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(Integer asteroidBeltId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'asteroidBeltId' is set
         if (asteroidBeltId == null) {
@@ -352,7 +301,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdCall(asteroidBeltId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         return call;
 
     }
@@ -401,7 +350,7 @@ public class UniverseApi {
     public ApiResponse<UniverseAsteroidBeltsResponse> getUniverseAsteroidBeltsAsteroidBeltIdWithHttpInfo(
             Integer asteroidBeltId, String datasource, String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
-                datasource, ifNoneMatch, null, null);
+                datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -430,27 +379,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, final ApiCallback<UniverseAsteroidBeltsResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
-                datasource, ifNoneMatch, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -471,17 +401,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseBloodlinesCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -519,30 +446,17 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseBloodlinesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         com.squareup.okhttp.Call call = getUniverseBloodlinesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -597,7 +511,7 @@ public class UniverseApi {
     public ApiResponse<List<BloodlinesResponse>> getUniverseBloodlinesWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, null, null);
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -629,27 +543,8 @@ public class UniverseApi {
             String ifNoneMatch, String language, final ApiCallback<List<BloodlinesResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -665,17 +560,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseCategoriesCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -705,30 +597,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseCategoriesValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseCategoriesCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseCategoriesCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -770,7 +648,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseCategoriesWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -796,27 +674,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseCategoriesAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -839,18 +697,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseCategoriesCategoryIdCall(Integer categoryId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -889,28 +743,15 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseCategoriesCategoryIdValidateBeforeCall(Integer categoryId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'categoryId' is set
         if (categoryId == null) {
@@ -919,7 +760,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdCall(categoryId, acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         return call;
 
     }
@@ -978,7 +819,7 @@ public class UniverseApi {
     public ApiResponse<CategoryResponse> getUniverseCategoriesCategoryIdWithHttpInfo(Integer categoryId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
-                datasource, ifNoneMatch, language, null, null);
+                datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1012,27 +853,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, String language, final ApiCallback<CategoryResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
-                datasource, ifNoneMatch, language, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1048,17 +870,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseConstellationsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1088,30 +907,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseConstellationsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseConstellationsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseConstellationsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -1153,7 +958,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseConstellationsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1179,27 +984,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseConstellationsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1222,18 +1007,15 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseConstellationsConstellationIdCall(Integer constellationId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1272,28 +1054,15 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseConstellationsConstellationIdValidateBeforeCall(
             Integer constellationId, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'constellationId' is set
         if (constellationId == null) {
@@ -1302,7 +1071,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdCall(constellationId, acceptLanguage,
-                datasource, ifNoneMatch, language, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, language, callback);
         return call;
 
     }
@@ -1362,7 +1131,7 @@ public class UniverseApi {
             Integer constellationId, String acceptLanguage, String datasource, String ifNoneMatch, String language)
             throws ApiException {
         com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
-                acceptLanguage, datasource, ifNoneMatch, language, null, null);
+                acceptLanguage, datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1396,27 +1165,8 @@ public class UniverseApi {
             String acceptLanguage, String datasource, String ifNoneMatch, String language,
             final ApiCallback<ConstellationResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
-                acceptLanguage, datasource, ifNoneMatch, language, progressListener, progressRequestListener);
+                acceptLanguage, datasource, ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1437,17 +1187,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseFactionsCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1485,30 +1232,17 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseFactionsValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         com.squareup.okhttp.Call call = getUniverseFactionsCall(acceptLanguage, datasource, ifNoneMatch, language,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -1561,7 +1295,7 @@ public class UniverseApi {
     public ApiResponse<List<FactionsResponse>> getUniverseFactionsWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, null, null);
+                language, null);
         Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1593,27 +1327,8 @@ public class UniverseApi {
             String ifNoneMatch, String language, final ApiCallback<List<FactionsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, progressListener, progressRequestListener);
+                language, callback);
         Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1629,17 +1344,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseGraphicsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1669,30 +1381,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseGraphicsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseGraphicsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -1732,7 +1430,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseGraphicsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1758,27 +1456,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseGraphicsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1796,17 +1474,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseGraphicsGraphicIdCall(Integer graphicId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1837,27 +1512,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseGraphicsGraphicIdValidateBeforeCall(Integer graphicId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'graphicId' is set
         if (graphicId == null) {
@@ -1865,8 +1527,7 @@ public class UniverseApi {
                     "Missing the required parameter 'graphicId' when calling getUniverseGraphicsGraphicId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdCall(graphicId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdCall(graphicId, datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -1914,7 +1575,7 @@ public class UniverseApi {
     public ApiResponse<GraphicResponse> getUniverseGraphicsGraphicIdWithHttpInfo(Integer graphicId, String datasource,
             String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource,
-                ifNoneMatch, null, null);
+                ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1942,27 +1603,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseGraphicsGraphicIdAsync(Integer graphicId, String datasource,
             String ifNoneMatch, final ApiCallback<GraphicResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1980,17 +1622,14 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseGroupsCall(String datasource, String ifNoneMatch, Integer page,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2024,30 +1663,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseGroupsValidateBeforeCall(String datasource, String ifNoneMatch,
-            Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer page, final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGroupsCall(datasource, ifNoneMatch, page, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseGroupsCall(datasource, ifNoneMatch, page, callback);
         return call;
 
     }
@@ -2093,7 +1718,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseGroupsWithHttpInfo(String datasource, String ifNoneMatch, Integer page)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, null, null);
+        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2121,27 +1746,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseGroupsAsync(String datasource, String ifNoneMatch, Integer page,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2164,18 +1769,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseGroupsGroupIdCall(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2214,28 +1815,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseGroupsGroupIdValidateBeforeCall(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'groupId' is set
         if (groupId == null) {
@@ -2244,7 +1831,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseGroupsGroupIdCall(groupId, acceptLanguage, datasource, ifNoneMatch,
-                language, progressListener, progressRequestListener);
+                language, callback);
         return call;
 
     }
@@ -2303,7 +1890,7 @@ public class UniverseApi {
     public ApiResponse<GroupResponse> getUniverseGroupsGroupIdWithHttpInfo(Integer groupId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
-                ifNoneMatch, language, null, null);
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<GroupResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2337,27 +1924,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, String language, final ApiCallback<GroupResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<GroupResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2375,17 +1943,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseMoonsMoonIdCall(Integer moonId, String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2416,35 +1981,21 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseMoonsMoonIdValidateBeforeCall(Integer moonId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'moonId' is set
         if (moonId == null) {
             throw new ApiException("Missing the required parameter 'moonId' when calling getUniverseMoonsMoonId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdCall(moonId, datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdCall(moonId, datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -2491,8 +2042,7 @@ public class UniverseApi {
      */
     public ApiResponse<MoonResponse> getUniverseMoonsMoonIdWithHttpInfo(Integer moonId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch, null,
-                null);
+        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2520,27 +2070,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseMoonsMoonIdAsync(Integer moonId, String datasource, String ifNoneMatch,
             final ApiCallback<MoonResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2558,17 +2089,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniversePlanetsPlanetIdCall(Integer planetId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2599,27 +2127,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniversePlanetsPlanetIdValidateBeforeCall(Integer planetId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'planetId' is set
         if (planetId == null) {
@@ -2627,8 +2142,7 @@ public class UniverseApi {
                     "Missing the required parameter 'planetId' when calling getUniversePlanetsPlanetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdCall(planetId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdCall(planetId, datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -2676,7 +2190,7 @@ public class UniverseApi {
     public ApiResponse<PlanetResponse> getUniversePlanetsPlanetIdWithHttpInfo(Integer planetId, String datasource,
             String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
-                null, null);
+                null);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2704,27 +2218,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniversePlanetsPlanetIdAsync(Integer planetId, String datasource,
             String ifNoneMatch, final ApiCallback<PlanetResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2745,17 +2240,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseRacesCall(String acceptLanguage, String datasource, String ifNoneMatch,
-            String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2793,30 +2285,17 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseRacesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         com.squareup.okhttp.Call call = getUniverseRacesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -2871,7 +2350,7 @@ public class UniverseApi {
     public ApiResponse<List<RacesResponse>> getUniverseRacesWithHttpInfo(String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, null, null);
+                language, null);
         Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2902,27 +2381,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseRacesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
             String language, final ApiCallback<List<RacesResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, progressListener, progressRequestListener);
+                language, callback);
         Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2938,17 +2398,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseRegionsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2978,30 +2435,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseRegionsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRegionsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseRegionsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -3041,7 +2484,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseRegionsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -3067,27 +2510,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseRegionsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3110,18 +2533,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseRegionsRegionIdCall(Integer regionId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3160,28 +2579,15 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseRegionsRegionIdValidateBeforeCall(Integer regionId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
@@ -3190,7 +2596,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseRegionsRegionIdCall(regionId, acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         return call;
 
     }
@@ -3249,7 +2655,7 @@ public class UniverseApi {
     public ApiResponse<RegionResponse> getUniverseRegionsRegionIdWithHttpInfo(Integer regionId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage,
-                datasource, ifNoneMatch, language, null, null);
+                datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -3283,27 +2689,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, String language, final ApiCallback<RegionResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage,
-                datasource, ifNoneMatch, language, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3321,17 +2708,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseStargatesStargateIdCall(Integer stargateId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3362,27 +2746,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseStargatesStargateIdValidateBeforeCall(Integer stargateId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'stargateId' is set
         if (stargateId == null) {
@@ -3391,7 +2762,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseStargatesStargateIdCall(stargateId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -3440,7 +2811,7 @@ public class UniverseApi {
     public ApiResponse<StargateResponse> getUniverseStargatesStargateIdWithHttpInfo(Integer stargateId,
             String datasource, String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
-                ifNoneMatch, null, null);
+                ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StargateResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -3468,27 +2839,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseStargatesStargateIdAsync(Integer stargateId, String datasource,
             String ifNoneMatch, final ApiCallback<StargateResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<StargateResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3506,17 +2858,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseStarsStarIdCall(Integer starId, String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3547,35 +2896,21 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseStarsStarIdValidateBeforeCall(Integer starId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'starId' is set
         if (starId == null) {
             throw new ApiException("Missing the required parameter 'starId' when calling getUniverseStarsStarId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStarsStarIdCall(starId, datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseStarsStarIdCall(starId, datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -3622,8 +2957,7 @@ public class UniverseApi {
      */
     public ApiResponse<StarResponse> getUniverseStarsStarIdWithHttpInfo(Integer starId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch, null,
-                null);
+        com.squareup.okhttp.Call call = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -3651,27 +2985,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseStarsStarIdAsync(Integer starId, String datasource, String ifNoneMatch,
             final ApiCallback<StarResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3689,17 +3004,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseStationsStationIdCall(Integer stationId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3730,27 +3042,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseStationsStationIdValidateBeforeCall(Integer stationId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'stationId' is set
         if (stationId == null) {
@@ -3758,8 +3057,7 @@ public class UniverseApi {
                     "Missing the required parameter 'stationId' when calling getUniverseStationsStationId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStationsStationIdCall(stationId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseStationsStationIdCall(stationId, datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -3807,7 +3105,7 @@ public class UniverseApi {
     public ApiResponse<StationResponse> getUniverseStationsStationIdWithHttpInfo(Integer stationId, String datasource,
             String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource,
-                ifNoneMatch, null, null);
+                ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -3835,27 +3133,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseStationsStationIdAsync(Integer stationId, String datasource,
             String ifNoneMatch, final ApiCallback<StationResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -3874,17 +3153,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseStructuresCall(String datasource, String filter, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3918,30 +3194,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseStructuresValidateBeforeCall(String datasource, String filter,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStructuresCall(datasource, filter, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseStructuresCall(datasource, filter, ifNoneMatch, callback);
         return call;
 
     }
@@ -3989,8 +3251,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Long>> getUniverseStructuresWithHttpInfo(String datasource, String filter,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch, null,
-                null);
+        com.squareup.okhttp.Call call = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4019,27 +3280,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseStructuresAsync(String datasource, String filter, String ifNoneMatch,
             final ApiCallback<List<Long>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4059,17 +3301,14 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseStructuresStructureIdCall(Long structureId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4104,28 +3343,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseStructuresStructureIdValidateBeforeCall(Long structureId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'structureId' is set
         if (structureId == null) {
@@ -4134,7 +3359,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseStructuresStructureIdCall(structureId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -4189,7 +3414,7 @@ public class UniverseApi {
     public ApiResponse<StructureResponse> getUniverseStructuresStructureIdWithHttpInfo(Long structureId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<StructureResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4221,27 +3446,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseStructuresStructureIdAsync(Long structureId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<StructureResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<StructureResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4257,17 +3463,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseSystemJumpsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4297,30 +3500,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseSystemJumpsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemJumpsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -4366,7 +3555,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<SystemJumpsResponse>> getUniverseSystemJumpsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4394,27 +3583,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseSystemJumpsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<SystemJumpsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4430,17 +3599,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseSystemKillsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4470,30 +3636,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseSystemKillsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemKillsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemKillsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -4539,7 +3691,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<SystemKillsResponse>> getUniverseSystemKillsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4567,27 +3719,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseSystemKillsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<SystemKillsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4603,17 +3735,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseSystemsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4643,30 +3772,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseSystemsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -4708,7 +3823,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseSystemsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4734,27 +3849,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseSystemsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4777,18 +3872,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseSystemsSystemIdCall(Integer systemId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4827,28 +3918,15 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseSystemsSystemIdValidateBeforeCall(Integer systemId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'systemId' is set
         if (systemId == null) {
@@ -4857,7 +3935,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseSystemsSystemIdCall(systemId, acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         return call;
 
     }
@@ -4916,7 +3994,7 @@ public class UniverseApi {
     public ApiResponse<SystemResponse> getUniverseSystemsSystemIdWithHttpInfo(Integer systemId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage,
-                datasource, ifNoneMatch, language, null, null);
+                datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -4950,27 +4028,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, String language, final ApiCallback<SystemResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage,
-                datasource, ifNoneMatch, language, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -4988,17 +4047,14 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseTypesCall(String datasource, String ifNoneMatch, Integer page,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -5032,30 +4088,16 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseTypesValidateBeforeCall(String datasource, String ifNoneMatch,
-            Integer page, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer page, final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseTypesCall(datasource, ifNoneMatch, page, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseTypesCall(datasource, ifNoneMatch, page, callback);
         return call;
 
     }
@@ -5099,7 +4141,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseTypesWithHttpInfo(String datasource, String ifNoneMatch, Integer page)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, null, null);
+        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -5127,27 +4169,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call getUniverseTypesAsync(String datasource, String ifNoneMatch, Integer page,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5170,18 +4192,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseTypesTypeIdCall(Integer typeId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -5220,28 +4238,14 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseTypesTypeIdValidateBeforeCall(Integer typeId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'typeId' is set
         if (typeId == null) {
@@ -5249,7 +4253,7 @@ public class UniverseApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseTypesTypeIdCall(typeId, acceptLanguage, datasource, ifNoneMatch,
-                language, progressListener, progressRequestListener);
+                language, callback);
         return call;
 
     }
@@ -5308,7 +4312,7 @@ public class UniverseApi {
     public ApiResponse<TypeResponse> getUniverseTypesTypeIdWithHttpInfo(Integer typeId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
-                ifNoneMatch, language, null, null);
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<TypeResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -5342,27 +4346,8 @@ public class UniverseApi {
             String datasource, String ifNoneMatch, String language, final ApiCallback<TypeResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
-                ifNoneMatch, language, progressListener, progressRequestListener);
+                ifNoneMatch, language, callback);
         Type localVarReturnType = new TypeToken<TypeResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5382,17 +4367,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUniverseIdsCall(List<String> requestBody, String acceptLanguage,
-            String datasource, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String language, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = requestBody;
 
         // create path and map variables
@@ -5424,35 +4406,21 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUniverseIdsValidateBeforeCall(List<String> requestBody, String acceptLanguage,
-            String datasource, String language, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String language, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling postUniverseIds(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUniverseIdsCall(requestBody, acceptLanguage, datasource, language,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postUniverseIdsCall(requestBody, acceptLanguage, datasource, language, callback);
         return call;
 
     }
@@ -5511,7 +4479,7 @@ public class UniverseApi {
     public ApiResponse<UniverseIdsResponse> postUniverseIdsWithHttpInfo(List<String> requestBody,
             String acceptLanguage, String datasource, String language) throws ApiException {
         com.squareup.okhttp.Call call = postUniverseIdsValidateBeforeCall(requestBody, acceptLanguage, datasource,
-                language, null, null);
+                language, null);
         Type localVarReturnType = new TypeToken<UniverseIdsResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -5544,27 +4512,8 @@ public class UniverseApi {
     public com.squareup.okhttp.Call postUniverseIdsAsync(List<String> requestBody, String acceptLanguage,
             String datasource, String language, final ApiCallback<UniverseIdsResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postUniverseIdsValidateBeforeCall(requestBody, acceptLanguage, datasource,
-                language, progressListener, progressRequestListener);
+                language, callback);
         Type localVarReturnType = new TypeToken<UniverseIdsResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -5579,17 +4528,14 @@ public class UniverseApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postUniverseNamesCall(List<Integer> requestBody, String datasource,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = requestBody;
 
         // create path and map variables
@@ -5613,35 +4559,21 @@ public class UniverseApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postUniverseNamesValidateBeforeCall(List<Integer> requestBody, String datasource,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling postUniverseNames(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUniverseNamesCall(requestBody, datasource, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUniverseNamesCall(requestBody, datasource, callback);
         return call;
 
     }
@@ -5690,7 +4622,7 @@ public class UniverseApi {
      */
     public ApiResponse<List<UniverseNamesResponse>> postUniverseNamesWithHttpInfo(List<Integer> requestBody,
             String datasource) throws ApiException {
-        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, null, null);
+        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, null);
         Type localVarReturnType = new TypeToken<List<UniverseNamesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -5719,27 +4651,7 @@ public class UniverseApi {
     public com.squareup.okhttp.Call postUniverseNamesAsync(List<Integer> requestBody, String datasource,
             final ApiCallback<List<UniverseNamesResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, callback);
         Type localVarReturnType = new TypeToken<List<UniverseNamesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

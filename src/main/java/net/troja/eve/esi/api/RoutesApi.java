@@ -68,18 +68,15 @@ public class RoutesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getRouteOriginDestinationCall(Integer destination, Integer origin,
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -123,28 +120,15 @@ public class RoutesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getRouteOriginDestinationValidateBeforeCall(Integer destination, Integer origin,
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'destination' is set
         if (destination == null) {
@@ -159,7 +143,7 @@ public class RoutesApi {
         }
 
         com.squareup.okhttp.Call call = getRouteOriginDestinationCall(destination, origin, avoid, connections,
-                datasource, flag, ifNoneMatch, progressListener, progressRequestListener);
+                datasource, flag, ifNoneMatch, callback);
         return call;
 
     }
@@ -225,7 +209,7 @@ public class RoutesApi {
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch)
             throws ApiException {
         com.squareup.okhttp.Call call = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
-                connections, datasource, flag, ifNoneMatch, null, null);
+                connections, datasource, flag, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -262,27 +246,8 @@ public class RoutesApi {
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
             final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
-                connections, datasource, flag, ifNoneMatch, progressListener, progressRequestListener);
+                connections, datasource, flag, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

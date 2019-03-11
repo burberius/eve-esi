@@ -64,17 +64,14 @@ public class ClonesApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdClonesCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -109,28 +106,14 @@ public class ClonesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdClonesValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -139,7 +122,7 @@ public class ClonesApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdClonesCall(characterId, datasource, ifNoneMatch, token,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -192,7 +175,7 @@ public class ClonesApi {
     public ApiResponse<CharacterClonesResponse> getCharactersCharacterIdClonesWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdClonesValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterClonesResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -223,27 +206,8 @@ public class ClonesApi {
     public com.squareup.okhttp.Call getCharactersCharacterIdClonesAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<CharacterClonesResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdClonesValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<CharacterClonesResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -263,17 +227,14 @@ public class ClonesApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdImplantsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -308,28 +269,14 @@ public class ClonesApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdImplantsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -338,7 +285,7 @@ public class ClonesApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdImplantsCall(characterId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -393,7 +340,7 @@ public class ClonesApi {
     public ApiResponse<List<Integer>> getCharactersCharacterIdImplantsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdImplantsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -424,27 +371,8 @@ public class ClonesApi {
     public com.squareup.okhttp.Call getCharactersCharacterIdImplantsAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<List<Integer>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdImplantsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

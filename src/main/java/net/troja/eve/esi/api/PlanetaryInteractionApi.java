@@ -67,17 +67,14 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -112,28 +109,14 @@ public class PlanetaryInteractionApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdPlanetsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -142,7 +125,7 @@ public class PlanetaryInteractionApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsCall(characterId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -197,7 +180,7 @@ public class PlanetaryInteractionApi {
     public ApiResponse<List<CharacterPlanetsResponse>> getCharactersCharacterIdPlanetsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -229,27 +212,8 @@ public class PlanetaryInteractionApi {
             String ifNoneMatch, String token, final ApiCallback<List<CharacterPlanetsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -271,18 +235,14 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsPlanetIdCall(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -318,28 +278,15 @@ public class PlanetaryInteractionApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(Integer characterId,
-            Integer planetId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer planetId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -354,7 +301,7 @@ public class PlanetaryInteractionApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdCall(characterId, planetId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         return call;
 
     }
@@ -420,7 +367,7 @@ public class PlanetaryInteractionApi {
             Integer characterId, Integer planetId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId,
-                planetId, datasource, ifNoneMatch, token, null, null);
+                planetId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -457,27 +404,8 @@ public class PlanetaryInteractionApi {
             String datasource, String ifNoneMatch, String token, final ApiCallback<CharacterPlanetResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId,
-                planetId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                planetId, datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -499,18 +427,15 @@ public class PlanetaryInteractionApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCorporationsCorporationIdCustomsOfficesCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -549,28 +474,15 @@ public class PlanetaryInteractionApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -579,7 +491,7 @@ public class PlanetaryInteractionApi {
         }
 
         com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesCall(corporationId, datasource,
-                ifNoneMatch, page, token, progressListener, progressRequestListener);
+                ifNoneMatch, page, token, callback);
         return call;
 
     }
@@ -641,7 +553,7 @@ public class PlanetaryInteractionApi {
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null, null);
+                datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -676,27 +588,8 @@ public class PlanetaryInteractionApi {
             String datasource, String ifNoneMatch, Integer page, String token,
             final ApiCallback<List<CorporationCustomsOfficesResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -714,17 +607,14 @@ public class PlanetaryInteractionApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getUniverseSchematicsSchematicIdCall(Integer schematicId, String datasource,
-            String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -755,27 +645,14 @@ public class PlanetaryInteractionApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getUniverseSchematicsSchematicIdValidateBeforeCall(Integer schematicId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'schematicId' is set
         if (schematicId == null) {
@@ -784,7 +661,7 @@ public class PlanetaryInteractionApi {
         }
 
         com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdCall(schematicId, datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -833,7 +710,7 @@ public class PlanetaryInteractionApi {
     public ApiResponse<PlanetFactorySchematicResponse> getUniverseSchematicsSchematicIdWithHttpInfo(
             Integer schematicId, String datasource, String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
-                ifNoneMatch, null, null);
+                ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<PlanetFactorySchematicResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -861,27 +738,8 @@ public class PlanetaryInteractionApi {
     public com.squareup.okhttp.Call getUniverseSchematicsSchematicIdAsync(Integer schematicId, String datasource,
             String ifNoneMatch, final ApiCallback<PlanetFactorySchematicResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<PlanetFactorySchematicResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

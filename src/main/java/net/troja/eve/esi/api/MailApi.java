@@ -69,18 +69,14 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdCall(Integer characterId,
-            Integer labelId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer labelId, String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -114,28 +110,15 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(
-            Integer characterId, Integer labelId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer characterId, Integer labelId, String datasource, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -150,7 +133,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdCall(characterId, labelId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         return call;
 
     }
@@ -198,7 +181,7 @@ public class MailApi {
     public ApiResponse<Void> deleteCharactersCharacterIdMailLabelsLabelIdWithHttpInfo(Integer characterId,
             Integer labelId, String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
-                labelId, datasource, token, null, null);
+                labelId, datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -225,27 +208,8 @@ public class MailApi {
     public com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdAsync(Integer characterId,
             Integer labelId, String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
-                labelId, datasource, token, progressListener, progressRequestListener);
+                labelId, datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -262,17 +226,14 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -306,28 +267,14 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer mailId, String datasource, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -342,7 +289,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -388,7 +335,7 @@ public class MailApi {
     public ApiResponse<Void> deleteCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
             String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, null, null);
+                datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -415,27 +362,8 @@ public class MailApi {
     public com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
             String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -459,18 +387,15 @@ public class MailApi {
      *            (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdMailCall(Integer characterId, String datasource,
-            String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -513,28 +438,15 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdMailValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -543,7 +455,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailCall(characterId, datasource, ifNoneMatch, labels,
-                lastMailId, token, progressListener, progressRequestListener);
+                lastMailId, token, callback);
         return call;
 
     }
@@ -613,7 +525,7 @@ public class MailApi {
             String datasource, String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, labels, lastMailId, token, null, null);
+                ifNoneMatch, labels, lastMailId, token, null);
         Type localVarReturnType = new TypeToken<List<MailHeadersResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -653,27 +565,8 @@ public class MailApi {
             String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token,
             final ApiCallback<List<MailHeadersResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, labels, lastMailId, token, progressListener, progressRequestListener);
+                ifNoneMatch, labels, lastMailId, token, callback);
         Type localVarReturnType = new TypeToken<List<MailHeadersResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -693,17 +586,14 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -738,28 +628,14 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -768,7 +644,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsCall(characterId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -823,7 +699,7 @@ public class MailApi {
     public ApiResponse<MailLabelsResponse> getCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<MailLabelsResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -855,27 +731,8 @@ public class MailApi {
     public com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<MailLabelsResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<MailLabelsResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -895,17 +752,14 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdMailListsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -940,28 +794,14 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdMailListsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -970,7 +810,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsCall(characterId, datasource, ifNoneMatch,
-                token, progressListener, progressRequestListener);
+                token, callback);
         return call;
 
     }
@@ -1025,7 +865,7 @@ public class MailApi {
     public ApiResponse<List<CharacterMailinglistsResponse>> getCharactersCharacterIdMailListsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterMailinglistsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1057,27 +897,8 @@ public class MailApi {
             String ifNoneMatch, String token, final ApiCallback<List<CharacterMailinglistsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterMailinglistsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1099,18 +920,14 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1146,28 +963,15 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer mailId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1182,7 +986,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         return call;
 
     }
@@ -1239,7 +1043,7 @@ public class MailApi {
     public ApiResponse<MailResponse> getCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId,
             Integer mailId, String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, ifNoneMatch, token, null, null);
+                datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1273,27 +1077,8 @@ public class MailApi {
             String datasource, String ifNoneMatch, String token, final ApiCallback<MailResponse> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1312,17 +1097,14 @@ public class MailApi {
      *            Access token to use if unable to set a header (optional)
      * @param mail
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postCharactersCharacterIdMailCall(Integer characterId, String datasource,
-            String token, Mail mail, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, Mail mail, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = mail;
 
         // create path and map variables
@@ -1351,27 +1133,14 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postCharactersCharacterIdMailValidateBeforeCall(Integer characterId,
-            String datasource, String token, Mail mail, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, Mail mail, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1380,7 +1149,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailCall(characterId, datasource, token, mail,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -1430,7 +1199,7 @@ public class MailApi {
     public ApiResponse<Integer> postCharactersCharacterIdMailWithHttpInfo(Integer characterId, String datasource,
             String token, Mail mail) throws ApiException {
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailValidateBeforeCall(characterId, datasource, token,
-                mail, null, null);
+                mail, null);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1459,27 +1228,8 @@ public class MailApi {
     public com.squareup.okhttp.Call postCharactersCharacterIdMailAsync(Integer characterId, String datasource,
             String token, Mail mail, final ApiCallback<Integer> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailValidateBeforeCall(characterId, datasource, token,
-                mail, progressListener, progressRequestListener);
+                mail, callback);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1498,18 +1248,14 @@ public class MailApi {
      *            Access token to use if unable to set a header (optional)
      * @param mailLabelSimple
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
-            String token, MailLabelSimple mailLabelSimple,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, MailLabelSimple mailLabelSimple, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = mailLabelSimple;
 
         // create path and map variables
@@ -1538,28 +1284,15 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId,
-            String datasource, String token, MailLabelSimple mailLabelSimple,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, MailLabelSimple mailLabelSimple, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1568,7 +1301,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsCall(characterId, datasource, token,
-                mailLabelSimple, progressListener, progressRequestListener);
+                mailLabelSimple, callback);
         return call;
 
     }
@@ -1619,7 +1352,7 @@ public class MailApi {
     public ApiResponse<Integer> postCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId, String datasource,
             String token, MailLabelSimple mailLabelSimple) throws ApiException {
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                token, mailLabelSimple, null, null);
+                token, mailLabelSimple, null);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1648,27 +1381,8 @@ public class MailApi {
     public com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
             String token, MailLabelSimple mailLabelSimple, final ApiCallback<Integer> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                token, mailLabelSimple, progressListener, progressRequestListener);
+                token, mailLabelSimple, callback);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1689,18 +1403,14 @@ public class MailApi {
      *            Access token to use if unable to set a header (optional)
      * @param mailMetaData
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String token, MailMetaData mailMetaData,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, MailMetaData mailMetaData, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = mailMetaData;
 
         // create path and map variables
@@ -1732,28 +1442,15 @@ public class MailApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String token, MailMetaData mailMetaData,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer mailId, String datasource, String token, MailMetaData mailMetaData, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1768,7 +1465,7 @@ public class MailApi {
         }
 
         com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource, token,
-                mailMetaData, progressListener, progressRequestListener);
+                mailMetaData, callback);
         return call;
 
     }
@@ -1820,7 +1517,7 @@ public class MailApi {
     public ApiResponse<Void> putCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
             String datasource, String token, MailMetaData mailMetaData) throws ApiException {
         com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, mailMetaData, null, null);
+                datasource, token, mailMetaData, null);
         return apiClient.execute(call);
     }
 
@@ -1850,27 +1547,8 @@ public class MailApi {
             String datasource, String token, MailMetaData mailMetaData, final ApiCallback<Void> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, mailMetaData, progressListener, progressRequestListener);
+                datasource, token, mailMetaData, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }

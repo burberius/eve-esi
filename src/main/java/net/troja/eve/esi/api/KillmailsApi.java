@@ -68,18 +68,14 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdKillmailsRecentCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -118,28 +114,15 @@ public class KillmailsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdKillmailsRecentValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -148,7 +131,7 @@ public class KillmailsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentCall(characterId, datasource,
-                ifNoneMatch, page, token, progressListener, progressRequestListener);
+                ifNoneMatch, page, token, callback);
         return call;
 
     }
@@ -207,7 +190,7 @@ public class KillmailsApi {
     public ApiResponse<List<CharacterKillmailsResponse>> getCharactersCharacterIdKillmailsRecentWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, null, null);
+                datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -242,27 +225,8 @@ public class KillmailsApi {
             String datasource, String ifNoneMatch, Integer page, String token,
             final ApiCallback<List<CharacterKillmailsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -284,18 +248,15 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCorporationsCorporationIdKillmailsRecentCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -334,28 +295,15 @@ public class KillmailsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -364,7 +312,7 @@ public class KillmailsApi {
         }
 
         com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentCall(corporationId, datasource,
-                ifNoneMatch, page, token, progressListener, progressRequestListener);
+                ifNoneMatch, page, token, callback);
         return call;
 
     }
@@ -428,7 +376,7 @@ public class KillmailsApi {
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null, null);
+                datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationKillmailsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -464,27 +412,8 @@ public class KillmailsApi {
             String datasource, String ifNoneMatch, Integer page, String token,
             final ApiCallback<List<CorporationKillmailsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, page, token, callback);
         Type localVarReturnType = new TypeToken<List<CorporationKillmailsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -504,17 +433,14 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashCall(String killmailHash, Integer killmailId,
-            String datasource, String ifNoneMatch, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -546,28 +472,14 @@ public class KillmailsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashValidateBeforeCall(String killmailHash,
-            Integer killmailId, String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer killmailId, String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'killmailHash' is set
         if (killmailHash == null) {
@@ -582,7 +494,7 @@ public class KillmailsApi {
         }
 
         com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashCall(killmailHash, killmailId, datasource,
-                ifNoneMatch, progressListener, progressRequestListener);
+                ifNoneMatch, callback);
         return call;
 
     }
@@ -635,7 +547,7 @@ public class KillmailsApi {
     public ApiResponse<KillmailResponse> getKillmailsKillmailIdKillmailHashWithHttpInfo(String killmailHash,
             Integer killmailId, String datasource, String ifNoneMatch) throws ApiException {
         com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
-                datasource, ifNoneMatch, null, null);
+                datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<KillmailResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -665,27 +577,8 @@ public class KillmailsApi {
     public com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashAsync(String killmailHash, Integer killmailId,
             String datasource, String ifNoneMatch, final ApiCallback<KillmailResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
-                datasource, ifNoneMatch, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<KillmailResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

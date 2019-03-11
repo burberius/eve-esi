@@ -62,17 +62,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSovereigntyCampaignsCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -102,30 +99,16 @@ public class SovereigntyApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSovereigntyCampaignsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyCampaignsCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -169,7 +152,7 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyCampaignsResponse>> getSovereigntyCampaignsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -195,27 +178,7 @@ public class SovereigntyApi {
     public com.squareup.okhttp.Call getSovereigntyCampaignsAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<SovereigntyCampaignsResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -231,17 +194,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSovereigntyMapCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -271,30 +231,16 @@ public class SovereigntyApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSovereigntyMapValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyMapCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyMapCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -336,7 +282,7 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyMapResponse>> getSovereigntyMapWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -363,27 +309,7 @@ public class SovereigntyApi {
     public com.squareup.okhttp.Call getSovereigntyMapAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<SovereigntyMapResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -399,17 +325,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getSovereigntyStructuresCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -439,30 +362,16 @@ public class SovereigntyApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSovereigntyStructuresValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyStructuresCall(datasource, ifNoneMatch, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyStructuresCall(datasource, ifNoneMatch, callback);
         return call;
 
     }
@@ -506,7 +415,7 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyStructuresResponse>> getSovereigntyStructuresWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, null, null);
+        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -532,27 +441,7 @@ public class SovereigntyApi {
     public com.squareup.okhttp.Call getSovereigntyStructuresAsync(String datasource, String ifNoneMatch,
             final ApiCallback<List<SovereigntyStructuresResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);

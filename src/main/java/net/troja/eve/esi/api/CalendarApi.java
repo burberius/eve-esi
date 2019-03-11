@@ -69,18 +69,14 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdCalendarCall(Integer characterId, String datasource,
-            Integer fromEvent, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer fromEvent, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -119,28 +115,15 @@ public class CalendarApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdCalendarValidateBeforeCall(Integer characterId,
-            String datasource, Integer fromEvent, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, Integer fromEvent, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -149,7 +132,7 @@ public class CalendarApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarCall(characterId, datasource, fromEvent,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         return call;
 
     }
@@ -215,7 +198,7 @@ public class CalendarApi {
             Integer characterId, String datasource, Integer fromEvent, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
-                fromEvent, ifNoneMatch, token, null, null);
+                fromEvent, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -252,27 +235,8 @@ public class CalendarApi {
             Integer fromEvent, String ifNoneMatch, String token,
             final ApiCallback<List<CharacterCalendarResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
-                fromEvent, ifNoneMatch, token, progressListener, progressRequestListener);
+                fromEvent, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -294,18 +258,14 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -341,28 +301,15 @@ public class CalendarApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
-            Integer eventId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -377,7 +324,7 @@ public class CalendarApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdCall(characterId, eventId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         return call;
 
     }
@@ -437,7 +384,7 @@ public class CalendarApi {
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, ifNoneMatch, token, null, null);
+                datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterCalendarEventResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -471,27 +418,8 @@ public class CalendarApi {
             String datasource, String ifNoneMatch, String token,
             final ApiCallback<CharacterCalendarEventResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<CharacterCalendarEventResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -513,18 +441,15 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAttendeesCall(Integer characterId,
-            Integer eventId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -560,28 +485,15 @@ public class CalendarApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -596,7 +508,7 @@ public class CalendarApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesCall(characterId, eventId,
-                datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                datasource, ifNoneMatch, token, callback);
         return call;
 
     }
@@ -657,7 +569,7 @@ public class CalendarApi {
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
-                eventId, datasource, ifNoneMatch, token, null, null);
+                eventId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarAttendeesResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -691,27 +603,8 @@ public class CalendarApi {
             Integer eventId, String datasource, String ifNoneMatch, String token,
             final ApiCallback<List<CharacterCalendarAttendeesResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
-                eventId, datasource, ifNoneMatch, token, progressListener, progressRequestListener);
+                eventId, datasource, ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarAttendeesResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -732,18 +625,15 @@ public class CalendarApi {
      *            Access token to use if unable to set a header (optional)
      * @param characterCalendarEvent
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
-            String datasource, String token, CharacterCalendarEvent characterCalendarEvent,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, CharacterCalendarEvent characterCalendarEvent, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = characterCalendarEvent;
 
         // create path and map variables
@@ -775,28 +665,15 @@ public class CalendarApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
             Integer eventId, String datasource, String token, CharacterCalendarEvent characterCalendarEvent,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -811,7 +688,7 @@ public class CalendarApi {
         }
 
         com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdCall(characterId, eventId, datasource,
-                token, characterCalendarEvent, progressListener, progressRequestListener);
+                token, characterCalendarEvent, callback);
         return call;
 
     }
@@ -864,7 +741,7 @@ public class CalendarApi {
     public ApiResponse<Void> putCharactersCharacterIdCalendarEventIdWithHttpInfo(Integer characterId, Integer eventId,
             String datasource, String token, CharacterCalendarEvent characterCalendarEvent) throws ApiException {
         com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, token, characterCalendarEvent, null, null);
+                datasource, token, characterCalendarEvent, null);
         return apiClient.execute(call);
     }
 
@@ -894,27 +771,8 @@ public class CalendarApi {
             String datasource, String token, CharacterCalendarEvent characterCalendarEvent,
             final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, token, characterCalendarEvent, progressListener, progressRequestListener);
+                datasource, token, characterCalendarEvent, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }

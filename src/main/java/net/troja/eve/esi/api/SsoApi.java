@@ -1,16 +1,14 @@
 package net.troja.eve.esi.api;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Pair;
-import net.troja.eve.esi.ProgressRequestBody;
-import net.troja.eve.esi.ProgressResponseBody;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.model.CharacterInfo;
 
@@ -65,8 +63,7 @@ public class SsoApi {
     }
 
     private com.squareup.okhttp.Call postRevokeTokenCall(final String token, final String tokenTypeHint,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
@@ -96,30 +93,15 @@ public class SsoApi {
         final String localVarContentType = revokeApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            revokeApiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] {};
         return revokeApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postRevokeTokenValidateBeforeCall(final String token, final String tokenTypeHint,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-
-        com.squareup.okhttp.Call call = postRevokeTokenCall(token, tokenTypeHint, progressListener,
-                progressRequestListener);
+            final ApiCallback callback) throws ApiException {
+        com.squareup.okhttp.Call call = postRevokeTokenCall(token, tokenTypeHint, callback);
         return call;
 
     }
@@ -130,7 +112,7 @@ public class SsoApi {
 
     private ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
             throws ApiException {
-        com.squareup.okhttp.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null, null);
-        return revokeApiClient.execute(call);
+        com.squareup.okhttp.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null);
+        return apiClient.execute(call);
     }
 }

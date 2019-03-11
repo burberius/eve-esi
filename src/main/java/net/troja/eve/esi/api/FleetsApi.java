@@ -73,17 +73,14 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -117,28 +114,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId,
-            Integer memberId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            Integer memberId, String datasource, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -153,7 +136,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdCall(fleetId, memberId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -201,7 +184,7 @@ public class FleetsApi {
     public ApiResponse<Void> deleteFleetsFleetIdMembersMemberIdWithHttpInfo(Long fleetId, Integer memberId,
             String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, null, null);
+                datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -228,27 +211,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdAsync(Long fleetId, Integer memberId,
             String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -265,17 +229,14 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -309,27 +270,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -344,7 +292,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -392,7 +340,7 @@ public class FleetsApi {
     public ApiResponse<Void> deleteFleetsFleetIdSquadsSquadIdWithHttpInfo(Long fleetId, Long squadId,
             String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId,
-                datasource, token, null, null);
+                datasource, token, null);
         return apiClient.execute(call);
     }
 
@@ -419,27 +367,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId,
             String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -456,17 +385,14 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -500,27 +426,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -534,8 +447,7 @@ public class FleetsApi {
                     "Missing the required parameter 'wingId' when calling deleteFleetsFleetIdWingsWingId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token, callback);
         return call;
 
     }
@@ -585,7 +497,7 @@ public class FleetsApi {
     public ApiResponse<Void> deleteFleetsFleetIdWingsWingIdWithHttpInfo(Long fleetId, Long wingId, String datasource,
             String token) throws ApiException {
         com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, null, null);
+                token, null);
         return apiClient.execute(call);
     }
 
@@ -613,27 +525,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, String datasource,
             String token, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, progressListener, progressRequestListener);
+                token, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -651,17 +544,14 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getCharactersCharacterIdFleetCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -696,28 +586,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getCharactersCharacterIdFleetValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -726,7 +602,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = getCharactersCharacterIdFleetCall(characterId, datasource, ifNoneMatch, token,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -781,7 +657,7 @@ public class FleetsApi {
     public ApiResponse<CharacterFleetResponse> getCharactersCharacterIdFleetWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
         com.squareup.okhttp.Call call = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, null, null);
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterFleetResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -812,27 +688,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call getCharactersCharacterIdFleetAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<CharacterFleetResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, progressListener, progressRequestListener);
+                ifNoneMatch, token, callback);
         Type localVarReturnType = new TypeToken<CharacterFleetResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -852,17 +709,14 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getFleetsFleetIdCall(Long fleetId, String datasource, String ifNoneMatch,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -897,35 +751,21 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getFleetsFleetIdValidateBeforeCall(Long fleetId, String datasource,
-            String ifNoneMatch, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling getFleetsFleetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdCall(fleetId, datasource, ifNoneMatch, token, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = getFleetsFleetIdCall(fleetId, datasource, ifNoneMatch, token, callback);
         return call;
 
     }
@@ -977,7 +817,7 @@ public class FleetsApi {
     public ApiResponse<FleetResponse> getFleetsFleetIdWithHttpInfo(Long fleetId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
         com.squareup.okhttp.Call call = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token,
-                null, null);
+                null);
         Type localVarReturnType = new TypeToken<FleetResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1008,27 +848,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call getFleetsFleetIdAsync(Long fleetId, String datasource, String ifNoneMatch,
             String token, final ApiCallback<FleetResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token,
-                progressListener, progressRequestListener);
+                callback);
         Type localVarReturnType = new TypeToken<FleetResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1053,18 +874,14 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getFleetsFleetIdMembersCall(Long fleetId, String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1107,28 +924,15 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getFleetsFleetIdMembersValidateBeforeCall(Long fleetId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1137,7 +941,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = getFleetsFleetIdMembersCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
-                language, token, progressListener, progressRequestListener);
+                language, token, callback);
         return call;
 
     }
@@ -1201,7 +1005,7 @@ public class FleetsApi {
             String acceptLanguage, String datasource, String ifNoneMatch, String language, String token)
             throws ApiException {
         com.squareup.okhttp.Call call = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, null, null);
+                ifNoneMatch, language, token, null);
         Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1238,27 +1042,8 @@ public class FleetsApi {
             String datasource, String ifNoneMatch, String language, String token,
             final ApiCallback<List<FleetMembersResponse>> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, progressListener, progressRequestListener);
+                ifNoneMatch, language, token, callback);
         Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1283,18 +1068,14 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call getFleetsFleetIdWingsCall(Long fleetId, String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String ifNoneMatch, String language, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1337,28 +1118,15 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String ifNoneMatch, String language, String token, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1366,7 +1134,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = getFleetsFleetIdWingsCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
-                language, token, progressListener, progressRequestListener);
+                language, token, callback);
         return call;
 
     }
@@ -1429,7 +1197,7 @@ public class FleetsApi {
     public ApiResponse<List<FleetWingsResponse>> getFleetsFleetIdWingsWithHttpInfo(Long fleetId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, String token) throws ApiException {
         com.squareup.okhttp.Call call = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, null, null);
+                ifNoneMatch, language, token, null);
         Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1466,27 +1234,8 @@ public class FleetsApi {
             String ifNoneMatch, String language, String token, final ApiCallback<List<FleetWingsResponse>> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, progressListener, progressRequestListener);
+                ifNoneMatch, language, token, callback);
         Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1505,17 +1254,14 @@ public class FleetsApi {
      *            Access token to use if unable to set a header (optional)
      * @param fleetInvitation
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postFleetsFleetIdMembersCall(Long fleetId, String datasource, String token,
-            FleetInvitation fleetInvitation, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            FleetInvitation fleetInvitation, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = fleetInvitation;
 
         // create path and map variables
@@ -1546,28 +1292,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postFleetsFleetIdMembersValidateBeforeCall(Long fleetId, String datasource,
-            String token, FleetInvitation fleetInvitation,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, FleetInvitation fleetInvitation, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1576,7 +1308,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = postFleetsFleetIdMembersCall(fleetId, datasource, token, fleetInvitation,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -1626,7 +1358,7 @@ public class FleetsApi {
     public ApiResponse<Void> postFleetsFleetIdMembersWithHttpInfo(Long fleetId, String datasource, String token,
             FleetInvitation fleetInvitation) throws ApiException {
         com.squareup.okhttp.Call call = postFleetsFleetIdMembersValidateBeforeCall(fleetId, datasource, token,
-                fleetInvitation, null, null);
+                fleetInvitation, null);
         return apiClient.execute(call);
     }
 
@@ -1654,27 +1386,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call postFleetsFleetIdMembersAsync(Long fleetId, String datasource, String token,
             FleetInvitation fleetInvitation, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postFleetsFleetIdMembersValidateBeforeCall(fleetId, datasource, token,
-                fleetInvitation, progressListener, progressRequestListener);
+                fleetInvitation, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -1689,17 +1402,14 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postFleetsFleetIdWingsCall(Long fleetId, String datasource, String token,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1730,27 +1440,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String datasource,
-            String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1758,8 +1455,7 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling postFleetsFleetIdWings(Async)");
         }
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsCall(fleetId, datasource, token, progressListener,
-                progressRequestListener);
+        com.squareup.okhttp.Call call = postFleetsFleetIdWingsCall(fleetId, datasource, token, callback);
         return call;
 
     }
@@ -1804,7 +1500,7 @@ public class FleetsApi {
      */
     public ApiResponse<FleetWingCreatedResponse> postFleetsFleetIdWingsWithHttpInfo(Long fleetId, String datasource,
             String token) throws ApiException {
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, null, null);
+        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, null);
         Type localVarReturnType = new TypeToken<FleetWingCreatedResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1831,27 +1527,7 @@ public class FleetsApi {
     public com.squareup.okhttp.Call postFleetsFleetIdWingsAsync(Long fleetId, String datasource, String token,
             final ApiCallback<FleetWingCreatedResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, callback);
         Type localVarReturnType = new TypeToken<FleetWingCreatedResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -1870,17 +1546,14 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsCall(Long fleetId, Long wingId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1912,27 +1585,14 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1947,7 +1607,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsCall(fleetId, wingId, datasource, token,
-                progressListener, progressRequestListener);
+                callback);
         return call;
 
     }
@@ -1998,7 +1658,7 @@ public class FleetsApi {
     public ApiResponse<FleetSquadCreatedResponse> postFleetsFleetIdWingsWingIdSquadsWithHttpInfo(Long fleetId,
             Long wingId, String datasource, String token) throws ApiException {
         com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId,
-                datasource, token, null, null);
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<FleetSquadCreatedResponse>() {
         }.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2027,27 +1687,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsAsync(Long fleetId, Long wingId,
             String datasource, String token, final ApiCallback<FleetSquadCreatedResponse> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId,
-                datasource, token, progressListener, progressRequestListener);
+                datasource, token, callback);
         Type localVarReturnType = new TypeToken<FleetSquadCreatedResponse>() {
         }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
@@ -2066,17 +1707,14 @@ public class FleetsApi {
      *            Access token to use if unable to set a header (optional)
      * @param fleetNewSettings
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putFleetsFleetIdCall(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            FleetNewSettings fleetNewSettings, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = fleetNewSettings;
 
         // create path and map variables
@@ -2107,35 +1745,21 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putFleetsFleetIdValidateBeforeCall(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings, final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            FleetNewSettings fleetNewSettings, final ApiCallback callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetsFleetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdCall(fleetId, datasource, token, fleetNewSettings,
-                progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = putFleetsFleetIdCall(fleetId, datasource, token, fleetNewSettings, callback);
         return call;
 
     }
@@ -2183,7 +1807,7 @@ public class FleetsApi {
     public ApiResponse<Void> putFleetsFleetIdWithHttpInfo(Long fleetId, String datasource, String token,
             FleetNewSettings fleetNewSettings) throws ApiException {
         com.squareup.okhttp.Call call = putFleetsFleetIdValidateBeforeCall(fleetId, datasource, token,
-                fleetNewSettings, null, null);
+                fleetNewSettings, null);
         return apiClient.execute(call);
     }
 
@@ -2210,27 +1834,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call putFleetsFleetIdAsync(Long fleetId, String datasource, String token,
             FleetNewSettings fleetNewSettings, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putFleetsFleetIdValidateBeforeCall(fleetId, datasource, token,
-                fleetNewSettings, progressListener, progressRequestListener);
+                fleetNewSettings, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -2249,18 +1854,15 @@ public class FleetsApi {
      *            Access token to use if unable to set a header (optional)
      * @param fleetMemberMovement
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = fleetMemberMovement;
 
         // create path and map variables
@@ -2292,28 +1894,15 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -2328,7 +1917,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdCall(fleetId, memberId, datasource, token,
-                fleetMemberMovement, progressListener, progressRequestListener);
+                fleetMemberMovement, callback);
         return call;
 
     }
@@ -2380,7 +1969,7 @@ public class FleetsApi {
     public ApiResponse<Void> putFleetsFleetIdMembersMemberIdWithHttpInfo(Long fleetId, Integer memberId,
             String datasource, String token, FleetMemberMovement fleetMemberMovement) throws ApiException {
         com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, fleetMemberMovement, null, null);
+                datasource, token, fleetMemberMovement, null);
         return apiClient.execute(call);
     }
 
@@ -2410,27 +1999,8 @@ public class FleetsApi {
             String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback<Void> callback)
             throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, fleetMemberMovement, progressListener, progressRequestListener);
+                datasource, token, fleetMemberMovement, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -2449,18 +2019,14 @@ public class FleetsApi {
      *            Access token to use if unable to set a header (optional)
      * @param fleetSquadNaming
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, String datasource,
-            String token, FleetSquadNaming fleetSquadNaming,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, FleetSquadNaming fleetSquadNaming, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = fleetSquadNaming;
 
         // create path and map variables
@@ -2492,28 +2058,15 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
-            String datasource, String token, FleetSquadNaming fleetSquadNaming,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, FleetSquadNaming fleetSquadNaming, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -2528,7 +2081,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, datasource, token,
-                fleetSquadNaming, progressListener, progressRequestListener);
+                fleetSquadNaming, callback);
         return call;
 
     }
@@ -2580,7 +2133,7 @@ public class FleetsApi {
     public ApiResponse<Void> putFleetsFleetIdSquadsSquadIdWithHttpInfo(Long fleetId, Long squadId, String datasource,
             String token, FleetSquadNaming fleetSquadNaming) throws ApiException {
         com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
-                token, fleetSquadNaming, null, null);
+                token, fleetSquadNaming, null);
         return apiClient.execute(call);
     }
 
@@ -2609,27 +2162,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId, String datasource,
             String token, FleetSquadNaming fleetSquadNaming, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
-                token, fleetSquadNaming, progressListener, progressRequestListener);
+                token, fleetSquadNaming, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -2648,18 +2182,14 @@ public class FleetsApi {
      *            Access token to use if unable to set a header (optional)
      * @param fleetWingNaming
      *            (optional)
-     * @param progressListener
-     *            Progress listener
-     * @param progressRequestListener
-     *            Progress request listener
+     * @param callback
+     *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, String datasource,
-            String token, FleetWingNaming fleetWingNaming,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String token, FleetWingNaming fleetWingNaming, final ApiCallback callback) throws ApiException {
         Object localVarPostBody = fleetWingNaming;
 
         // create path and map variables
@@ -2691,28 +2221,15 @@ public class FleetsApi {
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if (progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
-                        throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                            .body(new ProgressResponseBody(originalResponse.body(), progressListener)).build();
-                }
-            });
-        }
-
         String[] localVarAuthNames = new String[] { "evesso" };
         return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
     }
 
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, FleetWingNaming fleetWingNaming,
-            final ProgressResponseBody.ProgressListener progressListener,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+            String datasource, String token, FleetWingNaming fleetWingNaming, final ApiCallback callback)
+            throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -2727,7 +2244,7 @@ public class FleetsApi {
         }
 
         com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token,
-                fleetWingNaming, progressListener, progressRequestListener);
+                fleetWingNaming, callback);
         return call;
 
     }
@@ -2779,7 +2296,7 @@ public class FleetsApi {
     public ApiResponse<Void> putFleetsFleetIdWingsWingIdWithHttpInfo(Long fleetId, Long wingId, String datasource,
             String token, FleetWingNaming fleetWingNaming) throws ApiException {
         com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, fleetWingNaming, null, null);
+                token, fleetWingNaming, null);
         return apiClient.execute(call);
     }
 
@@ -2808,27 +2325,8 @@ public class FleetsApi {
     public com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, String datasource,
             String token, FleetWingNaming fleetWingNaming, final ApiCallback<Void> callback) throws ApiException {
 
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
         com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, fleetWingNaming, progressListener, progressRequestListener);
+                token, fleetWingNaming, callback);
         apiClient.executeAsync(call, callback);
         return call;
     }

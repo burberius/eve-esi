@@ -42,12 +42,12 @@ sed -i -f meta_replace.sed meta.json
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-java -jar openapi-generator-cli-3.3.4.jar generate \
+java -jar openapi-generator-cli.jar generate \
   --skip-validate-spec  \
   -i meta.json \
   -g java \
   -c config.json
-java -jar openapi-generator-cli-3.3.4.jar generate \
+java -jar openapi-generator-cli.jar generate \
   --skip-validate-spec  \
   -i esi.json \
   -g java \
