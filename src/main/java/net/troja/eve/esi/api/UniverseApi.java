@@ -4539,7 +4539,7 @@ public class UniverseApi {
         Object localVarPostBody = requestBody;
 
         // create path and map variables
-        String localVarPath = "/v2/universe/names/";
+        String localVarPath = "/v3/universe/names/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4582,9 +4582,7 @@ public class UniverseApi {
      * Get names and categories for a set of IDs Resolve a set of IDs to names
      * and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types --- Warning: This route has an upgrade available --- [Diff
-     * of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#POST-/universe/names/)
+     * Regions, Types, Factions ---
      * 
      * @param requestBody
      *            The ids to resolve (required)
@@ -4606,9 +4604,7 @@ public class UniverseApi {
      * Get names and categories for a set of IDs Resolve a set of IDs to names
      * and categories. Supported ID&#39;s for resolving are: Characters,
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
-     * Regions, Types --- Warning: This route has an upgrade available --- [Diff
-     * of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#POST-/universe/names/)
+     * Regions, Types, Factions ---
      * 
      * @param requestBody
      *            The ids to resolve (required)
@@ -4632,9 +4628,7 @@ public class UniverseApi {
      * Get names and categories for a set of IDs (asynchronously) Resolve a set
      * of IDs to names and categories. Supported ID&#39;s for resolving are:
      * Characters, Corporations, Alliances, Stations, Solar Systems,
-     * Constellations, Regions, Types --- Warning: This route has an upgrade
-     * available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#POST-/universe/names/)
+     * Constellations, Regions, Types, Factions ---
      * 
      * @param requestBody
      *            The ids to resolve (required)

@@ -57,7 +57,9 @@ public class UniverseNamesResponse implements Serializable {
 
         SOLAR_SYSTEM("solar_system"),
 
-        STATION("station");
+        STATION("station"),
+
+        FACTION("faction");
 
         private String value;
 
