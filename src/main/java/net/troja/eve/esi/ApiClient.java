@@ -176,9 +176,14 @@ public class ApiClient {
      *            An instance of OkHttpClient
      * @return Api Client
      */
-    public ApiClient setHttpClient(OkHttpClient httpClient) {
-        this.httpClient = httpClient;
-        addProgressInterceptor();
+    public ApiClient setHttpClient(OkHttpClient newHttpClient) {
+        if (!httpClient.equals(newHttpClient)) {
+            newHttpClient.networkInterceptors().addAll(httpClient.networkInterceptors());
+            httpClient.networkInterceptors().clear();
+            newHttpClient.interceptors().addAll(httpClient.interceptors());
+            httpClient.interceptors().clear();
+            this.httpClient = newHttpClient;
+        }
         return this;
     }
 
