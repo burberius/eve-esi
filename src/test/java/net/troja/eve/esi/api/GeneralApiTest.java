@@ -37,10 +37,9 @@ public class GeneralApiTest {
     @BeforeClass
     public static void initClass() throws ApiException {
         initData();
-        getCharacterId();
     }
 
-    public static void initData() {
+    public static void initData() throws ApiException {
         final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);
@@ -48,9 +47,7 @@ public class GeneralApiTest {
         refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
         apiClient = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
-    }
 
-    private static void getCharacterId() throws ApiException {
         final SsoApi api = new SsoApi(apiClient);
         CharacterInfo info = api.getCharacterInfo();
 

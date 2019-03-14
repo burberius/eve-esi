@@ -1,5 +1,6 @@
 package net.troja.eve.esi;
 
+import com.squareup.okhttp.OkHttpClient;
 import net.troja.eve.esi.auth.OAuth;
 
 public class ApiClientBuilder {
@@ -8,6 +9,7 @@ public class ApiClientBuilder {
     private String refreshToken;
     private String accessToken;
     private String userAgent;
+    private OkHttpClient okHttpClient;
 
     public ApiClient build() {
         ApiClient client = new ApiClient();
@@ -33,6 +35,9 @@ public class ApiClientBuilder {
         if (accessToken != null) {
             auth.setAccessToken(accessToken);
         }
+        if (okHttpClient != null) {
+            client.setHttpClient(okHttpClient);
+        }
         return client;
     }
 
@@ -53,6 +58,11 @@ public class ApiClientBuilder {
 
     public ApiClientBuilder userAgent(String userAgent) {
         this.userAgent = userAgent;
+        return this;
+    }
+
+    public ApiClientBuilder okHttpClient(OkHttpClient okHttpClient) {
+        this.okHttpClient = okHttpClient;
         return this;
     }
 

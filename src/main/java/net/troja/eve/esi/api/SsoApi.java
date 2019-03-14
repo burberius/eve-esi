@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
-import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
@@ -23,7 +22,7 @@ public class SsoApi {
     private static final String REFRESH_TOKEN = "refresh_token";
     private static final String DATASOURCE = "tranquility";
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
-    private final ApiClient revokeApiClient = new ApiClientBuilder().build();
+    private final ApiClient revokeApiClient = new ApiClient();
     private ApiClient apiClient;
     private MetaApi metaApi;
 
