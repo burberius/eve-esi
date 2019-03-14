@@ -2,8 +2,8 @@ package net.troja.eve.esi.api;
 
 import java.util.Map;
 import net.troja.eve.esi.ApiClient;
+import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.model.CharacterInfo;
 import static org.junit.Assume.assumeFalse;
 import org.junit.BeforeClass;
@@ -47,17 +47,11 @@ public class GeneralApiTest {
         refreshToken = env.get(SSO_REFRESH_TOKEN);
         refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
-        apiClient = new ApiClient();
-        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
-        auth.setAuth(clientId, refreshToken);
+        apiClient = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
     }
 
     private static void getCharacterId() throws ApiException {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setAuth(clientId, refreshToken);
-
-        final SsoApi api = new SsoApi(client);
+        final SsoApi api = new SsoApi(apiClient);
         CharacterInfo info = api.getCharacterInfo();
 
         characterName = info.getCharacterName();

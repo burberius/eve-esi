@@ -23,6 +23,7 @@ import net.troja.eve.esi.api.GeneralApiTest;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiClient;
+import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
 import net.troja.eve.esi.api.SsoApi;
@@ -63,10 +64,8 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void refreshToken() throws ApiException {
-        final ApiClient client = new ApiClient();
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setAuth(clientId, refreshToken);
-
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams);
 
@@ -75,10 +74,7 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void expiredAccessTokenAssets() {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         AssetsApi api = new AssetsApi(client);
         try {
             api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
@@ -92,9 +88,8 @@ public class SsoAuthTest extends GeneralApiTest {
     @Test
     public void singleScopeJWT() {
         assumeTrue(refreshTokenPublicData != null);
-        final ApiClient client = new ApiClient();
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshTokenPublicData).build();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setAuth(clientId, refreshTokenPublicData); //Public Scope
         JWT jwt = auth.getJWT();
         assertThat(jwt, notNullValue());
         JWT.Header header = jwt.getHeader();
@@ -145,10 +140,7 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void expiredAccessTokenSso() {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
-        auth.setAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2");
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         final SsoApi api = new SsoApi(client);
         try {
             api.getCharacterInfo();
@@ -189,19 +181,20 @@ public class SsoAuthTest extends GeneralApiTest {
      */
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
         final String state = "somesecret";
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final ApiClient client;
         if (args.length == 1) {
-            auth.setClientId(args[0]);
+            client = new ApiClientBuilder().clientID(args[0]).build();
         } else {
             initData();
             if (clientId != null) {
-                auth.setClientId(clientId);
+                client = new ApiClientBuilder().clientID(clientId).build();
             } else {
                 System.err.println("ClientId missing");
                 System.exit(-1);
+                client = new ApiClientBuilder().build();
             }
         }
+        final OAuth auth = (OAuth) client.getAuthentication("evesso");
         final Set<String> scopes = SsoScopes.ALL;
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {

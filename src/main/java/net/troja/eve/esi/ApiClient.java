@@ -129,12 +129,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        String userAgent = System.getProperty("http.agent");
-        if (userAgent != null && !userAgent.isEmpty()) {
-            setUserAgent(userAgent);
-        } else {
-            setUserAgent("eve-esi/slack:@goldengnu");
-        }
+        setUserAgent("OpenAPI-Generator/1.0.0/java");
 
         authentications = new HashMap<String, Authentication>();
     }

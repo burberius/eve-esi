@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeParseException;
 import net.troja.eve.esi.ApiClient;
+import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.model.CharacterInfo;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -48,9 +48,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void getCharacterInfoTest() throws ApiException {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setAuth(clientId, refreshToken);
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
 
         final SsoApi api = new SsoApi(client);
         CharacterInfo info = api.getCharacterInfo();
@@ -68,9 +66,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void revokeRefreshToken() throws ApiException {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).build();
 
         final SsoApi api = new SsoApi(client);
         api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1"); //Revoked Refresh Tokens (Already Invalid)
@@ -78,9 +74,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void revokeAccessToken() throws ApiException {
-        final ApiClient client = new ApiClient();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        auth.setClientId(clientId);
+        final ApiClient client = new ApiClientBuilder().clientID(clientId).build();
 
         final SsoApi api = new SsoApi(client);
         api.revokeAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2"); //Revoked Access Tokens (Already Invalid)
