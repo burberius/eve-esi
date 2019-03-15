@@ -19,7 +19,7 @@ import net.troja.eve.esi.model.CorporationWalletTransactionsResponse;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assume.assumeTrue;
+import static org.junit.Assume.assumeFalse;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -65,7 +65,9 @@ public class WalletApiTest extends GeneralApiTest {
         final List<CharacterWalletJournalResponse> response = api.getCharactersCharacterIdWalletJournal(characterId, DATASOURCE, null, page, null);
 
         assertThat(response, notNullValue());
-        assumeTrue(!response.isEmpty());
+
+        assumeFalse(response.isEmpty());
+
         final CharacterWalletJournalResponse characterWalletJournalResponse = response.get(0);
         assertThat(characterWalletJournalResponse.getBalance(), greaterThan(0.0));
     }

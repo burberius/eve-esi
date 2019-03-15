@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>net.troja.eve</groupId>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.troja.eve</groupId>
   <artifactId>eve-esi</artifactId>
   <version>3.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -9,12 +9,12 @@
   <description>Java Client for the new Eve Swagger Interface (ESI)</description>
   <url>https://github.com/burberius/eve-esi</url>
 
-    <licenses>
-        <license>
+  <licenses>
+    <license>
       <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
+    </license>
+  </licenses>
 
   <scm>
     <connection>scm:git:https://github.com/burberius/eve-esi.git</connection>
@@ -23,13 +23,13 @@
     <tag>HEAD</tag>
   </scm>
 
-    <developers>
-        <developer>
+  <developers>
+    <developer>
       <id>burberius</id>
       <name>Jens Oberender</name>
       <email>burberius@gmail.com</email>
       <url>https://github.com/burberius</url>
-        </developer>
+    </developer>
     <developer>
     <id>goldengnu</id>
       <name>Niklas Kyster Rasmussen</name>
@@ -37,7 +37,7 @@
       <url>https://github.com/GoldenGnu</url>
       <timezone>+1</timezone>
     </developer>
-    </developers>
+  </developers>
 
     <dependencies>
         <dependency>
