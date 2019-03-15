@@ -8,6 +8,7 @@ import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.ApiResponse;
+import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.model.CharacterInfo;
@@ -26,7 +27,7 @@ public class SsoApi {
     private MetaApi metaApi;
 
     public SsoApi() {
-        this(new ApiClient());
+        this(Configuration.getDefaultApiClient());
     }
 
     public SsoApi(final ApiClient apiClient) {
@@ -113,6 +114,6 @@ public class SsoApi {
     private ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
             throws ApiException {
         com.squareup.okhttp.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null);
-        return apiClient.execute(call);
+        return revokeApiClient.execute(call);
     }
 }
