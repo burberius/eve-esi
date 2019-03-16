@@ -25,18 +25,17 @@ http://www.thread-safe.com/2014/05/the-correct-use-of-state-parameter-in.html
 To run the tests that use authorization you need to have some environment variables set,
 this information should not be published:
 * SSO_CLIENT_ID
-* SSO_CLIENT_SECRET
 * SSO_REFRESH_TOKEN
 
-Client id and secret can be created on the following page: https://developers.eveonline.com/
+Client id can be created on the following page: https://developers.eveonline.com/
 You should use http://localhost as redirect url as that is the value used in the test and it also
 makes it easier after the redirect.
 
 ### Create a refresh token for the tests
 To create a refresh token, you have to start the class *net/troja/eve/esi/api/auth/SsoAuthTest.java*
-with your client id as first and the secret as second argument. Then it shows you the url on console.
+with your client id as the argument or set the environment variables `SSO_CLIENT_ID`.
 
-Open the url in your browser, login with your account and authorize the access. This will redirect you
+The url will open in your browser, login with your account and authorize the access. This will redirect you
 to an url on localhost, something like:
 ```
 http://localhost/?code=7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0&state=somesecret
@@ -55,7 +54,7 @@ Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 
 ### Paging
 If you wonder how the paging with esi works, please have a look at the test
-*[src/test/java/net/troja/eve/esi/api/MarketApiTest.java](https://github.com/burberius/eve-esi/blob/master/src/test/java/net/troja/eve/esi/api/MarketApiTest.java#L49)* there is a method *pagingExample* showing it.
+*[src/test/java/net/troja/eve/esi/api/MarketApiTest.java](https://github.com/burberius/eve-esi/blob/master/src/test/java/net/troja/eve/esi/api/MarketApiTest.java#L234)* there is a method *pagingExample* showing it.
 
 ### java.lang.IllegalStateException: InjectionManagerFactory not found
 When you get that exception with eve-esi, you have to add the following dependency to your *pom.xml*
@@ -83,5 +82,5 @@ When you get that exception with eve-esi, you have to add the following dependen
 2) run ``./generate.sh``
 
 ## Links
-* [EVE Swagger Interface](https://esi.tech.ccp.is/latest/)
-* [Eve Online SSO](http://eveonline-third-party-documentation.readthedocs.io/en/latest/sso/index.html)
+* [EVE Swagger Interface](https://esi.evetech.net/)
+* [Eve Online SSO](https://github.com/esi/esi-docs#sso---read-this-notice-first)
