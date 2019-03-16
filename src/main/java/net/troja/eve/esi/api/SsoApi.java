@@ -46,7 +46,10 @@ public class SsoApi {
     }
 
     /**
-     * Deprecated use net.troja.eve.esi.api.MetaApi.getVerify() instead
+     * Alias for net.troja.eve.esi.api.MetaApi.getVerify()
+     * Return CharacterInfo that have helper methods:
+     * CharacterInfo.getScopes() : Set<String>
+     * CharacterInfo.getExpireOn() : OffsetDateTime
      * 
      * @return
      * @throws ApiException
