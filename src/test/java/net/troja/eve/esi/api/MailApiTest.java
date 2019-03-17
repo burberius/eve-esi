@@ -17,7 +17,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -80,7 +79,7 @@ public class MailApiTest extends GeneralApiTest {
         assertThat(response.size(), equalTo(50));
         final MailHeadersResponse headers = response.get(0);
         assertThat(headers.getFrom(), greaterThan(0));
-        assertThat(StringUtils.isNotBlank(headers.getSubject()), equalTo(true));
+        assertThat(!headers.getSubject().isEmpty(), equalTo(true));
     }
 
     /**
@@ -93,7 +92,7 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdMailLabelsTest() throws ApiException {
-        final Integer characterId = null;
+        // final Integer characterId = null;
         // MailLabelsResponse response =
         // api.getCharactersCharacterIdMailLabels(characterId, DATASOURCE);
 
@@ -110,7 +109,7 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdMailListsTest() throws ApiException {
-        final Integer characterId = null;
+        // final Integer characterId = null;
         // List<CharacterMailinglistsResponse> response =
         // api.getCharactersCharacterIdMailLists(characterId, DATASOURCE);
 
@@ -127,7 +126,7 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdMailMailIdTest() throws ApiException {
-        final Integer characterId = null;
+        // final Integer characterId = null;
         final Integer mailId = null;
         // MailResponse response =
         // api.getCharactersCharacterIdMailMailId(characterId, mailId,

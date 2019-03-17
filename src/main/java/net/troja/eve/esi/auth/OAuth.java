@@ -5,8 +5,10 @@
 
 package net.troja.eve.esi.auth;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.annotations.SerializedName;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -36,42 +38,61 @@ public class OAuth implements Authentication {
     private static final SecureRandom RND = new SecureRandom();
     private static final int LEN = 128;
 
-    private String refreshToken;
-    private String clientId;
     private String codeVerifier;
-    private static final Map<String, AccessTokenData> ACCESS_TOKEN_CACHE = new ConcurrentHashMap<>();
+    private AccountData account;
+    private static final Map<String, AccountData> ACCOUNTS = new ConcurrentHashMap<>();
 
     @Override
     public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
         // Add auth
-        AccessTokenData accessTokenData = getAccessTokenData();
-        if (accessTokenData != null) {
-            headerParams.put("Authorization", "Bearer " + accessTokenData.getAccessToken());
+        AccountData accountData = getAccountData();
+        if (accountData != null) {
+            headerParams.put("Authorization", "Bearer " + accountData.getAccessToken());
         }
     }
 
     public void setAccessToken(final String accessToken) {
-        ACCESS_TOKEN_CACHE.put(getAuthKey(), new AccessTokenData(accessToken, 0));
-    }
-
-    public void setRefreshToken(final String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
-    public void setClientId(final String clientId) {
-        this.clientId = clientId;
+        if (account == null) {
+            account = new AccountData(null, null);
+        }
+        account.setAccessToken(accessToken);
     }
 
     public String getRefreshToken() {
-        return refreshToken;
+        if (account != null) {
+            return account.getRefreshToken();
+        } else {
+            return null;
+        }
     }
 
     public String getClientId() {
-        return clientId;
+        if (account != null) {
+            return account.getClientId();
+        } else {
+            return null;
+        }
+    }
+
+    public void setAuth(final String clientId, final String refreshToken) {
+        AccountData accountData = new AccountData(clientId, refreshToken);
+        AccountData old = ACCOUNTS.putIfAbsent(accountData.getKey(), accountData);
+        if (old != null) {
+            accountData = old;
+        }
+        if (account != null) {
+            accountData.setAccessToken(account.getAccessToken());
+        }
+        account = accountData;
+    }
+
+    public void setClientId(final String clientId) {
+        setAuth(clientId, null);
     }
 
     public String getAccessToken() {
-        AccessTokenData accessTokenData = getAccessTokenData();
+        AccountData accessTokenData = getAccountData(); // Update access token
+                                                        // if needed
         if (accessTokenData != null) {
             return accessTokenData.getAccessToken();
         } else {
@@ -90,47 +111,38 @@ public class OAuth implements Authentication {
      * @return Unverified JWT or null
      */
     public JWT getJWT() {
-        AccessTokenData accessTokenData = getAccessTokenData(); // Update access
-                                                                // token if
-                                                                // needed;
-        if (accessTokenData == null) {
+        AccountData accountData = getAccountData(); // Update access token if
+                                                    // needed
+        if (accountData == null) {
             return null;
         }
         try {
-            String accessToken = accessTokenData.getAccessToken();
+            String accessToken = accountData.getAccessToken();
+            if (accessToken == null) {
+                return null;
+            }
             String[] parts = accessToken.split("\\.");
             if (parts.length != 3) {
                 return null;
             }
-            ObjectMapper objectMapper = new ObjectMapper();
-            JWT.Header header = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[0])),
-                    JWT.Header.class);
-            JWT.Payload payload = objectMapper.readValue(new String(Base64.getUrlDecoder().decode(parts[1])),
-                    JWT.Payload.class);
+            Gson gson = new GsonBuilder().registerTypeAdapter(JWT.Payload.class, new JWT.PayloadDeserializer())
+                    .create();
+            JWT.Header header = gson.fromJson(new String(Base64.getUrlDecoder().decode(parts[0])), JWT.Header.class);
+            JWT.Payload payload = gson.fromJson(new String(Base64.getUrlDecoder().decode(parts[1])), JWT.Payload.class);
             String signature = parts[2];
             return new JWT(header, payload, signature);
-        } catch (IOException ex) {
+        } catch (JsonSyntaxException ex) {
             return null;
         }
     }
 
-    private AccessTokenData getAccessTokenData() {
-        // Check if we need a new access token
-        synchronized (OAuth.class) { // This block is synchronized across all
-                                     // threads - so we don't update the access
-                                     // token more than once
-            AccessTokenData accessTokenData = ACCESS_TOKEN_CACHE.get(getAuthKey());
-            if (refreshToken != null
-                    && (accessTokenData == null || accessTokenData.getValidUntil() < System.currentTimeMillis())) {
-                try {
-                    refreshToken();
-                } catch (final ApiException ex) {
-                    // This error will be handled by ESI once the request is
-                    // made
-                }
-            }
+    private AccountData getAccountData() {
+        if (account == null) {
+            return null;
+        } else {
+            account.update();
+            return account;
         }
-        return ACCESS_TOKEN_CACHE.get(getAuthKey());
     }
 
     /**
@@ -149,6 +161,10 @@ public class OAuth implements Authentication {
      * @return
      */
     public String getAuthorizationUri(final String redirectUri, final Set<String> scopes, final String state) {
+        if (account == null)
+            throw new IllegalArgumentException("Auth is not set");
+        if (account.getClientId() == null)
+            throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append(URI_AUTHENTICATION);
         builder.append("?");
@@ -157,7 +173,7 @@ public class OAuth implements Authentication {
         builder.append("&redirect_uri=");
         builder.append(encode(redirectUri));
         builder.append("&client_id=");
-        builder.append(encode(clientId));
+        builder.append(encode(account.getClientId()));
         builder.append("&scope=");
         builder.append(encode(getScopesString(scopes)));
         builder.append("&state=");
@@ -180,30 +196,36 @@ public class OAuth implements Authentication {
      * @throws net.troja.eve.esi.ApiException
      */
     public void finishFlow(final String code, final String state) throws ApiException {
+        if (account == null)
+            throw new IllegalArgumentException("Auth is not set");
+        if (codeVerifier == null)
+            throw new IllegalArgumentException("code_verifier is not set");
+        if (account.getClientId() == null)
+            throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("authorization_code"));
         builder.append("&client_id=");
-        builder.append(encode(clientId));
+        builder.append(encode(account.getClientId()));
         builder.append("&code=");
         builder.append(encode(code));
         builder.append("&code_verifier=");
         builder.append(encode(codeVerifier));
-        update(builder.toString());
+        update(account, builder.toString());
     }
 
-    private void refreshToken() throws ApiException {
+    private static void refreshToken(AccountData accountData) throws ApiException {
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("refresh_token"));
         builder.append("&client_id=");
-        builder.append(encode(clientId));
+        builder.append(encode(accountData.getClientId()));
         builder.append("&refresh_token=");
-        builder.append(encode(refreshToken));
-        update(builder.toString());
+        builder.append(encode(accountData.getRefreshToken()));
+        update(accountData, builder.toString());
     }
 
-    private void update(String urlParameters) throws ApiException {
+    private static void update(AccountData accountData, String urlParameters) throws ApiException {
         try {
             URL obj = new URL(URI_ACCESS_TOKEN);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -212,6 +234,8 @@ public class OAuth implements Authentication {
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             con.setRequestProperty("Host", "login.eveonline.com");
+            con.setConnectTimeout(10000);
+            con.setReadTimeout(10000);
 
             // Send post request
             con.setDoOutput(true);
@@ -229,14 +253,25 @@ public class OAuth implements Authentication {
                 }
             }
             // read json
-            ObjectMapper objectMapper = new ObjectMapper();
-            Result result = objectMapper.readValue(response.toString(), Result.class);
+            Gson gson = new GsonBuilder().create();
+            Result result = gson.fromJson(response.toString(), Result.class);
 
             // set data
-            refreshToken = result.getRefreshToken();
-            String accessToken = result.getAccessToken();
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
-            ACCESS_TOKEN_CACHE.put(getAuthKey(), new AccessTokenData(accessToken, validUntil));
+            ACCOUNTS.remove(accountData.getKey()); // Remove old value - or we
+                                                   // can match a random refresh
+                                                   // token with just the
+                                                   // clientID
+            accountData.setAccessToken(result.getAccessToken());
+            accountData.setValidUntil(validUntil);
+            accountData.setRefreshToken(result.getRefreshToken());
+            ACCOUNTS.put(accountData.getKey(), accountData); // Update map in
+                                                             // case the Refresh
+                                                             // Token (AKA Key)
+                                                             // have been
+                                                             // changed
+        } catch (JsonSyntaxException ex) {
+            throw new ApiException(ex);
         } catch (MalformedURLException ex) {
             throw new ApiException(ex);
         } catch (IOException ex) {
@@ -257,17 +292,23 @@ public class OAuth implements Authentication {
         return scopesString.toString();
     }
 
-    private String getAuthKey() {
-        return clientId + refreshToken;
-    }
+    private static class AccountData {
+        private final String clientId;
+        private String refreshToken;
+        private String accessToken;
+        private long validUntil = 0;
 
-    private static class AccessTokenData {
-        private final String accessToken;
-        private final long validUntil;
+        public AccountData(String clientId, String refreshToken) {
+            this.clientId = clientId;
+            this.refreshToken = refreshToken;
+        }
 
-        public AccessTokenData(final String accessToken, final long validUntil) {
-            this.accessToken = accessToken;
-            this.validUntil = validUntil;
+        public String getClientId() {
+            return clientId;
+        }
+
+        public String getRefreshToken() {
+            return refreshToken;
         }
 
         public String getAccessToken() {
@@ -276,6 +317,33 @@ public class OAuth implements Authentication {
 
         public long getValidUntil() {
             return validUntil;
+        }
+
+        public void setRefreshToken(String refreshToken) {
+            this.refreshToken = refreshToken;
+        }
+
+        public void setAccessToken(String accessToken) {
+            this.accessToken = accessToken;
+        }
+
+        public void setValidUntil(long validUntil) {
+            this.validUntil = validUntil;
+        }
+
+        private synchronized void update() {
+            if (refreshToken != null && (accessToken == null || getValidUntil() < System.currentTimeMillis())) {
+                try {
+                    OAuth.refreshToken(this);
+                } catch (final ApiException ex) {
+                    // This error will be handled by ESI once the request is
+                    // made
+                }
+            }
+        }
+
+        public String getKey() {
+            return clientId + refreshToken;
         }
     }
 
@@ -295,7 +363,7 @@ public class OAuth implements Authentication {
         }
     }
 
-    private String encode(String parameter) {
+    private static String encode(String parameter) {
         try {
             return URLEncoder.encode(parameter, "UTF-8");
         } catch (UnsupportedEncodingException ex) {
@@ -305,13 +373,13 @@ public class OAuth implements Authentication {
 
     private static class Result {
 
-        @JsonProperty("access_token")
+        @SerializedName("access_token")
         private String accessToken;
-        @JsonProperty("expires_in")
+        @SerializedName("expires_in")
         private Long expiresIn;
-        @JsonProperty("token_type")
+        @SerializedName("token_type")
         private String tokenType;
-        @JsonProperty("refresh_token")
+        @SerializedName("refresh_token")
         private String refreshToken;
 
         public String getAccessToken() {

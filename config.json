@@ -4,7 +4,7 @@
   "invokerPackage":"net.troja.eve.esi",
   "apiPackage":"net.troja.eve.esi.api",
   "modelPackage":"net.troja.eve.esi.model",
-  "library":"jersey2",
+  "library":"okhttp-gson",
   "serializableModel":"true",
   "hideGenerationTimestamp":"true",
   "dateLibrary":"java8"
