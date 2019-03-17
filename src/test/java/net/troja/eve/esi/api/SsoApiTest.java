@@ -5,10 +5,13 @@ import java.lang.reflect.Modifier;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.HashSet;
+import java.util.Set;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterInfo;
+import net.troja.eve.esi.model.EsiVerifyResponse;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -29,21 +32,26 @@ public class SsoApiTest extends GeneralApiTest {
         }
     }
 
-    private void test(Class<?> c) {
-		Method methods[] = c.getMethods();
-		for (Method method : methods) {
-			if (method.getDeclaringClass() != c
-					&& method.getDeclaringClass() != Object.class
-					&& ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC)
-					&& ((method.getModifiers() & Modifier.FINAL) != Modifier.FINAL)) {
-				fail(c.getSimpleName()+" - overwrite method: "+method.toString());
-			}
-		}
+    private void compareMethods(Class<?> c1, Class<?> c2) {
+		Set<String> methods1 = new HashSet<>();
+        for (Method method : c1.getMethods()) {
+            methods1.add(method.getName());
+        }
+		Set<String> methods2 = new HashSet<>();
+        for (Method method : c2.getMethods()) {
+            methods2.add(method.getName());
+        }
+        for (String methodName : methods1) {
+            assertThat(methodName + "not found", methods2.contains(methodName), equalTo(true));
+        }
+        for (String methodName : methods2) {
+            assertThat(methodName + "not found", methods1.contains(methodName), equalTo(true));
+        }
 	}
 	
 	@Test
 	public void testOverwrite() {
-		test(CharacterInfo.class);
+		compareMethods(CharacterInfo.class, EsiVerifyResponse.class);
 	}
 
     @Test
@@ -57,11 +65,11 @@ public class SsoApiTest extends GeneralApiTest {
         assertThat(info.getCharacterID(), greaterThan(100000));
         assertThat(info.getCharacterName().isEmpty(), equalTo(false));
         assertThat(info.getExpiresOn(), notNullValue());
-        assertThat(info.getExpiresOnDate(), notNullValue());
-        assertThat(info.getExpiresOnDate().isAfter(OffsetDateTime.now()), equalTo(true));
+        assertThat(info.getExpiresOn(), notNullValue());
+        assertThat(info.getExpiresOn().isAfter(OffsetDateTime.now()), equalTo(true));
         assertThat(info.getTokenType(), equalTo("JWT"));
         assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
-        assertThat(info.getScopesSet().size(), greaterThan(10));
+        assertThat(info.getScopes().size(), greaterThan(10));
     }
 
     @Test
