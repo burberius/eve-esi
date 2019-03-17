@@ -36,10 +36,6 @@ public class GeneralApiTest {
 
     @BeforeClass
     public static void initClass() throws ApiException {
-        initData();
-    }
-
-    public static void initData() throws ApiException {
         final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);

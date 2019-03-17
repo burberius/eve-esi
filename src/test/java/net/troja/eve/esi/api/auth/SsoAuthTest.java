@@ -185,9 +185,8 @@ public class SsoAuthTest extends GeneralApiTest {
         if (args.length == 1) {
             client = new ApiClientBuilder().clientID(args[0]).build();
         } else {
-            initData();
-            if (clientId != null) {
-                client = new ApiClientBuilder().clientID(clientId).build();
+            if (System.getenv().get(SSO_CLIENT_ID) != null) {
+                client = new ApiClientBuilder().clientID(System.getenv().get(SSO_CLIENT_ID)).build();
             } else {
                 System.err.println("ClientId missing");
                 System.exit(-1);
