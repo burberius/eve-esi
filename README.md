@@ -2,7 +2,22 @@
 [![Build Status](http://jenkins.cyno.space/jenkins/job/GitHub%20eve-esi/badge/icon)](http://jenkins.cyno.space/jenkins/job/GitHub%20eve-esi/)
 
 # EVE-ESI
-A Java client library for the new EVE Swagger Interface (ESI)
+A Java client library for the EVE Swagger Interface (ESI)
+
+## Version 3.0.0 changes
+After several years with many changes to ESI it is now quite stable, so
+we decided to move to a (hopefully) better and especially threadsafe http library: **okhttp**
+
+This version also changes how the *ApiClient* is initialized, it now uses a
+builder *ApiClientBuilder* to create the *ApiClient* the right way. Here are two examples:
+
+```java
+ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("some-access-token").build();
+
+ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken("some-refresh-token").build();
+```
+
+For more, please have a look in the tests.
 
 ## Maven integration
 Just add the following to your *pom.xml*:
@@ -10,7 +25,7 @@ Just add the following to your *pom.xml*:
 <dependency>
     <groupId>net.troja.eve</groupId>
     <artifactId>eve-esi</artifactId>
-    <version>1.0.0</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 
@@ -55,16 +70,6 @@ Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 ### Paging
 If you wonder how the paging with esi works, please have a look at the test
 *[src/test/java/net/troja/eve/esi/api/MarketApiTest.java](https://github.com/burberius/eve-esi/blob/master/src/test/java/net/troja/eve/esi/api/MarketApiTest.java#L234)* there is a method *pagingExample* showing it.
-
-### java.lang.IllegalStateException: InjectionManagerFactory not found
-When you get that exception with eve-esi, you have to add the following dependency to your *pom.xml*
-```xml
-<dependency>
-  <groupId>org.glassfish.jersey.inject</groupId>
-  <artifactId>jersey-hk2</artifactId>
-  <version>${jersey.version}</version>
-</dependency>
-```
 
 ## Development on windows
 
