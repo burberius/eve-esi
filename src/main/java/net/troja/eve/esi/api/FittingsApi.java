@@ -234,7 +234,7 @@ public class FittingsApi {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/fittings/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/fittings/".replaceAll("\\{" + "character_id" + "\\}",
                 apiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -288,11 +288,7 @@ public class FittingsApi {
 
     /**
      * Get fittings Return fittings of a character --- This route is cached for
-     * up to 300 seconds --- Warning: This route has an upgrade available ---
-     * [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET
-     * -/characters/{character_id}/fittings/) SSO Scope:
-     * esi-fittings.read_fittings.v1
+     * up to 300 seconds SSO Scope: esi-fittings.read_fittings.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -318,11 +314,7 @@ public class FittingsApi {
 
     /**
      * Get fittings Return fittings of a character --- This route is cached for
-     * up to 300 seconds --- Warning: This route has an upgrade available ---
-     * [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET
-     * -/characters/{character_id}/fittings/) SSO Scope:
-     * esi-fittings.read_fittings.v1
+     * up to 300 seconds SSO Scope: esi-fittings.read_fittings.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -350,10 +342,7 @@ public class FittingsApi {
 
     /**
      * Get fittings (asynchronously) Return fittings of a character --- This
-     * route is cached for up to 300 seconds --- Warning: This route has an
-     * upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net
-     * /diff/latest/dev/#GET-/characters/{character_id}/fittings/) SSO Scope:
+     * route is cached for up to 300 seconds SSO Scope:
      * esi-fittings.read_fittings.v1
      * 
      * @param characterId
@@ -408,7 +397,7 @@ public class FittingsApi {
         Object localVarPostBody = characterFitting;
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/fittings/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/fittings/".replaceAll("\\{" + "character_id" + "\\}",
                 apiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -456,11 +445,8 @@ public class FittingsApi {
     }
 
     /**
-     * Create fitting Save a new fitting for a character --- Warning: This route
-     * has an upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#POST-/characters/{character_id}/fittings/) SSO
-     * Scope: esi-fittings.write_fittings.v1
+     * Create fitting Save a new fitting for a character --- SSO Scope:
+     * esi-fittings.write_fittings.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -484,11 +470,8 @@ public class FittingsApi {
     }
 
     /**
-     * Create fitting Save a new fitting for a character --- Warning: This route
-     * has an upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#POST-/characters/{character_id}/fittings/) SSO
-     * Scope: esi-fittings.write_fittings.v1
+     * Create fitting Save a new fitting for a character --- SSO Scope:
+     * esi-fittings.write_fittings.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -515,9 +498,7 @@ public class FittingsApi {
 
     /**
      * Create fitting (asynchronously) Save a new fitting for a character ---
-     * Warning: This route has an upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{
-     * character_id}/fittings/) SSO Scope: esi-fittings.write_fittings.v1
+     * SSO Scope: esi-fittings.write_fittings.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
