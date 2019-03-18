@@ -12,7 +12,7 @@
 package net.troja.eve.esi;
 
 public class Configuration {
-    private static ApiClient defaultApiClient = new ApiClient();
+    private static ApiClient defaultApiClient = new ApiClientBuilder().build();
 
     /**
      * Get the default API client, which would be used when creating API
