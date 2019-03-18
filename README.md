@@ -29,6 +29,17 @@ Just add the following to your *pom.xml*:
 </dependency>
 ```
 
+## Versioning (Major.Minor.Patch)
+
+- Major
+  - Major breaking changes to the entire library
+  - May also contain endpoint promotions and bug fixes
+- Minor
+  - Endpoint promotions ([breaking changes](https://github.com/esi/esi-docs/blob/master/docs/breaking_changes.md]) announced in the [esi changelog](https://github.com/esi/esi-issues/blob/master/changelog.md))
+  - May also contain bug fixes
+- Patch
+  - Bug Fixes without any breaking changes
+
 ## SSO usage
 The usage of the SSO can be seen in the *main* method within the test class
 *net/troja/eve/esi/api/auth/SsoAuthTest.java*.
