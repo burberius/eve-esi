@@ -46,4 +46,4 @@ src/main/java/net/troja/eve/esi/api/SwaggerApi.java
 src/test/java/net/troja/eve/esi/api/SwaggerApiTest.java
 src/main/java/net/troja/eve/esi/api/WebUiApi.java
 src/test/java/net/troja/eve/esi/api/WebUIApiTest.java
-src/test/java/net/troja/eve/esi/Configuration.java
+src/main/java/net/troja/eve/esi/Configuration.java
