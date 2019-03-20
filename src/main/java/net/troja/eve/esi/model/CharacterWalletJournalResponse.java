@@ -144,12 +144,7 @@ public class CharacterWalletJournalResponse implements Serializable {
 
     /**
      * \&quot;The transaction type for the given. transaction. Different
-     * transaction types will populate different attributes. Note: If you have
-     * an existing XML API application that is using ref_types, you will need to
-     * know which string ESI ref_type maps to which integer. You can look at the
-     * following file to see string-&gt;int mappings:
-     * https://github.com/ccpgames
-     * /eve-glue/blob/master/eve_glue/wallet_journal_ref.py\&quot;
+     * transaction types will populate different attributes.\&quot;
      */
     @JsonAdapter(RefTypeEnum.Adapter.class)
     public enum RefTypeEnum {
@@ -301,6 +296,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         INSURANCE("insurance"),
 
+        ITEM_TRADER_PAYMENT("item_trader_payment"),
+
         JUMP_CLONE_ACTIVATION_FEE("jump_clone_activation_fee"),
 
         JUMP_CLONE_INSTALLATION_FEE("jump_clone_installation_fee"),
@@ -370,6 +367,8 @@ public class CharacterWalletJournalResponse implements Serializable {
         SECURITY_PROCESSING_FEE("security_processing_fee"),
 
         SHARES("shares"),
+
+        SKILL_PURCHASE("skill_purchase"),
 
         SOVEREIGNITY_BILL("sovereignity_bill"),
 
@@ -661,16 +660,11 @@ public class CharacterWalletJournalResponse implements Serializable {
 
     /**
      * \&quot;The transaction type for the given. transaction. Different
-     * transaction types will populate different attributes. Note: If you have
-     * an existing XML API application that is using ref_types, you will need to
-     * know which string ESI ref_type maps to which integer. You can look at the
-     * following file to see string-&gt;int mappings:
-     * https://github.com/ccpgames
-     * /eve-glue/blob/master/eve_glue/wallet_journal_ref.py\&quot;
+     * transaction types will populate different attributes.\&quot;
      * 
      * @return refType
      **/
-    @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\"")
+    @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes.\"")
     public RefTypeEnum getRefType() {
         return refType;
     }
