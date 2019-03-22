@@ -246,7 +246,7 @@ public class WalletApi {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v5/characters/{character_id}/wallet/journal/".replaceAll(
+        String localVarPath = "/v6/characters/{character_id}/wallet/journal/".replaceAll(
                 "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

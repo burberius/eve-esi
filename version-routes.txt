@@ -190,5 +190,5 @@
   "/v4/corporations/{corporation_id}/",
   "/v4/corporations/{corporation_id}/wallets/{division}/journal/",
   "/v4/universe/systems/{system_id}/",
-  "/v5/characters/{character_id}/wallet/journal/"
+  "/v6/characters/{character_id}/wallet/journal/"
 ]
