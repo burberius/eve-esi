@@ -33,22 +33,22 @@ import java.util.List;
 import java.util.Map;
 
 public class InsuranceApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public InsuranceApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public InsuranceApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -65,14 +65,14 @@ public class InsuranceApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getInsurancePricesCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getInsurancePricesCall(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -81,25 +81,25 @@ public class InsuranceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -107,21 +107,20 @@ public class InsuranceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getInsurancePricesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getInsurancePricesValidateBeforeCall(String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getInsurancePricesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getInsurancePricesCall(acceptLanguage, datasource, ifNoneMatch, language, _callback);
+        return localVarCall;
 
     }
 
@@ -147,9 +146,9 @@ public class InsuranceApi {
      */
     public List<InsurancePricesResponse> getInsurancePrices(String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<List<InsurancePricesResponse>> resp = getInsurancePricesWithHttpInfo(acceptLanguage, datasource,
-                ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<List<InsurancePricesResponse>> localVarResp = getInsurancePricesWithHttpInfo(acceptLanguage,
+                datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -174,11 +173,11 @@ public class InsuranceApi {
      */
     public ApiResponse<List<InsurancePricesResponse>> getInsurancePricesWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getInsurancePricesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+        okhttp3.Call localVarCall = getInsurancePricesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
                 language, null);
         Type localVarReturnType = new TypeToken<List<InsurancePricesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -196,22 +195,21 @@ public class InsuranceApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getInsurancePricesAsync(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback<List<InsurancePricesResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getInsurancePricesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback<List<InsurancePricesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getInsurancePricesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, callback);
+        okhttp3.Call localVarCall = getInsurancePricesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
         Type localVarReturnType = new TypeToken<List<InsurancePricesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

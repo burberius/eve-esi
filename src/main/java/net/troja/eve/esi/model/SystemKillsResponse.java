@@ -146,7 +146,6 @@ public class SystemKillsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemKillsResponse {\n");
-
         sb.append("    npcKills: ").append(toIndentedString(npcKills)).append("\n");
         sb.append("    shipKills: ").append(toIndentedString(shipKills)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");

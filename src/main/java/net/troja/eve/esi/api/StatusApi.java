@@ -33,22 +33,22 @@ import java.util.List;
 import java.util.Map;
 
 public class StatusApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public StatusApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public StatusApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -60,13 +60,13 @@ public class StatusApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStatusCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getStatusCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -76,17 +76,17 @@ public class StatusApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -94,20 +94,20 @@ public class StatusApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStatusValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getStatusValidateBeforeCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getStatusCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getStatusCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -127,8 +127,8 @@ public class StatusApi {
      *             deserialize the response body
      */
     public StatusResponse getStatus(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<StatusResponse> resp = getStatusWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<StatusResponse> localVarResp = getStatusWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -147,10 +147,10 @@ public class StatusApi {
      *             deserialize the response body
      */
     public ApiResponse<StatusResponse> getStatusWithHttpInfo(String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StatusResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -163,20 +163,20 @@ public class StatusApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getStatusAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<StatusResponse> callback) throws ApiException {
+    public okhttp3.Call getStatusAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<StatusResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<StatusResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

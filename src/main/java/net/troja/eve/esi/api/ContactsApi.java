@@ -38,22 +38,22 @@ import java.util.List;
 import java.util.Map;
 
 public class ContactsApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public ContactsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public ContactsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -68,32 +68,32 @@ public class ContactsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdContactsCall(Integer characterId,
-            List<Integer> contactIds, String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdContactsCall(Integer characterId, List<Integer> contactIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (contactIds != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "contact_ids", contactIds));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "contact_ids", contactIds));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -101,7 +101,7 @@ public class ContactsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -109,17 +109,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
-            List<Integer> contactIds, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call deleteCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
+            List<Integer> contactIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -133,9 +133,9 @@ public class ContactsApi {
                     "Missing the required parameter 'contactIds' when calling deleteCharactersCharacterIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdContactsCall(characterId, contactIds, datasource,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdContactsCall(characterId, contactIds, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -181,9 +181,9 @@ public class ContactsApi {
      */
     public ApiResponse<Void> deleteCharactersCharacterIdContactsWithHttpInfo(Integer characterId,
             List<Integer> contactIds, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdContactsValidateBeforeCall(characterId, contactIds,
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdContactsValidateBeforeCall(characterId, contactIds,
                 datasource, token, null);
-        return apiClient.execute(call);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -199,21 +199,20 @@ public class ContactsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdContactsAsync(Integer characterId,
-            List<Integer> contactIds, String datasource, String token, final ApiCallback<Void> callback)
-            throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdContactsAsync(Integer characterId, List<Integer> contactIds,
+            String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdContactsValidateBeforeCall(characterId, contactIds,
-                datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdContactsValidateBeforeCall(characterId, contactIds,
+                datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -231,42 +230,42 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdContactsCall(Integer allianceId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdContactsCall(Integer allianceId, String datasource, String ifNoneMatch,
+            Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/alliances/{alliance_id}/contacts/".replaceAll("\\{" + "alliance_id" + "\\}",
-                apiClient.escapeString(allianceId.toString()));
+                localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -274,18 +273,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesAllianceIdContactsValidateBeforeCall(Integer allianceId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getAlliancesAllianceIdContactsValidateBeforeCall(Integer allianceId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
@@ -293,9 +291,9 @@ public class ContactsApi {
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsCall(allianceId, datasource, ifNoneMatch, page,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsCall(allianceId, datasource, ifNoneMatch, page,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -322,9 +320,9 @@ public class ContactsApi {
      */
     public List<AllianceContactsResponse> getAlliancesAllianceIdContacts(Integer allianceId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<AllianceContactsResponse>> resp = getAlliancesAllianceIdContactsWithHttpInfo(allianceId,
-                datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        ApiResponse<List<AllianceContactsResponse>> localVarResp = getAlliancesAllianceIdContactsWithHttpInfo(
+                allianceId, datasource, ifNoneMatch, page, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -350,11 +348,11 @@ public class ContactsApi {
      */
     public ApiResponse<List<AllianceContactsResponse>> getAlliancesAllianceIdContactsWithHttpInfo(Integer allianceId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsValidateBeforeCall(allianceId, datasource,
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsValidateBeforeCall(allianceId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<AllianceContactsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -374,23 +372,23 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdContactsAsync(Integer allianceId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<AllianceContactsResponse>> callback)
+    public okhttp3.Call getAlliancesAllianceIdContactsAsync(Integer allianceId, String datasource, String ifNoneMatch,
+            Integer page, String token, final ApiCallback<List<AllianceContactsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsValidateBeforeCall(allianceId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsValidateBeforeCall(allianceId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<AllianceContactsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -406,38 +404,38 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdContactsLabelsCall(Integer allianceId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdContactsLabelsCall(Integer allianceId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/alliances/{alliance_id}/contacts/labels/".replaceAll("\\{" + "alliance_id" + "\\}",
-                apiClient.escapeString(allianceId.toString()));
+                localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -445,17 +443,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesAllianceIdContactsLabelsValidateBeforeCall(Integer allianceId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getAlliancesAllianceIdContactsLabelsValidateBeforeCall(Integer allianceId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
@@ -463,9 +461,9 @@ public class ContactsApi {
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdContactsLabels(Async)");
         }
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsLabelsCall(allianceId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsLabelsCall(allianceId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -491,9 +489,9 @@ public class ContactsApi {
      */
     public List<AllianceContactsLabelsResponse> getAlliancesAllianceIdContactsLabels(Integer allianceId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<AllianceContactsLabelsResponse>> resp = getAlliancesAllianceIdContactsLabelsWithHttpInfo(
+        ApiResponse<List<AllianceContactsLabelsResponse>> localVarResp = getAlliancesAllianceIdContactsLabelsWithHttpInfo(
                 allianceId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -518,11 +516,11 @@ public class ContactsApi {
      */
     public ApiResponse<List<AllianceContactsLabelsResponse>> getAlliancesAllianceIdContactsLabelsWithHttpInfo(
             Integer allianceId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsLabelsValidateBeforeCall(allianceId, datasource,
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsLabelsValidateBeforeCall(allianceId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -540,23 +538,23 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdContactsLabelsAsync(Integer allianceId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<AllianceContactsLabelsResponse>> callback)
+    public okhttp3.Call getAlliancesAllianceIdContactsLabelsAsync(Integer allianceId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<AllianceContactsLabelsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdContactsLabelsValidateBeforeCall(allianceId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsLabelsValidateBeforeCall(allianceId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<AllianceContactsLabelsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -574,42 +572,42 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdContactsCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdContactsCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -617,18 +615,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -636,9 +633,9 @@ public class ContactsApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsCall(characterId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsCall(characterId, datasource, ifNoneMatch, page,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -665,9 +662,9 @@ public class ContactsApi {
      */
     public List<ContactsResponse> getCharactersCharacterIdContacts(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<ContactsResponse>> resp = getCharactersCharacterIdContactsWithHttpInfo(characterId,
+        ApiResponse<List<ContactsResponse>> localVarResp = getCharactersCharacterIdContactsWithHttpInfo(characterId,
                 datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -693,11 +690,11 @@ public class ContactsApi {
      */
     public ApiResponse<List<ContactsResponse>> getCharactersCharacterIdContactsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<ContactsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -717,23 +714,23 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdContactsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<ContactsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdContactsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback<List<ContactsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<ContactsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -749,38 +746,38 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdContactsLabelsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdContactsLabelsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/contacts/labels/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -788,17 +785,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdContactsLabelsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdContactsLabelsValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -806,9 +803,9 @@ public class ContactsApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdContactsLabels(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsLabelsCall(characterId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsLabelsCall(characterId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -834,9 +831,9 @@ public class ContactsApi {
      */
     public List<ContactLabelsResponse> getCharactersCharacterIdContactsLabels(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<ContactLabelsResponse>> resp = getCharactersCharacterIdContactsLabelsWithHttpInfo(characterId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<ContactLabelsResponse>> localVarResp = getCharactersCharacterIdContactsLabelsWithHttpInfo(
+                characterId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -861,11 +858,11 @@ public class ContactsApi {
      */
     public ApiResponse<List<ContactLabelsResponse>> getCharactersCharacterIdContactsLabelsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsLabelsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsLabelsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<ContactLabelsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -883,23 +880,23 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdContactsLabelsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<ContactLabelsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdContactsLabelsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<ContactLabelsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdContactsLabelsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdContactsLabelsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<ContactLabelsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -917,42 +914,42 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContactsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdContactsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/corporations/{corporation_id}/contacts/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -960,17 +957,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdContactsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdContactsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -979,9 +976,9 @@ public class ContactsApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1009,9 +1006,9 @@ public class ContactsApi {
      */
     public List<CorporationContactsResponse> getCorporationsCorporationIdContacts(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationContactsResponse>> resp = getCorporationsCorporationIdContactsWithHttpInfo(
+        ApiResponse<List<CorporationContactsResponse>> localVarResp = getCorporationsCorporationIdContactsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1039,11 +1036,11 @@ public class ContactsApi {
     public ApiResponse<List<CorporationContactsResponse>> getCorporationsCorporationIdContactsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContactsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1063,23 +1060,23 @@ public class ContactsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContactsAsync(Integer corporationId, String datasource,
+    public okhttp3.Call getCorporationsCorporationIdContactsAsync(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationContactsResponse>> callback) throws ApiException {
+            final ApiCallback<List<CorporationContactsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationContactsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1095,38 +1092,38 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContactsLabelsCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdContactsLabelsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/contacts/labels/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1134,18 +1131,17 @@ public class ContactsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdContactsLabelsValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdContactsLabelsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1153,9 +1149,9 @@ public class ContactsApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContactsLabels(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsLabelsCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsLabelsCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1181,9 +1177,9 @@ public class ContactsApi {
      */
     public List<CorporationContactsLabelsResponse> getCorporationsCorporationIdContactsLabels(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationContactsLabelsResponse>> resp = getCorporationsCorporationIdContactsLabelsWithHttpInfo(
+        ApiResponse<List<CorporationContactsLabelsResponse>> localVarResp = getCorporationsCorporationIdContactsLabelsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1208,11 +1204,11 @@ public class ContactsApi {
      */
     public ApiResponse<List<CorporationContactsLabelsResponse>> getCorporationsCorporationIdContactsLabelsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsLabelsValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsLabelsValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContactsLabelsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1230,23 +1226,23 @@ public class ContactsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContactsLabelsAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<CorporationContactsLabelsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdContactsLabelsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationContactsLabelsResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContactsLabelsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsLabelsValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationContactsLabelsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1256,7 +1252,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1268,64 +1264,64 @@ public class ContactsApi {
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdContactsCall(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched,
-            final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCharactersCharacterIdContactsCall(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = contactIds;
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (labelIds != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "label_ids", labelIds));
         }
 
         if (standing != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("standing", standing));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("standing", standing));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         if (watched != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("watched", watched));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("watched", watched));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
-            Float standing, List<Integer> requestBody, String datasource, List<Long> labelIds, String token,
-            Boolean watched, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1339,15 +1335,15 @@ public class ContactsApi {
                     "Missing the required parameter 'standing' when calling postCharactersCharacterIdContacts(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'contactIds' is set
+        if (contactIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCharactersCharacterIdContacts(Async)");
+                    "Missing the required parameter 'contactIds' when calling postCharactersCharacterIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdContactsCall(characterId, standing, requestBody,
-                datasource, labelIds, token, watched, callback);
-        return call;
+        okhttp3.Call localVarCall = postCharactersCharacterIdContactsCall(characterId, standing, contactIds,
+                datasource, labelIds, token, watched, _callback);
+        return localVarCall;
 
     }
 
@@ -1359,7 +1355,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1377,11 +1373,11 @@ public class ContactsApi {
      *             deserialize the response body
      */
     public List<Integer> postCharactersCharacterIdContacts(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched)
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched)
             throws ApiException {
-        ApiResponse<List<Integer>> resp = postCharactersCharacterIdContactsWithHttpInfo(characterId, standing,
-                requestBody, datasource, labelIds, token, watched);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = postCharactersCharacterIdContactsWithHttpInfo(characterId, standing,
+                contactIds, datasource, labelIds, token, watched);
+        return localVarResp.getData();
     }
 
     /**
@@ -1392,7 +1388,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1410,13 +1406,13 @@ public class ContactsApi {
      *             deserialize the response body
      */
     public ApiResponse<List<Integer>> postCharactersCharacterIdContactsWithHttpInfo(Integer characterId,
-            Float standing, List<Integer> requestBody, String datasource, List<Long> labelIds, String token,
+            Float standing, List<Integer> contactIds, String datasource, List<Long> labelIds, String token,
             Boolean watched) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
-                requestBody, datasource, labelIds, token, watched, null);
+        okhttp3.Call localVarCall = postCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
+                contactIds, datasource, labelIds, token, watched, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1427,7 +1423,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1439,23 +1435,23 @@ public class ContactsApi {
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdContactsAsync(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdContactsAsync(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
-                requestBody, datasource, labelIds, token, watched, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
+                contactIds, datasource, labelIds, token, watched, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1465,7 +1461,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1477,41 +1473,41 @@ public class ContactsApi {
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdContactsCall(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched,
-            final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call putCharactersCharacterIdContactsCall(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = contactIds;
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (labelIds != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "label_ids", labelIds));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "label_ids", labelIds));
         }
 
         if (standing != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("standing", standing));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("standing", standing));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         if (watched != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("watched", watched));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("watched", watched));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1519,24 +1515,24 @@ public class ContactsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
-            Float standing, List<Integer> requestBody, String datasource, List<Long> labelIds, String token,
-            Boolean watched, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call putCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1550,15 +1546,15 @@ public class ContactsApi {
                     "Missing the required parameter 'standing' when calling putCharactersCharacterIdContacts(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'contactIds' is set
+        if (contactIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling putCharactersCharacterIdContacts(Async)");
+                    "Missing the required parameter 'contactIds' when calling putCharactersCharacterIdContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdContactsCall(characterId, standing, requestBody,
-                datasource, labelIds, token, watched, callback);
-        return call;
+        okhttp3.Call localVarCall = putCharactersCharacterIdContactsCall(characterId, standing, contactIds, datasource,
+                labelIds, token, watched, _callback);
+        return localVarCall;
 
     }
 
@@ -1570,7 +1566,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1586,9 +1582,9 @@ public class ContactsApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putCharactersCharacterIdContacts(Integer characterId, Float standing, List<Integer> requestBody,
+    public void putCharactersCharacterIdContacts(Integer characterId, Float standing, List<Integer> contactIds,
             String datasource, List<Long> labelIds, String token, Boolean watched) throws ApiException {
-        putCharactersCharacterIdContactsWithHttpInfo(characterId, standing, requestBody, datasource, labelIds, token,
+        putCharactersCharacterIdContactsWithHttpInfo(characterId, standing, contactIds, datasource, labelIds, token,
                 watched);
     }
 
@@ -1600,7 +1596,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1618,11 +1614,11 @@ public class ContactsApi {
      *             deserialize the response body
      */
     public ApiResponse<Void> putCharactersCharacterIdContactsWithHttpInfo(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched)
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched)
             throws ApiException {
-        com.squareup.okhttp.Call call = putCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
-                requestBody, datasource, labelIds, token, watched, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = putCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
+                contactIds, datasource, labelIds, token, watched, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1633,7 +1629,7 @@ public class ContactsApi {
      *            An EVE character ID (required)
      * @param standing
      *            Standing for the contact (required)
-     * @param requestBody
+     * @param contactIds
      *            A list of contacts (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1645,20 +1641,20 @@ public class ContactsApi {
      * @param watched
      *            Whether the contact should be watched, note this is only
      *            effective on characters (optional, default to false)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdContactsAsync(Integer characterId, Float standing,
-            List<Integer> requestBody, String datasource, List<Long> labelIds, String token, Boolean watched,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call putCharactersCharacterIdContactsAsync(Integer characterId, Float standing,
+            List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
-                requestBody, datasource, labelIds, token, watched, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putCharactersCharacterIdContactsValidateBeforeCall(characterId, standing,
+                contactIds, datasource, labelIds, token, watched, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 }

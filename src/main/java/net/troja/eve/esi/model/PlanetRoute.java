@@ -54,7 +54,7 @@ public class PlanetRoute implements Serializable {
 
     public static final String SERIALIZED_NAME_WAYPOINTS = "waypoints";
     @SerializedName(SERIALIZED_NAME_WAYPOINTS)
-    private List<Long> waypoints = null;
+    private List<Long> waypoints = new ArrayList<>();
 
     public PlanetRoute quantity(Float quantity) {
         this.quantity = quantity;
@@ -203,7 +203,6 @@ public class PlanetRoute implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetRoute {\n");
-
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    routeId: ").append(toIndentedString(routeId)).append("\n");
         sb.append("    contentTypeId: ").append(toIndentedString(contentTypeId)).append("\n");

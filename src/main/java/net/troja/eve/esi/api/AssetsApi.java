@@ -38,22 +38,22 @@ import java.util.List;
 import java.util.Map;
 
 public class AssetsApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public AssetsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public AssetsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -71,42 +71,42 @@ public class AssetsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdAssetsCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdAssetsCall(Integer characterId, String datasource, String ifNoneMatch,
+            Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/assets/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -114,18 +114,17 @@ public class AssetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdAssetsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdAssetsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -133,9 +132,9 @@ public class AssetsApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdAssets(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAssetsCall(characterId, datasource, ifNoneMatch, page,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdAssetsCall(characterId, datasource, ifNoneMatch, page,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -163,9 +162,9 @@ public class AssetsApi {
      */
     public List<CharacterAssetsResponse> getCharactersCharacterIdAssets(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterAssetsResponse>> resp = getCharactersCharacterIdAssetsWithHttpInfo(characterId,
-                datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        ApiResponse<List<CharacterAssetsResponse>> localVarResp = getCharactersCharacterIdAssetsWithHttpInfo(
+                characterId, datasource, ifNoneMatch, page, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -192,11 +191,11 @@ public class AssetsApi {
      */
     public ApiResponse<List<CharacterAssetsResponse>> getCharactersCharacterIdAssetsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAssetsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdAssetsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -216,23 +215,22 @@ public class AssetsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdAssetsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CharacterAssetsResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdAssetsAsync(Integer characterId, String datasource, String ifNoneMatch,
+            Integer page, String token, final ApiCallback<List<CharacterAssetsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAssetsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdAssetsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -250,42 +248,42 @@ public class AssetsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdAssetsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdAssetsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/corporations/{corporation_id}/assets/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -293,18 +291,17 @@ public class AssetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdAssetsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdAssetsValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -312,9 +309,9 @@ public class AssetsApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdAssets(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAssetsCall(corporationId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAssetsCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -343,9 +340,9 @@ public class AssetsApi {
      */
     public List<CorporationAssetsResponse> getCorporationsCorporationIdAssets(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationAssetsResponse>> resp = getCorporationsCorporationIdAssetsWithHttpInfo(
+        ApiResponse<List<CorporationAssetsResponse>> localVarResp = getCorporationsCorporationIdAssetsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -374,11 +371,11 @@ public class AssetsApi {
     public ApiResponse<List<CorporationAssetsResponse>> getCorporationsCorporationIdAssetsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAssetsValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAssetsValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -399,23 +396,23 @@ public class AssetsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdAssetsAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CorporationAssetsResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdAssetsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CorporationAssetsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAssetsValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAssetsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -423,57 +420,57 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdAssetsLocationsCall(Integer characterId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCharactersCharacterIdAssetsLocationsCall(Integer characterId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = itemIds;
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/assets/locations/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdAssetsLocationsValidateBeforeCall(Integer characterId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdAssetsLocationsValidateBeforeCall(Integer characterId,
+            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -481,15 +478,15 @@ public class AssetsApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdAssetsLocations(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCharactersCharacterIdAssetsLocations(Async)");
+                    "Missing the required parameter 'itemIds' when calling postCharactersCharacterIdAssetsLocations(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsLocationsCall(characterId, requestBody,
-                datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsLocationsCall(characterId, itemIds, datasource,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -501,7 +498,7 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -514,10 +511,10 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public List<CharacterAssetsLocationsResponse> postCharactersCharacterIdAssetsLocations(Integer characterId,
-            List<Long> requestBody, String datasource, String token) throws ApiException {
-        ApiResponse<List<CharacterAssetsLocationsResponse>> resp = postCharactersCharacterIdAssetsLocationsWithHttpInfo(
-                characterId, requestBody, datasource, token);
-        return resp.getData();
+            List<Long> itemIds, String datasource, String token) throws ApiException {
+        ApiResponse<List<CharacterAssetsLocationsResponse>> localVarResp = postCharactersCharacterIdAssetsLocationsWithHttpInfo(
+                characterId, itemIds, datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -528,7 +525,7 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -541,12 +538,12 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public ApiResponse<List<CharacterAssetsLocationsResponse>> postCharactersCharacterIdAssetsLocationsWithHttpInfo(
-            Integer characterId, List<Long> requestBody, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsLocationsValidateBeforeCall(characterId,
-                requestBody, datasource, token, null);
+            Integer characterId, List<Long> itemIds, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsLocationsValidateBeforeCall(characterId, itemIds,
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -557,30 +554,30 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdAssetsLocationsAsync(Integer characterId,
-            List<Long> requestBody, String datasource, String token,
-            final ApiCallback<List<CharacterAssetsLocationsResponse>> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdAssetsLocationsAsync(Integer characterId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback<List<CharacterAssetsLocationsResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsLocationsValidateBeforeCall(characterId,
-                requestBody, datasource, token, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsLocationsValidateBeforeCall(characterId, itemIds,
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -588,57 +585,57 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdAssetsNamesCall(Integer characterId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCharactersCharacterIdAssetsNamesCall(Integer characterId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = itemIds;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/assets/names/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdAssetsNamesValidateBeforeCall(Integer characterId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdAssetsNamesValidateBeforeCall(Integer characterId,
+            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -646,15 +643,15 @@ public class AssetsApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdAssetsNames(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCharactersCharacterIdAssetsNames(Async)");
+                    "Missing the required parameter 'itemIds' when calling postCharactersCharacterIdAssetsNames(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsNamesCall(characterId, requestBody, datasource,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsNamesCall(characterId, itemIds, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -666,7 +663,7 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -679,10 +676,10 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public List<CharacterAssetsNamesResponse> postCharactersCharacterIdAssetsNames(Integer characterId,
-            List<Long> requestBody, String datasource, String token) throws ApiException {
-        ApiResponse<List<CharacterAssetsNamesResponse>> resp = postCharactersCharacterIdAssetsNamesWithHttpInfo(
-                characterId, requestBody, datasource, token);
-        return resp.getData();
+            List<Long> itemIds, String datasource, String token) throws ApiException {
+        ApiResponse<List<CharacterAssetsNamesResponse>> localVarResp = postCharactersCharacterIdAssetsNamesWithHttpInfo(
+                characterId, itemIds, datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -693,7 +690,7 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -706,12 +703,12 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public ApiResponse<List<CharacterAssetsNamesResponse>> postCharactersCharacterIdAssetsNamesWithHttpInfo(
-            Integer characterId, List<Long> requestBody, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsNamesValidateBeforeCall(characterId,
-                requestBody, datasource, token, null);
+            Integer characterId, List<Long> itemIds, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsNamesValidateBeforeCall(characterId, itemIds,
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -722,30 +719,30 @@ public class AssetsApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdAssetsNamesAsync(Integer characterId,
-            List<Long> requestBody, String datasource, String token,
-            final ApiCallback<List<CharacterAssetsNamesResponse>> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdAssetsNamesAsync(Integer characterId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback<List<CharacterAssetsNamesResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdAssetsNamesValidateBeforeCall(characterId,
-                requestBody, datasource, token, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdAssetsNamesValidateBeforeCall(characterId, itemIds,
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -753,58 +750,57 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCorporationsCorporationIdAssetsLocationsCall(Integer corporationId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsCall(Integer corporationId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = itemIds;
 
         // create path and map variables
         String localVarPath = "/v2/corporations/{corporation_id}/assets/locations/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(
-            Integer corporationId, List<Long> requestBody, String datasource, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(Integer corporationId,
+            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -812,15 +808,15 @@ public class AssetsApi {
                     "Missing the required parameter 'corporationId' when calling postCorporationsCorporationIdAssetsLocations(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCorporationsCorporationIdAssetsLocations(Async)");
+                    "Missing the required parameter 'itemIds' when calling postCorporationsCorporationIdAssetsLocations(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsLocationsCall(corporationId, requestBody,
-                datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsLocationsCall(corporationId, itemIds,
+                datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -833,7 +829,7 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -846,10 +842,10 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public List<CorporationAssetsLocationsResponse> postCorporationsCorporationIdAssetsLocations(Integer corporationId,
-            List<Long> requestBody, String datasource, String token) throws ApiException {
-        ApiResponse<List<CorporationAssetsLocationsResponse>> resp = postCorporationsCorporationIdAssetsLocationsWithHttpInfo(
-                corporationId, requestBody, datasource, token);
-        return resp.getData();
+            List<Long> itemIds, String datasource, String token) throws ApiException {
+        ApiResponse<List<CorporationAssetsLocationsResponse>> localVarResp = postCorporationsCorporationIdAssetsLocationsWithHttpInfo(
+                corporationId, itemIds, datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -861,7 +857,7 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -874,12 +870,12 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public ApiResponse<List<CorporationAssetsLocationsResponse>> postCorporationsCorporationIdAssetsLocationsWithHttpInfo(
-            Integer corporationId, List<Long> requestBody, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(corporationId,
-                requestBody, datasource, token, null);
+            Integer corporationId, List<Long> itemIds, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(corporationId,
+                itemIds, datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsLocationsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -891,30 +887,30 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCorporationsCorporationIdAssetsLocationsAsync(Integer corporationId,
-            List<Long> requestBody, String datasource, String token,
-            final ApiCallback<List<CorporationAssetsLocationsResponse>> callback) throws ApiException {
+    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsAsync(Integer corporationId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback<List<CorporationAssetsLocationsResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(corporationId,
-                requestBody, datasource, token, callback);
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(corporationId,
+                itemIds, datasource, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsLocationsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -922,57 +918,57 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCorporationsCorporationIdAssetsNamesCall(Integer corporationId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCorporationsCorporationIdAssetsNamesCall(Integer corporationId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = itemIds;
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/assets/names/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCorporationsCorporationIdAssetsNamesValidateBeforeCall(Integer corporationId,
-            List<Long> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCorporationsCorporationIdAssetsNamesValidateBeforeCall(Integer corporationId,
+            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -980,15 +976,15 @@ public class AssetsApi {
                     "Missing the required parameter 'corporationId' when calling postCorporationsCorporationIdAssetsNames(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'itemIds' is set
+        if (itemIds == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCorporationsCorporationIdAssetsNames(Async)");
+                    "Missing the required parameter 'itemIds' when calling postCorporationsCorporationIdAssetsNames(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsNamesCall(corporationId, requestBody,
-                datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsNamesCall(corporationId, itemIds, datasource,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -1001,7 +997,7 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1014,10 +1010,10 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public List<CorporationAssetsNamesResponse> postCorporationsCorporationIdAssetsNames(Integer corporationId,
-            List<Long> requestBody, String datasource, String token) throws ApiException {
-        ApiResponse<List<CorporationAssetsNamesResponse>> resp = postCorporationsCorporationIdAssetsNamesWithHttpInfo(
-                corporationId, requestBody, datasource, token);
-        return resp.getData();
+            List<Long> itemIds, String datasource, String token) throws ApiException {
+        ApiResponse<List<CorporationAssetsNamesResponse>> localVarResp = postCorporationsCorporationIdAssetsNamesWithHttpInfo(
+                corporationId, itemIds, datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1029,7 +1025,7 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -1042,12 +1038,12 @@ public class AssetsApi {
      *             deserialize the response body
      */
     public ApiResponse<List<CorporationAssetsNamesResponse>> postCorporationsCorporationIdAssetsNamesWithHttpInfo(
-            Integer corporationId, List<Long> requestBody, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsNamesValidateBeforeCall(corporationId,
-                requestBody, datasource, token, null);
+            Integer corporationId, List<Long> itemIds, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsNamesValidateBeforeCall(corporationId, itemIds,
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsNamesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1059,29 +1055,29 @@ public class AssetsApi {
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
-     * @param requestBody
+     * @param itemIds
      *            A list of item ids (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCorporationsCorporationIdAssetsNamesAsync(Integer corporationId,
-            List<Long> requestBody, String datasource, String token,
-            final ApiCallback<List<CorporationAssetsNamesResponse>> callback) throws ApiException {
+    public okhttp3.Call postCorporationsCorporationIdAssetsNamesAsync(Integer corporationId, List<Long> itemIds,
+            String datasource, String token, final ApiCallback<List<CorporationAssetsNamesResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = postCorporationsCorporationIdAssetsNamesValidateBeforeCall(corporationId,
-                requestBody, datasource, token, callback);
+        okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsNamesValidateBeforeCall(corporationId, itemIds,
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsNamesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

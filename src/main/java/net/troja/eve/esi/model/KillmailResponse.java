@@ -228,7 +228,6 @@ public class KillmailResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailResponse {\n");
-
         sb.append("    killmailTime: ").append(toIndentedString(killmailTime)).append("\n");
         sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
         sb.append("    attackers: ").append(toIndentedString(attackers)).append("\n");

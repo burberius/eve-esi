@@ -124,7 +124,6 @@ public class CharacterShipResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterShipResponse {\n");
-
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    shipItemId: ").append(toIndentedString(shipItemId)).append("\n");
         sb.append("    shipName: ").append(toIndentedString(shipName)).append("\n");

@@ -171,7 +171,6 @@ public class CorporationMedalsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMedalsResponse {\n");
-
         sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");

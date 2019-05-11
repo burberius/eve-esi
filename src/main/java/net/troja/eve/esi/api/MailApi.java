@@ -39,22 +39,22 @@ import java.util.List;
 import java.util.Map;
 
 public class MailApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public MailApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public MailApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -69,29 +69,29 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdCall(Integer characterId,
-            Integer labelId, String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdMailLabelsLabelIdCall(Integer characterId, Integer labelId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/labels/{label_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "label_id" + "\\}", apiClient.escapeString(labelId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "label_id" + "\\}", localVarApiClient.escapeString(labelId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -99,7 +99,7 @@ public class MailApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -107,18 +107,17 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(
-            Integer characterId, Integer labelId, String datasource, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(Integer characterId,
+            Integer labelId, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -132,9 +131,9 @@ public class MailApi {
                     "Missing the required parameter 'labelId' when calling deleteCharactersCharacterIdMailLabelsLabelId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdCall(characterId, labelId,
-                datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailLabelsLabelIdCall(characterId, labelId, datasource,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -180,9 +179,9 @@ public class MailApi {
      */
     public ApiResponse<Void> deleteCharactersCharacterIdMailLabelsLabelIdWithHttpInfo(Integer characterId,
             Integer labelId, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
                 labelId, datasource, token, null);
-        return apiClient.execute(call);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -198,20 +197,20 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdMailLabelsLabelIdAsync(Integer characterId,
-            Integer labelId, String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdMailLabelsLabelIdAsync(Integer characterId, Integer labelId,
+            String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
-                labelId, datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailLabelsLabelIdValidateBeforeCall(characterId,
+                labelId, datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -226,29 +225,29 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "mail_id" + "\\}", localVarApiClient.escapeString(mailId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -256,7 +255,7 @@ public class MailApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -264,17 +263,17 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call deleteCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId, Integer mailId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -288,9 +287,9 @@ public class MailApi {
                     "Missing the required parameter 'mailId' when calling deleteCharactersCharacterIdMailMailId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -334,9 +333,9 @@ public class MailApi {
      */
     public ApiResponse<Void> deleteCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
             String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
                 datasource, token, null);
-        return apiClient.execute(call);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -352,20 +351,20 @@ public class MailApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
-            String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call deleteCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
+            String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
+                datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -387,47 +386,46 @@ public class MailApi {
      *            (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailCall(Integer characterId, String datasource,
-            String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailCall(Integer characterId, String datasource, String ifNoneMatch,
+            List<Integer> labels, Integer lastMailId, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (labels != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "labels", labels));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "labels", labels));
         }
 
         if (lastMailId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("last_mail_id", lastMailId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("last_mail_id", lastMailId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -435,18 +433,18 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdMailValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdMailValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -454,9 +452,9 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMail(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailCall(characterId, datasource, ifNoneMatch, labels,
-                lastMailId, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailCall(characterId, datasource, ifNoneMatch, labels,
+                lastMailId, token, _callback);
+        return localVarCall;
 
     }
 
@@ -489,9 +487,9 @@ public class MailApi {
      */
     public List<MailHeadersResponse> getCharactersCharacterIdMail(Integer characterId, String datasource,
             String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token) throws ApiException {
-        ApiResponse<List<MailHeadersResponse>> resp = getCharactersCharacterIdMailWithHttpInfo(characterId, datasource,
-                ifNoneMatch, labels, lastMailId, token);
-        return resp.getData();
+        ApiResponse<List<MailHeadersResponse>> localVarResp = getCharactersCharacterIdMailWithHttpInfo(characterId,
+                datasource, ifNoneMatch, labels, lastMailId, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -524,11 +522,11 @@ public class MailApi {
     public ApiResponse<List<MailHeadersResponse>> getCharactersCharacterIdMailWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, labels, lastMailId, token, null);
         Type localVarReturnType = new TypeToken<List<MailHeadersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -554,23 +552,23 @@ public class MailApi {
      *            (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailAsync(Integer characterId, String datasource,
-            String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token,
-            final ApiCallback<List<MailHeadersResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailAsync(Integer characterId, String datasource, String ifNoneMatch,
+            List<Integer> labels, Integer lastMailId, String token,
+            final ApiCallback<List<MailHeadersResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, labels, lastMailId, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, labels, lastMailId, token, _callback);
         Type localVarReturnType = new TypeToken<List<MailHeadersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -586,38 +584,38 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/mail/labels/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -625,17 +623,17 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -643,9 +641,9 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMailLabels(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailLabelsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -671,9 +669,9 @@ public class MailApi {
      */
     public MailLabelsResponse getCharactersCharacterIdMailLabels(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<MailLabelsResponse> resp = getCharactersCharacterIdMailLabelsWithHttpInfo(characterId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<MailLabelsResponse> localVarResp = getCharactersCharacterIdMailLabelsWithHttpInfo(characterId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -698,11 +696,11 @@ public class MailApi {
      */
     public ApiResponse<MailLabelsResponse> getCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<MailLabelsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -721,22 +719,22 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<MailLabelsResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<MailLabelsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<MailLabelsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -752,38 +750,38 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailListsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailListsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/lists/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -791,17 +789,17 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdMailListsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdMailListsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -809,9 +807,9 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMailLists(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailListsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -837,9 +835,9 @@ public class MailApi {
      */
     public List<CharacterMailinglistsResponse> getCharactersCharacterIdMailLists(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterMailinglistsResponse>> resp = getCharactersCharacterIdMailListsWithHttpInfo(
+        ApiResponse<List<CharacterMailinglistsResponse>> localVarResp = getCharactersCharacterIdMailListsWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -864,11 +862,11 @@ public class MailApi {
      */
     public ApiResponse<List<CharacterMailinglistsResponse>> getCharactersCharacterIdMailListsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterMailinglistsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -886,23 +884,23 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailListsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterMailinglistsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdMailListsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterMailinglistsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailListsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterMailinglistsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -920,39 +918,39 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "mail_id" + "\\}", localVarApiClient.escapeString(mailId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -960,18 +958,17 @@ public class MailApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId, Integer mailId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -985,9 +982,9 @@ public class MailApi {
                     "Missing the required parameter 'mailId' when calling getCharactersCharacterIdMailMailId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1014,9 +1011,9 @@ public class MailApi {
      */
     public MailResponse getCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<MailResponse> resp = getCharactersCharacterIdMailMailIdWithHttpInfo(characterId, mailId,
+        ApiResponse<MailResponse> localVarResp = getCharactersCharacterIdMailMailIdWithHttpInfo(characterId, mailId,
                 datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1042,11 +1039,11 @@ public class MailApi {
      */
     public ApiResponse<MailResponse> getCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId,
             Integer mailId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1066,23 +1063,22 @@ public class MailApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback<MailResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<MailResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<MailResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1090,57 +1086,57 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param mail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mail
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdMailCall(Integer characterId, String datasource,
-            String token, Mail mail, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdMailCall(Integer characterId, Mail mail, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = mail;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdMailValidateBeforeCall(Integer characterId,
-            String datasource, String token, Mail mail, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdMailValidateBeforeCall(Integer characterId, Mail mail,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1148,9 +1144,14 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdMail(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailCall(characterId, datasource, token, mail,
-                callback);
-        return call;
+        // verify the required parameter 'mail' is set
+        if (mail == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'mail' when calling postCharactersCharacterIdMail(Async)");
+        }
+
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailCall(characterId, mail, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1160,22 +1161,23 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param mail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mail
-     *            (optional)
      * @return Integer
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public Integer postCharactersCharacterIdMail(Integer characterId, String datasource, String token, Mail mail)
+    public Integer postCharactersCharacterIdMail(Integer characterId, Mail mail, String datasource, String token)
             throws ApiException {
-        ApiResponse<Integer> resp = postCharactersCharacterIdMailWithHttpInfo(characterId, datasource, token, mail);
-        return resp.getData();
+        ApiResponse<Integer> localVarResp = postCharactersCharacterIdMailWithHttpInfo(characterId, mail, datasource,
+                token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1184,25 +1186,25 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param mail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mail
-     *            (optional)
      * @return ApiResponse&lt;Integer&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Integer> postCharactersCharacterIdMailWithHttpInfo(Integer characterId, String datasource,
-            String token, Mail mail) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailValidateBeforeCall(characterId, datasource, token,
-                mail, null);
+    public ApiResponse<Integer> postCharactersCharacterIdMailWithHttpInfo(Integer characterId, Mail mail,
+            String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailValidateBeforeCall(characterId, mail, datasource,
+                token, null);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1211,29 +1213,29 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param mail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mail
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdMailAsync(Integer characterId, String datasource,
-            String token, Mail mail, final ApiCallback<Integer> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdMailAsync(Integer characterId, Mail mail, String datasource,
+            String token, final ApiCallback<Integer> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailValidateBeforeCall(characterId, datasource, token,
-                mail, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailValidateBeforeCall(characterId, mail, datasource,
+                token, _callback);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1241,58 +1243,57 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param label
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailLabelSimple
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
-            String token, MailLabelSimple mailLabelSimple, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = mailLabelSimple;
+    public okhttp3.Call postCharactersCharacterIdMailLabelsCall(Integer characterId, MailLabelSimple label,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = label;
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/mail/labels/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId,
-            String datasource, String token, MailLabelSimple mailLabelSimple, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdMailLabelsValidateBeforeCall(Integer characterId,
+            MailLabelSimple label, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1300,9 +1301,15 @@ public class MailApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdMailLabels(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsCall(characterId, datasource, token,
-                mailLabelSimple, callback);
-        return call;
+        // verify the required parameter 'label' is set
+        if (label == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'label' when calling postCharactersCharacterIdMailLabels(Async)");
+        }
+
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailLabelsCall(characterId, label, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1312,23 +1319,23 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param label
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailLabelSimple
-     *            (optional)
      * @return Integer
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public Integer postCharactersCharacterIdMailLabels(Integer characterId, String datasource, String token,
-            MailLabelSimple mailLabelSimple) throws ApiException {
-        ApiResponse<Integer> resp = postCharactersCharacterIdMailLabelsWithHttpInfo(characterId, datasource, token,
-                mailLabelSimple);
-        return resp.getData();
+    public Integer postCharactersCharacterIdMailLabels(Integer characterId, MailLabelSimple label, String datasource,
+            String token) throws ApiException {
+        ApiResponse<Integer> localVarResp = postCharactersCharacterIdMailLabelsWithHttpInfo(characterId, label,
+                datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1337,25 +1344,25 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param label
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailLabelSimple
-     *            (optional)
      * @return ApiResponse&lt;Integer&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Integer> postCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId, String datasource,
-            String token, MailLabelSimple mailLabelSimple) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                token, mailLabelSimple, null);
+    public ApiResponse<Integer> postCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId,
+            MailLabelSimple label, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, label,
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1364,29 +1371,29 @@ public class MailApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
+     * @param label
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailLabelSimple
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
-            String token, MailLabelSimple mailLabelSimple, final ApiCallback<Integer> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdMailLabelsAsync(Integer characterId, MailLabelSimple label,
+            String datasource, String token, final ApiCallback<Integer> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, datasource,
-                token, mailLabelSimple, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdMailLabelsValidateBeforeCall(characterId, label,
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1396,36 +1403,36 @@ public class MailApi {
      *            An EVE character ID (required)
      * @param mailId
      *            An EVE mail ID (required)
+     * @param contents
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailMetaData
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
-            String datasource, String token, MailMetaData mailMetaData, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = mailMetaData;
+    public okhttp3.Call putCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
+            MailMetaData contents, String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = contents;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "mail_id" + "\\}", apiClient.escapeString(mailId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "mail_id" + "\\}", localVarApiClient.escapeString(mailId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1433,24 +1440,23 @@ public class MailApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId,
-            Integer mailId, String datasource, String token, MailMetaData mailMetaData, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call putCharactersCharacterIdMailMailIdValidateBeforeCall(Integer characterId, Integer mailId,
+            MailMetaData contents, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1464,9 +1470,15 @@ public class MailApi {
                     "Missing the required parameter 'mailId' when calling putCharactersCharacterIdMailMailId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdCall(characterId, mailId, datasource, token,
-                mailMetaData, callback);
-        return call;
+        // verify the required parameter 'contents' is set
+        if (contents == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'contents' when calling putCharactersCharacterIdMailMailId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putCharactersCharacterIdMailMailIdCall(characterId, mailId, contents, datasource,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -1478,20 +1490,20 @@ public class MailApi {
      *            An EVE character ID (required)
      * @param mailId
      *            An EVE mail ID (required)
+     * @param contents
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailMetaData
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
-            String token, MailMetaData mailMetaData) throws ApiException {
-        putCharactersCharacterIdMailMailIdWithHttpInfo(characterId, mailId, datasource, token, mailMetaData);
+    public void putCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, MailMetaData contents,
+            String datasource, String token) throws ApiException {
+        putCharactersCharacterIdMailMailIdWithHttpInfo(characterId, mailId, contents, datasource, token);
     }
 
     /**
@@ -1502,23 +1514,23 @@ public class MailApi {
      *            An EVE character ID (required)
      * @param mailId
      *            An EVE mail ID (required)
+     * @param contents
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailMetaData
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
     public ApiResponse<Void> putCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
-            String datasource, String token, MailMetaData mailMetaData) throws ApiException {
-        com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, mailMetaData, null);
-        return apiClient.execute(call);
+            MailMetaData contents, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId, contents,
+                datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1529,27 +1541,27 @@ public class MailApi {
      *            An EVE character ID (required)
      * @param mailId
      *            An EVE mail ID (required)
+     * @param contents
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param mailMetaData
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
-            String datasource, String token, MailMetaData mailMetaData, final ApiCallback<Void> callback)
+    public okhttp3.Call putCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
+            MailMetaData contents, String datasource, String token, final ApiCallback<Void> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId,
-                datasource, token, mailMetaData, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putCharactersCharacterIdMailMailIdValidateBeforeCall(characterId, mailId, contents,
+                datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 }

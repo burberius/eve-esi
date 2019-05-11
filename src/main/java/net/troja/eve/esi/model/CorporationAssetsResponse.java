@@ -296,13 +296,13 @@ public class CorporationAssetsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static LocationFlagEnum fromValue(String text) {
+        public static LocationFlagEnum fromValue(String value) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
@@ -314,7 +314,7 @@ public class CorporationAssetsResponse implements Serializable {
             @Override
             public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(String.valueOf(value));
+                return LocationFlagEnum.fromValue(value);
             }
         }
     }
@@ -357,13 +357,13 @@ public class CorporationAssetsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static LocationTypeEnum fromValue(String text) {
+        public static LocationTypeEnum fromValue(String value) {
             for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LocationTypeEnum> {
@@ -375,7 +375,7 @@ public class CorporationAssetsResponse implements Serializable {
             @Override
             public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return LocationTypeEnum.fromValue(String.valueOf(value));
+                return LocationTypeEnum.fromValue(value);
             }
         }
     }
@@ -565,7 +565,6 @@ public class CorporationAssetsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationAssetsResponse {\n");
-
         sb.append("    isBlueprintCopy: ").append(toIndentedString(isBlueprintCopy)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");

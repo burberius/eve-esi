@@ -100,7 +100,6 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardResponse {\n");
-
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
         sb.append("}");

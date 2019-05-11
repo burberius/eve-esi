@@ -142,7 +142,6 @@ public class CharacterPlanetResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterPlanetResponse {\n");
-
         sb.append("    routes: ").append(toIndentedString(routes)).append("\n");
         sb.append("    links: ").append(toIndentedString(links)).append("\n");
         sb.append("    pins: ").append(toIndentedString(pins)).append("\n");

@@ -38,11 +38,11 @@ public class SystemPlanet implements Serializable {
 
     public static final String SERIALIZED_NAME_MOONS = "moons";
     @SerializedName(SERIALIZED_NAME_MOONS)
-    private List<Integer> moons = null;
+    private List<Integer> moons = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ASTEROID_BELTS = "asteroid_belts";
     @SerializedName(SERIALIZED_NAME_ASTEROID_BELTS)
-    private List<Integer> asteroidBelts = null;
+    private List<Integer> asteroidBelts = new ArrayList<>();
 
     public SystemPlanet planetId(Integer planetId) {
         this.planetId = planetId;
@@ -139,7 +139,6 @@ public class SystemPlanet implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemPlanet {\n");
-
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
         sb.append("    asteroidBelts: ").append(toIndentedString(asteroidBelts)).append("\n");

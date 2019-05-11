@@ -233,7 +233,6 @@ public class SovereigntyStructuresResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyStructuresResponse {\n");
-
         sb.append("    structureTypeId: ").append(toIndentedString(structureTypeId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    vulnerableStartTime: ").append(toIndentedString(vulnerableStartTime)).append("\n");

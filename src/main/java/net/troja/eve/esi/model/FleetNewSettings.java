@@ -98,7 +98,6 @@ public class FleetNewSettings implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetNewSettings {\n");
-
         sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
         sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("}");

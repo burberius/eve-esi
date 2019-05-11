@@ -146,7 +146,6 @@ public class CharacterAffiliationResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAffiliationResponse {\n");
-
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");

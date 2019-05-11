@@ -152,13 +152,13 @@ public class CharacterRolesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtOtherEnum fromValue(String text) {
+        public static RolesAtOtherEnum fromValue(String value) {
             for (RolesAtOtherEnum b : RolesAtOtherEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtOtherEnum> {
@@ -170,14 +170,14 @@ public class CharacterRolesResponse implements Serializable {
             @Override
             public RolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtOtherEnum.fromValue(String.valueOf(value));
+                return RolesAtOtherEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<RolesAtOtherEnum> rolesAtOther = null;
+    private List<RolesAtOtherEnum> rolesAtOther = new ArrayList<>();
 
     /**
      * roles_at_base string
@@ -299,13 +299,13 @@ public class CharacterRolesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtBaseEnum fromValue(String text) {
+        public static RolesAtBaseEnum fromValue(String value) {
             for (RolesAtBaseEnum b : RolesAtBaseEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtBaseEnum> {
@@ -317,14 +317,14 @@ public class CharacterRolesResponse implements Serializable {
             @Override
             public RolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtBaseEnum.fromValue(String.valueOf(value));
+                return RolesAtBaseEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<RolesAtBaseEnum> rolesAtBase = null;
+    private List<RolesAtBaseEnum> rolesAtBase = new ArrayList<>();
 
     /**
      * role string
@@ -446,13 +446,13 @@ public class CharacterRolesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesEnum fromValue(String text) {
+        public static RolesEnum fromValue(String value) {
             for (RolesEnum b : RolesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesEnum> {
@@ -464,14 +464,14 @@ public class CharacterRolesResponse implements Serializable {
             @Override
             public RolesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesEnum.fromValue(String.valueOf(value));
+                return RolesEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<RolesEnum> roles = null;
+    private List<RolesEnum> roles = new ArrayList<>();
 
     /**
      * roles_at_hq string
@@ -593,13 +593,13 @@ public class CharacterRolesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtHqEnum fromValue(String text) {
+        public static RolesAtHqEnum fromValue(String value) {
             for (RolesAtHqEnum b : RolesAtHqEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtHqEnum> {
@@ -611,14 +611,14 @@ public class CharacterRolesResponse implements Serializable {
             @Override
             public RolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtHqEnum.fromValue(String.valueOf(value));
+                return RolesAtHqEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<RolesAtHqEnum> rolesAtHq = null;
+    private List<RolesAtHqEnum> rolesAtHq = new ArrayList<>();
 
     public CharacterRolesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
@@ -752,7 +752,6 @@ public class CharacterRolesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterRolesResponse {\n");
-
         sb.append("    rolesAtOther: ").append(toIndentedString(rolesAtOther)).append("\n");
         sb.append("    rolesAtBase: ").append(toIndentedString(rolesAtBase)).append("\n");
         sb.append("    roles: ").append(toIndentedString(roles)).append("\n");

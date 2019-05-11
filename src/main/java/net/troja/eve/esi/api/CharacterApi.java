@@ -46,22 +46,22 @@ import java.util.List;
 import java.util.Map;
 
 public class CharacterApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public CharacterApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public CharacterApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -75,34 +75,34 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCall(Integer characterId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCall(Integer characterId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v4/characters/{character_id}/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -110,17 +110,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdValidateBeforeCall(Integer characterId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -128,8 +128,8 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCall(characterId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdCall(characterId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -152,8 +152,9 @@ public class CharacterApi {
      */
     public CharacterResponse getCharactersCharacterId(Integer characterId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<CharacterResponse> resp = getCharactersCharacterIdWithHttpInfo(characterId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<CharacterResponse> localVarResp = getCharactersCharacterIdWithHttpInfo(characterId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -175,11 +176,11 @@ public class CharacterApi {
      */
     public ApiResponse<CharacterResponse> getCharactersCharacterIdWithHttpInfo(Integer characterId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdValidateBeforeCall(characterId, datasource, ifNoneMatch,
+                null);
         Type localVarReturnType = new TypeToken<CharacterResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -195,22 +196,22 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdAsync(Integer characterId, String datasource,
-            String ifNoneMatch, final ApiCallback<CharacterResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdAsync(Integer characterId, String datasource, String ifNoneMatch,
+            final ApiCallback<CharacterResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdValidateBeforeCall(characterId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<CharacterResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -226,38 +227,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdAgentsResearchCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdAgentsResearchCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/agents_research/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -265,17 +266,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdAgentsResearchValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdAgentsResearchValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -283,9 +284,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdAgentsResearch(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAgentsResearchCall(characterId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdAgentsResearchCall(characterId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -313,9 +314,9 @@ public class CharacterApi {
      */
     public List<CharacterResearchAgentsResponse> getCharactersCharacterIdAgentsResearch(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterResearchAgentsResponse>> resp = getCharactersCharacterIdAgentsResearchWithHttpInfo(
+        ApiResponse<List<CharacterResearchAgentsResponse>> localVarResp = getCharactersCharacterIdAgentsResearchWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -342,11 +343,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterResearchAgentsResponse>> getCharactersCharacterIdAgentsResearchWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAgentsResearchValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdAgentsResearchValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -367,23 +368,23 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdAgentsResearchAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterResearchAgentsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdAgentsResearchAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterResearchAgentsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdAgentsResearchValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdAgentsResearchValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterResearchAgentsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -401,42 +402,42 @@ public class CharacterApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBlueprintsCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdBlueprintsCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/blueprints/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -444,18 +445,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdBlueprintsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdBlueprintsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -463,9 +463,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdBlueprints(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBlueprintsCall(characterId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdBlueprintsCall(characterId, datasource, ifNoneMatch, page,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -493,9 +493,9 @@ public class CharacterApi {
      */
     public List<CharacterBlueprintsResponse> getCharactersCharacterIdBlueprints(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterBlueprintsResponse>> resp = getCharactersCharacterIdBlueprintsWithHttpInfo(
+        ApiResponse<List<CharacterBlueprintsResponse>> localVarResp = getCharactersCharacterIdBlueprintsWithHttpInfo(
                 characterId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -522,11 +522,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterBlueprintsResponse>> getCharactersCharacterIdBlueprintsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBlueprintsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdBlueprintsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -546,23 +546,23 @@ public class CharacterApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBlueprintsAsync(Integer characterId, String datasource,
+    public okhttp3.Call getCharactersCharacterIdBlueprintsAsync(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CharacterBlueprintsResponse>> callback) throws ApiException {
+            final ApiCallback<List<CharacterBlueprintsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBlueprintsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdBlueprintsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterBlueprintsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -576,34 +576,34 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCorporationhistoryCall(Integer characterId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCorporationhistoryCall(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/corporationhistory/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -611,17 +611,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdCorporationhistoryValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdCorporationhistoryValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -629,9 +629,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdCorporationhistory(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCorporationhistoryCall(characterId, datasource,
-                ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdCorporationhistoryCall(characterId, datasource,
+                ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -654,9 +654,9 @@ public class CharacterApi {
      */
     public List<CharacterCorporationHistoryResponse> getCharactersCharacterIdCorporationhistory(Integer characterId,
             String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<CharacterCorporationHistoryResponse>> resp = getCharactersCharacterIdCorporationhistoryWithHttpInfo(
+        ApiResponse<List<CharacterCorporationHistoryResponse>> localVarResp = getCharactersCharacterIdCorporationhistoryWithHttpInfo(
                 characterId, datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -679,11 +679,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterCorporationHistoryResponse>> getCharactersCharacterIdCorporationhistoryWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCorporationhistoryValidateBeforeCall(characterId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdCorporationhistoryValidateBeforeCall(characterId,
                 datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -699,23 +699,23 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCorporationhistoryAsync(Integer characterId,
-            String datasource, String ifNoneMatch, final ApiCallback<List<CharacterCorporationHistoryResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdCorporationhistoryAsync(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback<List<CharacterCorporationHistoryResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCorporationhistoryValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdCorporationhistoryValidateBeforeCall(characterId,
+                datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterCorporationHistoryResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -731,38 +731,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFatigueCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFatigueCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/fatigue/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -770,17 +770,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdFatigueValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdFatigueValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -788,9 +788,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdFatigue(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFatigueCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdFatigueCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -816,9 +816,9 @@ public class CharacterApi {
      */
     public CharacterFatigueResponse getCharactersCharacterIdFatigue(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterFatigueResponse> resp = getCharactersCharacterIdFatigueWithHttpInfo(characterId,
+        ApiResponse<CharacterFatigueResponse> localVarResp = getCharactersCharacterIdFatigueWithHttpInfo(characterId,
                 datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -843,11 +843,11 @@ public class CharacterApi {
      */
     public ApiResponse<CharacterFatigueResponse> getCharactersCharacterIdFatigueWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFatigueValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdFatigueValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterFatigueResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -865,22 +865,23 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFatigueAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<CharacterFatigueResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFatigueAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<CharacterFatigueResponse> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFatigueValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdFatigueValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterFatigueResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -896,38 +897,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMedalsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMedalsCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/medals/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -935,17 +936,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdMedalsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdMedalsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -953,9 +954,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMedals(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMedalsCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdMedalsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -980,9 +981,9 @@ public class CharacterApi {
      */
     public List<CharacterMedalsResponse> getCharactersCharacterIdMedals(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterMedalsResponse>> resp = getCharactersCharacterIdMedalsWithHttpInfo(characterId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CharacterMedalsResponse>> localVarResp = getCharactersCharacterIdMedalsWithHttpInfo(
+                characterId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1006,11 +1007,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterMedalsResponse>> getCharactersCharacterIdMedalsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMedalsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdMedalsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterMedalsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1028,23 +1029,22 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdMedalsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterMedalsResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdMedalsAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<List<CharacterMedalsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdMedalsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdMedalsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterMedalsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1060,38 +1060,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdNotificationsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdNotificationsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v4/characters/{character_id}/notifications/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1099,17 +1099,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdNotificationsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdNotificationsValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1117,9 +1117,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdNotifications(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsCall(characterId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -1145,9 +1145,9 @@ public class CharacterApi {
      */
     public List<CharacterNotificationsResponse> getCharactersCharacterIdNotifications(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterNotificationsResponse>> resp = getCharactersCharacterIdNotificationsWithHttpInfo(
+        ApiResponse<List<CharacterNotificationsResponse>> localVarResp = getCharactersCharacterIdNotificationsWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1172,11 +1172,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterNotificationsResponse>> getCharactersCharacterIdNotificationsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1194,23 +1194,23 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdNotificationsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterNotificationsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdNotificationsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterNotificationsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterNotificationsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1226,38 +1226,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdNotificationsContactsCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdNotificationsContactsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/notifications/contacts/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1265,18 +1265,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdNotificationsContactsValidateBeforeCall(
-            Integer characterId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdNotificationsContactsValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1284,9 +1283,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdNotificationsContacts(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsContactsCall(characterId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsContactsCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1312,9 +1311,9 @@ public class CharacterApi {
      */
     public List<NewContactNotificationsResponse> getCharactersCharacterIdNotificationsContacts(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<NewContactNotificationsResponse>> resp = getCharactersCharacterIdNotificationsContactsWithHttpInfo(
+        ApiResponse<List<NewContactNotificationsResponse>> localVarResp = getCharactersCharacterIdNotificationsContactsWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1339,11 +1338,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<NewContactNotificationsResponse>> getCharactersCharacterIdNotificationsContactsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsContactsValidateBeforeCall(characterId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsContactsValidateBeforeCall(characterId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<NewContactNotificationsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1361,23 +1360,23 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdNotificationsContactsAsync(Integer characterId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<NewContactNotificationsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdNotificationsContactsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<NewContactNotificationsResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdNotificationsContactsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsContactsValidateBeforeCall(characterId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<NewContactNotificationsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1391,34 +1390,34 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPortraitCall(Integer characterId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdPortraitCall(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/portrait/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1426,17 +1425,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdPortraitValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdPortraitValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1444,9 +1443,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdPortrait(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPortraitCall(characterId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdPortraitCall(characterId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1469,9 +1468,9 @@ public class CharacterApi {
      */
     public CharacterPortraitResponse getCharactersCharacterIdPortrait(Integer characterId, String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<CharacterPortraitResponse> resp = getCharactersCharacterIdPortraitWithHttpInfo(characterId,
+        ApiResponse<CharacterPortraitResponse> localVarResp = getCharactersCharacterIdPortraitWithHttpInfo(characterId,
                 datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1493,11 +1492,11 @@ public class CharacterApi {
      */
     public ApiResponse<CharacterPortraitResponse> getCharactersCharacterIdPortraitWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPortraitValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdPortraitValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<CharacterPortraitResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1512,22 +1511,22 @@ public class CharacterApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPortraitAsync(Integer characterId, String datasource,
-            String ifNoneMatch, final ApiCallback<CharacterPortraitResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdPortraitAsync(Integer characterId, String datasource,
+            String ifNoneMatch, final ApiCallback<CharacterPortraitResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPortraitValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdPortraitValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<CharacterPortraitResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1543,38 +1542,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdRolesCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdRolesCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/roles/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1582,17 +1581,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdRolesValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdRolesValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1600,9 +1599,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdRoles(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdRolesCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdRolesCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1628,9 +1627,9 @@ public class CharacterApi {
      */
     public CharacterRolesResponse getCharactersCharacterIdRoles(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterRolesResponse> resp = getCharactersCharacterIdRolesWithHttpInfo(characterId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<CharacterRolesResponse> localVarResp = getCharactersCharacterIdRolesWithHttpInfo(characterId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1655,11 +1654,11 @@ public class CharacterApi {
      */
     public ApiResponse<CharacterRolesResponse> getCharactersCharacterIdRolesWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdRolesValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdRolesValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterRolesResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1677,22 +1676,22 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdRolesAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<CharacterRolesResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdRolesAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<CharacterRolesResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdRolesValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdRolesValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterRolesResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1708,38 +1707,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdStandingsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdStandingsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/standings/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1747,17 +1746,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdStandingsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdStandingsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1765,9 +1764,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdStandings(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStandingsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdStandingsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1793,9 +1792,9 @@ public class CharacterApi {
      */
     public List<CharacterStandingsResponse> getCharactersCharacterIdStandings(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterStandingsResponse>> resp = getCharactersCharacterIdStandingsWithHttpInfo(characterId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CharacterStandingsResponse>> localVarResp = getCharactersCharacterIdStandingsWithHttpInfo(
+                characterId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1820,11 +1819,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterStandingsResponse>> getCharactersCharacterIdStandingsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStandingsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdStandingsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1842,23 +1841,23 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdStandingsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterStandingsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdStandingsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterStandingsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStandingsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdStandingsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterStandingsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1874,38 +1873,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdStatsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdStatsCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/stats/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1913,17 +1912,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdStatsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdStatsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1931,9 +1930,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdStats(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStatsCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdStatsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1959,9 +1958,9 @@ public class CharacterApi {
      */
     public List<CharacterStatsResponse> getCharactersCharacterIdStats(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterStatsResponse>> resp = getCharactersCharacterIdStatsWithHttpInfo(characterId,
+        ApiResponse<List<CharacterStatsResponse>> localVarResp = getCharactersCharacterIdStatsWithHttpInfo(characterId,
                 datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1986,11 +1985,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterStatsResponse>> getCharactersCharacterIdStatsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStatsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdStatsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterStatsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2008,23 +2007,22 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdStatsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterStatsResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdStatsAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<List<CharacterStatsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdStatsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdStatsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterStatsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2040,38 +2038,38 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdTitlesCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdTitlesCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/titles/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2079,17 +2077,17 @@ public class CharacterApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdTitlesValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdTitlesValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -2097,9 +2095,9 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdTitles(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdTitlesCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdTitlesCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -2125,9 +2123,9 @@ public class CharacterApi {
      */
     public List<CharacterTitlesResponse> getCharactersCharacterIdTitles(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterTitlesResponse>> resp = getCharactersCharacterIdTitlesWithHttpInfo(characterId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CharacterTitlesResponse>> localVarResp = getCharactersCharacterIdTitlesWithHttpInfo(
+                characterId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -2152,11 +2150,11 @@ public class CharacterApi {
      */
     public ApiResponse<List<CharacterTitlesResponse>> getCharactersCharacterIdTitlesWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdTitlesValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdTitlesValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterTitlesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2174,43 +2172,42 @@ public class CharacterApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdTitlesAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterTitlesResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdTitlesAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<List<CharacterTitlesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdTitlesValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdTitlesValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterTitlesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
      * Build call for postCharactersAffiliation
      * 
-     * @param requestBody
+     * @param characters
      *            The character IDs to fetch affiliations for. All characters
      *            must exist, or none will be returned (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersAffiliationCall(List<Integer> requestBody, String datasource,
-            final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCharactersAffiliationCall(List<Integer> characters, String datasource,
+            final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = characters;
 
         // create path and map variables
         String localVarPath = "/v1/characters/affiliation/";
@@ -2218,38 +2215,38 @@ public class CharacterApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersAffiliationValidateBeforeCall(List<Integer> requestBody,
-            String datasource, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersAffiliationValidateBeforeCall(List<Integer> characters, String datasource,
+            final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'characters' is set
+        if (characters == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCharactersAffiliation(Async)");
+                    "Missing the required parameter 'characters' when calling postCharactersAffiliation(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersAffiliationCall(requestBody, datasource, callback);
-        return call;
+        okhttp3.Call localVarCall = postCharactersAffiliationCall(characters, datasource, _callback);
+        return localVarCall;
 
     }
 
@@ -2257,7 +2254,7 @@ public class CharacterApi {
      * Character affiliation Bulk lookup of character IDs to corporation,
      * alliance and faction --- This route is cached for up to 3600 seconds
      * 
-     * @param requestBody
+     * @param characters
      *            The character IDs to fetch affiliations for. All characters
      *            must exist, or none will be returned (required)
      * @param datasource
@@ -2268,18 +2265,18 @@ public class CharacterApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> requestBody, String datasource)
+    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> characters, String datasource)
             throws ApiException {
-        ApiResponse<List<CharacterAffiliationResponse>> resp = postCharactersAffiliationWithHttpInfo(requestBody,
-                datasource);
-        return resp.getData();
+        ApiResponse<List<CharacterAffiliationResponse>> localVarResp = postCharactersAffiliationWithHttpInfo(
+                characters, datasource);
+        return localVarResp.getData();
     }
 
     /**
      * Character affiliation Bulk lookup of character IDs to corporation,
      * alliance and faction --- This route is cached for up to 3600 seconds
      * 
-     * @param requestBody
+     * @param characters
      *            The character IDs to fetch affiliations for. All characters
      *            must exist, or none will be returned (required)
      * @param datasource
@@ -2291,11 +2288,11 @@ public class CharacterApi {
      *             deserialize the response body
      */
     public ApiResponse<List<CharacterAffiliationResponse>> postCharactersAffiliationWithHttpInfo(
-            List<Integer> requestBody, String datasource) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersAffiliationValidateBeforeCall(requestBody, datasource, null);
+            List<Integer> characters, String datasource) throws ApiException {
+        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(characters, datasource, null);
         Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2303,27 +2300,27 @@ public class CharacterApi {
      * corporation, alliance and faction --- This route is cached for up to 3600
      * seconds
      * 
-     * @param requestBody
+     * @param characters
      *            The character IDs to fetch affiliations for. All characters
      *            must exist, or none will be returned (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersAffiliationAsync(List<Integer> requestBody, String datasource,
-            final ApiCallback<List<CharacterAffiliationResponse>> callback) throws ApiException {
+    public okhttp3.Call postCharactersAffiliationAsync(List<Integer> characters, String datasource,
+            final ApiCallback<List<CharacterAffiliationResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersAffiliationValidateBeforeCall(requestBody, datasource, callback);
+        okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(characters, datasource, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2331,57 +2328,57 @@ public class CharacterApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param characters
      *            The target characters to calculate the charge for (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdCspaCall(Integer characterId, List<Integer> requestBody,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postCharactersCharacterIdCspaCall(Integer characterId, List<Integer> characters,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = characters;
 
         // create path and map variables
         String localVarPath = "/v4/characters/{character_id}/cspa/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postCharactersCharacterIdCspaValidateBeforeCall(Integer characterId,
-            List<Integer> requestBody, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdCspaValidateBeforeCall(Integer characterId, List<Integer> characters,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -2389,15 +2386,15 @@ public class CharacterApi {
                     "Missing the required parameter 'characterId' when calling postCharactersCharacterIdCspa(Async)");
         }
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
+        // verify the required parameter 'characters' is set
+        if (characters == null) {
             throw new ApiException(
-                    "Missing the required parameter 'requestBody' when calling postCharactersCharacterIdCspa(Async)");
+                    "Missing the required parameter 'characters' when calling postCharactersCharacterIdCspa(Async)");
         }
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdCspaCall(characterId, requestBody, datasource, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = postCharactersCharacterIdCspaCall(characterId, characters, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -2408,7 +2405,7 @@ public class CharacterApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param characters
      *            The target characters to calculate the charge for (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -2420,10 +2417,11 @@ public class CharacterApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public Float postCharactersCharacterIdCspa(Integer characterId, List<Integer> requestBody, String datasource,
+    public Float postCharactersCharacterIdCspa(Integer characterId, List<Integer> characters, String datasource,
             String token) throws ApiException {
-        ApiResponse<Float> resp = postCharactersCharacterIdCspaWithHttpInfo(characterId, requestBody, datasource, token);
-        return resp.getData();
+        ApiResponse<Float> localVarResp = postCharactersCharacterIdCspaWithHttpInfo(characterId, characters,
+                datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -2433,7 +2431,7 @@ public class CharacterApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param characters
      *            The target characters to calculate the charge for (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -2445,13 +2443,13 @@ public class CharacterApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Float> postCharactersCharacterIdCspaWithHttpInfo(Integer characterId, List<Integer> requestBody,
+    public ApiResponse<Float> postCharactersCharacterIdCspaWithHttpInfo(Integer characterId, List<Integer> characters,
             String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postCharactersCharacterIdCspaValidateBeforeCall(characterId, requestBody,
+        okhttp3.Call localVarCall = postCharactersCharacterIdCspaValidateBeforeCall(characterId, characters,
                 datasource, token, null);
         Type localVarReturnType = new TypeToken<Float>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2461,28 +2459,28 @@ public class CharacterApi {
      * 
      * @param characterId
      *            An EVE character ID (required)
-     * @param requestBody
+     * @param characters
      *            The target characters to calculate the charge for (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postCharactersCharacterIdCspaAsync(Integer characterId, List<Integer> requestBody,
-            String datasource, String token, final ApiCallback<Float> callback) throws ApiException {
+    public okhttp3.Call postCharactersCharacterIdCspaAsync(Integer characterId, List<Integer> characters,
+            String datasource, String token, final ApiCallback<Float> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postCharactersCharacterIdCspaValidateBeforeCall(characterId, requestBody,
-                datasource, token, callback);
+        okhttp3.Call localVarCall = postCharactersCharacterIdCspaValidateBeforeCall(characterId, characters,
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<Float>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

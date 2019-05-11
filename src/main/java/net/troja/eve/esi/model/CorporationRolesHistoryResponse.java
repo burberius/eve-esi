@@ -157,13 +157,13 @@ public class CorporationRolesHistoryResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static NewRolesEnum fromValue(String text) {
+        public static NewRolesEnum fromValue(String value) {
             for (NewRolesEnum b : NewRolesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<NewRolesEnum> {
@@ -175,7 +175,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
             @Override
             public NewRolesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return NewRolesEnum.fromValue(String.valueOf(value));
+                return NewRolesEnum.fromValue(value);
             }
         }
     }
@@ -304,13 +304,13 @@ public class CorporationRolesHistoryResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static OldRolesEnum fromValue(String text) {
+        public static OldRolesEnum fromValue(String value) {
             for (OldRolesEnum b : OldRolesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OldRolesEnum> {
@@ -322,7 +322,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
             @Override
             public OldRolesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return OldRolesEnum.fromValue(String.valueOf(value));
+                return OldRolesEnum.fromValue(value);
             }
         }
     }
@@ -367,13 +367,13 @@ public class CorporationRolesHistoryResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RoleTypeEnum fromValue(String text) {
+        public static RoleTypeEnum fromValue(String value) {
             for (RoleTypeEnum b : RoleTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RoleTypeEnum> {
@@ -385,7 +385,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
             @Override
             public RoleTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RoleTypeEnum.fromValue(String.valueOf(value));
+                return RoleTypeEnum.fromValue(value);
             }
         }
     }
@@ -552,7 +552,6 @@ public class CorporationRolesHistoryResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationRolesHistoryResponse {\n");
-
         sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
         sb.append("    newRoles: ").append(toIndentedString(newRoles)).append("\n");
         sb.append("    oldRoles: ").append(toIndentedString(oldRoles)).append("\n");

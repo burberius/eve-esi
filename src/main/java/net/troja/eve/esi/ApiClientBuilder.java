@@ -1,7 +1,7 @@
 package net.troja.eve.esi;
 
-import com.squareup.okhttp.OkHttpClient;
 import net.troja.eve.esi.auth.OAuth;
+import okhttp3.OkHttpClient;
 
 public class ApiClientBuilder {
 

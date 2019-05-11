@@ -63,7 +63,7 @@ public class DogmaEffectResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_MODIFIERS = "modifiers";
     @SerializedName(SERIALIZED_NAME_MODIFIERS)
-    private List<DogmaEffectModifier> modifiers = null;
+    private List<DogmaEffectModifier> modifiers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DISCHARGE_ATTRIBUTE_ID = "discharge_attribute_id";
     @SerializedName(SERIALIZED_NAME_DISCHARGE_ATTRIBUTE_ID)
@@ -568,7 +568,6 @@ public class DogmaEffectResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaEffectResponse {\n");
-
         sb.append("    preExpression: ").append(toIndentedString(preExpression)).append("\n");
         sb.append("    durationAttributeId: ").append(toIndentedString(durationAttributeId)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");

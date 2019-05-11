@@ -74,7 +74,6 @@ public class PlanetFactoryDetails implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetFactoryDetails {\n");
-
         sb.append("    schematicId: ").append(toIndentedString(schematicId)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -270,7 +270,6 @@ public class PublicContractsItemsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PublicContractsItemsResponse {\n");
-
         sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("    isBlueprintCopy: ").append(toIndentedString(isBlueprintCopy)).append("\n");
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");

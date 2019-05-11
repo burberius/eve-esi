@@ -2368,7 +2368,6 @@ public class CharacterStatsCombat implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsCombat {\n");
-
         sb.append("    killsPodWormhole: ").append(toIndentedString(killsPodWormhole)).append("\n");
         sb.append("    repairCapacitorRemoteAmount: ").append(toIndentedString(repairCapacitorRemoteAmount))
                 .append("\n");

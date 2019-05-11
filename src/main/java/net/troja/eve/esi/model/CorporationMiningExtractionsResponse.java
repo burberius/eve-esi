@@ -173,7 +173,6 @@ public class CorporationMiningExtractionsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMiningExtractionsResponse {\n");
-
         sb.append("    chunkArrivalTime: ").append(toIndentedString(chunkArrivalTime)).append("\n");
         sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");
         sb.append("    naturalDecayTime: ").append(toIndentedString(naturalDecayTime)).append("\n");

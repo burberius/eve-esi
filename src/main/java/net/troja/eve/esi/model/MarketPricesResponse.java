@@ -122,7 +122,6 @@ public class MarketPricesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketPricesResponse {\n");
-
         sb.append("    adjustedPrice: ").append(toIndentedString(adjustedPrice)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    averagePrice: ").append(toIndentedString(averagePrice)).append("\n");

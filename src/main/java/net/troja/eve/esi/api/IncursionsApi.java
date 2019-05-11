@@ -33,22 +33,22 @@ import java.util.List;
 import java.util.Map;
 
 public class IncursionsApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public IncursionsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public IncursionsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -60,13 +60,13 @@ public class IncursionsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getIncursionsCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getIncursionsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -76,17 +76,17 @@ public class IncursionsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -94,20 +94,20 @@ public class IncursionsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getIncursionsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getIncursionsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getIncursionsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getIncursionsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -127,8 +127,8 @@ public class IncursionsApi {
      *             deserialize the response body
      */
     public List<IncursionsResponse> getIncursions(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<IncursionsResponse>> resp = getIncursionsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<IncursionsResponse>> localVarResp = getIncursionsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -148,10 +148,10 @@ public class IncursionsApi {
      */
     public ApiResponse<List<IncursionsResponse>> getIncursionsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getIncursionsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getIncursionsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<IncursionsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -164,20 +164,20 @@ public class IncursionsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getIncursionsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<IncursionsResponse>> callback) throws ApiException {
+    public okhttp3.Call getIncursionsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<IncursionsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getIncursionsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getIncursionsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<IncursionsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

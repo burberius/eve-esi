@@ -176,7 +176,6 @@ public class GroupResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class GroupResponse {\n");
-
         sb.append("    types: ").append(toIndentedString(types)).append("\n");
         sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
         sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");

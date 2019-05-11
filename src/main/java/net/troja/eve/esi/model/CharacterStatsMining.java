@@ -508,7 +508,6 @@ public class CharacterStatsMining implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsMining {\n");
-
         sb.append("    oreDarkOchre: ").append(toIndentedString(oreDarkOchre)).append("\n");
         sb.append("    oreJaspet: ").append(toIndentedString(oreJaspet)).append("\n");
         sb.append("    oreOmber: ").append(toIndentedString(oreOmber)).append("\n");

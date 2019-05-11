@@ -221,7 +221,6 @@ public class AllianceResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceResponse {\n");
-
         sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
         sb.append("    creatorCorporationId: ").append(toIndentedString(creatorCorporationId)).append("\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");

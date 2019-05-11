@@ -106,7 +106,6 @@ public class IndustrySystemsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class IndustrySystemsResponse {\n");
-
         sb.append("    costIndices: ").append(toIndentedString(costIndices)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("}");

@@ -267,7 +267,6 @@ public class KillmailAttacker implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailAttacker {\n");
-
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");

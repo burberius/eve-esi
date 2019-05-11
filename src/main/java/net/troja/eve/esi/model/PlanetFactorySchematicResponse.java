@@ -98,7 +98,6 @@ public class PlanetFactorySchematicResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetFactorySchematicResponse {\n");
-
         sb.append("    schematicName: ").append(toIndentedString(schematicName)).append("\n");
         sb.append("    cycleTime: ").append(toIndentedString(cycleTime)).append("\n");
         sb.append("}");

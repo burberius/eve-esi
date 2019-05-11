@@ -55,7 +55,7 @@ public class KillmailItem implements Serializable {
 
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private List<KillmailSubItem> items = null;
+    private List<KillmailSubItem> items = new ArrayList<>();
 
     public KillmailItem quantityDestroyed(Long quantityDestroyed) {
         this.quantityDestroyed = quantityDestroyed;
@@ -205,7 +205,6 @@ public class KillmailItem implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailItem {\n");
-
         sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");

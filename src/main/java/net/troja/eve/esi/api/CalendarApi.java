@@ -36,22 +36,22 @@ import java.util.List;
 import java.util.Map;
 
 public class CalendarApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public CalendarApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public CalendarApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -69,42 +69,42 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarCall(Integer characterId, String datasource,
-            Integer fromEvent, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCalendarCall(Integer characterId, String datasource, Integer fromEvent,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/calendar/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (fromEvent != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("from_event", fromEvent));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from_event", fromEvent));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -112,18 +112,17 @@ public class CalendarApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdCalendarValidateBeforeCall(Integer characterId,
-            String datasource, Integer fromEvent, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdCalendarValidateBeforeCall(Integer characterId, String datasource,
+            Integer fromEvent, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -131,9 +130,9 @@ public class CalendarApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdCalendar(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarCall(characterId, datasource, fromEvent,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarCall(characterId, datasource, fromEvent,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -164,9 +163,9 @@ public class CalendarApi {
      */
     public List<CharacterCalendarResponse> getCharactersCharacterIdCalendar(Integer characterId, String datasource,
             Integer fromEvent, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterCalendarResponse>> resp = getCharactersCharacterIdCalendarWithHttpInfo(characterId,
-                datasource, fromEvent, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CharacterCalendarResponse>> localVarResp = getCharactersCharacterIdCalendarWithHttpInfo(
+                characterId, datasource, fromEvent, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -197,11 +196,11 @@ public class CalendarApi {
     public ApiResponse<List<CharacterCalendarResponse>> getCharactersCharacterIdCalendarWithHttpInfo(
             Integer characterId, String datasource, Integer fromEvent, String ifNoneMatch, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
                 fromEvent, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -224,23 +223,23 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarAsync(Integer characterId, String datasource,
+    public okhttp3.Call getCharactersCharacterIdCalendarAsync(Integer characterId, String datasource,
             Integer fromEvent, String ifNoneMatch, String token,
-            final ApiCallback<List<CharacterCalendarResponse>> callback) throws ApiException {
+            final ApiCallback<List<CharacterCalendarResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
-                fromEvent, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarValidateBeforeCall(characterId, datasource,
+                fromEvent, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -258,39 +257,39 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/calendar/{event_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "event_id" + "\\}", localVarApiClient.escapeString(eventId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -298,17 +297,17 @@ public class CalendarApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
-            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
+            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -323,9 +322,9 @@ public class CalendarApi {
                     "Missing the required parameter 'eventId' when calling getCharactersCharacterIdCalendarEventId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdCall(characterId, eventId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdCall(characterId, eventId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -353,9 +352,9 @@ public class CalendarApi {
      */
     public CharacterCalendarEventResponse getCharactersCharacterIdCalendarEventId(Integer characterId, Integer eventId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterCalendarEventResponse> resp = getCharactersCharacterIdCalendarEventIdWithHttpInfo(
+        ApiResponse<CharacterCalendarEventResponse> localVarResp = getCharactersCharacterIdCalendarEventIdWithHttpInfo(
                 characterId, eventId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -383,11 +382,11 @@ public class CalendarApi {
     public ApiResponse<CharacterCalendarEventResponse> getCharactersCharacterIdCalendarEventIdWithHttpInfo(
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterCalendarEventResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -407,23 +406,23 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAsync(Integer characterId, Integer eventId,
+    public okhttp3.Call getCharactersCharacterIdCalendarEventIdAsync(Integer characterId, Integer eventId,
             String datasource, String ifNoneMatch, String token,
-            final ApiCallback<CharacterCalendarEventResponse> callback) throws ApiException {
+            final ApiCallback<CharacterCalendarEventResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterCalendarEventResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -441,40 +440,39 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAttendeesCall(Integer characterId,
-            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCalendarEventIdAttendeesCall(Integer characterId, Integer eventId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/calendar/{event_id}/attendees/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "event_id" + "\\}", localVarApiClient.escapeString(eventId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -482,18 +480,18 @@ public class CalendarApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(
-            Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(Integer characterId,
+            Integer eventId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -507,9 +505,9 @@ public class CalendarApi {
                     "Missing the required parameter 'eventId' when calling getCharactersCharacterIdCalendarEventIdAttendees(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesCall(characterId, eventId,
-                datasource, ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdAttendeesCall(characterId, eventId,
+                datasource, ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -538,9 +536,9 @@ public class CalendarApi {
     public List<CharacterCalendarAttendeesResponse> getCharactersCharacterIdCalendarEventIdAttendees(
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
-        ApiResponse<List<CharacterCalendarAttendeesResponse>> resp = getCharactersCharacterIdCalendarEventIdAttendeesWithHttpInfo(
+        ApiResponse<List<CharacterCalendarAttendeesResponse>> localVarResp = getCharactersCharacterIdCalendarEventIdAttendeesWithHttpInfo(
                 characterId, eventId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -568,11 +566,11 @@ public class CalendarApi {
     public ApiResponse<List<CharacterCalendarAttendeesResponse>> getCharactersCharacterIdCalendarEventIdAttendeesWithHttpInfo(
             Integer characterId, Integer eventId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
                 eventId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarAttendeesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -592,23 +590,23 @@ public class CalendarApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdCalendarEventIdAttendeesAsync(Integer characterId,
-            Integer eventId, String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<CharacterCalendarAttendeesResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdCalendarEventIdAttendeesAsync(Integer characterId, Integer eventId,
+            String datasource, String ifNoneMatch, String token,
+            final ApiCallback<List<CharacterCalendarAttendeesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
-                eventId, datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdCalendarEventIdAttendeesValidateBeforeCall(characterId,
+                eventId, datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterCalendarAttendeesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -618,37 +616,37 @@ public class CalendarApi {
      *            An EVE character ID (required)
      * @param eventId
      *            The ID of the event requested (required)
+     * @param response
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param characterCalendarEvent
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
-            String datasource, String token, CharacterCalendarEvent characterCalendarEvent, final ApiCallback callback)
+    public okhttp3.Call putCharactersCharacterIdCalendarEventIdCall(Integer characterId, Integer eventId,
+            CharacterCalendarEvent response, String datasource, String token, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = characterCalendarEvent;
+        Object localVarPostBody = response;
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/calendar/{event_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "event_id" + "\\}", apiClient.escapeString(eventId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "event_id" + "\\}", localVarApiClient.escapeString(eventId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -656,24 +654,24 @@ public class CalendarApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
-            Integer eventId, String datasource, String token, CharacterCalendarEvent characterCalendarEvent,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call putCharactersCharacterIdCalendarEventIdValidateBeforeCall(Integer characterId,
+            Integer eventId, CharacterCalendarEvent response, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -687,9 +685,15 @@ public class CalendarApi {
                     "Missing the required parameter 'eventId' when calling putCharactersCharacterIdCalendarEventId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdCall(characterId, eventId, datasource,
-                token, characterCalendarEvent, callback);
-        return call;
+        // verify the required parameter 'response' is set
+        if (response == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'response' when calling putCharactersCharacterIdCalendarEventId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putCharactersCharacterIdCalendarEventIdCall(characterId, eventId, response,
+                datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -701,21 +705,20 @@ public class CalendarApi {
      *            An EVE character ID (required)
      * @param eventId
      *            The ID of the event requested (required)
+     * @param response
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param characterCalendarEvent
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putCharactersCharacterIdCalendarEventId(Integer characterId, Integer eventId, String datasource,
-            String token, CharacterCalendarEvent characterCalendarEvent) throws ApiException {
-        putCharactersCharacterIdCalendarEventIdWithHttpInfo(characterId, eventId, datasource, token,
-                characterCalendarEvent);
+    public void putCharactersCharacterIdCalendarEventId(Integer characterId, Integer eventId,
+            CharacterCalendarEvent response, String datasource, String token) throws ApiException {
+        putCharactersCharacterIdCalendarEventIdWithHttpInfo(characterId, eventId, response, datasource, token);
     }
 
     /**
@@ -726,23 +729,23 @@ public class CalendarApi {
      *            An EVE character ID (required)
      * @param eventId
      *            The ID of the event requested (required)
+     * @param response
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param characterCalendarEvent
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
     public ApiResponse<Void> putCharactersCharacterIdCalendarEventIdWithHttpInfo(Integer characterId, Integer eventId,
-            String datasource, String token, CharacterCalendarEvent characterCalendarEvent) throws ApiException {
-        com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, token, characterCalendarEvent, null);
-        return apiClient.execute(call);
+            CharacterCalendarEvent response, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
+                response, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -753,27 +756,27 @@ public class CalendarApi {
      *            An EVE character ID (required)
      * @param eventId
      *            The ID of the event requested (required)
+     * @param response
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param characterCalendarEvent
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putCharactersCharacterIdCalendarEventIdAsync(Integer characterId, Integer eventId,
-            String datasource, String token, CharacterCalendarEvent characterCalendarEvent,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call putCharactersCharacterIdCalendarEventIdAsync(Integer characterId, Integer eventId,
+            CharacterCalendarEvent response, String datasource, String token, final ApiCallback<Void> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
-                datasource, token, characterCalendarEvent, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putCharactersCharacterIdCalendarEventIdValidateBeforeCall(characterId, eventId,
+                response, datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 }

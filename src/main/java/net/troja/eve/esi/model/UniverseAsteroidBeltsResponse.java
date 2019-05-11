@@ -123,7 +123,6 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseAsteroidBeltsResponse {\n");
-
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");

@@ -122,7 +122,6 @@ public class CorporationIconsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationIconsResponse {\n");
-
         sb.append("    px256x256: ").append(toIndentedString(px256x256)).append("\n");
         sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");

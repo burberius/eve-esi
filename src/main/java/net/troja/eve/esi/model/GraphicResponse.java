@@ -243,7 +243,6 @@ public class GraphicResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class GraphicResponse {\n");
-
         sb.append("    sofDna: ").append(toIndentedString(sofDna)).append("\n");
         sb.append("    sofFationName: ").append(toIndentedString(sofFationName)).append("\n");
         sb.append("    collisionFile: ").append(toIndentedString(collisionFile)).append("\n");

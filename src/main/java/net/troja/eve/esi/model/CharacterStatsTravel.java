@@ -558,7 +558,6 @@ public class CharacterStatsTravel implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsTravel {\n");
-
         sb.append("    jumpsStargateLowSec: ").append(toIndentedString(jumpsStargateLowSec)).append("\n");
         sb.append("    warpsToBookmark: ").append(toIndentedString(warpsToBookmark)).append("\n");
         sb.append("    docksHighSec: ").append(toIndentedString(docksHighSec)).append("\n");

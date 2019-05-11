@@ -40,22 +40,22 @@ import java.util.List;
 import java.util.Map;
 
 public class FactionWarfareApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public FactionWarfareApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public FactionWarfareApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -71,38 +71,38 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFwStatsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFwStatsCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/fw/stats/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -110,17 +110,17 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdFwStatsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdFwStatsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -128,9 +128,9 @@ public class FactionWarfareApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdFwStats(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFwStatsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdFwStatsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -156,9 +156,9 @@ public class FactionWarfareApi {
      */
     public CharacterFwStatsResponse getCharactersCharacterIdFwStats(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterFwStatsResponse> resp = getCharactersCharacterIdFwStatsWithHttpInfo(characterId,
+        ApiResponse<CharacterFwStatsResponse> localVarResp = getCharactersCharacterIdFwStatsWithHttpInfo(characterId,
                 datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -183,11 +183,11 @@ public class FactionWarfareApi {
      */
     public ApiResponse<CharacterFwStatsResponse> getCharactersCharacterIdFwStatsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFwStatsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdFwStatsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterFwStatsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -205,22 +205,23 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFwStatsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<CharacterFwStatsResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFwStatsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<CharacterFwStatsResponse> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFwStatsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdFwStatsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterFwStatsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -236,38 +237,38 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdFwStatsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdFwStatsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/fw/stats/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -275,17 +276,17 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdFwStatsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdFwStatsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -293,9 +294,9 @@ public class FactionWarfareApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdFwStats(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFwStatsCall(corporationId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFwStatsCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -321,9 +322,9 @@ public class FactionWarfareApi {
      */
     public CorporationFwStatsResponse getCorporationsCorporationIdFwStats(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CorporationFwStatsResponse> resp = getCorporationsCorporationIdFwStatsWithHttpInfo(corporationId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<CorporationFwStatsResponse> localVarResp = getCorporationsCorporationIdFwStatsWithHttpInfo(
+                corporationId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -348,11 +349,11 @@ public class FactionWarfareApi {
      */
     public ApiResponse<CorporationFwStatsResponse> getCorporationsCorporationIdFwStatsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFwStatsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFwStatsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CorporationFwStatsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -370,23 +371,23 @@ public class FactionWarfareApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdFwStatsAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<CorporationFwStatsResponse> callback)
+    public okhttp3.Call getCorporationsCorporationIdFwStatsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<CorporationFwStatsResponse> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFwStatsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFwStatsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CorporationFwStatsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -398,14 +399,14 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -414,17 +415,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -432,20 +433,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwLeaderboardsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwLeaderboardsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwLeaderboardsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -467,8 +468,9 @@ public class FactionWarfareApi {
      */
     public FactionWarfareLeaderboardResponse getFwLeaderboards(String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<FactionWarfareLeaderboardResponse> resp = getFwLeaderboardsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<FactionWarfareLeaderboardResponse> localVarResp = getFwLeaderboardsWithHttpInfo(datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -489,10 +491,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<FactionWarfareLeaderboardResponse> getFwLeaderboardsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getFwLeaderboardsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwLeaderboardsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -506,21 +508,21 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<FactionWarfareLeaderboardResponse> callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<FactionWarfareLeaderboardResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getFwLeaderboardsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -532,14 +534,14 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsCharactersCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsCharactersCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -548,17 +550,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -566,20 +568,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwLeaderboardsCharactersValidateBeforeCall(String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwLeaderboardsCharactersValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsCharactersCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwLeaderboardsCharactersCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -601,9 +603,9 @@ public class FactionWarfareApi {
      */
     public FactionWarfareLeaderboardCharactersResponse getFwLeaderboardsCharacters(String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<FactionWarfareLeaderboardCharactersResponse> resp = getFwLeaderboardsCharactersWithHttpInfo(
+        ApiResponse<FactionWarfareLeaderboardCharactersResponse> localVarResp = getFwLeaderboardsCharactersWithHttpInfo(
                 datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -624,10 +626,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<FactionWarfareLeaderboardCharactersResponse> getFwLeaderboardsCharactersWithHttpInfo(
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getFwLeaderboardsCharactersValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwLeaderboardsCharactersValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardCharactersResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -641,21 +643,21 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsCharactersAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<FactionWarfareLeaderboardCharactersResponse> callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsCharactersAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<FactionWarfareLeaderboardCharactersResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsCharactersValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getFwLeaderboardsCharactersValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardCharactersResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -667,14 +669,14 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsCorporationsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsCorporationsCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -683,17 +685,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -701,20 +703,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwLeaderboardsCorporationsValidateBeforeCall(String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwLeaderboardsCorporationsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsCorporationsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwLeaderboardsCorporationsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -736,9 +738,9 @@ public class FactionWarfareApi {
      */
     public FactionWarfareLeaderboardCorporationsResponse getFwLeaderboardsCorporations(String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<FactionWarfareLeaderboardCorporationsResponse> resp = getFwLeaderboardsCorporationsWithHttpInfo(
+        ApiResponse<FactionWarfareLeaderboardCorporationsResponse> localVarResp = getFwLeaderboardsCorporationsWithHttpInfo(
                 datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -759,10 +761,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<FactionWarfareLeaderboardCorporationsResponse> getFwLeaderboardsCorporationsWithHttpInfo(
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getFwLeaderboardsCorporationsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwLeaderboardsCorporationsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardCorporationsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -776,22 +778,21 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwLeaderboardsCorporationsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<FactionWarfareLeaderboardCorporationsResponse> callback) throws ApiException {
+    public okhttp3.Call getFwLeaderboardsCorporationsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<FactionWarfareLeaderboardCorporationsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwLeaderboardsCorporationsValidateBeforeCall(datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getFwLeaderboardsCorporationsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<FactionWarfareLeaderboardCorporationsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -803,13 +804,13 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwStatsCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getFwStatsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -819,17 +820,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -837,20 +838,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwStatsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwStatsValidateBeforeCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwStatsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwStatsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -871,8 +872,8 @@ public class FactionWarfareApi {
      *             deserialize the response body
      */
     public List<FactionWarfareStatsResponse> getFwStats(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<FactionWarfareStatsResponse>> resp = getFwStatsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<FactionWarfareStatsResponse>> localVarResp = getFwStatsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -893,10 +894,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<List<FactionWarfareStatsResponse>> getFwStatsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getFwStatsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwStatsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -910,21 +911,21 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwStatsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<FactionWarfareStatsResponse>> callback) throws ApiException {
+    public okhttp3.Call getFwStatsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<FactionWarfareStatsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwStatsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getFwStatsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<FactionWarfareStatsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -936,13 +937,13 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwSystemsCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getFwSystemsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -952,17 +953,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -970,20 +971,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwSystemsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwSystemsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwSystemsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwSystemsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -1004,8 +1005,9 @@ public class FactionWarfareApi {
      *             deserialize the response body
      */
     public List<FactionWarfareSystemsResponse> getFwSystems(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<FactionWarfareSystemsResponse>> resp = getFwSystemsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<FactionWarfareSystemsResponse>> localVarResp = getFwSystemsWithHttpInfo(datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -1026,10 +1028,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<List<FactionWarfareSystemsResponse>> getFwSystemsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getFwSystemsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwSystemsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1043,21 +1045,21 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwSystemsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<FactionWarfareSystemsResponse>> callback) throws ApiException {
+    public okhttp3.Call getFwSystemsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<FactionWarfareSystemsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwSystemsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getFwSystemsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<FactionWarfareSystemsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1069,13 +1071,13 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFwWarsCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getFwWarsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -1085,17 +1087,17 @@ public class FactionWarfareApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1103,20 +1105,20 @@ public class FactionWarfareApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFwWarsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFwWarsValidateBeforeCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwWarsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getFwWarsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -1136,8 +1138,8 @@ public class FactionWarfareApi {
      *             deserialize the response body
      */
     public List<FactionWarfareWarsResponse> getFwWars(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<FactionWarfareWarsResponse>> resp = getFwWarsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<FactionWarfareWarsResponse>> localVarResp = getFwWarsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -1157,10 +1159,10 @@ public class FactionWarfareApi {
      */
     public ApiResponse<List<FactionWarfareWarsResponse>> getFwWarsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getFwWarsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getFwWarsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1173,20 +1175,20 @@ public class FactionWarfareApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFwWarsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<FactionWarfareWarsResponse>> callback) throws ApiException {
+    public okhttp3.Call getFwWarsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<FactionWarfareWarsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFwWarsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getFwWarsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<FactionWarfareWarsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

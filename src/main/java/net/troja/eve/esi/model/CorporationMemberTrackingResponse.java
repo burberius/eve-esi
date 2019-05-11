@@ -219,7 +219,6 @@ public class CorporationMemberTrackingResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMemberTrackingResponse {\n");
-
         sb.append("    logoffDate: ").append(toIndentedString(logoffDate)).append("\n");
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    baseId: ").append(toIndentedString(baseId)).append("\n");

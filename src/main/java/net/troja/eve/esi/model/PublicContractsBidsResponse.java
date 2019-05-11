@@ -123,7 +123,6 @@ public class PublicContractsBidsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PublicContractsBidsResponse {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    bidId: ").append(toIndentedString(bidId)).append("\n");
         sb.append("    dateBid: ").append(toIndentedString(dateBid)).append("\n");

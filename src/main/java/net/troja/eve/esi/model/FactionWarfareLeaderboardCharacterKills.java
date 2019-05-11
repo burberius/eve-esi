@@ -151,7 +151,6 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharacterKills {\n");
-
         sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("    activeTotal: ").append(toIndentedString(activeTotal)).append("\n");
         sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");

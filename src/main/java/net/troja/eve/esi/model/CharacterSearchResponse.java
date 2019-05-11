@@ -34,47 +34,47 @@ public class CharacterSearchResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AGENT = "agent";
     @SerializedName(SERIALIZED_NAME_AGENT)
-    private List<Integer> agent = null;
+    private List<Integer> agent = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHARACTER = "character";
     @SerializedName(SERIALIZED_NAME_CHARACTER)
-    private List<Integer> character = null;
+    private List<Integer> character = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ALLIANCE = "alliance";
     @SerializedName(SERIALIZED_NAME_ALLIANCE)
-    private List<Integer> alliance = null;
+    private List<Integer> alliance = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONSTELLATION = "constellation";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION)
-    private List<Integer> constellation = null;
+    private List<Integer> constellation = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CORPORATION = "corporation";
     @SerializedName(SERIALIZED_NAME_CORPORATION)
-    private List<Integer> corporation = null;
+    private List<Integer> corporation = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FACTION = "faction";
     @SerializedName(SERIALIZED_NAME_FACTION)
-    private List<Integer> faction = null;
+    private List<Integer> faction = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATION = "station";
     @SerializedName(SERIALIZED_NAME_STATION)
-    private List<Integer> station = null;
+    private List<Integer> station = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPE = "inventory_type";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
-    private List<Integer> inventoryType = null;
+    private List<Integer> inventoryType = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REGION = "region";
     @SerializedName(SERIALIZED_NAME_REGION)
-    private List<Integer> region = null;
+    private List<Integer> region = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STRUCTURE = "structure";
     @SerializedName(SERIALIZED_NAME_STRUCTURE)
-    private List<Long> structure = null;
+    private List<Long> structure = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM = "solar_system";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM)
-    private List<Integer> solarSystem = null;
+    private List<Integer> solarSystem = new ArrayList<>();
 
     public CharacterSearchResponse agent(List<Integer> agent) {
         this.agent = agent;
@@ -405,7 +405,6 @@ public class CharacterSearchResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterSearchResponse {\n");
-
         sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
         sb.append("    character: ").append(toIndentedString(character)).append("\n");
         sb.append("    alliance: ").append(toIndentedString(alliance)).append("\n");

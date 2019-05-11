@@ -200,7 +200,6 @@ public class CharacterFwStatsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFwStatsResponse {\n");
-
         sb.append("    highestRank: ").append(toIndentedString(highestRank)).append("\n");
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    enlistedOn: ").append(toIndentedString(enlistedOn)).append("\n");

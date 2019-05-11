@@ -364,7 +364,6 @@ public class CharacterStatsMarket implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsMarket {\n");
-
         sb.append("    acceptContractsCourier: ").append(toIndentedString(acceptContractsCourier)).append("\n");
         sb.append("    buyOrdersPlaced: ").append(toIndentedString(buyOrdersPlaced)).append("\n");
         sb.append("    iskSpent: ").append(toIndentedString(iskSpent)).append("\n");

@@ -194,7 +194,6 @@ public class IndustryFacilitiesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class IndustryFacilitiesResponse {\n");
-
         sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");

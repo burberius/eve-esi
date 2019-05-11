@@ -83,13 +83,13 @@ public class CharacterOrdersResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RangeEnum fromValue(String text) {
+        public static RangeEnum fromValue(String value) {
             for (RangeEnum b : RangeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RangeEnum> {
@@ -101,7 +101,7 @@ public class CharacterOrdersResponse implements Serializable {
             @Override
             public RangeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RangeEnum.fromValue(String.valueOf(value));
+                return RangeEnum.fromValue(value);
             }
         }
     }
@@ -458,7 +458,6 @@ public class CharacterOrdersResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOrdersResponse {\n");
-
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("    range: ").append(toIndentedString(range)).append("\n");

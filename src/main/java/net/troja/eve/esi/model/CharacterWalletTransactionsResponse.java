@@ -292,7 +292,6 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterWalletTransactionsResponse {\n");
-
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");

@@ -68,13 +68,13 @@ public class SovereigntyCampaignsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static EventTypeEnum fromValue(String text) {
+        public static EventTypeEnum fromValue(String value) {
             for (EventTypeEnum b : EventTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<EventTypeEnum> {
@@ -86,7 +86,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
             @Override
             public EventTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return EventTypeEnum.fromValue(String.valueOf(value));
+                return EventTypeEnum.fromValue(value);
             }
         }
     }
@@ -125,7 +125,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PARTICIPANTS = "participants";
     @SerializedName(SERIALIZED_NAME_PARTICIPANTS)
-    private List<SovereigntyCampaignParticipant> participants = null;
+    private List<SovereigntyCampaignParticipant> participants = new ArrayList<>();
 
     public SovereigntyCampaignsResponse startTime(OffsetDateTime startTime) {
         this.startTime = startTime;
@@ -359,7 +359,6 @@ public class SovereigntyCampaignsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyCampaignsResponse {\n");
-
         sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
         sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
         sb.append("    defenderId: ").append(toIndentedString(defenderId)).append("\n");

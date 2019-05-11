@@ -70,7 +70,7 @@ public class WarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ALLIES = "allies";
     @SerializedName(SERIALIZED_NAME_ALLIES)
-    private List<WarAlly> allies = null;
+    private List<WarAlly> allies = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DEFENDER = "defender";
     @SerializedName(SERIALIZED_NAME_DEFENDER)
@@ -305,7 +305,6 @@ public class WarResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class WarResponse {\n");
-
         sb.append("    declared: ").append(toIndentedString(declared)).append("\n");
         sb.append("    aggressor: ").append(toIndentedString(aggressor)).append("\n");
         sb.append("    openForAllies: ").append(toIndentedString(openForAllies)).append("\n");

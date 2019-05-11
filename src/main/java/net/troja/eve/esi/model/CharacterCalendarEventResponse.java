@@ -97,13 +97,13 @@ public class CharacterCalendarEventResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static OwnerTypeEnum fromValue(String text) {
+        public static OwnerTypeEnum fromValue(String value) {
             for (OwnerTypeEnum b : OwnerTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OwnerTypeEnum> {
@@ -115,7 +115,7 @@ public class CharacterCalendarEventResponse implements Serializable {
             @Override
             public OwnerTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return OwnerTypeEnum.fromValue(String.valueOf(value));
+                return OwnerTypeEnum.fromValue(value);
             }
         }
     }
@@ -344,7 +344,6 @@ public class CharacterCalendarEventResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterCalendarEventResponse {\n");
-
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
         sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");

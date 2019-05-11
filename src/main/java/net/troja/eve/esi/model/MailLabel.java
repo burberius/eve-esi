@@ -90,13 +90,13 @@ public class MailLabel implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ColorEnum fromValue(String text) {
+        public static ColorEnum fromValue(String value) {
             for (ColorEnum b : ColorEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ColorEnum> {
@@ -108,7 +108,7 @@ public class MailLabel implements Serializable {
             @Override
             public ColorEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ColorEnum.fromValue(String.valueOf(value));
+                return ColorEnum.fromValue(value);
             }
         }
     }
@@ -223,7 +223,6 @@ public class MailLabel implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabel {\n");
-
         sb.append("    unreadCount: ").append(toIndentedString(unreadCount)).append("\n");
         sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

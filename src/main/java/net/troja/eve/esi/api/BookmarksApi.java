@@ -36,22 +36,22 @@ import java.util.List;
 import java.util.Map;
 
 public class BookmarksApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public BookmarksApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public BookmarksApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -69,42 +69,42 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBookmarksCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdBookmarksCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/bookmarks/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -112,18 +112,17 @@ public class BookmarksApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdBookmarksValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdBookmarksValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -131,9 +130,9 @@ public class BookmarksApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdBookmarks(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksCall(characterId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksCall(characterId, datasource, ifNoneMatch, page,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -161,9 +160,9 @@ public class BookmarksApi {
      */
     public List<CharacterBookmarksResponse> getCharactersCharacterIdBookmarks(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterBookmarksResponse>> resp = getCharactersCharacterIdBookmarksWithHttpInfo(characterId,
-                datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        ApiResponse<List<CharacterBookmarksResponse>> localVarResp = getCharactersCharacterIdBookmarksWithHttpInfo(
+                characterId, datasource, ifNoneMatch, page, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -190,11 +189,11 @@ public class BookmarksApi {
      */
     public ApiResponse<List<CharacterBookmarksResponse>> getCharactersCharacterIdBookmarksWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterBookmarksResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -214,23 +213,23 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBookmarksAsync(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CharacterBookmarksResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdBookmarksAsync(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CharacterBookmarksResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterBookmarksResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -248,43 +247,42 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBookmarksFoldersCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdBookmarksFoldersCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/characters/{character_id}/bookmarks/folders/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -292,17 +290,17 @@ public class BookmarksApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -311,9 +309,9 @@ public class BookmarksApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdBookmarksFolders(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksFoldersCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksFoldersCall(characterId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -341,9 +339,9 @@ public class BookmarksApi {
      */
     public List<CharacterBookmarkFoldersResponse> getCharactersCharacterIdBookmarksFolders(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterBookmarkFoldersResponse>> resp = getCharactersCharacterIdBookmarksFoldersWithHttpInfo(
+        ApiResponse<List<CharacterBookmarkFoldersResponse>> localVarResp = getCharactersCharacterIdBookmarksFoldersWithHttpInfo(
                 characterId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -370,11 +368,11 @@ public class BookmarksApi {
      */
     public ApiResponse<List<CharacterBookmarkFoldersResponse>> getCharactersCharacterIdBookmarksFoldersWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterBookmarkFoldersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -394,23 +392,23 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdBookmarksFoldersAsync(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CharacterBookmarkFoldersResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdBookmarksFoldersAsync(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CharacterBookmarkFoldersResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdBookmarksFoldersValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterBookmarkFoldersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -428,42 +426,42 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBookmarksCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/bookmarks/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -471,17 +469,17 @@ public class BookmarksApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdBookmarksValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -490,9 +488,9 @@ public class BookmarksApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdBookmarks(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -520,9 +518,9 @@ public class BookmarksApi {
      */
     public List<CorporationBookmarksResponse> getCorporationsCorporationIdBookmarks(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationBookmarksResponse>> resp = getCorporationsCorporationIdBookmarksWithHttpInfo(
+        ApiResponse<List<CorporationBookmarksResponse>> localVarResp = getCorporationsCorporationIdBookmarksWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -550,11 +548,11 @@ public class BookmarksApi {
     public ApiResponse<List<CorporationBookmarksResponse>> getCorporationsCorporationIdBookmarksWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationBookmarksResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -574,23 +572,23 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationBookmarksResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBookmarksAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationBookmarksResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationBookmarksResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -608,43 +606,42 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksFoldersCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBookmarksFoldersCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/bookmarks/folders/".replaceAll("\\{"
-                + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -652,18 +649,18 @@ public class BookmarksApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -671,9 +668,9 @@ public class BookmarksApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdBookmarksFolders(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksFoldersCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksFoldersCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -701,9 +698,9 @@ public class BookmarksApi {
      */
     public List<CorporationBookmarkFoldersResponse> getCorporationsCorporationIdBookmarksFolders(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationBookmarkFoldersResponse>> resp = getCorporationsCorporationIdBookmarksFoldersWithHttpInfo(
+        ApiResponse<List<CorporationBookmarkFoldersResponse>> localVarResp = getCorporationsCorporationIdBookmarksFoldersWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -731,11 +728,11 @@ public class BookmarksApi {
     public ApiResponse<List<CorporationBookmarkFoldersResponse>> getCorporationsCorporationIdBookmarksFoldersWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationBookmarkFoldersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -755,22 +752,22 @@ public class BookmarksApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBookmarksFoldersAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationBookmarkFoldersResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBookmarksFoldersAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationBookmarkFoldersResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBookmarksFoldersValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationBookmarkFoldersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

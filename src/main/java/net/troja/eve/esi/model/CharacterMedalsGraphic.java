@@ -146,7 +146,6 @@ public class CharacterMedalsGraphic implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterMedalsGraphic {\n");
-
         sb.append("    color: ").append(toIndentedString(color)).append("\n");
         sb.append("    part: ").append(toIndentedString(part)).append("\n");
         sb.append("    graphic: ").append(toIndentedString(graphic)).append("\n");

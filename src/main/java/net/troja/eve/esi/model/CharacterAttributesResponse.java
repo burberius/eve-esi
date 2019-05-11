@@ -244,7 +244,6 @@ public class CharacterAttributesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAttributesResponse {\n");
-
         sb.append("    lastRemapDate: ").append(toIndentedString(lastRemapDate)).append("\n");
         sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
         sb.append("    willpower: ").append(toIndentedString(willpower)).append("\n");

@@ -85,13 +85,13 @@ public class CorporationStarbasesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StateEnum fromValue(String text) {
+        public static StateEnum fromValue(String value) {
             for (StateEnum b : StateEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StateEnum> {
@@ -103,7 +103,7 @@ public class CorporationStarbasesResponse implements Serializable {
             @Override
             public StateEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StateEnum.fromValue(String.valueOf(value));
+                return StateEnum.fromValue(value);
             }
         }
     }
@@ -300,7 +300,6 @@ public class CorporationStarbasesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStarbasesResponse {\n");
-
         sb.append("    unanchorAt: ").append(toIndentedString(unanchorAt)).append("\n");
         sb.append("    onlinedSince: ").append(toIndentedString(onlinedSince)).append("\n");
         sb.append("    starbaseId: ").append(toIndentedString(starbaseId)).append("\n");

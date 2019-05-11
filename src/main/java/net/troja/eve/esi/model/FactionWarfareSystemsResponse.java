@@ -74,13 +74,13 @@ public class FactionWarfareSystemsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ContestedEnum fromValue(String text) {
+        public static ContestedEnum fromValue(String value) {
             for (ContestedEnum b : ContestedEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContestedEnum> {
@@ -92,7 +92,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
             @Override
             public ContestedEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ContestedEnum.fromValue(String.valueOf(value));
+                return ContestedEnum.fromValue(value);
             }
         }
     }
@@ -246,7 +246,6 @@ public class FactionWarfareSystemsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareSystemsResponse {\n");
-
         sb.append("    ownerFactionId: ").append(toIndentedString(ownerFactionId)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
         sb.append("    victoryPointsThreshold: ").append(toIndentedString(victoryPointsThreshold)).append("\n");

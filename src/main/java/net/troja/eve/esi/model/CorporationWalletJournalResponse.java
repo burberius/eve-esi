@@ -87,13 +87,13 @@ public class CorporationWalletJournalResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ContextIdTypeEnum fromValue(String text) {
+        public static ContextIdTypeEnum fromValue(String value) {
             for (ContextIdTypeEnum b : ContextIdTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContextIdTypeEnum> {
@@ -105,7 +105,7 @@ public class CorporationWalletJournalResponse implements Serializable {
             @Override
             public ContextIdTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ContextIdTypeEnum.fromValue(String.valueOf(value));
+                return ContextIdTypeEnum.fromValue(value);
             }
         }
     }
@@ -404,13 +404,13 @@ public class CorporationWalletJournalResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RefTypeEnum fromValue(String text) {
+        public static RefTypeEnum fromValue(String value) {
             for (RefTypeEnum b : RefTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RefTypeEnum> {
@@ -422,7 +422,7 @@ public class CorporationWalletJournalResponse implements Serializable {
             @Override
             public RefTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RefTypeEnum.fromValue(String.valueOf(value));
+                return RefTypeEnum.fromValue(value);
             }
         }
     }
@@ -736,7 +736,6 @@ public class CorporationWalletJournalResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletJournalResponse {\n");
-
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");

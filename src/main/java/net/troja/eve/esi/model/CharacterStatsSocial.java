@@ -655,7 +655,6 @@ public class CharacterStatsSocial implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsSocial {\n");
-
         sb.append("    addedAsContactHigh: ").append(toIndentedString(addedAsContactHigh)).append("\n");
         sb.append("    chatMessagesConstellation: ").append(toIndentedString(chatMessagesConstellation)).append("\n");
         sb.append("    addNote: ").append(toIndentedString(addNote)).append("\n");

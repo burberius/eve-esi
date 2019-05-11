@@ -146,7 +146,6 @@ public class FleetResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetResponse {\n");
-
         sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("    isRegistered: ").append(toIndentedString(isRegistered)).append("\n");
         sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");

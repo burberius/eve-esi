@@ -39,7 +39,7 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
-    private List<CorporationStarbaseFuel> fuels = null;
+    private List<CorporationStarbaseFuel> fuels = new ArrayList<>();
 
     /**
      * Who can take fuel blocks out of the starbase (POS)&#39;s fuel bay
@@ -69,13 +69,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static FuelBayTakeEnum fromValue(String text) {
+        public static FuelBayTakeEnum fromValue(String value) {
             for (FuelBayTakeEnum b : FuelBayTakeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FuelBayTakeEnum> {
@@ -87,7 +87,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public FuelBayTakeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return FuelBayTakeEnum.fromValue(String.valueOf(value));
+                return FuelBayTakeEnum.fromValue(value);
             }
         }
     }
@@ -131,13 +131,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static FuelBayViewEnum fromValue(String text) {
+        public static FuelBayViewEnum fromValue(String value) {
             for (FuelBayViewEnum b : FuelBayViewEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FuelBayViewEnum> {
@@ -149,7 +149,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public FuelBayViewEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return FuelBayViewEnum.fromValue(String.valueOf(value));
+                return FuelBayViewEnum.fromValue(value);
             }
         }
     }
@@ -186,13 +186,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static OfflineEnum fromValue(String text) {
+        public static OfflineEnum fromValue(String value) {
             for (OfflineEnum b : OfflineEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OfflineEnum> {
@@ -204,7 +204,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public OfflineEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return OfflineEnum.fromValue(String.valueOf(value));
+                return OfflineEnum.fromValue(value);
             }
         }
     }
@@ -249,13 +249,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static AnchorEnum fromValue(String text) {
+        public static AnchorEnum fromValue(String value) {
             for (AnchorEnum b : AnchorEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<AnchorEnum> {
@@ -267,7 +267,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public AnchorEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return AnchorEnum.fromValue(String.valueOf(value));
+                return AnchorEnum.fromValue(value);
             }
         }
     }
@@ -304,13 +304,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static UnanchorEnum fromValue(String text) {
+        public static UnanchorEnum fromValue(String value) {
             for (UnanchorEnum b : UnanchorEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<UnanchorEnum> {
@@ -322,7 +322,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public UnanchorEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return UnanchorEnum.fromValue(String.valueOf(value));
+                return UnanchorEnum.fromValue(value);
             }
         }
     }
@@ -367,13 +367,13 @@ public class CorporationStarbaseResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static OnlineEnum fromValue(String text) {
+        public static OnlineEnum fromValue(String value) {
             for (OnlineEnum b : OnlineEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OnlineEnum> {
@@ -385,7 +385,7 @@ public class CorporationStarbaseResponse implements Serializable {
             @Override
             public OnlineEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return OnlineEnum.fromValue(String.valueOf(value));
+                return OnlineEnum.fromValue(value);
             }
         }
     }
@@ -717,7 +717,6 @@ public class CorporationStarbaseResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStarbaseResponse {\n");
-
         sb.append("    attackIfAtWar: ").append(toIndentedString(attackIfAtWar)).append("\n");
         sb.append("    fuels: ").append(toIndentedString(fuels)).append("\n");
         sb.append("    fuelBayTake: ").append(toIndentedString(fuelBayTake)).append("\n");

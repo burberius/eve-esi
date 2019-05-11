@@ -68,13 +68,13 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StandingLevelEnum fromValue(String text) {
+        public static StandingLevelEnum fromValue(String value) {
             for (StandingLevelEnum b : StandingLevelEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StandingLevelEnum> {
@@ -86,7 +86,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
             @Override
             public StandingLevelEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StandingLevelEnum.fromValue(String.valueOf(value));
+                return StandingLevelEnum.fromValue(value);
             }
         }
     }
@@ -449,7 +449,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationCustomsOfficesResponse {\n");
-
         sb.append("    corporationTaxRate: ").append(toIndentedString(corporationTaxRate)).append("\n");
         sb.append("    neutralStandingTaxRate: ").append(toIndentedString(neutralStandingTaxRate)).append("\n");
         sb.append("    standingLevel: ").append(toIndentedString(standingLevel)).append("\n");

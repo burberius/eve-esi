@@ -375,7 +375,6 @@ public class CharacterStatsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsResponse {\n");
-
         sb.append("    isk: ").append(toIndentedString(isk)).append("\n");
         sb.append("    social: ").append(toIndentedString(social)).append("\n");
         sb.append("    year: ").append(toIndentedString(year)).append("\n");

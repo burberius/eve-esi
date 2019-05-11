@@ -66,8 +66,8 @@ public class SsoApi {
         postRevokeToken(accessToken, ACCESS_TOKEN);
     }
 
-    private com.squareup.okhttp.Call postRevokeTokenCall(final String token, final String tokenTypeHint,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
@@ -103,10 +103,9 @@ public class SsoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postRevokeTokenValidateBeforeCall(final String token, final String tokenTypeHint,
+    private okhttp3.Call postRevokeTokenValidateBeforeCall(final String token, final String tokenTypeHint,
             final ApiCallback callback) throws ApiException {
-        com.squareup.okhttp.Call call = postRevokeTokenCall(token, tokenTypeHint, callback);
-        return call;
+        return postRevokeTokenCall(token, tokenTypeHint, callback);
 
     }
 
@@ -116,7 +115,7 @@ public class SsoApi {
 
     private ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
             throws ApiException {
-        com.squareup.okhttp.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null);
+        okhttp3.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null);
         return revokeApiClient.execute(call);
     }
 }

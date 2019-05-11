@@ -44,43 +44,43 @@ public class UniverseIdsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CHARACTERS = "characters";
     @SerializedName(SERIALIZED_NAME_CHARACTERS)
-    private List<UniverseIdsCharacter> characters = null;
+    private List<UniverseIdsCharacter> characters = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REGIONS = "regions";
     @SerializedName(SERIALIZED_NAME_REGIONS)
-    private List<UniverseIdsRegion> regions = null;
+    private List<UniverseIdsRegion> regions = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
-    private List<UniverseIdsSystem> systems = null;
+    private List<UniverseIdsSystem> systems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
-    private List<UniverseIdsConstellation> constellations = null;
+    private List<UniverseIdsConstellation> constellations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
-    private List<UniverseIdsInventoryType> inventoryTypes = null;
+    private List<UniverseIdsInventoryType> inventoryTypes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
-    private List<UniverseIdsAlliance> alliances = null;
+    private List<UniverseIdsAlliance> alliances = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
-    private List<UniverseIdsStation> stations = null;
+    private List<UniverseIdsStation> stations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_AGENTS = "agents";
     @SerializedName(SERIALIZED_NAME_AGENTS)
-    private List<UniverseIdsAgent> agents = null;
+    private List<UniverseIdsAgent> agents = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
-    private List<UniverseIdsCorporation> corporations = null;
+    private List<UniverseIdsCorporation> corporations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
-    private List<UniverseIdsFaction> factions = null;
+    private List<UniverseIdsFaction> factions = new ArrayList<>();
 
     public UniverseIdsResponse characters(List<UniverseIdsCharacter> characters) {
         this.characters = characters;
@@ -383,7 +383,6 @@ public class UniverseIdsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseIdsResponse {\n");
-
         sb.append("    characters: ").append(toIndentedString(characters)).append("\n");
         sb.append("    regions: ").append(toIndentedString(regions)).append("\n");
         sb.append("    systems: ").append(toIndentedString(systems)).append("\n");

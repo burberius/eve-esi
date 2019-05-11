@@ -65,13 +65,13 @@ public class CharacterNotificationsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static SenderTypeEnum fromValue(String text) {
+        public static SenderTypeEnum fromValue(String value) {
             for (SenderTypeEnum b : SenderTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SenderTypeEnum> {
@@ -83,7 +83,7 @@ public class CharacterNotificationsResponse implements Serializable {
             @Override
             public SenderTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return SenderTypeEnum.fromValue(String.valueOf(value));
+                return SenderTypeEnum.fromValue(value);
             }
         }
     }
@@ -488,13 +488,13 @@ public class CharacterNotificationsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String text) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -506,7 +506,7 @@ public class CharacterNotificationsResponse implements Serializable {
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return TypeEnum.fromValue(String.valueOf(value));
+                return TypeEnum.fromValue(value);
             }
         }
     }
@@ -683,7 +683,6 @@ public class CharacterNotificationsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterNotificationsResponse {\n");
-
         sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
         sb.append("    senderType: ").append(toIndentedString(senderType)).append("\n");
         sb.append("    notificationId: ").append(toIndentedString(notificationId)).append("\n");

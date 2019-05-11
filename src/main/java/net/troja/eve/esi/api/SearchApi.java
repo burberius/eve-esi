@@ -34,22 +34,22 @@ import java.util.List;
 import java.util.Map;
 
 public class SearchApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public SearchApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public SearchApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -77,59 +77,59 @@ public class SearchApi {
      *            to false)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdSearchCall(List<String> categories, Integer characterId,
-            String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            Boolean strict, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdSearchCall(List<String> categories, Integer characterId, String search,
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/search/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         if (search != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("search", search));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
 
         if (strict != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("strict", strict));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("strict", strict));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -137,18 +137,18 @@ public class SearchApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdSearchValidateBeforeCall(List<String> categories,
-            Integer characterId, String search, String acceptLanguage, String datasource, String ifNoneMatch,
-            String language, Boolean strict, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdSearchValidateBeforeCall(List<String> categories, Integer characterId,
+            String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
+            Boolean strict, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'categories' is set
         if (categories == null) {
@@ -168,9 +168,9 @@ public class SearchApi {
                     "Missing the required parameter 'search' when calling getCharactersCharacterIdSearch(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdSearchCall(categories, characterId, search,
-                acceptLanguage, datasource, ifNoneMatch, language, strict, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdSearchCall(categories, characterId, search, acceptLanguage,
+                datasource, ifNoneMatch, language, strict, token, _callback);
+        return localVarCall;
 
     }
 
@@ -209,9 +209,9 @@ public class SearchApi {
     public CharacterSearchResponse getCharactersCharacterIdSearch(List<String> categories, Integer characterId,
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
             Boolean strict, String token) throws ApiException {
-        ApiResponse<CharacterSearchResponse> resp = getCharactersCharacterIdSearchWithHttpInfo(categories, characterId,
-                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token);
-        return resp.getData();
+        ApiResponse<CharacterSearchResponse> localVarResp = getCharactersCharacterIdSearchWithHttpInfo(categories,
+                characterId, search, acceptLanguage, datasource, ifNoneMatch, language, strict, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -249,11 +249,11 @@ public class SearchApi {
     public ApiResponse<CharacterSearchResponse> getCharactersCharacterIdSearchWithHttpInfo(List<String> categories,
             Integer characterId, String search, String acceptLanguage, String datasource, String ifNoneMatch,
             String language, Boolean strict, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId,
-                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId, search,
+                acceptLanguage, datasource, ifNoneMatch, language, strict, token, null);
         Type localVarReturnType = new TypeToken<CharacterSearchResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -283,23 +283,23 @@ public class SearchApi {
      *            to false)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdSearchAsync(List<String> categories, Integer characterId,
+    public okhttp3.Call getCharactersCharacterIdSearchAsync(List<String> categories, Integer characterId,
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            Boolean strict, String token, final ApiCallback<CharacterSearchResponse> callback) throws ApiException {
+            Boolean strict, String token, final ApiCallback<CharacterSearchResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId,
-                search, acceptLanguage, datasource, ifNoneMatch, language, strict, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId, search,
+                acceptLanguage, datasource, ifNoneMatch, language, strict, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterSearchResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -323,15 +323,14 @@ public class SearchApi {
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSearchCall(List<String> categories, String search, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, Boolean strict, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getSearchCall(List<String> categories, String search, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, Boolean strict, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -340,37 +339,37 @@ public class SearchApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (categories != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "categories", categories));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         if (search != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("search", search));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
 
         if (strict != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("strict", strict));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("strict", strict));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -378,18 +377,18 @@ public class SearchApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSearchValidateBeforeCall(List<String> categories, String search,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getSearchValidateBeforeCall(List<String> categories, String search, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, Boolean strict, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'categories' is set
         if (categories == null) {
@@ -401,9 +400,9 @@ public class SearchApi {
             throw new ApiException("Missing the required parameter 'search' when calling getSearch(Async)");
         }
 
-        com.squareup.okhttp.Call call = getSearchCall(categories, search, acceptLanguage, datasource, ifNoneMatch,
-                language, strict, callback);
-        return call;
+        okhttp3.Call localVarCall = getSearchCall(categories, search, acceptLanguage, datasource, ifNoneMatch,
+                language, strict, _callback);
+        return localVarCall;
 
     }
 
@@ -437,9 +436,9 @@ public class SearchApi {
      */
     public SearchResponse getSearch(List<String> categories, String search, String acceptLanguage, String datasource,
             String ifNoneMatch, String language, Boolean strict) throws ApiException {
-        ApiResponse<SearchResponse> resp = getSearchWithHttpInfo(categories, search, acceptLanguage, datasource,
-                ifNoneMatch, language, strict);
-        return resp.getData();
+        ApiResponse<SearchResponse> localVarResp = getSearchWithHttpInfo(categories, search, acceptLanguage,
+                datasource, ifNoneMatch, language, strict);
+        return localVarResp.getData();
     }
 
     /**
@@ -473,11 +472,11 @@ public class SearchApi {
     public ApiResponse<SearchResponse> getSearchWithHttpInfo(List<String> categories, String search,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict)
             throws ApiException {
-        com.squareup.okhttp.Call call = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
+        okhttp3.Call localVarCall = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
                 ifNoneMatch, language, strict, null);
         Type localVarReturnType = new TypeToken<SearchResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -503,22 +502,22 @@ public class SearchApi {
      * @param strict
      *            Whether the search should be a strict match (optional, default
      *            to false)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getSearchAsync(List<String> categories, String search, String acceptLanguage,
+    public okhttp3.Call getSearchAsync(List<String> categories, String search, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, Boolean strict,
-            final ApiCallback<SearchResponse> callback) throws ApiException {
+            final ApiCallback<SearchResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
-                ifNoneMatch, language, strict, callback);
+        okhttp3.Call localVarCall = getSearchValidateBeforeCall(categories, search, acceptLanguage, datasource,
+                ifNoneMatch, language, strict, _callback);
         Type localVarReturnType = new TypeToken<SearchResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

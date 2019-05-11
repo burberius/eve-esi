@@ -122,7 +122,6 @@ public class InsurancePriceLevel implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class InsurancePriceLevel {\n");
-
         sb.append("    cost: ").append(toIndentedString(cost)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    payout: ").append(toIndentedString(payout)).append("\n");

@@ -122,7 +122,6 @@ public class CharacterStatsCharacter implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsCharacter {\n");
-
         sb.append("    minutes: ").append(toIndentedString(minutes)).append("\n");
         sb.append("    daysOfActivity: ").append(toIndentedString(daysOfActivity)).append("\n");
         sb.append("    sessionsStarted: ").append(toIndentedString(sessionsStarted)).append("\n");

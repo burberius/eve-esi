@@ -34,22 +34,22 @@ import java.util.List;
 import java.util.Map;
 
 public class LoyaltyApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public LoyaltyApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public LoyaltyApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -65,38 +65,38 @@ public class LoyaltyApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdLoyaltyPointsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdLoyaltyPointsCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/loyalty/points/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -104,17 +104,17 @@ public class LoyaltyApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -122,9 +122,9 @@ public class LoyaltyApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdLoyaltyPoints(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdLoyaltyPointsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdLoyaltyPointsCall(characterId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -150,9 +150,9 @@ public class LoyaltyApi {
      */
     public List<CharacterLoyaltyPointsResponse> getCharactersCharacterIdLoyaltyPoints(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterLoyaltyPointsResponse>> resp = getCharactersCharacterIdLoyaltyPointsWithHttpInfo(
+        ApiResponse<List<CharacterLoyaltyPointsResponse>> localVarResp = getCharactersCharacterIdLoyaltyPointsWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -177,11 +177,11 @@ public class LoyaltyApi {
      */
     public ApiResponse<List<CharacterLoyaltyPointsResponse>> getCharactersCharacterIdLoyaltyPointsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -199,23 +199,23 @@ public class LoyaltyApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdLoyaltyPointsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterLoyaltyPointsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdLoyaltyPointsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterLoyaltyPointsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdLoyaltyPointsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterLoyaltyPointsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -229,34 +229,34 @@ public class LoyaltyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getLoyaltyStoresCorporationIdOffersCall(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getLoyaltyStoresCorporationIdOffersCall(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/loyalty/stores/{corporation_id}/offers/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -264,17 +264,17 @@ public class LoyaltyApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getLoyaltyStoresCorporationIdOffersValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getLoyaltyStoresCorporationIdOffersValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -282,9 +282,9 @@ public class LoyaltyApi {
                     "Missing the required parameter 'corporationId' when calling getLoyaltyStoresCorporationIdOffers(Async)");
         }
 
-        com.squareup.okhttp.Call call = getLoyaltyStoresCorporationIdOffersCall(corporationId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getLoyaltyStoresCorporationIdOffersCall(corporationId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -307,9 +307,9 @@ public class LoyaltyApi {
      */
     public List<LoyaltyStoreOffersResponse> getLoyaltyStoresCorporationIdOffers(Integer corporationId,
             String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<LoyaltyStoreOffersResponse>> resp = getLoyaltyStoresCorporationIdOffersWithHttpInfo(
+        ApiResponse<List<LoyaltyStoreOffersResponse>> localVarResp = getLoyaltyStoresCorporationIdOffersWithHttpInfo(
                 corporationId, datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -331,11 +331,11 @@ public class LoyaltyApi {
      */
     public ApiResponse<List<LoyaltyStoreOffersResponse>> getLoyaltyStoresCorporationIdOffersWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -351,21 +351,21 @@ public class LoyaltyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getLoyaltyStoresCorporationIdOffersAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback<List<LoyaltyStoreOffersResponse>> callback) throws ApiException {
+    public okhttp3.Call getLoyaltyStoresCorporationIdOffersAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback<List<LoyaltyStoreOffersResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getLoyaltyStoresCorporationIdOffersValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<LoyaltyStoreOffersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

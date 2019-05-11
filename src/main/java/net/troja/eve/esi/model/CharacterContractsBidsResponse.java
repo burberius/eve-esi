@@ -147,7 +147,6 @@ public class CharacterContractsBidsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterContractsBidsResponse {\n");
-
         sb.append("    bidderId: ").append(toIndentedString(bidderId)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    bidId: ").append(toIndentedString(bidId)).append("\n");

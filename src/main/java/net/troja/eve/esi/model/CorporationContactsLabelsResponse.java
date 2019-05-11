@@ -98,7 +98,6 @@ public class CorporationContactsLabelsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContactsLabelsResponse {\n");
-
         sb.append("    labelName: ").append(toIndentedString(labelName)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
         sb.append("}");

@@ -97,7 +97,6 @@ public class CharacterStatsIsk implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsIsk {\n");
-
         sb.append("    in: ").append(toIndentedString(in)).append("\n");
         sb.append("    out: ").append(toIndentedString(out)).append("\n");
         sb.append("}");

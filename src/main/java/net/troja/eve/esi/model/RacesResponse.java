@@ -145,7 +145,6 @@ public class RacesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class RacesResponse {\n");
-
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

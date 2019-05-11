@@ -58,13 +58,13 @@ public class CorporationShareholdersResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ShareholderTypeEnum fromValue(String text) {
+        public static ShareholderTypeEnum fromValue(String value) {
             for (ShareholderTypeEnum b : ShareholderTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ShareholderTypeEnum> {
@@ -76,7 +76,7 @@ public class CorporationShareholdersResponse implements Serializable {
             @Override
             public ShareholderTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ShareholderTypeEnum.fromValue(String.valueOf(value));
+                return ShareholderTypeEnum.fromValue(value);
             }
         }
     }
@@ -169,7 +169,6 @@ public class CorporationShareholdersResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationShareholdersResponse {\n");
-
         sb.append("    shareCount: ").append(toIndentedString(shareCount)).append("\n");
         sb.append("    shareholderType: ").append(toIndentedString(shareholderType)).append("\n");
         sb.append("    shareholderId: ").append(toIndentedString(shareholderId)).append("\n");

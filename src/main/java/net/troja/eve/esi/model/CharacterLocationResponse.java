@@ -122,7 +122,6 @@ public class CharacterLocationResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterLocationResponse {\n");
-
         sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");

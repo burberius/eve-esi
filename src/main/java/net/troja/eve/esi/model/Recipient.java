@@ -62,13 +62,13 @@ public class Recipient implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RecipientTypeEnum fromValue(String text) {
+        public static RecipientTypeEnum fromValue(String value) {
             for (RecipientTypeEnum b : RecipientTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RecipientTypeEnum> {
@@ -80,7 +80,7 @@ public class Recipient implements Serializable {
             @Override
             public RecipientTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RecipientTypeEnum.fromValue(String.valueOf(value));
+                return RecipientTypeEnum.fromValue(value);
             }
         }
     }
@@ -149,7 +149,6 @@ public class Recipient implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Recipient {\n");
-
         sb.append("    recipientId: ").append(toIndentedString(recipientId)).append("\n");
         sb.append("    recipientType: ").append(toIndentedString(recipientType)).append("\n");
         sb.append("}");

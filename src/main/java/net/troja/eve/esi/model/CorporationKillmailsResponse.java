@@ -98,7 +98,6 @@ public class CorporationKillmailsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationKillmailsResponse {\n");
-
         sb.append("    killmailHash: ").append(toIndentedString(killmailHash)).append("\n");
         sb.append("    killmailId: ").append(toIndentedString(killmailId)).append("\n");
         sb.append("}");

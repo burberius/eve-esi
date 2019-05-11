@@ -98,7 +98,6 @@ public class CorporationWalletsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletsResponse {\n");
-
         sb.append("    division: ").append(toIndentedString(division)).append("\n");
         sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
         sb.append("}");

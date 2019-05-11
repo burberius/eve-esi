@@ -99,7 +99,6 @@ public class CharacterOpportunitiesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOpportunitiesResponse {\n");
-
         sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
         sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
         sb.append("}");

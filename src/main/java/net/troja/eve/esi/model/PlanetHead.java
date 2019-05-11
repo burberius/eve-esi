@@ -121,7 +121,6 @@ public class PlanetHead implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetHead {\n");
-
         sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
         sb.append("    headId: ").append(toIndentedString(headId)).append("\n");
         sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");

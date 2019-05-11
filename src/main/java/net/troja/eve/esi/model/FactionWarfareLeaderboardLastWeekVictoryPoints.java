@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardLastWeekVictoryPoints implements Serializa
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardLastWeekVictoryPoints {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("}");

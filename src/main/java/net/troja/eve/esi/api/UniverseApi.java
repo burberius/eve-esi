@@ -54,22 +54,22 @@ import java.util.List;
 import java.util.Map;
 
 public class UniverseApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public UniverseApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public UniverseApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -86,14 +86,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseAncestriesCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseAncestriesCall(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -102,25 +102,25 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -128,21 +128,21 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseAncestriesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseAncestriesValidateBeforeCall(String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseAncestriesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseAncestriesCall(acceptLanguage, datasource, ifNoneMatch, language,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -168,9 +168,9 @@ public class UniverseApi {
      */
     public List<UniverseAncestriesResponse> getUniverseAncestries(String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<List<UniverseAncestriesResponse>> resp = getUniverseAncestriesWithHttpInfo(acceptLanguage,
+        ApiResponse<List<UniverseAncestriesResponse>> localVarResp = getUniverseAncestriesWithHttpInfo(acceptLanguage,
                 datasource, ifNoneMatch, language);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -195,11 +195,11 @@ public class UniverseApi {
      */
     public ApiResponse<List<UniverseAncestriesResponse>> getUniverseAncestriesWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, null);
+        okhttp3.Call localVarCall = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, null);
         Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -217,23 +217,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseAncestriesAsync(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback<List<UniverseAncestriesResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseAncestriesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback<List<UniverseAncestriesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseAncestriesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
         Type localVarReturnType = new TypeToken<List<UniverseAncestriesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -247,34 +246,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseAsteroidBeltsAsteroidBeltIdCall(Integer asteroidBeltId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseAsteroidBeltsAsteroidBeltIdCall(Integer asteroidBeltId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/asteroid_belts/{asteroid_belt_id}/".replaceAll("\\{" + "asteroid_belt_id"
-                + "\\}", apiClient.escapeString(asteroidBeltId.toString()));
+                + "\\}", localVarApiClient.escapeString(asteroidBeltId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -282,17 +281,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(Integer asteroidBeltId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(Integer asteroidBeltId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'asteroidBeltId' is set
         if (asteroidBeltId == null) {
@@ -300,9 +299,9 @@ public class UniverseApi {
                     "Missing the required parameter 'asteroidBeltId' when calling getUniverseAsteroidBeltsAsteroidBeltId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdCall(asteroidBeltId, datasource,
-                ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseAsteroidBeltsAsteroidBeltIdCall(asteroidBeltId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -325,9 +324,9 @@ public class UniverseApi {
      */
     public UniverseAsteroidBeltsResponse getUniverseAsteroidBeltsAsteroidBeltId(Integer asteroidBeltId,
             String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<UniverseAsteroidBeltsResponse> resp = getUniverseAsteroidBeltsAsteroidBeltIdWithHttpInfo(
+        ApiResponse<UniverseAsteroidBeltsResponse> localVarResp = getUniverseAsteroidBeltsAsteroidBeltIdWithHttpInfo(
                 asteroidBeltId, datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -349,11 +348,11 @@ public class UniverseApi {
      */
     public ApiResponse<UniverseAsteroidBeltsResponse> getUniverseAsteroidBeltsAsteroidBeltIdWithHttpInfo(
             Integer asteroidBeltId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
+        okhttp3.Call localVarCall = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
                 datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -368,23 +367,22 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseAsteroidBeltsAsteroidBeltIdAsync(Integer asteroidBeltId,
-            String datasource, String ifNoneMatch, final ApiCallback<UniverseAsteroidBeltsResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseAsteroidBeltsAsteroidBeltIdAsync(Integer asteroidBeltId, String datasource,
+            String ifNoneMatch, final ApiCallback<UniverseAsteroidBeltsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
-                datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseAsteroidBeltsAsteroidBeltIdValidateBeforeCall(asteroidBeltId,
+                datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<UniverseAsteroidBeltsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -401,14 +399,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseBloodlinesCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseBloodlinesCall(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -417,25 +415,25 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -443,21 +441,21 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseBloodlinesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseBloodlinesValidateBeforeCall(String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseBloodlinesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseBloodlinesCall(acceptLanguage, datasource, ifNoneMatch, language,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -483,9 +481,9 @@ public class UniverseApi {
      */
     public List<BloodlinesResponse> getUniverseBloodlines(String acceptLanguage, String datasource, String ifNoneMatch,
             String language) throws ApiException {
-        ApiResponse<List<BloodlinesResponse>> resp = getUniverseBloodlinesWithHttpInfo(acceptLanguage, datasource,
-                ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<List<BloodlinesResponse>> localVarResp = getUniverseBloodlinesWithHttpInfo(acceptLanguage,
+                datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -510,11 +508,11 @@ public class UniverseApi {
      */
     public ApiResponse<List<BloodlinesResponse>> getUniverseBloodlinesWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, null);
+        okhttp3.Call localVarCall = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, null);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -532,23 +530,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseBloodlinesAsync(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback<List<BloodlinesResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseBloodlinesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback<List<BloodlinesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseBloodlinesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
         Type localVarReturnType = new TypeToken<List<BloodlinesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -560,14 +557,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseCategoriesCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseCategoriesCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -576,17 +573,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -594,20 +591,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseCategoriesValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseCategoriesValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseCategoriesCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseCategoriesCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -627,8 +624,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseCategories(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseCategoriesWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseCategoriesWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -648,10 +645,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseCategoriesWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -664,21 +661,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseCategoriesAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseCategoriesAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseCategoriesValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -697,42 +694,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseCategoriesCategoryIdCall(Integer categoryId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseCategoriesCategoryIdCall(Integer categoryId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/categories/{category_id}/".replaceAll("\\{" + "category_id" + "\\}",
-                apiClient.escapeString(categoryId.toString()));
+                localVarApiClient.escapeString(categoryId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -740,18 +737,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseCategoriesCategoryIdValidateBeforeCall(Integer categoryId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getUniverseCategoriesCategoryIdValidateBeforeCall(Integer categoryId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'categoryId' is set
         if (categoryId == null) {
@@ -759,9 +755,9 @@ public class UniverseApi {
                     "Missing the required parameter 'categoryId' when calling getUniverseCategoriesCategoryId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdCall(categoryId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseCategoriesCategoryIdCall(categoryId, acceptLanguage, datasource,
+                ifNoneMatch, language, _callback);
+        return localVarCall;
 
     }
 
@@ -789,9 +785,9 @@ public class UniverseApi {
      */
     public CategoryResponse getUniverseCategoriesCategoryId(Integer categoryId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<CategoryResponse> resp = getUniverseCategoriesCategoryIdWithHttpInfo(categoryId, acceptLanguage,
-                datasource, ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<CategoryResponse> localVarResp = getUniverseCategoriesCategoryIdWithHttpInfo(categoryId,
+                acceptLanguage, datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -818,11 +814,11 @@ public class UniverseApi {
      */
     public ApiResponse<CategoryResponse> getUniverseCategoriesCategoryIdWithHttpInfo(Integer categoryId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
+        okhttp3.Call localVarCall = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
                 datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -842,23 +838,23 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseCategoriesCategoryIdAsync(Integer categoryId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback<CategoryResponse> callback)
+    public okhttp3.Call getUniverseCategoriesCategoryIdAsync(Integer categoryId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback<CategoryResponse> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
-                datasource, ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseCategoriesCategoryIdValidateBeforeCall(categoryId, acceptLanguage,
+                datasource, ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<CategoryResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -870,14 +866,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseConstellationsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseConstellationsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -886,17 +882,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -904,20 +900,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseConstellationsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseConstellationsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseConstellationsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseConstellationsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -937,8 +933,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseConstellations(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseConstellationsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseConstellationsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -958,10 +954,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseConstellationsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -974,21 +970,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseConstellationsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseConstellationsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseConstellationsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1007,43 +1003,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseConstellationsConstellationIdCall(Integer constellationId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseConstellationsConstellationIdCall(Integer constellationId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/constellations/{constellation_id}/".replaceAll("\\{" + "constellation_id"
-                + "\\}", apiClient.escapeString(constellationId.toString()));
+                + "\\}", localVarApiClient.escapeString(constellationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1051,18 +1046,18 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseConstellationsConstellationIdValidateBeforeCall(
-            Integer constellationId, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseConstellationsConstellationIdValidateBeforeCall(Integer constellationId,
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'constellationId' is set
         if (constellationId == null) {
@@ -1070,9 +1065,9 @@ public class UniverseApi {
                     "Missing the required parameter 'constellationId' when calling getUniverseConstellationsConstellationId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdCall(constellationId, acceptLanguage,
-                datasource, ifNoneMatch, language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseConstellationsConstellationIdCall(constellationId, acceptLanguage,
+                datasource, ifNoneMatch, language, _callback);
+        return localVarCall;
 
     }
 
@@ -1100,9 +1095,9 @@ public class UniverseApi {
      */
     public ConstellationResponse getUniverseConstellationsConstellationId(Integer constellationId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<ConstellationResponse> resp = getUniverseConstellationsConstellationIdWithHttpInfo(constellationId,
-                acceptLanguage, datasource, ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<ConstellationResponse> localVarResp = getUniverseConstellationsConstellationIdWithHttpInfo(
+                constellationId, acceptLanguage, datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -1130,11 +1125,11 @@ public class UniverseApi {
     public ApiResponse<ConstellationResponse> getUniverseConstellationsConstellationIdWithHttpInfo(
             Integer constellationId, String acceptLanguage, String datasource, String ifNoneMatch, String language)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
+        okhttp3.Call localVarCall = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
                 acceptLanguage, datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1154,23 +1149,23 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseConstellationsConstellationIdAsync(Integer constellationId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            final ApiCallback<ConstellationResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseConstellationsConstellationIdAsync(Integer constellationId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback<ConstellationResponse> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
-                acceptLanguage, datasource, ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseConstellationsConstellationIdValidateBeforeCall(constellationId,
+                acceptLanguage, datasource, ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<ConstellationResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1187,14 +1182,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseFactionsCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseFactionsCall(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1203,25 +1198,25 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1229,21 +1224,21 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseFactionsValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseFactionsValidateBeforeCall(String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseFactionsCall(acceptLanguage, datasource, ifNoneMatch, language,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseFactionsCall(acceptLanguage, datasource, ifNoneMatch, language,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1268,9 +1263,9 @@ public class UniverseApi {
      */
     public List<FactionsResponse> getUniverseFactions(String acceptLanguage, String datasource, String ifNoneMatch,
             String language) throws ApiException {
-        ApiResponse<List<FactionsResponse>> resp = getUniverseFactionsWithHttpInfo(acceptLanguage, datasource,
+        ApiResponse<List<FactionsResponse>> localVarResp = getUniverseFactionsWithHttpInfo(acceptLanguage, datasource,
                 ifNoneMatch, language);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1294,11 +1289,11 @@ public class UniverseApi {
      */
     public ApiResponse<List<FactionsResponse>> getUniverseFactionsWithHttpInfo(String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+        okhttp3.Call localVarCall = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
                 language, null);
         Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1316,23 +1311,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseFactionsAsync(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback<List<FactionsResponse>> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseFactionsAsync(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback<List<FactionsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, callback);
+        okhttp3.Call localVarCall = getUniverseFactionsValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
         Type localVarReturnType = new TypeToken<List<FactionsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1344,14 +1338,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseGraphicsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseGraphicsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1360,17 +1354,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1378,20 +1372,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseGraphicsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseGraphicsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseGraphicsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -1410,8 +1404,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseGraphics(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseGraphicsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseGraphicsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -1430,10 +1424,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseGraphicsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1446,21 +1440,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseGraphicsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseGraphicsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseGraphicsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1474,34 +1468,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseGraphicsGraphicIdCall(Integer graphicId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseGraphicsGraphicIdCall(Integer graphicId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/graphics/{graphic_id}/".replaceAll("\\{" + "graphic_id" + "\\}",
-                apiClient.escapeString(graphicId.toString()));
+                localVarApiClient.escapeString(graphicId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1509,17 +1503,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseGraphicsGraphicIdValidateBeforeCall(Integer graphicId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseGraphicsGraphicIdValidateBeforeCall(Integer graphicId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'graphicId' is set
         if (graphicId == null) {
@@ -1527,8 +1521,8 @@ public class UniverseApi {
                     "Missing the required parameter 'graphicId' when calling getUniverseGraphicsGraphicId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdCall(graphicId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseGraphicsGraphicIdCall(graphicId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -1551,8 +1545,9 @@ public class UniverseApi {
      */
     public GraphicResponse getUniverseGraphicsGraphicId(Integer graphicId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<GraphicResponse> resp = getUniverseGraphicsGraphicIdWithHttpInfo(graphicId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<GraphicResponse> localVarResp = getUniverseGraphicsGraphicIdWithHttpInfo(graphicId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -1574,11 +1569,11 @@ public class UniverseApi {
      */
     public ApiResponse<GraphicResponse> getUniverseGraphicsGraphicIdWithHttpInfo(Integer graphicId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource,
-                ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource, ifNoneMatch,
+                null);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1593,22 +1588,22 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseGraphicsGraphicIdAsync(Integer graphicId, String datasource,
-            String ifNoneMatch, final ApiCallback<GraphicResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseGraphicsGraphicIdAsync(Integer graphicId, String datasource, String ifNoneMatch,
+            final ApiCallback<GraphicResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseGraphicsGraphicIdValidateBeforeCall(graphicId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<GraphicResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1622,14 +1617,14 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseGroupsCall(String datasource, String ifNoneMatch, Integer page,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseGroupsCall(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -1638,21 +1633,21 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1660,20 +1655,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseGroupsValidateBeforeCall(String datasource, String ifNoneMatch,
-            Integer page, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseGroupsValidateBeforeCall(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGroupsCall(datasource, ifNoneMatch, page, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseGroupsCall(datasource, ifNoneMatch, page, _callback);
+        return localVarCall;
 
     }
 
@@ -1695,8 +1690,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseGroups(String datasource, String ifNoneMatch, Integer page) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseGroupsWithHttpInfo(datasource, ifNoneMatch, page);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseGroupsWithHttpInfo(datasource, ifNoneMatch, page);
+        return localVarResp.getData();
     }
 
     /**
@@ -1718,10 +1713,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseGroupsWithHttpInfo(String datasource, String ifNoneMatch, Integer page)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, null);
+        okhttp3.Call localVarCall = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1736,21 +1731,21 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseGroupsAsync(String datasource, String ifNoneMatch, Integer page,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseGroupsAsync(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, callback);
+        okhttp3.Call localVarCall = getUniverseGroupsValidateBeforeCall(datasource, ifNoneMatch, page, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1769,42 +1764,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseGroupsGroupIdCall(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseGroupsGroupIdCall(Integer groupId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/groups/{group_id}/".replaceAll("\\{" + "group_id" + "\\}",
-                apiClient.escapeString(groupId.toString()));
+                localVarApiClient.escapeString(groupId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1812,17 +1807,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseGroupsGroupIdValidateBeforeCall(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseGroupsGroupIdValidateBeforeCall(Integer groupId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'groupId' is set
         if (groupId == null) {
@@ -1830,9 +1825,9 @@ public class UniverseApi {
                     "Missing the required parameter 'groupId' when calling getUniverseGroupsGroupId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseGroupsGroupIdCall(groupId, acceptLanguage, datasource, ifNoneMatch,
-                language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseGroupsGroupIdCall(groupId, acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
+        return localVarCall;
 
     }
 
@@ -1860,9 +1855,9 @@ public class UniverseApi {
      */
     public GroupResponse getUniverseGroupsGroupId(Integer groupId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<GroupResponse> resp = getUniverseGroupsGroupIdWithHttpInfo(groupId, acceptLanguage, datasource,
-                ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<GroupResponse> localVarResp = getUniverseGroupsGroupIdWithHttpInfo(groupId, acceptLanguage,
+                datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -1889,11 +1884,11 @@ public class UniverseApi {
      */
     public ApiResponse<GroupResponse> getUniverseGroupsGroupIdWithHttpInfo(Integer groupId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
+        okhttp3.Call localVarCall = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
                 ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<GroupResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1913,23 +1908,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseGroupsGroupIdAsync(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback<GroupResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseGroupsGroupIdAsync(Integer groupId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback<GroupResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage, datasource,
+                ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<GroupResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1943,34 +1937,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseMoonsMoonIdCall(Integer moonId, String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseMoonsMoonIdCall(Integer moonId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/moons/{moon_id}/".replaceAll("\\{" + "moon_id" + "\\}",
-                apiClient.escapeString(moonId.toString()));
+                localVarApiClient.escapeString(moonId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1978,25 +1972,25 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseMoonsMoonIdValidateBeforeCall(Integer moonId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseMoonsMoonIdValidateBeforeCall(Integer moonId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'moonId' is set
         if (moonId == null) {
             throw new ApiException("Missing the required parameter 'moonId' when calling getUniverseMoonsMoonId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdCall(moonId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseMoonsMoonIdCall(moonId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -2019,8 +2013,8 @@ public class UniverseApi {
      */
     public MoonResponse getUniverseMoonsMoonId(Integer moonId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<MoonResponse> resp = getUniverseMoonsMoonIdWithHttpInfo(moonId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<MoonResponse> localVarResp = getUniverseMoonsMoonIdWithHttpInfo(moonId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -2042,10 +2036,10 @@ public class UniverseApi {
      */
     public ApiResponse<MoonResponse> getUniverseMoonsMoonIdWithHttpInfo(Integer moonId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2060,22 +2054,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseMoonsMoonIdAsync(Integer moonId, String datasource, String ifNoneMatch,
-            final ApiCallback<MoonResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseMoonsMoonIdAsync(Integer moonId, String datasource, String ifNoneMatch,
+            final ApiCallback<MoonResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getUniverseMoonsMoonIdValidateBeforeCall(moonId, datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<MoonResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2089,34 +2082,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniversePlanetsPlanetIdCall(Integer planetId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniversePlanetsPlanetIdCall(Integer planetId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/planets/{planet_id}/".replaceAll("\\{" + "planet_id" + "\\}",
-                apiClient.escapeString(planetId.toString()));
+                localVarApiClient.escapeString(planetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2124,17 +2117,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniversePlanetsPlanetIdValidateBeforeCall(Integer planetId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniversePlanetsPlanetIdValidateBeforeCall(Integer planetId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'planetId' is set
         if (planetId == null) {
@@ -2142,8 +2135,8 @@ public class UniverseApi {
                     "Missing the required parameter 'planetId' when calling getUniversePlanetsPlanetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdCall(planetId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniversePlanetsPlanetIdCall(planetId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -2166,8 +2159,9 @@ public class UniverseApi {
      */
     public PlanetResponse getUniversePlanetsPlanetId(Integer planetId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<PlanetResponse> resp = getUniversePlanetsPlanetIdWithHttpInfo(planetId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<PlanetResponse> localVarResp = getUniversePlanetsPlanetIdWithHttpInfo(planetId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -2189,11 +2183,11 @@ public class UniverseApi {
      */
     public ApiResponse<PlanetResponse> getUniversePlanetsPlanetIdWithHttpInfo(Integer planetId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
+        okhttp3.Call localVarCall = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
                 null);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2208,22 +2202,22 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniversePlanetsPlanetIdAsync(Integer planetId, String datasource,
-            String ifNoneMatch, final ApiCallback<PlanetResponse> callback) throws ApiException {
+    public okhttp3.Call getUniversePlanetsPlanetIdAsync(Integer planetId, String datasource, String ifNoneMatch,
+            final ApiCallback<PlanetResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getUniversePlanetsPlanetIdValidateBeforeCall(planetId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<PlanetResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2240,14 +2234,14 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseRacesCall(String acceptLanguage, String datasource, String ifNoneMatch,
-            String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseRacesCall(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2256,25 +2250,25 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2282,21 +2276,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseRacesValidateBeforeCall(String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseRacesValidateBeforeCall(String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRacesCall(acceptLanguage, datasource, ifNoneMatch, language,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseRacesCall(acceptLanguage, datasource, ifNoneMatch, language, _callback);
+        return localVarCall;
 
     }
 
@@ -2322,9 +2315,9 @@ public class UniverseApi {
      */
     public List<RacesResponse> getUniverseRaces(String acceptLanguage, String datasource, String ifNoneMatch,
             String language) throws ApiException {
-        ApiResponse<List<RacesResponse>> resp = getUniverseRacesWithHttpInfo(acceptLanguage, datasource, ifNoneMatch,
-                language);
-        return resp.getData();
+        ApiResponse<List<RacesResponse>> localVarResp = getUniverseRacesWithHttpInfo(acceptLanguage, datasource,
+                ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -2349,11 +2342,11 @@ public class UniverseApi {
      */
     public ApiResponse<List<RacesResponse>> getUniverseRacesWithHttpInfo(String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+        okhttp3.Call localVarCall = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
                 language, null);
         Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2371,22 +2364,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseRacesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
-            String language, final ApiCallback<List<RacesResponse>> callback) throws ApiException {
+    public okhttp3.Call getUniverseRacesAsync(String acceptLanguage, String datasource, String ifNoneMatch,
+            String language, final ApiCallback<List<RacesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
-                language, callback);
+        okhttp3.Call localVarCall = getUniverseRacesValidateBeforeCall(acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
         Type localVarReturnType = new TypeToken<List<RacesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2398,14 +2391,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseRegionsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseRegionsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -2414,17 +2407,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2432,20 +2425,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseRegionsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseRegionsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRegionsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseRegionsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -2464,8 +2457,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseRegions(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseRegionsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseRegionsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -2484,10 +2477,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseRegionsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2500,21 +2493,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseRegionsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseRegionsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseRegionsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2533,42 +2526,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseRegionsRegionIdCall(Integer regionId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseRegionsRegionIdCall(Integer regionId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/regions/{region_id}/".replaceAll("\\{" + "region_id" + "\\}",
-                apiClient.escapeString(regionId.toString()));
+                localVarApiClient.escapeString(regionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2576,18 +2569,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseRegionsRegionIdValidateBeforeCall(Integer regionId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getUniverseRegionsRegionIdValidateBeforeCall(Integer regionId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
@@ -2595,9 +2587,9 @@ public class UniverseApi {
                     "Missing the required parameter 'regionId' when calling getUniverseRegionsRegionId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseRegionsRegionIdCall(regionId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseRegionsRegionIdCall(regionId, acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
+        return localVarCall;
 
     }
 
@@ -2625,9 +2617,9 @@ public class UniverseApi {
      */
     public RegionResponse getUniverseRegionsRegionId(Integer regionId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<RegionResponse> resp = getUniverseRegionsRegionIdWithHttpInfo(regionId, acceptLanguage, datasource,
-                ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<RegionResponse> localVarResp = getUniverseRegionsRegionIdWithHttpInfo(regionId, acceptLanguage,
+                datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -2654,11 +2646,11 @@ public class UniverseApi {
      */
     public ApiResponse<RegionResponse> getUniverseRegionsRegionIdWithHttpInfo(Integer regionId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage,
-                datasource, ifNoneMatch, language, null);
+        okhttp3.Call localVarCall = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage, datasource,
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2678,23 +2670,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseRegionsRegionIdAsync(Integer regionId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback<RegionResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseRegionsRegionIdAsync(Integer regionId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback<RegionResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage,
-                datasource, ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseRegionsRegionIdValidateBeforeCall(regionId, acceptLanguage, datasource,
+                ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<RegionResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2708,34 +2699,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseStargatesStargateIdCall(Integer stargateId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseStargatesStargateIdCall(Integer stargateId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/stargates/{stargate_id}/".replaceAll("\\{" + "stargate_id" + "\\}",
-                apiClient.escapeString(stargateId.toString()));
+                localVarApiClient.escapeString(stargateId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2743,17 +2734,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseStargatesStargateIdValidateBeforeCall(Integer stargateId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseStargatesStargateIdValidateBeforeCall(Integer stargateId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'stargateId' is set
         if (stargateId == null) {
@@ -2761,9 +2752,8 @@ public class UniverseApi {
                     "Missing the required parameter 'stargateId' when calling getUniverseStargatesStargateId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStargatesStargateIdCall(stargateId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseStargatesStargateIdCall(stargateId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -2786,9 +2776,9 @@ public class UniverseApi {
      */
     public StargateResponse getUniverseStargatesStargateId(Integer stargateId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<StargateResponse> resp = getUniverseStargatesStargateIdWithHttpInfo(stargateId, datasource,
+        ApiResponse<StargateResponse> localVarResp = getUniverseStargatesStargateIdWithHttpInfo(stargateId, datasource,
                 ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2810,11 +2800,11 @@ public class UniverseApi {
      */
     public ApiResponse<StargateResponse> getUniverseStargatesStargateIdWithHttpInfo(Integer stargateId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
+        okhttp3.Call localVarCall = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StargateResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2829,22 +2819,22 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseStargatesStargateIdAsync(Integer stargateId, String datasource,
-            String ifNoneMatch, final ApiCallback<StargateResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseStargatesStargateIdAsync(Integer stargateId, String datasource, String ifNoneMatch,
+            final ApiCallback<StargateResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseStargatesStargateIdValidateBeforeCall(stargateId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<StargateResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2858,34 +2848,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseStarsStarIdCall(Integer starId, String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseStarsStarIdCall(Integer starId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/stars/{star_id}/".replaceAll("\\{" + "star_id" + "\\}",
-                apiClient.escapeString(starId.toString()));
+                localVarApiClient.escapeString(starId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2893,25 +2883,25 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseStarsStarIdValidateBeforeCall(Integer starId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseStarsStarIdValidateBeforeCall(Integer starId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'starId' is set
         if (starId == null) {
             throw new ApiException("Missing the required parameter 'starId' when calling getUniverseStarsStarId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStarsStarIdCall(starId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseStarsStarIdCall(starId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -2934,8 +2924,8 @@ public class UniverseApi {
      */
     public StarResponse getUniverseStarsStarId(Integer starId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<StarResponse> resp = getUniverseStarsStarIdWithHttpInfo(starId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<StarResponse> localVarResp = getUniverseStarsStarIdWithHttpInfo(starId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -2957,10 +2947,10 @@ public class UniverseApi {
      */
     public ApiResponse<StarResponse> getUniverseStarsStarIdWithHttpInfo(Integer starId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2975,22 +2965,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseStarsStarIdAsync(Integer starId, String datasource, String ifNoneMatch,
-            final ApiCallback<StarResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseStarsStarIdAsync(Integer starId, String datasource, String ifNoneMatch,
+            final ApiCallback<StarResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getUniverseStarsStarIdValidateBeforeCall(starId, datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<StarResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3004,34 +2993,34 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseStationsStationIdCall(Integer stationId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseStationsStationIdCall(Integer stationId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/universe/stations/{station_id}/".replaceAll("\\{" + "station_id" + "\\}",
-                apiClient.escapeString(stationId.toString()));
+                localVarApiClient.escapeString(stationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3039,17 +3028,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseStationsStationIdValidateBeforeCall(Integer stationId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseStationsStationIdValidateBeforeCall(Integer stationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'stationId' is set
         if (stationId == null) {
@@ -3057,8 +3046,8 @@ public class UniverseApi {
                     "Missing the required parameter 'stationId' when calling getUniverseStationsStationId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStationsStationIdCall(stationId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseStationsStationIdCall(stationId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3081,8 +3070,9 @@ public class UniverseApi {
      */
     public StationResponse getUniverseStationsStationId(Integer stationId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<StationResponse> resp = getUniverseStationsStationIdWithHttpInfo(stationId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<StationResponse> localVarResp = getUniverseStationsStationIdWithHttpInfo(stationId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3104,11 +3094,11 @@ public class UniverseApi {
      */
     public ApiResponse<StationResponse> getUniverseStationsStationIdWithHttpInfo(Integer stationId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource,
-                ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource, ifNoneMatch,
+                null);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3123,22 +3113,22 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseStationsStationIdAsync(Integer stationId, String datasource,
-            String ifNoneMatch, final ApiCallback<StationResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseStationsStationIdAsync(Integer stationId, String datasource, String ifNoneMatch,
+            final ApiCallback<StationResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseStationsStationIdValidateBeforeCall(stationId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<StationResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3153,14 +3143,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseStructuresCall(String datasource, String filter, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseStructuresCall(String datasource, String filter, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3169,21 +3159,21 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (filter != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("filter", filter));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3191,20 +3181,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseStructuresValidateBeforeCall(String datasource, String filter,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseStructuresValidateBeforeCall(String datasource, String filter, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStructuresCall(datasource, filter, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseStructuresCall(datasource, filter, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3227,8 +3217,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Long> getUniverseStructures(String datasource, String filter, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Long>> resp = getUniverseStructuresWithHttpInfo(datasource, filter, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Long>> localVarResp = getUniverseStructuresWithHttpInfo(datasource, filter, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3251,10 +3241,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Long>> getUniverseStructuresWithHttpInfo(String datasource, String filter,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3270,22 +3260,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseStructuresAsync(String datasource, String filter, String ifNoneMatch,
-            final ApiCallback<List<Long>> callback) throws ApiException {
+    public okhttp3.Call getUniverseStructuresAsync(String datasource, String filter, String ifNoneMatch,
+            final ApiCallback<List<Long>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getUniverseStructuresValidateBeforeCall(datasource, filter, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Long>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3301,38 +3290,38 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseStructuresStructureIdCall(Long structureId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseStructuresStructureIdCall(Long structureId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/universe/structures/{structure_id}/".replaceAll("\\{" + "structure_id" + "\\}",
-                apiClient.escapeString(structureId.toString()));
+                localVarApiClient.escapeString(structureId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3340,17 +3329,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseStructuresStructureIdValidateBeforeCall(Long structureId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseStructuresStructureIdValidateBeforeCall(Long structureId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'structureId' is set
         if (structureId == null) {
@@ -3358,9 +3347,9 @@ public class UniverseApi {
                     "Missing the required parameter 'structureId' when calling getUniverseStructuresStructureId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseStructuresStructureIdCall(structureId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseStructuresStructureIdCall(structureId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -3386,9 +3375,9 @@ public class UniverseApi {
      */
     public StructureResponse getUniverseStructuresStructureId(Long structureId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
-        ApiResponse<StructureResponse> resp = getUniverseStructuresStructureIdWithHttpInfo(structureId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<StructureResponse> localVarResp = getUniverseStructuresStructureIdWithHttpInfo(structureId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -3413,11 +3402,11 @@ public class UniverseApi {
      */
     public ApiResponse<StructureResponse> getUniverseStructuresStructureIdWithHttpInfo(Long structureId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
+        okhttp3.Call localVarCall = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<StructureResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3436,22 +3425,22 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseStructuresStructureIdAsync(Long structureId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<StructureResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseStructuresStructureIdAsync(Long structureId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<StructureResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getUniverseStructuresStructureIdValidateBeforeCall(structureId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<StructureResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3463,14 +3452,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemJumpsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemJumpsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3479,17 +3468,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3497,20 +3486,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseSystemJumpsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseSystemJumpsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseSystemJumpsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3532,8 +3521,9 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<SystemJumpsResponse> getUniverseSystemJumps(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<SystemJumpsResponse>> resp = getUniverseSystemJumpsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<SystemJumpsResponse>> localVarResp = getUniverseSystemJumpsWithHttpInfo(datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3555,10 +3545,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<SystemJumpsResponse>> getUniverseSystemJumpsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3573,21 +3563,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemJumpsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<SystemJumpsResponse>> callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemJumpsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<SystemJumpsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseSystemJumpsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<SystemJumpsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3599,14 +3589,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemKillsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemKillsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3615,17 +3605,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3633,20 +3623,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseSystemKillsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseSystemKillsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemKillsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseSystemKillsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3668,8 +3658,9 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<SystemKillsResponse> getUniverseSystemKills(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<SystemKillsResponse>> resp = getUniverseSystemKillsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<SystemKillsResponse>> localVarResp = getUniverseSystemKillsWithHttpInfo(datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3691,10 +3682,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<SystemKillsResponse>> getUniverseSystemKillsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3709,21 +3700,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemKillsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<SystemKillsResponse>> callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemKillsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<SystemKillsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseSystemKillsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<SystemKillsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3735,14 +3726,14 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3751,17 +3742,17 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3769,20 +3760,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseSystemsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseSystemsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseSystemsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3802,8 +3793,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseSystems(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseSystemsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseSystemsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3823,10 +3814,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseSystemsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3839,21 +3830,21 @@ public class UniverseApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseSystemsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3872,42 +3863,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemsSystemIdCall(Integer systemId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseSystemsSystemIdCall(Integer systemId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v4/universe/systems/{system_id}/".replaceAll("\\{" + "system_id" + "\\}",
-                apiClient.escapeString(systemId.toString()));
+                localVarApiClient.escapeString(systemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3915,18 +3906,17 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseSystemsSystemIdValidateBeforeCall(Integer systemId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getUniverseSystemsSystemIdValidateBeforeCall(Integer systemId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'systemId' is set
         if (systemId == null) {
@@ -3934,9 +3924,9 @@ public class UniverseApi {
                     "Missing the required parameter 'systemId' when calling getUniverseSystemsSystemId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseSystemsSystemIdCall(systemId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseSystemsSystemIdCall(systemId, acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
+        return localVarCall;
 
     }
 
@@ -3964,9 +3954,9 @@ public class UniverseApi {
      */
     public SystemResponse getUniverseSystemsSystemId(Integer systemId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<SystemResponse> resp = getUniverseSystemsSystemIdWithHttpInfo(systemId, acceptLanguage, datasource,
-                ifNoneMatch, language);
-        return resp.getData();
+        ApiResponse<SystemResponse> localVarResp = getUniverseSystemsSystemIdWithHttpInfo(systemId, acceptLanguage,
+                datasource, ifNoneMatch, language);
+        return localVarResp.getData();
     }
 
     /**
@@ -3993,11 +3983,11 @@ public class UniverseApi {
      */
     public ApiResponse<SystemResponse> getUniverseSystemsSystemIdWithHttpInfo(Integer systemId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage,
-                datasource, ifNoneMatch, language, null);
+        okhttp3.Call localVarCall = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage, datasource,
+                ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -4017,23 +4007,22 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseSystemsSystemIdAsync(Integer systemId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback<SystemResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseSystemsSystemIdAsync(Integer systemId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback<SystemResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage,
-                datasource, ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseSystemsSystemIdValidateBeforeCall(systemId, acceptLanguage, datasource,
+                ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<SystemResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -4047,14 +4036,14 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseTypesCall(String datasource, String ifNoneMatch, Integer page,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseTypesCall(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -4063,21 +4052,21 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -4085,20 +4074,20 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseTypesValidateBeforeCall(String datasource, String ifNoneMatch,
-            Integer page, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseTypesValidateBeforeCall(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseTypesCall(datasource, ifNoneMatch, page, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseTypesCall(datasource, ifNoneMatch, page, _callback);
+        return localVarCall;
 
     }
 
@@ -4119,8 +4108,8 @@ public class UniverseApi {
      *             deserialize the response body
      */
     public List<Integer> getUniverseTypes(String datasource, String ifNoneMatch, Integer page) throws ApiException {
-        ApiResponse<List<Integer>> resp = getUniverseTypesWithHttpInfo(datasource, ifNoneMatch, page);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getUniverseTypesWithHttpInfo(datasource, ifNoneMatch, page);
+        return localVarResp.getData();
     }
 
     /**
@@ -4141,10 +4130,10 @@ public class UniverseApi {
      */
     public ApiResponse<List<Integer>> getUniverseTypesWithHttpInfo(String datasource, String ifNoneMatch, Integer page)
             throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, null);
+        okhttp3.Call localVarCall = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -4159,21 +4148,21 @@ public class UniverseApi {
      *            matches the current ETag (optional)
      * @param page
      *            Which page of results to return (optional, default to 1)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseTypesAsync(String datasource, String ifNoneMatch, Integer page,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getUniverseTypesAsync(String datasource, String ifNoneMatch, Integer page,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, callback);
+        okhttp3.Call localVarCall = getUniverseTypesValidateBeforeCall(datasource, ifNoneMatch, page, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -4192,42 +4181,42 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseTypesTypeIdCall(Integer typeId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseTypesTypeIdCall(Integer typeId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/universe/types/{type_id}/".replaceAll("\\{" + "type_id" + "\\}",
-                apiClient.escapeString(typeId.toString()));
+                localVarApiClient.escapeString(typeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -4235,26 +4224,26 @@ public class UniverseApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseTypesTypeIdValidateBeforeCall(Integer typeId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseTypesTypeIdValidateBeforeCall(Integer typeId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'typeId' is set
         if (typeId == null) {
             throw new ApiException("Missing the required parameter 'typeId' when calling getUniverseTypesTypeId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseTypesTypeIdCall(typeId, acceptLanguage, datasource, ifNoneMatch,
-                language, callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseTypesTypeIdCall(typeId, acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
+        return localVarCall;
 
     }
 
@@ -4282,9 +4271,9 @@ public class UniverseApi {
      */
     public TypeResponse getUniverseTypesTypeId(Integer typeId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<TypeResponse> resp = getUniverseTypesTypeIdWithHttpInfo(typeId, acceptLanguage, datasource,
+        ApiResponse<TypeResponse> localVarResp = getUniverseTypesTypeIdWithHttpInfo(typeId, acceptLanguage, datasource,
                 ifNoneMatch, language);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -4311,11 +4300,11 @@ public class UniverseApi {
      */
     public ApiResponse<TypeResponse> getUniverseTypesTypeIdWithHttpInfo(Integer typeId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
+        okhttp3.Call localVarCall = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
                 ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<TypeResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -4335,29 +4324,28 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseTypesTypeIdAsync(Integer typeId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback<TypeResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getUniverseTypesTypeIdAsync(Integer typeId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback<TypeResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getUniverseTypesTypeIdValidateBeforeCall(typeId, acceptLanguage, datasource,
+                ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<TypeResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
      * Build call for postUniverseIds
      * 
-     * @param requestBody
+     * @param names
      *            The names to resolve (required)
      * @param acceptLanguage
      *            Language to use in the response (optional, default to en-us)
@@ -4367,15 +4355,15 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUniverseIdsCall(List<String> requestBody, String acceptLanguage,
-            String datasource, String language, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postUniverseIdsCall(List<String> names, String acceptLanguage, String datasource,
+            String language, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = names;
 
         // create path and map variables
         String localVarPath = "/v1/universe/ids/";
@@ -4383,45 +4371,45 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUniverseIdsValidateBeforeCall(List<String> requestBody, String acceptLanguage,
-            String datasource, String language, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUniverseIdsValidateBeforeCall(List<String> names, String acceptLanguage,
+            String datasource, String language, final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling postUniverseIds(Async)");
+        // verify the required parameter 'names' is set
+        if (names == null) {
+            throw new ApiException("Missing the required parameter 'names' when calling postUniverseIds(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUniverseIdsCall(requestBody, acceptLanguage, datasource, language, callback);
-        return call;
+        okhttp3.Call localVarCall = postUniverseIdsCall(names, acceptLanguage, datasource, language, _callback);
+        return localVarCall;
 
     }
 
@@ -4432,7 +4420,7 @@ public class UniverseApi {
      * matches will be returned. All names searched for are cached for 12 hours
      * ---
      * 
-     * @param requestBody
+     * @param names
      *            The names to resolve (required)
      * @param acceptLanguage
      *            Language to use in the response (optional, default to en-us)
@@ -4447,11 +4435,11 @@ public class UniverseApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public UniverseIdsResponse postUniverseIds(List<String> requestBody, String acceptLanguage, String datasource,
+    public UniverseIdsResponse postUniverseIds(List<String> names, String acceptLanguage, String datasource,
             String language) throws ApiException {
-        ApiResponse<UniverseIdsResponse> resp = postUniverseIdsWithHttpInfo(requestBody, acceptLanguage, datasource,
+        ApiResponse<UniverseIdsResponse> localVarResp = postUniverseIdsWithHttpInfo(names, acceptLanguage, datasource,
                 language);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -4461,7 +4449,7 @@ public class UniverseApi {
      * matches will be returned. All names searched for are cached for 12 hours
      * ---
      * 
-     * @param requestBody
+     * @param names
      *            The names to resolve (required)
      * @param acceptLanguage
      *            Language to use in the response (optional, default to en-us)
@@ -4476,13 +4464,12 @@ public class UniverseApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<UniverseIdsResponse> postUniverseIdsWithHttpInfo(List<String> requestBody,
-            String acceptLanguage, String datasource, String language) throws ApiException {
-        com.squareup.okhttp.Call call = postUniverseIdsValidateBeforeCall(requestBody, acceptLanguage, datasource,
-                language, null);
+    public ApiResponse<UniverseIdsResponse> postUniverseIdsWithHttpInfo(List<String> names, String acceptLanguage,
+            String datasource, String language) throws ApiException {
+        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(names, acceptLanguage, datasource, language, null);
         Type localVarReturnType = new TypeToken<UniverseIdsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -4492,7 +4479,7 @@ public class UniverseApi {
      * Only exact matches will be returned. All names searched for are cached
      * for 12 hours ---
      * 
-     * @param requestBody
+     * @param names
      *            The names to resolve (required)
      * @param acceptLanguage
      *            Language to use in the response (optional, default to en-us)
@@ -4502,41 +4489,41 @@ public class UniverseApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUniverseIdsAsync(List<String> requestBody, String acceptLanguage,
-            String datasource, String language, final ApiCallback<UniverseIdsResponse> callback) throws ApiException {
+    public okhttp3.Call postUniverseIdsAsync(List<String> names, String acceptLanguage, String datasource,
+            String language, final ApiCallback<UniverseIdsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUniverseIdsValidateBeforeCall(requestBody, acceptLanguage, datasource,
-                language, callback);
+        okhttp3.Call localVarCall = postUniverseIdsValidateBeforeCall(names, acceptLanguage, datasource, language,
+                _callback);
         Type localVarReturnType = new TypeToken<UniverseIdsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
      * Build call for postUniverseNames
      * 
-     * @param requestBody
+     * @param ids
      *            The ids to resolve (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUniverseNamesCall(List<Integer> requestBody, String datasource,
-            final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = requestBody;
+    public okhttp3.Call postUniverseNamesCall(List<Integer> ids, String datasource, final ApiCallback _callback)
+            throws ApiException {
+        Object localVarPostBody = ids;
 
         // create path and map variables
         String localVarPath = "/v3/universe/names/";
@@ -4544,37 +4531,37 @@ public class UniverseApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUniverseNamesValidateBeforeCall(List<Integer> requestBody, String datasource,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUniverseNamesValidateBeforeCall(List<Integer> ids, String datasource,
+            final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'requestBody' is set
-        if (requestBody == null) {
-            throw new ApiException("Missing the required parameter 'requestBody' when calling postUniverseNames(Async)");
+        // verify the required parameter 'ids' is set
+        if (ids == null) {
+            throw new ApiException("Missing the required parameter 'ids' when calling postUniverseNames(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUniverseNamesCall(requestBody, datasource, callback);
-        return call;
+        okhttp3.Call localVarCall = postUniverseNamesCall(ids, datasource, _callback);
+        return localVarCall;
 
     }
 
@@ -4584,7 +4571,7 @@ public class UniverseApi {
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
      * Regions, Types, Factions ---
      * 
-     * @param requestBody
+     * @param ids
      *            The ids to resolve (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -4594,10 +4581,9 @@ public class UniverseApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public List<UniverseNamesResponse> postUniverseNames(List<Integer> requestBody, String datasource)
-            throws ApiException {
-        ApiResponse<List<UniverseNamesResponse>> resp = postUniverseNamesWithHttpInfo(requestBody, datasource);
-        return resp.getData();
+    public List<UniverseNamesResponse> postUniverseNames(List<Integer> ids, String datasource) throws ApiException {
+        ApiResponse<List<UniverseNamesResponse>> localVarResp = postUniverseNamesWithHttpInfo(ids, datasource);
+        return localVarResp.getData();
     }
 
     /**
@@ -4606,7 +4592,7 @@ public class UniverseApi {
      * Corporations, Alliances, Stations, Solar Systems, Constellations,
      * Regions, Types, Factions ---
      * 
-     * @param requestBody
+     * @param ids
      *            The ids to resolve (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
@@ -4616,12 +4602,12 @@ public class UniverseApi {
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<List<UniverseNamesResponse>> postUniverseNamesWithHttpInfo(List<Integer> requestBody,
-            String datasource) throws ApiException {
-        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, null);
+    public ApiResponse<List<UniverseNamesResponse>> postUniverseNamesWithHttpInfo(List<Integer> ids, String datasource)
+            throws ApiException {
+        okhttp3.Call localVarCall = postUniverseNamesValidateBeforeCall(ids, datasource, null);
         Type localVarReturnType = new TypeToken<List<UniverseNamesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -4630,25 +4616,25 @@ public class UniverseApi {
      * Characters, Corporations, Alliances, Stations, Solar Systems,
      * Constellations, Regions, Types, Factions ---
      * 
-     * @param requestBody
+     * @param ids
      *            The ids to resolve (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUniverseNamesAsync(List<Integer> requestBody, String datasource,
-            final ApiCallback<List<UniverseNamesResponse>> callback) throws ApiException {
+    public okhttp3.Call postUniverseNamesAsync(List<Integer> ids, String datasource,
+            final ApiCallback<List<UniverseNamesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUniverseNamesValidateBeforeCall(requestBody, datasource, callback);
+        okhttp3.Call localVarCall = postUniverseNamesValidateBeforeCall(ids, datasource, _callback);
         Type localVarReturnType = new TypeToken<List<UniverseNamesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

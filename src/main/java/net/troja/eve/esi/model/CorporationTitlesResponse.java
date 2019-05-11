@@ -152,13 +152,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtOtherEnum fromValue(String text) {
+        public static RolesAtOtherEnum fromValue(String value) {
             for (RolesAtOtherEnum b : RolesAtOtherEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtOtherEnum> {
@@ -170,14 +170,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public RolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtOtherEnum.fromValue(String.valueOf(value));
+                return RolesAtOtherEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<RolesAtOtherEnum> rolesAtOther = null;
+    private List<RolesAtOtherEnum> rolesAtOther = new ArrayList<>();
 
     /**
      * roles_at_base string
@@ -299,13 +299,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtBaseEnum fromValue(String text) {
+        public static RolesAtBaseEnum fromValue(String value) {
             for (RolesAtBaseEnum b : RolesAtBaseEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtBaseEnum> {
@@ -317,14 +317,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public RolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtBaseEnum.fromValue(String.valueOf(value));
+                return RolesAtBaseEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<RolesAtBaseEnum> rolesAtBase = null;
+    private List<RolesAtBaseEnum> rolesAtBase = new ArrayList<>();
 
     /**
      * grantable_roles_at_base string
@@ -446,13 +446,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static GrantableRolesAtBaseEnum fromValue(String text) {
+        public static GrantableRolesAtBaseEnum fromValue(String value) {
             for (GrantableRolesAtBaseEnum b : GrantableRolesAtBaseEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtBaseEnum> {
@@ -465,14 +465,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public GrantableRolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return GrantableRolesAtBaseEnum.fromValue(String.valueOf(value));
+                return GrantableRolesAtBaseEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE = "grantable_roles_at_base";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE)
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = null;
+    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = new ArrayList<>();
 
     /**
      * role string
@@ -594,13 +594,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesEnum fromValue(String text) {
+        public static RolesEnum fromValue(String value) {
             for (RolesEnum b : RolesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesEnum> {
@@ -612,14 +612,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public RolesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesEnum.fromValue(String.valueOf(value));
+                return RolesEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<RolesEnum> roles = null;
+    private List<RolesEnum> roles = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -745,13 +745,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RolesAtHqEnum fromValue(String text) {
+        public static RolesAtHqEnum fromValue(String value) {
             for (RolesAtHqEnum b : RolesAtHqEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RolesAtHqEnum> {
@@ -763,14 +763,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public RolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RolesAtHqEnum.fromValue(String.valueOf(value));
+                return RolesAtHqEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<RolesAtHqEnum> rolesAtHq = null;
+    private List<RolesAtHqEnum> rolesAtHq = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TITLE_ID = "title_id";
     @SerializedName(SERIALIZED_NAME_TITLE_ID)
@@ -896,13 +896,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static GrantableRolesAtHqEnum fromValue(String text) {
+        public static GrantableRolesAtHqEnum fromValue(String value) {
             for (GrantableRolesAtHqEnum b : GrantableRolesAtHqEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtHqEnum> {
@@ -914,14 +914,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public GrantableRolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return GrantableRolesAtHqEnum.fromValue(String.valueOf(value));
+                return GrantableRolesAtHqEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ = "grantable_roles_at_hq";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ)
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = null;
+    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = new ArrayList<>();
 
     /**
      * grantable_role string
@@ -1043,13 +1043,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static GrantableRolesEnum fromValue(String text) {
+        public static GrantableRolesEnum fromValue(String value) {
             for (GrantableRolesEnum b : GrantableRolesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesEnum> {
@@ -1061,14 +1061,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public GrantableRolesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return GrantableRolesEnum.fromValue(String.valueOf(value));
+                return GrantableRolesEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES = "grantable_roles";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES)
-    private List<GrantableRolesEnum> grantableRoles = null;
+    private List<GrantableRolesEnum> grantableRoles = new ArrayList<>();
 
     /**
      * grantable_roles_at_other string
@@ -1190,13 +1190,13 @@ public class CorporationTitlesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static GrantableRolesAtOtherEnum fromValue(String text) {
+        public static GrantableRolesAtOtherEnum fromValue(String value) {
             for (GrantableRolesAtOtherEnum b : GrantableRolesAtOtherEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtOtherEnum> {
@@ -1209,14 +1209,14 @@ public class CorporationTitlesResponse implements Serializable {
             @Override
             public GrantableRolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return GrantableRolesAtOtherEnum.fromValue(String.valueOf(value));
+                return GrantableRolesAtOtherEnum.fromValue(value);
             }
         }
     }
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER = "grantable_roles_at_other";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER)
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = null;
+    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = new ArrayList<>();
 
     public CorporationTitlesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
@@ -1503,7 +1503,6 @@ public class CorporationTitlesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationTitlesResponse {\n");
-
         sb.append("    rolesAtOther: ").append(toIndentedString(rolesAtOther)).append("\n");
         sb.append("    rolesAtBase: ").append(toIndentedString(rolesAtBase)).append("\n");
         sb.append("    grantableRolesAtBase: ").append(toIndentedString(grantableRolesAtBase)).append("\n");

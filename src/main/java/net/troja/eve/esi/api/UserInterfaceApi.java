@@ -33,22 +33,22 @@ import java.util.List;
 import java.util.Map;
 
 public class UserInterfaceApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public UserInterfaceApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public UserInterfaceApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -68,14 +68,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUiAutopilotWaypointCall(Boolean addToBeginning, Boolean clearOtherWaypoints,
-            Long destinationId, String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postUiAutopilotWaypointCall(Boolean addToBeginning, Boolean clearOtherWaypoints,
+            Long destinationId, String datasource, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -84,23 +84,23 @@ public class UserInterfaceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (addToBeginning != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("add_to_beginning", addToBeginning));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("add_to_beginning", addToBeginning));
         }
 
         if (clearOtherWaypoints != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("clear_other_waypoints", clearOtherWaypoints));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clear_other_waypoints", clearOtherWaypoints));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (destinationId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("destination_id", destinationId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("destination_id", destinationId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -108,7 +108,7 @@ public class UserInterfaceApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -116,18 +116,17 @@ public class UserInterfaceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUiAutopilotWaypointValidateBeforeCall(Boolean addToBeginning,
-            Boolean clearOtherWaypoints, Long destinationId, String datasource, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call postUiAutopilotWaypointValidateBeforeCall(Boolean addToBeginning, Boolean clearOtherWaypoints,
+            Long destinationId, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'addToBeginning' is set
         if (addToBeginning == null) {
@@ -147,9 +146,9 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'destinationId' when calling postUiAutopilotWaypoint(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiAutopilotWaypointCall(addToBeginning, clearOtherWaypoints, destinationId,
-                datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiAutopilotWaypointCall(addToBeginning, clearOtherWaypoints, destinationId,
+                datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -205,9 +204,9 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiAutopilotWaypointWithHttpInfo(Boolean addToBeginning, Boolean clearOtherWaypoints,
             Long destinationId, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
+        okhttp3.Call localVarCall = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
                 destinationId, datasource, token, null);
-        return apiClient.execute(call);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -228,20 +227,20 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUiAutopilotWaypointAsync(Boolean addToBeginning, Boolean clearOtherWaypoints,
-            Long destinationId, String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postUiAutopilotWaypointAsync(Boolean addToBeginning, Boolean clearOtherWaypoints,
+            Long destinationId, String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
-                destinationId, datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiAutopilotWaypointValidateBeforeCall(addToBeginning, clearOtherWaypoints,
+                destinationId, datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -254,14 +253,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowContractCall(Integer contractId, String datasource, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowContractCall(Integer contractId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -270,15 +269,15 @@ public class UserInterfaceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (contractId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("contract_id", contractId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("contract_id", contractId));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -286,7 +285,7 @@ public class UserInterfaceApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -294,17 +293,17 @@ public class UserInterfaceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUiOpenwindowContractValidateBeforeCall(Integer contractId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUiOpenwindowContractValidateBeforeCall(Integer contractId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'contractId' is set
         if (contractId == null) {
@@ -312,8 +311,8 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'contractId' when calling postUiOpenwindowContract(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowContractCall(contractId, datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowContractCall(contractId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -354,8 +353,8 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowContractWithHttpInfo(Integer contractId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -369,20 +368,19 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowContractAsync(Integer contractId, String datasource, String token,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowContractAsync(Integer contractId, String datasource, String token,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token,
-                callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowContractValidateBeforeCall(contractId, datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -395,14 +393,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowInformationCall(Integer targetId, String datasource, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowInformationCall(Integer targetId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -411,15 +409,15 @@ public class UserInterfaceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (targetId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("target_id", targetId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target_id", targetId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -427,7 +425,7 @@ public class UserInterfaceApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -435,17 +433,17 @@ public class UserInterfaceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUiOpenwindowInformationValidateBeforeCall(Integer targetId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUiOpenwindowInformationValidateBeforeCall(Integer targetId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'targetId' is set
         if (targetId == null) {
@@ -453,8 +451,8 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'targetId' when calling postUiOpenwindowInformation(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowInformationCall(targetId, datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowInformationCall(targetId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -497,8 +495,8 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowInformationWithHttpInfo(Integer targetId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -513,20 +511,20 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowInformationAsync(Integer targetId, String datasource, String token,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowInformationAsync(Integer targetId, String datasource, String token,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token,
-                callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowInformationValidateBeforeCall(targetId, datasource, token,
+                _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -539,14 +537,14 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowMarketdetailsCall(Integer typeId, String datasource, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowMarketdetailsCall(Integer typeId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -555,15 +553,15 @@ public class UserInterfaceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         if (typeId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("type_id", typeId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -571,7 +569,7 @@ public class UserInterfaceApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -579,17 +577,17 @@ public class UserInterfaceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUiOpenwindowMarketdetailsValidateBeforeCall(Integer typeId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUiOpenwindowMarketdetailsValidateBeforeCall(Integer typeId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'typeId' is set
         if (typeId == null) {
@@ -597,8 +595,8 @@ public class UserInterfaceApi {
                     "Missing the required parameter 'typeId' when calling postUiOpenwindowMarketdetails(Async)");
         }
 
-        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsCall(typeId, datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowMarketdetailsCall(typeId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -639,8 +637,8 @@ public class UserInterfaceApi {
      */
     public ApiResponse<Void> postUiOpenwindowMarketdetailsWithHttpInfo(Integer typeId, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -654,41 +652,41 @@ public class UserInterfaceApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowMarketdetailsAsync(Integer typeId, String datasource, String token,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowMarketdetailsAsync(Integer typeId, String datasource, String token,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token,
-                callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowMarketdetailsValidateBeforeCall(typeId, datasource, token,
+                _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
      * Build call for postUiOpenwindowNewmail
      * 
+     * @param newMail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param uiNewMail
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowNewmailCall(String datasource, String token, UiNewMail uiNewMail,
-            final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = uiNewMail;
+    public okhttp3.Call postUiOpenwindowNewmailCall(UiNewMail newMail, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newMail;
 
         // create path and map variables
         String localVarPath = "/v1/ui/openwindow/newmail/";
@@ -696,11 +694,11 @@ public class UserInterfaceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -708,26 +706,32 @@ public class UserInterfaceApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postUiOpenwindowNewmailValidateBeforeCall(String datasource, String token,
-            UiNewMail uiNewMail, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postUiOpenwindowNewmailValidateBeforeCall(UiNewMail newMail, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowNewmailCall(datasource, token, uiNewMail, callback);
-        return call;
+        // verify the required parameter 'newMail' is set
+        if (newMail == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'newMail' when calling postUiOpenwindowNewmail(Async)");
+        }
+
+        okhttp3.Call localVarCall = postUiOpenwindowNewmailCall(newMail, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -735,41 +739,41 @@ public class UserInterfaceApi {
      * Open New Mail Window Open the New Mail window, according to settings from
      * the request if applicable --- SSO Scope: esi-ui.open_window.v1
      * 
+     * @param newMail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param uiNewMail
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void postUiOpenwindowNewmail(String datasource, String token, UiNewMail uiNewMail) throws ApiException {
-        postUiOpenwindowNewmailWithHttpInfo(datasource, token, uiNewMail);
+    public void postUiOpenwindowNewmail(UiNewMail newMail, String datasource, String token) throws ApiException {
+        postUiOpenwindowNewmailWithHttpInfo(newMail, datasource, token);
     }
 
     /**
      * Open New Mail Window Open the New Mail window, according to settings from
      * the request if applicable --- SSO Scope: esi-ui.open_window.v1
      * 
+     * @param newMail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param uiNewMail
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Void> postUiOpenwindowNewmailWithHttpInfo(String datasource, String token, UiNewMail uiNewMail)
+    public ApiResponse<Void> postUiOpenwindowNewmailWithHttpInfo(UiNewMail newMail, String datasource, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = postUiOpenwindowNewmailValidateBeforeCall(datasource, token, uiNewMail, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(newMail, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -777,26 +781,25 @@ public class UserInterfaceApi {
      * to settings from the request if applicable --- SSO Scope:
      * esi-ui.open_window.v1
      * 
+     * @param newMail
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param uiNewMail
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postUiOpenwindowNewmailAsync(String datasource, String token, UiNewMail uiNewMail,
-            final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postUiOpenwindowNewmailAsync(UiNewMail newMail, String datasource, String token,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postUiOpenwindowNewmailValidateBeforeCall(datasource, token, uiNewMail,
-                callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postUiOpenwindowNewmailValidateBeforeCall(newMail, datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 }

@@ -98,7 +98,6 @@ public class TypeDogmaEffect implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class TypeDogmaEffect {\n");
-
         sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
         sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
         sb.append("}");

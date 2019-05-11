@@ -291,7 +291,6 @@ public class DogmaAttributeResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaAttributeResponse {\n");
-
         sb.append("    stackable: ").append(toIndentedString(stackable)).append("\n");
         sb.append("    attributeId: ").append(toIndentedString(attributeId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

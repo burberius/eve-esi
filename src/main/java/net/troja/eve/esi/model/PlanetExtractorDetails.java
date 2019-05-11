@@ -178,7 +178,6 @@ public class PlanetExtractorDetails implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetExtractorDetails {\n");
-
         sb.append("    headRadius: ").append(toIndentedString(headRadius)).append("\n");
         sb.append("    qtyPerCycle: ").append(toIndentedString(qtyPerCycle)).append("\n");
         sb.append("    cycleTime: ").append(toIndentedString(cycleTime)).append("\n");

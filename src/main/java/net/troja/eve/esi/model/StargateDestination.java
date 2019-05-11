@@ -98,7 +98,6 @@ public class StargateDestination implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StargateDestination {\n");
-
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    stargateId: ").append(toIndentedString(stargateId)).append("\n");
         sb.append("}");

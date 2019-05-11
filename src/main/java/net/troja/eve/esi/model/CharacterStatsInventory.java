@@ -98,7 +98,6 @@ public class CharacterStatsInventory implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsInventory {\n");
-
         sb.append("    trashItemQuantity: ").append(toIndentedString(trashItemQuantity)).append("\n");
         sb.append("    abandonLootQuantity: ").append(toIndentedString(abandonLootQuantity)).append("\n");
         sb.append("}");

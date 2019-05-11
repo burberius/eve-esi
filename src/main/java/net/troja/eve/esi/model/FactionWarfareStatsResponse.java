@@ -172,7 +172,6 @@ public class FactionWarfareStatsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareStatsResponse {\n");
-
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    systemsControlled: ").append(toIndentedString(systemsControlled)).append("\n");
         sb.append("    pilots: ").append(toIndentedString(pilots)).append("\n");

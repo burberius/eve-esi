@@ -153,7 +153,6 @@ public class RegionResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class RegionResponse {\n");
-
         sb.append("    constellations: ").append(toIndentedString(constellations)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");

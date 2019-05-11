@@ -64,7 +64,7 @@ public class KillmailVictim implements Serializable {
 
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private List<KillmailItem> items = null;
+    private List<KillmailItem> items = new ArrayList<>();
 
     public KillmailVictim shipTypeId(Integer shipTypeId) {
         this.shipTypeId = shipTypeId;
@@ -255,7 +255,6 @@ public class KillmailVictim implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailVictim {\n");
-
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");

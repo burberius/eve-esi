@@ -35,22 +35,22 @@ import java.util.List;
 import java.util.Map;
 
 public class SovereigntyApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public SovereigntyApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public SovereigntyApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -62,14 +62,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSovereigntyCampaignsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getSovereigntyCampaignsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -78,17 +78,17 @@ public class SovereigntyApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -96,20 +96,20 @@ public class SovereigntyApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSovereigntyCampaignsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getSovereigntyCampaignsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getSovereigntyCampaignsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -130,9 +130,9 @@ public class SovereigntyApi {
      */
     public List<SovereigntyCampaignsResponse> getSovereigntyCampaigns(String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<List<SovereigntyCampaignsResponse>> resp = getSovereigntyCampaignsWithHttpInfo(datasource,
+        ApiResponse<List<SovereigntyCampaignsResponse>> localVarResp = getSovereigntyCampaignsWithHttpInfo(datasource,
                 ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -152,10 +152,10 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyCampaignsResponse>> getSovereigntyCampaignsWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -168,21 +168,21 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getSovereigntyCampaignsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<SovereigntyCampaignsResponse>> callback) throws ApiException {
+    public okhttp3.Call getSovereigntyCampaignsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<SovereigntyCampaignsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getSovereigntyCampaignsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyCampaignsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -194,14 +194,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSovereigntyMapCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getSovereigntyMapCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -210,17 +210,17 @@ public class SovereigntyApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -228,20 +228,20 @@ public class SovereigntyApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSovereigntyMapValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getSovereigntyMapValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyMapCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getSovereigntyMapCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -261,8 +261,8 @@ public class SovereigntyApi {
      *             deserialize the response body
      */
     public List<SovereigntyMapResponse> getSovereigntyMap(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<SovereigntyMapResponse>> resp = getSovereigntyMapWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<SovereigntyMapResponse>> localVarResp = getSovereigntyMapWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -282,10 +282,10 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyMapResponse>> getSovereigntyMapWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -299,21 +299,21 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getSovereigntyMapAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<SovereigntyMapResponse>> callback) throws ApiException {
+    public okhttp3.Call getSovereigntyMapAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<SovereigntyMapResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getSovereigntyMapValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyMapResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -325,14 +325,14 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSovereigntyStructuresCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getSovereigntyStructuresCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -341,17 +341,17 @@ public class SovereigntyApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -359,20 +359,20 @@ public class SovereigntyApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSovereigntyStructuresValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getSovereigntyStructuresValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyStructuresCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getSovereigntyStructuresCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -393,9 +393,9 @@ public class SovereigntyApi {
      */
     public List<SovereigntyStructuresResponse> getSovereigntyStructures(String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<List<SovereigntyStructuresResponse>> resp = getSovereigntyStructuresWithHttpInfo(datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<SovereigntyStructuresResponse>> localVarResp = getSovereigntyStructuresWithHttpInfo(
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -415,10 +415,10 @@ public class SovereigntyApi {
      */
     public ApiResponse<List<SovereigntyStructuresResponse>> getSovereigntyStructuresWithHttpInfo(String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -431,20 +431,20 @@ public class SovereigntyApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getSovereigntyStructuresAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<SovereigntyStructuresResponse>> callback) throws ApiException {
+    public okhttp3.Call getSovereigntyStructuresAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<SovereigntyStructuresResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getSovereigntyStructuresValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<SovereigntyStructuresResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

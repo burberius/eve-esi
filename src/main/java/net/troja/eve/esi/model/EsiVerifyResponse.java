@@ -220,7 +220,6 @@ public class EsiVerifyResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class EsiVerifyResponse {\n");
-
         sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
         sb.append("    intellectualProperty: ").append(toIndentedString(intellectualProperty)).append("\n");
         sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");

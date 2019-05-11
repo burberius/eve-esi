@@ -40,7 +40,7 @@ public class SystemResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STARGATES = "stargates";
     @SerializedName(SERIALIZED_NAME_STARGATES)
-    private List<Integer> stargates = null;
+    private List<Integer> stargates = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SECURITY_STATUS = "security_status";
     @SerializedName(SERIALIZED_NAME_SECURITY_STATUS)
@@ -48,7 +48,7 @@ public class SystemResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PLANETS = "planets";
     @SerializedName(SERIALIZED_NAME_PLANETS)
-    private List<SystemPlanet> planets = null;
+    private List<SystemPlanet> planets = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -68,7 +68,7 @@ public class SystemResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
-    private List<Integer> stations = null;
+    private List<Integer> stations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
@@ -319,7 +319,6 @@ public class SystemResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemResponse {\n");
-
         sb.append("    starId: ").append(toIndentedString(starId)).append("\n");
         sb.append("    stargates: ").append(toIndentedString(stargates)).append("\n");
         sb.append("    securityStatus: ").append(toIndentedString(securityStatus)).append("\n");

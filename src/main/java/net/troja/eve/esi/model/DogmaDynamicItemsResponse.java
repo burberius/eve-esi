@@ -185,7 +185,6 @@ public class DogmaDynamicItemsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaDynamicItemsResponse {\n");
-
         sb.append("    mutatorTypeId: ").append(toIndentedString(mutatorTypeId)).append("\n");
         sb.append("    dogmaAttributes: ").append(toIndentedString(dogmaAttributes)).append("\n");
         sb.append("    sourceTypeId: ").append(toIndentedString(sourceTypeId)).append("\n");

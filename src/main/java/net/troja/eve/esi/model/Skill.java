@@ -146,7 +146,6 @@ public class Skill implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Skill {\n");
-
         sb.append("    trainedSkillLevel: ").append(toIndentedString(trainedSkillLevel)).append("\n");
         sb.append("    activeSkillLevel: ").append(toIndentedString(activeSkillLevel)).append("\n");
         sb.append("    skillId: ").append(toIndentedString(skillId)).append("\n");

@@ -37,22 +37,22 @@ import java.util.List;
 import java.util.Map;
 
 public class WalletApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public WalletApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public WalletApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -68,38 +68,38 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdWalletCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/wallet/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -107,17 +107,17 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdWalletValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdWalletValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -125,9 +125,9 @@ public class WalletApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWallet(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -153,9 +153,9 @@ public class WalletApi {
      */
     public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
-        ApiResponse<Double> resp = getCharactersCharacterIdWalletWithHttpInfo(characterId, datasource, ifNoneMatch,
-                token);
-        return resp.getData();
+        ApiResponse<Double> localVarResp = getCharactersCharacterIdWalletWithHttpInfo(characterId, datasource,
+                ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -180,11 +180,11 @@ public class WalletApi {
      */
     public ApiResponse<Double> getCharactersCharacterIdWalletWithHttpInfo(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<Double>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -202,22 +202,22 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<Double> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdWalletAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<Double> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<Double>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -235,42 +235,42 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletJournalCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdWalletJournalCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v6/characters/{character_id}/wallet/journal/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -278,17 +278,17 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdWalletJournalValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdWalletJournalValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -297,9 +297,9 @@ public class WalletApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWalletJournal(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletJournalCall(characterId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletJournalCall(characterId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -327,9 +327,9 @@ public class WalletApi {
      */
     public List<CharacterWalletJournalResponse> getCharactersCharacterIdWalletJournal(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterWalletJournalResponse>> resp = getCharactersCharacterIdWalletJournalWithHttpInfo(
+        ApiResponse<List<CharacterWalletJournalResponse>> localVarResp = getCharactersCharacterIdWalletJournalWithHttpInfo(
                 characterId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -356,11 +356,11 @@ public class WalletApi {
      */
     public ApiResponse<List<CharacterWalletJournalResponse>> getCharactersCharacterIdWalletJournalWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletJournalValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletJournalValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -381,23 +381,23 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletJournalAsync(Integer characterId, String datasource,
+    public okhttp3.Call getCharactersCharacterIdWalletJournalAsync(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CharacterWalletJournalResponse>> callback) throws ApiException {
+            final ApiCallback<List<CharacterWalletJournalResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletJournalValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletJournalValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterWalletJournalResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -416,43 +416,42 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletTransactionsCall(Integer characterId,
-            String datasource, Long fromId, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdWalletTransactionsCall(Integer characterId, String datasource,
+            Long fromId, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/wallet/transactions/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (fromId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("from_id", fromId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from_id", fromId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -460,17 +459,17 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdWalletTransactionsValidateBeforeCall(Integer characterId,
-            String datasource, Long fromId, String ifNoneMatch, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdWalletTransactionsValidateBeforeCall(Integer characterId,
+            String datasource, Long fromId, String ifNoneMatch, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -479,9 +478,9 @@ public class WalletApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdWalletTransactions(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletTransactionsCall(characterId, datasource, fromId,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletTransactionsCall(characterId, datasource, fromId,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -510,9 +509,9 @@ public class WalletApi {
      */
     public List<CharacterWalletTransactionsResponse> getCharactersCharacterIdWalletTransactions(Integer characterId,
             String datasource, Long fromId, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterWalletTransactionsResponse>> resp = getCharactersCharacterIdWalletTransactionsWithHttpInfo(
+        ApiResponse<List<CharacterWalletTransactionsResponse>> localVarResp = getCharactersCharacterIdWalletTransactionsWithHttpInfo(
                 characterId, datasource, fromId, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -541,11 +540,11 @@ public class WalletApi {
      */
     public ApiResponse<List<CharacterWalletTransactionsResponse>> getCharactersCharacterIdWalletTransactionsWithHttpInfo(
             Integer characterId, String datasource, Long fromId, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletTransactionsValidateBeforeCall(characterId,
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletTransactionsValidateBeforeCall(characterId,
                 datasource, fromId, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -566,23 +565,23 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdWalletTransactionsAsync(Integer characterId,
-            String datasource, Long fromId, String ifNoneMatch, String token,
-            final ApiCallback<List<CharacterWalletTransactionsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdWalletTransactionsAsync(Integer characterId, String datasource,
+            Long fromId, String ifNoneMatch, String token,
+            final ApiCallback<List<CharacterWalletTransactionsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdWalletTransactionsValidateBeforeCall(characterId,
-                datasource, fromId, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdWalletTransactionsValidateBeforeCall(characterId,
+                datasource, fromId, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterWalletTransactionsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -598,38 +597,38 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdWalletsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/wallets/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -637,17 +636,17 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdWalletsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdWalletsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -655,9 +654,9 @@ public class WalletApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdWallets(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsCall(corporationId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -684,9 +683,9 @@ public class WalletApi {
      */
     public List<CorporationWalletsResponse> getCorporationsCorporationIdWallets(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationWalletsResponse>> resp = getCorporationsCorporationIdWalletsWithHttpInfo(
+        ApiResponse<List<CorporationWalletsResponse>> localVarResp = getCorporationsCorporationIdWalletsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -712,11 +711,11 @@ public class WalletApi {
      */
     public ApiResponse<List<CorporationWalletsResponse>> getCorporationsCorporationIdWalletsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationWalletsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -735,23 +734,23 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CorporationWalletsResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdWalletsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationWalletsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationWalletsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -771,44 +770,44 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionJournalCall(Integer corporationId,
-            Integer division, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdWalletsDivisionJournalCall(Integer corporationId, Integer division,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v4/corporations/{corporation_id}/wallets/{division}/journal/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString())).replaceAll(
-                "\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString())).replaceAll(
+                "\\{" + "division" + "\\}", localVarApiClient.escapeString(division.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -816,18 +815,18 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(
-            Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(Integer corporationId,
+            Integer division, String datasource, String ifNoneMatch, Integer page, String token,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -841,9 +840,9 @@ public class WalletApi {
                     "Missing the required parameter 'division' when calling getCorporationsCorporationIdWalletsDivisionJournal(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionJournalCall(corporationId, division,
-                datasource, ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionJournalCall(corporationId, division,
+                datasource, ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -876,9 +875,9 @@ public class WalletApi {
     public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
             Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        ApiResponse<List<CorporationWalletJournalResponse>> resp = getCorporationsCorporationIdWalletsDivisionJournalWithHttpInfo(
+        ApiResponse<List<CorporationWalletJournalResponse>> localVarResp = getCorporationsCorporationIdWalletsDivisionJournalWithHttpInfo(
                 corporationId, division, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -910,11 +909,11 @@ public class WalletApi {
     public ApiResponse<List<CorporationWalletJournalResponse>> getCorporationsCorporationIdWalletsDivisionJournalWithHttpInfo(
             Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(
-                corporationId, division, datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(corporationId,
+                division, datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -938,23 +937,23 @@ public class WalletApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionJournalAsync(Integer corporationId,
+    public okhttp3.Call getCorporationsCorporationIdWalletsDivisionJournalAsync(Integer corporationId,
             Integer division, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationWalletJournalResponse>> callback) throws ApiException {
+            final ApiCallback<List<CorporationWalletJournalResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(
-                corporationId, division, datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionJournalValidateBeforeCall(corporationId,
+                division, datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationWalletJournalResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -975,44 +974,44 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionTransactionsCall(Integer corporationId,
+    public okhttp3.Call getCorporationsCorporationIdWalletsDivisionTransactionsCall(Integer corporationId,
             Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
-            final ApiCallback callback) throws ApiException {
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/wallets/{division}/transactions/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString())).replaceAll(
-                "\\{" + "division" + "\\}", apiClient.escapeString(division.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString())).replaceAll(
+                "\\{" + "division" + "\\}", localVarApiClient.escapeString(division.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (fromId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("from_id", fromId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("from_id", fromId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1020,18 +1019,18 @@ public class WalletApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
+    private okhttp3.Call getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
             Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
-            final ApiCallback callback) throws ApiException {
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1045,9 +1044,9 @@ public class WalletApi {
                     "Missing the required parameter 'division' when calling getCorporationsCorporationIdWalletsDivisionTransactions(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionTransactionsCall(corporationId,
-                division, datasource, fromId, ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionTransactionsCall(corporationId,
+                division, datasource, fromId, ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1080,9 +1079,9 @@ public class WalletApi {
     public List<CorporationWalletTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
             Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token)
             throws ApiException {
-        ApiResponse<List<CorporationWalletTransactionsResponse>> resp = getCorporationsCorporationIdWalletsDivisionTransactionsWithHttpInfo(
+        ApiResponse<List<CorporationWalletTransactionsResponse>> localVarResp = getCorporationsCorporationIdWalletsDivisionTransactionsWithHttpInfo(
                 corporationId, division, datasource, fromId, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1116,11 +1115,11 @@ public class WalletApi {
     public ApiResponse<List<CorporationWalletTransactionsResponse>> getCorporationsCorporationIdWalletsDivisionTransactionsWithHttpInfo(
             Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
                 corporationId, division, datasource, fromId, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1145,22 +1144,22 @@ public class WalletApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdWalletsDivisionTransactionsAsync(Integer corporationId,
+    public okhttp3.Call getCorporationsCorporationIdWalletsDivisionTransactionsAsync(Integer corporationId,
             Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
-            final ApiCallback<List<CorporationWalletTransactionsResponse>> callback) throws ApiException {
+            final ApiCallback<List<CorporationWalletTransactionsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
-                corporationId, division, datasource, fromId, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdWalletsDivisionTransactionsValidateBeforeCall(
+                corporationId, division, datasource, fromId, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationWalletTransactionsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

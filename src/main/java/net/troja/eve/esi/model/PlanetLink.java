@@ -122,7 +122,6 @@ public class PlanetLink implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetLink {\n");
-
         sb.append("    linkLevel: ").append(toIndentedString(linkLevel)).append("\n");
         sb.append("    destinationPinId: ").append(toIndentedString(destinationPinId)).append("\n");
         sb.append("    sourcePinId: ").append(toIndentedString(sourcePinId)).append("\n");

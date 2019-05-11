@@ -171,7 +171,6 @@ public class StructureResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StructureResponse {\n");
-
         sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

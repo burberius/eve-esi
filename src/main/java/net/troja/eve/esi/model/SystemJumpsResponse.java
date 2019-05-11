@@ -98,7 +98,6 @@ public class SystemJumpsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemJumpsResponse {\n");
-
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    shipJumps: ").append(toIndentedString(shipJumps)).append("\n");
         sb.append("}");

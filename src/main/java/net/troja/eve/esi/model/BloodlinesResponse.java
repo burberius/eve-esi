@@ -315,7 +315,6 @@ public class BloodlinesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class BloodlinesResponse {\n");
-
         sb.append("    shipTypeId: ").append(toIndentedString(shipTypeId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    memory: ").append(toIndentedString(memory)).append("\n");

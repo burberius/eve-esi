@@ -178,7 +178,6 @@ public class ConstellationResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ConstellationResponse {\n");
-
         sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");

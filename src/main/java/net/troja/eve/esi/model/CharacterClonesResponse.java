@@ -156,7 +156,6 @@ public class CharacterClonesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterClonesResponse {\n");
-
         sb.append("    lastStationChangeDate: ").append(toIndentedString(lastStationChangeDate)).append("\n");
         sb.append("    lastCloneJumpDate: ").append(toIndentedString(lastCloneJumpDate)).append("\n");
         sb.append("    jumpClones: ").append(toIndentedString(jumpClones)).append("\n");

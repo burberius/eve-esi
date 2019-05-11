@@ -178,7 +178,6 @@ public class UiNewMail implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UiNewMail {\n");
-
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
         sb.append("    subject: ").append(toIndentedString(subject)).append("\n");

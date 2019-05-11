@@ -170,7 +170,6 @@ public class KillmailSubItem implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailSubItem {\n");
-
         sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");

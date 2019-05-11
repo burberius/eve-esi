@@ -84,7 +84,7 @@ public class TypeResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
-    private List<TypeDogmaAttribute> dogmaAttributes = null;
+    private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_MARKET_GROUP_ID = "market_group_id";
     @SerializedName(SERIALIZED_NAME_MARKET_GROUP_ID)
@@ -96,7 +96,7 @@ public class TypeResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
-    private List<TypeDogmaEffect> dogmaEffects = null;
+    private List<TypeDogmaEffect> dogmaEffects = new ArrayList<>();
 
     public TypeResponse typeId(Integer typeId) {
         this.typeId = typeId;
@@ -453,7 +453,6 @@ public class TypeResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class TypeResponse {\n");
-
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    mass: ").append(toIndentedString(mass)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");

@@ -36,22 +36,22 @@ import java.util.List;
 import java.util.Map;
 
 public class PlanetaryInteractionApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public PlanetaryInteractionApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public PlanetaryInteractionApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -67,38 +67,38 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdPlanetsCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/planets/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -106,17 +106,17 @@ public class PlanetaryInteractionApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdPlanetsValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdPlanetsValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -124,9 +124,9 @@ public class PlanetaryInteractionApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdPlanets(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -152,9 +152,9 @@ public class PlanetaryInteractionApi {
      */
     public List<CharacterPlanetsResponse> getCharactersCharacterIdPlanets(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterPlanetsResponse>> resp = getCharactersCharacterIdPlanetsWithHttpInfo(characterId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CharacterPlanetsResponse>> localVarResp = getCharactersCharacterIdPlanetsWithHttpInfo(
+                characterId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -179,11 +179,11 @@ public class PlanetaryInteractionApi {
      */
     public ApiResponse<List<CharacterPlanetsResponse>> getCharactersCharacterIdPlanetsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -201,23 +201,23 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterPlanetsResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdPlanetsAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterPlanetsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterPlanetsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -235,39 +235,39 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsPlanetIdCall(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdCall(Integer characterId, Integer planetId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/planets/{planet_id}/".replaceAll(
-                "\\{" + "character_id" + "\\}", apiClient.escapeString(characterId.toString())).replaceAll(
-                "\\{" + "planet_id" + "\\}", apiClient.escapeString(planetId.toString()));
+                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString())).replaceAll(
+                "\\{" + "planet_id" + "\\}", localVarApiClient.escapeString(planetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -275,17 +275,17 @@ public class PlanetaryInteractionApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(Integer characterId,
-            Integer planetId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(Integer characterId,
+            Integer planetId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -300,9 +300,9 @@ public class PlanetaryInteractionApi {
                     "Missing the required parameter 'planetId' when calling getCharactersCharacterIdPlanetsPlanetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdCall(characterId, planetId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdCall(characterId, planetId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -333,9 +333,9 @@ public class PlanetaryInteractionApi {
      */
     public CharacterPlanetResponse getCharactersCharacterIdPlanetsPlanetId(Integer characterId, Integer planetId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterPlanetResponse> resp = getCharactersCharacterIdPlanetsPlanetIdWithHttpInfo(characterId,
-                planetId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<CharacterPlanetResponse> localVarResp = getCharactersCharacterIdPlanetsPlanetIdWithHttpInfo(
+                characterId, planetId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -366,11 +366,11 @@ public class PlanetaryInteractionApi {
     public ApiResponse<CharacterPlanetResponse> getCharactersCharacterIdPlanetsPlanetIdWithHttpInfo(
             Integer characterId, Integer planetId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId,
-                planetId, datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
+                datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -393,23 +393,23 @@ public class PlanetaryInteractionApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdPlanetsPlanetIdAsync(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback<CharacterPlanetResponse> callback)
+    public okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdAsync(Integer characterId, Integer planetId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback<CharacterPlanetResponse> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId,
-                planetId, datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -427,43 +427,42 @@ public class PlanetaryInteractionApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdCustomsOfficesCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdCustomsOfficesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/customs_offices/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -471,18 +470,18 @@ public class PlanetaryInteractionApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -490,9 +489,9 @@ public class PlanetaryInteractionApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdCustomsOffices(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdCustomsOfficesCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -521,9 +520,9 @@ public class PlanetaryInteractionApi {
      */
     public List<CorporationCustomsOfficesResponse> getCorporationsCorporationIdCustomsOffices(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationCustomsOfficesResponse>> resp = getCorporationsCorporationIdCustomsOfficesWithHttpInfo(
+        ApiResponse<List<CorporationCustomsOfficesResponse>> localVarResp = getCorporationsCorporationIdCustomsOfficesWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -552,11 +551,11 @@ public class PlanetaryInteractionApi {
     public ApiResponse<List<CorporationCustomsOfficesResponse>> getCorporationsCorporationIdCustomsOfficesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -577,23 +576,23 @@ public class PlanetaryInteractionApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdCustomsOfficesAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationCustomsOfficesResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdCustomsOfficesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationCustomsOfficesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdCustomsOfficesValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationCustomsOfficesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -607,34 +606,34 @@ public class PlanetaryInteractionApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getUniverseSchematicsSchematicIdCall(Integer schematicId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getUniverseSchematicsSchematicIdCall(Integer schematicId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/universe/schematics/{schematic_id}/".replaceAll("\\{" + "schematic_id" + "\\}",
-                apiClient.escapeString(schematicId.toString()));
+                localVarApiClient.escapeString(schematicId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -642,17 +641,17 @@ public class PlanetaryInteractionApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getUniverseSchematicsSchematicIdValidateBeforeCall(Integer schematicId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getUniverseSchematicsSchematicIdValidateBeforeCall(Integer schematicId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'schematicId' is set
         if (schematicId == null) {
@@ -660,9 +659,9 @@ public class PlanetaryInteractionApi {
                     "Missing the required parameter 'schematicId' when calling getUniverseSchematicsSchematicId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdCall(schematicId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getUniverseSchematicsSchematicIdCall(schematicId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -685,9 +684,9 @@ public class PlanetaryInteractionApi {
      */
     public PlanetFactorySchematicResponse getUniverseSchematicsSchematicId(Integer schematicId, String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<PlanetFactorySchematicResponse> resp = getUniverseSchematicsSchematicIdWithHttpInfo(schematicId,
-                datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<PlanetFactorySchematicResponse> localVarResp = getUniverseSchematicsSchematicIdWithHttpInfo(
+                schematicId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -709,11 +708,11 @@ public class PlanetaryInteractionApi {
      */
     public ApiResponse<PlanetFactorySchematicResponse> getUniverseSchematicsSchematicIdWithHttpInfo(
             Integer schematicId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
+        okhttp3.Call localVarCall = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<PlanetFactorySchematicResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -728,21 +727,21 @@ public class PlanetaryInteractionApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getUniverseSchematicsSchematicIdAsync(Integer schematicId, String datasource,
-            String ifNoneMatch, final ApiCallback<PlanetFactorySchematicResponse> callback) throws ApiException {
+    public okhttp3.Call getUniverseSchematicsSchematicIdAsync(Integer schematicId, String datasource,
+            String ifNoneMatch, final ApiCallback<PlanetFactorySchematicResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getUniverseSchematicsSchematicIdValidateBeforeCall(schematicId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<PlanetFactorySchematicResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

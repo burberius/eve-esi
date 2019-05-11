@@ -245,7 +245,6 @@ public class CharacterSkillqueueResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterSkillqueueResponse {\n");
-
         sb.append("    queuePosition: ").append(toIndentedString(queuePosition)).append("\n");
         sb.append("    finishDate: ").append(toIndentedString(finishDate)).append("\n");
         sb.append("    levelEndSp: ").append(toIndentedString(levelEndSp)).append("\n");

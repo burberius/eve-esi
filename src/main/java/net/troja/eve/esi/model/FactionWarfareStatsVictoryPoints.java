@@ -122,7 +122,6 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareStatsVictoryPoints {\n");
-
         sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("    total: ").append(toIndentedString(total)).append("\n");
         sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");

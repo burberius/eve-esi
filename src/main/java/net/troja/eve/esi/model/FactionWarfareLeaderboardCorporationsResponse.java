@@ -101,7 +101,6 @@ public class FactionWarfareLeaderboardCorporationsResponse implements Serializab
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationsResponse {\n");
-
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
         sb.append("}");

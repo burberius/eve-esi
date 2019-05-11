@@ -50,7 +50,7 @@ public class PlanetPin implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTENTS = "contents";
     @SerializedName(SERIALIZED_NAME_CONTENTS)
-    private List<PlanetContent> contents = null;
+    private List<PlanetContent> contents = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SCHEMATIC_ID = "schematic_id";
     @SerializedName(SERIALIZED_NAME_SCHEMATIC_ID)
@@ -327,7 +327,6 @@ public class PlanetPin implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetPin {\n");
-
         sb.append("    installTime: ").append(toIndentedString(installTime)).append("\n");
         sb.append("    factoryDetails: ").append(toIndentedString(factoryDetails)).append("\n");
         sb.append("    lastCycleStart: ").append(toIndentedString(lastCycleStart)).append("\n");

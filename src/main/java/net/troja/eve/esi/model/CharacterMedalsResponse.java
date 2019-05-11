@@ -90,13 +90,13 @@ public class CharacterMedalsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String text) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -108,7 +108,7 @@ public class CharacterMedalsResponse implements Serializable {
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StatusEnum.fromValue(String.valueOf(value));
+                return StatusEnum.fromValue(value);
             }
         }
     }
@@ -322,7 +322,6 @@ public class CharacterMedalsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterMedalsResponse {\n");
-
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    medalId: ").append(toIndentedString(medalId)).append("\n");
         sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");

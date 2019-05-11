@@ -99,7 +99,6 @@ public class CharacterAssetsLocationsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAssetsLocationsResponse {\n");
-
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("}");

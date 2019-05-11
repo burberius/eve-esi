@@ -64,13 +64,13 @@ public class AllianceContactsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ContactTypeEnum fromValue(String text) {
+        public static ContactTypeEnum fromValue(String value) {
             for (ContactTypeEnum b : ContactTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContactTypeEnum> {
@@ -82,7 +82,7 @@ public class AllianceContactsResponse implements Serializable {
             @Override
             public ContactTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ContactTypeEnum.fromValue(String.valueOf(value));
+                return ContactTypeEnum.fromValue(value);
             }
         }
     }
@@ -93,7 +93,7 @@ public class AllianceContactsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LABEL_IDS = "label_ids";
     @SerializedName(SERIALIZED_NAME_LABEL_IDS)
-    private List<Long> labelIds = null;
+    private List<Long> labelIds = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONTACT_ID = "contact_id";
     @SerializedName(SERIALIZED_NAME_CONTACT_ID)
@@ -207,7 +207,6 @@ public class AllianceContactsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceContactsResponse {\n");
-
         sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
         sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
         sb.append("    labelIds: ").append(toIndentedString(labelIds)).append("\n");

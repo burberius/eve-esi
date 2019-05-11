@@ -130,7 +130,6 @@ public class CharacterSkillsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterSkillsResponse {\n");
-
         sb.append("    skills: ").append(toIndentedString(skills)).append("\n");
         sb.append("    unallocatedSp: ").append(toIndentedString(unallocatedSp)).append("\n");
         sb.append("    totalSp: ").append(toIndentedString(totalSp)).append("\n");

@@ -75,13 +75,13 @@ public class CharacterResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static GenderEnum fromValue(String text) {
+        public static GenderEnum fromValue(String value) {
             for (GenderEnum b : GenderEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<GenderEnum> {
@@ -93,7 +93,7 @@ public class CharacterResponse implements Serializable {
             @Override
             public GenderEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return GenderEnum.fromValue(String.valueOf(value));
+                return GenderEnum.fromValue(value);
             }
         }
     }
@@ -117,6 +117,10 @@ public class CharacterResponse implements Serializable {
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
     private Integer factionId;
+
+    public static final String SERIALIZED_NAME_TITLE = "title";
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
 
     public static final String SERIALIZED_NAME_BLOODLINE_ID = "bloodline_id";
     @SerializedName(SERIALIZED_NAME_BLOODLINE_ID)
@@ -313,6 +317,25 @@ public class CharacterResponse implements Serializable {
         this.factionId = factionId;
     }
 
+    public CharacterResponse title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    /**
+     * The individual title of the character
+     * 
+     * @return title
+     **/
+    @ApiModelProperty(value = "The individual title of the character")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public CharacterResponse bloodlineId(Integer bloodlineId) {
         this.bloodlineId = bloodlineId;
         return this;
@@ -351,20 +374,20 @@ public class CharacterResponse implements Serializable {
                 && Objects.equals(this.name, characterResponse.name)
                 && Objects.equals(this.description, characterResponse.description)
                 && Objects.equals(this.factionId, characterResponse.factionId)
+                && Objects.equals(this.title, characterResponse.title)
                 && Objects.equals(this.bloodlineId, characterResponse.bloodlineId);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(birthday, allianceId, ancestryId, corporationId, securityStatus, gender, raceId, name,
-                description, factionId, bloodlineId);
+                description, factionId, title, bloodlineId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterResponse {\n");
-
         sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    ancestryId: ").append(toIndentedString(ancestryId)).append("\n");
@@ -375,6 +398,7 @@ public class CharacterResponse implements Serializable {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
+        sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    bloodlineId: ").append(toIndentedString(bloodlineId)).append("\n");
         sb.append("}");
         return sb.toString();

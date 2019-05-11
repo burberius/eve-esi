@@ -74,7 +74,6 @@ public class CharacterFittingResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFittingResponse {\n");
-
         sb.append("    fittingId: ").append(toIndentedString(fittingId)).append("\n");
         sb.append("}");
         return sb.toString();

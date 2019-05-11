@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersActiveTotalKills {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");

@@ -71,13 +71,13 @@ public class FleetInvitation implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RoleEnum fromValue(String text) {
+        public static RoleEnum fromValue(String value) {
             for (RoleEnum b : RoleEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RoleEnum> {
@@ -89,7 +89,7 @@ public class FleetInvitation implements Serializable {
             @Override
             public RoleEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RoleEnum.fromValue(String.valueOf(value));
+                return RoleEnum.fromValue(value);
             }
         }
     }
@@ -215,7 +215,6 @@ public class FleetInvitation implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetInvitation {\n");
-
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");

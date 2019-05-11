@@ -65,13 +65,13 @@ public class FleetMemberMovement implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RoleEnum fromValue(String text) {
+        public static RoleEnum fromValue(String value) {
             for (RoleEnum b : RoleEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RoleEnum> {
@@ -83,7 +83,7 @@ public class FleetMemberMovement implements Serializable {
             @Override
             public RoleEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RoleEnum.fromValue(String.valueOf(value));
+                return RoleEnum.fromValue(value);
             }
         }
     }
@@ -187,7 +187,6 @@ public class FleetMemberMovement implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetMemberMovement {\n");
-
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");

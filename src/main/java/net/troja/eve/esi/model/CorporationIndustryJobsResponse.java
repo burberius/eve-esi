@@ -147,13 +147,13 @@ public class CorporationIndustryJobsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String text) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -165,7 +165,7 @@ public class CorporationIndustryJobsResponse implements Serializable {
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StatusEnum.fromValue(String.valueOf(value));
+                return StatusEnum.fromValue(value);
             }
         }
     }
@@ -642,7 +642,6 @@ public class CorporationIndustryJobsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationIndustryJobsResponse {\n");
-
         sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
         sb.append("    successfulRuns: ").append(toIndentedString(successfulRuns)).append("\n");
         sb.append("    cost: ").append(toIndentedString(cost)).append("\n");

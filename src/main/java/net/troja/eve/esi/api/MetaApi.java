@@ -34,34 +34,34 @@ import java.util.List;
 import java.util.Map;
 
 public class MetaApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public MetaApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public MetaApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
      * Build call for getHeaders
      * 
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getHeadersCall(final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getHeadersCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -72,7 +72,7 @@ public class MetaApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -80,19 +80,19 @@ public class MetaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getHeadersValidateBeforeCall(final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getHeadersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getHeadersCall(callback);
-        return call;
+        okhttp3.Call localVarCall = getHeadersCall(_callback);
+        return localVarCall;
 
     }
 
@@ -107,8 +107,8 @@ public class MetaApi {
      *             deserialize the response body
      */
     public Map<String, String> getHeaders() throws ApiException {
-        ApiResponse<Map<String, String>> resp = getHeadersWithHttpInfo();
-        return resp.getData();
+        ApiResponse<Map<String, String>> localVarResp = getHeadersWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
@@ -122,10 +122,10 @@ public class MetaApi {
      *             deserialize the response body
      */
     public ApiResponse<Map<String, String>> getHeadersWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getHeadersValidateBeforeCall(null);
+        okhttp3.Call localVarCall = getHeadersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, String>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -133,33 +133,32 @@ public class MetaApi {
      * debugging purposes. Note that the &#39;Connection&#39; header and any
      * &#39;X-&#39; headers are not included
      * 
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getHeadersAsync(final ApiCallback<Map<String, String>> callback)
-            throws ApiException {
+    public okhttp3.Call getHeadersAsync(final ApiCallback<Map<String, String>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getHeadersValidateBeforeCall(callback);
+        okhttp3.Call localVarCall = getHeadersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, String>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
      * Build call for getPing
      * 
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getPingCall(final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getPingCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -170,7 +169,7 @@ public class MetaApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "text/plain; charset=utf-8" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -178,19 +177,19 @@ public class MetaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getPingValidateBeforeCall(final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getPingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getPingCall(callback);
-        return call;
+        okhttp3.Call localVarCall = getPingCall(_callback);
+        return localVarCall;
 
     }
 
@@ -203,8 +202,8 @@ public class MetaApi {
      *             deserialize the response body
      */
     public String getPing() throws ApiException {
-        ApiResponse<String> resp = getPingWithHttpInfo();
-        return resp.getData();
+        ApiResponse<String> localVarResp = getPingWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
@@ -216,29 +215,29 @@ public class MetaApi {
      *             deserialize the response body
      */
     public ApiResponse<String> getPingWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getPingValidateBeforeCall(null);
+        okhttp3.Call localVarCall = getPingValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<String>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Ping route (asynchronously) Ping the ESI routers
      * 
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getPingAsync(final ApiCallback<String> callback) throws ApiException {
+    public okhttp3.Call getPingAsync(final ApiCallback<String> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getPingValidateBeforeCall(callback);
+        okhttp3.Call localVarCall = getPingValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<String>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -247,13 +246,13 @@ public class MetaApi {
      * @param version
      *            The version of metrics to request. Note that alternate
      *            versions are grouped together (optional, default to latest)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStatusCall(String version, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getStatusCall(String version, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -262,13 +261,13 @@ public class MetaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (version != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("version", version));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("version", version));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -276,20 +275,19 @@ public class MetaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStatusValidateBeforeCall(String version, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getStatusValidateBeforeCall(String version, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getStatusCall(version, callback);
-        return call;
+        okhttp3.Call localVarCall = getStatusCall(version, _callback);
+        return localVarCall;
 
     }
 
@@ -306,8 +304,8 @@ public class MetaApi {
      *             deserialize the response body
      */
     public List<EsiStatusResponse> getStatus(String version) throws ApiException {
-        ApiResponse<List<EsiStatusResponse>> resp = getStatusWithHttpInfo(version);
-        return resp.getData();
+        ApiResponse<List<EsiStatusResponse>> localVarResp = getStatusWithHttpInfo(version);
+        return localVarResp.getData();
     }
 
     /**
@@ -323,10 +321,10 @@ public class MetaApi {
      *             deserialize the response body
      */
     public ApiResponse<List<EsiStatusResponse>> getStatusWithHttpInfo(String version) throws ApiException {
-        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(version, null);
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(version, null);
         Type localVarReturnType = new TypeToken<List<EsiStatusResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -336,21 +334,21 @@ public class MetaApi {
      * @param version
      *            The version of metrics to request. Note that alternate
      *            versions are grouped together (optional, default to latest)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getStatusAsync(String version, final ApiCallback<List<EsiStatusResponse>> callback)
+    public okhttp3.Call getStatusAsync(String version, final ApiCallback<List<EsiStatusResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getStatusValidateBeforeCall(version, callback);
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(version, _callback);
         Type localVarReturnType = new TypeToken<List<EsiStatusResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -368,14 +366,14 @@ public class MetaApi {
      * @param authorization
      *            Access token, in the format of \&quot;Bearer &lt;access
      *            token&gt;\&quot; (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getVerifyCall(String userAgent, String xUserAgent, String datasource, String token,
-            String authorization, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getVerifyCall(String userAgent, String xUserAgent, String datasource, String token,
+            String authorization, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -384,29 +382,29 @@ public class MetaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (userAgent != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("user_agent", userAgent));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("user_agent", userAgent));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xUserAgent != null) {
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
         }
 
         if (authorization != null) {
-            localVarHeaderParams.put("Authorization", apiClient.parameterToString(authorization));
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -414,20 +412,20 @@ public class MetaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getVerifyValidateBeforeCall(String userAgent, String xUserAgent,
-            String datasource, String token, String authorization, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getVerifyValidateBeforeCall(String userAgent, String xUserAgent, String datasource,
+            String token, String authorization, final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getVerifyCall(userAgent, xUserAgent, datasource, token, authorization, callback);
-        return call;
+        okhttp3.Call localVarCall = getVerifyCall(userAgent, xUserAgent, datasource, token, authorization, _callback);
+        return localVarCall;
 
     }
 
@@ -453,9 +451,9 @@ public class MetaApi {
      */
     public EsiVerifyResponse getVerify(String userAgent, String xUserAgent, String datasource, String token,
             String authorization) throws ApiException {
-        ApiResponse<EsiVerifyResponse> resp = getVerifyWithHttpInfo(userAgent, xUserAgent, datasource, token,
+        ApiResponse<EsiVerifyResponse> localVarResp = getVerifyWithHttpInfo(userAgent, xUserAgent, datasource, token,
                 authorization);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -480,11 +478,11 @@ public class MetaApi {
      */
     public ApiResponse<EsiVerifyResponse> getVerifyWithHttpInfo(String userAgent, String xUserAgent, String datasource,
             String token, String authorization) throws ApiException {
-        com.squareup.okhttp.Call call = getVerifyValidateBeforeCall(userAgent, xUserAgent, datasource, token,
+        okhttp3.Call localVarCall = getVerifyValidateBeforeCall(userAgent, xUserAgent, datasource, token,
                 authorization, null);
         Type localVarReturnType = new TypeToken<EsiVerifyResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -503,22 +501,22 @@ public class MetaApi {
      * @param authorization
      *            Access token, in the format of \&quot;Bearer &lt;access
      *            token&gt;\&quot; (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getVerifyAsync(String userAgent, String xUserAgent, String datasource,
-            String token, String authorization, final ApiCallback<EsiVerifyResponse> callback) throws ApiException {
+    public okhttp3.Call getVerifyAsync(String userAgent, String xUserAgent, String datasource, String token,
+            String authorization, final ApiCallback<EsiVerifyResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getVerifyValidateBeforeCall(userAgent, xUserAgent, datasource, token,
-                authorization, callback);
+        okhttp3.Call localVarCall = getVerifyValidateBeforeCall(userAgent, xUserAgent, datasource, token,
+                authorization, _callback);
         Type localVarReturnType = new TypeToken<EsiVerifyResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -528,13 +526,13 @@ public class MetaApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getVersionsCall(String userAgent, String xUserAgent, final ApiCallback callback)
+    public okhttp3.Call getVersionsCall(String userAgent, String xUserAgent, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -544,17 +542,17 @@ public class MetaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (userAgent != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("user_agent", userAgent));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("user_agent", userAgent));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (xUserAgent != null) {
-            localVarHeaderParams.put("X-User-Agent", apiClient.parameterToString(xUserAgent));
+            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -562,20 +560,20 @@ public class MetaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getVersionsValidateBeforeCall(String userAgent, String xUserAgent,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getVersionsValidateBeforeCall(String userAgent, String xUserAgent, final ApiCallback _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getVersionsCall(userAgent, xUserAgent, callback);
-        return call;
+        okhttp3.Call localVarCall = getVersionsCall(userAgent, xUserAgent, _callback);
+        return localVarCall;
 
     }
 
@@ -592,8 +590,8 @@ public class MetaApi {
      *             deserialize the response body
      */
     public List<String> getVersions(String userAgent, String xUserAgent) throws ApiException {
-        ApiResponse<List<String>> resp = getVersionsWithHttpInfo(userAgent, xUserAgent);
-        return resp.getData();
+        ApiResponse<List<String>> localVarResp = getVersionsWithHttpInfo(userAgent, xUserAgent);
+        return localVarResp.getData();
     }
 
     /**
@@ -609,10 +607,10 @@ public class MetaApi {
      *             deserialize the response body
      */
     public ApiResponse<List<String>> getVersionsWithHttpInfo(String userAgent, String xUserAgent) throws ApiException {
-        com.squareup.okhttp.Call call = getVersionsValidateBeforeCall(userAgent, xUserAgent, null);
+        okhttp3.Call localVarCall = getVersionsValidateBeforeCall(userAgent, xUserAgent, null);
         Type localVarReturnType = new TypeToken<List<String>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -622,20 +620,20 @@ public class MetaApi {
      *            Client identifier, takes precedence over headers (optional)
      * @param xUserAgent
      *            Client identifier, takes precedence over User-Agent (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getVersionsAsync(String userAgent, String xUserAgent,
-            final ApiCallback<List<String>> callback) throws ApiException {
+    public okhttp3.Call getVersionsAsync(String userAgent, String xUserAgent, final ApiCallback<List<String>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getVersionsValidateBeforeCall(userAgent, xUserAgent, callback);
+        okhttp3.Call localVarCall = getVersionsValidateBeforeCall(userAgent, xUserAgent, _callback);
         Type localVarReturnType = new TypeToken<List<String>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

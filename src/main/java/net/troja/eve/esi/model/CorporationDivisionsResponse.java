@@ -36,11 +36,11 @@ public class CorporationDivisionsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_HANGAR = "hangar";
     @SerializedName(SERIALIZED_NAME_HANGAR)
-    private List<CorporationDivisionsHangar> hangar = null;
+    private List<CorporationDivisionsHangar> hangar = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_WALLET = "wallet";
     @SerializedName(SERIALIZED_NAME_WALLET)
-    private List<CorporationDivisionsWallet> wallet = null;
+    private List<CorporationDivisionsWallet> wallet = new ArrayList<>();
 
     public CorporationDivisionsResponse hangar(List<CorporationDivisionsHangar> hangar) {
         this.hangar = hangar;
@@ -118,7 +118,6 @@ public class CorporationDivisionsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationDivisionsResponse {\n");
-
         sb.append("    hangar: ").append(toIndentedString(hangar)).append("\n");
         sb.append("    wallet: ").append(toIndentedString(wallet)).append("\n");
         sb.append("}");

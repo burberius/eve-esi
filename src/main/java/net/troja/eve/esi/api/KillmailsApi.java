@@ -35,22 +35,22 @@ import java.util.List;
 import java.util.Map;
 
 public class KillmailsApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public KillmailsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public KillmailsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -68,42 +68,42 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdKillmailsRecentCall(Integer characterId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdKillmailsRecentCall(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/killmails/recent/".replaceAll("\\{" + "character_id"
-                + "\\}", apiClient.escapeString(characterId.toString()));
+                + "\\}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -111,17 +111,17 @@ public class KillmailsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdKillmailsRecentValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCharactersCharacterIdKillmailsRecentValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'characterId' is set
@@ -130,9 +130,9 @@ public class KillmailsApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdKillmailsRecent(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentCall(characterId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdKillmailsRecentCall(characterId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -160,9 +160,9 @@ public class KillmailsApi {
      */
     public List<CharacterKillmailsResponse> getCharactersCharacterIdKillmailsRecent(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CharacterKillmailsResponse>> resp = getCharactersCharacterIdKillmailsRecentWithHttpInfo(
+        ApiResponse<List<CharacterKillmailsResponse>> localVarResp = getCharactersCharacterIdKillmailsRecentWithHttpInfo(
                 characterId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -189,11 +189,11 @@ public class KillmailsApi {
      */
     public ApiResponse<List<CharacterKillmailsResponse>> getCharactersCharacterIdKillmailsRecentWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -214,23 +214,23 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdKillmailsRecentAsync(Integer characterId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CharacterKillmailsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdKillmailsRecentAsync(Integer characterId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CharacterKillmailsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdKillmailsRecentValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterKillmailsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -248,43 +248,42 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdKillmailsRecentCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdKillmailsRecentCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/killmails/recent/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -292,18 +291,18 @@ public class KillmailsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -311,9 +310,9 @@ public class KillmailsApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdKillmailsRecent(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdKillmailsRecentCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -343,9 +342,9 @@ public class KillmailsApi {
      */
     public List<CorporationKillmailsResponse> getCorporationsCorporationIdKillmailsRecent(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationKillmailsResponse>> resp = getCorporationsCorporationIdKillmailsRecentWithHttpInfo(
+        ApiResponse<List<CorporationKillmailsResponse>> localVarResp = getCorporationsCorporationIdKillmailsRecentWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -375,11 +374,11 @@ public class KillmailsApi {
     public ApiResponse<List<CorporationKillmailsResponse>> getCorporationsCorporationIdKillmailsRecentWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationKillmailsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -401,23 +400,23 @@ public class KillmailsApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdKillmailsRecentAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationKillmailsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdKillmailsRecentAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationKillmailsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdKillmailsRecentValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationKillmailsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -433,35 +432,35 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashCall(String killmailHash, Integer killmailId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getKillmailsKillmailIdKillmailHashCall(String killmailHash, Integer killmailId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/killmails/{killmail_id}/{killmail_hash}/".replaceAll(
-                "\\{" + "killmail_hash" + "\\}", apiClient.escapeString(killmailHash.toString())).replaceAll(
-                "\\{" + "killmail_id" + "\\}", apiClient.escapeString(killmailId.toString()));
+                "\\{" + "killmail_hash" + "\\}", localVarApiClient.escapeString(killmailHash.toString())).replaceAll(
+                "\\{" + "killmail_id" + "\\}", localVarApiClient.escapeString(killmailId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -469,17 +468,17 @@ public class KillmailsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashValidateBeforeCall(String killmailHash,
-            Integer killmailId, String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getKillmailsKillmailIdKillmailHashValidateBeforeCall(String killmailHash, Integer killmailId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'killmailHash' is set
         if (killmailHash == null) {
@@ -493,9 +492,9 @@ public class KillmailsApi {
                     "Missing the required parameter 'killmailId' when calling getKillmailsKillmailIdKillmailHash(Async)");
         }
 
-        com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashCall(killmailHash, killmailId, datasource,
-                ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getKillmailsKillmailIdKillmailHashCall(killmailHash, killmailId, datasource,
+                ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -520,9 +519,9 @@ public class KillmailsApi {
      */
     public KillmailResponse getKillmailsKillmailIdKillmailHash(String killmailHash, Integer killmailId,
             String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<KillmailResponse> resp = getKillmailsKillmailIdKillmailHashWithHttpInfo(killmailHash, killmailId,
-                datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<KillmailResponse> localVarResp = getKillmailsKillmailIdKillmailHashWithHttpInfo(killmailHash,
+                killmailId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -546,11 +545,11 @@ public class KillmailsApi {
      */
     public ApiResponse<KillmailResponse> getKillmailsKillmailIdKillmailHashWithHttpInfo(String killmailHash,
             Integer killmailId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
+        okhttp3.Call localVarCall = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
                 datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<KillmailResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -567,21 +566,21 @@ public class KillmailsApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getKillmailsKillmailIdKillmailHashAsync(String killmailHash, Integer killmailId,
-            String datasource, String ifNoneMatch, final ApiCallback<KillmailResponse> callback) throws ApiException {
+    public okhttp3.Call getKillmailsKillmailIdKillmailHashAsync(String killmailHash, Integer killmailId,
+            String datasource, String ifNoneMatch, final ApiCallback<KillmailResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
-                datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getKillmailsKillmailIdKillmailHashValidateBeforeCall(killmailHash, killmailId,
+                datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<KillmailResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

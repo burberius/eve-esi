@@ -147,7 +147,6 @@ public class CharacterOnlineResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOnlineResponse {\n");
-
         sb.append("    lastLogin: ").append(toIndentedString(lastLogin)).append("\n");
         sb.append("    online: ").append(toIndentedString(online)).append("\n");
         sb.append("    logins: ").append(toIndentedString(logins)).append("\n");

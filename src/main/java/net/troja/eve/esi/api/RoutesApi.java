@@ -31,22 +31,22 @@ import java.util.List;
 import java.util.Map;
 
 public class RoutesApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public RoutesApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public RoutesApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -68,48 +68,48 @@ public class RoutesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getRouteOriginDestinationCall(Integer destination, Integer origin,
-            List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getRouteOriginDestinationCall(Integer destination, Integer origin, List<Integer> avoid,
+            List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/route/{origin}/{destination}/".replaceAll("\\{" + "destination" + "\\}",
-                apiClient.escapeString(destination.toString())).replaceAll("\\{" + "origin" + "\\}",
-                apiClient.escapeString(origin.toString()));
+                localVarApiClient.escapeString(destination.toString())).replaceAll("\\{" + "origin" + "\\}",
+                localVarApiClient.escapeString(origin.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (avoid != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "avoid", avoid));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "avoid", avoid));
         }
 
         if (connections != null) {
-            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "connections", connections));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "connections", connections));
         }
 
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (flag != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("flag", flag));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("flag", flag));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -117,18 +117,18 @@ public class RoutesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getRouteOriginDestinationValidateBeforeCall(Integer destination, Integer origin,
+    private okhttp3.Call getRouteOriginDestinationValidateBeforeCall(Integer destination, Integer origin,
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'destination' is set
         if (destination == null) {
@@ -142,9 +142,9 @@ public class RoutesApi {
                     "Missing the required parameter 'origin' when calling getRouteOriginDestination(Async)");
         }
 
-        com.squareup.okhttp.Call call = getRouteOriginDestinationCall(destination, origin, avoid, connections,
-                datasource, flag, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getRouteOriginDestinationCall(destination, origin, avoid, connections, datasource,
+                flag, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -175,9 +175,9 @@ public class RoutesApi {
      */
     public List<Integer> getRouteOriginDestination(Integer destination, Integer origin, List<Integer> avoid,
             List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getRouteOriginDestinationWithHttpInfo(destination, origin, avoid,
+        ApiResponse<List<Integer>> localVarResp = getRouteOriginDestinationWithHttpInfo(destination, origin, avoid,
                 connections, datasource, flag, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -208,11 +208,11 @@ public class RoutesApi {
     public ApiResponse<List<Integer>> getRouteOriginDestinationWithHttpInfo(Integer destination, Integer origin,
             List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
+        okhttp3.Call localVarCall = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
                 connections, datasource, flag, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -235,22 +235,22 @@ public class RoutesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getRouteOriginDestinationAsync(Integer destination, Integer origin,
-            List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getRouteOriginDestinationAsync(Integer destination, Integer origin, List<Integer> avoid,
+            List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
-                connections, datasource, flag, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
+                connections, datasource, flag, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

@@ -70,13 +70,13 @@ public class SystemCostIndice implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ActivityEnum fromValue(String text) {
+        public static ActivityEnum fromValue(String value) {
             for (ActivityEnum b : ActivityEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ActivityEnum> {
@@ -88,7 +88,7 @@ public class SystemCostIndice implements Serializable {
             @Override
             public ActivityEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ActivityEnum.fromValue(String.valueOf(value));
+                return ActivityEnum.fromValue(value);
             }
         }
     }
@@ -161,7 +161,6 @@ public class SystemCostIndice implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemCostIndice {\n");
-
         sb.append("    activity: ").append(toIndentedString(activity)).append("\n");
         sb.append("    costIndex: ").append(toIndentedString(costIndex)).append("\n");
         sb.append("}");

@@ -146,7 +146,6 @@ public class CharacterPortraitResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterPortraitResponse {\n");
-
         sb.append("    px256x256: ").append(toIndentedString(px256x256)).append("\n");
         sb.append("    px512x512: ").append(toIndentedString(px512x512)).append("\n");
         sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");

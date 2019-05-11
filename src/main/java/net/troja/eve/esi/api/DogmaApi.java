@@ -35,22 +35,22 @@ import java.util.List;
 import java.util.Map;
 
 public class DogmaApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public DogmaApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public DogmaApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -62,14 +62,14 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDogmaAttributesCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getDogmaAttributesCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -78,17 +78,17 @@ public class DogmaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -96,20 +96,20 @@ public class DogmaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDogmaAttributesValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getDogmaAttributesValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaAttributesCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getDogmaAttributesCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -129,8 +129,8 @@ public class DogmaApi {
      *             deserialize the response body
      */
     public List<Integer> getDogmaAttributes(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getDogmaAttributesWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getDogmaAttributesWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -150,10 +150,10 @@ public class DogmaApi {
      */
     public ApiResponse<List<Integer>> getDogmaAttributesWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getDogmaAttributesValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getDogmaAttributesValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -166,21 +166,21 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getDogmaAttributesAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getDogmaAttributesAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaAttributesValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getDogmaAttributesValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -194,34 +194,34 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDogmaAttributesAttributeIdCall(Integer attributeId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getDogmaAttributesAttributeIdCall(Integer attributeId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/dogma/attributes/{attribute_id}/".replaceAll("\\{" + "attribute_id" + "\\}",
-                apiClient.escapeString(attributeId.toString()));
+                localVarApiClient.escapeString(attributeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -229,17 +229,17 @@ public class DogmaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDogmaAttributesAttributeIdValidateBeforeCall(Integer attributeId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getDogmaAttributesAttributeIdValidateBeforeCall(Integer attributeId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'attributeId' is set
         if (attributeId == null) {
@@ -247,9 +247,8 @@ public class DogmaApi {
                     "Missing the required parameter 'attributeId' when calling getDogmaAttributesAttributeId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getDogmaAttributesAttributeIdCall(attributeId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getDogmaAttributesAttributeIdCall(attributeId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -272,9 +271,9 @@ public class DogmaApi {
      */
     public DogmaAttributeResponse getDogmaAttributesAttributeId(Integer attributeId, String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<DogmaAttributeResponse> resp = getDogmaAttributesAttributeIdWithHttpInfo(attributeId, datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<DogmaAttributeResponse> localVarResp = getDogmaAttributesAttributeIdWithHttpInfo(attributeId,
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -296,11 +295,11 @@ public class DogmaApi {
      */
     public ApiResponse<DogmaAttributeResponse> getDogmaAttributesAttributeIdWithHttpInfo(Integer attributeId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, datasource,
+        okhttp3.Call localVarCall = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -315,22 +314,22 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getDogmaAttributesAttributeIdAsync(Integer attributeId, String datasource,
-            String ifNoneMatch, final ApiCallback<DogmaAttributeResponse> callback) throws ApiException {
+    public okhttp3.Call getDogmaAttributesAttributeIdAsync(Integer attributeId, String datasource, String ifNoneMatch,
+            final ApiCallback<DogmaAttributeResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getDogmaAttributesAttributeIdValidateBeforeCall(attributeId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<DogmaAttributeResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -346,35 +345,35 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDogmaDynamicItemsTypeIdItemIdCall(Long itemId, Integer typeId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getDogmaDynamicItemsTypeIdItemIdCall(Long itemId, Integer typeId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/dogma/dynamic/items/{type_id}/{item_id}/".replaceAll("\\{" + "item_id" + "\\}",
-                apiClient.escapeString(itemId.toString())).replaceAll("\\{" + "type_id" + "\\}",
-                apiClient.escapeString(typeId.toString()));
+                localVarApiClient.escapeString(itemId.toString())).replaceAll("\\{" + "type_id" + "\\}",
+                localVarApiClient.escapeString(typeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -382,17 +381,17 @@ public class DogmaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(Long itemId, Integer typeId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(Long itemId, Integer typeId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'itemId' is set
         if (itemId == null) {
@@ -406,9 +405,9 @@ public class DogmaApi {
                     "Missing the required parameter 'typeId' when calling getDogmaDynamicItemsTypeIdItemId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getDogmaDynamicItemsTypeIdItemIdCall(itemId, typeId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getDogmaDynamicItemsTypeIdItemIdCall(itemId, typeId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -433,9 +432,9 @@ public class DogmaApi {
      */
     public DogmaDynamicItemsResponse getDogmaDynamicItemsTypeIdItemId(Long itemId, Integer typeId, String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<DogmaDynamicItemsResponse> resp = getDogmaDynamicItemsTypeIdItemIdWithHttpInfo(itemId, typeId,
-                datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<DogmaDynamicItemsResponse> localVarResp = getDogmaDynamicItemsTypeIdItemIdWithHttpInfo(itemId,
+                typeId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -459,11 +458,11 @@ public class DogmaApi {
      */
     public ApiResponse<DogmaDynamicItemsResponse> getDogmaDynamicItemsTypeIdItemIdWithHttpInfo(Long itemId,
             Integer typeId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId, datasource,
+        okhttp3.Call localVarCall = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<DogmaDynamicItemsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -481,23 +480,22 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getDogmaDynamicItemsTypeIdItemIdAsync(Long itemId, Integer typeId,
-            String datasource, String ifNoneMatch, final ApiCallback<DogmaDynamicItemsResponse> callback)
-            throws ApiException {
+    public okhttp3.Call getDogmaDynamicItemsTypeIdItemIdAsync(Long itemId, Integer typeId, String datasource,
+            String ifNoneMatch, final ApiCallback<DogmaDynamicItemsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getDogmaDynamicItemsTypeIdItemIdValidateBeforeCall(itemId, typeId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<DogmaDynamicItemsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -509,14 +507,14 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDogmaEffectsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getDogmaEffectsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -525,17 +523,17 @@ public class DogmaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -543,20 +541,20 @@ public class DogmaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDogmaEffectsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getDogmaEffectsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaEffectsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getDogmaEffectsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -576,8 +574,8 @@ public class DogmaApi {
      *             deserialize the response body
      */
     public List<Integer> getDogmaEffects(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getDogmaEffectsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getDogmaEffectsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -597,10 +595,10 @@ public class DogmaApi {
      */
     public ApiResponse<List<Integer>> getDogmaEffectsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getDogmaEffectsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getDogmaEffectsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -613,21 +611,21 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getDogmaEffectsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getDogmaEffectsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaEffectsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getDogmaEffectsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -641,34 +639,34 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDogmaEffectsEffectIdCall(Integer effectId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getDogmaEffectsEffectIdCall(Integer effectId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/dogma/effects/{effect_id}/".replaceAll("\\{" + "effect_id" + "\\}",
-                apiClient.escapeString(effectId.toString()));
+                localVarApiClient.escapeString(effectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -676,17 +674,17 @@ public class DogmaApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDogmaEffectsEffectIdValidateBeforeCall(Integer effectId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getDogmaEffectsEffectIdValidateBeforeCall(Integer effectId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'effectId' is set
         if (effectId == null) {
@@ -694,8 +692,8 @@ public class DogmaApi {
                     "Missing the required parameter 'effectId' when calling getDogmaEffectsEffectId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getDogmaEffectsEffectIdCall(effectId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getDogmaEffectsEffectIdCall(effectId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -718,8 +716,9 @@ public class DogmaApi {
      */
     public DogmaEffectResponse getDogmaEffectsEffectId(Integer effectId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<DogmaEffectResponse> resp = getDogmaEffectsEffectIdWithHttpInfo(effectId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<DogmaEffectResponse> localVarResp = getDogmaEffectsEffectIdWithHttpInfo(effectId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -741,11 +740,10 @@ public class DogmaApi {
      */
     public ApiResponse<DogmaEffectResponse> getDogmaEffectsEffectIdWithHttpInfo(Integer effectId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getDogmaEffectsEffectIdValidateBeforeCall(effectId, datasource, ifNoneMatch,
-                null);
+        okhttp3.Call localVarCall = getDogmaEffectsEffectIdValidateBeforeCall(effectId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -760,21 +758,21 @@ public class DogmaApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getDogmaEffectsEffectIdAsync(Integer effectId, String datasource,
-            String ifNoneMatch, final ApiCallback<DogmaEffectResponse> callback) throws ApiException {
+    public okhttp3.Call getDogmaEffectsEffectIdAsync(Integer effectId, String datasource, String ifNoneMatch,
+            final ApiCallback<DogmaEffectResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getDogmaEffectsEffectIdValidateBeforeCall(effectId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getDogmaEffectsEffectIdValidateBeforeCall(effectId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<DogmaEffectResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

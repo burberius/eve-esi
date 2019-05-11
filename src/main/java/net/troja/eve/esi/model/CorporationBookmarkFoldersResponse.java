@@ -122,7 +122,6 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationBookmarkFoldersResponse {\n");
-
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");

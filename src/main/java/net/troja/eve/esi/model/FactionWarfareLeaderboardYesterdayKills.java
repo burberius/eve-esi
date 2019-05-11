@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardYesterdayKills implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardYesterdayKills {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("}");

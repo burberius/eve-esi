@@ -136,13 +136,13 @@ public class FittingItem implements Serializable {
             return String.valueOf(value);
         }
 
-        public static FlagEnum fromValue(String text) {
+        public static FlagEnum fromValue(String value) {
             for (FlagEnum b : FlagEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FlagEnum> {
@@ -154,7 +154,7 @@ public class FittingItem implements Serializable {
             @Override
             public FlagEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return FlagEnum.fromValue(String.valueOf(value));
+                return FlagEnum.fromValue(value);
             }
         }
     }
@@ -250,7 +250,6 @@ public class FittingItem implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FittingItem {\n");
-
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");

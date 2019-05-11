@@ -99,7 +99,6 @@ public class FactionWarfareLeaderboardCorporationLastWeekVictoryPoints implement
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCorporationLastWeekVictoryPoints {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("}");

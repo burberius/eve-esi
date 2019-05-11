@@ -60,7 +60,7 @@ public class CorporationStructuresResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
-    private List<StructureService> services = null;
+    private List<StructureService> services = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATE_TIMER_END = "state_timer_end";
     @SerializedName(SERIALIZED_NAME_STATE_TIMER_END)
@@ -128,13 +128,13 @@ public class CorporationStructuresResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StateEnum fromValue(String text) {
+        public static StateEnum fromValue(String value) {
             for (StateEnum b : StateEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StateEnum> {
@@ -146,7 +146,7 @@ public class CorporationStructuresResponse implements Serializable {
             @Override
             public StateEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StateEnum.fromValue(String.valueOf(value));
+                return StateEnum.fromValue(value);
             }
         }
     }
@@ -526,7 +526,6 @@ public class CorporationStructuresResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStructuresResponse {\n");
-
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");

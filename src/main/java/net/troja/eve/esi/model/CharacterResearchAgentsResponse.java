@@ -171,7 +171,6 @@ public class CharacterResearchAgentsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterResearchAgentsResponse {\n");
-
         sb.append("    remainderPoints: ").append(toIndentedString(remainderPoints)).append("\n");
         sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
         sb.append("    skillTypeId: ").append(toIndentedString(skillTypeId)).append("\n");

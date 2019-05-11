@@ -123,7 +123,6 @@ public class CharacterFatigueResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFatigueResponse {\n");
-
         sb.append("    lastJumpDate: ").append(toIndentedString(lastJumpDate)).append("\n");
         sb.append("    jumpFatigueExpireDate: ").append(toIndentedString(jumpFatigueExpireDate)).append("\n");
         sb.append("    lastUpdateDate: ").append(toIndentedString(lastUpdateDate)).append("\n");

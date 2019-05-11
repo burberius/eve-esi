@@ -35,22 +35,22 @@ import java.util.List;
 import java.util.Map;
 
 public class OpportunitiesApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public OpportunitiesApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public OpportunitiesApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -66,38 +66,38 @@ public class OpportunitiesApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdOpportunitiesCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdOpportunitiesCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/opportunities/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -105,17 +105,17 @@ public class OpportunitiesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdOpportunitiesValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdOpportunitiesValidateBeforeCall(Integer characterId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -123,9 +123,9 @@ public class OpportunitiesApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdOpportunities(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdOpportunitiesCall(characterId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdOpportunitiesCall(characterId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -151,9 +151,9 @@ public class OpportunitiesApi {
      */
     public List<CharacterOpportunitiesResponse> getCharactersCharacterIdOpportunities(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CharacterOpportunitiesResponse>> resp = getCharactersCharacterIdOpportunitiesWithHttpInfo(
+        ApiResponse<List<CharacterOpportunitiesResponse>> localVarResp = getCharactersCharacterIdOpportunitiesWithHttpInfo(
                 characterId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -178,11 +178,11 @@ public class OpportunitiesApi {
      */
     public ApiResponse<List<CharacterOpportunitiesResponse>> getCharactersCharacterIdOpportunitiesWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdOpportunitiesValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCharactersCharacterIdOpportunitiesValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterOpportunitiesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -200,23 +200,23 @@ public class OpportunitiesApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdOpportunitiesAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CharacterOpportunitiesResponse>> callback)
+    public okhttp3.Call getCharactersCharacterIdOpportunitiesAsync(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CharacterOpportunitiesResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdOpportunitiesValidateBeforeCall(characterId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdOpportunitiesValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CharacterOpportunitiesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -228,14 +228,14 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesGroupsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesGroupsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -244,17 +244,17 @@ public class OpportunitiesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -262,20 +262,20 @@ public class OpportunitiesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOpportunitiesGroupsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getOpportunitiesGroupsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getOpportunitiesGroupsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -295,8 +295,8 @@ public class OpportunitiesApi {
      *             deserialize the response body
      */
     public List<Integer> getOpportunitiesGroups(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getOpportunitiesGroupsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getOpportunitiesGroupsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -316,10 +316,10 @@ public class OpportunitiesApi {
      */
     public ApiResponse<List<Integer>> getOpportunitiesGroupsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getOpportunitiesGroupsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -332,21 +332,21 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesGroupsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesGroupsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getOpportunitiesGroupsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -365,42 +365,42 @@ public class OpportunitiesApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesGroupsGroupIdCall(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesGroupsGroupIdCall(Integer groupId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/opportunities/groups/{group_id}/".replaceAll("\\{" + "group_id" + "\\}",
-                apiClient.escapeString(groupId.toString()));
+                localVarApiClient.escapeString(groupId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -408,18 +408,17 @@ public class OpportunitiesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOpportunitiesGroupsGroupIdValidateBeforeCall(Integer groupId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getOpportunitiesGroupsGroupIdValidateBeforeCall(Integer groupId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'groupId' is set
         if (groupId == null) {
@@ -427,9 +426,9 @@ public class OpportunitiesApi {
                     "Missing the required parameter 'groupId' when calling getOpportunitiesGroupsGroupId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsGroupIdCall(groupId, acceptLanguage, datasource,
-                ifNoneMatch, language, callback);
-        return call;
+        okhttp3.Call localVarCall = getOpportunitiesGroupsGroupIdCall(groupId, acceptLanguage, datasource, ifNoneMatch,
+                language, _callback);
+        return localVarCall;
 
     }
 
@@ -457,9 +456,9 @@ public class OpportunitiesApi {
      */
     public OpportunitiesGroupResponse getOpportunitiesGroupsGroupId(Integer groupId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language) throws ApiException {
-        ApiResponse<OpportunitiesGroupResponse> resp = getOpportunitiesGroupsGroupIdWithHttpInfo(groupId,
+        ApiResponse<OpportunitiesGroupResponse> localVarResp = getOpportunitiesGroupsGroupIdWithHttpInfo(groupId,
                 acceptLanguage, datasource, ifNoneMatch, language);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -486,11 +485,11 @@ public class OpportunitiesApi {
      */
     public ApiResponse<OpportunitiesGroupResponse> getOpportunitiesGroupsGroupIdWithHttpInfo(Integer groupId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language) throws ApiException {
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage,
+        okhttp3.Call localVarCall = getOpportunitiesGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage,
                 datasource, ifNoneMatch, language, null);
         Type localVarReturnType = new TypeToken<OpportunitiesGroupResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -510,23 +509,23 @@ public class OpportunitiesApi {
      * @param language
      *            Language to use in the response, takes precedence over
      *            Accept-Language (optional, default to en-us)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesGroupsGroupIdAsync(Integer groupId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language,
-            final ApiCallback<OpportunitiesGroupResponse> callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesGroupsGroupIdAsync(Integer groupId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, final ApiCallback<OpportunitiesGroupResponse> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage,
-                datasource, ifNoneMatch, language, callback);
+        okhttp3.Call localVarCall = getOpportunitiesGroupsGroupIdValidateBeforeCall(groupId, acceptLanguage,
+                datasource, ifNoneMatch, language, _callback);
         Type localVarReturnType = new TypeToken<OpportunitiesGroupResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -538,14 +537,14 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesTasksCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesTasksCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -554,17 +553,17 @@ public class OpportunitiesApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -572,20 +571,20 @@ public class OpportunitiesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOpportunitiesTasksValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getOpportunitiesTasksValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesTasksCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getOpportunitiesTasksCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -605,8 +604,8 @@ public class OpportunitiesApi {
      *             deserialize the response body
      */
     public List<Integer> getOpportunitiesTasks(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getOpportunitiesTasksWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getOpportunitiesTasksWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -626,10 +625,10 @@ public class OpportunitiesApi {
      */
     public ApiResponse<List<Integer>> getOpportunitiesTasksWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getOpportunitiesTasksValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getOpportunitiesTasksValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -642,21 +641,21 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesTasksAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesTasksAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesTasksValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getOpportunitiesTasksValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -670,34 +669,34 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesTasksTaskIdCall(Integer taskId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesTasksTaskIdCall(Integer taskId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/opportunities/tasks/{task_id}/".replaceAll("\\{" + "task_id" + "\\}",
-                apiClient.escapeString(taskId.toString()));
+                localVarApiClient.escapeString(taskId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -705,17 +704,17 @@ public class OpportunitiesApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOpportunitiesTasksTaskIdValidateBeforeCall(Integer taskId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getOpportunitiesTasksTaskIdValidateBeforeCall(Integer taskId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'taskId' is set
         if (taskId == null) {
@@ -723,8 +722,8 @@ public class OpportunitiesApi {
                     "Missing the required parameter 'taskId' when calling getOpportunitiesTasksTaskId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getOpportunitiesTasksTaskIdCall(taskId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getOpportunitiesTasksTaskIdCall(taskId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -747,9 +746,9 @@ public class OpportunitiesApi {
      */
     public OpportunitiesTasksResponse getOpportunitiesTasksTaskId(Integer taskId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<OpportunitiesTasksResponse> resp = getOpportunitiesTasksTaskIdWithHttpInfo(taskId, datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<OpportunitiesTasksResponse> localVarResp = getOpportunitiesTasksTaskIdWithHttpInfo(taskId,
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -771,11 +770,10 @@ public class OpportunitiesApi {
      */
     public ApiResponse<OpportunitiesTasksResponse> getOpportunitiesTasksTaskIdWithHttpInfo(Integer taskId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getOpportunitiesTasksTaskIdValidateBeforeCall(taskId, datasource, ifNoneMatch,
-                null);
+        okhttp3.Call localVarCall = getOpportunitiesTasksTaskIdValidateBeforeCall(taskId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<OpportunitiesTasksResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -790,21 +788,21 @@ public class OpportunitiesApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getOpportunitiesTasksTaskIdAsync(Integer taskId, String datasource,
-            String ifNoneMatch, final ApiCallback<OpportunitiesTasksResponse> callback) throws ApiException {
+    public okhttp3.Call getOpportunitiesTasksTaskIdAsync(Integer taskId, String datasource, String ifNoneMatch,
+            final ApiCallback<OpportunitiesTasksResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getOpportunitiesTasksTaskIdValidateBeforeCall(taskId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getOpportunitiesTasksTaskIdValidateBeforeCall(taskId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<OpportunitiesTasksResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

@@ -146,7 +146,6 @@ public class SovereigntyMapResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyMapResponse {\n");
-
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");

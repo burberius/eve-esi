@@ -154,7 +154,6 @@ public class CharacterFitting implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterFitting {\n");
-
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

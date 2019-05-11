@@ -171,7 +171,6 @@ public class CorporationMiningObserverResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMiningObserverResponse {\n");
-
         sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    recordedCorporationId: ").append(toIndentedString(recordedCorporationId)).append("\n");

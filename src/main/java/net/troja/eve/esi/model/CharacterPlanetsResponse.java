@@ -67,13 +67,13 @@ public class CharacterPlanetsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static PlanetTypeEnum fromValue(String text) {
+        public static PlanetTypeEnum fromValue(String value) {
             for (PlanetTypeEnum b : PlanetTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PlanetTypeEnum> {
@@ -85,7 +85,7 @@ public class CharacterPlanetsResponse implements Serializable {
             @Override
             public PlanetTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return PlanetTypeEnum.fromValue(String.valueOf(value));
+                return PlanetTypeEnum.fromValue(value);
             }
         }
     }
@@ -278,7 +278,6 @@ public class CharacterPlanetsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterPlanetsResponse {\n");
-
         sb.append("    planetType: ").append(toIndentedString(planetType)).append("\n");
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");

@@ -34,7 +34,7 @@ public class MailMetaData implements Serializable {
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
-    private List<Integer> labels = null;
+    private List<Integer> labels = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_READ = "read";
     @SerializedName(SERIALIZED_NAME_READ)
@@ -107,7 +107,6 @@ public class MailMetaData implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailMetaData {\n");
-
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    read: ").append(toIndentedString(read)).append("\n");
         sb.append("}");

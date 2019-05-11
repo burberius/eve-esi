@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardCharactersYesterdayKills implements Serial
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersYesterdayKills {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");

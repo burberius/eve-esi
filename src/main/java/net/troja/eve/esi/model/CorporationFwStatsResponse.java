@@ -176,7 +176,6 @@ public class CorporationFwStatsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationFwStatsResponse {\n");
-
         sb.append("    kills: ").append(toIndentedString(kills)).append("\n");
         sb.append("    pilots: ").append(toIndentedString(pilots)).append("\n");
         sb.append("    enlistedOn: ").append(toIndentedString(enlistedOn)).append("\n");

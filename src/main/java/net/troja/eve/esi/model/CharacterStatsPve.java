@@ -147,7 +147,6 @@ public class CharacterStatsPve implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsPve {\n");
-
         sb.append("    missionsSucceeded: ").append(toIndentedString(missionsSucceeded)).append("\n");
         sb.append("    dungeonsCompletedAgent: ").append(toIndentedString(dungeonsCompletedAgent)).append("\n");
         sb.append("    dungeonsCompletedDistribution: ").append(toIndentedString(dungeonsCompletedDistribution))

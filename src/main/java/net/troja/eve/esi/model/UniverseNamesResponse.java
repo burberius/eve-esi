@@ -76,13 +76,13 @@ public class UniverseNamesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static CategoryEnum fromValue(String text) {
+        public static CategoryEnum fromValue(String value) {
             for (CategoryEnum b : CategoryEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<CategoryEnum> {
@@ -94,7 +94,7 @@ public class UniverseNamesResponse implements Serializable {
             @Override
             public CategoryEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return CategoryEnum.fromValue(String.valueOf(value));
+                return CategoryEnum.fromValue(value);
             }
         }
     }
@@ -183,7 +183,6 @@ public class UniverseNamesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseNamesResponse {\n");
-
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    category: ").append(toIndentedString(category)).append("\n");

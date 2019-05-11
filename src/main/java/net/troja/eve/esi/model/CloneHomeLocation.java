@@ -58,13 +58,13 @@ public class CloneHomeLocation implements Serializable {
             return String.valueOf(value);
         }
 
-        public static LocationTypeEnum fromValue(String text) {
+        public static LocationTypeEnum fromValue(String value) {
             for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LocationTypeEnum> {
@@ -76,7 +76,7 @@ public class CloneHomeLocation implements Serializable {
             @Override
             public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return LocationTypeEnum.fromValue(String.valueOf(value));
+                return LocationTypeEnum.fromValue(value);
             }
         }
     }
@@ -145,7 +145,6 @@ public class CloneHomeLocation implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CloneHomeLocation {\n");
-
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
         sb.append("}");

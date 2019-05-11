@@ -125,7 +125,6 @@ public class CharacterStatsOrbital implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsOrbital {\n");
-
         sb.append("    strikeCharactersKilled: ").append(toIndentedString(strikeCharactersKilled)).append("\n");
         sb.append("    strikeDamageToPlayersArmorAmount: ").append(toIndentedString(strikeDamageToPlayersArmorAmount))
                 .append("\n");

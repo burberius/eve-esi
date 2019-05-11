@@ -74,7 +74,6 @@ public class FleetSquadCreatedResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetSquadCreatedResponse {\n");
-
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("}");
         return sb.toString();

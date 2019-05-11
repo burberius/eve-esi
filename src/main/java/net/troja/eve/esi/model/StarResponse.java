@@ -252,13 +252,13 @@ public class StarResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static SpectralClassEnum fromValue(String text) {
+        public static SpectralClassEnum fromValue(String value) {
             for (SpectralClassEnum b : SpectralClassEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SpectralClassEnum> {
@@ -270,7 +270,7 @@ public class StarResponse implements Serializable {
             @Override
             public SpectralClassEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return SpectralClassEnum.fromValue(String.valueOf(value));
+                return SpectralClassEnum.fromValue(value);
             }
         }
     }
@@ -462,7 +462,6 @@ public class StarResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StarResponse {\n");
-
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    temperature: ").append(toIndentedString(temperature)).append("\n");

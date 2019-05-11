@@ -98,7 +98,6 @@ public class CharacterBookmarkFoldersResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterBookmarkFoldersResponse {\n");
-
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");
         sb.append("}");

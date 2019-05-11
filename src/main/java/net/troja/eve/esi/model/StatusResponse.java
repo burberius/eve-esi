@@ -147,7 +147,6 @@ public class StatusResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StatusResponse {\n");
-
         sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
         sb.append("    players: ").append(toIndentedString(players)).append("\n");
         sb.append("    serverVersion: ").append(toIndentedString(serverVersion)).append("\n");

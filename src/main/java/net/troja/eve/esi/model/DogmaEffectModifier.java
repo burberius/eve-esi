@@ -194,7 +194,6 @@ public class DogmaEffectModifier implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaEffectModifier {\n");
-
         sb.append("    modifyingAttributeId: ").append(toIndentedString(modifyingAttributeId)).append("\n");
         sb.append("    func: ").append(toIndentedString(func)).append("\n");
         sb.append("    domain: ").append(toIndentedString(domain)).append("\n");

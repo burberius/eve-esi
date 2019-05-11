@@ -146,7 +146,6 @@ public class MoonResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MoonResponse {\n");
-
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    moonId: ").append(toIndentedString(moonId)).append("\n");

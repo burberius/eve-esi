@@ -39,7 +39,7 @@ public class MailLabelsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
-    private List<MailLabel> labels = null;
+    private List<MailLabel> labels = new ArrayList<>();
 
     public MailLabelsResponse totalUnreadCount(Integer totalUnreadCount) {
         this.totalUnreadCount = totalUnreadCount;
@@ -109,7 +109,6 @@ public class MailLabelsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabelsResponse {\n");
-
         sb.append("    totalUnreadCount: ").append(toIndentedString(totalUnreadCount)).append("\n");
         sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("}");

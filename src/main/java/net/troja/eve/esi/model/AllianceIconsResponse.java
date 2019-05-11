@@ -98,7 +98,6 @@ public class AllianceIconsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceIconsResponse {\n");
-
         sb.append("    px64x64: ").append(toIndentedString(px64x64)).append("\n");
         sb.append("    px128x128: ").append(toIndentedString(px128x128)).append("\n");
         sb.append("}");

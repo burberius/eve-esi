@@ -98,7 +98,6 @@ public class CharacterMailinglistsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterMailinglistsResponse {\n");
-
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    mailingListId: ").append(toIndentedString(mailingListId)).append("\n");
         sb.append("}");

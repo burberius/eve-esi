@@ -98,7 +98,6 @@ public class CorporationStarbaseFuel implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStarbaseFuel {\n");
-
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");

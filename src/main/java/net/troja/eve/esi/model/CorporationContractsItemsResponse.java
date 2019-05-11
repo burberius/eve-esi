@@ -196,7 +196,6 @@ public class CorporationContractsItemsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContractsItemsResponse {\n");
-
         sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");

@@ -147,13 +147,13 @@ public class StationResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ServicesEnum fromValue(String text) {
+        public static ServicesEnum fromValue(String value) {
             for (ServicesEnum b : ServicesEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ServicesEnum> {
@@ -165,7 +165,7 @@ public class StationResponse implements Serializable {
             @Override
             public ServicesEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ServicesEnum.fromValue(String.valueOf(value));
+                return ServicesEnum.fromValue(value);
             }
         }
     }
@@ -444,7 +444,6 @@ public class StationResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StationResponse {\n");
-
         sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
         sb.append("    reprocessingEfficiency: ").append(toIndentedString(reprocessingEfficiency)).append("\n");
         sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");

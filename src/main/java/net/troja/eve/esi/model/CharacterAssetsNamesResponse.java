@@ -98,7 +98,6 @@ public class CharacterAssetsNamesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAssetsNamesResponse {\n");
-
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");

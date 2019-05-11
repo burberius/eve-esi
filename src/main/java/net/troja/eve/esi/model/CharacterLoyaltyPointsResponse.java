@@ -98,7 +98,6 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterLoyaltyPointsResponse {\n");
-
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    loyaltyPoints: ").append(toIndentedString(loyaltyPoints)).append("\n");
         sb.append("}");

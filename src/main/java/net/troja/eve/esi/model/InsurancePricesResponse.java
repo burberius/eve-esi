@@ -106,7 +106,6 @@ public class InsurancePricesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class InsurancePricesResponse {\n");
-
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
         sb.append("}");

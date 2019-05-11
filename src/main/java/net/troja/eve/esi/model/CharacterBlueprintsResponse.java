@@ -214,13 +214,13 @@ public class CharacterBlueprintsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static LocationFlagEnum fromValue(String text) {
+        public static LocationFlagEnum fromValue(String value) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
@@ -232,7 +232,7 @@ public class CharacterBlueprintsResponse implements Serializable {
             @Override
             public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(String.valueOf(value));
+                return LocationFlagEnum.fromValue(value);
             }
         }
     }
@@ -445,7 +445,6 @@ public class CharacterBlueprintsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterBlueprintsResponse {\n");
-
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");

@@ -98,7 +98,6 @@ public class CharacterBookmarkItem implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterBookmarkItem {\n");
-
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");

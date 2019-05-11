@@ -291,7 +291,6 @@ public class FactionsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionsResponse {\n");
-
         sb.append("    militiaCorporationId: ").append(toIndentedString(militiaCorporationId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

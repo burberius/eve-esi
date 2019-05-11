@@ -123,7 +123,6 @@ public class CharacterBookmarksCoordinates implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterBookmarksCoordinates {\n");
-
         sb.append("    x: ").append(toIndentedString(x)).append("\n");
         sb.append("    y: ").append(toIndentedString(y)).append("\n");
         sb.append("    z: ").append(toIndentedString(z)).append("\n");

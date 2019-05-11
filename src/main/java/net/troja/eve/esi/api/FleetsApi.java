@@ -43,22 +43,22 @@ import java.util.List;
 import java.util.Map;
 
 public class FleetsApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public FleetsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public FleetsApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -73,29 +73,29 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "member_id" + "\\}",
-                apiClient.escapeString(memberId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "member_id" + "\\}",
+                localVarApiClient.escapeString(memberId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -103,7 +103,7 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -111,17 +111,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId,
-            Integer memberId, String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId, Integer memberId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -135,9 +135,9 @@ public class FleetsApi {
                     "Missing the required parameter 'memberId' when calling deleteFleetsFleetIdMembersMemberId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdCall(fleetId, memberId, datasource, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdMembersMemberIdCall(fleetId, memberId, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -183,9 +183,9 @@ public class FleetsApi {
      */
     public ApiResponse<Void> deleteFleetsFleetIdMembersMemberIdWithHttpInfo(Long fleetId, Integer memberId,
             String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId, datasource,
+                token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -201,20 +201,20 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdMembersMemberIdAsync(Long fleetId, Integer memberId,
-            String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdMembersMemberIdAsync(Long fleetId, Integer memberId, String datasource,
+            String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId, datasource,
+                token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -229,29 +229,29 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "squad_id" + "\\}",
-                apiClient.escapeString(squadId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "squad_id" + "\\}",
+                localVarApiClient.escapeString(squadId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -259,7 +259,7 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -267,17 +267,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -291,9 +291,8 @@ public class FleetsApi {
                     "Missing the required parameter 'squadId' when calling deleteFleetsFleetIdSquadsSquadId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, datasource, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -339,9 +338,9 @@ public class FleetsApi {
      */
     public ApiResponse<Void> deleteFleetsFleetIdSquadsSquadIdWithHttpInfo(Long fleetId, Long squadId,
             String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId,
-                datasource, token, null);
-        return apiClient.execute(call);
+        okhttp3.Call localVarCall = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
+                token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -357,20 +356,20 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId,
-            String datasource, String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId, String datasource,
+            String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId,
-                datasource, token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
+                token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -385,29 +384,29 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
-                apiClient.escapeString(wingId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
+                localVarApiClient.escapeString(wingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -415,7 +414,7 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -423,17 +422,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call deleteFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -447,8 +446,8 @@ public class FleetsApi {
                     "Missing the required parameter 'wingId' when calling deleteFleetsFleetIdWingsWingId(Async)");
         }
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -496,9 +495,9 @@ public class FleetsApi {
      */
     public ApiResponse<Void> deleteFleetsFleetIdWingsWingIdWithHttpInfo(Long fleetId, Long wingId, String datasource,
             String token) throws ApiException {
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
+        okhttp3.Call localVarCall = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
                 token, null);
-        return apiClient.execute(call);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -515,20 +514,20 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call deleteFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, String datasource,
-            String token, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call deleteFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, String datasource, String token,
+            final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = deleteFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
+                token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -544,38 +543,38 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFleetCall(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFleetCall(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/fleet/".replaceAll("\\{" + "character_id" + "\\}",
-                apiClient.escapeString(characterId.toString()));
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -583,17 +582,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCharactersCharacterIdFleetValidateBeforeCall(Integer characterId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCharactersCharacterIdFleetValidateBeforeCall(Integer characterId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -601,15 +600,18 @@ public class FleetsApi {
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdFleet(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFleetCall(characterId, datasource, ifNoneMatch, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCharactersCharacterIdFleetCall(characterId, datasource, ifNoneMatch, token,
+                _callback);
+        return localVarCall;
 
     }
 
     /**
      * Get character fleet info Return the fleet ID the character is in, if any.
-     * --- This route is cached for up to 60 seconds SSO Scope:
+     * --- This route is cached for up to 60 seconds --- Warning: This route has
+     * an upgrade available --- [Diff of the upcoming
+     * changes](https://esi.evetech
+     * .net/diff/latest/dev/#GET-/characters/{character_id}/fleet/) SSO Scope:
      * esi-fleets.read_fleet.v1
      * 
      * @param characterId
@@ -629,14 +631,17 @@ public class FleetsApi {
      */
     public CharacterFleetResponse getCharactersCharacterIdFleet(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CharacterFleetResponse> resp = getCharactersCharacterIdFleetWithHttpInfo(characterId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<CharacterFleetResponse> localVarResp = getCharactersCharacterIdFleetWithHttpInfo(characterId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
      * Get character fleet info Return the fleet ID the character is in, if any.
-     * --- This route is cached for up to 60 seconds SSO Scope:
+     * --- This route is cached for up to 60 seconds --- Warning: This route has
+     * an upgrade available --- [Diff of the upcoming
+     * changes](https://esi.evetech
+     * .net/diff/latest/dev/#GET-/characters/{character_id}/fleet/) SSO Scope:
      * esi-fleets.read_fleet.v1
      * 
      * @param characterId
@@ -656,17 +661,20 @@ public class FleetsApi {
      */
     public ApiResponse<CharacterFleetResponse> getCharactersCharacterIdFleetWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
+        okhttp3.Call localVarCall = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CharacterFleetResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Get character fleet info (asynchronously) Return the fleet ID the
      * character is in, if any. --- This route is cached for up to 60 seconds
-     * SSO Scope: esi-fleets.read_fleet.v1
+     * --- Warning: This route has an upgrade available --- [Diff of the
+     * upcoming
+     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters
+     * /{character_id}/fleet/) SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -678,22 +686,22 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCharactersCharacterIdFleetAsync(Integer characterId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<CharacterFleetResponse> callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdFleetAsync(Integer characterId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback<CharacterFleetResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCharactersCharacterIdFleetValidateBeforeCall(characterId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterFleetResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -709,38 +717,38 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdCall(Long fleetId, String datasource, String ifNoneMatch,
-            String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFleetsFleetIdCall(Long fleetId, String datasource, String ifNoneMatch, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -748,25 +756,25 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFleetsFleetIdValidateBeforeCall(Long fleetId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getFleetsFleetIdValidateBeforeCall(Long fleetId, String datasource, String ifNoneMatch,
+            String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling getFleetsFleetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdCall(fleetId, datasource, ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getFleetsFleetIdCall(fleetId, datasource, ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -791,8 +799,8 @@ public class FleetsApi {
      */
     public FleetResponse getFleetsFleetId(Long fleetId, String datasource, String ifNoneMatch, String token)
             throws ApiException {
-        ApiResponse<FleetResponse> resp = getFleetsFleetIdWithHttpInfo(fleetId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<FleetResponse> localVarResp = getFleetsFleetIdWithHttpInfo(fleetId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -816,11 +824,10 @@ public class FleetsApi {
      */
     public ApiResponse<FleetResponse> getFleetsFleetIdWithHttpInfo(Long fleetId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
-        com.squareup.okhttp.Call call = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token,
-                null);
+        okhttp3.Call localVarCall = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<FleetResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -838,22 +845,22 @@ public class FleetsApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdAsync(Long fleetId, String datasource, String ifNoneMatch,
-            String token, final ApiCallback<FleetResponse> callback) throws ApiException {
+    public okhttp3.Call getFleetsFleetIdAsync(Long fleetId, String datasource, String ifNoneMatch, String token,
+            final ApiCallback<FleetResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token,
-                callback);
+        okhttp3.Call localVarCall = getFleetsFleetIdValidateBeforeCall(fleetId, datasource, ifNoneMatch, token,
+                _callback);
         Type localVarReturnType = new TypeToken<FleetResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -874,46 +881,46 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdMembersCall(Long fleetId, String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFleetsFleetIdMembersCall(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/members/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -921,17 +928,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFleetsFleetIdMembersValidateBeforeCall(Long fleetId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, String token, final ApiCallback callback)
+    private okhttp3.Call getFleetsFleetIdMembersValidateBeforeCall(Long fleetId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'fleetId' is set
@@ -940,9 +947,9 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling getFleetsFleetIdMembers(Async)");
         }
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdMembersCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
-                language, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getFleetsFleetIdMembersCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
+                language, token, _callback);
+        return localVarCall;
 
     }
 
@@ -972,9 +979,9 @@ public class FleetsApi {
      */
     public List<FleetMembersResponse> getFleetsFleetIdMembers(Long fleetId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language, String token) throws ApiException {
-        ApiResponse<List<FleetMembersResponse>> resp = getFleetsFleetIdMembersWithHttpInfo(fleetId, acceptLanguage,
-                datasource, ifNoneMatch, language, token);
-        return resp.getData();
+        ApiResponse<List<FleetMembersResponse>> localVarResp = getFleetsFleetIdMembersWithHttpInfo(fleetId,
+                acceptLanguage, datasource, ifNoneMatch, language, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1004,11 +1011,11 @@ public class FleetsApi {
     public ApiResponse<List<FleetMembersResponse>> getFleetsFleetIdMembersWithHttpInfo(Long fleetId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
+        okhttp3.Call localVarCall = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
                 ifNoneMatch, language, token, null);
         Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1031,23 +1038,23 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdMembersAsync(Long fleetId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, String token,
-            final ApiCallback<List<FleetMembersResponse>> callback) throws ApiException {
+    public okhttp3.Call getFleetsFleetIdMembersAsync(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token, final ApiCallback<List<FleetMembersResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, callback);
+        okhttp3.Call localVarCall = getFleetsFleetIdMembersValidateBeforeCall(fleetId, acceptLanguage, datasource,
+                ifNoneMatch, language, token, _callback);
         Type localVarReturnType = new TypeToken<List<FleetMembersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1068,46 +1075,46 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdWingsCall(Long fleetId, String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getFleetsFleetIdWingsCall(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/wings/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1115,17 +1122,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String acceptLanguage,
-            String datasource, String ifNoneMatch, String language, String token, final ApiCallback callback)
+    private okhttp3.Call getFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'fleetId' is set
@@ -1133,9 +1140,9 @@ public class FleetsApi {
             throw new ApiException("Missing the required parameter 'fleetId' when calling getFleetsFleetIdWings(Async)");
         }
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdWingsCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
-                language, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getFleetsFleetIdWingsCall(fleetId, acceptLanguage, datasource, ifNoneMatch,
+                language, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1165,9 +1172,9 @@ public class FleetsApi {
      */
     public List<FleetWingsResponse> getFleetsFleetIdWings(Long fleetId, String acceptLanguage, String datasource,
             String ifNoneMatch, String language, String token) throws ApiException {
-        ApiResponse<List<FleetWingsResponse>> resp = getFleetsFleetIdWingsWithHttpInfo(fleetId, acceptLanguage,
+        ApiResponse<List<FleetWingsResponse>> localVarResp = getFleetsFleetIdWingsWithHttpInfo(fleetId, acceptLanguage,
                 datasource, ifNoneMatch, language, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1196,11 +1203,11 @@ public class FleetsApi {
      */
     public ApiResponse<List<FleetWingsResponse>> getFleetsFleetIdWingsWithHttpInfo(Long fleetId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
+        okhttp3.Call localVarCall = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
                 ifNoneMatch, language, token, null);
         Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1223,23 +1230,23 @@ public class FleetsApi {
      *            Accept-Language (optional, default to en-us)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getFleetsFleetIdWingsAsync(Long fleetId, String acceptLanguage, String datasource,
-            String ifNoneMatch, String language, String token, final ApiCallback<List<FleetWingsResponse>> callback)
+    public okhttp3.Call getFleetsFleetIdWingsAsync(Long fleetId, String acceptLanguage, String datasource,
+            String ifNoneMatch, String language, String token, final ApiCallback<List<FleetWingsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
-                ifNoneMatch, language, token, callback);
+        okhttp3.Call localVarCall = getFleetsFleetIdWingsValidateBeforeCall(fleetId, acceptLanguage, datasource,
+                ifNoneMatch, language, token, _callback);
         Type localVarReturnType = new TypeToken<List<FleetWingsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1247,35 +1254,35 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param invitation
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetInvitation
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdMembersCall(Long fleetId, String datasource, String token,
-            FleetInvitation fleetInvitation, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = fleetInvitation;
+    public okhttp3.Call postFleetsFleetIdMembersCall(Long fleetId, FleetInvitation invitation, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = invitation;
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/members/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1283,23 +1290,23 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postFleetsFleetIdMembersValidateBeforeCall(Long fleetId, String datasource,
-            String token, FleetInvitation fleetInvitation, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postFleetsFleetIdMembersValidateBeforeCall(Long fleetId, FleetInvitation invitation,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1307,9 +1314,14 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling postFleetsFleetIdMembers(Async)");
         }
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdMembersCall(fleetId, datasource, token, fleetInvitation,
-                callback);
-        return call;
+        // verify the required parameter 'invitation' is set
+        if (invitation == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'invitation' when calling postFleetsFleetIdMembers(Async)");
+        }
+
+        okhttp3.Call localVarCall = postFleetsFleetIdMembersCall(fleetId, invitation, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1320,20 +1332,20 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param invitation
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetInvitation
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void postFleetsFleetIdMembers(Long fleetId, String datasource, String token, FleetInvitation fleetInvitation)
+    public void postFleetsFleetIdMembers(Long fleetId, FleetInvitation invitation, String datasource, String token)
             throws ApiException {
-        postFleetsFleetIdMembersWithHttpInfo(fleetId, datasource, token, fleetInvitation);
+        postFleetsFleetIdMembersWithHttpInfo(fleetId, invitation, datasource, token);
     }
 
     /**
@@ -1343,23 +1355,23 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param invitation
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetInvitation
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Void> postFleetsFleetIdMembersWithHttpInfo(Long fleetId, String datasource, String token,
-            FleetInvitation fleetInvitation) throws ApiException {
-        com.squareup.okhttp.Call call = postFleetsFleetIdMembersValidateBeforeCall(fleetId, datasource, token,
-                fleetInvitation, null);
-        return apiClient.execute(call);
+    public ApiResponse<Void> postFleetsFleetIdMembersWithHttpInfo(Long fleetId, FleetInvitation invitation,
+            String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = postFleetsFleetIdMembersValidateBeforeCall(fleetId, invitation, datasource, token,
+                null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1369,27 +1381,27 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param invitation
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetInvitation
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdMembersAsync(Long fleetId, String datasource, String token,
-            FleetInvitation fleetInvitation, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call postFleetsFleetIdMembersAsync(Long fleetId, FleetInvitation invitation, String datasource,
+            String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdMembersValidateBeforeCall(fleetId, datasource, token,
-                fleetInvitation, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = postFleetsFleetIdMembersValidateBeforeCall(fleetId, invitation, datasource, token,
+                _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1402,34 +1414,34 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdWingsCall(Long fleetId, String datasource, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postFleetsFleetIdWingsCall(Long fleetId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/wings/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1437,17 +1449,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String datasource,
-            String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postFleetsFleetIdWingsValidateBeforeCall(Long fleetId, String datasource, String token,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1455,8 +1467,8 @@ public class FleetsApi {
                     "Missing the required parameter 'fleetId' when calling postFleetsFleetIdWings(Async)");
         }
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsCall(fleetId, datasource, token, callback);
-        return call;
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsCall(fleetId, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1478,8 +1490,9 @@ public class FleetsApi {
      */
     public FleetWingCreatedResponse postFleetsFleetIdWings(Long fleetId, String datasource, String token)
             throws ApiException {
-        ApiResponse<FleetWingCreatedResponse> resp = postFleetsFleetIdWingsWithHttpInfo(fleetId, datasource, token);
-        return resp.getData();
+        ApiResponse<FleetWingCreatedResponse> localVarResp = postFleetsFleetIdWingsWithHttpInfo(fleetId, datasource,
+                token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1500,10 +1513,10 @@ public class FleetsApi {
      */
     public ApiResponse<FleetWingCreatedResponse> postFleetsFleetIdWingsWithHttpInfo(Long fleetId, String datasource,
             String token) throws ApiException {
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, null);
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, null);
         Type localVarReturnType = new TypeToken<FleetWingCreatedResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1517,21 +1530,21 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdWingsAsync(Long fleetId, String datasource, String token,
-            final ApiCallback<FleetWingCreatedResponse> callback) throws ApiException {
+    public okhttp3.Call postFleetsFleetIdWingsAsync(Long fleetId, String datasource, String token,
+            final ApiCallback<FleetWingCreatedResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, callback);
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsValidateBeforeCall(fleetId, datasource, token, _callback);
         Type localVarReturnType = new TypeToken<FleetWingCreatedResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1546,35 +1559,35 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsCall(Long fleetId, Long wingId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call postFleetsFleetIdWingsWingIdSquadsCall(Long fleetId, Long wingId, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/squads/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
-                apiClient.escapeString(wingId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
+                localVarApiClient.escapeString(wingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1582,17 +1595,17 @@ public class FleetsApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(Long fleetId, Long wingId,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -1606,9 +1619,9 @@ public class FleetsApi {
                     "Missing the required parameter 'wingId' when calling postFleetsFleetIdWingsWingIdSquads(Async)");
         }
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsCall(fleetId, wingId, datasource, token,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsWingIdSquadsCall(fleetId, wingId, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1632,9 +1645,9 @@ public class FleetsApi {
      */
     public FleetSquadCreatedResponse postFleetsFleetIdWingsWingIdSquads(Long fleetId, Long wingId, String datasource,
             String token) throws ApiException {
-        ApiResponse<FleetSquadCreatedResponse> resp = postFleetsFleetIdWingsWingIdSquadsWithHttpInfo(fleetId, wingId,
-                datasource, token);
-        return resp.getData();
+        ApiResponse<FleetSquadCreatedResponse> localVarResp = postFleetsFleetIdWingsWingIdSquadsWithHttpInfo(fleetId,
+                wingId, datasource, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1657,11 +1670,11 @@ public class FleetsApi {
      */
     public ApiResponse<FleetSquadCreatedResponse> postFleetsFleetIdWingsWingIdSquadsWithHttpInfo(Long fleetId,
             Long wingId, String datasource, String token) throws ApiException {
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId,
-                datasource, token, null);
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId, datasource,
+                token, null);
         Type localVarReturnType = new TypeToken<FleetSquadCreatedResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1677,22 +1690,22 @@ public class FleetsApi {
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call postFleetsFleetIdWingsWingIdSquadsAsync(Long fleetId, Long wingId,
-            String datasource, String token, final ApiCallback<FleetSquadCreatedResponse> callback) throws ApiException {
+    public okhttp3.Call postFleetsFleetIdWingsWingIdSquadsAsync(Long fleetId, Long wingId, String datasource,
+            String token, final ApiCallback<FleetSquadCreatedResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId,
-                datasource, token, callback);
+        okhttp3.Call localVarCall = postFleetsFleetIdWingsWingIdSquadsValidateBeforeCall(fleetId, wingId, datasource,
+                token, _callback);
         Type localVarReturnType = new TypeToken<FleetSquadCreatedResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1700,35 +1713,35 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param newSettings
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetNewSettings
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdCall(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = fleetNewSettings;
+    public okhttp3.Call putFleetsFleetIdCall(Long fleetId, FleetNewSettings newSettings, String datasource,
+            String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = newSettings;
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString()));
+                localVarApiClient.escapeString(fleetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1736,31 +1749,36 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putFleetsFleetIdValidateBeforeCall(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call putFleetsFleetIdValidateBeforeCall(Long fleetId, FleetNewSettings newSettings,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
             throw new ApiException("Missing the required parameter 'fleetId' when calling putFleetsFleetId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdCall(fleetId, datasource, token, fleetNewSettings, callback);
-        return call;
+        // verify the required parameter 'newSettings' is set
+        if (newSettings == null) {
+            throw new ApiException("Missing the required parameter 'newSettings' when calling putFleetsFleetId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putFleetsFleetIdCall(fleetId, newSettings, datasource, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1770,20 +1788,20 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param newSettings
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetNewSettings
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putFleetsFleetId(Long fleetId, String datasource, String token, FleetNewSettings fleetNewSettings)
+    public void putFleetsFleetId(Long fleetId, FleetNewSettings newSettings, String datasource, String token)
             throws ApiException {
-        putFleetsFleetIdWithHttpInfo(fleetId, datasource, token, fleetNewSettings);
+        putFleetsFleetIdWithHttpInfo(fleetId, newSettings, datasource, token);
     }
 
     /**
@@ -1792,23 +1810,22 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param newSettings
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetNewSettings
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Void> putFleetsFleetIdWithHttpInfo(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings) throws ApiException {
-        com.squareup.okhttp.Call call = putFleetsFleetIdValidateBeforeCall(fleetId, datasource, token,
-                fleetNewSettings, null);
-        return apiClient.execute(call);
+    public ApiResponse<Void> putFleetsFleetIdWithHttpInfo(Long fleetId, FleetNewSettings newSettings,
+            String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putFleetsFleetIdValidateBeforeCall(fleetId, newSettings, datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1817,27 +1834,27 @@ public class FleetsApi {
      * 
      * @param fleetId
      *            ID for a fleet (required)
+     * @param newSettings
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetNewSettings
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdAsync(Long fleetId, String datasource, String token,
-            FleetNewSettings fleetNewSettings, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call putFleetsFleetIdAsync(Long fleetId, FleetNewSettings newSettings, String datasource,
+            String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdValidateBeforeCall(fleetId, datasource, token,
-                fleetNewSettings, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putFleetsFleetIdValidateBeforeCall(fleetId, newSettings, datasource, token,
+                _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1847,37 +1864,37 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param memberId
      *            The character ID of a member in this fleet (required)
+     * @param movement
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetMemberMovement
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback callback)
+    public okhttp3.Call putFleetsFleetIdMembersMemberIdCall(Long fleetId, Integer memberId,
+            FleetMemberMovement movement, String datasource, String token, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = fleetMemberMovement;
+        Object localVarPostBody = movement;
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/members/{member_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "member_id" + "\\}",
-                apiClient.escapeString(memberId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "member_id" + "\\}",
+                localVarApiClient.escapeString(memberId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -1885,23 +1902,23 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback callback)
+    private okhttp3.Call putFleetsFleetIdMembersMemberIdValidateBeforeCall(Long fleetId, Integer memberId,
+            FleetMemberMovement movement, String datasource, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'fleetId' is set
@@ -1916,9 +1933,15 @@ public class FleetsApi {
                     "Missing the required parameter 'memberId' when calling putFleetsFleetIdMembersMemberId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdCall(fleetId, memberId, datasource, token,
-                fleetMemberMovement, callback);
-        return call;
+        // verify the required parameter 'movement' is set
+        if (movement == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'movement' when calling putFleetsFleetIdMembersMemberId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putFleetsFleetIdMembersMemberIdCall(fleetId, memberId, movement, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1930,20 +1953,20 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param memberId
      *            The character ID of a member in this fleet (required)
+     * @param movement
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetMemberMovement
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, String datasource, String token,
-            FleetMemberMovement fleetMemberMovement) throws ApiException {
-        putFleetsFleetIdMembersMemberIdWithHttpInfo(fleetId, memberId, datasource, token, fleetMemberMovement);
+    public void putFleetsFleetIdMembersMemberId(Long fleetId, Integer memberId, FleetMemberMovement movement,
+            String datasource, String token) throws ApiException {
+        putFleetsFleetIdMembersMemberIdWithHttpInfo(fleetId, memberId, movement, datasource, token);
     }
 
     /**
@@ -1954,23 +1977,23 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param memberId
      *            The character ID of a member in this fleet (required)
+     * @param movement
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetMemberMovement
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
     public ApiResponse<Void> putFleetsFleetIdMembersMemberIdWithHttpInfo(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement) throws ApiException {
-        com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, fleetMemberMovement, null);
-        return apiClient.execute(call);
+            FleetMemberMovement movement, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId, movement,
+                datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -1981,28 +2004,28 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param memberId
      *            The character ID of a member in this fleet (required)
+     * @param movement
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetMemberMovement
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdMembersMemberIdAsync(Long fleetId, Integer memberId,
-            String datasource, String token, FleetMemberMovement fleetMemberMovement, final ApiCallback<Void> callback)
+    public okhttp3.Call putFleetsFleetIdMembersMemberIdAsync(Long fleetId, Integer memberId,
+            FleetMemberMovement movement, String datasource, String token, final ApiCallback<Void> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId,
-                datasource, token, fleetMemberMovement, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putFleetsFleetIdMembersMemberIdValidateBeforeCall(fleetId, memberId, movement,
+                datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2012,36 +2035,36 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param squadId
      *            The squad to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetSquadNaming
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, String datasource,
-            String token, FleetSquadNaming fleetSquadNaming, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = fleetSquadNaming;
+    public okhttp3.Call putFleetsFleetIdSquadsSquadIdCall(Long fleetId, Long squadId, FleetSquadNaming naming,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = naming;
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/squads/{squad_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "squad_id" + "\\}",
-                apiClient.escapeString(squadId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "squad_id" + "\\}",
+                localVarApiClient.escapeString(squadId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -2049,24 +2072,23 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
-            String datasource, String token, FleetSquadNaming fleetSquadNaming, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call putFleetsFleetIdSquadsSquadIdValidateBeforeCall(Long fleetId, Long squadId,
+            FleetSquadNaming naming, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -2080,9 +2102,15 @@ public class FleetsApi {
                     "Missing the required parameter 'squadId' when calling putFleetsFleetIdSquadsSquadId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, datasource, token,
-                fleetSquadNaming, callback);
-        return call;
+        // verify the required parameter 'naming' is set
+        if (naming == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'naming' when calling putFleetsFleetIdSquadsSquadId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putFleetsFleetIdSquadsSquadIdCall(fleetId, squadId, naming, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -2094,20 +2122,20 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param squadId
      *            The squad to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetSquadNaming
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, String datasource, String token,
-            FleetSquadNaming fleetSquadNaming) throws ApiException {
-        putFleetsFleetIdSquadsSquadIdWithHttpInfo(fleetId, squadId, datasource, token, fleetSquadNaming);
+    public void putFleetsFleetIdSquadsSquadId(Long fleetId, Long squadId, FleetSquadNaming naming, String datasource,
+            String token) throws ApiException {
+        putFleetsFleetIdSquadsSquadIdWithHttpInfo(fleetId, squadId, naming, datasource, token);
     }
 
     /**
@@ -2118,23 +2146,23 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param squadId
      *            The squad to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetSquadNaming
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Void> putFleetsFleetIdSquadsSquadIdWithHttpInfo(Long fleetId, Long squadId, String datasource,
-            String token, FleetSquadNaming fleetSquadNaming) throws ApiException {
-        com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
-                token, fleetSquadNaming, null);
-        return apiClient.execute(call);
+    public ApiResponse<Void> putFleetsFleetIdSquadsSquadIdWithHttpInfo(Long fleetId, Long squadId,
+            FleetSquadNaming naming, String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, naming,
+                datasource, token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -2145,27 +2173,27 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param squadId
      *            The squad to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetSquadNaming
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId, String datasource,
-            String token, FleetSquadNaming fleetSquadNaming, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call putFleetsFleetIdSquadsSquadIdAsync(Long fleetId, Long squadId, FleetSquadNaming naming,
+            String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, datasource,
-                token, fleetSquadNaming, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putFleetsFleetIdSquadsSquadIdValidateBeforeCall(fleetId, squadId, naming,
+                datasource, token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2175,36 +2203,36 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param wingId
      *            The wing to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetWingNaming
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, String datasource,
-            String token, FleetWingNaming fleetWingNaming, final ApiCallback callback) throws ApiException {
-        Object localVarPostBody = fleetWingNaming;
+    public okhttp3.Call putFleetsFleetIdWingsWingIdCall(Long fleetId, Long wingId, FleetWingNaming naming,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = naming;
 
         // create path and map variables
         String localVarPath = "/v1/fleets/{fleet_id}/wings/{wing_id}/".replaceAll("\\{" + "fleet_id" + "\\}",
-                apiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
-                apiClient.escapeString(wingId.toString()));
+                localVarApiClient.escapeString(fleetId.toString())).replaceAll("\\{" + "wing_id" + "\\}",
+                localVarApiClient.escapeString(wingId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -2212,24 +2240,23 @@ public class FleetsApi {
         final String[] localVarAccepts = {
 
         };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId,
-            String datasource, String token, FleetWingNaming fleetWingNaming, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call putFleetsFleetIdWingsWingIdValidateBeforeCall(Long fleetId, Long wingId,
+            FleetWingNaming naming, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'fleetId' is set
         if (fleetId == null) {
@@ -2243,9 +2270,15 @@ public class FleetsApi {
                     "Missing the required parameter 'wingId' when calling putFleetsFleetIdWingsWingId(Async)");
         }
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdCall(fleetId, wingId, datasource, token,
-                fleetWingNaming, callback);
-        return call;
+        // verify the required parameter 'naming' is set
+        if (naming == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'naming' when calling putFleetsFleetIdWingsWingId(Async)");
+        }
+
+        okhttp3.Call localVarCall = putFleetsFleetIdWingsWingIdCall(fleetId, wingId, naming, datasource, token,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -2257,20 +2290,20 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param wingId
      *            The wing to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetWingNaming
-     *            (optional)
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public void putFleetsFleetIdWingsWingId(Long fleetId, Long wingId, String datasource, String token,
-            FleetWingNaming fleetWingNaming) throws ApiException {
-        putFleetsFleetIdWingsWingIdWithHttpInfo(fleetId, wingId, datasource, token, fleetWingNaming);
+    public void putFleetsFleetIdWingsWingId(Long fleetId, Long wingId, FleetWingNaming naming, String datasource,
+            String token) throws ApiException {
+        putFleetsFleetIdWingsWingIdWithHttpInfo(fleetId, wingId, naming, datasource, token);
     }
 
     /**
@@ -2281,23 +2314,23 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param wingId
      *            The wing to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetWingNaming
-     *            (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
      */
-    public ApiResponse<Void> putFleetsFleetIdWingsWingIdWithHttpInfo(Long fleetId, Long wingId, String datasource,
-            String token, FleetWingNaming fleetWingNaming) throws ApiException {
-        com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, fleetWingNaming, null);
-        return apiClient.execute(call);
+    public ApiResponse<Void> putFleetsFleetIdWingsWingIdWithHttpInfo(Long fleetId, Long wingId, FleetWingNaming naming,
+            String datasource, String token) throws ApiException {
+        okhttp3.Call localVarCall = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, naming, datasource,
+                token, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -2308,26 +2341,26 @@ public class FleetsApi {
      *            ID for a fleet (required)
      * @param wingId
      *            The wing to rename (required)
+     * @param naming
+     *            (required)
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param fleetWingNaming
-     *            (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call putFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, String datasource,
-            String token, FleetWingNaming fleetWingNaming, final ApiCallback<Void> callback) throws ApiException {
+    public okhttp3.Call putFleetsFleetIdWingsWingIdAsync(Long fleetId, Long wingId, FleetWingNaming naming,
+            String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, datasource,
-                token, fleetWingNaming, callback);
-        apiClient.executeAsync(call, callback);
-        return call;
+        okhttp3.Call localVarCall = putFleetsFleetIdWingsWingIdValidateBeforeCall(fleetId, wingId, naming, datasource,
+                token, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 }

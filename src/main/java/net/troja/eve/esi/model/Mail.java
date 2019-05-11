@@ -152,7 +152,6 @@ public class Mail implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Mail {\n");
-
         sb.append("    approvedCost: ").append(toIndentedString(approvedCost)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");

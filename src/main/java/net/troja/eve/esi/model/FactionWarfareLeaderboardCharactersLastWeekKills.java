@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardCharactersLastWeekKills {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");

@@ -98,7 +98,6 @@ public class UniverseIdsInventoryType implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseIdsInventoryType {\n");
-
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("}");

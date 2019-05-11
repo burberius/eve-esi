@@ -195,7 +195,6 @@ public class MarketHistoryResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketHistoryResponse {\n");
-
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("    average: ").append(toIndentedString(average)).append("\n");

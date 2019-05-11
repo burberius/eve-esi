@@ -98,7 +98,6 @@ public class SovereigntyCampaignParticipant implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyCampaignParticipant {\n");
-
         sb.append("    score: ").append(toIndentedString(score)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("}");

@@ -206,7 +206,6 @@ public class OpportunitiesGroupResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class OpportunitiesGroupResponse {\n");
-
         sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
         sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

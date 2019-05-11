@@ -34,22 +34,22 @@ import java.util.List;
 import java.util.Map;
 
 public class AllianceApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public AllianceApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public AllianceApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -61,13 +61,13 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesCall(String datasource, String ifNoneMatch, final ApiCallback callback)
+    public okhttp3.Call getAlliancesCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -77,17 +77,17 @@ public class AllianceApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -95,20 +95,20 @@ public class AllianceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getAlliancesValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -128,8 +128,8 @@ public class AllianceApi {
      *             deserialize the response body
      */
     public List<Integer> getAlliances(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getAlliancesWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getAlliancesWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -149,10 +149,10 @@ public class AllianceApi {
      */
     public ApiResponse<List<Integer>> getAlliancesWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getAlliancesValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -165,21 +165,21 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getAlliancesAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getAlliancesValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -193,34 +193,34 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdCall(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdCall(Integer allianceId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/alliances/{alliance_id}/".replaceAll("\\{" + "alliance_id" + "\\}",
-                apiClient.escapeString(allianceId.toString()));
+                localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -228,17 +228,17 @@ public class AllianceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesAllianceIdValidateBeforeCall(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getAlliancesAllianceIdValidateBeforeCall(Integer allianceId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
@@ -246,8 +246,8 @@ public class AllianceApi {
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdCall(allianceId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesAllianceIdCall(allianceId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -270,8 +270,9 @@ public class AllianceApi {
      */
     public AllianceResponse getAlliancesAllianceId(Integer allianceId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<AllianceResponse> resp = getAlliancesAllianceIdWithHttpInfo(allianceId, datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<AllianceResponse> localVarResp = getAlliancesAllianceIdWithHttpInfo(allianceId, datasource,
+                ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -293,11 +294,10 @@ public class AllianceApi {
      */
     public ApiResponse<AllianceResponse> getAlliancesAllianceIdWithHttpInfo(Integer allianceId, String datasource,
             String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdValidateBeforeCall(allianceId, datasource, ifNoneMatch,
-                null);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdValidateBeforeCall(allianceId, datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<AllianceResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -312,22 +312,22 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdAsync(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback<AllianceResponse> callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdAsync(Integer allianceId, String datasource, String ifNoneMatch,
+            final ApiCallback<AllianceResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdValidateBeforeCall(allianceId, datasource, ifNoneMatch,
-                callback);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdValidateBeforeCall(allianceId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<AllianceResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -341,34 +341,34 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdCorporationsCall(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdCorporationsCall(Integer allianceId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/alliances/{alliance_id}/corporations/".replaceAll("\\{" + "alliance_id" + "\\}",
-                apiClient.escapeString(allianceId.toString()));
+                localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -376,17 +376,17 @@ public class AllianceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesAllianceIdCorporationsValidateBeforeCall(Integer allianceId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getAlliancesAllianceIdCorporationsValidateBeforeCall(Integer allianceId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
@@ -394,9 +394,9 @@ public class AllianceApi {
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdCorporations(Async)");
         }
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdCorporationsCall(allianceId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesAllianceIdCorporationsCall(allianceId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -419,9 +419,9 @@ public class AllianceApi {
      */
     public List<Integer> getAlliancesAllianceIdCorporations(Integer allianceId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<List<Integer>> resp = getAlliancesAllianceIdCorporationsWithHttpInfo(allianceId, datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getAlliancesAllianceIdCorporationsWithHttpInfo(allianceId,
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -443,11 +443,11 @@ public class AllianceApi {
      */
     public ApiResponse<List<Integer>> getAlliancesAllianceIdCorporationsWithHttpInfo(Integer allianceId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdCorporationsValidateBeforeCall(allianceId, datasource,
+        okhttp3.Call localVarCall = getAlliancesAllianceIdCorporationsValidateBeforeCall(allianceId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -463,22 +463,22 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdCorporationsAsync(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdCorporationsAsync(Integer allianceId, String datasource,
+            String ifNoneMatch, final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdCorporationsValidateBeforeCall(allianceId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdCorporationsValidateBeforeCall(allianceId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -492,34 +492,34 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdIconsCall(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdIconsCall(Integer allianceId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/alliances/{alliance_id}/icons/".replaceAll("\\{" + "alliance_id" + "\\}",
-                apiClient.escapeString(allianceId.toString()));
+                localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -527,17 +527,17 @@ public class AllianceApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAlliancesAllianceIdIconsValidateBeforeCall(Integer allianceId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getAlliancesAllianceIdIconsValidateBeforeCall(Integer allianceId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
@@ -545,8 +545,8 @@ public class AllianceApi {
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdIcons(Async)");
         }
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdIconsCall(allianceId, datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getAlliancesAllianceIdIconsCall(allianceId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -569,9 +569,9 @@ public class AllianceApi {
      */
     public AllianceIconsResponse getAlliancesAllianceIdIcons(Integer allianceId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<AllianceIconsResponse> resp = getAlliancesAllianceIdIconsWithHttpInfo(allianceId, datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<AllianceIconsResponse> localVarResp = getAlliancesAllianceIdIconsWithHttpInfo(allianceId,
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -593,11 +593,11 @@ public class AllianceApi {
      */
     public ApiResponse<AllianceIconsResponse> getAlliancesAllianceIdIconsWithHttpInfo(Integer allianceId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdIconsValidateBeforeCall(allianceId, datasource,
-                ifNoneMatch, null);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdIconsValidateBeforeCall(allianceId, datasource, ifNoneMatch,
+                null);
         Type localVarReturnType = new TypeToken<AllianceIconsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -612,21 +612,21 @@ public class AllianceApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getAlliancesAllianceIdIconsAsync(Integer allianceId, String datasource,
-            String ifNoneMatch, final ApiCallback<AllianceIconsResponse> callback) throws ApiException {
+    public okhttp3.Call getAlliancesAllianceIdIconsAsync(Integer allianceId, String datasource, String ifNoneMatch,
+            final ApiCallback<AllianceIconsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getAlliancesAllianceIdIconsValidateBeforeCall(allianceId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getAlliancesAllianceIdIconsValidateBeforeCall(allianceId, datasource, ifNoneMatch,
+                _callback);
         Type localVarReturnType = new TypeToken<AllianceIconsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

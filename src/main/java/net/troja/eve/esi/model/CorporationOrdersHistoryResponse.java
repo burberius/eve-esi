@@ -87,13 +87,13 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static RangeEnum fromValue(String text) {
+        public static RangeEnum fromValue(String value) {
             for (RangeEnum b : RangeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RangeEnum> {
@@ -105,7 +105,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             @Override
             public RangeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return RangeEnum.fromValue(String.valueOf(value));
+                return RangeEnum.fromValue(value);
             }
         }
     }
@@ -170,13 +170,13 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StateEnum fromValue(String text) {
+        public static StateEnum fromValue(String value) {
             for (StateEnum b : StateEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StateEnum> {
@@ -188,7 +188,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
             @Override
             public StateEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StateEnum.fromValue(String.valueOf(value));
+                return StateEnum.fromValue(value);
             }
         }
     }
@@ -552,7 +552,6 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationOrdersHistoryResponse {\n");
-
         sb.append("    issuedBy: ").append(toIndentedString(issuedBy)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");

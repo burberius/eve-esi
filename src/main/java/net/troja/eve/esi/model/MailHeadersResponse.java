@@ -44,7 +44,7 @@ public class MailHeadersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
-    private List<Recipient> recipients = null;
+    private List<Recipient> recipients = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -56,7 +56,7 @@ public class MailHeadersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
-    private List<Integer> labels = null;
+    private List<Integer> labels = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
     @SerializedName(SERIALIZED_NAME_TIMESTAMP)
@@ -238,7 +238,6 @@ public class MailHeadersResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailHeadersResponse {\n");
-
         sb.append("    isRead: ").append(toIndentedString(isRead)).append("\n");
         sb.append("    mailId: ").append(toIndentedString(mailId)).append("\n");
         sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");

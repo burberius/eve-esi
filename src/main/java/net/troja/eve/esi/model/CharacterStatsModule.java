@@ -1743,7 +1743,6 @@ public class CharacterStatsModule implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsModule {\n");
-
         sb.append("    activationsBombLauncher: ").append(toIndentedString(activationsBombLauncher)).append("\n");
         sb.append("    activationsRemoteTrackingComputer: ")
                 .append(toIndentedString(activationsRemoteTrackingComputer)).append("\n");

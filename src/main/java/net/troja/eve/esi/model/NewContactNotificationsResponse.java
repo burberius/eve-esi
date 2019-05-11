@@ -173,7 +173,6 @@ public class NewContactNotificationsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class NewContactNotificationsResponse {\n");
-
         sb.append("    sendDate: ").append(toIndentedString(sendDate)).append("\n");
         sb.append("    senderCharacterId: ").append(toIndentedString(senderCharacterId)).append("\n");
         sb.append("    standingLevel: ").append(toIndentedString(standingLevel)).append("\n");

@@ -956,7 +956,6 @@ public class CharacterStatsIndustry implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsIndustry {\n");
-
         sb.append("    reprocessItemQuantity: ").append(toIndentedString(reprocessItemQuantity)).append("\n");
         sb.append("    hackingSuccesses: ").append(toIndentedString(hackingSuccesses)).append("\n");
         sb.append("    jobsCompletedInvention: ").append(toIndentedString(jobsCompletedInvention)).append("\n");

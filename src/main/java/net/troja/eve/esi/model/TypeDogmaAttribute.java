@@ -98,7 +98,6 @@ public class TypeDogmaAttribute implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class TypeDogmaAttribute {\n");
-
         sb.append("    attributeId: ").append(toIndentedString(attributeId)).append("\n");
         sb.append("    value: ").append(toIndentedString(value)).append("\n");
         sb.append("}");

@@ -79,13 +79,13 @@ public class CorporationContractsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static AvailabilityEnum fromValue(String text) {
+        public static AvailabilityEnum fromValue(String value) {
             for (AvailabilityEnum b : AvailabilityEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<AvailabilityEnum> {
@@ -97,7 +97,7 @@ public class CorporationContractsResponse implements Serializable {
             @Override
             public AvailabilityEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return AvailabilityEnum.fromValue(String.valueOf(value));
+                return AvailabilityEnum.fromValue(value);
             }
         }
     }
@@ -144,13 +144,13 @@ public class CorporationContractsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String text) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -162,7 +162,7 @@ public class CorporationContractsResponse implements Serializable {
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return TypeEnum.fromValue(String.valueOf(value));
+                return TypeEnum.fromValue(value);
             }
         }
     }
@@ -259,13 +259,13 @@ public class CorporationContractsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String text) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -277,7 +277,7 @@ public class CorporationContractsResponse implements Serializable {
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return StatusEnum.fromValue(String.valueOf(value));
+                return StatusEnum.fromValue(value);
             }
         }
     }
@@ -748,7 +748,6 @@ public class CorporationContractsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContractsResponse {\n");
-
         sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
         sb.append("    endLocationId: ").append(toIndentedString(endLocationId)).append("\n");
         sb.append("    issuerCorporationId: ").append(toIndentedString(issuerCorporationId)).append("\n");

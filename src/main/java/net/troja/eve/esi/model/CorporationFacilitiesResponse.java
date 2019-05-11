@@ -122,7 +122,6 @@ public class CorporationFacilitiesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationFacilitiesResponse {\n");
-
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");

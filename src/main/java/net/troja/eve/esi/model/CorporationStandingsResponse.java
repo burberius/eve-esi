@@ -56,13 +56,13 @@ public class CorporationStandingsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static FromTypeEnum fromValue(String text) {
+        public static FromTypeEnum fromValue(String value) {
             for (FromTypeEnum b : FromTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FromTypeEnum> {
@@ -74,7 +74,7 @@ public class CorporationStandingsResponse implements Serializable {
             @Override
             public FromTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return FromTypeEnum.fromValue(String.valueOf(value));
+                return FromTypeEnum.fromValue(value);
             }
         }
     }
@@ -171,7 +171,6 @@ public class CorporationStandingsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationStandingsResponse {\n");
-
         sb.append("    fromType: ").append(toIndentedString(fromType)).append("\n");
         sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
         sb.append("    fromId: ").append(toIndentedString(fromId)).append("\n");

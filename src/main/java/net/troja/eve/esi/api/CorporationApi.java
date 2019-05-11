@@ -51,22 +51,22 @@ import java.util.List;
 import java.util.Map;
 
 public class CorporationApi {
-    private ApiClient apiClient;
+    private ApiClient localVarApiClient;
 
     public CorporationApi() {
         this(Configuration.getDefaultApiClient());
     }
 
     public CorporationApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     public ApiClient getApiClient() {
-        return apiClient;
+        return localVarApiClient;
     }
 
     public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        this.localVarApiClient = apiClient;
     }
 
     /**
@@ -80,34 +80,34 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdCall(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdCall(Integer corporationId, String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v4/corporations/{corporation_id}/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -115,17 +115,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -133,9 +133,8 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdCall(corporationId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdCall(corporationId, datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -158,9 +157,9 @@ public class CorporationApi {
      */
     public CorporationResponse getCorporationsCorporationId(Integer corporationId, String datasource, String ifNoneMatch)
             throws ApiException {
-        ApiResponse<CorporationResponse> resp = getCorporationsCorporationIdWithHttpInfo(corporationId, datasource,
-                ifNoneMatch);
-        return resp.getData();
+        ApiResponse<CorporationResponse> localVarResp = getCorporationsCorporationIdWithHttpInfo(corporationId,
+                datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -182,11 +181,11 @@ public class CorporationApi {
      */
     public ApiResponse<CorporationResponse> getCorporationsCorporationIdWithHttpInfo(Integer corporationId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<CorporationResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -201,22 +200,22 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback<CorporationResponse> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdAsync(Integer corporationId, String datasource, String ifNoneMatch,
+            final ApiCallback<CorporationResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<CorporationResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -230,34 +229,34 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdAlliancehistoryCall(Integer corporationId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdAlliancehistoryCall(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -265,18 +264,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -284,9 +282,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdAlliancehistory(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAlliancehistoryCall(corporationId, datasource,
-                ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAlliancehistoryCall(corporationId, datasource,
+                ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -309,9 +307,9 @@ public class CorporationApi {
      */
     public List<CorporationAlliancesHistoryResponse> getCorporationsCorporationIdAlliancehistory(Integer corporationId,
             String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<CorporationAlliancesHistoryResponse>> resp = getCorporationsCorporationIdAlliancehistoryWithHttpInfo(
+        ApiResponse<List<CorporationAlliancesHistoryResponse>> localVarResp = getCorporationsCorporationIdAlliancehistoryWithHttpInfo(
                 corporationId, datasource, ifNoneMatch);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -334,11 +332,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationAlliancesHistoryResponse>> getCorporationsCorporationIdAlliancehistoryWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<CorporationAlliancesHistoryResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -354,23 +352,23 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdAlliancehistoryAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, final ApiCallback<List<CorporationAlliancesHistoryResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdAlliancehistoryAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback<List<CorporationAlliancesHistoryResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationAlliancesHistoryResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -388,43 +386,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBlueprintsCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBlueprintsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/corporations/{corporation_id}/blueprints/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -432,17 +429,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdBlueprintsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdBlueprintsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -451,9 +448,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdBlueprints(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBlueprintsCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBlueprintsCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -482,9 +479,9 @@ public class CorporationApi {
      */
     public List<CorporationBlueprintsResponse> getCorporationsCorporationIdBlueprints(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationBlueprintsResponse>> resp = getCorporationsCorporationIdBlueprintsWithHttpInfo(
+        ApiResponse<List<CorporationBlueprintsResponse>> localVarResp = getCorporationsCorporationIdBlueprintsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -513,11 +510,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationBlueprintsResponse>> getCorporationsCorporationIdBlueprintsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBlueprintsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBlueprintsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -538,23 +535,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdBlueprintsAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationBlueprintsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdBlueprintsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationBlueprintsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdBlueprintsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdBlueprintsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationBlueprintsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -572,43 +569,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContainersLogsCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdContainersLogsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v2/corporations/{corporation_id}/containers/logs/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -616,18 +612,18 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdContainersLogsValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdContainersLogsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -635,9 +631,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContainersLogs(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContainersLogsCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContainersLogsCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -667,9 +663,9 @@ public class CorporationApi {
      */
     public List<CorporationContainersLogsResponse> getCorporationsCorporationIdContainersLogs(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationContainersLogsResponse>> resp = getCorporationsCorporationIdContainersLogsWithHttpInfo(
+        ApiResponse<List<CorporationContainersLogsResponse>> localVarResp = getCorporationsCorporationIdContainersLogsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -699,11 +695,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationContainersLogsResponse>> getCorporationsCorporationIdContainersLogsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContainersLogsValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContainersLogsValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -725,23 +721,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdContainersLogsAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationContainersLogsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdContainersLogsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationContainersLogsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdContainersLogsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdContainersLogsValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationContainersLogsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -757,38 +753,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdDivisionsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdDivisionsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/divisions/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -796,17 +792,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdDivisionsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdDivisionsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -814,9 +810,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdDivisions(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdDivisionsCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdDivisionsCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -844,9 +840,9 @@ public class CorporationApi {
      */
     public CorporationDivisionsResponse getCorporationsCorporationIdDivisions(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CorporationDivisionsResponse> resp = getCorporationsCorporationIdDivisionsWithHttpInfo(
+        ApiResponse<CorporationDivisionsResponse> localVarResp = getCorporationsCorporationIdDivisionsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -873,11 +869,11 @@ public class CorporationApi {
      */
     public ApiResponse<CorporationDivisionsResponse> getCorporationsCorporationIdDivisionsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdDivisionsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdDivisionsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CorporationDivisionsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -897,23 +893,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdDivisionsAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<CorporationDivisionsResponse> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdDivisionsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<CorporationDivisionsResponse> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdDivisionsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdDivisionsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CorporationDivisionsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -929,38 +925,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdFacilitiesCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdFacilitiesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/facilities/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -968,17 +964,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdFacilitiesValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdFacilitiesValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -986,9 +982,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdFacilities(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFacilitiesCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFacilitiesCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -1015,9 +1011,9 @@ public class CorporationApi {
      */
     public List<CorporationFacilitiesResponse> getCorporationsCorporationIdFacilities(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationFacilitiesResponse>> resp = getCorporationsCorporationIdFacilitiesWithHttpInfo(
+        ApiResponse<List<CorporationFacilitiesResponse>> localVarResp = getCorporationsCorporationIdFacilitiesWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1043,11 +1039,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationFacilitiesResponse>> getCorporationsCorporationIdFacilitiesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFacilitiesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFacilitiesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1066,23 +1062,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdFacilitiesAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<CorporationFacilitiesResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdFacilitiesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationFacilitiesResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdFacilitiesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdFacilitiesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationFacilitiesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1096,34 +1092,34 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdIconsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdIconsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/icons/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1131,17 +1127,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdIconsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdIconsValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1149,9 +1145,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdIcons(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdIconsCall(corporationId, datasource, ifNoneMatch,
-                callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdIconsCall(corporationId, datasource, ifNoneMatch,
+                _callback);
+        return localVarCall;
 
     }
 
@@ -1174,9 +1170,9 @@ public class CorporationApi {
      */
     public CorporationIconsResponse getCorporationsCorporationIdIcons(Integer corporationId, String datasource,
             String ifNoneMatch) throws ApiException {
-        ApiResponse<CorporationIconsResponse> resp = getCorporationsCorporationIdIconsWithHttpInfo(corporationId,
-                datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<CorporationIconsResponse> localVarResp = getCorporationsCorporationIdIconsWithHttpInfo(
+                corporationId, datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -1198,11 +1194,11 @@ public class CorporationApi {
      */
     public ApiResponse<CorporationIconsResponse> getCorporationsCorporationIdIconsWithHttpInfo(Integer corporationId,
             String datasource, String ifNoneMatch) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdIconsValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdIconsValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<CorporationIconsResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1217,22 +1213,22 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdIconsAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, final ApiCallback<CorporationIconsResponse> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdIconsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, final ApiCallback<CorporationIconsResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdIconsValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdIconsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<CorporationIconsResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1250,42 +1246,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMedalsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMedalsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/medals/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1293,18 +1289,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMedalsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdMedalsValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1312,9 +1307,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedals(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsCall(corporationId, datasource, ifNoneMatch,
-                page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1342,9 +1337,9 @@ public class CorporationApi {
      */
     public List<CorporationMedalsResponse> getCorporationsCorporationIdMedals(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationMedalsResponse>> resp = getCorporationsCorporationIdMedalsWithHttpInfo(
+        ApiResponse<List<CorporationMedalsResponse>> localVarResp = getCorporationsCorporationIdMedalsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1372,11 +1367,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationMedalsResponse>> getCorporationsCorporationIdMedalsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationMedalsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1396,23 +1391,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMedalsAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CorporationMedalsResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdMedalsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback<List<CorporationMedalsResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMedalsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1430,43 +1425,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMedalsIssuedCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMedalsIssuedCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/medals/issued/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1474,17 +1468,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -1493,9 +1487,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedalsIssued(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsIssuedCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsIssuedCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1524,9 +1518,9 @@ public class CorporationApi {
      */
     public List<CorporationMedalsIssuedResponse> getCorporationsCorporationIdMedalsIssued(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationMedalsIssuedResponse>> resp = getCorporationsCorporationIdMedalsIssuedWithHttpInfo(
+        ApiResponse<List<CorporationMedalsIssuedResponse>> localVarResp = getCorporationsCorporationIdMedalsIssuedWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -1555,11 +1549,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationMedalsIssuedResponse>> getCorporationsCorporationIdMedalsIssuedWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1580,23 +1574,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMedalsIssuedAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationMedalsIssuedResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMedalsIssuedAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationMedalsIssuedResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMedalsIssuedResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1612,38 +1606,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/corporations/{corporation_id}/members/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1651,17 +1645,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMembersValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdMembersValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1669,9 +1663,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembers(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersCall(corporationId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -1698,9 +1692,9 @@ public class CorporationApi {
      */
     public List<Integer> getCorporationsCorporationIdMembers(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<Integer>> resp = getCorporationsCorporationIdMembersWithHttpInfo(corporationId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getCorporationsCorporationIdMembersWithHttpInfo(corporationId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1726,11 +1720,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<Integer>> getCorporationsCorporationIdMembersWithHttpInfo(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1749,22 +1743,22 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1780,38 +1774,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersLimitCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersLimitCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/members/limit/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1819,17 +1813,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMembersLimitValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdMembersLimitValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -1837,9 +1831,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersLimit(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersLimitCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersLimitCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -1866,9 +1860,9 @@ public class CorporationApi {
      */
     public Integer getCorporationsCorporationIdMembersLimit(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<Integer> resp = getCorporationsCorporationIdMembersLimitWithHttpInfo(corporationId, datasource,
-                ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<Integer> localVarResp = getCorporationsCorporationIdMembersLimitWithHttpInfo(corporationId,
+                datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -1894,11 +1888,11 @@ public class CorporationApi {
      */
     public ApiResponse<Integer> getCorporationsCorporationIdMembersLimitWithHttpInfo(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersLimitValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersLimitValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1917,23 +1911,22 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersLimitAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback<Integer> callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersLimitAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<Integer> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersLimitValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersLimitValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<Integer>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -1949,38 +1942,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersTitlesCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersTitlesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/members/titles/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -1988,17 +1981,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMembersTitlesValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdMembersTitlesValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -2006,9 +1999,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersTitles(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersTitlesCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersTitlesCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -2035,9 +2028,9 @@ public class CorporationApi {
      */
     public List<CorporationMembersTitlesResponse> getCorporationsCorporationIdMembersTitles(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationMembersTitlesResponse>> resp = getCorporationsCorporationIdMembersTitlesWithHttpInfo(
+        ApiResponse<List<CorporationMembersTitlesResponse>> localVarResp = getCorporationsCorporationIdMembersTitlesWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2063,11 +2056,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationMembersTitlesResponse>> getCorporationsCorporationIdMembersTitlesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersTitlesValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersTitlesValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2086,23 +2079,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembersTitlesAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<CorporationMembersTitlesResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembersTitlesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationMembersTitlesResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembersTitlesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersTitlesValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMembersTitlesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2118,38 +2111,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembertrackingCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembertrackingCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/membertracking/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2157,18 +2150,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdMembertrackingValidateBeforeCall(
-            Integer corporationId, String datasource, String ifNoneMatch, String token, final ApiCallback callback)
-            throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdMembertrackingValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -2176,9 +2168,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembertracking(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembertrackingCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembertrackingCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -2206,9 +2198,9 @@ public class CorporationApi {
      */
     public List<CorporationMemberTrackingResponse> getCorporationsCorporationIdMembertracking(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationMemberTrackingResponse>> resp = getCorporationsCorporationIdMembertrackingWithHttpInfo(
+        ApiResponse<List<CorporationMemberTrackingResponse>> localVarResp = getCorporationsCorporationIdMembertrackingWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2235,11 +2227,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationMemberTrackingResponse>> getCorporationsCorporationIdMembertrackingWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembertrackingValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembertrackingValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2259,23 +2251,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdMembertrackingAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, String token,
-            final ApiCallback<List<CorporationMemberTrackingResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdMembertrackingAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationMemberTrackingResponse>> _callback)
+            throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdMembertrackingValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdMembertrackingValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationMemberTrackingResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2291,38 +2283,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdRolesCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdRolesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/roles/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2330,17 +2322,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdRolesValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdRolesValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -2348,9 +2340,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdRoles(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesCall(corporationId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -2377,9 +2369,9 @@ public class CorporationApi {
      */
     public List<CorporationRolesResponse> getCorporationsCorporationIdRoles(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationRolesResponse>> resp = getCorporationsCorporationIdRolesWithHttpInfo(corporationId,
-                datasource, ifNoneMatch, token);
-        return resp.getData();
+        ApiResponse<List<CorporationRolesResponse>> localVarResp = getCorporationsCorporationIdRolesWithHttpInfo(
+                corporationId, datasource, ifNoneMatch, token);
+        return localVarResp.getData();
     }
 
     /**
@@ -2405,11 +2397,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationRolesResponse>> getCorporationsCorporationIdRolesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationRolesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2428,23 +2420,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdRolesAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CorporationRolesResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdRolesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationRolesResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationRolesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2462,43 +2454,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdRolesHistoryCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdRolesHistoryCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/roles/history/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2506,17 +2497,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdRolesHistoryValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdRolesHistoryValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -2525,9 +2516,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdRolesHistory(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesHistoryCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesHistoryCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -2557,9 +2548,9 @@ public class CorporationApi {
      */
     public List<CorporationRolesHistoryResponse> getCorporationsCorporationIdRolesHistory(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationRolesHistoryResponse>> resp = getCorporationsCorporationIdRolesHistoryWithHttpInfo(
+        ApiResponse<List<CorporationRolesHistoryResponse>> localVarResp = getCorporationsCorporationIdRolesHistoryWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2589,11 +2580,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationRolesHistoryResponse>> getCorporationsCorporationIdRolesHistoryWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesHistoryValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesHistoryValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2615,23 +2606,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdRolesHistoryAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationRolesHistoryResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdRolesHistoryAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationRolesHistoryResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdRolesHistoryValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesHistoryValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationRolesHistoryResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2649,43 +2640,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdShareholdersCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
-            throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdShareholdersCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/shareholders/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2693,17 +2683,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdShareholdersValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdShareholdersValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -2712,9 +2702,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdShareholders(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdShareholdersCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdShareholdersCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -2743,9 +2733,9 @@ public class CorporationApi {
      */
     public List<CorporationShareholdersResponse> getCorporationsCorporationIdShareholders(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationShareholdersResponse>> resp = getCorporationsCorporationIdShareholdersWithHttpInfo(
+        ApiResponse<List<CorporationShareholdersResponse>> localVarResp = getCorporationsCorporationIdShareholdersWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2774,11 +2764,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationShareholdersResponse>> getCorporationsCorporationIdShareholdersWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdShareholdersValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdShareholdersValidateBeforeCall(corporationId,
                 datasource, ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2799,23 +2789,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdShareholdersAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationShareholdersResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdShareholdersAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationShareholdersResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdShareholdersValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdShareholdersValidateBeforeCall(corporationId,
+                datasource, ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationShareholdersResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -2833,42 +2823,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStandingsCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStandingsCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/standings/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -2876,17 +2866,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdStandingsValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdStandingsValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -2895,9 +2885,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStandings(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStandingsCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStandingsCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -2925,9 +2915,9 @@ public class CorporationApi {
      */
     public List<CorporationStandingsResponse> getCorporationsCorporationIdStandings(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationStandingsResponse>> resp = getCorporationsCorporationIdStandingsWithHttpInfo(
+        ApiResponse<List<CorporationStandingsResponse>> localVarResp = getCorporationsCorporationIdStandingsWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -2955,11 +2945,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationStandingsResponse>> getCorporationsCorporationIdStandingsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStandingsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStandingsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationStandingsResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2979,23 +2969,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStandingsAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationStandingsResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStandingsAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationStandingsResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStandingsValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStandingsValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationStandingsResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3013,42 +3003,42 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesCall(Integer corporationId, String datasource,
-            String ifNoneMatch, Integer page, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStarbasesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/starbases/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3056,17 +3046,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback callback)
+    private okhttp3.Call getCorporationsCorporationIdStarbasesValidateBeforeCall(Integer corporationId,
+            String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
 
         // verify the required parameter 'corporationId' is set
@@ -3075,9 +3065,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStarbases(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesCall(corporationId, datasource,
-                ifNoneMatch, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesCall(corporationId, datasource, ifNoneMatch,
+                page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -3106,9 +3096,9 @@ public class CorporationApi {
      */
     public List<CorporationStarbasesResponse> getCorporationsCorporationIdStarbases(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
-        ApiResponse<List<CorporationStarbasesResponse>> resp = getCorporationsCorporationIdStarbasesWithHttpInfo(
+        ApiResponse<List<CorporationStarbasesResponse>> localVarResp = getCorporationsCorporationIdStarbasesWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -3137,11 +3127,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationStarbasesResponse>> getCorporationsCorporationIdStarbasesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, Integer page, String token)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3162,23 +3152,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesAsync(Integer corporationId,
-            String datasource, String ifNoneMatch, Integer page, String token,
-            final ApiCallback<List<CorporationStarbasesResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStarbasesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, Integer page, String token,
+            final ApiCallback<List<CorporationStarbasesResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesValidateBeforeCall(corporationId,
-                datasource, ifNoneMatch, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationStarbasesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3198,44 +3188,44 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesStarbaseIdCall(Integer corporationId,
-            Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStarbasesStarbaseIdCall(Integer corporationId, Long starbaseId,
+            Integer systemId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/starbases/{starbase_id}/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", apiClient.escapeString(corporationId.toString())).replaceAll(
-                "\\{" + "starbase_id" + "\\}", apiClient.escapeString(starbaseId.toString()));
+                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString())).replaceAll(
+                "\\{" + "starbase_id" + "\\}", localVarApiClient.escapeString(starbaseId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (systemId != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("system_id", systemId));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("system_id", systemId));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3243,18 +3233,18 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(
-            Integer corporationId, Long starbaseId, Integer systemId, String datasource, String ifNoneMatch,
-            String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(Integer corporationId,
+            Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -3274,9 +3264,9 @@ public class CorporationApi {
                     "Missing the required parameter 'systemId' when calling getCorporationsCorporationIdStarbasesStarbaseId(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesStarbaseIdCall(corporationId, starbaseId,
-                systemId, datasource, ifNoneMatch, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesStarbaseIdCall(corporationId, starbaseId,
+                systemId, datasource, ifNoneMatch, token, _callback);
+        return localVarCall;
 
     }
 
@@ -3307,9 +3297,9 @@ public class CorporationApi {
      */
     public CorporationStarbaseResponse getCorporationsCorporationIdStarbasesStarbaseId(Integer corporationId,
             Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<CorporationStarbaseResponse> resp = getCorporationsCorporationIdStarbasesStarbaseIdWithHttpInfo(
+        ApiResponse<CorporationStarbaseResponse> localVarResp = getCorporationsCorporationIdStarbasesStarbaseIdWithHttpInfo(
                 corporationId, starbaseId, systemId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -3340,11 +3330,11 @@ public class CorporationApi {
     public ApiResponse<CorporationStarbaseResponse> getCorporationsCorporationIdStarbasesStarbaseIdWithHttpInfo(
             Integer corporationId, Long starbaseId, Integer systemId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(
-                corporationId, starbaseId, systemId, datasource, ifNoneMatch, token, null);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(corporationId,
+                starbaseId, systemId, datasource, ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<CorporationStarbaseResponse>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3367,23 +3357,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStarbasesStarbaseIdAsync(Integer corporationId,
-            Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token,
-            final ApiCallback<CorporationStarbaseResponse> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStarbasesStarbaseIdAsync(Integer corporationId, Long starbaseId,
+            Integer systemId, String datasource, String ifNoneMatch, String token,
+            final ApiCallback<CorporationStarbaseResponse> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(
-                corporationId, starbaseId, systemId, datasource, ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(corporationId,
+                starbaseId, systemId, datasource, ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<CorporationStarbaseResponse>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3406,51 +3396,51 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStructuresCall(Integer corporationId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStructuresCall(Integer corporationId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, Integer page, String token,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v3/corporations/{corporation_id}/structures/".replaceAll("\\{" + "corporation_id"
-                + "\\}", apiClient.escapeString(corporationId.toString()));
+                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (language != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
         if (page != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
-            localVarHeaderParams.put("Accept-Language", apiClient.parameterToString(acceptLanguage));
+            localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
 
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3458,18 +3448,18 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdStructuresValidateBeforeCall(Integer corporationId,
+    private okhttp3.Call getCorporationsCorporationIdStructuresValidateBeforeCall(Integer corporationId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token,
-            final ApiCallback callback) throws ApiException {
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -3477,9 +3467,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStructures(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStructuresCall(corporationId, acceptLanguage,
-                datasource, ifNoneMatch, language, page, token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStructuresCall(corporationId, acceptLanguage,
+                datasource, ifNoneMatch, language, page, token, _callback);
+        return localVarCall;
 
     }
 
@@ -3517,9 +3507,9 @@ public class CorporationApi {
     public List<CorporationStructuresResponse> getCorporationsCorporationIdStructures(Integer corporationId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token)
             throws ApiException {
-        ApiResponse<List<CorporationStructuresResponse>> resp = getCorporationsCorporationIdStructuresWithHttpInfo(
+        ApiResponse<List<CorporationStructuresResponse>> localVarResp = getCorporationsCorporationIdStructuresWithHttpInfo(
                 corporationId, acceptLanguage, datasource, ifNoneMatch, language, page, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -3556,11 +3546,11 @@ public class CorporationApi {
     public ApiResponse<List<CorporationStructuresResponse>> getCorporationsCorporationIdStructuresWithHttpInfo(
             Integer corporationId, String acceptLanguage, String datasource, String ifNoneMatch, String language,
             Integer page, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStructuresValidateBeforeCall(corporationId,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStructuresValidateBeforeCall(corporationId,
                 acceptLanguage, datasource, ifNoneMatch, language, page, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationStructuresResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3589,23 +3579,23 @@ public class CorporationApi {
      *            Which page of results to return (optional, default to 1)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdStructuresAsync(Integer corporationId,
-            String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token,
-            final ApiCallback<List<CorporationStructuresResponse>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdStructuresAsync(Integer corporationId, String acceptLanguage,
+            String datasource, String ifNoneMatch, String language, Integer page, String token,
+            final ApiCallback<List<CorporationStructuresResponse>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdStructuresValidateBeforeCall(corporationId,
-                acceptLanguage, datasource, ifNoneMatch, language, page, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdStructuresValidateBeforeCall(corporationId,
+                acceptLanguage, datasource, ifNoneMatch, language, page, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationStructuresResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3621,38 +3611,38 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdTitlesCall(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsCorporationIdTitlesCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/titles/".replaceAll("\\{" + "corporation_id" + "\\}",
-                apiClient.escapeString(corporationId.toString()));
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         if (token != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("token", token));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3660,17 +3650,17 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsCorporationIdTitlesValidateBeforeCall(Integer corporationId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsCorporationIdTitlesValidateBeforeCall(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -3678,9 +3668,9 @@ public class CorporationApi {
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdTitles(Async)");
         }
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdTitlesCall(corporationId, datasource, ifNoneMatch,
-                token, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsCorporationIdTitlesCall(corporationId, datasource, ifNoneMatch,
+                token, _callback);
+        return localVarCall;
 
     }
 
@@ -3706,9 +3696,9 @@ public class CorporationApi {
      */
     public List<CorporationTitlesResponse> getCorporationsCorporationIdTitles(Integer corporationId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
-        ApiResponse<List<CorporationTitlesResponse>> resp = getCorporationsCorporationIdTitlesWithHttpInfo(
+        ApiResponse<List<CorporationTitlesResponse>> localVarResp = getCorporationsCorporationIdTitlesWithHttpInfo(
                 corporationId, datasource, ifNoneMatch, token);
-        return resp.getData();
+        return localVarResp.getData();
     }
 
     /**
@@ -3733,11 +3723,11 @@ public class CorporationApi {
      */
     public ApiResponse<List<CorporationTitlesResponse>> getCorporationsCorporationIdTitlesWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdTitlesValidateBeforeCall(corporationId, datasource,
+        okhttp3.Call localVarCall = getCorporationsCorporationIdTitlesValidateBeforeCall(corporationId, datasource,
                 ifNoneMatch, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationTitlesResponse>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3756,23 +3746,23 @@ public class CorporationApi {
      *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsCorporationIdTitlesAsync(Integer corporationId, String datasource,
-            String ifNoneMatch, String token, final ApiCallback<List<CorporationTitlesResponse>> callback)
+    public okhttp3.Call getCorporationsCorporationIdTitlesAsync(Integer corporationId, String datasource,
+            String ifNoneMatch, String token, final ApiCallback<List<CorporationTitlesResponse>> _callback)
             throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsCorporationIdTitlesValidateBeforeCall(corporationId, datasource,
-                ifNoneMatch, token, callback);
+        okhttp3.Call localVarCall = getCorporationsCorporationIdTitlesValidateBeforeCall(corporationId, datasource,
+                ifNoneMatch, token, _callback);
         Type localVarReturnType = new TypeToken<List<CorporationTitlesResponse>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -3784,14 +3774,14 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCorporationsNpccorpsCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    public okhttp3.Call getCorporationsNpccorpsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
+            throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3800,17 +3790,17 @@ public class CorporationApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (datasource != null) {
-            localVarQueryParams.addAll(apiClient.parameterToPair("datasource", datasource));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", apiClient.parameterToString(ifNoneMatch));
+            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
@@ -3818,20 +3808,20 @@ public class CorporationApi {
         final String[] localVarContentTypes = {
 
         };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] {};
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCorporationsNpccorpsValidateBeforeCall(String datasource, String ifNoneMatch,
-            final ApiCallback callback) throws ApiException {
+    private okhttp3.Call getCorporationsNpccorpsValidateBeforeCall(String datasource, String ifNoneMatch,
+            final ApiCallback _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsNpccorpsCall(datasource, ifNoneMatch, callback);
-        return call;
+        okhttp3.Call localVarCall = getCorporationsNpccorpsCall(datasource, ifNoneMatch, _callback);
+        return localVarCall;
 
     }
 
@@ -3851,8 +3841,8 @@ public class CorporationApi {
      *             deserialize the response body
      */
     public List<Integer> getCorporationsNpccorps(String datasource, String ifNoneMatch) throws ApiException {
-        ApiResponse<List<Integer>> resp = getCorporationsNpccorpsWithHttpInfo(datasource, ifNoneMatch);
-        return resp.getData();
+        ApiResponse<List<Integer>> localVarResp = getCorporationsNpccorpsWithHttpInfo(datasource, ifNoneMatch);
+        return localVarResp.getData();
     }
 
     /**
@@ -3872,10 +3862,10 @@ public class CorporationApi {
      */
     public ApiResponse<List<Integer>> getCorporationsNpccorpsWithHttpInfo(String datasource, String ifNoneMatch)
             throws ApiException {
-        com.squareup.okhttp.Call call = getCorporationsNpccorpsValidateBeforeCall(datasource, ifNoneMatch, null);
+        okhttp3.Call localVarCall = getCorporationsNpccorpsValidateBeforeCall(datasource, ifNoneMatch, null);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        return apiClient.execute(call, localVarReturnType);
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3888,20 +3878,20 @@ public class CorporationApi {
      * @param ifNoneMatch
      *            ETag from a previous request. A 304 will be returned if this
      *            matches the current ETag (optional)
-     * @param callback
+     * @param _callback
      *            The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
      */
-    public com.squareup.okhttp.Call getCorporationsNpccorpsAsync(String datasource, String ifNoneMatch,
-            final ApiCallback<List<Integer>> callback) throws ApiException {
+    public okhttp3.Call getCorporationsNpccorpsAsync(String datasource, String ifNoneMatch,
+            final ApiCallback<List<Integer>> _callback) throws ApiException {
 
-        com.squareup.okhttp.Call call = getCorporationsNpccorpsValidateBeforeCall(datasource, ifNoneMatch, callback);
+        okhttp3.Call localVarCall = getCorporationsNpccorpsValidateBeforeCall(datasource, ifNoneMatch, _callback);
         Type localVarReturnType = new TypeToken<List<Integer>>() {
         }.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

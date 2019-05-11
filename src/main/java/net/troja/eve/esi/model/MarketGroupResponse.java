@@ -177,7 +177,6 @@ public class MarketGroupResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketGroupResponse {\n");
-
         sb.append("    types: ").append(toIndentedString(types)).append("\n");
         sb.append("    parentGroupId: ").append(toIndentedString(parentGroupId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");

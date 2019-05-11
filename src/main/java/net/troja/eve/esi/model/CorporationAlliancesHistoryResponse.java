@@ -148,7 +148,6 @@ public class CorporationAlliancesHistoryResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationAlliancesHistoryResponse {\n");
-
         sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
         sb.append("    isDeleted: ").append(toIndentedString(isDeleted)).append("\n");

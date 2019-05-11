@@ -170,7 +170,6 @@ public class PlanetResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetResponse {\n");
-
         sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");

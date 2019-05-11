@@ -61,13 +61,13 @@ public class CorporationMiningObserversResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ObserverTypeEnum fromValue(String text) {
+        public static ObserverTypeEnum fromValue(String value) {
             for (ObserverTypeEnum b : ObserverTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ObserverTypeEnum> {
@@ -79,7 +79,7 @@ public class CorporationMiningObserversResponse implements Serializable {
             @Override
             public ObserverTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ObserverTypeEnum.fromValue(String.valueOf(value));
+                return ObserverTypeEnum.fromValue(value);
             }
         }
     }
@@ -168,7 +168,6 @@ public class CorporationMiningObserversResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationMiningObserversResponse {\n");
-
         sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
         sb.append("    observerId: ").append(toIndentedString(observerId)).append("\n");
         sb.append("    observerType: ").append(toIndentedString(observerType)).append("\n");

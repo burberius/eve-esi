@@ -98,7 +98,6 @@ public class FactionWarfareLeaderboardActiveTotalVictoryPoints implements Serial
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareLeaderboardActiveTotalVictoryPoints {\n");
-
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
         sb.append("}");

@@ -58,13 +58,13 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static EventResponseEnum fromValue(String text) {
+        public static EventResponseEnum fromValue(String value) {
             for (EventResponseEnum b : EventResponseEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<EventResponseEnum> {
@@ -76,7 +76,7 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
             @Override
             public EventResponseEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return EventResponseEnum.fromValue(String.valueOf(value));
+                return EventResponseEnum.fromValue(value);
             }
         }
     }
@@ -149,7 +149,6 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterCalendarAttendeesResponse {\n");
-
         sb.append("    eventResponse: ").append(toIndentedString(eventResponse)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");

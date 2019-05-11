@@ -67,13 +67,13 @@ public class CorporationContainersLogsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static PasswordTypeEnum fromValue(String text) {
+        public static PasswordTypeEnum fromValue(String value) {
             for (PasswordTypeEnum b : PasswordTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PasswordTypeEnum> {
@@ -85,7 +85,7 @@ public class CorporationContainersLogsResponse implements Serializable {
             @Override
             public PasswordTypeEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return PasswordTypeEnum.fromValue(String.valueOf(value));
+                return PasswordTypeEnum.fromValue(value);
             }
         }
     }
@@ -348,13 +348,13 @@ public class CorporationContainersLogsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static LocationFlagEnum fromValue(String text) {
+        public static LocationFlagEnum fromValue(String value) {
             for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
@@ -366,7 +366,7 @@ public class CorporationContainersLogsResponse implements Serializable {
             @Override
             public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(String.valueOf(value));
+                return LocationFlagEnum.fromValue(value);
             }
         }
     }
@@ -419,13 +419,13 @@ public class CorporationContainersLogsResponse implements Serializable {
             return String.valueOf(value);
         }
 
-        public static ActionEnum fromValue(String text) {
+        public static ActionEnum fromValue(String value) {
             for (ActionEnum b : ActionEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + text + "'");
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ActionEnum> {
@@ -437,7 +437,7 @@ public class CorporationContainersLogsResponse implements Serializable {
             @Override
             public ActionEnum read(final JsonReader jsonReader) throws IOException {
                 String value = jsonReader.nextString();
-                return ActionEnum.fromValue(String.valueOf(value));
+                return ActionEnum.fromValue(value);
             }
         }
     }
@@ -723,7 +723,6 @@ public class CorporationContainersLogsResponse implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationContainersLogsResponse {\n");
-
         sb.append("    oldConfigBitmask: ").append(toIndentedString(oldConfigBitmask)).append("\n");
         sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    loggedAt: ").append(toIndentedString(loggedAt)).append("\n");
