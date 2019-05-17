@@ -9,7 +9,7 @@ wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 
 # -!- Workaround START
 # Get dev swagger.json
-wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquility || exit 1
+# wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquility || exit 1
 # -!- Workaround END
 
 #
@@ -41,7 +41,7 @@ sed -i -f replace.sed esi.json
 sed -i -f meta_replace.sed meta.json
 
 # -!- Workaround START
-sed -i -f replace.sed dev.json
+# sed -i -f replace.sed dev.json
 # -!- Workaround END
 
 ./meta_transformation.sh
