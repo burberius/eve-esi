@@ -18,7 +18,7 @@ wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 VERSION=$(git ls-remote --tags https://github.com/OpenAPITools/openapi-generator.git | grep -o "refs/tags/v[^-]*$" | sort -rV | head -1 | sed -e 's#.*v##')
 
 if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
-  wget -O openapi-generator-cli.jar -q http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
+  wget -O openapi-generator-cli-$VERSION.jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
 
   if [ $? != 0 ]; then
     echo "Could not download http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar"
@@ -52,12 +52,12 @@ sed -i -f meta_replace.sed meta.json
 #
 test -d src/test/java/net/troja/eve/esi/api.new && rm -r src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
-java -jar openapi-generator-cli.jar generate \
+java -jar openapi-generator-cli-$VERSION.jar generate \
   --skip-validate-spec  \
   -i meta.json \
   -g java \
   -c config.json
-java -jar openapi-generator-cli.jar generate \
+java -jar openapi-generator-cli-$VERSION.jar generate \
   --skip-validate-spec  \
   -i esi.json \
   -g java \
