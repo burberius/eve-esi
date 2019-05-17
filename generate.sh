@@ -13,14 +13,6 @@ wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 # -!- Workaround END
 
 #
-# Remove old model files in case something was removed
-#
-mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
-rm -r src/main/java/net/troja/eve/esi/model
-mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
-rm -r src/main/java/net/troja/eve/esi/api
-
-#
 # Get swagger code generator
 #
 VERSION=$(git ls-remote --tags https://github.com/OpenAPITools/openapi-generator.git | grep -o "refs/tags/v.*" | sort -rV | head -1 | sed -e 's#.*v##')
@@ -33,6 +25,14 @@ if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
     exit -1
   fi
 fi
+
+#
+# Remove old model files in case something was removed
+#
+mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
+rm -r src/main/java/net/troja/eve/esi/model
+mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
+rm -r src/main/java/net/troja/eve/esi/api
 
 #
 # Transform and beautify swagger file
