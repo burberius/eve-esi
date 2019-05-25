@@ -30,7 +30,7 @@ eve-esi.iml
 *~
 
 # Downloaded swagger-codegen-cli
-#swagger-codegen-cli*
+openapi-generator-cli*
 
 # Swagger data file
 esi.json
