@@ -555,7 +555,7 @@ public class FleetsApi {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/fleet/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/fleet/".replaceAll("\\{" + "character_id" + "\\}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -609,10 +609,7 @@ public class FleetsApi {
 
     /**
      * Get character fleet info Return the fleet ID the character is in, if any.
-     * --- This route is cached for up to 60 seconds --- Warning: This route has
-     * an upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#GET-/characters/{character_id}/fleet/) SSO Scope:
+     * --- This route is cached for up to 60 seconds SSO Scope:
      * esi-fleets.read_fleet.v1
      * 
      * @param characterId
@@ -639,10 +636,7 @@ public class FleetsApi {
 
     /**
      * Get character fleet info Return the fleet ID the character is in, if any.
-     * --- This route is cached for up to 60 seconds --- Warning: This route has
-     * an upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#GET-/characters/{character_id}/fleet/) SSO Scope:
+     * --- This route is cached for up to 60 seconds SSO Scope:
      * esi-fleets.read_fleet.v1
      * 
      * @param characterId
@@ -672,10 +666,7 @@ public class FleetsApi {
     /**
      * Get character fleet info (asynchronously) Return the fleet ID the
      * character is in, if any. --- This route is cached for up to 60 seconds
-     * --- Warning: This route has an upgrade available --- [Diff of the
-     * upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters
-     * /{character_id}/fleet/) SSO Scope: esi-fleets.read_fleet.v1
+     * SSO Scope: esi-fleets.read_fleet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

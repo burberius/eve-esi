@@ -89,11 +89,12 @@ public class CharacterSkillqueueResponse implements Serializable {
     }
 
     /**
-     * finish_date string
+     * Date on which training of the skill will complete. Omitted if the skill
+     * queue is paused.
      * 
      * @return finishDate
      **/
-    @ApiModelProperty(value = "finish_date string")
+    @ApiModelProperty(value = "Date on which training of the skill will complete. Omitted if the skill queue is paused.")
     public OffsetDateTime getFinishDate() {
         return finishDate;
     }

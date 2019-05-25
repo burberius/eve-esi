@@ -94,6 +94,10 @@ public class CharacterFleetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_FLEET_ID)
     private Long fleetId;
 
+    public static final String SERIALIZED_NAME_FLEET_BOSS_ID = "fleet_boss_id";
+    @SerializedName(SERIALIZED_NAME_FLEET_BOSS_ID)
+    private Long fleetBossId;
+
     public static final String SERIALIZED_NAME_WING_ID = "wing_id";
     @SerializedName(SERIALIZED_NAME_WING_ID)
     private Long wingId;
@@ -155,6 +159,25 @@ public class CharacterFleetResponse implements Serializable {
         this.fleetId = fleetId;
     }
 
+    public CharacterFleetResponse fleetBossId(Long fleetBossId) {
+        this.fleetBossId = fleetBossId;
+        return this;
+    }
+
+    /**
+     * Character ID of the current fleet boss
+     * 
+     * @return fleetBossId
+     **/
+    @ApiModelProperty(required = true, value = "Character ID of the current fleet boss")
+    public Long getFleetBossId() {
+        return fleetBossId;
+    }
+
+    public void setFleetBossId(Long fleetBossId) {
+        this.fleetBossId = fleetBossId;
+    }
+
     public CharacterFleetResponse wingId(Long wingId) {
         this.wingId = wingId;
         return this;
@@ -186,12 +209,13 @@ public class CharacterFleetResponse implements Serializable {
         return Objects.equals(this.role, characterFleetResponse.role)
                 && Objects.equals(this.squadId, characterFleetResponse.squadId)
                 && Objects.equals(this.fleetId, characterFleetResponse.fleetId)
+                && Objects.equals(this.fleetBossId, characterFleetResponse.fleetBossId)
                 && Objects.equals(this.wingId, characterFleetResponse.wingId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(role, squadId, fleetId, wingId);
+        return Objects.hash(role, squadId, fleetId, fleetBossId, wingId);
     }
 
     @Override
@@ -201,6 +225,7 @@ public class CharacterFleetResponse implements Serializable {
         sb.append("    role: ").append(toIndentedString(role)).append("\n");
         sb.append("    squadId: ").append(toIndentedString(squadId)).append("\n");
         sb.append("    fleetId: ").append(toIndentedString(fleetId)).append("\n");
+        sb.append("    fleetBossId: ").append(toIndentedString(fleetBossId)).append("\n");
         sb.append("    wingId: ").append(toIndentedString(wingId)).append("\n");
         sb.append("}");
         return sb.toString();

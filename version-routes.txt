@@ -16,7 +16,6 @@
   "/v1/characters/{character_id}/corporationhistory/",
   "/v1/characters/{character_id}/fatigue/",
   "/v1/characters/{character_id}/fittings/{fitting_id}/",
-  "/v1/characters/{character_id}/fleet/",
   "/v1/characters/{character_id}/fw/stats/",
   "/v1/characters/{character_id}/implants/",
   "/v1/characters/{character_id}/industry/jobs/",
@@ -149,6 +148,7 @@
   "/v2/characters/{character_id}/bookmarks/folders/",
   "/v2/characters/{character_id}/contacts/",
   "/v2/characters/{character_id}/fittings/",
+  "/v2/characters/{character_id}/fleet/",
   "/v2/characters/{character_id}/mail/labels/",
   "/v2/characters/{character_id}/online/",
   "/v2/characters/{character_id}/orders/",
@@ -185,10 +185,10 @@
   "/v3/universe/types/{type_id}/",
   "/v4/characters/{character_id}/",
   "/v4/characters/{character_id}/cspa/",
-  "/v4/characters/{character_id}/notifications/",
   "/v4/characters/{character_id}/skills/",
   "/v4/corporations/{corporation_id}/",
   "/v4/corporations/{corporation_id}/wallets/{division}/journal/",
   "/v4/universe/systems/{system_id}/",
+  "/v5/characters/{character_id}/notifications/",
   "/v6/characters/{character_id}/wallet/journal/"
 ]

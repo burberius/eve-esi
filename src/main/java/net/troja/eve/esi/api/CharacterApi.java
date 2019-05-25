@@ -1072,7 +1072,7 @@ public class CharacterApi {
         Object localVarPostBody = new Object();
 
         // create path and map variables
-        String localVarPath = "/v4/characters/{character_id}/notifications/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v5/characters/{character_id}/notifications/".replaceAll("\\{" + "character_id" + "\\}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

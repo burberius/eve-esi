@@ -130,6 +130,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         ALLIANCECAPITALCHANGED("AllianceCapitalChanged"),
 
+        ALLIANCEWARDECLAREDV2("AllianceWarDeclaredV2"),
+
         ALLYCONTRACTCANCELLED("AllyContractCancelled"),
 
         ALLYJOINEDWARAGGRESSORMSG("AllyJoinedWarAggressorMsg"),
@@ -202,6 +204,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         CORPAPPREJECTMSG("CorpAppRejectMsg"),
 
+        CORPBECAMEWARELIGIBLE("CorpBecameWarEligible"),
+
         CORPDIVIDENDMSG("CorpDividendMsg"),
 
         CORPFRIENDLYFIREDISABLETIMERCOMPLETED("CorpFriendlyFireDisableTimerCompleted"),
@@ -220,6 +224,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         CORPNEWSMSG("CorpNewsMsg"),
 
+        CORPNOLONGERWARELIGIBLE("CorpNoLongerWarEligible"),
+
         CORPOFFICEEXPIRATIONMSG("CorpOfficeExpirationMsg"),
 
         CORPSTRUCTLOSTMSG("CorpStructLostMsg"),
@@ -231,6 +237,8 @@ public class CharacterNotificationsResponse implements Serializable {
         CORPVOTEMSG("CorpVoteMsg"),
 
         CORPWARDECLAREDMSG("CorpWarDeclaredMsg"),
+
+        CORPWARDECLAREDV2("CorpWarDeclaredV2"),
 
         CORPWARFIGHTINGLEGALMSG("CorpWarFightingLegalMsg"),
 
@@ -469,6 +477,8 @@ public class CharacterNotificationsResponse implements Serializable {
         TUTORIALMSG("TutorialMsg"),
 
         WARALLYOFFERDECLINEDMSG("WarAllyOfferDeclinedMsg"),
+
+        WARHQREMOVEDFROMSPACE("WarHQRemovedFromSpace"),
 
         WARSURRENDERDECLINEDMSG("WarSurrenderDeclinedMsg"),
 
