@@ -190,21 +190,7 @@
 
     <profiles>
         <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <java.debug>true</java.debug>
-                <java.optimize>false</java.optimize>
-            </properties>
-        </profile>
-        <profile>
             <id>production</id>
-            <properties>
-                <java.debug>false</java.debug>
-                <java.optimize>true</java.optimize>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
