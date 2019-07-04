@@ -47,6 +47,16 @@ The usage of the SSO can be seen in the *main* method within the test class
 **Note:** The state should be some secret to prevent XRSF, please read:
 http://www.thread-safe.com/2014/05/the-correct-use-of-state-parameter-in.html
 
+## ApiException: Bad Gateway
+The exception *net.troja.eve.esi.ApiException: Bad Gateway* happens in the ESI on occasion,
+there's not much you can do on the client side except be prepared to handle it (e.g. retry).
+Some endpoints are more notorious for this than others. For example, the corporate contracts
+API regularly has this issue.
+
+On a typical day in EveKit, one of my sync nodes makes about 500K requests across various API
+endpoints. About 2000 of those calls result in errors, and about a third of those errors are
+502 (bad gateway). It's just something you have to be prepared to deal with.
+
 ## Tests with authorization
 To run the tests that use authorization you need to have some environment variables set,
 this information should not be published:
