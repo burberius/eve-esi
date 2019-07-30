@@ -133,12 +133,14 @@ public class JWT {
             JsonObject jsonObject = json.getAsJsonObject();
             Payload payload = new Payload();
             JsonElement element = jsonObject.get("scp");
-            if (element.isJsonArray()) {
-                for (JsonElement item : element.getAsJsonArray()) {
-                    payload.scopes.add(item.getAsString());
+            if (element != null) {
+                if (element.isJsonArray()) {
+                    for (JsonElement item : element.getAsJsonArray()) {
+                        payload.scopes.add(item.getAsString());
+                    }
+                } else {
+                    payload.scopes.add(element.getAsString());
                 }
-            } else {
-                payload.scopes.add(element.getAsString());
             }
 
             payload.jti = jsonObject.get("jti").getAsString();
