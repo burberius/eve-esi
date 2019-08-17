@@ -350,6 +350,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         MADEWARMUTUAL("MadeWarMutual"),
 
+        MERCOFFERRETRACTEDMSG("MercOfferRetractedMsg"),
+
         MERCOFFEREDNEGOTIATIONMSG("MercOfferedNegotiationMsg"),
 
         MISSIONOFFEREXPIRATIONMSG("MissionOfferExpirationMsg"),
@@ -377,6 +379,8 @@ public class CharacterNotificationsResponse implements Serializable {
         NPCSTANDINGSGAINED("NPCStandingsGained"),
 
         NPCSTANDINGSLOST("NPCStandingsLost"),
+
+        OFFERTOALLYRETRACTED("OfferToAllyRetracted"),
 
         OFFEREDSURRENDER("OfferedSurrender"),
 

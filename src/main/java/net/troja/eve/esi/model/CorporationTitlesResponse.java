@@ -132,10 +132,6 @@ public class CorporationTitlesResponse implements Serializable {
 
         STATION_MANAGER("Station_Manager"),
 
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
-
         TRADER("Trader");
 
         private String value;
@@ -278,10 +274,6 @@ public class CorporationTitlesResponse implements Serializable {
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
         STATION_MANAGER("Station_Manager"),
-
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
 
         TRADER("Trader");
 
@@ -426,10 +418,6 @@ public class CorporationTitlesResponse implements Serializable {
 
         STATION_MANAGER("Station_Manager"),
 
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
-
         TRADER("Trader");
 
         private String value;
@@ -573,10 +561,6 @@ public class CorporationTitlesResponse implements Serializable {
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
         STATION_MANAGER("Station_Manager"),
-
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
 
         TRADER("Trader");
 
@@ -725,10 +709,6 @@ public class CorporationTitlesResponse implements Serializable {
 
         STATION_MANAGER("Station_Manager"),
 
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
-
         TRADER("Trader");
 
         private String value;
@@ -876,10 +856,6 @@ public class CorporationTitlesResponse implements Serializable {
 
         STATION_MANAGER("Station_Manager"),
 
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
-
         TRADER("Trader");
 
         private String value;
@@ -1023,10 +999,6 @@ public class CorporationTitlesResponse implements Serializable {
 
         STATION_MANAGER("Station_Manager"),
 
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
-
         TRADER("Trader");
 
         private String value;
@@ -1169,10 +1141,6 @@ public class CorporationTitlesResponse implements Serializable {
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
 
         STATION_MANAGER("Station_Manager"),
-
-        TERRESTRIAL_COMBAT_OFFICER("Terrestrial_Combat_Officer"),
-
-        TERRESTRIAL_LOGISTICS_OFFICER("Terrestrial_Logistics_Officer"),
 
         TRADER("Trader");
 
