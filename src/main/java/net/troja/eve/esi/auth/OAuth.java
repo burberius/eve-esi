@@ -186,6 +186,34 @@ public class OAuth implements Authentication {
     }
 
     /**
+     * 
+     * @return the PKCE code verifier used to generate the last code challenge
+     *         (RFC 7636)
+     */
+    public String getCodeVerifier() {
+        return codeVerifier;
+    }
+
+    /**
+     * Finish the oauth flow after the user was redirected back.
+     *
+     * @param code
+     *            Code returned by the Eve Online SSO
+     * @param state
+     *            This should be some secret to prevent XRSF see
+     *            getAuthorizationUri
+     * @param codeVerifier
+     *            The PKCE code verifier used to generate the code challenge
+     *            (RFC 7636). Required if not called by the same instance that
+     *            called `getAuthorizationUri`
+     * @throws net.troja.eve.esi.ApiException
+     */
+    public void finishFlow(final String code, final String state, String codeVerifier) throws ApiException {
+        this.codeVerifier = codeVerifier;
+        finishFlow(code, state);
+    }
+
+    /**
      * Finish the oauth flow after the user was redirected back.
      *
      * @param code
