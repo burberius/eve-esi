@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
     private Integer characterId;
 
     public FactionWarfareLeaderboardCharactersYesterdayVictoryPoints amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of victory points")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
     }
 
     public FactionWarfareLeaderboardCharactersYesterdayVictoryPoints characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardCharactersYesterdayVictoryPoints implement
      * 
      * @return characterId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;

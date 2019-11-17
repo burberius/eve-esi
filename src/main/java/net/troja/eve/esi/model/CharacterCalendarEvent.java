@@ -85,6 +85,7 @@ public class CharacterCalendarEvent implements Serializable {
     private ResponseEnum response;
 
     public CharacterCalendarEvent response(ResponseEnum response) {
+
         this.response = response;
         return this;
     }

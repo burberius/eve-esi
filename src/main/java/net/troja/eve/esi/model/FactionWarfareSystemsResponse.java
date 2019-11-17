@@ -31,22 +31,6 @@ import java.io.Serializable;
 public class FactionWarfareSystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_OWNER_FACTION_ID = "owner_faction_id";
-    @SerializedName(SERIALIZED_NAME_OWNER_FACTION_ID)
-    private Integer ownerFactionId;
-
-    public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
-    @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
-    private Integer victoryPoints;
-
-    public static final String SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD = "victory_points_threshold";
-    @SerializedName(SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD)
-    private Integer victoryPointsThreshold;
-
-    public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
-    @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
-    private Integer solarSystemId;
-
     /**
      * contested string
      */
@@ -106,83 +90,24 @@ public class FactionWarfareSystemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OCCUPIER_FACTION_ID)
     private Integer occupierFactionId;
 
-    public FactionWarfareSystemsResponse ownerFactionId(Integer ownerFactionId) {
-        this.ownerFactionId = ownerFactionId;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_OWNER_FACTION_ID = "owner_faction_id";
+    @SerializedName(SERIALIZED_NAME_OWNER_FACTION_ID)
+    private Integer ownerFactionId;
 
-    /**
-     * owner_faction_id integer
-     * 
-     * @return ownerFactionId
-     **/
-    @ApiModelProperty(required = true, value = "owner_faction_id integer")
-    public Integer getOwnerFactionId() {
-        return ownerFactionId;
-    }
+    public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
+    @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
+    private Integer solarSystemId;
 
-    public void setOwnerFactionId(Integer ownerFactionId) {
-        this.ownerFactionId = ownerFactionId;
-    }
+    public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
+    @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
+    private Integer victoryPoints;
 
-    public FactionWarfareSystemsResponse victoryPoints(Integer victoryPoints) {
-        this.victoryPoints = victoryPoints;
-        return this;
-    }
-
-    /**
-     * victory_points integer
-     * 
-     * @return victoryPoints
-     **/
-    @ApiModelProperty(required = true, value = "victory_points integer")
-    public Integer getVictoryPoints() {
-        return victoryPoints;
-    }
-
-    public void setVictoryPoints(Integer victoryPoints) {
-        this.victoryPoints = victoryPoints;
-    }
-
-    public FactionWarfareSystemsResponse victoryPointsThreshold(Integer victoryPointsThreshold) {
-        this.victoryPointsThreshold = victoryPointsThreshold;
-        return this;
-    }
-
-    /**
-     * victory_points_threshold integer
-     * 
-     * @return victoryPointsThreshold
-     **/
-    @ApiModelProperty(required = true, value = "victory_points_threshold integer")
-    public Integer getVictoryPointsThreshold() {
-        return victoryPointsThreshold;
-    }
-
-    public void setVictoryPointsThreshold(Integer victoryPointsThreshold) {
-        this.victoryPointsThreshold = victoryPointsThreshold;
-    }
-
-    public FactionWarfareSystemsResponse solarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-        return this;
-    }
-
-    /**
-     * solar_system_id integer
-     * 
-     * @return solarSystemId
-     **/
-    @ApiModelProperty(required = true, value = "solar_system_id integer")
-    public Integer getSolarSystemId() {
-        return solarSystemId;
-    }
-
-    public void setSolarSystemId(Integer solarSystemId) {
-        this.solarSystemId = solarSystemId;
-    }
+    public static final String SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD = "victory_points_threshold";
+    @SerializedName(SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD)
+    private Integer victoryPointsThreshold;
 
     public FactionWarfareSystemsResponse contested(ContestedEnum contested) {
+
         this.contested = contested;
         return this;
     }
@@ -202,6 +127,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
     }
 
     public FactionWarfareSystemsResponse occupierFactionId(Integer occupierFactionId) {
+
         this.occupierFactionId = occupierFactionId;
         return this;
     }
@@ -220,6 +146,86 @@ public class FactionWarfareSystemsResponse implements Serializable {
         this.occupierFactionId = occupierFactionId;
     }
 
+    public FactionWarfareSystemsResponse ownerFactionId(Integer ownerFactionId) {
+
+        this.ownerFactionId = ownerFactionId;
+        return this;
+    }
+
+    /**
+     * owner_faction_id integer
+     * 
+     * @return ownerFactionId
+     **/
+    @ApiModelProperty(required = true, value = "owner_faction_id integer")
+    public Integer getOwnerFactionId() {
+        return ownerFactionId;
+    }
+
+    public void setOwnerFactionId(Integer ownerFactionId) {
+        this.ownerFactionId = ownerFactionId;
+    }
+
+    public FactionWarfareSystemsResponse solarSystemId(Integer solarSystemId) {
+
+        this.solarSystemId = solarSystemId;
+        return this;
+    }
+
+    /**
+     * solar_system_id integer
+     * 
+     * @return solarSystemId
+     **/
+    @ApiModelProperty(required = true, value = "solar_system_id integer")
+    public Integer getSolarSystemId() {
+        return solarSystemId;
+    }
+
+    public void setSolarSystemId(Integer solarSystemId) {
+        this.solarSystemId = solarSystemId;
+    }
+
+    public FactionWarfareSystemsResponse victoryPoints(Integer victoryPoints) {
+
+        this.victoryPoints = victoryPoints;
+        return this;
+    }
+
+    /**
+     * victory_points integer
+     * 
+     * @return victoryPoints
+     **/
+    @ApiModelProperty(required = true, value = "victory_points integer")
+    public Integer getVictoryPoints() {
+        return victoryPoints;
+    }
+
+    public void setVictoryPoints(Integer victoryPoints) {
+        this.victoryPoints = victoryPoints;
+    }
+
+    public FactionWarfareSystemsResponse victoryPointsThreshold(Integer victoryPointsThreshold) {
+
+        this.victoryPointsThreshold = victoryPointsThreshold;
+        return this;
+    }
+
+    /**
+     * victory_points_threshold integer
+     * 
+     * @return victoryPointsThreshold
+     **/
+    @ApiModelProperty(required = true, value = "victory_points_threshold integer")
+    public Integer getVictoryPointsThreshold() {
+        return victoryPointsThreshold;
+    }
+
+    public void setVictoryPointsThreshold(Integer victoryPointsThreshold) {
+        this.victoryPointsThreshold = victoryPointsThreshold;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -229,30 +235,30 @@ public class FactionWarfareSystemsResponse implements Serializable {
             return false;
         }
         FactionWarfareSystemsResponse factionWarfareSystemsResponse = (FactionWarfareSystemsResponse) o;
-        return Objects.equals(this.ownerFactionId, factionWarfareSystemsResponse.ownerFactionId)
-                && Objects.equals(this.victoryPoints, factionWarfareSystemsResponse.victoryPoints)
-                && Objects.equals(this.victoryPointsThreshold, factionWarfareSystemsResponse.victoryPointsThreshold)
+        return Objects.equals(this.contested, factionWarfareSystemsResponse.contested)
+                && Objects.equals(this.occupierFactionId, factionWarfareSystemsResponse.occupierFactionId)
+                && Objects.equals(this.ownerFactionId, factionWarfareSystemsResponse.ownerFactionId)
                 && Objects.equals(this.solarSystemId, factionWarfareSystemsResponse.solarSystemId)
-                && Objects.equals(this.contested, factionWarfareSystemsResponse.contested)
-                && Objects.equals(this.occupierFactionId, factionWarfareSystemsResponse.occupierFactionId);
+                && Objects.equals(this.victoryPoints, factionWarfareSystemsResponse.victoryPoints)
+                && Objects.equals(this.victoryPointsThreshold, factionWarfareSystemsResponse.victoryPointsThreshold);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerFactionId, victoryPoints, victoryPointsThreshold, solarSystemId, contested,
-                occupierFactionId);
+        return Objects.hash(contested, occupierFactionId, ownerFactionId, solarSystemId, victoryPoints,
+                victoryPointsThreshold);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareSystemsResponse {\n");
-        sb.append("    ownerFactionId: ").append(toIndentedString(ownerFactionId)).append("\n");
-        sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
-        sb.append("    victoryPointsThreshold: ").append(toIndentedString(victoryPointsThreshold)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    contested: ").append(toIndentedString(contested)).append("\n");
         sb.append("    occupierFactionId: ").append(toIndentedString(occupierFactionId)).append("\n");
+        sb.append("    ownerFactionId: ").append(toIndentedString(ownerFactionId)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    victoryPoints: ").append(toIndentedString(victoryPoints)).append("\n");
+        sb.append("    victoryPointsThreshold: ").append(toIndentedString(victoryPointsThreshold)).append("\n");
         sb.append("}");
         return sb.toString();
     }

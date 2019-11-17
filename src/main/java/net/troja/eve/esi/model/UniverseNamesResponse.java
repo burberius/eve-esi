@@ -31,14 +31,6 @@ import java.io.Serializable;
 public class UniverseNamesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
-    public static final String SERIALIZED_NAME_ID = "id";
-    @SerializedName(SERIALIZED_NAME_ID)
-    private Integer id;
-
     /**
      * category string
      */
@@ -104,45 +96,16 @@ public class UniverseNamesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CATEGORY)
     private CategoryEnum category;
 
-    public UniverseNamesResponse name(String name) {
-        this.name = name;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_ID = "id";
+    @SerializedName(SERIALIZED_NAME_ID)
+    private Integer id;
 
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UniverseNamesResponse id(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * id integer
-     * 
-     * @return id
-     **/
-    @ApiModelProperty(required = true, value = "id integer")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
     public UniverseNamesResponse category(CategoryEnum category) {
+
         this.category = category;
         return this;
     }
@@ -161,6 +124,46 @@ public class UniverseNamesResponse implements Serializable {
         this.category = category;
     }
 
+    public UniverseNamesResponse id(Integer id) {
+
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * id integer
+     * 
+     * @return id
+     **/
+    @ApiModelProperty(required = true, value = "id integer")
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public UniverseNamesResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,23 +173,23 @@ public class UniverseNamesResponse implements Serializable {
             return false;
         }
         UniverseNamesResponse universeNamesResponse = (UniverseNamesResponse) o;
-        return Objects.equals(this.name, universeNamesResponse.name)
+        return Objects.equals(this.category, universeNamesResponse.category)
                 && Objects.equals(this.id, universeNamesResponse.id)
-                && Objects.equals(this.category, universeNamesResponse.category);
+                && Objects.equals(this.name, universeNamesResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, category);
+        return Objects.hash(category, id, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseNamesResponse {\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    category: ").append(toIndentedString(category)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -43,59 +43,144 @@ import java.io.Serializable;
 public class CharacterStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_CHARACTER = "character";
+    @SerializedName(SERIALIZED_NAME_CHARACTER)
+    private CharacterStatsCharacter character;
+
+    public static final String SERIALIZED_NAME_COMBAT = "combat";
+    @SerializedName(SERIALIZED_NAME_COMBAT)
+    private CharacterStatsCombat combat;
+
+    public static final String SERIALIZED_NAME_INDUSTRY = "industry";
+    @SerializedName(SERIALIZED_NAME_INDUSTRY)
+    private CharacterStatsIndustry industry;
+
+    public static final String SERIALIZED_NAME_INVENTORY = "inventory";
+    @SerializedName(SERIALIZED_NAME_INVENTORY)
+    private CharacterStatsInventory inventory;
+
     public static final String SERIALIZED_NAME_ISK = "isk";
     @SerializedName(SERIALIZED_NAME_ISK)
-    private CharacterStatsIsk isk = null;
+    private CharacterStatsIsk isk;
+
+    public static final String SERIALIZED_NAME_MARKET = "market";
+    @SerializedName(SERIALIZED_NAME_MARKET)
+    private CharacterStatsMarket market;
+
+    public static final String SERIALIZED_NAME_MINING = "mining";
+    @SerializedName(SERIALIZED_NAME_MINING)
+    private CharacterStatsMining mining;
+
+    public static final String SERIALIZED_NAME_MODULE = "module";
+    @SerializedName(SERIALIZED_NAME_MODULE)
+    private CharacterStatsModule module;
+
+    public static final String SERIALIZED_NAME_ORBITAL = "orbital";
+    @SerializedName(SERIALIZED_NAME_ORBITAL)
+    private CharacterStatsOrbital orbital;
+
+    public static final String SERIALIZED_NAME_PVE = "pve";
+    @SerializedName(SERIALIZED_NAME_PVE)
+    private CharacterStatsPve pve;
 
     public static final String SERIALIZED_NAME_SOCIAL = "social";
     @SerializedName(SERIALIZED_NAME_SOCIAL)
-    private CharacterStatsSocial social = null;
+    private CharacterStatsSocial social;
+
+    public static final String SERIALIZED_NAME_TRAVEL = "travel";
+    @SerializedName(SERIALIZED_NAME_TRAVEL)
+    private CharacterStatsTravel travel;
 
     public static final String SERIALIZED_NAME_YEAR = "year";
     @SerializedName(SERIALIZED_NAME_YEAR)
     private Integer year;
 
-    public static final String SERIALIZED_NAME_MODULE = "module";
-    @SerializedName(SERIALIZED_NAME_MODULE)
-    private CharacterStatsModule module = null;
+    public CharacterStatsResponse character(CharacterStatsCharacter character) {
 
-    public static final String SERIALIZED_NAME_ORBITAL = "orbital";
-    @SerializedName(SERIALIZED_NAME_ORBITAL)
-    private CharacterStatsOrbital orbital = null;
+        this.character = character;
+        return this;
+    }
 
-    public static final String SERIALIZED_NAME_COMBAT = "combat";
-    @SerializedName(SERIALIZED_NAME_COMBAT)
-    private CharacterStatsCombat combat = null;
+    /**
+     * Get character
+     * 
+     * @return character
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsCharacter getCharacter() {
+        return character;
+    }
 
-    public static final String SERIALIZED_NAME_INDUSTRY = "industry";
-    @SerializedName(SERIALIZED_NAME_INDUSTRY)
-    private CharacterStatsIndustry industry = null;
+    public void setCharacter(CharacterStatsCharacter character) {
+        this.character = character;
+    }
 
-    public static final String SERIALIZED_NAME_MINING = "mining";
-    @SerializedName(SERIALIZED_NAME_MINING)
-    private CharacterStatsMining mining = null;
+    public CharacterStatsResponse combat(CharacterStatsCombat combat) {
 
-    public static final String SERIALIZED_NAME_INVENTORY = "inventory";
-    @SerializedName(SERIALIZED_NAME_INVENTORY)
-    private CharacterStatsInventory inventory = null;
+        this.combat = combat;
+        return this;
+    }
 
-    public static final String SERIALIZED_NAME_MARKET = "market";
-    @SerializedName(SERIALIZED_NAME_MARKET)
-    private CharacterStatsMarket market = null;
+    /**
+     * Get combat
+     * 
+     * @return combat
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsCombat getCombat() {
+        return combat;
+    }
 
-    public static final String SERIALIZED_NAME_CHARACTER = "character";
-    @SerializedName(SERIALIZED_NAME_CHARACTER)
-    private CharacterStatsCharacter character = null;
+    public void setCombat(CharacterStatsCombat combat) {
+        this.combat = combat;
+    }
 
-    public static final String SERIALIZED_NAME_TRAVEL = "travel";
-    @SerializedName(SERIALIZED_NAME_TRAVEL)
-    private CharacterStatsTravel travel = null;
+    public CharacterStatsResponse industry(CharacterStatsIndustry industry) {
 
-    public static final String SERIALIZED_NAME_PVE = "pve";
-    @SerializedName(SERIALIZED_NAME_PVE)
-    private CharacterStatsPve pve = null;
+        this.industry = industry;
+        return this;
+    }
+
+    /**
+     * Get industry
+     * 
+     * @return industry
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsIndustry getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(CharacterStatsIndustry industry) {
+        this.industry = industry;
+    }
+
+    public CharacterStatsResponse inventory(CharacterStatsInventory inventory) {
+
+        this.inventory = inventory;
+        return this;
+    }
+
+    /**
+     * Get inventory
+     * 
+     * @return inventory
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsInventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(CharacterStatsInventory inventory) {
+        this.inventory = inventory;
+    }
 
     public CharacterStatsResponse isk(CharacterStatsIsk isk) {
+
         this.isk = isk;
         return this;
     }
@@ -105,6 +190,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return isk
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "")
     public CharacterStatsIsk getIsk() {
         return isk;
@@ -114,7 +200,113 @@ public class CharacterStatsResponse implements Serializable {
         this.isk = isk;
     }
 
+    public CharacterStatsResponse market(CharacterStatsMarket market) {
+
+        this.market = market;
+        return this;
+    }
+
+    /**
+     * Get market
+     * 
+     * @return market
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsMarket getMarket() {
+        return market;
+    }
+
+    public void setMarket(CharacterStatsMarket market) {
+        this.market = market;
+    }
+
+    public CharacterStatsResponse mining(CharacterStatsMining mining) {
+
+        this.mining = mining;
+        return this;
+    }
+
+    /**
+     * Get mining
+     * 
+     * @return mining
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsMining getMining() {
+        return mining;
+    }
+
+    public void setMining(CharacterStatsMining mining) {
+        this.mining = mining;
+    }
+
+    public CharacterStatsResponse module(CharacterStatsModule module) {
+
+        this.module = module;
+        return this;
+    }
+
+    /**
+     * Get module
+     * 
+     * @return module
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsModule getModule() {
+        return module;
+    }
+
+    public void setModule(CharacterStatsModule module) {
+        this.module = module;
+    }
+
+    public CharacterStatsResponse orbital(CharacterStatsOrbital orbital) {
+
+        this.orbital = orbital;
+        return this;
+    }
+
+    /**
+     * Get orbital
+     * 
+     * @return orbital
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsOrbital getOrbital() {
+        return orbital;
+    }
+
+    public void setOrbital(CharacterStatsOrbital orbital) {
+        this.orbital = orbital;
+    }
+
+    public CharacterStatsResponse pve(CharacterStatsPve pve) {
+
+        this.pve = pve;
+        return this;
+    }
+
+    /**
+     * Get pve
+     * 
+     * @return pve
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsPve getPve() {
+        return pve;
+    }
+
+    public void setPve(CharacterStatsPve pve) {
+        this.pve = pve;
+    }
+
     public CharacterStatsResponse social(CharacterStatsSocial social) {
+
         this.social = social;
         return this;
     }
@@ -124,6 +316,7 @@ public class CharacterStatsResponse implements Serializable {
      * 
      * @return social
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "")
     public CharacterStatsSocial getSocial() {
         return social;
@@ -133,7 +326,29 @@ public class CharacterStatsResponse implements Serializable {
         this.social = social;
     }
 
+    public CharacterStatsResponse travel(CharacterStatsTravel travel) {
+
+        this.travel = travel;
+        return this;
+    }
+
+    /**
+     * Get travel
+     * 
+     * @return travel
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public CharacterStatsTravel getTravel() {
+        return travel;
+    }
+
+    public void setTravel(CharacterStatsTravel travel) {
+        this.travel = travel;
+    }
+
     public CharacterStatsResponse year(Integer year) {
+
         this.year = year;
         return this;
     }
@@ -152,196 +367,6 @@ public class CharacterStatsResponse implements Serializable {
         this.year = year;
     }
 
-    public CharacterStatsResponse module(CharacterStatsModule module) {
-        this.module = module;
-        return this;
-    }
-
-    /**
-     * Get module
-     * 
-     * @return module
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsModule getModule() {
-        return module;
-    }
-
-    public void setModule(CharacterStatsModule module) {
-        this.module = module;
-    }
-
-    public CharacterStatsResponse orbital(CharacterStatsOrbital orbital) {
-        this.orbital = orbital;
-        return this;
-    }
-
-    /**
-     * Get orbital
-     * 
-     * @return orbital
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsOrbital getOrbital() {
-        return orbital;
-    }
-
-    public void setOrbital(CharacterStatsOrbital orbital) {
-        this.orbital = orbital;
-    }
-
-    public CharacterStatsResponse combat(CharacterStatsCombat combat) {
-        this.combat = combat;
-        return this;
-    }
-
-    /**
-     * Get combat
-     * 
-     * @return combat
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsCombat getCombat() {
-        return combat;
-    }
-
-    public void setCombat(CharacterStatsCombat combat) {
-        this.combat = combat;
-    }
-
-    public CharacterStatsResponse industry(CharacterStatsIndustry industry) {
-        this.industry = industry;
-        return this;
-    }
-
-    /**
-     * Get industry
-     * 
-     * @return industry
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsIndustry getIndustry() {
-        return industry;
-    }
-
-    public void setIndustry(CharacterStatsIndustry industry) {
-        this.industry = industry;
-    }
-
-    public CharacterStatsResponse mining(CharacterStatsMining mining) {
-        this.mining = mining;
-        return this;
-    }
-
-    /**
-     * Get mining
-     * 
-     * @return mining
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsMining getMining() {
-        return mining;
-    }
-
-    public void setMining(CharacterStatsMining mining) {
-        this.mining = mining;
-    }
-
-    public CharacterStatsResponse inventory(CharacterStatsInventory inventory) {
-        this.inventory = inventory;
-        return this;
-    }
-
-    /**
-     * Get inventory
-     * 
-     * @return inventory
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsInventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(CharacterStatsInventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public CharacterStatsResponse market(CharacterStatsMarket market) {
-        this.market = market;
-        return this;
-    }
-
-    /**
-     * Get market
-     * 
-     * @return market
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsMarket getMarket() {
-        return market;
-    }
-
-    public void setMarket(CharacterStatsMarket market) {
-        this.market = market;
-    }
-
-    public CharacterStatsResponse character(CharacterStatsCharacter character) {
-        this.character = character;
-        return this;
-    }
-
-    /**
-     * Get character
-     * 
-     * @return character
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsCharacter getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(CharacterStatsCharacter character) {
-        this.character = character;
-    }
-
-    public CharacterStatsResponse travel(CharacterStatsTravel travel) {
-        this.travel = travel;
-        return this;
-    }
-
-    /**
-     * Get travel
-     * 
-     * @return travel
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsTravel getTravel() {
-        return travel;
-    }
-
-    public void setTravel(CharacterStatsTravel travel) {
-        this.travel = travel;
-    }
-
-    public CharacterStatsResponse pve(CharacterStatsPve pve) {
-        this.pve = pve;
-        return this;
-    }
-
-    /**
-     * Get pve
-     * 
-     * @return pve
-     **/
-    @ApiModelProperty(value = "")
-    public CharacterStatsPve getPve() {
-        return pve;
-    }
-
-    public void setPve(CharacterStatsPve pve) {
-        this.pve = pve;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -351,44 +376,44 @@ public class CharacterStatsResponse implements Serializable {
             return false;
         }
         CharacterStatsResponse characterStatsResponse = (CharacterStatsResponse) o;
-        return Objects.equals(this.isk, characterStatsResponse.isk)
-                && Objects.equals(this.social, characterStatsResponse.social)
-                && Objects.equals(this.year, characterStatsResponse.year)
-                && Objects.equals(this.module, characterStatsResponse.module)
-                && Objects.equals(this.orbital, characterStatsResponse.orbital)
+        return Objects.equals(this.character, characterStatsResponse.character)
                 && Objects.equals(this.combat, characterStatsResponse.combat)
                 && Objects.equals(this.industry, characterStatsResponse.industry)
-                && Objects.equals(this.mining, characterStatsResponse.mining)
                 && Objects.equals(this.inventory, characterStatsResponse.inventory)
+                && Objects.equals(this.isk, characterStatsResponse.isk)
                 && Objects.equals(this.market, characterStatsResponse.market)
-                && Objects.equals(this.character, characterStatsResponse.character)
+                && Objects.equals(this.mining, characterStatsResponse.mining)
+                && Objects.equals(this.module, characterStatsResponse.module)
+                && Objects.equals(this.orbital, characterStatsResponse.orbital)
+                && Objects.equals(this.pve, characterStatsResponse.pve)
+                && Objects.equals(this.social, characterStatsResponse.social)
                 && Objects.equals(this.travel, characterStatsResponse.travel)
-                && Objects.equals(this.pve, characterStatsResponse.pve);
+                && Objects.equals(this.year, characterStatsResponse.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isk, social, year, module, orbital, combat, industry, mining, inventory, market, character,
-                travel, pve);
+        return Objects.hash(character, combat, industry, inventory, isk, market, mining, module, orbital, pve, social,
+                travel, year);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsResponse {\n");
-        sb.append("    isk: ").append(toIndentedString(isk)).append("\n");
-        sb.append("    social: ").append(toIndentedString(social)).append("\n");
-        sb.append("    year: ").append(toIndentedString(year)).append("\n");
-        sb.append("    module: ").append(toIndentedString(module)).append("\n");
-        sb.append("    orbital: ").append(toIndentedString(orbital)).append("\n");
+        sb.append("    character: ").append(toIndentedString(character)).append("\n");
         sb.append("    combat: ").append(toIndentedString(combat)).append("\n");
         sb.append("    industry: ").append(toIndentedString(industry)).append("\n");
-        sb.append("    mining: ").append(toIndentedString(mining)).append("\n");
         sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
+        sb.append("    isk: ").append(toIndentedString(isk)).append("\n");
         sb.append("    market: ").append(toIndentedString(market)).append("\n");
-        sb.append("    character: ").append(toIndentedString(character)).append("\n");
-        sb.append("    travel: ").append(toIndentedString(travel)).append("\n");
+        sb.append("    mining: ").append(toIndentedString(mining)).append("\n");
+        sb.append("    module: ").append(toIndentedString(module)).append("\n");
+        sb.append("    orbital: ").append(toIndentedString(orbital)).append("\n");
         sb.append("    pve: ").append(toIndentedString(pve)).append("\n");
+        sb.append("    social: ").append(toIndentedString(social)).append("\n");
+        sb.append("    travel: ").append(toIndentedString(travel)).append("\n");
+        sb.append("    year: ").append(toIndentedString(year)).append("\n");
         sb.append("}");
         return sb.toString();
     }

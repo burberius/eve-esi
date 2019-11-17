@@ -14,6 +14,7 @@ package net.troja.eve.esi;
 
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
+import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
@@ -48,6 +49,7 @@ import java.util.regex.Pattern;
 
 import net.troja.eve.esi.auth.Authentication;
 import net.troja.eve.esi.auth.HttpBasicAuth;
+import net.troja.eve.esi.auth.HttpBearerAuth;
 import net.troja.eve.esi.auth.ApiKeyAuth;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.RetryingOAuth;
@@ -58,6 +60,7 @@ public class ApiClient {
     private String basePath = "https://esi.evetech.net";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
+    private Map<String, String> defaultCookieMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
     private Map<String, Authentication> authentications;
@@ -166,25 +169,16 @@ public class ApiClient {
     }
 
     /**
-     * Set HTTP client
+     * Set HTTP client, which must never be null.
      *
      * @param newHttpClient
      *            An instance of OkHttpClient
      * @return Api Client
+     * @throws NullPointerException
+     *             when newHttpClient is null
      */
     public ApiClient setHttpClient(OkHttpClient newHttpClient) {
-        if (!httpClient.equals(newHttpClient)) {
-            OkHttpClient.Builder builder = newHttpClient.newBuilder();
-            Iterator<Interceptor> networkInterceptorIterator = httpClient.networkInterceptors().iterator();
-            while (networkInterceptorIterator.hasNext()) {
-                builder.addNetworkInterceptor(networkInterceptorIterator.next());
-            }
-            Iterator<Interceptor> interceptorIterator = httpClient.interceptors().iterator();
-            while (interceptorIterator.hasNext()) {
-                builder.addInterceptor(interceptorIterator.next());
-            }
-            this.httpClient = builder.build();
-        }
+        this.httpClient = Objects.requireNonNull(newHttpClient, "HttpClient must not be null!");
         return this;
     }
 
@@ -426,6 +420,20 @@ public class ApiClient {
      */
     public ApiClient addDefaultHeader(String key, String value) {
         defaultHeaderMap.put(key, value);
+        return this;
+    }
+
+    /**
+     * Add a default cookie.
+     *
+     * @param key
+     *            The cookie's key
+     * @param value
+     *            The cookie's value
+     * @return ApiClient
+     */
+    public ApiClient addDefaultCookie(String key, String value) {
+        defaultCookieMap.put(key, value);
         return this;
     }
 
@@ -1108,6 +1116,8 @@ public class ApiClient {
      *            The request body object
      * @param headerParams
      *            The header parameters
+     * @param cookieParams
+     *            The cookie parameters
      * @param formParams
      *            The form parameters
      * @param authNames
@@ -1119,10 +1129,10 @@ public class ApiClient {
      *             If fail to serialize the request body object
      */
     public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
-            Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames,
-            ApiCallback callback) throws ApiException {
+            Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
+            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams,
-                formParams, authNames, callback);
+                cookieParams, formParams, authNames, callback);
 
         return httpClient.newCall(request);
     }
@@ -1143,6 +1153,8 @@ public class ApiClient {
      *            The request body object
      * @param headerParams
      *            The header parameters
+     * @param cookieParams
+     *            The cookie parameters
      * @param formParams
      *            The form parameters
      * @param authNames
@@ -1154,13 +1166,14 @@ public class ApiClient {
      *             If fail to serialize the request body object
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
-            Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames,
-            ApiCallback callback) throws ApiException {
-        updateParamsForAuth(authNames, queryParams, headerParams);
+            Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
+            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
         processHeaderParams(headerParams, reqBuilder);
+        processCookieParams(cookieParams, reqBuilder);
 
         String contentType = (String) headerParams.get("Content-Type");
         // ensuring a default content type
@@ -1261,9 +1274,9 @@ public class ApiClient {
      * Set header parameters to the request builder, including default headers.
      *
      * @param headerParams
-     *            Header parameters in the ofrm of Map
+     *            Header parameters in the form of Map
      * @param reqBuilder
-     *            Reqeust.Builder
+     *            Request.Builder
      */
     public void processHeaderParams(Map<String, String> headerParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : headerParams.entrySet()) {
@@ -1277,6 +1290,25 @@ public class ApiClient {
     }
 
     /**
+     * Set cookie parameters to the request builder, including default cookies.
+     *
+     * @param cookieParams
+     *            Cookie parameters in the form of Map
+     * @param reqBuilder
+     *            Request.Builder
+     */
+    public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
+        for (Entry<String, String> param : cookieParams.entrySet()) {
+            reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+        }
+        for (Entry<String, String> param : defaultCookieMap.entrySet()) {
+            if (!cookieParams.containsKey(param.getKey())) {
+                reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+            }
+        }
+    }
+
+    /**
      * Update query and header parameters based on authentication settings.
      *
      * @param authNames
@@ -1285,14 +1317,17 @@ public class ApiClient {
      *            List of query parameters
      * @param headerParams
      *            Map of header parameters
+     * @param cookieParams
+     *            Map of cookie parameters
      */
-    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams) {
+    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams,
+            Map<String, String> cookieParams) {
         for (String authName : authNames) {
             Authentication auth = authentications.get(authName);
             if (auth == null) {
                 throw new RuntimeException("Authentication undefined: " + authName);
             }
-            auth.applyToParams(queryParams, headerParams);
+            auth.applyToParams(queryParams, headerParams, cookieParams);
         }
     }
 
@@ -1379,8 +1414,8 @@ public class ApiClient {
      */
     private void applySslSettings() {
         try {
-            TrustManager[] trustManagers = null;
-            HostnameVerifier hostnameVerifier = null;
+            TrustManager[] trustManagers;
+            HostnameVerifier hostnameVerifier;
             if (!verifyingSsl) {
                 trustManagers = new TrustManager[] { new X509TrustManager() {
                     @Override
@@ -1398,43 +1433,42 @@ public class ApiClient {
                         return new java.security.cert.X509Certificate[] {};
                     }
                 } };
-                SSLContext sslContext = SSLContext.getInstance("TLS");
                 hostnameVerifier = new HostnameVerifier() {
                     @Override
                     public boolean verify(String hostname, SSLSession session) {
                         return true;
                     }
                 };
-            } else if (sslCaCert != null) {
-                char[] password = null; // Any password will work.
-                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
-                if (certificates.isEmpty()) {
-                    throw new IllegalArgumentException("expected non-empty set of trusted certificates");
-                }
-                KeyStore caKeyStore = newEmptyKeyStore(password);
-                int index = 0;
-                for (Certificate certificate : certificates) {
-                    String certificateAlias = "ca" + Integer.toString(index++);
-                    caKeyStore.setCertificateEntry(certificateAlias, certificate);
-                }
+            } else {
                 TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory
                         .getDefaultAlgorithm());
-                trustManagerFactory.init(caKeyStore);
+
+                if (sslCaCert == null) {
+                    trustManagerFactory.init((KeyStore) null);
+                } else {
+                    char[] password = null; // Any password will work.
+                    CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+                    Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
+                    if (certificates.isEmpty()) {
+                        throw new IllegalArgumentException("expected non-empty set of trusted certificates");
+                    }
+                    KeyStore caKeyStore = newEmptyKeyStore(password);
+                    int index = 0;
+                    for (Certificate certificate : certificates) {
+                        String certificateAlias = "ca" + Integer.toString(index++);
+                        caKeyStore.setCertificateEntry(certificateAlias, certificate);
+                    }
+                    trustManagerFactory.init(caKeyStore);
+                }
                 trustManagers = trustManagerFactory.getTrustManagers();
+                hostnameVerifier = OkHostnameVerifier.INSTANCE;
             }
 
-            if (keyManagers != null || trustManagers != null) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(keyManagers, trustManagers, new SecureRandom());
-                httpClient = httpClient.newBuilder()
-                        .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0]).build();
-            } else {
-                httpClient = httpClient.newBuilder().sslSocketFactory(null, (X509TrustManager) trustManagers[0])
-                        .build();
-            }
-
-            httpClient = httpClient.newBuilder().hostnameVerifier(hostnameVerifier).build();
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+            httpClient = httpClient.newBuilder()
+                    .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
+                    .hostnameVerifier(hostnameVerifier).build();
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }

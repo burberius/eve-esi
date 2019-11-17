@@ -32,17 +32,17 @@ import java.io.Serializable;
 public class CorporationWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_DATE = "date";
-    @SerializedName(SERIALIZED_NAME_DATE)
-    private OffsetDateTime date;
-
-    public static final String SERIALIZED_NAME_REASON = "reason";
-    @SerializedName(SERIALIZED_NAME_REASON)
-    private String reason;
-
     public static final String SERIALIZED_NAME_AMOUNT = "amount";
     @SerializedName(SERIALIZED_NAME_AMOUNT)
     private Double amount;
+
+    public static final String SERIALIZED_NAME_BALANCE = "balance";
+    @SerializedName(SERIALIZED_NAME_BALANCE)
+    private Double balance;
+
+    public static final String SERIALIZED_NAME_CONTEXT_ID = "context_id";
+    @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
+    private Long contextId;
 
     /**
      * The type of the given context_id if present
@@ -115,33 +115,25 @@ public class CorporationWalletJournalResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CONTEXT_ID_TYPE)
     private ContextIdTypeEnum contextIdType;
 
-    public static final String SERIALIZED_NAME_FIRST_PARTY_ID = "first_party_id";
-    @SerializedName(SERIALIZED_NAME_FIRST_PARTY_ID)
-    private Integer firstPartyId;
+    public static final String SERIALIZED_NAME_DATE = "date";
+    @SerializedName(SERIALIZED_NAME_DATE)
+    private OffsetDateTime date;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
     private String description;
 
-    public static final String SERIALIZED_NAME_TAX = "tax";
-    @SerializedName(SERIALIZED_NAME_TAX)
-    private Double tax;
-
-    public static final String SERIALIZED_NAME_TAX_RECEIVER_ID = "tax_receiver_id";
-    @SerializedName(SERIALIZED_NAME_TAX_RECEIVER_ID)
-    private Integer taxReceiverId;
-
-    public static final String SERIALIZED_NAME_BALANCE = "balance";
-    @SerializedName(SERIALIZED_NAME_BALANCE)
-    private Double balance;
-
-    public static final String SERIALIZED_NAME_CONTEXT_ID = "context_id";
-    @SerializedName(SERIALIZED_NAME_CONTEXT_ID)
-    private Long contextId;
+    public static final String SERIALIZED_NAME_FIRST_PARTY_ID = "first_party_id";
+    @SerializedName(SERIALIZED_NAME_FIRST_PARTY_ID)
+    private Integer firstPartyId;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
     private Long id;
+
+    public static final String SERIALIZED_NAME_REASON = "reason";
+    @SerializedName(SERIALIZED_NAME_REASON)
+    private String reason;
 
     /**
      * \&quot;The transaction type for the given. transaction. Different
@@ -436,7 +428,104 @@ public class CorporationWalletJournalResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SECOND_PARTY_ID)
     private Integer secondPartyId;
 
+    public static final String SERIALIZED_NAME_TAX = "tax";
+    @SerializedName(SERIALIZED_NAME_TAX)
+    private Double tax;
+
+    public static final String SERIALIZED_NAME_TAX_RECEIVER_ID = "tax_receiver_id";
+    @SerializedName(SERIALIZED_NAME_TAX_RECEIVER_ID)
+    private Integer taxReceiverId;
+
+    public CorporationWalletJournalResponse amount(Double amount) {
+
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * The amount of ISK given or taken from the wallet as a result of the given
+     * transaction. Positive when ISK is deposited into the wallet and negative
+     * when ISK is withdrawn
+     * 
+     * @return amount
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public CorporationWalletJournalResponse balance(Double balance) {
+
+        this.balance = balance;
+        return this;
+    }
+
+    /**
+     * Wallet balance after transaction occurred
+     * 
+     * @return balance
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Wallet balance after transaction occurred")
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public CorporationWalletJournalResponse contextId(Long contextId) {
+
+        this.contextId = contextId;
+        return this;
+    }
+
+    /**
+     * An ID that gives extra context to the particular transaction. Because of
+     * legacy reasons the context is completely different per ref_type and means
+     * different things. It is also possible to not have a context_id
+     * 
+     * @return contextId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
+    public Long getContextId() {
+        return contextId;
+    }
+
+    public void setContextId(Long contextId) {
+        this.contextId = contextId;
+    }
+
+    public CorporationWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdType) {
+
+        this.contextIdType = contextIdType;
+        return this;
+    }
+
+    /**
+     * The type of the given context_id if present
+     * 
+     * @return contextIdType
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The type of the given context_id if present")
+    public ContextIdTypeEnum getContextIdType() {
+        return contextIdType;
+    }
+
+    public void setContextIdType(ContextIdTypeEnum contextIdType) {
+        this.contextIdType = contextIdType;
+    }
+
     public CorporationWalletJournalResponse date(OffsetDateTime date) {
+
         this.date = date;
         return this;
     }
@@ -455,90 +544,8 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.date = date;
     }
 
-    public CorporationWalletJournalResponse reason(String reason) {
-        this.reason = reason;
-        return this;
-    }
-
-    /**
-     * The user stated reason for the transaction. Only applies to some
-     * ref_types
-     * 
-     * @return reason
-     **/
-    @ApiModelProperty(value = "The user stated reason for the transaction. Only applies to some ref_types")
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public CorporationWalletJournalResponse amount(Double amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    /**
-     * The amount of ISK given or taken from the wallet as a result of the given
-     * transaction. Positive when ISK is deposited into the wallet and negative
-     * when ISK is withdrawn
-     * 
-     * @return amount
-     **/
-    @ApiModelProperty(value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public CorporationWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdType) {
-        this.contextIdType = contextIdType;
-        return this;
-    }
-
-    /**
-     * The type of the given context_id if present
-     * 
-     * @return contextIdType
-     **/
-    @ApiModelProperty(value = "The type of the given context_id if present")
-    public ContextIdTypeEnum getContextIdType() {
-        return contextIdType;
-    }
-
-    public void setContextIdType(ContextIdTypeEnum contextIdType) {
-        this.contextIdType = contextIdType;
-    }
-
-    public CorporationWalletJournalResponse firstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-        return this;
-    }
-
-    /**
-     * The id of the first party involved in the transaction. This attribute has
-     * no consistency and is different or non existant for particular ref_types.
-     * The description attribute will help make sense of what this attribute
-     * means. For more info about the given ID it can be dropped into the
-     * /universe/names/ ESI route to determine its type and name
-     * 
-     * @return firstPartyId
-     **/
-    @ApiModelProperty(value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
-    public Integer getFirstPartyId() {
-        return firstPartyId;
-    }
-
-    public void setFirstPartyId(Integer firstPartyId) {
-        this.firstPartyId = firstPartyId;
-    }
-
     public CorporationWalletJournalResponse description(String description) {
+
         this.description = description;
         return this;
     }
@@ -557,86 +564,33 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.description = description;
     }
 
-    public CorporationWalletJournalResponse tax(Double tax) {
-        this.tax = tax;
+    public CorporationWalletJournalResponse firstPartyId(Integer firstPartyId) {
+
+        this.firstPartyId = firstPartyId;
         return this;
     }
 
     /**
-     * Tax amount received. Only applies to tax related transactions
+     * The id of the first party involved in the transaction. This attribute has
+     * no consistency and is different or non existant for particular ref_types.
+     * The description attribute will help make sense of what this attribute
+     * means. For more info about the given ID it can be dropped into the
+     * /universe/names/ ESI route to determine its type and name
      * 
-     * @return tax
+     * @return firstPartyId
      **/
-    @ApiModelProperty(value = "Tax amount received. Only applies to tax related transactions")
-    public Double getTax() {
-        return tax;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
+    public Integer getFirstPartyId() {
+        return firstPartyId;
     }
 
-    public void setTax(Double tax) {
-        this.tax = tax;
-    }
-
-    public CorporationWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
-        this.taxReceiverId = taxReceiverId;
-        return this;
-    }
-
-    /**
-     * The corporation ID receiving any tax paid. Only applies to tax related
-     * transactions
-     * 
-     * @return taxReceiverId
-     **/
-    @ApiModelProperty(value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
-    public Integer getTaxReceiverId() {
-        return taxReceiverId;
-    }
-
-    public void setTaxReceiverId(Integer taxReceiverId) {
-        this.taxReceiverId = taxReceiverId;
-    }
-
-    public CorporationWalletJournalResponse balance(Double balance) {
-        this.balance = balance;
-        return this;
-    }
-
-    /**
-     * Wallet balance after transaction occurred
-     * 
-     * @return balance
-     **/
-    @ApiModelProperty(value = "Wallet balance after transaction occurred")
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public CorporationWalletJournalResponse contextId(Long contextId) {
-        this.contextId = contextId;
-        return this;
-    }
-
-    /**
-     * An ID that gives extra context to the particular transaction. Because of
-     * legacy reasons the context is completely different per ref_type and means
-     * different things. It is also possible to not have a context_id
-     * 
-     * @return contextId
-     **/
-    @ApiModelProperty(value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
-    public Long getContextId() {
-        return contextId;
-    }
-
-    public void setContextId(Long contextId) {
-        this.contextId = contextId;
+    public void setFirstPartyId(Integer firstPartyId) {
+        this.firstPartyId = firstPartyId;
     }
 
     public CorporationWalletJournalResponse id(Long id) {
+
         this.id = id;
         return this;
     }
@@ -655,7 +609,30 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.id = id;
     }
 
+    public CorporationWalletJournalResponse reason(String reason) {
+
+        this.reason = reason;
+        return this;
+    }
+
+    /**
+     * The user stated reason for the transaction. Only applies to some
+     * ref_types
+     * 
+     * @return reason
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The user stated reason for the transaction. Only applies to some ref_types")
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     public CorporationWalletJournalResponse refType(RefTypeEnum refType) {
+
         this.refType = refType;
         return this;
     }
@@ -681,6 +658,7 @@ public class CorporationWalletJournalResponse implements Serializable {
     }
 
     public CorporationWalletJournalResponse secondPartyId(Integer secondPartyId) {
+
         this.secondPartyId = secondPartyId;
         return this;
     }
@@ -694,6 +672,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return secondPartyId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
     public Integer getSecondPartyId() {
         return secondPartyId;
@@ -701,6 +680,49 @@ public class CorporationWalletJournalResponse implements Serializable {
 
     public void setSecondPartyId(Integer secondPartyId) {
         this.secondPartyId = secondPartyId;
+    }
+
+    public CorporationWalletJournalResponse tax(Double tax) {
+
+        this.tax = tax;
+        return this;
+    }
+
+    /**
+     * Tax amount received. Only applies to tax related transactions
+     * 
+     * @return tax
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Tax amount received. Only applies to tax related transactions")
+    public Double getTax() {
+        return tax;
+    }
+
+    public void setTax(Double tax) {
+        this.tax = tax;
+    }
+
+    public CorporationWalletJournalResponse taxReceiverId(Integer taxReceiverId) {
+
+        this.taxReceiverId = taxReceiverId;
+        return this;
+    }
+
+    /**
+     * The corporation ID receiving any tax paid. Only applies to tax related
+     * transactions
+     * 
+     * @return taxReceiverId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
+    public Integer getTaxReceiverId() {
+        return taxReceiverId;
+    }
+
+    public void setTaxReceiverId(Integer taxReceiverId) {
+        this.taxReceiverId = taxReceiverId;
     }
 
     @Override
@@ -712,44 +734,44 @@ public class CorporationWalletJournalResponse implements Serializable {
             return false;
         }
         CorporationWalletJournalResponse corporationWalletJournalResponse = (CorporationWalletJournalResponse) o;
-        return Objects.equals(this.date, corporationWalletJournalResponse.date)
-                && Objects.equals(this.reason, corporationWalletJournalResponse.reason)
-                && Objects.equals(this.amount, corporationWalletJournalResponse.amount)
-                && Objects.equals(this.contextIdType, corporationWalletJournalResponse.contextIdType)
-                && Objects.equals(this.firstPartyId, corporationWalletJournalResponse.firstPartyId)
-                && Objects.equals(this.description, corporationWalletJournalResponse.description)
-                && Objects.equals(this.tax, corporationWalletJournalResponse.tax)
-                && Objects.equals(this.taxReceiverId, corporationWalletJournalResponse.taxReceiverId)
+        return Objects.equals(this.amount, corporationWalletJournalResponse.amount)
                 && Objects.equals(this.balance, corporationWalletJournalResponse.balance)
                 && Objects.equals(this.contextId, corporationWalletJournalResponse.contextId)
+                && Objects.equals(this.contextIdType, corporationWalletJournalResponse.contextIdType)
+                && Objects.equals(this.date, corporationWalletJournalResponse.date)
+                && Objects.equals(this.description, corporationWalletJournalResponse.description)
+                && Objects.equals(this.firstPartyId, corporationWalletJournalResponse.firstPartyId)
                 && Objects.equals(this.id, corporationWalletJournalResponse.id)
+                && Objects.equals(this.reason, corporationWalletJournalResponse.reason)
                 && Objects.equals(this.refType, corporationWalletJournalResponse.refType)
-                && Objects.equals(this.secondPartyId, corporationWalletJournalResponse.secondPartyId);
+                && Objects.equals(this.secondPartyId, corporationWalletJournalResponse.secondPartyId)
+                && Objects.equals(this.tax, corporationWalletJournalResponse.tax)
+                && Objects.equals(this.taxReceiverId, corporationWalletJournalResponse.taxReceiverId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, reason, amount, contextIdType, firstPartyId, description, tax, taxReceiverId,
-                balance, contextId, id, refType, secondPartyId);
+        return Objects.hash(amount, balance, contextId, contextIdType, date, description, firstPartyId, id, reason,
+                refType, secondPartyId, tax, taxReceiverId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationWalletJournalResponse {\n");
-        sb.append("    date: ").append(toIndentedString(date)).append("\n");
-        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-        sb.append("    contextIdType: ").append(toIndentedString(contextIdType)).append("\n");
-        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
-        sb.append("    taxReceiverId: ").append(toIndentedString(taxReceiverId)).append("\n");
         sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
         sb.append("    contextId: ").append(toIndentedString(contextId)).append("\n");
+        sb.append("    contextIdType: ").append(toIndentedString(contextIdType)).append("\n");
+        sb.append("    date: ").append(toIndentedString(date)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    firstPartyId: ").append(toIndentedString(firstPartyId)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    refType: ").append(toIndentedString(refType)).append("\n");
         sb.append("    secondPartyId: ").append(toIndentedString(secondPartyId)).append("\n");
+        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    taxReceiverId: ").append(toIndentedString(taxReceiverId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

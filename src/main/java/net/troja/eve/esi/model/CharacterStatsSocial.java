@@ -31,240 +31,108 @@ import java.io.Serializable;
 public class CharacterStatsSocial implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_HIGH = "added_as_contact_high";
-    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_HIGH)
-    private Long addedAsContactHigh;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_CONSTELLATION = "chat_messages_constellation";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_CONSTELLATION)
-    private Long chatMessagesConstellation;
-
-    public static final String SERIALIZED_NAME_ADD_NOTE = "add_note";
-    @SerializedName(SERIALIZED_NAME_ADD_NOTE)
-    private Long addNote;
-
-    public static final String SERIALIZED_NAME_MAILS_SENT = "mails_sent";
-    @SerializedName(SERIALIZED_NAME_MAILS_SENT)
-    private Long mailsSent;
-
-    public static final String SERIALIZED_NAME_DIRECT_TRADES = "direct_trades";
-    @SerializedName(SERIALIZED_NAME_DIRECT_TRADES)
-    private Long directTrades;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_WARFACTION = "chat_messages_warfaction";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_WARFACTION)
-    private Long chatMessagesWarfaction;
-
-    public static final String SERIALIZED_NAME_FLEET_BROADCASTS = "fleet_broadcasts";
-    @SerializedName(SERIALIZED_NAME_FLEET_BROADCASTS)
-    private Long fleetBroadcasts;
-
     public static final String SERIALIZED_NAME_ADD_CONTACT_BAD = "add_contact_bad";
     @SerializedName(SERIALIZED_NAME_ADD_CONTACT_BAD)
     private Long addContactBad;
-
-    public static final String SERIALIZED_NAME_ADD_CONTACT_HIGH = "add_contact_high";
-    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_HIGH)
-    private Long addContactHigh;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_FLEET = "chat_messages_fleet";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_FLEET)
-    private Long chatMessagesFleet;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_ALLIANCE = "chat_messages_alliance";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_ALLIANCE)
-    private Long chatMessagesAlliance;
-
-    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_GOOD = "added_as_contact_good";
-    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_GOOD)
-    private Long addedAsContactGood;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_SOLARSYSTEM = "chat_messages_solarsystem";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_SOLARSYSTEM)
-    private Long chatMessagesSolarsystem;
-
-    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_HORRIBLE = "added_as_contact_horrible";
-    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_HORRIBLE)
-    private Long addedAsContactHorrible;
-
-    public static final String SERIALIZED_NAME_ADD_CONTACT_NEUTRAL = "add_contact_neutral";
-    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_NEUTRAL)
-    private Long addContactNeutral;
-
-    public static final String SERIALIZED_NAME_ADD_CONTACT_HORRIBLE = "add_contact_horrible";
-    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_HORRIBLE)
-    private Long addContactHorrible;
-
-    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_NEUTRAL = "added_as_contact_neutral";
-    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_NEUTRAL)
-    private Long addedAsContactNeutral;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_CORPORATION = "chat_messages_corporation";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_CORPORATION)
-    private Long chatMessagesCorporation;
-
-    public static final String SERIALIZED_NAME_FLEET_JOINS = "fleet_joins";
-    @SerializedName(SERIALIZED_NAME_FLEET_JOINS)
-    private Long fleetJoins;
-
-    public static final String SERIALIZED_NAME_CHAT_TOTAL_MESSAGE_LENGTH = "chat_total_message_length";
-    @SerializedName(SERIALIZED_NAME_CHAT_TOTAL_MESSAGE_LENGTH)
-    private Long chatTotalMessageLength;
-
-    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_BAD = "added_as_contact_bad";
-    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_BAD)
-    private Long addedAsContactBad;
-
-    public static final String SERIALIZED_NAME_CHAT_MESSAGES_REGION = "chat_messages_region";
-    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_REGION)
-    private Long chatMessagesRegion;
 
     public static final String SERIALIZED_NAME_ADD_CONTACT_GOOD = "add_contact_good";
     @SerializedName(SERIALIZED_NAME_ADD_CONTACT_GOOD)
     private Long addContactGood;
 
+    public static final String SERIALIZED_NAME_ADD_CONTACT_HIGH = "add_contact_high";
+    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_HIGH)
+    private Long addContactHigh;
+
+    public static final String SERIALIZED_NAME_ADD_CONTACT_HORRIBLE = "add_contact_horrible";
+    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_HORRIBLE)
+    private Long addContactHorrible;
+
+    public static final String SERIALIZED_NAME_ADD_CONTACT_NEUTRAL = "add_contact_neutral";
+    @SerializedName(SERIALIZED_NAME_ADD_CONTACT_NEUTRAL)
+    private Long addContactNeutral;
+
+    public static final String SERIALIZED_NAME_ADD_NOTE = "add_note";
+    @SerializedName(SERIALIZED_NAME_ADD_NOTE)
+    private Long addNote;
+
+    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_BAD = "added_as_contact_bad";
+    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_BAD)
+    private Long addedAsContactBad;
+
+    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_GOOD = "added_as_contact_good";
+    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_GOOD)
+    private Long addedAsContactGood;
+
+    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_HIGH = "added_as_contact_high";
+    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_HIGH)
+    private Long addedAsContactHigh;
+
+    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_HORRIBLE = "added_as_contact_horrible";
+    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_HORRIBLE)
+    private Long addedAsContactHorrible;
+
+    public static final String SERIALIZED_NAME_ADDED_AS_CONTACT_NEUTRAL = "added_as_contact_neutral";
+    @SerializedName(SERIALIZED_NAME_ADDED_AS_CONTACT_NEUTRAL)
+    private Long addedAsContactNeutral;
+
     public static final String SERIALIZED_NAME_CALENDAR_EVENT_CREATED = "calendar_event_created";
     @SerializedName(SERIALIZED_NAME_CALENDAR_EVENT_CREATED)
     private Long calendarEventCreated;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_ALLIANCE = "chat_messages_alliance";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_ALLIANCE)
+    private Long chatMessagesAlliance;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_CONSTELLATION = "chat_messages_constellation";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_CONSTELLATION)
+    private Long chatMessagesConstellation;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_CORPORATION = "chat_messages_corporation";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_CORPORATION)
+    private Long chatMessagesCorporation;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_FLEET = "chat_messages_fleet";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_FLEET)
+    private Long chatMessagesFleet;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_REGION = "chat_messages_region";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_REGION)
+    private Long chatMessagesRegion;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_SOLARSYSTEM = "chat_messages_solarsystem";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_SOLARSYSTEM)
+    private Long chatMessagesSolarsystem;
+
+    public static final String SERIALIZED_NAME_CHAT_MESSAGES_WARFACTION = "chat_messages_warfaction";
+    @SerializedName(SERIALIZED_NAME_CHAT_MESSAGES_WARFACTION)
+    private Long chatMessagesWarfaction;
+
+    public static final String SERIALIZED_NAME_CHAT_TOTAL_MESSAGE_LENGTH = "chat_total_message_length";
+    @SerializedName(SERIALIZED_NAME_CHAT_TOTAL_MESSAGE_LENGTH)
+    private Long chatTotalMessageLength;
+
+    public static final String SERIALIZED_NAME_DIRECT_TRADES = "direct_trades";
+    @SerializedName(SERIALIZED_NAME_DIRECT_TRADES)
+    private Long directTrades;
+
+    public static final String SERIALIZED_NAME_FLEET_BROADCASTS = "fleet_broadcasts";
+    @SerializedName(SERIALIZED_NAME_FLEET_BROADCASTS)
+    private Long fleetBroadcasts;
+
+    public static final String SERIALIZED_NAME_FLEET_JOINS = "fleet_joins";
+    @SerializedName(SERIALIZED_NAME_FLEET_JOINS)
+    private Long fleetJoins;
 
     public static final String SERIALIZED_NAME_MAILS_RECEIVED = "mails_received";
     @SerializedName(SERIALIZED_NAME_MAILS_RECEIVED)
     private Long mailsReceived;
 
-    public CharacterStatsSocial addedAsContactHigh(Long addedAsContactHigh) {
-        this.addedAsContactHigh = addedAsContactHigh;
-        return this;
-    }
-
-    /**
-     * added_as_contact_high integer
-     * 
-     * @return addedAsContactHigh
-     **/
-    @ApiModelProperty(value = "added_as_contact_high integer")
-    public Long getAddedAsContactHigh() {
-        return addedAsContactHigh;
-    }
-
-    public void setAddedAsContactHigh(Long addedAsContactHigh) {
-        this.addedAsContactHigh = addedAsContactHigh;
-    }
-
-    public CharacterStatsSocial chatMessagesConstellation(Long chatMessagesConstellation) {
-        this.chatMessagesConstellation = chatMessagesConstellation;
-        return this;
-    }
-
-    /**
-     * chat_messages_constellation integer
-     * 
-     * @return chatMessagesConstellation
-     **/
-    @ApiModelProperty(value = "chat_messages_constellation integer")
-    public Long getChatMessagesConstellation() {
-        return chatMessagesConstellation;
-    }
-
-    public void setChatMessagesConstellation(Long chatMessagesConstellation) {
-        this.chatMessagesConstellation = chatMessagesConstellation;
-    }
-
-    public CharacterStatsSocial addNote(Long addNote) {
-        this.addNote = addNote;
-        return this;
-    }
-
-    /**
-     * add_note integer
-     * 
-     * @return addNote
-     **/
-    @ApiModelProperty(value = "add_note integer")
-    public Long getAddNote() {
-        return addNote;
-    }
-
-    public void setAddNote(Long addNote) {
-        this.addNote = addNote;
-    }
-
-    public CharacterStatsSocial mailsSent(Long mailsSent) {
-        this.mailsSent = mailsSent;
-        return this;
-    }
-
-    /**
-     * mails_sent integer
-     * 
-     * @return mailsSent
-     **/
-    @ApiModelProperty(value = "mails_sent integer")
-    public Long getMailsSent() {
-        return mailsSent;
-    }
-
-    public void setMailsSent(Long mailsSent) {
-        this.mailsSent = mailsSent;
-    }
-
-    public CharacterStatsSocial directTrades(Long directTrades) {
-        this.directTrades = directTrades;
-        return this;
-    }
-
-    /**
-     * direct_trades integer
-     * 
-     * @return directTrades
-     **/
-    @ApiModelProperty(value = "direct_trades integer")
-    public Long getDirectTrades() {
-        return directTrades;
-    }
-
-    public void setDirectTrades(Long directTrades) {
-        this.directTrades = directTrades;
-    }
-
-    public CharacterStatsSocial chatMessagesWarfaction(Long chatMessagesWarfaction) {
-        this.chatMessagesWarfaction = chatMessagesWarfaction;
-        return this;
-    }
-
-    /**
-     * chat_messages_warfaction integer
-     * 
-     * @return chatMessagesWarfaction
-     **/
-    @ApiModelProperty(value = "chat_messages_warfaction integer")
-    public Long getChatMessagesWarfaction() {
-        return chatMessagesWarfaction;
-    }
-
-    public void setChatMessagesWarfaction(Long chatMessagesWarfaction) {
-        this.chatMessagesWarfaction = chatMessagesWarfaction;
-    }
-
-    public CharacterStatsSocial fleetBroadcasts(Long fleetBroadcasts) {
-        this.fleetBroadcasts = fleetBroadcasts;
-        return this;
-    }
-
-    /**
-     * fleet_broadcasts integer
-     * 
-     * @return fleetBroadcasts
-     **/
-    @ApiModelProperty(value = "fleet_broadcasts integer")
-    public Long getFleetBroadcasts() {
-        return fleetBroadcasts;
-    }
-
-    public void setFleetBroadcasts(Long fleetBroadcasts) {
-        this.fleetBroadcasts = fleetBroadcasts;
-    }
+    public static final String SERIALIZED_NAME_MAILS_SENT = "mails_sent";
+    @SerializedName(SERIALIZED_NAME_MAILS_SENT)
+    private Long mailsSent;
 
     public CharacterStatsSocial addContactBad(Long addContactBad) {
+
         this.addContactBad = addContactBad;
         return this;
     }
@@ -274,6 +142,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactBad
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "add_contact_bad integer")
     public Long getAddContactBad() {
         return addContactBad;
@@ -283,273 +152,8 @@ public class CharacterStatsSocial implements Serializable {
         this.addContactBad = addContactBad;
     }
 
-    public CharacterStatsSocial addContactHigh(Long addContactHigh) {
-        this.addContactHigh = addContactHigh;
-        return this;
-    }
-
-    /**
-     * add_contact_high integer
-     * 
-     * @return addContactHigh
-     **/
-    @ApiModelProperty(value = "add_contact_high integer")
-    public Long getAddContactHigh() {
-        return addContactHigh;
-    }
-
-    public void setAddContactHigh(Long addContactHigh) {
-        this.addContactHigh = addContactHigh;
-    }
-
-    public CharacterStatsSocial chatMessagesFleet(Long chatMessagesFleet) {
-        this.chatMessagesFleet = chatMessagesFleet;
-        return this;
-    }
-
-    /**
-     * chat_messages_fleet integer
-     * 
-     * @return chatMessagesFleet
-     **/
-    @ApiModelProperty(value = "chat_messages_fleet integer")
-    public Long getChatMessagesFleet() {
-        return chatMessagesFleet;
-    }
-
-    public void setChatMessagesFleet(Long chatMessagesFleet) {
-        this.chatMessagesFleet = chatMessagesFleet;
-    }
-
-    public CharacterStatsSocial chatMessagesAlliance(Long chatMessagesAlliance) {
-        this.chatMessagesAlliance = chatMessagesAlliance;
-        return this;
-    }
-
-    /**
-     * chat_messages_alliance integer
-     * 
-     * @return chatMessagesAlliance
-     **/
-    @ApiModelProperty(value = "chat_messages_alliance integer")
-    public Long getChatMessagesAlliance() {
-        return chatMessagesAlliance;
-    }
-
-    public void setChatMessagesAlliance(Long chatMessagesAlliance) {
-        this.chatMessagesAlliance = chatMessagesAlliance;
-    }
-
-    public CharacterStatsSocial addedAsContactGood(Long addedAsContactGood) {
-        this.addedAsContactGood = addedAsContactGood;
-        return this;
-    }
-
-    /**
-     * added_as_contact_good integer
-     * 
-     * @return addedAsContactGood
-     **/
-    @ApiModelProperty(value = "added_as_contact_good integer")
-    public Long getAddedAsContactGood() {
-        return addedAsContactGood;
-    }
-
-    public void setAddedAsContactGood(Long addedAsContactGood) {
-        this.addedAsContactGood = addedAsContactGood;
-    }
-
-    public CharacterStatsSocial chatMessagesSolarsystem(Long chatMessagesSolarsystem) {
-        this.chatMessagesSolarsystem = chatMessagesSolarsystem;
-        return this;
-    }
-
-    /**
-     * chat_messages_solarsystem integer
-     * 
-     * @return chatMessagesSolarsystem
-     **/
-    @ApiModelProperty(value = "chat_messages_solarsystem integer")
-    public Long getChatMessagesSolarsystem() {
-        return chatMessagesSolarsystem;
-    }
-
-    public void setChatMessagesSolarsystem(Long chatMessagesSolarsystem) {
-        this.chatMessagesSolarsystem = chatMessagesSolarsystem;
-    }
-
-    public CharacterStatsSocial addedAsContactHorrible(Long addedAsContactHorrible) {
-        this.addedAsContactHorrible = addedAsContactHorrible;
-        return this;
-    }
-
-    /**
-     * added_as_contact_horrible integer
-     * 
-     * @return addedAsContactHorrible
-     **/
-    @ApiModelProperty(value = "added_as_contact_horrible integer")
-    public Long getAddedAsContactHorrible() {
-        return addedAsContactHorrible;
-    }
-
-    public void setAddedAsContactHorrible(Long addedAsContactHorrible) {
-        this.addedAsContactHorrible = addedAsContactHorrible;
-    }
-
-    public CharacterStatsSocial addContactNeutral(Long addContactNeutral) {
-        this.addContactNeutral = addContactNeutral;
-        return this;
-    }
-
-    /**
-     * add_contact_neutral integer
-     * 
-     * @return addContactNeutral
-     **/
-    @ApiModelProperty(value = "add_contact_neutral integer")
-    public Long getAddContactNeutral() {
-        return addContactNeutral;
-    }
-
-    public void setAddContactNeutral(Long addContactNeutral) {
-        this.addContactNeutral = addContactNeutral;
-    }
-
-    public CharacterStatsSocial addContactHorrible(Long addContactHorrible) {
-        this.addContactHorrible = addContactHorrible;
-        return this;
-    }
-
-    /**
-     * add_contact_horrible integer
-     * 
-     * @return addContactHorrible
-     **/
-    @ApiModelProperty(value = "add_contact_horrible integer")
-    public Long getAddContactHorrible() {
-        return addContactHorrible;
-    }
-
-    public void setAddContactHorrible(Long addContactHorrible) {
-        this.addContactHorrible = addContactHorrible;
-    }
-
-    public CharacterStatsSocial addedAsContactNeutral(Long addedAsContactNeutral) {
-        this.addedAsContactNeutral = addedAsContactNeutral;
-        return this;
-    }
-
-    /**
-     * added_as_contact_neutral integer
-     * 
-     * @return addedAsContactNeutral
-     **/
-    @ApiModelProperty(value = "added_as_contact_neutral integer")
-    public Long getAddedAsContactNeutral() {
-        return addedAsContactNeutral;
-    }
-
-    public void setAddedAsContactNeutral(Long addedAsContactNeutral) {
-        this.addedAsContactNeutral = addedAsContactNeutral;
-    }
-
-    public CharacterStatsSocial chatMessagesCorporation(Long chatMessagesCorporation) {
-        this.chatMessagesCorporation = chatMessagesCorporation;
-        return this;
-    }
-
-    /**
-     * chat_messages_corporation integer
-     * 
-     * @return chatMessagesCorporation
-     **/
-    @ApiModelProperty(value = "chat_messages_corporation integer")
-    public Long getChatMessagesCorporation() {
-        return chatMessagesCorporation;
-    }
-
-    public void setChatMessagesCorporation(Long chatMessagesCorporation) {
-        this.chatMessagesCorporation = chatMessagesCorporation;
-    }
-
-    public CharacterStatsSocial fleetJoins(Long fleetJoins) {
-        this.fleetJoins = fleetJoins;
-        return this;
-    }
-
-    /**
-     * fleet_joins integer
-     * 
-     * @return fleetJoins
-     **/
-    @ApiModelProperty(value = "fleet_joins integer")
-    public Long getFleetJoins() {
-        return fleetJoins;
-    }
-
-    public void setFleetJoins(Long fleetJoins) {
-        this.fleetJoins = fleetJoins;
-    }
-
-    public CharacterStatsSocial chatTotalMessageLength(Long chatTotalMessageLength) {
-        this.chatTotalMessageLength = chatTotalMessageLength;
-        return this;
-    }
-
-    /**
-     * chat_total_message_length integer
-     * 
-     * @return chatTotalMessageLength
-     **/
-    @ApiModelProperty(value = "chat_total_message_length integer")
-    public Long getChatTotalMessageLength() {
-        return chatTotalMessageLength;
-    }
-
-    public void setChatTotalMessageLength(Long chatTotalMessageLength) {
-        this.chatTotalMessageLength = chatTotalMessageLength;
-    }
-
-    public CharacterStatsSocial addedAsContactBad(Long addedAsContactBad) {
-        this.addedAsContactBad = addedAsContactBad;
-        return this;
-    }
-
-    /**
-     * added_as_contact_bad integer
-     * 
-     * @return addedAsContactBad
-     **/
-    @ApiModelProperty(value = "added_as_contact_bad integer")
-    public Long getAddedAsContactBad() {
-        return addedAsContactBad;
-    }
-
-    public void setAddedAsContactBad(Long addedAsContactBad) {
-        this.addedAsContactBad = addedAsContactBad;
-    }
-
-    public CharacterStatsSocial chatMessagesRegion(Long chatMessagesRegion) {
-        this.chatMessagesRegion = chatMessagesRegion;
-        return this;
-    }
-
-    /**
-     * chat_messages_region integer
-     * 
-     * @return chatMessagesRegion
-     **/
-    @ApiModelProperty(value = "chat_messages_region integer")
-    public Long getChatMessagesRegion() {
-        return chatMessagesRegion;
-    }
-
-    public void setChatMessagesRegion(Long chatMessagesRegion) {
-        this.chatMessagesRegion = chatMessagesRegion;
-    }
-
     public CharacterStatsSocial addContactGood(Long addContactGood) {
+
         this.addContactGood = addContactGood;
         return this;
     }
@@ -559,6 +163,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return addContactGood
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "add_contact_good integer")
     public Long getAddContactGood() {
         return addContactGood;
@@ -568,7 +173,197 @@ public class CharacterStatsSocial implements Serializable {
         this.addContactGood = addContactGood;
     }
 
+    public CharacterStatsSocial addContactHigh(Long addContactHigh) {
+
+        this.addContactHigh = addContactHigh;
+        return this;
+    }
+
+    /**
+     * add_contact_high integer
+     * 
+     * @return addContactHigh
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "add_contact_high integer")
+    public Long getAddContactHigh() {
+        return addContactHigh;
+    }
+
+    public void setAddContactHigh(Long addContactHigh) {
+        this.addContactHigh = addContactHigh;
+    }
+
+    public CharacterStatsSocial addContactHorrible(Long addContactHorrible) {
+
+        this.addContactHorrible = addContactHorrible;
+        return this;
+    }
+
+    /**
+     * add_contact_horrible integer
+     * 
+     * @return addContactHorrible
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "add_contact_horrible integer")
+    public Long getAddContactHorrible() {
+        return addContactHorrible;
+    }
+
+    public void setAddContactHorrible(Long addContactHorrible) {
+        this.addContactHorrible = addContactHorrible;
+    }
+
+    public CharacterStatsSocial addContactNeutral(Long addContactNeutral) {
+
+        this.addContactNeutral = addContactNeutral;
+        return this;
+    }
+
+    /**
+     * add_contact_neutral integer
+     * 
+     * @return addContactNeutral
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "add_contact_neutral integer")
+    public Long getAddContactNeutral() {
+        return addContactNeutral;
+    }
+
+    public void setAddContactNeutral(Long addContactNeutral) {
+        this.addContactNeutral = addContactNeutral;
+    }
+
+    public CharacterStatsSocial addNote(Long addNote) {
+
+        this.addNote = addNote;
+        return this;
+    }
+
+    /**
+     * add_note integer
+     * 
+     * @return addNote
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "add_note integer")
+    public Long getAddNote() {
+        return addNote;
+    }
+
+    public void setAddNote(Long addNote) {
+        this.addNote = addNote;
+    }
+
+    public CharacterStatsSocial addedAsContactBad(Long addedAsContactBad) {
+
+        this.addedAsContactBad = addedAsContactBad;
+        return this;
+    }
+
+    /**
+     * added_as_contact_bad integer
+     * 
+     * @return addedAsContactBad
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "added_as_contact_bad integer")
+    public Long getAddedAsContactBad() {
+        return addedAsContactBad;
+    }
+
+    public void setAddedAsContactBad(Long addedAsContactBad) {
+        this.addedAsContactBad = addedAsContactBad;
+    }
+
+    public CharacterStatsSocial addedAsContactGood(Long addedAsContactGood) {
+
+        this.addedAsContactGood = addedAsContactGood;
+        return this;
+    }
+
+    /**
+     * added_as_contact_good integer
+     * 
+     * @return addedAsContactGood
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "added_as_contact_good integer")
+    public Long getAddedAsContactGood() {
+        return addedAsContactGood;
+    }
+
+    public void setAddedAsContactGood(Long addedAsContactGood) {
+        this.addedAsContactGood = addedAsContactGood;
+    }
+
+    public CharacterStatsSocial addedAsContactHigh(Long addedAsContactHigh) {
+
+        this.addedAsContactHigh = addedAsContactHigh;
+        return this;
+    }
+
+    /**
+     * added_as_contact_high integer
+     * 
+     * @return addedAsContactHigh
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "added_as_contact_high integer")
+    public Long getAddedAsContactHigh() {
+        return addedAsContactHigh;
+    }
+
+    public void setAddedAsContactHigh(Long addedAsContactHigh) {
+        this.addedAsContactHigh = addedAsContactHigh;
+    }
+
+    public CharacterStatsSocial addedAsContactHorrible(Long addedAsContactHorrible) {
+
+        this.addedAsContactHorrible = addedAsContactHorrible;
+        return this;
+    }
+
+    /**
+     * added_as_contact_horrible integer
+     * 
+     * @return addedAsContactHorrible
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "added_as_contact_horrible integer")
+    public Long getAddedAsContactHorrible() {
+        return addedAsContactHorrible;
+    }
+
+    public void setAddedAsContactHorrible(Long addedAsContactHorrible) {
+        this.addedAsContactHorrible = addedAsContactHorrible;
+    }
+
+    public CharacterStatsSocial addedAsContactNeutral(Long addedAsContactNeutral) {
+
+        this.addedAsContactNeutral = addedAsContactNeutral;
+        return this;
+    }
+
+    /**
+     * added_as_contact_neutral integer
+     * 
+     * @return addedAsContactNeutral
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "added_as_contact_neutral integer")
+    public Long getAddedAsContactNeutral() {
+        return addedAsContactNeutral;
+    }
+
+    public void setAddedAsContactNeutral(Long addedAsContactNeutral) {
+        this.addedAsContactNeutral = addedAsContactNeutral;
+    }
+
     public CharacterStatsSocial calendarEventCreated(Long calendarEventCreated) {
+
         this.calendarEventCreated = calendarEventCreated;
         return this;
     }
@@ -578,6 +373,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return calendarEventCreated
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "calendar_event_created integer")
     public Long getCalendarEventCreated() {
         return calendarEventCreated;
@@ -587,7 +383,239 @@ public class CharacterStatsSocial implements Serializable {
         this.calendarEventCreated = calendarEventCreated;
     }
 
+    public CharacterStatsSocial chatMessagesAlliance(Long chatMessagesAlliance) {
+
+        this.chatMessagesAlliance = chatMessagesAlliance;
+        return this;
+    }
+
+    /**
+     * chat_messages_alliance integer
+     * 
+     * @return chatMessagesAlliance
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_alliance integer")
+    public Long getChatMessagesAlliance() {
+        return chatMessagesAlliance;
+    }
+
+    public void setChatMessagesAlliance(Long chatMessagesAlliance) {
+        this.chatMessagesAlliance = chatMessagesAlliance;
+    }
+
+    public CharacterStatsSocial chatMessagesConstellation(Long chatMessagesConstellation) {
+
+        this.chatMessagesConstellation = chatMessagesConstellation;
+        return this;
+    }
+
+    /**
+     * chat_messages_constellation integer
+     * 
+     * @return chatMessagesConstellation
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_constellation integer")
+    public Long getChatMessagesConstellation() {
+        return chatMessagesConstellation;
+    }
+
+    public void setChatMessagesConstellation(Long chatMessagesConstellation) {
+        this.chatMessagesConstellation = chatMessagesConstellation;
+    }
+
+    public CharacterStatsSocial chatMessagesCorporation(Long chatMessagesCorporation) {
+
+        this.chatMessagesCorporation = chatMessagesCorporation;
+        return this;
+    }
+
+    /**
+     * chat_messages_corporation integer
+     * 
+     * @return chatMessagesCorporation
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_corporation integer")
+    public Long getChatMessagesCorporation() {
+        return chatMessagesCorporation;
+    }
+
+    public void setChatMessagesCorporation(Long chatMessagesCorporation) {
+        this.chatMessagesCorporation = chatMessagesCorporation;
+    }
+
+    public CharacterStatsSocial chatMessagesFleet(Long chatMessagesFleet) {
+
+        this.chatMessagesFleet = chatMessagesFleet;
+        return this;
+    }
+
+    /**
+     * chat_messages_fleet integer
+     * 
+     * @return chatMessagesFleet
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_fleet integer")
+    public Long getChatMessagesFleet() {
+        return chatMessagesFleet;
+    }
+
+    public void setChatMessagesFleet(Long chatMessagesFleet) {
+        this.chatMessagesFleet = chatMessagesFleet;
+    }
+
+    public CharacterStatsSocial chatMessagesRegion(Long chatMessagesRegion) {
+
+        this.chatMessagesRegion = chatMessagesRegion;
+        return this;
+    }
+
+    /**
+     * chat_messages_region integer
+     * 
+     * @return chatMessagesRegion
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_region integer")
+    public Long getChatMessagesRegion() {
+        return chatMessagesRegion;
+    }
+
+    public void setChatMessagesRegion(Long chatMessagesRegion) {
+        this.chatMessagesRegion = chatMessagesRegion;
+    }
+
+    public CharacterStatsSocial chatMessagesSolarsystem(Long chatMessagesSolarsystem) {
+
+        this.chatMessagesSolarsystem = chatMessagesSolarsystem;
+        return this;
+    }
+
+    /**
+     * chat_messages_solarsystem integer
+     * 
+     * @return chatMessagesSolarsystem
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_solarsystem integer")
+    public Long getChatMessagesSolarsystem() {
+        return chatMessagesSolarsystem;
+    }
+
+    public void setChatMessagesSolarsystem(Long chatMessagesSolarsystem) {
+        this.chatMessagesSolarsystem = chatMessagesSolarsystem;
+    }
+
+    public CharacterStatsSocial chatMessagesWarfaction(Long chatMessagesWarfaction) {
+
+        this.chatMessagesWarfaction = chatMessagesWarfaction;
+        return this;
+    }
+
+    /**
+     * chat_messages_warfaction integer
+     * 
+     * @return chatMessagesWarfaction
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_messages_warfaction integer")
+    public Long getChatMessagesWarfaction() {
+        return chatMessagesWarfaction;
+    }
+
+    public void setChatMessagesWarfaction(Long chatMessagesWarfaction) {
+        this.chatMessagesWarfaction = chatMessagesWarfaction;
+    }
+
+    public CharacterStatsSocial chatTotalMessageLength(Long chatTotalMessageLength) {
+
+        this.chatTotalMessageLength = chatTotalMessageLength;
+        return this;
+    }
+
+    /**
+     * chat_total_message_length integer
+     * 
+     * @return chatTotalMessageLength
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "chat_total_message_length integer")
+    public Long getChatTotalMessageLength() {
+        return chatTotalMessageLength;
+    }
+
+    public void setChatTotalMessageLength(Long chatTotalMessageLength) {
+        this.chatTotalMessageLength = chatTotalMessageLength;
+    }
+
+    public CharacterStatsSocial directTrades(Long directTrades) {
+
+        this.directTrades = directTrades;
+        return this;
+    }
+
+    /**
+     * direct_trades integer
+     * 
+     * @return directTrades
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "direct_trades integer")
+    public Long getDirectTrades() {
+        return directTrades;
+    }
+
+    public void setDirectTrades(Long directTrades) {
+        this.directTrades = directTrades;
+    }
+
+    public CharacterStatsSocial fleetBroadcasts(Long fleetBroadcasts) {
+
+        this.fleetBroadcasts = fleetBroadcasts;
+        return this;
+    }
+
+    /**
+     * fleet_broadcasts integer
+     * 
+     * @return fleetBroadcasts
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "fleet_broadcasts integer")
+    public Long getFleetBroadcasts() {
+        return fleetBroadcasts;
+    }
+
+    public void setFleetBroadcasts(Long fleetBroadcasts) {
+        this.fleetBroadcasts = fleetBroadcasts;
+    }
+
+    public CharacterStatsSocial fleetJoins(Long fleetJoins) {
+
+        this.fleetJoins = fleetJoins;
+        return this;
+    }
+
+    /**
+     * fleet_joins integer
+     * 
+     * @return fleetJoins
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "fleet_joins integer")
+    public Long getFleetJoins() {
+        return fleetJoins;
+    }
+
+    public void setFleetJoins(Long fleetJoins) {
+        this.fleetJoins = fleetJoins;
+    }
+
     public CharacterStatsSocial mailsReceived(Long mailsReceived) {
+
         this.mailsReceived = mailsReceived;
         return this;
     }
@@ -597,6 +625,7 @@ public class CharacterStatsSocial implements Serializable {
      * 
      * @return mailsReceived
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "mails_received integer")
     public Long getMailsReceived() {
         return mailsReceived;
@@ -604,6 +633,27 @@ public class CharacterStatsSocial implements Serializable {
 
     public void setMailsReceived(Long mailsReceived) {
         this.mailsReceived = mailsReceived;
+    }
+
+    public CharacterStatsSocial mailsSent(Long mailsSent) {
+
+        this.mailsSent = mailsSent;
+        return this;
+    }
+
+    /**
+     * mails_sent integer
+     * 
+     * @return mailsSent
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "mails_sent integer")
+    public Long getMailsSent() {
+        return mailsSent;
+    }
+
+    public void setMailsSent(Long mailsSent) {
+        this.mailsSent = mailsSent;
     }
 
     @Override
@@ -615,72 +665,72 @@ public class CharacterStatsSocial implements Serializable {
             return false;
         }
         CharacterStatsSocial characterStatsSocial = (CharacterStatsSocial) o;
-        return Objects.equals(this.addedAsContactHigh, characterStatsSocial.addedAsContactHigh)
-                && Objects.equals(this.chatMessagesConstellation, characterStatsSocial.chatMessagesConstellation)
-                && Objects.equals(this.addNote, characterStatsSocial.addNote)
-                && Objects.equals(this.mailsSent, characterStatsSocial.mailsSent)
-                && Objects.equals(this.directTrades, characterStatsSocial.directTrades)
-                && Objects.equals(this.chatMessagesWarfaction, characterStatsSocial.chatMessagesWarfaction)
-                && Objects.equals(this.fleetBroadcasts, characterStatsSocial.fleetBroadcasts)
-                && Objects.equals(this.addContactBad, characterStatsSocial.addContactBad)
-                && Objects.equals(this.addContactHigh, characterStatsSocial.addContactHigh)
-                && Objects.equals(this.chatMessagesFleet, characterStatsSocial.chatMessagesFleet)
-                && Objects.equals(this.chatMessagesAlliance, characterStatsSocial.chatMessagesAlliance)
-                && Objects.equals(this.addedAsContactGood, characterStatsSocial.addedAsContactGood)
-                && Objects.equals(this.chatMessagesSolarsystem, characterStatsSocial.chatMessagesSolarsystem)
-                && Objects.equals(this.addedAsContactHorrible, characterStatsSocial.addedAsContactHorrible)
-                && Objects.equals(this.addContactNeutral, characterStatsSocial.addContactNeutral)
-                && Objects.equals(this.addContactHorrible, characterStatsSocial.addContactHorrible)
-                && Objects.equals(this.addedAsContactNeutral, characterStatsSocial.addedAsContactNeutral)
-                && Objects.equals(this.chatMessagesCorporation, characterStatsSocial.chatMessagesCorporation)
-                && Objects.equals(this.fleetJoins, characterStatsSocial.fleetJoins)
-                && Objects.equals(this.chatTotalMessageLength, characterStatsSocial.chatTotalMessageLength)
-                && Objects.equals(this.addedAsContactBad, characterStatsSocial.addedAsContactBad)
-                && Objects.equals(this.chatMessagesRegion, characterStatsSocial.chatMessagesRegion)
+        return Objects.equals(this.addContactBad, characterStatsSocial.addContactBad)
                 && Objects.equals(this.addContactGood, characterStatsSocial.addContactGood)
+                && Objects.equals(this.addContactHigh, characterStatsSocial.addContactHigh)
+                && Objects.equals(this.addContactHorrible, characterStatsSocial.addContactHorrible)
+                && Objects.equals(this.addContactNeutral, characterStatsSocial.addContactNeutral)
+                && Objects.equals(this.addNote, characterStatsSocial.addNote)
+                && Objects.equals(this.addedAsContactBad, characterStatsSocial.addedAsContactBad)
+                && Objects.equals(this.addedAsContactGood, characterStatsSocial.addedAsContactGood)
+                && Objects.equals(this.addedAsContactHigh, characterStatsSocial.addedAsContactHigh)
+                && Objects.equals(this.addedAsContactHorrible, characterStatsSocial.addedAsContactHorrible)
+                && Objects.equals(this.addedAsContactNeutral, characterStatsSocial.addedAsContactNeutral)
                 && Objects.equals(this.calendarEventCreated, characterStatsSocial.calendarEventCreated)
-                && Objects.equals(this.mailsReceived, characterStatsSocial.mailsReceived);
+                && Objects.equals(this.chatMessagesAlliance, characterStatsSocial.chatMessagesAlliance)
+                && Objects.equals(this.chatMessagesConstellation, characterStatsSocial.chatMessagesConstellation)
+                && Objects.equals(this.chatMessagesCorporation, characterStatsSocial.chatMessagesCorporation)
+                && Objects.equals(this.chatMessagesFleet, characterStatsSocial.chatMessagesFleet)
+                && Objects.equals(this.chatMessagesRegion, characterStatsSocial.chatMessagesRegion)
+                && Objects.equals(this.chatMessagesSolarsystem, characterStatsSocial.chatMessagesSolarsystem)
+                && Objects.equals(this.chatMessagesWarfaction, characterStatsSocial.chatMessagesWarfaction)
+                && Objects.equals(this.chatTotalMessageLength, characterStatsSocial.chatTotalMessageLength)
+                && Objects.equals(this.directTrades, characterStatsSocial.directTrades)
+                && Objects.equals(this.fleetBroadcasts, characterStatsSocial.fleetBroadcasts)
+                && Objects.equals(this.fleetJoins, characterStatsSocial.fleetJoins)
+                && Objects.equals(this.mailsReceived, characterStatsSocial.mailsReceived)
+                && Objects.equals(this.mailsSent, characterStatsSocial.mailsSent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(addedAsContactHigh, chatMessagesConstellation, addNote, mailsSent, directTrades,
-                chatMessagesWarfaction, fleetBroadcasts, addContactBad, addContactHigh, chatMessagesFleet,
-                chatMessagesAlliance, addedAsContactGood, chatMessagesSolarsystem, addedAsContactHorrible,
-                addContactNeutral, addContactHorrible, addedAsContactNeutral, chatMessagesCorporation, fleetJoins,
-                chatTotalMessageLength, addedAsContactBad, chatMessagesRegion, addContactGood, calendarEventCreated,
-                mailsReceived);
+        return Objects.hash(addContactBad, addContactGood, addContactHigh, addContactHorrible, addContactNeutral,
+                addNote, addedAsContactBad, addedAsContactGood, addedAsContactHigh, addedAsContactHorrible,
+                addedAsContactNeutral, calendarEventCreated, chatMessagesAlliance, chatMessagesConstellation,
+                chatMessagesCorporation, chatMessagesFleet, chatMessagesRegion, chatMessagesSolarsystem,
+                chatMessagesWarfaction, chatTotalMessageLength, directTrades, fleetBroadcasts, fleetJoins,
+                mailsReceived, mailsSent);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsSocial {\n");
-        sb.append("    addedAsContactHigh: ").append(toIndentedString(addedAsContactHigh)).append("\n");
-        sb.append("    chatMessagesConstellation: ").append(toIndentedString(chatMessagesConstellation)).append("\n");
-        sb.append("    addNote: ").append(toIndentedString(addNote)).append("\n");
-        sb.append("    mailsSent: ").append(toIndentedString(mailsSent)).append("\n");
-        sb.append("    directTrades: ").append(toIndentedString(directTrades)).append("\n");
-        sb.append("    chatMessagesWarfaction: ").append(toIndentedString(chatMessagesWarfaction)).append("\n");
-        sb.append("    fleetBroadcasts: ").append(toIndentedString(fleetBroadcasts)).append("\n");
         sb.append("    addContactBad: ").append(toIndentedString(addContactBad)).append("\n");
-        sb.append("    addContactHigh: ").append(toIndentedString(addContactHigh)).append("\n");
-        sb.append("    chatMessagesFleet: ").append(toIndentedString(chatMessagesFleet)).append("\n");
-        sb.append("    chatMessagesAlliance: ").append(toIndentedString(chatMessagesAlliance)).append("\n");
-        sb.append("    addedAsContactGood: ").append(toIndentedString(addedAsContactGood)).append("\n");
-        sb.append("    chatMessagesSolarsystem: ").append(toIndentedString(chatMessagesSolarsystem)).append("\n");
-        sb.append("    addedAsContactHorrible: ").append(toIndentedString(addedAsContactHorrible)).append("\n");
-        sb.append("    addContactNeutral: ").append(toIndentedString(addContactNeutral)).append("\n");
-        sb.append("    addContactHorrible: ").append(toIndentedString(addContactHorrible)).append("\n");
-        sb.append("    addedAsContactNeutral: ").append(toIndentedString(addedAsContactNeutral)).append("\n");
-        sb.append("    chatMessagesCorporation: ").append(toIndentedString(chatMessagesCorporation)).append("\n");
-        sb.append("    fleetJoins: ").append(toIndentedString(fleetJoins)).append("\n");
-        sb.append("    chatTotalMessageLength: ").append(toIndentedString(chatTotalMessageLength)).append("\n");
-        sb.append("    addedAsContactBad: ").append(toIndentedString(addedAsContactBad)).append("\n");
-        sb.append("    chatMessagesRegion: ").append(toIndentedString(chatMessagesRegion)).append("\n");
         sb.append("    addContactGood: ").append(toIndentedString(addContactGood)).append("\n");
+        sb.append("    addContactHigh: ").append(toIndentedString(addContactHigh)).append("\n");
+        sb.append("    addContactHorrible: ").append(toIndentedString(addContactHorrible)).append("\n");
+        sb.append("    addContactNeutral: ").append(toIndentedString(addContactNeutral)).append("\n");
+        sb.append("    addNote: ").append(toIndentedString(addNote)).append("\n");
+        sb.append("    addedAsContactBad: ").append(toIndentedString(addedAsContactBad)).append("\n");
+        sb.append("    addedAsContactGood: ").append(toIndentedString(addedAsContactGood)).append("\n");
+        sb.append("    addedAsContactHigh: ").append(toIndentedString(addedAsContactHigh)).append("\n");
+        sb.append("    addedAsContactHorrible: ").append(toIndentedString(addedAsContactHorrible)).append("\n");
+        sb.append("    addedAsContactNeutral: ").append(toIndentedString(addedAsContactNeutral)).append("\n");
         sb.append("    calendarEventCreated: ").append(toIndentedString(calendarEventCreated)).append("\n");
+        sb.append("    chatMessagesAlliance: ").append(toIndentedString(chatMessagesAlliance)).append("\n");
+        sb.append("    chatMessagesConstellation: ").append(toIndentedString(chatMessagesConstellation)).append("\n");
+        sb.append("    chatMessagesCorporation: ").append(toIndentedString(chatMessagesCorporation)).append("\n");
+        sb.append("    chatMessagesFleet: ").append(toIndentedString(chatMessagesFleet)).append("\n");
+        sb.append("    chatMessagesRegion: ").append(toIndentedString(chatMessagesRegion)).append("\n");
+        sb.append("    chatMessagesSolarsystem: ").append(toIndentedString(chatMessagesSolarsystem)).append("\n");
+        sb.append("    chatMessagesWarfaction: ").append(toIndentedString(chatMessagesWarfaction)).append("\n");
+        sb.append("    chatTotalMessageLength: ").append(toIndentedString(chatTotalMessageLength)).append("\n");
+        sb.append("    directTrades: ").append(toIndentedString(directTrades)).append("\n");
+        sb.append("    fleetBroadcasts: ").append(toIndentedString(fleetBroadcasts)).append("\n");
+        sb.append("    fleetJoins: ").append(toIndentedString(fleetJoins)).append("\n");
         sb.append("    mailsReceived: ").append(toIndentedString(mailsReceived)).append("\n");
+        sb.append("    mailsSent: ").append(toIndentedString(mailsSent)).append("\n");
         sb.append("}");
         return sb.toString();
     }

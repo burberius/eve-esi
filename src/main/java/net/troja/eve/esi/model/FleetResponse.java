@@ -31,61 +31,24 @@ import java.io.Serializable;
 public class FleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_MOTD = "motd";
-    @SerializedName(SERIALIZED_NAME_MOTD)
-    private String motd;
+    public static final String SERIALIZED_NAME_IS_FREE_MOVE = "is_free_move";
+    @SerializedName(SERIALIZED_NAME_IS_FREE_MOVE)
+    private Boolean isFreeMove;
 
     public static final String SERIALIZED_NAME_IS_REGISTERED = "is_registered";
     @SerializedName(SERIALIZED_NAME_IS_REGISTERED)
     private Boolean isRegistered;
 
-    public static final String SERIALIZED_NAME_IS_FREE_MOVE = "is_free_move";
-    @SerializedName(SERIALIZED_NAME_IS_FREE_MOVE)
-    private Boolean isFreeMove;
-
     public static final String SERIALIZED_NAME_IS_VOICE_ENABLED = "is_voice_enabled";
     @SerializedName(SERIALIZED_NAME_IS_VOICE_ENABLED)
     private Boolean isVoiceEnabled;
 
-    public FleetResponse motd(String motd) {
-        this.motd = motd;
-        return this;
-    }
-
-    /**
-     * Fleet MOTD in CCP flavoured HTML
-     * 
-     * @return motd
-     **/
-    @ApiModelProperty(required = true, value = "Fleet MOTD in CCP flavoured HTML")
-    public String getMotd() {
-        return motd;
-    }
-
-    public void setMotd(String motd) {
-        this.motd = motd;
-    }
-
-    public FleetResponse isRegistered(Boolean isRegistered) {
-        this.isRegistered = isRegistered;
-        return this;
-    }
-
-    /**
-     * Does the fleet have an active fleet advertisement
-     * 
-     * @return isRegistered
-     **/
-    @ApiModelProperty(required = true, value = "Does the fleet have an active fleet advertisement")
-    public Boolean getIsRegistered() {
-        return isRegistered;
-    }
-
-    public void setIsRegistered(Boolean isRegistered) {
-        this.isRegistered = isRegistered;
-    }
+    public static final String SERIALIZED_NAME_MOTD = "motd";
+    @SerializedName(SERIALIZED_NAME_MOTD)
+    private String motd;
 
     public FleetResponse isFreeMove(Boolean isFreeMove) {
+
         this.isFreeMove = isFreeMove;
         return this;
     }
@@ -104,7 +67,28 @@ public class FleetResponse implements Serializable {
         this.isFreeMove = isFreeMove;
     }
 
+    public FleetResponse isRegistered(Boolean isRegistered) {
+
+        this.isRegistered = isRegistered;
+        return this;
+    }
+
+    /**
+     * Does the fleet have an active fleet advertisement
+     * 
+     * @return isRegistered
+     **/
+    @ApiModelProperty(required = true, value = "Does the fleet have an active fleet advertisement")
+    public Boolean getIsRegistered() {
+        return isRegistered;
+    }
+
+    public void setIsRegistered(Boolean isRegistered) {
+        this.isRegistered = isRegistered;
+    }
+
     public FleetResponse isVoiceEnabled(Boolean isVoiceEnabled) {
+
         this.isVoiceEnabled = isVoiceEnabled;
         return this;
     }
@@ -123,6 +107,26 @@ public class FleetResponse implements Serializable {
         this.isVoiceEnabled = isVoiceEnabled;
     }
 
+    public FleetResponse motd(String motd) {
+
+        this.motd = motd;
+        return this;
+    }
+
+    /**
+     * Fleet MOTD in CCP flavoured HTML
+     * 
+     * @return motd
+     **/
+    @ApiModelProperty(required = true, value = "Fleet MOTD in CCP flavoured HTML")
+    public String getMotd() {
+        return motd;
+    }
+
+    public void setMotd(String motd) {
+        this.motd = motd;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,25 +136,25 @@ public class FleetResponse implements Serializable {
             return false;
         }
         FleetResponse fleetResponse = (FleetResponse) o;
-        return Objects.equals(this.motd, fleetResponse.motd)
+        return Objects.equals(this.isFreeMove, fleetResponse.isFreeMove)
                 && Objects.equals(this.isRegistered, fleetResponse.isRegistered)
-                && Objects.equals(this.isFreeMove, fleetResponse.isFreeMove)
-                && Objects.equals(this.isVoiceEnabled, fleetResponse.isVoiceEnabled);
+                && Objects.equals(this.isVoiceEnabled, fleetResponse.isVoiceEnabled)
+                && Objects.equals(this.motd, fleetResponse.motd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(motd, isRegistered, isFreeMove, isVoiceEnabled);
+        return Objects.hash(isFreeMove, isRegistered, isVoiceEnabled, motd);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FleetResponse {\n");
-        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
-        sb.append("    isRegistered: ").append(toIndentedString(isRegistered)).append("\n");
         sb.append("    isFreeMove: ").append(toIndentedString(isFreeMove)).append("\n");
+        sb.append("    isRegistered: ").append(toIndentedString(isRegistered)).append("\n");
         sb.append("    isVoiceEnabled: ").append(toIndentedString(isVoiceEnabled)).append("\n");
+        sb.append("    motd: ").append(toIndentedString(motd)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayKills implements Seria
     private Integer corporationId;
 
     public FactionWarfareLeaderboardCorporationYesterdayKills amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayKills implements Seria
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of kills")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayKills implements Seria
     }
 
     public FactionWarfareLeaderboardCorporationYesterdayKills corporationId(Integer corporationId) {
+
         this.corporationId = corporationId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayKills implements Seria
      * 
      * @return corporationId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;

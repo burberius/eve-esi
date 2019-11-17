@@ -43,236 +43,48 @@ import java.io.Serializable;
 public class UniverseIdsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_CHARACTERS = "characters";
-    @SerializedName(SERIALIZED_NAME_CHARACTERS)
-    private List<UniverseIdsCharacter> characters = new ArrayList<>();
-
-    public static final String SERIALIZED_NAME_REGIONS = "regions";
-    @SerializedName(SERIALIZED_NAME_REGIONS)
-    private List<UniverseIdsRegion> regions = new ArrayList<>();
-
-    public static final String SERIALIZED_NAME_SYSTEMS = "systems";
-    @SerializedName(SERIALIZED_NAME_SYSTEMS)
-    private List<UniverseIdsSystem> systems = new ArrayList<>();
-
-    public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
-    @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
-    private List<UniverseIdsConstellation> constellations = new ArrayList<>();
-
-    public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
-    @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
-    private List<UniverseIdsInventoryType> inventoryTypes = new ArrayList<>();
+    public static final String SERIALIZED_NAME_AGENTS = "agents";
+    @SerializedName(SERIALIZED_NAME_AGENTS)
+    private List<UniverseIdsAgent> agents = null;
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
-    private List<UniverseIdsAlliance> alliances = new ArrayList<>();
+    private List<UniverseIdsAlliance> alliances = null;
 
-    public static final String SERIALIZED_NAME_STATIONS = "stations";
-    @SerializedName(SERIALIZED_NAME_STATIONS)
-    private List<UniverseIdsStation> stations = new ArrayList<>();
+    public static final String SERIALIZED_NAME_CHARACTERS = "characters";
+    @SerializedName(SERIALIZED_NAME_CHARACTERS)
+    private List<UniverseIdsCharacter> characters = null;
 
-    public static final String SERIALIZED_NAME_AGENTS = "agents";
-    @SerializedName(SERIALIZED_NAME_AGENTS)
-    private List<UniverseIdsAgent> agents = new ArrayList<>();
+    public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
+    @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
+    private List<UniverseIdsConstellation> constellations = null;
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
-    private List<UniverseIdsCorporation> corporations = new ArrayList<>();
+    private List<UniverseIdsCorporation> corporations = null;
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
-    private List<UniverseIdsFaction> factions = new ArrayList<>();
+    private List<UniverseIdsFaction> factions = null;
 
-    public UniverseIdsResponse characters(List<UniverseIdsCharacter> characters) {
-        this.characters = characters;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
+    @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
+    private List<UniverseIdsInventoryType> inventoryTypes = null;
 
-    public UniverseIdsResponse addCharactersItem(UniverseIdsCharacter charactersItem) {
-        if (this.characters == null) {
-            this.characters = new ArrayList<>();
-        }
-        this.characters.add(charactersItem);
-        return this;
-    }
+    public static final String SERIALIZED_NAME_REGIONS = "regions";
+    @SerializedName(SERIALIZED_NAME_REGIONS)
+    private List<UniverseIdsRegion> regions = null;
 
-    /**
-     * characters array
-     * 
-     * @return characters
-     **/
-    @ApiModelProperty(value = "characters array")
-    public List<UniverseIdsCharacter> getCharacters() {
-        return characters;
-    }
+    public static final String SERIALIZED_NAME_STATIONS = "stations";
+    @SerializedName(SERIALIZED_NAME_STATIONS)
+    private List<UniverseIdsStation> stations = null;
 
-    public void setCharacters(List<UniverseIdsCharacter> characters) {
-        this.characters = characters;
-    }
-
-    public UniverseIdsResponse regions(List<UniverseIdsRegion> regions) {
-        this.regions = regions;
-        return this;
-    }
-
-    public UniverseIdsResponse addRegionsItem(UniverseIdsRegion regionsItem) {
-        if (this.regions == null) {
-            this.regions = new ArrayList<>();
-        }
-        this.regions.add(regionsItem);
-        return this;
-    }
-
-    /**
-     * regions array
-     * 
-     * @return regions
-     **/
-    @ApiModelProperty(value = "regions array")
-    public List<UniverseIdsRegion> getRegions() {
-        return regions;
-    }
-
-    public void setRegions(List<UniverseIdsRegion> regions) {
-        this.regions = regions;
-    }
-
-    public UniverseIdsResponse systems(List<UniverseIdsSystem> systems) {
-        this.systems = systems;
-        return this;
-    }
-
-    public UniverseIdsResponse addSystemsItem(UniverseIdsSystem systemsItem) {
-        if (this.systems == null) {
-            this.systems = new ArrayList<>();
-        }
-        this.systems.add(systemsItem);
-        return this;
-    }
-
-    /**
-     * systems array
-     * 
-     * @return systems
-     **/
-    @ApiModelProperty(value = "systems array")
-    public List<UniverseIdsSystem> getSystems() {
-        return systems;
-    }
-
-    public void setSystems(List<UniverseIdsSystem> systems) {
-        this.systems = systems;
-    }
-
-    public UniverseIdsResponse constellations(List<UniverseIdsConstellation> constellations) {
-        this.constellations = constellations;
-        return this;
-    }
-
-    public UniverseIdsResponse addConstellationsItem(UniverseIdsConstellation constellationsItem) {
-        if (this.constellations == null) {
-            this.constellations = new ArrayList<>();
-        }
-        this.constellations.add(constellationsItem);
-        return this;
-    }
-
-    /**
-     * constellations array
-     * 
-     * @return constellations
-     **/
-    @ApiModelProperty(value = "constellations array")
-    public List<UniverseIdsConstellation> getConstellations() {
-        return constellations;
-    }
-
-    public void setConstellations(List<UniverseIdsConstellation> constellations) {
-        this.constellations = constellations;
-    }
-
-    public UniverseIdsResponse inventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
-        this.inventoryTypes = inventoryTypes;
-        return this;
-    }
-
-    public UniverseIdsResponse addInventoryTypesItem(UniverseIdsInventoryType inventoryTypesItem) {
-        if (this.inventoryTypes == null) {
-            this.inventoryTypes = new ArrayList<>();
-        }
-        this.inventoryTypes.add(inventoryTypesItem);
-        return this;
-    }
-
-    /**
-     * inventory_types array
-     * 
-     * @return inventoryTypes
-     **/
-    @ApiModelProperty(value = "inventory_types array")
-    public List<UniverseIdsInventoryType> getInventoryTypes() {
-        return inventoryTypes;
-    }
-
-    public void setInventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
-        this.inventoryTypes = inventoryTypes;
-    }
-
-    public UniverseIdsResponse alliances(List<UniverseIdsAlliance> alliances) {
-        this.alliances = alliances;
-        return this;
-    }
-
-    public UniverseIdsResponse addAlliancesItem(UniverseIdsAlliance alliancesItem) {
-        if (this.alliances == null) {
-            this.alliances = new ArrayList<>();
-        }
-        this.alliances.add(alliancesItem);
-        return this;
-    }
-
-    /**
-     * alliances array
-     * 
-     * @return alliances
-     **/
-    @ApiModelProperty(value = "alliances array")
-    public List<UniverseIdsAlliance> getAlliances() {
-        return alliances;
-    }
-
-    public void setAlliances(List<UniverseIdsAlliance> alliances) {
-        this.alliances = alliances;
-    }
-
-    public UniverseIdsResponse stations(List<UniverseIdsStation> stations) {
-        this.stations = stations;
-        return this;
-    }
-
-    public UniverseIdsResponse addStationsItem(UniverseIdsStation stationsItem) {
-        if (this.stations == null) {
-            this.stations = new ArrayList<>();
-        }
-        this.stations.add(stationsItem);
-        return this;
-    }
-
-    /**
-     * stations array
-     * 
-     * @return stations
-     **/
-    @ApiModelProperty(value = "stations array")
-    public List<UniverseIdsStation> getStations() {
-        return stations;
-    }
-
-    public void setStations(List<UniverseIdsStation> stations) {
-        this.stations = stations;
-    }
+    public static final String SERIALIZED_NAME_SYSTEMS = "systems";
+    @SerializedName(SERIALIZED_NAME_SYSTEMS)
+    private List<UniverseIdsSystem> systems = null;
 
     public UniverseIdsResponse agents(List<UniverseIdsAgent> agents) {
+
         this.agents = agents;
         return this;
     }
@@ -290,6 +102,7 @@ public class UniverseIdsResponse implements Serializable {
      * 
      * @return agents
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "agents array")
     public List<UniverseIdsAgent> getAgents() {
         return agents;
@@ -299,7 +112,95 @@ public class UniverseIdsResponse implements Serializable {
         this.agents = agents;
     }
 
+    public UniverseIdsResponse alliances(List<UniverseIdsAlliance> alliances) {
+
+        this.alliances = alliances;
+        return this;
+    }
+
+    public UniverseIdsResponse addAlliancesItem(UniverseIdsAlliance alliancesItem) {
+        if (this.alliances == null) {
+            this.alliances = new ArrayList<>();
+        }
+        this.alliances.add(alliancesItem);
+        return this;
+    }
+
+    /**
+     * alliances array
+     * 
+     * @return alliances
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "alliances array")
+    public List<UniverseIdsAlliance> getAlliances() {
+        return alliances;
+    }
+
+    public void setAlliances(List<UniverseIdsAlliance> alliances) {
+        this.alliances = alliances;
+    }
+
+    public UniverseIdsResponse characters(List<UniverseIdsCharacter> characters) {
+
+        this.characters = characters;
+        return this;
+    }
+
+    public UniverseIdsResponse addCharactersItem(UniverseIdsCharacter charactersItem) {
+        if (this.characters == null) {
+            this.characters = new ArrayList<>();
+        }
+        this.characters.add(charactersItem);
+        return this;
+    }
+
+    /**
+     * characters array
+     * 
+     * @return characters
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "characters array")
+    public List<UniverseIdsCharacter> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<UniverseIdsCharacter> characters) {
+        this.characters = characters;
+    }
+
+    public UniverseIdsResponse constellations(List<UniverseIdsConstellation> constellations) {
+
+        this.constellations = constellations;
+        return this;
+    }
+
+    public UniverseIdsResponse addConstellationsItem(UniverseIdsConstellation constellationsItem) {
+        if (this.constellations == null) {
+            this.constellations = new ArrayList<>();
+        }
+        this.constellations.add(constellationsItem);
+        return this;
+    }
+
+    /**
+     * constellations array
+     * 
+     * @return constellations
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "constellations array")
+    public List<UniverseIdsConstellation> getConstellations() {
+        return constellations;
+    }
+
+    public void setConstellations(List<UniverseIdsConstellation> constellations) {
+        this.constellations = constellations;
+    }
+
     public UniverseIdsResponse corporations(List<UniverseIdsCorporation> corporations) {
+
         this.corporations = corporations;
         return this;
     }
@@ -317,6 +218,7 @@ public class UniverseIdsResponse implements Serializable {
      * 
      * @return corporations
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "corporations array")
     public List<UniverseIdsCorporation> getCorporations() {
         return corporations;
@@ -327,6 +229,7 @@ public class UniverseIdsResponse implements Serializable {
     }
 
     public UniverseIdsResponse factions(List<UniverseIdsFaction> factions) {
+
         this.factions = factions;
         return this;
     }
@@ -344,6 +247,7 @@ public class UniverseIdsResponse implements Serializable {
      * 
      * @return factions
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "factions array")
     public List<UniverseIdsFaction> getFactions() {
         return factions;
@@ -351,6 +255,122 @@ public class UniverseIdsResponse implements Serializable {
 
     public void setFactions(List<UniverseIdsFaction> factions) {
         this.factions = factions;
+    }
+
+    public UniverseIdsResponse inventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
+
+        this.inventoryTypes = inventoryTypes;
+        return this;
+    }
+
+    public UniverseIdsResponse addInventoryTypesItem(UniverseIdsInventoryType inventoryTypesItem) {
+        if (this.inventoryTypes == null) {
+            this.inventoryTypes = new ArrayList<>();
+        }
+        this.inventoryTypes.add(inventoryTypesItem);
+        return this;
+    }
+
+    /**
+     * inventory_types array
+     * 
+     * @return inventoryTypes
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "inventory_types array")
+    public List<UniverseIdsInventoryType> getInventoryTypes() {
+        return inventoryTypes;
+    }
+
+    public void setInventoryTypes(List<UniverseIdsInventoryType> inventoryTypes) {
+        this.inventoryTypes = inventoryTypes;
+    }
+
+    public UniverseIdsResponse regions(List<UniverseIdsRegion> regions) {
+
+        this.regions = regions;
+        return this;
+    }
+
+    public UniverseIdsResponse addRegionsItem(UniverseIdsRegion regionsItem) {
+        if (this.regions == null) {
+            this.regions = new ArrayList<>();
+        }
+        this.regions.add(regionsItem);
+        return this;
+    }
+
+    /**
+     * regions array
+     * 
+     * @return regions
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "regions array")
+    public List<UniverseIdsRegion> getRegions() {
+        return regions;
+    }
+
+    public void setRegions(List<UniverseIdsRegion> regions) {
+        this.regions = regions;
+    }
+
+    public UniverseIdsResponse stations(List<UniverseIdsStation> stations) {
+
+        this.stations = stations;
+        return this;
+    }
+
+    public UniverseIdsResponse addStationsItem(UniverseIdsStation stationsItem) {
+        if (this.stations == null) {
+            this.stations = new ArrayList<>();
+        }
+        this.stations.add(stationsItem);
+        return this;
+    }
+
+    /**
+     * stations array
+     * 
+     * @return stations
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "stations array")
+    public List<UniverseIdsStation> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<UniverseIdsStation> stations) {
+        this.stations = stations;
+    }
+
+    public UniverseIdsResponse systems(List<UniverseIdsSystem> systems) {
+
+        this.systems = systems;
+        return this;
+    }
+
+    public UniverseIdsResponse addSystemsItem(UniverseIdsSystem systemsItem) {
+        if (this.systems == null) {
+            this.systems = new ArrayList<>();
+        }
+        this.systems.add(systemsItem);
+        return this;
+    }
+
+    /**
+     * systems array
+     * 
+     * @return systems
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "systems array")
+    public List<UniverseIdsSystem> getSystems() {
+        return systems;
+    }
+
+    public void setSystems(List<UniverseIdsSystem> systems) {
+        this.systems = systems;
     }
 
     @Override
@@ -362,38 +382,38 @@ public class UniverseIdsResponse implements Serializable {
             return false;
         }
         UniverseIdsResponse universeIdsResponse = (UniverseIdsResponse) o;
-        return Objects.equals(this.characters, universeIdsResponse.characters)
-                && Objects.equals(this.regions, universeIdsResponse.regions)
-                && Objects.equals(this.systems, universeIdsResponse.systems)
-                && Objects.equals(this.constellations, universeIdsResponse.constellations)
-                && Objects.equals(this.inventoryTypes, universeIdsResponse.inventoryTypes)
+        return Objects.equals(this.agents, universeIdsResponse.agents)
                 && Objects.equals(this.alliances, universeIdsResponse.alliances)
-                && Objects.equals(this.stations, universeIdsResponse.stations)
-                && Objects.equals(this.agents, universeIdsResponse.agents)
+                && Objects.equals(this.characters, universeIdsResponse.characters)
+                && Objects.equals(this.constellations, universeIdsResponse.constellations)
                 && Objects.equals(this.corporations, universeIdsResponse.corporations)
-                && Objects.equals(this.factions, universeIdsResponse.factions);
+                && Objects.equals(this.factions, universeIdsResponse.factions)
+                && Objects.equals(this.inventoryTypes, universeIdsResponse.inventoryTypes)
+                && Objects.equals(this.regions, universeIdsResponse.regions)
+                && Objects.equals(this.stations, universeIdsResponse.stations)
+                && Objects.equals(this.systems, universeIdsResponse.systems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(characters, regions, systems, constellations, inventoryTypes, alliances, stations, agents,
-                corporations, factions);
+        return Objects.hash(agents, alliances, characters, constellations, corporations, factions, inventoryTypes,
+                regions, stations, systems);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseIdsResponse {\n");
-        sb.append("    characters: ").append(toIndentedString(characters)).append("\n");
-        sb.append("    regions: ").append(toIndentedString(regions)).append("\n");
-        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
-        sb.append("    constellations: ").append(toIndentedString(constellations)).append("\n");
-        sb.append("    inventoryTypes: ").append(toIndentedString(inventoryTypes)).append("\n");
-        sb.append("    alliances: ").append(toIndentedString(alliances)).append("\n");
-        sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
         sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
+        sb.append("    alliances: ").append(toIndentedString(alliances)).append("\n");
+        sb.append("    characters: ").append(toIndentedString(characters)).append("\n");
+        sb.append("    constellations: ").append(toIndentedString(constellations)).append("\n");
         sb.append("    corporations: ").append(toIndentedString(corporations)).append("\n");
         sb.append("    factions: ").append(toIndentedString(factions)).append("\n");
+        sb.append("    inventoryTypes: ").append(toIndentedString(inventoryTypes)).append("\n");
+        sb.append("    regions: ").append(toIndentedString(regions)).append("\n");
+        sb.append("    stations: ").append(toIndentedString(stations)).append("\n");
+        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
         sb.append("}");
         return sb.toString();
     }

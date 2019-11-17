@@ -40,6 +40,7 @@ public class RequiredItem implements Serializable {
     private Integer typeId;
 
     public RequiredItem quantity(Integer quantity) {
+
         this.quantity = quantity;
         return this;
     }
@@ -59,6 +60,7 @@ public class RequiredItem implements Serializable {
     }
 
     public RequiredItem typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }

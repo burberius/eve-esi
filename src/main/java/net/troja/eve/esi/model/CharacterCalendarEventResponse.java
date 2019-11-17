@@ -44,10 +44,6 @@ public class CharacterCalendarEventResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_EVENT_ID)
     private Integer eventId;
 
-    public static final String SERIALIZED_NAME_OWNER_NAME = "owner_name";
-    @SerializedName(SERIALIZED_NAME_OWNER_NAME)
-    private String ownerName;
-
     public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
     @SerializedName(SERIALIZED_NAME_IMPORTANCE)
     private Integer importance;
@@ -56,17 +52,9 @@ public class CharacterCalendarEventResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OWNER_ID)
     private Integer ownerId;
 
-    public static final String SERIALIZED_NAME_RESPONSE = "response";
-    @SerializedName(SERIALIZED_NAME_RESPONSE)
-    private String response;
-
-    public static final String SERIALIZED_NAME_TEXT = "text";
-    @SerializedName(SERIALIZED_NAME_TEXT)
-    private String text;
-
-    public static final String SERIALIZED_NAME_TITLE = "title";
-    @SerializedName(SERIALIZED_NAME_TITLE)
-    private String title;
+    public static final String SERIALIZED_NAME_OWNER_NAME = "owner_name";
+    @SerializedName(SERIALIZED_NAME_OWNER_NAME)
+    private String ownerName;
 
     /**
      * owner_type string
@@ -125,7 +113,20 @@ public class CharacterCalendarEventResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OWNER_TYPE)
     private OwnerTypeEnum ownerType;
 
+    public static final String SERIALIZED_NAME_RESPONSE = "response";
+    @SerializedName(SERIALIZED_NAME_RESPONSE)
+    private String response;
+
+    public static final String SERIALIZED_NAME_TEXT = "text";
+    @SerializedName(SERIALIZED_NAME_TEXT)
+    private String text;
+
+    public static final String SERIALIZED_NAME_TITLE = "title";
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
     public CharacterCalendarEventResponse date(OffsetDateTime date) {
+
         this.date = date;
         return this;
     }
@@ -145,6 +146,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     public CharacterCalendarEventResponse duration(Integer duration) {
+
         this.duration = duration;
         return this;
     }
@@ -164,6 +166,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     public CharacterCalendarEventResponse eventId(Integer eventId) {
+
         this.eventId = eventId;
         return this;
     }
@@ -182,26 +185,8 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarEventResponse ownerName(String ownerName) {
-        this.ownerName = ownerName;
-        return this;
-    }
-
-    /**
-     * owner_name string
-     * 
-     * @return ownerName
-     **/
-    @ApiModelProperty(required = true, value = "owner_name string")
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
     public CharacterCalendarEventResponse importance(Integer importance) {
+
         this.importance = importance;
         return this;
     }
@@ -221,6 +206,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     public CharacterCalendarEventResponse ownerId(Integer ownerId) {
+
         this.ownerId = ownerId;
         return this;
     }
@@ -239,7 +225,48 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.ownerId = ownerId;
     }
 
+    public CharacterCalendarEventResponse ownerName(String ownerName) {
+
+        this.ownerName = ownerName;
+        return this;
+    }
+
+    /**
+     * owner_name string
+     * 
+     * @return ownerName
+     **/
+    @ApiModelProperty(required = true, value = "owner_name string")
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerType) {
+
+        this.ownerType = ownerType;
+        return this;
+    }
+
+    /**
+     * owner_type string
+     * 
+     * @return ownerType
+     **/
+    @ApiModelProperty(required = true, value = "owner_type string")
+    public OwnerTypeEnum getOwnerType() {
+        return ownerType;
+    }
+
+    public void setOwnerType(OwnerTypeEnum ownerType) {
+        this.ownerType = ownerType;
+    }
+
     public CharacterCalendarEventResponse response(String response) {
+
         this.response = response;
         return this;
     }
@@ -259,6 +286,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     public CharacterCalendarEventResponse text(String text) {
+
         this.text = text;
         return this;
     }
@@ -278,6 +306,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     public CharacterCalendarEventResponse title(String title) {
+
         this.title = title;
         return this;
     }
@@ -296,25 +325,6 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.title = title;
     }
 
-    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerType) {
-        this.ownerType = ownerType;
-        return this;
-    }
-
-    /**
-     * owner_type string
-     * 
-     * @return ownerType
-     **/
-    @ApiModelProperty(required = true, value = "owner_type string")
-    public OwnerTypeEnum getOwnerType() {
-        return ownerType;
-    }
-
-    public void setOwnerType(OwnerTypeEnum ownerType) {
-        this.ownerType = ownerType;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -327,18 +337,18 @@ public class CharacterCalendarEventResponse implements Serializable {
         return Objects.equals(this.date, characterCalendarEventResponse.date)
                 && Objects.equals(this.duration, characterCalendarEventResponse.duration)
                 && Objects.equals(this.eventId, characterCalendarEventResponse.eventId)
-                && Objects.equals(this.ownerName, characterCalendarEventResponse.ownerName)
                 && Objects.equals(this.importance, characterCalendarEventResponse.importance)
                 && Objects.equals(this.ownerId, characterCalendarEventResponse.ownerId)
+                && Objects.equals(this.ownerName, characterCalendarEventResponse.ownerName)
+                && Objects.equals(this.ownerType, characterCalendarEventResponse.ownerType)
                 && Objects.equals(this.response, characterCalendarEventResponse.response)
                 && Objects.equals(this.text, characterCalendarEventResponse.text)
-                && Objects.equals(this.title, characterCalendarEventResponse.title)
-                && Objects.equals(this.ownerType, characterCalendarEventResponse.ownerType);
+                && Objects.equals(this.title, characterCalendarEventResponse.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, duration, eventId, ownerName, importance, ownerId, response, text, title, ownerType);
+        return Objects.hash(date, duration, eventId, importance, ownerId, ownerName, ownerType, response, text, title);
     }
 
     @Override
@@ -348,13 +358,13 @@ public class CharacterCalendarEventResponse implements Serializable {
         sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
         sb.append("    eventId: ").append(toIndentedString(eventId)).append("\n");
-        sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
         sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
         sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+        sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+        sb.append("    ownerType: ").append(toIndentedString(ownerType)).append("\n");
         sb.append("    response: ").append(toIndentedString(response)).append("\n");
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
-        sb.append("    ownerType: ").append(toIndentedString(ownerType)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -44,6 +44,7 @@ public class CharacterAssetsLocationsPosition implements Serializable {
     private Double z;
 
     public CharacterAssetsLocationsPosition x(Double x) {
+
         this.x = x;
         return this;
     }
@@ -63,6 +64,7 @@ public class CharacterAssetsLocationsPosition implements Serializable {
     }
 
     public CharacterAssetsLocationsPosition y(Double y) {
+
         this.y = y;
         return this;
     }
@@ -82,6 +84,7 @@ public class CharacterAssetsLocationsPosition implements Serializable {
     }
 
     public CharacterAssetsLocationsPosition z(Double z) {
+
         this.z = z;
         return this;
     }

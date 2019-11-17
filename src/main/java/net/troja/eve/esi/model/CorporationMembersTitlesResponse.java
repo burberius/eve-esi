@@ -42,6 +42,7 @@ public class CorporationMembersTitlesResponse implements Serializable {
     private List<Integer> titles = new ArrayList<>();
 
     public CorporationMembersTitlesResponse characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -61,6 +62,7 @@ public class CorporationMembersTitlesResponse implements Serializable {
     }
 
     public CorporationMembersTitlesResponse titles(List<Integer> titles) {
+
         this.titles = titles;
         return this;
     }

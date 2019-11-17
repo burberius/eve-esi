@@ -35,13 +35,14 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
 
     public static final String SERIALIZED_NAME_KILLS = "kills";
     @SerializedName(SERIALIZED_NAME_KILLS)
-    private FactionWarfareLeaderboardCharacterKills kills = null;
+    private FactionWarfareLeaderboardCharacterKills kills;
 
     public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
-    private FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints = null;
+    private FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints;
 
     public FactionWarfareLeaderboardCharactersResponse kills(FactionWarfareLeaderboardCharacterKills kills) {
+
         this.kills = kills;
         return this;
     }
@@ -62,6 +63,7 @@ public class FactionWarfareLeaderboardCharactersResponse implements Serializable
 
     public FactionWarfareLeaderboardCharactersResponse victoryPoints(
             FactionWarfareLeaderboardCharacterVictoryPoints victoryPoints) {
+
         this.victoryPoints = victoryPoints;
         return this;
     }

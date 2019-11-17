@@ -40,6 +40,7 @@ public class CorporationDivisionsHangar implements Serializable {
     private String name;
 
     public CorporationDivisionsHangar division(Integer division) {
+
         this.division = division;
         return this;
     }
@@ -49,6 +50,7 @@ public class CorporationDivisionsHangar implements Serializable {
      * 
      * @return division
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "division integer")
     public Integer getDivision() {
         return division;
@@ -59,6 +61,7 @@ public class CorporationDivisionsHangar implements Serializable {
     }
 
     public CorporationDivisionsHangar name(String name) {
+
         this.name = name;
         return this;
     }
@@ -68,6 +71,7 @@ public class CorporationDivisionsHangar implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "name string")
     public String getName() {
         return name;

@@ -35,46 +35,48 @@ import java.io.Serializable;
 public class DogmaDynamicItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_MUTATOR_TYPE_ID = "mutator_type_id";
-    @SerializedName(SERIALIZED_NAME_MUTATOR_TYPE_ID)
-    private Integer mutatorTypeId;
+    public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
+    @SerializedName(SERIALIZED_NAME_CREATED_BY)
+    private Integer createdBy;
 
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
     private List<DogmaDynamicAttribute> dogmaAttributes = new ArrayList<>();
 
-    public static final String SERIALIZED_NAME_SOURCE_TYPE_ID = "source_type_id";
-    @SerializedName(SERIALIZED_NAME_SOURCE_TYPE_ID)
-    private Integer sourceTypeId;
-
-    public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
-    @SerializedName(SERIALIZED_NAME_CREATED_BY)
-    private Integer createdBy;
-
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
     private List<DogmaDynamicEffect> dogmaEffects = new ArrayList<>();
 
-    public DogmaDynamicItemsResponse mutatorTypeId(Integer mutatorTypeId) {
-        this.mutatorTypeId = mutatorTypeId;
+    public static final String SERIALIZED_NAME_MUTATOR_TYPE_ID = "mutator_type_id";
+    @SerializedName(SERIALIZED_NAME_MUTATOR_TYPE_ID)
+    private Integer mutatorTypeId;
+
+    public static final String SERIALIZED_NAME_SOURCE_TYPE_ID = "source_type_id";
+    @SerializedName(SERIALIZED_NAME_SOURCE_TYPE_ID)
+    private Integer sourceTypeId;
+
+    public DogmaDynamicItemsResponse createdBy(Integer createdBy) {
+
+        this.createdBy = createdBy;
         return this;
     }
 
     /**
-     * The type ID of the mutator used to generate the dynamic item.
+     * The ID of the character who created the item
      * 
-     * @return mutatorTypeId
+     * @return createdBy
      **/
-    @ApiModelProperty(required = true, value = "The type ID of the mutator used to generate the dynamic item.")
-    public Integer getMutatorTypeId() {
-        return mutatorTypeId;
+    @ApiModelProperty(required = true, value = "The ID of the character who created the item")
+    public Integer getCreatedBy() {
+        return createdBy;
     }
 
-    public void setMutatorTypeId(Integer mutatorTypeId) {
-        this.mutatorTypeId = mutatorTypeId;
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
     }
 
     public DogmaDynamicItemsResponse dogmaAttributes(List<DogmaDynamicAttribute> dogmaAttributes) {
+
         this.dogmaAttributes = dogmaAttributes;
         return this;
     }
@@ -98,46 +100,8 @@ public class DogmaDynamicItemsResponse implements Serializable {
         this.dogmaAttributes = dogmaAttributes;
     }
 
-    public DogmaDynamicItemsResponse sourceTypeId(Integer sourceTypeId) {
-        this.sourceTypeId = sourceTypeId;
-        return this;
-    }
-
-    /**
-     * The type ID of the source item the mutator was applied to create the
-     * dynamic item.
-     * 
-     * @return sourceTypeId
-     **/
-    @ApiModelProperty(required = true, value = "The type ID of the source item the mutator was applied to create the dynamic item.")
-    public Integer getSourceTypeId() {
-        return sourceTypeId;
-    }
-
-    public void setSourceTypeId(Integer sourceTypeId) {
-        this.sourceTypeId = sourceTypeId;
-    }
-
-    public DogmaDynamicItemsResponse createdBy(Integer createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    /**
-     * The ID of the character who created the item
-     * 
-     * @return createdBy
-     **/
-    @ApiModelProperty(required = true, value = "The ID of the character who created the item")
-    public Integer getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Integer createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public DogmaDynamicItemsResponse dogmaEffects(List<DogmaDynamicEffect> dogmaEffects) {
+
         this.dogmaEffects = dogmaEffects;
         return this;
     }
@@ -161,6 +125,47 @@ public class DogmaDynamicItemsResponse implements Serializable {
         this.dogmaEffects = dogmaEffects;
     }
 
+    public DogmaDynamicItemsResponse mutatorTypeId(Integer mutatorTypeId) {
+
+        this.mutatorTypeId = mutatorTypeId;
+        return this;
+    }
+
+    /**
+     * The type ID of the mutator used to generate the dynamic item.
+     * 
+     * @return mutatorTypeId
+     **/
+    @ApiModelProperty(required = true, value = "The type ID of the mutator used to generate the dynamic item.")
+    public Integer getMutatorTypeId() {
+        return mutatorTypeId;
+    }
+
+    public void setMutatorTypeId(Integer mutatorTypeId) {
+        this.mutatorTypeId = mutatorTypeId;
+    }
+
+    public DogmaDynamicItemsResponse sourceTypeId(Integer sourceTypeId) {
+
+        this.sourceTypeId = sourceTypeId;
+        return this;
+    }
+
+    /**
+     * The type ID of the source item the mutator was applied to create the
+     * dynamic item.
+     * 
+     * @return sourceTypeId
+     **/
+    @ApiModelProperty(required = true, value = "The type ID of the source item the mutator was applied to create the dynamic item.")
+    public Integer getSourceTypeId() {
+        return sourceTypeId;
+    }
+
+    public void setSourceTypeId(Integer sourceTypeId) {
+        this.sourceTypeId = sourceTypeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,27 +175,27 @@ public class DogmaDynamicItemsResponse implements Serializable {
             return false;
         }
         DogmaDynamicItemsResponse dogmaDynamicItemsResponse = (DogmaDynamicItemsResponse) o;
-        return Objects.equals(this.mutatorTypeId, dogmaDynamicItemsResponse.mutatorTypeId)
+        return Objects.equals(this.createdBy, dogmaDynamicItemsResponse.createdBy)
                 && Objects.equals(this.dogmaAttributes, dogmaDynamicItemsResponse.dogmaAttributes)
-                && Objects.equals(this.sourceTypeId, dogmaDynamicItemsResponse.sourceTypeId)
-                && Objects.equals(this.createdBy, dogmaDynamicItemsResponse.createdBy)
-                && Objects.equals(this.dogmaEffects, dogmaDynamicItemsResponse.dogmaEffects);
+                && Objects.equals(this.dogmaEffects, dogmaDynamicItemsResponse.dogmaEffects)
+                && Objects.equals(this.mutatorTypeId, dogmaDynamicItemsResponse.mutatorTypeId)
+                && Objects.equals(this.sourceTypeId, dogmaDynamicItemsResponse.sourceTypeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mutatorTypeId, dogmaAttributes, sourceTypeId, createdBy, dogmaEffects);
+        return Objects.hash(createdBy, dogmaAttributes, dogmaEffects, mutatorTypeId, sourceTypeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaDynamicItemsResponse {\n");
-        sb.append("    mutatorTypeId: ").append(toIndentedString(mutatorTypeId)).append("\n");
-        sb.append("    dogmaAttributes: ").append(toIndentedString(dogmaAttributes)).append("\n");
-        sb.append("    sourceTypeId: ").append(toIndentedString(sourceTypeId)).append("\n");
         sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+        sb.append("    dogmaAttributes: ").append(toIndentedString(dogmaAttributes)).append("\n");
         sb.append("    dogmaEffects: ").append(toIndentedString(dogmaEffects)).append("\n");
+        sb.append("    mutatorTypeId: ").append(toIndentedString(mutatorTypeId)).append("\n");
+        sb.append("    sourceTypeId: ").append(toIndentedString(sourceTypeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

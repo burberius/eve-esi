@@ -41,6 +41,7 @@ public class CharacterOpportunitiesResponse implements Serializable {
     private Integer taskId;
 
     public CharacterOpportunitiesResponse completedAt(OffsetDateTime completedAt) {
+
         this.completedAt = completedAt;
         return this;
     }
@@ -60,6 +61,7 @@ public class CharacterOpportunitiesResponse implements Serializable {
     }
 
     public CharacterOpportunitiesResponse taskId(Integer taskId) {
+
         this.taskId = taskId;
         return this;
     }

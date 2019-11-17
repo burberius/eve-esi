@@ -40,6 +40,7 @@ public class CharacterStatsIsk implements Serializable {
     private Long out;
 
     public CharacterStatsIsk in(Long in) {
+
         this.in = in;
         return this;
     }
@@ -49,6 +50,7 @@ public class CharacterStatsIsk implements Serializable {
      * 
      * @return in
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "in integer")
     public Long getIn() {
         return in;
@@ -59,6 +61,7 @@ public class CharacterStatsIsk implements Serializable {
     }
 
     public CharacterStatsIsk out(Long out) {
+
         this.out = out;
         return this;
     }
@@ -68,6 +71,7 @@ public class CharacterStatsIsk implements Serializable {
      * 
      * @return out
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "out integer")
     public Long getOut() {
         return out;

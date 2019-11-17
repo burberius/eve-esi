@@ -39,10 +39,6 @@ public class CorporationAssetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_IS_SINGLETON)
     private Boolean isSingleton;
 
-    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-    @SerializedName(SERIALIZED_NAME_QUANTITY)
-    private Integer quantity;
-
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
     private Long itemId;
@@ -324,10 +320,6 @@ public class CorporationAssetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
     private LocationFlagEnum locationFlag;
 
-    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
-    @SerializedName(SERIALIZED_NAME_TYPE_ID)
-    private Integer typeId;
-
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
     private Long locationId;
@@ -385,7 +377,16 @@ public class CorporationAssetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
     private LocationTypeEnum locationType;
 
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
+    @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    private Integer typeId;
+
     public CorporationAssetsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
+
         this.isBlueprintCopy = isBlueprintCopy;
         return this;
     }
@@ -395,6 +396,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return isBlueprintCopy
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "is_blueprint_copy boolean")
     public Boolean getIsBlueprintCopy() {
         return isBlueprintCopy;
@@ -405,6 +407,7 @@ public class CorporationAssetsResponse implements Serializable {
     }
 
     public CorporationAssetsResponse isSingleton(Boolean isSingleton) {
+
         this.isSingleton = isSingleton;
         return this;
     }
@@ -423,26 +426,8 @@ public class CorporationAssetsResponse implements Serializable {
         this.isSingleton = isSingleton;
     }
 
-    public CorporationAssetsResponse quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    /**
-     * quantity integer
-     * 
-     * @return quantity
-     **/
-    @ApiModelProperty(required = true, value = "quantity integer")
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
     public CorporationAssetsResponse itemId(Long itemId) {
+
         this.itemId = itemId;
         return this;
     }
@@ -462,6 +447,7 @@ public class CorporationAssetsResponse implements Serializable {
     }
 
     public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+
         this.locationFlag = locationFlag;
         return this;
     }
@@ -480,26 +466,8 @@ public class CorporationAssetsResponse implements Serializable {
         this.locationFlag = locationFlag;
     }
 
-    public CorporationAssetsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     public CorporationAssetsResponse locationId(Long locationId) {
+
         this.locationId = locationId;
         return this;
     }
@@ -519,6 +487,7 @@ public class CorporationAssetsResponse implements Serializable {
     }
 
     public CorporationAssetsResponse locationType(LocationTypeEnum locationType) {
+
         this.locationType = locationType;
         return this;
     }
@@ -537,6 +506,46 @@ public class CorporationAssetsResponse implements Serializable {
         this.locationType = locationType;
     }
 
+    public CorporationAssetsResponse quantity(Integer quantity) {
+
+        this.quantity = quantity;
+        return this;
+    }
+
+    /**
+     * quantity integer
+     * 
+     * @return quantity
+     **/
+    @ApiModelProperty(required = true, value = "quantity integer")
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public CorporationAssetsResponse typeId(Integer typeId) {
+
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -548,18 +557,18 @@ public class CorporationAssetsResponse implements Serializable {
         CorporationAssetsResponse corporationAssetsResponse = (CorporationAssetsResponse) o;
         return Objects.equals(this.isBlueprintCopy, corporationAssetsResponse.isBlueprintCopy)
                 && Objects.equals(this.isSingleton, corporationAssetsResponse.isSingleton)
-                && Objects.equals(this.quantity, corporationAssetsResponse.quantity)
                 && Objects.equals(this.itemId, corporationAssetsResponse.itemId)
                 && Objects.equals(this.locationFlag, corporationAssetsResponse.locationFlag)
-                && Objects.equals(this.typeId, corporationAssetsResponse.typeId)
                 && Objects.equals(this.locationId, corporationAssetsResponse.locationId)
-                && Objects.equals(this.locationType, corporationAssetsResponse.locationType);
+                && Objects.equals(this.locationType, corporationAssetsResponse.locationType)
+                && Objects.equals(this.quantity, corporationAssetsResponse.quantity)
+                && Objects.equals(this.typeId, corporationAssetsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isBlueprintCopy, isSingleton, quantity, itemId, locationFlag, typeId, locationId,
-                locationType);
+        return Objects.hash(isBlueprintCopy, isSingleton, itemId, locationFlag, locationId, locationType, quantity,
+                typeId);
     }
 
     @Override
@@ -568,12 +577,12 @@ public class CorporationAssetsResponse implements Serializable {
         sb.append("class CorporationAssetsResponse {\n");
         sb.append("    isBlueprintCopy: ").append(toIndentedString(isBlueprintCopy)).append("\n");
         sb.append("    isSingleton: ").append(toIndentedString(isSingleton)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("    locationType: ").append(toIndentedString(locationType)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

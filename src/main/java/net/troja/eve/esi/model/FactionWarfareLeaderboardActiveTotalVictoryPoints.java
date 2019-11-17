@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardActiveTotalVictoryPoints implements Serial
     private Integer factionId;
 
     public FactionWarfareLeaderboardActiveTotalVictoryPoints amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardActiveTotalVictoryPoints implements Serial
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of victory points")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardActiveTotalVictoryPoints implements Serial
     }
 
     public FactionWarfareLeaderboardActiveTotalVictoryPoints factionId(Integer factionId) {
+
         this.factionId = factionId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardActiveTotalVictoryPoints implements Serial
      * 
      * @return factionId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;

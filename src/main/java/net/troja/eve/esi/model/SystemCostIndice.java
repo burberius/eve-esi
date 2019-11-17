@@ -103,6 +103,7 @@ public class SystemCostIndice implements Serializable {
     private Float costIndex;
 
     public SystemCostIndice activity(ActivityEnum activity) {
+
         this.activity = activity;
         return this;
     }
@@ -122,6 +123,7 @@ public class SystemCostIndice implements Serializable {
     }
 
     public SystemCostIndice costIndex(Float costIndex) {
+
         this.costIndex = costIndex;
         return this;
     }

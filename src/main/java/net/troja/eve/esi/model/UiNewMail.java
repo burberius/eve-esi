@@ -54,6 +54,7 @@ public class UiNewMail implements Serializable {
     private Integer toMailingListId;
 
     public UiNewMail body(String body) {
+
         this.body = body;
         return this;
     }
@@ -73,6 +74,7 @@ public class UiNewMail implements Serializable {
     }
 
     public UiNewMail recipients(List<Integer> recipients) {
+
         this.recipients = recipients;
         return this;
     }
@@ -97,6 +99,7 @@ public class UiNewMail implements Serializable {
     }
 
     public UiNewMail subject(String subject) {
+
         this.subject = subject;
         return this;
     }
@@ -116,6 +119,7 @@ public class UiNewMail implements Serializable {
     }
 
     public UiNewMail toCorpOrAllianceId(Integer toCorpOrAllianceId) {
+
         this.toCorpOrAllianceId = toCorpOrAllianceId;
         return this;
     }
@@ -125,6 +129,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return toCorpOrAllianceId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "to_corp_or_alliance_id integer")
     public Integer getToCorpOrAllianceId() {
         return toCorpOrAllianceId;
@@ -135,6 +140,7 @@ public class UiNewMail implements Serializable {
     }
 
     public UiNewMail toMailingListId(Integer toMailingListId) {
+
         this.toMailingListId = toMailingListId;
         return this;
     }
@@ -146,6 +152,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return toMailingListId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Corporations, alliances and mailing lists are all types of mailing groups. You may only send to one mailing group, at a time, so you may fill out either this field or the to_corp_or_alliance_ids field")
     public Integer getToMailingListId() {
         return toMailingListId;

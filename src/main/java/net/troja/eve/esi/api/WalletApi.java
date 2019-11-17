@@ -74,10 +74,92 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet balance</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/wallet/".replaceAll("\\{" + "character_id" + "\\}",
@@ -98,6 +180,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -113,7 +196,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -151,6 +235,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet balance</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Double getCharactersCharacterIdWallet(Integer characterId, String datasource, String ifNoneMatch,
             String token) throws ApiException {
@@ -178,6 +344,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet balance</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Double> getCharactersCharacterIdWalletWithHttpInfo(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
@@ -209,6 +457,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet balance</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletAsync(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback<Double> _callback) throws ApiException {
@@ -241,10 +571,93 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletJournalCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v6/characters/{character_id}/wallet/journal/".replaceAll(
@@ -269,6 +682,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -284,7 +698,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -325,6 +740,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CharacterWalletJournalResponse> getCharactersCharacterIdWalletJournal(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
@@ -354,6 +852,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CharacterWalletJournalResponse>> getCharactersCharacterIdWalletJournalWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, Integer page, String token) throws ApiException {
@@ -388,6 +969,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletJournalAsync(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token,
@@ -422,10 +1086,92 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletTransactionsCall(Integer characterId, String datasource,
             Long fromId, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/wallet/transactions/".replaceAll("\\{" + "character_id"
@@ -450,6 +1196,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -465,7 +1212,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -507,6 +1255,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CharacterWalletTransactionsResponse> getCharactersCharacterIdWalletTransactions(Integer characterId,
             String datasource, Long fromId, String ifNoneMatch, String token) throws ApiException {
@@ -538,6 +1368,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CharacterWalletTransactionsResponse>> getCharactersCharacterIdWalletTransactionsWithHttpInfo(
             Integer characterId, String datasource, Long fromId, String ifNoneMatch, String token) throws ApiException {
@@ -572,6 +1484,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdWalletTransactionsAsync(Integer characterId, String datasource,
             Long fromId, String ifNoneMatch, String token,
@@ -603,10 +1597,92 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>List of corporation wallets</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/wallets/".replaceAll("\\{" + "corporation_id" + "\\}",
@@ -627,6 +1703,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -642,7 +1719,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -681,6 +1759,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>List of corporation wallets</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CorporationWalletsResponse> getCorporationsCorporationIdWallets(Integer corporationId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -709,6 +1869,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>List of corporation wallets</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CorporationWalletsResponse>> getCorporationsCorporationIdWalletsWithHttpInfo(
             Integer corporationId, String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -741,6 +1983,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>List of corporation wallets</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsAsync(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<List<CorporationWalletsResponse>> _callback)
@@ -776,11 +2100,94 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsDivisionJournalCall(Integer corporationId, Integer division,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v4/corporations/{corporation_id}/wallets/{division}/journal/".replaceAll(
@@ -806,6 +2213,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -821,7 +2229,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -872,6 +2281,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CorporationWalletJournalResponse> getCorporationsCorporationIdWalletsDivisionJournal(
             Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token)
@@ -906,6 +2398,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CorporationWalletJournalResponse>> getCorporationsCorporationIdWalletsDivisionJournalWithHttpInfo(
             Integer corporationId, Integer division, String datasource, String ifNoneMatch, Integer page, String token)
@@ -944,6 +2519,89 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Journal entries</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        X-Pages - Maximum page number <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsDivisionJournalAsync(Integer corporationId,
             Integer division, String datasource, String ifNoneMatch, Integer page, String token,
@@ -980,11 +2638,93 @@ public class WalletApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsDivisionTransactionsCall(Integer corporationId,
             Integer division, String datasource, Long fromId, String ifNoneMatch, String token,
             final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/corporations/{corporation_id}/wallets/{division}/transactions/".replaceAll(
@@ -1010,6 +2750,7 @@ public class WalletApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1025,7 +2766,8 @@ public class WalletApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1076,6 +2818,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CorporationWalletTransactionsResponse> getCorporationsCorporationIdWalletsDivisionTransactions(
             Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token)
@@ -1112,6 +2936,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CorporationWalletTransactionsResponse>> getCorporationsCorporationIdWalletsDivisionTransactionsWithHttpInfo(
             Integer corporationId, Integer division, String datasource, Long fromId, String ifNoneMatch, String token)
@@ -1151,6 +3057,88 @@ public class WalletApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Wallet transactions</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCorporationsCorporationIdWalletsDivisionTransactionsAsync(Integer corporationId,
             Integer division, String datasource, Long fromId, String ifNoneMatch, String token,

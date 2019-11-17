@@ -40,6 +40,7 @@ public class PlanetContent implements Serializable {
     private Integer typeId;
 
     public PlanetContent amount(Long amount) {
+
         this.amount = amount;
         return this;
     }
@@ -59,6 +60,7 @@ public class PlanetContent implements Serializable {
     }
 
     public PlanetContent typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }

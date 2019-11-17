@@ -119,6 +119,7 @@ public class MailLabelSimple implements Serializable {
     private String name;
 
     public MailLabelSimple color(ColorEnum color) {
+
         this.color = color;
         return this;
     }
@@ -128,6 +129,7 @@ public class MailLabelSimple implements Serializable {
      * 
      * @return color
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Hexadecimal string representing label color, in RGB format")
     public ColorEnum getColor() {
         return color;
@@ -138,6 +140,7 @@ public class MailLabelSimple implements Serializable {
     }
 
     public MailLabelSimple name(String name) {
+
         this.name = name;
         return this;
     }

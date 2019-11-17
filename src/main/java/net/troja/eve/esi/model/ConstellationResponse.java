@@ -34,27 +34,108 @@ import java.io.Serializable;
 public class ConstellationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_SYSTEMS = "systems";
-    @SerializedName(SERIALIZED_NAME_SYSTEMS)
-    private List<Integer> systems = new ArrayList<>();
+    public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
+    @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
+    private Integer constellationId;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
+    public static final String SERIALIZED_NAME_POSITION = "position";
+    @SerializedName(SERIALIZED_NAME_POSITION)
+    private Position position;
+
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
     private Integer regionId;
 
-    public static final String SERIALIZED_NAME_POSITION = "position";
-    @SerializedName(SERIALIZED_NAME_POSITION)
-    private Position position = null;
+    public static final String SERIALIZED_NAME_SYSTEMS = "systems";
+    @SerializedName(SERIALIZED_NAME_SYSTEMS)
+    private List<Integer> systems = new ArrayList<>();
 
-    public static final String SERIALIZED_NAME_CONSTELLATION_ID = "constellation_id";
-    @SerializedName(SERIALIZED_NAME_CONSTELLATION_ID)
-    private Integer constellationId;
+    public ConstellationResponse constellationId(Integer constellationId) {
+
+        this.constellationId = constellationId;
+        return this;
+    }
+
+    /**
+     * constellation_id integer
+     * 
+     * @return constellationId
+     **/
+    @ApiModelProperty(required = true, value = "constellation_id integer")
+    public Integer getConstellationId() {
+        return constellationId;
+    }
+
+    public void setConstellationId(Integer constellationId) {
+        this.constellationId = constellationId;
+    }
+
+    public ConstellationResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ConstellationResponse position(Position position) {
+
+        this.position = position;
+        return this;
+    }
+
+    /**
+     * Get position
+     * 
+     * @return position
+     **/
+    @ApiModelProperty(required = true, value = "")
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public ConstellationResponse regionId(Integer regionId) {
+
+        this.regionId = regionId;
+        return this;
+    }
+
+    /**
+     * The region this constellation is in
+     * 
+     * @return regionId
+     **/
+    @ApiModelProperty(required = true, value = "The region this constellation is in")
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
+    }
 
     public ConstellationResponse systems(List<Integer> systems) {
+
         this.systems = systems;
         return this;
     }
@@ -78,82 +159,6 @@ public class ConstellationResponse implements Serializable {
         this.systems = systems;
     }
 
-    public ConstellationResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ConstellationResponse regionId(Integer regionId) {
-        this.regionId = regionId;
-        return this;
-    }
-
-    /**
-     * The region this constellation is in
-     * 
-     * @return regionId
-     **/
-    @ApiModelProperty(required = true, value = "The region this constellation is in")
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
-
-    public ConstellationResponse position(Position position) {
-        this.position = position;
-        return this;
-    }
-
-    /**
-     * Get position
-     * 
-     * @return position
-     **/
-    @ApiModelProperty(required = true, value = "")
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public ConstellationResponse constellationId(Integer constellationId) {
-        this.constellationId = constellationId;
-        return this;
-    }
-
-    /**
-     * constellation_id integer
-     * 
-     * @return constellationId
-     **/
-    @ApiModelProperty(required = true, value = "constellation_id integer")
-    public Integer getConstellationId() {
-        return constellationId;
-    }
-
-    public void setConstellationId(Integer constellationId) {
-        this.constellationId = constellationId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -163,27 +168,27 @@ public class ConstellationResponse implements Serializable {
             return false;
         }
         ConstellationResponse constellationResponse = (ConstellationResponse) o;
-        return Objects.equals(this.systems, constellationResponse.systems)
+        return Objects.equals(this.constellationId, constellationResponse.constellationId)
                 && Objects.equals(this.name, constellationResponse.name)
-                && Objects.equals(this.regionId, constellationResponse.regionId)
                 && Objects.equals(this.position, constellationResponse.position)
-                && Objects.equals(this.constellationId, constellationResponse.constellationId);
+                && Objects.equals(this.regionId, constellationResponse.regionId)
+                && Objects.equals(this.systems, constellationResponse.systems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systems, name, regionId, position, constellationId);
+        return Objects.hash(constellationId, name, position, regionId, systems);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ConstellationResponse {\n");
-        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
-        sb.append("    position: ").append(toIndentedString(position)).append("\n");
         sb.append("    constellationId: ").append(toIndentedString(constellationId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
+        sb.append("    systems: ").append(toIndentedString(systems)).append("\n");
         sb.append("}");
         return sb.toString();
     }

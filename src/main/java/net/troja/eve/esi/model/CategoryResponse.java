@@ -37,19 +37,20 @@ public class CategoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
     private Integer categoryId;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_GROUPS = "groups";
     @SerializedName(SERIALIZED_NAME_GROUPS)
     private List<Integer> groups = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
     public static final String SERIALIZED_NAME_PUBLISHED = "published";
     @SerializedName(SERIALIZED_NAME_PUBLISHED)
     private Boolean published;
 
     public CategoryResponse categoryId(Integer categoryId) {
+
         this.categoryId = categoryId;
         return this;
     }
@@ -68,26 +69,8 @@ public class CategoryResponse implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public CategoryResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public CategoryResponse groups(List<Integer> groups) {
+
         this.groups = groups;
         return this;
     }
@@ -111,7 +94,28 @@ public class CategoryResponse implements Serializable {
         this.groups = groups;
     }
 
+    public CategoryResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public CategoryResponse published(Boolean published) {
+
         this.published = published;
         return this;
     }
@@ -140,14 +144,14 @@ public class CategoryResponse implements Serializable {
         }
         CategoryResponse categoryResponse = (CategoryResponse) o;
         return Objects.equals(this.categoryId, categoryResponse.categoryId)
-                && Objects.equals(this.name, categoryResponse.name)
                 && Objects.equals(this.groups, categoryResponse.groups)
+                && Objects.equals(this.name, categoryResponse.name)
                 && Objects.equals(this.published, categoryResponse.published);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(categoryId, name, groups, published);
+        return Objects.hash(categoryId, groups, name, published);
     }
 
     @Override
@@ -155,8 +159,8 @@ public class CategoryResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CategoryResponse {\n");
         sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    published: ").append(toIndentedString(published)).append("\n");
         sb.append("}");
         return sb.toString();

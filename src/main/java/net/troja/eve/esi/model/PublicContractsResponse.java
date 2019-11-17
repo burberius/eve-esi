@@ -32,29 +32,57 @@ import java.io.Serializable;
 public class PublicContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_REWARD = "reward";
-    @SerializedName(SERIALIZED_NAME_REWARD)
-    private Double reward;
+    public static final String SERIALIZED_NAME_BUYOUT = "buyout";
+    @SerializedName(SERIALIZED_NAME_BUYOUT)
+    private Double buyout;
 
-    public static final String SERIALIZED_NAME_END_LOCATION_ID = "end_location_id";
-    @SerializedName(SERIALIZED_NAME_END_LOCATION_ID)
-    private Long endLocationId;
-
-    public static final String SERIALIZED_NAME_ISSUER_CORPORATION_ID = "issuer_corporation_id";
-    @SerializedName(SERIALIZED_NAME_ISSUER_CORPORATION_ID)
-    private Integer issuerCorporationId;
+    public static final String SERIALIZED_NAME_COLLATERAL = "collateral";
+    @SerializedName(SERIALIZED_NAME_COLLATERAL)
+    private Double collateral;
 
     public static final String SERIALIZED_NAME_CONTRACT_ID = "contract_id";
     @SerializedName(SERIALIZED_NAME_CONTRACT_ID)
     private Integer contractId;
 
+    public static final String SERIALIZED_NAME_DATE_EXPIRED = "date_expired";
+    @SerializedName(SERIALIZED_NAME_DATE_EXPIRED)
+    private OffsetDateTime dateExpired;
+
+    public static final String SERIALIZED_NAME_DATE_ISSUED = "date_issued";
+    @SerializedName(SERIALIZED_NAME_DATE_ISSUED)
+    private OffsetDateTime dateIssued;
+
     public static final String SERIALIZED_NAME_DAYS_TO_COMPLETE = "days_to_complete";
     @SerializedName(SERIALIZED_NAME_DAYS_TO_COMPLETE)
     private Integer daysToComplete;
 
-    public static final String SERIALIZED_NAME_BUYOUT = "buyout";
-    @SerializedName(SERIALIZED_NAME_BUYOUT)
-    private Double buyout;
+    public static final String SERIALIZED_NAME_END_LOCATION_ID = "end_location_id";
+    @SerializedName(SERIALIZED_NAME_END_LOCATION_ID)
+    private Long endLocationId;
+
+    public static final String SERIALIZED_NAME_FOR_CORPORATION = "for_corporation";
+    @SerializedName(SERIALIZED_NAME_FOR_CORPORATION)
+    private Boolean forCorporation;
+
+    public static final String SERIALIZED_NAME_ISSUER_CORPORATION_ID = "issuer_corporation_id";
+    @SerializedName(SERIALIZED_NAME_ISSUER_CORPORATION_ID)
+    private Integer issuerCorporationId;
+
+    public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
+    @SerializedName(SERIALIZED_NAME_ISSUER_ID)
+    private Integer issuerId;
+
+    public static final String SERIALIZED_NAME_PRICE = "price";
+    @SerializedName(SERIALIZED_NAME_PRICE)
+    private Double price;
+
+    public static final String SERIALIZED_NAME_REWARD = "reward";
+    @SerializedName(SERIALIZED_NAME_REWARD)
+    private Double reward;
+
+    public static final String SERIALIZED_NAME_START_LOCATION_ID = "start_location_id";
+    @SerializedName(SERIALIZED_NAME_START_LOCATION_ID)
+    private Long startLocationId;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
@@ -117,96 +145,54 @@ public class PublicContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE)
     private TypeEnum type;
 
-    public static final String SERIALIZED_NAME_DATE_EXPIRED = "date_expired";
-    @SerializedName(SERIALIZED_NAME_DATE_EXPIRED)
-    private OffsetDateTime dateExpired;
-
-    public static final String SERIALIZED_NAME_START_LOCATION_ID = "start_location_id";
-    @SerializedName(SERIALIZED_NAME_START_LOCATION_ID)
-    private Long startLocationId;
-
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Double volume;
 
-    public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
-    @SerializedName(SERIALIZED_NAME_ISSUER_ID)
-    private Integer issuerId;
+    public PublicContractsResponse buyout(Double buyout) {
 
-    public static final String SERIALIZED_NAME_DATE_ISSUED = "date_issued";
-    @SerializedName(SERIALIZED_NAME_DATE_ISSUED)
-    private OffsetDateTime dateIssued;
-
-    public static final String SERIALIZED_NAME_PRICE = "price";
-    @SerializedName(SERIALIZED_NAME_PRICE)
-    private Double price;
-
-    public static final String SERIALIZED_NAME_FOR_CORPORATION = "for_corporation";
-    @SerializedName(SERIALIZED_NAME_FOR_CORPORATION)
-    private Boolean forCorporation;
-
-    public static final String SERIALIZED_NAME_COLLATERAL = "collateral";
-    @SerializedName(SERIALIZED_NAME_COLLATERAL)
-    private Double collateral;
-
-    public PublicContractsResponse reward(Double reward) {
-        this.reward = reward;
+        this.buyout = buyout;
         return this;
     }
 
     /**
-     * Remuneration for contract (for Couriers only)
+     * Buyout price (for Auctions only)
      * 
-     * @return reward
+     * @return buyout
      **/
-    @ApiModelProperty(value = "Remuneration for contract (for Couriers only)")
-    public Double getReward() {
-        return reward;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Buyout price (for Auctions only)")
+    public Double getBuyout() {
+        return buyout;
     }
 
-    public void setReward(Double reward) {
-        this.reward = reward;
+    public void setBuyout(Double buyout) {
+        this.buyout = buyout;
     }
 
-    public PublicContractsResponse endLocationId(Long endLocationId) {
-        this.endLocationId = endLocationId;
+    public PublicContractsResponse collateral(Double collateral) {
+
+        this.collateral = collateral;
         return this;
     }
 
     /**
-     * End location ID (for Couriers contract)
+     * Collateral price (for Couriers only)
      * 
-     * @return endLocationId
+     * @return collateral
      **/
-    @ApiModelProperty(value = "End location ID (for Couriers contract)")
-    public Long getEndLocationId() {
-        return endLocationId;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Collateral price (for Couriers only)")
+    public Double getCollateral() {
+        return collateral;
     }
 
-    public void setEndLocationId(Long endLocationId) {
-        this.endLocationId = endLocationId;
-    }
-
-    public PublicContractsResponse issuerCorporationId(Integer issuerCorporationId) {
-        this.issuerCorporationId = issuerCorporationId;
-        return this;
-    }
-
-    /**
-     * Character&#39;s corporation ID for the issuer
-     * 
-     * @return issuerCorporationId
-     **/
-    @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
-    public Integer getIssuerCorporationId() {
-        return issuerCorporationId;
-    }
-
-    public void setIssuerCorporationId(Integer issuerCorporationId) {
-        this.issuerCorporationId = issuerCorporationId;
+    public void setCollateral(Double collateral) {
+        this.collateral = collateral;
     }
 
     public PublicContractsResponse contractId(Integer contractId) {
+
         this.contractId = contractId;
         return this;
     }
@@ -225,83 +211,8 @@ public class PublicContractsResponse implements Serializable {
         this.contractId = contractId;
     }
 
-    public PublicContractsResponse daysToComplete(Integer daysToComplete) {
-        this.daysToComplete = daysToComplete;
-        return this;
-    }
-
-    /**
-     * Number of days to perform the contract
-     * 
-     * @return daysToComplete
-     **/
-    @ApiModelProperty(value = "Number of days to perform the contract")
-    public Integer getDaysToComplete() {
-        return daysToComplete;
-    }
-
-    public void setDaysToComplete(Integer daysToComplete) {
-        this.daysToComplete = daysToComplete;
-    }
-
-    public PublicContractsResponse buyout(Double buyout) {
-        this.buyout = buyout;
-        return this;
-    }
-
-    /**
-     * Buyout price (for Auctions only)
-     * 
-     * @return buyout
-     **/
-    @ApiModelProperty(value = "Buyout price (for Auctions only)")
-    public Double getBuyout() {
-        return buyout;
-    }
-
-    public void setBuyout(Double buyout) {
-        this.buyout = buyout;
-    }
-
-    public PublicContractsResponse title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    /**
-     * Title of the contract
-     * 
-     * @return title
-     **/
-    @ApiModelProperty(value = "Title of the contract")
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public PublicContractsResponse type(TypeEnum type) {
-        this.type = type;
-        return this;
-    }
-
-    /**
-     * Type of the contract
-     * 
-     * @return type
-     **/
-    @ApiModelProperty(required = true, value = "Type of the contract")
-    public TypeEnum getType() {
-        return type;
-    }
-
-    public void setType(TypeEnum type) {
-        this.type = type;
-    }
-
     public PublicContractsResponse dateExpired(OffsetDateTime dateExpired) {
+
         this.dateExpired = dateExpired;
         return this;
     }
@@ -320,64 +231,8 @@ public class PublicContractsResponse implements Serializable {
         this.dateExpired = dateExpired;
     }
 
-    public PublicContractsResponse startLocationId(Long startLocationId) {
-        this.startLocationId = startLocationId;
-        return this;
-    }
-
-    /**
-     * Start location ID (for Couriers contract)
-     * 
-     * @return startLocationId
-     **/
-    @ApiModelProperty(value = "Start location ID (for Couriers contract)")
-    public Long getStartLocationId() {
-        return startLocationId;
-    }
-
-    public void setStartLocationId(Long startLocationId) {
-        this.startLocationId = startLocationId;
-    }
-
-    public PublicContractsResponse volume(Double volume) {
-        this.volume = volume;
-        return this;
-    }
-
-    /**
-     * Volume of items in the contract
-     * 
-     * @return volume
-     **/
-    @ApiModelProperty(value = "Volume of items in the contract")
-    public Double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Double volume) {
-        this.volume = volume;
-    }
-
-    public PublicContractsResponse issuerId(Integer issuerId) {
-        this.issuerId = issuerId;
-        return this;
-    }
-
-    /**
-     * Character ID for the issuer
-     * 
-     * @return issuerId
-     **/
-    @ApiModelProperty(required = true, value = "Character ID for the issuer")
-    public Integer getIssuerId() {
-        return issuerId;
-    }
-
-    public void setIssuerId(Integer issuerId) {
-        this.issuerId = issuerId;
-    }
-
     public PublicContractsResponse dateIssued(OffsetDateTime dateIssued) {
+
         this.dateIssued = dateIssued;
         return this;
     }
@@ -396,26 +251,50 @@ public class PublicContractsResponse implements Serializable {
         this.dateIssued = dateIssued;
     }
 
-    public PublicContractsResponse price(Double price) {
-        this.price = price;
+    public PublicContractsResponse daysToComplete(Integer daysToComplete) {
+
+        this.daysToComplete = daysToComplete;
         return this;
     }
 
     /**
-     * Price of contract (for ItemsExchange and Auctions)
+     * Number of days to perform the contract
      * 
-     * @return price
+     * @return daysToComplete
      **/
-    @ApiModelProperty(value = "Price of contract (for ItemsExchange and Auctions)")
-    public Double getPrice() {
-        return price;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Number of days to perform the contract")
+    public Integer getDaysToComplete() {
+        return daysToComplete;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setDaysToComplete(Integer daysToComplete) {
+        this.daysToComplete = daysToComplete;
+    }
+
+    public PublicContractsResponse endLocationId(Long endLocationId) {
+
+        this.endLocationId = endLocationId;
+        return this;
+    }
+
+    /**
+     * End location ID (for Couriers contract)
+     * 
+     * @return endLocationId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "End location ID (for Couriers contract)")
+    public Long getEndLocationId() {
+        return endLocationId;
+    }
+
+    public void setEndLocationId(Long endLocationId) {
+        this.endLocationId = endLocationId;
     }
 
     public PublicContractsResponse forCorporation(Boolean forCorporation) {
+
         this.forCorporation = forCorporation;
         return this;
     }
@@ -425,6 +304,7 @@ public class PublicContractsResponse implements Serializable {
      * 
      * @return forCorporation
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "true if the contract was issued on behalf of the issuer's corporation")
     public Boolean getForCorporation() {
         return forCorporation;
@@ -434,23 +314,169 @@ public class PublicContractsResponse implements Serializable {
         this.forCorporation = forCorporation;
     }
 
-    public PublicContractsResponse collateral(Double collateral) {
-        this.collateral = collateral;
+    public PublicContractsResponse issuerCorporationId(Integer issuerCorporationId) {
+
+        this.issuerCorporationId = issuerCorporationId;
         return this;
     }
 
     /**
-     * Collateral price (for Couriers only)
+     * Character&#39;s corporation ID for the issuer
      * 
-     * @return collateral
+     * @return issuerCorporationId
      **/
-    @ApiModelProperty(value = "Collateral price (for Couriers only)")
-    public Double getCollateral() {
-        return collateral;
+    @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
+    public Integer getIssuerCorporationId() {
+        return issuerCorporationId;
     }
 
-    public void setCollateral(Double collateral) {
-        this.collateral = collateral;
+    public void setIssuerCorporationId(Integer issuerCorporationId) {
+        this.issuerCorporationId = issuerCorporationId;
+    }
+
+    public PublicContractsResponse issuerId(Integer issuerId) {
+
+        this.issuerId = issuerId;
+        return this;
+    }
+
+    /**
+     * Character ID for the issuer
+     * 
+     * @return issuerId
+     **/
+    @ApiModelProperty(required = true, value = "Character ID for the issuer")
+    public Integer getIssuerId() {
+        return issuerId;
+    }
+
+    public void setIssuerId(Integer issuerId) {
+        this.issuerId = issuerId;
+    }
+
+    public PublicContractsResponse price(Double price) {
+
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * Price of contract (for ItemsExchange and Auctions)
+     * 
+     * @return price
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Price of contract (for ItemsExchange and Auctions)")
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public PublicContractsResponse reward(Double reward) {
+
+        this.reward = reward;
+        return this;
+    }
+
+    /**
+     * Remuneration for contract (for Couriers only)
+     * 
+     * @return reward
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Remuneration for contract (for Couriers only)")
+    public Double getReward() {
+        return reward;
+    }
+
+    public void setReward(Double reward) {
+        this.reward = reward;
+    }
+
+    public PublicContractsResponse startLocationId(Long startLocationId) {
+
+        this.startLocationId = startLocationId;
+        return this;
+    }
+
+    /**
+     * Start location ID (for Couriers contract)
+     * 
+     * @return startLocationId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Start location ID (for Couriers contract)")
+    public Long getStartLocationId() {
+        return startLocationId;
+    }
+
+    public void setStartLocationId(Long startLocationId) {
+        this.startLocationId = startLocationId;
+    }
+
+    public PublicContractsResponse title(String title) {
+
+        this.title = title;
+        return this;
+    }
+
+    /**
+     * Title of the contract
+     * 
+     * @return title
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Title of the contract")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public PublicContractsResponse type(TypeEnum type) {
+
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Type of the contract
+     * 
+     * @return type
+     **/
+    @ApiModelProperty(required = true, value = "Type of the contract")
+    public TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeEnum type) {
+        this.type = type;
+    }
+
+    public PublicContractsResponse volume(Double volume) {
+
+        this.volume = volume;
+        return this;
+    }
+
+    /**
+     * Volume of items in the contract
+     * 
+     * @return volume
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Volume of items in the contract")
+    public Double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
     }
 
     @Override
@@ -462,50 +488,50 @@ public class PublicContractsResponse implements Serializable {
             return false;
         }
         PublicContractsResponse publicContractsResponse = (PublicContractsResponse) o;
-        return Objects.equals(this.reward, publicContractsResponse.reward)
-                && Objects.equals(this.endLocationId, publicContractsResponse.endLocationId)
-                && Objects.equals(this.issuerCorporationId, publicContractsResponse.issuerCorporationId)
+        return Objects.equals(this.buyout, publicContractsResponse.buyout)
+                && Objects.equals(this.collateral, publicContractsResponse.collateral)
                 && Objects.equals(this.contractId, publicContractsResponse.contractId)
+                && Objects.equals(this.dateExpired, publicContractsResponse.dateExpired)
+                && Objects.equals(this.dateIssued, publicContractsResponse.dateIssued)
                 && Objects.equals(this.daysToComplete, publicContractsResponse.daysToComplete)
-                && Objects.equals(this.buyout, publicContractsResponse.buyout)
+                && Objects.equals(this.endLocationId, publicContractsResponse.endLocationId)
+                && Objects.equals(this.forCorporation, publicContractsResponse.forCorporation)
+                && Objects.equals(this.issuerCorporationId, publicContractsResponse.issuerCorporationId)
+                && Objects.equals(this.issuerId, publicContractsResponse.issuerId)
+                && Objects.equals(this.price, publicContractsResponse.price)
+                && Objects.equals(this.reward, publicContractsResponse.reward)
+                && Objects.equals(this.startLocationId, publicContractsResponse.startLocationId)
                 && Objects.equals(this.title, publicContractsResponse.title)
                 && Objects.equals(this.type, publicContractsResponse.type)
-                && Objects.equals(this.dateExpired, publicContractsResponse.dateExpired)
-                && Objects.equals(this.startLocationId, publicContractsResponse.startLocationId)
-                && Objects.equals(this.volume, publicContractsResponse.volume)
-                && Objects.equals(this.issuerId, publicContractsResponse.issuerId)
-                && Objects.equals(this.dateIssued, publicContractsResponse.dateIssued)
-                && Objects.equals(this.price, publicContractsResponse.price)
-                && Objects.equals(this.forCorporation, publicContractsResponse.forCorporation)
-                && Objects.equals(this.collateral, publicContractsResponse.collateral);
+                && Objects.equals(this.volume, publicContractsResponse.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reward, endLocationId, issuerCorporationId, contractId, daysToComplete, buyout, title,
-                type, dateExpired, startLocationId, volume, issuerId, dateIssued, price, forCorporation, collateral);
+        return Objects.hash(buyout, collateral, contractId, dateExpired, dateIssued, daysToComplete, endLocationId,
+                forCorporation, issuerCorporationId, issuerId, price, reward, startLocationId, title, type, volume);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PublicContractsResponse {\n");
-        sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
-        sb.append("    endLocationId: ").append(toIndentedString(endLocationId)).append("\n");
-        sb.append("    issuerCorporationId: ").append(toIndentedString(issuerCorporationId)).append("\n");
-        sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
-        sb.append("    daysToComplete: ").append(toIndentedString(daysToComplete)).append("\n");
         sb.append("    buyout: ").append(toIndentedString(buyout)).append("\n");
+        sb.append("    collateral: ").append(toIndentedString(collateral)).append("\n");
+        sb.append("    contractId: ").append(toIndentedString(contractId)).append("\n");
+        sb.append("    dateExpired: ").append(toIndentedString(dateExpired)).append("\n");
+        sb.append("    dateIssued: ").append(toIndentedString(dateIssued)).append("\n");
+        sb.append("    daysToComplete: ").append(toIndentedString(daysToComplete)).append("\n");
+        sb.append("    endLocationId: ").append(toIndentedString(endLocationId)).append("\n");
+        sb.append("    forCorporation: ").append(toIndentedString(forCorporation)).append("\n");
+        sb.append("    issuerCorporationId: ").append(toIndentedString(issuerCorporationId)).append("\n");
+        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
+        sb.append("    price: ").append(toIndentedString(price)).append("\n");
+        sb.append("    reward: ").append(toIndentedString(reward)).append("\n");
+        sb.append("    startLocationId: ").append(toIndentedString(startLocationId)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
-        sb.append("    dateExpired: ").append(toIndentedString(dateExpired)).append("\n");
-        sb.append("    startLocationId: ").append(toIndentedString(startLocationId)).append("\n");
         sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
-        sb.append("    issuerId: ").append(toIndentedString(issuerId)).append("\n");
-        sb.append("    dateIssued: ").append(toIndentedString(dateIssued)).append("\n");
-        sb.append("    price: ").append(toIndentedString(price)).append("\n");
-        sb.append("    forCorporation: ").append(toIndentedString(forCorporation)).append("\n");
-        sb.append("    collateral: ").append(toIndentedString(collateral)).append("\n");
         sb.append("}");
         return sb.toString();
     }

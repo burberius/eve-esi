@@ -40,6 +40,7 @@ public class FleetNewSettings implements Serializable {
     private String motd;
 
     public FleetNewSettings isFreeMove(Boolean isFreeMove) {
+
         this.isFreeMove = isFreeMove;
         return this;
     }
@@ -49,6 +50,7 @@ public class FleetNewSettings implements Serializable {
      * 
      * @return isFreeMove
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Should free-move be enabled in the fleet")
     public Boolean getIsFreeMove() {
         return isFreeMove;
@@ -59,6 +61,7 @@ public class FleetNewSettings implements Serializable {
     }
 
     public FleetNewSettings motd(String motd) {
+
         this.motd = motd;
         return this;
     }
@@ -68,6 +71,7 @@ public class FleetNewSettings implements Serializable {
      * 
      * @return motd
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "New fleet MOTD in CCP flavoured HTML")
     public String getMotd() {
         return motd;

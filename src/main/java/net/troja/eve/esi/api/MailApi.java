@@ -75,10 +75,77 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call deleteCharactersCharacterIdMailLabelsLabelIdCall(Integer characterId, Integer labelId,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/labels/{label_id}/".replaceAll(
@@ -96,6 +163,7 @@ public class MailApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
 
@@ -113,7 +181,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -154,6 +223,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void deleteCharactersCharacterIdMailLabelsLabelId(Integer characterId, Integer labelId, String datasource,
             String token) throws ApiException {
@@ -177,6 +313,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Void> deleteCharactersCharacterIdMailLabelsLabelIdWithHttpInfo(Integer characterId,
             Integer labelId, String datasource, String token) throws ApiException {
@@ -204,6 +407,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Label deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call deleteCharactersCharacterIdMailLabelsLabelIdAsync(Integer characterId, Integer labelId,
             String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
@@ -231,10 +501,77 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call deleteCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll(
@@ -252,6 +589,7 @@ public class MailApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
 
@@ -269,7 +607,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -309,6 +648,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void deleteCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
             String token) throws ApiException {
@@ -331,6 +737,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Void> deleteCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
             String datasource, String token) throws ApiException {
@@ -358,6 +831,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail deleted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call deleteCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
             String datasource, String token, final ApiCallback<Void> _callback) throws ApiException {
@@ -392,10 +932,92 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>The requested mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailCall(Integer characterId, String datasource, String ifNoneMatch,
             List<Integer> labels, Integer lastMailId, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/".replaceAll("\\{" + "character_id" + "\\}",
@@ -424,6 +1046,7 @@ public class MailApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -439,7 +1062,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -485,6 +1109,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>The requested mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<MailHeadersResponse> getCharactersCharacterIdMail(Integer characterId, String datasource,
             String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token) throws ApiException {
@@ -519,6 +1225,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>The requested mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<MailHeadersResponse>> getCharactersCharacterIdMailWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, List<Integer> labels, Integer lastMailId, String token)
@@ -559,6 +1347,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>The requested mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailAsync(Integer characterId, String datasource, String ifNoneMatch,
             List<Integer> labels, Integer lastMailId, String token,
@@ -590,10 +1460,92 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>A list of mail labels and unread counts</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailLabelsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v3/characters/{character_id}/mail/labels/".replaceAll("\\{" + "character_id" + "\\}",
@@ -614,6 +1566,7 @@ public class MailApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -629,7 +1582,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -667,6 +1621,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>A list of mail labels and unread counts</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public MailLabelsResponse getCharactersCharacterIdMailLabels(Integer characterId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
@@ -694,6 +1730,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>A list of mail labels and unread counts</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<MailLabelsResponse> getCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -726,6 +1844,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>A list of mail labels and unread counts</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailLabelsAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<MailLabelsResponse> _callback) throws ApiException {
@@ -756,10 +1956,92 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Mailing lists</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailListsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/lists/".replaceAll("\\{" + "character_id" + "\\}",
@@ -780,6 +2062,7 @@ public class MailApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -795,7 +2078,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -833,6 +2117,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Mailing lists</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<CharacterMailinglistsResponse> getCharactersCharacterIdMailLists(Integer characterId,
             String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -860,6 +2226,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Mailing lists</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<CharacterMailinglistsResponse>> getCharactersCharacterIdMailListsWithHttpInfo(
             Integer characterId, String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -891,6 +2339,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Mailing lists</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailListsAsync(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<List<CharacterMailinglistsResponse>> _callback)
@@ -924,10 +2454,92 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Contents of a mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/v1/characters/{character_id}/mail/{mail_id}/".replaceAll(
@@ -949,6 +2561,7 @@ public class MailApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -964,7 +2577,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1009,6 +2623,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Contents of a mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public MailResponse getCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, String datasource,
             String ifNoneMatch, String token) throws ApiException {
@@ -1037,6 +2733,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Contents of a mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<MailResponse> getCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId,
             Integer mailId, String datasource, String ifNoneMatch, String token) throws ApiException {
@@ -1070,6 +2848,88 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Contents of a mail</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>304</td>
+     *                        <td>Not modified</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        ETag - RFC7232 compliant entity tag <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId, String datasource,
             String ifNoneMatch, String token, final ApiCallback<MailResponse> _callback) throws ApiException {
@@ -1099,6 +2959,73 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Mail created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call postCharactersCharacterIdMailCall(Integer characterId, Mail mail, String datasource,
             String token, final ApiCallback _callback) throws ApiException {
@@ -1119,6 +3046,7 @@ public class MailApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1132,7 +3060,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1173,6 +3102,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Mail created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Integer postCharactersCharacterIdMail(Integer characterId, Mail mail, String datasource, String token)
             throws ApiException {
@@ -1198,6 +3194,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Mail created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Integer> postCharactersCharacterIdMailWithHttpInfo(Integer characterId, Mail mail,
             String datasource, String token) throws ApiException {
@@ -1227,6 +3290,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Mail created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call postCharactersCharacterIdMailAsync(Integer characterId, Mail mail, String datasource,
             String token, final ApiCallback<Integer> _callback) throws ApiException {
@@ -1256,6 +3386,73 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Label created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call postCharactersCharacterIdMailLabelsCall(Integer characterId, MailLabelSimple label,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
@@ -1276,6 +3473,7 @@ public class MailApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1289,7 +3487,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1331,6 +3530,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Label created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Integer postCharactersCharacterIdMailLabels(Integer characterId, MailLabelSimple label, String datasource,
             String token) throws ApiException {
@@ -1356,6 +3622,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Label created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Integer> postCharactersCharacterIdMailLabelsWithHttpInfo(Integer characterId,
             MailLabelSimple label, String datasource, String token) throws ApiException {
@@ -1385,6 +3718,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Label created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call postCharactersCharacterIdMailLabelsAsync(Integer characterId, MailLabelSimple label,
             String datasource, String token, final ApiCallback<Integer> _callback) throws ApiException {
@@ -1416,6 +3816,73 @@ public class MailApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail updated</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call putCharactersCharacterIdMailMailIdCall(Integer characterId, Integer mailId,
             MailMetaData contents, String datasource, String token, final ApiCallback _callback) throws ApiException {
@@ -1437,6 +3904,7 @@ public class MailApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
 
@@ -1452,7 +3920,8 @@ public class MailApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1501,6 +3970,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail updated</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public void putCharactersCharacterIdMailMailId(Integer characterId, Integer mailId, MailMetaData contents,
             String datasource, String token) throws ApiException {
@@ -1526,6 +4062,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail updated</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Void> putCharactersCharacterIdMailMailIdWithHttpInfo(Integer characterId, Integer mailId,
             MailMetaData contents, String datasource, String token) throws ApiException {
@@ -1555,6 +4158,73 @@ public class MailApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>Mail updated</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call putCharactersCharacterIdMailMailIdAsync(Integer characterId, Integer mailId,
             MailMetaData contents, String datasource, String token, final ApiCallback<Void> _callback)

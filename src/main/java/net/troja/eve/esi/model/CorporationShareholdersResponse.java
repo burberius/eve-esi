@@ -35,6 +35,10 @@ public class CorporationShareholdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SHARE_COUNT)
     private Long shareCount;
 
+    public static final String SERIALIZED_NAME_SHAREHOLDER_ID = "shareholder_id";
+    @SerializedName(SERIALIZED_NAME_SHAREHOLDER_ID)
+    private Integer shareholderId;
+
     /**
      * shareholder_type string
      */
@@ -86,11 +90,8 @@ public class CorporationShareholdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_TYPE)
     private ShareholderTypeEnum shareholderType;
 
-    public static final String SERIALIZED_NAME_SHAREHOLDER_ID = "shareholder_id";
-    @SerializedName(SERIALIZED_NAME_SHAREHOLDER_ID)
-    private Integer shareholderId;
-
     public CorporationShareholdersResponse shareCount(Long shareCount) {
+
         this.shareCount = shareCount;
         return this;
     }
@@ -109,26 +110,8 @@ public class CorporationShareholdersResponse implements Serializable {
         this.shareCount = shareCount;
     }
 
-    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderType) {
-        this.shareholderType = shareholderType;
-        return this;
-    }
-
-    /**
-     * shareholder_type string
-     * 
-     * @return shareholderType
-     **/
-    @ApiModelProperty(required = true, value = "shareholder_type string")
-    public ShareholderTypeEnum getShareholderType() {
-        return shareholderType;
-    }
-
-    public void setShareholderType(ShareholderTypeEnum shareholderType) {
-        this.shareholderType = shareholderType;
-    }
-
     public CorporationShareholdersResponse shareholderId(Integer shareholderId) {
+
         this.shareholderId = shareholderId;
         return this;
     }
@@ -147,6 +130,26 @@ public class CorporationShareholdersResponse implements Serializable {
         this.shareholderId = shareholderId;
     }
 
+    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderType) {
+
+        this.shareholderType = shareholderType;
+        return this;
+    }
+
+    /**
+     * shareholder_type string
+     * 
+     * @return shareholderType
+     **/
+    @ApiModelProperty(required = true, value = "shareholder_type string")
+    public ShareholderTypeEnum getShareholderType() {
+        return shareholderType;
+    }
+
+    public void setShareholderType(ShareholderTypeEnum shareholderType) {
+        this.shareholderType = shareholderType;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,13 +160,13 @@ public class CorporationShareholdersResponse implements Serializable {
         }
         CorporationShareholdersResponse corporationShareholdersResponse = (CorporationShareholdersResponse) o;
         return Objects.equals(this.shareCount, corporationShareholdersResponse.shareCount)
-                && Objects.equals(this.shareholderType, corporationShareholdersResponse.shareholderType)
-                && Objects.equals(this.shareholderId, corporationShareholdersResponse.shareholderId);
+                && Objects.equals(this.shareholderId, corporationShareholdersResponse.shareholderId)
+                && Objects.equals(this.shareholderType, corporationShareholdersResponse.shareholderType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shareCount, shareholderType, shareholderId);
+        return Objects.hash(shareCount, shareholderId, shareholderType);
     }
 
     @Override
@@ -171,8 +174,8 @@ public class CorporationShareholdersResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationShareholdersResponse {\n");
         sb.append("    shareCount: ").append(toIndentedString(shareCount)).append("\n");
-        sb.append("    shareholderType: ").append(toIndentedString(shareholderType)).append("\n");
         sb.append("    shareholderId: ").append(toIndentedString(shareholderId)).append("\n");
+        sb.append("    shareholderType: ").append(toIndentedString(shareholderType)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -51,6 +51,7 @@ public class CharacterFitting implements Serializable {
     private Integer shipTypeId;
 
     public CharacterFitting description(String description) {
+
         this.description = description;
         return this;
     }
@@ -70,6 +71,7 @@ public class CharacterFitting implements Serializable {
     }
 
     public CharacterFitting items(List<FittingItem> items) {
+
         this.items = items;
         return this;
     }
@@ -94,6 +96,7 @@ public class CharacterFitting implements Serializable {
     }
 
     public CharacterFitting name(String name) {
+
         this.name = name;
         return this;
     }
@@ -113,6 +116,7 @@ public class CharacterFitting implements Serializable {
     }
 
     public CharacterFitting shipTypeId(Integer shipTypeId) {
+
         this.shipTypeId = shipTypeId;
         return this;
     }

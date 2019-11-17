@@ -44,6 +44,7 @@ public class InsurancePriceLevel implements Serializable {
     private Float payout;
 
     public InsurancePriceLevel cost(Float cost) {
+
         this.cost = cost;
         return this;
     }
@@ -63,6 +64,7 @@ public class InsurancePriceLevel implements Serializable {
     }
 
     public InsurancePriceLevel name(String name) {
+
         this.name = name;
         return this;
     }
@@ -82,6 +84,7 @@ public class InsurancePriceLevel implements Serializable {
     }
 
     public InsurancePriceLevel payout(Float payout) {
+
         this.payout = payout;
         return this;
     }

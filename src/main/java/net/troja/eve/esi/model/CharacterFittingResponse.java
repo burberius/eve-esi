@@ -36,6 +36,7 @@ public class CharacterFittingResponse implements Serializable {
     private Integer fittingId;
 
     public CharacterFittingResponse fittingId(Integer fittingId) {
+
         this.fittingId = fittingId;
         return this;
     }

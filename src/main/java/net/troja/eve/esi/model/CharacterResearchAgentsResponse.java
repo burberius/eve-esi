@@ -32,13 +32,17 @@ import java.io.Serializable;
 public class CharacterResearchAgentsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_REMAINDER_POINTS = "remainder_points";
-    @SerializedName(SERIALIZED_NAME_REMAINDER_POINTS)
-    private Float remainderPoints;
-
     public static final String SERIALIZED_NAME_AGENT_ID = "agent_id";
     @SerializedName(SERIALIZED_NAME_AGENT_ID)
     private Integer agentId;
+
+    public static final String SERIALIZED_NAME_POINTS_PER_DAY = "points_per_day";
+    @SerializedName(SERIALIZED_NAME_POINTS_PER_DAY)
+    private Float pointsPerDay;
+
+    public static final String SERIALIZED_NAME_REMAINDER_POINTS = "remainder_points";
+    @SerializedName(SERIALIZED_NAME_REMAINDER_POINTS)
+    private Float remainderPoints;
 
     public static final String SERIALIZED_NAME_SKILL_TYPE_ID = "skill_type_id";
     @SerializedName(SERIALIZED_NAME_SKILL_TYPE_ID)
@@ -48,30 +52,8 @@ public class CharacterResearchAgentsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STARTED_AT)
     private OffsetDateTime startedAt;
 
-    public static final String SERIALIZED_NAME_POINTS_PER_DAY = "points_per_day";
-    @SerializedName(SERIALIZED_NAME_POINTS_PER_DAY)
-    private Float pointsPerDay;
-
-    public CharacterResearchAgentsResponse remainderPoints(Float remainderPoints) {
-        this.remainderPoints = remainderPoints;
-        return this;
-    }
-
-    /**
-     * remainder_points number
-     * 
-     * @return remainderPoints
-     **/
-    @ApiModelProperty(required = true, value = "remainder_points number")
-    public Float getRemainderPoints() {
-        return remainderPoints;
-    }
-
-    public void setRemainderPoints(Float remainderPoints) {
-        this.remainderPoints = remainderPoints;
-    }
-
     public CharacterResearchAgentsResponse agentId(Integer agentId) {
+
         this.agentId = agentId;
         return this;
     }
@@ -90,7 +72,48 @@ public class CharacterResearchAgentsResponse implements Serializable {
         this.agentId = agentId;
     }
 
+    public CharacterResearchAgentsResponse pointsPerDay(Float pointsPerDay) {
+
+        this.pointsPerDay = pointsPerDay;
+        return this;
+    }
+
+    /**
+     * points_per_day number
+     * 
+     * @return pointsPerDay
+     **/
+    @ApiModelProperty(required = true, value = "points_per_day number")
+    public Float getPointsPerDay() {
+        return pointsPerDay;
+    }
+
+    public void setPointsPerDay(Float pointsPerDay) {
+        this.pointsPerDay = pointsPerDay;
+    }
+
+    public CharacterResearchAgentsResponse remainderPoints(Float remainderPoints) {
+
+        this.remainderPoints = remainderPoints;
+        return this;
+    }
+
+    /**
+     * remainder_points number
+     * 
+     * @return remainderPoints
+     **/
+    @ApiModelProperty(required = true, value = "remainder_points number")
+    public Float getRemainderPoints() {
+        return remainderPoints;
+    }
+
+    public void setRemainderPoints(Float remainderPoints) {
+        this.remainderPoints = remainderPoints;
+    }
+
     public CharacterResearchAgentsResponse skillTypeId(Integer skillTypeId) {
+
         this.skillTypeId = skillTypeId;
         return this;
     }
@@ -110,6 +133,7 @@ public class CharacterResearchAgentsResponse implements Serializable {
     }
 
     public CharacterResearchAgentsResponse startedAt(OffsetDateTime startedAt) {
+
         this.startedAt = startedAt;
         return this;
     }
@@ -128,25 +152,6 @@ public class CharacterResearchAgentsResponse implements Serializable {
         this.startedAt = startedAt;
     }
 
-    public CharacterResearchAgentsResponse pointsPerDay(Float pointsPerDay) {
-        this.pointsPerDay = pointsPerDay;
-        return this;
-    }
-
-    /**
-     * points_per_day number
-     * 
-     * @return pointsPerDay
-     **/
-    @ApiModelProperty(required = true, value = "points_per_day number")
-    public Float getPointsPerDay() {
-        return pointsPerDay;
-    }
-
-    public void setPointsPerDay(Float pointsPerDay) {
-        this.pointsPerDay = pointsPerDay;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -156,27 +161,27 @@ public class CharacterResearchAgentsResponse implements Serializable {
             return false;
         }
         CharacterResearchAgentsResponse characterResearchAgentsResponse = (CharacterResearchAgentsResponse) o;
-        return Objects.equals(this.remainderPoints, characterResearchAgentsResponse.remainderPoints)
-                && Objects.equals(this.agentId, characterResearchAgentsResponse.agentId)
+        return Objects.equals(this.agentId, characterResearchAgentsResponse.agentId)
+                && Objects.equals(this.pointsPerDay, characterResearchAgentsResponse.pointsPerDay)
+                && Objects.equals(this.remainderPoints, characterResearchAgentsResponse.remainderPoints)
                 && Objects.equals(this.skillTypeId, characterResearchAgentsResponse.skillTypeId)
-                && Objects.equals(this.startedAt, characterResearchAgentsResponse.startedAt)
-                && Objects.equals(this.pointsPerDay, characterResearchAgentsResponse.pointsPerDay);
+                && Objects.equals(this.startedAt, characterResearchAgentsResponse.startedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(remainderPoints, agentId, skillTypeId, startedAt, pointsPerDay);
+        return Objects.hash(agentId, pointsPerDay, remainderPoints, skillTypeId, startedAt);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterResearchAgentsResponse {\n");
-        sb.append("    remainderPoints: ").append(toIndentedString(remainderPoints)).append("\n");
         sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
+        sb.append("    pointsPerDay: ").append(toIndentedString(pointsPerDay)).append("\n");
+        sb.append("    remainderPoints: ").append(toIndentedString(remainderPoints)).append("\n");
         sb.append("    skillTypeId: ").append(toIndentedString(skillTypeId)).append("\n");
         sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
-        sb.append("    pointsPerDay: ").append(toIndentedString(pointsPerDay)).append("\n");
         sb.append("}");
         return sb.toString();
     }

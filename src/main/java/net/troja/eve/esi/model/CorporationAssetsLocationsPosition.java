@@ -44,6 +44,7 @@ public class CorporationAssetsLocationsPosition implements Serializable {
     private Double z;
 
     public CorporationAssetsLocationsPosition x(Double x) {
+
         this.x = x;
         return this;
     }
@@ -63,6 +64,7 @@ public class CorporationAssetsLocationsPosition implements Serializable {
     }
 
     public CorporationAssetsLocationsPosition y(Double y) {
+
         this.y = y;
         return this;
     }
@@ -82,6 +84,7 @@ public class CorporationAssetsLocationsPosition implements Serializable {
     }
 
     public CorporationAssetsLocationsPosition z(Double z) {
+
         this.z = z;
         return this;
     }

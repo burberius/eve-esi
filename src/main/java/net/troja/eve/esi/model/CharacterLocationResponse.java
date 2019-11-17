@@ -31,38 +31,20 @@ import java.io.Serializable;
 public class CharacterLocationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_STATION_ID = "station_id";
-    @SerializedName(SERIALIZED_NAME_STATION_ID)
-    private Integer stationId;
-
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
     private Integer solarSystemId;
+
+    public static final String SERIALIZED_NAME_STATION_ID = "station_id";
+    @SerializedName(SERIALIZED_NAME_STATION_ID)
+    private Integer stationId;
 
     public static final String SERIALIZED_NAME_STRUCTURE_ID = "structure_id";
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
     private Long structureId;
 
-    public CharacterLocationResponse stationId(Integer stationId) {
-        this.stationId = stationId;
-        return this;
-    }
-
-    /**
-     * station_id integer
-     * 
-     * @return stationId
-     **/
-    @ApiModelProperty(value = "station_id integer")
-    public Integer getStationId() {
-        return stationId;
-    }
-
-    public void setStationId(Integer stationId) {
-        this.stationId = stationId;
-    }
-
     public CharacterLocationResponse solarSystemId(Integer solarSystemId) {
+
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -81,7 +63,29 @@ public class CharacterLocationResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
+    public CharacterLocationResponse stationId(Integer stationId) {
+
+        this.stationId = stationId;
+        return this;
+    }
+
+    /**
+     * station_id integer
+     * 
+     * @return stationId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "station_id integer")
+    public Integer getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
+    }
+
     public CharacterLocationResponse structureId(Long structureId) {
+
         this.structureId = structureId;
         return this;
     }
@@ -91,6 +95,7 @@ public class CharacterLocationResponse implements Serializable {
      * 
      * @return structureId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "structure_id integer")
     public Long getStructureId() {
         return structureId;
@@ -109,22 +114,22 @@ public class CharacterLocationResponse implements Serializable {
             return false;
         }
         CharacterLocationResponse characterLocationResponse = (CharacterLocationResponse) o;
-        return Objects.equals(this.stationId, characterLocationResponse.stationId)
-                && Objects.equals(this.solarSystemId, characterLocationResponse.solarSystemId)
+        return Objects.equals(this.solarSystemId, characterLocationResponse.solarSystemId)
+                && Objects.equals(this.stationId, characterLocationResponse.stationId)
                 && Objects.equals(this.structureId, characterLocationResponse.structureId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stationId, solarSystemId, structureId);
+        return Objects.hash(solarSystemId, stationId, structureId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterLocationResponse {\n");
-        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
         sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -31,34 +31,16 @@ import java.io.Serializable;
 public class UniverseIdsInventoryType implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
     private Integer id;
 
-    public UniverseIdsInventoryType name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
     public UniverseIdsInventoryType id(Integer id) {
+
         this.id = id;
         return this;
     }
@@ -68,6 +50,7 @@ public class UniverseIdsInventoryType implements Serializable {
      * 
      * @return id
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "id integer")
     public Integer getId() {
         return id;
@@ -75,6 +58,27 @@ public class UniverseIdsInventoryType implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public UniverseIdsInventoryType name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -86,21 +90,21 @@ public class UniverseIdsInventoryType implements Serializable {
             return false;
         }
         UniverseIdsInventoryType universeIdsInventoryType = (UniverseIdsInventoryType) o;
-        return Objects.equals(this.name, universeIdsInventoryType.name)
-                && Objects.equals(this.id, universeIdsInventoryType.id);
+        return Objects.equals(this.id, universeIdsInventoryType.id)
+                && Objects.equals(this.name, universeIdsInventoryType.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseIdsInventoryType {\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

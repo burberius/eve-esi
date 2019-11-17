@@ -40,6 +40,7 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
     private Integer loyaltyPoints;
 
     public CharacterLoyaltyPointsResponse corporationId(Integer corporationId) {
+
         this.corporationId = corporationId;
         return this;
     }
@@ -59,6 +60,7 @@ public class CharacterLoyaltyPointsResponse implements Serializable {
     }
 
     public CharacterLoyaltyPointsResponse loyaltyPoints(Integer loyaltyPoints) {
+
         this.loyaltyPoints = loyaltyPoints;
         return this;
     }

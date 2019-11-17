@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
     private Integer corporationId;
 
     public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of victory points")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
     }
 
     public FactionWarfareLeaderboardCorporationYesterdayVictoryPoints corporationId(Integer corporationId) {
+
         this.corporationId = corporationId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardCorporationYesterdayVictoryPoints implemen
      * 
      * @return corporationId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;

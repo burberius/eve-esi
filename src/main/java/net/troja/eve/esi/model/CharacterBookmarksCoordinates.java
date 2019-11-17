@@ -45,6 +45,7 @@ public class CharacterBookmarksCoordinates implements Serializable {
     private Double z;
 
     public CharacterBookmarksCoordinates x(Double x) {
+
         this.x = x;
         return this;
     }
@@ -64,6 +65,7 @@ public class CharacterBookmarksCoordinates implements Serializable {
     }
 
     public CharacterBookmarksCoordinates y(Double y) {
+
         this.y = y;
         return this;
     }
@@ -83,6 +85,7 @@ public class CharacterBookmarksCoordinates implements Serializable {
     }
 
     public CharacterBookmarksCoordinates z(Double z) {
+
         this.z = z;
         return this;
     }

@@ -35,6 +35,10 @@ public class CharacterAffiliationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
     private Integer allianceId;
 
+    public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
+    @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    private Integer characterId;
+
     public static final String SERIALIZED_NAME_CORPORATION_ID = "corporation_id";
     @SerializedName(SERIALIZED_NAME_CORPORATION_ID)
     private Integer corporationId;
@@ -43,11 +47,8 @@ public class CharacterAffiliationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
     private Integer factionId;
 
-    public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
-    @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
-    private Integer characterId;
-
     public CharacterAffiliationResponse allianceId(Integer allianceId) {
+
         this.allianceId = allianceId;
         return this;
     }
@@ -57,6 +58,7 @@ public class CharacterAffiliationResponse implements Serializable {
      * 
      * @return allianceId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "The character's alliance ID, if their corporation is in an alliance")
     public Integer getAllianceId() {
         return allianceId;
@@ -66,7 +68,28 @@ public class CharacterAffiliationResponse implements Serializable {
         this.allianceId = allianceId;
     }
 
+    public CharacterAffiliationResponse characterId(Integer characterId) {
+
+        this.characterId = characterId;
+        return this;
+    }
+
+    /**
+     * The character&#39;s ID
+     * 
+     * @return characterId
+     **/
+    @ApiModelProperty(required = true, value = "The character's ID")
+    public Integer getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(Integer characterId) {
+        this.characterId = characterId;
+    }
+
     public CharacterAffiliationResponse corporationId(Integer corporationId) {
+
         this.corporationId = corporationId;
         return this;
     }
@@ -86,6 +109,7 @@ public class CharacterAffiliationResponse implements Serializable {
     }
 
     public CharacterAffiliationResponse factionId(Integer factionId) {
+
         this.factionId = factionId;
         return this;
     }
@@ -95,6 +119,7 @@ public class CharacterAffiliationResponse implements Serializable {
      * 
      * @return factionId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "The character's faction ID, if their corporation is in a faction")
     public Integer getFactionId() {
         return factionId;
@@ -102,25 +127,6 @@ public class CharacterAffiliationResponse implements Serializable {
 
     public void setFactionId(Integer factionId) {
         this.factionId = factionId;
-    }
-
-    public CharacterAffiliationResponse characterId(Integer characterId) {
-        this.characterId = characterId;
-        return this;
-    }
-
-    /**
-     * The character&#39;s ID
-     * 
-     * @return characterId
-     **/
-    @ApiModelProperty(required = true, value = "The character's ID")
-    public Integer getCharacterId() {
-        return characterId;
-    }
-
-    public void setCharacterId(Integer characterId) {
-        this.characterId = characterId;
     }
 
     @Override
@@ -133,14 +139,14 @@ public class CharacterAffiliationResponse implements Serializable {
         }
         CharacterAffiliationResponse characterAffiliationResponse = (CharacterAffiliationResponse) o;
         return Objects.equals(this.allianceId, characterAffiliationResponse.allianceId)
+                && Objects.equals(this.characterId, characterAffiliationResponse.characterId)
                 && Objects.equals(this.corporationId, characterAffiliationResponse.corporationId)
-                && Objects.equals(this.factionId, characterAffiliationResponse.factionId)
-                && Objects.equals(this.characterId, characterAffiliationResponse.characterId);
+                && Objects.equals(this.factionId, characterAffiliationResponse.factionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allianceId, corporationId, factionId, characterId);
+        return Objects.hash(allianceId, characterId, corporationId, factionId);
     }
 
     @Override
@@ -148,9 +154,9 @@ public class CharacterAffiliationResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterAffiliationResponse {\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
+        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("    corporationId: ").append(toIndentedString(corporationId)).append("\n");
         sb.append("    factionId: ").append(toIndentedString(factionId)).append("\n");
-        sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

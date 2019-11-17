@@ -31,34 +31,16 @@ import java.io.Serializable;
 public class StargateDestination implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
-    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
-    private Integer systemId;
-
     public static final String SERIALIZED_NAME_STARGATE_ID = "stargate_id";
     @SerializedName(SERIALIZED_NAME_STARGATE_ID)
     private Integer stargateId;
 
-    public StargateDestination systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The solar system this stargate connects to
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(required = true, value = "The solar system this stargate connects to")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
+    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
+    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    private Integer systemId;
 
     public StargateDestination stargateId(Integer stargateId) {
+
         this.stargateId = stargateId;
         return this;
     }
@@ -77,6 +59,26 @@ public class StargateDestination implements Serializable {
         this.stargateId = stargateId;
     }
 
+    public StargateDestination systemId(Integer systemId) {
+
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this stargate connects to
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(required = true, value = "The solar system this stargate connects to")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,21 +88,21 @@ public class StargateDestination implements Serializable {
             return false;
         }
         StargateDestination stargateDestination = (StargateDestination) o;
-        return Objects.equals(this.systemId, stargateDestination.systemId)
-                && Objects.equals(this.stargateId, stargateDestination.stargateId);
+        return Objects.equals(this.stargateId, stargateDestination.stargateId)
+                && Objects.equals(this.systemId, stargateDestination.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemId, stargateId);
+        return Objects.hash(stargateId, systemId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StargateDestination {\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    stargateId: ").append(toIndentedString(stargateId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

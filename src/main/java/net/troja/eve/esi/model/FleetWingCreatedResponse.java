@@ -36,6 +36,7 @@ public class FleetWingCreatedResponse implements Serializable {
     private Long wingId;
 
     public FleetWingCreatedResponse wingId(Long wingId) {
+
         this.wingId = wingId;
         return this;
     }

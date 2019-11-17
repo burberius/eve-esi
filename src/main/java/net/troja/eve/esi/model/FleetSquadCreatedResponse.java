@@ -36,6 +36,7 @@ public class FleetSquadCreatedResponse implements Serializable {
     private Long squadId;
 
     public FleetSquadCreatedResponse squadId(Long squadId) {
+
         this.squadId = squadId;
         return this;
     }

@@ -31,34 +31,16 @@ import java.io.Serializable;
 public class AllianceContactsLabelsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_LABEL_NAME = "label_name";
-    @SerializedName(SERIALIZED_NAME_LABEL_NAME)
-    private String labelName;
-
     public static final String SERIALIZED_NAME_LABEL_ID = "label_id";
     @SerializedName(SERIALIZED_NAME_LABEL_ID)
     private Long labelId;
 
-    public AllianceContactsLabelsResponse labelName(String labelName) {
-        this.labelName = labelName;
-        return this;
-    }
-
-    /**
-     * label_name string
-     * 
-     * @return labelName
-     **/
-    @ApiModelProperty(required = true, value = "label_name string")
-    public String getLabelName() {
-        return labelName;
-    }
-
-    public void setLabelName(String labelName) {
-        this.labelName = labelName;
-    }
+    public static final String SERIALIZED_NAME_LABEL_NAME = "label_name";
+    @SerializedName(SERIALIZED_NAME_LABEL_NAME)
+    private String labelName;
 
     public AllianceContactsLabelsResponse labelId(Long labelId) {
+
         this.labelId = labelId;
         return this;
     }
@@ -77,6 +59,26 @@ public class AllianceContactsLabelsResponse implements Serializable {
         this.labelId = labelId;
     }
 
+    public AllianceContactsLabelsResponse labelName(String labelName) {
+
+        this.labelName = labelName;
+        return this;
+    }
+
+    /**
+     * label_name string
+     * 
+     * @return labelName
+     **/
+    @ApiModelProperty(required = true, value = "label_name string")
+    public String getLabelName() {
+        return labelName;
+    }
+
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,21 +88,21 @@ public class AllianceContactsLabelsResponse implements Serializable {
             return false;
         }
         AllianceContactsLabelsResponse allianceContactsLabelsResponse = (AllianceContactsLabelsResponse) o;
-        return Objects.equals(this.labelName, allianceContactsLabelsResponse.labelName)
-                && Objects.equals(this.labelId, allianceContactsLabelsResponse.labelId);
+        return Objects.equals(this.labelId, allianceContactsLabelsResponse.labelId)
+                && Objects.equals(this.labelName, allianceContactsLabelsResponse.labelName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(labelName, labelId);
+        return Objects.hash(labelId, labelName);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class AllianceContactsLabelsResponse {\n");
-        sb.append("    labelName: ").append(toIndentedString(labelName)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
+        sb.append("    labelName: ").append(toIndentedString(labelName)).append("\n");
         sb.append("}");
         return sb.toString();
     }

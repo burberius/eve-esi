@@ -31,10 +31,6 @@ import java.io.Serializable;
 public class CharacterStatsPve implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_MISSIONS_SUCCEEDED = "missions_succeeded";
-    @SerializedName(SERIALIZED_NAME_MISSIONS_SUCCEEDED)
-    private Long missionsSucceeded;
-
     public static final String SERIALIZED_NAME_DUNGEONS_COMPLETED_AGENT = "dungeons_completed_agent";
     @SerializedName(SERIALIZED_NAME_DUNGEONS_COMPLETED_AGENT)
     private Long dungeonsCompletedAgent;
@@ -43,30 +39,16 @@ public class CharacterStatsPve implements Serializable {
     @SerializedName(SERIALIZED_NAME_DUNGEONS_COMPLETED_DISTRIBUTION)
     private Long dungeonsCompletedDistribution;
 
+    public static final String SERIALIZED_NAME_MISSIONS_SUCCEEDED = "missions_succeeded";
+    @SerializedName(SERIALIZED_NAME_MISSIONS_SUCCEEDED)
+    private Long missionsSucceeded;
+
     public static final String SERIALIZED_NAME_MISSIONS_SUCCEEDED_EPIC_ARC = "missions_succeeded_epic_arc";
     @SerializedName(SERIALIZED_NAME_MISSIONS_SUCCEEDED_EPIC_ARC)
     private Long missionsSucceededEpicArc;
 
-    public CharacterStatsPve missionsSucceeded(Long missionsSucceeded) {
-        this.missionsSucceeded = missionsSucceeded;
-        return this;
-    }
-
-    /**
-     * missions_succeeded integer
-     * 
-     * @return missionsSucceeded
-     **/
-    @ApiModelProperty(value = "missions_succeeded integer")
-    public Long getMissionsSucceeded() {
-        return missionsSucceeded;
-    }
-
-    public void setMissionsSucceeded(Long missionsSucceeded) {
-        this.missionsSucceeded = missionsSucceeded;
-    }
-
     public CharacterStatsPve dungeonsCompletedAgent(Long dungeonsCompletedAgent) {
+
         this.dungeonsCompletedAgent = dungeonsCompletedAgent;
         return this;
     }
@@ -76,6 +58,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return dungeonsCompletedAgent
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "dungeons_completed_agent integer")
     public Long getDungeonsCompletedAgent() {
         return dungeonsCompletedAgent;
@@ -86,6 +69,7 @@ public class CharacterStatsPve implements Serializable {
     }
 
     public CharacterStatsPve dungeonsCompletedDistribution(Long dungeonsCompletedDistribution) {
+
         this.dungeonsCompletedDistribution = dungeonsCompletedDistribution;
         return this;
     }
@@ -95,6 +79,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return dungeonsCompletedDistribution
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "dungeons_completed_distribution integer")
     public Long getDungeonsCompletedDistribution() {
         return dungeonsCompletedDistribution;
@@ -104,7 +89,29 @@ public class CharacterStatsPve implements Serializable {
         this.dungeonsCompletedDistribution = dungeonsCompletedDistribution;
     }
 
+    public CharacterStatsPve missionsSucceeded(Long missionsSucceeded) {
+
+        this.missionsSucceeded = missionsSucceeded;
+        return this;
+    }
+
+    /**
+     * missions_succeeded integer
+     * 
+     * @return missionsSucceeded
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "missions_succeeded integer")
+    public Long getMissionsSucceeded() {
+        return missionsSucceeded;
+    }
+
+    public void setMissionsSucceeded(Long missionsSucceeded) {
+        this.missionsSucceeded = missionsSucceeded;
+    }
+
     public CharacterStatsPve missionsSucceededEpicArc(Long missionsSucceededEpicArc) {
+
         this.missionsSucceededEpicArc = missionsSucceededEpicArc;
         return this;
     }
@@ -114,6 +121,7 @@ public class CharacterStatsPve implements Serializable {
      * 
      * @return missionsSucceededEpicArc
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "missions_succeeded_epic_arc integer")
     public Long getMissionsSucceededEpicArc() {
         return missionsSucceededEpicArc;
@@ -132,15 +140,15 @@ public class CharacterStatsPve implements Serializable {
             return false;
         }
         CharacterStatsPve characterStatsPve = (CharacterStatsPve) o;
-        return Objects.equals(this.missionsSucceeded, characterStatsPve.missionsSucceeded)
-                && Objects.equals(this.dungeonsCompletedAgent, characterStatsPve.dungeonsCompletedAgent)
+        return Objects.equals(this.dungeonsCompletedAgent, characterStatsPve.dungeonsCompletedAgent)
                 && Objects.equals(this.dungeonsCompletedDistribution, characterStatsPve.dungeonsCompletedDistribution)
+                && Objects.equals(this.missionsSucceeded, characterStatsPve.missionsSucceeded)
                 && Objects.equals(this.missionsSucceededEpicArc, characterStatsPve.missionsSucceededEpicArc);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(missionsSucceeded, dungeonsCompletedAgent, dungeonsCompletedDistribution,
+        return Objects.hash(dungeonsCompletedAgent, dungeonsCompletedDistribution, missionsSucceeded,
                 missionsSucceededEpicArc);
     }
 
@@ -148,10 +156,10 @@ public class CharacterStatsPve implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsPve {\n");
-        sb.append("    missionsSucceeded: ").append(toIndentedString(missionsSucceeded)).append("\n");
         sb.append("    dungeonsCompletedAgent: ").append(toIndentedString(dungeonsCompletedAgent)).append("\n");
         sb.append("    dungeonsCompletedDistribution: ").append(toIndentedString(dungeonsCompletedDistribution))
                 .append("\n");
+        sb.append("    missionsSucceeded: ").append(toIndentedString(missionsSucceeded)).append("\n");
         sb.append("    missionsSucceededEpicArc: ").append(toIndentedString(missionsSucceededEpicArc)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -87,6 +87,7 @@ public class CloneHomeLocation implements Serializable {
     private LocationTypeEnum locationType;
 
     public CloneHomeLocation locationId(Long locationId) {
+
         this.locationId = locationId;
         return this;
     }
@@ -96,6 +97,7 @@ public class CloneHomeLocation implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "location_id integer")
     public Long getLocationId() {
         return locationId;
@@ -106,6 +108,7 @@ public class CloneHomeLocation implements Serializable {
     }
 
     public CloneHomeLocation locationType(LocationTypeEnum locationType) {
+
         this.locationType = locationType;
         return this;
     }
@@ -115,6 +118,7 @@ public class CloneHomeLocation implements Serializable {
      * 
      * @return locationType
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "location_type string")
     public LocationTypeEnum getLocationType() {
         return locationType;

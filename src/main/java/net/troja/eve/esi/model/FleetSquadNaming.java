@@ -36,6 +36,7 @@ public class FleetSquadNaming implements Serializable {
     private String name;
 
     public FleetSquadNaming name(String name) {
+
         this.name = name;
         return this;
     }

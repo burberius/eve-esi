@@ -33,19 +33,78 @@ import java.io.Serializable;
 public class SystemPlanet implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_ASTEROID_BELTS = "asteroid_belts";
+    @SerializedName(SERIALIZED_NAME_ASTEROID_BELTS)
+    private List<Integer> asteroidBelts = null;
+
+    public static final String SERIALIZED_NAME_MOONS = "moons";
+    @SerializedName(SERIALIZED_NAME_MOONS)
+    private List<Integer> moons = null;
+
     public static final String SERIALIZED_NAME_PLANET_ID = "planet_id";
     @SerializedName(SERIALIZED_NAME_PLANET_ID)
     private Integer planetId;
 
-    public static final String SERIALIZED_NAME_MOONS = "moons";
-    @SerializedName(SERIALIZED_NAME_MOONS)
-    private List<Integer> moons = new ArrayList<>();
+    public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
 
-    public static final String SERIALIZED_NAME_ASTEROID_BELTS = "asteroid_belts";
-    @SerializedName(SERIALIZED_NAME_ASTEROID_BELTS)
-    private List<Integer> asteroidBelts = new ArrayList<>();
+        this.asteroidBelts = asteroidBelts;
+        return this;
+    }
+
+    public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
+        if (this.asteroidBelts == null) {
+            this.asteroidBelts = new ArrayList<>();
+        }
+        this.asteroidBelts.add(asteroidBeltsItem);
+        return this;
+    }
+
+    /**
+     * asteroid_belts array
+     * 
+     * @return asteroidBelts
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "asteroid_belts array")
+    public List<Integer> getAsteroidBelts() {
+        return asteroidBelts;
+    }
+
+    public void setAsteroidBelts(List<Integer> asteroidBelts) {
+        this.asteroidBelts = asteroidBelts;
+    }
+
+    public SystemPlanet moons(List<Integer> moons) {
+
+        this.moons = moons;
+        return this;
+    }
+
+    public SystemPlanet addMoonsItem(Integer moonsItem) {
+        if (this.moons == null) {
+            this.moons = new ArrayList<>();
+        }
+        this.moons.add(moonsItem);
+        return this;
+    }
+
+    /**
+     * moons array
+     * 
+     * @return moons
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "moons array")
+    public List<Integer> getMoons() {
+        return moons;
+    }
+
+    public void setMoons(List<Integer> moons) {
+        this.moons = moons;
+    }
 
     public SystemPlanet planetId(Integer planetId) {
+
         this.planetId = planetId;
         return this;
     }
@@ -64,60 +123,6 @@ public class SystemPlanet implements Serializable {
         this.planetId = planetId;
     }
 
-    public SystemPlanet moons(List<Integer> moons) {
-        this.moons = moons;
-        return this;
-    }
-
-    public SystemPlanet addMoonsItem(Integer moonsItem) {
-        if (this.moons == null) {
-            this.moons = new ArrayList<>();
-        }
-        this.moons.add(moonsItem);
-        return this;
-    }
-
-    /**
-     * moons array
-     * 
-     * @return moons
-     **/
-    @ApiModelProperty(value = "moons array")
-    public List<Integer> getMoons() {
-        return moons;
-    }
-
-    public void setMoons(List<Integer> moons) {
-        this.moons = moons;
-    }
-
-    public SystemPlanet asteroidBelts(List<Integer> asteroidBelts) {
-        this.asteroidBelts = asteroidBelts;
-        return this;
-    }
-
-    public SystemPlanet addAsteroidBeltsItem(Integer asteroidBeltsItem) {
-        if (this.asteroidBelts == null) {
-            this.asteroidBelts = new ArrayList<>();
-        }
-        this.asteroidBelts.add(asteroidBeltsItem);
-        return this;
-    }
-
-    /**
-     * asteroid_belts array
-     * 
-     * @return asteroidBelts
-     **/
-    @ApiModelProperty(value = "asteroid_belts array")
-    public List<Integer> getAsteroidBelts() {
-        return asteroidBelts;
-    }
-
-    public void setAsteroidBelts(List<Integer> asteroidBelts) {
-        this.asteroidBelts = asteroidBelts;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,22 +132,23 @@ public class SystemPlanet implements Serializable {
             return false;
         }
         SystemPlanet systemPlanet = (SystemPlanet) o;
-        return Objects.equals(this.planetId, systemPlanet.planetId) && Objects.equals(this.moons, systemPlanet.moons)
-                && Objects.equals(this.asteroidBelts, systemPlanet.asteroidBelts);
+        return Objects.equals(this.asteroidBelts, systemPlanet.asteroidBelts)
+                && Objects.equals(this.moons, systemPlanet.moons)
+                && Objects.equals(this.planetId, systemPlanet.planetId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(planetId, moons, asteroidBelts);
+        return Objects.hash(asteroidBelts, moons, planetId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SystemPlanet {\n");
-        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
-        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
         sb.append("    asteroidBelts: ").append(toIndentedString(asteroidBelts)).append("\n");
+        sb.append("    moons: ").append(toIndentedString(moons)).append("\n");
+        sb.append("    planetId: ").append(toIndentedString(planetId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

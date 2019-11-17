@@ -173,6 +173,7 @@ public class FittingItem implements Serializable {
     private Integer typeId;
 
     public FittingItem flag(FlagEnum flag) {
+
         this.flag = flag;
         return this;
     }
@@ -192,6 +193,7 @@ public class FittingItem implements Serializable {
     }
 
     public FittingItem quantity(Integer quantity) {
+
         this.quantity = quantity;
         return this;
     }
@@ -211,6 +213,7 @@ public class FittingItem implements Serializable {
     }
 
     public FittingItem typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }

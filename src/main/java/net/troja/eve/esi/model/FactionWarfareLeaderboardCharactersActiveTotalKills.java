@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
     private Integer characterId;
 
     public FactionWarfareLeaderboardCharactersActiveTotalKills amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of kills")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
     }
 
     public FactionWarfareLeaderboardCharactersActiveTotalKills characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardCharactersActiveTotalKills implements Seri
      * 
      * @return characterId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;

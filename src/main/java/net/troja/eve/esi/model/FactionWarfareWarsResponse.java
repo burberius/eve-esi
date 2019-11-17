@@ -40,6 +40,7 @@ public class FactionWarfareWarsResponse implements Serializable {
     private Integer factionId;
 
     public FactionWarfareWarsResponse againstId(Integer againstId) {
+
         this.againstId = againstId;
         return this;
     }
@@ -59,6 +60,7 @@ public class FactionWarfareWarsResponse implements Serializable {
     }
 
     public FactionWarfareWarsResponse factionId(Integer factionId) {
+
         this.factionId = factionId;
         return this;
     }

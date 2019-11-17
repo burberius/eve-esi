@@ -31,57 +31,20 @@ import java.io.Serializable;
 public class FactionWarfareStatsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
-    @SerializedName(SERIALIZED_NAME_YESTERDAY)
-    private Integer yesterday;
+    public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
+    @SerializedName(SERIALIZED_NAME_LAST_WEEK)
+    private Integer lastWeek;
 
     public static final String SERIALIZED_NAME_TOTAL = "total";
     @SerializedName(SERIALIZED_NAME_TOTAL)
     private Integer total;
 
-    public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
-    @SerializedName(SERIALIZED_NAME_LAST_WEEK)
-    private Integer lastWeek;
-
-    public FactionWarfareStatsVictoryPoints yesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-        return this;
-    }
-
-    /**
-     * Yesterday&#39;s victory points gained
-     * 
-     * @return yesterday
-     **/
-    @ApiModelProperty(required = true, value = "Yesterday's victory points gained")
-    public Integer getYesterday() {
-        return yesterday;
-    }
-
-    public void setYesterday(Integer yesterday) {
-        this.yesterday = yesterday;
-    }
-
-    public FactionWarfareStatsVictoryPoints total(Integer total) {
-        this.total = total;
-        return this;
-    }
-
-    /**
-     * Total victory points gained since faction warfare began
-     * 
-     * @return total
-     **/
-    @ApiModelProperty(required = true, value = "Total victory points gained since faction warfare began")
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
+    public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
+    @SerializedName(SERIALIZED_NAME_YESTERDAY)
+    private Integer yesterday;
 
     public FactionWarfareStatsVictoryPoints lastWeek(Integer lastWeek) {
+
         this.lastWeek = lastWeek;
         return this;
     }
@@ -100,6 +63,46 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
         this.lastWeek = lastWeek;
     }
 
+    public FactionWarfareStatsVictoryPoints total(Integer total) {
+
+        this.total = total;
+        return this;
+    }
+
+    /**
+     * Total victory points gained since faction warfare began
+     * 
+     * @return total
+     **/
+    @ApiModelProperty(required = true, value = "Total victory points gained since faction warfare began")
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public FactionWarfareStatsVictoryPoints yesterday(Integer yesterday) {
+
+        this.yesterday = yesterday;
+        return this;
+    }
+
+    /**
+     * Yesterday&#39;s victory points gained
+     * 
+     * @return yesterday
+     **/
+    @ApiModelProperty(required = true, value = "Yesterday's victory points gained")
+    public Integer getYesterday() {
+        return yesterday;
+    }
+
+    public void setYesterday(Integer yesterday) {
+        this.yesterday = yesterday;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -109,23 +112,23 @@ public class FactionWarfareStatsVictoryPoints implements Serializable {
             return false;
         }
         FactionWarfareStatsVictoryPoints factionWarfareStatsVictoryPoints = (FactionWarfareStatsVictoryPoints) o;
-        return Objects.equals(this.yesterday, factionWarfareStatsVictoryPoints.yesterday)
+        return Objects.equals(this.lastWeek, factionWarfareStatsVictoryPoints.lastWeek)
                 && Objects.equals(this.total, factionWarfareStatsVictoryPoints.total)
-                && Objects.equals(this.lastWeek, factionWarfareStatsVictoryPoints.lastWeek);
+                && Objects.equals(this.yesterday, factionWarfareStatsVictoryPoints.yesterday);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(yesterday, total, lastWeek);
+        return Objects.hash(lastWeek, total, yesterday);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class FactionWarfareStatsVictoryPoints {\n");
-        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
-        sb.append("    total: ").append(toIndentedString(total)).append("\n");
         sb.append("    lastWeek: ").append(toIndentedString(lastWeek)).append("\n");
+        sb.append("    total: ").append(toIndentedString(total)).append("\n");
+        sb.append("    yesterday: ").append(toIndentedString(yesterday)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -31,29 +31,33 @@ import java.io.Serializable;
 public class PublicContractsItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_IS_INCLUDED = "is_included";
-    @SerializedName(SERIALIZED_NAME_IS_INCLUDED)
-    private Boolean isIncluded;
-
     public static final String SERIALIZED_NAME_IS_BLUEPRINT_COPY = "is_blueprint_copy";
     @SerializedName(SERIALIZED_NAME_IS_BLUEPRINT_COPY)
     private Boolean isBlueprintCopy;
 
-    public static final String SERIALIZED_NAME_RECORD_ID = "record_id";
-    @SerializedName(SERIALIZED_NAME_RECORD_ID)
-    private Long recordId;
+    public static final String SERIALIZED_NAME_IS_INCLUDED = "is_included";
+    @SerializedName(SERIALIZED_NAME_IS_INCLUDED)
+    private Boolean isIncluded;
 
-    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-    @SerializedName(SERIALIZED_NAME_QUANTITY)
-    private Integer quantity;
+    public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
+    @SerializedName(SERIALIZED_NAME_ITEM_ID)
+    private Long itemId;
 
     public static final String SERIALIZED_NAME_MATERIAL_EFFICIENCY = "material_efficiency";
     @SerializedName(SERIALIZED_NAME_MATERIAL_EFFICIENCY)
     private Integer materialEfficiency;
 
-    public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
-    @SerializedName(SERIALIZED_NAME_ITEM_ID)
-    private Long itemId;
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_RECORD_ID = "record_id";
+    @SerializedName(SERIALIZED_NAME_RECORD_ID)
+    private Long recordId;
+
+    public static final String SERIALIZED_NAME_RUNS = "runs";
+    @SerializedName(SERIALIZED_NAME_RUNS)
+    private Integer runs;
 
     public static final String SERIALIZED_NAME_TIME_EFFICIENCY = "time_efficiency";
     @SerializedName(SERIALIZED_NAME_TIME_EFFICIENCY)
@@ -63,11 +67,29 @@ public class PublicContractsItemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public static final String SERIALIZED_NAME_RUNS = "runs";
-    @SerializedName(SERIALIZED_NAME_RUNS)
-    private Integer runs;
+    public PublicContractsItemsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
+
+        this.isBlueprintCopy = isBlueprintCopy;
+        return this;
+    }
+
+    /**
+     * is_blueprint_copy boolean
+     * 
+     * @return isBlueprintCopy
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "is_blueprint_copy boolean")
+    public Boolean getIsBlueprintCopy() {
+        return isBlueprintCopy;
+    }
+
+    public void setIsBlueprintCopy(Boolean isBlueprintCopy) {
+        this.isBlueprintCopy = isBlueprintCopy;
+    }
 
     public PublicContractsItemsResponse isIncluded(Boolean isIncluded) {
+
         this.isIncluded = isIncluded;
         return this;
     }
@@ -87,45 +109,51 @@ public class PublicContractsItemsResponse implements Serializable {
         this.isIncluded = isIncluded;
     }
 
-    public PublicContractsItemsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
-        this.isBlueprintCopy = isBlueprintCopy;
+    public PublicContractsItemsResponse itemId(Long itemId) {
+
+        this.itemId = itemId;
         return this;
     }
 
     /**
-     * is_blueprint_copy boolean
+     * Unique ID for the item being sold. Not present if item is being requested
+     * by contract rather than sold with contract
      * 
-     * @return isBlueprintCopy
+     * @return itemId
      **/
-    @ApiModelProperty(value = "is_blueprint_copy boolean")
-    public Boolean getIsBlueprintCopy() {
-        return isBlueprintCopy;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract")
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setIsBlueprintCopy(Boolean isBlueprintCopy) {
-        this.isBlueprintCopy = isBlueprintCopy;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
-    public PublicContractsItemsResponse recordId(Long recordId) {
-        this.recordId = recordId;
+    public PublicContractsItemsResponse materialEfficiency(Integer materialEfficiency) {
+
+        this.materialEfficiency = materialEfficiency;
         return this;
     }
 
     /**
-     * Unique ID for the item, used by the contract system
+     * Material Efficiency Level of the blueprint minimum: 0 maximum: 25
      * 
-     * @return recordId
+     * @return materialEfficiency
      **/
-    @ApiModelProperty(required = true, value = "Unique ID for the item, used by the contract system")
-    public Long getRecordId() {
-        return recordId;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Material Efficiency Level of the blueprint")
+    public Integer getMaterialEfficiency() {
+        return materialEfficiency;
     }
 
-    public void setRecordId(Long recordId) {
-        this.recordId = recordId;
+    public void setMaterialEfficiency(Integer materialEfficiency) {
+        this.materialEfficiency = materialEfficiency;
     }
 
     public PublicContractsItemsResponse quantity(Integer quantity) {
+
         this.quantity = quantity;
         return this;
     }
@@ -144,46 +172,50 @@ public class PublicContractsItemsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public PublicContractsItemsResponse materialEfficiency(Integer materialEfficiency) {
-        this.materialEfficiency = materialEfficiency;
+    public PublicContractsItemsResponse recordId(Long recordId) {
+
+        this.recordId = recordId;
         return this;
     }
 
     /**
-     * Material Efficiency Level of the blueprint minimum: 0 maximum: 25
+     * Unique ID for the item, used by the contract system
      * 
-     * @return materialEfficiency
+     * @return recordId
      **/
-    @ApiModelProperty(value = "Material Efficiency Level of the blueprint")
-    public Integer getMaterialEfficiency() {
-        return materialEfficiency;
+    @ApiModelProperty(required = true, value = "Unique ID for the item, used by the contract system")
+    public Long getRecordId() {
+        return recordId;
     }
 
-    public void setMaterialEfficiency(Integer materialEfficiency) {
-        this.materialEfficiency = materialEfficiency;
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
     }
 
-    public PublicContractsItemsResponse itemId(Long itemId) {
-        this.itemId = itemId;
+    public PublicContractsItemsResponse runs(Integer runs) {
+
+        this.runs = runs;
         return this;
     }
 
     /**
-     * Unique ID for the item being sold. Not present if item is being requested
-     * by contract rather than sold with contract
+     * Number of runs remaining if the blueprint is a copy, -1 if it is an
+     * original minimum: -1
      * 
-     * @return itemId
+     * @return runs
      **/
-    @ApiModelProperty(value = "Unique ID for the item being sold. Not present if item is being requested by contract rather than sold with contract")
-    public Long getItemId() {
-        return itemId;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original")
+    public Integer getRuns() {
+        return runs;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
+    public void setRuns(Integer runs) {
+        this.runs = runs;
     }
 
     public PublicContractsItemsResponse timeEfficiency(Integer timeEfficiency) {
+
         this.timeEfficiency = timeEfficiency;
         return this;
     }
@@ -193,6 +225,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return timeEfficiency
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Time Efficiency Level of the blueprint")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
@@ -203,6 +236,7 @@ public class PublicContractsItemsResponse implements Serializable {
     }
 
     public PublicContractsItemsResponse typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }
@@ -221,26 +255,6 @@ public class PublicContractsItemsResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public PublicContractsItemsResponse runs(Integer runs) {
-        this.runs = runs;
-        return this;
-    }
-
-    /**
-     * Number of runs remaining if the blueprint is a copy, -1 if it is an
-     * original minimum: -1
-     * 
-     * @return runs
-     **/
-    @ApiModelProperty(value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original")
-    public Integer getRuns() {
-        return runs;
-    }
-
-    public void setRuns(Integer runs) {
-        this.runs = runs;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -250,36 +264,36 @@ public class PublicContractsItemsResponse implements Serializable {
             return false;
         }
         PublicContractsItemsResponse publicContractsItemsResponse = (PublicContractsItemsResponse) o;
-        return Objects.equals(this.isIncluded, publicContractsItemsResponse.isIncluded)
-                && Objects.equals(this.isBlueprintCopy, publicContractsItemsResponse.isBlueprintCopy)
-                && Objects.equals(this.recordId, publicContractsItemsResponse.recordId)
-                && Objects.equals(this.quantity, publicContractsItemsResponse.quantity)
-                && Objects.equals(this.materialEfficiency, publicContractsItemsResponse.materialEfficiency)
+        return Objects.equals(this.isBlueprintCopy, publicContractsItemsResponse.isBlueprintCopy)
+                && Objects.equals(this.isIncluded, publicContractsItemsResponse.isIncluded)
                 && Objects.equals(this.itemId, publicContractsItemsResponse.itemId)
+                && Objects.equals(this.materialEfficiency, publicContractsItemsResponse.materialEfficiency)
+                && Objects.equals(this.quantity, publicContractsItemsResponse.quantity)
+                && Objects.equals(this.recordId, publicContractsItemsResponse.recordId)
+                && Objects.equals(this.runs, publicContractsItemsResponse.runs)
                 && Objects.equals(this.timeEfficiency, publicContractsItemsResponse.timeEfficiency)
-                && Objects.equals(this.typeId, publicContractsItemsResponse.typeId)
-                && Objects.equals(this.runs, publicContractsItemsResponse.runs);
+                && Objects.equals(this.typeId, publicContractsItemsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isIncluded, isBlueprintCopy, recordId, quantity, materialEfficiency, itemId,
-                timeEfficiency, typeId, runs);
+        return Objects.hash(isBlueprintCopy, isIncluded, itemId, materialEfficiency, quantity, recordId, runs,
+                timeEfficiency, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PublicContractsItemsResponse {\n");
-        sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("    isBlueprintCopy: ").append(toIndentedString(isBlueprintCopy)).append("\n");
-        sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
+        sb.append("    isIncluded: ").append(toIndentedString(isIncluded)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
+        sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    recordId: ").append(toIndentedString(recordId)).append("\n");
+        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
         sb.append("    timeEfficiency: ").append(toIndentedString(timeEfficiency)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
         sb.append("}");
         return sb.toString();
     }

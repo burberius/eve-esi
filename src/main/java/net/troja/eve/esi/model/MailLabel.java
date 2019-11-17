@@ -31,10 +31,6 @@ import java.io.Serializable;
 public class MailLabel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_UNREAD_COUNT = "unread_count";
-    @SerializedName(SERIALIZED_NAME_UNREAD_COUNT)
-    private Integer unreadCount;
-
     /**
      * color string
      */
@@ -118,34 +114,20 @@ public class MailLabel implements Serializable {
     @SerializedName(SERIALIZED_NAME_COLOR)
     private ColorEnum color = ColorEnum.FFFFFF;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_LABEL_ID = "label_id";
     @SerializedName(SERIALIZED_NAME_LABEL_ID)
     private Integer labelId;
 
-    public MailLabel unreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    /**
-     * unread_count integer minimum: 0
-     * 
-     * @return unreadCount
-     **/
-    @ApiModelProperty(value = "unread_count integer")
-    public Integer getUnreadCount() {
-        return unreadCount;
-    }
-
-    public void setUnreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
-    }
+    public static final String SERIALIZED_NAME_UNREAD_COUNT = "unread_count";
+    @SerializedName(SERIALIZED_NAME_UNREAD_COUNT)
+    private Integer unreadCount;
 
     public MailLabel color(ColorEnum color) {
+
         this.color = color;
         return this;
     }
@@ -155,6 +137,7 @@ public class MailLabel implements Serializable {
      * 
      * @return color
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "color string")
     public ColorEnum getColor() {
         return color;
@@ -164,26 +147,8 @@ public class MailLabel implements Serializable {
         this.color = color;
     }
 
-    public MailLabel name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public MailLabel labelId(Integer labelId) {
+
         this.labelId = labelId;
         return this;
     }
@@ -193,6 +158,7 @@ public class MailLabel implements Serializable {
      * 
      * @return labelId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "label_id integer")
     public Integer getLabelId() {
         return labelId;
@@ -200,6 +166,48 @@ public class MailLabel implements Serializable {
 
     public void setLabelId(Integer labelId) {
         this.labelId = labelId;
+    }
+
+    public MailLabel name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public MailLabel unreadCount(Integer unreadCount) {
+
+        this.unreadCount = unreadCount;
+        return this;
+    }
+
+    /**
+     * unread_count integer minimum: 0
+     * 
+     * @return unreadCount
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "unread_count integer")
+    public Integer getUnreadCount() {
+        return unreadCount;
+    }
+
+    public void setUnreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
     }
 
     @Override
@@ -211,23 +219,23 @@ public class MailLabel implements Serializable {
             return false;
         }
         MailLabel mailLabel = (MailLabel) o;
-        return Objects.equals(this.unreadCount, mailLabel.unreadCount) && Objects.equals(this.color, mailLabel.color)
-                && Objects.equals(this.name, mailLabel.name) && Objects.equals(this.labelId, mailLabel.labelId);
+        return Objects.equals(this.color, mailLabel.color) && Objects.equals(this.labelId, mailLabel.labelId)
+                && Objects.equals(this.name, mailLabel.name) && Objects.equals(this.unreadCount, mailLabel.unreadCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(unreadCount, color, name, labelId);
+        return Objects.hash(color, labelId, name, unreadCount);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MailLabel {\n");
-        sb.append("    unreadCount: ").append(toIndentedString(unreadCount)).append("\n");
         sb.append("    color: ").append(toIndentedString(color)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    labelId: ").append(toIndentedString(labelId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    unreadCount: ").append(toIndentedString(unreadCount)).append("\n");
         sb.append("}");
         return sb.toString();
     }

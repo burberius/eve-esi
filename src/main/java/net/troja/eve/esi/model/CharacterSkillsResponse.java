@@ -38,15 +38,16 @@ public class CharacterSkillsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SKILLS)
     private List<Skill> skills = new ArrayList<>();
 
-    public static final String SERIALIZED_NAME_UNALLOCATED_SP = "unallocated_sp";
-    @SerializedName(SERIALIZED_NAME_UNALLOCATED_SP)
-    private Integer unallocatedSp;
-
     public static final String SERIALIZED_NAME_TOTAL_SP = "total_sp";
     @SerializedName(SERIALIZED_NAME_TOTAL_SP)
     private Long totalSp;
 
+    public static final String SERIALIZED_NAME_UNALLOCATED_SP = "unallocated_sp";
+    @SerializedName(SERIALIZED_NAME_UNALLOCATED_SP)
+    private Integer unallocatedSp;
+
     public CharacterSkillsResponse skills(List<Skill> skills) {
+
         this.skills = skills;
         return this;
     }
@@ -70,26 +71,8 @@ public class CharacterSkillsResponse implements Serializable {
         this.skills = skills;
     }
 
-    public CharacterSkillsResponse unallocatedSp(Integer unallocatedSp) {
-        this.unallocatedSp = unallocatedSp;
-        return this;
-    }
-
-    /**
-     * Skill points available to be assigned
-     * 
-     * @return unallocatedSp
-     **/
-    @ApiModelProperty(value = "Skill points available to be assigned")
-    public Integer getUnallocatedSp() {
-        return unallocatedSp;
-    }
-
-    public void setUnallocatedSp(Integer unallocatedSp) {
-        this.unallocatedSp = unallocatedSp;
-    }
-
     public CharacterSkillsResponse totalSp(Long totalSp) {
+
         this.totalSp = totalSp;
         return this;
     }
@@ -108,6 +91,27 @@ public class CharacterSkillsResponse implements Serializable {
         this.totalSp = totalSp;
     }
 
+    public CharacterSkillsResponse unallocatedSp(Integer unallocatedSp) {
+
+        this.unallocatedSp = unallocatedSp;
+        return this;
+    }
+
+    /**
+     * Skill points available to be assigned
+     * 
+     * @return unallocatedSp
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Skill points available to be assigned")
+    public Integer getUnallocatedSp() {
+        return unallocatedSp;
+    }
+
+    public void setUnallocatedSp(Integer unallocatedSp) {
+        this.unallocatedSp = unallocatedSp;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,13 +122,13 @@ public class CharacterSkillsResponse implements Serializable {
         }
         CharacterSkillsResponse characterSkillsResponse = (CharacterSkillsResponse) o;
         return Objects.equals(this.skills, characterSkillsResponse.skills)
-                && Objects.equals(this.unallocatedSp, characterSkillsResponse.unallocatedSp)
-                && Objects.equals(this.totalSp, characterSkillsResponse.totalSp);
+                && Objects.equals(this.totalSp, characterSkillsResponse.totalSp)
+                && Objects.equals(this.unallocatedSp, characterSkillsResponse.unallocatedSp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skills, unallocatedSp, totalSp);
+        return Objects.hash(skills, totalSp, unallocatedSp);
     }
 
     @Override
@@ -132,8 +136,8 @@ public class CharacterSkillsResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterSkillsResponse {\n");
         sb.append("    skills: ").append(toIndentedString(skills)).append("\n");
-        sb.append("    unallocatedSp: ").append(toIndentedString(unallocatedSp)).append("\n");
         sb.append("    totalSp: ").append(toIndentedString(totalSp)).append("\n");
+        sb.append("    unallocatedSp: ").append(toIndentedString(unallocatedSp)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -40,6 +40,7 @@ public class WarAlly implements Serializable {
     private Integer corporationId;
 
     public WarAlly allianceId(Integer allianceId) {
+
         this.allianceId = allianceId;
         return this;
     }
@@ -49,6 +50,7 @@ public class WarAlly implements Serializable {
      * 
      * @return allianceId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Alliance ID if and only if this ally is an alliance")
     public Integer getAllianceId() {
         return allianceId;
@@ -59,6 +61,7 @@ public class WarAlly implements Serializable {
     }
 
     public WarAlly corporationId(Integer corporationId) {
+
         this.corporationId = corporationId;
         return this;
     }
@@ -68,6 +71,7 @@ public class WarAlly implements Serializable {
      * 
      * @return corporationId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Corporation ID if and only if this ally is a corporation")
     public Integer getCorporationId() {
         return corporationId;

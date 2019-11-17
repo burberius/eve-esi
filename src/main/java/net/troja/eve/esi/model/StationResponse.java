@@ -34,34 +34,6 @@ import java.io.Serializable;
 public class StationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_OWNER = "owner";
-    @SerializedName(SERIALIZED_NAME_OWNER)
-    private Integer owner;
-
-    public static final String SERIALIZED_NAME_REPROCESSING_EFFICIENCY = "reprocessing_efficiency";
-    @SerializedName(SERIALIZED_NAME_REPROCESSING_EFFICIENCY)
-    private Float reprocessingEfficiency;
-
-    public static final String SERIALIZED_NAME_OFFICE_RENTAL_COST = "office_rental_cost";
-    @SerializedName(SERIALIZED_NAME_OFFICE_RENTAL_COST)
-    private Float officeRentalCost;
-
-    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
-    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
-    private Integer systemId;
-
-    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
-    @SerializedName(SERIALIZED_NAME_TYPE_ID)
-    private Integer typeId;
-
-    public static final String SERIALIZED_NAME_RACE_ID = "race_id";
-    @SerializedName(SERIALIZED_NAME_RACE_ID)
-    private Integer raceId;
-
-    public static final String SERIALIZED_NAME_STATION_ID = "station_id";
-    @SerializedName(SERIALIZED_NAME_STATION_ID)
-    private Integer stationId;
-
     public static final String SERIALIZED_NAME_MAX_DOCKABLE_SHIP_VOLUME = "max_dockable_ship_volume";
     @SerializedName(SERIALIZED_NAME_MAX_DOCKABLE_SHIP_VOLUME)
     private Float maxDockableShipVolume;
@@ -70,9 +42,29 @@ public class StationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
+    public static final String SERIALIZED_NAME_OFFICE_RENTAL_COST = "office_rental_cost";
+    @SerializedName(SERIALIZED_NAME_OFFICE_RENTAL_COST)
+    private Float officeRentalCost;
+
+    public static final String SERIALIZED_NAME_OWNER = "owner";
+    @SerializedName(SERIALIZED_NAME_OWNER)
+    private Integer owner;
+
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
-    private Position position = null;
+    private Position position;
+
+    public static final String SERIALIZED_NAME_RACE_ID = "race_id";
+    @SerializedName(SERIALIZED_NAME_RACE_ID)
+    private Integer raceId;
+
+    public static final String SERIALIZED_NAME_REPROCESSING_EFFICIENCY = "reprocessing_efficiency";
+    @SerializedName(SERIALIZED_NAME_REPROCESSING_EFFICIENCY)
+    private Float reprocessingEfficiency;
+
+    public static final String SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE = "reprocessing_stations_take";
+    @SerializedName(SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE)
+    private Float reprocessingStationsTake;
 
     /**
      * service string
@@ -175,144 +167,20 @@ public class StationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SERVICES)
     private List<ServicesEnum> services = new ArrayList<>();
 
-    public static final String SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE = "reprocessing_stations_take";
-    @SerializedName(SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE)
-    private Float reprocessingStationsTake;
+    public static final String SERIALIZED_NAME_STATION_ID = "station_id";
+    @SerializedName(SERIALIZED_NAME_STATION_ID)
+    private Integer stationId;
 
-    public StationResponse owner(Integer owner) {
-        this.owner = owner;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
+    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    private Integer systemId;
 
-    /**
-     * ID of the corporation that controls this station
-     * 
-     * @return owner
-     **/
-    @ApiModelProperty(value = "ID of the corporation that controls this station")
-    public Integer getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Integer owner) {
-        this.owner = owner;
-    }
-
-    public StationResponse reprocessingEfficiency(Float reprocessingEfficiency) {
-        this.reprocessingEfficiency = reprocessingEfficiency;
-        return this;
-    }
-
-    /**
-     * reprocessing_efficiency number
-     * 
-     * @return reprocessingEfficiency
-     **/
-    @ApiModelProperty(required = true, value = "reprocessing_efficiency number")
-    public Float getReprocessingEfficiency() {
-        return reprocessingEfficiency;
-    }
-
-    public void setReprocessingEfficiency(Float reprocessingEfficiency) {
-        this.reprocessingEfficiency = reprocessingEfficiency;
-    }
-
-    public StationResponse officeRentalCost(Float officeRentalCost) {
-        this.officeRentalCost = officeRentalCost;
-        return this;
-    }
-
-    /**
-     * office_rental_cost number
-     * 
-     * @return officeRentalCost
-     **/
-    @ApiModelProperty(required = true, value = "office_rental_cost number")
-    public Float getOfficeRentalCost() {
-        return officeRentalCost;
-    }
-
-    public void setOfficeRentalCost(Float officeRentalCost) {
-        this.officeRentalCost = officeRentalCost;
-    }
-
-    public StationResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The solar system this station is in
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(required = true, value = "The solar system this station is in")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
-
-    public StationResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public StationResponse raceId(Integer raceId) {
-        this.raceId = raceId;
-        return this;
-    }
-
-    /**
-     * race_id integer
-     * 
-     * @return raceId
-     **/
-    @ApiModelProperty(value = "race_id integer")
-    public Integer getRaceId() {
-        return raceId;
-    }
-
-    public void setRaceId(Integer raceId) {
-        this.raceId = raceId;
-    }
-
-    public StationResponse stationId(Integer stationId) {
-        this.stationId = stationId;
-        return this;
-    }
-
-    /**
-     * station_id integer
-     * 
-     * @return stationId
-     **/
-    @ApiModelProperty(required = true, value = "station_id integer")
-    public Integer getStationId() {
-        return stationId;
-    }
-
-    public void setStationId(Integer stationId) {
-        this.stationId = stationId;
-    }
+    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
+    @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    private Integer typeId;
 
     public StationResponse maxDockableShipVolume(Float maxDockableShipVolume) {
+
         this.maxDockableShipVolume = maxDockableShipVolume;
         return this;
     }
@@ -332,6 +200,7 @@ public class StationResponse implements Serializable {
     }
 
     public StationResponse name(String name) {
+
         this.name = name;
         return this;
     }
@@ -350,7 +219,49 @@ public class StationResponse implements Serializable {
         this.name = name;
     }
 
+    public StationResponse officeRentalCost(Float officeRentalCost) {
+
+        this.officeRentalCost = officeRentalCost;
+        return this;
+    }
+
+    /**
+     * office_rental_cost number
+     * 
+     * @return officeRentalCost
+     **/
+    @ApiModelProperty(required = true, value = "office_rental_cost number")
+    public Float getOfficeRentalCost() {
+        return officeRentalCost;
+    }
+
+    public void setOfficeRentalCost(Float officeRentalCost) {
+        this.officeRentalCost = officeRentalCost;
+    }
+
+    public StationResponse owner(Integer owner) {
+
+        this.owner = owner;
+        return this;
+    }
+
+    /**
+     * ID of the corporation that controls this station
+     * 
+     * @return owner
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "ID of the corporation that controls this station")
+    public Integer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Integer owner) {
+        this.owner = owner;
+    }
+
     public StationResponse position(Position position) {
+
         this.position = position;
         return this;
     }
@@ -369,7 +280,69 @@ public class StationResponse implements Serializable {
         this.position = position;
     }
 
+    public StationResponse raceId(Integer raceId) {
+
+        this.raceId = raceId;
+        return this;
+    }
+
+    /**
+     * race_id integer
+     * 
+     * @return raceId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "race_id integer")
+    public Integer getRaceId() {
+        return raceId;
+    }
+
+    public void setRaceId(Integer raceId) {
+        this.raceId = raceId;
+    }
+
+    public StationResponse reprocessingEfficiency(Float reprocessingEfficiency) {
+
+        this.reprocessingEfficiency = reprocessingEfficiency;
+        return this;
+    }
+
+    /**
+     * reprocessing_efficiency number
+     * 
+     * @return reprocessingEfficiency
+     **/
+    @ApiModelProperty(required = true, value = "reprocessing_efficiency number")
+    public Float getReprocessingEfficiency() {
+        return reprocessingEfficiency;
+    }
+
+    public void setReprocessingEfficiency(Float reprocessingEfficiency) {
+        this.reprocessingEfficiency = reprocessingEfficiency;
+    }
+
+    public StationResponse reprocessingStationsTake(Float reprocessingStationsTake) {
+
+        this.reprocessingStationsTake = reprocessingStationsTake;
+        return this;
+    }
+
+    /**
+     * reprocessing_stations_take number
+     * 
+     * @return reprocessingStationsTake
+     **/
+    @ApiModelProperty(required = true, value = "reprocessing_stations_take number")
+    public Float getReprocessingStationsTake() {
+        return reprocessingStationsTake;
+    }
+
+    public void setReprocessingStationsTake(Float reprocessingStationsTake) {
+        this.reprocessingStationsTake = reprocessingStationsTake;
+    }
+
     public StationResponse services(List<ServicesEnum> services) {
+
         this.services = services;
         return this;
     }
@@ -393,23 +366,64 @@ public class StationResponse implements Serializable {
         this.services = services;
     }
 
-    public StationResponse reprocessingStationsTake(Float reprocessingStationsTake) {
-        this.reprocessingStationsTake = reprocessingStationsTake;
+    public StationResponse stationId(Integer stationId) {
+
+        this.stationId = stationId;
         return this;
     }
 
     /**
-     * reprocessing_stations_take number
+     * station_id integer
      * 
-     * @return reprocessingStationsTake
+     * @return stationId
      **/
-    @ApiModelProperty(required = true, value = "reprocessing_stations_take number")
-    public Float getReprocessingStationsTake() {
-        return reprocessingStationsTake;
+    @ApiModelProperty(required = true, value = "station_id integer")
+    public Integer getStationId() {
+        return stationId;
     }
 
-    public void setReprocessingStationsTake(Float reprocessingStationsTake) {
-        this.reprocessingStationsTake = reprocessingStationsTake;
+    public void setStationId(Integer stationId) {
+        this.stationId = stationId;
+    }
+
+    public StationResponse systemId(Integer systemId) {
+
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this station is in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(required = true, value = "The solar system this station is in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
+    public StationResponse typeId(Integer typeId) {
+
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -421,42 +435,42 @@ public class StationResponse implements Serializable {
             return false;
         }
         StationResponse stationResponse = (StationResponse) o;
-        return Objects.equals(this.owner, stationResponse.owner)
-                && Objects.equals(this.reprocessingEfficiency, stationResponse.reprocessingEfficiency)
-                && Objects.equals(this.officeRentalCost, stationResponse.officeRentalCost)
-                && Objects.equals(this.systemId, stationResponse.systemId)
-                && Objects.equals(this.typeId, stationResponse.typeId)
-                && Objects.equals(this.raceId, stationResponse.raceId)
-                && Objects.equals(this.stationId, stationResponse.stationId)
-                && Objects.equals(this.maxDockableShipVolume, stationResponse.maxDockableShipVolume)
+        return Objects.equals(this.maxDockableShipVolume, stationResponse.maxDockableShipVolume)
                 && Objects.equals(this.name, stationResponse.name)
+                && Objects.equals(this.officeRentalCost, stationResponse.officeRentalCost)
+                && Objects.equals(this.owner, stationResponse.owner)
                 && Objects.equals(this.position, stationResponse.position)
+                && Objects.equals(this.raceId, stationResponse.raceId)
+                && Objects.equals(this.reprocessingEfficiency, stationResponse.reprocessingEfficiency)
+                && Objects.equals(this.reprocessingStationsTake, stationResponse.reprocessingStationsTake)
                 && Objects.equals(this.services, stationResponse.services)
-                && Objects.equals(this.reprocessingStationsTake, stationResponse.reprocessingStationsTake);
+                && Objects.equals(this.stationId, stationResponse.stationId)
+                && Objects.equals(this.systemId, stationResponse.systemId)
+                && Objects.equals(this.typeId, stationResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, reprocessingEfficiency, officeRentalCost, systemId, typeId, raceId, stationId,
-                maxDockableShipVolume, name, position, services, reprocessingStationsTake);
+        return Objects.hash(maxDockableShipVolume, name, officeRentalCost, owner, position, raceId,
+                reprocessingEfficiency, reprocessingStationsTake, services, stationId, systemId, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StationResponse {\n");
-        sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-        sb.append("    reprocessingEfficiency: ").append(toIndentedString(reprocessingEfficiency)).append("\n");
-        sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
-        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
         sb.append("    maxDockableShipVolume: ").append(toIndentedString(maxDockableShipVolume)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    officeRentalCost: ").append(toIndentedString(officeRentalCost)).append("\n");
+        sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
-        sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    raceId: ").append(toIndentedString(raceId)).append("\n");
+        sb.append("    reprocessingEfficiency: ").append(toIndentedString(reprocessingEfficiency)).append("\n");
         sb.append("    reprocessingStationsTake: ").append(toIndentedString(reprocessingStationsTake)).append("\n");
+        sb.append("    services: ").append(toIndentedString(services)).append("\n");
+        sb.append("    stationId: ").append(toIndentedString(stationId)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

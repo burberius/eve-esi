@@ -31,14 +31,6 @@ import java.io.Serializable;
 public class CorporationBlueprintsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
-    @SerializedName(SERIALIZED_NAME_QUANTITY)
-    private Integer quantity;
-
-    public static final String SERIALIZED_NAME_MATERIAL_EFFICIENCY = "material_efficiency";
-    @SerializedName(SERIALIZED_NAME_MATERIAL_EFFICIENCY)
-    private Integer materialEfficiency;
-
     public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
     private Long itemId;
@@ -320,6 +312,22 @@ public class CorporationBlueprintsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
     private LocationFlagEnum locationFlag;
 
+    public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
+    @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    private Long locationId;
+
+    public static final String SERIALIZED_NAME_MATERIAL_EFFICIENCY = "material_efficiency";
+    @SerializedName(SERIALIZED_NAME_MATERIAL_EFFICIENCY)
+    private Integer materialEfficiency;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_RUNS = "runs";
+    @SerializedName(SERIALIZED_NAME_RUNS)
+    private Integer runs;
+
     public static final String SERIALIZED_NAME_TIME_EFFICIENCY = "time_efficiency";
     @SerializedName(SERIALIZED_NAME_TIME_EFFICIENCY)
     private Integer timeEfficiency;
@@ -328,15 +336,89 @@ public class CorporationBlueprintsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public static final String SERIALIZED_NAME_RUNS = "runs";
-    @SerializedName(SERIALIZED_NAME_RUNS)
-    private Integer runs;
+    public CorporationBlueprintsResponse itemId(Long itemId) {
 
-    public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
-    @SerializedName(SERIALIZED_NAME_LOCATION_ID)
-    private Long locationId;
+        this.itemId = itemId;
+        return this;
+    }
+
+    /**
+     * Unique ID for this item.
+     * 
+     * @return itemId
+     **/
+    @ApiModelProperty(required = true, value = "Unique ID for this item.")
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
+
+        this.locationFlag = locationFlag;
+        return this;
+    }
+
+    /**
+     * Type of the location_id
+     * 
+     * @return locationFlag
+     **/
+    @ApiModelProperty(required = true, value = "Type of the location_id")
+    public LocationFlagEnum getLocationFlag() {
+        return locationFlag;
+    }
+
+    public void setLocationFlag(LocationFlagEnum locationFlag) {
+        this.locationFlag = locationFlag;
+    }
+
+    public CorporationBlueprintsResponse locationId(Long locationId) {
+
+        this.locationId = locationId;
+        return this;
+    }
+
+    /**
+     * References a solar system, station or item_id if this blueprint is
+     * located within a container.
+     * 
+     * @return locationId
+     **/
+    @ApiModelProperty(required = true, value = "References a solar system, station or item_id if this blueprint is located within a container.")
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public CorporationBlueprintsResponse materialEfficiency(Integer materialEfficiency) {
+
+        this.materialEfficiency = materialEfficiency;
+        return this;
+    }
+
+    /**
+     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
+     * 
+     * @return materialEfficiency
+     **/
+    @ApiModelProperty(required = true, value = "Material Efficiency Level of the blueprint.")
+    public Integer getMaterialEfficiency() {
+        return materialEfficiency;
+    }
+
+    public void setMaterialEfficiency(Integer materialEfficiency) {
+        this.materialEfficiency = materialEfficiency;
+    }
 
     public CorporationBlueprintsResponse quantity(Integer quantity) {
+
         this.quantity = quantity;
         return this;
     }
@@ -358,102 +440,8 @@ public class CorporationBlueprintsResponse implements Serializable {
         this.quantity = quantity;
     }
 
-    public CorporationBlueprintsResponse materialEfficiency(Integer materialEfficiency) {
-        this.materialEfficiency = materialEfficiency;
-        return this;
-    }
-
-    /**
-     * Material Efficiency Level of the blueprint. minimum: 0 maximum: 25
-     * 
-     * @return materialEfficiency
-     **/
-    @ApiModelProperty(required = true, value = "Material Efficiency Level of the blueprint.")
-    public Integer getMaterialEfficiency() {
-        return materialEfficiency;
-    }
-
-    public void setMaterialEfficiency(Integer materialEfficiency) {
-        this.materialEfficiency = materialEfficiency;
-    }
-
-    public CorporationBlueprintsResponse itemId(Long itemId) {
-        this.itemId = itemId;
-        return this;
-    }
-
-    /**
-     * Unique ID for this item.
-     * 
-     * @return itemId
-     **/
-    @ApiModelProperty(required = true, value = "Unique ID for this item.")
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-        return this;
-    }
-
-    /**
-     * Type of the location_id
-     * 
-     * @return locationFlag
-     **/
-    @ApiModelProperty(required = true, value = "Type of the location_id")
-    public LocationFlagEnum getLocationFlag() {
-        return locationFlag;
-    }
-
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
-        this.locationFlag = locationFlag;
-    }
-
-    public CorporationBlueprintsResponse timeEfficiency(Integer timeEfficiency) {
-        this.timeEfficiency = timeEfficiency;
-        return this;
-    }
-
-    /**
-     * Time Efficiency Level of the blueprint. minimum: 0 maximum: 20
-     * 
-     * @return timeEfficiency
-     **/
-    @ApiModelProperty(required = true, value = "Time Efficiency Level of the blueprint.")
-    public Integer getTimeEfficiency() {
-        return timeEfficiency;
-    }
-
-    public void setTimeEfficiency(Integer timeEfficiency) {
-        this.timeEfficiency = timeEfficiency;
-    }
-
-    public CorporationBlueprintsResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(required = true, value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     public CorporationBlueprintsResponse runs(Integer runs) {
+
         this.runs = runs;
         return this;
     }
@@ -473,24 +461,44 @@ public class CorporationBlueprintsResponse implements Serializable {
         this.runs = runs;
     }
 
-    public CorporationBlueprintsResponse locationId(Long locationId) {
-        this.locationId = locationId;
+    public CorporationBlueprintsResponse timeEfficiency(Integer timeEfficiency) {
+
+        this.timeEfficiency = timeEfficiency;
         return this;
     }
 
     /**
-     * References a solar system, station or item_id if this blueprint is
-     * located within a container.
+     * Time Efficiency Level of the blueprint. minimum: 0 maximum: 20
      * 
-     * @return locationId
+     * @return timeEfficiency
      **/
-    @ApiModelProperty(required = true, value = "References a solar system, station or item_id if this blueprint is located within a container.")
-    public Long getLocationId() {
-        return locationId;
+    @ApiModelProperty(required = true, value = "Time Efficiency Level of the blueprint.")
+    public Integer getTimeEfficiency() {
+        return timeEfficiency;
     }
 
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
+    public void setTimeEfficiency(Integer timeEfficiency) {
+        this.timeEfficiency = timeEfficiency;
+    }
+
+    public CorporationBlueprintsResponse typeId(Integer typeId) {
+
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * type_id integer
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(required = true, value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -502,34 +510,34 @@ public class CorporationBlueprintsResponse implements Serializable {
             return false;
         }
         CorporationBlueprintsResponse corporationBlueprintsResponse = (CorporationBlueprintsResponse) o;
-        return Objects.equals(this.quantity, corporationBlueprintsResponse.quantity)
-                && Objects.equals(this.materialEfficiency, corporationBlueprintsResponse.materialEfficiency)
-                && Objects.equals(this.itemId, corporationBlueprintsResponse.itemId)
+        return Objects.equals(this.itemId, corporationBlueprintsResponse.itemId)
                 && Objects.equals(this.locationFlag, corporationBlueprintsResponse.locationFlag)
-                && Objects.equals(this.timeEfficiency, corporationBlueprintsResponse.timeEfficiency)
-                && Objects.equals(this.typeId, corporationBlueprintsResponse.typeId)
+                && Objects.equals(this.locationId, corporationBlueprintsResponse.locationId)
+                && Objects.equals(this.materialEfficiency, corporationBlueprintsResponse.materialEfficiency)
+                && Objects.equals(this.quantity, corporationBlueprintsResponse.quantity)
                 && Objects.equals(this.runs, corporationBlueprintsResponse.runs)
-                && Objects.equals(this.locationId, corporationBlueprintsResponse.locationId);
+                && Objects.equals(this.timeEfficiency, corporationBlueprintsResponse.timeEfficiency)
+                && Objects.equals(this.typeId, corporationBlueprintsResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quantity, materialEfficiency, itemId, locationFlag, timeEfficiency, typeId, runs,
-                locationId);
+        return Objects.hash(itemId, locationFlag, locationId, materialEfficiency, quantity, runs, timeEfficiency,
+                typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationBlueprintsResponse {\n");
-        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-        sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
         sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
         sb.append("    locationFlag: ").append(toIndentedString(locationFlag)).append("\n");
+        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+        sb.append("    materialEfficiency: ").append(toIndentedString(materialEfficiency)).append("\n");
+        sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
+        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
         sb.append("    timeEfficiency: ").append(toIndentedString(timeEfficiency)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
-        sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

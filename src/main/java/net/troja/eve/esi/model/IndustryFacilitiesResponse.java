@@ -31,21 +31,17 @@ import java.io.Serializable;
 public class IndustryFacilitiesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_FACILITY_ID = "facility_id";
+    @SerializedName(SERIALIZED_NAME_FACILITY_ID)
+    private Long facilityId;
+
     public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
     @SerializedName(SERIALIZED_NAME_OWNER_ID)
     private Integer ownerId;
 
-    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
-    @SerializedName(SERIALIZED_NAME_TYPE_ID)
-    private Integer typeId;
-
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
     private Integer regionId;
-
-    public static final String SERIALIZED_NAME_FACILITY_ID = "facility_id";
-    @SerializedName(SERIALIZED_NAME_FACILITY_ID)
-    private Long facilityId;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
@@ -55,64 +51,12 @@ public class IndustryFacilitiesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TAX)
     private Float tax;
 
-    public IndustryFacilitiesResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    /**
-     * Owner of the facility
-     * 
-     * @return ownerId
-     **/
-    @ApiModelProperty(required = true, value = "Owner of the facility")
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public IndustryFacilitiesResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * Type ID of the facility
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(required = true, value = "Type ID of the facility")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
-    public IndustryFacilitiesResponse regionId(Integer regionId) {
-        this.regionId = regionId;
-        return this;
-    }
-
-    /**
-     * Region ID where the facility is
-     * 
-     * @return regionId
-     **/
-    @ApiModelProperty(required = true, value = "Region ID where the facility is")
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
+    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
+    @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    private Integer typeId;
 
     public IndustryFacilitiesResponse facilityId(Long facilityId) {
+
         this.facilityId = facilityId;
         return this;
     }
@@ -131,7 +75,48 @@ public class IndustryFacilitiesResponse implements Serializable {
         this.facilityId = facilityId;
     }
 
+    public IndustryFacilitiesResponse ownerId(Integer ownerId) {
+
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    /**
+     * Owner of the facility
+     * 
+     * @return ownerId
+     **/
+    @ApiModelProperty(required = true, value = "Owner of the facility")
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public IndustryFacilitiesResponse regionId(Integer regionId) {
+
+        this.regionId = regionId;
+        return this;
+    }
+
+    /**
+     * Region ID where the facility is
+     * 
+     * @return regionId
+     **/
+    @ApiModelProperty(required = true, value = "Region ID where the facility is")
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
+    }
+
     public IndustryFacilitiesResponse solarSystemId(Integer solarSystemId) {
+
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -151,6 +136,7 @@ public class IndustryFacilitiesResponse implements Serializable {
     }
 
     public IndustryFacilitiesResponse tax(Float tax) {
+
         this.tax = tax;
         return this;
     }
@@ -160,6 +146,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return tax
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Tax imposed by the facility")
     public Float getTax() {
         return tax;
@@ -167,6 +154,26 @@ public class IndustryFacilitiesResponse implements Serializable {
 
     public void setTax(Float tax) {
         this.tax = tax;
+    }
+
+    public IndustryFacilitiesResponse typeId(Integer typeId) {
+
+        this.typeId = typeId;
+        return this;
+    }
+
+    /**
+     * Type ID of the facility
+     * 
+     * @return typeId
+     **/
+    @ApiModelProperty(required = true, value = "Type ID of the facility")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -178,29 +185,29 @@ public class IndustryFacilitiesResponse implements Serializable {
             return false;
         }
         IndustryFacilitiesResponse industryFacilitiesResponse = (IndustryFacilitiesResponse) o;
-        return Objects.equals(this.ownerId, industryFacilitiesResponse.ownerId)
-                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId)
+        return Objects.equals(this.facilityId, industryFacilitiesResponse.facilityId)
+                && Objects.equals(this.ownerId, industryFacilitiesResponse.ownerId)
                 && Objects.equals(this.regionId, industryFacilitiesResponse.regionId)
-                && Objects.equals(this.facilityId, industryFacilitiesResponse.facilityId)
                 && Objects.equals(this.solarSystemId, industryFacilitiesResponse.solarSystemId)
-                && Objects.equals(this.tax, industryFacilitiesResponse.tax);
+                && Objects.equals(this.tax, industryFacilitiesResponse.tax)
+                && Objects.equals(this.typeId, industryFacilitiesResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerId, typeId, regionId, facilityId, solarSystemId, tax);
+        return Objects.hash(facilityId, ownerId, regionId, solarSystemId, tax, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class IndustryFacilitiesResponse {\n");
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+        sb.append("    regionId: ").append(toIndentedString(regionId)).append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

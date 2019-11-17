@@ -31,34 +31,16 @@ import java.io.Serializable;
 public class DogmaDynamicEffect implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_IS_DEFAULT = "is_default";
-    @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
-    private Boolean isDefault;
-
     public static final String SERIALIZED_NAME_EFFECT_ID = "effect_id";
     @SerializedName(SERIALIZED_NAME_EFFECT_ID)
     private Integer effectId;
 
-    public DogmaDynamicEffect isDefault(Boolean isDefault) {
-        this.isDefault = isDefault;
-        return this;
-    }
-
-    /**
-     * is_default boolean
-     * 
-     * @return isDefault
-     **/
-    @ApiModelProperty(required = true, value = "is_default boolean")
-    public Boolean getIsDefault() {
-        return isDefault;
-    }
-
-    public void setIsDefault(Boolean isDefault) {
-        this.isDefault = isDefault;
-    }
+    public static final String SERIALIZED_NAME_IS_DEFAULT = "is_default";
+    @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
+    private Boolean isDefault;
 
     public DogmaDynamicEffect effectId(Integer effectId) {
+
         this.effectId = effectId;
         return this;
     }
@@ -77,6 +59,26 @@ public class DogmaDynamicEffect implements Serializable {
         this.effectId = effectId;
     }
 
+    public DogmaDynamicEffect isDefault(Boolean isDefault) {
+
+        this.isDefault = isDefault;
+        return this;
+    }
+
+    /**
+     * is_default boolean
+     * 
+     * @return isDefault
+     **/
+    @ApiModelProperty(required = true, value = "is_default boolean")
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,21 +88,21 @@ public class DogmaDynamicEffect implements Serializable {
             return false;
         }
         DogmaDynamicEffect dogmaDynamicEffect = (DogmaDynamicEffect) o;
-        return Objects.equals(this.isDefault, dogmaDynamicEffect.isDefault)
-                && Objects.equals(this.effectId, dogmaDynamicEffect.effectId);
+        return Objects.equals(this.effectId, dogmaDynamicEffect.effectId)
+                && Objects.equals(this.isDefault, dogmaDynamicEffect.isDefault);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isDefault, effectId);
+        return Objects.hash(effectId, isDefault);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class DogmaDynamicEffect {\n");
-        sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
         sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
+        sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -45,6 +45,7 @@ public class Position implements Serializable {
     private Double z;
 
     public Position x(Double x) {
+
         this.x = x;
         return this;
     }
@@ -64,6 +65,7 @@ public class Position implements Serializable {
     }
 
     public Position y(Double y) {
+
         this.y = y;
         return this;
     }
@@ -83,6 +85,7 @@ public class Position implements Serializable {
     }
 
     public Position z(Double z) {
+
         this.z = z;
         return this;
     }

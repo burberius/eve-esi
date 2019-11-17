@@ -31,61 +31,24 @@ import java.io.Serializable;
 public class OpportunitiesTasksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_NOTIFICATION = "notification";
-    @SerializedName(SERIALIZED_NAME_NOTIFICATION)
-    private String notification;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-    private String description;
+    public static final String SERIALIZED_NAME_NOTIFICATION = "notification";
+    @SerializedName(SERIALIZED_NAME_NOTIFICATION)
+    private String notification;
 
     public static final String SERIALIZED_NAME_TASK_ID = "task_id";
     @SerializedName(SERIALIZED_NAME_TASK_ID)
     private Integer taskId;
 
-    public OpportunitiesTasksResponse notification(String notification) {
-        this.notification = notification;
-        return this;
-    }
-
-    /**
-     * notification string
-     * 
-     * @return notification
-     **/
-    @ApiModelProperty(required = true, value = "notification string")
-    public String getNotification() {
-        return notification;
-    }
-
-    public void setNotification(String notification) {
-        this.notification = notification;
-    }
-
-    public OpportunitiesTasksResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public OpportunitiesTasksResponse description(String description) {
+
         this.description = description;
         return this;
     }
@@ -104,7 +67,48 @@ public class OpportunitiesTasksResponse implements Serializable {
         this.description = description;
     }
 
+    public OpportunitiesTasksResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public OpportunitiesTasksResponse notification(String notification) {
+
+        this.notification = notification;
+        return this;
+    }
+
+    /**
+     * notification string
+     * 
+     * @return notification
+     **/
+    @ApiModelProperty(required = true, value = "notification string")
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+
     public OpportunitiesTasksResponse taskId(Integer taskId) {
+
         this.taskId = taskId;
         return this;
     }
@@ -132,24 +136,24 @@ public class OpportunitiesTasksResponse implements Serializable {
             return false;
         }
         OpportunitiesTasksResponse opportunitiesTasksResponse = (OpportunitiesTasksResponse) o;
-        return Objects.equals(this.notification, opportunitiesTasksResponse.notification)
+        return Objects.equals(this.description, opportunitiesTasksResponse.description)
                 && Objects.equals(this.name, opportunitiesTasksResponse.name)
-                && Objects.equals(this.description, opportunitiesTasksResponse.description)
+                && Objects.equals(this.notification, opportunitiesTasksResponse.notification)
                 && Objects.equals(this.taskId, opportunitiesTasksResponse.taskId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(notification, name, description, taskId);
+        return Objects.hash(description, name, notification, taskId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class OpportunitiesTasksResponse {\n");
-        sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
         sb.append("    taskId: ").append(toIndentedString(taskId)).append("\n");
         sb.append("}");
         return sb.toString();

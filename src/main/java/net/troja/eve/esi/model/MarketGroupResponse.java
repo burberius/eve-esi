@@ -33,18 +33,6 @@ import java.io.Serializable;
 public class MarketGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_TYPES = "types";
-    @SerializedName(SERIALIZED_NAME_TYPES)
-    private List<Integer> types = new ArrayList<>();
-
-    public static final String SERIALIZED_NAME_PARENT_GROUP_ID = "parent_group_id";
-    @SerializedName(SERIALIZED_NAME_PARENT_GROUP_ID)
-    private Integer parentGroupId;
-
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)
     private String description;
@@ -53,7 +41,101 @@ public class MarketGroupResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_MARKET_GROUP_ID)
     private Integer marketGroupId;
 
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
+    public static final String SERIALIZED_NAME_PARENT_GROUP_ID = "parent_group_id";
+    @SerializedName(SERIALIZED_NAME_PARENT_GROUP_ID)
+    private Integer parentGroupId;
+
+    public static final String SERIALIZED_NAME_TYPES = "types";
+    @SerializedName(SERIALIZED_NAME_TYPES)
+    private List<Integer> types = new ArrayList<>();
+
+    public MarketGroupResponse description(String description) {
+
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * description string
+     * 
+     * @return description
+     **/
+    @ApiModelProperty(required = true, value = "description string")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public MarketGroupResponse marketGroupId(Integer marketGroupId) {
+
+        this.marketGroupId = marketGroupId;
+        return this;
+    }
+
+    /**
+     * market_group_id integer
+     * 
+     * @return marketGroupId
+     **/
+    @ApiModelProperty(required = true, value = "market_group_id integer")
+    public Integer getMarketGroupId() {
+        return marketGroupId;
+    }
+
+    public void setMarketGroupId(Integer marketGroupId) {
+        this.marketGroupId = marketGroupId;
+    }
+
+    public MarketGroupResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public MarketGroupResponse parentGroupId(Integer parentGroupId) {
+
+        this.parentGroupId = parentGroupId;
+        return this;
+    }
+
+    /**
+     * parent_group_id integer
+     * 
+     * @return parentGroupId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "parent_group_id integer")
+    public Integer getParentGroupId() {
+        return parentGroupId;
+    }
+
+    public void setParentGroupId(Integer parentGroupId) {
+        this.parentGroupId = parentGroupId;
+    }
+
     public MarketGroupResponse types(List<Integer> types) {
+
         this.types = types;
         return this;
     }
@@ -77,82 +159,6 @@ public class MarketGroupResponse implements Serializable {
         this.types = types;
     }
 
-    public MarketGroupResponse parentGroupId(Integer parentGroupId) {
-        this.parentGroupId = parentGroupId;
-        return this;
-    }
-
-    /**
-     * parent_group_id integer
-     * 
-     * @return parentGroupId
-     **/
-    @ApiModelProperty(value = "parent_group_id integer")
-    public Integer getParentGroupId() {
-        return parentGroupId;
-    }
-
-    public void setParentGroupId(Integer parentGroupId) {
-        this.parentGroupId = parentGroupId;
-    }
-
-    public MarketGroupResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public MarketGroupResponse description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * description string
-     * 
-     * @return description
-     **/
-    @ApiModelProperty(required = true, value = "description string")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public MarketGroupResponse marketGroupId(Integer marketGroupId) {
-        this.marketGroupId = marketGroupId;
-        return this;
-    }
-
-    /**
-     * market_group_id integer
-     * 
-     * @return marketGroupId
-     **/
-    @ApiModelProperty(required = true, value = "market_group_id integer")
-    public Integer getMarketGroupId() {
-        return marketGroupId;
-    }
-
-    public void setMarketGroupId(Integer marketGroupId) {
-        this.marketGroupId = marketGroupId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -162,27 +168,27 @@ public class MarketGroupResponse implements Serializable {
             return false;
         }
         MarketGroupResponse marketGroupResponse = (MarketGroupResponse) o;
-        return Objects.equals(this.types, marketGroupResponse.types)
-                && Objects.equals(this.parentGroupId, marketGroupResponse.parentGroupId)
+        return Objects.equals(this.description, marketGroupResponse.description)
+                && Objects.equals(this.marketGroupId, marketGroupResponse.marketGroupId)
                 && Objects.equals(this.name, marketGroupResponse.name)
-                && Objects.equals(this.description, marketGroupResponse.description)
-                && Objects.equals(this.marketGroupId, marketGroupResponse.marketGroupId);
+                && Objects.equals(this.parentGroupId, marketGroupResponse.parentGroupId)
+                && Objects.equals(this.types, marketGroupResponse.types);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(types, parentGroupId, name, description, marketGroupId);
+        return Objects.hash(description, marketGroupId, name, parentGroupId, types);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketGroupResponse {\n");
-        sb.append("    types: ").append(toIndentedString(types)).append("\n");
-        sb.append("    parentGroupId: ").append(toIndentedString(parentGroupId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    marketGroupId: ").append(toIndentedString(marketGroupId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    parentGroupId: ").append(toIndentedString(parentGroupId)).append("\n");
+        sb.append("    types: ").append(toIndentedString(types)).append("\n");
         sb.append("}");
         return sb.toString();
     }

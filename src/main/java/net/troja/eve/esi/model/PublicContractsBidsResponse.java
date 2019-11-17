@@ -45,6 +45,7 @@ public class PublicContractsBidsResponse implements Serializable {
     private OffsetDateTime dateBid;
 
     public PublicContractsBidsResponse amount(Float amount) {
+
         this.amount = amount;
         return this;
     }
@@ -64,6 +65,7 @@ public class PublicContractsBidsResponse implements Serializable {
     }
 
     public PublicContractsBidsResponse bidId(Integer bidId) {
+
         this.bidId = bidId;
         return this;
     }
@@ -83,6 +85,7 @@ public class PublicContractsBidsResponse implements Serializable {
     }
 
     public PublicContractsBidsResponse dateBid(OffsetDateTime dateBid) {
+
         this.dateBid = dateBid;
         return this;
     }

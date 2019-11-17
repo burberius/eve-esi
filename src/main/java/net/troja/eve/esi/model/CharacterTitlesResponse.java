@@ -40,6 +40,7 @@ public class CharacterTitlesResponse implements Serializable {
     private Integer titleId;
 
     public CharacterTitlesResponse name(String name) {
+
         this.name = name;
         return this;
     }
@@ -49,6 +50,7 @@ public class CharacterTitlesResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
@@ -59,6 +61,7 @@ public class CharacterTitlesResponse implements Serializable {
     }
 
     public CharacterTitlesResponse titleId(Integer titleId) {
+
         this.titleId = titleId;
         return this;
     }
@@ -68,6 +71,7 @@ public class CharacterTitlesResponse implements Serializable {
      * 
      * @return titleId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "title_id integer")
     public Integer getTitleId() {
         return titleId;

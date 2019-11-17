@@ -40,6 +40,7 @@ public class WarKillmailsResponse implements Serializable {
     private Integer killmailId;
 
     public WarKillmailsResponse killmailHash(String killmailHash) {
+
         this.killmailHash = killmailHash;
         return this;
     }
@@ -59,6 +60,7 @@ public class WarKillmailsResponse implements Serializable {
     }
 
     public WarKillmailsResponse killmailId(Integer killmailId) {
+
         this.killmailId = killmailId;
         return this;
     }

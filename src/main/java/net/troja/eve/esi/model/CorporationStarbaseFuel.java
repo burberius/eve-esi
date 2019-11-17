@@ -40,6 +40,7 @@ public class CorporationStarbaseFuel implements Serializable {
     private Integer typeId;
 
     public CorporationStarbaseFuel quantity(Integer quantity) {
+
         this.quantity = quantity;
         return this;
     }
@@ -59,6 +60,7 @@ public class CorporationStarbaseFuel implements Serializable {
     }
 
     public CorporationStarbaseFuel typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }

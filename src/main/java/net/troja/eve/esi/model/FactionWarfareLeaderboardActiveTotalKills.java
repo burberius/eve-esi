@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
     private Integer factionId;
 
     public FactionWarfareLeaderboardActiveTotalKills amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of kills")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
     }
 
     public FactionWarfareLeaderboardActiveTotalKills factionId(Integer factionId) {
+
         this.factionId = factionId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardActiveTotalKills implements Serializable {
      * 
      * @return factionId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;

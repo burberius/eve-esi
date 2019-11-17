@@ -51,6 +51,7 @@ public class Mail implements Serializable {
     private String subject;
 
     public Mail approvedCost(Long approvedCost) {
+
         this.approvedCost = approvedCost;
         return this;
     }
@@ -60,6 +61,7 @@ public class Mail implements Serializable {
      * 
      * @return approvedCost
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "approved_cost integer")
     public Long getApprovedCost() {
         return approvedCost;
@@ -70,6 +72,7 @@ public class Mail implements Serializable {
     }
 
     public Mail body(String body) {
+
         this.body = body;
         return this;
     }
@@ -89,6 +92,7 @@ public class Mail implements Serializable {
     }
 
     public Mail recipients(List<Recipient> recipients) {
+
         this.recipients = recipients;
         return this;
     }
@@ -113,6 +117,7 @@ public class Mail implements Serializable {
     }
 
     public Mail subject(String subject) {
+
         this.subject = subject;
         return this;
     }

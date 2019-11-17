@@ -31,6 +31,10 @@ import java.io.Serializable;
 public class CharacterCalendarAttendeesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
+    @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
+    private Integer characterId;
+
     /**
      * event_response string
      */
@@ -86,30 +90,8 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_EVENT_RESPONSE)
     private EventResponseEnum eventResponse;
 
-    public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
-    @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
-    private Integer characterId;
-
-    public CharacterCalendarAttendeesResponse eventResponse(EventResponseEnum eventResponse) {
-        this.eventResponse = eventResponse;
-        return this;
-    }
-
-    /**
-     * event_response string
-     * 
-     * @return eventResponse
-     **/
-    @ApiModelProperty(value = "event_response string")
-    public EventResponseEnum getEventResponse() {
-        return eventResponse;
-    }
-
-    public void setEventResponse(EventResponseEnum eventResponse) {
-        this.eventResponse = eventResponse;
-    }
-
     public CharacterCalendarAttendeesResponse characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -119,6 +101,7 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
      * 
      * @return characterId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
@@ -126,6 +109,27 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
 
     public void setCharacterId(Integer characterId) {
         this.characterId = characterId;
+    }
+
+    public CharacterCalendarAttendeesResponse eventResponse(EventResponseEnum eventResponse) {
+
+        this.eventResponse = eventResponse;
+        return this;
+    }
+
+    /**
+     * event_response string
+     * 
+     * @return eventResponse
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "event_response string")
+    public EventResponseEnum getEventResponse() {
+        return eventResponse;
+    }
+
+    public void setEventResponse(EventResponseEnum eventResponse) {
+        this.eventResponse = eventResponse;
     }
 
     @Override
@@ -137,21 +141,21 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
             return false;
         }
         CharacterCalendarAttendeesResponse characterCalendarAttendeesResponse = (CharacterCalendarAttendeesResponse) o;
-        return Objects.equals(this.eventResponse, characterCalendarAttendeesResponse.eventResponse)
-                && Objects.equals(this.characterId, characterCalendarAttendeesResponse.characterId);
+        return Objects.equals(this.characterId, characterCalendarAttendeesResponse.characterId)
+                && Objects.equals(this.eventResponse, characterCalendarAttendeesResponse.eventResponse);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventResponse, characterId);
+        return Objects.hash(characterId, eventResponse);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterCalendarAttendeesResponse {\n");
-        sb.append("    eventResponse: ").append(toIndentedString(eventResponse)).append("\n");
         sb.append("    characterId: ").append(toIndentedString(characterId)).append("\n");
+        sb.append("    eventResponse: ").append(toIndentedString(eventResponse)).append("\n");
         sb.append("}");
         return sb.toString();
     }

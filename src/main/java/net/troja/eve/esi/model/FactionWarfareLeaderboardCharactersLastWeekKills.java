@@ -40,6 +40,7 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
     private Integer characterId;
 
     public FactionWarfareLeaderboardCharactersLastWeekKills amount(Integer amount) {
+
         this.amount = amount;
         return this;
     }
@@ -49,6 +50,7 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
      * 
      * @return amount
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Amount of kills")
     public Integer getAmount() {
         return amount;
@@ -59,6 +61,7 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
     }
 
     public FactionWarfareLeaderboardCharactersLastWeekKills characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -68,6 +71,7 @@ public class FactionWarfareLeaderboardCharactersLastWeekKills implements Seriali
      * 
      * @return characterId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;

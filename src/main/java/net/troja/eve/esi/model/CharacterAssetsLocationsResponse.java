@@ -38,9 +38,10 @@ public class CharacterAssetsLocationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
-    private CharacterAssetsLocationsPosition position = null;
+    private CharacterAssetsLocationsPosition position;
 
     public CharacterAssetsLocationsResponse itemId(Long itemId) {
+
         this.itemId = itemId;
         return this;
     }
@@ -60,6 +61,7 @@ public class CharacterAssetsLocationsResponse implements Serializable {
     }
 
     public CharacterAssetsLocationsResponse position(CharacterAssetsLocationsPosition position) {
+
         this.position = position;
         return this;
     }

@@ -31,61 +31,69 @@ import java.io.Serializable;
 public class CharacterStatsIndustry implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_REPROCESS_ITEM_QUANTITY = "reprocess_item_quantity";
-    @SerializedName(SERIALIZED_NAME_REPROCESS_ITEM_QUANTITY)
-    private Long reprocessItemQuantity;
-
     public static final String SERIALIZED_NAME_HACKING_SUCCESSES = "hacking_successes";
     @SerializedName(SERIALIZED_NAME_HACKING_SUCCESSES)
     private Long hackingSuccesses;
 
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_INVENTION = "jobs_completed_invention";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_INVENTION)
-    private Long jobsCompletedInvention;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID_QUANTITY = "jobs_completed_manufacture_asteroid_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID_QUANTITY)
-    private Long jobsCompletedManufactureAsteroidQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE_QUANTITY = "jobs_completed_manufacture_charge_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE_QUANTITY)
-    private Long jobsCompletedManufactureChargeQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT = "jobs_completed_manufacture_implant";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT)
-    private Long jobsCompletedManufactureImplant;
-
-    public static final String SERIALIZED_NAME_JOBS_STARTED_MANUFACTURE = "jobs_started_manufacture";
-    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_MANUFACTURE)
-    private Long jobsStartedManufacture;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER_QUANTITY = "jobs_completed_manufacture_other_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER_QUANTITY)
-    private Long jobsCompletedManufactureOtherQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_TIME_PRODUCTIVITY = "jobs_completed_time_productivity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_TIME_PRODUCTIVITY)
-    private Long jobsCompletedTimeProductivity;
+    public static final String SERIALIZED_NAME_JOBS_CANCELLED = "jobs_cancelled";
+    @SerializedName(SERIALIZED_NAME_JOBS_CANCELLED)
+    private Long jobsCancelled;
 
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_COPY_BLUEPRINT = "jobs_completed_copy_blueprint";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_COPY_BLUEPRINT)
     private Long jobsCompletedCopyBlueprint;
 
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER = "jobs_completed_manufacture_other";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER)
-    private Long jobsCompletedManufactureOther;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_INVENTION = "jobs_completed_invention";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_INVENTION)
+    private Long jobsCompletedInvention;
 
-    public static final String SERIALIZED_NAME_REPROCESS_ITEM = "reprocess_item";
-    @SerializedName(SERIALIZED_NAME_REPROCESS_ITEM)
-    private Long reprocessItem;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE = "jobs_completed_manufacture";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE)
+    private Long jobsCompletedManufacture;
 
-    public static final String SERIALIZED_NAME_JOBS_STARTED_COPY_BLUEPRINT = "jobs_started_copy_blueprint";
-    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_COPY_BLUEPRINT)
-    private Long jobsStartedCopyBlueprint;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID = "jobs_completed_manufacture_asteroid";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID)
+    private Long jobsCompletedManufactureAsteroid;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID_QUANTITY = "jobs_completed_manufacture_asteroid_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID_QUANTITY)
+    private Long jobsCompletedManufactureAsteroidQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE = "jobs_completed_manufacture_charge";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE)
+    private Long jobsCompletedManufactureCharge;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE_QUANTITY = "jobs_completed_manufacture_charge_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE_QUANTITY)
+    private Long jobsCompletedManufactureChargeQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY = "jobs_completed_manufacture_commodity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY)
+    private Long jobsCompletedManufactureCommodity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY_QUANTITY = "jobs_completed_manufacture_commodity_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY_QUANTITY)
+    private Long jobsCompletedManufactureCommodityQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE = "jobs_completed_manufacture_deployable";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE)
+    private Long jobsCompletedManufactureDeployable;
 
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE_QUANTITY = "jobs_completed_manufacture_deployable_quantity";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE_QUANTITY)
     private Long jobsCompletedManufactureDeployableQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE = "jobs_completed_manufacture_drone";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE)
+    private Long jobsCompletedManufactureDrone;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE_QUANTITY = "jobs_completed_manufacture_drone_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE_QUANTITY)
+    private Long jobsCompletedManufactureDroneQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT = "jobs_completed_manufacture_implant";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT)
+    private Long jobsCompletedManufactureImplant;
 
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT_QUANTITY = "jobs_completed_manufacture_implant_quantity";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_IMPLANT_QUANTITY)
@@ -95,106 +103,80 @@ public class CharacterStatsIndustry implements Serializable {
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_MODULE)
     private Long jobsCompletedManufactureModule;
 
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM_QUANTITY = "jobs_completed_manufacture_subsystem_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM_QUANTITY)
-    private Long jobsCompletedManufactureSubsystemQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_CANCELLED = "jobs_cancelled";
-    @SerializedName(SERIALIZED_NAME_JOBS_CANCELLED)
-    private Long jobsCancelled;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY = "jobs_completed_manufacture_commodity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY)
-    private Long jobsCompletedManufactureCommodity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM = "jobs_completed_manufacture_subsystem";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM)
-    private Long jobsCompletedManufactureSubsystem;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE = "jobs_completed_manufacture_deployable";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DEPLOYABLE)
-    private Long jobsCompletedManufactureDeployable;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP_QUANTITY = "jobs_completed_manufacture_ship_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP_QUANTITY)
-    private Long jobsCompletedManufactureShipQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE = "jobs_completed_manufacture";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE)
-    private Long jobsCompletedManufacture;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE = "jobs_completed_manufacture_charge";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_CHARGE)
-    private Long jobsCompletedManufactureCharge;
-
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_MODULE_QUANTITY = "jobs_completed_manufacture_module_quantity";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_MODULE_QUANTITY)
     private Long jobsCompletedManufactureModuleQuantity;
 
-    public static final String SERIALIZED_NAME_JOBS_STARTED_TIME_PRODUCTIVITY = "jobs_started_time_productivity";
-    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_TIME_PRODUCTIVITY)
-    private Long jobsStartedTimeProductivity;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER = "jobs_completed_manufacture_other";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER)
+    private Long jobsCompletedManufactureOther;
 
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID = "jobs_completed_manufacture_asteroid";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_ASTEROID)
-    private Long jobsCompletedManufactureAsteroid;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE_QUANTITY = "jobs_completed_manufacture_drone_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE_QUANTITY)
-    private Long jobsCompletedManufactureDroneQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_STARTED_MATERIAL_PRODUCTIVITY = "jobs_started_material_productivity";
-    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_MATERIAL_PRODUCTIVITY)
-    private Long jobsStartedMaterialProductivity;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER_QUANTITY = "jobs_completed_manufacture_other_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_OTHER_QUANTITY)
+    private Long jobsCompletedManufactureOtherQuantity;
 
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP = "jobs_completed_manufacture_ship";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP)
     private Long jobsCompletedManufactureShip;
 
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MATERIAL_PRODUCTIVITY = "jobs_completed_material_productivity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MATERIAL_PRODUCTIVITY)
-    private Long jobsCompletedMaterialProductivity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY_QUANTITY = "jobs_completed_manufacture_commodity_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_COMMODITY_QUANTITY)
-    private Long jobsCompletedManufactureCommodityQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE = "jobs_completed_manufacture_drone";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_DRONE)
-    private Long jobsCompletedManufactureDrone;
-
-    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE_QUANTITY = "jobs_completed_manufacture_structure_quantity";
-    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE_QUANTITY)
-    private Long jobsCompletedManufactureStructureQuantity;
-
-    public static final String SERIALIZED_NAME_JOBS_STARTED_INVENTION = "jobs_started_invention";
-    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_INVENTION)
-    private Long jobsStartedInvention;
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP_QUANTITY = "jobs_completed_manufacture_ship_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SHIP_QUANTITY)
+    private Long jobsCompletedManufactureShipQuantity;
 
     public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE = "jobs_completed_manufacture_structure";
     @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE)
     private Long jobsCompletedManufactureStructure;
 
-    public CharacterStatsIndustry reprocessItemQuantity(Long reprocessItemQuantity) {
-        this.reprocessItemQuantity = reprocessItemQuantity;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE_QUANTITY = "jobs_completed_manufacture_structure_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_STRUCTURE_QUANTITY)
+    private Long jobsCompletedManufactureStructureQuantity;
 
-    /**
-     * reprocess_item_quantity integer
-     * 
-     * @return reprocessItemQuantity
-     **/
-    @ApiModelProperty(value = "reprocess_item_quantity integer")
-    public Long getReprocessItemQuantity() {
-        return reprocessItemQuantity;
-    }
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM = "jobs_completed_manufacture_subsystem";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM)
+    private Long jobsCompletedManufactureSubsystem;
 
-    public void setReprocessItemQuantity(Long reprocessItemQuantity) {
-        this.reprocessItemQuantity = reprocessItemQuantity;
-    }
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM_QUANTITY = "jobs_completed_manufacture_subsystem_quantity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MANUFACTURE_SUBSYSTEM_QUANTITY)
+    private Long jobsCompletedManufactureSubsystemQuantity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_MATERIAL_PRODUCTIVITY = "jobs_completed_material_productivity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_MATERIAL_PRODUCTIVITY)
+    private Long jobsCompletedMaterialProductivity;
+
+    public static final String SERIALIZED_NAME_JOBS_COMPLETED_TIME_PRODUCTIVITY = "jobs_completed_time_productivity";
+    @SerializedName(SERIALIZED_NAME_JOBS_COMPLETED_TIME_PRODUCTIVITY)
+    private Long jobsCompletedTimeProductivity;
+
+    public static final String SERIALIZED_NAME_JOBS_STARTED_COPY_BLUEPRINT = "jobs_started_copy_blueprint";
+    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_COPY_BLUEPRINT)
+    private Long jobsStartedCopyBlueprint;
+
+    public static final String SERIALIZED_NAME_JOBS_STARTED_INVENTION = "jobs_started_invention";
+    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_INVENTION)
+    private Long jobsStartedInvention;
+
+    public static final String SERIALIZED_NAME_JOBS_STARTED_MANUFACTURE = "jobs_started_manufacture";
+    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_MANUFACTURE)
+    private Long jobsStartedManufacture;
+
+    public static final String SERIALIZED_NAME_JOBS_STARTED_MATERIAL_PRODUCTIVITY = "jobs_started_material_productivity";
+    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_MATERIAL_PRODUCTIVITY)
+    private Long jobsStartedMaterialProductivity;
+
+    public static final String SERIALIZED_NAME_JOBS_STARTED_TIME_PRODUCTIVITY = "jobs_started_time_productivity";
+    @SerializedName(SERIALIZED_NAME_JOBS_STARTED_TIME_PRODUCTIVITY)
+    private Long jobsStartedTimeProductivity;
+
+    public static final String SERIALIZED_NAME_REPROCESS_ITEM = "reprocess_item";
+    @SerializedName(SERIALIZED_NAME_REPROCESS_ITEM)
+    private Long reprocessItem;
+
+    public static final String SERIALIZED_NAME_REPROCESS_ITEM_QUANTITY = "reprocess_item_quantity";
+    @SerializedName(SERIALIZED_NAME_REPROCESS_ITEM_QUANTITY)
+    private Long reprocessItemQuantity;
 
     public CharacterStatsIndustry hackingSuccesses(Long hackingSuccesses) {
+
         this.hackingSuccesses = hackingSuccesses;
         return this;
     }
@@ -204,6 +186,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return hackingSuccesses
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "hacking_successes integer")
     public Long getHackingSuccesses() {
         return hackingSuccesses;
@@ -213,140 +196,29 @@ public class CharacterStatsIndustry implements Serializable {
         this.hackingSuccesses = hackingSuccesses;
     }
 
-    public CharacterStatsIndustry jobsCompletedInvention(Long jobsCompletedInvention) {
-        this.jobsCompletedInvention = jobsCompletedInvention;
+    public CharacterStatsIndustry jobsCancelled(Long jobsCancelled) {
+
+        this.jobsCancelled = jobsCancelled;
         return this;
     }
 
     /**
-     * jobs_completed_invention integer
+     * jobs_cancelled integer
      * 
-     * @return jobsCompletedInvention
+     * @return jobsCancelled
      **/
-    @ApiModelProperty(value = "jobs_completed_invention integer")
-    public Long getJobsCompletedInvention() {
-        return jobsCompletedInvention;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_cancelled integer")
+    public Long getJobsCancelled() {
+        return jobsCancelled;
     }
 
-    public void setJobsCompletedInvention(Long jobsCompletedInvention) {
-        this.jobsCompletedInvention = jobsCompletedInvention;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureAsteroidQuantity(Long jobsCompletedManufactureAsteroidQuantity) {
-        this.jobsCompletedManufactureAsteroidQuantity = jobsCompletedManufactureAsteroidQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_asteroid_quantity integer
-     * 
-     * @return jobsCompletedManufactureAsteroidQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid_quantity integer")
-    public Long getJobsCompletedManufactureAsteroidQuantity() {
-        return jobsCompletedManufactureAsteroidQuantity;
-    }
-
-    public void setJobsCompletedManufactureAsteroidQuantity(Long jobsCompletedManufactureAsteroidQuantity) {
-        this.jobsCompletedManufactureAsteroidQuantity = jobsCompletedManufactureAsteroidQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureChargeQuantity(Long jobsCompletedManufactureChargeQuantity) {
-        this.jobsCompletedManufactureChargeQuantity = jobsCompletedManufactureChargeQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_charge_quantity integer
-     * 
-     * @return jobsCompletedManufactureChargeQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_charge_quantity integer")
-    public Long getJobsCompletedManufactureChargeQuantity() {
-        return jobsCompletedManufactureChargeQuantity;
-    }
-
-    public void setJobsCompletedManufactureChargeQuantity(Long jobsCompletedManufactureChargeQuantity) {
-        this.jobsCompletedManufactureChargeQuantity = jobsCompletedManufactureChargeQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureImplant(Long jobsCompletedManufactureImplant) {
-        this.jobsCompletedManufactureImplant = jobsCompletedManufactureImplant;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_implant integer
-     * 
-     * @return jobsCompletedManufactureImplant
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_implant integer")
-    public Long getJobsCompletedManufactureImplant() {
-        return jobsCompletedManufactureImplant;
-    }
-
-    public void setJobsCompletedManufactureImplant(Long jobsCompletedManufactureImplant) {
-        this.jobsCompletedManufactureImplant = jobsCompletedManufactureImplant;
-    }
-
-    public CharacterStatsIndustry jobsStartedManufacture(Long jobsStartedManufacture) {
-        this.jobsStartedManufacture = jobsStartedManufacture;
-        return this;
-    }
-
-    /**
-     * jobs_started_manufacture integer
-     * 
-     * @return jobsStartedManufacture
-     **/
-    @ApiModelProperty(value = "jobs_started_manufacture integer")
-    public Long getJobsStartedManufacture() {
-        return jobsStartedManufacture;
-    }
-
-    public void setJobsStartedManufacture(Long jobsStartedManufacture) {
-        this.jobsStartedManufacture = jobsStartedManufacture;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureOtherQuantity(Long jobsCompletedManufactureOtherQuantity) {
-        this.jobsCompletedManufactureOtherQuantity = jobsCompletedManufactureOtherQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_other_quantity integer
-     * 
-     * @return jobsCompletedManufactureOtherQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_other_quantity integer")
-    public Long getJobsCompletedManufactureOtherQuantity() {
-        return jobsCompletedManufactureOtherQuantity;
-    }
-
-    public void setJobsCompletedManufactureOtherQuantity(Long jobsCompletedManufactureOtherQuantity) {
-        this.jobsCompletedManufactureOtherQuantity = jobsCompletedManufactureOtherQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedTimeProductivity(Long jobsCompletedTimeProductivity) {
-        this.jobsCompletedTimeProductivity = jobsCompletedTimeProductivity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_time_productivity integer
-     * 
-     * @return jobsCompletedTimeProductivity
-     **/
-    @ApiModelProperty(value = "jobs_completed_time_productivity integer")
-    public Long getJobsCompletedTimeProductivity() {
-        return jobsCompletedTimeProductivity;
-    }
-
-    public void setJobsCompletedTimeProductivity(Long jobsCompletedTimeProductivity) {
-        this.jobsCompletedTimeProductivity = jobsCompletedTimeProductivity;
+    public void setJobsCancelled(Long jobsCancelled) {
+        this.jobsCancelled = jobsCancelled;
     }
 
     public CharacterStatsIndustry jobsCompletedCopyBlueprint(Long jobsCompletedCopyBlueprint) {
+
         this.jobsCompletedCopyBlueprint = jobsCompletedCopyBlueprint;
         return this;
     }
@@ -356,6 +228,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedCopyBlueprint
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_copy_blueprint integer")
     public Long getJobsCompletedCopyBlueprint() {
         return jobsCompletedCopyBlueprint;
@@ -365,65 +238,199 @@ public class CharacterStatsIndustry implements Serializable {
         this.jobsCompletedCopyBlueprint = jobsCompletedCopyBlueprint;
     }
 
-    public CharacterStatsIndustry jobsCompletedManufactureOther(Long jobsCompletedManufactureOther) {
-        this.jobsCompletedManufactureOther = jobsCompletedManufactureOther;
+    public CharacterStatsIndustry jobsCompletedInvention(Long jobsCompletedInvention) {
+
+        this.jobsCompletedInvention = jobsCompletedInvention;
         return this;
     }
 
     /**
-     * jobs_completed_manufacture_other integer
+     * jobs_completed_invention integer
      * 
-     * @return jobsCompletedManufactureOther
+     * @return jobsCompletedInvention
      **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_other integer")
-    public Long getJobsCompletedManufactureOther() {
-        return jobsCompletedManufactureOther;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_invention integer")
+    public Long getJobsCompletedInvention() {
+        return jobsCompletedInvention;
     }
 
-    public void setJobsCompletedManufactureOther(Long jobsCompletedManufactureOther) {
-        this.jobsCompletedManufactureOther = jobsCompletedManufactureOther;
+    public void setJobsCompletedInvention(Long jobsCompletedInvention) {
+        this.jobsCompletedInvention = jobsCompletedInvention;
     }
 
-    public CharacterStatsIndustry reprocessItem(Long reprocessItem) {
-        this.reprocessItem = reprocessItem;
+    public CharacterStatsIndustry jobsCompletedManufacture(Long jobsCompletedManufacture) {
+
+        this.jobsCompletedManufacture = jobsCompletedManufacture;
         return this;
     }
 
     /**
-     * reprocess_item integer
+     * jobs_completed_manufacture integer
      * 
-     * @return reprocessItem
+     * @return jobsCompletedManufacture
      **/
-    @ApiModelProperty(value = "reprocess_item integer")
-    public Long getReprocessItem() {
-        return reprocessItem;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture integer")
+    public Long getJobsCompletedManufacture() {
+        return jobsCompletedManufacture;
     }
 
-    public void setReprocessItem(Long reprocessItem) {
-        this.reprocessItem = reprocessItem;
+    public void setJobsCompletedManufacture(Long jobsCompletedManufacture) {
+        this.jobsCompletedManufacture = jobsCompletedManufacture;
     }
 
-    public CharacterStatsIndustry jobsStartedCopyBlueprint(Long jobsStartedCopyBlueprint) {
-        this.jobsStartedCopyBlueprint = jobsStartedCopyBlueprint;
+    public CharacterStatsIndustry jobsCompletedManufactureAsteroid(Long jobsCompletedManufactureAsteroid) {
+
+        this.jobsCompletedManufactureAsteroid = jobsCompletedManufactureAsteroid;
         return this;
     }
 
     /**
-     * jobs_started_copy_blueprint integer
+     * jobs_completed_manufacture_asteroid integer
      * 
-     * @return jobsStartedCopyBlueprint
+     * @return jobsCompletedManufactureAsteroid
      **/
-    @ApiModelProperty(value = "jobs_started_copy_blueprint integer")
-    public Long getJobsStartedCopyBlueprint() {
-        return jobsStartedCopyBlueprint;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid integer")
+    public Long getJobsCompletedManufactureAsteroid() {
+        return jobsCompletedManufactureAsteroid;
     }
 
-    public void setJobsStartedCopyBlueprint(Long jobsStartedCopyBlueprint) {
-        this.jobsStartedCopyBlueprint = jobsStartedCopyBlueprint;
+    public void setJobsCompletedManufactureAsteroid(Long jobsCompletedManufactureAsteroid) {
+        this.jobsCompletedManufactureAsteroid = jobsCompletedManufactureAsteroid;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureAsteroidQuantity(Long jobsCompletedManufactureAsteroidQuantity) {
+
+        this.jobsCompletedManufactureAsteroidQuantity = jobsCompletedManufactureAsteroidQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_asteroid_quantity integer
+     * 
+     * @return jobsCompletedManufactureAsteroidQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid_quantity integer")
+    public Long getJobsCompletedManufactureAsteroidQuantity() {
+        return jobsCompletedManufactureAsteroidQuantity;
+    }
+
+    public void setJobsCompletedManufactureAsteroidQuantity(Long jobsCompletedManufactureAsteroidQuantity) {
+        this.jobsCompletedManufactureAsteroidQuantity = jobsCompletedManufactureAsteroidQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureCharge(Long jobsCompletedManufactureCharge) {
+
+        this.jobsCompletedManufactureCharge = jobsCompletedManufactureCharge;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_charge integer
+     * 
+     * @return jobsCompletedManufactureCharge
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_charge integer")
+    public Long getJobsCompletedManufactureCharge() {
+        return jobsCompletedManufactureCharge;
+    }
+
+    public void setJobsCompletedManufactureCharge(Long jobsCompletedManufactureCharge) {
+        this.jobsCompletedManufactureCharge = jobsCompletedManufactureCharge;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureChargeQuantity(Long jobsCompletedManufactureChargeQuantity) {
+
+        this.jobsCompletedManufactureChargeQuantity = jobsCompletedManufactureChargeQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_charge_quantity integer
+     * 
+     * @return jobsCompletedManufactureChargeQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_charge_quantity integer")
+    public Long getJobsCompletedManufactureChargeQuantity() {
+        return jobsCompletedManufactureChargeQuantity;
+    }
+
+    public void setJobsCompletedManufactureChargeQuantity(Long jobsCompletedManufactureChargeQuantity) {
+        this.jobsCompletedManufactureChargeQuantity = jobsCompletedManufactureChargeQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureCommodity(Long jobsCompletedManufactureCommodity) {
+
+        this.jobsCompletedManufactureCommodity = jobsCompletedManufactureCommodity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_commodity integer
+     * 
+     * @return jobsCompletedManufactureCommodity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_commodity integer")
+    public Long getJobsCompletedManufactureCommodity() {
+        return jobsCompletedManufactureCommodity;
+    }
+
+    public void setJobsCompletedManufactureCommodity(Long jobsCompletedManufactureCommodity) {
+        this.jobsCompletedManufactureCommodity = jobsCompletedManufactureCommodity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureCommodityQuantity(
+            Long jobsCompletedManufactureCommodityQuantity) {
+
+        this.jobsCompletedManufactureCommodityQuantity = jobsCompletedManufactureCommodityQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_commodity_quantity integer
+     * 
+     * @return jobsCompletedManufactureCommodityQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_commodity_quantity integer")
+    public Long getJobsCompletedManufactureCommodityQuantity() {
+        return jobsCompletedManufactureCommodityQuantity;
+    }
+
+    public void setJobsCompletedManufactureCommodityQuantity(Long jobsCompletedManufactureCommodityQuantity) {
+        this.jobsCompletedManufactureCommodityQuantity = jobsCompletedManufactureCommodityQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureDeployable(Long jobsCompletedManufactureDeployable) {
+
+        this.jobsCompletedManufactureDeployable = jobsCompletedManufactureDeployable;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_deployable integer
+     * 
+     * @return jobsCompletedManufactureDeployable
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_deployable integer")
+    public Long getJobsCompletedManufactureDeployable() {
+        return jobsCompletedManufactureDeployable;
+    }
+
+    public void setJobsCompletedManufactureDeployable(Long jobsCompletedManufactureDeployable) {
+        this.jobsCompletedManufactureDeployable = jobsCompletedManufactureDeployable;
     }
 
     public CharacterStatsIndustry jobsCompletedManufactureDeployableQuantity(
             Long jobsCompletedManufactureDeployableQuantity) {
+
         this.jobsCompletedManufactureDeployableQuantity = jobsCompletedManufactureDeployableQuantity;
         return this;
     }
@@ -433,6 +440,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureDeployableQuantity
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_deployable_quantity integer")
     public Long getJobsCompletedManufactureDeployableQuantity() {
         return jobsCompletedManufactureDeployableQuantity;
@@ -442,7 +450,71 @@ public class CharacterStatsIndustry implements Serializable {
         this.jobsCompletedManufactureDeployableQuantity = jobsCompletedManufactureDeployableQuantity;
     }
 
+    public CharacterStatsIndustry jobsCompletedManufactureDrone(Long jobsCompletedManufactureDrone) {
+
+        this.jobsCompletedManufactureDrone = jobsCompletedManufactureDrone;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_drone integer
+     * 
+     * @return jobsCompletedManufactureDrone
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_drone integer")
+    public Long getJobsCompletedManufactureDrone() {
+        return jobsCompletedManufactureDrone;
+    }
+
+    public void setJobsCompletedManufactureDrone(Long jobsCompletedManufactureDrone) {
+        this.jobsCompletedManufactureDrone = jobsCompletedManufactureDrone;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureDroneQuantity(Long jobsCompletedManufactureDroneQuantity) {
+
+        this.jobsCompletedManufactureDroneQuantity = jobsCompletedManufactureDroneQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_drone_quantity integer
+     * 
+     * @return jobsCompletedManufactureDroneQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_drone_quantity integer")
+    public Long getJobsCompletedManufactureDroneQuantity() {
+        return jobsCompletedManufactureDroneQuantity;
+    }
+
+    public void setJobsCompletedManufactureDroneQuantity(Long jobsCompletedManufactureDroneQuantity) {
+        this.jobsCompletedManufactureDroneQuantity = jobsCompletedManufactureDroneQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureImplant(Long jobsCompletedManufactureImplant) {
+
+        this.jobsCompletedManufactureImplant = jobsCompletedManufactureImplant;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_implant integer
+     * 
+     * @return jobsCompletedManufactureImplant
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_implant integer")
+    public Long getJobsCompletedManufactureImplant() {
+        return jobsCompletedManufactureImplant;
+    }
+
+    public void setJobsCompletedManufactureImplant(Long jobsCompletedManufactureImplant) {
+        this.jobsCompletedManufactureImplant = jobsCompletedManufactureImplant;
+    }
+
     public CharacterStatsIndustry jobsCompletedManufactureImplantQuantity(Long jobsCompletedManufactureImplantQuantity) {
+
         this.jobsCompletedManufactureImplantQuantity = jobsCompletedManufactureImplantQuantity;
         return this;
     }
@@ -452,6 +524,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureImplantQuantity
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_implant_quantity integer")
     public Long getJobsCompletedManufactureImplantQuantity() {
         return jobsCompletedManufactureImplantQuantity;
@@ -462,6 +535,7 @@ public class CharacterStatsIndustry implements Serializable {
     }
 
     public CharacterStatsIndustry jobsCompletedManufactureModule(Long jobsCompletedManufactureModule) {
+
         this.jobsCompletedManufactureModule = jobsCompletedManufactureModule;
         return this;
     }
@@ -471,6 +545,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureModule
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_module integer")
     public Long getJobsCompletedManufactureModule() {
         return jobsCompletedManufactureModule;
@@ -480,160 +555,8 @@ public class CharacterStatsIndustry implements Serializable {
         this.jobsCompletedManufactureModule = jobsCompletedManufactureModule;
     }
 
-    public CharacterStatsIndustry jobsCompletedManufactureSubsystemQuantity(
-            Long jobsCompletedManufactureSubsystemQuantity) {
-        this.jobsCompletedManufactureSubsystemQuantity = jobsCompletedManufactureSubsystemQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_subsystem_quantity integer
-     * 
-     * @return jobsCompletedManufactureSubsystemQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem_quantity integer")
-    public Long getJobsCompletedManufactureSubsystemQuantity() {
-        return jobsCompletedManufactureSubsystemQuantity;
-    }
-
-    public void setJobsCompletedManufactureSubsystemQuantity(Long jobsCompletedManufactureSubsystemQuantity) {
-        this.jobsCompletedManufactureSubsystemQuantity = jobsCompletedManufactureSubsystemQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCancelled(Long jobsCancelled) {
-        this.jobsCancelled = jobsCancelled;
-        return this;
-    }
-
-    /**
-     * jobs_cancelled integer
-     * 
-     * @return jobsCancelled
-     **/
-    @ApiModelProperty(value = "jobs_cancelled integer")
-    public Long getJobsCancelled() {
-        return jobsCancelled;
-    }
-
-    public void setJobsCancelled(Long jobsCancelled) {
-        this.jobsCancelled = jobsCancelled;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureCommodity(Long jobsCompletedManufactureCommodity) {
-        this.jobsCompletedManufactureCommodity = jobsCompletedManufactureCommodity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_commodity integer
-     * 
-     * @return jobsCompletedManufactureCommodity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_commodity integer")
-    public Long getJobsCompletedManufactureCommodity() {
-        return jobsCompletedManufactureCommodity;
-    }
-
-    public void setJobsCompletedManufactureCommodity(Long jobsCompletedManufactureCommodity) {
-        this.jobsCompletedManufactureCommodity = jobsCompletedManufactureCommodity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureSubsystem(Long jobsCompletedManufactureSubsystem) {
-        this.jobsCompletedManufactureSubsystem = jobsCompletedManufactureSubsystem;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_subsystem integer
-     * 
-     * @return jobsCompletedManufactureSubsystem
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem integer")
-    public Long getJobsCompletedManufactureSubsystem() {
-        return jobsCompletedManufactureSubsystem;
-    }
-
-    public void setJobsCompletedManufactureSubsystem(Long jobsCompletedManufactureSubsystem) {
-        this.jobsCompletedManufactureSubsystem = jobsCompletedManufactureSubsystem;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureDeployable(Long jobsCompletedManufactureDeployable) {
-        this.jobsCompletedManufactureDeployable = jobsCompletedManufactureDeployable;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_deployable integer
-     * 
-     * @return jobsCompletedManufactureDeployable
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_deployable integer")
-    public Long getJobsCompletedManufactureDeployable() {
-        return jobsCompletedManufactureDeployable;
-    }
-
-    public void setJobsCompletedManufactureDeployable(Long jobsCompletedManufactureDeployable) {
-        this.jobsCompletedManufactureDeployable = jobsCompletedManufactureDeployable;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureShipQuantity(Long jobsCompletedManufactureShipQuantity) {
-        this.jobsCompletedManufactureShipQuantity = jobsCompletedManufactureShipQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_ship_quantity integer
-     * 
-     * @return jobsCompletedManufactureShipQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_ship_quantity integer")
-    public Long getJobsCompletedManufactureShipQuantity() {
-        return jobsCompletedManufactureShipQuantity;
-    }
-
-    public void setJobsCompletedManufactureShipQuantity(Long jobsCompletedManufactureShipQuantity) {
-        this.jobsCompletedManufactureShipQuantity = jobsCompletedManufactureShipQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufacture(Long jobsCompletedManufacture) {
-        this.jobsCompletedManufacture = jobsCompletedManufacture;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture integer
-     * 
-     * @return jobsCompletedManufacture
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture integer")
-    public Long getJobsCompletedManufacture() {
-        return jobsCompletedManufacture;
-    }
-
-    public void setJobsCompletedManufacture(Long jobsCompletedManufacture) {
-        this.jobsCompletedManufacture = jobsCompletedManufacture;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureCharge(Long jobsCompletedManufactureCharge) {
-        this.jobsCompletedManufactureCharge = jobsCompletedManufactureCharge;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_charge integer
-     * 
-     * @return jobsCompletedManufactureCharge
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_charge integer")
-    public Long getJobsCompletedManufactureCharge() {
-        return jobsCompletedManufactureCharge;
-    }
-
-    public void setJobsCompletedManufactureCharge(Long jobsCompletedManufactureCharge) {
-        this.jobsCompletedManufactureCharge = jobsCompletedManufactureCharge;
-    }
-
     public CharacterStatsIndustry jobsCompletedManufactureModuleQuantity(Long jobsCompletedManufactureModuleQuantity) {
+
         this.jobsCompletedManufactureModuleQuantity = jobsCompletedManufactureModuleQuantity;
         return this;
     }
@@ -643,6 +566,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureModuleQuantity
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_module_quantity integer")
     public Long getJobsCompletedManufactureModuleQuantity() {
         return jobsCompletedManufactureModuleQuantity;
@@ -652,83 +576,50 @@ public class CharacterStatsIndustry implements Serializable {
         this.jobsCompletedManufactureModuleQuantity = jobsCompletedManufactureModuleQuantity;
     }
 
-    public CharacterStatsIndustry jobsStartedTimeProductivity(Long jobsStartedTimeProductivity) {
-        this.jobsStartedTimeProductivity = jobsStartedTimeProductivity;
+    public CharacterStatsIndustry jobsCompletedManufactureOther(Long jobsCompletedManufactureOther) {
+
+        this.jobsCompletedManufactureOther = jobsCompletedManufactureOther;
         return this;
     }
 
     /**
-     * jobs_started_time_productivity integer
+     * jobs_completed_manufacture_other integer
      * 
-     * @return jobsStartedTimeProductivity
+     * @return jobsCompletedManufactureOther
      **/
-    @ApiModelProperty(value = "jobs_started_time_productivity integer")
-    public Long getJobsStartedTimeProductivity() {
-        return jobsStartedTimeProductivity;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_other integer")
+    public Long getJobsCompletedManufactureOther() {
+        return jobsCompletedManufactureOther;
     }
 
-    public void setJobsStartedTimeProductivity(Long jobsStartedTimeProductivity) {
-        this.jobsStartedTimeProductivity = jobsStartedTimeProductivity;
+    public void setJobsCompletedManufactureOther(Long jobsCompletedManufactureOther) {
+        this.jobsCompletedManufactureOther = jobsCompletedManufactureOther;
     }
 
-    public CharacterStatsIndustry jobsCompletedManufactureAsteroid(Long jobsCompletedManufactureAsteroid) {
-        this.jobsCompletedManufactureAsteroid = jobsCompletedManufactureAsteroid;
+    public CharacterStatsIndustry jobsCompletedManufactureOtherQuantity(Long jobsCompletedManufactureOtherQuantity) {
+
+        this.jobsCompletedManufactureOtherQuantity = jobsCompletedManufactureOtherQuantity;
         return this;
     }
 
     /**
-     * jobs_completed_manufacture_asteroid integer
+     * jobs_completed_manufacture_other_quantity integer
      * 
-     * @return jobsCompletedManufactureAsteroid
+     * @return jobsCompletedManufactureOtherQuantity
      **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_asteroid integer")
-    public Long getJobsCompletedManufactureAsteroid() {
-        return jobsCompletedManufactureAsteroid;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_other_quantity integer")
+    public Long getJobsCompletedManufactureOtherQuantity() {
+        return jobsCompletedManufactureOtherQuantity;
     }
 
-    public void setJobsCompletedManufactureAsteroid(Long jobsCompletedManufactureAsteroid) {
-        this.jobsCompletedManufactureAsteroid = jobsCompletedManufactureAsteroid;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureDroneQuantity(Long jobsCompletedManufactureDroneQuantity) {
-        this.jobsCompletedManufactureDroneQuantity = jobsCompletedManufactureDroneQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_drone_quantity integer
-     * 
-     * @return jobsCompletedManufactureDroneQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_drone_quantity integer")
-    public Long getJobsCompletedManufactureDroneQuantity() {
-        return jobsCompletedManufactureDroneQuantity;
-    }
-
-    public void setJobsCompletedManufactureDroneQuantity(Long jobsCompletedManufactureDroneQuantity) {
-        this.jobsCompletedManufactureDroneQuantity = jobsCompletedManufactureDroneQuantity;
-    }
-
-    public CharacterStatsIndustry jobsStartedMaterialProductivity(Long jobsStartedMaterialProductivity) {
-        this.jobsStartedMaterialProductivity = jobsStartedMaterialProductivity;
-        return this;
-    }
-
-    /**
-     * jobs_started_material_productivity integer
-     * 
-     * @return jobsStartedMaterialProductivity
-     **/
-    @ApiModelProperty(value = "jobs_started_material_productivity integer")
-    public Long getJobsStartedMaterialProductivity() {
-        return jobsStartedMaterialProductivity;
-    }
-
-    public void setJobsStartedMaterialProductivity(Long jobsStartedMaterialProductivity) {
-        this.jobsStartedMaterialProductivity = jobsStartedMaterialProductivity;
+    public void setJobsCompletedManufactureOtherQuantity(Long jobsCompletedManufactureOtherQuantity) {
+        this.jobsCompletedManufactureOtherQuantity = jobsCompletedManufactureOtherQuantity;
     }
 
     public CharacterStatsIndustry jobsCompletedManufactureShip(Long jobsCompletedManufactureShip) {
+
         this.jobsCompletedManufactureShip = jobsCompletedManufactureShip;
         return this;
     }
@@ -738,6 +629,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureShip
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_ship integer")
     public Long getJobsCompletedManufactureShip() {
         return jobsCompletedManufactureShip;
@@ -747,104 +639,29 @@ public class CharacterStatsIndustry implements Serializable {
         this.jobsCompletedManufactureShip = jobsCompletedManufactureShip;
     }
 
-    public CharacterStatsIndustry jobsCompletedMaterialProductivity(Long jobsCompletedMaterialProductivity) {
-        this.jobsCompletedMaterialProductivity = jobsCompletedMaterialProductivity;
+    public CharacterStatsIndustry jobsCompletedManufactureShipQuantity(Long jobsCompletedManufactureShipQuantity) {
+
+        this.jobsCompletedManufactureShipQuantity = jobsCompletedManufactureShipQuantity;
         return this;
     }
 
     /**
-     * jobs_completed_material_productivity integer
+     * jobs_completed_manufacture_ship_quantity integer
      * 
-     * @return jobsCompletedMaterialProductivity
+     * @return jobsCompletedManufactureShipQuantity
      **/
-    @ApiModelProperty(value = "jobs_completed_material_productivity integer")
-    public Long getJobsCompletedMaterialProductivity() {
-        return jobsCompletedMaterialProductivity;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_ship_quantity integer")
+    public Long getJobsCompletedManufactureShipQuantity() {
+        return jobsCompletedManufactureShipQuantity;
     }
 
-    public void setJobsCompletedMaterialProductivity(Long jobsCompletedMaterialProductivity) {
-        this.jobsCompletedMaterialProductivity = jobsCompletedMaterialProductivity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureCommodityQuantity(
-            Long jobsCompletedManufactureCommodityQuantity) {
-        this.jobsCompletedManufactureCommodityQuantity = jobsCompletedManufactureCommodityQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_commodity_quantity integer
-     * 
-     * @return jobsCompletedManufactureCommodityQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_commodity_quantity integer")
-    public Long getJobsCompletedManufactureCommodityQuantity() {
-        return jobsCompletedManufactureCommodityQuantity;
-    }
-
-    public void setJobsCompletedManufactureCommodityQuantity(Long jobsCompletedManufactureCommodityQuantity) {
-        this.jobsCompletedManufactureCommodityQuantity = jobsCompletedManufactureCommodityQuantity;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureDrone(Long jobsCompletedManufactureDrone) {
-        this.jobsCompletedManufactureDrone = jobsCompletedManufactureDrone;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_drone integer
-     * 
-     * @return jobsCompletedManufactureDrone
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_drone integer")
-    public Long getJobsCompletedManufactureDrone() {
-        return jobsCompletedManufactureDrone;
-    }
-
-    public void setJobsCompletedManufactureDrone(Long jobsCompletedManufactureDrone) {
-        this.jobsCompletedManufactureDrone = jobsCompletedManufactureDrone;
-    }
-
-    public CharacterStatsIndustry jobsCompletedManufactureStructureQuantity(
-            Long jobsCompletedManufactureStructureQuantity) {
-        this.jobsCompletedManufactureStructureQuantity = jobsCompletedManufactureStructureQuantity;
-        return this;
-    }
-
-    /**
-     * jobs_completed_manufacture_structure_quantity integer
-     * 
-     * @return jobsCompletedManufactureStructureQuantity
-     **/
-    @ApiModelProperty(value = "jobs_completed_manufacture_structure_quantity integer")
-    public Long getJobsCompletedManufactureStructureQuantity() {
-        return jobsCompletedManufactureStructureQuantity;
-    }
-
-    public void setJobsCompletedManufactureStructureQuantity(Long jobsCompletedManufactureStructureQuantity) {
-        this.jobsCompletedManufactureStructureQuantity = jobsCompletedManufactureStructureQuantity;
-    }
-
-    public CharacterStatsIndustry jobsStartedInvention(Long jobsStartedInvention) {
-        this.jobsStartedInvention = jobsStartedInvention;
-        return this;
-    }
-
-    /**
-     * jobs_started_invention integer
-     * 
-     * @return jobsStartedInvention
-     **/
-    @ApiModelProperty(value = "jobs_started_invention integer")
-    public Long getJobsStartedInvention() {
-        return jobsStartedInvention;
-    }
-
-    public void setJobsStartedInvention(Long jobsStartedInvention) {
-        this.jobsStartedInvention = jobsStartedInvention;
+    public void setJobsCompletedManufactureShipQuantity(Long jobsCompletedManufactureShipQuantity) {
+        this.jobsCompletedManufactureShipQuantity = jobsCompletedManufactureShipQuantity;
     }
 
     public CharacterStatsIndustry jobsCompletedManufactureStructure(Long jobsCompletedManufactureStructure) {
+
         this.jobsCompletedManufactureStructure = jobsCompletedManufactureStructure;
         return this;
     }
@@ -854,6 +671,7 @@ public class CharacterStatsIndustry implements Serializable {
      * 
      * @return jobsCompletedManufactureStructure
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "jobs_completed_manufacture_structure integer")
     public Long getJobsCompletedManufactureStructure() {
         return jobsCompletedManufactureStructure;
@@ -861,6 +679,260 @@ public class CharacterStatsIndustry implements Serializable {
 
     public void setJobsCompletedManufactureStructure(Long jobsCompletedManufactureStructure) {
         this.jobsCompletedManufactureStructure = jobsCompletedManufactureStructure;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureStructureQuantity(
+            Long jobsCompletedManufactureStructureQuantity) {
+
+        this.jobsCompletedManufactureStructureQuantity = jobsCompletedManufactureStructureQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_structure_quantity integer
+     * 
+     * @return jobsCompletedManufactureStructureQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_structure_quantity integer")
+    public Long getJobsCompletedManufactureStructureQuantity() {
+        return jobsCompletedManufactureStructureQuantity;
+    }
+
+    public void setJobsCompletedManufactureStructureQuantity(Long jobsCompletedManufactureStructureQuantity) {
+        this.jobsCompletedManufactureStructureQuantity = jobsCompletedManufactureStructureQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureSubsystem(Long jobsCompletedManufactureSubsystem) {
+
+        this.jobsCompletedManufactureSubsystem = jobsCompletedManufactureSubsystem;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_subsystem integer
+     * 
+     * @return jobsCompletedManufactureSubsystem
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem integer")
+    public Long getJobsCompletedManufactureSubsystem() {
+        return jobsCompletedManufactureSubsystem;
+    }
+
+    public void setJobsCompletedManufactureSubsystem(Long jobsCompletedManufactureSubsystem) {
+        this.jobsCompletedManufactureSubsystem = jobsCompletedManufactureSubsystem;
+    }
+
+    public CharacterStatsIndustry jobsCompletedManufactureSubsystemQuantity(
+            Long jobsCompletedManufactureSubsystemQuantity) {
+
+        this.jobsCompletedManufactureSubsystemQuantity = jobsCompletedManufactureSubsystemQuantity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_manufacture_subsystem_quantity integer
+     * 
+     * @return jobsCompletedManufactureSubsystemQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_manufacture_subsystem_quantity integer")
+    public Long getJobsCompletedManufactureSubsystemQuantity() {
+        return jobsCompletedManufactureSubsystemQuantity;
+    }
+
+    public void setJobsCompletedManufactureSubsystemQuantity(Long jobsCompletedManufactureSubsystemQuantity) {
+        this.jobsCompletedManufactureSubsystemQuantity = jobsCompletedManufactureSubsystemQuantity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedMaterialProductivity(Long jobsCompletedMaterialProductivity) {
+
+        this.jobsCompletedMaterialProductivity = jobsCompletedMaterialProductivity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_material_productivity integer
+     * 
+     * @return jobsCompletedMaterialProductivity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_material_productivity integer")
+    public Long getJobsCompletedMaterialProductivity() {
+        return jobsCompletedMaterialProductivity;
+    }
+
+    public void setJobsCompletedMaterialProductivity(Long jobsCompletedMaterialProductivity) {
+        this.jobsCompletedMaterialProductivity = jobsCompletedMaterialProductivity;
+    }
+
+    public CharacterStatsIndustry jobsCompletedTimeProductivity(Long jobsCompletedTimeProductivity) {
+
+        this.jobsCompletedTimeProductivity = jobsCompletedTimeProductivity;
+        return this;
+    }
+
+    /**
+     * jobs_completed_time_productivity integer
+     * 
+     * @return jobsCompletedTimeProductivity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_completed_time_productivity integer")
+    public Long getJobsCompletedTimeProductivity() {
+        return jobsCompletedTimeProductivity;
+    }
+
+    public void setJobsCompletedTimeProductivity(Long jobsCompletedTimeProductivity) {
+        this.jobsCompletedTimeProductivity = jobsCompletedTimeProductivity;
+    }
+
+    public CharacterStatsIndustry jobsStartedCopyBlueprint(Long jobsStartedCopyBlueprint) {
+
+        this.jobsStartedCopyBlueprint = jobsStartedCopyBlueprint;
+        return this;
+    }
+
+    /**
+     * jobs_started_copy_blueprint integer
+     * 
+     * @return jobsStartedCopyBlueprint
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_started_copy_blueprint integer")
+    public Long getJobsStartedCopyBlueprint() {
+        return jobsStartedCopyBlueprint;
+    }
+
+    public void setJobsStartedCopyBlueprint(Long jobsStartedCopyBlueprint) {
+        this.jobsStartedCopyBlueprint = jobsStartedCopyBlueprint;
+    }
+
+    public CharacterStatsIndustry jobsStartedInvention(Long jobsStartedInvention) {
+
+        this.jobsStartedInvention = jobsStartedInvention;
+        return this;
+    }
+
+    /**
+     * jobs_started_invention integer
+     * 
+     * @return jobsStartedInvention
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_started_invention integer")
+    public Long getJobsStartedInvention() {
+        return jobsStartedInvention;
+    }
+
+    public void setJobsStartedInvention(Long jobsStartedInvention) {
+        this.jobsStartedInvention = jobsStartedInvention;
+    }
+
+    public CharacterStatsIndustry jobsStartedManufacture(Long jobsStartedManufacture) {
+
+        this.jobsStartedManufacture = jobsStartedManufacture;
+        return this;
+    }
+
+    /**
+     * jobs_started_manufacture integer
+     * 
+     * @return jobsStartedManufacture
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_started_manufacture integer")
+    public Long getJobsStartedManufacture() {
+        return jobsStartedManufacture;
+    }
+
+    public void setJobsStartedManufacture(Long jobsStartedManufacture) {
+        this.jobsStartedManufacture = jobsStartedManufacture;
+    }
+
+    public CharacterStatsIndustry jobsStartedMaterialProductivity(Long jobsStartedMaterialProductivity) {
+
+        this.jobsStartedMaterialProductivity = jobsStartedMaterialProductivity;
+        return this;
+    }
+
+    /**
+     * jobs_started_material_productivity integer
+     * 
+     * @return jobsStartedMaterialProductivity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_started_material_productivity integer")
+    public Long getJobsStartedMaterialProductivity() {
+        return jobsStartedMaterialProductivity;
+    }
+
+    public void setJobsStartedMaterialProductivity(Long jobsStartedMaterialProductivity) {
+        this.jobsStartedMaterialProductivity = jobsStartedMaterialProductivity;
+    }
+
+    public CharacterStatsIndustry jobsStartedTimeProductivity(Long jobsStartedTimeProductivity) {
+
+        this.jobsStartedTimeProductivity = jobsStartedTimeProductivity;
+        return this;
+    }
+
+    /**
+     * jobs_started_time_productivity integer
+     * 
+     * @return jobsStartedTimeProductivity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "jobs_started_time_productivity integer")
+    public Long getJobsStartedTimeProductivity() {
+        return jobsStartedTimeProductivity;
+    }
+
+    public void setJobsStartedTimeProductivity(Long jobsStartedTimeProductivity) {
+        this.jobsStartedTimeProductivity = jobsStartedTimeProductivity;
+    }
+
+    public CharacterStatsIndustry reprocessItem(Long reprocessItem) {
+
+        this.reprocessItem = reprocessItem;
+        return this;
+    }
+
+    /**
+     * reprocess_item integer
+     * 
+     * @return reprocessItem
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "reprocess_item integer")
+    public Long getReprocessItem() {
+        return reprocessItem;
+    }
+
+    public void setReprocessItem(Long reprocessItem) {
+        this.reprocessItem = reprocessItem;
+    }
+
+    public CharacterStatsIndustry reprocessItemQuantity(Long reprocessItemQuantity) {
+
+        this.reprocessItemQuantity = reprocessItemQuantity;
+        return this;
+    }
+
+    /**
+     * reprocess_item_quantity integer
+     * 
+     * @return reprocessItemQuantity
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "reprocess_item_quantity integer")
+    public Long getReprocessItemQuantity() {
+        return reprocessItemQuantity;
+    }
+
+    public void setReprocessItemQuantity(Long reprocessItemQuantity) {
+        this.reprocessItemQuantity = reprocessItemQuantity;
     }
 
     @Override
@@ -872,153 +944,153 @@ public class CharacterStatsIndustry implements Serializable {
             return false;
         }
         CharacterStatsIndustry characterStatsIndustry = (CharacterStatsIndustry) o;
-        return Objects.equals(this.reprocessItemQuantity, characterStatsIndustry.reprocessItemQuantity)
-                && Objects.equals(this.hackingSuccesses, characterStatsIndustry.hackingSuccesses)
+        return Objects.equals(this.hackingSuccesses, characterStatsIndustry.hackingSuccesses)
+                && Objects.equals(this.jobsCancelled, characterStatsIndustry.jobsCancelled)
+                && Objects.equals(this.jobsCompletedCopyBlueprint, characterStatsIndustry.jobsCompletedCopyBlueprint)
                 && Objects.equals(this.jobsCompletedInvention, characterStatsIndustry.jobsCompletedInvention)
+                && Objects.equals(this.jobsCompletedManufacture, characterStatsIndustry.jobsCompletedManufacture)
+                && Objects.equals(this.jobsCompletedManufactureAsteroid,
+                        characterStatsIndustry.jobsCompletedManufactureAsteroid)
                 && Objects.equals(this.jobsCompletedManufactureAsteroidQuantity,
                         characterStatsIndustry.jobsCompletedManufactureAsteroidQuantity)
+                && Objects.equals(this.jobsCompletedManufactureCharge,
+                        characterStatsIndustry.jobsCompletedManufactureCharge)
                 && Objects.equals(this.jobsCompletedManufactureChargeQuantity,
                         characterStatsIndustry.jobsCompletedManufactureChargeQuantity)
-                && Objects.equals(this.jobsCompletedManufactureImplant,
-                        characterStatsIndustry.jobsCompletedManufactureImplant)
-                && Objects.equals(this.jobsStartedManufacture, characterStatsIndustry.jobsStartedManufacture)
-                && Objects.equals(this.jobsCompletedManufactureOtherQuantity,
-                        characterStatsIndustry.jobsCompletedManufactureOtherQuantity)
-                && Objects.equals(this.jobsCompletedTimeProductivity,
-                        characterStatsIndustry.jobsCompletedTimeProductivity)
-                && Objects.equals(this.jobsCompletedCopyBlueprint, characterStatsIndustry.jobsCompletedCopyBlueprint)
-                && Objects.equals(this.jobsCompletedManufactureOther,
-                        characterStatsIndustry.jobsCompletedManufactureOther)
-                && Objects.equals(this.reprocessItem, characterStatsIndustry.reprocessItem)
-                && Objects.equals(this.jobsStartedCopyBlueprint, characterStatsIndustry.jobsStartedCopyBlueprint)
+                && Objects.equals(this.jobsCompletedManufactureCommodity,
+                        characterStatsIndustry.jobsCompletedManufactureCommodity)
+                && Objects.equals(this.jobsCompletedManufactureCommodityQuantity,
+                        characterStatsIndustry.jobsCompletedManufactureCommodityQuantity)
+                && Objects.equals(this.jobsCompletedManufactureDeployable,
+                        characterStatsIndustry.jobsCompletedManufactureDeployable)
                 && Objects.equals(this.jobsCompletedManufactureDeployableQuantity,
                         characterStatsIndustry.jobsCompletedManufactureDeployableQuantity)
+                && Objects.equals(this.jobsCompletedManufactureDrone,
+                        characterStatsIndustry.jobsCompletedManufactureDrone)
+                && Objects.equals(this.jobsCompletedManufactureDroneQuantity,
+                        characterStatsIndustry.jobsCompletedManufactureDroneQuantity)
+                && Objects.equals(this.jobsCompletedManufactureImplant,
+                        characterStatsIndustry.jobsCompletedManufactureImplant)
                 && Objects.equals(this.jobsCompletedManufactureImplantQuantity,
                         characterStatsIndustry.jobsCompletedManufactureImplantQuantity)
                 && Objects.equals(this.jobsCompletedManufactureModule,
                         characterStatsIndustry.jobsCompletedManufactureModule)
-                && Objects.equals(this.jobsCompletedManufactureSubsystemQuantity,
-                        characterStatsIndustry.jobsCompletedManufactureSubsystemQuantity)
-                && Objects.equals(this.jobsCancelled, characterStatsIndustry.jobsCancelled)
-                && Objects.equals(this.jobsCompletedManufactureCommodity,
-                        characterStatsIndustry.jobsCompletedManufactureCommodity)
-                && Objects.equals(this.jobsCompletedManufactureSubsystem,
-                        characterStatsIndustry.jobsCompletedManufactureSubsystem)
-                && Objects.equals(this.jobsCompletedManufactureDeployable,
-                        characterStatsIndustry.jobsCompletedManufactureDeployable)
-                && Objects.equals(this.jobsCompletedManufactureShipQuantity,
-                        characterStatsIndustry.jobsCompletedManufactureShipQuantity)
-                && Objects.equals(this.jobsCompletedManufacture, characterStatsIndustry.jobsCompletedManufacture)
-                && Objects.equals(this.jobsCompletedManufactureCharge,
-                        characterStatsIndustry.jobsCompletedManufactureCharge)
                 && Objects.equals(this.jobsCompletedManufactureModuleQuantity,
                         characterStatsIndustry.jobsCompletedManufactureModuleQuantity)
-                && Objects.equals(this.jobsStartedTimeProductivity, characterStatsIndustry.jobsStartedTimeProductivity)
-                && Objects.equals(this.jobsCompletedManufactureAsteroid,
-                        characterStatsIndustry.jobsCompletedManufactureAsteroid)
-                && Objects.equals(this.jobsCompletedManufactureDroneQuantity,
-                        characterStatsIndustry.jobsCompletedManufactureDroneQuantity)
-                && Objects.equals(this.jobsStartedMaterialProductivity,
-                        characterStatsIndustry.jobsStartedMaterialProductivity)
+                && Objects.equals(this.jobsCompletedManufactureOther,
+                        characterStatsIndustry.jobsCompletedManufactureOther)
+                && Objects.equals(this.jobsCompletedManufactureOtherQuantity,
+                        characterStatsIndustry.jobsCompletedManufactureOtherQuantity)
                 && Objects.equals(this.jobsCompletedManufactureShip,
                         characterStatsIndustry.jobsCompletedManufactureShip)
-                && Objects.equals(this.jobsCompletedMaterialProductivity,
-                        characterStatsIndustry.jobsCompletedMaterialProductivity)
-                && Objects.equals(this.jobsCompletedManufactureCommodityQuantity,
-                        characterStatsIndustry.jobsCompletedManufactureCommodityQuantity)
-                && Objects.equals(this.jobsCompletedManufactureDrone,
-                        characterStatsIndustry.jobsCompletedManufactureDrone)
+                && Objects.equals(this.jobsCompletedManufactureShipQuantity,
+                        characterStatsIndustry.jobsCompletedManufactureShipQuantity)
+                && Objects.equals(this.jobsCompletedManufactureStructure,
+                        characterStatsIndustry.jobsCompletedManufactureStructure)
                 && Objects.equals(this.jobsCompletedManufactureStructureQuantity,
                         characterStatsIndustry.jobsCompletedManufactureStructureQuantity)
+                && Objects.equals(this.jobsCompletedManufactureSubsystem,
+                        characterStatsIndustry.jobsCompletedManufactureSubsystem)
+                && Objects.equals(this.jobsCompletedManufactureSubsystemQuantity,
+                        characterStatsIndustry.jobsCompletedManufactureSubsystemQuantity)
+                && Objects.equals(this.jobsCompletedMaterialProductivity,
+                        characterStatsIndustry.jobsCompletedMaterialProductivity)
+                && Objects.equals(this.jobsCompletedTimeProductivity,
+                        characterStatsIndustry.jobsCompletedTimeProductivity)
+                && Objects.equals(this.jobsStartedCopyBlueprint, characterStatsIndustry.jobsStartedCopyBlueprint)
                 && Objects.equals(this.jobsStartedInvention, characterStatsIndustry.jobsStartedInvention)
-                && Objects.equals(this.jobsCompletedManufactureStructure,
-                        characterStatsIndustry.jobsCompletedManufactureStructure);
+                && Objects.equals(this.jobsStartedManufacture, characterStatsIndustry.jobsStartedManufacture)
+                && Objects.equals(this.jobsStartedMaterialProductivity,
+                        characterStatsIndustry.jobsStartedMaterialProductivity)
+                && Objects.equals(this.jobsStartedTimeProductivity, characterStatsIndustry.jobsStartedTimeProductivity)
+                && Objects.equals(this.reprocessItem, characterStatsIndustry.reprocessItem)
+                && Objects.equals(this.reprocessItemQuantity, characterStatsIndustry.reprocessItemQuantity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reprocessItemQuantity, hackingSuccesses, jobsCompletedInvention,
-                jobsCompletedManufactureAsteroidQuantity, jobsCompletedManufactureChargeQuantity,
-                jobsCompletedManufactureImplant, jobsStartedManufacture, jobsCompletedManufactureOtherQuantity,
-                jobsCompletedTimeProductivity, jobsCompletedCopyBlueprint, jobsCompletedManufactureOther,
-                reprocessItem, jobsStartedCopyBlueprint, jobsCompletedManufactureDeployableQuantity,
+        return Objects.hash(hackingSuccesses, jobsCancelled, jobsCompletedCopyBlueprint, jobsCompletedInvention,
+                jobsCompletedManufacture, jobsCompletedManufactureAsteroid, jobsCompletedManufactureAsteroidQuantity,
+                jobsCompletedManufactureCharge, jobsCompletedManufactureChargeQuantity,
+                jobsCompletedManufactureCommodity, jobsCompletedManufactureCommodityQuantity,
+                jobsCompletedManufactureDeployable, jobsCompletedManufactureDeployableQuantity,
+                jobsCompletedManufactureDrone, jobsCompletedManufactureDroneQuantity, jobsCompletedManufactureImplant,
                 jobsCompletedManufactureImplantQuantity, jobsCompletedManufactureModule,
-                jobsCompletedManufactureSubsystemQuantity, jobsCancelled, jobsCompletedManufactureCommodity,
-                jobsCompletedManufactureSubsystem, jobsCompletedManufactureDeployable,
-                jobsCompletedManufactureShipQuantity, jobsCompletedManufacture, jobsCompletedManufactureCharge,
-                jobsCompletedManufactureModuleQuantity, jobsStartedTimeProductivity, jobsCompletedManufactureAsteroid,
-                jobsCompletedManufactureDroneQuantity, jobsStartedMaterialProductivity, jobsCompletedManufactureShip,
-                jobsCompletedMaterialProductivity, jobsCompletedManufactureCommodityQuantity,
-                jobsCompletedManufactureDrone, jobsCompletedManufactureStructureQuantity, jobsStartedInvention,
-                jobsCompletedManufactureStructure);
+                jobsCompletedManufactureModuleQuantity, jobsCompletedManufactureOther,
+                jobsCompletedManufactureOtherQuantity, jobsCompletedManufactureShip,
+                jobsCompletedManufactureShipQuantity, jobsCompletedManufactureStructure,
+                jobsCompletedManufactureStructureQuantity, jobsCompletedManufactureSubsystem,
+                jobsCompletedManufactureSubsystemQuantity, jobsCompletedMaterialProductivity,
+                jobsCompletedTimeProductivity, jobsStartedCopyBlueprint, jobsStartedInvention, jobsStartedManufacture,
+                jobsStartedMaterialProductivity, jobsStartedTimeProductivity, reprocessItem, reprocessItemQuantity);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsIndustry {\n");
-        sb.append("    reprocessItemQuantity: ").append(toIndentedString(reprocessItemQuantity)).append("\n");
         sb.append("    hackingSuccesses: ").append(toIndentedString(hackingSuccesses)).append("\n");
+        sb.append("    jobsCancelled: ").append(toIndentedString(jobsCancelled)).append("\n");
+        sb.append("    jobsCompletedCopyBlueprint: ").append(toIndentedString(jobsCompletedCopyBlueprint)).append("\n");
         sb.append("    jobsCompletedInvention: ").append(toIndentedString(jobsCompletedInvention)).append("\n");
+        sb.append("    jobsCompletedManufacture: ").append(toIndentedString(jobsCompletedManufacture)).append("\n");
+        sb.append("    jobsCompletedManufactureAsteroid: ").append(toIndentedString(jobsCompletedManufactureAsteroid))
+                .append("\n");
         sb.append("    jobsCompletedManufactureAsteroidQuantity: ")
                 .append(toIndentedString(jobsCompletedManufactureAsteroidQuantity)).append("\n");
+        sb.append("    jobsCompletedManufactureCharge: ").append(toIndentedString(jobsCompletedManufactureCharge))
+                .append("\n");
         sb.append("    jobsCompletedManufactureChargeQuantity: ")
                 .append(toIndentedString(jobsCompletedManufactureChargeQuantity)).append("\n");
-        sb.append("    jobsCompletedManufactureImplant: ").append(toIndentedString(jobsCompletedManufactureImplant))
-                .append("\n");
-        sb.append("    jobsStartedManufacture: ").append(toIndentedString(jobsStartedManufacture)).append("\n");
-        sb.append("    jobsCompletedManufactureOtherQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureOtherQuantity)).append("\n");
-        sb.append("    jobsCompletedTimeProductivity: ").append(toIndentedString(jobsCompletedTimeProductivity))
-                .append("\n");
-        sb.append("    jobsCompletedCopyBlueprint: ").append(toIndentedString(jobsCompletedCopyBlueprint)).append("\n");
-        sb.append("    jobsCompletedManufactureOther: ").append(toIndentedString(jobsCompletedManufactureOther))
-                .append("\n");
-        sb.append("    reprocessItem: ").append(toIndentedString(reprocessItem)).append("\n");
-        sb.append("    jobsStartedCopyBlueprint: ").append(toIndentedString(jobsStartedCopyBlueprint)).append("\n");
+        sb.append("    jobsCompletedManufactureCommodity: ")
+                .append(toIndentedString(jobsCompletedManufactureCommodity)).append("\n");
+        sb.append("    jobsCompletedManufactureCommodityQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureCommodityQuantity)).append("\n");
+        sb.append("    jobsCompletedManufactureDeployable: ")
+                .append(toIndentedString(jobsCompletedManufactureDeployable)).append("\n");
         sb.append("    jobsCompletedManufactureDeployableQuantity: ")
                 .append(toIndentedString(jobsCompletedManufactureDeployableQuantity)).append("\n");
+        sb.append("    jobsCompletedManufactureDrone: ").append(toIndentedString(jobsCompletedManufactureDrone))
+                .append("\n");
+        sb.append("    jobsCompletedManufactureDroneQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureDroneQuantity)).append("\n");
+        sb.append("    jobsCompletedManufactureImplant: ").append(toIndentedString(jobsCompletedManufactureImplant))
+                .append("\n");
         sb.append("    jobsCompletedManufactureImplantQuantity: ")
                 .append(toIndentedString(jobsCompletedManufactureImplantQuantity)).append("\n");
         sb.append("    jobsCompletedManufactureModule: ").append(toIndentedString(jobsCompletedManufactureModule))
                 .append("\n");
-        sb.append("    jobsCompletedManufactureSubsystemQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureSubsystemQuantity)).append("\n");
-        sb.append("    jobsCancelled: ").append(toIndentedString(jobsCancelled)).append("\n");
-        sb.append("    jobsCompletedManufactureCommodity: ")
-                .append(toIndentedString(jobsCompletedManufactureCommodity)).append("\n");
-        sb.append("    jobsCompletedManufactureSubsystem: ")
-                .append(toIndentedString(jobsCompletedManufactureSubsystem)).append("\n");
-        sb.append("    jobsCompletedManufactureDeployable: ")
-                .append(toIndentedString(jobsCompletedManufactureDeployable)).append("\n");
-        sb.append("    jobsCompletedManufactureShipQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureShipQuantity)).append("\n");
-        sb.append("    jobsCompletedManufacture: ").append(toIndentedString(jobsCompletedManufacture)).append("\n");
-        sb.append("    jobsCompletedManufactureCharge: ").append(toIndentedString(jobsCompletedManufactureCharge))
-                .append("\n");
         sb.append("    jobsCompletedManufactureModuleQuantity: ")
                 .append(toIndentedString(jobsCompletedManufactureModuleQuantity)).append("\n");
-        sb.append("    jobsStartedTimeProductivity: ").append(toIndentedString(jobsStartedTimeProductivity))
+        sb.append("    jobsCompletedManufactureOther: ").append(toIndentedString(jobsCompletedManufactureOther))
                 .append("\n");
-        sb.append("    jobsCompletedManufactureAsteroid: ").append(toIndentedString(jobsCompletedManufactureAsteroid))
-                .append("\n");
-        sb.append("    jobsCompletedManufactureDroneQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureDroneQuantity)).append("\n");
-        sb.append("    jobsStartedMaterialProductivity: ").append(toIndentedString(jobsStartedMaterialProductivity))
-                .append("\n");
+        sb.append("    jobsCompletedManufactureOtherQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureOtherQuantity)).append("\n");
         sb.append("    jobsCompletedManufactureShip: ").append(toIndentedString(jobsCompletedManufactureShip))
                 .append("\n");
-        sb.append("    jobsCompletedMaterialProductivity: ")
-                .append(toIndentedString(jobsCompletedMaterialProductivity)).append("\n");
-        sb.append("    jobsCompletedManufactureCommodityQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureCommodityQuantity)).append("\n");
-        sb.append("    jobsCompletedManufactureDrone: ").append(toIndentedString(jobsCompletedManufactureDrone))
-                .append("\n");
-        sb.append("    jobsCompletedManufactureStructureQuantity: ")
-                .append(toIndentedString(jobsCompletedManufactureStructureQuantity)).append("\n");
-        sb.append("    jobsStartedInvention: ").append(toIndentedString(jobsStartedInvention)).append("\n");
+        sb.append("    jobsCompletedManufactureShipQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureShipQuantity)).append("\n");
         sb.append("    jobsCompletedManufactureStructure: ")
                 .append(toIndentedString(jobsCompletedManufactureStructure)).append("\n");
+        sb.append("    jobsCompletedManufactureStructureQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureStructureQuantity)).append("\n");
+        sb.append("    jobsCompletedManufactureSubsystem: ")
+                .append(toIndentedString(jobsCompletedManufactureSubsystem)).append("\n");
+        sb.append("    jobsCompletedManufactureSubsystemQuantity: ")
+                .append(toIndentedString(jobsCompletedManufactureSubsystemQuantity)).append("\n");
+        sb.append("    jobsCompletedMaterialProductivity: ")
+                .append(toIndentedString(jobsCompletedMaterialProductivity)).append("\n");
+        sb.append("    jobsCompletedTimeProductivity: ").append(toIndentedString(jobsCompletedTimeProductivity))
+                .append("\n");
+        sb.append("    jobsStartedCopyBlueprint: ").append(toIndentedString(jobsStartedCopyBlueprint)).append("\n");
+        sb.append("    jobsStartedInvention: ").append(toIndentedString(jobsStartedInvention)).append("\n");
+        sb.append("    jobsStartedManufacture: ").append(toIndentedString(jobsStartedManufacture)).append("\n");
+        sb.append("    jobsStartedMaterialProductivity: ").append(toIndentedString(jobsStartedMaterialProductivity))
+                .append("\n");
+        sb.append("    jobsStartedTimeProductivity: ").append(toIndentedString(jobsStartedTimeProductivity))
+                .append("\n");
+        sb.append("    reprocessItem: ").append(toIndentedString(reprocessItem)).append("\n");
+        sb.append("    reprocessItemQuantity: ").append(toIndentedString(reprocessItemQuantity)).append("\n");
         sb.append("}");
         return sb.toString();
     }

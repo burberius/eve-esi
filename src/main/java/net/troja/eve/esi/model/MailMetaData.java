@@ -35,13 +35,14 @@ public class MailMetaData implements Serializable {
 
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
-    private List<Integer> labels = new ArrayList<>();
+    private List<Integer> labels = null;
 
     public static final String SERIALIZED_NAME_READ = "read";
     @SerializedName(SERIALIZED_NAME_READ)
     private Boolean read;
 
     public MailMetaData labels(List<Integer> labels) {
+
         this.labels = labels;
         return this;
     }
@@ -59,6 +60,7 @@ public class MailMetaData implements Serializable {
      * 
      * @return labels
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Labels to assign to the mail. Pre-existing labels are unassigned.")
     public List<Integer> getLabels() {
         return labels;
@@ -69,6 +71,7 @@ public class MailMetaData implements Serializable {
     }
 
     public MailMetaData read(Boolean read) {
+
         this.read = read;
         return this;
     }
@@ -78,6 +81,7 @@ public class MailMetaData implements Serializable {
      * 
      * @return read
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Whether the mail is flagged as read")
     public Boolean getRead() {
         return read;

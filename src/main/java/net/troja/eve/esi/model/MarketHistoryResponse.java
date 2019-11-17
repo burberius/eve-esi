@@ -32,21 +32,13 @@ import java.io.Serializable;
 public class MarketHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_DATE = "date";
-    @SerializedName(SERIALIZED_NAME_DATE)
-    private LocalDate date;
-
-    public static final String SERIALIZED_NAME_VOLUME = "volume";
-    @SerializedName(SERIALIZED_NAME_VOLUME)
-    private Long volume;
-
     public static final String SERIALIZED_NAME_AVERAGE = "average";
     @SerializedName(SERIALIZED_NAME_AVERAGE)
     private Double average;
 
-    public static final String SERIALIZED_NAME_ORDER_COUNT = "order_count";
-    @SerializedName(SERIALIZED_NAME_ORDER_COUNT)
-    private Long orderCount;
+    public static final String SERIALIZED_NAME_DATE = "date";
+    @SerializedName(SERIALIZED_NAME_DATE)
+    private LocalDate date;
 
     public static final String SERIALIZED_NAME_HIGHEST = "highest";
     @SerializedName(SERIALIZED_NAME_HIGHEST)
@@ -56,45 +48,16 @@ public class MarketHistoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOWEST)
     private Double lowest;
 
-    public MarketHistoryResponse date(LocalDate date) {
-        this.date = date;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_ORDER_COUNT = "order_count";
+    @SerializedName(SERIALIZED_NAME_ORDER_COUNT)
+    private Long orderCount;
 
-    /**
-     * The date of this historical statistic entry
-     * 
-     * @return date
-     **/
-    @ApiModelProperty(required = true, value = "The date of this historical statistic entry")
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public MarketHistoryResponse volume(Long volume) {
-        this.volume = volume;
-        return this;
-    }
-
-    /**
-     * Total
-     * 
-     * @return volume
-     **/
-    @ApiModelProperty(required = true, value = "Total")
-    public Long getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Long volume) {
-        this.volume = volume;
-    }
+    public static final String SERIALIZED_NAME_VOLUME = "volume";
+    @SerializedName(SERIALIZED_NAME_VOLUME)
+    private Long volume;
 
     public MarketHistoryResponse average(Double average) {
+
         this.average = average;
         return this;
     }
@@ -113,26 +76,28 @@ public class MarketHistoryResponse implements Serializable {
         this.average = average;
     }
 
-    public MarketHistoryResponse orderCount(Long orderCount) {
-        this.orderCount = orderCount;
+    public MarketHistoryResponse date(LocalDate date) {
+
+        this.date = date;
         return this;
     }
 
     /**
-     * Total number of orders happened that day
+     * The date of this historical statistic entry
      * 
-     * @return orderCount
+     * @return date
      **/
-    @ApiModelProperty(required = true, value = "Total number of orders happened that day")
-    public Long getOrderCount() {
-        return orderCount;
+    @ApiModelProperty(required = true, value = "The date of this historical statistic entry")
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setOrderCount(Long orderCount) {
-        this.orderCount = orderCount;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public MarketHistoryResponse highest(Double highest) {
+
         this.highest = highest;
         return this;
     }
@@ -152,6 +117,7 @@ public class MarketHistoryResponse implements Serializable {
     }
 
     public MarketHistoryResponse lowest(Double lowest) {
+
         this.lowest = lowest;
         return this;
     }
@@ -170,6 +136,46 @@ public class MarketHistoryResponse implements Serializable {
         this.lowest = lowest;
     }
 
+    public MarketHistoryResponse orderCount(Long orderCount) {
+
+        this.orderCount = orderCount;
+        return this;
+    }
+
+    /**
+     * Total number of orders happened that day
+     * 
+     * @return orderCount
+     **/
+    @ApiModelProperty(required = true, value = "Total number of orders happened that day")
+    public Long getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(Long orderCount) {
+        this.orderCount = orderCount;
+    }
+
+    public MarketHistoryResponse volume(Long volume) {
+
+        this.volume = volume;
+        return this;
+    }
+
+    /**
+     * Total
+     * 
+     * @return volume
+     **/
+    @ApiModelProperty(required = true, value = "Total")
+    public Long getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Long volume) {
+        this.volume = volume;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -179,29 +185,29 @@ public class MarketHistoryResponse implements Serializable {
             return false;
         }
         MarketHistoryResponse marketHistoryResponse = (MarketHistoryResponse) o;
-        return Objects.equals(this.date, marketHistoryResponse.date)
-                && Objects.equals(this.volume, marketHistoryResponse.volume)
-                && Objects.equals(this.average, marketHistoryResponse.average)
-                && Objects.equals(this.orderCount, marketHistoryResponse.orderCount)
+        return Objects.equals(this.average, marketHistoryResponse.average)
+                && Objects.equals(this.date, marketHistoryResponse.date)
                 && Objects.equals(this.highest, marketHistoryResponse.highest)
-                && Objects.equals(this.lowest, marketHistoryResponse.lowest);
+                && Objects.equals(this.lowest, marketHistoryResponse.lowest)
+                && Objects.equals(this.orderCount, marketHistoryResponse.orderCount)
+                && Objects.equals(this.volume, marketHistoryResponse.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, volume, average, orderCount, highest, lowest);
+        return Objects.hash(average, date, highest, lowest, orderCount, volume);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class MarketHistoryResponse {\n");
-        sb.append("    date: ").append(toIndentedString(date)).append("\n");
-        sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("    average: ").append(toIndentedString(average)).append("\n");
-        sb.append("    orderCount: ").append(toIndentedString(orderCount)).append("\n");
+        sb.append("    date: ").append(toIndentedString(date)).append("\n");
         sb.append("    highest: ").append(toIndentedString(highest)).append("\n");
         sb.append("    lowest: ").append(toIndentedString(lowest)).append("\n");
+        sb.append("    orderCount: ").append(toIndentedString(orderCount)).append("\n");
+        sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
         sb.append("}");
         return sb.toString();
     }

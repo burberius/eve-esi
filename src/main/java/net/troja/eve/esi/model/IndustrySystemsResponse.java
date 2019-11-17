@@ -43,6 +43,7 @@ public class IndustrySystemsResponse implements Serializable {
     private Integer solarSystemId;
 
     public IndustrySystemsResponse costIndices(List<SystemCostIndice> costIndices) {
+
         this.costIndices = costIndices;
         return this;
     }
@@ -67,6 +68,7 @@ public class IndustrySystemsResponse implements Serializable {
     }
 
     public IndustrySystemsResponse solarSystemId(Integer solarSystemId) {
+
         this.solarSystemId = solarSystemId;
         return this;
     }

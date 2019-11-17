@@ -40,6 +40,7 @@ public class TypeDogmaAttribute implements Serializable {
     private Float value;
 
     public TypeDogmaAttribute attributeId(Integer attributeId) {
+
         this.attributeId = attributeId;
         return this;
     }
@@ -59,6 +60,7 @@ public class TypeDogmaAttribute implements Serializable {
     }
 
     public TypeDogmaAttribute value(Float value) {
+
         this.value = value;
         return this;
     }

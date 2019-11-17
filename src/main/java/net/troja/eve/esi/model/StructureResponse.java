@@ -32,65 +32,28 @@ import java.io.Serializable;
 public class StructureResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
     public static final String SERIALIZED_NAME_OWNER_ID = "owner_id";
     @SerializedName(SERIALIZED_NAME_OWNER_ID)
     private Integer ownerId;
 
-    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
-    @SerializedName(SERIALIZED_NAME_TYPE_ID)
-    private Integer typeId;
-
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
+    public static final String SERIALIZED_NAME_POSITION = "position";
+    @SerializedName(SERIALIZED_NAME_POSITION)
+    private Position position;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
     private Integer solarSystemId;
 
-    public static final String SERIALIZED_NAME_POSITION = "position";
-    @SerializedName(SERIALIZED_NAME_POSITION)
-    private Position position = null;
-
-    public StructureResponse ownerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    /**
-     * The ID of the corporation who owns this particular structure
-     * 
-     * @return ownerId
-     **/
-    @ApiModelProperty(required = true, value = "The ID of the corporation who owns this particular structure")
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public StructureResponse typeId(Integer typeId) {
-        this.typeId = typeId;
-        return this;
-    }
-
-    /**
-     * type_id integer
-     * 
-     * @return typeId
-     **/
-    @ApiModelProperty(value = "type_id integer")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+    public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
+    @SerializedName(SERIALIZED_NAME_TYPE_ID)
+    private Integer typeId;
 
     public StructureResponse name(String name) {
+
         this.name = name;
         return this;
     }
@@ -109,7 +72,49 @@ public class StructureResponse implements Serializable {
         this.name = name;
     }
 
+    public StructureResponse ownerId(Integer ownerId) {
+
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    /**
+     * The ID of the corporation who owns this particular structure
+     * 
+     * @return ownerId
+     **/
+    @ApiModelProperty(required = true, value = "The ID of the corporation who owns this particular structure")
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public StructureResponse position(Position position) {
+
+        this.position = position;
+        return this;
+    }
+
+    /**
+     * Get position
+     * 
+     * @return position
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public StructureResponse solarSystemId(Integer solarSystemId) {
+
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -128,23 +133,25 @@ public class StructureResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
-    public StructureResponse position(Position position) {
-        this.position = position;
+    public StructureResponse typeId(Integer typeId) {
+
+        this.typeId = typeId;
         return this;
     }
 
     /**
-     * Get position
+     * type_id integer
      * 
-     * @return position
+     * @return typeId
      **/
-    @ApiModelProperty(value = "")
-    public Position getPosition() {
-        return position;
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "type_id integer")
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Override
@@ -156,27 +163,27 @@ public class StructureResponse implements Serializable {
             return false;
         }
         StructureResponse structureResponse = (StructureResponse) o;
-        return Objects.equals(this.ownerId, structureResponse.ownerId)
-                && Objects.equals(this.typeId, structureResponse.typeId)
-                && Objects.equals(this.name, structureResponse.name)
+        return Objects.equals(this.name, structureResponse.name)
+                && Objects.equals(this.ownerId, structureResponse.ownerId)
+                && Objects.equals(this.position, structureResponse.position)
                 && Objects.equals(this.solarSystemId, structureResponse.solarSystemId)
-                && Objects.equals(this.position, structureResponse.position);
+                && Objects.equals(this.typeId, structureResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerId, typeId, name, solarSystemId, position);
+        return Objects.hash(name, ownerId, position, solarSystemId, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class StructureResponse {\n");
-        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
+        sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -31,6 +31,10 @@ import java.io.Serializable;
 public class CorporationFacilitiesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_FACILITY_ID = "facility_id";
+    @SerializedName(SERIALIZED_NAME_FACILITY_ID)
+    private Long facilityId;
+
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
     private Integer systemId;
@@ -39,11 +43,28 @@ public class CorporationFacilitiesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public static final String SERIALIZED_NAME_FACILITY_ID = "facility_id";
-    @SerializedName(SERIALIZED_NAME_FACILITY_ID)
-    private Long facilityId;
+    public CorporationFacilitiesResponse facilityId(Long facilityId) {
+
+        this.facilityId = facilityId;
+        return this;
+    }
+
+    /**
+     * facility_id integer
+     * 
+     * @return facilityId
+     **/
+    @ApiModelProperty(required = true, value = "facility_id integer")
+    public Long getFacilityId() {
+        return facilityId;
+    }
+
+    public void setFacilityId(Long facilityId) {
+        this.facilityId = facilityId;
+    }
 
     public CorporationFacilitiesResponse systemId(Integer systemId) {
+
         this.systemId = systemId;
         return this;
     }
@@ -63,6 +84,7 @@ public class CorporationFacilitiesResponse implements Serializable {
     }
 
     public CorporationFacilitiesResponse typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }
@@ -81,25 +103,6 @@ public class CorporationFacilitiesResponse implements Serializable {
         this.typeId = typeId;
     }
 
-    public CorporationFacilitiesResponse facilityId(Long facilityId) {
-        this.facilityId = facilityId;
-        return this;
-    }
-
-    /**
-     * facility_id integer
-     * 
-     * @return facilityId
-     **/
-    @ApiModelProperty(required = true, value = "facility_id integer")
-    public Long getFacilityId() {
-        return facilityId;
-    }
-
-    public void setFacilityId(Long facilityId) {
-        this.facilityId = facilityId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -109,23 +112,23 @@ public class CorporationFacilitiesResponse implements Serializable {
             return false;
         }
         CorporationFacilitiesResponse corporationFacilitiesResponse = (CorporationFacilitiesResponse) o;
-        return Objects.equals(this.systemId, corporationFacilitiesResponse.systemId)
-                && Objects.equals(this.typeId, corporationFacilitiesResponse.typeId)
-                && Objects.equals(this.facilityId, corporationFacilitiesResponse.facilityId);
+        return Objects.equals(this.facilityId, corporationFacilitiesResponse.facilityId)
+                && Objects.equals(this.systemId, corporationFacilitiesResponse.systemId)
+                && Objects.equals(this.typeId, corporationFacilitiesResponse.typeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemId, typeId, facilityId);
+        return Objects.hash(facilityId, systemId, typeId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationFacilitiesResponse {\n");
+        sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
         sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    typeId: ").append(toIndentedString(typeId)).append("\n");
-        sb.append("    facilityId: ").append(toIndentedString(facilityId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

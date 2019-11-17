@@ -36,19 +36,20 @@ public class CharacterOnlineResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_LAST_LOGIN)
     private OffsetDateTime lastLogin;
 
-    public static final String SERIALIZED_NAME_ONLINE = "online";
-    @SerializedName(SERIALIZED_NAME_ONLINE)
-    private Boolean online;
+    public static final String SERIALIZED_NAME_LAST_LOGOUT = "last_logout";
+    @SerializedName(SERIALIZED_NAME_LAST_LOGOUT)
+    private OffsetDateTime lastLogout;
 
     public static final String SERIALIZED_NAME_LOGINS = "logins";
     @SerializedName(SERIALIZED_NAME_LOGINS)
     private Integer logins;
 
-    public static final String SERIALIZED_NAME_LAST_LOGOUT = "last_logout";
-    @SerializedName(SERIALIZED_NAME_LAST_LOGOUT)
-    private OffsetDateTime lastLogout;
+    public static final String SERIALIZED_NAME_ONLINE = "online";
+    @SerializedName(SERIALIZED_NAME_ONLINE)
+    private Boolean online;
 
     public CharacterOnlineResponse lastLogin(OffsetDateTime lastLogin) {
+
         this.lastLogin = lastLogin;
         return this;
     }
@@ -58,6 +59,7 @@ public class CharacterOnlineResponse implements Serializable {
      * 
      * @return lastLogin
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Timestamp of the last login")
     public OffsetDateTime getLastLogin() {
         return lastLogin;
@@ -67,7 +69,50 @@ public class CharacterOnlineResponse implements Serializable {
         this.lastLogin = lastLogin;
     }
 
+    public CharacterOnlineResponse lastLogout(OffsetDateTime lastLogout) {
+
+        this.lastLogout = lastLogout;
+        return this;
+    }
+
+    /**
+     * Timestamp of the last logout
+     * 
+     * @return lastLogout
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Timestamp of the last logout")
+    public OffsetDateTime getLastLogout() {
+        return lastLogout;
+    }
+
+    public void setLastLogout(OffsetDateTime lastLogout) {
+        this.lastLogout = lastLogout;
+    }
+
+    public CharacterOnlineResponse logins(Integer logins) {
+
+        this.logins = logins;
+        return this;
+    }
+
+    /**
+     * Total number of times the character has logged in
+     * 
+     * @return logins
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Total number of times the character has logged in")
+    public Integer getLogins() {
+        return logins;
+    }
+
+    public void setLogins(Integer logins) {
+        this.logins = logins;
+    }
+
     public CharacterOnlineResponse online(Boolean online) {
+
         this.online = online;
         return this;
     }
@@ -86,44 +131,6 @@ public class CharacterOnlineResponse implements Serializable {
         this.online = online;
     }
 
-    public CharacterOnlineResponse logins(Integer logins) {
-        this.logins = logins;
-        return this;
-    }
-
-    /**
-     * Total number of times the character has logged in
-     * 
-     * @return logins
-     **/
-    @ApiModelProperty(value = "Total number of times the character has logged in")
-    public Integer getLogins() {
-        return logins;
-    }
-
-    public void setLogins(Integer logins) {
-        this.logins = logins;
-    }
-
-    public CharacterOnlineResponse lastLogout(OffsetDateTime lastLogout) {
-        this.lastLogout = lastLogout;
-        return this;
-    }
-
-    /**
-     * Timestamp of the last logout
-     * 
-     * @return lastLogout
-     **/
-    @ApiModelProperty(value = "Timestamp of the last logout")
-    public OffsetDateTime getLastLogout() {
-        return lastLogout;
-    }
-
-    public void setLastLogout(OffsetDateTime lastLogout) {
-        this.lastLogout = lastLogout;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -134,14 +141,14 @@ public class CharacterOnlineResponse implements Serializable {
         }
         CharacterOnlineResponse characterOnlineResponse = (CharacterOnlineResponse) o;
         return Objects.equals(this.lastLogin, characterOnlineResponse.lastLogin)
-                && Objects.equals(this.online, characterOnlineResponse.online)
+                && Objects.equals(this.lastLogout, characterOnlineResponse.lastLogout)
                 && Objects.equals(this.logins, characterOnlineResponse.logins)
-                && Objects.equals(this.lastLogout, characterOnlineResponse.lastLogout);
+                && Objects.equals(this.online, characterOnlineResponse.online);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lastLogin, online, logins, lastLogout);
+        return Objects.hash(lastLogin, lastLogout, logins, online);
     }
 
     @Override
@@ -149,9 +156,9 @@ public class CharacterOnlineResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterOnlineResponse {\n");
         sb.append("    lastLogin: ").append(toIndentedString(lastLogin)).append("\n");
-        sb.append("    online: ").append(toIndentedString(online)).append("\n");
-        sb.append("    logins: ").append(toIndentedString(logins)).append("\n");
         sb.append("    lastLogout: ").append(toIndentedString(lastLogout)).append("\n");
+        sb.append("    logins: ").append(toIndentedString(logins)).append("\n");
+        sb.append("    online: ").append(toIndentedString(online)).append("\n");
         sb.append("}");
         return sb.toString();
     }

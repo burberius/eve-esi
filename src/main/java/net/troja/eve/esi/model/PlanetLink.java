@@ -31,38 +31,20 @@ import java.io.Serializable;
 public class PlanetLink implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_LINK_LEVEL = "link_level";
-    @SerializedName(SERIALIZED_NAME_LINK_LEVEL)
-    private Integer linkLevel;
-
     public static final String SERIALIZED_NAME_DESTINATION_PIN_ID = "destination_pin_id";
     @SerializedName(SERIALIZED_NAME_DESTINATION_PIN_ID)
     private Long destinationPinId;
+
+    public static final String SERIALIZED_NAME_LINK_LEVEL = "link_level";
+    @SerializedName(SERIALIZED_NAME_LINK_LEVEL)
+    private Integer linkLevel;
 
     public static final String SERIALIZED_NAME_SOURCE_PIN_ID = "source_pin_id";
     @SerializedName(SERIALIZED_NAME_SOURCE_PIN_ID)
     private Long sourcePinId;
 
-    public PlanetLink linkLevel(Integer linkLevel) {
-        this.linkLevel = linkLevel;
-        return this;
-    }
-
-    /**
-     * link_level integer minimum: 0 maximum: 10
-     * 
-     * @return linkLevel
-     **/
-    @ApiModelProperty(required = true, value = "link_level integer")
-    public Integer getLinkLevel() {
-        return linkLevel;
-    }
-
-    public void setLinkLevel(Integer linkLevel) {
-        this.linkLevel = linkLevel;
-    }
-
     public PlanetLink destinationPinId(Long destinationPinId) {
+
         this.destinationPinId = destinationPinId;
         return this;
     }
@@ -81,7 +63,28 @@ public class PlanetLink implements Serializable {
         this.destinationPinId = destinationPinId;
     }
 
+    public PlanetLink linkLevel(Integer linkLevel) {
+
+        this.linkLevel = linkLevel;
+        return this;
+    }
+
+    /**
+     * link_level integer minimum: 0 maximum: 10
+     * 
+     * @return linkLevel
+     **/
+    @ApiModelProperty(required = true, value = "link_level integer")
+    public Integer getLinkLevel() {
+        return linkLevel;
+    }
+
+    public void setLinkLevel(Integer linkLevel) {
+        this.linkLevel = linkLevel;
+    }
+
     public PlanetLink sourcePinId(Long sourcePinId) {
+
         this.sourcePinId = sourcePinId;
         return this;
     }
@@ -109,22 +112,22 @@ public class PlanetLink implements Serializable {
             return false;
         }
         PlanetLink planetLink = (PlanetLink) o;
-        return Objects.equals(this.linkLevel, planetLink.linkLevel)
-                && Objects.equals(this.destinationPinId, planetLink.destinationPinId)
+        return Objects.equals(this.destinationPinId, planetLink.destinationPinId)
+                && Objects.equals(this.linkLevel, planetLink.linkLevel)
                 && Objects.equals(this.sourcePinId, planetLink.sourcePinId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(linkLevel, destinationPinId, sourcePinId);
+        return Objects.hash(destinationPinId, linkLevel, sourcePinId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlanetLink {\n");
-        sb.append("    linkLevel: ").append(toIndentedString(linkLevel)).append("\n");
         sb.append("    destinationPinId: ").append(toIndentedString(destinationPinId)).append("\n");
+        sb.append("    linkLevel: ").append(toIndentedString(linkLevel)).append("\n");
         sb.append("    sourcePinId: ").append(toIndentedString(sourcePinId)).append("\n");
         sb.append("}");
         return sb.toString();

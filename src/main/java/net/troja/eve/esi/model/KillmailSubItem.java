@@ -31,14 +31,6 @@ import java.io.Serializable;
 public class KillmailSubItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
-    @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)
-    private Long quantityDestroyed;
-
-    public static final String SERIALIZED_NAME_SINGLETON = "singleton";
-    @SerializedName(SERIALIZED_NAME_SINGLETON)
-    private Integer singleton;
-
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
     private Integer flag;
@@ -47,49 +39,20 @@ public class KillmailSubItem implements Serializable {
     @SerializedName(SERIALIZED_NAME_ITEM_TYPE_ID)
     private Integer itemTypeId;
 
+    public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
+    @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)
+    private Long quantityDestroyed;
+
     public static final String SERIALIZED_NAME_QUANTITY_DROPPED = "quantity_dropped";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DROPPED)
     private Long quantityDropped;
 
-    public KillmailSubItem quantityDestroyed(Long quantityDestroyed) {
-        this.quantityDestroyed = quantityDestroyed;
-        return this;
-    }
-
-    /**
-     * quantity_destroyed integer
-     * 
-     * @return quantityDestroyed
-     **/
-    @ApiModelProperty(value = "quantity_destroyed integer")
-    public Long getQuantityDestroyed() {
-        return quantityDestroyed;
-    }
-
-    public void setQuantityDestroyed(Long quantityDestroyed) {
-        this.quantityDestroyed = quantityDestroyed;
-    }
-
-    public KillmailSubItem singleton(Integer singleton) {
-        this.singleton = singleton;
-        return this;
-    }
-
-    /**
-     * singleton integer
-     * 
-     * @return singleton
-     **/
-    @ApiModelProperty(required = true, value = "singleton integer")
-    public Integer getSingleton() {
-        return singleton;
-    }
-
-    public void setSingleton(Integer singleton) {
-        this.singleton = singleton;
-    }
+    public static final String SERIALIZED_NAME_SINGLETON = "singleton";
+    @SerializedName(SERIALIZED_NAME_SINGLETON)
+    private Integer singleton;
 
     public KillmailSubItem flag(Integer flag) {
+
         this.flag = flag;
         return this;
     }
@@ -109,6 +72,7 @@ public class KillmailSubItem implements Serializable {
     }
 
     public KillmailSubItem itemTypeId(Integer itemTypeId) {
+
         this.itemTypeId = itemTypeId;
         return this;
     }
@@ -127,7 +91,29 @@ public class KillmailSubItem implements Serializable {
         this.itemTypeId = itemTypeId;
     }
 
+    public KillmailSubItem quantityDestroyed(Long quantityDestroyed) {
+
+        this.quantityDestroyed = quantityDestroyed;
+        return this;
+    }
+
+    /**
+     * quantity_destroyed integer
+     * 
+     * @return quantityDestroyed
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "quantity_destroyed integer")
+    public Long getQuantityDestroyed() {
+        return quantityDestroyed;
+    }
+
+    public void setQuantityDestroyed(Long quantityDestroyed) {
+        this.quantityDestroyed = quantityDestroyed;
+    }
+
     public KillmailSubItem quantityDropped(Long quantityDropped) {
+
         this.quantityDropped = quantityDropped;
         return this;
     }
@@ -137,6 +123,7 @@ public class KillmailSubItem implements Serializable {
      * 
      * @return quantityDropped
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "quantity_dropped integer")
     public Long getQuantityDropped() {
         return quantityDropped;
@@ -144,6 +131,26 @@ public class KillmailSubItem implements Serializable {
 
     public void setQuantityDropped(Long quantityDropped) {
         this.quantityDropped = quantityDropped;
+    }
+
+    public KillmailSubItem singleton(Integer singleton) {
+
+        this.singleton = singleton;
+        return this;
+    }
+
+    /**
+     * singleton integer
+     * 
+     * @return singleton
+     **/
+    @ApiModelProperty(required = true, value = "singleton integer")
+    public Integer getSingleton() {
+        return singleton;
+    }
+
+    public void setSingleton(Integer singleton) {
+        this.singleton = singleton;
     }
 
     @Override
@@ -155,27 +162,27 @@ public class KillmailSubItem implements Serializable {
             return false;
         }
         KillmailSubItem killmailSubItem = (KillmailSubItem) o;
-        return Objects.equals(this.quantityDestroyed, killmailSubItem.quantityDestroyed)
-                && Objects.equals(this.singleton, killmailSubItem.singleton)
-                && Objects.equals(this.flag, killmailSubItem.flag)
+        return Objects.equals(this.flag, killmailSubItem.flag)
                 && Objects.equals(this.itemTypeId, killmailSubItem.itemTypeId)
-                && Objects.equals(this.quantityDropped, killmailSubItem.quantityDropped);
+                && Objects.equals(this.quantityDestroyed, killmailSubItem.quantityDestroyed)
+                && Objects.equals(this.quantityDropped, killmailSubItem.quantityDropped)
+                && Objects.equals(this.singleton, killmailSubItem.singleton);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quantityDestroyed, singleton, flag, itemTypeId, quantityDropped);
+        return Objects.hash(flag, itemTypeId, quantityDestroyed, quantityDropped, singleton);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class KillmailSubItem {\n");
-        sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
-        sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
         sb.append("    flag: ").append(toIndentedString(flag)).append("\n");
         sb.append("    itemTypeId: ").append(toIndentedString(itemTypeId)).append("\n");
+        sb.append("    quantityDestroyed: ").append(toIndentedString(quantityDestroyed)).append("\n");
         sb.append("    quantityDropped: ").append(toIndentedString(quantityDropped)).append("\n");
+        sb.append("    singleton: ").append(toIndentedString(singleton)).append("\n");
         sb.append("}");
         return sb.toString();
     }

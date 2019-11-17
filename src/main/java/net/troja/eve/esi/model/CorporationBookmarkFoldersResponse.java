@@ -35,15 +35,16 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CREATOR_ID)
     private Integer creatorId;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_FOLDER_ID = "folder_id";
     @SerializedName(SERIALIZED_NAME_FOLDER_ID)
     private Integer folderId;
 
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
     public CorporationBookmarkFoldersResponse creatorId(Integer creatorId) {
+
         this.creatorId = creatorId;
         return this;
     }
@@ -53,6 +54,7 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
      * 
      * @return creatorId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "creator_id integer")
     public Integer getCreatorId() {
         return creatorId;
@@ -62,26 +64,8 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         this.creatorId = creatorId;
     }
 
-    public CorporationBookmarkFoldersResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public CorporationBookmarkFoldersResponse folderId(Integer folderId) {
+
         this.folderId = folderId;
         return this;
     }
@@ -100,6 +84,26 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         this.folderId = folderId;
     }
 
+    public CorporationBookmarkFoldersResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,13 +114,13 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         }
         CorporationBookmarkFoldersResponse corporationBookmarkFoldersResponse = (CorporationBookmarkFoldersResponse) o;
         return Objects.equals(this.creatorId, corporationBookmarkFoldersResponse.creatorId)
-                && Objects.equals(this.name, corporationBookmarkFoldersResponse.name)
-                && Objects.equals(this.folderId, corporationBookmarkFoldersResponse.folderId);
+                && Objects.equals(this.folderId, corporationBookmarkFoldersResponse.folderId)
+                && Objects.equals(this.name, corporationBookmarkFoldersResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(creatorId, name, folderId);
+        return Objects.hash(creatorId, folderId, name);
     }
 
     @Override
@@ -124,8 +128,8 @@ public class CorporationBookmarkFoldersResponse implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class CorporationBookmarkFoldersResponse {\n");
         sb.append("    creatorId: ").append(toIndentedString(creatorId)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

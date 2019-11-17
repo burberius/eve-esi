@@ -32,38 +32,20 @@ import java.io.Serializable;
 public class UniverseAsteroidBeltsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
-    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
-    private Integer systemId;
-
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
-    private Position position = null;
+    private Position position;
 
-    public UniverseAsteroidBeltsResponse systemId(Integer systemId) {
-        this.systemId = systemId;
-        return this;
-    }
-
-    /**
-     * The solar system this asteroid belt is in
-     * 
-     * @return systemId
-     **/
-    @ApiModelProperty(required = true, value = "The solar system this asteroid belt is in")
-    public Integer getSystemId() {
-        return systemId;
-    }
-
-    public void setSystemId(Integer systemId) {
-        this.systemId = systemId;
-    }
+    public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
+    @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
+    private Integer systemId;
 
     public UniverseAsteroidBeltsResponse name(String name) {
+
         this.name = name;
         return this;
     }
@@ -83,6 +65,7 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
     }
 
     public UniverseAsteroidBeltsResponse position(Position position) {
+
         this.position = position;
         return this;
     }
@@ -101,6 +84,26 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
         this.position = position;
     }
 
+    public UniverseAsteroidBeltsResponse systemId(Integer systemId) {
+
+        this.systemId = systemId;
+        return this;
+    }
+
+    /**
+     * The solar system this asteroid belt is in
+     * 
+     * @return systemId
+     **/
+    @ApiModelProperty(required = true, value = "The solar system this asteroid belt is in")
+    public Integer getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Integer systemId) {
+        this.systemId = systemId;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,23 +113,23 @@ public class UniverseAsteroidBeltsResponse implements Serializable {
             return false;
         }
         UniverseAsteroidBeltsResponse universeAsteroidBeltsResponse = (UniverseAsteroidBeltsResponse) o;
-        return Objects.equals(this.systemId, universeAsteroidBeltsResponse.systemId)
-                && Objects.equals(this.name, universeAsteroidBeltsResponse.name)
-                && Objects.equals(this.position, universeAsteroidBeltsResponse.position);
+        return Objects.equals(this.name, universeAsteroidBeltsResponse.name)
+                && Objects.equals(this.position, universeAsteroidBeltsResponse.position)
+                && Objects.equals(this.systemId, universeAsteroidBeltsResponse.systemId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemId, name, position);
+        return Objects.hash(name, position, systemId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class UniverseAsteroidBeltsResponse {\n");
-        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    position: ").append(toIndentedString(position)).append("\n");
+        sb.append("    systemId: ").append(toIndentedString(systemId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

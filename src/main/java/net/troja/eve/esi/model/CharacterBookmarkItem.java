@@ -40,6 +40,7 @@ public class CharacterBookmarkItem implements Serializable {
     private Integer typeId;
 
     public CharacterBookmarkItem itemId(Long itemId) {
+
         this.itemId = itemId;
         return this;
     }
@@ -59,6 +60,7 @@ public class CharacterBookmarkItem implements Serializable {
     }
 
     public CharacterBookmarkItem typeId(Integer typeId) {
+
         this.typeId = typeId;
         return this;
     }

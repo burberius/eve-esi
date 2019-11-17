@@ -32,25 +32,9 @@ import java.io.Serializable;
 public class SovereigntyStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_STRUCTURE_TYPE_ID = "structure_type_id";
-    @SerializedName(SERIALIZED_NAME_STRUCTURE_TYPE_ID)
-    private Integer structureTypeId;
-
     public static final String SERIALIZED_NAME_ALLIANCE_ID = "alliance_id";
     @SerializedName(SERIALIZED_NAME_ALLIANCE_ID)
     private Integer allianceId;
-
-    public static final String SERIALIZED_NAME_VULNERABLE_START_TIME = "vulnerable_start_time";
-    @SerializedName(SERIALIZED_NAME_VULNERABLE_START_TIME)
-    private OffsetDateTime vulnerableStartTime;
-
-    public static final String SERIALIZED_NAME_VULNERABLE_END_TIME = "vulnerable_end_time";
-    @SerializedName(SERIALIZED_NAME_VULNERABLE_END_TIME)
-    private OffsetDateTime vulnerableEndTime;
-
-    public static final String SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL = "vulnerability_occupancy_level";
-    @SerializedName(SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL)
-    private Float vulnerabilityOccupancyLevel;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
@@ -60,26 +44,24 @@ public class SovereigntyStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
     private Long structureId;
 
-    public SovereigntyStructuresResponse structureTypeId(Integer structureTypeId) {
-        this.structureTypeId = structureTypeId;
-        return this;
-    }
+    public static final String SERIALIZED_NAME_STRUCTURE_TYPE_ID = "structure_type_id";
+    @SerializedName(SERIALIZED_NAME_STRUCTURE_TYPE_ID)
+    private Integer structureTypeId;
 
-    /**
-     * A reference to the type of structure this is.
-     * 
-     * @return structureTypeId
-     **/
-    @ApiModelProperty(required = true, value = "A reference to the type of structure this is. ")
-    public Integer getStructureTypeId() {
-        return structureTypeId;
-    }
+    public static final String SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL = "vulnerability_occupancy_level";
+    @SerializedName(SERIALIZED_NAME_VULNERABILITY_OCCUPANCY_LEVEL)
+    private Float vulnerabilityOccupancyLevel;
 
-    public void setStructureTypeId(Integer structureTypeId) {
-        this.structureTypeId = structureTypeId;
-    }
+    public static final String SERIALIZED_NAME_VULNERABLE_END_TIME = "vulnerable_end_time";
+    @SerializedName(SERIALIZED_NAME_VULNERABLE_END_TIME)
+    private OffsetDateTime vulnerableEndTime;
+
+    public static final String SERIALIZED_NAME_VULNERABLE_START_TIME = "vulnerable_start_time";
+    @SerializedName(SERIALIZED_NAME_VULNERABLE_START_TIME)
+    private OffsetDateTime vulnerableStartTime;
 
     public SovereigntyStructuresResponse allianceId(Integer allianceId) {
+
         this.allianceId = allianceId;
         return this;
     }
@@ -98,76 +80,8 @@ public class SovereigntyStructuresResponse implements Serializable {
         this.allianceId = allianceId;
     }
 
-    public SovereigntyStructuresResponse vulnerableStartTime(OffsetDateTime vulnerableStartTime) {
-        this.vulnerableStartTime = vulnerableStartTime;
-        return this;
-    }
-
-    /**
-     * The next time at which the structure will become vulnerable. Or the start
-     * time of the current window if current time is between this and
-     * vulnerableEndTime.
-     * 
-     * @return vulnerableStartTime
-     **/
-    @ApiModelProperty(value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
-    public OffsetDateTime getVulnerableStartTime() {
-        return vulnerableStartTime;
-    }
-
-    public void setVulnerableStartTime(OffsetDateTime vulnerableStartTime) {
-        this.vulnerableStartTime = vulnerableStartTime;
-    }
-
-    public SovereigntyStructuresResponse vulnerableEndTime(OffsetDateTime vulnerableEndTime) {
-        this.vulnerableEndTime = vulnerableEndTime;
-        return this;
-    }
-
-    /**
-     * The time at which the next or current vulnerability window ends. At the
-     * end of a vulnerability window the next window is recalculated and locked
-     * in along with the vulnerabilityOccupancyLevel. If the structure is not in
-     * 100% entosis control of the defender, it will go in to &#39;overtime&#39;
-     * and stay vulnerable for as long as that situation persists. Only once the
-     * defenders have 100% entosis control and has the vulnerableEndTime passed
-     * does the vulnerability interval expire and a new one is calculated.
-     * 
-     * @return vulnerableEndTime
-     **/
-    @ApiModelProperty(value = "The time at which the next or current vulnerability window ends. At the end of a vulnerability window the next window is recalculated and locked in along with the vulnerabilityOccupancyLevel. If the structure is not in 100% entosis control of the defender, it will go in to 'overtime' and stay vulnerable for as long as that situation persists. Only once the defenders have 100% entosis control and has the vulnerableEndTime passed does the vulnerability interval expire and a new one is calculated. ")
-    public OffsetDateTime getVulnerableEndTime() {
-        return vulnerableEndTime;
-    }
-
-    public void setVulnerableEndTime(OffsetDateTime vulnerableEndTime) {
-        this.vulnerableEndTime = vulnerableEndTime;
-    }
-
-    public SovereigntyStructuresResponse vulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
-        this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
-        return this;
-    }
-
-    /**
-     * The occupancy level for the next or current vulnerability window. This
-     * takes into account all development indexes and capital system bonuses.
-     * Also known as Activity Defense Multiplier from in the client. It
-     * increases the time that attackers must spend using their entosis links on
-     * the structure.
-     * 
-     * @return vulnerabilityOccupancyLevel
-     **/
-    @ApiModelProperty(value = "The occupancy level for the next or current vulnerability window. This takes into account all development indexes and capital system bonuses. Also known as Activity Defense Multiplier from in the client. It increases the time that attackers must spend using their entosis links on the structure. ")
-    public Float getVulnerabilityOccupancyLevel() {
-        return vulnerabilityOccupancyLevel;
-    }
-
-    public void setVulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
-        this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
-    }
-
     public SovereigntyStructuresResponse solarSystemId(Integer solarSystemId) {
+
         this.solarSystemId = solarSystemId;
         return this;
     }
@@ -187,6 +101,7 @@ public class SovereigntyStructuresResponse implements Serializable {
     }
 
     public SovereigntyStructuresResponse structureId(Long structureId) {
+
         this.structureId = structureId;
         return this;
     }
@@ -205,6 +120,101 @@ public class SovereigntyStructuresResponse implements Serializable {
         this.structureId = structureId;
     }
 
+    public SovereigntyStructuresResponse structureTypeId(Integer structureTypeId) {
+
+        this.structureTypeId = structureTypeId;
+        return this;
+    }
+
+    /**
+     * A reference to the type of structure this is.
+     * 
+     * @return structureTypeId
+     **/
+    @ApiModelProperty(required = true, value = "A reference to the type of structure this is. ")
+    public Integer getStructureTypeId() {
+        return structureTypeId;
+    }
+
+    public void setStructureTypeId(Integer structureTypeId) {
+        this.structureTypeId = structureTypeId;
+    }
+
+    public SovereigntyStructuresResponse vulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
+
+        this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
+        return this;
+    }
+
+    /**
+     * The occupancy level for the next or current vulnerability window. This
+     * takes into account all development indexes and capital system bonuses.
+     * Also known as Activity Defense Multiplier from in the client. It
+     * increases the time that attackers must spend using their entosis links on
+     * the structure.
+     * 
+     * @return vulnerabilityOccupancyLevel
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The occupancy level for the next or current vulnerability window. This takes into account all development indexes and capital system bonuses. Also known as Activity Defense Multiplier from in the client. It increases the time that attackers must spend using their entosis links on the structure. ")
+    public Float getVulnerabilityOccupancyLevel() {
+        return vulnerabilityOccupancyLevel;
+    }
+
+    public void setVulnerabilityOccupancyLevel(Float vulnerabilityOccupancyLevel) {
+        this.vulnerabilityOccupancyLevel = vulnerabilityOccupancyLevel;
+    }
+
+    public SovereigntyStructuresResponse vulnerableEndTime(OffsetDateTime vulnerableEndTime) {
+
+        this.vulnerableEndTime = vulnerableEndTime;
+        return this;
+    }
+
+    /**
+     * The time at which the next or current vulnerability window ends. At the
+     * end of a vulnerability window the next window is recalculated and locked
+     * in along with the vulnerabilityOccupancyLevel. If the structure is not in
+     * 100% entosis control of the defender, it will go in to &#39;overtime&#39;
+     * and stay vulnerable for as long as that situation persists. Only once the
+     * defenders have 100% entosis control and has the vulnerableEndTime passed
+     * does the vulnerability interval expire and a new one is calculated.
+     * 
+     * @return vulnerableEndTime
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The time at which the next or current vulnerability window ends. At the end of a vulnerability window the next window is recalculated and locked in along with the vulnerabilityOccupancyLevel. If the structure is not in 100% entosis control of the defender, it will go in to 'overtime' and stay vulnerable for as long as that situation persists. Only once the defenders have 100% entosis control and has the vulnerableEndTime passed does the vulnerability interval expire and a new one is calculated. ")
+    public OffsetDateTime getVulnerableEndTime() {
+        return vulnerableEndTime;
+    }
+
+    public void setVulnerableEndTime(OffsetDateTime vulnerableEndTime) {
+        this.vulnerableEndTime = vulnerableEndTime;
+    }
+
+    public SovereigntyStructuresResponse vulnerableStartTime(OffsetDateTime vulnerableStartTime) {
+
+        this.vulnerableStartTime = vulnerableStartTime;
+        return this;
+    }
+
+    /**
+     * The next time at which the structure will become vulnerable. Or the start
+     * time of the current window if current time is between this and
+     * vulnerableEndTime.
+     * 
+     * @return vulnerableStartTime
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "The next time at which the structure will become vulnerable. Or the start time of the current window if current time is between this and vulnerableEndTime. ")
+    public OffsetDateTime getVulnerableStartTime() {
+        return vulnerableStartTime;
+    }
+
+    public void setVulnerableStartTime(OffsetDateTime vulnerableStartTime) {
+        this.vulnerableStartTime = vulnerableStartTime;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -214,34 +224,34 @@ public class SovereigntyStructuresResponse implements Serializable {
             return false;
         }
         SovereigntyStructuresResponse sovereigntyStructuresResponse = (SovereigntyStructuresResponse) o;
-        return Objects.equals(this.structureTypeId, sovereigntyStructuresResponse.structureTypeId)
-                && Objects.equals(this.allianceId, sovereigntyStructuresResponse.allianceId)
-                && Objects.equals(this.vulnerableStartTime, sovereigntyStructuresResponse.vulnerableStartTime)
-                && Objects.equals(this.vulnerableEndTime, sovereigntyStructuresResponse.vulnerableEndTime)
+        return Objects.equals(this.allianceId, sovereigntyStructuresResponse.allianceId)
+                && Objects.equals(this.solarSystemId, sovereigntyStructuresResponse.solarSystemId)
+                && Objects.equals(this.structureId, sovereigntyStructuresResponse.structureId)
+                && Objects.equals(this.structureTypeId, sovereigntyStructuresResponse.structureTypeId)
                 && Objects.equals(this.vulnerabilityOccupancyLevel,
                         sovereigntyStructuresResponse.vulnerabilityOccupancyLevel)
-                && Objects.equals(this.solarSystemId, sovereigntyStructuresResponse.solarSystemId)
-                && Objects.equals(this.structureId, sovereigntyStructuresResponse.structureId);
+                && Objects.equals(this.vulnerableEndTime, sovereigntyStructuresResponse.vulnerableEndTime)
+                && Objects.equals(this.vulnerableStartTime, sovereigntyStructuresResponse.vulnerableStartTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(structureTypeId, allianceId, vulnerableStartTime, vulnerableEndTime,
-                vulnerabilityOccupancyLevel, solarSystemId, structureId);
+        return Objects.hash(allianceId, solarSystemId, structureId, structureTypeId, vulnerabilityOccupancyLevel,
+                vulnerableEndTime, vulnerableStartTime);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class SovereigntyStructuresResponse {\n");
-        sb.append("    structureTypeId: ").append(toIndentedString(structureTypeId)).append("\n");
         sb.append("    allianceId: ").append(toIndentedString(allianceId)).append("\n");
-        sb.append("    vulnerableStartTime: ").append(toIndentedString(vulnerableStartTime)).append("\n");
-        sb.append("    vulnerableEndTime: ").append(toIndentedString(vulnerableEndTime)).append("\n");
-        sb.append("    vulnerabilityOccupancyLevel: ").append(toIndentedString(vulnerabilityOccupancyLevel))
-                .append("\n");
         sb.append("    solarSystemId: ").append(toIndentedString(solarSystemId)).append("\n");
         sb.append("    structureId: ").append(toIndentedString(structureId)).append("\n");
+        sb.append("    structureTypeId: ").append(toIndentedString(structureTypeId)).append("\n");
+        sb.append("    vulnerabilityOccupancyLevel: ").append(toIndentedString(vulnerabilityOccupancyLevel))
+                .append("\n");
+        sb.append("    vulnerableEndTime: ").append(toIndentedString(vulnerableEndTime)).append("\n");
+        sb.append("    vulnerableStartTime: ").append(toIndentedString(vulnerableStartTime)).append("\n");
         sb.append("}");
         return sb.toString();
     }

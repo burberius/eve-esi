@@ -90,6 +90,7 @@ public class CorporationMiningObserversResponse implements Serializable {
     private ObserverTypeEnum observerType;
 
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
+
         this.lastUpdated = lastUpdated;
         return this;
     }
@@ -109,6 +110,7 @@ public class CorporationMiningObserversResponse implements Serializable {
     }
 
     public CorporationMiningObserversResponse observerId(Long observerId) {
+
         this.observerId = observerId;
         return this;
     }
@@ -128,6 +130,7 @@ public class CorporationMiningObserversResponse implements Serializable {
     }
 
     public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerType) {
+
         this.observerType = observerType;
         return this;
     }

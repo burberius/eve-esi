@@ -31,6 +31,10 @@ import java.io.Serializable;
 public class CharacterStandingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_FROM_ID = "from_id";
+    @SerializedName(SERIALIZED_NAME_FROM_ID)
+    private Integer fromId;
+
     /**
      * from_type string
      */
@@ -88,11 +92,28 @@ public class CharacterStandingsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STANDING)
     private Float standing;
 
-    public static final String SERIALIZED_NAME_FROM_ID = "from_id";
-    @SerializedName(SERIALIZED_NAME_FROM_ID)
-    private Integer fromId;
+    public CharacterStandingsResponse fromId(Integer fromId) {
+
+        this.fromId = fromId;
+        return this;
+    }
+
+    /**
+     * from_id integer
+     * 
+     * @return fromId
+     **/
+    @ApiModelProperty(required = true, value = "from_id integer")
+    public Integer getFromId() {
+        return fromId;
+    }
+
+    public void setFromId(Integer fromId) {
+        this.fromId = fromId;
+    }
 
     public CharacterStandingsResponse fromType(FromTypeEnum fromType) {
+
         this.fromType = fromType;
         return this;
     }
@@ -112,6 +133,7 @@ public class CharacterStandingsResponse implements Serializable {
     }
 
     public CharacterStandingsResponse standing(Float standing) {
+
         this.standing = standing;
         return this;
     }
@@ -130,25 +152,6 @@ public class CharacterStandingsResponse implements Serializable {
         this.standing = standing;
     }
 
-    public CharacterStandingsResponse fromId(Integer fromId) {
-        this.fromId = fromId;
-        return this;
-    }
-
-    /**
-     * from_id integer
-     * 
-     * @return fromId
-     **/
-    @ApiModelProperty(required = true, value = "from_id integer")
-    public Integer getFromId() {
-        return fromId;
-    }
-
-    public void setFromId(Integer fromId) {
-        this.fromId = fromId;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -158,23 +161,23 @@ public class CharacterStandingsResponse implements Serializable {
             return false;
         }
         CharacterStandingsResponse characterStandingsResponse = (CharacterStandingsResponse) o;
-        return Objects.equals(this.fromType, characterStandingsResponse.fromType)
-                && Objects.equals(this.standing, characterStandingsResponse.standing)
-                && Objects.equals(this.fromId, characterStandingsResponse.fromId);
+        return Objects.equals(this.fromId, characterStandingsResponse.fromId)
+                && Objects.equals(this.fromType, characterStandingsResponse.fromType)
+                && Objects.equals(this.standing, characterStandingsResponse.standing);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fromType, standing, fromId);
+        return Objects.hash(fromId, fromType, standing);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStandingsResponse {\n");
+        sb.append("    fromId: ").append(toIndentedString(fromId)).append("\n");
         sb.append("    fromType: ").append(toIndentedString(fromType)).append("\n");
         sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
-        sb.append("    fromId: ").append(toIndentedString(fromId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

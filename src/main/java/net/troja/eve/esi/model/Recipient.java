@@ -91,6 +91,7 @@ public class Recipient implements Serializable {
     private RecipientTypeEnum recipientType;
 
     public Recipient recipientId(Integer recipientId) {
+
         this.recipientId = recipientId;
         return this;
     }
@@ -110,6 +111,7 @@ public class Recipient implements Serializable {
     }
 
     public Recipient recipientType(RecipientTypeEnum recipientType) {
+
         this.recipientType = recipientType;
         return this;
     }

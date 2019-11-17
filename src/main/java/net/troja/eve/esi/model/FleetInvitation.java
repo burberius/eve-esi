@@ -108,6 +108,7 @@ public class FleetInvitation implements Serializable {
     private Long wingId;
 
     public FleetInvitation characterId(Integer characterId) {
+
         this.characterId = characterId;
         return this;
     }
@@ -127,6 +128,7 @@ public class FleetInvitation implements Serializable {
     }
 
     public FleetInvitation role(RoleEnum role) {
+
         this.role = role;
         return this;
     }
@@ -155,6 +157,7 @@ public class FleetInvitation implements Serializable {
     }
 
     public FleetInvitation squadId(Long squadId) {
+
         this.squadId = squadId;
         return this;
     }
@@ -164,6 +167,7 @@ public class FleetInvitation implements Serializable {
      * 
      * @return squadId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "squad_id integer")
     public Long getSquadId() {
         return squadId;
@@ -174,6 +178,7 @@ public class FleetInvitation implements Serializable {
     }
 
     public FleetInvitation wingId(Long wingId) {
+
         this.wingId = wingId;
         return this;
     }
@@ -183,6 +188,7 @@ public class FleetInvitation implements Serializable {
      * 
      * @return wingId
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "wing_id integer")
     public Long getWingId() {
         return wingId;

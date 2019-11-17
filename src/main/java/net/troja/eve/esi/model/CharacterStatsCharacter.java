@@ -31,38 +31,20 @@ import java.io.Serializable;
 public class CharacterStatsCharacter implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_MINUTES = "minutes";
-    @SerializedName(SERIALIZED_NAME_MINUTES)
-    private Long minutes;
-
     public static final String SERIALIZED_NAME_DAYS_OF_ACTIVITY = "days_of_activity";
     @SerializedName(SERIALIZED_NAME_DAYS_OF_ACTIVITY)
     private Long daysOfActivity;
+
+    public static final String SERIALIZED_NAME_MINUTES = "minutes";
+    @SerializedName(SERIALIZED_NAME_MINUTES)
+    private Long minutes;
 
     public static final String SERIALIZED_NAME_SESSIONS_STARTED = "sessions_started";
     @SerializedName(SERIALIZED_NAME_SESSIONS_STARTED)
     private Long sessionsStarted;
 
-    public CharacterStatsCharacter minutes(Long minutes) {
-        this.minutes = minutes;
-        return this;
-    }
-
-    /**
-     * minutes integer
-     * 
-     * @return minutes
-     **/
-    @ApiModelProperty(value = "minutes integer")
-    public Long getMinutes() {
-        return minutes;
-    }
-
-    public void setMinutes(Long minutes) {
-        this.minutes = minutes;
-    }
-
     public CharacterStatsCharacter daysOfActivity(Long daysOfActivity) {
+
         this.daysOfActivity = daysOfActivity;
         return this;
     }
@@ -72,6 +54,7 @@ public class CharacterStatsCharacter implements Serializable {
      * 
      * @return daysOfActivity
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "days_of_activity integer")
     public Long getDaysOfActivity() {
         return daysOfActivity;
@@ -81,7 +64,29 @@ public class CharacterStatsCharacter implements Serializable {
         this.daysOfActivity = daysOfActivity;
     }
 
+    public CharacterStatsCharacter minutes(Long minutes) {
+
+        this.minutes = minutes;
+        return this;
+    }
+
+    /**
+     * minutes integer
+     * 
+     * @return minutes
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "minutes integer")
+    public Long getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(Long minutes) {
+        this.minutes = minutes;
+    }
+
     public CharacterStatsCharacter sessionsStarted(Long sessionsStarted) {
+
         this.sessionsStarted = sessionsStarted;
         return this;
     }
@@ -91,6 +96,7 @@ public class CharacterStatsCharacter implements Serializable {
      * 
      * @return sessionsStarted
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "sessions_started integer")
     public Long getSessionsStarted() {
         return sessionsStarted;
@@ -109,22 +115,22 @@ public class CharacterStatsCharacter implements Serializable {
             return false;
         }
         CharacterStatsCharacter characterStatsCharacter = (CharacterStatsCharacter) o;
-        return Objects.equals(this.minutes, characterStatsCharacter.minutes)
-                && Objects.equals(this.daysOfActivity, characterStatsCharacter.daysOfActivity)
+        return Objects.equals(this.daysOfActivity, characterStatsCharacter.daysOfActivity)
+                && Objects.equals(this.minutes, characterStatsCharacter.minutes)
                 && Objects.equals(this.sessionsStarted, characterStatsCharacter.sessionsStarted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(minutes, daysOfActivity, sessionsStarted);
+        return Objects.hash(daysOfActivity, minutes, sessionsStarted);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterStatsCharacter {\n");
-        sb.append("    minutes: ").append(toIndentedString(minutes)).append("\n");
         sb.append("    daysOfActivity: ").append(toIndentedString(daysOfActivity)).append("\n");
+        sb.append("    minutes: ").append(toIndentedString(minutes)).append("\n");
         sb.append("    sessionsStarted: ").append(toIndentedString(sessionsStarted)).append("\n");
         sb.append("}");
         return sb.toString();

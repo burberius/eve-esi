@@ -33,13 +33,9 @@ import java.io.Serializable;
 public class ContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_IS_WATCHED = "is_watched";
-    @SerializedName(SERIALIZED_NAME_IS_WATCHED)
-    private Boolean isWatched;
-
-    public static final String SERIALIZED_NAME_STANDING = "standing";
-    @SerializedName(SERIALIZED_NAME_STANDING)
-    private Float standing;
+    public static final String SERIALIZED_NAME_CONTACT_ID = "contact_id";
+    @SerializedName(SERIALIZED_NAME_CONTACT_ID)
+    private Integer contactId;
 
     /**
      * contact_type string
@@ -100,53 +96,40 @@ public class ContactsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_IS_BLOCKED)
     private Boolean isBlocked;
 
+    public static final String SERIALIZED_NAME_IS_WATCHED = "is_watched";
+    @SerializedName(SERIALIZED_NAME_IS_WATCHED)
+    private Boolean isWatched;
+
     public static final String SERIALIZED_NAME_LABEL_IDS = "label_ids";
     @SerializedName(SERIALIZED_NAME_LABEL_IDS)
-    private List<Long> labelIds = new ArrayList<>();
+    private List<Long> labelIds = null;
 
-    public static final String SERIALIZED_NAME_CONTACT_ID = "contact_id";
-    @SerializedName(SERIALIZED_NAME_CONTACT_ID)
-    private Integer contactId;
+    public static final String SERIALIZED_NAME_STANDING = "standing";
+    @SerializedName(SERIALIZED_NAME_STANDING)
+    private Float standing;
 
-    public ContactsResponse isWatched(Boolean isWatched) {
-        this.isWatched = isWatched;
+    public ContactsResponse contactId(Integer contactId) {
+
+        this.contactId = contactId;
         return this;
     }
 
     /**
-     * Whether this contact is being watched
+     * contact_id integer
      * 
-     * @return isWatched
+     * @return contactId
      **/
-    @ApiModelProperty(value = "Whether this contact is being watched")
-    public Boolean getIsWatched() {
-        return isWatched;
+    @ApiModelProperty(required = true, value = "contact_id integer")
+    public Integer getContactId() {
+        return contactId;
     }
 
-    public void setIsWatched(Boolean isWatched) {
-        this.isWatched = isWatched;
-    }
-
-    public ContactsResponse standing(Float standing) {
-        this.standing = standing;
-        return this;
-    }
-
-    /**
-     * Standing of the contact
-     * 
-     * @return standing
-     **/
-    @ApiModelProperty(required = true, value = "Standing of the contact")
-    public Float getStanding() {
-        return standing;
-    }
-
-    public void setStanding(Float standing) {
-        this.standing = standing;
+    public void setContactId(Integer contactId) {
+        this.contactId = contactId;
     }
 
     public ContactsResponse contactType(ContactTypeEnum contactType) {
+
         this.contactType = contactType;
         return this;
     }
@@ -166,6 +149,7 @@ public class ContactsResponse implements Serializable {
     }
 
     public ContactsResponse isBlocked(Boolean isBlocked) {
+
         this.isBlocked = isBlocked;
         return this;
     }
@@ -176,6 +160,7 @@ public class ContactsResponse implements Serializable {
      * 
      * @return isBlocked
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "Whether this contact is in the blocked list. Note a missing value denotes unknown, not true or false")
     public Boolean getIsBlocked() {
         return isBlocked;
@@ -185,7 +170,29 @@ public class ContactsResponse implements Serializable {
         this.isBlocked = isBlocked;
     }
 
+    public ContactsResponse isWatched(Boolean isWatched) {
+
+        this.isWatched = isWatched;
+        return this;
+    }
+
+    /**
+     * Whether this contact is being watched
+     * 
+     * @return isWatched
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Whether this contact is being watched")
+    public Boolean getIsWatched() {
+        return isWatched;
+    }
+
+    public void setIsWatched(Boolean isWatched) {
+        this.isWatched = isWatched;
+    }
+
     public ContactsResponse labelIds(List<Long> labelIds) {
+
         this.labelIds = labelIds;
         return this;
     }
@@ -203,6 +210,7 @@ public class ContactsResponse implements Serializable {
      * 
      * @return labelIds
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "label_ids array")
     public List<Long> getLabelIds() {
         return labelIds;
@@ -212,23 +220,24 @@ public class ContactsResponse implements Serializable {
         this.labelIds = labelIds;
     }
 
-    public ContactsResponse contactId(Integer contactId) {
-        this.contactId = contactId;
+    public ContactsResponse standing(Float standing) {
+
+        this.standing = standing;
         return this;
     }
 
     /**
-     * contact_id integer
+     * Standing of the contact
      * 
-     * @return contactId
+     * @return standing
      **/
-    @ApiModelProperty(required = true, value = "contact_id integer")
-    public Integer getContactId() {
-        return contactId;
+    @ApiModelProperty(required = true, value = "Standing of the contact")
+    public Float getStanding() {
+        return standing;
     }
 
-    public void setContactId(Integer contactId) {
-        this.contactId = contactId;
+    public void setStanding(Float standing) {
+        this.standing = standing;
     }
 
     @Override
@@ -240,29 +249,29 @@ public class ContactsResponse implements Serializable {
             return false;
         }
         ContactsResponse contactsResponse = (ContactsResponse) o;
-        return Objects.equals(this.isWatched, contactsResponse.isWatched)
-                && Objects.equals(this.standing, contactsResponse.standing)
+        return Objects.equals(this.contactId, contactsResponse.contactId)
                 && Objects.equals(this.contactType, contactsResponse.contactType)
                 && Objects.equals(this.isBlocked, contactsResponse.isBlocked)
+                && Objects.equals(this.isWatched, contactsResponse.isWatched)
                 && Objects.equals(this.labelIds, contactsResponse.labelIds)
-                && Objects.equals(this.contactId, contactsResponse.contactId);
+                && Objects.equals(this.standing, contactsResponse.standing);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isWatched, standing, contactType, isBlocked, labelIds, contactId);
+        return Objects.hash(contactId, contactType, isBlocked, isWatched, labelIds, standing);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ContactsResponse {\n");
-        sb.append("    isWatched: ").append(toIndentedString(isWatched)).append("\n");
-        sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
+        sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
         sb.append("    contactType: ").append(toIndentedString(contactType)).append("\n");
         sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
+        sb.append("    isWatched: ").append(toIndentedString(isWatched)).append("\n");
         sb.append("    labelIds: ").append(toIndentedString(labelIds)).append("\n");
-        sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
+        sb.append("    standing: ").append(toIndentedString(standing)).append("\n");
         sb.append("}");
         return sb.toString();
     }

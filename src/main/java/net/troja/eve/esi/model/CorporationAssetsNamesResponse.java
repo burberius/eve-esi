@@ -40,6 +40,7 @@ public class CorporationAssetsNamesResponse implements Serializable {
     private String name;
 
     public CorporationAssetsNamesResponse itemId(Long itemId) {
+
         this.itemId = itemId;
         return this;
     }
@@ -59,6 +60,7 @@ public class CorporationAssetsNamesResponse implements Serializable {
     }
 
     public CorporationAssetsNamesResponse name(String name) {
+
         this.name = name;
         return this;
     }

@@ -31,34 +31,16 @@ import java.io.Serializable;
 public class CharacterBookmarkFoldersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_NAME = "name";
-    @SerializedName(SERIALIZED_NAME_NAME)
-    private String name;
-
     public static final String SERIALIZED_NAME_FOLDER_ID = "folder_id";
     @SerializedName(SERIALIZED_NAME_FOLDER_ID)
     private Integer folderId;
 
-    public CharacterBookmarkFoldersResponse name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    /**
-     * name string
-     * 
-     * @return name
-     **/
-    @ApiModelProperty(required = true, value = "name string")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
     public CharacterBookmarkFoldersResponse folderId(Integer folderId) {
+
         this.folderId = folderId;
         return this;
     }
@@ -77,6 +59,26 @@ public class CharacterBookmarkFoldersResponse implements Serializable {
         this.folderId = folderId;
     }
 
+    public CharacterBookmarkFoldersResponse name(String name) {
+
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * name string
+     * 
+     * @return name
+     **/
+    @ApiModelProperty(required = true, value = "name string")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,21 +88,21 @@ public class CharacterBookmarkFoldersResponse implements Serializable {
             return false;
         }
         CharacterBookmarkFoldersResponse characterBookmarkFoldersResponse = (CharacterBookmarkFoldersResponse) o;
-        return Objects.equals(this.name, characterBookmarkFoldersResponse.name)
-                && Objects.equals(this.folderId, characterBookmarkFoldersResponse.folderId);
+        return Objects.equals(this.folderId, characterBookmarkFoldersResponse.folderId)
+                && Objects.equals(this.name, characterBookmarkFoldersResponse.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, folderId);
+        return Objects.hash(folderId, name);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CharacterBookmarkFoldersResponse {\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    folderId: ").append(toIndentedString(folderId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("}");
         return sb.toString();
     }

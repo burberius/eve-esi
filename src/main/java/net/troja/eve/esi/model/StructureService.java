@@ -89,6 +89,7 @@ public class StructureService implements Serializable {
     private StateEnum state;
 
     public StructureService name(String name) {
+
         this.name = name;
         return this;
     }
@@ -108,6 +109,7 @@ public class StructureService implements Serializable {
     }
 
     public StructureService state(StateEnum state) {
+
         this.state = state;
         return this;
     }

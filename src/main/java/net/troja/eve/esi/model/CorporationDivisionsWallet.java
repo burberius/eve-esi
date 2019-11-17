@@ -40,6 +40,7 @@ public class CorporationDivisionsWallet implements Serializable {
     private String name;
 
     public CorporationDivisionsWallet division(Integer division) {
+
         this.division = division;
         return this;
     }
@@ -49,6 +50,7 @@ public class CorporationDivisionsWallet implements Serializable {
      * 
      * @return division
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "division integer")
     public Integer getDivision() {
         return division;
@@ -59,6 +61,7 @@ public class CorporationDivisionsWallet implements Serializable {
     }
 
     public CorporationDivisionsWallet name(String name) {
+
         this.name = name;
         return this;
     }
@@ -68,6 +71,7 @@ public class CorporationDivisionsWallet implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nullable
     @ApiModelProperty(value = "name string")
     public String getName() {
         return name;

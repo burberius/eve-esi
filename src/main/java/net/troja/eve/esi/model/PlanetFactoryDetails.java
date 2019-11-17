@@ -36,6 +36,7 @@ public class PlanetFactoryDetails implements Serializable {
     private Integer schematicId;
 
     public PlanetFactoryDetails schematicId(Integer schematicId) {
+
         this.schematicId = schematicId;
         return this;
     }

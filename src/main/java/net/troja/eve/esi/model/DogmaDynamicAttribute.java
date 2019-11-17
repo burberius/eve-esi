@@ -40,6 +40,7 @@ public class DogmaDynamicAttribute implements Serializable {
     private Float value;
 
     public DogmaDynamicAttribute attributeId(Integer attributeId) {
+
         this.attributeId = attributeId;
         return this;
     }
@@ -59,6 +60,7 @@ public class DogmaDynamicAttribute implements Serializable {
     }
 
     public DogmaDynamicAttribute value(Float value) {
+
         this.value = value;
         return this;
     }
