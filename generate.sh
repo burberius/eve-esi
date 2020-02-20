@@ -26,10 +26,10 @@ wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquilit
 VERSION=$(git ls-remote --tags https://github.com/OpenAPITools/openapi-generator.git | grep -o "refs/tags/v[^-]*$" | sort -rV | head -1 | sed -e 's#.*v##')
 
 if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
-  wget -O openapi-generator-cli-$VERSION.jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
+  wget -O openapi-generator-cli-$VERSION.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
 
   if [ $? != 0 ]; then
-    echo "Could not download http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar"
+    echo "Could not download https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar"
     exit -1
   fi
 fi
