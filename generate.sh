@@ -96,6 +96,7 @@ echo "import java.util.HashSet;" >> $FILE
 echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
 echo "public class SsoScopes {" >> $FILE
+echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
 for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
   echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
@@ -106,7 +107,7 @@ for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0]
   fi
   echo "public static final String $UPPER = \"$VAL\";" >> $FILE
 done
-echo -e "\nprivate static final String[] ALL_VALUES = {$ALL};" >> $FILE
+echo -e "\nprivate static final String[] ALL_VALUES = {PUBLIC_DATA, $ALL};" >> $FILE
 echo "" >> $FILE
 echo "    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));" >> $FILE
 echo "" >> $FILE
