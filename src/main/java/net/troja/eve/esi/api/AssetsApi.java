@@ -166,7 +166,7 @@ public class AssetsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/assets/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v4/characters/{character_id}/assets/".replaceAll("\\{" + "character_id" + "\\}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -226,10 +226,7 @@ public class AssetsApi {
 
     /**
      * Get character assets Return a list of the characters assets --- This
-     * route is cached for up to 3600 seconds --- Warning: This route has an
-     * upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net
-     * /diff/latest/dev/#GET-/characters/{character_id}/assets/) SSO Scope:
+     * route is cached for up to 3600 seconds SSO Scope:
      * esi-assets.read_assets.v1
      * 
      * @param characterId
@@ -341,10 +338,7 @@ public class AssetsApi {
 
     /**
      * Get character assets Return a list of the characters assets --- This
-     * route is cached for up to 3600 seconds --- Warning: This route has an
-     * upgrade available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net
-     * /diff/latest/dev/#GET-/characters/{character_id}/assets/) SSO Scope:
+     * route is cached for up to 3600 seconds SSO Scope:
      * esi-assets.read_assets.v1
      * 
      * @param characterId
@@ -458,11 +452,8 @@ public class AssetsApi {
 
     /**
      * Get character assets (asynchronously) Return a list of the characters
-     * assets --- This route is cached for up to 3600 seconds --- Warning: This
-     * route has an upgrade available --- [Diff of the upcoming
-     * changes](https://
-     * esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/assets/)
-     * SSO Scope: esi-assets.read_assets.v1
+     * assets --- This route is cached for up to 3600 seconds SSO Scope:
+     * esi-assets.read_assets.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -686,7 +677,7 @@ public class AssetsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/assets/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v4/corporations/{corporation_id}/assets/".replaceAll("\\{" + "corporation_id" + "\\}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -747,10 +738,7 @@ public class AssetsApi {
     /**
      * Get corporation assets Return a list of the corporation assets --- This
      * route is cached for up to 3600 seconds --- Requires one of the following
-     * EVE corporation role(s): Director --- Warning: This route has an upgrade
-     * available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/
-     * latest/dev/#GET-/corporations/{corporation_id}/assets/) SSO Scope:
+     * EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
@@ -863,10 +851,7 @@ public class AssetsApi {
     /**
      * Get corporation assets Return a list of the corporation assets --- This
      * route is cached for up to 3600 seconds --- Requires one of the following
-     * EVE corporation role(s): Director --- Warning: This route has an upgrade
-     * available --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/
-     * latest/dev/#GET-/corporations/{corporation_id}/assets/) SSO Scope:
+     * EVE corporation role(s): Director SSO Scope:
      * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
@@ -982,11 +967,8 @@ public class AssetsApi {
     /**
      * Get corporation assets (asynchronously) Return a list of the corporation
      * assets --- This route is cached for up to 3600 seconds --- Requires one
-     * of the following EVE corporation role(s): Director --- Warning: This
-     * route has an upgrade available --- [Diff of the upcoming
-     * changes](https://
-     * esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id
-     * }/assets/) SSO Scope: esi-assets.read_corporation_assets.v1
+     * of the following EVE corporation role(s): Director SSO Scope:
+     * esi-assets.read_corporation_assets.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)

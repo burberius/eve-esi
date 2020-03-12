@@ -333,6 +333,8 @@ public class CorporationAssetsResponse implements Serializable {
 
         SOLAR_SYSTEM("solar_system"),
 
+        ITEM("item"),
+
         OTHER("other");
 
         private String value;
