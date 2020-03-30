@@ -107,7 +107,7 @@ for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0]
   fi
   echo "public static final String $UPPER = \"$VAL\";" >> $FILE
 done
-echo -e "\nprivate static final String[] ALL_VALUES = {PUBLIC_DATA, $ALL};" >> $FILE
+echo -e "\nprivate static final String[] ALL_VALUES = {$ALL};" >> $FILE
 echo "" >> $FILE
 echo "    public static Set<String> ALL = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(ALL_VALUES)));" >> $FILE
 echo "" >> $FILE
