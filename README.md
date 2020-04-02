@@ -35,7 +35,7 @@ Just add the following to your *pom.xml*:
   - Major breaking changes to the entire library
   - May also contain endpoint promotions and bug fixes
 - Minor
-  - Endpoint promotions ([breaking changes](https://github.com/esi/esi-docs/blob/master/docs/breaking_changes.md]) announced in the [esi changelog](https://github.com/esi/esi-issues/blob/master/changelog.md))
+  - Endpoint promotions ([breaking changes](https://github.com/esi/esi-docs/blob/master/docs/breaking_changes.md) announced in the [esi changelog](https://github.com/esi/esi-issues/blob/master/changelog.md))
   - May also contain bug fixes
 - Patch
   - Bug fixes without any breaking changes
