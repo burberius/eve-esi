@@ -1758,10 +1758,8 @@ public class CalendarApi {
     }
 
     /**
-     * Respond to an event Set your response status to an event --- [Diff of the
-     * upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#PUT-/characters
-     * /{character_id}/calendar/{event_id}/) SSO Scope:
+     * Respond to an event Set your response status to an event --- This route
+     * is cached for up to 5 seconds SSO Scope:
      * esi-calendar.respond_calendar_events.v1
      * 
      * @param characterId
@@ -1852,10 +1850,8 @@ public class CalendarApi {
     }
 
     /**
-     * Respond to an event Set your response status to an event --- [Diff of the
-     * upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev/#PUT-/characters
-     * /{character_id}/calendar/{event_id}/) SSO Scope:
+     * Respond to an event Set your response status to an event --- This route
+     * is cached for up to 5 seconds SSO Scope:
      * esi-calendar.respond_calendar_events.v1
      * 
      * @param characterId
@@ -1950,9 +1946,7 @@ public class CalendarApi {
 
     /**
      * Respond to an event (asynchronously) Set your response status to an event
-     * --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest/dev
-     * /#PUT-/characters/{character_id}/calendar/{event_id}/) SSO Scope:
+     * --- This route is cached for up to 5 seconds SSO Scope:
      * esi-calendar.respond_calendar_events.v1
      * 
      * @param characterId
