@@ -4,13 +4,21 @@
 # Get eve swagger file
 #
 rm -f esi.json
+#
+# esi _latest
+#
 wget -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tranquility || exit 1
+#
+# meta
+#
 wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 
-# -!- Workaround START
-# Get dev swagger.json
-# wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquility || exit 1
-# -!- Workaround END
+### -!- Workaround START
+#
+# esi _dev
+#
+wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquility || exit 1
+### -!- Workaround END
 
 #
 # Get swagger code generator
@@ -18,10 +26,10 @@ wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 VERSION=$(git ls-remote --tags https://github.com/OpenAPITools/openapi-generator.git | grep -o "refs/tags/v[^-]*$" | sort -rV | head -1 | sed -e 's#.*v##')
 
 if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
-  wget -O openapi-generator-cli-$VERSION.jar http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
+  wget -O openapi-generator-cli-$VERSION.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
 
   if [ $? != 0 ]; then
-    echo "Could not download http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar"
+    echo "Could not download https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar"
     exit -1
   fi
 fi
@@ -40,11 +48,12 @@ rm -r src/main/java/net/troja/eve/esi/api
 sed -i -f replace.sed esi.json
 sed -i -f meta_replace.sed meta.json
 
-# -!- Workaround START
-# sed -i -f replace.sed dev.json
-# -!- Workaround END
+### -!- Workaround START
+sed -i -f replace.sed dev.json
+### -!- Workaround END
 
 ./meta_transformation.sh
+### -!- Workaround continue in transformation.sh
 ./transformation.sh
 #
 # Generate code
@@ -87,6 +96,7 @@ echo "import java.util.HashSet;" >> $FILE
 echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
 echo "public class SsoScopes {" >> $FILE
+echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
 for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
   echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])

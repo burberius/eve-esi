@@ -17,6 +17,7 @@ import net.troja.eve.esi.model.CharacterBookmarkFoldersResponse;
 import net.troja.eve.esi.model.CharacterBookmarksResponse;
 import net.troja.eve.esi.model.CorporationBookmarkFoldersResponse;
 import net.troja.eve.esi.model.CorporationBookmarksResponse;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 import org.junit.Before;
@@ -65,7 +66,7 @@ public class BookmarksApiTest extends GeneralApiTest {
         Integer page = null;
         final List<CharacterBookmarkFoldersResponse> response = api.getCharactersCharacterIdBookmarksFolders(characterId, DATASOURCE, null, page, null);
 
-        assertThat(response.size(), greaterThan(1));
+        assertThat(response.size(), equalTo(0));
     }
 
     /**

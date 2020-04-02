@@ -61,9 +61,21 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Headers OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getHeadersCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/headers/";
@@ -71,6 +83,7 @@ public class MetaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -86,7 +99,8 @@ public class MetaApi {
 
         String[] localVarAuthNames = new String[] {};
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -106,6 +120,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Headers OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public Map<String, String> getHeaders() throws ApiException {
         ApiResponse<Map<String, String>> localVarResp = getHeadersWithHttpInfo();
@@ -121,6 +147,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Headers OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<Map<String, String>> getHeadersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getHeadersValidateBeforeCall(null);
@@ -140,6 +178,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Headers OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getHeadersAsync(final ApiCallback<Map<String, String>> _callback) throws ApiException {
 
@@ -158,9 +208,21 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Ping OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getPingCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/ping";
@@ -168,6 +230,7 @@ public class MetaApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "text/plain; charset=utf-8" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -183,7 +246,8 @@ public class MetaApi {
 
         String[] localVarAuthNames = new String[] {};
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -201,6 +265,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Ping OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public String getPing() throws ApiException {
         ApiResponse<String> localVarResp = getPingWithHttpInfo();
@@ -214,6 +290,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Ping OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<String> getPingWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPingValidateBeforeCall(null);
@@ -231,6 +319,18 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Ping OK</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getPingAsync(final ApiCallback<String> _callback) throws ApiException {
 
@@ -252,9 +352,30 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>ESI Status</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported version</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getStatusCall(String version, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/status.json";
@@ -266,6 +387,7 @@ public class MetaApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -281,7 +403,8 @@ public class MetaApi {
 
         String[] localVarAuthNames = new String[] {};
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -303,6 +426,27 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>ESI Status</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported version</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public List<EsiStatusResponse> getStatus(String version) throws ApiException {
         ApiResponse<List<EsiStatusResponse>> localVarResp = getStatusWithHttpInfo(version);
@@ -320,6 +464,27 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>ESI Status</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported version</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<EsiStatusResponse>> getStatusWithHttpInfo(String version) throws ApiException {
         okhttp3.Call localVarCall = getStatusValidateBeforeCall(version, null);
@@ -341,6 +506,27 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>ESI Status</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported version</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getStatusAsync(String version, final ApiCallback<List<EsiStatusResponse>> _callback)
             throws ApiException {
@@ -372,10 +558,45 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>SSO /verify JSON response</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>SSO /verify JSON error</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Authorization not provided</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported datasource</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getVerifyCall(String userAgent, String xUserAgent, String datasource, String token,
             String authorization, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/verify/";
@@ -403,6 +624,7 @@ public class MetaApi {
             localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -418,7 +640,8 @@ public class MetaApi {
 
         String[] localVarAuthNames = new String[] { "evesso" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -449,6 +672,41 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>SSO /verify JSON response</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>SSO /verify JSON error</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Authorization not provided</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported datasource</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public EsiVerifyResponse getVerify(String userAgent, String xUserAgent, String datasource, String token,
             String authorization) throws ApiException {
@@ -476,6 +734,41 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>SSO /verify JSON response</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>SSO /verify JSON error</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Authorization not provided</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported datasource</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<EsiVerifyResponse> getVerifyWithHttpInfo(String userAgent, String xUserAgent, String datasource,
             String token, String authorization) throws ApiException {
@@ -508,6 +801,41 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>SSO /verify JSON response</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>SSO /verify JSON error</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td>Authorization not provided</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Unsupported datasource</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getVerifyAsync(String userAgent, String xUserAgent, String datasource, String token,
             String authorization, final ApiCallback<EsiVerifyResponse> _callback) throws ApiException {
@@ -532,10 +860,26 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Version list</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getVersionsCall(String userAgent, String xUserAgent, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/versions/";
@@ -551,6 +895,7 @@ public class MetaApi {
             localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
         }
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -566,7 +911,8 @@ public class MetaApi {
 
         String[] localVarAuthNames = new String[] {};
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -589,6 +935,22 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Version list</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
      */
     public List<String> getVersions(String userAgent, String xUserAgent) throws ApiException {
         ApiResponse<List<String>> localVarResp = getVersionsWithHttpInfo(userAgent, xUserAgent);
@@ -606,6 +968,22 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Version list</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
      */
     public ApiResponse<List<String>> getVersionsWithHttpInfo(String userAgent, String xUserAgent) throws ApiException {
         okhttp3.Call localVarCall = getVersionsValidateBeforeCall(userAgent, xUserAgent, null);
@@ -627,6 +1005,22 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
+     * @http.response.details <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Version list</td>
+     *                        <td>Cache-Control - The caching mechanism used <br>
+     *                        Expires - RFC7231 formatted datetime string <br>
+     *                        Last-Modified - RFC7231 formatted datetime string
+     *                        <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
      */
     public okhttp3.Call getVersionsAsync(String userAgent, String xUserAgent, final ApiCallback<List<String>> _callback)
             throws ApiException {

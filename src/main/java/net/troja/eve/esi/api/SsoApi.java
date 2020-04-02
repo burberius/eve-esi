@@ -1,5 +1,7 @@
 package net.troja.eve.esi.api;
 
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +14,7 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
+import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CharacterInfo;
 
 /**
@@ -66,7 +69,7 @@ public class SsoApi {
         postRevokeToken(accessToken, ACCESS_TOKEN);
     }
 
-    private okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback callback)
+    private okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = new Object();
 
@@ -81,6 +84,7 @@ public class SsoApi {
         localVarHeaderParams.put("Content-Type", "application/x-www-form-urlencoded");
         localVarHeaderParams.put("Host", "login.eveonline.com");
 
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         localVarFormParams.put("token_type_hint", tokenTypeHint);
         localVarFormParams.put("client_id", auth.getClientId());
@@ -99,7 +103,8 @@ public class SsoApi {
 
         String[] localVarAuthNames = new String[] {};
         return revokeApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, callback);
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")

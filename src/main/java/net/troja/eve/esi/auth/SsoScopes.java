@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SsoScopes {
+    public static final String PUBLIC_DATA = "publicData";
     public static final String ESI_ALLIANCES_READ_CONTACTS_V1 = "esi-alliances.read_contacts.v1";
     public static final String ESI_ASSETS_READ_ASSETS_V1 = "esi-assets.read_assets.v1";
     public static final String ESI_ASSETS_READ_CORPORATION_ASSETS_V1 = "esi-assets.read_corporation_assets.v1";

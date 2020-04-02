@@ -43,7 +43,7 @@ public class OAuth implements Authentication {
     private static final Map<String, AccountData> ACCOUNTS = new ConcurrentHashMap<>();
 
     @Override
-    public void applyToParams(final List<Pair> queryParams, final Map<String, String> headerParams) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
         // Add auth
         AccountData accountData = getAccountData();
         if (accountData != null) {

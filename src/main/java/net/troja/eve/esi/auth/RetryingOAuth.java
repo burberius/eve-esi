@@ -35,6 +35,16 @@ public class RetryingOAuth extends OAuth implements Interceptor {
         this(new OkHttpClient(), tokenRequestBuilder);
     }
 
+    /**
+     * @param tokenUrl
+     *            The token URL to be used for this OAuth2 flow. Applicable to
+     *            the following OAuth2 flows: "password", "clientCredentials"
+     *            and "authorizationCode". The value must be an absolute URL.
+     * @param clientId
+     *            The OAuth2 client ID for the "clientCredentials" flow.
+     * @param clientSecret
+     *            The OAuth2 client secret for the "clientCredentials" flow.
+     */
     public RetryingOAuth(String tokenUrl, String clientId, OAuthFlow flow, String clientSecret,
             Map<String, String> parameters) {
         this(OAuthClientRequest.tokenLocation(tokenUrl).setClientId(clientId).setClientSecret(clientSecret));
@@ -159,7 +169,7 @@ public class RetryingOAuth extends OAuth implements Interceptor {
     // Applying authorization to parameters is performed in the
     // retryingIntercept method
     @Override
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
         // No implementation necessary
     }
 }

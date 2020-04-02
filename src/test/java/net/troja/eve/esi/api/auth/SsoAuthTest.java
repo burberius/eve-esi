@@ -67,7 +67,7 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         final Map<String, String> headerParams = new HashMap<>();
-        auth.applyToParams(null, headerParams);
+        auth.applyToParams(null, headerParams, null);
 
         assertThat(headerParams.size(), equalTo(1));
     }
