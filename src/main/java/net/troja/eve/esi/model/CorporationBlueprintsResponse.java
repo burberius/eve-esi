@@ -383,12 +383,12 @@ public class CorporationBlueprintsResponse implements Serializable {
     }
 
     /**
-     * References a solar system, station or item_id if this blueprint is
-     * located within a container.
+     * References a station, a ship or an item_id if this blueprint is located
+     * within a container.
      * 
      * @return locationId
      **/
-    @ApiModelProperty(required = true, value = "References a solar system, station or item_id if this blueprint is located within a container.")
+    @ApiModelProperty(required = true, value = "References a station, a ship or an item_id if this blueprint is located within a container.")
     public Long getLocationId() {
         return locationId;
     }

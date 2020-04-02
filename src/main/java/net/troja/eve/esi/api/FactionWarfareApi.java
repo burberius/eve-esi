@@ -723,10 +723,7 @@ public class FactionWarfareApi {
     /**
      * Overview of a corporation involved in faction warfare Statistics about a
      * corporation involved in faction warfare --- This route expires daily at
-     * 11:05 --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest
-     * /dev/#GET-/corporations/{corporation_id}/fw/stats/) SSO Scope:
-     * esi-corporations.read_fw_stats.v1
+     * 11:05 SSO Scope: esi-corporations.read_fw_stats.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -836,10 +833,7 @@ public class FactionWarfareApi {
     /**
      * Overview of a corporation involved in faction warfare Statistics about a
      * corporation involved in faction warfare --- This route expires daily at
-     * 11:05 --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/diff/latest
-     * /dev/#GET-/corporations/{corporation_id}/fw/stats/) SSO Scope:
-     * esi-corporations.read_fw_stats.v1
+     * 11:05 SSO Scope: esi-corporations.read_fw_stats.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -951,10 +945,7 @@ public class FactionWarfareApi {
     /**
      * Overview of a corporation involved in faction warfare (asynchronously)
      * Statistics about a corporation involved in faction warfare --- This route
-     * expires daily at 11:05 --- [Diff of the upcoming
-     * changes](https://esi.evetech
-     * .net/diff/latest/dev/#GET-/corporations/{corporation_id}/fw/stats/) SSO
-     * Scope: esi-corporations.read_fw_stats.v1
+     * expires daily at 11:05 SSO Scope: esi-corporations.read_fw_stats.v1
      * 
      * @param corporationId
      *            An EVE corporation ID (required)

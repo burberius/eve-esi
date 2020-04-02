@@ -4180,7 +4180,9 @@ public class CharacterApi {
 
     /**
      * Get character portraits Get portrait urls for a character --- This route
-     * expires daily at 11:05
+     * expires daily at 11:05 --- [Diff of the upcoming
+     * changes](https://esi.evetech
+     * .net/diff/latest/dev/#GET-/characters/{character_id}/portrait/)
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -4286,7 +4288,9 @@ public class CharacterApi {
 
     /**
      * Get character portraits Get portrait urls for a character --- This route
-     * expires daily at 11:05
+     * expires daily at 11:05 --- [Diff of the upcoming
+     * changes](https://esi.evetech
+     * .net/diff/latest/dev/#GET-/characters/{character_id}/portrait/)
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -4394,7 +4398,10 @@ public class CharacterApi {
 
     /**
      * Get character portraits (asynchronously) Get portrait urls for a
-     * character --- This route expires daily at 11:05
+     * character --- This route expires daily at 11:05 --- [Diff of the upcoming
+     * changes
+     * ](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id
+     * }/portrait/)
      * 
      * @param characterId
      *            An EVE character ID (required)

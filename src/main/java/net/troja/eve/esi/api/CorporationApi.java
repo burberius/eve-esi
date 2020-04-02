@@ -3227,7 +3227,10 @@ public class CorporationApi {
 
     /**
      * Get corporation icon Get the icon urls for a corporation --- This route
-     * is cached for up to 3600 seconds
+     * is cached for up to 3600 seconds --- [Diff of the upcoming
+     * changes](https:
+     * //esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id
+     * }/icons/)
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -3334,7 +3337,10 @@ public class CorporationApi {
 
     /**
      * Get corporation icon Get the icon urls for a corporation --- This route
-     * is cached for up to 3600 seconds
+     * is cached for up to 3600 seconds --- [Diff of the upcoming
+     * changes](https:
+     * //esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id
+     * }/icons/)
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
@@ -3443,7 +3449,9 @@ public class CorporationApi {
 
     /**
      * Get corporation icon (asynchronously) Get the icon urls for a corporation
-     * --- This route is cached for up to 3600 seconds
+     * --- This route is cached for up to 3600 seconds --- [Diff of the upcoming
+     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{
+     * corporation_id}/icons/)
      * 
      * @param corporationId
      *            An EVE corporation ID (required)
