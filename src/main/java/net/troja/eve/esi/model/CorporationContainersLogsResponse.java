@@ -170,6 +170,8 @@ public class CorporationContainersLogsResponse implements Serializable {
 
         FLEETHANGAR("FleetHangar"),
 
+        FRIGATEESCAPEBAY("FrigateEscapeBay"),
+
         HANGAR("Hangar"),
 
         HANGARALL("HangarAll"),
