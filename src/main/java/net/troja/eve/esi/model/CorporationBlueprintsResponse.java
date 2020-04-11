@@ -94,8 +94,6 @@ public class CorporationBlueprintsResponse implements Serializable {
 
         FLEETHANGAR("FleetHangar"),
 
-        FRIGATEESCAPEBAY("FrigateEscapeBay"),
-
         HANGAR("Hangar"),
 
         HANGARALL("HangarAll"),
