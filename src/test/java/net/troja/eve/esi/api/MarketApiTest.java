@@ -22,6 +22,9 @@ import net.troja.eve.esi.model.MarketHistoryResponse;
 import net.troja.eve.esi.model.MarketOrdersResponse;
 import net.troja.eve.esi.model.MarketPricesResponse;
 import net.troja.eve.esi.HeaderUtil;
+import static net.troja.eve.esi.api.GeneralApiTest.DATASOURCE;
+import static net.troja.eve.esi.api.GeneralApiTest.REGION_ID_THE_FORGE;
+import static net.troja.eve.esi.api.GeneralApiTest.characterId;
 import net.troja.eve.esi.model.CharacterOrdersHistoryResponse;
 import net.troja.eve.esi.model.CorporationOrdersHistoryResponse;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -252,9 +255,15 @@ public class MarketApiTest extends GeneralApiTest {
         //Step 3: Get the rest of the pages
 
         //For each page greater than one. This can be done in threads, but, require a new ApiClient and MarketApi for each thread
-        for (int page = 2; page <= xPages; page++) {
+        for (int i = 2; i <= xPages; i++) {
             //Get market orders
-            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
+            final int page = i;
+            List<MarketOrdersResponse> pageResponse = update(new Update<List<MarketOrdersResponse>>() {
+                @Override
+                public List<MarketOrdersResponse> update() throws ApiException {
+                    return api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
+                }
+            });
             result.addAll(pageResponse);
         }
 

@@ -26,6 +26,8 @@ public class GeneralApiTest {
     protected final static int SOLARSYSTEM_ID_JITA = 30000142;
     protected final static int SOLARSYSTEM_ID_ALIKARA = 30002754;
 
+    private final int MAX_RETRIES = 3;
+
     protected static String clientId;
     protected static String refreshToken;
     protected static String refreshTokenPublicData;
@@ -53,5 +55,26 @@ public class GeneralApiTest {
 
     protected void ignoreTestFails() {
         assumeFalse("Ignore test fails", true); //true = ignore tests :: false = run all tests
+    }
+
+    protected <T> T update(Update<T> update) throws ApiException {
+        return update(update, 0);
+    }
+
+    private <T> T update(Update<T> update, int retry) throws ApiException {
+        try {
+            return update.update();
+        } catch (ApiException ex) {
+            if (retry < MAX_RETRIES) {
+                retry++;
+                return update(update, retry);
+            } else {
+                throw ex;
+            }
+        }
+    }
+
+    protected interface Update<T> {
+        public T update() throws ApiException;
     }
 }
