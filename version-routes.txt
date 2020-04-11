@@ -182,13 +182,13 @@
   "/v3/universe/names/",
   "/v3/universe/types/{type_id}/",
   "/v4/characters/{character_id}/",
-  "/v4/characters/{character_id}/assets/",
   "/v4/characters/{character_id}/cspa/",
   "/v4/characters/{character_id}/skills/",
   "/v4/corporations/{corporation_id}/",
-  "/v4/corporations/{corporation_id}/assets/",
   "/v4/corporations/{corporation_id}/wallets/{division}/journal/",
   "/v4/universe/systems/{system_id}/",
+  "/v5/characters/{character_id}/assets/",
   "/v5/characters/{character_id}/notifications/",
+  "/v5/corporations/{corporation_id}/assets/",
   "/v6/characters/{character_id}/wallet/journal/"
 ]
