@@ -242,7 +242,13 @@ public class MarketApiTest extends GeneralApiTest {
 
 		//Step 1: Get first page
 		//Get market orders
-		ApiResponse<List<MarketOrdersResponse>> response = api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
+        ApiResponse<List<MarketOrdersResponse>> response = update(new Update<ApiResponse<List<MarketOrdersResponse>>>() {
+            @Override
+            public ApiResponse<List<MarketOrdersResponse>> update() throws ApiException {
+                return api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
+            }
+        });
+
         result.addAll(response.getData());
 
         //Step 2: Safely get X-Pages header
