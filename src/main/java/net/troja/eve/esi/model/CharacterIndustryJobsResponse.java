@@ -112,64 +112,9 @@ public class CharacterIndustryJobsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STATION_ID)
     private Long stationId;
 
-    /**
-     * status string
-     */
-    @JsonAdapter(StatusEnum.Adapter.class)
-    public enum StatusEnum {
-        ACTIVE("active"),
-
-        CANCELLED("cancelled"),
-
-        DELIVERED("delivered"),
-
-        PAUSED("paused"),
-
-        READY("ready"),
-
-        REVERTED("reverted");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StatusEnum fromValue(String value) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StatusEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StatusEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
 
     public static final String SERIALIZED_NAME_SUCCESSFUL_RUNS = "successful_runs";
     @SerializedName(SERIALIZED_NAME_SUCCESSFUL_RUNS)
@@ -587,7 +532,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
         this.stationId = stationId;
     }
 
-    public CharacterIndustryJobsResponse status(StatusEnum status) {
+    public CharacterIndustryJobsResponse status(String status) {
 
         this.status = status;
         return this;
@@ -599,11 +544,11 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return status
      **/
     @ApiModelProperty(required = true, value = "status string")
-    public StatusEnum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -31,138 +31,9 @@ import java.io.Serializable;
 public class FittingItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * flag string
-     */
-    @JsonAdapter(FlagEnum.Adapter.class)
-    public enum FlagEnum {
-        CARGO("Cargo"),
-
-        DRONEBAY("DroneBay"),
-
-        FIGHTERBAY("FighterBay"),
-
-        HISLOT0("HiSlot0"),
-
-        HISLOT1("HiSlot1"),
-
-        HISLOT2("HiSlot2"),
-
-        HISLOT3("HiSlot3"),
-
-        HISLOT4("HiSlot4"),
-
-        HISLOT5("HiSlot5"),
-
-        HISLOT6("HiSlot6"),
-
-        HISLOT7("HiSlot7"),
-
-        INVALID("Invalid"),
-
-        LOSLOT0("LoSlot0"),
-
-        LOSLOT1("LoSlot1"),
-
-        LOSLOT2("LoSlot2"),
-
-        LOSLOT3("LoSlot3"),
-
-        LOSLOT4("LoSlot4"),
-
-        LOSLOT5("LoSlot5"),
-
-        LOSLOT6("LoSlot6"),
-
-        LOSLOT7("LoSlot7"),
-
-        MEDSLOT0("MedSlot0"),
-
-        MEDSLOT1("MedSlot1"),
-
-        MEDSLOT2("MedSlot2"),
-
-        MEDSLOT3("MedSlot3"),
-
-        MEDSLOT4("MedSlot4"),
-
-        MEDSLOT5("MedSlot5"),
-
-        MEDSLOT6("MedSlot6"),
-
-        MEDSLOT7("MedSlot7"),
-
-        RIGSLOT0("RigSlot0"),
-
-        RIGSLOT1("RigSlot1"),
-
-        RIGSLOT2("RigSlot2"),
-
-        SERVICESLOT0("ServiceSlot0"),
-
-        SERVICESLOT1("ServiceSlot1"),
-
-        SERVICESLOT2("ServiceSlot2"),
-
-        SERVICESLOT3("ServiceSlot3"),
-
-        SERVICESLOT4("ServiceSlot4"),
-
-        SERVICESLOT5("ServiceSlot5"),
-
-        SERVICESLOT6("ServiceSlot6"),
-
-        SERVICESLOT7("ServiceSlot7"),
-
-        SUBSYSTEMSLOT0("SubSystemSlot0"),
-
-        SUBSYSTEMSLOT1("SubSystemSlot1"),
-
-        SUBSYSTEMSLOT2("SubSystemSlot2"),
-
-        SUBSYSTEMSLOT3("SubSystemSlot3");
-
-        private String value;
-
-        FlagEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static FlagEnum fromValue(String value) {
-            for (FlagEnum b : FlagEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<FlagEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final FlagEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public FlagEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return FlagEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
-    private FlagEnum flag;
+    private String flag;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -172,7 +43,7 @@ public class FittingItem implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public FittingItem flag(FlagEnum flag) {
+    public FittingItem flag(String flag) {
 
         this.flag = flag;
         return this;
@@ -184,11 +55,11 @@ public class FittingItem implements Serializable {
      * @return flag
      **/
     @ApiModelProperty(required = true, value = "flag string")
-    public FlagEnum getFlag() {
+    public String getFlag() {
         return flag;
     }
 
-    public void setFlag(FlagEnum flag) {
+    public void setFlag(String flag) {
         this.flag = flag;
     }
 

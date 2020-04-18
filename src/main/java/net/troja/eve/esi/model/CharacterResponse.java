@@ -60,56 +60,9 @@ public class CharacterResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
     private Integer factionId;
 
-    /**
-     * gender string
-     */
-    @JsonAdapter(GenderEnum.Adapter.class)
-    public enum GenderEnum {
-        FEMALE("female"),
-
-        MALE("male");
-
-        private String value;
-
-        GenderEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static GenderEnum fromValue(String value) {
-            for (GenderEnum b : GenderEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<GenderEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final GenderEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public GenderEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return GenderEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_GENDER = "gender";
     @SerializedName(SERIALIZED_NAME_GENDER)
-    private GenderEnum gender;
+    private String gender;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -272,7 +225,7 @@ public class CharacterResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public CharacterResponse gender(GenderEnum gender) {
+    public CharacterResponse gender(String gender) {
 
         this.gender = gender;
         return this;
@@ -284,11 +237,11 @@ public class CharacterResponse implements Serializable {
      * @return gender
      **/
     @ApiModelProperty(required = true, value = "gender string")
-    public GenderEnum getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

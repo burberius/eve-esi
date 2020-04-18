@@ -31,60 +31,9 @@ import java.io.Serializable;
 public class FactionWarfareSystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * contested string
-     */
-    @JsonAdapter(ContestedEnum.Adapter.class)
-    public enum ContestedEnum {
-        CAPTURED("captured"),
-
-        CONTESTED("contested"),
-
-        UNCONTESTED("uncontested"),
-
-        VULNERABLE("vulnerable");
-
-        private String value;
-
-        ContestedEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ContestedEnum fromValue(String value) {
-            for (ContestedEnum b : ContestedEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ContestedEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ContestedEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ContestedEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ContestedEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_CONTESTED = "contested";
     @SerializedName(SERIALIZED_NAME_CONTESTED)
-    private ContestedEnum contested;
+    private String contested;
 
     public static final String SERIALIZED_NAME_OCCUPIER_FACTION_ID = "occupier_faction_id";
     @SerializedName(SERIALIZED_NAME_OCCUPIER_FACTION_ID)
@@ -106,7 +55,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD)
     private Integer victoryPointsThreshold;
 
-    public FactionWarfareSystemsResponse contested(ContestedEnum contested) {
+    public FactionWarfareSystemsResponse contested(String contested) {
 
         this.contested = contested;
         return this;
@@ -118,11 +67,11 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * @return contested
      **/
     @ApiModelProperty(required = true, value = "contested string")
-    public ContestedEnum getContested() {
+    public String getContested() {
         return contested;
     }
 
-    public void setContested(ContestedEnum contested) {
+    public void setContested(String contested) {
         this.contested = contested;
     }
 

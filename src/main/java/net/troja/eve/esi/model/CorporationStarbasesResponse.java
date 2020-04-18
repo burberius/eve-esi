@@ -48,62 +48,9 @@ public class CorporationStarbasesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STARBASE_ID)
     private Long starbaseId;
 
-    /**
-     * state string
-     */
-    @JsonAdapter(StateEnum.Adapter.class)
-    public enum StateEnum {
-        OFFLINE("offline"),
-
-        ONLINE("online"),
-
-        ONLINING("onlining"),
-
-        REINFORCED("reinforced"),
-
-        UNANCHORING("unanchoring");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StateEnum fromValue(String value) {
-            for (StateEnum b : StateEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StateEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StateEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StateEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -202,7 +149,7 @@ public class CorporationStarbasesResponse implements Serializable {
         this.starbaseId = starbaseId;
     }
 
-    public CorporationStarbasesResponse state(StateEnum state) {
+    public CorporationStarbasesResponse state(String state) {
 
         this.state = state;
         return this;
@@ -215,11 +162,11 @@ public class CorporationStarbasesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "state string")
-    public StateEnum getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(String state) {
         this.state = state;
     }
 

@@ -37,60 +37,9 @@ public class ContactsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CONTACT_ID)
     private Integer contactId;
 
-    /**
-     * contact_type string
-     */
-    @JsonAdapter(ContactTypeEnum.Adapter.class)
-    public enum ContactTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction");
-
-        private String value;
-
-        ContactTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ContactTypeEnum fromValue(String value) {
-            for (ContactTypeEnum b : ContactTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ContactTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ContactTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ContactTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ContactTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_CONTACT_TYPE = "contact_type";
     @SerializedName(SERIALIZED_NAME_CONTACT_TYPE)
-    private ContactTypeEnum contactType;
+    private String contactType;
 
     public static final String SERIALIZED_NAME_IS_BLOCKED = "is_blocked";
     @SerializedName(SERIALIZED_NAME_IS_BLOCKED)
@@ -128,7 +77,7 @@ public class ContactsResponse implements Serializable {
         this.contactId = contactId;
     }
 
-    public ContactsResponse contactType(ContactTypeEnum contactType) {
+    public ContactsResponse contactType(String contactType) {
 
         this.contactType = contactType;
         return this;
@@ -140,11 +89,11 @@ public class ContactsResponse implements Serializable {
      * @return contactType
      **/
     @ApiModelProperty(required = true, value = "contact_type string")
-    public ContactTypeEnum getContactType() {
+    public String getContactType() {
         return contactType;
     }
 
-    public void setContactType(ContactTypeEnum contactType) {
+    public void setContactType(String contactType) {
         this.contactType = contactType;
     }
 

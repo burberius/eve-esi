@@ -48,68 +48,9 @@ public class CharacterPlanetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_PLANET_ID)
     private Integer planetId;
 
-    /**
-     * planet_type string
-     */
-    @JsonAdapter(PlanetTypeEnum.Adapter.class)
-    public enum PlanetTypeEnum {
-        TEMPERATE("temperate"),
-
-        BARREN("barren"),
-
-        OCEANIC("oceanic"),
-
-        ICE("ice"),
-
-        GAS("gas"),
-
-        LAVA("lava"),
-
-        STORM("storm"),
-
-        PLASMA("plasma");
-
-        private String value;
-
-        PlanetTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PlanetTypeEnum fromValue(String value) {
-            for (PlanetTypeEnum b : PlanetTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<PlanetTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PlanetTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public PlanetTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return PlanetTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_PLANET_TYPE = "planet_type";
     @SerializedName(SERIALIZED_NAME_PLANET_TYPE)
-    private PlanetTypeEnum planetType;
+    private String planetType;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
@@ -199,7 +140,7 @@ public class CharacterPlanetsResponse implements Serializable {
         this.planetId = planetId;
     }
 
-    public CharacterPlanetsResponse planetType(PlanetTypeEnum planetType) {
+    public CharacterPlanetsResponse planetType(String planetType) {
 
         this.planetType = planetType;
         return this;
@@ -211,11 +152,11 @@ public class CharacterPlanetsResponse implements Serializable {
      * @return planetType
      **/
     @ApiModelProperty(required = true, value = "planet_type string")
-    public PlanetTypeEnum getPlanetType() {
+    public String getPlanetType() {
         return planetType;
     }
 
-    public void setPlanetType(PlanetTypeEnum planetType) {
+    public void setPlanetType(String planetType) {
         this.planetType = planetType;
     }
 

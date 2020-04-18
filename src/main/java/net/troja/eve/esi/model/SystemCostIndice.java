@@ -31,78 +31,15 @@ import java.io.Serializable;
 public class SystemCostIndice implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * activity string
-     */
-    @JsonAdapter(ActivityEnum.Adapter.class)
-    public enum ActivityEnum {
-        COPYING("copying"),
-
-        DUPLICATING("duplicating"),
-
-        INVENTION("invention"),
-
-        MANUFACTURING("manufacturing"),
-
-        NONE("none"),
-
-        REACTION("reaction"),
-
-        RESEARCHING_MATERIAL_EFFICIENCY("researching_material_efficiency"),
-
-        RESEARCHING_TECHNOLOGY("researching_technology"),
-
-        RESEARCHING_TIME_EFFICIENCY("researching_time_efficiency"),
-
-        REVERSE_ENGINEERING("reverse_engineering");
-
-        private String value;
-
-        ActivityEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ActivityEnum fromValue(String value) {
-            for (ActivityEnum b : ActivityEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ActivityEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ActivityEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ActivityEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ActivityEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_ACTIVITY = "activity";
     @SerializedName(SERIALIZED_NAME_ACTIVITY)
-    private ActivityEnum activity;
+    private String activity;
 
     public static final String SERIALIZED_NAME_COST_INDEX = "cost_index";
     @SerializedName(SERIALIZED_NAME_COST_INDEX)
     private Float costIndex;
 
-    public SystemCostIndice activity(ActivityEnum activity) {
+    public SystemCostIndice activity(String activity) {
 
         this.activity = activity;
         return this;
@@ -114,11 +51,11 @@ public class SystemCostIndice implements Serializable {
      * @return activity
      **/
     @ApiModelProperty(required = true, value = "activity string")
-    public ActivityEnum getActivity() {
+    public String getActivity() {
         return activity;
     }
 
-    public void setActivity(ActivityEnum activity) {
+    public void setActivity(String activity) {
         this.activity = activity;
     }
 

@@ -71,78 +71,9 @@ public class CorporationStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SERVICES)
     private List<StructureService> services = null;
 
-    /**
-     * state string
-     */
-    @JsonAdapter(StateEnum.Adapter.class)
-    public enum StateEnum {
-        ANCHOR_VULNERABLE("anchor_vulnerable"),
-
-        ANCHORING("anchoring"),
-
-        ARMOR_REINFORCE("armor_reinforce"),
-
-        ARMOR_VULNERABLE("armor_vulnerable"),
-
-        DEPLOY_VULNERABLE("deploy_vulnerable"),
-
-        FITTING_INVULNERABLE("fitting_invulnerable"),
-
-        HULL_REINFORCE("hull_reinforce"),
-
-        HULL_VULNERABLE("hull_vulnerable"),
-
-        ONLINE_DEPRECATED("online_deprecated"),
-
-        ONLINING_VULNERABLE("onlining_vulnerable"),
-
-        SHIELD_VULNERABLE("shield_vulnerable"),
-
-        UNANCHORED("unanchored"),
-
-        UNKNOWN("unknown");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StateEnum fromValue(String value) {
-            for (StateEnum b : StateEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StateEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StateEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StateEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
 
     public static final String SERIALIZED_NAME_STATE_TIMER_END = "state_timer_end";
     @SerializedName(SERIALIZED_NAME_STATE_TIMER_END)
@@ -371,7 +302,7 @@ public class CorporationStructuresResponse implements Serializable {
         this.services = services;
     }
 
-    public CorporationStructuresResponse state(StateEnum state) {
+    public CorporationStructuresResponse state(String state) {
 
         this.state = state;
         return this;
@@ -383,11 +314,11 @@ public class CorporationStructuresResponse implements Serializable {
      * @return state
      **/
     @ApiModelProperty(required = true, value = "state string")
-    public StateEnum getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(String state) {
         this.state = state;
     }
 

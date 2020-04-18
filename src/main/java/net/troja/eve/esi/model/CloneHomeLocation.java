@@ -35,56 +35,9 @@ public class CloneHomeLocation implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
     private Long locationId;
 
-    /**
-     * location_type string
-     */
-    @JsonAdapter(LocationTypeEnum.Adapter.class)
-    public enum LocationTypeEnum {
-        STATION("station"),
-
-        STRUCTURE("structure");
-
-        private String value;
-
-        LocationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LocationTypeEnum fromValue(String value) {
-            for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<LocationTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LocationTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return LocationTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
-    private LocationTypeEnum locationType;
+    private String locationType;
 
     public CloneHomeLocation locationId(Long locationId) {
 
@@ -107,7 +60,7 @@ public class CloneHomeLocation implements Serializable {
         this.locationId = locationId;
     }
 
-    public CloneHomeLocation locationType(LocationTypeEnum locationType) {
+    public CloneHomeLocation locationType(String locationType) {
 
         this.locationType = locationType;
         return this;
@@ -120,11 +73,11 @@ public class CloneHomeLocation implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "location_type string")
-    public LocationTypeEnum getLocationType() {
+    public String getLocationType() {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
+    public void setLocationType(String locationType) {
         this.locationType = locationType;
     }
 

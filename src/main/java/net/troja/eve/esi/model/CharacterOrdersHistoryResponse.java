@@ -68,131 +68,17 @@ public class CharacterOrdersHistoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_PRICE)
     private Double price;
 
-    /**
-     * Valid order range, numbers are ranges in jumps
-     */
-    @JsonAdapter(RangeEnum.Adapter.class)
-    public enum RangeEnum {
-        _1("1"),
-
-        _10("10"),
-
-        _2("2"),
-
-        _20("20"),
-
-        _3("3"),
-
-        _30("30"),
-
-        _4("4"),
-
-        _40("40"),
-
-        _5("5"),
-
-        REGION("region"),
-
-        SOLARSYSTEM("solarsystem"),
-
-        STATION("station");
-
-        private String value;
-
-        RangeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RangeEnum fromValue(String value) {
-            for (RangeEnum b : RangeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RangeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RangeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RangeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RangeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
-    private RangeEnum range;
+    private String range;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
     private Integer regionId;
 
-    /**
-     * Current order state
-     */
-    @JsonAdapter(StateEnum.Adapter.class)
-    public enum StateEnum {
-        CANCELLED("cancelled"),
-
-        EXPIRED("expired");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StateEnum fromValue(String value) {
-            for (StateEnum b : StateEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StateEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StateEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StateEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
@@ -392,7 +278,7 @@ public class CharacterOrdersHistoryResponse implements Serializable {
         this.price = price;
     }
 
-    public CharacterOrdersHistoryResponse range(RangeEnum range) {
+    public CharacterOrdersHistoryResponse range(String range) {
 
         this.range = range;
         return this;
@@ -404,11 +290,11 @@ public class CharacterOrdersHistoryResponse implements Serializable {
      * @return range
      **/
     @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
-    public RangeEnum getRange() {
+    public String getRange() {
         return range;
     }
 
-    public void setRange(RangeEnum range) {
+    public void setRange(String range) {
         this.range = range;
     }
 
@@ -432,7 +318,7 @@ public class CharacterOrdersHistoryResponse implements Serializable {
         this.regionId = regionId;
     }
 
-    public CharacterOrdersHistoryResponse state(StateEnum state) {
+    public CharacterOrdersHistoryResponse state(String state) {
 
         this.state = state;
         return this;
@@ -444,11 +330,11 @@ public class CharacterOrdersHistoryResponse implements Serializable {
      * @return state
      **/
     @ApiModelProperty(required = true, value = "Current order state")
-    public StateEnum getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(String state) {
         this.state = state;
     }
 

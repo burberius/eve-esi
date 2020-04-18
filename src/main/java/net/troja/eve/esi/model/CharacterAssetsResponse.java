@@ -43,271 +43,17 @@ public class CharacterAssetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
     private Long itemId;
 
-    /**
-     * location_flag string
-     */
-    @JsonAdapter(LocationFlagEnum.Adapter.class)
-    public enum LocationFlagEnum {
-        ASSETSAFETY("AssetSafety"),
-
-        AUTOFIT("AutoFit"),
-
-        BOOSTERBAY("BoosterBay"),
-
-        CARGO("Cargo"),
-
-        CORPSEBAY("CorpseBay"),
-
-        DELIVERIES("Deliveries"),
-
-        DRONEBAY("DroneBay"),
-
-        FIGHTERBAY("FighterBay"),
-
-        FIGHTERTUBE0("FighterTube0"),
-
-        FIGHTERTUBE1("FighterTube1"),
-
-        FIGHTERTUBE2("FighterTube2"),
-
-        FIGHTERTUBE3("FighterTube3"),
-
-        FIGHTERTUBE4("FighterTube4"),
-
-        FLEETHANGAR("FleetHangar"),
-
-        FRIGATEESCAPEBAY("FrigateEscapeBay"),
-
-        HANGAR("Hangar"),
-
-        HANGARALL("HangarAll"),
-
-        HISLOT0("HiSlot0"),
-
-        HISLOT1("HiSlot1"),
-
-        HISLOT2("HiSlot2"),
-
-        HISLOT3("HiSlot3"),
-
-        HISLOT4("HiSlot4"),
-
-        HISLOT5("HiSlot5"),
-
-        HISLOT6("HiSlot6"),
-
-        HISLOT7("HiSlot7"),
-
-        HIDDENMODIFIERS("HiddenModifiers"),
-
-        IMPLANT("Implant"),
-
-        LOSLOT0("LoSlot0"),
-
-        LOSLOT1("LoSlot1"),
-
-        LOSLOT2("LoSlot2"),
-
-        LOSLOT3("LoSlot3"),
-
-        LOSLOT4("LoSlot4"),
-
-        LOSLOT5("LoSlot5"),
-
-        LOSLOT6("LoSlot6"),
-
-        LOSLOT7("LoSlot7"),
-
-        LOCKED("Locked"),
-
-        MEDSLOT0("MedSlot0"),
-
-        MEDSLOT1("MedSlot1"),
-
-        MEDSLOT2("MedSlot2"),
-
-        MEDSLOT3("MedSlot3"),
-
-        MEDSLOT4("MedSlot4"),
-
-        MEDSLOT5("MedSlot5"),
-
-        MEDSLOT6("MedSlot6"),
-
-        MEDSLOT7("MedSlot7"),
-
-        QUAFEBAY("QuafeBay"),
-
-        RIGSLOT0("RigSlot0"),
-
-        RIGSLOT1("RigSlot1"),
-
-        RIGSLOT2("RigSlot2"),
-
-        RIGSLOT3("RigSlot3"),
-
-        RIGSLOT4("RigSlot4"),
-
-        RIGSLOT5("RigSlot5"),
-
-        RIGSLOT6("RigSlot6"),
-
-        RIGSLOT7("RigSlot7"),
-
-        SHIPHANGAR("ShipHangar"),
-
-        SKILL("Skill"),
-
-        SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
-
-        SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
-
-        SPECIALIZEDFUELBAY("SpecializedFuelBay"),
-
-        SPECIALIZEDGASHOLD("SpecializedGasHold"),
-
-        SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
-
-        SPECIALIZEDLARGESHIPHOLD("SpecializedLargeShipHold"),
-
-        SPECIALIZEDMATERIALBAY("SpecializedMaterialBay"),
-
-        SPECIALIZEDMEDIUMSHIPHOLD("SpecializedMediumShipHold"),
-
-        SPECIALIZEDMINERALHOLD("SpecializedMineralHold"),
-
-        SPECIALIZEDOREHOLD("SpecializedOreHold"),
-
-        SPECIALIZEDPLANETARYCOMMODITIESHOLD("SpecializedPlanetaryCommoditiesHold"),
-
-        SPECIALIZEDSALVAGEHOLD("SpecializedSalvageHold"),
-
-        SPECIALIZEDSHIPHOLD("SpecializedShipHold"),
-
-        SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
-
-        SUBSYSTEMBAY("SubSystemBay"),
-
-        SUBSYSTEMSLOT0("SubSystemSlot0"),
-
-        SUBSYSTEMSLOT1("SubSystemSlot1"),
-
-        SUBSYSTEMSLOT2("SubSystemSlot2"),
-
-        SUBSYSTEMSLOT3("SubSystemSlot3"),
-
-        SUBSYSTEMSLOT4("SubSystemSlot4"),
-
-        SUBSYSTEMSLOT5("SubSystemSlot5"),
-
-        SUBSYSTEMSLOT6("SubSystemSlot6"),
-
-        SUBSYSTEMSLOT7("SubSystemSlot7"),
-
-        UNLOCKED("Unlocked"),
-
-        WARDROBE("Wardrobe");
-
-        private String value;
-
-        LocationFlagEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LocationFlagEnum fromValue(String value) {
-            for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
     private Long locationId;
 
-    /**
-     * location_type string
-     */
-    @JsonAdapter(LocationTypeEnum.Adapter.class)
-    public enum LocationTypeEnum {
-        STATION("station"),
-
-        SOLAR_SYSTEM("solar_system"),
-
-        ITEM("item"),
-
-        OTHER("other");
-
-        private String value;
-
-        LocationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LocationTypeEnum fromValue(String value) {
-            for (LocationTypeEnum b : LocationTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<LocationTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LocationTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public LocationTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return LocationTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
-    private LocationTypeEnum locationType;
+    private String locationType;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -378,7 +124,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CharacterAssetsResponse locationFlag(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -390,11 +136,11 @@ public class CharacterAssetsResponse implements Serializable {
      * @return locationFlag
      **/
     @ApiModelProperty(required = true, value = "location_flag string")
-    public LocationFlagEnum getLocationFlag() {
+    public String getLocationFlag() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
@@ -418,7 +164,7 @@ public class CharacterAssetsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CharacterAssetsResponse locationType(LocationTypeEnum locationType) {
+    public CharacterAssetsResponse locationType(String locationType) {
 
         this.locationType = locationType;
         return this;
@@ -430,11 +176,11 @@ public class CharacterAssetsResponse implements Serializable {
      * @return locationType
      **/
     @ApiModelProperty(required = true, value = "location_type string")
-    public LocationTypeEnum getLocationType() {
+    public String getLocationType() {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
+    public void setLocationType(String locationType) {
         this.locationType = locationType;
     }
 

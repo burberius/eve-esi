@@ -35,60 +35,9 @@ public class Recipient implements Serializable {
     @SerializedName(SERIALIZED_NAME_RECIPIENT_ID)
     private Integer recipientId;
 
-    /**
-     * recipient_type string
-     */
-    @JsonAdapter(RecipientTypeEnum.Adapter.class)
-    public enum RecipientTypeEnum {
-        ALLIANCE("alliance"),
-
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        MAILING_LIST("mailing_list");
-
-        private String value;
-
-        RecipientTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RecipientTypeEnum fromValue(String value) {
-            for (RecipientTypeEnum b : RecipientTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RecipientTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RecipientTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RecipientTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RecipientTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_RECIPIENT_TYPE = "recipient_type";
     @SerializedName(SERIALIZED_NAME_RECIPIENT_TYPE)
-    private RecipientTypeEnum recipientType;
+    private String recipientType;
 
     public Recipient recipientId(Integer recipientId) {
 
@@ -110,7 +59,7 @@ public class Recipient implements Serializable {
         this.recipientId = recipientId;
     }
 
-    public Recipient recipientType(RecipientTypeEnum recipientType) {
+    public Recipient recipientType(String recipientType) {
 
         this.recipientType = recipientType;
         return this;
@@ -122,11 +71,11 @@ public class Recipient implements Serializable {
      * @return recipientType
      **/
     @ApiModelProperty(required = true, value = "recipient_type string")
-    public RecipientTypeEnum getRecipientType() {
+    public String getRecipientType() {
         return recipientType;
     }
 
-    public void setRecipientType(RecipientTypeEnum recipientType) {
+    public void setRecipientType(String recipientType) {
         this.recipientType = recipientType;
     }
 

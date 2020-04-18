@@ -32,72 +32,9 @@ import java.io.Serializable;
 public class CorporationContainersLogsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * action string
-     */
-    @JsonAdapter(ActionEnum.Adapter.class)
-    public enum ActionEnum {
-        ADD("add"),
-
-        ASSEMBLE("assemble"),
-
-        CONFIGURE("configure"),
-
-        ENTER_PASSWORD("enter_password"),
-
-        LOCK("lock"),
-
-        MOVE("move"),
-
-        REPACKAGE("repackage"),
-
-        SET_NAME("set_name"),
-
-        SET_PASSWORD("set_password"),
-
-        UNLOCK("unlock");
-
-        private String value;
-
-        ActionEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ActionEnum fromValue(String value) {
-            for (ActionEnum b : ActionEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ActionEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ActionEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ActionEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ActionEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_ACTION = "action";
     @SerializedName(SERIALIZED_NAME_ACTION)
-    private ActionEnum action;
+    private String action;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
@@ -111,284 +48,9 @@ public class CorporationContainersLogsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE_ID)
     private Integer containerTypeId;
 
-    /**
-     * location_flag string
-     */
-    @JsonAdapter(LocationFlagEnum.Adapter.class)
-    public enum LocationFlagEnum {
-        ASSETSAFETY("AssetSafety"),
-
-        AUTOFIT("AutoFit"),
-
-        BONUS("Bonus"),
-
-        BOOSTER("Booster"),
-
-        BOOSTERBAY("BoosterBay"),
-
-        CAPSULE("Capsule"),
-
-        CARGO("Cargo"),
-
-        CORPDELIVERIES("CorpDeliveries"),
-
-        CORPSAG1("CorpSAG1"),
-
-        CORPSAG2("CorpSAG2"),
-
-        CORPSAG3("CorpSAG3"),
-
-        CORPSAG4("CorpSAG4"),
-
-        CORPSAG5("CorpSAG5"),
-
-        CORPSAG6("CorpSAG6"),
-
-        CORPSAG7("CorpSAG7"),
-
-        CRATELOOT("CrateLoot"),
-
-        DELIVERIES("Deliveries"),
-
-        DRONEBAY("DroneBay"),
-
-        DUSTBATTLE("DustBattle"),
-
-        DUSTDATABANK("DustDatabank"),
-
-        FIGHTERBAY("FighterBay"),
-
-        FIGHTERTUBE0("FighterTube0"),
-
-        FIGHTERTUBE1("FighterTube1"),
-
-        FIGHTERTUBE2("FighterTube2"),
-
-        FIGHTERTUBE3("FighterTube3"),
-
-        FIGHTERTUBE4("FighterTube4"),
-
-        FLEETHANGAR("FleetHangar"),
-
-        FRIGATEESCAPEBAY("FrigateEscapeBay"),
-
-        HANGAR("Hangar"),
-
-        HANGARALL("HangarAll"),
-
-        HISLOT0("HiSlot0"),
-
-        HISLOT1("HiSlot1"),
-
-        HISLOT2("HiSlot2"),
-
-        HISLOT3("HiSlot3"),
-
-        HISLOT4("HiSlot4"),
-
-        HISLOT5("HiSlot5"),
-
-        HISLOT6("HiSlot6"),
-
-        HISLOT7("HiSlot7"),
-
-        HIDDENMODIFIERS("HiddenModifiers"),
-
-        IMPLANT("Implant"),
-
-        IMPOUNDED("Impounded"),
-
-        JUNKYARDREPROCESSED("JunkyardReprocessed"),
-
-        JUNKYARDTRASHED("JunkyardTrashed"),
-
-        LOSLOT0("LoSlot0"),
-
-        LOSLOT1("LoSlot1"),
-
-        LOSLOT2("LoSlot2"),
-
-        LOSLOT3("LoSlot3"),
-
-        LOSLOT4("LoSlot4"),
-
-        LOSLOT5("LoSlot5"),
-
-        LOSLOT6("LoSlot6"),
-
-        LOSLOT7("LoSlot7"),
-
-        LOCKED("Locked"),
-
-        MEDSLOT0("MedSlot0"),
-
-        MEDSLOT1("MedSlot1"),
-
-        MEDSLOT2("MedSlot2"),
-
-        MEDSLOT3("MedSlot3"),
-
-        MEDSLOT4("MedSlot4"),
-
-        MEDSLOT5("MedSlot5"),
-
-        MEDSLOT6("MedSlot6"),
-
-        MEDSLOT7("MedSlot7"),
-
-        OFFICEFOLDER("OfficeFolder"),
-
-        PILOT("Pilot"),
-
-        PLANETSURFACE("PlanetSurface"),
-
-        QUAFEBAY("QuafeBay"),
-
-        REWARD("Reward"),
-
-        RIGSLOT0("RigSlot0"),
-
-        RIGSLOT1("RigSlot1"),
-
-        RIGSLOT2("RigSlot2"),
-
-        RIGSLOT3("RigSlot3"),
-
-        RIGSLOT4("RigSlot4"),
-
-        RIGSLOT5("RigSlot5"),
-
-        RIGSLOT6("RigSlot6"),
-
-        RIGSLOT7("RigSlot7"),
-
-        SECONDARYSTORAGE("SecondaryStorage"),
-
-        SERVICESLOT0("ServiceSlot0"),
-
-        SERVICESLOT1("ServiceSlot1"),
-
-        SERVICESLOT2("ServiceSlot2"),
-
-        SERVICESLOT3("ServiceSlot3"),
-
-        SERVICESLOT4("ServiceSlot4"),
-
-        SERVICESLOT5("ServiceSlot5"),
-
-        SERVICESLOT6("ServiceSlot6"),
-
-        SERVICESLOT7("ServiceSlot7"),
-
-        SHIPHANGAR("ShipHangar"),
-
-        SHIPOFFLINE("ShipOffline"),
-
-        SKILL("Skill"),
-
-        SKILLINTRAINING("SkillInTraining"),
-
-        SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
-
-        SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
-
-        SPECIALIZEDFUELBAY("SpecializedFuelBay"),
-
-        SPECIALIZEDGASHOLD("SpecializedGasHold"),
-
-        SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
-
-        SPECIALIZEDLARGESHIPHOLD("SpecializedLargeShipHold"),
-
-        SPECIALIZEDMATERIALBAY("SpecializedMaterialBay"),
-
-        SPECIALIZEDMEDIUMSHIPHOLD("SpecializedMediumShipHold"),
-
-        SPECIALIZEDMINERALHOLD("SpecializedMineralHold"),
-
-        SPECIALIZEDOREHOLD("SpecializedOreHold"),
-
-        SPECIALIZEDPLANETARYCOMMODITIESHOLD("SpecializedPlanetaryCommoditiesHold"),
-
-        SPECIALIZEDSALVAGEHOLD("SpecializedSalvageHold"),
-
-        SPECIALIZEDSHIPHOLD("SpecializedShipHold"),
-
-        SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
-
-        STRUCTUREACTIVE("StructureActive"),
-
-        STRUCTUREFUEL("StructureFuel"),
-
-        STRUCTUREINACTIVE("StructureInactive"),
-
-        STRUCTUREOFFLINE("StructureOffline"),
-
-        SUBSYSTEMBAY("SubSystemBay"),
-
-        SUBSYSTEMSLOT0("SubSystemSlot0"),
-
-        SUBSYSTEMSLOT1("SubSystemSlot1"),
-
-        SUBSYSTEMSLOT2("SubSystemSlot2"),
-
-        SUBSYSTEMSLOT3("SubSystemSlot3"),
-
-        SUBSYSTEMSLOT4("SubSystemSlot4"),
-
-        SUBSYSTEMSLOT5("SubSystemSlot5"),
-
-        SUBSYSTEMSLOT6("SubSystemSlot6"),
-
-        SUBSYSTEMSLOT7("SubSystemSlot7"),
-
-        UNLOCKED("Unlocked"),
-
-        WALLET("Wallet"),
-
-        WARDROBE("Wardrobe");
-
-        private String value;
-
-        LocationFlagEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LocationFlagEnum fromValue(String value) {
-            for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -406,56 +68,9 @@ public class CorporationContainersLogsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OLD_CONFIG_BITMASK)
     private Integer oldConfigBitmask;
 
-    /**
-     * Type of password set if action is of type SetPassword or EnterPassword
-     */
-    @JsonAdapter(PasswordTypeEnum.Adapter.class)
-    public enum PasswordTypeEnum {
-        CONFIG("config"),
-
-        GENERAL("general");
-
-        private String value;
-
-        PasswordTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static PasswordTypeEnum fromValue(String value) {
-            for (PasswordTypeEnum b : PasswordTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<PasswordTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final PasswordTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public PasswordTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return PasswordTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_PASSWORD_TYPE = "password_type";
     @SerializedName(SERIALIZED_NAME_PASSWORD_TYPE)
-    private PasswordTypeEnum passwordType;
+    private String passwordType;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -465,7 +80,7 @@ public class CorporationContainersLogsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public CorporationContainersLogsResponse action(ActionEnum action) {
+    public CorporationContainersLogsResponse action(String action) {
 
         this.action = action;
         return this;
@@ -477,11 +92,11 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return action
      **/
     @ApiModelProperty(required = true, value = "action string")
-    public ActionEnum getAction() {
+    public String getAction() {
         return action;
     }
 
-    public void setAction(ActionEnum action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
@@ -545,7 +160,7 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.containerTypeId = containerTypeId;
     }
 
-    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CorporationContainersLogsResponse locationFlag(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -557,11 +172,11 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return locationFlag
      **/
     @ApiModelProperty(required = true, value = "location_flag string")
-    public LocationFlagEnum getLocationFlag() {
+    public String getLocationFlag() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
@@ -647,7 +262,7 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.oldConfigBitmask = oldConfigBitmask;
     }
 
-    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordType) {
+    public CorporationContainersLogsResponse passwordType(String passwordType) {
 
         this.passwordType = passwordType;
         return this;
@@ -660,11 +275,11 @@ public class CorporationContainersLogsResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "Type of password set if action is of type SetPassword or EnterPassword")
-    public PasswordTypeEnum getPasswordType() {
+    public String getPasswordType() {
         return passwordType;
     }
 
-    public void setPasswordType(PasswordTypeEnum passwordType) {
+    public void setPasswordType(String passwordType) {
         this.passwordType = passwordType;
     }
 

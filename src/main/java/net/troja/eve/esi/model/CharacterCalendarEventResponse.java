@@ -56,62 +56,9 @@ public class CharacterCalendarEventResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OWNER_NAME)
     private String ownerName;
 
-    /**
-     * owner_type string
-     */
-    @JsonAdapter(OwnerTypeEnum.Adapter.class)
-    public enum OwnerTypeEnum {
-        EVE_SERVER("eve_server"),
-
-        CORPORATION("corporation"),
-
-        FACTION("faction"),
-
-        CHARACTER("character"),
-
-        ALLIANCE("alliance");
-
-        private String value;
-
-        OwnerTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OwnerTypeEnum fromValue(String value) {
-            for (OwnerTypeEnum b : OwnerTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<OwnerTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OwnerTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public OwnerTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return OwnerTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_OWNER_TYPE = "owner_type";
     @SerializedName(SERIALIZED_NAME_OWNER_TYPE)
-    private OwnerTypeEnum ownerType;
+    private String ownerType;
 
     public static final String SERIALIZED_NAME_RESPONSE = "response";
     @SerializedName(SERIALIZED_NAME_RESPONSE)
@@ -245,7 +192,7 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.ownerName = ownerName;
     }
 
-    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerType) {
+    public CharacterCalendarEventResponse ownerType(String ownerType) {
 
         this.ownerType = ownerType;
         return this;
@@ -257,11 +204,11 @@ public class CharacterCalendarEventResponse implements Serializable {
      * @return ownerType
      **/
     @ApiModelProperty(required = true, value = "owner_type string")
-    public OwnerTypeEnum getOwnerType() {
+    public String getOwnerType() {
         return ownerType;
     }
 
-    public void setOwnerType(OwnerTypeEnum ownerType) {
+    public void setOwnerType(String ownerType) {
         this.ownerType = ownerType;
     }
 

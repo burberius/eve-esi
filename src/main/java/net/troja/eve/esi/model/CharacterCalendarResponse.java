@@ -40,60 +40,9 @@ public class CharacterCalendarResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_EVENT_ID)
     private Integer eventId;
 
-    /**
-     * event_response string
-     */
-    @JsonAdapter(EventResponseEnum.Adapter.class)
-    public enum EventResponseEnum {
-        DECLINED("declined"),
-
-        NOT_RESPONDED("not_responded"),
-
-        ACCEPTED("accepted"),
-
-        TENTATIVE("tentative");
-
-        private String value;
-
-        EventResponseEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static EventResponseEnum fromValue(String value) {
-            for (EventResponseEnum b : EventResponseEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<EventResponseEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final EventResponseEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public EventResponseEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return EventResponseEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_EVENT_RESPONSE = "event_response";
     @SerializedName(SERIALIZED_NAME_EVENT_RESPONSE)
-    private EventResponseEnum eventResponse;
+    private String eventResponse;
 
     public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
     @SerializedName(SERIALIZED_NAME_IMPORTANCE)
@@ -145,7 +94,7 @@ public class CharacterCalendarResponse implements Serializable {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponse) {
+    public CharacterCalendarResponse eventResponse(String eventResponse) {
 
         this.eventResponse = eventResponse;
         return this;
@@ -158,11 +107,11 @@ public class CharacterCalendarResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "event_response string")
-    public EventResponseEnum getEventResponse() {
+    public String getEventResponse() {
         return eventResponse;
     }
 
-    public void setEventResponse(EventResponseEnum eventResponse) {
+    public void setEventResponse(String eventResponse) {
         this.eventResponse = eventResponse;
     }
 

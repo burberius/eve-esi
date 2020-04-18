@@ -39,56 +39,9 @@ public class CorporationShareholdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_ID)
     private Integer shareholderId;
 
-    /**
-     * shareholder_type string
-     */
-    @JsonAdapter(ShareholderTypeEnum.Adapter.class)
-    public enum ShareholderTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation");
-
-        private String value;
-
-        ShareholderTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ShareholderTypeEnum fromValue(String value) {
-            for (ShareholderTypeEnum b : ShareholderTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ShareholderTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ShareholderTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ShareholderTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ShareholderTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_SHAREHOLDER_TYPE = "shareholder_type";
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_TYPE)
-    private ShareholderTypeEnum shareholderType;
+    private String shareholderType;
 
     public CorporationShareholdersResponse shareCount(Long shareCount) {
 
@@ -130,7 +83,7 @@ public class CorporationShareholdersResponse implements Serializable {
         this.shareholderId = shareholderId;
     }
 
-    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderType) {
+    public CorporationShareholdersResponse shareholderType(String shareholderType) {
 
         this.shareholderType = shareholderType;
         return this;
@@ -142,11 +95,11 @@ public class CorporationShareholdersResponse implements Serializable {
      * @return shareholderType
      **/
     @ApiModelProperty(required = true, value = "shareholder_type string")
-    public ShareholderTypeEnum getShareholderType() {
+    public String getShareholderType() {
         return shareholderType;
     }
 
-    public void setShareholderType(ShareholderTypeEnum shareholderType) {
+    public void setShareholderType(String shareholderType) {
         this.shareholderType = shareholderType;
     }
 

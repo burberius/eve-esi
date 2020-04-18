@@ -22,6 +22,30 @@ jq ".paths[\"/v2/characters/{character_id}/fleet/\"] = $ENDPOINT" work1.json > w
 mv work2.json esi.json
 ### -!- Workaround END
 
+# enum
+echo "Removing enum"
+# properties.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.properties != null).properties[]  | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# properties.items.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.properties != null).properties[] | select(.items != null).items  | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# properties.items.properties.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.properties != null).properties[] | select(.items != null).items | select(.properties != null).properties[] | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# properties.properties.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.properties != null).properties[] | select(.properties != null).properties[]  | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# items.properties.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.items != null).items | select(.properties != null).properties[] | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# items.properties.items.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.items != null).items | select(.properties != null).properties[] | select(.items != null).items | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+# items.properties.items.properties.enum
+jq "del(.paths[][].responses.\"200\".schema | select(.items != null).items | select(.properties != null).properties[] | select(.items != null).items | select(.properties != null).properties[] | select(.enum != null).enum)" esi.json > work.json
+mv work.json esi.json
+
 # definitions
 echo "Removing definitions"
 jq "(.definitions) = {}" esi.json > work1.json

@@ -75,62 +75,9 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_REINFORCE_EXIT_START)
     private Integer reinforceExitStart;
 
-    /**
-     * Access is allowed only for entities with this level of standing or better
-     */
-    @JsonAdapter(StandingLevelEnum.Adapter.class)
-    public enum StandingLevelEnum {
-        BAD("bad"),
-
-        EXCELLENT("excellent"),
-
-        GOOD("good"),
-
-        NEUTRAL("neutral"),
-
-        TERRIBLE("terrible");
-
-        private String value;
-
-        StandingLevelEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StandingLevelEnum fromValue(String value) {
-            for (StandingLevelEnum b : StandingLevelEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StandingLevelEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StandingLevelEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StandingLevelEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StandingLevelEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STANDING_LEVEL = "standing_level";
     @SerializedName(SERIALIZED_NAME_STANDING_LEVEL)
-    private StandingLevelEnum standingLevel;
+    private String standingLevel;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -370,7 +317,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         this.reinforceExitStart = reinforceExitStart;
     }
 
-    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevel) {
+    public CorporationCustomsOfficesResponse standingLevel(String standingLevel) {
 
         this.standingLevel = standingLevel;
         return this;
@@ -383,11 +330,11 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "Access is allowed only for entities with this level of standing or better")
-    public StandingLevelEnum getStandingLevel() {
+    public String getStandingLevel() {
         return standingLevel;
     }
 
-    public void setStandingLevel(StandingLevelEnum standingLevel) {
+    public void setStandingLevel(String standingLevel) {
         this.standingLevel = standingLevel;
     }
 

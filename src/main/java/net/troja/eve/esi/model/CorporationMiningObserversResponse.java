@@ -40,54 +40,9 @@ public class CorporationMiningObserversResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_OBSERVER_ID)
     private Long observerId;
 
-    /**
-     * The category of the observing entity
-     */
-    @JsonAdapter(ObserverTypeEnum.Adapter.class)
-    public enum ObserverTypeEnum {
-        STRUCTURE("structure");
-
-        private String value;
-
-        ObserverTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ObserverTypeEnum fromValue(String value) {
-            for (ObserverTypeEnum b : ObserverTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ObserverTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ObserverTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ObserverTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ObserverTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_OBSERVER_TYPE = "observer_type";
     @SerializedName(SERIALIZED_NAME_OBSERVER_TYPE)
-    private ObserverTypeEnum observerType;
+    private String observerType;
 
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
 
@@ -129,7 +84,7 @@ public class CorporationMiningObserversResponse implements Serializable {
         this.observerId = observerId;
     }
 
-    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerType) {
+    public CorporationMiningObserversResponse observerType(String observerType) {
 
         this.observerType = observerType;
         return this;
@@ -141,11 +96,11 @@ public class CorporationMiningObserversResponse implements Serializable {
      * @return observerType
      **/
     @ApiModelProperty(required = true, value = "The category of the observing entity")
-    public ObserverTypeEnum getObserverType() {
+    public String getObserverType() {
         return observerType;
     }
 
-    public void setObserverType(ObserverTypeEnum observerType) {
+    public void setObserverType(String observerType) {
         this.observerType = observerType;
     }
 

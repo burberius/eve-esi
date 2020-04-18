@@ -37,1151 +37,37 @@ public class CorporationRolesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
     private Integer characterId;
 
-    /**
-     * grantable_role string
-     */
-    @JsonAdapter(GrantableRolesEnum.Adapter.class)
-    public enum GrantableRolesEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        GrantableRolesEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static GrantableRolesEnum fromValue(String value) {
-            for (GrantableRolesEnum b : GrantableRolesEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<GrantableRolesEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final GrantableRolesEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public GrantableRolesEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return GrantableRolesEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES = "grantable_roles";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES)
-    private List<GrantableRolesEnum> grantableRoles = null;
-
-    /**
-     * grantable_roles_at_base string
-     */
-    @JsonAdapter(GrantableRolesAtBaseEnum.Adapter.class)
-    public enum GrantableRolesAtBaseEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        GrantableRolesAtBaseEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static GrantableRolesAtBaseEnum fromValue(String value) {
-            for (GrantableRolesAtBaseEnum b : GrantableRolesAtBaseEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<GrantableRolesAtBaseEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final GrantableRolesAtBaseEnum enumeration)
-                    throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public GrantableRolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return GrantableRolesAtBaseEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> grantableRoles = null;
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE = "grantable_roles_at_base";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE)
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = null;
-
-    /**
-     * grantable_roles_at_hq string
-     */
-    @JsonAdapter(GrantableRolesAtHqEnum.Adapter.class)
-    public enum GrantableRolesAtHqEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        GrantableRolesAtHqEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static GrantableRolesAtHqEnum fromValue(String value) {
-            for (GrantableRolesAtHqEnum b : GrantableRolesAtHqEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<GrantableRolesAtHqEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final GrantableRolesAtHqEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public GrantableRolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return GrantableRolesAtHqEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> grantableRolesAtBase = null;
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ = "grantable_roles_at_hq";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ)
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = null;
-
-    /**
-     * grantable_roles_at_other string
-     */
-    @JsonAdapter(GrantableRolesAtOtherEnum.Adapter.class)
-    public enum GrantableRolesAtOtherEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        GrantableRolesAtOtherEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static GrantableRolesAtOtherEnum fromValue(String value) {
-            for (GrantableRolesAtOtherEnum b : GrantableRolesAtOtherEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<GrantableRolesAtOtherEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final GrantableRolesAtOtherEnum enumeration)
-                    throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public GrantableRolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return GrantableRolesAtOtherEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> grantableRolesAtHq = null;
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER = "grantable_roles_at_other";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER)
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = null;
-
-    /**
-     * role string
-     */
-    @JsonAdapter(RolesEnum.Adapter.class)
-    public enum RolesEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        RolesEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RolesEnum fromValue(String value) {
-            for (RolesEnum b : RolesEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RolesEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RolesEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RolesEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RolesEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> grantableRolesAtOther = null;
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<RolesEnum> roles = null;
-
-    /**
-     * roles_at_base string
-     */
-    @JsonAdapter(RolesAtBaseEnum.Adapter.class)
-    public enum RolesAtBaseEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        RolesAtBaseEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RolesAtBaseEnum fromValue(String value) {
-            for (RolesAtBaseEnum b : RolesAtBaseEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RolesAtBaseEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RolesAtBaseEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RolesAtBaseEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RolesAtBaseEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> roles = null;
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<RolesAtBaseEnum> rolesAtBase = null;
-
-    /**
-     * roles_at_hq string
-     */
-    @JsonAdapter(RolesAtHqEnum.Adapter.class)
-    public enum RolesAtHqEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        RolesAtHqEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RolesAtHqEnum fromValue(String value) {
-            for (RolesAtHqEnum b : RolesAtHqEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RolesAtHqEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RolesAtHqEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RolesAtHqEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RolesAtHqEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> rolesAtBase = null;
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<RolesAtHqEnum> rolesAtHq = null;
-
-    /**
-     * roles_at_other string
-     */
-    @JsonAdapter(RolesAtOtherEnum.Adapter.class)
-    public enum RolesAtOtherEnum {
-        ACCOUNT_TAKE_1("Account_Take_1"),
-
-        ACCOUNT_TAKE_2("Account_Take_2"),
-
-        ACCOUNT_TAKE_3("Account_Take_3"),
-
-        ACCOUNT_TAKE_4("Account_Take_4"),
-
-        ACCOUNT_TAKE_5("Account_Take_5"),
-
-        ACCOUNT_TAKE_6("Account_Take_6"),
-
-        ACCOUNT_TAKE_7("Account_Take_7"),
-
-        ACCOUNTANT("Accountant"),
-
-        AUDITOR("Auditor"),
-
-        COMMUNICATIONS_OFFICER("Communications_Officer"),
-
-        CONFIG_EQUIPMENT("Config_Equipment"),
-
-        CONFIG_STARBASE_EQUIPMENT("Config_Starbase_Equipment"),
-
-        CONTAINER_TAKE_1("Container_Take_1"),
-
-        CONTAINER_TAKE_2("Container_Take_2"),
-
-        CONTAINER_TAKE_3("Container_Take_3"),
-
-        CONTAINER_TAKE_4("Container_Take_4"),
-
-        CONTAINER_TAKE_5("Container_Take_5"),
-
-        CONTAINER_TAKE_6("Container_Take_6"),
-
-        CONTAINER_TAKE_7("Container_Take_7"),
-
-        CONTRACT_MANAGER("Contract_Manager"),
-
-        DIPLOMAT("Diplomat"),
-
-        DIRECTOR("Director"),
-
-        FACTORY_MANAGER("Factory_Manager"),
-
-        FITTING_MANAGER("Fitting_Manager"),
-
-        HANGAR_QUERY_1("Hangar_Query_1"),
-
-        HANGAR_QUERY_2("Hangar_Query_2"),
-
-        HANGAR_QUERY_3("Hangar_Query_3"),
-
-        HANGAR_QUERY_4("Hangar_Query_4"),
-
-        HANGAR_QUERY_5("Hangar_Query_5"),
-
-        HANGAR_QUERY_6("Hangar_Query_6"),
-
-        HANGAR_QUERY_7("Hangar_Query_7"),
-
-        HANGAR_TAKE_1("Hangar_Take_1"),
-
-        HANGAR_TAKE_2("Hangar_Take_2"),
-
-        HANGAR_TAKE_3("Hangar_Take_3"),
-
-        HANGAR_TAKE_4("Hangar_Take_4"),
-
-        HANGAR_TAKE_5("Hangar_Take_5"),
-
-        HANGAR_TAKE_6("Hangar_Take_6"),
-
-        HANGAR_TAKE_7("Hangar_Take_7"),
-
-        JUNIOR_ACCOUNTANT("Junior_Accountant"),
-
-        PERSONNEL_MANAGER("Personnel_Manager"),
-
-        RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
-
-        RENT_OFFICE("Rent_Office"),
-
-        RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
-
-        SECURITY_OFFICER("Security_Officer"),
-
-        STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
-
-        STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
-
-        STATION_MANAGER("Station_Manager"),
-
-        TRADER("Trader");
-
-        private String value;
-
-        RolesAtOtherEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RolesAtOtherEnum fromValue(String value) {
-            for (RolesAtOtherEnum b : RolesAtOtherEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RolesAtOtherEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RolesAtOtherEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RolesAtOtherEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RolesAtOtherEnum.fromValue(value);
-            }
-        }
-    }
+    private List<String> rolesAtHq = null;
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<RolesAtOtherEnum> rolesAtOther = null;
+    private List<String> rolesAtOther = null;
 
     public CorporationRolesResponse characterId(Integer characterId) {
 
@@ -1203,13 +89,13 @@ public class CorporationRolesResponse implements Serializable {
         this.characterId = characterId;
     }
 
-    public CorporationRolesResponse grantableRoles(List<GrantableRolesEnum> grantableRoles) {
+    public CorporationRolesResponse grantableRoles(List<String> grantableRoles) {
 
         this.grantableRoles = grantableRoles;
         return this;
     }
 
-    public CorporationRolesResponse addGrantableRolesItem(GrantableRolesEnum grantableRolesItem) {
+    public CorporationRolesResponse addGrantableRolesItem(String grantableRolesItem) {
         if (this.grantableRoles == null) {
             this.grantableRoles = new ArrayList<>();
         }
@@ -1224,21 +110,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles array")
-    public List<GrantableRolesEnum> getGrantableRoles() {
+    public List<String> getGrantableRoles() {
         return grantableRoles;
     }
 
-    public void setGrantableRoles(List<GrantableRolesEnum> grantableRoles) {
+    public void setGrantableRoles(List<String> grantableRoles) {
         this.grantableRoles = grantableRoles;
     }
 
-    public CorporationRolesResponse grantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBase) {
+    public CorporationRolesResponse grantableRolesAtBase(List<String> grantableRolesAtBase) {
 
         this.grantableRolesAtBase = grantableRolesAtBase;
         return this;
     }
 
-    public CorporationRolesResponse addGrantableRolesAtBaseItem(GrantableRolesAtBaseEnum grantableRolesAtBaseItem) {
+    public CorporationRolesResponse addGrantableRolesAtBaseItem(String grantableRolesAtBaseItem) {
         if (this.grantableRolesAtBase == null) {
             this.grantableRolesAtBase = new ArrayList<>();
         }
@@ -1253,21 +139,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_base array")
-    public List<GrantableRolesAtBaseEnum> getGrantableRolesAtBase() {
+    public List<String> getGrantableRolesAtBase() {
         return grantableRolesAtBase;
     }
 
-    public void setGrantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBase) {
+    public void setGrantableRolesAtBase(List<String> grantableRolesAtBase) {
         this.grantableRolesAtBase = grantableRolesAtBase;
     }
 
-    public CorporationRolesResponse grantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHq) {
+    public CorporationRolesResponse grantableRolesAtHq(List<String> grantableRolesAtHq) {
 
         this.grantableRolesAtHq = grantableRolesAtHq;
         return this;
     }
 
-    public CorporationRolesResponse addGrantableRolesAtHqItem(GrantableRolesAtHqEnum grantableRolesAtHqItem) {
+    public CorporationRolesResponse addGrantableRolesAtHqItem(String grantableRolesAtHqItem) {
         if (this.grantableRolesAtHq == null) {
             this.grantableRolesAtHq = new ArrayList<>();
         }
@@ -1282,21 +168,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_hq array")
-    public List<GrantableRolesAtHqEnum> getGrantableRolesAtHq() {
+    public List<String> getGrantableRolesAtHq() {
         return grantableRolesAtHq;
     }
 
-    public void setGrantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHq) {
+    public void setGrantableRolesAtHq(List<String> grantableRolesAtHq) {
         this.grantableRolesAtHq = grantableRolesAtHq;
     }
 
-    public CorporationRolesResponse grantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOther) {
+    public CorporationRolesResponse grantableRolesAtOther(List<String> grantableRolesAtOther) {
 
         this.grantableRolesAtOther = grantableRolesAtOther;
         return this;
     }
 
-    public CorporationRolesResponse addGrantableRolesAtOtherItem(GrantableRolesAtOtherEnum grantableRolesAtOtherItem) {
+    public CorporationRolesResponse addGrantableRolesAtOtherItem(String grantableRolesAtOtherItem) {
         if (this.grantableRolesAtOther == null) {
             this.grantableRolesAtOther = new ArrayList<>();
         }
@@ -1311,21 +197,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_other array")
-    public List<GrantableRolesAtOtherEnum> getGrantableRolesAtOther() {
+    public List<String> getGrantableRolesAtOther() {
         return grantableRolesAtOther;
     }
 
-    public void setGrantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOther) {
+    public void setGrantableRolesAtOther(List<String> grantableRolesAtOther) {
         this.grantableRolesAtOther = grantableRolesAtOther;
     }
 
-    public CorporationRolesResponse roles(List<RolesEnum> roles) {
+    public CorporationRolesResponse roles(List<String> roles) {
 
         this.roles = roles;
         return this;
     }
 
-    public CorporationRolesResponse addRolesItem(RolesEnum rolesItem) {
+    public CorporationRolesResponse addRolesItem(String rolesItem) {
         if (this.roles == null) {
             this.roles = new ArrayList<>();
         }
@@ -1340,21 +226,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles array")
-    public List<RolesEnum> getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<RolesEnum> roles) {
+    public void setRoles(List<String> roles) {
         this.roles = roles;
     }
 
-    public CorporationRolesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public CorporationRolesResponse rolesAtBase(List<String> rolesAtBase) {
 
         this.rolesAtBase = rolesAtBase;
         return this;
     }
 
-    public CorporationRolesResponse addRolesAtBaseItem(RolesAtBaseEnum rolesAtBaseItem) {
+    public CorporationRolesResponse addRolesAtBaseItem(String rolesAtBaseItem) {
         if (this.rolesAtBase == null) {
             this.rolesAtBase = new ArrayList<>();
         }
@@ -1369,21 +255,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_base array")
-    public List<RolesAtBaseEnum> getRolesAtBase() {
+    public List<String> getRolesAtBase() {
         return rolesAtBase;
     }
 
-    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public void setRolesAtBase(List<String> rolesAtBase) {
         this.rolesAtBase = rolesAtBase;
     }
 
-    public CorporationRolesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public CorporationRolesResponse rolesAtHq(List<String> rolesAtHq) {
 
         this.rolesAtHq = rolesAtHq;
         return this;
     }
 
-    public CorporationRolesResponse addRolesAtHqItem(RolesAtHqEnum rolesAtHqItem) {
+    public CorporationRolesResponse addRolesAtHqItem(String rolesAtHqItem) {
         if (this.rolesAtHq == null) {
             this.rolesAtHq = new ArrayList<>();
         }
@@ -1398,21 +284,21 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_hq array")
-    public List<RolesAtHqEnum> getRolesAtHq() {
+    public List<String> getRolesAtHq() {
         return rolesAtHq;
     }
 
-    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public void setRolesAtHq(List<String> rolesAtHq) {
         this.rolesAtHq = rolesAtHq;
     }
 
-    public CorporationRolesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public CorporationRolesResponse rolesAtOther(List<String> rolesAtOther) {
 
         this.rolesAtOther = rolesAtOther;
         return this;
     }
 
-    public CorporationRolesResponse addRolesAtOtherItem(RolesAtOtherEnum rolesAtOtherItem) {
+    public CorporationRolesResponse addRolesAtOtherItem(String rolesAtOtherItem) {
         if (this.rolesAtOther == null) {
             this.rolesAtOther = new ArrayList<>();
         }
@@ -1427,11 +313,11 @@ public class CorporationRolesResponse implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_other array")
-    public List<RolesAtOtherEnum> getRolesAtOther() {
+    public List<String> getRolesAtOther() {
         return rolesAtOther;
     }
 
-    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public void setRolesAtOther(List<String> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
     }
 

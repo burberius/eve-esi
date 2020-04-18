@@ -42,60 +42,9 @@ public class CorporationStarbaseResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ALLOW_CORPORATION_MEMBERS)
     private Boolean allowCorporationMembers;
 
-    /**
-     * Who can anchor starbase (POS) and its structures
-     */
-    @JsonAdapter(AnchorEnum.Adapter.class)
-    public enum AnchorEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        AnchorEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static AnchorEnum fromValue(String value) {
-            for (AnchorEnum b : AnchorEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<AnchorEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final AnchorEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public AnchorEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return AnchorEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_ANCHOR = "anchor";
     @SerializedName(SERIALIZED_NAME_ANCHOR)
-    private AnchorEnum anchor;
+    private String anchor;
 
     public static final String SERIALIZED_NAME_ATTACK_IF_AT_WAR = "attack_if_at_war";
     @SerializedName(SERIALIZED_NAME_ATTACK_IF_AT_WAR)
@@ -113,287 +62,29 @@ public class CorporationStarbaseResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ATTACK_STANDING_THRESHOLD)
     private Float attackStandingThreshold;
 
-    /**
-     * Who can take fuel blocks out of the starbase (POS)&#39;s fuel bay
-     */
-    @JsonAdapter(FuelBayTakeEnum.Adapter.class)
-    public enum FuelBayTakeEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        FuelBayTakeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static FuelBayTakeEnum fromValue(String value) {
-            for (FuelBayTakeEnum b : FuelBayTakeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<FuelBayTakeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final FuelBayTakeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public FuelBayTakeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return FuelBayTakeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_FUEL_BAY_TAKE = "fuel_bay_take";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_TAKE)
-    private FuelBayTakeEnum fuelBayTake;
-
-    /**
-     * Who can view the starbase (POS)&#39;s fule bay. Characters either need to
-     * have required role or belong to the starbase (POS) owner&#39;s
-     * corporation or alliance, as described by the enum, all other access
-     * settings follows the same scheme
-     */
-    @JsonAdapter(FuelBayViewEnum.Adapter.class)
-    public enum FuelBayViewEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        FuelBayViewEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static FuelBayViewEnum fromValue(String value) {
-            for (FuelBayViewEnum b : FuelBayViewEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<FuelBayViewEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final FuelBayViewEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public FuelBayViewEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return FuelBayViewEnum.fromValue(value);
-            }
-        }
-    }
+    private String fuelBayTake;
 
     public static final String SERIALIZED_NAME_FUEL_BAY_VIEW = "fuel_bay_view";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_VIEW)
-    private FuelBayViewEnum fuelBayView;
+    private String fuelBayView;
 
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
     private List<CorporationStarbaseFuel> fuels = null;
 
-    /**
-     * Who can offline starbase (POS) and its structures
-     */
-    @JsonAdapter(OfflineEnum.Adapter.class)
-    public enum OfflineEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        OfflineEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OfflineEnum fromValue(String value) {
-            for (OfflineEnum b : OfflineEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<OfflineEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OfflineEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public OfflineEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return OfflineEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_OFFLINE = "offline";
     @SerializedName(SERIALIZED_NAME_OFFLINE)
-    private OfflineEnum offline;
-
-    /**
-     * Who can online starbase (POS) and its structures
-     */
-    @JsonAdapter(OnlineEnum.Adapter.class)
-    public enum OnlineEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        OnlineEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static OnlineEnum fromValue(String value) {
-            for (OnlineEnum b : OnlineEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<OnlineEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final OnlineEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public OnlineEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return OnlineEnum.fromValue(value);
-            }
-        }
-    }
+    private String offline;
 
     public static final String SERIALIZED_NAME_ONLINE = "online";
     @SerializedName(SERIALIZED_NAME_ONLINE)
-    private OnlineEnum online;
-
-    /**
-     * Who can unanchor starbase (POS) and its structures
-     */
-    @JsonAdapter(UnanchorEnum.Adapter.class)
-    public enum UnanchorEnum {
-        ALLIANCE_MEMBER("alliance_member"),
-
-        CONFIG_STARBASE_EQUIPMENT_ROLE("config_starbase_equipment_role"),
-
-        CORPORATION_MEMBER("corporation_member"),
-
-        STARBASE_FUEL_TECHNICIAN_ROLE("starbase_fuel_technician_role");
-
-        private String value;
-
-        UnanchorEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static UnanchorEnum fromValue(String value) {
-            for (UnanchorEnum b : UnanchorEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<UnanchorEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final UnanchorEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public UnanchorEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return UnanchorEnum.fromValue(value);
-            }
-        }
-    }
+    private String online;
 
     public static final String SERIALIZED_NAME_UNANCHOR = "unanchor";
     @SerializedName(SERIALIZED_NAME_UNANCHOR)
-    private UnanchorEnum unanchor;
+    private String unanchor;
 
     public static final String SERIALIZED_NAME_USE_ALLIANCE_STANDINGS = "use_alliance_standings";
     @SerializedName(SERIALIZED_NAME_USE_ALLIANCE_STANDINGS)
@@ -439,7 +130,7 @@ public class CorporationStarbaseResponse implements Serializable {
         this.allowCorporationMembers = allowCorporationMembers;
     }
 
-    public CorporationStarbaseResponse anchor(AnchorEnum anchor) {
+    public CorporationStarbaseResponse anchor(String anchor) {
 
         this.anchor = anchor;
         return this;
@@ -451,11 +142,11 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return anchor
      **/
     @ApiModelProperty(required = true, value = "Who can anchor starbase (POS) and its structures")
-    public AnchorEnum getAnchor() {
+    public String getAnchor() {
         return anchor;
     }
 
-    public void setAnchor(AnchorEnum anchor) {
+    public void setAnchor(String anchor) {
         this.anchor = anchor;
     }
 
@@ -543,7 +234,7 @@ public class CorporationStarbaseResponse implements Serializable {
         this.attackStandingThreshold = attackStandingThreshold;
     }
 
-    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTake) {
+    public CorporationStarbaseResponse fuelBayTake(String fuelBayTake) {
 
         this.fuelBayTake = fuelBayTake;
         return this;
@@ -555,15 +246,15 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return fuelBayTake
      **/
     @ApiModelProperty(required = true, value = "Who can take fuel blocks out of the starbase (POS)'s fuel bay")
-    public FuelBayTakeEnum getFuelBayTake() {
+    public String getFuelBayTake() {
         return fuelBayTake;
     }
 
-    public void setFuelBayTake(FuelBayTakeEnum fuelBayTake) {
+    public void setFuelBayTake(String fuelBayTake) {
         this.fuelBayTake = fuelBayTake;
     }
 
-    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayView) {
+    public CorporationStarbaseResponse fuelBayView(String fuelBayView) {
 
         this.fuelBayView = fuelBayView;
         return this;
@@ -578,11 +269,11 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return fuelBayView
      **/
     @ApiModelProperty(required = true, value = "Who can view the starbase (POS)'s fule bay. Characters either need to have required role or belong to the starbase (POS) owner's corporation or alliance, as described by the enum, all other access settings follows the same scheme")
-    public FuelBayViewEnum getFuelBayView() {
+    public String getFuelBayView() {
         return fuelBayView;
     }
 
-    public void setFuelBayView(FuelBayViewEnum fuelBayView) {
+    public void setFuelBayView(String fuelBayView) {
         this.fuelBayView = fuelBayView;
     }
 
@@ -616,7 +307,7 @@ public class CorporationStarbaseResponse implements Serializable {
         this.fuels = fuels;
     }
 
-    public CorporationStarbaseResponse offline(OfflineEnum offline) {
+    public CorporationStarbaseResponse offline(String offline) {
 
         this.offline = offline;
         return this;
@@ -628,15 +319,15 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return offline
      **/
     @ApiModelProperty(required = true, value = "Who can offline starbase (POS) and its structures")
-    public OfflineEnum getOffline() {
+    public String getOffline() {
         return offline;
     }
 
-    public void setOffline(OfflineEnum offline) {
+    public void setOffline(String offline) {
         this.offline = offline;
     }
 
-    public CorporationStarbaseResponse online(OnlineEnum online) {
+    public CorporationStarbaseResponse online(String online) {
 
         this.online = online;
         return this;
@@ -648,15 +339,15 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return online
      **/
     @ApiModelProperty(required = true, value = "Who can online starbase (POS) and its structures")
-    public OnlineEnum getOnline() {
+    public String getOnline() {
         return online;
     }
 
-    public void setOnline(OnlineEnum online) {
+    public void setOnline(String online) {
         this.online = online;
     }
 
-    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchor) {
+    public CorporationStarbaseResponse unanchor(String unanchor) {
 
         this.unanchor = unanchor;
         return this;
@@ -668,11 +359,11 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return unanchor
      **/
     @ApiModelProperty(required = true, value = "Who can unanchor starbase (POS) and its structures")
-    public UnanchorEnum getUnanchor() {
+    public String getUnanchor() {
         return unanchor;
     }
 
-    public void setUnanchor(UnanchorEnum unanchor) {
+    public void setUnanchor(String unanchor) {
         this.unanchor = unanchor;
     }
 

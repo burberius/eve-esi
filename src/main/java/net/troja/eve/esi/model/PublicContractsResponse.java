@@ -88,62 +88,9 @@ public class PublicContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TITLE)
     private String title;
 
-    /**
-     * Type of the contract
-     */
-    @JsonAdapter(TypeEnum.Adapter.class)
-    public enum TypeEnum {
-        UNKNOWN("unknown"),
-
-        ITEM_EXCHANGE("item_exchange"),
-
-        AUCTION("auction"),
-
-        COURIER("courier"),
-
-        LOAN("loan");
-
-        private String value;
-
-        TypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TypeEnum fromValue(String value) {
-            for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<TypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return TypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
@@ -438,7 +385,7 @@ public class PublicContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public PublicContractsResponse type(TypeEnum type) {
+    public PublicContractsResponse type(String type) {
 
         this.type = type;
         return this;
@@ -450,11 +397,11 @@ public class PublicContractsResponse implements Serializable {
      * @return type
      **/
     @ApiModelProperty(required = true, value = "Type of the contract")
-    public TypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 

@@ -66,106 +66,9 @@ public class StationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_REPROCESSING_STATIONS_TAKE)
     private Float reprocessingStationsTake;
 
-    /**
-     * service string
-     */
-    @JsonAdapter(ServicesEnum.Adapter.class)
-    public enum ServicesEnum {
-        BOUNTY_MISSIONS("bounty-missions"),
-
-        ASSASINATION_MISSIONS("assasination-missions"),
-
-        COURIER_MISSIONS("courier-missions"),
-
-        INTERBUS("interbus"),
-
-        REPROCESSING_PLANT("reprocessing-plant"),
-
-        REFINERY("refinery"),
-
-        MARKET("market"),
-
-        BLACK_MARKET("black-market"),
-
-        STOCK_EXCHANGE("stock-exchange"),
-
-        CLONING("cloning"),
-
-        SURGERY("surgery"),
-
-        DNA_THERAPY("dna-therapy"),
-
-        REPAIR_FACILITIES("repair-facilities"),
-
-        FACTORY("factory"),
-
-        LABRATORY("labratory"),
-
-        GAMBLING("gambling"),
-
-        FITTING("fitting"),
-
-        PAINTSHOP("paintshop"),
-
-        NEWS("news"),
-
-        STORAGE("storage"),
-
-        INSURANCE("insurance"),
-
-        DOCKING("docking"),
-
-        OFFICE_RENTAL("office-rental"),
-
-        JUMP_CLONE_FACILITY("jump-clone-facility"),
-
-        LOYALTY_POINT_STORE("loyalty-point-store"),
-
-        NAVY_OFFICES("navy-offices"),
-
-        SECURITY_OFFICES("security-offices");
-
-        private String value;
-
-        ServicesEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ServicesEnum fromValue(String value) {
-            for (ServicesEnum b : ServicesEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ServicesEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ServicesEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ServicesEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ServicesEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
-    private List<ServicesEnum> services = new ArrayList<>();
+    private List<String> services = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATION_ID = "station_id";
     @SerializedName(SERIALIZED_NAME_STATION_ID)
@@ -341,13 +244,13 @@ public class StationResponse implements Serializable {
         this.reprocessingStationsTake = reprocessingStationsTake;
     }
 
-    public StationResponse services(List<ServicesEnum> services) {
+    public StationResponse services(List<String> services) {
 
         this.services = services;
         return this;
     }
 
-    public StationResponse addServicesItem(ServicesEnum servicesItem) {
+    public StationResponse addServicesItem(String servicesItem) {
         this.services.add(servicesItem);
         return this;
     }
@@ -358,11 +261,11 @@ public class StationResponse implements Serializable {
      * @return services
      **/
     @ApiModelProperty(required = true, value = "services array")
-    public List<ServicesEnum> getServices() {
+    public List<String> getServices() {
         return services;
     }
 
-    public void setServices(List<ServicesEnum> services) {
+    public void setServices(List<String> services) {
         this.services = services;
     }
 

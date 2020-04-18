@@ -35,58 +35,9 @@ public class StructureService implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    /**
-     * state string
-     */
-    @JsonAdapter(StateEnum.Adapter.class)
-    public enum StateEnum {
-        ONLINE("online"),
-
-        OFFLINE("offline"),
-
-        CLEANUP("cleanup");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StateEnum fromValue(String value) {
-            for (StateEnum b : StateEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StateEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StateEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StateEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
 
     public StructureService name(String name) {
 
@@ -108,7 +59,7 @@ public class StructureService implements Serializable {
         this.name = name;
     }
 
-    public StructureService state(StateEnum state) {
+    public StructureService state(String state) {
 
         this.state = state;
         return this;
@@ -120,11 +71,11 @@ public class StructureService implements Serializable {
      * @return state
      **/
     @ApiModelProperty(required = true, value = "state string")
-    public StateEnum getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(String state) {
         this.state = state;
     }
 

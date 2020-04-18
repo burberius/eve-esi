@@ -31,88 +31,9 @@ import java.io.Serializable;
 public class MailLabel implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * color string
-     */
-    @JsonAdapter(ColorEnum.Adapter.class)
-    public enum ColorEnum {
-        _0000FE("#0000fe"),
-
-        _006634("#006634"),
-
-        _0099FF("#0099ff"),
-
-        _00FF33("#00ff33"),
-
-        _01FFFF("#01ffff"),
-
-        _349800("#349800"),
-
-        _660066("#660066"),
-
-        _666666("#666666"),
-
-        _999999("#999999"),
-
-        _99FFFF("#99ffff"),
-
-        _9A0000("#9a0000"),
-
-        CCFF9A("#ccff9a"),
-
-        E6E6E6("#e6e6e6"),
-
-        FE0000("#fe0000"),
-
-        FF6600("#ff6600"),
-
-        FFFF01("#ffff01"),
-
-        FFFFCD("#ffffcd"),
-
-        FFFFFF("#ffffff");
-
-        private String value;
-
-        ColorEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static ColorEnum fromValue(String value) {
-            for (ColorEnum b : ColorEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<ColorEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final ColorEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public ColorEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return ColorEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_COLOR = "color";
     @SerializedName(SERIALIZED_NAME_COLOR)
-    private ColorEnum color = ColorEnum.FFFFFF;
+    private String color = "#ffffff";
 
     public static final String SERIALIZED_NAME_LABEL_ID = "label_id";
     @SerializedName(SERIALIZED_NAME_LABEL_ID)
@@ -126,7 +47,7 @@ public class MailLabel implements Serializable {
     @SerializedName(SERIALIZED_NAME_UNREAD_COUNT)
     private Integer unreadCount;
 
-    public MailLabel color(ColorEnum color) {
+    public MailLabel color(String color) {
 
         this.color = color;
         return this;
@@ -139,11 +60,11 @@ public class MailLabel implements Serializable {
      **/
     @javax.annotation.Nullable
     @ApiModelProperty(value = "color string")
-    public ColorEnum getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

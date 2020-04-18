@@ -40,60 +40,9 @@ public class CorporationContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ASSIGNEE_ID)
     private Integer assigneeId;
 
-    /**
-     * To whom the contract is available
-     */
-    @JsonAdapter(AvailabilityEnum.Adapter.class)
-    public enum AvailabilityEnum {
-        PUBLIC("public"),
-
-        PERSONAL("personal"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance");
-
-        private String value;
-
-        AvailabilityEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static AvailabilityEnum fromValue(String value) {
-            for (AvailabilityEnum b : AvailabilityEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<AvailabilityEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final AvailabilityEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public AvailabilityEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return AvailabilityEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
     @SerializedName(SERIALIZED_NAME_AVAILABILITY)
-    private AvailabilityEnum availability;
+    private String availability;
 
     public static final String SERIALIZED_NAME_BUYOUT = "buyout";
     @SerializedName(SERIALIZED_NAME_BUYOUT)
@@ -155,133 +104,17 @@ public class CorporationContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_START_LOCATION_ID)
     private Long startLocationId;
 
-    /**
-     * Status of the the contract
-     */
-    @JsonAdapter(StatusEnum.Adapter.class)
-    public enum StatusEnum {
-        OUTSTANDING("outstanding"),
-
-        IN_PROGRESS("in_progress"),
-
-        FINISHED_ISSUER("finished_issuer"),
-
-        FINISHED_CONTRACTOR("finished_contractor"),
-
-        FINISHED("finished"),
-
-        CANCELLED("cancelled"),
-
-        REJECTED("rejected"),
-
-        FAILED("failed"),
-
-        DELETED("deleted"),
-
-        REVERSED("reversed");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StatusEnum fromValue(String value) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StatusEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StatusEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
     private String title;
 
-    /**
-     * Type of the contract
-     */
-    @JsonAdapter(TypeEnum.Adapter.class)
-    public enum TypeEnum {
-        UNKNOWN("unknown"),
-
-        ITEM_EXCHANGE("item_exchange"),
-
-        AUCTION("auction"),
-
-        COURIER("courier"),
-
-        LOAN("loan");
-
-        private String value;
-
-        TypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TypeEnum fromValue(String value) {
-            for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<TypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return TypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
@@ -327,7 +160,7 @@ public class CorporationContractsResponse implements Serializable {
         this.assigneeId = assigneeId;
     }
 
-    public CorporationContractsResponse availability(AvailabilityEnum availability) {
+    public CorporationContractsResponse availability(String availability) {
 
         this.availability = availability;
         return this;
@@ -339,11 +172,11 @@ public class CorporationContractsResponse implements Serializable {
      * @return availability
      **/
     @ApiModelProperty(required = true, value = "To whom the contract is available")
-    public AvailabilityEnum getAvailability() {
+    public String getAvailability() {
         return availability;
     }
 
-    public void setAvailability(AvailabilityEnum availability) {
+    public void setAvailability(String availability) {
         this.availability = availability;
     }
 
@@ -656,7 +489,7 @@ public class CorporationContractsResponse implements Serializable {
         this.startLocationId = startLocationId;
     }
 
-    public CorporationContractsResponse status(StatusEnum status) {
+    public CorporationContractsResponse status(String status) {
 
         this.status = status;
         return this;
@@ -668,11 +501,11 @@ public class CorporationContractsResponse implements Serializable {
      * @return status
      **/
     @ApiModelProperty(required = true, value = "Status of the the contract")
-    public StatusEnum getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -697,7 +530,7 @@ public class CorporationContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public CorporationContractsResponse type(TypeEnum type) {
+    public CorporationContractsResponse type(String type) {
 
         this.type = type;
         return this;
@@ -709,11 +542,11 @@ public class CorporationContractsResponse implements Serializable {
      * @return type
      **/
     @ApiModelProperty(required = true, value = "Type of the contract")
-    public TypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 

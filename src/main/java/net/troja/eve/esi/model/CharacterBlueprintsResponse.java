@@ -35,204 +35,9 @@ public class CharacterBlueprintsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ITEM_ID)
     private Long itemId;
 
-    /**
-     * Type of the location_id
-     */
-    @JsonAdapter(LocationFlagEnum.Adapter.class)
-    public enum LocationFlagEnum {
-        AUTOFIT("AutoFit"),
-
-        CARGO("Cargo"),
-
-        CORPSEBAY("CorpseBay"),
-
-        DRONEBAY("DroneBay"),
-
-        FLEETHANGAR("FleetHangar"),
-
-        DELIVERIES("Deliveries"),
-
-        HIDDENMODIFIERS("HiddenModifiers"),
-
-        HANGAR("Hangar"),
-
-        HANGARALL("HangarAll"),
-
-        LOSLOT0("LoSlot0"),
-
-        LOSLOT1("LoSlot1"),
-
-        LOSLOT2("LoSlot2"),
-
-        LOSLOT3("LoSlot3"),
-
-        LOSLOT4("LoSlot4"),
-
-        LOSLOT5("LoSlot5"),
-
-        LOSLOT6("LoSlot6"),
-
-        LOSLOT7("LoSlot7"),
-
-        MEDSLOT0("MedSlot0"),
-
-        MEDSLOT1("MedSlot1"),
-
-        MEDSLOT2("MedSlot2"),
-
-        MEDSLOT3("MedSlot3"),
-
-        MEDSLOT4("MedSlot4"),
-
-        MEDSLOT5("MedSlot5"),
-
-        MEDSLOT6("MedSlot6"),
-
-        MEDSLOT7("MedSlot7"),
-
-        HISLOT0("HiSlot0"),
-
-        HISLOT1("HiSlot1"),
-
-        HISLOT2("HiSlot2"),
-
-        HISLOT3("HiSlot3"),
-
-        HISLOT4("HiSlot4"),
-
-        HISLOT5("HiSlot5"),
-
-        HISLOT6("HiSlot6"),
-
-        HISLOT7("HiSlot7"),
-
-        ASSETSAFETY("AssetSafety"),
-
-        LOCKED("Locked"),
-
-        UNLOCKED("Unlocked"),
-
-        IMPLANT("Implant"),
-
-        QUAFEBAY("QuafeBay"),
-
-        RIGSLOT0("RigSlot0"),
-
-        RIGSLOT1("RigSlot1"),
-
-        RIGSLOT2("RigSlot2"),
-
-        RIGSLOT3("RigSlot3"),
-
-        RIGSLOT4("RigSlot4"),
-
-        RIGSLOT5("RigSlot5"),
-
-        RIGSLOT6("RigSlot6"),
-
-        RIGSLOT7("RigSlot7"),
-
-        SHIPHANGAR("ShipHangar"),
-
-        SPECIALIZEDFUELBAY("SpecializedFuelBay"),
-
-        SPECIALIZEDOREHOLD("SpecializedOreHold"),
-
-        SPECIALIZEDGASHOLD("SpecializedGasHold"),
-
-        SPECIALIZEDMINERALHOLD("SpecializedMineralHold"),
-
-        SPECIALIZEDSALVAGEHOLD("SpecializedSalvageHold"),
-
-        SPECIALIZEDSHIPHOLD("SpecializedShipHold"),
-
-        SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
-
-        SPECIALIZEDMEDIUMSHIPHOLD("SpecializedMediumShipHold"),
-
-        SPECIALIZEDLARGESHIPHOLD("SpecializedLargeShipHold"),
-
-        SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
-
-        SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
-
-        SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
-
-        SPECIALIZEDPLANETARYCOMMODITIESHOLD("SpecializedPlanetaryCommoditiesHold"),
-
-        SPECIALIZEDMATERIALBAY("SpecializedMaterialBay"),
-
-        SUBSYSTEMSLOT0("SubSystemSlot0"),
-
-        SUBSYSTEMSLOT1("SubSystemSlot1"),
-
-        SUBSYSTEMSLOT2("SubSystemSlot2"),
-
-        SUBSYSTEMSLOT3("SubSystemSlot3"),
-
-        SUBSYSTEMSLOT4("SubSystemSlot4"),
-
-        SUBSYSTEMSLOT5("SubSystemSlot5"),
-
-        SUBSYSTEMSLOT6("SubSystemSlot6"),
-
-        SUBSYSTEMSLOT7("SubSystemSlot7"),
-
-        FIGHTERBAY("FighterBay"),
-
-        FIGHTERTUBE0("FighterTube0"),
-
-        FIGHTERTUBE1("FighterTube1"),
-
-        FIGHTERTUBE2("FighterTube2"),
-
-        FIGHTERTUBE3("FighterTube3"),
-
-        FIGHTERTUBE4("FighterTube4"),
-
-        MODULE("Module");
-
-        private String value;
-
-        LocationFlagEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LocationFlagEnum fromValue(String value) {
-            for (LocationFlagEnum b : LocationFlagEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<LocationFlagEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LocationFlagEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public LocationFlagEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return LocationFlagEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -278,7 +83,7 @@ public class CharacterBlueprintsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CharacterBlueprintsResponse locationFlag(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -290,11 +95,11 @@ public class CharacterBlueprintsResponse implements Serializable {
      * @return locationFlag
      **/
     @ApiModelProperty(required = true, value = "Type of the location_id")
-    public LocationFlagEnum getLocationFlag() {
+    public String getLocationFlag() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 

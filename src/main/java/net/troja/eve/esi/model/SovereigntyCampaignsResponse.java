@@ -55,62 +55,9 @@ public class SovereigntyCampaignsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_DEFENDER_SCORE)
     private Float defenderScore;
 
-    /**
-     * Type of event this campaign is for. tcu_defense, ihub_defense and
-     * station_defense are referred to as \&quot;Defense Events\&quot;,
-     * station_freeport as \&quot;Freeport Events\&quot;.
-     */
-    @JsonAdapter(EventTypeEnum.Adapter.class)
-    public enum EventTypeEnum {
-        TCU_DEFENSE("tcu_defense"),
-
-        IHUB_DEFENSE("ihub_defense"),
-
-        STATION_DEFENSE("station_defense"),
-
-        STATION_FREEPORT("station_freeport");
-
-        private String value;
-
-        EventTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static EventTypeEnum fromValue(String value) {
-            for (EventTypeEnum b : EventTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<EventTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final EventTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public EventTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return EventTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_EVENT_TYPE = "event_type";
     @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-    private EventTypeEnum eventType;
+    private String eventType;
 
     public static final String SERIALIZED_NAME_PARTICIPANTS = "participants";
     @SerializedName(SERIALIZED_NAME_PARTICIPANTS)
@@ -231,7 +178,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
         this.defenderScore = defenderScore;
     }
 
-    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventType) {
+    public SovereigntyCampaignsResponse eventType(String eventType) {
 
         this.eventType = eventType;
         return this;
@@ -245,11 +192,11 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * @return eventType
      **/
     @ApiModelProperty(required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
-    public EventTypeEnum getEventType() {
+    public String getEventType() {
         return eventType;
     }
 
-    public void setEventType(EventTypeEnum eventType) {
+    public void setEventType(String eventType) {
         this.eventType = eventType;
     }
 

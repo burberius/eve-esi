@@ -60,76 +60,9 @@ public class MarketStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_PRICE)
     private Double price;
 
-    /**
-     * range string
-     */
-    @JsonAdapter(RangeEnum.Adapter.class)
-    public enum RangeEnum {
-        STATION("station"),
-
-        REGION("region"),
-
-        SOLARSYSTEM("solarsystem"),
-
-        _1("1"),
-
-        _2("2"),
-
-        _3("3"),
-
-        _4("4"),
-
-        _5("5"),
-
-        _10("10"),
-
-        _20("20"),
-
-        _30("30"),
-
-        _40("40");
-
-        private String value;
-
-        RangeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RangeEnum fromValue(String value) {
-            for (RangeEnum b : RangeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RangeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RangeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RangeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RangeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
-    private RangeEnum range;
+    private String range;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
@@ -283,7 +216,7 @@ public class MarketStructuresResponse implements Serializable {
         this.price = price;
     }
 
-    public MarketStructuresResponse range(RangeEnum range) {
+    public MarketStructuresResponse range(String range) {
 
         this.range = range;
         return this;
@@ -295,11 +228,11 @@ public class MarketStructuresResponse implements Serializable {
      * @return range
      **/
     @ApiModelProperty(required = true, value = "range string")
-    public RangeEnum getRange() {
+    public String getRange() {
         return range;
     }
 
-    public void setRange(RangeEnum range) {
+    public void setRange(String range) {
         this.range = range;
     }
 

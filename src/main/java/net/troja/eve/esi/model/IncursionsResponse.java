@@ -57,58 +57,9 @@ public class IncursionsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STAGING_SOLAR_SYSTEM_ID)
     private Integer stagingSolarSystemId;
 
-    /**
-     * The state of this incursion
-     */
-    @JsonAdapter(StateEnum.Adapter.class)
-    public enum StateEnum {
-        WITHDRAWING("withdrawing"),
-
-        MOBILIZING("mobilizing"),
-
-        ESTABLISHED("established");
-
-        private String value;
-
-        StateEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StateEnum fromValue(String value) {
-            for (StateEnum b : StateEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<StateEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public StateEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return StateEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
@@ -239,7 +190,7 @@ public class IncursionsResponse implements Serializable {
         this.stagingSolarSystemId = stagingSolarSystemId;
     }
 
-    public IncursionsResponse state(StateEnum state) {
+    public IncursionsResponse state(String state) {
 
         this.state = state;
         return this;
@@ -251,11 +202,11 @@ public class IncursionsResponse implements Serializable {
      * @return state
      **/
     @ApiModelProperty(required = true, value = "The state of this incursion")
-    public StateEnum getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(String state) {
         this.state = state;
     }
 

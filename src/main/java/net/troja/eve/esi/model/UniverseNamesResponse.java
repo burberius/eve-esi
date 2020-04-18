@@ -31,70 +31,9 @@ import java.io.Serializable;
 public class UniverseNamesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * category string
-     */
-    @JsonAdapter(CategoryEnum.Adapter.class)
-    public enum CategoryEnum {
-        ALLIANCE("alliance"),
-
-        CHARACTER("character"),
-
-        CONSTELLATION("constellation"),
-
-        CORPORATION("corporation"),
-
-        INVENTORY_TYPE("inventory_type"),
-
-        REGION("region"),
-
-        SOLAR_SYSTEM("solar_system"),
-
-        STATION("station"),
-
-        FACTION("faction");
-
-        private String value;
-
-        CategoryEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static CategoryEnum fromValue(String value) {
-            for (CategoryEnum b : CategoryEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<CategoryEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final CategoryEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public CategoryEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return CategoryEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_CATEGORY = "category";
     @SerializedName(SERIALIZED_NAME_CATEGORY)
-    private CategoryEnum category;
+    private String category;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
@@ -104,7 +43,7 @@ public class UniverseNamesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public UniverseNamesResponse category(CategoryEnum category) {
+    public UniverseNamesResponse category(String category) {
 
         this.category = category;
         return this;
@@ -116,11 +55,11 @@ public class UniverseNamesResponse implements Serializable {
      * @return category
      **/
     @ApiModelProperty(required = true, value = "category string")
-    public CategoryEnum getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryEnum category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

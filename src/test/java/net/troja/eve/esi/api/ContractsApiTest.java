@@ -71,7 +71,7 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(characterContractsResponses.size(), greaterThan(0));
         Integer contractId = null;
         for (CharacterContractsResponse characterContractsResponse : characterContractsResponses) {
-            if (characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.AUCTION) {
+            if ("auction".equals(characterContractsResponse.getType())) {
                 contractId = characterContractsResponse.getContractId();
             }
         }
@@ -99,8 +99,8 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(characterContractsResponses.size(), greaterThan(0));
         Integer contractId = null;
         for (CharacterContractsResponse characterContractsResponse : characterContractsResponses) {
-            if (characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.AUCTION
-                    || characterContractsResponse.getType() == CharacterContractsResponse.TypeEnum.ITEM_EXCHANGE) {
+            if ("auction".equals(characterContractsResponse.getType())
+                    || "item_exchange".equals(characterContractsResponse.getType()) ) {
                 contractId = characterContractsResponse.getContractId();
                 break;
             }
@@ -127,7 +127,7 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(contracts, notNullValue());
         Integer contractId = null;
         for (PublicContractsResponse contractsResponse : contracts) {
-            if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION) {
+            if ("auction".equals(contractsResponse.getType())) {
                 contractId = contractsResponse.getContractId();
                 break;
             }
@@ -155,7 +155,7 @@ public class ContractsApiTest extends GeneralApiTest {
         assertThat(contracts, notNullValue());
         Integer contractId = null;
         for (PublicContractsResponse contractsResponse : contracts) {
-            if (contractsResponse.getType() == PublicContractsResponse.TypeEnum.AUCTION || contractsResponse.getType() == PublicContractsResponse.TypeEnum.ITEM_EXCHANGE) {
+            if ("auction".equals(contractsResponse.getType()) || "item_exchange".equals(contractsResponse.getType())) {
                 contractId = contractsResponse.getContractId();
                 break;
             }

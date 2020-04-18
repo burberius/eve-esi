@@ -68,76 +68,9 @@ public class CorporationOrdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_PRICE)
     private Double price;
 
-    /**
-     * Valid order range, numbers are ranges in jumps
-     */
-    @JsonAdapter(RangeEnum.Adapter.class)
-    public enum RangeEnum {
-        _1("1"),
-
-        _10("10"),
-
-        _2("2"),
-
-        _20("20"),
-
-        _3("3"),
-
-        _30("30"),
-
-        _4("4"),
-
-        _40("40"),
-
-        _5("5"),
-
-        REGION("region"),
-
-        SOLARSYSTEM("solarsystem"),
-
-        STATION("station");
-
-        private String value;
-
-        RangeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RangeEnum fromValue(String value) {
-            for (RangeEnum b : RangeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RangeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RangeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RangeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RangeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
-    private RangeEnum range;
+    private String range;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
@@ -344,7 +277,7 @@ public class CorporationOrdersResponse implements Serializable {
         this.price = price;
     }
 
-    public CorporationOrdersResponse range(RangeEnum range) {
+    public CorporationOrdersResponse range(String range) {
 
         this.range = range;
         return this;
@@ -356,11 +289,11 @@ public class CorporationOrdersResponse implements Serializable {
      * @return range
      **/
     @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
-    public RangeEnum getRange() {
+    public String getRange() {
         return range;
     }
 
-    public void setRange(RangeEnum range) {
+    public void setRange(String range) {
         this.range = range;
     }
 

@@ -40,60 +40,9 @@ public class FleetMembersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_JOIN_TIME)
     private OffsetDateTime joinTime;
 
-    /**
-     * Member’s role in fleet
-     */
-    @JsonAdapter(RoleEnum.Adapter.class)
-    public enum RoleEnum {
-        FLEET_COMMANDER("fleet_commander"),
-
-        WING_COMMANDER("wing_commander"),
-
-        SQUAD_COMMANDER("squad_commander"),
-
-        SQUAD_MEMBER("squad_member");
-
-        private String value;
-
-        RoleEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static RoleEnum fromValue(String value) {
-            for (RoleEnum b : RoleEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<RoleEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public RoleEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return RoleEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_ROLE = "role";
     @SerializedName(SERIALIZED_NAME_ROLE)
-    private RoleEnum role;
+    private String role;
 
     public static final String SERIALIZED_NAME_ROLE_NAME = "role_name";
     @SerializedName(SERIALIZED_NAME_ROLE_NAME)
@@ -163,7 +112,7 @@ public class FleetMembersResponse implements Serializable {
         this.joinTime = joinTime;
     }
 
-    public FleetMembersResponse role(RoleEnum role) {
+    public FleetMembersResponse role(String role) {
 
         this.role = role;
         return this;
@@ -175,11 +124,11 @@ public class FleetMembersResponse implements Serializable {
      * @return role
      **/
     @ApiModelProperty(required = true, value = "Member’s role in fleet")
-    public RoleEnum getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

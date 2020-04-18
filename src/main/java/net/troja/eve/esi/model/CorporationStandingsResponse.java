@@ -35,58 +35,9 @@ public class CorporationStandingsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_FROM_ID)
     private Integer fromId;
 
-    /**
-     * from_type string
-     */
-    @JsonAdapter(FromTypeEnum.Adapter.class)
-    public enum FromTypeEnum {
-        AGENT("agent"),
-
-        NPC_CORP("npc_corp"),
-
-        FACTION("faction");
-
-        private String value;
-
-        FromTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static FromTypeEnum fromValue(String value) {
-            for (FromTypeEnum b : FromTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<FromTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final FromTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public FromTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return FromTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_FROM_TYPE = "from_type";
     @SerializedName(SERIALIZED_NAME_FROM_TYPE)
-    private FromTypeEnum fromType;
+    private String fromType;
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)
@@ -112,7 +63,7 @@ public class CorporationStandingsResponse implements Serializable {
         this.fromId = fromId;
     }
 
-    public CorporationStandingsResponse fromType(FromTypeEnum fromType) {
+    public CorporationStandingsResponse fromType(String fromType) {
 
         this.fromType = fromType;
         return this;
@@ -124,11 +75,11 @@ public class CorporationStandingsResponse implements Serializable {
      * @return fromType
      **/
     @ApiModelProperty(required = true, value = "from_type string")
-    public FromTypeEnum getFromType() {
+    public String getFromType() {
         return fromType;
     }
 
-    public void setFromType(FromTypeEnum fromType) {
+    public void setFromType(String fromType) {
         this.fromType = fromType;
     }
 

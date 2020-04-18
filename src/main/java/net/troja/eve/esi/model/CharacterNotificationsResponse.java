@@ -44,62 +44,9 @@ public class CharacterNotificationsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SENDER_ID)
     private Integer senderId;
 
-    /**
-     * sender_type string
-     */
-    @JsonAdapter(SenderTypeEnum.Adapter.class)
-    public enum SenderTypeEnum {
-        CHARACTER("character"),
-
-        CORPORATION("corporation"),
-
-        ALLIANCE("alliance"),
-
-        FACTION("faction"),
-
-        OTHER("other");
-
-        private String value;
-
-        SenderTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static SenderTypeEnum fromValue(String value) {
-            for (SenderTypeEnum b : SenderTypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<SenderTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final SenderTypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public SenderTypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return SenderTypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_SENDER_TYPE = "sender_type";
     @SerializedName(SERIALIZED_NAME_SENDER_TYPE)
-    private SenderTypeEnum senderType;
+    private String senderType;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
     @SerializedName(SERIALIZED_NAME_TEXT)
@@ -109,466 +56,9 @@ public class CharacterNotificationsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TIMESTAMP)
     private OffsetDateTime timestamp;
 
-    /**
-     * type string
-     */
-    @JsonAdapter(TypeEnum.Adapter.class)
-    public enum TypeEnum {
-        ACCEPTEDALLY("AcceptedAlly"),
-
-        ACCEPTEDSURRENDER("AcceptedSurrender"),
-
-        ALLANCHORINGMSG("AllAnchoringMsg"),
-
-        ALLMAINTENANCEBILLMSG("AllMaintenanceBillMsg"),
-
-        ALLSTRUCINVULNERABLEMSG("AllStrucInvulnerableMsg"),
-
-        ALLSTRUCTVULNERABLEMSG("AllStructVulnerableMsg"),
-
-        ALLWARCORPJOINEDALLIANCEMSG("AllWarCorpJoinedAllianceMsg"),
-
-        ALLWARDECLAREDMSG("AllWarDeclaredMsg"),
-
-        ALLWARINVALIDATEDMSG("AllWarInvalidatedMsg"),
-
-        ALLWARRETRACTEDMSG("AllWarRetractedMsg"),
-
-        ALLWARSURRENDERMSG("AllWarSurrenderMsg"),
-
-        ALLIANCECAPITALCHANGED("AllianceCapitalChanged"),
-
-        ALLIANCEWARDECLAREDV2("AllianceWarDeclaredV2"),
-
-        ALLYCONTRACTCANCELLED("AllyContractCancelled"),
-
-        ALLYJOINEDWARAGGRESSORMSG("AllyJoinedWarAggressorMsg"),
-
-        ALLYJOINEDWARALLYMSG("AllyJoinedWarAllyMsg"),
-
-        ALLYJOINEDWARDEFENDERMSG("AllyJoinedWarDefenderMsg"),
-
-        BATTLEPUNISHFRIENDLYFIRE("BattlePunishFriendlyFire"),
-
-        BILLOUTOFMONEYMSG("BillOutOfMoneyMsg"),
-
-        BILLPAIDCORPALLMSG("BillPaidCorpAllMsg"),
-
-        BOUNTYCLAIMMSG("BountyClaimMsg"),
-
-        BOUNTYESSSHARED("BountyESSShared"),
-
-        BOUNTYESSTAKEN("BountyESSTaken"),
-
-        BOUNTYPLACEDALLIANCE("BountyPlacedAlliance"),
-
-        BOUNTYPLACEDCHAR("BountyPlacedChar"),
-
-        BOUNTYPLACEDCORP("BountyPlacedCorp"),
-
-        BOUNTYYOURBOUNTYCLAIMED("BountyYourBountyClaimed"),
-
-        BUDDYCONNECTCONTACTADD("BuddyConnectContactAdd"),
-
-        CHARAPPACCEPTMSG("CharAppAcceptMsg"),
-
-        CHARAPPREJECTMSG("CharAppRejectMsg"),
-
-        CHARAPPWITHDRAWMSG("CharAppWithdrawMsg"),
-
-        CHARLEFTCORPMSG("CharLeftCorpMsg"),
-
-        CHARMEDALMSG("CharMedalMsg"),
-
-        CHARTERMINATIONMSG("CharTerminationMsg"),
-
-        CLONEACTIVATIONMSG("CloneActivationMsg"),
-
-        CLONEACTIVATIONMSG2("CloneActivationMsg2"),
-
-        CLONEMOVEDMSG("CloneMovedMsg"),
-
-        CLONEREVOKEDMSG1("CloneRevokedMsg1"),
-
-        CLONEREVOKEDMSG2("CloneRevokedMsg2"),
-
-        COMBATOPERATIONFINISHED("CombatOperationFinished"),
-
-        CONTACTADD("ContactAdd"),
-
-        CONTACTEDIT("ContactEdit"),
-
-        CONTAINERPASSWORDMSG("ContainerPasswordMsg"),
-
-        CORPALLBILLMSG("CorpAllBillMsg"),
-
-        CORPAPPACCEPTMSG("CorpAppAcceptMsg"),
-
-        CORPAPPINVITEDMSG("CorpAppInvitedMsg"),
-
-        CORPAPPNEWMSG("CorpAppNewMsg"),
-
-        CORPAPPREJECTCUSTOMMSG("CorpAppRejectCustomMsg"),
-
-        CORPAPPREJECTMSG("CorpAppRejectMsg"),
-
-        CORPBECAMEWARELIGIBLE("CorpBecameWarEligible"),
-
-        CORPDIVIDENDMSG("CorpDividendMsg"),
-
-        CORPFRIENDLYFIREDISABLETIMERCOMPLETED("CorpFriendlyFireDisableTimerCompleted"),
-
-        CORPFRIENDLYFIREDISABLETIMERSTARTED("CorpFriendlyFireDisableTimerStarted"),
-
-        CORPFRIENDLYFIREENABLETIMERCOMPLETED("CorpFriendlyFireEnableTimerCompleted"),
-
-        CORPFRIENDLYFIREENABLETIMERSTARTED("CorpFriendlyFireEnableTimerStarted"),
-
-        CORPKICKED("CorpKicked"),
-
-        CORPLIQUIDATIONMSG("CorpLiquidationMsg"),
-
-        CORPNEWCEOMSG("CorpNewCEOMsg"),
-
-        CORPNEWSMSG("CorpNewsMsg"),
-
-        CORPNOLONGERWARELIGIBLE("CorpNoLongerWarEligible"),
-
-        CORPOFFICEEXPIRATIONMSG("CorpOfficeExpirationMsg"),
-
-        CORPSTRUCTLOSTMSG("CorpStructLostMsg"),
-
-        CORPTAXCHANGEMSG("CorpTaxChangeMsg"),
-
-        CORPVOTECEOREVOKEDMSG("CorpVoteCEORevokedMsg"),
-
-        CORPVOTEMSG("CorpVoteMsg"),
-
-        CORPWARDECLAREDMSG("CorpWarDeclaredMsg"),
-
-        CORPWARDECLAREDV2("CorpWarDeclaredV2"),
-
-        CORPWARFIGHTINGLEGALMSG("CorpWarFightingLegalMsg"),
-
-        CORPWARINVALIDATEDMSG("CorpWarInvalidatedMsg"),
-
-        CORPWARRETRACTEDMSG("CorpWarRetractedMsg"),
-
-        CORPWARSURRENDERMSG("CorpWarSurrenderMsg"),
-
-        CUSTOMSMSG("CustomsMsg"),
-
-        DECLAREWAR("DeclareWar"),
-
-        DISTRICTATTACKED("DistrictAttacked"),
-
-        DUSTAPPACCEPTEDMSG("DustAppAcceptedMsg"),
-
-        ENTOSISCAPTURESTARTED("EntosisCaptureStarted"),
-
-        FWALLIANCEKICKMSG("FWAllianceKickMsg"),
-
-        FWALLIANCEWARNINGMSG("FWAllianceWarningMsg"),
-
-        FWCHARKICKMSG("FWCharKickMsg"),
-
-        FWCHARRANKGAINMSG("FWCharRankGainMsg"),
-
-        FWCHARRANKLOSSMSG("FWCharRankLossMsg"),
-
-        FWCHARWARNINGMSG("FWCharWarningMsg"),
-
-        FWCORPJOINMSG("FWCorpJoinMsg"),
-
-        FWCORPKICKMSG("FWCorpKickMsg"),
-
-        FWCORPLEAVEMSG("FWCorpLeaveMsg"),
-
-        FWCORPWARNINGMSG("FWCorpWarningMsg"),
-
-        FACWARCORPJOINREQUESTMSG("FacWarCorpJoinRequestMsg"),
-
-        FACWARCORPJOINWITHDRAWMSG("FacWarCorpJoinWithdrawMsg"),
-
-        FACWARCORPLEAVEREQUESTMSG("FacWarCorpLeaveRequestMsg"),
-
-        FACWARCORPLEAVEWITHDRAWMSG("FacWarCorpLeaveWithdrawMsg"),
-
-        FACWARLPDISQUALIFIEDEVENT("FacWarLPDisqualifiedEvent"),
-
-        FACWARLPDISQUALIFIEDKILL("FacWarLPDisqualifiedKill"),
-
-        FACWARLPPAYOUTEVENT("FacWarLPPayoutEvent"),
-
-        FACWARLPPAYOUTKILL("FacWarLPPayoutKill"),
-
-        GAMETIMEADDED("GameTimeAdded"),
-
-        GAMETIMERECEIVED("GameTimeReceived"),
-
-        GAMETIMESENT("GameTimeSent"),
-
-        GIFTRECEIVED("GiftReceived"),
-
-        IHUBDESTROYEDBYBILLFAILURE("IHubDestroyedByBillFailure"),
-
-        INCURSIONCOMPLETEDMSG("IncursionCompletedMsg"),
-
-        INDUSTRYOPERATIONFINISHED("IndustryOperationFinished"),
-
-        INDUSTRYTEAMAUCTIONLOST("IndustryTeamAuctionLost"),
-
-        INDUSTRYTEAMAUCTIONWON("IndustryTeamAuctionWon"),
-
-        INFRASTRUCTUREHUBBILLABOUTTOEXPIRE("InfrastructureHubBillAboutToExpire"),
-
-        INSURANCEEXPIRATIONMSG("InsuranceExpirationMsg"),
-
-        INSURANCEFIRSTSHIPMSG("InsuranceFirstShipMsg"),
-
-        INSURANCEINVALIDATEDMSG("InsuranceInvalidatedMsg"),
-
-        INSURANCEISSUEDMSG("InsuranceIssuedMsg"),
-
-        INSURANCEPAYOUTMSG("InsurancePayoutMsg"),
-
-        INVASIONSYSTEMLOGIN("InvasionSystemLogin"),
-
-        JUMPCLONEDELETEDMSG1("JumpCloneDeletedMsg1"),
-
-        JUMPCLONEDELETEDMSG2("JumpCloneDeletedMsg2"),
-
-        KILLREPORTFINALBLOW("KillReportFinalBlow"),
-
-        KILLREPORTVICTIM("KillReportVictim"),
-
-        KILLRIGHTAVAILABLE("KillRightAvailable"),
-
-        KILLRIGHTAVAILABLEOPEN("KillRightAvailableOpen"),
-
-        KILLRIGHTEARNED("KillRightEarned"),
-
-        KILLRIGHTUNAVAILABLE("KillRightUnavailable"),
-
-        KILLRIGHTUNAVAILABLEOPEN("KillRightUnavailableOpen"),
-
-        KILLRIGHTUSED("KillRightUsed"),
-
-        LOCATECHARMSG("LocateCharMsg"),
-
-        MADEWARMUTUAL("MadeWarMutual"),
-
-        MERCOFFERRETRACTEDMSG("MercOfferRetractedMsg"),
-
-        MERCOFFEREDNEGOTIATIONMSG("MercOfferedNegotiationMsg"),
-
-        MISSIONOFFEREXPIRATIONMSG("MissionOfferExpirationMsg"),
-
-        MISSIONTIMEOUTMSG("MissionTimeoutMsg"),
-
-        MOONMININGAUTOMATICFRACTURE("MoonminingAutomaticFracture"),
-
-        MOONMININGEXTRACTIONCANCELLED("MoonminingExtractionCancelled"),
-
-        MOONMININGEXTRACTIONFINISHED("MoonminingExtractionFinished"),
-
-        MOONMININGEXTRACTIONSTARTED("MoonminingExtractionStarted"),
-
-        MOONMININGLASERFIRED("MoonminingLaserFired"),
-
-        MUTUALWAREXPIRED("MutualWarExpired"),
-
-        MUTUALWARINVITEACCEPTED("MutualWarInviteAccepted"),
-
-        MUTUALWARINVITEREJECTED("MutualWarInviteRejected"),
-
-        MUTUALWARINVITESENT("MutualWarInviteSent"),
-
-        NPCSTANDINGSGAINED("NPCStandingsGained"),
-
-        NPCSTANDINGSLOST("NPCStandingsLost"),
-
-        OFFERTOALLYRETRACTED("OfferToAllyRetracted"),
-
-        OFFEREDSURRENDER("OfferedSurrender"),
-
-        OFFEREDTOALLY("OfferedToAlly"),
-
-        OLDLSCMESSAGES("OldLscMessages"),
-
-        OPERATIONFINISHED("OperationFinished"),
-
-        ORBITALATTACKED("OrbitalAttacked"),
-
-        ORBITALREINFORCED("OrbitalReinforced"),
-
-        OWNERSHIPTRANSFERRED("OwnershipTransferred"),
-
-        RAFFLECREATED("RaffleCreated"),
-
-        RAFFLEEXPIRED("RaffleExpired"),
-
-        RAFFLEFINISHED("RaffleFinished"),
-
-        REIMBURSEMENTMSG("ReimbursementMsg"),
-
-        RESEARCHMISSIONAVAILABLEMSG("ResearchMissionAvailableMsg"),
-
-        RETRACTSWAR("RetractsWar"),
-
-        SEASONALCHALLENGECOMPLETED("SeasonalChallengeCompleted"),
-
-        SOVALLCLAIMAQUIREDMSG("SovAllClaimAquiredMsg"),
-
-        SOVALLCLAIMLOSTMSG("SovAllClaimLostMsg"),
-
-        SOVCOMMANDNODEEVENTSTARTED("SovCommandNodeEventStarted"),
-
-        SOVCORPBILLLATEMSG("SovCorpBillLateMsg"),
-
-        SOVCORPCLAIMFAILMSG("SovCorpClaimFailMsg"),
-
-        SOVDISRUPTORMSG("SovDisruptorMsg"),
-
-        SOVSTATIONENTEREDFREEPORT("SovStationEnteredFreeport"),
-
-        SOVSTRUCTUREDESTROYED("SovStructureDestroyed"),
-
-        SOVSTRUCTUREREINFORCED("SovStructureReinforced"),
-
-        SOVSTRUCTURESELFDESTRUCTCANCEL("SovStructureSelfDestructCancel"),
-
-        SOVSTRUCTURESELFDESTRUCTFINISHED("SovStructureSelfDestructFinished"),
-
-        SOVSTRUCTURESELFDESTRUCTREQUESTED("SovStructureSelfDestructRequested"),
-
-        SOVEREIGNTYIHDAMAGEMSG("SovereigntyIHDamageMsg"),
-
-        SOVEREIGNTYSBUDAMAGEMSG("SovereigntySBUDamageMsg"),
-
-        SOVEREIGNTYTCUDAMAGEMSG("SovereigntyTCUDamageMsg"),
-
-        STATIONAGGRESSIONMSG1("StationAggressionMsg1"),
-
-        STATIONAGGRESSIONMSG2("StationAggressionMsg2"),
-
-        STATIONCONQUERMSG("StationConquerMsg"),
-
-        STATIONSERVICEDISABLED("StationServiceDisabled"),
-
-        STATIONSERVICEENABLED("StationServiceEnabled"),
-
-        STATIONSTATECHANGEMSG("StationStateChangeMsg"),
-
-        STORYLINEMISSIONAVAILABLEMSG("StoryLineMissionAvailableMsg"),
-
-        STRUCTUREANCHORING("StructureAnchoring"),
-
-        STRUCTURECOURIERCONTRACTCHANGED("StructureCourierContractChanged"),
-
-        STRUCTUREDESTROYED("StructureDestroyed"),
-
-        STRUCTUREFUELALERT("StructureFuelAlert"),
-
-        STRUCTUREITEMSDELIVERED("StructureItemsDelivered"),
-
-        STRUCTUREITEMSMOVEDTOSAFETY("StructureItemsMovedToSafety"),
-
-        STRUCTURELOSTARMOR("StructureLostArmor"),
-
-        STRUCTURELOSTSHIELDS("StructureLostShields"),
-
-        STRUCTUREONLINE("StructureOnline"),
-
-        STRUCTURESERVICESOFFLINE("StructureServicesOffline"),
-
-        STRUCTUREUNANCHORING("StructureUnanchoring"),
-
-        STRUCTUREUNDERATTACK("StructureUnderAttack"),
-
-        STRUCTUREWENTHIGHPOWER("StructureWentHighPower"),
-
-        STRUCTUREWENTLOWPOWER("StructureWentLowPower"),
-
-        STRUCTURESJOBSCANCELLED("StructuresJobsCancelled"),
-
-        STRUCTURESJOBSPAUSED("StructuresJobsPaused"),
-
-        STRUCTURESREINFORCEMENTCHANGED("StructuresReinforcementChanged"),
-
-        TOWERALERTMSG("TowerAlertMsg"),
-
-        TOWERRESOURCEALERTMSG("TowerResourceAlertMsg"),
-
-        TRANSACTIONREVERSALMSG("TransactionReversalMsg"),
-
-        TUTORIALMSG("TutorialMsg"),
-
-        WARADOPTED_("WarAdopted "),
-
-        WARALLYINHERITED("WarAllyInherited"),
-
-        WARALLYOFFERDECLINEDMSG("WarAllyOfferDeclinedMsg"),
-
-        WARCONCORDINVALIDATES("WarConcordInvalidates"),
-
-        WARDECLARED("WarDeclared"),
-
-        WARHQREMOVEDFROMSPACE("WarHQRemovedFromSpace"),
-
-        WARINHERITED("WarInherited"),
-
-        WARINVALID("WarInvalid"),
-
-        WARRETRACTED("WarRetracted"),
-
-        WARRETRACTEDBYCONCORD("WarRetractedByConcord"),
-
-        WARSURRENDERDECLINEDMSG("WarSurrenderDeclinedMsg"),
-
-        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg");
-
-        private String value;
-
-        TypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TypeEnum fromValue(String value) {
-            for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        public static class Adapter extends TypeAdapter<TypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(enumeration.getValue());
-            }
-
-            @Override
-            public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                String value = jsonReader.nextString();
-                return TypeEnum.fromValue(value);
-            }
-        }
-    }
-
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
 
     public CharacterNotificationsResponse isRead(Boolean isRead) {
 
@@ -631,7 +121,7 @@ public class CharacterNotificationsResponse implements Serializable {
         this.senderId = senderId;
     }
 
-    public CharacterNotificationsResponse senderType(SenderTypeEnum senderType) {
+    public CharacterNotificationsResponse senderType(String senderType) {
 
         this.senderType = senderType;
         return this;
@@ -643,11 +133,11 @@ public class CharacterNotificationsResponse implements Serializable {
      * @return senderType
      **/
     @ApiModelProperty(required = true, value = "sender_type string")
-    public SenderTypeEnum getSenderType() {
+    public String getSenderType() {
         return senderType;
     }
 
-    public void setSenderType(SenderTypeEnum senderType) {
+    public void setSenderType(String senderType) {
         this.senderType = senderType;
     }
 
@@ -692,7 +182,7 @@ public class CharacterNotificationsResponse implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public CharacterNotificationsResponse type(TypeEnum type) {
+    public CharacterNotificationsResponse type(String type) {
 
         this.type = type;
         return this;
@@ -704,11 +194,11 @@ public class CharacterNotificationsResponse implements Serializable {
      * @return type
      **/
     @ApiModelProperty(required = true, value = "type string")
-    public TypeEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 
