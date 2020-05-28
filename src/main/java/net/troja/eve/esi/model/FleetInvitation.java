@@ -78,7 +78,7 @@ public class FleetInvitation implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RoleEnum> {
@@ -97,7 +97,8 @@ public class FleetInvitation implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLE = "role";
     @SerializedName(SERIALIZED_NAME_ROLE)
-    private RoleEnum role;
+    private String role;
+    private RoleEnum roleEnum;
 
     public static final String SERIALIZED_NAME_SQUAD_ID = "squad_id";
     @SerializedName(SERIALIZED_NAME_SQUAD_ID)
@@ -127,7 +128,13 @@ public class FleetInvitation implements Serializable {
         this.characterId = characterId;
     }
 
-    public FleetInvitation role(RoleEnum role) {
+    public FleetInvitation role(RoleEnum roleEnum) {
+
+        this.roleEnum = roleEnum;
+        return this;
+    }
+
+    public FleetInvitation roleString(String role) {
 
         this.role = role;
         return this;
@@ -149,10 +156,21 @@ public class FleetInvitation implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "If a character is invited with the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is invited with the `wing_commander` role, only `wing_id` should be specified. If a character is invited with the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is invited with the `squad_member` role, `wing_id` and `squad_id` should either both be specified or not specified at all. If they aren’t specified, the invited character will join any squad with available positions.")
     public RoleEnum getRole() {
+        if (roleEnum == null) {
+            roleEnum = RoleEnum.fromValue(role);
+        }
+        return roleEnum;
+    }
+
+    public String getRoleString() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(RoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
+    }
+
+    public void setRoleString(String role) {
         this.role = role;
     }
 

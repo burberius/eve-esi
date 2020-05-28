@@ -94,7 +94,7 @@ public class CorporationWalletJournalResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ContextIdTypeEnum> {
@@ -113,7 +113,8 @@ public class CorporationWalletJournalResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTEXT_ID_TYPE = "context_id_type";
     @SerializedName(SERIALIZED_NAME_CONTEXT_ID_TYPE)
-    private ContextIdTypeEnum contextIdType;
+    private String contextIdType;
+    private ContextIdTypeEnum contextIdTypeEnum;
 
     public static final String SERIALIZED_NAME_DATE = "date";
     @SerializedName(SERIALIZED_NAME_DATE)
@@ -403,7 +404,7 @@ public class CorporationWalletJournalResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RefTypeEnum> {
@@ -422,7 +423,8 @@ public class CorporationWalletJournalResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_REF_TYPE = "ref_type";
     @SerializedName(SERIALIZED_NAME_REF_TYPE)
-    private RefTypeEnum refType;
+    private String refType;
+    private RefTypeEnum refTypeEnum;
 
     public static final String SERIALIZED_NAME_SECOND_PARTY_ID = "second_party_id";
     @SerializedName(SERIALIZED_NAME_SECOND_PARTY_ID)
@@ -503,7 +505,13 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.contextId = contextId;
     }
 
-    public CorporationWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdType) {
+    public CorporationWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdTypeEnum) {
+
+        this.contextIdTypeEnum = contextIdTypeEnum;
+        return this;
+    }
+
+    public CorporationWalletJournalResponse contextIdTypeString(String contextIdType) {
 
         this.contextIdType = contextIdType;
         return this;
@@ -517,10 +525,21 @@ public class CorporationWalletJournalResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "The type of the given context_id if present")
     public ContextIdTypeEnum getContextIdType() {
+        if (contextIdTypeEnum == null) {
+            contextIdTypeEnum = ContextIdTypeEnum.fromValue(contextIdType);
+        }
+        return contextIdTypeEnum;
+    }
+
+    public String getContextIdTypeString() {
         return contextIdType;
     }
 
-    public void setContextIdType(ContextIdTypeEnum contextIdType) {
+    public void setContextIdType(ContextIdTypeEnum contextIdTypeEnum) {
+        this.contextIdTypeEnum = contextIdTypeEnum;
+    }
+
+    public void setContextIdTypeString(String contextIdType) {
         this.contextIdType = contextIdType;
     }
 
@@ -631,7 +650,13 @@ public class CorporationWalletJournalResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CorporationWalletJournalResponse refType(RefTypeEnum refType) {
+    public CorporationWalletJournalResponse refType(RefTypeEnum refTypeEnum) {
+
+        this.refTypeEnum = refTypeEnum;
+        return this;
+    }
+
+    public CorporationWalletJournalResponse refTypeString(String refType) {
 
         this.refType = refType;
         return this;
@@ -650,10 +675,21 @@ public class CorporationWalletJournalResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\"")
     public RefTypeEnum getRefType() {
+        if (refTypeEnum == null) {
+            refTypeEnum = RefTypeEnum.fromValue(refType);
+        }
+        return refTypeEnum;
+    }
+
+    public String getRefTypeString() {
         return refType;
     }
 
-    public void setRefType(RefTypeEnum refType) {
+    public void setRefType(RefTypeEnum refTypeEnum) {
+        this.refTypeEnum = refTypeEnum;
+    }
+
+    public void setRefTypeString(String refType) {
         this.refType = refType;
     }
 

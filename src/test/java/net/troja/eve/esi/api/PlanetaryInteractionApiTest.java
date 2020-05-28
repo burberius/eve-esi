@@ -66,7 +66,7 @@ public class PlanetaryInteractionApiTest extends GeneralApiTest {
     public void getCharactersCharacterIdPlanetsPlanetIdTest() throws ApiException {
         final List<CharacterPlanetsResponse> planets = api.getCharactersCharacterIdPlanets(characterId, DATASOURCE, null, null);
 
-        final CharacterPlanetResponse response = api.getCharactersCharacterIdPlanetsPlanetId(characterId, planets.get(0).getPlanetId(), DATASOURCE, null, null);
+        final CharacterPlanetResponse response = api.getCharactersCharacterIdPlanetsPlanetId(characterId, planets.get(0).getPlanetId(), DATASOURCE, null);
 
         assertThat(response, notNullValue());
         assertThat(response.getPins().size(), greaterThan(0));

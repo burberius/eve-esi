@@ -64,11 +64,13 @@ mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.old
 java -jar openapi-generator-cli-$VERSION.jar generate \
   --skip-validate-spec  \
   -i meta.json \
+  -t templates \
   -g java \
   -c config.json
 java -jar openapi-generator-cli-$VERSION.jar generate \
   --skip-validate-spec  \
   -i esi.json \
+  -t templates \
   -g java \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new

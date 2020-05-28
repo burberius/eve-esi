@@ -118,7 +118,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RangeEnum> {
@@ -137,7 +137,8 @@ public class CorporationOrdersHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
-    private RangeEnum range;
+    private String range;
+    private RangeEnum rangeEnum;
 
     public static final String SERIALIZED_NAME_REGION_ID = "region_id";
     @SerializedName(SERIALIZED_NAME_REGION_ID)
@@ -173,7 +174,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<StateEnum> {
@@ -192,7 +193,8 @@ public class CorporationOrdersHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
+    private StateEnum stateEnum;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
@@ -396,7 +398,13 @@ public class CorporationOrdersHistoryResponse implements Serializable {
         this.price = price;
     }
 
-    public CorporationOrdersHistoryResponse range(RangeEnum range) {
+    public CorporationOrdersHistoryResponse range(RangeEnum rangeEnum) {
+
+        this.rangeEnum = rangeEnum;
+        return this;
+    }
+
+    public CorporationOrdersHistoryResponse rangeString(String range) {
 
         this.range = range;
         return this;
@@ -409,10 +417,21 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
     public RangeEnum getRange() {
+        if (rangeEnum == null) {
+            rangeEnum = RangeEnum.fromValue(range);
+        }
+        return rangeEnum;
+    }
+
+    public String getRangeString() {
         return range;
     }
 
-    public void setRange(RangeEnum range) {
+    public void setRange(RangeEnum rangeEnum) {
+        this.rangeEnum = rangeEnum;
+    }
+
+    public void setRangeString(String range) {
         this.range = range;
     }
 
@@ -436,7 +455,13 @@ public class CorporationOrdersHistoryResponse implements Serializable {
         this.regionId = regionId;
     }
 
-    public CorporationOrdersHistoryResponse state(StateEnum state) {
+    public CorporationOrdersHistoryResponse state(StateEnum stateEnum) {
+
+        this.stateEnum = stateEnum;
+        return this;
+    }
+
+    public CorporationOrdersHistoryResponse stateString(String state) {
 
         this.state = state;
         return this;
@@ -449,10 +474,21 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Current order state")
     public StateEnum getState() {
+        if (stateEnum == null) {
+            stateEnum = StateEnum.fromValue(state);
+        }
+        return stateEnum;
+    }
+
+    public String getStateString() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(StateEnum stateEnum) {
+        this.stateEnum = stateEnum;
+    }
+
+    public void setStateString(String state) {
         this.state = state;
     }
 

@@ -143,7 +143,7 @@ public class FittingItem implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<FlagEnum> {
@@ -162,7 +162,8 @@ public class FittingItem implements Serializable {
 
     public static final String SERIALIZED_NAME_FLAG = "flag";
     @SerializedName(SERIALIZED_NAME_FLAG)
-    private FlagEnum flag;
+    private String flag;
+    private FlagEnum flagEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -172,7 +173,13 @@ public class FittingItem implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public FittingItem flag(FlagEnum flag) {
+    public FittingItem flag(FlagEnum flagEnum) {
+
+        this.flagEnum = flagEnum;
+        return this;
+    }
+
+    public FittingItem flagString(String flag) {
 
         this.flag = flag;
         return this;
@@ -185,10 +192,21 @@ public class FittingItem implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "flag string")
     public FlagEnum getFlag() {
+        if (flagEnum == null) {
+            flagEnum = FlagEnum.fromValue(flag);
+        }
+        return flagEnum;
+    }
+
+    public String getFlagString() {
         return flag;
     }
 
-    public void setFlag(FlagEnum flag) {
+    public void setFlag(FlagEnum flagEnum) {
+        this.flagEnum = flagEnum;
+    }
+
+    public void setFlagString(String flag) {
         this.flag = flag;
     }
 

@@ -111,7 +111,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<StandingLevelEnum> {
@@ -130,7 +130,8 @@ public class CorporationCustomsOfficesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STANDING_LEVEL = "standing_level";
     @SerializedName(SERIALIZED_NAME_STANDING_LEVEL)
-    private StandingLevelEnum standingLevel;
+    private String standingLevel;
+    private StandingLevelEnum standingLevelEnum;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -370,7 +371,13 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         this.reinforceExitStart = reinforceExitStart;
     }
 
-    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevel) {
+    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevelEnum) {
+
+        this.standingLevelEnum = standingLevelEnum;
+        return this;
+    }
+
+    public CorporationCustomsOfficesResponse standingLevelString(String standingLevel) {
 
         this.standingLevel = standingLevel;
         return this;
@@ -384,10 +391,21 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "Access is allowed only for entities with this level of standing or better")
     public StandingLevelEnum getStandingLevel() {
+        if (standingLevelEnum == null) {
+            standingLevelEnum = StandingLevelEnum.fromValue(standingLevel);
+        }
+        return standingLevelEnum;
+    }
+
+    public String getStandingLevelString() {
         return standingLevel;
     }
 
-    public void setStandingLevel(StandingLevelEnum standingLevel) {
+    public void setStandingLevel(StandingLevelEnum standingLevelEnum) {
+        this.standingLevelEnum = standingLevelEnum;
+    }
+
+    public void setStandingLevelString(String standingLevel) {
         this.standingLevel = standingLevel;
     }
 

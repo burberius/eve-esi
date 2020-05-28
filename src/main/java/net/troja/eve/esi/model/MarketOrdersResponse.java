@@ -110,7 +110,7 @@ public class MarketOrdersResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RangeEnum> {
@@ -129,7 +129,8 @@ public class MarketOrdersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_RANGE = "range";
     @SerializedName(SERIALIZED_NAME_RANGE)
-    private RangeEnum range;
+    private String range;
+    private RangeEnum rangeEnum;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -287,7 +288,13 @@ public class MarketOrdersResponse implements Serializable {
         this.price = price;
     }
 
-    public MarketOrdersResponse range(RangeEnum range) {
+    public MarketOrdersResponse range(RangeEnum rangeEnum) {
+
+        this.rangeEnum = rangeEnum;
+        return this;
+    }
+
+    public MarketOrdersResponse rangeString(String range) {
 
         this.range = range;
         return this;
@@ -300,10 +307,21 @@ public class MarketOrdersResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "range string")
     public RangeEnum getRange() {
+        if (rangeEnum == null) {
+            rangeEnum = RangeEnum.fromValue(range);
+        }
+        return rangeEnum;
+    }
+
+    public String getRangeString() {
         return range;
     }
 
-    public void setRange(RangeEnum range) {
+    public void setRange(RangeEnum rangeEnum) {
+        this.rangeEnum = rangeEnum;
+    }
+
+    public void setRangeString(String range) {
         this.range = range;
     }
 

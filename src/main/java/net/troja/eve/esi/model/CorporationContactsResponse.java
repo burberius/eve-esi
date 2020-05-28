@@ -71,7 +71,7 @@ public class CorporationContactsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ContactTypeEnum> {
@@ -90,7 +90,8 @@ public class CorporationContactsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTACT_TYPE = "contact_type";
     @SerializedName(SERIALIZED_NAME_CONTACT_TYPE)
-    private ContactTypeEnum contactType;
+    private String contactType;
+    private ContactTypeEnum contactTypeEnum;
 
     public static final String SERIALIZED_NAME_IS_WATCHED = "is_watched";
     @SerializedName(SERIALIZED_NAME_IS_WATCHED)
@@ -124,7 +125,13 @@ public class CorporationContactsResponse implements Serializable {
         this.contactId = contactId;
     }
 
-    public CorporationContactsResponse contactType(ContactTypeEnum contactType) {
+    public CorporationContactsResponse contactType(ContactTypeEnum contactTypeEnum) {
+
+        this.contactTypeEnum = contactTypeEnum;
+        return this;
+    }
+
+    public CorporationContactsResponse contactTypeString(String contactType) {
 
         this.contactType = contactType;
         return this;
@@ -137,10 +144,21 @@ public class CorporationContactsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "contact_type string")
     public ContactTypeEnum getContactType() {
+        if (contactTypeEnum == null) {
+            contactTypeEnum = ContactTypeEnum.fromValue(contactType);
+        }
+        return contactTypeEnum;
+    }
+
+    public String getContactTypeString() {
         return contactType;
     }
 
-    public void setContactType(ContactTypeEnum contactType) {
+    public void setContactType(ContactTypeEnum contactTypeEnum) {
+        this.contactTypeEnum = contactTypeEnum;
+    }
+
+    public void setContactTypeString(String contactType) {
         this.contactType = contactType;
     }
 

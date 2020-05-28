@@ -293,7 +293,7 @@ public class CorporationBlueprintsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
@@ -312,7 +312,8 @@ public class CorporationBlueprintsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
+    private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -358,7 +359,13 @@ public class CorporationBlueprintsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CorporationBlueprintsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
+
+        this.locationFlagEnum = locationFlagEnum;
+        return this;
+    }
+
+    public CorporationBlueprintsResponse locationFlagString(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -371,10 +378,21 @@ public class CorporationBlueprintsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Type of the location_id")
     public LocationFlagEnum getLocationFlag() {
+        if (locationFlagEnum == null) {
+            locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
+        }
+        return locationFlagEnum;
+    }
+
+    public String getLocationFlagString() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
+        this.locationFlagEnum = locationFlagEnum;
+    }
+
+    public void setLocationFlagString(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 

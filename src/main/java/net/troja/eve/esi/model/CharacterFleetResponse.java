@@ -73,7 +73,7 @@ public class CharacterFleetResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RoleEnum> {
@@ -92,7 +92,8 @@ public class CharacterFleetResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLE = "role";
     @SerializedName(SERIALIZED_NAME_ROLE)
-    private RoleEnum role;
+    private String role;
+    private RoleEnum roleEnum;
 
     public static final String SERIALIZED_NAME_SQUAD_ID = "squad_id";
     @SerializedName(SERIALIZED_NAME_SQUAD_ID)
@@ -142,7 +143,13 @@ public class CharacterFleetResponse implements Serializable {
         this.fleetId = fleetId;
     }
 
-    public CharacterFleetResponse role(RoleEnum role) {
+    public CharacterFleetResponse role(RoleEnum roleEnum) {
+
+        this.roleEnum = roleEnum;
+        return this;
+    }
+
+    public CharacterFleetResponse roleString(String role) {
 
         this.role = role;
         return this;
@@ -155,10 +162,21 @@ public class CharacterFleetResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Member’s role in fleet")
     public RoleEnum getRole() {
+        if (roleEnum == null) {
+            roleEnum = RoleEnum.fromValue(role);
+        }
+        return roleEnum;
+    }
+
+    public String getRoleString() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(RoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
+    }
+
+    public void setRoleString(String role) {
         this.role = role;
     }
 

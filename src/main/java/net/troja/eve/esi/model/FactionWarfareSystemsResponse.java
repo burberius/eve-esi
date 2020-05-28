@@ -65,7 +65,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ContestedEnum> {
@@ -84,7 +84,8 @@ public class FactionWarfareSystemsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTESTED = "contested";
     @SerializedName(SERIALIZED_NAME_CONTESTED)
-    private ContestedEnum contested;
+    private String contested;
+    private ContestedEnum contestedEnum;
 
     public static final String SERIALIZED_NAME_OCCUPIER_FACTION_ID = "occupier_faction_id";
     @SerializedName(SERIALIZED_NAME_OCCUPIER_FACTION_ID)
@@ -106,7 +107,13 @@ public class FactionWarfareSystemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD)
     private Integer victoryPointsThreshold;
 
-    public FactionWarfareSystemsResponse contested(ContestedEnum contested) {
+    public FactionWarfareSystemsResponse contested(ContestedEnum contestedEnum) {
+
+        this.contestedEnum = contestedEnum;
+        return this;
+    }
+
+    public FactionWarfareSystemsResponse contestedString(String contested) {
 
         this.contested = contested;
         return this;
@@ -119,10 +126,21 @@ public class FactionWarfareSystemsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "contested string")
     public ContestedEnum getContested() {
+        if (contestedEnum == null) {
+            contestedEnum = ContestedEnum.fromValue(contested);
+        }
+        return contestedEnum;
+    }
+
+    public String getContestedString() {
         return contested;
     }
 
-    public void setContested(ContestedEnum contested) {
+    public void setContested(ContestedEnum contestedEnum) {
+        this.contestedEnum = contestedEnum;
+    }
+
+    public void setContestedString(String contested) {
         this.contested = contested;
     }
 

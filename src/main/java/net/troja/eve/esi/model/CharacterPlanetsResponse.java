@@ -90,7 +90,7 @@ public class CharacterPlanetsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<PlanetTypeEnum> {
@@ -109,7 +109,8 @@ public class CharacterPlanetsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PLANET_TYPE = "planet_type";
     @SerializedName(SERIALIZED_NAME_PLANET_TYPE)
-    private PlanetTypeEnum planetType;
+    private String planetType;
+    private PlanetTypeEnum planetTypeEnum;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
@@ -199,7 +200,13 @@ public class CharacterPlanetsResponse implements Serializable {
         this.planetId = planetId;
     }
 
-    public CharacterPlanetsResponse planetType(PlanetTypeEnum planetType) {
+    public CharacterPlanetsResponse planetType(PlanetTypeEnum planetTypeEnum) {
+
+        this.planetTypeEnum = planetTypeEnum;
+        return this;
+    }
+
+    public CharacterPlanetsResponse planetTypeString(String planetType) {
 
         this.planetType = planetType;
         return this;
@@ -212,10 +219,21 @@ public class CharacterPlanetsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "planet_type string")
     public PlanetTypeEnum getPlanetType() {
+        if (planetTypeEnum == null) {
+            planetTypeEnum = PlanetTypeEnum.fromValue(planetType);
+        }
+        return planetTypeEnum;
+    }
+
+    public String getPlanetTypeString() {
         return planetType;
     }
 
-    public void setPlanetType(PlanetTypeEnum planetType) {
+    public void setPlanetType(PlanetTypeEnum planetTypeEnum) {
+        this.planetTypeEnum = planetTypeEnum;
+    }
+
+    public void setPlanetTypeString(String planetType) {
         this.planetType = planetType;
     }
 

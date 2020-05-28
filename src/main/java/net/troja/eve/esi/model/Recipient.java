@@ -69,7 +69,7 @@ public class Recipient implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RecipientTypeEnum> {
@@ -88,7 +88,8 @@ public class Recipient implements Serializable {
 
     public static final String SERIALIZED_NAME_RECIPIENT_TYPE = "recipient_type";
     @SerializedName(SERIALIZED_NAME_RECIPIENT_TYPE)
-    private RecipientTypeEnum recipientType;
+    private String recipientType;
+    private RecipientTypeEnum recipientTypeEnum;
 
     public Recipient recipientId(Integer recipientId) {
 
@@ -110,7 +111,13 @@ public class Recipient implements Serializable {
         this.recipientId = recipientId;
     }
 
-    public Recipient recipientType(RecipientTypeEnum recipientType) {
+    public Recipient recipientType(RecipientTypeEnum recipientTypeEnum) {
+
+        this.recipientTypeEnum = recipientTypeEnum;
+        return this;
+    }
+
+    public Recipient recipientTypeString(String recipientType) {
 
         this.recipientType = recipientType;
         return this;
@@ -123,10 +130,21 @@ public class Recipient implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "recipient_type string")
     public RecipientTypeEnum getRecipientType() {
+        if (recipientTypeEnum == null) {
+            recipientTypeEnum = RecipientTypeEnum.fromValue(recipientType);
+        }
+        return recipientTypeEnum;
+    }
+
+    public String getRecipientTypeString() {
         return recipientType;
     }
 
-    public void setRecipientType(RecipientTypeEnum recipientType) {
+    public void setRecipientType(RecipientTypeEnum recipientTypeEnum) {
+        this.recipientTypeEnum = recipientTypeEnum;
+    }
+
+    public void setRecipientTypeString(String recipientType) {
         this.recipientType = recipientType;
     }
 

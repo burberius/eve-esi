@@ -67,7 +67,7 @@ public class CharacterStandingsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<FromTypeEnum> {
@@ -86,7 +86,8 @@ public class CharacterStandingsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FROM_TYPE = "from_type";
     @SerializedName(SERIALIZED_NAME_FROM_TYPE)
-    private FromTypeEnum fromType;
+    private String fromType;
+    private FromTypeEnum fromTypeEnum;
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)
@@ -112,7 +113,13 @@ public class CharacterStandingsResponse implements Serializable {
         this.fromId = fromId;
     }
 
-    public CharacterStandingsResponse fromType(FromTypeEnum fromType) {
+    public CharacterStandingsResponse fromType(FromTypeEnum fromTypeEnum) {
+
+        this.fromTypeEnum = fromTypeEnum;
+        return this;
+    }
+
+    public CharacterStandingsResponse fromTypeString(String fromType) {
 
         this.fromType = fromType;
         return this;
@@ -125,10 +132,21 @@ public class CharacterStandingsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "from_type string")
     public FromTypeEnum getFromType() {
+        if (fromTypeEnum == null) {
+            fromTypeEnum = FromTypeEnum.fromValue(fromType);
+        }
+        return fromTypeEnum;
+    }
+
+    public String getFromTypeString() {
         return fromType;
     }
 
-    public void setFromType(FromTypeEnum fromType) {
+    public void setFromType(FromTypeEnum fromTypeEnum) {
+        this.fromTypeEnum = fromTypeEnum;
+    }
+
+    public void setFromTypeString(String fromType) {
         this.fromType = fromType;
     }
 

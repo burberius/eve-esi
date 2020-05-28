@@ -90,7 +90,7 @@ public class CharacterResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<GenderEnum> {
@@ -109,7 +109,8 @@ public class CharacterResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GENDER = "gender";
     @SerializedName(SERIALIZED_NAME_GENDER)
-    private GenderEnum gender;
+    private String gender;
+    private GenderEnum genderEnum;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -272,7 +273,13 @@ public class CharacterResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public CharacterResponse gender(GenderEnum gender) {
+    public CharacterResponse gender(GenderEnum genderEnum) {
+
+        this.genderEnum = genderEnum;
+        return this;
+    }
+
+    public CharacterResponse genderString(String gender) {
 
         this.gender = gender;
         return this;
@@ -285,10 +292,21 @@ public class CharacterResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "gender string")
     public GenderEnum getGender() {
+        if (genderEnum == null) {
+            genderEnum = GenderEnum.fromValue(gender);
+        }
+        return genderEnum;
+    }
+
+    public String getGenderString() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(GenderEnum genderEnum) {
+        this.genderEnum = genderEnum;
+    }
+
+    public void setGenderString(String gender) {
         this.gender = gender;
     }
 

@@ -63,7 +63,7 @@ public class CharacterCalendarEvent implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ResponseEnum> {
@@ -82,9 +82,16 @@ public class CharacterCalendarEvent implements Serializable {
 
     public static final String SERIALIZED_NAME_RESPONSE = "response";
     @SerializedName(SERIALIZED_NAME_RESPONSE)
-    private ResponseEnum response;
+    private String response;
+    private ResponseEnum responseEnum;
 
-    public CharacterCalendarEvent response(ResponseEnum response) {
+    public CharacterCalendarEvent response(ResponseEnum responseEnum) {
+
+        this.responseEnum = responseEnum;
+        return this;
+    }
+
+    public CharacterCalendarEvent responseString(String response) {
 
         this.response = response;
         return this;
@@ -97,10 +104,21 @@ public class CharacterCalendarEvent implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "response string")
     public ResponseEnum getResponse() {
+        if (responseEnum == null) {
+            responseEnum = ResponseEnum.fromValue(response);
+        }
+        return responseEnum;
+    }
+
+    public String getResponseString() {
         return response;
     }
 
-    public void setResponse(ResponseEnum response) {
+    public void setResponse(ResponseEnum responseEnum) {
+        this.responseEnum = responseEnum;
+    }
+
+    public void setResponseString(String response) {
         this.response = response;
     }
 

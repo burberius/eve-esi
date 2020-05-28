@@ -124,7 +124,7 @@ public class PublicContractsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
@@ -143,7 +143,8 @@ public class PublicContractsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
+    private TypeEnum typeEnum;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
@@ -438,7 +439,13 @@ public class PublicContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public PublicContractsResponse type(TypeEnum type) {
+    public PublicContractsResponse type(TypeEnum typeEnum) {
+
+        this.typeEnum = typeEnum;
+        return this;
+    }
+
+    public PublicContractsResponse typeString(String type) {
 
         this.type = type;
         return this;
@@ -451,10 +458,21 @@ public class PublicContractsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Type of the contract")
     public TypeEnum getType() {
+        if (typeEnum == null) {
+            typeEnum = TypeEnum.fromValue(type);
+        }
+        return typeEnum;
+    }
+
+    public String getTypeString() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(TypeEnum typeEnum) {
+        this.typeEnum = typeEnum;
+    }
+
+    public void setTypeString(String type) {
         this.type = type;
     }
 

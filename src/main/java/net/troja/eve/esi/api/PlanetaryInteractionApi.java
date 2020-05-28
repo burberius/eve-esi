@@ -561,9 +561,6 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param _callback
@@ -580,22 +577,7 @@ public class PlanetaryInteractionApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Colony layout</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>304</td>
-     *                        <td>Not modified</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
+     *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
@@ -655,7 +637,7 @@ public class PlanetaryInteractionApi {
      *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdCall(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -674,10 +656,6 @@ public class PlanetaryInteractionApi {
         }
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        if (ifNoneMatch != null) {
-            localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
-        }
-
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
@@ -700,8 +678,7 @@ public class PlanetaryInteractionApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(Integer characterId,
-            Integer planetId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
-            throws ApiException {
+            Integer planetId, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -716,7 +693,7 @@ public class PlanetaryInteractionApi {
         }
 
         okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdCall(characterId, planetId, datasource,
-                ifNoneMatch, token, _callback);
+                token, _callback);
         return localVarCall;
 
     }
@@ -725,9 +702,8 @@ public class PlanetaryInteractionApi {
      * Get colony layout Returns full details on the layout of a single
      * planetary colony, including links, pins and routes. Note: Planetary
      * information is only recalculated when the colony is viewed through the
-     * client. Information will not update until this criteria is met. --- This
-     * route is cached for up to 600 seconds SSO Scope:
-     * esi-planets.manage_planets.v1
+     * client. Information will not update until this criteria is met. --- SSO
+     * Scope: esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -736,9 +712,6 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @return CharacterPlanetResponse
@@ -754,22 +727,7 @@ public class PlanetaryInteractionApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Colony layout</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>304</td>
-     *                        <td>Not modified</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
+     *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
@@ -829,9 +787,9 @@ public class PlanetaryInteractionApi {
      *                        </table>
      */
     public CharacterPlanetResponse getCharactersCharacterIdPlanetsPlanetId(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token) throws ApiException {
+            String datasource, String token) throws ApiException {
         ApiResponse<CharacterPlanetResponse> localVarResp = getCharactersCharacterIdPlanetsPlanetIdWithHttpInfo(
-                characterId, planetId, datasource, ifNoneMatch, token);
+                characterId, planetId, datasource, token);
         return localVarResp.getData();
     }
 
@@ -839,9 +797,8 @@ public class PlanetaryInteractionApi {
      * Get colony layout Returns full details on the layout of a single
      * planetary colony, including links, pins and routes. Note: Planetary
      * information is only recalculated when the colony is viewed through the
-     * client. Information will not update until this criteria is met. --- This
-     * route is cached for up to 600 seconds SSO Scope:
-     * esi-planets.manage_planets.v1
+     * client. Information will not update until this criteria is met. --- SSO
+     * Scope: esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -850,9 +807,6 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @return ApiResponse&lt;CharacterPlanetResponse&gt;
@@ -868,22 +822,7 @@ public class PlanetaryInteractionApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Colony layout</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>304</td>
-     *                        <td>Not modified</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
+     *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
@@ -943,10 +882,9 @@ public class PlanetaryInteractionApi {
      *                        </table>
      */
     public ApiResponse<CharacterPlanetResponse> getCharactersCharacterIdPlanetsPlanetIdWithHttpInfo(
-            Integer characterId, Integer planetId, String datasource, String ifNoneMatch, String token)
-            throws ApiException {
+            Integer characterId, Integer planetId, String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
-                datasource, ifNoneMatch, token, null);
+                datasource, token, null);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -957,8 +895,7 @@ public class PlanetaryInteractionApi {
      * a single planetary colony, including links, pins and routes. Note:
      * Planetary information is only recalculated when the colony is viewed
      * through the client. Information will not update until this criteria is
-     * met. --- This route is cached for up to 600 seconds SSO Scope:
-     * esi-planets.manage_planets.v1
+     * met. --- SSO Scope: esi-planets.manage_planets.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -967,9 +904,6 @@ public class PlanetaryInteractionApi {
      * @param datasource
      *            The server name you would like data from (optional, default to
      *            tranquility)
-     * @param ifNoneMatch
-     *            ETag from a previous request. A 304 will be returned if this
-     *            matches the current ETag (optional)
      * @param token
      *            Access token to use if unable to set a header (optional)
      * @param _callback
@@ -987,22 +921,7 @@ public class PlanetaryInteractionApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Colony layout</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>304</td>
-     *                        <td>Not modified</td>
-     *                        <td>Cache-Control - The caching mechanism used <br>
-     *                        ETag - RFC7232 compliant entity tag <br>
-     *                        Expires - RFC7231 formatted datetime string <br>
-     *                        Last-Modified - RFC7231 formatted datetime string
-     *                        <br>
-     *                        </td>
+     *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
@@ -1062,11 +981,10 @@ public class PlanetaryInteractionApi {
      *                        </table>
      */
     public okhttp3.Call getCharactersCharacterIdPlanetsPlanetIdAsync(Integer characterId, Integer planetId,
-            String datasource, String ifNoneMatch, String token, final ApiCallback<CharacterPlanetResponse> _callback)
-            throws ApiException {
+            String datasource, String token, final ApiCallback<CharacterPlanetResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharactersCharacterIdPlanetsPlanetIdValidateBeforeCall(characterId, planetId,
-                datasource, ifNoneMatch, token, _callback);
+                datasource, token, _callback);
         Type localVarReturnType = new TypeToken<CharacterPlanetResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

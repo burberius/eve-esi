@@ -69,7 +69,7 @@ public class CorporationShareholdersResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ShareholderTypeEnum> {
@@ -88,7 +88,8 @@ public class CorporationShareholdersResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SHAREHOLDER_TYPE = "shareholder_type";
     @SerializedName(SERIALIZED_NAME_SHAREHOLDER_TYPE)
-    private ShareholderTypeEnum shareholderType;
+    private String shareholderType;
+    private ShareholderTypeEnum shareholderTypeEnum;
 
     public CorporationShareholdersResponse shareCount(Long shareCount) {
 
@@ -130,7 +131,13 @@ public class CorporationShareholdersResponse implements Serializable {
         this.shareholderId = shareholderId;
     }
 
-    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderType) {
+    public CorporationShareholdersResponse shareholderType(ShareholderTypeEnum shareholderTypeEnum) {
+
+        this.shareholderTypeEnum = shareholderTypeEnum;
+        return this;
+    }
+
+    public CorporationShareholdersResponse shareholderTypeString(String shareholderType) {
 
         this.shareholderType = shareholderType;
         return this;
@@ -143,10 +150,21 @@ public class CorporationShareholdersResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "shareholder_type string")
     public ShareholderTypeEnum getShareholderType() {
+        if (shareholderTypeEnum == null) {
+            shareholderTypeEnum = ShareholderTypeEnum.fromValue(shareholderType);
+        }
+        return shareholderTypeEnum;
+    }
+
+    public String getShareholderTypeString() {
         return shareholderType;
     }
 
-    public void setShareholderType(ShareholderTypeEnum shareholderType) {
+    public void setShareholderType(ShareholderTypeEnum shareholderTypeEnum) {
+        this.shareholderTypeEnum = shareholderTypeEnum;
+    }
+
+    public void setShareholderTypeString(String shareholderType) {
         this.shareholderType = shareholderType;
     }
 

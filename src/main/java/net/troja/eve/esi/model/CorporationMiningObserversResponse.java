@@ -68,7 +68,7 @@ public class CorporationMiningObserversResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ObserverTypeEnum> {
@@ -87,7 +87,8 @@ public class CorporationMiningObserversResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_OBSERVER_TYPE = "observer_type";
     @SerializedName(SERIALIZED_NAME_OBSERVER_TYPE)
-    private ObserverTypeEnum observerType;
+    private String observerType;
+    private ObserverTypeEnum observerTypeEnum;
 
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
 
@@ -129,7 +130,13 @@ public class CorporationMiningObserversResponse implements Serializable {
         this.observerId = observerId;
     }
 
-    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerType) {
+    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerTypeEnum) {
+
+        this.observerTypeEnum = observerTypeEnum;
+        return this;
+    }
+
+    public CorporationMiningObserversResponse observerTypeString(String observerType) {
 
         this.observerType = observerType;
         return this;
@@ -142,10 +149,21 @@ public class CorporationMiningObserversResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "The category of the observing entity")
     public ObserverTypeEnum getObserverType() {
+        if (observerTypeEnum == null) {
+            observerTypeEnum = ObserverTypeEnum.fromValue(observerType);
+        }
+        return observerTypeEnum;
+    }
+
+    public String getObserverTypeString() {
         return observerType;
     }
 
-    public void setObserverType(ObserverTypeEnum observerType) {
+    public void setObserverType(ObserverTypeEnum observerTypeEnum) {
+        this.observerTypeEnum = observerTypeEnum;
+    }
+
+    public void setObserverTypeString(String observerType) {
         this.observerType = observerType;
     }
 

@@ -84,7 +84,7 @@ public class CorporationStarbasesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<StateEnum> {
@@ -103,7 +103,8 @@ public class CorporationStarbasesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
+    private StateEnum stateEnum;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
@@ -202,7 +203,13 @@ public class CorporationStarbasesResponse implements Serializable {
         this.starbaseId = starbaseId;
     }
 
-    public CorporationStarbasesResponse state(StateEnum state) {
+    public CorporationStarbasesResponse state(StateEnum stateEnum) {
+
+        this.stateEnum = stateEnum;
+        return this;
+    }
+
+    public CorporationStarbasesResponse stateString(String state) {
 
         this.state = state;
         return this;
@@ -216,10 +223,21 @@ public class CorporationStarbasesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "state string")
     public StateEnum getState() {
+        if (stateEnum == null) {
+            stateEnum = StateEnum.fromValue(state);
+        }
+        return stateEnum;
+    }
+
+    public String getStateString() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(StateEnum stateEnum) {
+        this.stateEnum = stateEnum;
+    }
+
+    public void setStateString(String state) {
         this.state = state;
     }
 

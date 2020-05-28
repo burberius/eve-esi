@@ -93,7 +93,7 @@ public class CharacterMedalsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -112,7 +112,8 @@ public class CharacterMedalsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
+    private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
@@ -263,7 +264,13 @@ public class CharacterMedalsResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CharacterMedalsResponse status(StatusEnum status) {
+    public CharacterMedalsResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
+        return this;
+    }
+
+    public CharacterMedalsResponse statusString(String status) {
 
         this.status = status;
         return this;
@@ -276,10 +283,21 @@ public class CharacterMedalsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
+        if (statusEnum == null) {
+            statusEnum = StatusEnum.fromValue(status);
+        }
+        return statusEnum;
+    }
+
+    public String getStatusString() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
+    }
+
+    public void setStatusString(String status) {
         this.status = status;
     }
 

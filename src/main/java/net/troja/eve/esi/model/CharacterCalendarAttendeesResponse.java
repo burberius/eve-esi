@@ -69,7 +69,7 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<EventResponseEnum> {
@@ -88,7 +88,8 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_EVENT_RESPONSE = "event_response";
     @SerializedName(SERIALIZED_NAME_EVENT_RESPONSE)
-    private EventResponseEnum eventResponse;
+    private String eventResponse;
+    private EventResponseEnum eventResponseEnum;
 
     public CharacterCalendarAttendeesResponse characterId(Integer characterId) {
 
@@ -111,7 +112,13 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
         this.characterId = characterId;
     }
 
-    public CharacterCalendarAttendeesResponse eventResponse(EventResponseEnum eventResponse) {
+    public CharacterCalendarAttendeesResponse eventResponse(EventResponseEnum eventResponseEnum) {
+
+        this.eventResponseEnum = eventResponseEnum;
+        return this;
+    }
+
+    public CharacterCalendarAttendeesResponse eventResponseString(String eventResponse) {
 
         this.eventResponse = eventResponse;
         return this;
@@ -125,10 +132,21 @@ public class CharacterCalendarAttendeesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "event_response string")
     public EventResponseEnum getEventResponse() {
+        if (eventResponseEnum == null) {
+            eventResponseEnum = EventResponseEnum.fromValue(eventResponse);
+        }
+        return eventResponseEnum;
+    }
+
+    public String getEventResponseString() {
         return eventResponse;
     }
 
-    public void setEventResponse(EventResponseEnum eventResponse) {
+    public void setEventResponse(EventResponseEnum eventResponseEnum) {
+        this.eventResponseEnum = eventResponseEnum;
+    }
+
+    public void setEventResponseString(String eventResponse) {
         this.eventResponse = eventResponse;
     }
 

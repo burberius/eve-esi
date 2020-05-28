@@ -93,7 +93,7 @@ public class MailLabelSimple implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ColorEnum> {
@@ -112,13 +112,20 @@ public class MailLabelSimple implements Serializable {
 
     public static final String SERIALIZED_NAME_COLOR = "color";
     @SerializedName(SERIALIZED_NAME_COLOR)
-    private ColorEnum color = ColorEnum.FFFFFF;
+    private String color = ColorEnum.FFFFFF.getValue();
+    private ColorEnum colorEnum = ColorEnum.FFFFFF;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public MailLabelSimple color(ColorEnum color) {
+    public MailLabelSimple color(ColorEnum colorEnum) {
+
+        this.colorEnum = colorEnum;
+        return this;
+    }
+
+    public MailLabelSimple colorString(String color) {
 
         this.color = color;
         return this;
@@ -132,10 +139,21 @@ public class MailLabelSimple implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "Hexadecimal string representing label color, in RGB format")
     public ColorEnum getColor() {
+        if (colorEnum == null) {
+            colorEnum = ColorEnum.fromValue(color);
+        }
+        return colorEnum;
+    }
+
+    public String getColorString() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(ColorEnum colorEnum) {
+        this.colorEnum = colorEnum;
+    }
+
+    public void setColorString(String color) {
         this.color = color;
     }
 

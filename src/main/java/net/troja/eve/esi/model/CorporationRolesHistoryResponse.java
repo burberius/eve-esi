@@ -168,7 +168,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<NewRolesEnum> {
@@ -187,7 +187,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_NEW_ROLES = "new_roles";
     @SerializedName(SERIALIZED_NAME_NEW_ROLES)
-    private List<NewRolesEnum> newRoles = new ArrayList<>();
+    private List<String> newRoles = new ArrayList<>();
+    private List<NewRolesEnum> newRolesEnum = new ArrayList<>();
 
     /**
      * old_role string
@@ -311,7 +312,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<OldRolesEnum> {
@@ -330,7 +331,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_OLD_ROLES = "old_roles";
     @SerializedName(SERIALIZED_NAME_OLD_ROLES)
-    private List<OldRolesEnum> oldRoles = new ArrayList<>();
+    private List<String> oldRoles = new ArrayList<>();
+    private List<OldRolesEnum> oldRolesEnum = new ArrayList<>();
 
     /**
      * role_type string
@@ -374,7 +376,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RoleTypeEnum> {
@@ -393,7 +395,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLE_TYPE = "role_type";
     @SerializedName(SERIALIZED_NAME_ROLE_TYPE)
-    private RoleTypeEnum roleType;
+    private String roleType;
+    private RoleTypeEnum roleTypeEnum;
 
     public CorporationRolesHistoryResponse changedAt(OffsetDateTime changedAt) {
 
@@ -455,13 +458,19 @@ public class CorporationRolesHistoryResponse implements Serializable {
         this.issuerId = issuerId;
     }
 
-    public CorporationRolesHistoryResponse newRoles(List<NewRolesEnum> newRoles) {
+    public CorporationRolesHistoryResponse newRoles(List<NewRolesEnum> newRolesEnum) {
+
+        this.newRolesEnum = newRolesEnum;
+        return this;
+    }
+
+    public CorporationRolesHistoryResponse newRolesString(List<String> newRoles) {
 
         this.newRoles = newRoles;
         return this;
     }
 
-    public CorporationRolesHistoryResponse addNewRolesItem(NewRolesEnum newRolesItem) {
+    public CorporationRolesHistoryResponse addNewRolesItem(String newRolesItem) {
         this.newRoles.add(newRolesItem);
         return this;
     }
@@ -473,20 +482,40 @@ public class CorporationRolesHistoryResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "new_roles array")
     public List<NewRolesEnum> getNewRoles() {
+        if (newRolesEnum == null) {
+            newRolesEnum = new ArrayList<>();
+            for (String value : newRoles) {
+                newRolesEnum.add(NewRolesEnum.fromValue(value));
+            }
+        }
+        return newRolesEnum;
+    }
+
+    public List<String> getNewRolesString() {
         return newRoles;
     }
 
-    public void setNewRoles(List<NewRolesEnum> newRoles) {
+    public void setNewRoles(List<NewRolesEnum> newRolesEnum) {
+        this.newRolesEnum = newRolesEnum;
+    }
+
+    public void setNewRolesString(List<String> newRoles) {
         this.newRoles = newRoles;
     }
 
-    public CorporationRolesHistoryResponse oldRoles(List<OldRolesEnum> oldRoles) {
+    public CorporationRolesHistoryResponse oldRoles(List<OldRolesEnum> oldRolesEnum) {
+
+        this.oldRolesEnum = oldRolesEnum;
+        return this;
+    }
+
+    public CorporationRolesHistoryResponse oldRolesString(List<String> oldRoles) {
 
         this.oldRoles = oldRoles;
         return this;
     }
 
-    public CorporationRolesHistoryResponse addOldRolesItem(OldRolesEnum oldRolesItem) {
+    public CorporationRolesHistoryResponse addOldRolesItem(String oldRolesItem) {
         this.oldRoles.add(oldRolesItem);
         return this;
     }
@@ -498,14 +527,34 @@ public class CorporationRolesHistoryResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "old_roles array")
     public List<OldRolesEnum> getOldRoles() {
+        if (oldRolesEnum == null) {
+            oldRolesEnum = new ArrayList<>();
+            for (String value : oldRoles) {
+                oldRolesEnum.add(OldRolesEnum.fromValue(value));
+            }
+        }
+        return oldRolesEnum;
+    }
+
+    public List<String> getOldRolesString() {
         return oldRoles;
     }
 
-    public void setOldRoles(List<OldRolesEnum> oldRoles) {
+    public void setOldRoles(List<OldRolesEnum> oldRolesEnum) {
+        this.oldRolesEnum = oldRolesEnum;
+    }
+
+    public void setOldRolesString(List<String> oldRoles) {
         this.oldRoles = oldRoles;
     }
 
-    public CorporationRolesHistoryResponse roleType(RoleTypeEnum roleType) {
+    public CorporationRolesHistoryResponse roleType(RoleTypeEnum roleTypeEnum) {
+
+        this.roleTypeEnum = roleTypeEnum;
+        return this;
+    }
+
+    public CorporationRolesHistoryResponse roleTypeString(String roleType) {
 
         this.roleType = roleType;
         return this;
@@ -518,10 +567,21 @@ public class CorporationRolesHistoryResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "role_type string")
     public RoleTypeEnum getRoleType() {
+        if (roleTypeEnum == null) {
+            roleTypeEnum = RoleTypeEnum.fromValue(roleType);
+        }
+        return roleTypeEnum;
+    }
+
+    public String getRoleTypeString() {
         return roleType;
     }
 
-    public void setRoleType(RoleTypeEnum roleType) {
+    public void setRoleType(RoleTypeEnum roleTypeEnum) {
+        this.roleTypeEnum = roleTypeEnum;
+    }
+
+    public void setRoleTypeString(String roleType) {
         this.roleType = roleType;
     }
 

@@ -65,7 +65,7 @@ public class CloneHomeLocation implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<LocationTypeEnum> {
@@ -84,7 +84,8 @@ public class CloneHomeLocation implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
-    private LocationTypeEnum locationType;
+    private String locationType;
+    private LocationTypeEnum locationTypeEnum;
 
     public CloneHomeLocation locationId(Long locationId) {
 
@@ -107,7 +108,13 @@ public class CloneHomeLocation implements Serializable {
         this.locationId = locationId;
     }
 
-    public CloneHomeLocation locationType(LocationTypeEnum locationType) {
+    public CloneHomeLocation locationType(LocationTypeEnum locationTypeEnum) {
+
+        this.locationTypeEnum = locationTypeEnum;
+        return this;
+    }
+
+    public CloneHomeLocation locationTypeString(String locationType) {
 
         this.locationType = locationType;
         return this;
@@ -121,10 +128,21 @@ public class CloneHomeLocation implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "location_type string")
     public LocationTypeEnum getLocationType() {
+        if (locationTypeEnum == null) {
+            locationTypeEnum = LocationTypeEnum.fromValue(locationType);
+        }
+        return locationTypeEnum;
+    }
+
+    public String getLocationTypeString() {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
+    public void setLocationType(LocationTypeEnum locationTypeEnum) {
+        this.locationTypeEnum = locationTypeEnum;
+    }
+
+    public void setLocationTypeString(String locationType) {
         this.locationType = locationType;
     }
 

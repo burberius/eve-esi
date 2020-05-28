@@ -78,7 +78,7 @@ public class CorporationContainersLogsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<ActionEnum> {
@@ -97,7 +97,8 @@ public class CorporationContainersLogsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ACTION = "action";
     @SerializedName(SERIALIZED_NAME_ACTION)
-    private ActionEnum action;
+    private String action;
+    private ActionEnum actionEnum;
 
     public static final String SERIALIZED_NAME_CHARACTER_ID = "character_id";
     @SerializedName(SERIALIZED_NAME_CHARACTER_ID)
@@ -369,7 +370,7 @@ public class CorporationContainersLogsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
@@ -388,7 +389,8 @@ public class CorporationContainersLogsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
+    private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -436,7 +438,7 @@ public class CorporationContainersLogsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<PasswordTypeEnum> {
@@ -455,7 +457,8 @@ public class CorporationContainersLogsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_PASSWORD_TYPE = "password_type";
     @SerializedName(SERIALIZED_NAME_PASSWORD_TYPE)
-    private PasswordTypeEnum passwordType;
+    private String passwordType;
+    private PasswordTypeEnum passwordTypeEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -465,7 +468,13 @@ public class CorporationContainersLogsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public CorporationContainersLogsResponse action(ActionEnum action) {
+    public CorporationContainersLogsResponse action(ActionEnum actionEnum) {
+
+        this.actionEnum = actionEnum;
+        return this;
+    }
+
+    public CorporationContainersLogsResponse actionString(String action) {
 
         this.action = action;
         return this;
@@ -478,10 +487,21 @@ public class CorporationContainersLogsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "action string")
     public ActionEnum getAction() {
+        if (actionEnum == null) {
+            actionEnum = ActionEnum.fromValue(action);
+        }
+        return actionEnum;
+    }
+
+    public String getActionString() {
         return action;
     }
 
-    public void setAction(ActionEnum action) {
+    public void setAction(ActionEnum actionEnum) {
+        this.actionEnum = actionEnum;
+    }
+
+    public void setActionString(String action) {
         this.action = action;
     }
 
@@ -545,7 +565,13 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.containerTypeId = containerTypeId;
     }
 
-    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
+
+        this.locationFlagEnum = locationFlagEnum;
+        return this;
+    }
+
+    public CorporationContainersLogsResponse locationFlagString(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -558,10 +584,21 @@ public class CorporationContainersLogsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "location_flag string")
     public LocationFlagEnum getLocationFlag() {
+        if (locationFlagEnum == null) {
+            locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
+        }
+        return locationFlagEnum;
+    }
+
+    public String getLocationFlagString() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
+        this.locationFlagEnum = locationFlagEnum;
+    }
+
+    public void setLocationFlagString(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
@@ -647,7 +684,13 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.oldConfigBitmask = oldConfigBitmask;
     }
 
-    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordType) {
+    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordTypeEnum) {
+
+        this.passwordTypeEnum = passwordTypeEnum;
+        return this;
+    }
+
+    public CorporationContainersLogsResponse passwordTypeString(String passwordType) {
 
         this.passwordType = passwordType;
         return this;
@@ -661,10 +704,21 @@ public class CorporationContainersLogsResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "Type of password set if action is of type SetPassword or EnterPassword")
     public PasswordTypeEnum getPasswordType() {
+        if (passwordTypeEnum == null) {
+            passwordTypeEnum = PasswordTypeEnum.fromValue(passwordType);
+        }
+        return passwordTypeEnum;
+    }
+
+    public String getPasswordTypeString() {
         return passwordType;
     }
 
-    public void setPasswordType(PasswordTypeEnum passwordType) {
+    public void setPasswordType(PasswordTypeEnum passwordTypeEnum) {
+        this.passwordTypeEnum = passwordTypeEnum;
+    }
+
+    public void setPasswordTypeString(String passwordType) {
         this.passwordType = passwordType;
     }
 
