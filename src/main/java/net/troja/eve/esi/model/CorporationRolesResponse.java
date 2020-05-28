@@ -159,7 +159,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesEnum> {
@@ -302,7 +302,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtBaseEnum> {
@@ -446,7 +446,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtHqEnum> {
@@ -589,7 +589,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<GrantableRolesAtOtherEnum> {
@@ -733,7 +733,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RolesEnum> {
@@ -876,7 +876,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RolesAtBaseEnum> {
@@ -1019,7 +1019,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RolesAtHqEnum> {
@@ -1162,7 +1162,7 @@ public class CorporationRolesResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<RolesAtOtherEnum> {

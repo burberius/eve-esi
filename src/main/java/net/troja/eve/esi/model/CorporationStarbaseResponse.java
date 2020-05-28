@@ -76,7 +76,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<AnchorEnum> {
@@ -147,7 +147,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<FuelBayTakeEnum> {
@@ -205,7 +205,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<FuelBayViewEnum> {
@@ -264,7 +264,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<OfflineEnum> {
@@ -319,7 +319,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<OnlineEnum> {
@@ -374,7 +374,7 @@ public class CorporationStarbaseResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<UnanchorEnum> {

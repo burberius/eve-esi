@@ -213,7 +213,7 @@ public class CharacterBlueprintsResponse implements Serializable {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+            return null;
         }
 
         public static class Adapter extends TypeAdapter<LocationFlagEnum> {
