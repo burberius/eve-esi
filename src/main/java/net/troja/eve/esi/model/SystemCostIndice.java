@@ -96,13 +96,20 @@ public class SystemCostIndice implements Serializable {
 
     public static final String SERIALIZED_NAME_ACTIVITY = "activity";
     @SerializedName(SERIALIZED_NAME_ACTIVITY)
-    private ActivityEnum activity;
+    private String activity;
+    private ActivityEnum activityEnum;
 
     public static final String SERIALIZED_NAME_COST_INDEX = "cost_index";
     @SerializedName(SERIALIZED_NAME_COST_INDEX)
     private Float costIndex;
 
-    public SystemCostIndice activity(ActivityEnum activity) {
+    public SystemCostIndice activity(ActivityEnum activityEnum) {
+
+        this.activityEnum = activityEnum;
+        return this;
+    }
+
+    public SystemCostIndice activityString(String activity) {
 
         this.activity = activity;
         return this;
@@ -115,10 +122,21 @@ public class SystemCostIndice implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "activity string")
     public ActivityEnum getActivity() {
+        if (activityEnum == null) {
+            activityEnum = ActivityEnum.fromValue(activity);
+        }
+        return activityEnum;
+    }
+
+    public String getActivityString() {
         return activity;
     }
 
-    public void setActivity(ActivityEnum activity) {
+    public void setActivity(ActivityEnum activityEnum) {
+        this.activityEnum = activityEnum;
+    }
+
+    public void setActivityString(String activity) {
         this.activity = activity;
     }
 

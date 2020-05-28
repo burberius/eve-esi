@@ -101,7 +101,8 @@ public class CorporationMedalsIssuedResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
+    private StatusEnum statusEnum;
 
     public CorporationMedalsIssuedResponse characterId(Integer characterId) {
 
@@ -203,7 +204,13 @@ public class CorporationMedalsIssuedResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CorporationMedalsIssuedResponse status(StatusEnum status) {
+    public CorporationMedalsIssuedResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
+        return this;
+    }
+
+    public CorporationMedalsIssuedResponse statusString(String status) {
 
         this.status = status;
         return this;
@@ -216,10 +223,21 @@ public class CorporationMedalsIssuedResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
+        if (statusEnum == null) {
+            statusEnum = StatusEnum.fromValue(status);
+        }
+        return statusEnum;
+    }
+
+    public String getStatusString() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
+    }
+
+    public void setStatusString(String status) {
         this.status = status;
     }
 

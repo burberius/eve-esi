@@ -174,7 +174,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES = "grantable_roles";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES)
-    private List<GrantableRolesEnum> grantableRoles = null;
+    private List<String> grantableRoles = null;
+    private List<GrantableRolesEnum> grantableRolesEnum = null;
 
     /**
      * grantable_roles_at_base string
@@ -318,7 +319,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE = "grantable_roles_at_base";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE)
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBase = null;
+    private List<String> grantableRolesAtBase = null;
+    private List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum = null;
 
     /**
      * grantable_roles_at_hq string
@@ -461,7 +463,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ = "grantable_roles_at_hq";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ)
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHq = null;
+    private List<String> grantableRolesAtHq = null;
+    private List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum = null;
 
     /**
      * grantable_roles_at_other string
@@ -605,7 +608,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER = "grantable_roles_at_other";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER)
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOther = null;
+    private List<String> grantableRolesAtOther = null;
+    private List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum = null;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -752,7 +756,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<RolesEnum> roles = null;
+    private List<String> roles = null;
+    private List<RolesEnum> rolesEnum = null;
 
     /**
      * roles_at_base string
@@ -895,7 +900,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<RolesAtBaseEnum> rolesAtBase = null;
+    private List<String> rolesAtBase = null;
+    private List<RolesAtBaseEnum> rolesAtBaseEnum = null;
 
     /**
      * roles_at_hq string
@@ -1038,7 +1044,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<RolesAtHqEnum> rolesAtHq = null;
+    private List<String> rolesAtHq = null;
+    private List<RolesAtHqEnum> rolesAtHqEnum = null;
 
     /**
      * roles_at_other string
@@ -1181,19 +1188,26 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<RolesAtOtherEnum> rolesAtOther = null;
+    private List<String> rolesAtOther = null;
+    private List<RolesAtOtherEnum> rolesAtOtherEnum = null;
 
     public static final String SERIALIZED_NAME_TITLE_ID = "title_id";
     @SerializedName(SERIALIZED_NAME_TITLE_ID)
     private Integer titleId;
 
-    public CorporationTitlesResponse grantableRoles(List<GrantableRolesEnum> grantableRoles) {
+    public CorporationTitlesResponse grantableRoles(List<GrantableRolesEnum> grantableRolesEnum) {
+
+        this.grantableRolesEnum = grantableRolesEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesString(List<String> grantableRoles) {
 
         this.grantableRoles = grantableRoles;
         return this;
     }
 
-    public CorporationTitlesResponse addGrantableRolesItem(GrantableRolesEnum grantableRolesItem) {
+    public CorporationTitlesResponse addGrantableRolesItem(String grantableRolesItem) {
         if (this.grantableRoles == null) {
             this.grantableRoles = new ArrayList<>();
         }
@@ -1209,20 +1223,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles array")
     public List<GrantableRolesEnum> getGrantableRoles() {
+        if (grantableRolesEnum == null) {
+            grantableRolesEnum = new ArrayList<>();
+            for (String value : grantableRoles) {
+                grantableRolesEnum.add(GrantableRolesEnum.fromValue(value));
+            }
+        }
+        return grantableRolesEnum;
+    }
+
+    public List<String> getGrantableRolesString() {
         return grantableRoles;
     }
 
-    public void setGrantableRoles(List<GrantableRolesEnum> grantableRoles) {
+    public void setGrantableRoles(List<GrantableRolesEnum> grantableRolesEnum) {
+        this.grantableRolesEnum = grantableRolesEnum;
+    }
+
+    public void setGrantableRolesString(List<String> grantableRoles) {
         this.grantableRoles = grantableRoles;
     }
 
-    public CorporationTitlesResponse grantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBase) {
+    public CorporationTitlesResponse grantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum) {
+
+        this.grantableRolesAtBaseEnum = grantableRolesAtBaseEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtBaseString(List<String> grantableRolesAtBase) {
 
         this.grantableRolesAtBase = grantableRolesAtBase;
         return this;
     }
 
-    public CorporationTitlesResponse addGrantableRolesAtBaseItem(GrantableRolesAtBaseEnum grantableRolesAtBaseItem) {
+    public CorporationTitlesResponse addGrantableRolesAtBaseItem(String grantableRolesAtBaseItem) {
         if (this.grantableRolesAtBase == null) {
             this.grantableRolesAtBase = new ArrayList<>();
         }
@@ -1238,20 +1272,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_base array")
     public List<GrantableRolesAtBaseEnum> getGrantableRolesAtBase() {
+        if (grantableRolesAtBaseEnum == null) {
+            grantableRolesAtBaseEnum = new ArrayList<>();
+            for (String value : grantableRolesAtBase) {
+                grantableRolesAtBaseEnum.add(GrantableRolesAtBaseEnum.fromValue(value));
+            }
+        }
+        return grantableRolesAtBaseEnum;
+    }
+
+    public List<String> getGrantableRolesAtBaseString() {
         return grantableRolesAtBase;
     }
 
-    public void setGrantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBase) {
+    public void setGrantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum) {
+        this.grantableRolesAtBaseEnum = grantableRolesAtBaseEnum;
+    }
+
+    public void setGrantableRolesAtBaseString(List<String> grantableRolesAtBase) {
         this.grantableRolesAtBase = grantableRolesAtBase;
     }
 
-    public CorporationTitlesResponse grantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHq) {
+    public CorporationTitlesResponse grantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum) {
+
+        this.grantableRolesAtHqEnum = grantableRolesAtHqEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtHqString(List<String> grantableRolesAtHq) {
 
         this.grantableRolesAtHq = grantableRolesAtHq;
         return this;
     }
 
-    public CorporationTitlesResponse addGrantableRolesAtHqItem(GrantableRolesAtHqEnum grantableRolesAtHqItem) {
+    public CorporationTitlesResponse addGrantableRolesAtHqItem(String grantableRolesAtHqItem) {
         if (this.grantableRolesAtHq == null) {
             this.grantableRolesAtHq = new ArrayList<>();
         }
@@ -1267,20 +1321,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_hq array")
     public List<GrantableRolesAtHqEnum> getGrantableRolesAtHq() {
+        if (grantableRolesAtHqEnum == null) {
+            grantableRolesAtHqEnum = new ArrayList<>();
+            for (String value : grantableRolesAtHq) {
+                grantableRolesAtHqEnum.add(GrantableRolesAtHqEnum.fromValue(value));
+            }
+        }
+        return grantableRolesAtHqEnum;
+    }
+
+    public List<String> getGrantableRolesAtHqString() {
         return grantableRolesAtHq;
     }
 
-    public void setGrantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHq) {
+    public void setGrantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum) {
+        this.grantableRolesAtHqEnum = grantableRolesAtHqEnum;
+    }
+
+    public void setGrantableRolesAtHqString(List<String> grantableRolesAtHq) {
         this.grantableRolesAtHq = grantableRolesAtHq;
     }
 
-    public CorporationTitlesResponse grantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOther) {
+    public CorporationTitlesResponse grantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum) {
+
+        this.grantableRolesAtOtherEnum = grantableRolesAtOtherEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtOtherString(List<String> grantableRolesAtOther) {
 
         this.grantableRolesAtOther = grantableRolesAtOther;
         return this;
     }
 
-    public CorporationTitlesResponse addGrantableRolesAtOtherItem(GrantableRolesAtOtherEnum grantableRolesAtOtherItem) {
+    public CorporationTitlesResponse addGrantableRolesAtOtherItem(String grantableRolesAtOtherItem) {
         if (this.grantableRolesAtOther == null) {
             this.grantableRolesAtOther = new ArrayList<>();
         }
@@ -1296,10 +1370,24 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "grantable_roles_at_other array")
     public List<GrantableRolesAtOtherEnum> getGrantableRolesAtOther() {
+        if (grantableRolesAtOtherEnum == null) {
+            grantableRolesAtOtherEnum = new ArrayList<>();
+            for (String value : grantableRolesAtOther) {
+                grantableRolesAtOtherEnum.add(GrantableRolesAtOtherEnum.fromValue(value));
+            }
+        }
+        return grantableRolesAtOtherEnum;
+    }
+
+    public List<String> getGrantableRolesAtOtherString() {
         return grantableRolesAtOther;
     }
 
-    public void setGrantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOther) {
+    public void setGrantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum) {
+        this.grantableRolesAtOtherEnum = grantableRolesAtOtherEnum;
+    }
+
+    public void setGrantableRolesAtOtherString(List<String> grantableRolesAtOther) {
         this.grantableRolesAtOther = grantableRolesAtOther;
     }
 
@@ -1324,13 +1412,19 @@ public class CorporationTitlesResponse implements Serializable {
         this.name = name;
     }
 
-    public CorporationTitlesResponse roles(List<RolesEnum> roles) {
+    public CorporationTitlesResponse roles(List<RolesEnum> rolesEnum) {
+
+        this.rolesEnum = rolesEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesString(List<String> roles) {
 
         this.roles = roles;
         return this;
     }
 
-    public CorporationTitlesResponse addRolesItem(RolesEnum rolesItem) {
+    public CorporationTitlesResponse addRolesItem(String rolesItem) {
         if (this.roles == null) {
             this.roles = new ArrayList<>();
         }
@@ -1346,20 +1440,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles array")
     public List<RolesEnum> getRoles() {
+        if (rolesEnum == null) {
+            rolesEnum = new ArrayList<>();
+            for (String value : roles) {
+                rolesEnum.add(RolesEnum.fromValue(value));
+            }
+        }
+        return rolesEnum;
+    }
+
+    public List<String> getRolesString() {
         return roles;
     }
 
-    public void setRoles(List<RolesEnum> roles) {
+    public void setRoles(List<RolesEnum> rolesEnum) {
+        this.rolesEnum = rolesEnum;
+    }
+
+    public void setRolesString(List<String> roles) {
         this.roles = roles;
     }
 
-    public CorporationTitlesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public CorporationTitlesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
+
+        this.rolesAtBaseEnum = rolesAtBaseEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtBaseString(List<String> rolesAtBase) {
 
         this.rolesAtBase = rolesAtBase;
         return this;
     }
 
-    public CorporationTitlesResponse addRolesAtBaseItem(RolesAtBaseEnum rolesAtBaseItem) {
+    public CorporationTitlesResponse addRolesAtBaseItem(String rolesAtBaseItem) {
         if (this.rolesAtBase == null) {
             this.rolesAtBase = new ArrayList<>();
         }
@@ -1375,20 +1489,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_base array")
     public List<RolesAtBaseEnum> getRolesAtBase() {
+        if (rolesAtBaseEnum == null) {
+            rolesAtBaseEnum = new ArrayList<>();
+            for (String value : rolesAtBase) {
+                rolesAtBaseEnum.add(RolesAtBaseEnum.fromValue(value));
+            }
+        }
+        return rolesAtBaseEnum;
+    }
+
+    public List<String> getRolesAtBaseString() {
         return rolesAtBase;
     }
 
-    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
+        this.rolesAtBaseEnum = rolesAtBaseEnum;
+    }
+
+    public void setRolesAtBaseString(List<String> rolesAtBase) {
         this.rolesAtBase = rolesAtBase;
     }
 
-    public CorporationTitlesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public CorporationTitlesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
+
+        this.rolesAtHqEnum = rolesAtHqEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtHqString(List<String> rolesAtHq) {
 
         this.rolesAtHq = rolesAtHq;
         return this;
     }
 
-    public CorporationTitlesResponse addRolesAtHqItem(RolesAtHqEnum rolesAtHqItem) {
+    public CorporationTitlesResponse addRolesAtHqItem(String rolesAtHqItem) {
         if (this.rolesAtHq == null) {
             this.rolesAtHq = new ArrayList<>();
         }
@@ -1404,20 +1538,40 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_hq array")
     public List<RolesAtHqEnum> getRolesAtHq() {
+        if (rolesAtHqEnum == null) {
+            rolesAtHqEnum = new ArrayList<>();
+            for (String value : rolesAtHq) {
+                rolesAtHqEnum.add(RolesAtHqEnum.fromValue(value));
+            }
+        }
+        return rolesAtHqEnum;
+    }
+
+    public List<String> getRolesAtHqString() {
         return rolesAtHq;
     }
 
-    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
+        this.rolesAtHqEnum = rolesAtHqEnum;
+    }
+
+    public void setRolesAtHqString(List<String> rolesAtHq) {
         this.rolesAtHq = rolesAtHq;
     }
 
-    public CorporationTitlesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public CorporationTitlesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
+
+        this.rolesAtOtherEnum = rolesAtOtherEnum;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtOtherString(List<String> rolesAtOther) {
 
         this.rolesAtOther = rolesAtOther;
         return this;
     }
 
-    public CorporationTitlesResponse addRolesAtOtherItem(RolesAtOtherEnum rolesAtOtherItem) {
+    public CorporationTitlesResponse addRolesAtOtherItem(String rolesAtOtherItem) {
         if (this.rolesAtOther == null) {
             this.rolesAtOther = new ArrayList<>();
         }
@@ -1433,10 +1587,24 @@ public class CorporationTitlesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_other array")
     public List<RolesAtOtherEnum> getRolesAtOther() {
+        if (rolesAtOtherEnum == null) {
+            rolesAtOtherEnum = new ArrayList<>();
+            for (String value : rolesAtOther) {
+                rolesAtOtherEnum.add(RolesAtOtherEnum.fromValue(value));
+            }
+        }
+        return rolesAtOtherEnum;
+    }
+
+    public List<String> getRolesAtOtherString() {
         return rolesAtOther;
     }
 
-    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
+        this.rolesAtOtherEnum = rolesAtOtherEnum;
+    }
+
+    public void setRolesAtOtherString(List<String> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
     }
 

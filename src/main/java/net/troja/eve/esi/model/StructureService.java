@@ -86,7 +86,8 @@ public class StructureService implements Serializable {
 
     public static final String SERIALIZED_NAME_STATE = "state";
     @SerializedName(SERIALIZED_NAME_STATE)
-    private StateEnum state;
+    private String state;
+    private StateEnum stateEnum;
 
     public StructureService name(String name) {
 
@@ -108,7 +109,13 @@ public class StructureService implements Serializable {
         this.name = name;
     }
 
-    public StructureService state(StateEnum state) {
+    public StructureService state(StateEnum stateEnum) {
+
+        this.stateEnum = stateEnum;
+        return this;
+    }
+
+    public StructureService stateString(String state) {
 
         this.state = state;
         return this;
@@ -121,10 +128,21 @@ public class StructureService implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "state string")
     public StateEnum getState() {
+        if (stateEnum == null) {
+            stateEnum = StateEnum.fromValue(state);
+        }
+        return stateEnum;
+    }
+
+    public String getStateString() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(StateEnum stateEnum) {
+        this.stateEnum = stateEnum;
+    }
+
+    public void setStateString(String state) {
         this.state = state;
     }
 

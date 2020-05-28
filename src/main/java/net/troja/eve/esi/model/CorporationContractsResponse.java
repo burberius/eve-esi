@@ -93,7 +93,8 @@ public class CorporationContractsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_AVAILABILITY = "availability";
     @SerializedName(SERIALIZED_NAME_AVAILABILITY)
-    private AvailabilityEnum availability;
+    private String availability;
+    private AvailabilityEnum availabilityEnum;
 
     public static final String SERIALIZED_NAME_BUYOUT = "buyout";
     @SerializedName(SERIALIZED_NAME_BUYOUT)
@@ -220,7 +221,8 @@ public class CorporationContractsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
+    private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
@@ -281,7 +283,8 @@ public class CorporationContractsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
+    private TypeEnum typeEnum;
 
     public static final String SERIALIZED_NAME_VOLUME = "volume";
     @SerializedName(SERIALIZED_NAME_VOLUME)
@@ -327,7 +330,13 @@ public class CorporationContractsResponse implements Serializable {
         this.assigneeId = assigneeId;
     }
 
-    public CorporationContractsResponse availability(AvailabilityEnum availability) {
+    public CorporationContractsResponse availability(AvailabilityEnum availabilityEnum) {
+
+        this.availabilityEnum = availabilityEnum;
+        return this;
+    }
+
+    public CorporationContractsResponse availabilityString(String availability) {
 
         this.availability = availability;
         return this;
@@ -340,10 +349,21 @@ public class CorporationContractsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "To whom the contract is available")
     public AvailabilityEnum getAvailability() {
+        if (availabilityEnum == null) {
+            availabilityEnum = AvailabilityEnum.fromValue(availability);
+        }
+        return availabilityEnum;
+    }
+
+    public String getAvailabilityString() {
         return availability;
     }
 
-    public void setAvailability(AvailabilityEnum availability) {
+    public void setAvailability(AvailabilityEnum availabilityEnum) {
+        this.availabilityEnum = availabilityEnum;
+    }
+
+    public void setAvailabilityString(String availability) {
         this.availability = availability;
     }
 
@@ -656,7 +676,13 @@ public class CorporationContractsResponse implements Serializable {
         this.startLocationId = startLocationId;
     }
 
-    public CorporationContractsResponse status(StatusEnum status) {
+    public CorporationContractsResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
+        return this;
+    }
+
+    public CorporationContractsResponse statusString(String status) {
 
         this.status = status;
         return this;
@@ -669,10 +695,21 @@ public class CorporationContractsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Status of the the contract")
     public StatusEnum getStatus() {
+        if (statusEnum == null) {
+            statusEnum = StatusEnum.fromValue(status);
+        }
+        return statusEnum;
+    }
+
+    public String getStatusString() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
+    }
+
+    public void setStatusString(String status) {
         this.status = status;
     }
 
@@ -697,7 +734,13 @@ public class CorporationContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public CorporationContractsResponse type(TypeEnum type) {
+    public CorporationContractsResponse type(TypeEnum typeEnum) {
+
+        this.typeEnum = typeEnum;
+        return this;
+    }
+
+    public CorporationContractsResponse typeString(String type) {
 
         this.type = type;
         return this;
@@ -710,10 +753,21 @@ public class CorporationContractsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Type of the contract")
     public TypeEnum getType() {
+        if (typeEnum == null) {
+            typeEnum = TypeEnum.fromValue(type);
+        }
+        return typeEnum;
+    }
+
+    public String getTypeString() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(TypeEnum typeEnum) {
+        this.typeEnum = typeEnum;
+    }
+
+    public void setTypeString(String type) {
         this.type = type;
     }
 

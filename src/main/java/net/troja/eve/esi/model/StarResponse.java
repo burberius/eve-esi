@@ -274,7 +274,8 @@ public class StarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SPECTRAL_CLASS = "spectral_class";
     @SerializedName(SERIALIZED_NAME_SPECTRAL_CLASS)
-    private SpectralClassEnum spectralClass;
+    private String spectralClass;
+    private SpectralClassEnum spectralClassEnum;
 
     public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
     @SerializedName(SERIALIZED_NAME_TEMPERATURE)
@@ -384,7 +385,13 @@ public class StarResponse implements Serializable {
         this.solarSystemId = solarSystemId;
     }
 
-    public StarResponse spectralClass(SpectralClassEnum spectralClass) {
+    public StarResponse spectralClass(SpectralClassEnum spectralClassEnum) {
+
+        this.spectralClassEnum = spectralClassEnum;
+        return this;
+    }
+
+    public StarResponse spectralClassString(String spectralClass) {
 
         this.spectralClass = spectralClass;
         return this;
@@ -397,10 +404,21 @@ public class StarResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "spectral_class string")
     public SpectralClassEnum getSpectralClass() {
+        if (spectralClassEnum == null) {
+            spectralClassEnum = SpectralClassEnum.fromValue(spectralClass);
+        }
+        return spectralClassEnum;
+    }
+
+    public String getSpectralClassString() {
         return spectralClass;
     }
 
-    public void setSpectralClass(SpectralClassEnum spectralClass) {
+    public void setSpectralClass(SpectralClassEnum spectralClassEnum) {
+        this.spectralClassEnum = spectralClassEnum;
+    }
+
+    public void setSpectralClassString(String spectralClass) {
         this.spectralClass = spectralClass;
     }
 

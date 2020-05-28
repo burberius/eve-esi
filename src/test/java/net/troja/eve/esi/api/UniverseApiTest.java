@@ -173,7 +173,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseFactionsTest() throws ApiException {
         final List<FactionsResponse> response = api.getUniverseFactions(LANGUAGE, DATASOURCE, null, LANGUAGE);
 
-        assertThat(response.size(), equalTo(24));
+        assertThat(response.size(), equalTo(25));
         final FactionsResponse factionsResponse = response.get(0);
         assertThat(factionsResponse.getName(), equalTo("Caldari State"));
     }

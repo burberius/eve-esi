@@ -99,7 +99,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SENDER_TYPE = "sender_type";
     @SerializedName(SERIALIZED_NAME_SENDER_TYPE)
-    private SenderTypeEnum senderType;
+    private String senderType;
+    private SenderTypeEnum senderTypeEnum;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
     @SerializedName(SERIALIZED_NAME_TEXT)
@@ -568,7 +569,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
-    private TypeEnum type;
+    private String type;
+    private TypeEnum typeEnum;
 
     public CharacterNotificationsResponse isRead(Boolean isRead) {
 
@@ -631,7 +633,13 @@ public class CharacterNotificationsResponse implements Serializable {
         this.senderId = senderId;
     }
 
-    public CharacterNotificationsResponse senderType(SenderTypeEnum senderType) {
+    public CharacterNotificationsResponse senderType(SenderTypeEnum senderTypeEnum) {
+
+        this.senderTypeEnum = senderTypeEnum;
+        return this;
+    }
+
+    public CharacterNotificationsResponse senderTypeString(String senderType) {
 
         this.senderType = senderType;
         return this;
@@ -644,10 +652,21 @@ public class CharacterNotificationsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "sender_type string")
     public SenderTypeEnum getSenderType() {
+        if (senderTypeEnum == null) {
+            senderTypeEnum = SenderTypeEnum.fromValue(senderType);
+        }
+        return senderTypeEnum;
+    }
+
+    public String getSenderTypeString() {
         return senderType;
     }
 
-    public void setSenderType(SenderTypeEnum senderType) {
+    public void setSenderType(SenderTypeEnum senderTypeEnum) {
+        this.senderTypeEnum = senderTypeEnum;
+    }
+
+    public void setSenderTypeString(String senderType) {
         this.senderType = senderType;
     }
 
@@ -692,7 +711,13 @@ public class CharacterNotificationsResponse implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public CharacterNotificationsResponse type(TypeEnum type) {
+    public CharacterNotificationsResponse type(TypeEnum typeEnum) {
+
+        this.typeEnum = typeEnum;
+        return this;
+    }
+
+    public CharacterNotificationsResponse typeString(String type) {
 
         this.type = type;
         return this;
@@ -705,10 +730,21 @@ public class CharacterNotificationsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "type string")
     public TypeEnum getType() {
+        if (typeEnum == null) {
+            typeEnum = TypeEnum.fromValue(type);
+        }
+        return typeEnum;
+    }
+
+    public String getTypeString() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(TypeEnum typeEnum) {
+        this.typeEnum = typeEnum;
+    }
+
+    public void setTypeString(String type) {
         this.type = type;
     }
 

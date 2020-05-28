@@ -94,7 +94,8 @@ public class Clone implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
-    private LocationTypeEnum locationType;
+    private String locationType;
+    private LocationTypeEnum locationTypeEnum;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -165,7 +166,13 @@ public class Clone implements Serializable {
         this.locationId = locationId;
     }
 
-    public Clone locationType(LocationTypeEnum locationType) {
+    public Clone locationType(LocationTypeEnum locationTypeEnum) {
+
+        this.locationTypeEnum = locationTypeEnum;
+        return this;
+    }
+
+    public Clone locationTypeString(String locationType) {
 
         this.locationType = locationType;
         return this;
@@ -178,10 +185,21 @@ public class Clone implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
+        if (locationTypeEnum == null) {
+            locationTypeEnum = LocationTypeEnum.fromValue(locationType);
+        }
+        return locationTypeEnum;
+    }
+
+    public String getLocationTypeString() {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
+    public void setLocationType(LocationTypeEnum locationTypeEnum) {
+        this.locationTypeEnum = locationTypeEnum;
+    }
+
+    public void setLocationTypeString(String locationType) {
         this.locationType = locationType;
     }
 

@@ -66,10 +66,22 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
   {{/vendorExtensions.x-is-jackson-optional-nullable}}
   {{^vendorExtensions.x-is-jackson-optional-nullable}}
   {{#isContainer}}
+  {{#isEnum}}
+  private List<String> {{name}}{{#required}}{{#defaultValue}} = {{{.}}}{{/defaultValue}}{{/required}}{{^required}} = null{{/required}};
+  private {{{datatypeWithEnum}}} {{name}}Enum{{#required}}{{#defaultValue}} = {{{.}}}{{/defaultValue}}{{/required}}{{^required}} = null{{/required}};
+  {{/isEnum}}
+  {{^isEnum}}
   private {{{datatypeWithEnum}}} {{name}}{{#required}}{{#defaultValue}} = {{{.}}}{{/defaultValue}}{{/required}}{{^required}} = null{{/required}};
+  {{/isEnum}}
   {{/isContainer}}
   {{^isContainer}}
+  {{#isEnum}}
+  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} String {{name}}{{#defaultValue}} = {{{.}}}.getValue(){{/defaultValue}};
+  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}Enum{{#defaultValue}} = {{{.}}}{{/defaultValue}};
+  {{/isEnum}}
+  {{^isEnum}}
   {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
+  {{/isEnum}}
   {{/isContainer}}
   {{/vendorExtensions.x-is-jackson-optional-nullable}}
 
@@ -98,14 +110,21 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
   {{#vars}}
 
   {{^isReadOnly}}
-  public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
+  public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}) {
+    {{#vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}}{{#isEnum}}Enum{{/isEnum}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});{{/vendorExtensions.x-is-jackson-optional-nullable}}
+    {{^vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}}{{#isEnum}}Enum{{/isEnum}} = {{name}}{{#isEnum}}Enum{{/isEnum}};{{/vendorExtensions.x-is-jackson-optional-nullable}}
+    return this;
+  }
+  {{#isEnum}}
+  public {{classname}} {{name}}String({{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
     {{#vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});{{/vendorExtensions.x-is-jackson-optional-nullable}}
     {{^vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}} = {{name}};{{/vendorExtensions.x-is-jackson-optional-nullable}}
     return this;
   }
+  {{/isEnum}}
   {{#isListContainer}}
 
-  public {{classname}} add{{nameInCamelCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
+  public {{classname}} add{{nameInCamelCase}}Item({{#isEnum}}String{{/isEnum}}{{^isEnum}}{{{items.datatypeWithEnum}}}{{/isEnum}} {{name}}Item) {
     {{#vendorExtensions.x-is-jackson-optional-nullable}}
     if (this.{{name}} == null || !this.{{name}}.isPresent()) {
       this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{{defaultValue}}});
@@ -197,9 +216,42 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
     return {{name}}.orElse(null);
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
     {{^vendorExtensions.x-is-jackson-optional-nullable}}
+    {{#isEnum}}
+    {{#isContainer}}
+    if ({{name}}Enum == null) {
+      {{name}}Enum = new ArrayList<>();
+      for (String value : {{name}}) {
+        {{name}}Enum.add({{{items.datatypeWithEnum}}}.fromValue(value));
+      }
+    }
+    {{/isContainer}}
+    {{^isContainer}}
+    if ({{name}}Enum == null) {
+      {{name}}Enum = {{{datatypeWithEnum}}}.fromValue({{name}});
+    }
+    {{/isContainer}}
+    return {{name}}Enum;
+    {{/isEnum}}
+    {{^isEnum}}
+    return {{name}};
+    {{/isEnum}}
+    {{/vendorExtensions.x-is-jackson-optional-nullable}}
+  }
+  {{#isEnum}}
+  public {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
+    {{#vendorExtensions.x-is-jackson-optional-nullable}}
+    {{#isReadOnly}}{{! A readonly attribute doesn't have setter => jackson will set null directly if explicitly returned by API, so make sure we have an empty JsonNullable}}
+    if ({{name}} == null) {
+      {{name}} = JsonNullable.<{{{datatypeWithEnum}}}>{{#defaultValue}}of({{{.}}}){{/defaultValue}}{{^defaultValue}}undefined(){{/defaultValue}};
+    }
+    {{/isReadOnly}}
+    return {{name}}.orElse(null);
+    {{/vendorExtensions.x-is-jackson-optional-nullable}}
+    {{^vendorExtensions.x-is-jackson-optional-nullable}}
     return {{name}};
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
   }
+  {{/isEnum}}
 
   {{#vendorExtensions.x-is-jackson-optional-nullable}}
 {{> jackson_annotations}}
@@ -215,7 +267,16 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
   {{/vendorExtensions.x-is-jackson-optional-nullable}}
 
   {{^isReadOnly}}
-  public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
+  public void {{setter}}({{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}) {
+    {{#vendorExtensions.x-is-jackson-optional-nullable}}
+    this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});
+    {{/vendorExtensions.x-is-jackson-optional-nullable}}
+    {{^vendorExtensions.x-is-jackson-optional-nullable}}
+    this.{{name}}{{#isEnum}}Enum{{/isEnum}} = {{name}}{{#isEnum}}Enum{{/isEnum}};
+    {{/vendorExtensions.x-is-jackson-optional-nullable}}
+  }
+  {{#isEnum}}
+  public void {{setter}}String({{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{name}}) {
     {{#vendorExtensions.x-is-jackson-optional-nullable}}
     this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
@@ -223,6 +284,7 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
     this.{{name}} = {{name}};
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
   }
+  {{/isEnum}}
   {{/isReadOnly}}
 
   {{/vars}}

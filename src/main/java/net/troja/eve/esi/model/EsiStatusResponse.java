@@ -98,7 +98,8 @@ public class EsiStatusResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_STATUS = "status";
     @SerializedName(SERIALIZED_NAME_STATUS)
-    private StatusEnum status;
+    private String status;
+    private StatusEnum statusEnum;
 
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
@@ -164,7 +165,13 @@ public class EsiStatusResponse implements Serializable {
         this.route = route;
     }
 
-    public EsiStatusResponse status(StatusEnum status) {
+    public EsiStatusResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
+        return this;
+    }
+
+    public EsiStatusResponse statusString(String status) {
 
         this.status = status;
         return this;
@@ -179,10 +186,21 @@ public class EsiStatusResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Vague route status. Green is good, yellow is degraded, meaning slow or potentially dropping requests. Red means most requests are not succeeding and/or are very slow (5s+) on average.")
     public StatusEnum getStatus() {
+        if (statusEnum == null) {
+            statusEnum = StatusEnum.fromValue(status);
+        }
+        return statusEnum;
+    }
+
+    public String getStatusString() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusEnum statusEnum) {
+        this.statusEnum = statusEnum;
+    }
+
+    public void setStatusString(String status) {
         this.status = status;
     }
 

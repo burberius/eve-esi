@@ -93,7 +93,8 @@ public class CharacterCalendarResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_EVENT_RESPONSE = "event_response";
     @SerializedName(SERIALIZED_NAME_EVENT_RESPONSE)
-    private EventResponseEnum eventResponse;
+    private String eventResponse;
+    private EventResponseEnum eventResponseEnum;
 
     public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
     @SerializedName(SERIALIZED_NAME_IMPORTANCE)
@@ -145,7 +146,13 @@ public class CharacterCalendarResponse implements Serializable {
         this.eventId = eventId;
     }
 
-    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponse) {
+    public CharacterCalendarResponse eventResponse(EventResponseEnum eventResponseEnum) {
+
+        this.eventResponseEnum = eventResponseEnum;
+        return this;
+    }
+
+    public CharacterCalendarResponse eventResponseString(String eventResponse) {
 
         this.eventResponse = eventResponse;
         return this;
@@ -159,10 +166,21 @@ public class CharacterCalendarResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "event_response string")
     public EventResponseEnum getEventResponse() {
+        if (eventResponseEnum == null) {
+            eventResponseEnum = EventResponseEnum.fromValue(eventResponse);
+        }
+        return eventResponseEnum;
+    }
+
+    public String getEventResponseString() {
         return eventResponse;
     }
 
-    public void setEventResponse(EventResponseEnum eventResponse) {
+    public void setEventResponse(EventResponseEnum eventResponseEnum) {
+        this.eventResponseEnum = eventResponseEnum;
+    }
+
+    public void setEventResponseString(String eventResponse) {
         this.eventResponse = eventResponse;
     }
 

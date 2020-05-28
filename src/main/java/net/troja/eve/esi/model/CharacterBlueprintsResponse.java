@@ -232,7 +232,8 @@ public class CharacterBlueprintsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
+    private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -278,7 +279,13 @@ public class CharacterBlueprintsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CharacterBlueprintsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CharacterBlueprintsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
+
+        this.locationFlagEnum = locationFlagEnum;
+        return this;
+    }
+
+    public CharacterBlueprintsResponse locationFlagString(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -291,10 +298,21 @@ public class CharacterBlueprintsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Type of the location_id")
     public LocationFlagEnum getLocationFlag() {
+        if (locationFlagEnum == null) {
+            locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
+        }
+        return locationFlagEnum;
+    }
+
+    public String getLocationFlagString() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
+        this.locationFlagEnum = locationFlagEnum;
+    }
+
+    public void setLocationFlagString(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 

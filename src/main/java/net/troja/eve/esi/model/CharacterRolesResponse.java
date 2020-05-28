@@ -174,7 +174,8 @@ public class CharacterRolesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<RolesEnum> roles = null;
+    private List<String> roles = null;
+    private List<RolesEnum> rolesEnum = null;
 
     /**
      * roles_at_base string
@@ -317,7 +318,8 @@ public class CharacterRolesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<RolesAtBaseEnum> rolesAtBase = null;
+    private List<String> rolesAtBase = null;
+    private List<RolesAtBaseEnum> rolesAtBaseEnum = null;
 
     /**
      * roles_at_hq string
@@ -460,7 +462,8 @@ public class CharacterRolesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<RolesAtHqEnum> rolesAtHq = null;
+    private List<String> rolesAtHq = null;
+    private List<RolesAtHqEnum> rolesAtHqEnum = null;
 
     /**
      * roles_at_other string
@@ -603,15 +606,22 @@ public class CharacterRolesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<RolesAtOtherEnum> rolesAtOther = null;
+    private List<String> rolesAtOther = null;
+    private List<RolesAtOtherEnum> rolesAtOtherEnum = null;
 
-    public CharacterRolesResponse roles(List<RolesEnum> roles) {
+    public CharacterRolesResponse roles(List<RolesEnum> rolesEnum) {
+
+        this.rolesEnum = rolesEnum;
+        return this;
+    }
+
+    public CharacterRolesResponse rolesString(List<String> roles) {
 
         this.roles = roles;
         return this;
     }
 
-    public CharacterRolesResponse addRolesItem(RolesEnum rolesItem) {
+    public CharacterRolesResponse addRolesItem(String rolesItem) {
         if (this.roles == null) {
             this.roles = new ArrayList<>();
         }
@@ -627,20 +637,40 @@ public class CharacterRolesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles array")
     public List<RolesEnum> getRoles() {
+        if (rolesEnum == null) {
+            rolesEnum = new ArrayList<>();
+            for (String value : roles) {
+                rolesEnum.add(RolesEnum.fromValue(value));
+            }
+        }
+        return rolesEnum;
+    }
+
+    public List<String> getRolesString() {
         return roles;
     }
 
-    public void setRoles(List<RolesEnum> roles) {
+    public void setRoles(List<RolesEnum> rolesEnum) {
+        this.rolesEnum = rolesEnum;
+    }
+
+    public void setRolesString(List<String> roles) {
         this.roles = roles;
     }
 
-    public CharacterRolesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public CharacterRolesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
+
+        this.rolesAtBaseEnum = rolesAtBaseEnum;
+        return this;
+    }
+
+    public CharacterRolesResponse rolesAtBaseString(List<String> rolesAtBase) {
 
         this.rolesAtBase = rolesAtBase;
         return this;
     }
 
-    public CharacterRolesResponse addRolesAtBaseItem(RolesAtBaseEnum rolesAtBaseItem) {
+    public CharacterRolesResponse addRolesAtBaseItem(String rolesAtBaseItem) {
         if (this.rolesAtBase == null) {
             this.rolesAtBase = new ArrayList<>();
         }
@@ -656,20 +686,40 @@ public class CharacterRolesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_base array")
     public List<RolesAtBaseEnum> getRolesAtBase() {
+        if (rolesAtBaseEnum == null) {
+            rolesAtBaseEnum = new ArrayList<>();
+            for (String value : rolesAtBase) {
+                rolesAtBaseEnum.add(RolesAtBaseEnum.fromValue(value));
+            }
+        }
+        return rolesAtBaseEnum;
+    }
+
+    public List<String> getRolesAtBaseString() {
         return rolesAtBase;
     }
 
-    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBase) {
+    public void setRolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
+        this.rolesAtBaseEnum = rolesAtBaseEnum;
+    }
+
+    public void setRolesAtBaseString(List<String> rolesAtBase) {
         this.rolesAtBase = rolesAtBase;
     }
 
-    public CharacterRolesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public CharacterRolesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
+
+        this.rolesAtHqEnum = rolesAtHqEnum;
+        return this;
+    }
+
+    public CharacterRolesResponse rolesAtHqString(List<String> rolesAtHq) {
 
         this.rolesAtHq = rolesAtHq;
         return this;
     }
 
-    public CharacterRolesResponse addRolesAtHqItem(RolesAtHqEnum rolesAtHqItem) {
+    public CharacterRolesResponse addRolesAtHqItem(String rolesAtHqItem) {
         if (this.rolesAtHq == null) {
             this.rolesAtHq = new ArrayList<>();
         }
@@ -685,20 +735,40 @@ public class CharacterRolesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_hq array")
     public List<RolesAtHqEnum> getRolesAtHq() {
+        if (rolesAtHqEnum == null) {
+            rolesAtHqEnum = new ArrayList<>();
+            for (String value : rolesAtHq) {
+                rolesAtHqEnum.add(RolesAtHqEnum.fromValue(value));
+            }
+        }
+        return rolesAtHqEnum;
+    }
+
+    public List<String> getRolesAtHqString() {
         return rolesAtHq;
     }
 
-    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHq) {
+    public void setRolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
+        this.rolesAtHqEnum = rolesAtHqEnum;
+    }
+
+    public void setRolesAtHqString(List<String> rolesAtHq) {
         this.rolesAtHq = rolesAtHq;
     }
 
-    public CharacterRolesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public CharacterRolesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
+
+        this.rolesAtOtherEnum = rolesAtOtherEnum;
+        return this;
+    }
+
+    public CharacterRolesResponse rolesAtOtherString(List<String> rolesAtOther) {
 
         this.rolesAtOther = rolesAtOther;
         return this;
     }
 
-    public CharacterRolesResponse addRolesAtOtherItem(RolesAtOtherEnum rolesAtOtherItem) {
+    public CharacterRolesResponse addRolesAtOtherItem(String rolesAtOtherItem) {
         if (this.rolesAtOther == null) {
             this.rolesAtOther = new ArrayList<>();
         }
@@ -714,10 +784,24 @@ public class CharacterRolesResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "roles_at_other array")
     public List<RolesAtOtherEnum> getRolesAtOther() {
+        if (rolesAtOtherEnum == null) {
+            rolesAtOtherEnum = new ArrayList<>();
+            for (String value : rolesAtOther) {
+                rolesAtOtherEnum.add(RolesAtOtherEnum.fromValue(value));
+            }
+        }
+        return rolesAtOtherEnum;
+    }
+
+    public List<String> getRolesAtOtherString() {
         return rolesAtOther;
     }
 
-    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOther) {
+    public void setRolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
+        this.rolesAtOtherEnum = rolesAtOtherEnum;
+    }
+
+    public void setRolesAtOtherString(List<String> rolesAtOther) {
         this.rolesAtOther = rolesAtOther;
     }
 

@@ -110,7 +110,8 @@ public class SovereigntyCampaignsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_EVENT_TYPE = "event_type";
     @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-    private EventTypeEnum eventType;
+    private String eventType;
+    private EventTypeEnum eventTypeEnum;
 
     public static final String SERIALIZED_NAME_PARTICIPANTS = "participants";
     @SerializedName(SERIALIZED_NAME_PARTICIPANTS)
@@ -231,7 +232,13 @@ public class SovereigntyCampaignsResponse implements Serializable {
         this.defenderScore = defenderScore;
     }
 
-    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventType) {
+    public SovereigntyCampaignsResponse eventType(EventTypeEnum eventTypeEnum) {
+
+        this.eventTypeEnum = eventTypeEnum;
+        return this;
+    }
+
+    public SovereigntyCampaignsResponse eventTypeString(String eventType) {
 
         this.eventType = eventType;
         return this;
@@ -246,10 +253,21 @@ public class SovereigntyCampaignsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
     public EventTypeEnum getEventType() {
+        if (eventTypeEnum == null) {
+            eventTypeEnum = EventTypeEnum.fromValue(eventType);
+        }
+        return eventTypeEnum;
+    }
+
+    public String getEventTypeString() {
         return eventType;
     }
 
-    public void setEventType(EventTypeEnum eventType) {
+    public void setEventType(EventTypeEnum eventTypeEnum) {
+        this.eventTypeEnum = eventTypeEnum;
+    }
+
+    public void setEventTypeString(String eventType) {
         this.eventType = eventType;
     }
 

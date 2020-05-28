@@ -165,7 +165,8 @@ public class StationResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
-    private List<ServicesEnum> services = new ArrayList<>();
+    private List<String> services = new ArrayList<>();
+    private List<ServicesEnum> servicesEnum = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_STATION_ID = "station_id";
     @SerializedName(SERIALIZED_NAME_STATION_ID)
@@ -341,13 +342,19 @@ public class StationResponse implements Serializable {
         this.reprocessingStationsTake = reprocessingStationsTake;
     }
 
-    public StationResponse services(List<ServicesEnum> services) {
+    public StationResponse services(List<ServicesEnum> servicesEnum) {
+
+        this.servicesEnum = servicesEnum;
+        return this;
+    }
+
+    public StationResponse servicesString(List<String> services) {
 
         this.services = services;
         return this;
     }
 
-    public StationResponse addServicesItem(ServicesEnum servicesItem) {
+    public StationResponse addServicesItem(String servicesItem) {
         this.services.add(servicesItem);
         return this;
     }
@@ -359,10 +366,24 @@ public class StationResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "services array")
     public List<ServicesEnum> getServices() {
+        if (servicesEnum == null) {
+            servicesEnum = new ArrayList<>();
+            for (String value : services) {
+                servicesEnum.add(ServicesEnum.fromValue(value));
+            }
+        }
+        return servicesEnum;
+    }
+
+    public List<String> getServicesString() {
         return services;
     }
 
-    public void setServices(List<ServicesEnum> services) {
+    public void setServices(List<ServicesEnum> servicesEnum) {
+        this.servicesEnum = servicesEnum;
+    }
+
+    public void setServicesString(List<String> services) {
         this.services = services;
     }
 

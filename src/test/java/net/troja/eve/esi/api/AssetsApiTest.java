@@ -57,6 +57,10 @@ public class AssetsApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         assertThat(response.size(), greaterThan(0));
+        assertThat(response.get(0).getLocationFlag(), notNullValue());
+        assertThat(response.get(0).getLocationFlagString(), notNullValue());
+        assertThat(response.get(0).getLocationType(), notNullValue());
+        assertThat(response.get(0).getLocationTypeString(), notNullValue());
     }
 
     /**

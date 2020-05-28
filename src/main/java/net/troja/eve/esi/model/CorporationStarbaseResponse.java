@@ -95,7 +95,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ANCHOR = "anchor";
     @SerializedName(SERIALIZED_NAME_ANCHOR)
-    private AnchorEnum anchor;
+    private String anchor;
+    private AnchorEnum anchorEnum;
 
     public static final String SERIALIZED_NAME_ATTACK_IF_AT_WAR = "attack_if_at_war";
     @SerializedName(SERIALIZED_NAME_ATTACK_IF_AT_WAR)
@@ -166,7 +167,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FUEL_BAY_TAKE = "fuel_bay_take";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_TAKE)
-    private FuelBayTakeEnum fuelBayTake;
+    private String fuelBayTake;
+    private FuelBayTakeEnum fuelBayTakeEnum;
 
     /**
      * Who can view the starbase (POS)&#39;s fule bay. Characters either need to
@@ -224,7 +226,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FUEL_BAY_VIEW = "fuel_bay_view";
     @SerializedName(SERIALIZED_NAME_FUEL_BAY_VIEW)
-    private FuelBayViewEnum fuelBayView;
+    private String fuelBayView;
+    private FuelBayViewEnum fuelBayViewEnum;
 
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
@@ -283,7 +286,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_OFFLINE = "offline";
     @SerializedName(SERIALIZED_NAME_OFFLINE)
-    private OfflineEnum offline;
+    private String offline;
+    private OfflineEnum offlineEnum;
 
     /**
      * Who can online starbase (POS) and its structures
@@ -338,7 +342,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ONLINE = "online";
     @SerializedName(SERIALIZED_NAME_ONLINE)
-    private OnlineEnum online;
+    private String online;
+    private OnlineEnum onlineEnum;
 
     /**
      * Who can unanchor starbase (POS) and its structures
@@ -393,7 +398,8 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_UNANCHOR = "unanchor";
     @SerializedName(SERIALIZED_NAME_UNANCHOR)
-    private UnanchorEnum unanchor;
+    private String unanchor;
+    private UnanchorEnum unanchorEnum;
 
     public static final String SERIALIZED_NAME_USE_ALLIANCE_STANDINGS = "use_alliance_standings";
     @SerializedName(SERIALIZED_NAME_USE_ALLIANCE_STANDINGS)
@@ -439,7 +445,13 @@ public class CorporationStarbaseResponse implements Serializable {
         this.allowCorporationMembers = allowCorporationMembers;
     }
 
-    public CorporationStarbaseResponse anchor(AnchorEnum anchor) {
+    public CorporationStarbaseResponse anchor(AnchorEnum anchorEnum) {
+
+        this.anchorEnum = anchorEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse anchorString(String anchor) {
 
         this.anchor = anchor;
         return this;
@@ -452,10 +464,21 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can anchor starbase (POS) and its structures")
     public AnchorEnum getAnchor() {
+        if (anchorEnum == null) {
+            anchorEnum = AnchorEnum.fromValue(anchor);
+        }
+        return anchorEnum;
+    }
+
+    public String getAnchorString() {
         return anchor;
     }
 
-    public void setAnchor(AnchorEnum anchor) {
+    public void setAnchor(AnchorEnum anchorEnum) {
+        this.anchorEnum = anchorEnum;
+    }
+
+    public void setAnchorString(String anchor) {
         this.anchor = anchor;
     }
 
@@ -543,7 +566,13 @@ public class CorporationStarbaseResponse implements Serializable {
         this.attackStandingThreshold = attackStandingThreshold;
     }
 
-    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTake) {
+    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
+
+        this.fuelBayTakeEnum = fuelBayTakeEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse fuelBayTakeString(String fuelBayTake) {
 
         this.fuelBayTake = fuelBayTake;
         return this;
@@ -556,14 +585,31 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can take fuel blocks out of the starbase (POS)'s fuel bay")
     public FuelBayTakeEnum getFuelBayTake() {
+        if (fuelBayTakeEnum == null) {
+            fuelBayTakeEnum = FuelBayTakeEnum.fromValue(fuelBayTake);
+        }
+        return fuelBayTakeEnum;
+    }
+
+    public String getFuelBayTakeString() {
         return fuelBayTake;
     }
 
-    public void setFuelBayTake(FuelBayTakeEnum fuelBayTake) {
+    public void setFuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
+        this.fuelBayTakeEnum = fuelBayTakeEnum;
+    }
+
+    public void setFuelBayTakeString(String fuelBayTake) {
         this.fuelBayTake = fuelBayTake;
     }
 
-    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayView) {
+    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayViewEnum) {
+
+        this.fuelBayViewEnum = fuelBayViewEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse fuelBayViewString(String fuelBayView) {
 
         this.fuelBayView = fuelBayView;
         return this;
@@ -579,10 +625,21 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can view the starbase (POS)'s fule bay. Characters either need to have required role or belong to the starbase (POS) owner's corporation or alliance, as described by the enum, all other access settings follows the same scheme")
     public FuelBayViewEnum getFuelBayView() {
+        if (fuelBayViewEnum == null) {
+            fuelBayViewEnum = FuelBayViewEnum.fromValue(fuelBayView);
+        }
+        return fuelBayViewEnum;
+    }
+
+    public String getFuelBayViewString() {
         return fuelBayView;
     }
 
-    public void setFuelBayView(FuelBayViewEnum fuelBayView) {
+    public void setFuelBayView(FuelBayViewEnum fuelBayViewEnum) {
+        this.fuelBayViewEnum = fuelBayViewEnum;
+    }
+
+    public void setFuelBayViewString(String fuelBayView) {
         this.fuelBayView = fuelBayView;
     }
 
@@ -616,7 +673,13 @@ public class CorporationStarbaseResponse implements Serializable {
         this.fuels = fuels;
     }
 
-    public CorporationStarbaseResponse offline(OfflineEnum offline) {
+    public CorporationStarbaseResponse offline(OfflineEnum offlineEnum) {
+
+        this.offlineEnum = offlineEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse offlineString(String offline) {
 
         this.offline = offline;
         return this;
@@ -629,14 +692,31 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can offline starbase (POS) and its structures")
     public OfflineEnum getOffline() {
+        if (offlineEnum == null) {
+            offlineEnum = OfflineEnum.fromValue(offline);
+        }
+        return offlineEnum;
+    }
+
+    public String getOfflineString() {
         return offline;
     }
 
-    public void setOffline(OfflineEnum offline) {
+    public void setOffline(OfflineEnum offlineEnum) {
+        this.offlineEnum = offlineEnum;
+    }
+
+    public void setOfflineString(String offline) {
         this.offline = offline;
     }
 
-    public CorporationStarbaseResponse online(OnlineEnum online) {
+    public CorporationStarbaseResponse online(OnlineEnum onlineEnum) {
+
+        this.onlineEnum = onlineEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse onlineString(String online) {
 
         this.online = online;
         return this;
@@ -649,14 +729,31 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can online starbase (POS) and its structures")
     public OnlineEnum getOnline() {
+        if (onlineEnum == null) {
+            onlineEnum = OnlineEnum.fromValue(online);
+        }
+        return onlineEnum;
+    }
+
+    public String getOnlineString() {
         return online;
     }
 
-    public void setOnline(OnlineEnum online) {
+    public void setOnline(OnlineEnum onlineEnum) {
+        this.onlineEnum = onlineEnum;
+    }
+
+    public void setOnlineString(String online) {
         this.online = online;
     }
 
-    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchor) {
+    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchorEnum) {
+
+        this.unanchorEnum = unanchorEnum;
+        return this;
+    }
+
+    public CorporationStarbaseResponse unanchorString(String unanchor) {
 
         this.unanchor = unanchor;
         return this;
@@ -669,10 +766,21 @@ public class CorporationStarbaseResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "Who can unanchor starbase (POS) and its structures")
     public UnanchorEnum getUnanchor() {
+        if (unanchorEnum == null) {
+            unanchorEnum = UnanchorEnum.fromValue(unanchor);
+        }
+        return unanchorEnum;
+    }
+
+    public String getUnanchorString() {
         return unanchor;
     }
 
-    public void setUnanchor(UnanchorEnum unanchor) {
+    public void setUnanchor(UnanchorEnum unanchorEnum) {
+        this.unanchorEnum = unanchorEnum;
+    }
+
+    public void setUnanchorString(String unanchor) {
         this.unanchor = unanchor;
     }
 

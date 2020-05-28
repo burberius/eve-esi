@@ -320,7 +320,8 @@ public class CorporationAssetsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_FLAG = "location_flag";
     @SerializedName(SERIALIZED_NAME_LOCATION_FLAG)
-    private LocationFlagEnum locationFlag;
+    private String locationFlag;
+    private LocationFlagEnum locationFlagEnum;
 
     public static final String SERIALIZED_NAME_LOCATION_ID = "location_id";
     @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -379,7 +380,8 @@ public class CorporationAssetsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LOCATION_TYPE = "location_type";
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
-    private LocationTypeEnum locationType;
+    private String locationType;
+    private LocationTypeEnum locationTypeEnum;
 
     public static final String SERIALIZED_NAME_QUANTITY = "quantity";
     @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -450,7 +452,13 @@ public class CorporationAssetsResponse implements Serializable {
         this.itemId = itemId;
     }
 
-    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlag) {
+    public CorporationAssetsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
+
+        this.locationFlagEnum = locationFlagEnum;
+        return this;
+    }
+
+    public CorporationAssetsResponse locationFlagString(String locationFlag) {
 
         this.locationFlag = locationFlag;
         return this;
@@ -463,10 +471,21 @@ public class CorporationAssetsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "location_flag string")
     public LocationFlagEnum getLocationFlag() {
+        if (locationFlagEnum == null) {
+            locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
+        }
+        return locationFlagEnum;
+    }
+
+    public String getLocationFlagString() {
         return locationFlag;
     }
 
-    public void setLocationFlag(LocationFlagEnum locationFlag) {
+    public void setLocationFlag(LocationFlagEnum locationFlagEnum) {
+        this.locationFlagEnum = locationFlagEnum;
+    }
+
+    public void setLocationFlagString(String locationFlag) {
         this.locationFlag = locationFlag;
     }
 
@@ -490,7 +509,13 @@ public class CorporationAssetsResponse implements Serializable {
         this.locationId = locationId;
     }
 
-    public CorporationAssetsResponse locationType(LocationTypeEnum locationType) {
+    public CorporationAssetsResponse locationType(LocationTypeEnum locationTypeEnum) {
+
+        this.locationTypeEnum = locationTypeEnum;
+        return this;
+    }
+
+    public CorporationAssetsResponse locationTypeString(String locationType) {
 
         this.locationType = locationType;
         return this;
@@ -503,10 +528,21 @@ public class CorporationAssetsResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
+        if (locationTypeEnum == null) {
+            locationTypeEnum = LocationTypeEnum.fromValue(locationType);
+        }
+        return locationTypeEnum;
+    }
+
+    public String getLocationTypeString() {
         return locationType;
     }
 
-    public void setLocationType(LocationTypeEnum locationType) {
+    public void setLocationType(LocationTypeEnum locationTypeEnum) {
+        this.locationTypeEnum = locationTypeEnum;
+    }
+
+    public void setLocationTypeString(String locationType) {
         this.locationType = locationType;
     }
 

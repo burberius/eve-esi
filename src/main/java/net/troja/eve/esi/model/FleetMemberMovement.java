@@ -91,7 +91,8 @@ public class FleetMemberMovement implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLE = "role";
     @SerializedName(SERIALIZED_NAME_ROLE)
-    private RoleEnum role;
+    private String role;
+    private RoleEnum roleEnum;
 
     public static final String SERIALIZED_NAME_SQUAD_ID = "squad_id";
     @SerializedName(SERIALIZED_NAME_SQUAD_ID)
@@ -101,7 +102,13 @@ public class FleetMemberMovement implements Serializable {
     @SerializedName(SERIALIZED_NAME_WING_ID)
     private Long wingId;
 
-    public FleetMemberMovement role(RoleEnum role) {
+    public FleetMemberMovement role(RoleEnum roleEnum) {
+
+        this.roleEnum = roleEnum;
+        return this;
+    }
+
+    public FleetMemberMovement roleString(String role) {
 
         this.role = role;
         return this;
@@ -121,10 +128,21 @@ public class FleetMemberMovement implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.")
     public RoleEnum getRole() {
+        if (roleEnum == null) {
+            roleEnum = RoleEnum.fromValue(role);
+        }
+        return roleEnum;
+    }
+
+    public String getRoleString() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(RoleEnum roleEnum) {
+        this.roleEnum = roleEnum;
+    }
+
+    public void setRoleString(String role) {
         this.role = role;
     }
 

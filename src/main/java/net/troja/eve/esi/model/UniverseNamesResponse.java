@@ -94,7 +94,8 @@ public class UniverseNamesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_CATEGORY = "category";
     @SerializedName(SERIALIZED_NAME_CATEGORY)
-    private CategoryEnum category;
+    private String category;
+    private CategoryEnum categoryEnum;
 
     public static final String SERIALIZED_NAME_ID = "id";
     @SerializedName(SERIALIZED_NAME_ID)
@@ -104,7 +105,13 @@ public class UniverseNamesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public UniverseNamesResponse category(CategoryEnum category) {
+    public UniverseNamesResponse category(CategoryEnum categoryEnum) {
+
+        this.categoryEnum = categoryEnum;
+        return this;
+    }
+
+    public UniverseNamesResponse categoryString(String category) {
 
         this.category = category;
         return this;
@@ -117,10 +124,21 @@ public class UniverseNamesResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "category string")
     public CategoryEnum getCategory() {
+        if (categoryEnum == null) {
+            categoryEnum = CategoryEnum.fromValue(category);
+        }
+        return categoryEnum;
+    }
+
+    public String getCategoryString() {
         return category;
     }
 
-    public void setCategory(CategoryEnum category) {
+    public void setCategory(CategoryEnum categoryEnum) {
+        this.categoryEnum = categoryEnum;
+    }
+
+    public void setCategoryString(String category) {
         this.category = category;
     }
 

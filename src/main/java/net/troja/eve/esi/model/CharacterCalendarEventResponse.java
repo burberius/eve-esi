@@ -111,7 +111,8 @@ public class CharacterCalendarEventResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_OWNER_TYPE = "owner_type";
     @SerializedName(SERIALIZED_NAME_OWNER_TYPE)
-    private OwnerTypeEnum ownerType;
+    private String ownerType;
+    private OwnerTypeEnum ownerTypeEnum;
 
     public static final String SERIALIZED_NAME_RESPONSE = "response";
     @SerializedName(SERIALIZED_NAME_RESPONSE)
@@ -245,7 +246,13 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.ownerName = ownerName;
     }
 
-    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerType) {
+    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerTypeEnum) {
+
+        this.ownerTypeEnum = ownerTypeEnum;
+        return this;
+    }
+
+    public CharacterCalendarEventResponse ownerTypeString(String ownerType) {
 
         this.ownerType = ownerType;
         return this;
@@ -258,10 +265,21 @@ public class CharacterCalendarEventResponse implements Serializable {
      **/
     @ApiModelProperty(required = true, value = "owner_type string")
     public OwnerTypeEnum getOwnerType() {
+        if (ownerTypeEnum == null) {
+            ownerTypeEnum = OwnerTypeEnum.fromValue(ownerType);
+        }
+        return ownerTypeEnum;
+    }
+
+    public String getOwnerTypeString() {
         return ownerType;
     }
 
-    public void setOwnerType(OwnerTypeEnum ownerType) {
+    public void setOwnerType(OwnerTypeEnum ownerTypeEnum) {
+        this.ownerTypeEnum = ownerTypeEnum;
+    }
+
+    public void setOwnerTypeString(String ownerType) {
         this.ownerType = ownerType;
     }
 
