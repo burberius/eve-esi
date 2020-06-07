@@ -9,6 +9,7 @@ A Java client library for the EVE Swagger Interface (ESI)
 
 Enum changes no longer require a version bumb in ESI, therefor eve-esi will return `null` for unknown enum values.
 You can get the string value of the unknown enum with `get[VariableName]String()`
+We don't check for changes regularly, so please, make a issue (or even better a PR with the changes) if you need the enum values updated.
 
 ## Version 3.0.0 changes
 After several years with many changes to ESI it is now quite stable, so
