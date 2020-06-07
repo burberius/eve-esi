@@ -470,6 +470,8 @@ public class CharacterNotificationsResponse implements Serializable {
         STRUCTUREDESTROYED("StructureDestroyed"),
 
         STRUCTUREFUELALERT("StructureFuelAlert"),
+        
+        STRUCTUREIMPENDINGABANDONMENTASSETSATRISK("StructureImpendingAbandonmentAssetsAtRisk"),
 
         STRUCTUREITEMSDELIVERED("StructureItemsDelivered"),
 
