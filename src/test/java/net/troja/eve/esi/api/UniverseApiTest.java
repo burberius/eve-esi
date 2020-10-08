@@ -175,7 +175,7 @@ public class UniverseApiTest extends GeneralApiTest {
 
         assertThat(response.size(), equalTo(25));
         final FactionsResponse factionsResponse = response.get(0);
-        assertThat(factionsResponse.getName(), equalTo("Minmatar Republic"));
+        assertThat(factionsResponse.getName(), equalTo("Caldari State"));
     }
 
     /**
