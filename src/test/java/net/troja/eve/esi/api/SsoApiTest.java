@@ -33,11 +33,11 @@ public class SsoApiTest extends GeneralApiTest {
     }
 
     private void compareMethods(Class<?> c1, Class<?> c2) {
-		Set<String> methods1 = new HashSet<>();
+        Set<String> methods1 = new HashSet<>();
         for (Method method : c1.getMethods()) {
             methods1.add(method.getName());
         }
-		Set<String> methods2 = new HashSet<>();
+        Set<String> methods2 = new HashSet<>();
         for (Method method : c2.getMethods()) {
             methods2.add(method.getName());
         }
@@ -47,12 +47,12 @@ public class SsoApiTest extends GeneralApiTest {
         for (String methodName : methods2) {
             assertThat(methodName + "not found", methods1.contains(methodName), equalTo(true));
         }
-	}
-	
-	@Test
-	public void testOverwrite() {
-		compareMethods(CharacterInfo.class, EsiVerifyResponse.class);
-	}
+    }
+
+    @Test
+    public void testOverwrite() {
+        compareMethods(CharacterInfo.class, EsiVerifyResponse.class);
+    }
 
     @Test
     public void getCharacterInfoTest() throws ApiException {

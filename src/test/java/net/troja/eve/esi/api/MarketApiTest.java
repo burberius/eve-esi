@@ -240,8 +240,8 @@ public class MarketApiTest extends GeneralApiTest {
         //Save all results in this List
         final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
 
-		//Step 1: Get first page
-		//Get market orders
+        //Step 1: Get first page
+        //Get market orders
         ApiResponse<List<MarketOrdersResponse>> response = update(new Update<ApiResponse<List<MarketOrdersResponse>>>() {
             @Override
             public ApiResponse<List<MarketOrdersResponse>> update() throws ApiException {
@@ -252,7 +252,7 @@ public class MarketApiTest extends GeneralApiTest {
         result.addAll(response.getData());
 
         //Step 2: Safely get X-Pages header
-		
+
         Integer xPages = HeaderUtil.getXPages(response.getHeaders());
         if (xPages == null || xPages < 2) { //Better safe than sorry
             return;

@@ -185,7 +185,7 @@ public class CharacterApiTest extends GeneralApiTest {
 
         assertThat(response, notNullValue());
         final String icon = response.getPx64x64();
-		assertThat(icon, notNullValue());
+        assertThat(icon, notNullValue());
         assertThat(!icon.isEmpty(), equalTo(true));
     }
 
