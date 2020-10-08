@@ -238,9 +238,8 @@ public class MarketApiTest extends GeneralApiTest {
     public void pagingExample() throws ApiException {
         final String orderType = "all";
         //Save all results in this List
-        final List<MarketOrdersResponse> result = new ArrayList<MarketOrdersResponse>();
+        final List<MarketOrdersResponse> result = new ArrayList<>();
 
-        //Step 1: Get first page
         //Get market orders
         ApiResponse<List<MarketOrdersResponse>> response = update(new Update<ApiResponse<List<MarketOrdersResponse>>>() {
             @Override
