@@ -240,27 +240,36 @@ public class MarketApiTest extends GeneralApiTest {
         //Save all results in this List
         final List<MarketOrdersResponse> result = new ArrayList<>();
 
-        //Get market orders
+        /**
+         * Step 1: Get first page
+         */
+
+        //Get market orders (the complexity here is error handling that retries on failure)
         ApiResponse<List<MarketOrdersResponse>> response = update(new Update<ApiResponse<List<MarketOrdersResponse>>>() {
             @Override
             public ApiResponse<List<MarketOrdersResponse>> update() throws ApiException {
                 return api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
             }
         });
-
         result.addAll(response.getData());
 
-        //Step 2: Safely get X-Pages header
+        /**
+         * Step 2: Safely get X-Pages header
+         */
 
         Integer xPages = HeaderUtil.getXPages(response.getHeaders());
         if (xPages == null || xPages < 2) { //Better safe than sorry
             return;
         }
 
-        //Step 3: Get the rest of the pages
-
-        //For each page greater than one. This can be done in threads, but, require a new ApiClient and MarketApi for each thread
-        for (int i = 2; i <= xPages; i++) {
+        /**
+         * Step 3: Get the rest of the pages.
+         * 
+         * This can be done in threads
+         * For public endpoints ApiClient is fully thread safe.
+         * For authorized endpoints one instance of ApiClient is required per refresh token
+         */
+        for (int i = 2; i <= xPages; i++) { //For each page greater than one.
             //Get market orders
             final int page = i;
             List<MarketOrdersResponse> pageResponse = update(new Update<List<MarketOrdersResponse>>() {
