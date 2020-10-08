@@ -176,6 +176,8 @@ public class CorporationAssetsResponse implements Serializable {
 
         QUAFEBAY("QuafeBay"),
 
+        QUANTUMCOREROOM("QuantumCoreRoom"),
+
         REWARD("Reward"),
 
         RIGSLOT0("RigSlot0"),

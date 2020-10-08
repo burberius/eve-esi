@@ -470,7 +470,7 @@ public class CharacterNotificationsResponse implements Serializable {
         STRUCTUREDESTROYED("StructureDestroyed"),
 
         STRUCTUREFUELALERT("StructureFuelAlert"),
-        
+
         STRUCTUREIMPENDINGABANDONMENTASSETSATRISK("StructureImpendingAbandonmentAssetsAtRisk"),
 
         STRUCTUREITEMSDELIVERED("StructureItemsDelivered"),
@@ -516,6 +516,8 @@ public class CharacterNotificationsResponse implements Serializable {
         WARCONCORDINVALIDATES("WarConcordInvalidates"),
 
         WARDECLARED("WarDeclared"),
+
+        WARENDEDHQSECURITYDROP("WarEndedHqSecurityDrop"),
 
         WARHQREMOVEDFROMSPACE("WarHQRemovedFromSpace"),
 
