@@ -32,7 +32,7 @@ Just add the following to your *pom.xml*:
 <dependency>
     <groupId>net.troja.eve</groupId>
     <artifactId>eve-esi</artifactId>
-    <version>3.0.0</version>
+    <version>4.1.0</version>
 </dependency>
 ```
 

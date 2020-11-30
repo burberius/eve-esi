@@ -42051,12 +42051,14 @@ components:
           - duel_wager_escrow
           - duel_wager_payment
           - duel_wager_refund
+          - ess_escrow_transfer
           - factory_slot_rental_fee
           - gm_cash_transfer
           - industry_job_tax
           - infrastructure_hub_maintenance
           - inheritance
           - insurance
+          - item_trader_payment
           - jump_clone_activation_fee
           - jump_clone_installation_fee
           - kill_right_fee
@@ -42092,6 +42094,7 @@ components:
           - reverse_engineering
           - security_processing_fee
           - shares
+          - skill_purchase
           - sovereignity_bill
           - store_purchase
           - store_purchase_refund
@@ -42518,6 +42521,7 @@ components:
           enum:
           - AcceptedAlly
           - AcceptedSurrender
+          - AgentRetiredTrigravian
           - AllAnchoringMsg
           - AllMaintenanceBillMsg
           - AllStrucInvulnerableMsg
@@ -42559,6 +42563,7 @@ components:
           - ContactAdd
           - ContactEdit
           - ContainerPasswordMsg
+          - ContractRegionChangedToPochven
           - CorpAllBillMsg
           - CorpAppAcceptMsg
           - CorpAppInvitedMsg
@@ -42591,6 +42596,7 @@ components:
           - DeclareWar
           - DistrictAttacked
           - DustAppAcceptedMsg
+          - ESSMainBankLink
           - EntosisCaptureStarted
           - FWAllianceKickMsg
           - FWAllianceWarningMsg
@@ -42625,7 +42631,9 @@ components:
           - InsuranceInvalidatedMsg
           - InsuranceIssuedMsg
           - InsurancePayoutMsg
+          - InvasionCompletedMsg
           - InvasionSystemLogin
+          - InvasionSystemStart
           - JumpCloneDeletedMsg1
           - JumpCloneDeletedMsg2
           - KillReportFinalBlow
@@ -42640,6 +42648,7 @@ components:
           - MadeWarMutual
           - MercOfferRetractedMsg
           - MercOfferedNegotiationMsg
+          - MissionCanceledTriglavian
           - MissionOfferExpirationMsg
           - MissionTimeoutMsg
           - MoonminingAutomaticFracture
@@ -42656,6 +42665,7 @@ components:
           - OfferToAllyRetracted
           - OfferedSurrender
           - OfferedToAlly
+          - OfficeLeaseCanceledInsufficientStandings
           - OldLscMessages
           - OperationFinished
           - OrbitalAttacked
@@ -43066,6 +43076,7 @@ components:
           - duel_wager_escrow
           - duel_wager_payment
           - duel_wager_refund
+          - ess_escrow_transfer
           - factory_slot_rental_fee
           - gm_cash_transfer
           - industry_job_tax
@@ -43235,8 +43246,6 @@ components:
             esi-corporations.read_structures.v1: EVE SSO scope esi-corporations.read_structures.v1
             esi-corporations.read_titles.v1: EVE SSO scope esi-corporations.read_titles.v1
             esi-corporations.track_members.v1: EVE SSO scope esi-corporations.track_members.v1
-            esi-fittings.read_fittings.v1: EVE SSO scope esi-fittings.read_fittings.v1
-            esi-fittings.write_fittings.v1: EVE SSO scope esi-fittings.write_fittings.v1
             esi-fleets.read_fleet.v1: EVE SSO scope esi-fleets.read_fleet.v1
             esi-fleets.write_fleet.v1: EVE SSO scope esi-fleets.write_fleet.v1
             esi-industry.read_character_jobs.v1: EVE SSO scope esi-industry.read_character_jobs.v1

@@ -26,8 +26,8 @@ public class SsoScopes {
     public static final String ESI_CHARACTERS_READ_OPPORTUNITIES_V1 = "esi-characters.read_opportunities.v1";
     public static final String ESI_CHARACTERS_READ_STANDINGS_V1 = "esi-characters.read_standings.v1";
     public static final String ESI_CHARACTERS_READ_TITLES_V1 = "esi-characters.read_titles.v1";
-    public static final String ESI_CHARACTERS_WRITE_CONTACTS_V1 = "esi-characters.write_contacts.v1";
     public static final String ESI_CHARACTERSTATS_READ_V1 = "esi-characterstats.read.v1";
+    public static final String ESI_CHARACTERS_WRITE_CONTACTS_V1 = "esi-characters.write_contacts.v1";
     public static final String ESI_CLONES_READ_CLONES_V1 = "esi-clones.read_clones.v1";
     public static final String ESI_CLONES_READ_IMPLANTS_V1 = "esi-clones.read_implants.v1";
     public static final String ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1 = "esi-contracts.read_character_contracts.v1";
@@ -83,7 +83,7 @@ public class SsoScopes {
             ESI_CHARACTERS_READ_CORPORATION_ROLES_V1, ESI_CHARACTERS_READ_FATIGUE_V1, ESI_CHARACTERS_READ_FW_STATS_V1,
             ESI_CHARACTERS_READ_LOYALTY_V1, ESI_CHARACTERS_READ_MEDALS_V1, ESI_CHARACTERS_READ_NOTIFICATIONS_V1,
             ESI_CHARACTERS_READ_OPPORTUNITIES_V1, ESI_CHARACTERS_READ_STANDINGS_V1, ESI_CHARACTERS_READ_TITLES_V1,
-            ESI_CHARACTERS_WRITE_CONTACTS_V1, ESI_CHARACTERSTATS_READ_V1, ESI_CLONES_READ_CLONES_V1,
+            ESI_CHARACTERSTATS_READ_V1, ESI_CHARACTERS_WRITE_CONTACTS_V1, ESI_CLONES_READ_CLONES_V1,
             ESI_CLONES_READ_IMPLANTS_V1, ESI_CONTRACTS_READ_CHARACTER_CONTRACTS_V1,
             ESI_CONTRACTS_READ_CORPORATION_CONTRACTS_V1, ESI_CORPORATIONS_READ_BLUEPRINTS_V1,
             ESI_CORPORATIONS_READ_CONTACTS_V1, ESI_CORPORATIONS_READ_CONTAINER_LOGS_V1,

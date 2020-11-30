@@ -119,6 +119,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         ACCEPTEDSURRENDER("AcceptedSurrender"),
 
+        AGENTRETIREDTRIGRAVIAN("AgentRetiredTrigravian"),
+
         ALLANCHORINGMSG("AllAnchoringMsg"),
 
         ALLMAINTENANCEBILLMSG("AllMaintenanceBillMsg"),
@@ -201,6 +203,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         CONTAINERPASSWORDMSG("ContainerPasswordMsg"),
 
+        CONTRACTREGIONCHANGEDTOPOCHVEN("ContractRegionChangedToPochven"),
+
         CORPALLBILLMSG("CorpAllBillMsg"),
 
         CORPAPPACCEPTMSG("CorpAppAcceptMsg"),
@@ -264,6 +268,8 @@ public class CharacterNotificationsResponse implements Serializable {
         DISTRICTATTACKED("DistrictAttacked"),
 
         DUSTAPPACCEPTEDMSG("DustAppAcceptedMsg"),
+
+        ESSMAINBANKLINK("ESSMainBankLink"),
 
         ENTOSISCAPTURESTARTED("EntosisCaptureStarted"),
 
@@ -333,7 +339,11 @@ public class CharacterNotificationsResponse implements Serializable {
 
         INSURANCEPAYOUTMSG("InsurancePayoutMsg"),
 
+        INVASIONCOMPLETEDMSG("InvasionCompletedMsg"),
+
         INVASIONSYSTEMLOGIN("InvasionSystemLogin"),
+
+        INVASIONSYSTEMSTART("InvasionSystemStart"),
 
         JUMPCLONEDELETEDMSG1("JumpCloneDeletedMsg1"),
 
@@ -362,6 +372,8 @@ public class CharacterNotificationsResponse implements Serializable {
         MERCOFFERRETRACTEDMSG("MercOfferRetractedMsg"),
 
         MERCOFFEREDNEGOTIATIONMSG("MercOfferedNegotiationMsg"),
+
+        MISSIONCANCELEDTRIGLAVIAN("MissionCanceledTriglavian"),
 
         MISSIONOFFEREXPIRATIONMSG("MissionOfferExpirationMsg"),
 
@@ -394,6 +406,8 @@ public class CharacterNotificationsResponse implements Serializable {
         OFFEREDSURRENDER("OfferedSurrender"),
 
         OFFEREDTOALLY("OfferedToAlly"),
+
+        OFFICELEASECANCELEDINSUFFICIENTSTANDINGS("OfficeLeaseCanceledInsufficientStandings"),
 
         OLDLSCMESSAGES("OldLscMessages"),
 

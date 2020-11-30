@@ -278,6 +278,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         DUEL_WAGER_REFUND("duel_wager_refund"),
 
+        ESS_ESCROW_TRANSFER("ess_escrow_transfer"),
+
         FACTORY_SLOT_RENTAL_FEE("factory_slot_rental_fee"),
 
         GM_CASH_TRANSFER("gm_cash_transfer"),

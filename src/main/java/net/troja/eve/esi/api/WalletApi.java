@@ -218,8 +218,10 @@ public class WalletApi {
 
     /**
      * Get a character&#39;s wallet balance Returns a character&#39;s wallet
-     * balance --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * balance --- This route is cached for up to 120 seconds --- [Diff of the
+     * upcoming
+     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters
+     * /{character_id}/wallet/) SSO Scope: esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -327,8 +329,10 @@ public class WalletApi {
 
     /**
      * Get a character&#39;s wallet balance Returns a character&#39;s wallet
-     * balance --- This route is cached for up to 120 seconds SSO Scope:
-     * esi-wallet.read_character_wallet.v1
+     * balance --- This route is cached for up to 120 seconds --- [Diff of the
+     * upcoming
+     * changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters
+     * /{character_id}/wallet/) SSO Scope: esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)
@@ -439,7 +443,10 @@ public class WalletApi {
     /**
      * Get a character&#39;s wallet balance (asynchronously) Returns a
      * character&#39;s wallet balance --- This route is cached for up to 120
-     * seconds SSO Scope: esi-wallet.read_character_wallet.v1
+     * seconds --- [Diff of the upcoming
+     * changes](https://esi.evetech.net/diff/latest
+     * /dev/#GET-/characters/{character_id}/wallet/) SSO Scope:
+     * esi-wallet.read_character_wallet.v1
      * 
      * @param characterId
      *            An EVE character ID (required)

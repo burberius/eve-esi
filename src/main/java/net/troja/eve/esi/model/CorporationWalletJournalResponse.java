@@ -283,6 +283,8 @@ public class CorporationWalletJournalResponse implements Serializable {
 
         DUEL_WAGER_REFUND("duel_wager_refund"),
 
+        ESS_ESCROW_TRANSFER("ess_escrow_transfer"),
+
         FACTORY_SLOT_RENTAL_FEE("factory_slot_rental_fee"),
 
         GM_CASH_TRANSFER("gm_cash_transfer"),
@@ -294,6 +296,8 @@ public class CorporationWalletJournalResponse implements Serializable {
         INHERITANCE("inheritance"),
 
         INSURANCE("insurance"),
+
+        ITEM_TRADER_PAYMENT("item_trader_payment"),
 
         JUMP_CLONE_ACTIVATION_FEE("jump_clone_activation_fee"),
 
@@ -364,6 +368,8 @@ public class CorporationWalletJournalResponse implements Serializable {
         SECURITY_PROCESSING_FEE("security_processing_fee"),
 
         SHARES("shares"),
+
+        SKILL_PURCHASE("skill_purchase"),
 
         SOVEREIGNITY_BILL("sovereignity_bill"),
 
