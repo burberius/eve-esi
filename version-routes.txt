@@ -155,7 +155,6 @@
   "/v2/characters/{character_id}/portrait/",
   "/v2/characters/{character_id}/roles/",
   "/v2/characters/{character_id}/skillqueue/",
-  "/v2/characters/{character_id}/stats/",
   "/v2/corporations/{corporation_id}/alliancehistory/",
   "/v2/corporations/{corporation_id}/assets/locations/",
   "/v2/corporations/{corporation_id}/blueprints/",

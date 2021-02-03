@@ -75,12 +75,8 @@ java -jar openapi-generator-cli-$VERSION.jar generate \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
-mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi//model/CharacterInfo.java
+mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi/model/CharacterInfo.java
 mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
-
-for I in $(grep "OpenAPI spec version" src/* -r | sed -e 's#:.*##'); do
-  sed -i -e '/OpenAPI spec version/d' $I
-done
 
 # Fix route
 jq ".paths | keys" esi.json > version-routes.txt
