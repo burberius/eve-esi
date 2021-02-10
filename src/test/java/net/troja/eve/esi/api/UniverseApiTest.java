@@ -61,7 +61,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseAncestriesTest() throws ApiException {
         List<UniverseAncestriesResponse> response = api.getUniverseAncestries(LANGUAGE, DATASOURCE, null, LANGUAGE);
 
-        assertThat(response.size(), equalTo(42));
+        assertThat(response.size(), equalTo(43));
         final UniverseAncestriesResponse ancestriesResponse = response.get(0);
         assertThat(ancestriesResponse.getBloodlineId(), greaterThan(0));
     }
