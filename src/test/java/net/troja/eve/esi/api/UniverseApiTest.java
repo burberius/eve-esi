@@ -111,7 +111,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseCategoriesTest() throws ApiException {
         final List<Integer> response = api.getUniverseCategories(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(43));
+        assertThat(response.size(), equalTo(44));
     }
 
     /**
@@ -175,7 +175,7 @@ public class UniverseApiTest extends GeneralApiTest {
 
         assertThat(response.size(), equalTo(25));
         final FactionsResponse factionsResponse = response.get(0);
-        assertThat(factionsResponse.getName(), equalTo("Minmatar Republic"));
+        assertThat(factionsResponse.getName(), equalTo("Amarr Empire"));
     }
 
     /**
