@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: 1.7.15
+  version: 1.8.2
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -472,220 +472,6 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
-  /v1/characters/affiliation/:
-    post:
-      description: |-
-        Bulk lookup of character IDs to corporation, alliance and faction
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/affiliation/)
-      operationId: post_characters_affiliation
-      parameters:
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: characters array
-              items:
-                description: character integer
-                format: int32
-                title: post_characters_affiliation_character
-                type: integer
-              maxItems: 1000
-              minItems: 1
-              title: post_characters_affiliation_characters
-              type: array
-              uniqueItems: true
-        description: The character IDs to fetch affiliations for. All characters must
-          exist, or none will be returned
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - alliance_id: 434243723
-                character_id: 95538921
-                corporation_id: 109299958
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterAffiliationResponse'
-                maxItems: 1000
-                title: post_characters_affiliation_ok
-                type: array
-          description: Character corporation, alliance and faction IDs
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      summary: Character affiliation
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 3600
-      x-codegen-request-body-name: characters
-      x-contentType: application/json
-      x-accepts: application/json
-  /v1/characters/{character_id}/agents_research/:
-    get:
-      description: |-
-        Return a list of agents research information for a character. The formula for finding the current research points with an agent is: currentPoints = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_agents_research.v1
-      operationId: get_characters_character_id_agents_research
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - agent_id: 3009358
-                points_per_day: 53.5346162146776
-                remainder_points: 53604.0634303189
-                skill_type_id: 11450
-                started_at: 2017-03-23T14:47:00Z
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterResearchAgentsResponse'
-                maxItems: 1000
-                title: get_characters_character_id_agents_research_ok
-                type: array
-          description: A list of agents research information
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_agents_research.v1
-      summary: Get agents research
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 3600
       x-accepts: application/json
   /v1/characters/{character_id}/assets/names/:
     post:
@@ -1729,245 +1515,6 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
-  /v1/characters/{character_id}/corporationhistory/:
-    get:
-      description: |-
-        Get a list of all the corporations a character has been a member of
-
-        ---
-
-        This route is cached for up to 86400 seconds
-      operationId: get_characters_character_id_corporationhistory
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - corporation_id: 90000001
-                is_deleted: true
-                record_id: 500
-                start_date: 2016-06-26T20:00:00Z
-              - corporation_id: 90000002
-                record_id: 501
-                start_date: 2016-07-26T20:00:00Z
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterCorporationHistoryResponse'
-                maxItems: 10000
-                title: get_characters_character_id_corporationhistory_ok
-                type: array
-          description: Corporation history for the given character
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      summary: Get corporation history
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 86400
-      x-accepts: application/json
-  /v1/characters/{character_id}/fatigue/:
-    get:
-      description: |-
-        Return a character's jump activation and fatigue information
-
-        ---
-
-        This route is cached for up to 300 seconds
-
-        SSO Scope: esi-characters.read_fatigue.v1
-      operationId: get_characters_character_id_fatigue
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                jump_fatigue_expire_date: 2017-07-06T15:47:00Z
-                last_jump_date: 2017-07-05T15:47:00Z
-                last_update_date: 2017-07-05T15:42:00Z
-              schema:
-                $ref: '#/components/schemas/CharacterFatigueResponse'
-          description: Jump activation and fatigue information
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_fatigue.v1
-      summary: Get jump fatigue
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 300
       x-accepts: application/json
   /v1/characters/{character_id}/fittings/{fitting_id}/:
     delete:
@@ -3642,149 +3189,6 @@ paths:
       x-codegen-request-body-name: contents
       x-contentType: application/json
       x-accepts: application/json
-  /v1/characters/{character_id}/medals/:
-    get:
-      description: |-
-        Return a list of medals the character has
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_medals.v1
-      operationId: get_characters_character_id_medals
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - corporation_id: 98000001
-                date: 2017-03-16T15:01:45Z
-                description: For 33 corp!
-                graphics:
-                - color: -1
-                  graphic: caldari.1_1
-                  layer: 0
-                  part: 1
-                - color: -330271
-                  graphic: caldari.1_2
-                  layer: 1
-                  part: 1
-                - color: -1
-                  graphic: compass.1_2
-                  layer: 0
-                  part: 2
-                issuer_id: 2112000002
-                medal_id: 3
-                reason: Thanks!
-                status: private
-                title: 33 tester medal
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterMedalsResponse'
-                maxItems: 1000
-                title: get_characters_character_id_medals_ok
-                type: array
-          description: A list of medals
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_medals.v1
-      summary: Get medals
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 3600
-      x-accepts: application/json
   /v1/characters/{character_id}/mining/:
     get:
       description: |-
@@ -3926,133 +3330,6 @@ paths:
       - Industry
       x-alternate-versions:
       - dev
-      - legacy
-      - v1
-      x-cached-seconds: 600
-      x-accepts: application/json
-  /v1/characters/{character_id}/notifications/contacts/:
-    get:
-      description: |-
-        Return notifications about having been added to someone's contact list
-
-        ---
-
-        This route is cached for up to 600 seconds
-
-        SSO Scope: esi-characters.read_notifications.v1
-      operationId: get_characters_character_id_notifications_contacts
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - message: hello friend :3
-                notification_id: 1
-                send_date: 2017-08-16T10:08:00Z
-                sender_character_id: 95465499
-                standing_level: 1.5
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/NewContactNotificationsResponse'
-                maxItems: 50
-                title: get_characters_character_id_notifications_contacts_ok
-                type: array
-          description: A list of contact notifications
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_notifications.v1
-      summary: Get new contact notifications
-      tags:
-      - Character
-      x-alternate-versions:
       - legacy
       - v1
       x-cached-seconds: 600
@@ -4592,261 +3869,6 @@ paths:
       - v1
       - v2
       x-cached-seconds: 5
-      x-accepts: application/json
-  /v1/characters/{character_id}/standings/:
-    get:
-      description: |-
-        Return character standings from agents, NPC corporations, and factions
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_standings.v1
-      operationId: get_characters_character_id_standings
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - from_id: 3009841
-                from_type: agent
-                standing: 0.1
-              - from_id: 1000061
-                from_type: npc_corp
-                standing: 0
-              - from_id: 500003
-                from_type: faction
-                standing: -1
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterStandingsResponse'
-                maxItems: 10000
-                title: get_characters_character_id_standings_ok
-                type: array
-          description: A list of standings
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_standings.v1
-      summary: Get standings
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 3600
-      x-accepts: application/json
-  /v1/characters/{character_id}/titles/:
-    get:
-      description: |-
-        Returns a character's titles
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_titles.v1
-      operationId: get_characters_character_id_titles
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - name: Awesome Title
-                title_id: 1
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterTitlesResponse'
-                maxItems: 16
-                title: get_characters_character_id_titles_ok
-                type: array
-          description: A list of titles
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_titles.v1
-      summary: Get character corporation titles
-      tags:
-      - Character
-      x-alternate-versions:
-      - legacy
-      - v1
-      x-cached-seconds: 3600
       x-accepts: application/json
   /v1/characters/{character_id}/wallet/:
     get:
@@ -17030,6 +16052,217 @@ paths:
       - v2
       x-cached-seconds: 300
       x-accepts: application/json
+  /v2/characters/affiliation/:
+    post:
+      description: |-
+        Bulk lookup of character IDs to corporation, alliance and faction
+
+        ---
+
+        This route is cached for up to 3600 seconds
+      operationId: post_characters_affiliation
+      parameters:
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: characters array
+              items:
+                description: character integer
+                format: int32
+                title: post_characters_affiliation_character
+                type: integer
+              maxItems: 1000
+              minItems: 1
+              title: post_characters_affiliation_characters
+              type: array
+              uniqueItems: true
+        description: The character IDs to fetch affiliations for. All characters must
+          exist, or none will be returned
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - alliance_id: 434243723
+                character_id: 95538921
+                corporation_id: 109299958
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterAffiliationResponse'
+                maxItems: 1000
+                title: post_characters_affiliation_ok
+                type: array
+          description: Character corporation, alliance and faction IDs
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      summary: Character affiliation
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 3600
+      x-codegen-request-body-name: characters
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/characters/{character_id}/agents_research/:
+    get:
+      description: |-
+        Return a list of agents research information for a character. The formula for finding the current research points with an agent is: currentPoints = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_agents_research.v1
+      operationId: get_characters_character_id_agents_research
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - agent_id: 3009358
+                points_per_day: 53.5346162146776
+                remainder_points: 53604.0634303189
+                skill_type_id: 11450
+                started_at: 2017-03-23T14:47:00Z
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterResearchAgentsResponse'
+                maxItems: 1000
+                title: get_characters_character_id_agents_research_ok
+                type: array
+          description: A list of agents research information
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_agents_research.v1
+      summary: Get agents research
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 3600
+      x-accepts: application/json
   /v2/characters/{character_id}/assets/locations/:
     post:
       description: |-
@@ -17130,149 +16363,6 @@ paths:
       - v2
       x-codegen-request-body-name: item_ids
       x-contentType: application/json
-      x-accepts: application/json
-  /v2/characters/{character_id}/blueprints/:
-    get:
-      description: |-
-        Return a list of blueprints the character owns
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_blueprints.v1
-      operationId: get_characters_character_id_blueprints
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Which page of results to return
-        in: query
-        name: page
-        schema:
-          default: 1
-          format: int32
-          minimum: 1
-          type: integer
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - item_id: 1000000010495
-                location_flag: Hangar
-                location_id: 60014719
-                material_efficiency: 0
-                quantity: 1
-                runs: -1
-                time_efficiency: 0
-                type_id: 691
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterBlueprintsResponse'
-                maxItems: 1000
-                title: get_characters_character_id_blueprints_ok
-                type: array
-          description: A list of blueprints
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            X-Pages:
-              description: Maximum page number
-              schema:
-                default: 1
-                format: int32
-                type: integer
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_blueprints.v1
-      summary: Get blueprints
-      tags:
-      - Character
-      x-alternate-versions:
-      - v2
-      x-cached-seconds: 3600
       x-accepts: application/json
   /v2/characters/{character_id}/bookmarks/:
     get:
@@ -18028,6 +17118,245 @@ paths:
       x-codegen-request-body-name: contact_ids
       x-contentType: application/json
       x-accepts: application/json
+  /v2/characters/{character_id}/corporationhistory/:
+    get:
+      description: |-
+        Get a list of all the corporations a character has been a member of
+
+        ---
+
+        This route is cached for up to 86400 seconds
+      operationId: get_characters_character_id_corporationhistory
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - corporation_id: 90000001
+                is_deleted: true
+                record_id: 500
+                start_date: 2016-06-26T20:00:00Z
+              - corporation_id: 90000002
+                record_id: 501
+                start_date: 2016-07-26T20:00:00Z
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterCorporationHistoryResponse'
+                maxItems: 10000
+                title: get_characters_character_id_corporationhistory_ok
+                type: array
+          description: Corporation history for the given character
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      summary: Get corporation history
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 86400
+      x-accepts: application/json
+  /v2/characters/{character_id}/fatigue/:
+    get:
+      description: |-
+        Return a character's jump activation and fatigue information
+
+        ---
+
+        This route is cached for up to 300 seconds
+
+        SSO Scope: esi-characters.read_fatigue.v1
+      operationId: get_characters_character_id_fatigue
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                jump_fatigue_expire_date: 2017-07-06T15:47:00Z
+                last_jump_date: 2017-07-05T15:47:00Z
+                last_update_date: 2017-07-05T15:42:00Z
+              schema:
+                $ref: '#/components/schemas/CharacterFatigueResponse'
+          description: Jump activation and fatigue information
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_fatigue.v1
+      summary: Get jump fatigue
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 300
+      x-accepts: application/json
   /v2/characters/{character_id}/fittings/:
     get:
       description: |-
@@ -18418,6 +17747,276 @@ paths:
       x-codegen-request-body-name: label
       x-contentType: application/json
       x-accepts: application/json
+  /v2/characters/{character_id}/medals/:
+    get:
+      description: |-
+        Return a list of medals the character has
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_medals.v1
+      operationId: get_characters_character_id_medals
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - corporation_id: 98000001
+                date: 2017-03-16T15:01:45Z
+                description: For 33 corp!
+                graphics:
+                - color: -1
+                  graphic: caldari.1_1
+                  layer: 0
+                  part: 1
+                - color: -330271
+                  graphic: caldari.1_2
+                  layer: 1
+                  part: 1
+                - color: -1
+                  graphic: compass.1_2
+                  layer: 0
+                  part: 2
+                issuer_id: 2112000002
+                medal_id: 3
+                reason: Thanks!
+                status: private
+                title: 33 tester medal
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterMedalsResponse'
+                maxItems: 1000
+                title: get_characters_character_id_medals_ok
+                type: array
+          description: A list of medals
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_medals.v1
+      summary: Get medals
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 3600
+      x-accepts: application/json
+  /v2/characters/{character_id}/notifications/contacts/:
+    get:
+      description: |-
+        Return notifications about having been added to someone's contact list
+
+        ---
+
+        This route is cached for up to 600 seconds
+
+        SSO Scope: esi-characters.read_notifications.v1
+      operationId: get_characters_character_id_notifications_contacts
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - message: hello friend :3
+                notification_id: 1
+                send_date: 2017-08-16T10:08:00Z
+                sender_character_id: 95465499
+                standing_level: 1.5
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/NewContactNotificationsResponse'
+                maxItems: 50
+                title: get_characters_character_id_notifications_contacts_ok
+                type: array
+          description: A list of contact notifications
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_notifications.v1
+      summary: Get new contact notifications
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 600
+      x-accepts: application/json
   /v2/characters/{character_id}/online/:
     get:
       description: |-
@@ -18787,125 +18386,6 @@ paths:
       - v2
       - v3
       x-accepts: application/json
-  /v2/characters/{character_id}/roles/:
-    get:
-      description: |-
-        Returns a character's corporation roles
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-characters.read_corporation_roles.v1
-      operationId: get_characters_character_id_roles
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                roles:
-                - Director
-                - Station_Manager
-              schema:
-                $ref: '#/components/schemas/CharacterRolesResponse'
-          description: The character's roles in thier corporation
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_corporation_roles.v1
-      summary: Get character corporation roles
-      tags:
-      - Character
-      x-alternate-versions:
-      - v2
-      x-cached-seconds: 3600
-      x-accepts: application/json
   /v2/characters/{character_id}/skillqueue/:
     get:
       description: |-
@@ -19044,6 +18524,261 @@ paths:
       - v2
       x-cached-seconds: 120
       x-accepts: application/json
+  /v2/characters/{character_id}/standings/:
+    get:
+      description: |-
+        Return character standings from agents, NPC corporations, and factions
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_standings.v1
+      operationId: get_characters_character_id_standings
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - from_id: 3009841
+                from_type: agent
+                standing: 0.1
+              - from_id: 1000061
+                from_type: npc_corp
+                standing: 0
+              - from_id: 500003
+                from_type: faction
+                standing: -1
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterStandingsResponse'
+                maxItems: 10000
+                title: get_characters_character_id_standings_ok
+                type: array
+          description: A list of standings
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_standings.v1
+      summary: Get standings
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 3600
+      x-accepts: application/json
+  /v2/characters/{character_id}/titles/:
+    get:
+      description: |-
+        Returns a character's titles
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_titles.v1
+      operationId: get_characters_character_id_titles
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - name: Awesome Title
+                title_id: 1
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterTitlesResponse'
+                maxItems: 16
+                title: get_characters_character_id_titles_ok
+                type: array
+          description: A list of titles
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_titles.v1
+      summary: Get character corporation titles
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v2
+      x-cached-seconds: 3600
+      x-accepts: application/json
   /v2/corporations/npccorps/:
     get:
       description: |-
@@ -19052,9 +18787,6 @@ paths:
         ---
 
         This route expires daily at 11:05
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/npccorps/)
       operationId: get_corporations_npccorps
       parameters:
       - description: The server name you would like data from
@@ -19153,6 +18885,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-accepts: application/json
   /v2/corporations/{corporation_id}/assets/locations/:
@@ -19412,9 +19145,6 @@ paths:
         ---
         Requires one of the following EVE corporation role(s): Director
 
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/divisions/)
-
         SSO Scope: esi-corporations.read_divisions.v1
       operationId: get_corporations_corporation_id_divisions
       parameters:
@@ -19525,6 +19255,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -19541,9 +19272,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Factory_Manager
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/facilities/)
 
         SSO Scope: esi-corporations.read_facilities.v1
       operationId: get_corporations_corporation_id_facilities
@@ -19657,6 +19385,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -19670,9 +19399,6 @@ paths:
         ---
 
         This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/icons/)
       operationId: get_corporations_corporation_id_icons
       parameters:
       - description: An EVE corporation ID
@@ -19771,6 +19497,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-accepts: application/json
@@ -19782,9 +19509,6 @@ paths:
         ---
 
         This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/medals/)
 
         SSO Scope: esi-corporations.read_medals.v1
       operationId: get_corporations_corporation_id_medals
@@ -19914,6 +19638,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles: []
@@ -19929,9 +19654,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/medals/issued/)
 
         SSO Scope: esi-corporations.read_medals.v1
       operationId: get_corporations_corporation_id_medals_issued
@@ -20062,6 +19784,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -20078,9 +19801,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/members/limit/)
 
         SSO Scope: esi-corporations.track_members.v1
       operationId: get_corporations_corporation_id_members_limit
@@ -20189,6 +19909,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -20205,9 +19926,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/members/titles/)
 
         SSO Scope: esi-corporations.read_titles.v1
       operationId: get_corporations_corporation_id_members_titles
@@ -20320,6 +20038,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -20336,9 +20055,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/membertracking/)
 
         SSO Scope: esi-corporations.track_members.v1
       operationId: get_corporations_corporation_id_membertracking
@@ -20461,6 +20177,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -20633,9 +20350,6 @@ paths:
 
         This route is cached for up to 3600 seconds
 
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/roles/)
-
         SSO Scope: esi-corporations.read_corporation_membership.v1
       operationId: get_corporations_corporation_id_roles
       parameters:
@@ -20749,6 +20463,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-accepts: application/json
@@ -20763,9 +20478,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/roles/history/)
 
         SSO Scope: esi-corporations.read_corporation_membership.v1
       operationId: get_corporations_corporation_id_roles_history
@@ -20898,6 +20610,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -20911,9 +20624,6 @@ paths:
         ---
 
         This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/standings/)
 
         SSO Scope: esi-corporations.read_standings.v1
       operationId: get_corporations_corporation_id_standings
@@ -21047,6 +20757,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles: []
@@ -21062,9 +20773,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/starbases/)
 
         SSO Scope: esi-corporations.read_starbases.v1
       operationId: get_corporations_corporation_id_starbases
@@ -21192,6 +20900,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -21208,9 +20917,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/starbases/{starbase_id}/)
 
         SSO Scope: esi-corporations.read_starbases.v1
       operationId: get_corporations_corporation_id_starbases_starbase_id
@@ -21341,6 +21047,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -21357,9 +21064,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/titles/)
 
         SSO Scope: esi-corporations.read_titles.v1
       operationId: get_corporations_corporation_id_titles
@@ -21475,6 +21179,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v2
       x-cached-seconds: 3600
       x-required-roles:
@@ -22599,6 +22304,150 @@ paths:
       - v4
       x-cached-seconds: 3600
       x-accepts: application/json
+  /v3/characters/{character_id}/blueprints/:
+    get:
+      description: |-
+        Return a list of blueprints the character owns
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_blueprints.v1
+      operationId: get_characters_character_id_blueprints
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Which page of results to return
+        in: query
+        name: page
+        schema:
+          default: 1
+          format: int32
+          minimum: 1
+          type: integer
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - item_id: 1000000010495
+                location_flag: Hangar
+                location_id: 60014719
+                material_efficiency: 0
+                quantity: 1
+                runs: -1
+                time_efficiency: 0
+                type_id: 691
+              schema:
+                description: 200 ok array
+                items:
+                  $ref: '#/components/schemas/CharacterBlueprintsResponse'
+                maxItems: 1000
+                title: get_characters_character_id_blueprints_ok
+                type: array
+          description: A list of blueprints
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            X-Pages:
+              description: Maximum page number
+              schema:
+                default: 1
+                format: int32
+                type: integer
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_blueprints.v1
+      summary: Get blueprints
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v3
+      x-cached-seconds: 3600
+      x-accepts: application/json
   /v3/characters/{character_id}/calendar/{event_id}/:
     get:
       description: |-
@@ -23194,6 +23043,126 @@ paths:
       - dev
       - v3
       x-accepts: application/json
+  /v3/characters/{character_id}/roles/:
+    get:
+      description: |-
+        Returns a character's corporation roles
+
+        ---
+
+        This route is cached for up to 3600 seconds
+
+        SSO Scope: esi-characters.read_corporation_roles.v1
+      operationId: get_characters_character_id_roles
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                roles:
+                - Director
+                - Station_Manager
+              schema:
+                $ref: '#/components/schemas/CharacterRolesResponse'
+          description: The character's roles in thier corporation
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_corporation_roles.v1
+      summary: Get character corporation roles
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v3
+      x-cached-seconds: 3600
+      x-accepts: application/json
   /v3/characters/{character_id}/search/:
     get:
       description: |-
@@ -23407,9 +23376,6 @@ paths:
         ---
 
         This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/alliancehistory/)
       operationId: get_corporations_corporation_id_alliancehistory
       parameters:
       - description: An EVE corporation ID
@@ -23516,6 +23482,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v3
       x-cached-seconds: 3600
       x-accepts: application/json
@@ -23530,9 +23497,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/blueprints/)
 
         SSO Scope: esi-corporations.read_blueprints.v1
       operationId: get_corporations_corporation_id_blueprints
@@ -23665,6 +23629,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v3
       x-cached-seconds: 3600
       x-required-roles:
@@ -23681,9 +23646,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Director
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/containers/logs/)
 
         SSO Scope: esi-corporations.read_container_logs.v1
       operationId: get_corporations_corporation_id_containers_logs
@@ -23834,6 +23796,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v3
       x-cached-seconds: 600
       x-required-roles:
@@ -24348,99 +24311,6 @@ paths:
       - v4
       x-cached-seconds: 86400
       x-accepts: application/json
-  /v4/characters/{character_id}/cspa/:
-    post:
-      description: |-
-        Takes a source character ID in the url and a set of target character ID's in the body, returns a CSPA charge cost
-
-        ---
-
-        SSO Scope: esi-characters.read_contacts.v1
-      operationId: post_characters_character_id_cspa
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: characters array
-              items:
-                description: character integer
-                format: int32
-                title: post_characters_character_id_cspa_character
-                type: integer
-              maxItems: 100
-              minItems: 1
-              title: post_characters_character_id_cspa_characters
-              type: array
-              uniqueItems: true
-        description: The target characters to calculate the charge for
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              example: 2950
-              schema:
-                description: 201 created number
-                format: float
-                title: post_characters_character_id_cspa_created
-                type: number
-          description: Aggregate cost of sending a mail from the source character
-            to the target characters, in ISK
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-characters.read_contacts.v1
-      summary: Calculate a CSPA charge cost
-      tags:
-      - Character
-      x-alternate-versions:
-      - v4
-      x-codegen-request-body-name: characters
-      x-contentType: application/json
-      x-accepts: application/json
   /v4/characters/{character_id}/skills/:
     get:
       description: |-
@@ -24577,9 +24447,6 @@ paths:
 
         This route is cached for up to 3600 seconds
 
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/members/)
-
         SSO Scope: esi-corporations.read_corporation_membership.v1
       operationId: get_corporations_corporation_id_members
       parameters:
@@ -24694,6 +24561,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v4
       x-cached-seconds: 3600
       x-accepts: application/json
@@ -24708,9 +24576,6 @@ paths:
 
         ---
         Requires one of the following EVE corporation role(s): Station_Manager
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)
 
         SSO Scope: esi-corporations.read_structures.v1
       operationId: get_corporations_corporation_id_structures
@@ -24882,6 +24747,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v4
       x-cached-seconds: 3600
       x-required-roles:
@@ -25354,6 +25220,101 @@ paths:
       - v5
       x-cached-seconds: 3600
       x-accepts: application/json
+  /v5/characters/{character_id}/cspa/:
+    post:
+      description: |-
+        Takes a source character ID in the url and a set of target character ID's in the body, returns a CSPA charge cost
+
+        ---
+
+
+        SSO Scope: esi-characters.read_contacts.v1
+      operationId: post_characters_character_id_cspa
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: Access token to use if unable to set a header
+        in: query
+        name: token
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: characters array
+              items:
+                description: character integer
+                format: int32
+                title: post_characters_character_id_cspa_character
+                type: integer
+              maxItems: 100
+              minItems: 1
+              title: post_characters_character_id_cspa_characters
+              type: array
+              uniqueItems: true
+        description: The target characters to calculate the charge for
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              example: 2950
+              schema:
+                description: 201 created number
+                format: float
+                title: post_characters_character_id_cspa_created
+                type: number
+          description: Aggregate cost of sending a mail from the source character
+            to the target characters, in ISK
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      security:
+      - evesso:
+        - esi-characters.read_contacts.v1
+      summary: Calculate a CSPA charge cost
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - v5
+      x-codegen-request-body-name: characters
+      x-contentType: application/json
+      x-accepts: application/json
   /v5/characters/{character_id}/notifications/:
     get:
       description: |-
@@ -25493,9 +25454,6 @@ paths:
         ---
 
         This route is cached for up to 3600 seconds
-
-        ---
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/)
       operationId: get_corporations_corporation_id
       parameters:
       - description: An EVE corporation ID
@@ -25602,6 +25560,7 @@ paths:
       tags:
       - Corporation
       x-alternate-versions:
+      - dev
       - v5
       x-cached-seconds: 3600
       x-accepts: application/json
@@ -26336,78 +26295,6 @@ components:
           description: px64x64 string
           title: get_alliances_alliance_id_icons_px64x64
           type: string
-    CharacterAffiliationResponse:
-      description: 200 ok object
-      example:
-        alliance_id: 0
-        corporation_id: 1
-        faction_id: 5
-        character_id: 6
-      properties:
-        alliance_id:
-          description: The character's alliance ID, if their corporation is in an
-            alliance
-          format: int32
-          title: post_characters_affiliation_alliance_id
-          type: integer
-        character_id:
-          description: The character's ID
-          format: int32
-          title: post_characters_affiliation_character_id
-          type: integer
-        corporation_id:
-          description: The character's corporation ID
-          format: int32
-          title: post_characters_affiliation_corporation_id
-          type: integer
-        faction_id:
-          description: The character's faction ID, if their corporation is in a faction
-          format: int32
-          title: post_characters_affiliation_faction_id
-          type: integer
-      required:
-      - character_id
-      - corporation_id
-    CharacterResearchAgentsResponse:
-      description: 200 ok object
-      example:
-        remainder_points: 1.4658129
-        agent_id: 0
-        skill_type_id: 5
-        started_at: 2000-01-23T04:56:07.000+00:00
-        points_per_day: 6.0274563
-      properties:
-        agent_id:
-          description: agent_id integer
-          format: int32
-          title: get_characters_character_id_agents_research_agent_id
-          type: integer
-        points_per_day:
-          description: points_per_day number
-          format: float
-          title: get_characters_character_id_agents_research_points_per_day
-          type: number
-        remainder_points:
-          description: remainder_points number
-          format: float
-          title: get_characters_character_id_agents_research_remainder_points
-          type: number
-        skill_type_id:
-          description: skill_type_id integer
-          format: int32
-          title: get_characters_character_id_agents_research_skill_type_id
-          type: integer
-        started_at:
-          description: started_at string
-          format: date-time
-          title: get_characters_character_id_agents_research_started_at
-          type: string
-      required:
-      - agent_id
-      - points_per_day
-      - remainder_points
-      - skill_type_id
-      - started_at
     CharacterAssetsNamesResponse:
       description: 200 ok object
       example:
@@ -26806,60 +26693,6 @@ components:
       - quantity
       - record_id
       - type_id
-    CharacterCorporationHistoryResponse:
-      description: 200 ok object
-      example:
-        record_id: 6
-        corporation_id: 0
-        is_deleted: true
-        start_date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        corporation_id:
-          description: corporation_id integer
-          format: int32
-          title: get_characters_character_id_corporationhistory_corporation_id
-          type: integer
-        is_deleted:
-          description: True if the corporation has been deleted
-          title: get_characters_character_id_corporationhistory_is_deleted
-          type: boolean
-        record_id:
-          description: An incrementing ID that can be used to canonically establish
-            order of records in cases where dates may be ambiguous
-          format: int32
-          title: get_characters_character_id_corporationhistory_record_id
-          type: integer
-        start_date:
-          description: start_date string
-          format: date-time
-          title: get_characters_character_id_corporationhistory_start_date
-          type: string
-      required:
-      - corporation_id
-      - record_id
-      - start_date
-    CharacterFatigueResponse:
-      description: 200 ok object
-      example:
-        last_jump_date: 2000-01-23T04:56:07.000+00:00
-        jump_fatigue_expire_date: 2000-01-23T04:56:07.000+00:00
-        last_update_date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        jump_fatigue_expire_date:
-          description: Character's jump fatigue expiry
-          format: date-time
-          title: get_characters_character_id_fatigue_jump_fatigue_expire_date
-          type: string
-        last_jump_date:
-          description: Character's last jump activation
-          format: date-time
-          title: get_characters_character_id_fatigue_last_jump_date
-          type: string
-        last_update_date:
-          description: Character's last jump update
-          format: date-time
-          title: get_characters_character_id_fatigue_last_update_date
-          type: string
     CharacterFwStatsKills:
       description: Summary of kills done by the given character against enemy factions
       example:
@@ -27421,127 +27254,6 @@ components:
           type: boolean
       title: MailMetaData
       type: object
-    CharacterMedalsGraphic:
-      description: graphic object
-      example:
-        color: 6
-        part: 5
-        graphic: graphic
-        layer: 1
-      properties:
-        color:
-          description: color integer
-          format: int32
-          title: get_characters_character_id_medals_color
-          type: integer
-        graphic:
-          description: graphic string
-          title: CharacterMedalsGraphic_graphic
-          type: string
-        layer:
-          description: layer integer
-          format: int32
-          title: get_characters_character_id_medals_layer
-          type: integer
-        part:
-          description: part integer
-          format: int32
-          title: get_characters_character_id_medals_part
-          type: integer
-      required:
-      - graphic
-      - layer
-      - part
-    CharacterMedalsResponse:
-      description: 200 ok object
-      example:
-        date: 2000-01-23T04:56:07.000+00:00
-        medal_id: 2
-        issuer_id: 5
-        reason: reason
-        corporation_id: 0
-        description: description
-        graphics:
-        - color: 6
-          part: 5
-          graphic: graphic
-          layer: 1
-        - color: 6
-          part: 5
-          graphic: graphic
-          layer: 1
-        - color: 6
-          part: 5
-          graphic: graphic
-          layer: 1
-        - color: 6
-          part: 5
-          graphic: graphic
-          layer: 1
-        - color: 6
-          part: 5
-          graphic: graphic
-          layer: 1
-        title: title
-        status: public
-      properties:
-        corporation_id:
-          description: corporation_id integer
-          format: int32
-          title: get_characters_character_id_medals_corporation_id
-          type: integer
-        date:
-          description: date string
-          format: date-time
-          title: get_characters_character_id_medals_date
-          type: string
-        description:
-          description: description string
-          title: get_characters_character_id_medals_description
-          type: string
-        graphics:
-          description: graphics array
-          items:
-            $ref: '#/components/schemas/CharacterMedalsGraphic'
-          maxItems: 9
-          minItems: 3
-          title: CharacterMedalsGraphics
-          type: array
-        issuer_id:
-          description: issuer_id integer
-          format: int32
-          title: get_characters_character_id_medals_issuer_id
-          type: integer
-        medal_id:
-          description: medal_id integer
-          format: int32
-          title: get_characters_character_id_medals_medal_id
-          type: integer
-        reason:
-          description: reason string
-          title: get_characters_character_id_medals_reason
-          type: string
-        status:
-          description: status string
-          enum:
-          - public
-          - private
-          title: get_characters_character_id_medals_status
-          type: string
-        title:
-          description: title string
-          title: get_characters_character_id_medals_title
-          type: string
-      required:
-      - corporation_id
-      - date
-      - description
-      - graphics
-      - issuer_id
-      - medal_id
-      - reason
-      - status
-      - title
     CharacterMiningResponse:
       description: 200 ok object
       example:
@@ -27575,47 +27287,6 @@ components:
       - quantity
       - solar_system_id
       - type_id
-    NewContactNotificationsResponse:
-      description: 200 ok object
-      example:
-        send_date: 2000-01-23T04:56:07.000+00:00
-        sender_character_id: 6
-        standing_level: 1.4658129
-        notification_id: 0
-        message: message
-      properties:
-        message:
-          description: message string
-          title: get_characters_character_id_notifications_contacts_message
-          type: string
-        notification_id:
-          description: notification_id integer
-          format: int32
-          title: get_characters_character_id_notifications_contacts_notification_id
-          type: integer
-        send_date:
-          description: send_date string
-          format: date-time
-          title: get_characters_character_id_notifications_contacts_send_date
-          type: string
-        sender_character_id:
-          description: sender_character_id integer
-          format: int32
-          title: get_characters_character_id_notifications_contacts_sender_character_id
-          type: integer
-        standing_level:
-          description: 'A number representing the standing level the receiver has
-            been added at by the sender. The standing levels are as follows: -10 ->
-            Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent'
-          format: float
-          title: get_characters_character_id_notifications_contacts_standing_level
-          type: number
-      required:
-      - message
-      - notification_id
-      - send_date
-      - sender_character_id
-      - standing_level
     CharacterOpportunitiesResponse:
       description: 200 ok object
       example:
@@ -27849,50 +27520,6 @@ components:
       - ship_item_id
       - ship_name
       - ship_type_id
-    CharacterStandingsResponse:
-      description: 200 ok object
-      example:
-        from_type: agent
-        standing: 6.0274563
-        from_id: 0
-      properties:
-        from_id:
-          description: from_id integer
-          format: int32
-          title: get_characters_character_id_standings_from_id
-          type: integer
-        from_type:
-          description: from_type string
-          enum:
-          - agent
-          - npc_corp
-          - faction
-          title: get_characters_character_id_standings_from_type
-          type: string
-        standing:
-          description: standing number
-          format: float
-          title: get_characters_character_id_standings_standing
-          type: number
-      required:
-      - from_id
-      - from_type
-      - standing
-    CharacterTitlesResponse:
-      description: 200 ok object
-      example:
-        name: name
-        title_id: 0
-      properties:
-        name:
-          description: name string
-          title: get_characters_character_id_titles_name
-          type: string
-        title_id:
-          description: title_id integer
-          format: int32
-          title: get_characters_character_id_titles_title_id
-          type: integer
     CharacterWalletTransactionsResponse:
       description: wallet transaction
       example:
@@ -33639,6 +33266,78 @@ components:
       - contact_id
       - contact_type
       - standing
+    CharacterAffiliationResponse:
+      description: 200 ok object
+      example:
+        alliance_id: 0
+        corporation_id: 1
+        faction_id: 5
+        character_id: 6
+      properties:
+        alliance_id:
+          description: The character's alliance ID, if their corporation is in an
+            alliance
+          format: int32
+          title: post_characters_affiliation_alliance_id
+          type: integer
+        character_id:
+          description: The character's ID
+          format: int32
+          title: post_characters_affiliation_character_id
+          type: integer
+        corporation_id:
+          description: The character's corporation ID
+          format: int32
+          title: post_characters_affiliation_corporation_id
+          type: integer
+        faction_id:
+          description: The character's faction ID, if their corporation is in a faction
+          format: int32
+          title: post_characters_affiliation_faction_id
+          type: integer
+      required:
+      - character_id
+      - corporation_id
+    CharacterResearchAgentsResponse:
+      description: 200 ok object
+      example:
+        remainder_points: 1.4658129
+        agent_id: 0
+        skill_type_id: 5
+        started_at: 2000-01-23T04:56:07.000+00:00
+        points_per_day: 6.0274563
+      properties:
+        agent_id:
+          description: agent_id integer
+          format: int32
+          title: get_characters_character_id_agents_research_agent_id
+          type: integer
+        points_per_day:
+          description: points_per_day number
+          format: float
+          title: get_characters_character_id_agents_research_points_per_day
+          type: number
+        remainder_points:
+          description: remainder_points number
+          format: float
+          title: get_characters_character_id_agents_research_remainder_points
+          type: number
+        skill_type_id:
+          description: skill_type_id integer
+          format: int32
+          title: get_characters_character_id_agents_research_skill_type_id
+          type: integer
+        started_at:
+          description: started_at string
+          format: date-time
+          title: get_characters_character_id_agents_research_started_at
+          type: string
+      required:
+      - agent_id
+      - points_per_day
+      - remainder_points
+      - skill_type_id
+      - started_at
     CharacterAssetsLocationsPosition:
       description: position object
       example:
@@ -33684,156 +33383,6 @@ components:
       required:
       - item_id
       - position
-    CharacterBlueprintsResponse:
-      description: 200 ok object
-      example:
-        quantity: -1
-        material_efficiency: 3
-        item_id: 0
-        location_flag: AutoFit
-        time_efficiency: 4
-        type_id: 7
-        runs: 0
-        location_id: 6
-      properties:
-        item_id:
-          description: Unique ID for this item.
-          format: int64
-          title: get_characters_character_id_blueprints_item_id
-          type: integer
-        location_flag:
-          description: Type of the location_id
-          enum:
-          - AutoFit
-          - Cargo
-          - CorpseBay
-          - DroneBay
-          - FleetHangar
-          - Deliveries
-          - HiddenModifiers
-          - Hangar
-          - HangarAll
-          - LoSlot0
-          - LoSlot1
-          - LoSlot2
-          - LoSlot3
-          - LoSlot4
-          - LoSlot5
-          - LoSlot6
-          - LoSlot7
-          - MedSlot0
-          - MedSlot1
-          - MedSlot2
-          - MedSlot3
-          - MedSlot4
-          - MedSlot5
-          - MedSlot6
-          - MedSlot7
-          - HiSlot0
-          - HiSlot1
-          - HiSlot2
-          - HiSlot3
-          - HiSlot4
-          - HiSlot5
-          - HiSlot6
-          - HiSlot7
-          - AssetSafety
-          - Locked
-          - Unlocked
-          - Implant
-          - QuafeBay
-          - RigSlot0
-          - RigSlot1
-          - RigSlot2
-          - RigSlot3
-          - RigSlot4
-          - RigSlot5
-          - RigSlot6
-          - RigSlot7
-          - ShipHangar
-          - SpecializedFuelBay
-          - SpecializedOreHold
-          - SpecializedGasHold
-          - SpecializedMineralHold
-          - SpecializedSalvageHold
-          - SpecializedShipHold
-          - SpecializedSmallShipHold
-          - SpecializedMediumShipHold
-          - SpecializedLargeShipHold
-          - SpecializedIndustrialShipHold
-          - SpecializedAmmoHold
-          - SpecializedCommandCenterHold
-          - SpecializedPlanetaryCommoditiesHold
-          - SpecializedMaterialBay
-          - SubSystemSlot0
-          - SubSystemSlot1
-          - SubSystemSlot2
-          - SubSystemSlot3
-          - SubSystemSlot4
-          - SubSystemSlot5
-          - SubSystemSlot6
-          - SubSystemSlot7
-          - FighterBay
-          - FighterTube0
-          - FighterTube1
-          - FighterTube2
-          - FighterTube3
-          - FighterTube4
-          - Module
-          title: get_characters_character_id_blueprints_location_flag
-          type: string
-        location_id:
-          description: References a station, a ship or an item_id if this blueprint
-            is located within a container. If the return value is an item_id, then
-            the Character AssetList API must be queried to find the container using
-            the given item_id to determine the correct location of the Blueprint.
-          format: int64
-          title: get_characters_character_id_blueprints_location_id
-          type: integer
-        material_efficiency:
-          description: Material Efficiency Level of the blueprint.
-          format: int32
-          maximum: 25
-          minimum: 0
-          title: get_characters_character_id_blueprints_material_efficiency
-          type: integer
-        quantity:
-          description: A range of numbers with a minimum of -2 and no maximum value
-            where -1 is an original and -2 is a copy. It can be a positive integer
-            if it is a stack of blueprint originals fresh from the market (e.g. no
-            activities performed on them yet).
-          format: int32
-          minimum: -2
-          title: get_characters_character_id_blueprints_quantity
-          type: integer
-        runs:
-          description: Number of runs remaining if the blueprint is a copy, -1 if
-            it is an original.
-          format: int32
-          minimum: -1
-          title: get_characters_character_id_blueprints_runs
-          type: integer
-        time_efficiency:
-          description: Time Efficiency Level of the blueprint.
-          format: int32
-          maximum: 2E+1
-          minimum: 0
-          title: get_characters_character_id_blueprints_time_efficiency
-          type: integer
-        type_id:
-          description: type_id integer
-          format: int32
-          title: get_characters_character_id_blueprints_type_id
-          type: integer
-      required:
-      - item_id
-      - location_flag
-      - location_id
-      - material_efficiency
-      - quantity
-      - runs
-      - time_efficiency
-      - type_id
     CharacterBookmarksCoordinates:
       description: Optional object that is returned if a bookmark was made on a planet
         or a random location in space.
@@ -34018,6 +33567,60 @@ components:
       - contact_id
       - contact_type
       - standing
+    CharacterCorporationHistoryResponse:
+      description: 200 ok object
+      example:
+        record_id: 6
+        corporation_id: 0
+        is_deleted: true
+        start_date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        corporation_id:
+          description: corporation_id integer
+          format: int32
+          title: get_characters_character_id_corporationhistory_corporation_id
+          type: integer
+        is_deleted:
+          description: True if the corporation has been deleted
+          title: get_characters_character_id_corporationhistory_is_deleted
+          type: boolean
+        record_id:
+          description: An incrementing ID that can be used to canonically establish
+            order of records in cases where dates may be ambiguous
+          format: int32
+          title: get_characters_character_id_corporationhistory_record_id
+          type: integer
+        start_date:
+          description: start_date string
+          format: date-time
+          title: get_characters_character_id_corporationhistory_start_date
+          type: string
+      required:
+      - corporation_id
+      - record_id
+      - start_date
+    CharacterFatigueResponse:
+      description: 200 ok object
+      example:
+        last_jump_date: 2000-01-23T04:56:07.000+00:00
+        jump_fatigue_expire_date: 2000-01-23T04:56:07.000+00:00
+        last_update_date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        jump_fatigue_expire_date:
+          description: Character's jump fatigue expiry
+          format: date-time
+          title: get_characters_character_id_fatigue_jump_fatigue_expire_date
+          type: string
+        last_jump_date:
+          description: Character's last jump activation
+          format: date-time
+          title: get_characters_character_id_fatigue_last_jump_date
+          type: string
+        last_update_date:
+          description: Character's last jump update
+          format: date-time
+          title: get_characters_character_id_fatigue_last_update_date
+          type: string
     CharacterFittingsResponse:
       description: 200 ok object
       example:
@@ -34180,6 +33783,168 @@ components:
       - name
       title: MailLabelSimple
       type: object
+    CharacterMedalsGraphic:
+      description: graphic object
+      example:
+        color: 6
+        part: 5
+        graphic: graphic
+        layer: 1
+      properties:
+        color:
+          description: color integer
+          format: int32
+          title: get_characters_character_id_medals_color
+          type: integer
+        graphic:
+          description: graphic string
+          title: CharacterMedalsGraphic_graphic
+          type: string
+        layer:
+          description: layer integer
+          format: int32
+          title: get_characters_character_id_medals_layer
+          type: integer
+        part:
+          description: part integer
+          format: int32
+          title: get_characters_character_id_medals_part
+          type: integer
+      required:
+      - graphic
+      - layer
+      - part
+    CharacterMedalsResponse:
+      description: 200 ok object
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        medal_id: 2
+        issuer_id: 5
+        reason: reason
+        corporation_id: 0
+        description: description
+        graphics:
+        - color: 6
+          part: 5
+          graphic: graphic
+          layer: 1
+        - color: 6
+          part: 5
+          graphic: graphic
+          layer: 1
+        - color: 6
+          part: 5
+          graphic: graphic
+          layer: 1
+        - color: 6
+          part: 5
+          graphic: graphic
+          layer: 1
+        - color: 6
+          part: 5
+          graphic: graphic
+          layer: 1
+        title: title
+        status: public
+      properties:
+        corporation_id:
+          description: corporation_id integer
+          format: int32
+          title: get_characters_character_id_medals_corporation_id
+          type: integer
+        date:
+          description: date string
+          format: date-time
+          title: get_characters_character_id_medals_date
+          type: string
+        description:
+          description: description string
+          title: get_characters_character_id_medals_description
+          type: string
+        graphics:
+          description: graphics array
+          items:
+            $ref: '#/components/schemas/CharacterMedalsGraphic'
+          maxItems: 9
+          minItems: 3
+          title: CharacterMedalsGraphics
+          type: array
+        issuer_id:
+          description: issuer_id integer
+          format: int32
+          title: get_characters_character_id_medals_issuer_id
+          type: integer
+        medal_id:
+          description: medal_id integer
+          format: int32
+          title: get_characters_character_id_medals_medal_id
+          type: integer
+        reason:
+          description: reason string
+          title: get_characters_character_id_medals_reason
+          type: string
+        status:
+          description: status string
+          enum:
+          - public
+          - private
+          title: get_characters_character_id_medals_status
+          type: string
+        title:
+          description: title string
+          title: get_characters_character_id_medals_title
+          type: string
+      required:
+      - corporation_id
+      - date
+      - description
+      - graphics
+      - issuer_id
+      - medal_id
+      - reason
+      - status
+      - title
+    NewContactNotificationsResponse:
+      description: 200 ok object
+      example:
+        send_date: 2000-01-23T04:56:07.000+00:00
+        sender_character_id: 6
+        standing_level: 1.4658129
+        notification_id: 0
+        message: message
+      properties:
+        message:
+          description: message string
+          title: get_characters_character_id_notifications_contacts_message
+          type: string
+        notification_id:
+          description: notification_id integer
+          format: int32
+          title: get_characters_character_id_notifications_contacts_notification_id
+          type: integer
+        send_date:
+          description: send_date string
+          format: date-time
+          title: get_characters_character_id_notifications_contacts_send_date
+          type: string
+        sender_character_id:
+          description: sender_character_id integer
+          format: int32
+          title: get_characters_character_id_notifications_contacts_sender_character_id
+          type: integer
+        standing_level:
+          description: 'A number representing the standing level the receiver has
+            been added at by the sender. The standing levels are as follows: -10 ->
+            Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent'
+          format: float
+          title: get_characters_character_id_notifications_contacts_standing_level
+          type: number
+      required:
+      - message
+      - notification_id
+      - send_date
+      - sender_character_id
+      - standing_level
     CharacterOnlineResponse:
       description: 200 ok object
       example:
@@ -34346,266 +34111,6 @@ components:
           description: px64x64 string
           title: get_characters_character_id_portrait_px64x64
           type: string
-    CharacterRolesResponse:
-      description: 200 ok object
-      example:
-        roles_at_other:
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        roles_at_base:
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        roles:
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        roles_at_hq:
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-        - Account_Take_1
-      properties:
-        roles:
-          description: roles array
-          items:
-            description: role string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            title: get_characters_character_id_roles_role
-            type: string
-          maxItems: 50
-          title: get_characters_character_id_roles_roles
-          type: array
-        roles_at_base:
-          description: roles_at_base array
-          items:
-            description: roles_at_base string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            title: get_characters_character_id_roles_roles_at_base_roles_at_base
-            type: string
-          maxItems: 50
-          title: get_characters_character_id_roles_roles_at_base
-          type: array
-        roles_at_hq:
-          description: roles_at_hq array
-          items:
-            description: roles_at_hq string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            title: get_characters_character_id_roles_roles_at_hq_roles_at_hq
-            type: string
-          maxItems: 50
-          title: get_characters_character_id_roles_roles_at_hq
-          type: array
-        roles_at_other:
-          description: roles_at_other array
-          items:
-            description: roles_at_other string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            title: get_characters_character_id_roles_roles_at_other_roles_at_other
-            type: string
-          maxItems: 50
-          title: get_characters_character_id_roles_roles_at_other
-          type: array
     CharacterSkillqueueResponse:
       description: 200 ok object
       example:
@@ -34666,6 +34171,50 @@ components:
       - finished_level
       - queue_position
       - skill_id
+    CharacterStandingsResponse:
+      description: 200 ok object
+      example:
+        from_type: agent
+        standing: 6.0274563
+        from_id: 0
+      properties:
+        from_id:
+          description: from_id integer
+          format: int32
+          title: get_characters_character_id_standings_from_id
+          type: integer
+        from_type:
+          description: from_type string
+          enum:
+          - agent
+          - npc_corp
+          - faction
+          title: get_characters_character_id_standings_from_type
+          type: string
+        standing:
+          description: standing number
+          format: float
+          title: get_characters_character_id_standings_standing
+          type: number
+      required:
+      - from_id
+      - from_type
+      - standing
+    CharacterTitlesResponse:
+      description: 200 ok object
+      example:
+        name: name
+        title_id: 0
+      properties:
+        name:
+          description: name string
+          title: get_characters_character_id_titles_name
+          type: string
+        title_id:
+          description: title_id integer
+          format: int32
+          title: get_characters_character_id_titles_title_id
+          type: integer
     CorporationAssetsLocationsPosition:
       description: position object
       example:
@@ -37374,6 +36923,156 @@ components:
       - date_founded
       - name
       - ticker
+    CharacterBlueprintsResponse:
+      description: 200 ok object
+      example:
+        quantity: -1
+        material_efficiency: 3
+        item_id: 0
+        location_flag: AutoFit
+        time_efficiency: 4
+        type_id: 7
+        runs: 0
+        location_id: 6
+      properties:
+        item_id:
+          description: Unique ID for this item.
+          format: int64
+          title: get_characters_character_id_blueprints_item_id
+          type: integer
+        location_flag:
+          description: Type of the location_id
+          enum:
+          - AutoFit
+          - Cargo
+          - CorpseBay
+          - DroneBay
+          - FleetHangar
+          - Deliveries
+          - HiddenModifiers
+          - Hangar
+          - HangarAll
+          - LoSlot0
+          - LoSlot1
+          - LoSlot2
+          - LoSlot3
+          - LoSlot4
+          - LoSlot5
+          - LoSlot6
+          - LoSlot7
+          - MedSlot0
+          - MedSlot1
+          - MedSlot2
+          - MedSlot3
+          - MedSlot4
+          - MedSlot5
+          - MedSlot6
+          - MedSlot7
+          - HiSlot0
+          - HiSlot1
+          - HiSlot2
+          - HiSlot3
+          - HiSlot4
+          - HiSlot5
+          - HiSlot6
+          - HiSlot7
+          - AssetSafety
+          - Locked
+          - Unlocked
+          - Implant
+          - QuafeBay
+          - RigSlot0
+          - RigSlot1
+          - RigSlot2
+          - RigSlot3
+          - RigSlot4
+          - RigSlot5
+          - RigSlot6
+          - RigSlot7
+          - ShipHangar
+          - SpecializedFuelBay
+          - SpecializedOreHold
+          - SpecializedGasHold
+          - SpecializedMineralHold
+          - SpecializedSalvageHold
+          - SpecializedShipHold
+          - SpecializedSmallShipHold
+          - SpecializedMediumShipHold
+          - SpecializedLargeShipHold
+          - SpecializedIndustrialShipHold
+          - SpecializedAmmoHold
+          - SpecializedCommandCenterHold
+          - SpecializedPlanetaryCommoditiesHold
+          - SpecializedMaterialBay
+          - SubSystemSlot0
+          - SubSystemSlot1
+          - SubSystemSlot2
+          - SubSystemSlot3
+          - SubSystemSlot4
+          - SubSystemSlot5
+          - SubSystemSlot6
+          - SubSystemSlot7
+          - FighterBay
+          - FighterTube0
+          - FighterTube1
+          - FighterTube2
+          - FighterTube3
+          - FighterTube4
+          - Module
+          title: get_characters_character_id_blueprints_location_flag
+          type: string
+        location_id:
+          description: References a station, a ship or an item_id if this blueprint
+            is located within a container. If the return value is an item_id, then
+            the Character AssetList API must be queried to find the container using
+            the given item_id to determine the correct location of the Blueprint.
+          format: int64
+          title: get_characters_character_id_blueprints_location_id
+          type: integer
+        material_efficiency:
+          description: Material Efficiency Level of the blueprint.
+          format: int32
+          maximum: 25
+          minimum: 0
+          title: get_characters_character_id_blueprints_material_efficiency
+          type: integer
+        quantity:
+          description: A range of numbers with a minimum of -2 and no maximum value
+            where -1 is an original and -2 is a copy. It can be a positive integer
+            if it is a stack of blueprint originals fresh from the market (e.g. no
+            activities performed on them yet).
+          format: int32
+          minimum: -2
+          title: get_characters_character_id_blueprints_quantity
+          type: integer
+        runs:
+          description: Number of runs remaining if the blueprint is a copy, -1 if
+            it is an original.
+          format: int32
+          minimum: -1
+          title: get_characters_character_id_blueprints_runs
+          type: integer
+        time_efficiency:
+          description: Time Efficiency Level of the blueprint.
+          format: int32
+          maximum: 2E+1
+          minimum: 0
+          title: get_characters_character_id_blueprints_time_efficiency
+          type: integer
+        type_id:
+          description: type_id integer
+          format: int32
+          title: get_characters_character_id_blueprints_type_id
+          type: integer
+      required:
+      - item_id
+      - location_flag
+      - location_id
+      - material_efficiency
+      - quantity
+      - runs
+      - time_efficiency
+      - type_id
     CharacterCalendarEventResponse:
       description: Full details of a specific event
       example:
@@ -38314,6 +38013,266 @@ components:
       - links
       - pins
       - routes
+    CharacterRolesResponse:
+      description: 200 ok object
+      example:
+        roles_at_other:
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        roles_at_base:
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        roles:
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        roles_at_hq:
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+        - Account_Take_1
+      properties:
+        roles:
+          description: roles array
+          items:
+            description: role string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            title: get_characters_character_id_roles_role
+            type: string
+          maxItems: 50
+          title: get_characters_character_id_roles_roles
+          type: array
+        roles_at_base:
+          description: roles_at_base array
+          items:
+            description: roles_at_base string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            title: get_characters_character_id_roles_roles_at_base_roles_at_base
+            type: string
+          maxItems: 50
+          title: get_characters_character_id_roles_roles_at_base
+          type: array
+        roles_at_hq:
+          description: roles_at_hq array
+          items:
+            description: roles_at_hq string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            title: get_characters_character_id_roles_roles_at_hq_roles_at_hq
+            type: string
+          maxItems: 50
+          title: get_characters_character_id_roles_roles_at_hq
+          type: array
+        roles_at_other:
+          description: roles_at_other array
+          items:
+            description: roles_at_other string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            title: get_characters_character_id_roles_roles_at_other_roles_at_other
+            type: string
+          maxItems: 50
+          title: get_characters_character_id_roles_roles_at_other
+          type: array
     CharacterSearchResponse:
       description: 200 ok object
       example:
