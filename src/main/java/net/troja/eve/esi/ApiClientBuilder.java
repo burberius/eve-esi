@@ -5,8 +5,9 @@ import okhttp3.OkHttpClient;
 
 public class ApiClientBuilder {
 
-    private String clientID;
-    private String refreshToken;
+    private String clientID = null;
+    private String clientSecret = null;
+    private String refreshToken = null;
     private String accessToken;
     private String userAgent;
     private OkHttpClient okHttpClient;
@@ -25,13 +26,7 @@ public class ApiClientBuilder {
         }
         // Set auth
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        if (clientID != null) {
-            if (refreshToken != null) {
-                auth.setAuth(clientID, refreshToken);
-            } else {
-                auth.setClientId(clientID);
-            }
-        }
+        auth.setAuthWeb(clientID, clientSecret, refreshToken); //Some of the values may be null, that is okay and by design
         if (accessToken != null) {
             auth.setAccessToken(accessToken);
         }
@@ -41,8 +36,24 @@ public class ApiClientBuilder {
         return client;
     }
 
+    public ApiClientBuilder authWeb(String clientID, String clientSecret) {
+        this.clientID = clientID;
+        this.clientSecret = clientSecret;
+        return this;
+    }
+
+    public ApiClientBuilder authDesktop(String clientID) {
+        this.clientID = clientID;
+        return this;
+    }
+
     public ApiClientBuilder clientID(String clientID) {
         this.clientID = clientID;
+        return this;
+    }
+
+    public ApiClientBuilder clientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
         return this;
     }
 

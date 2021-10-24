@@ -53,7 +53,7 @@ public class OAuth implements Authentication {
 
     public void setAccessToken(final String accessToken) {
         if (account == null) {
-            account = new AccountData(null, null);
+            account = new AccountData(null, null, null);
         }
         account.setAccessToken(accessToken);
     }
@@ -74,8 +74,46 @@ public class OAuth implements Authentication {
         }
     }
 
-    public void setAuth(final String clientId, final String refreshToken) {
-        AccountData accountData = new AccountData(clientId, refreshToken);
+    public String getClientSecret() {
+        if (account != null) {
+            return account.getClientSecret();
+        } else {
+            return null;
+        }
+    }
+
+    private boolean isDesktopFlow() {
+        if (account != null) {
+            return account.isDesktopFlow();
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Desktop/Mobile flow (No client secret/PKCE)
+     * @param clientId
+     * @param refreshToken 
+     */
+    public void setAuthDesktop(final String clientId, final String refreshToken) {
+        setAuth(clientId, null, refreshToken);
+    }
+
+    /**
+     * Web flow (with client secret)
+     * @param clientId
+     * @param clientSecret
+     * @param refreshToken 
+     */
+    public void setAuthWeb(final String clientId, String clientSecret, final String refreshToken) {
+        setAuth(clientId, clientSecret, refreshToken);
+    }
+
+    /**
+     * Use setAuthDesktop or setAuthWeb
+     */
+    private void setAuth(final String clientId, String clientSecret, final String refreshToken) {
+        AccountData accountData = new AccountData(clientId, clientSecret, refreshToken);
         AccountData old = ACCOUNTS.putIfAbsent(accountData.getKey(), accountData);
         if (old != null) {
             accountData = old;
@@ -87,7 +125,7 @@ public class OAuth implements Authentication {
     }
 
     public void setClientId(final String clientId) {
-        setAuth(clientId, null);
+        setAuth(clientId, null, null);
     }
 
     public String getAccessToken() {
@@ -178,39 +216,13 @@ public class OAuth implements Authentication {
         builder.append(encode(getScopesString(scopes)));
         builder.append("&state=");
         builder.append(encode(state));
-        builder.append("&code_challenge");
-        builder.append(getCodeChallenge()); // Already url encoded
-        builder.append("&code_challenge_method=");
-        builder.append(encode("S256"));
+        if (isDesktopFlow()) { //Desktop flow (No client secret/PKCE)
+            builder.append("&code_challenge");
+            builder.append(getCodeChallenge()); // Already url encoded
+            builder.append("&code_challenge_method=");
+            builder.append(encode("S256"));
+        }
         return builder.toString();
-    }
-
-    /**
-     * 
-     * @return the PKCE code verifier used to generate the last code challenge
-     *         (RFC 7636)
-     */
-    public String getCodeVerifier() {
-        return codeVerifier;
-    }
-
-    /**
-     * Finish the oauth flow after the user was redirected back.
-     *
-     * @param code
-     *            Code returned by the Eve Online SSO
-     * @param state
-     *            This should be some secret to prevent XRSF see
-     *            getAuthorizationUri
-     * @param codeVerifier
-     *            The PKCE code verifier used to generate the code challenge
-     *            (RFC 7636). Required if not called by the same instance that
-     *            called `getAuthorizationUri`
-     * @throws net.troja.eve.esi.ApiException
-     */
-    public void finishFlow(final String code, final String state, String codeVerifier) throws ApiException {
-        this.codeVerifier = codeVerifier;
-        finishFlow(code, state);
     }
 
     /**
@@ -226,19 +238,21 @@ public class OAuth implements Authentication {
     public void finishFlow(final String code, final String state) throws ApiException {
         if (account == null)
             throw new IllegalArgumentException("Auth is not set");
-        if (codeVerifier == null)
+        if (codeVerifier == null && account.isDesktopFlow())
             throw new IllegalArgumentException("code_verifier is not set");
         if (account.getClientId() == null)
             throw new IllegalArgumentException("client_id is not set");
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("authorization_code"));
-        builder.append("&client_id=");
-        builder.append(encode(account.getClientId()));
         builder.append("&code=");
         builder.append(encode(code));
-        builder.append("&code_verifier=");
-        builder.append(encode(codeVerifier));
+        if (isDesktopFlow()) { //Desktop flow (No client secret/PKCE)
+            builder.append("&client_id=");
+            builder.append(encode(account.getClientId()));
+            builder.append("&code_verifier=");
+            builder.append(encode(codeVerifier));
+        }
         update(account, builder.toString());
     }
 
@@ -262,6 +276,9 @@ public class OAuth implements Authentication {
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             con.setRequestProperty("Host", "login.eveonline.com");
+            if (accountData.isWebFlow()) { //Web flow (with client secret)
+                con.setRequestProperty("Authorization", "Basic " + encode(accountData.getClientId() + ":" + accountData.getClientSecret())); 
+            }
             con.setConnectTimeout(10000);
             con.setReadTimeout(10000);
 
@@ -322,17 +339,23 @@ public class OAuth implements Authentication {
 
     private static class AccountData {
         private final String clientId;
+        private final String clientSecret;
         private String refreshToken;
         private String accessToken;
         private long validUntil = 0;
 
-        public AccountData(String clientId, String refreshToken) {
+        public AccountData(String clientId, String clientSecret, String refreshToken) {
             this.clientId = clientId;
+            this.clientSecret = clientSecret;
             this.refreshToken = refreshToken;
         }
 
         public String getClientId() {
             return clientId;
+        }
+
+        public String getClientSecret() {
+            return clientSecret;
         }
 
         public String getRefreshToken() {
@@ -370,8 +393,20 @@ public class OAuth implements Authentication {
             }
         }
 
+        private boolean isDesktopFlow() {
+            return clientSecret == null; //Desktop flow (No client secret/PKCE)
+        }
+
+        private boolean isWebFlow() { 
+            return clientSecret != null; //Web flow (with client secret)
+        }
+
         public String getKey() {
-            return clientId + refreshToken;
+            if (clientSecret != null) {
+                return clientId + clientSecret + refreshToken;
+            } else {
+                return clientId + refreshToken;
+            }
         }
     }
 
