@@ -317,11 +317,12 @@ public class CharacterContractsResponse implements Serializable {
     }
 
     /**
-     * ID to whom the contract is assigned, can be corporation or character ID
+     * ID to whom the contract is assigned, can be alliance, corporation or
+     * character ID
      * 
      * @return assigneeId
      **/
-    @ApiModelProperty(required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
+    @ApiModelProperty(required = true, value = "ID to whom the contract is assigned, can be alliance, corporation or character ID")
     public Integer getAssigneeId() {
         return assigneeId;
     }
