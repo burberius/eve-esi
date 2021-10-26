@@ -7723,7 +7723,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -7758,7 +7760,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: Access token to use if unable to set a header
         in: query
@@ -7814,7 +7818,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -8382,7 +8388,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -8417,7 +8425,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: Access token to use if unable to set a header
         in: query
@@ -8468,7 +8478,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -9831,7 +9843,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -9859,7 +9873,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -9905,7 +9921,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -10357,7 +10375,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -10385,7 +10405,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: An Eve item group ID
         in: path
@@ -10435,7 +10457,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -11287,7 +11311,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -11322,7 +11348,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -11366,7 +11394,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -12591,7 +12621,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -12619,7 +12651,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -12665,7 +12699,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -12849,7 +12885,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -12877,7 +12915,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -12929,7 +12969,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -13111,7 +13153,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: An Eve item category ID
         in: path
@@ -13146,7 +13190,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -13189,7 +13235,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -13370,7 +13418,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: constellation_id integer
         in: path
@@ -13405,7 +13455,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -13451,7 +13503,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -13863,7 +13917,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -13898,7 +13954,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -13942,7 +14000,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -14014,7 +14074,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -14036,7 +14098,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       requestBody:
         content:
@@ -14085,7 +14149,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "400":
           content: {}
@@ -14366,7 +14432,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -14394,7 +14462,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -14439,7 +14509,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -14621,7 +14693,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -14649,7 +14723,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: region_id integer
         in: path
@@ -14698,7 +14774,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -18449,7 +18527,7 @@ paths:
                 description: 200 ok array
                 items:
                   $ref: '#/components/schemas/CharacterSkillqueueResponse'
-                maxItems: 100
+                maxItems: 150
                 title: get_characters_character_id_skillqueue_ok
                 type: array
           description: The current skill queue, sorted ascending by finishing time
@@ -21435,7 +21513,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: Type of entities to search for
         explode: false
@@ -21487,7 +21567,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The string to search on
         in: query
@@ -21546,7 +21628,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -21705,7 +21789,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -21733,7 +21819,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       responses:
         "200":
@@ -21783,7 +21871,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -23187,7 +23277,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: Type of entities to search for
         explode: false
@@ -23248,7 +23340,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The string to search on
         in: query
@@ -23312,7 +23406,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -24068,7 +24164,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -24096,7 +24194,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: An Eve item type ID
         in: path
@@ -24144,7 +24244,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -24194,122 +24296,6 @@ paths:
       x-alternate-versions:
       - dev
       - v3
-      x-accepts: application/json
-  /v4/characters/{character_id}/:
-    get:
-      description: |-
-        Public information about a character
-
-        ---
-
-        This route is cached for up to 86400 seconds
-      operationId: get_characters_character_id
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                ancestry_id: 19
-                birthday: 2015-03-24T11:37:00Z
-                bloodline_id: 3
-                corporation_id: 109299958
-                description: ""
-                gender: male
-                name: CCP Bartender
-                race_id: 2
-                title: All round pretty awesome guy
-              schema:
-                $ref: '#/components/schemas/CharacterResponse'
-          description: Public data for the given character
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "404":
-          content: {}
-        "420":
-          content: {}
-        "422":
-          content: {}
-        "500":
-          content: {}
-        "502":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "520":
-          content: {}
-      summary: Get character's public information
-      tags:
-      - Character
-      x-alternate-versions:
-      - dev
-      - v4
-      x-cached-seconds: 86400
       x-accepts: application/json
   /v4/characters/{character_id}/skills/:
     get:
@@ -24592,7 +24578,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: An EVE corporation ID
         in: path
@@ -24628,7 +24616,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: Which page of results to return
         in: query
@@ -24696,7 +24686,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -24937,7 +24929,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: The server name you would like data from
         in: query
@@ -24965,7 +24959,9 @@ paths:
           - fr
           - ja
           - ru
+          - zh
           - ko
+          - es
           type: string
       - description: system_id integer
         in: path
@@ -25025,7 +25021,9 @@ paths:
                 - fr
                 - ja
                 - ru
+                - zh
                 - ko
+                - es
                 type: string
         "304":
           content: {}
@@ -25075,6 +25073,122 @@ paths:
       x-alternate-versions:
       - dev
       - v4
+      x-accepts: application/json
+  /v5/characters/{character_id}/:
+    get:
+      description: |-
+        Public information about a character
+
+        ---
+
+        This route is cached for up to 86400 seconds
+      operationId: get_characters_character_id
+      parameters:
+      - description: An EVE character ID
+        in: path
+        name: character_id
+        required: true
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+      - description: The server name you would like data from
+        in: query
+        name: datasource
+        schema:
+          default: tranquility
+          enum:
+          - tranquility
+          type: string
+      - description: ETag from a previous request. A 304 will be returned if this
+          matches the current ETag
+        in: header
+        name: If-None-Match
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                birthday: 2015-03-24T11:37:00Z
+                bloodline_id: 3
+                corporation_id: 109299958
+                description: ""
+                gender: male
+                name: CCP Bartender
+                race_id: 2
+                title: All round pretty awesome guy
+              schema:
+                $ref: '#/components/schemas/CharacterResponse'
+          description: Public data for the given character
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "304":
+          content: {}
+          description: Not modified
+          headers:
+            Cache-Control:
+              description: The caching mechanism used
+              schema:
+                type: string
+            ETag:
+              description: RFC7232 compliant entity tag
+              schema:
+                type: string
+            Expires:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+            Last-Modified:
+              description: RFC7231 formatted datetime string
+              schema:
+                type: string
+        "400":
+          content: {}
+        "401":
+          content: {}
+        "403":
+          content: {}
+        "404":
+          content: {}
+        "420":
+          content: {}
+        "422":
+          content: {}
+        "500":
+          content: {}
+        "502":
+          content: {}
+        "503":
+          content: {}
+        "504":
+          content: {}
+        "520":
+          content: {}
+      summary: Get character's public information
+      tags:
+      - Character
+      x-alternate-versions:
+      - dev
+      - legacy
+      - v5
+      x-cached-seconds: 86400
       x-accepts: application/json
   /v5/characters/{character_id}/assets/:
     get:
@@ -25995,7 +26109,9 @@ components:
         - fr
         - ja
         - ru
+        - zh
         - ko
+        - es
         type: string
     If-None-Match:
       description: ETag from a previous request. A 304 will be returned if this matches
@@ -26053,7 +26169,9 @@ components:
         - fr
         - ja
         - ru
+        - zh
         - ko
+        - es
         type: string
     page:
       description: Which page of results to return
@@ -26479,8 +26597,8 @@ components:
           title: get_characters_character_id_contracts_acceptor_id
           type: integer
         assignee_id:
-          description: ID to whom the contract is assigned, can be corporation or
-            character ID
+          description: ID to whom the contract is assigned, can be alliance, corporation
+            or character ID
           format: int32
           title: get_characters_character_id_contracts_assignee_id
           type: integer
@@ -39206,91 +39324,6 @@ components:
       - name
       - published
       - type_id
-    CharacterResponse:
-      description: 200 ok object
-      example:
-        birthday: 2000-01-23T04:56:07.000+00:00
-        alliance_id: 0
-        ancestry_id: 6
-        corporation_id: 5
-        security_status: 4.1228023
-        gender: female
-        race_id: 2
-        name: name
-        description: description
-        faction_id: 5
-        title: title
-        bloodline_id: 1
-      properties:
-        alliance_id:
-          description: The character's alliance ID
-          format: int32
-          title: get_characters_character_id_alliance_id
-          type: integer
-        ancestry_id:
-          description: ancestry_id integer
-          format: int32
-          title: get_characters_character_id_ancestry_id
-          type: integer
-        birthday:
-          description: Creation date of the character
-          format: date-time
-          title: get_characters_character_id_birthday
-          type: string
-        bloodline_id:
-          description: bloodline_id integer
-          format: int32
-          title: get_characters_character_id_bloodline_id
-          type: integer
-        corporation_id:
-          description: The character's corporation ID
-          format: int32
-          title: get_characters_character_id_corporation_id
-          type: integer
-        description:
-          description: description string
-          title: get_characters_character_id_description
-          type: string
-        faction_id:
-          description: ID of the faction the character is fighting for, if the character
-            is enlisted in Factional Warfare
-          format: int32
-          title: get_characters_character_id_faction_id
-          type: integer
-        gender:
-          description: gender string
-          enum:
-          - female
-          - male
-          title: get_characters_character_id_gender
-          type: string
-        name:
-          description: name string
-          title: get_characters_character_id_name
-          type: string
-        race_id:
-          description: race_id integer
-          format: int32
-          title: get_characters_character_id_race_id
-          type: integer
-        security_status:
-          description: security_status number
-          format: float
-          maximum: 1E+1
-          minimum: -1E+1
-          title: get_characters_character_id_security_status
-          type: number
-        title:
-          description: The individual title of the character
-          title: get_characters_character_id_title
-          type: string
-      required:
-      - birthday
-      - bloodline_id
-      - corporation_id
-      - gender
-      - name
-      - race_id
     Skill:
       description: skill object
       example:
@@ -39962,6 +39995,85 @@ components:
       - position
       - security_status
       - system_id
+    CharacterResponse:
+      description: 200 ok object
+      example:
+        birthday: 2000-01-23T04:56:07.000+00:00
+        alliance_id: 0
+        corporation_id: 1
+        security_status: -5.395728
+        gender: female
+        race_id: 5
+        name: name
+        description: description
+        faction_id: 5
+        title: title
+        bloodline_id: 6
+      properties:
+        alliance_id:
+          description: The character's alliance ID
+          format: int32
+          title: get_characters_character_id_alliance_id
+          type: integer
+        birthday:
+          description: Creation date of the character
+          format: date-time
+          title: get_characters_character_id_birthday
+          type: string
+        bloodline_id:
+          description: bloodline_id integer
+          format: int32
+          title: get_characters_character_id_bloodline_id
+          type: integer
+        corporation_id:
+          description: The character's corporation ID
+          format: int32
+          title: get_characters_character_id_corporation_id
+          type: integer
+        description:
+          description: description string
+          title: get_characters_character_id_description
+          type: string
+        faction_id:
+          description: ID of the faction the character is fighting for, if the character
+            is enlisted in Factional Warfare
+          format: int32
+          title: get_characters_character_id_faction_id
+          type: integer
+        gender:
+          description: gender string
+          enum:
+          - female
+          - male
+          title: get_characters_character_id_gender
+          type: string
+        name:
+          description: name string
+          title: get_characters_character_id_name
+          type: string
+        race_id:
+          description: race_id integer
+          format: int32
+          title: get_characters_character_id_race_id
+          type: integer
+        security_status:
+          description: security_status number
+          format: float
+          maximum: 1E+1
+          minimum: -1E+1
+          title: get_characters_character_id_security_status
+          type: number
+        title:
+          description: The individual title of the character
+          title: get_characters_character_id_title
+          type: string
+      required:
+      - birthday
+      - bloodline_id
+      - corporation_id
+      - gender
+      - name
+      - race_id
     CharacterAssetsResponse:
       description: 200 ok object
       example:
