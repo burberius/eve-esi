@@ -384,11 +384,11 @@ public class OAuth implements Authentication {
             return clientSecret;
         }
 
-        public String getRefreshToken() {
+        public synchronized String getRefreshToken() { //Synchronized with update()
             return refreshToken;
         }
 
-        public String getAccessToken() {
+        public synchronized String getAccessToken() { //Synchronized with update()
             return accessToken;
         }
 
