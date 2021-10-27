@@ -29,7 +29,7 @@ int characterID = payload.getCharacterID();
 
 We added Web Flow to eve-esi, as it's now required if you can keep the secret safe.
 
-`ApiClientBuilder.clientID()` have been replaved by `authWeb()` and `authDesktop()`  
+`ApiClientBuilder.clientID()` have been replaced by `authWeb()` and `authDesktop()`  
 
 Example of web flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html)):
 ```java
