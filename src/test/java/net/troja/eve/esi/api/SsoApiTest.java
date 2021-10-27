@@ -2,7 +2,6 @@ package net.troja.eve.esi.api;
 
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +12,6 @@ import net.troja.eve.esi.model.CharacterInfo;
 import net.troja.eve.esi.model.EsiVerifyResponse;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -56,17 +53,12 @@ public class SsoApiTest extends GeneralApiTest {
     @Test
     public void getCharacterInfoTest() throws ApiException {
         final SsoApi api = new SsoApi(apiClient);
-        CharacterInfo info = api.getCharacterInfo();
-
-        assertThat(info, notNullValue());
-        assertThat(info.getCharacterID(), greaterThan(100000));
-        assertThat(info.getCharacterName().isEmpty(), equalTo(false));
-        assertThat(info.getExpiresOn(), notNullValue());
-        assertThat(info.getExpiresOn(), notNullValue());
-        assertThat(info.getExpiresOn().isAfter(OffsetDateTime.now()), equalTo(true));
-        assertThat(info.getTokenType(), equalTo("JWT"));
-        assertThat(info.getCharacterOwnerHash().isEmpty(), equalTo(false));
-        assertThat(info.getScopes().size(), greaterThan(10));
+        try {
+            CharacterInfo info = api.getCharacterInfo();
+            fail("CharacterInfo is Deprecated!");
+        } catch (IllegalStateException ex) {
+            //OK
+        }
     }
 
     @Test

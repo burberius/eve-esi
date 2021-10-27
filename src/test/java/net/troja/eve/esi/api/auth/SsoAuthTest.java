@@ -26,7 +26,7 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
-import net.troja.eve.esi.api.SsoApi;
+import net.troja.eve.esi.api.MetaApi;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
@@ -144,11 +144,11 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
-    public void expiredAccessTokenSso() {
+    public void expiredAccessTokenMeta() {
         final ApiClient client = new ApiClientBuilder().authDesktop(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
-        final SsoApi api = new SsoApi(client);
+        final MetaApi metaApi = new MetaApi(client);
         try {
-            api.getCharacterInfo();
+            metaApi.getVerify(null, null, DATASOURCE, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex, notNullValue());
