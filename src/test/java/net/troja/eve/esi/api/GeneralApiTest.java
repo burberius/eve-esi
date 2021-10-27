@@ -58,6 +58,7 @@ public class GeneralApiTest {
         String webRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_WEB);
         String refreshTokenPublicData = testConfig.getProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
+        //Need to have access to the clients so we can save the updated refresh token
         apiClient = new ApiClientBuilder().authDesktop(clientId).refreshToken(desktopRefreshToken).build();
         apiClientWeb = new ApiClientBuilder().authWeb(clientId, ssoClientSecret).refreshToken(webRefreshToken).build();
         apiClientPublicData = new ApiClientBuilder().authDesktop(clientId).refreshToken(refreshTokenPublicData).build();
@@ -90,16 +91,17 @@ public class GeneralApiTest {
     }
 
     public static Properties getTestConfig() throws ApiException {
-        if (testConfig == null) {
-            load();
-        }
+        load();
         return testConfig;
     }
 
     private static void load() throws ApiException {
+        if (testConfig != null) { //Only load once...
+            return;
+        }
+        testConfig = new Properties(); //init
         try (InputStream input = new FileInputStream(CONFIC_FILENAME)) {
-            testConfig = new Properties();
-            testConfig.load(input);
+            testConfig.load(input); //Load from file
         } catch (IOException ex) {
             throw new ApiException(ex);
         }
