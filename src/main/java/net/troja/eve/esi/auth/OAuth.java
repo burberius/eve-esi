@@ -91,28 +91,51 @@ public class OAuth implements Authentication {
     }
 
     /**
-     * Desktop/Mobile flow (No client secret/PKCE)
+     * Desktop/Mobile flow (No client secret/PKCE).
+     * Note: You should use the ApiClientBuilder class instead of setting the auth here
+     * Docs: https://docs.esi.evetech.net/docs/sso/native_sso_flow.html
      * @param clientId
-     * @param refreshToken 
+     * @param refreshToken
      */
     public void setAuthDesktop(final String clientId, final String refreshToken) {
-        setAuth(clientId, null, refreshToken);
+        setAuthInner(clientId, null, refreshToken);
     }
 
     /**
-     * Web flow (with client secret)
+     * Web flow (with client secret).
+     * Note: You should use the ApiClientBuilder class instead of setting the auth here
+     * Docs: https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html
      * @param clientId
      * @param clientSecret
-     * @param refreshToken 
+     * @param refreshToken
      */
     public void setAuthWeb(final String clientId, String clientSecret, final String refreshToken) {
-        setAuth(clientId, clientSecret, refreshToken);
+        setAuthInner(clientId, clientSecret, refreshToken);
     }
 
     /**
-     * Use setAuthDesktop or setAuthWeb
+     * setAuth() method have been repleaced by setAuthDesktop() and setAuthWeb().
+     * Note: You should use the ApiClientBuilder class instead of setting the auth here
+     * @param clientId
+     * @param clientSecret
+     * @param refreshToken
      */
-    private void setAuth(final String clientId, String clientSecret, final String refreshToken) {
+    @Deprecated
+    public void setAuth(final String clientId, String clientSecret, final String refreshToken) {
+        throw new IllegalStateException("setAuth() method have been repleaced by setAuthDesktop() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
+    }
+
+    /**
+     * setClientId() method have been repleaced by setAuthDesktop() and setAuthWeb().
+     * Note: You should use the ApiClientBuilder class instead of setting the auth here
+     * @param clientId 
+     */
+    @Deprecated
+    public void setClientId(final String clientId) {
+        throw new IllegalStateException("setClientId() method have been repleaced by setAuthDesktop() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
+    }
+
+    private void setAuthInner(final String clientId, String clientSecret, final String refreshToken) {
         AccountData accountData = new AccountData(clientId, clientSecret, refreshToken);
         AccountData old = ACCOUNTS.putIfAbsent(accountData.getKey(), accountData);
         if (old != null) {
@@ -122,10 +145,6 @@ public class OAuth implements Authentication {
             accountData.setAccessToken(account.getAccessToken());
         }
         account = accountData;
-    }
-
-    public void setClientId(final String clientId) {
-        setAuth(clientId, null, null);
     }
 
     public String getAccessToken() {
@@ -274,11 +293,11 @@ public class OAuth implements Authentication {
 
             // add request header
             con.setRequestMethod("POST");
+            if (accountData.isWebFlow()) { //Web flow (with client secret)
+                con.setRequestProperty("Authorization", accountData.getAuthHeader()); 
+            }
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             con.setRequestProperty("Host", "login.eveonline.com");
-            if (accountData.isWebFlow()) { //Web flow (with client secret)
-                con.setRequestProperty("Authorization", "Basic " + encode(accountData.getClientId() + ":" + accountData.getClientSecret())); 
-            }
             con.setConnectTimeout(10000);
             con.setReadTimeout(10000);
 
@@ -340,6 +359,7 @@ public class OAuth implements Authentication {
     private static class AccountData {
         private final String clientId;
         private final String clientSecret;
+        private final String authHeader;
         private String refreshToken;
         private String accessToken;
         private long validUntil = 0;
@@ -348,6 +368,12 @@ public class OAuth implements Authentication {
             this.clientId = clientId;
             this.clientSecret = clientSecret;
             this.refreshToken = refreshToken;
+            if (clientSecret != null) {
+                String credentials = clientId + ":" + clientSecret;
+                authHeader =  "Basic " + Base64.getUrlEncoder().encodeToString(credentials.getBytes());
+            } else {
+                authHeader = null;
+            }
         }
 
         public String getClientId() {
@@ -380,6 +406,10 @@ public class OAuth implements Authentication {
 
         public void setValidUntil(long validUntil) {
             this.validUntil = validUntil;
+        }
+
+        public String getAuthHeader() {
+           return authHeader;
         }
 
         private synchronized void update() {
