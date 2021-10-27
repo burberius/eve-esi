@@ -14,7 +14,6 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CharacterInfo;
 
 /**
@@ -57,8 +56,9 @@ public class SsoApi {
      * @return
      * @throws ApiException
      */
+    @Deprecated
     public CharacterInfo getCharacterInfo() throws ApiException {
-        return new CharacterInfo(metaApi.getVerify(null, null, DATASOURCE, null, null));
+        throw new IllegalStateException("SsoApi.getCharacterInfo() have been replaced by OAuth.getJWT(). See https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes for details");
     }
 
     public void revokeRefreshToken(String refreshToken) throws ApiException {

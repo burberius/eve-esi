@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@Deprecated
 public class CharacterInfo {
 
     private final EsiVerifyResponse response;
@@ -14,7 +15,7 @@ public class CharacterInfo {
     private Set<String> scopesSet = null;
 
     public CharacterInfo(EsiVerifyResponse response) {
-        this.response = response;
+        throw new IllegalStateException("CharacterInfo have been replaced by JWT. See https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes for details");
     }
 
     public Set<String> getScopes() {
