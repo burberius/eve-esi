@@ -1,7 +1,5 @@
 package net.troja.eve.esi.api;
 
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,11 +12,11 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterInfo;
 
 /**
- * Api to retrieve the character information from the sso.
+ * Api to revoke tokens.
  */
+@Deprecated
 public class SsoApi {
     private static final String URI_REVOKE = "https://login.eveonline.com";
     private static final String ACCESS_TOKEN = "access_token";
@@ -49,16 +47,15 @@ public class SsoApi {
     }
 
     /**
-     * Alias for net.troja.eve.esi.api.MetaApi.getVerify() Return CharacterInfo
-     * that have helper methods: CharacterInfo.getScopes() : Set<String>
-     * CharacterInfo.getExpireOn() : OffsetDateTime
+     * @deprecated Use OAuth.getJWT().getPayload() to get most of the information stored in CharacterInfo before!
+     * @see <a href="https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes">Readme.md</a>
      * 
      * @return
      * @throws ApiException
      */
     @Deprecated
-    public CharacterInfo getCharacterInfo() throws ApiException {
-        throw new IllegalStateException("SsoApi.getCharacterInfo() have been replaced by OAuth.getJWT(). See https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes for details");
+    public void getCharacterInfo() throws ApiException {
+        throw new IllegalStateException("SsoApi.getCharacterInfo() has been replaced by OAuth.getJWT(). See https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes for details");
     }
 
     public void revokeRefreshToken(String refreshToken) throws ApiException {

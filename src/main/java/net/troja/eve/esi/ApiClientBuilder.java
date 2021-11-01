@@ -38,7 +38,8 @@ public class ApiClientBuilder {
 
     /**
      * Desktop/Mobile flow (No client secret/PKCE).
-     * Docs: https://docs.esi.evetech.net/docs/sso/native_sso_flow.html
+     * @see <a href="https://docs.esi.evetech.net/docs/sso/native_sso_flow.html">Native SSO Flow</a>
+     *
      * @param clientID
      * @return 
      */
@@ -49,7 +50,8 @@ public class ApiClientBuilder {
 
     /**
      * Web flow (with client secret).
-     * Docs: https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html
+     * @see <a href="https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html">Web base SSO Flow</a>
+     *
      * @param clientID
      * @param clientSecret
      * @return 
@@ -60,9 +62,15 @@ public class ApiClientBuilder {
         return this;
     }
 
+    /**
+     * @deprecated Please use @see #authDesktop(String) or @see #authWeb(String, String) instead!
+     *
+     * @param clientID
+     * @return
+     */
     @Deprecated
     public ApiClientBuilder clientID(String clientID) {
-        throw new IllegalStateException("clientID() method have been repleaced by authDesktop() or authWeb()");
+        throw new IllegalStateException("clientID() method has been replaced by authDesktop() or authWeb()");
     }
 
     public ApiClientBuilder refreshToken(String refreshToken) {

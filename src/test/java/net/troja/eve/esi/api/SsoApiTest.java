@@ -1,18 +1,13 @@
 package net.troja.eve.esi.api;
 
-import java.lang.reflect.Method;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
-import java.util.HashSet;
-import java.util.Set;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterInfo;
-import net.troja.eve.esi.model.EsiVerifyResponse;
 import org.junit.Test;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+
 import static org.junit.Assert.fail;
 
 
@@ -25,39 +20,6 @@ public class SsoApiTest extends GeneralApiTest {
             LocalDateTime.parse("2017-10-07T17:37:43");
         } catch (DateTimeParseException ex) {
             fail(ex.getMessage());
-        }
-    }
-
-    private void compareMethods(Class<?> c1, Class<?> c2) {
-        Set<String> methods1 = new HashSet<>();
-        for (Method method : c1.getMethods()) {
-            methods1.add(method.getName());
-        }
-        Set<String> methods2 = new HashSet<>();
-        for (Method method : c2.getMethods()) {
-            methods2.add(method.getName());
-        }
-        for (String methodName : methods1) {
-            assertThat(methodName + "not found", methods2.contains(methodName), equalTo(true));
-        }
-        for (String methodName : methods2) {
-            assertThat(methodName + "not found", methods1.contains(methodName), equalTo(true));
-        }
-    }
-
-    @Test
-    public void testOverwrite() {
-        compareMethods(CharacterInfo.class, EsiVerifyResponse.class);
-    }
-
-    @Test
-    public void getCharacterInfoTest() throws ApiException {
-        final SsoApi api = new SsoApi(apiClient);
-        try {
-            CharacterInfo info = api.getCharacterInfo();
-            fail("CharacterInfo is Deprecated!");
-        } catch (IllegalStateException ex) {
-            //OK
         }
     }
 
