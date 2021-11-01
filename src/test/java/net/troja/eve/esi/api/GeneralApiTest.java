@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 import java.util.Properties;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -51,16 +52,18 @@ public class GeneralApiTest {
 
     @BeforeClass
     public static void initClass() throws ApiException {
+        final Map<String, String> env = System.getenv();
+        clientId = env.get(SSO_CLIENT_ID);
+        final String clientSecret = env.get(SSO_CLIENT_SECRET);
+
         load();
-        clientId = testConfig.getProperty(SSO_CLIENT_ID);
-        String ssoClientSecret = testConfig.getProperty(SSO_CLIENT_SECRET);
         String nativeRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_NATIVE);
         String webRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_WEB);
         String refreshTokenPublicData = testConfig.getProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
         //Need to have access to the clients so we can save the updated refresh token
         apiClient = new ApiClientBuilder().authNative(clientId).refreshToken(nativeRefreshToken).build();
-        apiClientWeb = new ApiClientBuilder().authWeb(clientId, ssoClientSecret).refreshToken(webRefreshToken).build();
+        apiClientWeb = new ApiClientBuilder().authWeb(clientId, clientSecret).refreshToken(webRefreshToken).build();
         apiClientPublicData = new ApiClientBuilder().authNative(clientId).refreshToken(refreshTokenPublicData).build();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");

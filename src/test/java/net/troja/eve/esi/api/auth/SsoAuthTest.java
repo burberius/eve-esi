@@ -199,9 +199,6 @@ public class SsoAuthTest extends GeneralApiTest {
         } else if (System.getenv().get(SSO_CLIENT_ID) != null) { //Set from envierment variable
             clientID = System.getenv().get(SSO_CLIENT_ID);
             clientSecret = System.getenv().get(SSO_CLIENT_SECRET); 
-        } else if (getTestConfig().getProperty(SSO_CLIENT_ID) != null){ //Set from test config
-            clientID = getTestConfig().getProperty(SSO_CLIENT_ID);
-            clientSecret = getTestConfig().getProperty(SSO_CLIENT_SECRET);
         } else {
             System.err.println("ClientId missing");
             System.exit(-1);
