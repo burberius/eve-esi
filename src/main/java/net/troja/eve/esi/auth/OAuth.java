@@ -279,10 +279,12 @@ public class OAuth implements Authentication {
         StringBuilder builder = new StringBuilder();
         builder.append("grant_type=");
         builder.append(encode("refresh_token"));
-        builder.append("&client_id=");
-        builder.append(encode(accountData.getClientId()));
         builder.append("&refresh_token=");
         builder.append(encode(accountData.getRefreshToken()));
+        if (accountData.isNativeFlow()) { //Native flow (No client secret/PKCE)
+            builder.append("&client_id=");
+            builder.append(encode(accountData.getClientId()));
+        }
         update(accountData, builder.toString());
     }
 
