@@ -25,7 +25,6 @@ public class SsoApi {
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
     private final ApiClient revokeApiClient = new ApiClientBuilder().build();
     private ApiClient apiClient;
-    private MetaApi metaApi;
 
     public SsoApi() {
         this(Configuration.getDefaultApiClient());
@@ -33,7 +32,6 @@ public class SsoApi {
 
     public SsoApi(final ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi = new MetaApi(apiClient);
         revokeApiClient.setBasePath(URI_REVOKE); // Set new basepath
     }
 
@@ -43,14 +41,11 @@ public class SsoApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi.setApiClient(apiClient);
     }
 
     /**
      * @deprecated Use OAuth.getJWT().getPayload() to get most of the information stored in CharacterInfo before!
      * @see <a href="https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes">Readme.md</a>
-     * 
-     * @return
      * @throws ApiException
      */
     @Deprecated
