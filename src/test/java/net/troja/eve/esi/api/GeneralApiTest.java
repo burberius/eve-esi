@@ -20,7 +20,7 @@ public class GeneralApiTest {
     protected static final String LANGUAGE = "en-us";
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
     protected static final String SSO_CLIENT_SECRET = "SSO_CLIENT_SECRET";
-    protected static final String SSO_REFRESH_TOKEN_DESKTOP = "SSO_REFRESH_TOKEN_DESKTOP";
+    protected static final String SSO_REFRESH_TOKEN_NATIVE = "SSO_REFRESH_TOKEN_NATIVE";
     protected static final String SSO_REFRESH_TOKEN_WEB = "SSO_REFRESH_TOKEN_WEB";
     protected static final String SSO_REFRESH_TOKEN_PUBLIC_DATA = "SSO_REFRESH_TOKEN_PUBLIC_DATA";
     protected static final int CHARACTER_ID_CHRIBBA = 196379789;
@@ -54,14 +54,14 @@ public class GeneralApiTest {
         load();
         clientId = testConfig.getProperty(SSO_CLIENT_ID);
         String ssoClientSecret = testConfig.getProperty(SSO_CLIENT_SECRET);
-        String desktopRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_DESKTOP);
+        String nativeRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_NATIVE);
         String webRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_WEB);
         String refreshTokenPublicData = testConfig.getProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
         //Need to have access to the clients so we can save the updated refresh token
-        apiClient = new ApiClientBuilder().authDesktop(clientId).refreshToken(desktopRefreshToken).build();
+        apiClient = new ApiClientBuilder().authNative(clientId).refreshToken(nativeRefreshToken).build();
         apiClientWeb = new ApiClientBuilder().authWeb(clientId, ssoClientSecret).refreshToken(webRefreshToken).build();
-        apiClientPublicData = new ApiClientBuilder().authDesktop(clientId).refreshToken(refreshTokenPublicData).build();
+        apiClientPublicData = new ApiClientBuilder().authNative(clientId).refreshToken(refreshTokenPublicData).build();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
@@ -75,7 +75,7 @@ public class GeneralApiTest {
         load();
         try (OutputStream output = new FileOutputStream(CONFIC_FILENAME)) {
             //Update refresh token values
-            testConfig.setProperty(SSO_REFRESH_TOKEN_DESKTOP, getRefreshToken(apiClient));
+            testConfig.setProperty(SSO_REFRESH_TOKEN_NATIVE, getRefreshToken(apiClient));
             testConfig.setProperty(SSO_REFRESH_TOKEN_WEB, getRefreshToken(apiClientWeb));
             testConfig.setProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA, getRefreshToken(apiClientPublicData));
             //Save file

@@ -37,13 +37,13 @@ public class ApiClientBuilder {
     }
 
     /**
-     * Desktop/Mobile flow (No client secret/PKCE).
+     * Native flow (No client secret/PKCE).
      * @see <a href="https://docs.esi.evetech.net/docs/sso/native_sso_flow.html">Native SSO Flow</a>
      *
      * @param clientID
      * @return 
      */
-    public ApiClientBuilder authDesktop(String clientID) {
+    public ApiClientBuilder authNative(String clientID) {
         this.clientID = clientID;
         return this;
     }
@@ -63,14 +63,14 @@ public class ApiClientBuilder {
     }
 
     /**
-     * @deprecated Please use @see #authDesktop(String) or @see #authWeb(String, String) instead!
+     * @deprecated Please use @see #authNative(String) or @see #authWeb(String, String) instead!
      *
      * @param clientID
      * @return
      */
     @Deprecated
     public ApiClientBuilder clientID(String clientID) {
-        throw new IllegalStateException("clientID() method has been replaced by authDesktop() or authWeb()");
+        throw new IllegalStateException("clientID() method has been replaced by authNative() or authWeb()");
     }
 
     public ApiClientBuilder refreshToken(String refreshToken) {

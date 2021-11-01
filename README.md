@@ -29,16 +29,16 @@ int characterID = payload.getCharacterID();
 
 We added Web Flow to eve-esi, as it's now required if you can keep the secret safe.
 
-`ApiClientBuilder.clientID()` have been replaced by `authWeb()` and `authDesktop()`  
+`ApiClientBuilder.clientID()` have been replaced by `authWeb()` and `authNative()`  
 
 Example of web flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html)):
 ```java
 ApiClient client = new ApiClientBuilder().authWeb(clientID, clientSecret).refreshToken(refreshToken).build();
 ```
 
-Example of desktop/mobile flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/native_sso_flow.html)):
+Example of native flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/native_sso_flow.html)):
 ```java
-ApiClient client = new ApiClientBuilder().authDesktop(clientID).refreshToken(refreshToken).build();
+ApiClient client = new ApiClientBuilder().authNative(clientID).refreshToken(refreshToken).build();
 ```
 
 #### Refresh token rotations
@@ -67,9 +67,9 @@ This version also changes how the *ApiClient* is initialized, it now uses a
 builder *ApiClientBuilder* to create the *ApiClient* the right way. Here are two examples:
 
 ```java
-ApiClient client = new ApiClientBuilder().authDesktop(clientId).accessToken("some-access-token").build();
+ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("some-access-token").build();
 
-ApiClient client = new ApiClientBuilder().authDesktop(clientId).refreshToken("some-refresh-token").build();
+ApiClient client = new ApiClientBuilder().authNative(clientId).refreshToken("some-refresh-token").build();
 ```
 
 For more, please have a look in the tests.

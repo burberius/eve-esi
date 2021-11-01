@@ -25,7 +25,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void revokeRefreshToken() throws ApiException {
-        final ApiClient client = new ApiClientBuilder().authDesktop(clientId).build();
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).build();
 
         final SsoApi api = new SsoApi(client);
         api.revokeRefreshToken("GSRfoI0co6wu7nSa0hS-xkgJs1FL8e9q5u6HPegjZIw1"); //Revoked Refresh Tokens (Already Invalid)
@@ -33,7 +33,7 @@ public class SsoApiTest extends GeneralApiTest {
 
     @Test
     public void revokeAccessToken() throws ApiException {
-        final ApiClient client = new ApiClientBuilder().authDesktop(clientId).build();
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).build();
 
         final SsoApi api = new SsoApi(client);
         api.revokeAccessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2"); //Revoked Access Tokens (Already Invalid)

@@ -62,7 +62,7 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
-    public void refreshTokenDesktop() throws ApiException {
+    public void refreshTokenNative() throws ApiException {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams, null);
@@ -81,7 +81,7 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void expiredAccessTokenAssets() {
-        final ApiClient client = new ApiClientBuilder().authDesktop(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         AssetsApi api = new AssetsApi(client);
         try {
             api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
@@ -145,7 +145,7 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void expiredAccessTokenMeta() {
-        final ApiClient client = new ApiClientBuilder().authDesktop(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         final MetaApi metaApi = new MetaApi(client);
         try {
             metaApi.getVerify(null, null, DATASOURCE, null, null);
@@ -159,7 +159,7 @@ public class SsoAuthTest extends GeneralApiTest {
     @Test
     public void finishFlowFail() {
         OAuth oAuth = new OAuth();
-        oAuth.setAuthDesktop("", null);
+        oAuth.setAuthNative("", null);
         final String state = "TESTING";
         oAuth.getAuthorizationUri("", Collections.singleton(""), state);
         try {
@@ -188,7 +188,7 @@ public class SsoAuthTest extends GeneralApiTest {
         final String state = "somesecret";
         final ApiClient client;
         final String clientID;
-        final String clientSecret; //May be null for desktop flow
+        final String clientSecret; //May be null for native flow
         if (args.length > 0) { //Set from args
             clientID = args[0];
             if (args.length > 1) {
@@ -217,10 +217,10 @@ public class SsoAuthTest extends GeneralApiTest {
                 client = new ApiClientBuilder().authWeb(clientID, clientSecret).build();
             } else {
                 /*
-                 * Desktop/Mobile flow (No client secret/PKCE).
+                 * Native flow (No client secret/PKCE).
                  * Docs: https://docs.esi.evetech.net/docs/sso/native_sso_flow.html
                  */
-                client = new ApiClientBuilder().authDesktop(clientID).build();
+                client = new ApiClientBuilder().authNative(clientID).build();
             }
         } else {
             client = new ApiClientBuilder().build(); //This will never happen

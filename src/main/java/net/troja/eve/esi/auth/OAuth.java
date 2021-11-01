@@ -82,22 +82,22 @@ public class OAuth implements Authentication {
         }
     }
 
-    private boolean isDesktopFlow() {
+    private boolean isNativeFlow() {
         if (account != null) {
-            return account.isDesktopFlow();
+            return account.isNativeFlow();
         } else {
             return true;
         }
     }
 
     /**
-     * Desktop/Mobile flow (No client secret/PKCE).
+     * Native flow (No client secret/PKCE).
      * Note: You should use the ApiClientBuilder class instead of setting the auth here
      * Docs: https://docs.esi.evetech.net/docs/sso/native_sso_flow.html
      * @param clientId
      * @param refreshToken
      */
-    public void setAuthDesktop(final String clientId, final String refreshToken) {
+    public void setAuthNative(final String clientId, final String refreshToken) {
         setAuthInner(clientId, null, refreshToken);
     }
 
@@ -114,7 +114,7 @@ public class OAuth implements Authentication {
     }
 
     /**
-     * setAuth() method have been repleaced by setAuthDesktop() and setAuthWeb().
+     * setAuth() method has been replaced by setAuthNative() and setAuthWeb().
      * Note: You should use the ApiClientBuilder class instead of setting the auth here
      * @param clientId
      * @param clientSecret
@@ -122,17 +122,17 @@ public class OAuth implements Authentication {
      */
     @Deprecated
     public void setAuth(final String clientId, String clientSecret, final String refreshToken) {
-        throw new IllegalStateException("setAuth() method have been repleaced by setAuthDesktop() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
+        throw new IllegalStateException("setAuth() method has been replaced by by setAuthNative() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
     }
 
     /**
-     * setClientId() method have been repleaced by setAuthDesktop() and setAuthWeb().
+     * setClientId() method has been replaced by setAuthNative() and setAuthWeb().
      * Note: You should use the ApiClientBuilder class instead of setting the auth here
      * @param clientId 
      */
     @Deprecated
     public void setClientId(final String clientId) {
-        throw new IllegalStateException("setClientId() method have been repleaced by setAuthDesktop() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
+        throw new IllegalStateException("setClientId() method has been replaced by setAuthNative() and setAuthWeb(). Using the ApiClientBuilder class is recommended.");
     }
 
     private void setAuthInner(final String clientId, String clientSecret, final String refreshToken) {
@@ -235,7 +235,7 @@ public class OAuth implements Authentication {
         builder.append(encode(getScopesString(scopes)));
         builder.append("&state=");
         builder.append(encode(state));
-        if (isDesktopFlow()) { //Desktop flow (No client secret/PKCE)
+        if (isNativeFlow()) { //Native flow (No client secret/PKCE)
             builder.append("&code_challenge");
             builder.append(getCodeChallenge()); // Already url encoded
             builder.append("&code_challenge_method=");
@@ -257,7 +257,7 @@ public class OAuth implements Authentication {
     public void finishFlow(final String code, final String state) throws ApiException {
         if (account == null)
             throw new IllegalArgumentException("Auth is not set");
-        if (codeVerifier == null && account.isDesktopFlow())
+        if (codeVerifier == null && account.isNativeFlow())
             throw new IllegalArgumentException("code_verifier is not set");
         if (account.getClientId() == null)
             throw new IllegalArgumentException("client_id is not set");
@@ -266,7 +266,7 @@ public class OAuth implements Authentication {
         builder.append(encode("authorization_code"));
         builder.append("&code=");
         builder.append(encode(code));
-        if (isDesktopFlow()) { //Desktop flow (No client secret/PKCE)
+        if (isNativeFlow()) { //Native flow (No client secret/PKCE)
             builder.append("&client_id=");
             builder.append(encode(account.getClientId()));
             builder.append("&code_verifier=");
@@ -423,8 +423,8 @@ public class OAuth implements Authentication {
             }
         }
 
-        private boolean isDesktopFlow() {
-            return clientSecret == null; //Desktop flow (No client secret/PKCE)
+        private boolean isNativeFlow() {
+            return clientSecret == null; //Native flow (No client secret/PKCE)
         }
 
         private boolean isWebFlow() { 
