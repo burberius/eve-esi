@@ -266,6 +266,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         CSPAOFFLINEREFUND("cspaofflinerefund"),
 
+        DAILY_CHALLENGE_REWARD("daily_challenge_reward"),
+
         DATACORE_FEE("datacore_fee"),
 
         DNA_MODIFICATION_FEE("dna_modification_fee"),
@@ -280,7 +282,21 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         ESS_ESCROW_TRANSFER("ess_escrow_transfer"),
 
+        EXTERNAL_TRADE_DELIVERY("external_trade_delivery"),
+
+        EXTERNAL_TRADE_FREEZE("external_trade_freeze"),
+
+        EXTERNAL_TRADE_THAW("external_trade_thaw"),
+
         FACTORY_SLOT_RENTAL_FEE("factory_slot_rental_fee"),
+
+        FLUX_PAYOUT("flux_payout"),
+
+        FLUX_TAX("flux_tax"),
+
+        FLUX_TICKET_REPAYMENT("flux_ticket_repayment"),
+
+        FLUX_TICKET_SALE("flux_ticket_sale"),
 
         GM_CASH_TRANSFER("gm_cash_transfer"),
 
@@ -308,11 +324,15 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         MARKET_FINE_PAID("market_fine_paid"),
 
+        MARKET_PROVIDER_TAX("market_provider_tax"),
+
         MARKET_TRANSACTION("market_transaction"),
 
         MEDAL_CREATION("medal_creation"),
 
         MEDAL_ISSUED("medal_issued"),
+
+        MILESTONE_REWARD_PAYMENT("milestone_reward_payment"),
 
         MISSION_COMPLETION("mission_completion"),
 
@@ -344,6 +364,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         REACTION("reaction"),
 
+        REDEEMED_ISK_TOKEN("redeemed_isk_token"),
+
         RELEASE_OF_IMPOUNDED_PROPERTY("release_of_impounded_property"),
 
         REPAIR_BILL("repair_bill"),
@@ -359,6 +381,8 @@ public class CharacterWalletJournalResponse implements Serializable {
         RESOURCE_WARS_REWARD("resource_wars_reward"),
 
         REVERSE_ENGINEERING("reverse_engineering"),
+
+        SEASON_CHALLENGE_REWARD("season_challenge_reward"),
 
         SECURITY_PROCESSING_FEE("security_processing_fee"),
 
