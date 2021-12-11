@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.troja.eve</groupId>
     <artifactId>eve-esi</artifactId>
-    <version>4.6.1-SNAPSHOT</version>
+    <version>4.6.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>EVE-ESI</name>
     <description>Java Client for the new Eve Swagger Interface (ESI)</description>

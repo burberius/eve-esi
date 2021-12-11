@@ -111,7 +111,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseCategoriesTest() throws ApiException {
         final List<Integer> response = api.getUniverseCategories(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(44));
+        assertThat(response.size(), equalTo(45));
     }
 
     /**
