@@ -93,6 +93,19 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
+    public void invalidRefreshTokenAssets() {
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).refreshToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        AssetsApi api = new AssetsApi(client);
+        try {
+            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+            fail("Must fail with ApiException");
+        } catch (ApiException ex) {
+            assertThat(ex, notNullValue());
+            assertThat(ex.getCode(), notNullValue());
+        }
+    }
+
+    @Test
     public void singleScopeJWT() {
         final OAuth auth = (OAuth) apiClientPublicData.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
