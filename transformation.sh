@@ -1,7 +1,6 @@
 #!/bin/bash
-### -!- Workaround START
 #
-# Copy journal endpoint
+# -!- Workaround START
 #
 echo "-!- WORKAROUND -!- Moving characters fleet from dev to latest"
 #
@@ -20,7 +19,9 @@ jq ".paths[\"/v2/characters/{character_id}/fleet/\"] = $ENDPOINT" work1.json > w
 # Rename json to default name
 #
 mv work2.json esi.json
-### -!- Workaround END
+#
+# -!- Workaround END
+#
 
 # definitions
 echo "Removing definitions"

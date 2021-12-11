@@ -26,7 +26,7 @@ import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AssetsApi;
-import net.troja.eve.esi.api.SsoApi;
+import net.troja.eve.esi.api.MetaApi;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
@@ -36,7 +36,6 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeTrue;
 
 public class SsoAuthTest extends GeneralApiTest {
 
@@ -63,9 +62,17 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
-    public void refreshToken() throws ApiException {
-        final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+    public void refreshTokenNative() throws ApiException {
+        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        final Map<String, String> headerParams = new HashMap<>();
+        auth.applyToParams(null, headerParams, null);
+
+        assertThat(headerParams.size(), equalTo(1));
+    }
+
+    @Test
+    public void refreshTokenWeb() throws ApiException {
+        final OAuth auth = (OAuth) apiClientWeb.getAuthentication("evesso");
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams, null);
 
@@ -74,7 +81,20 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void expiredAccessTokenAssets() {
-        final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        AssetsApi api = new AssetsApi(client);
+        try {
+            api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
+            fail("Must fail with ApiException");
+        } catch (ApiException ex) {
+            assertThat(ex, notNullValue());
+            assertThat(ex.getCode(), notNullValue());
+        }
+    }
+
+    @Test
+    public void invalidRefreshTokenAssets() {
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).refreshToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
         AssetsApi api = new AssetsApi(client);
         try {
             api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
@@ -87,9 +107,7 @@ public class SsoAuthTest extends GeneralApiTest {
 
     @Test
     public void singleScopeJWT() {
-        assumeTrue(refreshTokenPublicData != null);
-        final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshTokenPublicData).build();
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        final OAuth auth = (OAuth) apiClientPublicData.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
         assertThat(jwt, notNullValue());
         JWT.Header header = jwt.getHeader();
@@ -139,11 +157,11 @@ public class SsoAuthTest extends GeneralApiTest {
     }
 
     @Test
-    public void expiredAccessTokenSso() {
-        final ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
-        final SsoApi api = new SsoApi(client);
+    public void expiredAccessTokenMeta() {
+        final ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("WOjpIU1jS6mkgAqXhxu5K4kuNa-b7QLN8kL-_Lizd6MSsLwRSBBB8Xgd0UNFOFaEMDKix3J4uUfgfrIkBYUDuQ2").build();
+        final MetaApi metaApi = new MetaApi(client);
         try {
-            api.getCharacterInfo();
+            metaApi.getVerify(null, null, DATASOURCE, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
             assertThat(ex, notNullValue());
@@ -154,7 +172,7 @@ public class SsoAuthTest extends GeneralApiTest {
     @Test
     public void finishFlowFail() {
         OAuth oAuth = new OAuth();
-        oAuth.setClientId("");
+        oAuth.setAuthNative("", null);
         final String state = "TESTING";
         oAuth.getAuthorizationUri("", Collections.singleton(""), state);
         try {
@@ -182,19 +200,43 @@ public class SsoAuthTest extends GeneralApiTest {
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
         final String state = "somesecret";
         final ApiClient client;
-        if (args.length == 1) {
-            client = new ApiClientBuilder().clientID(args[0]).build();
-        } else {
-            if (System.getenv().get(SSO_CLIENT_ID) != null) {
-                client = new ApiClientBuilder().clientID(System.getenv().get(SSO_CLIENT_ID)).build();
+        final String clientID;
+        final String clientSecret; //May be null for native flow
+        if (args.length > 0) { //Set from args
+            clientID = args[0];
+            if (args.length > 1) {
+                clientSecret = args[1];
             } else {
-                System.err.println("ClientId missing");
-                System.exit(-1);
-                client = new ApiClientBuilder().build();
+                clientSecret = null;
             }
+        } else if (System.getenv().get(SSO_CLIENT_ID) != null) { //Set from envierment variable
+            clientID = System.getenv().get(SSO_CLIENT_ID);
+            clientSecret = System.getenv().get(SSO_CLIENT_SECRET); 
+        } else {
+            System.err.println("ClientId missing");
+            System.exit(-1);
+            clientID = null;
+            clientSecret = null;
+        }
+        if (clientID != null) {
+            if (clientSecret != null) {
+                /*
+                 * Web flow (with client secret).
+                 * Docs: https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html
+                 */
+                client = new ApiClientBuilder().authWeb(clientID, clientSecret).build();
+            } else {
+                /*
+                 * Native flow (No client secret/PKCE).
+                 * Docs: https://docs.esi.evetech.net/docs/sso/native_sso_flow.html
+                 */
+                client = new ApiClientBuilder().authNative(clientID).build();
+            }
+        } else {
+            client = new ApiClientBuilder().build(); //This will never happen
         }
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        final Set<String> scopes = SsoScopes.ALL;
+        final Set<String> scopes = SsoScopes.ALL; //Collections.singleton(SsoScopes.PUBLIC_DATA);
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");

@@ -1,7 +1,5 @@
 package net.troja.eve.esi.api;
 
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,12 +12,11 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterAssetsResponse;
-import net.troja.eve.esi.model.CharacterInfo;
 
 /**
- * Api to retrieve the character information from the sso.
+ * Api to revoke tokens.
  */
+@Deprecated
 public class SsoApi {
     private static final String URI_REVOKE = "https://login.eveonline.com";
     private static final String ACCESS_TOKEN = "access_token";
@@ -28,7 +25,6 @@ public class SsoApi {
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
     private final ApiClient revokeApiClient = new ApiClientBuilder().build();
     private ApiClient apiClient;
-    private MetaApi metaApi;
 
     public SsoApi() {
         this(Configuration.getDefaultApiClient());
@@ -36,7 +32,6 @@ public class SsoApi {
 
     public SsoApi(final ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi = new MetaApi(apiClient);
         revokeApiClient.setBasePath(URI_REVOKE); // Set new basepath
     }
 
@@ -46,19 +41,16 @@ public class SsoApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.metaApi.setApiClient(apiClient);
     }
 
     /**
-     * Alias for net.troja.eve.esi.api.MetaApi.getVerify() Return CharacterInfo
-     * that have helper methods: CharacterInfo.getScopes() : Set<String>
-     * CharacterInfo.getExpireOn() : OffsetDateTime
-     * 
-     * @return
+     * @deprecated Use OAuth.getJWT().getPayload() to get most of the information stored in CharacterInfo before!
+     * @see <a href="https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes">Readme.md</a>
      * @throws ApiException
      */
-    public CharacterInfo getCharacterInfo() throws ApiException {
-        return new CharacterInfo(metaApi.getVerify(null, null, DATASOURCE, null, null));
+    @Deprecated
+    public void getCharacterInfo() throws ApiException {
+        throw new IllegalStateException("SsoApi.getCharacterInfo() has been replaced by OAuth.getJWT(). See https://github.com/burberius/eve-esi/blob/master/README.md#version-500-changes for details");
     }
 
     public void revokeRefreshToken(String refreshToken) throws ApiException {

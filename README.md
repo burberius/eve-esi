@@ -4,6 +4,54 @@
 # EVE-ESI
 A Java client library for the EVE Swagger Interface (ESI)
 
+## Version 5.0.0 changes
+
+Some major SSO changes is going to be released at some point after 2021-11-01.  
+See all the details in the ESI blog: [SSO Endpoint Deprecations](https://web.archive.org/web/20211006183217/https://developers.eveonline.com/blog/article/sso-endpoint-deprecations-2)
+
+#### Deprecating obsolete endpoints
+
+eve-esi is already using v2 of the SSO endpoints and are not using the SSO verify endpoint (only the ESI verify endpoint).  
+However, to be ready for when the ESI verify endpoint are removed, we're moving to JWT.
+
+`SsoApi.getCharacterInfo()` have been replaced by `OAuth.getJWT()`  
+Using `MetaApi.getVerify()` is also strongly discouraged.  
+
+Example of getting characterID with JWT:
+```java
+final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+JWT jwt = auth.getJWT(); //Note: will return null if the ApiClient does not have a valid refreshToken or accessToken
+JWT.Payload payload = jwt.getPayload();
+int characterID = payload.getCharacterID();
+```
+
+#### Stricter OAuth conformance
+
+We added Web Flow to eve-esi, as it's now required if you can keep the secret safe.
+
+`ApiClientBuilder.clientID()` have been replaced by `authWeb()` and `authNative()`  
+
+Example of web flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html)):
+```java
+ApiClient client = new ApiClientBuilder().authWeb(clientID, clientSecret).refreshToken(refreshToken).build();
+```
+
+Example of native flow (see [docs for details](https://docs.esi.evetech.net/docs/sso/native_sso_flow.html)):
+```java
+ApiClient client = new ApiClientBuilder().authNative(clientID).refreshToken(refreshToken).build();
+```
+
+#### Refresh token rotations
+
+eve-esi already take care of refresh token rotation, but, you will need to update your own storage with the changed refresh token.
+`OAuth.getRefreshToken()` will always have the current refresh token, but, with every request to ESI there is change eve-esi will update the accessToken (if it's expired) and a new refreshToken may be returned with that request.
+
+Example of getting the current refreshToken:
+```java
+final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+String refreshToken = auth.getRefreshToken(); //current refresh token
+```
+
 ## Version 4.0.0 changes
 
 Enum changes no longer require a version bump in ESI, therefor eve-esi will return `null` for unknown enum values.
@@ -19,9 +67,9 @@ This version also changes how the *ApiClient* is initialized, it now uses a
 builder *ApiClientBuilder* to create the *ApiClient* the right way. Here are two examples:
 
 ```java
-ApiClient client = new ApiClientBuilder().clientID(clientId).accessToken("some-access-token").build();
+ApiClient client = new ApiClientBuilder().authNative(clientId).accessToken("some-access-token").build();
 
-ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken("some-refresh-token").build();
+ApiClient client = new ApiClientBuilder().authNative(clientId).refreshToken("some-refresh-token").build();
 ```
 
 For more, please have a look in the tests.
