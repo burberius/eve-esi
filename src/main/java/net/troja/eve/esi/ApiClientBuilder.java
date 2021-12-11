@@ -10,10 +10,12 @@ public class ApiClientBuilder {
     private String accessToken;
     private String userAgent;
     private OkHttpClient okHttpClient;
+    private ApiClient client;
 
     public ApiClient build() {
-        ApiClient client = new ApiClient();
-
+        if (client == null) {
+            client = new ApiClient();
+        }
         // Set default User-Agent.
         String systemUserAgent = System.getProperty("http.agent");
         if (userAgent != null && !userAgent.isEmpty()) {
@@ -66,4 +68,8 @@ public class ApiClientBuilder {
         return this;
     }
 
+    public ApiClientBuilder client(ApiClient client) {
+        this.client = client;
+        return this;
+    }
 }

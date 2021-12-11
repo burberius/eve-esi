@@ -1,14 +1,22 @@
 package net.troja.eve.esi.api;
 
+import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
+import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.model.CharacterInfo;
+import net.troja.eve.esi.ApiResponse;
+import net.troja.eve.esi.auth.JWT;
+import net.troja.eve.esi.auth.OAuth;
+import okhttp3.Call;
+import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeFalse;
 import org.junit.BeforeClass;
 
 public class GeneralApiTest {
+    protected static final boolean IGNORE_WARNING_HEADER_199 = false;
     protected static final String DATASOURCE = "tranquility";
     protected static final String LANGUAGE = "en-us";
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
@@ -20,13 +28,13 @@ public class GeneralApiTest {
     protected static final String CORPORATION_NAME_TBD = "The Blue Donut";
     protected static final int ALLIANCE_ID_TRI = 933731581;
     protected static final String ALLIANCE_NAME_TRI = "Triumvirate.";
-    protected final static int REGION_ID_THE_FORGE = 10000002;
-    protected final static int TYPE_ID_VELDSPAR = 1230;
+    protected static final int REGION_ID_THE_FORGE = 10000002;
+    protected static final int TYPE_ID_VELDSPAR = 1230;
     protected static final String NAME_VELDSPAR = "Veldspar";
-    protected final static int SOLARSYSTEM_ID_JITA = 30000142;
-    protected final static int SOLARSYSTEM_ID_ALIKARA = 30002754;
+    protected static final int SOLARSYSTEM_ID_JITA = 30000142;
+    protected static final int SOLARSYSTEM_ID_ALIKARA = 30002754;
 
-    private final int MAX_RETRIES = 3;
+    private static final int MAX_RETRIES = 3;
 
     protected static String clientId;
     protected static String refreshToken;
@@ -44,37 +52,87 @@ public class GeneralApiTest {
         refreshToken = env.get(SSO_REFRESH_TOKEN);
         refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
 
-        apiClient = new ApiClientBuilder().clientID(clientId).refreshToken(refreshToken).build();
+        apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
 
-        final SsoApi api = new SsoApi(apiClient);
-        CharacterInfo info = api.getCharacterInfo();
-
-        characterName = info.getCharacterName();
-        characterId = info.getCharacterID();
+        final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
+        JWT jwt = auth.getJWT();
+        JWT.Payload payload = jwt.getPayload();
+        characterId = payload.getCharacterID();
+        characterName = payload.getName();
     }
 
     protected void ignoreTestFails() {
         assumeFalse("Ignore test fails", true); //true = ignore tests :: false = run all tests
     }
 
-    protected <T> T update(Update<T> update) throws ApiException {
-        return update(update, 0);
-    }
+    private static class ValidatingApiClient extends ApiClient {
+        @Override
+        public <T> void executeAsync(Call call, Type returnType, ApiCallback<T> callback) {
+            executeAsyncRetry(call, returnType, callback, 0);
+        }
 
-    private <T> T update(Update<T> update, int retry) throws ApiException {
-        try {
-            return update.update();
-        } catch (ApiException ex) {
-            if (retry < MAX_RETRIES) {
-                retry++;
-                return update(update, retry);
-            } else {
-                throw ex;
+        public <T> void executeAsyncRetry(Call call, Type returnType, ApiCallback<T> callback, final int retry) {
+            super.executeAsync(call.clone(), returnType, new ApiCallback<T>() {
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    if (retry < MAX_RETRIES) {
+                        executeAsyncRetry(call, returnType, callback, retry + 1);
+                    } else {
+                        callback.onFailure(e, statusCode, responseHeaders);
+                    }
+                }
+
+                @Override
+                public void onSuccess(T result, int statusCode, Map<String, List<String>> responseHeaders) {
+                    validate(responseHeaders);
+                    callback.onSuccess(result, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            });
+        }
+
+        @Override
+        public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
+            return executeRetry(call, returnType, 0);
+        }
+
+        private <T> ApiResponse<T> executeRetry(Call call, Type returnType, final int retry) throws ApiException {
+            try {
+                ApiResponse<T> apiResponse = super.execute(call.clone(), returnType);
+                validate(apiResponse.getHeaders());
+                return apiResponse;
+            } catch (ApiException ex) {
+                if (retry < MAX_RETRIES) {
+                    return executeRetry(call, returnType, retry + 1);
+                } else {
+                    throw ex;
+                }
             }
         }
-    }
 
-    protected interface Update<T> {
-        public T update() throws ApiException;
+        private void validate(Map<String, List<String>> responseHeaders) {
+            if (responseHeaders != null) {
+                for (Map.Entry<String, List<String>> entry : responseHeaders.entrySet()) {
+                    if (entry.getKey().toLowerCase().equals("warning")) {
+                        if (entry.getValue().get(0).startsWith("199") && IGNORE_WARNING_HEADER_199) {
+                            assumeFalse(entry.getValue().get(0), true);
+                        } else {
+                            fail(entry.getValue().get(0));
+                        }
+                    }
+                }
+            } else {
+                fail("No headers");
+            }
+        }
     }
 }

@@ -241,23 +241,16 @@ public class MarketApiTest extends GeneralApiTest {
         final List<MarketOrdersResponse> result = new ArrayList<>();
 
         /**
-         * Step 1: Get first page
+         * Step 1: Get first page.
          */
-
-        //Get market orders (the complexity here is error handling that retries on failure)
-        ApiResponse<List<MarketOrdersResponse>> response = update(new Update<ApiResponse<List<MarketOrdersResponse>>>() {
-            @Override
-            public ApiResponse<List<MarketOrdersResponse>> update() throws ApiException {
-                return api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
-            }
-        });
+        //Get market orders
+        ApiResponse<List<MarketOrdersResponse>> response = api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
         result.addAll(response.getData());
 
         /**
-         * Step 2: Safely get X-Pages header
+         * Step 2: Safely get X-Pages header.
          */
-
-        Integer xPages = HeaderUtil.getXPages(response.getHeaders());
+        final Integer xPages = HeaderUtil.getXPages(response.getHeaders());
         if (xPages == null || xPages < 2) { //Better safe than sorry
             return;
         }
@@ -269,15 +262,9 @@ public class MarketApiTest extends GeneralApiTest {
          * For public endpoints ApiClient is fully thread safe.
          * For authorized endpoints one instance of ApiClient is required per refresh token
          */
-        for (int i = 2; i <= xPages; i++) { //For each page greater than one.
+        for (int page = 2; page <= xPages; page++) { //For each page greater than one.
             //Get market orders
-            final int page = i;
-            List<MarketOrdersResponse> pageResponse = update(new Update<List<MarketOrdersResponse>>() {
-                @Override
-                public List<MarketOrdersResponse> update() throws ApiException {
-                    return api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
-                }
-            });
+            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
             result.addAll(pageResponse);
         }
 
