@@ -160,11 +160,15 @@ public class CharacterAssetsResponse implements Serializable {
 
         SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
 
+        SPECIALIZEDASTEROIDHOLD("SpecializedAsteroidHold"),
+
         SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
 
         SPECIALIZEDFUELBAY("SpecializedFuelBay"),
 
         SPECIALIZEDGASHOLD("SpecializedGasHold"),
+
+        SPECIALIZEDICEHOLD("SpecializedIceHold"),
 
         SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
 
@@ -185,6 +189,8 @@ public class CharacterAssetsResponse implements Serializable {
         SPECIALIZEDSHIPHOLD("SpecializedShipHold"),
 
         SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
+
+        STRUCTUREDEEDBAY("StructureDeedBay"),
 
         SUBSYSTEMBAY("SubSystemBay"),
 

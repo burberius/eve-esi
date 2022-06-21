@@ -224,11 +224,15 @@ public class CorporationAssetsResponse implements Serializable {
 
         SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
 
+        SPECIALIZEDASTEROIDHOLD("SpecializedAsteroidHold"),
+
         SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
 
         SPECIALIZEDFUELBAY("SpecializedFuelBay"),
 
         SPECIALIZEDGASHOLD("SpecializedGasHold"),
+
+        SPECIALIZEDICEHOLD("SpecializedIceHold"),
 
         SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
 
