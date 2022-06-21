@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: 1.10.1
+  version: "1.11"
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -40183,6 +40183,7 @@ components:
           - SpecializedSalvageHold
           - SpecializedShipHold
           - SpecializedSmallShipHold
+          - StructureDeedBay
           - SubSystemBay
           - SubSystemSlot0
           - SubSystemSlot1
