@@ -12,7 +12,10 @@
 package net.troja.eve.esi.api;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.isOneOf;
+import static org.hamcrest.Matchers.notNullValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +55,12 @@ public class SearchApiTest extends GeneralApiTest {
         final Boolean strict = true;
         final CharacterSearchResponse response = api.getCharactersCharacterIdSearch(categories, characterId, search, LANGUAGE, DATASOURCE, null, LANGUAGE, strict, null);
 
-        assertThat(response.getCharacter().size(), equalTo(1));
-        assertThat(response.getCharacter().get(0), equalTo(1652509239));
+        assertThat(response, notNullValue());
+        assertThat(response.getCharacter(), notNullValue());
+        assertThat(response.getCharacter().size(), greaterThan(1));
+        for (int charID : response.getCharacter()) {
+            assertThat(charID, isOneOf(1652509239, 2120011828));
+        }
     }
 
     /**
