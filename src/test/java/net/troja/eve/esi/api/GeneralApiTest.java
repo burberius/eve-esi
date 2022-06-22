@@ -49,14 +49,28 @@ public class GeneralApiTest {
         final Map<String, String> env = System.getenv();
 
         clientId = env.get(SSO_CLIENT_ID);
+        if (clientId == null) {
+            throw new NullPointerException(SSO_CLIENT_ID + " environment variable is null");
+        }
         refreshToken = env.get(SSO_REFRESH_TOKEN);
+        if (refreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN + " environment variable is null");
+        }
         refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
-
+        if (refreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_PUBLIC_DATA + " environment variable is null");
+        }
         apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
+        if (jwt == null) {
+            throw new NullPointerException("jwt is null");
+        }
         JWT.Payload payload = jwt.getPayload();
+        if (jwt == null) {
+            throw new NullPointerException("jwt is null");
+        }
         characterId = payload.getCharacterID();
         characterName = payload.getName();
     }
