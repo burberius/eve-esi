@@ -69,7 +69,7 @@ public class GeneralApiTest {
         }
         JWT.Payload payload = jwt.getPayload();
         if (payload == null) {
-            throw new NullPointerException("jwt is null");
+            throw new NullPointerException("payload is null");
         }
         characterId = payload.getCharacterID();
         characterName = payload.getName();
