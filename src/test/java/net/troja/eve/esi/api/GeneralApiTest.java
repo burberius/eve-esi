@@ -57,7 +57,7 @@ public class GeneralApiTest {
             throw new NullPointerException(SSO_REFRESH_TOKEN + " environment variable is null");
         }
         refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
-        if (refreshToken == null) {
+        if (refreshTokenPublicData == null) {
             throw new NullPointerException(SSO_REFRESH_TOKEN_PUBLIC_DATA + " environment variable is null");
         }
         apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
@@ -68,7 +68,7 @@ public class GeneralApiTest {
             throw new NullPointerException("jwt is null");
         }
         JWT.Payload payload = jwt.getPayload();
-        if (jwt == null) {
+        if (payload == null) {
             throw new NullPointerException("jwt is null");
         }
         characterId = payload.getCharacterID();
