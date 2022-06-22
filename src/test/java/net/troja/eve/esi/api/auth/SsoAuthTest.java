@@ -236,7 +236,10 @@ public class SsoAuthTest extends GeneralApiTest {
             client = new ApiClientBuilder().build(); //This will never happen
         }
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        final Set<String> scopes = SsoScopes.ALL; //Collections.singleton(SsoScopes.PUBLIC_DATA);
+        //PUBLIC_DATA
+        //final Set<String> scopes = Collections.singleton(SsoScopes.PUBLIC_DATA); // SsoScopes.ALL;
+        //ALL
+        final Set<String> scopes = SsoScopes.ALL;
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
@@ -247,8 +250,8 @@ public class SsoAuthTest extends GeneralApiTest {
         System.out.println("Authorization URL: " + authorizationUri);
         Desktop.getDesktop().browse(new URI(authorizationUri));
 
+        System.out.print("Code from Answer:");
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Code from Answer: ");
         final String code = br.readLine();
         auth.finishFlow(code, state);
         System.out.println("Refresh Token: " + auth.getRefreshToken());

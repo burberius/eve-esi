@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: 1.10.1
+  version: "1.11"
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -40170,9 +40170,11 @@ components:
           - ShipHangar
           - Skill
           - SpecializedAmmoHold
+          - SpecializedAsteroidHold
           - SpecializedCommandCenterHold
           - SpecializedFuelBay
           - SpecializedGasHold
+          - SpecializedIceHold
           - SpecializedIndustrialShipHold
           - SpecializedLargeShipHold
           - SpecializedMaterialBay
@@ -40183,6 +40185,7 @@ components:
           - SpecializedSalvageHold
           - SpecializedShipHold
           - SpecializedSmallShipHold
+          - StructureDeedBay
           - SubSystemBay
           - SubSystemSlot0
           - SubSystemSlot1
@@ -40709,9 +40712,11 @@ components:
           - Skill
           - SkillInTraining
           - SpecializedAmmoHold
+          - SpecializedAsteroidHold
           - SpecializedCommandCenterHold
           - SpecializedFuelBay
           - SpecializedGasHold
+          - SpecializedIceHold
           - SpecializedIndustrialShipHold
           - SpecializedLargeShipHold
           - SpecializedMaterialBay
