@@ -15,7 +15,7 @@ import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeFalse;
 import org.junit.BeforeClass;
 
-public class GeneralApiTest {
+public abstract class GeneralApiTest {
     protected static final boolean IGNORE_WARNING_HEADER_199 = false;
     protected static final String DATASOURCE = "tranquility";
     protected static final String LANGUAGE = "en-us";

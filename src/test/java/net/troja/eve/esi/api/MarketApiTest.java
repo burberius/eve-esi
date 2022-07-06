@@ -246,6 +246,7 @@ public class MarketApiTest extends GeneralApiTest {
         //Get market orders
         ApiResponse<List<MarketOrdersResponse>> response = api.getMarketsRegionIdOrdersWithHttpInfo(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, null, null);
         result.addAll(response.getData());
+        assertThat(result.size(), greaterThan(0));
 
         /**
          * Step 2: Safely get X-Pages header.
@@ -262,13 +263,10 @@ public class MarketApiTest extends GeneralApiTest {
          * For public endpoints ApiClient is fully thread safe.
          * For authorized endpoints one instance of ApiClient is required per refresh token
          */
-        for (int page = 2; page <= xPages; page++) { //For each page greater than one.
-            //Get market orders
-            List<MarketOrdersResponse> pageResponse = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, page, null);
-            result.addAll(pageResponse);
-        }
+        List<MarketOrdersResponse> page2 = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, 2, null);
+        assertThat(page2.size(), greaterThan(0));
 
-        assertThat(result, notNullValue());
-        assertThat(result.size(), greaterThan(0));
+        List<MarketOrdersResponse> lastPage = api.getMarketsRegionIdOrders(orderType, REGION_ID_THE_FORGE, DATASOURCE, null, xPages, null);
+        assertThat(lastPage.size(), greaterThan(0));
     }
 }

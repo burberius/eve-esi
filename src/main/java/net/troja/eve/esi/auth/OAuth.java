@@ -27,10 +27,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.net.ssl.HttpsURLConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 
 public class OAuth implements Authentication {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OAuth.class);
+
     private static final String URI_OAUTH = "https://login.eveonline.com/v2/oauth";
     private static final String URI_AUTHENTICATION = URI_OAUTH + "/authorize";
     private static final String URI_ACCESS_TOKEN = URI_OAUTH + "/token";
@@ -43,7 +49,8 @@ public class OAuth implements Authentication {
     private static final Map<String, AccountData> ACCOUNTS = new ConcurrentHashMap<>();
 
     @Override
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams,
+            Map<String, String> cookieParams) {
         // Add auth
         AccountData accountData = getAccountData();
         if (accountData != null) {
@@ -255,36 +262,45 @@ public class OAuth implements Authentication {
 
     private static void update(AccountData accountData, String urlParameters) throws ApiException {
         try {
+            LOGGER.debug("connect {}", URI_ACCESS_TOKEN);
             URL obj = new URL(URI_ACCESS_TOKEN);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
+            LOGGER.debug("set headers");
             // add request header
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             con.setRequestProperty("Host", "login.eveonline.com");
+            con.setRequestProperty("User-Agent", Configuration.getUseragent());
             con.setConnectTimeout(10000);
             con.setReadTimeout(10000);
 
             // Send post request
+            LOGGER.debug("post");
             con.setDoOutput(true);
             try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
                 wr.writeBytes(urlParameters);
                 wr.flush();
             }
 
+            LOGGER.debug("read");
             StringBuilder response;
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            try (InputStreamReader isr = new InputStreamReader(con.getInputStream());
+                    BufferedReader in = new BufferedReader(isr)) {
                 String inputLine;
                 response = new StringBuilder();
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
                 }
             }
+
             // read json
+            LOGGER.debug("json");
             Gson gson = new GsonBuilder().create();
             Result result = gson.fromJson(response.toString(), Result.class);
 
             // set data
+            LOGGER.debug("update account data");
             long validUntil = System.currentTimeMillis() + result.getExpiresIn() * 1000 - 5000;
             ACCOUNTS.remove(accountData.getKey()); // Remove old value - or we
                                                    // can match a random refresh

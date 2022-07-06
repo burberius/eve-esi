@@ -17,13 +17,10 @@ public class ApiClientBuilder {
             client = new ApiClient();
         }
         // Set default User-Agent.
-        String systemUserAgent = System.getProperty("http.agent");
         if (userAgent != null && !userAgent.isEmpty()) {
             client.setUserAgent(userAgent);
-        } else if (systemUserAgent != null && !systemUserAgent.isEmpty()) {
-            client.setUserAgent(systemUserAgent);
-        } else {
-            client.setUserAgent("eve-esi/slack:@goldengnu");
+        } else  {
+            client.setUserAgent(Configuration.getUseragent());
         }
         // Set auth
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
