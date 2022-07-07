@@ -12,17 +12,6 @@
 
 package net.troja.eve.esi;
 
-import okhttp3.*;
-import okhttp3.internal.http.HttpMethod;
-import okhttp3.internal.tls.OkHostnameVerifier;
-import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.logging.HttpLoggingInterceptor.Level;
-import okio.BufferedSink;
-import okio.Okio;
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
-import org.apache.oltu.oauth2.common.message.types.GrantType;
-
-import javax.net.ssl.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,26 +26,58 @@ import java.security.SecureRandom;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.internal.http.HttpMethod;
+import okhttp3.internal.tls.OkHostnameVerifier;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
+import okio.BufferedSink;
+import okio.Okio;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import net.troja.eve.esi.auth.ApiKeyAuth;
 import net.troja.eve.esi.auth.Authentication;
 import net.troja.eve.esi.auth.HttpBasicAuth;
-import net.troja.eve.esi.auth.HttpBearerAuth;
-import net.troja.eve.esi.auth.ApiKeyAuth;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.auth.RetryingOAuth;
 import net.troja.eve.esi.auth.OAuthFlow;
+import net.troja.eve.esi.auth.RetryingOAuth;
 
 public class ApiClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApiClient.class);
 
     private String basePath = "https://esi.evetech.net";
     private boolean debugging = false;
@@ -67,9 +88,6 @@ public class ApiClient {
     private Map<String, Authentication> authentications;
 
     private DateFormat dateFormat;
-    private DateFormat datetimeFormat;
-    private boolean lenientDatetimeFormat;
-    private int dateLength;
 
     private InputStream sslCaCert;
     private boolean verifyingSsl;
@@ -507,8 +525,8 @@ public class ApiClient {
      * endpoints with file response. The default value is <code>null</code>,
      * i.e. using the system's default tempopary folder.
      *
-     * @see <a
-     *      href="https://docs.oracle.com/javase/7/docs/api/java/io/File.html#createTempFile">createTempFile</a>
+     * @see <a href=
+     *      "https://docs.oracle.com/javase/7/docs/api/java/io/File.html#createTempFile">createTempFile</a>
      * @return Temporary folder path
      */
     public String getTempFolderPath() {
@@ -626,7 +644,7 @@ public class ApiClient {
             return jsonStr.substring(1, jsonStr.length() - 1);
         } else if (param instanceof Collection) {
             StringBuilder b = new StringBuilder();
-            for (Object o : (Collection) param) {
+            for (Object o : (Collection<?>) param) {
                 if (b.length() > 0) {
                     b.append(",");
                 }
@@ -677,7 +695,7 @@ public class ApiClient {
      *            The value of the parameter.
      * @return A list of {@code Pair} objects.
      */
-    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection value) {
+    public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
         List<Pair> params = new ArrayList<Pair>();
 
         // preconditions
@@ -726,7 +744,7 @@ public class ApiClient {
      *            The value of the parameter.
      * @return String representation of the parameter
      */
-    public String collectionPathParameterToString(String collectionFormat, Collection value) {
+    public String collectionPathParameterToString(String collectionFormat, Collection<?> value) {
         // create the value based on the collection format
         if ("multi".equals(collectionFormat)) {
             // not valid for path params
@@ -916,10 +934,10 @@ public class ApiClient {
     public RequestBody serialize(Object obj, String contentType) throws ApiException {
         if (obj instanceof byte[]) {
             // Binary (byte array) body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (byte[]) obj);
+            return RequestBody.create((byte[]) obj, MediaType.parse(contentType));
         } else if (obj instanceof File) {
             // File body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (File) obj);
+            return RequestBody.create((File) obj, MediaType.parse(contentType));
         } else if (isJsonMime(contentType)) {
             String content;
             if (obj != null) {
@@ -927,7 +945,7 @@ public class ApiClient {
             } else {
                 content = null;
             }
-            return RequestBody.create(MediaType.parse(contentType), content);
+            return RequestBody.create(content, MediaType.parse(contentType));
         } else {
             throw new ApiException("Content type \"" + contentType + "\" is not supported");
         }
@@ -1033,9 +1051,10 @@ public class ApiClient {
      */
     public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
         try {
+            LOGGER.debug("{} {}", call.request().method(), call.request().url());
             Response response = call.execute();
             T data = handleResponse(response, returnType);
-            return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
+            return new ApiResponse<>(response.code(), response.headers().toMultimap(), data);
         } catch (IOException e) {
             throw new ApiException(e);
         }
@@ -1070,6 +1089,7 @@ public class ApiClient {
      */
     @SuppressWarnings("unchecked")
     public <T> void executeAsync(Call call, final Type returnType, final ApiCallback<T> callback) {
+        LOGGER.debug("{} (async) {}", call.request().method(), call.request().url());
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -1164,7 +1184,7 @@ public class ApiClient {
      */
     public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
             Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
-            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+            Map<String, Object> formParams, String[] authNames, ApiCallback<?> callback) throws ApiException {
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams,
                 cookieParams, formParams, authNames, callback);
 
@@ -1201,7 +1221,7 @@ public class ApiClient {
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
             Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
-            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+            Map<String, Object> formParams, String[] authNames, ApiCallback<?> callback) throws ApiException {
         updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
@@ -1209,7 +1229,7 @@ public class ApiClient {
         processHeaderParams(headerParams, reqBuilder);
         processCookieParams(cookieParams, reqBuilder);
 
-        String contentType = (String) headerParams.get("Content-Type");
+        String contentType = headerParams.get("Content-Type");
         // ensuring a default content type
         if (contentType == null) {
             contentType = "application/json";
@@ -1228,7 +1248,7 @@ public class ApiClient {
                 reqBody = null;
             } else {
                 // use an empty request body (for POST, PUT and PATCH)
-                reqBody = RequestBody.create(MediaType.parse(contentType), "");
+                reqBody = RequestBody.create("", MediaType.parse(contentType));
             }
         } else {
             reqBody = serialize(body, contentType);
@@ -1393,13 +1413,13 @@ public class ApiClient {
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey()
-                        + "\"; filename=\"" + file.getName() + "\"");
+                Headers partHeaders = Headers.of("Content-Disposition",
+                        "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
                 MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
-                mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file));
+                mpBuilder.addPart(partHeaders, RequestBody.create(file,mediaType));
             } else {
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
-                mpBuilder.addPart(partHeaders, RequestBody.create(null, parameterToString(param.getValue())));
+                mpBuilder.addPart(partHeaders, RequestBody.create(parameterToString(param.getValue()), null));
             }
         }
         return mpBuilder.build();
@@ -1433,7 +1453,7 @@ public class ApiClient {
                 final Request request = chain.request();
                 final Response originalResponse = chain.proceed(request);
                 if (request.tag() instanceof ApiCallback) {
-                    final ApiCallback callback = (ApiCallback) request.tag();
+                    final ApiCallback<?> callback = (ApiCallback<?>) request.tag();
                     return originalResponse.newBuilder()
                             .body(new ProgressResponseBody(originalResponse.body(), callback)).build();
                 }
@@ -1474,8 +1494,8 @@ public class ApiClient {
                     }
                 };
             } else {
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory
-                        .getDefaultAlgorithm());
+                TrustManagerFactory trustManagerFactory = TrustManagerFactory
+                        .getInstance(TrustManagerFactory.getDefaultAlgorithm());
 
                 if (sslCaCert == null) {
                     trustManagerFactory.init((KeyStore) null);

@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.troja.eve</groupId>
     <artifactId>eve-esi</artifactId>
     <version>4.7.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>EVE-ESI</name>
-    <description>Java Client for the new Eve Swagger Interface (ESI)</description>
+    <description>Java Client for the EVE Online Swagger Interface (ESI)</description>
     <url>https://github.com/burberius/eve-esi</url>
 
     <scm>
@@ -221,6 +221,12 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -234,6 +240,7 @@
         <commons-lang3-version>3.12.0</commons-lang3-version>
         <javax-annotation-version>1.0</javax-annotation-version>
         <junit-version>4.13.2</junit-version>
+        <slf4j-version>1.7.7</slf4j-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

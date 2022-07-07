@@ -11,9 +11,17 @@
 
 package net.troja.eve.esi;
 
-public class Configuration {
-    private static ApiClient defaultApiClient = new ApiClientBuilder().build();
+import org.apache.commons.lang3.StringUtils;
 
+public final class Configuration {
+
+    private Configuration() {
+        // no.
+    }
+
+    private static ApiClient defaultApiClient = new ApiClientBuilder().build();
+    private static String useragent;
+    
     /**
      * Get the default API client, which would be used when creating API
      * instances without providing an API client.
@@ -34,4 +42,34 @@ public class Configuration {
     public static void setDefaultApiClient(ApiClient apiClient) {
         defaultApiClient = apiClient;
     }
+
+    /**
+     * Gets the default useragent first from a system property then falling back
+     * to a known string.
+     * 
+     * @return
+     */
+    private static String getDefaultUseragent() {
+        final String sys = System.getProperty("http.agent");
+        return StringUtils.isNotBlank(sys) ? sys : "eve-esi/slack:@goldengnu";
+    }
+
+    /**
+     * Returns the useragent to use for HTTP requests.
+     * 
+     * @return useragent
+     */
+    public static String getUseragent() {
+        return StringUtils.isNotBlank(useragent) ? useragent : getDefaultUseragent();
+    }
+
+    /**
+     * Sets the useragent to use for HTTP requests.
+     * 
+     * @param useragent
+     */
+    public static void setUseragent(final String useragent) {
+        Configuration.useragent = useragent;
+    }
+
 }
