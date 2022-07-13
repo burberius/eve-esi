@@ -158,7 +158,6 @@
   "/v2/corporations/{corporation_id}/titles/",
   "/v2/dogma/effects/{effect_id}/",
   "/v2/fw/systems/",
-  "/v2/search/",
   "/v2/ui/autopilot/waypoint/",
   "/v2/universe/factions/",
   "/v2/universe/stations/{station_id}/",
