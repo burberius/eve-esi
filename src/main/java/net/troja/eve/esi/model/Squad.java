@@ -28,6 +28,7 @@ import java.io.Serializable;
  * squad object
  */
 @ApiModel(description = "squad object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Squad implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class Squad implements Serializable {
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
+
+    public Squad() {
+    }
 
     public Squad id(Long id) {
 
@@ -50,6 +54,7 @@ public class Squad implements Serializable {
      * 
      * @return id
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "id integer")
     public Long getId() {
         return id;
@@ -70,6 +75,7 @@ public class Squad implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -80,7 +86,7 @@ public class Squad implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -110,7 +116,7 @@ public class Squad implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

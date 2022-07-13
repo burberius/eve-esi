@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterOrdersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -156,6 +157,9 @@ public class CharacterOrdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME_TOTAL)
     private Integer volumeTotal;
 
+    public CharacterOrdersResponse() {
+    }
+
     public CharacterOrdersResponse duration(Integer duration) {
 
         this.duration = duration;
@@ -168,6 +172,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return duration
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration")
     public Integer getDuration() {
         return duration;
@@ -231,6 +236,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return isCorporation
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Signifies whether the buy/sell order was placed on behalf of a corporation.")
     public Boolean getIsCorporation() {
         return isCorporation;
@@ -251,6 +257,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return issued
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time when this order was issued")
     public OffsetDateTime getIssued() {
         return issued;
@@ -271,6 +278,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the location where order was placed")
     public Long getLocationId() {
         return locationId;
@@ -313,6 +321,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return orderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique order ID")
     public Long getOrderId() {
         return orderId;
@@ -333,6 +342,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return price
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Cost per unit for this order")
     public Double getPrice() {
         return price;
@@ -359,6 +369,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return range
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
     public RangeEnum getRange() {
         if (rangeEnum == null) {
@@ -390,6 +401,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return regionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the region where order was placed")
     public Integer getRegionId() {
         return regionId;
@@ -410,6 +422,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The type ID of the item transacted in this order")
     public Integer getTypeId() {
         return typeId;
@@ -430,6 +443,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Quantity of items still required or offered")
     public Integer getVolumeRemain() {
         return volumeRemain;
@@ -450,6 +464,7 @@ public class CharacterOrdersResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Quantity of items required or offered at time order was placed")
     public Integer getVolumeTotal() {
         return volumeTotal;
@@ -460,7 +475,7 @@ public class CharacterOrdersResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -516,7 +531,7 @@ public class CharacterOrdersResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

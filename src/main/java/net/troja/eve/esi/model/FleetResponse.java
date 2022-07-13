@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class FleetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_MOTD)
     private String motd;
 
+    public FleetResponse() {
+    }
+
     public FleetResponse isFreeMove(Boolean isFreeMove) {
 
         this.isFreeMove = isFreeMove;
@@ -58,6 +62,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isFreeMove
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Is free-move enabled")
     public Boolean getIsFreeMove() {
         return isFreeMove;
@@ -78,6 +83,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isRegistered
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Does the fleet have an active fleet advertisement")
     public Boolean getIsRegistered() {
         return isRegistered;
@@ -98,6 +104,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isVoiceEnabled
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Is EVE Voice enabled")
     public Boolean getIsVoiceEnabled() {
         return isVoiceEnabled;
@@ -118,6 +125,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return motd
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Fleet MOTD in CCP flavoured HTML")
     public String getMotd() {
         return motd;
@@ -128,7 +136,7 @@ public class FleetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -163,7 +171,7 @@ public class FleetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

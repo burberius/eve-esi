@@ -31,6 +31,7 @@ import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CorporationAssetsLocationsResponse;
 import net.troja.eve.esi.model.CorporationAssetsNamesResponse;
 import net.troja.eve.esi.model.CorporationAssetsResponse;
+import java.util.Set;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -40,6 +41,8 @@ import java.util.Map;
 
 public class AssetsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public AssetsApi() {
         this(Configuration.getDefaultApiClient());
@@ -55,6 +58,22 @@ public class AssetsApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -163,6 +182,20 @@ public class AssetsApi {
      */
     public okhttp3.Call getCharactersCharacterIdAssetsCall(Integer characterId, String datasource, String ifNoneMatch,
             Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -171,6 +204,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -183,13 +220,10 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -200,12 +234,14 @@ public class AssetsApi {
 
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -674,6 +710,20 @@ public class AssetsApi {
      */
     public okhttp3.Call getCorporationsCorporationIdAssetsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -682,6 +732,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -694,13 +748,10 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -711,12 +762,14 @@ public class AssetsApi {
 
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1169,8 +1222,22 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdAssetsLocationsCall(Integer characterId, List<Long> itemIds,
+    public okhttp3.Call postCharactersCharacterIdAssetsLocationsCall(Integer characterId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = itemIds;
 
         // create path and map variables
@@ -1179,6 +1246,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1187,9 +1258,6 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1198,17 +1266,19 @@ public class AssetsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharactersCharacterIdAssetsLocationsValidateBeforeCall(Integer characterId,
-            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
+            Set<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1316,7 +1386,7 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CharacterAssetsLocationsResponse> postCharactersCharacterIdAssetsLocations(Integer characterId,
-            List<Long> itemIds, String datasource, String token) throws ApiException {
+            Set<Long> itemIds, String datasource, String token) throws ApiException {
         ApiResponse<List<CharacterAssetsLocationsResponse>> localVarResp = postCharactersCharacterIdAssetsLocationsWithHttpInfo(
                 characterId, itemIds, datasource, token);
         return localVarResp.getData();
@@ -1410,7 +1480,7 @@ public class AssetsApi {
      *                        </table>
      */
     public ApiResponse<List<CharacterAssetsLocationsResponse>> postCharactersCharacterIdAssetsLocationsWithHttpInfo(
-            Integer characterId, List<Long> itemIds, String datasource, String token) throws ApiException {
+            Integer characterId, Set<Long> itemIds, String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = postCharactersCharacterIdAssetsLocationsValidateBeforeCall(characterId, itemIds,
                 datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsLocationsResponse>>() {
@@ -1507,7 +1577,7 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdAssetsLocationsAsync(Integer characterId, List<Long> itemIds,
+    public okhttp3.Call postCharactersCharacterIdAssetsLocationsAsync(Integer characterId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback<List<CharacterAssetsLocationsResponse>> _callback)
             throws ApiException {
 
@@ -1604,8 +1674,22 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdAssetsNamesCall(Integer characterId, List<Long> itemIds,
+    public okhttp3.Call postCharactersCharacterIdAssetsNamesCall(Integer characterId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = itemIds;
 
         // create path and map variables
@@ -1614,6 +1698,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1622,9 +1710,6 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1633,17 +1718,19 @@ public class AssetsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCharactersCharacterIdAssetsNamesValidateBeforeCall(Integer characterId,
-            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCharactersCharacterIdAssetsNamesValidateBeforeCall(Integer characterId, Set<Long> itemIds,
+            String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
@@ -1751,7 +1838,7 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CharacterAssetsNamesResponse> postCharactersCharacterIdAssetsNames(Integer characterId,
-            List<Long> itemIds, String datasource, String token) throws ApiException {
+            Set<Long> itemIds, String datasource, String token) throws ApiException {
         ApiResponse<List<CharacterAssetsNamesResponse>> localVarResp = postCharactersCharacterIdAssetsNamesWithHttpInfo(
                 characterId, itemIds, datasource, token);
         return localVarResp.getData();
@@ -1845,7 +1932,7 @@ public class AssetsApi {
      *                        </table>
      */
     public ApiResponse<List<CharacterAssetsNamesResponse>> postCharactersCharacterIdAssetsNamesWithHttpInfo(
-            Integer characterId, List<Long> itemIds, String datasource, String token) throws ApiException {
+            Integer characterId, Set<Long> itemIds, String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = postCharactersCharacterIdAssetsNamesValidateBeforeCall(characterId, itemIds,
                 datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CharacterAssetsNamesResponse>>() {
@@ -1942,7 +2029,7 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdAssetsNamesAsync(Integer characterId, List<Long> itemIds,
+    public okhttp3.Call postCharactersCharacterIdAssetsNamesAsync(Integer characterId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback<List<CharacterAssetsNamesResponse>> _callback)
             throws ApiException {
 
@@ -2039,8 +2126,22 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsCall(Integer corporationId, List<Long> itemIds,
+    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsCall(Integer corporationId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = itemIds;
 
         // create path and map variables
@@ -2049,6 +2150,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2057,9 +2162,6 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2068,17 +2170,19 @@ public class AssetsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(Integer corporationId,
-            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
+            Set<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -2187,7 +2291,7 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CorporationAssetsLocationsResponse> postCorporationsCorporationIdAssetsLocations(Integer corporationId,
-            List<Long> itemIds, String datasource, String token) throws ApiException {
+            Set<Long> itemIds, String datasource, String token) throws ApiException {
         ApiResponse<List<CorporationAssetsLocationsResponse>> localVarResp = postCorporationsCorporationIdAssetsLocationsWithHttpInfo(
                 corporationId, itemIds, datasource, token);
         return localVarResp.getData();
@@ -2282,7 +2386,7 @@ public class AssetsApi {
      *                        </table>
      */
     public ApiResponse<List<CorporationAssetsLocationsResponse>> postCorporationsCorporationIdAssetsLocationsWithHttpInfo(
-            Integer corporationId, List<Long> itemIds, String datasource, String token) throws ApiException {
+            Integer corporationId, Set<Long> itemIds, String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsLocationsValidateBeforeCall(corporationId,
                 itemIds, datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsLocationsResponse>>() {
@@ -2380,7 +2484,7 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsAsync(Integer corporationId, List<Long> itemIds,
+    public okhttp3.Call postCorporationsCorporationIdAssetsLocationsAsync(Integer corporationId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback<List<CorporationAssetsLocationsResponse>> _callback)
             throws ApiException {
 
@@ -2477,8 +2581,22 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCorporationsCorporationIdAssetsNamesCall(Integer corporationId, List<Long> itemIds,
+    public okhttp3.Call postCorporationsCorporationIdAssetsNamesCall(Integer corporationId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = itemIds;
 
         // create path and map variables
@@ -2487,6 +2605,10 @@ public class AssetsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2495,9 +2617,6 @@ public class AssetsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2506,17 +2625,19 @@ public class AssetsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCorporationsCorporationIdAssetsNamesValidateBeforeCall(Integer corporationId,
-            List<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
+            Set<Long> itemIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
@@ -2625,7 +2746,7 @@ public class AssetsApi {
      *                        </table>
      */
     public List<CorporationAssetsNamesResponse> postCorporationsCorporationIdAssetsNames(Integer corporationId,
-            List<Long> itemIds, String datasource, String token) throws ApiException {
+            Set<Long> itemIds, String datasource, String token) throws ApiException {
         ApiResponse<List<CorporationAssetsNamesResponse>> localVarResp = postCorporationsCorporationIdAssetsNamesWithHttpInfo(
                 corporationId, itemIds, datasource, token);
         return localVarResp.getData();
@@ -2720,7 +2841,7 @@ public class AssetsApi {
      *                        </table>
      */
     public ApiResponse<List<CorporationAssetsNamesResponse>> postCorporationsCorporationIdAssetsNamesWithHttpInfo(
-            Integer corporationId, List<Long> itemIds, String datasource, String token) throws ApiException {
+            Integer corporationId, Set<Long> itemIds, String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = postCorporationsCorporationIdAssetsNamesValidateBeforeCall(corporationId, itemIds,
                 datasource, token, null);
         Type localVarReturnType = new TypeToken<List<CorporationAssetsNamesResponse>>() {
@@ -2818,7 +2939,7 @@ public class AssetsApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCorporationsCorporationIdAssetsNamesAsync(Integer corporationId, List<Long> itemIds,
+    public okhttp3.Call postCorporationsCorporationIdAssetsNamesAsync(Integer corporationId, Set<Long> itemIds,
             String datasource, String token, final ApiCallback<List<CorporationAssetsNamesResponse>> _callback)
             throws ApiException {
 

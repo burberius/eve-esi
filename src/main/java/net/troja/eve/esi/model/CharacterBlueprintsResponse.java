@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterBlueprintsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -259,6 +260,9 @@ public class CharacterBlueprintsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public CharacterBlueprintsResponse() {
+    }
+
     public CharacterBlueprintsResponse itemId(Long itemId) {
 
         this.itemId = itemId;
@@ -270,6 +274,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return itemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique ID for this item.")
     public Long getItemId() {
         return itemId;
@@ -296,6 +301,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Type of the location_id")
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
@@ -330,6 +336,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "References a station, a ship or an item_id if this blueprint is located within a container. If the return value is an item_id, then the Character AssetList API must be queried to find the container using the given item_id to determine the correct location of the Blueprint.")
     public Long getLocationId() {
         return locationId;
@@ -350,6 +357,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return materialEfficiency
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Material Efficiency Level of the blueprint.")
     public Integer getMaterialEfficiency() {
         return materialEfficiency;
@@ -373,6 +381,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "A range of numbers with a minimum of -2 and no maximum value where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (e.g. no activities performed on them yet).")
     public Integer getQuantity() {
         return quantity;
@@ -394,6 +403,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return runs
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of runs remaining if the blueprint is a copy, -1 if it is an original.")
     public Integer getRuns() {
         return runs;
@@ -414,6 +424,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return timeEfficiency
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Time Efficiency Level of the blueprint.")
     public Integer getTimeEfficiency() {
         return timeEfficiency;
@@ -434,6 +445,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -444,7 +456,7 @@ public class CharacterBlueprintsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -488,7 +500,7 @@ public class CharacterBlueprintsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

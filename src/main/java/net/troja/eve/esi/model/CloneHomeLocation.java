@@ -28,6 +28,7 @@ import java.io.Serializable;
  * home_location object
  */
 @ApiModel(description = "home_location object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CloneHomeLocation implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -86,6 +87,9 @@ public class CloneHomeLocation implements Serializable {
     @SerializedName(SERIALIZED_NAME_LOCATION_TYPE)
     private String locationType;
     private LocationTypeEnum locationTypeEnum;
+
+    public CloneHomeLocation() {
+    }
 
     public CloneHomeLocation locationId(Long locationId) {
 
@@ -147,7 +151,7 @@ public class CloneHomeLocation implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -178,7 +182,7 @@ public class CloneHomeLocation implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

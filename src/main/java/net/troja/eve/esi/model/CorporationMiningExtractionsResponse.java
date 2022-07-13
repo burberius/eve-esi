@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationMiningExtractionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +53,9 @@ public class CorporationMiningExtractionsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
     private Long structureId;
 
+    public CorporationMiningExtractionsResponse() {
+    }
+
     public CorporationMiningExtractionsResponse chunkArrivalTime(OffsetDateTime chunkArrivalTime) {
 
         this.chunkArrivalTime = chunkArrivalTime;
@@ -64,6 +68,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return chunkArrivalTime
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill. ")
     public OffsetDateTime getChunkArrivalTime() {
         return chunkArrivalTime;
@@ -84,6 +89,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return extractionStartTime
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The time at which the current extraction was initiated. ")
     public OffsetDateTime getExtractionStartTime() {
         return extractionStartTime;
@@ -104,6 +110,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return moonId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "moon_id integer")
     public Integer getMoonId() {
         return moonId;
@@ -125,6 +132,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return naturalDecayTime
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The time at which the chunk being extracted will naturally fracture if it is not first fractured by the moon mining drill. ")
     public OffsetDateTime getNaturalDecayTime() {
         return naturalDecayTime;
@@ -145,6 +153,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * 
      * @return structureId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "structure_id integer")
     public Long getStructureId() {
         return structureId;
@@ -155,7 +164,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -192,7 +201,7 @@ public class CorporationMiningExtractionsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

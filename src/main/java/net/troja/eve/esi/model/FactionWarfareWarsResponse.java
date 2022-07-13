@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareWarsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class FactionWarfareWarsResponse implements Serializable {
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
     private Integer factionId;
+
+    public FactionWarfareWarsResponse() {
+    }
 
     public FactionWarfareWarsResponse againstId(Integer againstId) {
 
@@ -50,6 +54,7 @@ public class FactionWarfareWarsResponse implements Serializable {
      * 
      * @return againstId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The faction ID of the enemy faction.")
     public Integer getAgainstId() {
         return againstId;
@@ -70,6 +75,7 @@ public class FactionWarfareWarsResponse implements Serializable {
      * 
      * @return factionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
@@ -80,7 +86,7 @@ public class FactionWarfareWarsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,7 +117,7 @@ public class FactionWarfareWarsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MoonResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class MoonResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
     private Integer systemId;
 
+    public MoonResponse() {
+    }
+
     public MoonResponse moonId(Integer moonId) {
 
         this.moonId = moonId;
@@ -59,6 +63,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return moonId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "moon_id integer")
     public Integer getMoonId() {
         return moonId;
@@ -79,6 +84,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -99,6 +105,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return position
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
@@ -119,6 +126,7 @@ public class MoonResponse implements Serializable {
      * 
      * @return systemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The solar system this moon is in")
     public Integer getSystemId() {
         return systemId;
@@ -129,7 +137,7 @@ public class MoonResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -163,7 +171,7 @@ public class MoonResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

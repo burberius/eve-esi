@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationContractsBidsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class CorporationContractsBidsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_DATE_BID)
     private OffsetDateTime dateBid;
 
+    public CorporationContractsBidsResponse() {
+    }
+
     public CorporationContractsBidsResponse amount(Float amount) {
 
         this.amount = amount;
@@ -59,6 +63,7 @@ public class CorporationContractsBidsResponse implements Serializable {
      * 
      * @return amount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The amount bid, in ISK")
     public Float getAmount() {
         return amount;
@@ -79,6 +84,7 @@ public class CorporationContractsBidsResponse implements Serializable {
      * 
      * @return bidId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique ID for the bid")
     public Integer getBidId() {
         return bidId;
@@ -99,6 +105,7 @@ public class CorporationContractsBidsResponse implements Serializable {
      * 
      * @return bidderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Character ID of the bidder")
     public Integer getBidderId() {
         return bidderId;
@@ -119,6 +126,7 @@ public class CorporationContractsBidsResponse implements Serializable {
      * 
      * @return dateBid
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Datetime when the bid was placed")
     public OffsetDateTime getDateBid() {
         return dateBid;
@@ -129,7 +137,7 @@ public class CorporationContractsBidsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -164,7 +172,7 @@ public class CorporationContractsBidsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

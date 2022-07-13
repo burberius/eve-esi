@@ -32,6 +32,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TypeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -99,6 +100,9 @@ public class TypeResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Float volume;
 
+    public TypeResponse() {
+    }
+
     public TypeResponse capacity(Float capacity) {
 
         this.capacity = capacity;
@@ -131,6 +135,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -230,6 +235,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return groupId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "group_id integer")
     public Integer getGroupId() {
         return groupId;
@@ -313,6 +319,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -375,6 +382,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return published
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "published boolean")
     public Boolean getPublished() {
         return published;
@@ -416,6 +424,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -447,7 +456,7 @@ public class TypeResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -505,7 +514,7 @@ public class TypeResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

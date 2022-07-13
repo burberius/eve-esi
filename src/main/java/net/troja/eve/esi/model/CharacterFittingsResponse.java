@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterFittingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +55,9 @@ public class CharacterFittingsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SHIP_TYPE_ID)
     private Integer shipTypeId;
 
+    public CharacterFittingsResponse() {
+    }
+
     public CharacterFittingsResponse description(String description) {
 
         this.description = description;
@@ -65,6 +69,7 @@ public class CharacterFittingsResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -85,6 +90,7 @@ public class CharacterFittingsResponse implements Serializable {
      * 
      * @return fittingId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "fitting_id integer")
     public Integer getFittingId() {
         return fittingId;
@@ -110,6 +116,7 @@ public class CharacterFittingsResponse implements Serializable {
      * 
      * @return items
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "items array")
     public List<FittingItem> getItems() {
         return items;
@@ -130,6 +137,7 @@ public class CharacterFittingsResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -150,6 +158,7 @@ public class CharacterFittingsResponse implements Serializable {
      * 
      * @return shipTypeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ship_type_id integer")
     public Integer getShipTypeId() {
         return shipTypeId;
@@ -160,7 +169,7 @@ public class CharacterFittingsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,7 +206,7 @@ public class CharacterFittingsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

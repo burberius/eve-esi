@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterIndustryJobsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -176,6 +177,9 @@ public class CharacterIndustryJobsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SUCCESSFUL_RUNS)
     private Integer successfulRuns;
 
+    public CharacterIndustryJobsResponse() {
+    }
+
     public CharacterIndustryJobsResponse activityId(Integer activityId) {
 
         this.activityId = activityId;
@@ -187,6 +191,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return activityId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Job activity ID")
     public Integer getActivityId() {
         return activityId;
@@ -207,6 +212,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "blueprint_id integer")
     public Long getBlueprintId() {
         return blueprintId;
@@ -229,6 +235,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintLocationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Location ID of the location from which the blueprint was installed. Normally a station ID, but can also be an asset (e.g. container) or corporation facility")
     public Long getBlueprintLocationId() {
         return blueprintLocationId;
@@ -249,6 +256,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintTypeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "blueprint_type_id integer")
     public Integer getBlueprintTypeId() {
         return blueprintTypeId;
@@ -332,6 +340,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return duration
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Job duration in seconds")
     public Integer getDuration() {
         return duration;
@@ -352,6 +361,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return endDate
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time when this job finished")
     public OffsetDateTime getEndDate() {
         return endDate;
@@ -372,6 +382,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return facilityId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the facility where this job is running")
     public Long getFacilityId() {
         return facilityId;
@@ -392,6 +403,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return installerId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the character which installed this job")
     public Integer getInstallerId() {
         return installerId;
@@ -412,6 +424,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return jobId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique job ID")
     public Integer getJobId() {
         return jobId;
@@ -454,6 +467,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return outputLocationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Location ID of the location to which the output of the job will be delivered. Normally a station ID, but can also be a corporation facility")
     public Long getOutputLocationId() {
         return outputLocationId;
@@ -539,6 +553,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return runs
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
     public Integer getRuns() {
         return runs;
@@ -559,6 +574,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return startDate
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time when this job started")
     public OffsetDateTime getStartDate() {
         return startDate;
@@ -579,6 +595,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return stationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the station where industry facility is located")
     public Long getStationId() {
         return stationId;
@@ -605,6 +622,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return status
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "status string")
     public StatusEnum getStatus() {
         if (statusEnum == null) {
@@ -648,7 +666,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -721,7 +739,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

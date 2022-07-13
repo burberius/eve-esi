@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SovereigntyStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -60,6 +61,9 @@ public class SovereigntyStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VULNERABLE_START_TIME)
     private OffsetDateTime vulnerableStartTime;
 
+    public SovereigntyStructuresResponse() {
+    }
+
     public SovereigntyStructuresResponse allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -71,6 +75,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return allianceId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The alliance that owns the structure. ")
     public Integer getAllianceId() {
         return allianceId;
@@ -91,6 +96,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Solar system in which the structure is located. ")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -111,6 +117,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return structureId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique item ID for this structure.")
     public Long getStructureId() {
         return structureId;
@@ -131,6 +138,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * 
      * @return structureTypeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "A reference to the type of structure this is. ")
     public Integer getStructureTypeId() {
         return structureTypeId;
@@ -216,7 +224,7 @@ public class SovereigntyStructuresResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -260,7 +268,7 @@ public class SovereigntyStructuresResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

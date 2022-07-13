@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterSkillqueueResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -64,6 +65,9 @@ public class CharacterSkillqueueResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TRAINING_START_SP)
     private Integer trainingStartSp;
 
+    public CharacterSkillqueueResponse() {
+    }
+
     public CharacterSkillqueueResponse finishDate(OffsetDateTime finishDate) {
 
         this.finishDate = finishDate;
@@ -97,6 +101,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return finishedLevel
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "finished_level integer")
     public Integer getFinishedLevel() {
         return finishedLevel;
@@ -160,6 +165,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return queuePosition
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "queue_position integer")
     public Integer getQueuePosition() {
         return queuePosition;
@@ -180,6 +186,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * 
      * @return skillId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "skill_id integer")
     public Integer getSkillId() {
         return skillId;
@@ -232,7 +239,7 @@ public class CharacterSkillqueueResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -276,7 +283,7 @@ public class CharacterSkillqueueResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

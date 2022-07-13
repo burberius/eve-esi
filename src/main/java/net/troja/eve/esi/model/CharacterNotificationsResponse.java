@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -594,6 +595,9 @@ public class CharacterNotificationsResponse implements Serializable {
     private String type;
     private TypeEnum typeEnum;
 
+    public CharacterNotificationsResponse() {
+    }
+
     public CharacterNotificationsResponse isRead(Boolean isRead) {
 
         this.isRead = isRead;
@@ -626,6 +630,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return notificationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "notification_id integer")
     public Long getNotificationId() {
         return notificationId;
@@ -646,6 +651,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "sender_id integer")
     public Integer getSenderId() {
         return senderId;
@@ -672,6 +678,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "sender_type string")
     public SenderTypeEnum getSenderType() {
         if (senderTypeEnum == null) {
@@ -724,6 +731,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return timestamp
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "timestamp string")
     public OffsetDateTime getTimestamp() {
         return timestamp;
@@ -750,6 +758,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return type
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type string")
     public TypeEnum getType() {
         if (typeEnum == null) {
@@ -771,7 +780,7 @@ public class CharacterNotificationsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -812,7 +821,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

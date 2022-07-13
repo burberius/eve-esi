@@ -28,6 +28,7 @@ import java.io.Serializable;
  * new_settings object
  */
 @ApiModel(description = "new_settings object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FleetNewSettings implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class FleetNewSettings implements Serializable {
     public static final String SERIALIZED_NAME_MOTD = "motd";
     @SerializedName(SERIALIZED_NAME_MOTD)
     private String motd;
+
+    public FleetNewSettings() {
+    }
 
     public FleetNewSettings isFreeMove(Boolean isFreeMove) {
 
@@ -82,7 +86,7 @@ public class FleetNewSettings implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -113,7 +117,7 @@ public class FleetNewSettings implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

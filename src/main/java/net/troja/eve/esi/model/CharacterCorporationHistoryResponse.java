@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterCorporationHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class CharacterCorporationHistoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_START_DATE)
     private OffsetDateTime startDate;
 
+    public CharacterCorporationHistoryResponse() {
+    }
+
     public CharacterCorporationHistoryResponse corporationId(Integer corporationId) {
 
         this.corporationId = corporationId;
@@ -59,6 +63,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return corporationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
@@ -101,6 +106,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return recordId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous")
     public Integer getRecordId() {
         return recordId;
@@ -121,6 +127,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * 
      * @return startDate
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "start_date string")
     public OffsetDateTime getStartDate() {
         return startDate;
@@ -131,7 +138,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,7 +173,7 @@ public class CharacterCorporationHistoryResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

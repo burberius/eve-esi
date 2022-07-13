@@ -34,6 +34,7 @@ import java.io.Serializable;
  * total
  */
 @ApiModel(description = "Top 4 rankings of factions by victory points from yesterday, last week and in total")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private List<FactionWarfareLeaderboardYesterdayVictoryPoints> yesterday = new ArrayList<>();
+
+    public FactionWarfareLeaderboardVictoryPoints() {
+    }
 
     public FactionWarfareLeaderboardVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardActiveTotalVictoryPoints> activeTotal) {
@@ -69,6 +73,7 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
      * 
      * @return activeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 4 ranking of factions active in faction warfare by total victory points. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
@@ -95,6 +100,7 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
      * 
      * @return lastWeek
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 4 ranking of factions by victory points in the past week")
     public List<FactionWarfareLeaderboardLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
@@ -122,6 +128,7 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
      * 
      * @return yesterday
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 4 ranking of factions by victory points in the past day")
     public List<FactionWarfareLeaderboardYesterdayVictoryPoints> getYesterday() {
         return yesterday;
@@ -132,7 +139,7 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -165,7 +172,7 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

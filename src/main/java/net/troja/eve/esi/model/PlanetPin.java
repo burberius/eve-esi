@@ -34,6 +34,7 @@ import java.io.Serializable;
  * pin object
  */
 @ApiModel(description = "pin object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlanetPin implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -80,6 +81,9 @@ public class PlanetPin implements Serializable {
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
+
+    public PlanetPin() {
+    }
 
     public PlanetPin contents(List<PlanetContent> contents) {
 
@@ -226,6 +230,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return latitude
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "latitude number")
     public Float getLatitude() {
         return latitude;
@@ -246,6 +251,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return longitude
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "longitude number")
     public Float getLongitude() {
         return longitude;
@@ -266,6 +272,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return pinId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "pin_id integer")
     public Long getPinId() {
         return pinId;
@@ -307,6 +314,7 @@ public class PlanetPin implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -317,7 +325,7 @@ public class PlanetPin implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -366,7 +374,7 @@ public class PlanetPin implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

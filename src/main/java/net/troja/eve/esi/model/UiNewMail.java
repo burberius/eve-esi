@@ -30,6 +30,7 @@ import java.io.Serializable;
  * new_mail object
  */
 @ApiModel(description = "new_mail object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UiNewMail implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +54,9 @@ public class UiNewMail implements Serializable {
     @SerializedName(SERIALIZED_NAME_TO_MAILING_LIST_ID)
     private Integer toMailingListId;
 
+    public UiNewMail() {
+    }
+
     public UiNewMail body(String body) {
 
         this.body = body;
@@ -64,6 +68,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return body
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "body string")
     public String getBody() {
         return body;
@@ -89,6 +94,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return recipients
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "recipients array")
     public List<Integer> getRecipients() {
         return recipients;
@@ -109,6 +115,7 @@ public class UiNewMail implements Serializable {
      * 
      * @return subject
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "subject string")
     public String getSubject() {
         return subject;
@@ -163,7 +170,7 @@ public class UiNewMail implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -199,7 +206,7 @@ public class UiNewMail implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

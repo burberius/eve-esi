@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationRolesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -1191,6 +1192,9 @@ public class CorporationRolesResponse implements Serializable {
     private List<String> rolesAtOther = null;
     private List<RolesAtOtherEnum> rolesAtOtherEnum = null;
 
+    public CorporationRolesResponse() {
+    }
+
     public CorporationRolesResponse characterId(Integer characterId) {
 
         this.characterId = characterId;
@@ -1202,6 +1206,7 @@ public class CorporationRolesResponse implements Serializable {
      * 
      * @return characterId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
@@ -1604,7 +1609,7 @@ public class CorporationRolesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1650,7 +1655,7 @@ public class CorporationRolesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -468,6 +469,9 @@ public class CorporationWalletJournalResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TAX_RECEIVER_ID)
     private Integer taxReceiverId;
 
+    public CorporationWalletJournalResponse() {
+    }
+
     public CorporationWalletJournalResponse amount(Double amount) {
 
         this.amount = amount;
@@ -584,6 +588,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return date
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time of transaction")
     public OffsetDateTime getDate() {
         return date;
@@ -604,6 +609,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The reason for the transaction, mirrors what is seen in the client")
     public String getDescription() {
         return description;
@@ -649,6 +655,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return id
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique journal reference ID")
     public Long getId() {
         return id;
@@ -703,6 +710,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * 
      * @return refType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\"")
     public RefTypeEnum getRefType() {
         if (refTypeEnum == null) {
@@ -792,7 +800,7 @@ public class CorporationWalletJournalResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -846,7 +854,7 @@ public class CorporationWalletJournalResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

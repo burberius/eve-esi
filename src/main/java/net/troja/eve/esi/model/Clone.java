@@ -30,6 +30,7 @@ import java.io.Serializable;
  * jump_clone object
  */
 @ApiModel(description = "jump_clone object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Clone implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -101,6 +102,9 @@ public class Clone implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
+    public Clone() {
+    }
+
     public Clone implants(List<Integer> implants) {
 
         this.implants = implants;
@@ -117,6 +121,7 @@ public class Clone implements Serializable {
      * 
      * @return implants
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "implants array")
     public List<Integer> getImplants() {
         return implants;
@@ -137,6 +142,7 @@ public class Clone implements Serializable {
      * 
      * @return jumpCloneId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "jump_clone_id integer")
     public Integer getJumpCloneId() {
         return jumpCloneId;
@@ -157,6 +163,7 @@ public class Clone implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
@@ -183,6 +190,7 @@ public class Clone implements Serializable {
      * 
      * @return locationType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
         if (locationTypeEnum == null) {
@@ -225,7 +233,7 @@ public class Clone implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -260,7 +268,7 @@ public class Clone implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

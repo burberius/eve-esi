@@ -28,6 +28,7 @@ import java.io.Serializable;
  * SSO /verify JSON
  */
 @ApiModel(description = "SSO /verify JSON")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EsiVerifyResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -59,6 +60,9 @@ public class EsiVerifyResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
     private String tokenType;
 
+    public EsiVerifyResponse() {
+    }
+
     public EsiVerifyResponse characterID(Integer characterID) {
 
         this.characterID = characterID;
@@ -70,6 +74,7 @@ public class EsiVerifyResponse implements Serializable {
      * 
      * @return characterID
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Token owner's character ID")
     public Integer getCharacterID() {
         return characterID;
@@ -207,7 +212,7 @@ public class EsiVerifyResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -249,7 +254,7 @@ public class EsiVerifyResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

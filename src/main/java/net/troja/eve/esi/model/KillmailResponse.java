@@ -33,6 +33,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KillmailResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -64,6 +65,9 @@ public class KillmailResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WAR_ID)
     private Integer warId;
 
+    public KillmailResponse() {
+    }
+
     public KillmailResponse attackers(List<KillmailAttacker> attackers) {
 
         this.attackers = attackers;
@@ -80,6 +84,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return attackers
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "attackers array")
     public List<KillmailAttacker> getAttackers() {
         return attackers;
@@ -100,6 +105,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return killmailId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the killmail")
     public Integer getKillmailId() {
         return killmailId;
@@ -120,6 +126,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return killmailTime
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Time that the victim was killed and the killmail generated ")
     public OffsetDateTime getKillmailTime() {
         return killmailTime;
@@ -161,6 +168,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Solar system that the kill took place in ")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -181,6 +189,7 @@ public class KillmailResponse implements Serializable {
      * 
      * @return victim
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public KillmailVictim getVictim() {
         return victim;
@@ -212,7 +221,7 @@ public class KillmailResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -253,7 +262,7 @@ public class KillmailResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

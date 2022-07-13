@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationOrdersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -160,6 +161,9 @@ public class CorporationOrdersResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WALLET_DIVISION)
     private Integer walletDivision;
 
+    public CorporationOrdersResponse() {
+    }
+
     public CorporationOrdersResponse duration(Integer duration) {
 
         this.duration = duration;
@@ -172,6 +176,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return duration
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration")
     public Integer getDuration() {
         return duration;
@@ -234,6 +239,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return issued
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time when this order was issued")
     public OffsetDateTime getIssued() {
         return issued;
@@ -254,6 +260,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return issuedBy
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The character who issued this order")
     public Integer getIssuedBy() {
         return issuedBy;
@@ -274,6 +281,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the location where order was placed")
     public Long getLocationId() {
         return locationId;
@@ -316,6 +324,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return orderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique order ID")
     public Long getOrderId() {
         return orderId;
@@ -336,6 +345,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return price
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Cost per unit for this order")
     public Double getPrice() {
         return price;
@@ -362,6 +372,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return range
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
     public RangeEnum getRange() {
         if (rangeEnum == null) {
@@ -393,6 +404,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return regionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the region where order was placed")
     public Integer getRegionId() {
         return regionId;
@@ -413,6 +425,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The type ID of the item transacted in this order")
     public Integer getTypeId() {
         return typeId;
@@ -433,6 +446,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Quantity of items still required or offered")
     public Integer getVolumeRemain() {
         return volumeRemain;
@@ -453,6 +467,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Quantity of items required or offered at time order was placed")
     public Integer getVolumeTotal() {
         return volumeTotal;
@@ -474,6 +489,7 @@ public class CorporationOrdersResponse implements Serializable {
      * 
      * @return walletDivision
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The corporation wallet division used for this order.")
     public Integer getWalletDivision() {
         return walletDivision;
@@ -484,7 +500,7 @@ public class CorporationOrdersResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -542,7 +558,7 @@ public class CorporationOrdersResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

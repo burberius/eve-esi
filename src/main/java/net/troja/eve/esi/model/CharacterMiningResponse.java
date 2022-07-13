@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterMiningResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class CharacterMiningResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public CharacterMiningResponse() {
+    }
+
     public CharacterMiningResponse date(LocalDate date) {
 
         this.date = date;
@@ -59,6 +63,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return date
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "date string")
     public LocalDate getDate() {
         return date;
@@ -79,6 +84,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "quantity integer")
     public Long getQuantity() {
         return quantity;
@@ -99,6 +105,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -119,6 +126,7 @@ public class CharacterMiningResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -129,7 +137,7 @@ public class CharacterMiningResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -164,7 +172,7 @@ public class CharacterMiningResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

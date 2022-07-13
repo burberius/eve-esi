@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -88,6 +89,9 @@ public class CorporationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WAR_ELIGIBLE)
     private Boolean warEligible;
 
+    public CorporationResponse() {
+    }
+
     public CorporationResponse allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -120,6 +124,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ceoId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ceo_id integer")
     public Integer getCeoId() {
         return ceoId;
@@ -140,6 +145,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return creatorId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "creator_id integer")
     public Integer getCreatorId() {
         return creatorId;
@@ -244,6 +250,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return memberCount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "member_count integer")
     public Integer getMemberCount() {
         return memberCount;
@@ -264,6 +271,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "the full name of the corporation")
     public String getName() {
         return name;
@@ -305,6 +313,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return taxRate
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "tax_rate number")
     public Float getTaxRate() {
         return taxRate;
@@ -325,6 +334,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ticker
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "the short name of the corporation")
     public String getTicker() {
         return ticker;
@@ -377,7 +387,7 @@ public class CorporationResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -433,7 +443,7 @@ public class CorporationResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

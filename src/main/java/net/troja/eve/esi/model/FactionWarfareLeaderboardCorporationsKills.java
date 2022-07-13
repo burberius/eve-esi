@@ -34,6 +34,7 @@ import java.io.Serializable;
  * and in total
  */
 @ApiModel(description = "Top 10 rankings of corporations by number of kills from yesterday, last week and in total")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardCorporationsKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private List<FactionWarfareLeaderboardCorporationYesterdayKills> yesterday = new ArrayList<>();
+
+    public FactionWarfareLeaderboardCorporationsKills() {
+    }
 
     public FactionWarfareLeaderboardCorporationsKills activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalKills> activeTotal) {
@@ -69,6 +73,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return activeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations active in faction warfare by total kills. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCorporationActiveTotalKills> getActiveTotal() {
         return activeTotal;
@@ -96,6 +101,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return lastWeek
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past week")
     public List<FactionWarfareLeaderboardCorporationLastWeekKills> getLastWeek() {
         return lastWeek;
@@ -123,6 +129,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return yesterday
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past day")
     public List<FactionWarfareLeaderboardCorporationYesterdayKills> getYesterday() {
         return yesterday;
@@ -133,7 +140,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,7 +173,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

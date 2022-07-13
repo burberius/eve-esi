@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +54,9 @@ public class MarketGroupResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPES)
     private List<Integer> types = new ArrayList<>();
 
+    public MarketGroupResponse() {
+    }
+
     public MarketGroupResponse description(String description) {
 
         this.description = description;
@@ -64,6 +68,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -84,6 +89,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return marketGroupId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "market_group_id integer")
     public Integer getMarketGroupId() {
         return marketGroupId;
@@ -104,6 +110,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -150,6 +157,7 @@ public class MarketGroupResponse implements Serializable {
      * 
      * @return types
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "types array")
     public List<Integer> getTypes() {
         return types;
@@ -160,7 +168,7 @@ public class MarketGroupResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,7 +205,7 @@ public class MarketGroupResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

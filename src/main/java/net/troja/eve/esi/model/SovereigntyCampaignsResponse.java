@@ -32,6 +32,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SovereigntyCampaignsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -129,6 +130,9 @@ public class SovereigntyCampaignsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STRUCTURE_ID)
     private Long structureId;
 
+    public SovereigntyCampaignsResponse() {
+    }
+
     public SovereigntyCampaignsResponse attackersScore(Float attackersScore) {
 
         this.attackersScore = attackersScore;
@@ -161,6 +165,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return campaignId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique ID for this campaign.")
     public Integer getCampaignId() {
         return campaignId;
@@ -181,6 +186,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return constellationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The constellation in which the campaign will take place. ")
     public Integer getConstellationId() {
         return constellationId;
@@ -251,6 +257,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return eventType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Type of event this campaign is for. tcu_defense, ihub_defense and station_defense are referred to as \"Defense Events\", station_freeport as \"Freeport Events\". ")
     public EventTypeEnum getEventType() {
         if (eventTypeEnum == null) {
@@ -312,6 +319,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The solar system the structure is located in. ")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -332,6 +340,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return startTime
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Time the event is scheduled to start. ")
     public OffsetDateTime getStartTime() {
         return startTime;
@@ -352,6 +361,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * 
      * @return structureId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The structure item ID that is related to this campaign. ")
     public Long getStructureId() {
         return structureId;
@@ -362,7 +372,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -410,7 +420,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

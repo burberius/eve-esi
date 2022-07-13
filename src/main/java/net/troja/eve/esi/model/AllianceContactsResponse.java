@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllianceContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -101,6 +102,9 @@ public class AllianceContactsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STANDING)
     private Float standing;
 
+    public AllianceContactsResponse() {
+    }
+
     public AllianceContactsResponse contactId(Integer contactId) {
 
         this.contactId = contactId;
@@ -112,6 +116,7 @@ public class AllianceContactsResponse implements Serializable {
      * 
      * @return contactId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "contact_id integer")
     public Integer getContactId() {
         return contactId;
@@ -138,6 +143,7 @@ public class AllianceContactsResponse implements Serializable {
      * 
      * @return contactType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "contact_type string")
     public ContactTypeEnum getContactType() {
         if (contactTypeEnum == null) {
@@ -198,6 +204,7 @@ public class AllianceContactsResponse implements Serializable {
      * 
      * @return standing
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Standing of the contact")
     public Float getStanding() {
         return standing;
@@ -208,7 +215,7 @@ public class AllianceContactsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -243,7 +250,7 @@ public class AllianceContactsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -33,6 +33,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterPlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class CharacterPlanetResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROUTES = "routes";
     @SerializedName(SERIALIZED_NAME_ROUTES)
     private List<PlanetRoute> routes = new ArrayList<>();
+
+    public CharacterPlanetResponse() {
+    }
 
     public CharacterPlanetResponse links(List<PlanetLink> links) {
 
@@ -64,6 +68,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return links
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "links array")
     public List<PlanetLink> getLinks() {
         return links;
@@ -89,6 +94,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return pins
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "pins array")
     public List<PlanetPin> getPins() {
         return pins;
@@ -114,6 +120,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return routes
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "routes array")
     public List<PlanetRoute> getRoutes() {
         return routes;
@@ -124,7 +131,7 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -157,7 +164,7 @@ public class CharacterPlanetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

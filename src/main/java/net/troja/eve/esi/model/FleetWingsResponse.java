@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FleetWingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -46,6 +47,9 @@ public class FleetWingsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SQUADS)
     private List<Squad> squads = new ArrayList<>();
 
+    public FleetWingsResponse() {
+    }
+
     public FleetWingsResponse id(Long id) {
 
         this.id = id;
@@ -57,6 +61,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return id
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "id integer")
     public Long getId() {
         return id;
@@ -77,6 +82,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -102,6 +108,7 @@ public class FleetWingsResponse implements Serializable {
      * 
      * @return squads
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "squads array")
     public List<Squad> getSquads() {
         return squads;
@@ -112,7 +119,7 @@ public class FleetWingsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,7 +151,7 @@ public class FleetWingsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

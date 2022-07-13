@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PublicContractsItemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -67,6 +68,9 @@ public class PublicContractsItemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public PublicContractsItemsResponse() {
+    }
+
     public PublicContractsItemsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
 
         this.isBlueprintCopy = isBlueprintCopy;
@@ -100,6 +104,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return isIncluded
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract")
     public Boolean getIsIncluded() {
         return isIncluded;
@@ -163,6 +168,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of items in the stack")
     public Integer getQuantity() {
         return quantity;
@@ -183,6 +189,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return recordId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique ID for the item, used by the contract system")
     public Long getRecordId() {
         return recordId;
@@ -246,6 +253,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Type ID for item")
     public Integer getTypeId() {
         return typeId;
@@ -256,7 +264,7 @@ public class PublicContractsItemsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -302,7 +310,7 @@ public class PublicContractsItemsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

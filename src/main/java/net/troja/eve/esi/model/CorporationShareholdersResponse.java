@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationShareholdersResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -91,6 +92,9 @@ public class CorporationShareholdersResponse implements Serializable {
     private String shareholderType;
     private ShareholderTypeEnum shareholderTypeEnum;
 
+    public CorporationShareholdersResponse() {
+    }
+
     public CorporationShareholdersResponse shareCount(Long shareCount) {
 
         this.shareCount = shareCount;
@@ -102,6 +106,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareCount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "share_count integer")
     public Long getShareCount() {
         return shareCount;
@@ -122,6 +127,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareholderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "shareholder_id integer")
     public Integer getShareholderId() {
         return shareholderId;
@@ -148,6 +154,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * 
      * @return shareholderType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "shareholder_type string")
     public ShareholderTypeEnum getShareholderType() {
         if (shareholderTypeEnum == null) {
@@ -169,7 +176,7 @@ public class CorporationShareholdersResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -202,7 +209,7 @@ public class CorporationShareholdersResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

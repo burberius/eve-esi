@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationAssetsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -397,6 +398,9 @@ public class CorporationAssetsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public CorporationAssetsResponse() {
+    }
+
     public CorporationAssetsResponse isBlueprintCopy(Boolean isBlueprintCopy) {
 
         this.isBlueprintCopy = isBlueprintCopy;
@@ -429,6 +433,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return isSingleton
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "is_singleton boolean")
     public Boolean getIsSingleton() {
         return isSingleton;
@@ -449,6 +454,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return itemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "item_id integer")
     public Long getItemId() {
         return itemId;
@@ -475,6 +481,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_flag string")
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
@@ -506,6 +513,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
@@ -532,6 +540,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return locationType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_type string")
     public LocationTypeEnum getLocationType() {
         if (locationTypeEnum == null) {
@@ -563,6 +572,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
@@ -583,6 +593,7 @@ public class CorporationAssetsResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -593,7 +604,7 @@ public class CorporationAssetsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -637,7 +648,7 @@ public class CorporationAssetsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

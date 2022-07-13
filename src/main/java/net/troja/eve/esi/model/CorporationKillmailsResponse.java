@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationKillmailsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class CorporationKillmailsResponse implements Serializable {
     public static final String SERIALIZED_NAME_KILLMAIL_ID = "killmail_id";
     @SerializedName(SERIALIZED_NAME_KILLMAIL_ID)
     private Integer killmailId;
+
+    public CorporationKillmailsResponse() {
+    }
 
     public CorporationKillmailsResponse killmailHash(String killmailHash) {
 
@@ -50,6 +54,7 @@ public class CorporationKillmailsResponse implements Serializable {
      * 
      * @return killmailHash
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "A hash of this killmail")
     public String getKillmailHash() {
         return killmailHash;
@@ -70,6 +75,7 @@ public class CorporationKillmailsResponse implements Serializable {
      * 
      * @return killmailId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of this killmail")
     public Integer getKillmailId() {
         return killmailId;
@@ -80,7 +86,7 @@ public class CorporationKillmailsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,7 +117,7 @@ public class CorporationKillmailsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

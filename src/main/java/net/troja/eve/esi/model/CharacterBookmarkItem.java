@@ -28,6 +28,7 @@ import java.io.Serializable;
  * Optional object that is returned if a bookmark was made on a particular item.
  */
 @ApiModel(description = "Optional object that is returned if a bookmark was made on a particular item.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterBookmarkItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class CharacterBookmarkItem implements Serializable {
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
+
+    public CharacterBookmarkItem() {
+    }
 
     public CharacterBookmarkItem itemId(Long itemId) {
 
@@ -50,6 +54,7 @@ public class CharacterBookmarkItem implements Serializable {
      * 
      * @return itemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "item_id integer")
     public Long getItemId() {
         return itemId;
@@ -70,6 +75,7 @@ public class CharacterBookmarkItem implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -80,7 +86,7 @@ public class CharacterBookmarkItem implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,7 +117,7 @@ public class CharacterBookmarkItem implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

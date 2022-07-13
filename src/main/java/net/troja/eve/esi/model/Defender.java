@@ -29,6 +29,7 @@ import java.io.Serializable;
  * either corporation_id or alliance_id
  */
 @ApiModel(description = "The defending corporation or alliance that declared this war, only contains either corporation_id or alliance_id")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Defender implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class Defender implements Serializable {
     public static final String SERIALIZED_NAME_SHIPS_KILLED = "ships_killed";
     @SerializedName(SERIALIZED_NAME_SHIPS_KILLED)
     private Integer shipsKilled;
+
+    public Defender() {
+    }
 
     public Defender allianceId(Integer allianceId) {
 
@@ -101,6 +105,7 @@ public class Defender implements Serializable {
      * 
      * @return iskDestroyed
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ISK value of ships the defender has killed")
     public Float getIskDestroyed() {
         return iskDestroyed;
@@ -121,6 +126,7 @@ public class Defender implements Serializable {
      * 
      * @return shipsKilled
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The number of ships the defender has killed")
     public Integer getShipsKilled() {
         return shipsKilled;
@@ -131,7 +137,7 @@ public class Defender implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,7 +172,7 @@ public class Defender implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

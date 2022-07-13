@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +53,9 @@ public class PlanetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public PlanetResponse() {
+    }
+
     public PlanetResponse name(String name) {
 
         this.name = name;
@@ -63,6 +67,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -83,6 +88,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return planetId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "planet_id integer")
     public Integer getPlanetId() {
         return planetId;
@@ -103,6 +109,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return position
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public Position getPosition() {
         return position;
@@ -123,6 +130,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return systemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The solar system this planet is in")
     public Integer getSystemId() {
         return systemId;
@@ -143,6 +151,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -153,7 +162,7 @@ public class PlanetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,7 +198,7 @@ public class PlanetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

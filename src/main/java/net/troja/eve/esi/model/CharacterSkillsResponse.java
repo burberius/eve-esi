@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterSkillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -45,6 +46,9 @@ public class CharacterSkillsResponse implements Serializable {
     public static final String SERIALIZED_NAME_UNALLOCATED_SP = "unallocated_sp";
     @SerializedName(SERIALIZED_NAME_UNALLOCATED_SP)
     private Integer unallocatedSp;
+
+    public CharacterSkillsResponse() {
+    }
 
     public CharacterSkillsResponse skills(List<Skill> skills) {
 
@@ -62,6 +66,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return skills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "skills array")
     public List<Skill> getSkills() {
         return skills;
@@ -82,6 +87,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return totalSp
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "total_sp integer")
     public Long getTotalSp() {
         return totalSp;
@@ -113,7 +119,7 @@ public class CharacterSkillsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,7 +152,7 @@ public class CharacterSkillsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

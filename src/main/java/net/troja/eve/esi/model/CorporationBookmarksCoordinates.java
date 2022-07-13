@@ -29,6 +29,7 @@ import java.io.Serializable;
  * random location in space.
  */
 @ApiModel(description = "Optional object that is returned if a bookmark was made on a planet or a random location in space.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationBookmarksCoordinates implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -44,6 +45,9 @@ public class CorporationBookmarksCoordinates implements Serializable {
     @SerializedName(SERIALIZED_NAME_Z)
     private Double z;
 
+    public CorporationBookmarksCoordinates() {
+    }
+
     public CorporationBookmarksCoordinates x(Double x) {
 
         this.x = x;
@@ -55,6 +59,7 @@ public class CorporationBookmarksCoordinates implements Serializable {
      * 
      * @return x
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "x number")
     public Double getX() {
         return x;
@@ -75,6 +80,7 @@ public class CorporationBookmarksCoordinates implements Serializable {
      * 
      * @return y
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "y number")
     public Double getY() {
         return y;
@@ -95,6 +101,7 @@ public class CorporationBookmarksCoordinates implements Serializable {
      * 
      * @return z
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "z number")
     public Double getZ() {
         return z;
@@ -105,7 +112,7 @@ public class CorporationBookmarksCoordinates implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -138,7 +145,7 @@ public class CorporationBookmarksCoordinates implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

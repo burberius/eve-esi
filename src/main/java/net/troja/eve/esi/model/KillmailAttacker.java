@@ -28,6 +28,7 @@ import java.io.Serializable;
  * attacker object
  */
 @ApiModel(description = "attacker object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KillmailAttacker implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -66,6 +67,9 @@ public class KillmailAttacker implements Serializable {
     public static final String SERIALIZED_NAME_WEAPON_TYPE_ID = "weapon_type_id";
     @SerializedName(SERIALIZED_NAME_WEAPON_TYPE_ID)
     private Integer weaponTypeId;
+
+    public KillmailAttacker() {
+    }
 
     public KillmailAttacker allianceId(Integer allianceId) {
 
@@ -141,6 +145,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return damageDone
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "damage_done integer")
     public Integer getDamageDone() {
         return damageDone;
@@ -182,6 +187,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return finalBlow
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Was the attacker the one to achieve the final blow ")
     public Boolean getFinalBlow() {
         return finalBlow;
@@ -202,6 +208,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return securityStatus
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Security status for the attacker ")
     public Float getSecurityStatus() {
         return securityStatus;
@@ -254,7 +261,7 @@ public class KillmailAttacker implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -300,7 +307,7 @@ public class KillmailAttacker implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

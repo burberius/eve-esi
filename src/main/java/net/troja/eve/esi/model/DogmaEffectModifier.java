@@ -28,6 +28,7 @@ import java.io.Serializable;
  * modifier object
  */
 @ApiModel(description = "modifier object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DogmaEffectModifier implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +55,9 @@ public class DogmaEffectModifier implements Serializable {
     public static final String SERIALIZED_NAME_OPERATOR = "operator";
     @SerializedName(SERIALIZED_NAME_OPERATOR)
     private Integer operator;
+
+    public DogmaEffectModifier() {
+    }
 
     public DogmaEffectModifier domain(String domain) {
 
@@ -108,6 +112,7 @@ public class DogmaEffectModifier implements Serializable {
      * 
      * @return func
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "func string")
     public String getFunc() {
         return func;
@@ -181,7 +186,7 @@ public class DogmaEffectModifier implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -220,7 +225,7 @@ public class DogmaEffectModifier implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

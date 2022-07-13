@@ -71,7 +71,9 @@ public class SsoApi {
 
     private okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
+
+        String basePath = null; // URI_REVOKE
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         // create path and map variables
@@ -99,12 +101,14 @@ public class SsoApi {
         final String[] localVarContentTypes = { "application/x-www-form-urlencoded" };
 
         final String localVarContentType = revokeApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return revokeApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return revokeApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")

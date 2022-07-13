@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllianceResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -60,6 +61,9 @@ public class AllianceResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TICKER)
     private String ticker;
 
+    public AllianceResponse() {
+    }
+
     public AllianceResponse creatorCorporationId(Integer creatorCorporationId) {
 
         this.creatorCorporationId = creatorCorporationId;
@@ -71,6 +75,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return creatorCorporationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the corporation that created the alliance")
     public Integer getCreatorCorporationId() {
         return creatorCorporationId;
@@ -91,6 +96,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return creatorId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the character that created the alliance")
     public Integer getCreatorId() {
         return creatorId;
@@ -111,6 +117,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return dateFounded
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "date_founded string")
     public OffsetDateTime getDateFounded() {
         return dateFounded;
@@ -174,6 +181,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "the full name of the alliance")
     public String getName() {
         return name;
@@ -194,6 +202,7 @@ public class AllianceResponse implements Serializable {
      * 
      * @return ticker
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "the short name of the alliance")
     public String getTicker() {
         return ticker;
@@ -204,7 +213,7 @@ public class AllianceResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -246,7 +255,7 @@ public class AllianceResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

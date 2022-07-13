@@ -33,6 +33,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterClonesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -51,6 +52,9 @@ public class CharacterClonesResponse implements Serializable {
     public static final String SERIALIZED_NAME_LAST_STATION_CHANGE_DATE = "last_station_change_date";
     @SerializedName(SERIALIZED_NAME_LAST_STATION_CHANGE_DATE)
     private OffsetDateTime lastStationChangeDate;
+
+    public CharacterClonesResponse() {
+    }
 
     public CharacterClonesResponse homeLocation(CloneHomeLocation homeLocation) {
 
@@ -89,6 +93,7 @@ public class CharacterClonesResponse implements Serializable {
      * 
      * @return jumpClones
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "jump_clones array")
     public List<Clone> getJumpClones() {
         return jumpClones;
@@ -141,7 +146,7 @@ public class CharacterClonesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -176,7 +181,7 @@ public class CharacterClonesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -28,6 +28,7 @@ import java.io.Serializable;
  * response object
  */
 @ApiModel(description = "response object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterCalendarEvent implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -85,6 +86,9 @@ public class CharacterCalendarEvent implements Serializable {
     private String response;
     private ResponseEnum responseEnum;
 
+    public CharacterCalendarEvent() {
+    }
+
     public CharacterCalendarEvent response(ResponseEnum responseEnum) {
 
         this.responseEnum = responseEnum;
@@ -102,6 +106,7 @@ public class CharacterCalendarEvent implements Serializable {
      * 
      * @return response
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "response string")
     public ResponseEnum getResponse() {
         if (responseEnum == null) {
@@ -123,7 +128,7 @@ public class CharacterCalendarEvent implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,7 +157,7 @@ public class CharacterCalendarEvent implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

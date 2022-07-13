@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationTitlesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -1195,6 +1196,9 @@ public class CorporationTitlesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TITLE_ID)
     private Integer titleId;
 
+    public CorporationTitlesResponse() {
+    }
+
     public CorporationTitlesResponse grantableRoles(List<GrantableRolesEnum> grantableRolesEnum) {
 
         this.grantableRolesEnum = grantableRolesEnum;
@@ -1630,7 +1634,7 @@ public class CorporationTitlesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1678,7 +1682,7 @@ public class CorporationTitlesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

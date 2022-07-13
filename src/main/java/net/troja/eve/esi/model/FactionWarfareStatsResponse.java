@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +54,9 @@ public class FactionWarfareStatsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
     private FactionWarfareStatsVictoryPoints victoryPoints;
 
+    public FactionWarfareStatsResponse() {
+    }
+
     public FactionWarfareStatsResponse factionId(Integer factionId) {
 
         this.factionId = factionId;
@@ -64,6 +68,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return factionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
@@ -84,6 +89,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return kills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public FactionWarfareStatsKills getKills() {
         return kills;
@@ -104,6 +110,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return pilots
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "How many pilots fight for the given faction")
     public Integer getPilots() {
         return pilots;
@@ -124,6 +131,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return systemsControlled
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The number of solar systems controlled by the given faction")
     public Integer getSystemsControlled() {
         return systemsControlled;
@@ -144,6 +152,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public FactionWarfareStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
@@ -154,7 +163,7 @@ public class FactionWarfareStatsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -191,7 +200,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

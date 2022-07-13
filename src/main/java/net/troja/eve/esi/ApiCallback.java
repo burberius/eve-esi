@@ -63,12 +63,12 @@ public interface ApiCallback<T> {
     void onUploadProgress(long bytesWritten, long contentLength, boolean done);
 
     /**
-     * This is called when the API downlond processing.
+     * This is called when the API download processing.
      *
      * @param bytesRead
      *            bytes Read
      * @param contentLength
-     *            content lenngth of the response
+     *            content length of the response
      * @param done
      *            Read end
      */

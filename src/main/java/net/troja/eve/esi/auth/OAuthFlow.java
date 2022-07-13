@@ -12,6 +12,8 @@
 
 package net.troja.eve.esi.auth;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public enum OAuthFlow {
-    accessCode, implicit, password, application
+    accessCode, // called authorizationCode in OpenAPI 3.0
+    implicit, password, application // called clientCredentials in OpenAPI 3.0
 }

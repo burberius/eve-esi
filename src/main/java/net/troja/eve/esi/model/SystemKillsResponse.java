@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SystemKillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class SystemKillsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
     private Integer systemId;
 
+    public SystemKillsResponse() {
+    }
+
     public SystemKillsResponse npcKills(Integer npcKills) {
 
         this.npcKills = npcKills;
@@ -58,6 +62,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return npcKills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of NPC ships killed in this system")
     public Integer getNpcKills() {
         return npcKills;
@@ -78,6 +83,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return podKills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of pods killed in this system")
     public Integer getPodKills() {
         return podKills;
@@ -98,6 +104,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return shipKills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Number of player ships killed in this system")
     public Integer getShipKills() {
         return shipKills;
@@ -118,6 +125,7 @@ public class SystemKillsResponse implements Serializable {
      * 
      * @return systemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
@@ -128,7 +136,7 @@ public class SystemKillsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -163,7 +171,7 @@ public class SystemKillsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

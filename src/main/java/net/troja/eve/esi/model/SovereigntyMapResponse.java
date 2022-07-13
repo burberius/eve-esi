@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SovereigntyMapResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -46,6 +47,9 @@ public class SovereigntyMapResponse implements Serializable {
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)
     private Integer systemId;
+
+    public SovereigntyMapResponse() {
+    }
 
     public SovereigntyMapResponse allianceId(Integer allianceId) {
 
@@ -121,6 +125,7 @@ public class SovereigntyMapResponse implements Serializable {
      * 
      * @return systemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "system_id integer")
     public Integer getSystemId() {
         return systemId;
@@ -131,7 +136,7 @@ public class SovereigntyMapResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,7 +171,7 @@ public class SovereigntyMapResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -28,6 +28,7 @@ import java.io.Serializable;
  * label object
  */
 @ApiModel(description = "label object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MailLabelSimple implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -119,6 +120,9 @@ public class MailLabelSimple implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
+    public MailLabelSimple() {
+    }
+
     public MailLabelSimple color(ColorEnum colorEnum) {
 
         this.colorEnum = colorEnum;
@@ -168,6 +172,7 @@ public class MailLabelSimple implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -178,7 +183,7 @@ public class MailLabelSimple implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -208,7 +213,7 @@ public class MailLabelSimple implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -28,6 +28,7 @@ import java.io.Serializable;
  * graphic object
  */
 @ApiModel(description = "graphic object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterMedalsGraphic implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -46,6 +47,9 @@ public class CharacterMedalsGraphic implements Serializable {
     public static final String SERIALIZED_NAME_PART = "part";
     @SerializedName(SERIALIZED_NAME_PART)
     private Integer part;
+
+    public CharacterMedalsGraphic() {
+    }
 
     public CharacterMedalsGraphic color(Integer color) {
 
@@ -79,6 +83,7 @@ public class CharacterMedalsGraphic implements Serializable {
      * 
      * @return graphic
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "graphic string")
     public String getGraphic() {
         return graphic;
@@ -99,6 +104,7 @@ public class CharacterMedalsGraphic implements Serializable {
      * 
      * @return layer
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "layer integer")
     public Integer getLayer() {
         return layer;
@@ -119,6 +125,7 @@ public class CharacterMedalsGraphic implements Serializable {
      * 
      * @return part
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "part integer")
     public Integer getPart() {
         return part;
@@ -129,7 +136,7 @@ public class CharacterMedalsGraphic implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -164,7 +171,7 @@ public class CharacterMedalsGraphic implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

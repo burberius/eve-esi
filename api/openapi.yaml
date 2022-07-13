@@ -26205,6 +26205,8 @@ components:
       required:
       - label_id
       - label_name
+      title: AllianceContactsLabelsResponse
+      type: object
     AllianceIconsResponse:
       description: 200 ok object
       example:
@@ -26219,6 +26221,8 @@ components:
           description: px64x64 string
           title: get_alliances_alliance_id_icons_px64x64
           type: string
+      title: AllianceIconsResponse
+      type: object
     CharacterAssetsNamesResponse:
       description: 200 ok object
       example:
@@ -26237,6 +26241,8 @@ components:
       required:
       - item_id
       - name
+      title: CharacterAssetsNamesResponse
+      type: object
     CharacterAttributesResponse:
       description: 200 ok object
       example:
@@ -26296,6 +26302,8 @@ components:
       - memory
       - perception
       - willpower
+      title: CharacterAttributesResponse
+      type: object
     CharacterCalendarResponse:
       description: event
       example:
@@ -26333,6 +26341,8 @@ components:
           description: title string
           title: get_characters_character_id_calendar_title
           type: string
+      title: CharacterCalendarResponse
+      type: object
     CharacterCalendarAttendeesResponse:
       description: character_id and response of an attendee
       example:
@@ -26353,6 +26363,8 @@ components:
           - tentative
           title: get_characters_character_id_calendar_event_id_attendees_event_response
           type: string
+      title: CharacterCalendarAttendeesResponse
+      type: object
     ContactLabelsResponse:
       description: 200 ok object
       example:
@@ -26371,6 +26383,8 @@ components:
       required:
       - label_id
       - label_name
+      title: ContactLabelsResponse
+      type: object
     CharacterContractsResponse:
       description: 200 ok object
       example:
@@ -26537,6 +26551,8 @@ components:
       - issuer_id
       - status
       - type
+      title: CharacterContractsResponse
+      type: object
     CharacterContractsBidsResponse:
       description: 200 ok object
       example:
@@ -26570,6 +26586,8 @@ components:
       - bid_id
       - bidder_id
       - date_bid
+      title: CharacterContractsBidsResponse
+      type: object
     CharacterContractsItemsResponse:
       description: 200 ok object
       example:
@@ -26617,6 +26635,8 @@ components:
       - quantity
       - record_id
       - type_id
+      title: CharacterContractsItemsResponse
+      type: object
     CharacterFwStatsKills:
       description: Summary of kills done by the given character against enemy factions
       example:
@@ -26646,6 +26666,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: CharacterFwStatsKills
+      type: object
     CharacterFwStatsVictoryPoints:
       description: Summary of victory points gained by the given character for the
         enlisted faction
@@ -26673,6 +26695,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: CharacterFwStatsVictoryPoints
+      type: object
     CharacterFwStatsResponse:
       description: 200 ok object
       example:
@@ -26722,6 +26746,8 @@ components:
       required:
       - kills
       - victory_points
+      title: CharacterFwStatsResponse
+      type: object
     CharacterIndustryJobsResponse:
       description: 200 ok object
       example:
@@ -26886,6 +26912,8 @@ components:
       - start_date
       - station_id
       - status
+      title: CharacterIndustryJobsResponse
+      type: object
     CharacterKillmailsResponse:
       description: 200 ok object
       example:
@@ -26904,6 +26932,8 @@ components:
       required:
       - killmail_hash
       - killmail_id
+      title: CharacterKillmailsResponse
+      type: object
     CharacterLocationResponse:
       description: 200 ok object
       example:
@@ -26928,6 +26958,8 @@ components:
           type: integer
       required:
       - solar_system_id
+      title: CharacterLocationResponse
+      type: object
     CharacterLoyaltyPointsResponse:
       description: 200 ok object
       example:
@@ -26947,6 +26979,8 @@ components:
       required:
       - corporation_id
       - loyalty_points
+      title: CharacterLoyaltyPointsResponse
+      type: object
     MailHeadersResponse:
       description: 200 ok object
       example:
@@ -27016,6 +27050,8 @@ components:
           format: date-time
           title: get_characters_character_id_mail_timestamp
           type: string
+      title: MailHeadersResponse
+      type: object
     Mail:
       description: mail object
       example:
@@ -27082,6 +27118,8 @@ components:
       required:
       - mailing_list_id
       - name
+      title: CharacterMailinglistsResponse
+      type: object
     MailResponse:
       description: 200 ok object
       example:
@@ -27150,6 +27188,8 @@ components:
           format: date-time
           title: get_characters_character_id_mail_mail_id_timestamp
           type: string
+      title: MailResponse
+      type: object
     MailMetaData:
       description: contents object
       example:
@@ -27211,6 +27251,8 @@ components:
       - quantity
       - solar_system_id
       - type_id
+      title: CharacterMiningResponse
+      type: object
     CharacterOpportunitiesResponse:
       description: 200 ok object
       example:
@@ -27230,6 +27272,8 @@ components:
       required:
       - completed_at
       - task_id
+      title: CharacterOpportunitiesResponse
+      type: object
     CharacterOrdersHistoryResponse:
       description: 200 ok object
       example:
@@ -27352,6 +27396,8 @@ components:
       - type_id
       - volume_remain
       - volume_total
+      title: CharacterOrdersHistoryResponse
+      type: object
     CharacterPlanetsResponse:
       description: 200 ok object
       example:
@@ -27417,6 +27463,8 @@ components:
       - planet_type
       - solar_system_id
       - upgrade_level
+      title: CharacterPlanetsResponse
+      type: object
     CharacterShipResponse:
       description: 200 ok object
       example:
@@ -27444,6 +27492,8 @@ components:
       - ship_item_id
       - ship_name
       - ship_type_id
+      title: CharacterShipResponse
+      type: object
     CharacterWalletTransactionsResponse:
       description: wallet transaction
       example:
@@ -27517,6 +27567,8 @@ components:
       - transaction_id
       - type_id
       - unit_price
+      title: CharacterWalletTransactionsResponse
+      type: object
     PublicContractsBidsResponse:
       description: 200 ok object
       example:
@@ -27543,6 +27595,8 @@ components:
       - amount
       - bid_id
       - date_bid
+      title: PublicContractsBidsResponse
+      type: object
     PublicContractsItemsResponse:
       description: 200 ok object
       example:
@@ -27612,6 +27666,8 @@ components:
       - quantity
       - record_id
       - type_id
+      title: PublicContractsItemsResponse
+      type: object
     PublicContractsResponse:
       description: 200 ok object
       example:
@@ -27722,6 +27778,8 @@ components:
       - issuer_corporation_id
       - issuer_id
       - type
+      title: PublicContractsResponse
+      type: object
     CorporationMiningExtractionsResponse:
       description: 200 ok object
       example:
@@ -27765,6 +27823,8 @@ components:
       - moon_id
       - natural_decay_time
       - structure_id
+      title: CorporationMiningExtractionsResponse
+      type: object
     CorporationMiningObserversResponse:
       description: 200 ok object
       example:
@@ -27793,6 +27853,8 @@ components:
       - last_updated
       - observer_id
       - observer_type
+      title: CorporationMiningObserversResponse
+      type: object
     CorporationMiningObserverResponse:
       description: 200 ok object
       example:
@@ -27835,6 +27897,8 @@ components:
       - quantity
       - recorded_corporation_id
       - type_id
+      title: CorporationMiningObserverResponse
+      type: object
     CorporationAssetsNamesResponse:
       description: 200 ok object
       example:
@@ -27853,6 +27917,8 @@ components:
       required:
       - item_id
       - name
+      title: CorporationAssetsNamesResponse
+      type: object
     CorporationBookmarksCoordinates:
       description: Optional object that is returned if a bookmark was made on a planet
         or a random location in space.
@@ -27880,6 +27946,8 @@ components:
       - x
       - "y"
       - z
+      title: CorporationBookmarksCoordinates
+      type: object
     CorporationBookmarkItem:
       description: Optional object that is returned if a bookmark was made on a particular
         item.
@@ -27900,6 +27968,8 @@ components:
       required:
       - item_id
       - type_id
+      title: CorporationBookmarkItem
+      type: object
     CorporationBookmarksResponse:
       description: 200 ok object
       example:
@@ -27962,6 +28032,8 @@ components:
       - label
       - location_id
       - notes
+      title: CorporationBookmarksResponse
+      type: object
     CorporationBookmarkFoldersResponse:
       description: 200 ok object
       example:
@@ -27986,6 +28058,8 @@ components:
       required:
       - folder_id
       - name
+      title: CorporationBookmarkFoldersResponse
+      type: object
     CorporationContactsLabelsResponse:
       description: 200 ok object
       example:
@@ -28004,6 +28078,8 @@ components:
       required:
       - label_id
       - label_name
+      title: CorporationContactsLabelsResponse
+      type: object
     CorporationContractsResponse:
       description: 200 ok object
       example:
@@ -28170,6 +28246,8 @@ components:
       - issuer_id
       - status
       - type
+      title: CorporationContractsResponse
+      type: object
     CorporationContractsBidsResponse:
       description: 200 ok object
       example:
@@ -28203,6 +28281,8 @@ components:
       - bid_id
       - bidder_id
       - date_bid
+      title: CorporationContractsBidsResponse
+      type: object
     CorporationContractsItemsResponse:
       description: 200 ok object
       example:
@@ -28250,6 +28330,8 @@ components:
       - quantity
       - record_id
       - type_id
+      title: CorporationContractsItemsResponse
+      type: object
     CorporationCustomsOfficesResponse:
       description: 200 ok object
       example:
@@ -28358,6 +28440,8 @@ components:
       - reinforce_exit_end
       - reinforce_exit_start
       - system_id
+      title: CorporationCustomsOfficesResponse
+      type: object
     CorporationFwStatsKills:
       description: Summary of kills done by the given corporation against enemy factions
       example:
@@ -28387,6 +28471,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: CorporationFwStatsKills
+      type: object
     CorporationFwStatsVictoryPoints:
       description: Summary of victory points gained by the given corporation for the
         enlisted faction
@@ -28414,6 +28500,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: CorporationFwStatsVictoryPoints
+      type: object
     CorporationFwStatsResponse:
       description: 200 ok object
       example:
@@ -28454,6 +28542,8 @@ components:
       required:
       - kills
       - victory_points
+      title: CorporationFwStatsResponse
+      type: object
     CorporationIndustryJobsResponse:
       description: 200 ok object
       example:
@@ -28618,6 +28708,8 @@ components:
       - runs
       - start_date
       - status
+      title: CorporationIndustryJobsResponse
+      type: object
     CorporationKillmailsResponse:
       description: 200 ok object
       example:
@@ -28636,6 +28728,8 @@ components:
       required:
       - killmail_hash
       - killmail_id
+      title: CorporationKillmailsResponse
+      type: object
     CorporationShareholdersResponse:
       description: 200 ok object
       example:
@@ -28664,6 +28758,8 @@ components:
       - share_count
       - shareholder_id
       - shareholder_type
+      title: CorporationShareholdersResponse
+      type: object
     CorporationWalletsResponse:
       description: 200 ok object
       example:
@@ -28685,6 +28781,8 @@ components:
       required:
       - balance
       - division
+      title: CorporationWalletsResponse
+      type: object
     CorporationWalletTransactionsResponse:
       description: wallet transaction
       example:
@@ -28752,6 +28850,8 @@ components:
       - transaction_id
       - type_id
       - unit_price
+      title: CorporationWalletTransactionsResponse
+      type: object
     DogmaAttributeResponse:
       description: 200 ok object
       example:
@@ -28812,6 +28912,8 @@ components:
           type: integer
       required:
       - attribute_id
+      title: DogmaAttributeResponse
+      type: object
     DogmaDynamicAttribute:
       description: dogma_attribute object
       example:
@@ -28831,6 +28933,8 @@ components:
       required:
       - attribute_id
       - value
+      title: DogmaDynamicAttribute
+      type: object
     DogmaDynamicEffect:
       description: dogma_effect object
       example:
@@ -28849,6 +28953,8 @@ components:
       required:
       - effect_id
       - is_default
+      title: DogmaDynamicEffect
+      type: object
     DogmaDynamicItemsResponse:
       description: 200 ok object
       example:
@@ -28914,6 +29020,8 @@ components:
       - dogma_effects
       - mutator_type_id
       - source_type_id
+      title: DogmaDynamicItemsResponse
+      type: object
     FleetResponse:
       description: 200 ok object
       example:
@@ -28943,6 +29051,8 @@ components:
       - is_registered
       - is_voice_enabled
       - motd
+      title: FleetResponse
+      type: object
     FleetNewSettings:
       description: new_settings object
       example:
@@ -29037,6 +29147,8 @@ components:
       - squad_id
       - takes_fleet_warp
       - wing_id
+      title: FleetMembersResponse
+      type: object
     FleetInvitation:
       description: invitation object
       example:
@@ -29152,6 +29264,8 @@ components:
       required:
       - id
       - name
+      title: Squad
+      type: object
     FleetWingsResponse:
       description: 200 ok object
       example:
@@ -29189,6 +29303,8 @@ components:
       - id
       - name
       - squads
+      title: FleetWingsResponse
+      type: object
     FleetWingCreatedResponse:
       description: 201 created object
       example:
@@ -29201,6 +29317,8 @@ components:
           type: integer
       required:
       - wing_id
+      title: FleetWingCreatedResponse
+      type: object
     FleetWingNaming:
       description: naming object
       example:
@@ -29227,6 +29345,8 @@ components:
           type: integer
       required:
       - squad_id
+      title: FleetSquadCreatedResponse
+      type: object
     FactionWarfareLeaderboardActiveTotalKills:
       description: active_total object
       example:
@@ -29243,6 +29363,8 @@ components:
           format: int32
           title: get_fw_leaderboards_faction_id
           type: integer
+      title: FactionWarfareLeaderboardActiveTotalKills
+      type: object
     FactionWarfareLeaderboardLastWeekKills:
       description: last_week object
       example:
@@ -29259,6 +29381,8 @@ components:
           format: int32
           title: get_fw_leaderboards_last_week_faction_id
           type: integer
+      title: FactionWarfareLeaderboardLastWeekKills
+      type: object
     FactionWarfareLeaderboardYesterdayKills:
       description: yesterday object
       example:
@@ -29275,6 +29399,8 @@ components:
           format: int32
           title: get_fw_leaderboards_yesterday_faction_id
           type: integer
+      title: FactionWarfareLeaderboardYesterdayKills
+      type: object
     FactionWarfareLeaderboardKills:
       description: Top 4 rankings of factions by number of kills from yesterday, last
         week and in total
@@ -29334,6 +29460,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardKills
+      type: object
     FactionWarfareLeaderboardActiveTotalVictoryPoints:
       description: active_total object
       example:
@@ -29350,6 +29478,8 @@ components:
           format: int32
           title: get_fw_leaderboards_active_total_faction_id
           type: integer
+      title: FactionWarfareLeaderboardActiveTotalVictoryPoints
+      type: object
     FactionWarfareLeaderboardLastWeekVictoryPoints:
       description: last_week object
       example:
@@ -29366,6 +29496,8 @@ components:
           format: int32
           title: get_fw_leaderboards_last_week_faction_id_1
           type: integer
+      title: FactionWarfareLeaderboardLastWeekVictoryPoints
+      type: object
     FactionWarfareLeaderboardYesterdayVictoryPoints:
       description: yesterday object
       example:
@@ -29382,6 +29514,8 @@ components:
           format: int32
           title: get_fw_leaderboards_yesterday_faction_id_1
           type: integer
+      title: FactionWarfareLeaderboardYesterdayVictoryPoints
+      type: object
     FactionWarfareLeaderboardVictoryPoints:
       description: Top 4 rankings of factions by victory points from yesterday, last
         week and in total
@@ -29441,6 +29575,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardVictoryPoints
+      type: object
     FactionWarfareLeaderboardResponse:
       description: 200 ok object
       example:
@@ -29508,6 +29644,8 @@ components:
       required:
       - kills
       - victory_points
+      title: FactionWarfareLeaderboardResponse
+      type: object
     FactionWarfareLeaderboardCharactersActiveTotalKills:
       description: active_total object
       example:
@@ -29524,6 +29662,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_character_id
           type: integer
+      title: FactionWarfareLeaderboardCharactersActiveTotalKills
+      type: object
     FactionWarfareLeaderboardCharactersLastWeekKills:
       description: last_week object
       example:
@@ -29540,6 +29680,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_last_week_character_id
           type: integer
+      title: FactionWarfareLeaderboardCharactersLastWeekKills
+      type: object
     FactionWarfareLeaderboardCharactersYesterdayKills:
       description: yesterday object
       example:
@@ -29556,6 +29698,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_yesterday_character_id
           type: integer
+      title: FactionWarfareLeaderboardCharactersYesterdayKills
+      type: object
     FactionWarfareLeaderboardCharacterKills:
       description: Top 100 rankings of pilots by number of kills from yesterday, last
         week and in total
@@ -29621,6 +29765,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardCharacterKills
+      type: object
     FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints:
       description: active_total object
       example:
@@ -29637,6 +29783,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_active_total_character_id
           type: integer
+      title: FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints
+      type: object
     FactionWarfareLeaderboardCharactersLastWeekVictoryPoints:
       description: last_week object
       example:
@@ -29653,6 +29801,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_last_week_character_id_1
           type: integer
+      title: FactionWarfareLeaderboardCharactersLastWeekVictoryPoints
+      type: object
     FactionWarfareLeaderboardCharactersYesterdayVictoryPoints:
       description: yesterday object
       example:
@@ -29669,6 +29819,8 @@ components:
           format: int32
           title: get_fw_leaderboards_characters_yesterday_character_id_1
           type: integer
+      title: FactionWarfareLeaderboardCharactersYesterdayVictoryPoints
+      type: object
     FactionWarfareLeaderboardCharacterVictoryPoints:
       description: Top 100 rankings of pilots by victory points from yesterday, last
         week and in total
@@ -29734,6 +29886,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardCharacterVictoryPoints
+      type: object
     FactionWarfareLeaderboardCharactersResponse:
       description: 200 ok object
       example:
@@ -29813,6 +29967,8 @@ components:
       required:
       - kills
       - victory_points
+      title: FactionWarfareLeaderboardCharactersResponse
+      type: object
     FactionWarfareLeaderboardCorporationActiveTotalKills:
       description: active_total object
       example:
@@ -29829,6 +29985,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_corporation_id
           type: integer
+      title: FactionWarfareLeaderboardCorporationActiveTotalKills
+      type: object
     FactionWarfareLeaderboardCorporationLastWeekKills:
       description: last_week object
       example:
@@ -29845,6 +30003,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_last_week_corporation_id
           type: integer
+      title: FactionWarfareLeaderboardCorporationLastWeekKills
+      type: object
     FactionWarfareLeaderboardCorporationYesterdayKills:
       description: yesterday object
       example:
@@ -29861,6 +30021,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_yesterday_corporation_id
           type: integer
+      title: FactionWarfareLeaderboardCorporationYesterdayKills
+      type: object
     FactionWarfareLeaderboardCorporationsKills:
       description: Top 10 rankings of corporations by number of kills from yesterday,
         last week and in total
@@ -29926,6 +30088,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardCorporationsKills
+      type: object
     FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints:
       description: active_total object
       example:
@@ -29942,6 +30106,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_active_total_corporation_id
           type: integer
+      title: FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints
+      type: object
     FactionWarfareLeaderboardCorporationLastWeekVictoryPoints:
       description: last_week object
       example:
@@ -29958,6 +30124,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_last_week_corporation_id_1
           type: integer
+      title: FactionWarfareLeaderboardCorporationLastWeekVictoryPoints
+      type: object
     FactionWarfareLeaderboardCorporationYesterdayVictoryPoints:
       description: yesterday object
       example:
@@ -29974,6 +30142,8 @@ components:
           format: int32
           title: get_fw_leaderboards_corporations_yesterday_corporation_id_1
           type: integer
+      title: FactionWarfareLeaderboardCorporationYesterdayVictoryPoints
+      type: object
     FactionWarfareLeaderboardCorporationsVictoryPoints:
       description: Top 10 rankings of corporations by victory points from yesterday,
         last week and in total
@@ -30041,6 +30211,8 @@ components:
       - active_total
       - last_week
       - yesterday
+      title: FactionWarfareLeaderboardCorporationsVictoryPoints
+      type: object
     FactionWarfareLeaderboardCorporationsResponse:
       description: 200 ok object
       example:
@@ -30120,6 +30292,8 @@ components:
       required:
       - kills
       - victory_points
+      title: FactionWarfareLeaderboardCorporationsResponse
+      type: object
     FactionWarfareStatsKills:
       description: Summary of kills against an enemy faction for the given faction
       example:
@@ -30147,6 +30321,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: FactionWarfareStatsKills
+      type: object
     FactionWarfareStatsVictoryPoints:
       description: Summary of victory points gained for the given faction
       example:
@@ -30173,6 +30349,8 @@ components:
       - last_week
       - total
       - yesterday
+      title: FactionWarfareStatsVictoryPoints
+      type: object
     FactionWarfareStatsResponse:
       description: 200 ok object
       example:
@@ -30213,6 +30391,8 @@ components:
       - pilots
       - systems_controlled
       - victory_points
+      title: FactionWarfareStatsResponse
+      type: object
     FactionWarfareWarsResponse:
       description: 200 ok object
       example:
@@ -30232,6 +30412,8 @@ components:
       required:
       - against_id
       - faction_id
+      title: FactionWarfareWarsResponse
+      type: object
     IncursionsResponse:
       description: 200 ok object
       example:
@@ -30305,6 +30487,8 @@ components:
       - staging_solar_system_id
       - state
       - type
+      title: IncursionsResponse
+      type: object
     IndustryFacilitiesResponse:
       description: 200 ok object
       example:
@@ -30351,6 +30535,8 @@ components:
       - region_id
       - solar_system_id
       - type_id
+      title: IndustryFacilitiesResponse
+      type: object
     SystemCostIndice:
       description: cost_indice object
       example:
@@ -30380,6 +30566,8 @@ components:
       required:
       - activity
       - cost_index
+      title: SystemCostIndice
+      type: object
     IndustrySystemsResponse:
       description: 200 ok object
       example:
@@ -30411,6 +30599,8 @@ components:
       required:
       - cost_indices
       - solar_system_id
+      title: IndustrySystemsResponse
+      type: object
     InsurancePriceLevel:
       description: level object
       example:
@@ -30436,6 +30626,8 @@ components:
       - cost
       - name
       - payout
+      title: InsurancePriceLevel
+      type: object
     InsurancePricesResponse:
       description: 200 ok object
       example:
@@ -30472,6 +30664,8 @@ components:
       required:
       - levels
       - type_id
+      title: InsurancePricesResponse
+      type: object
     KillmailAttacker:
       description: attacker object
       example:
@@ -30537,6 +30731,8 @@ components:
       - damage_done
       - final_blow
       - security_status
+      title: KillmailAttacker
+      type: object
     KillmailSubItem:
       description: item object
       example:
@@ -30575,6 +30771,8 @@ components:
       - flag
       - item_type_id
       - singleton
+      title: KillmailSubItem
+      type: object
     KillmailItem:
       description: item object
       example:
@@ -30649,6 +30847,8 @@ components:
       - flag
       - item_type_id
       - singleton
+      title: KillmailItem
+      type: object
     KillmailVictim:
       description: victim object
       example:
@@ -30863,6 +31063,8 @@ components:
       required:
       - damage_taken
       - ship_type_id
+      title: KillmailVictim
+      type: object
     KillmailResponse:
       description: 200 ok object
       example:
@@ -31128,6 +31330,8 @@ components:
       - killmail_time
       - solar_system_id
       - victim
+      title: KillmailResponse
+      type: object
     RequiredItem:
       description: required_item object
       example:
@@ -31147,6 +31351,8 @@ components:
       required:
       - quantity
       - type_id
+      title: RequiredItem
+      type: object
     LoyaltyStoreOffersResponse:
       description: 200 ok object
       example:
@@ -31212,6 +31418,8 @@ components:
       - quantity
       - required_items
       - type_id
+      title: LoyaltyStoreOffersResponse
+      type: object
     MarketGroupResponse:
       description: 200 ok object
       example:
@@ -31259,6 +31467,8 @@ components:
       - market_group_id
       - name
       - types
+      title: MarketGroupResponse
+      type: object
     MarketPricesResponse:
       description: 200 ok object
       example:
@@ -31283,6 +31493,8 @@ components:
           type: integer
       required:
       - type_id
+      title: MarketPricesResponse
+      type: object
     MarketStructuresResponse:
       description: 200 ok object
       example:
@@ -31376,6 +31588,8 @@ components:
       - type_id
       - volume_remain
       - volume_total
+      title: MarketStructuresResponse
+      type: object
     MarketHistoryResponse:
       description: 200 ok object
       example:
@@ -31423,6 +31637,8 @@ components:
       - lowest
       - order_count
       - volume
+      title: MarketHistoryResponse
+      type: object
     MarketOrdersResponse:
       description: 200 ok object
       example:
@@ -31523,6 +31739,8 @@ components:
       - type_id
       - volume_remain
       - volume_total
+      title: MarketOrdersResponse
+      type: object
     OpportunitiesGroupResponse:
       description: 200 ok object
       example:
@@ -31588,6 +31806,8 @@ components:
       - name
       - notification
       - required_tasks
+      title: OpportunitiesGroupResponse
+      type: object
     OpportunitiesTasksResponse:
       description: 200 ok object
       example:
@@ -31618,6 +31838,8 @@ components:
       - name
       - notification
       - task_id
+      title: OpportunitiesTasksResponse
+      type: object
     SovereigntyCampaignParticipant:
       description: participant object
       example:
@@ -31637,6 +31859,8 @@ components:
       required:
       - alliance_id
       - score
+      title: SovereigntyCampaignParticipant
+      type: object
     SovereigntyCampaignsResponse:
       description: 200 ok object
       example:
@@ -31733,6 +31957,8 @@ components:
       - solar_system_id
       - start_time
       - structure_id
+      title: SovereigntyCampaignsResponse
+      type: object
     SovereigntyMapResponse:
       description: 200 ok object
       example:
@@ -31763,6 +31989,8 @@ components:
           type: integer
       required:
       - system_id
+      title: SovereigntyMapResponse
+      type: object
     SovereigntyStructuresResponse:
       description: 200 ok object
       example:
@@ -31820,6 +32048,8 @@ components:
       - solar_system_id
       - structure_id
       - structure_type_id
+      title: SovereigntyStructuresResponse
+      type: object
     StatusResponse:
       description: 200 ok object
       example:
@@ -31849,6 +32079,8 @@ components:
       - players
       - server_version
       - start_time
+      title: StatusResponse
+      type: object
     UiNewMail:
       description: new_mail object
       example:
@@ -31944,6 +32176,8 @@ components:
       - description
       - id
       - name
+      title: UniverseAncestriesResponse
+      type: object
     UniverseAsteroidBeltsResponse:
       description: 200 ok object
       example:
@@ -31969,6 +32203,8 @@ components:
       - name
       - position
       - system_id
+      title: UniverseAsteroidBeltsResponse
+      type: object
     BloodlinesResponse:
       description: 200 ok object
       example:
@@ -32050,6 +32286,8 @@ components:
       - race_id
       - ship_type_id
       - willpower
+      title: BloodlinesResponse
+      type: object
     CategoryResponse:
       description: 200 ok object
       example:
@@ -32091,6 +32329,8 @@ components:
       - groups
       - name
       - published
+      title: CategoryResponse
+      type: object
     ConstellationResponse:
       description: 200 ok object
       example:
@@ -32140,6 +32380,8 @@ components:
       - position
       - region_id
       - systems
+      title: ConstellationResponse
+      type: object
     GraphicResponse:
       description: 200 ok object
       example:
@@ -32187,6 +32429,8 @@ components:
           type: string
       required:
       - graphic_id
+      title: GraphicResponse
+      type: object
     GroupResponse:
       description: 200 ok object
       example:
@@ -32235,6 +32479,8 @@ components:
       - name
       - published
       - types
+      title: GroupResponse
+      type: object
     UniverseIdsAgent:
       description: agent object
       example:
@@ -32250,6 +32496,8 @@ components:
           description: name string
           title: post_universe_ids_name
           type: string
+      title: UniverseIdsAgent
+      type: object
     UniverseIdsAlliance:
       description: alliance object
       example:
@@ -32265,6 +32513,8 @@ components:
           description: name string
           title: UniverseIdsAlliance_name
           type: string
+      title: UniverseIdsAlliance
+      type: object
     UniverseIdsCharacter:
       description: character object
       example:
@@ -32280,6 +32530,8 @@ components:
           description: name string
           title: UniverseIdsCharacter_name
           type: string
+      title: UniverseIdsCharacter
+      type: object
     UniverseIdsConstellation:
       description: constellation object
       example:
@@ -32295,6 +32547,8 @@ components:
           description: name string
           title: UniverseIdsConstellation_name
           type: string
+      title: UniverseIdsConstellation
+      type: object
     UniverseIdsCorporation:
       description: corporation object
       example:
@@ -32310,6 +32564,8 @@ components:
           description: name string
           title: UniverseIdsCorporation_name
           type: string
+      title: UniverseIdsCorporation
+      type: object
     UniverseIdsFaction:
       description: faction object
       example:
@@ -32325,6 +32581,8 @@ components:
           description: name string
           title: UniverseIdsFaction_name
           type: string
+      title: UniverseIdsFaction
+      type: object
     UniverseIdsInventoryType:
       description: inventory_type object
       example:
@@ -32340,6 +32598,8 @@ components:
           description: name string
           title: UniverseIdsInventoryType_name
           type: string
+      title: UniverseIdsInventoryType
+      type: object
     UniverseIdsRegion:
       description: region object
       example:
@@ -32355,6 +32615,8 @@ components:
           description: name string
           title: UniverseIdsRegion_name
           type: string
+      title: UniverseIdsRegion
+      type: object
     UniverseIdsStation:
       description: station object
       example:
@@ -32370,6 +32632,8 @@ components:
           description: name string
           title: UniverseIdsStation_name
           type: string
+      title: UniverseIdsStation
+      type: object
     UniverseIdsSystem:
       description: system object
       example:
@@ -32385,6 +32649,8 @@ components:
           description: name string
           title: UniverseIdsSystem_name
           type: string
+      title: UniverseIdsSystem
+      type: object
     UniverseIdsResponse:
       description: 200 ok object
       example:
@@ -32569,6 +32835,8 @@ components:
           maxItems: 500
           title: UniverseIdsSystems
           type: array
+      title: UniverseIdsResponse
+      type: object
     MoonResponse:
       description: 200 ok object
       example:
@@ -32601,6 +32869,8 @@ components:
       - name
       - position
       - system_id
+      title: MoonResponse
+      type: object
     PlanetResponse:
       description: 200 ok object
       example:
@@ -32640,6 +32910,8 @@ components:
       - position
       - system_id
       - type_id
+      title: PlanetResponse
+      type: object
     RacesResponse:
       description: 200 ok object
       example:
@@ -32671,6 +32943,8 @@ components:
       - description
       - name
       - race_id
+      title: RacesResponse
+      type: object
     RegionResponse:
       description: 200 ok object
       example:
@@ -32711,6 +32985,8 @@ components:
       - constellations
       - name
       - region_id
+      title: RegionResponse
+      type: object
     PlanetFactorySchematicResponse:
       description: 200 ok object
       example:
@@ -32729,6 +33005,8 @@ components:
       required:
       - cycle_time
       - schematic_name
+      title: PlanetFactorySchematicResponse
+      type: object
     StargateDestination:
       description: destination object
       example:
@@ -32748,6 +33026,8 @@ components:
       required:
       - stargate_id
       - system_id
+      title: StargateDestination
+      type: object
     StargateResponse:
       description: 200 ok object
       example:
@@ -32793,6 +33073,8 @@ components:
       - stargate_id
       - system_id
       - type_id
+      title: StargateResponse
+      type: object
     StarResponse:
       description: 200 ok object
       example:
@@ -32942,6 +33224,8 @@ components:
       - spectral_class
       - temperature
       - type_id
+      title: StarResponse
+      type: object
     SystemJumpsResponse:
       description: 200 ok object
       example:
@@ -32961,6 +33245,8 @@ components:
       required:
       - ship_jumps
       - system_id
+      title: SystemJumpsResponse
+      type: object
     Aggressor:
       description: The aggressor corporation or alliance that declared this war, only
         contains either corporation_id or alliance_id
@@ -32993,6 +33279,8 @@ components:
       required:
       - isk_destroyed
       - ships_killed
+      title: Aggressor
+      type: object
     WarAlly:
       description: ally object
       example:
@@ -33009,6 +33297,8 @@ components:
           format: int32
           title: WarAlly_corporation_id
           type: integer
+      title: WarAlly
+      type: object
     Defender:
       description: The defending corporation or alliance that declared this war, only
         contains either corporation_id or alliance_id
@@ -33041,6 +33331,8 @@ components:
       required:
       - isk_destroyed
       - ships_killed
+      title: Defender
+      type: object
     WarResponse:
       description: 200 ok object
       example:
@@ -33126,6 +33418,8 @@ components:
       - id
       - mutual
       - open_for_allies
+      title: WarResponse
+      type: object
     WarKillmailsResponse:
       description: 200 ok object
       example:
@@ -33144,6 +33438,8 @@ components:
       required:
       - killmail_hash
       - killmail_id
+      title: WarKillmailsResponse
+      type: object
     AllianceContactsResponse:
       description: 200 ok object
       example:
@@ -33190,6 +33486,8 @@ components:
       - contact_id
       - contact_type
       - standing
+      title: AllianceContactsResponse
+      type: object
     CharacterAffiliationResponse:
       description: 200 ok object
       example:
@@ -33222,6 +33520,8 @@ components:
       required:
       - character_id
       - corporation_id
+      title: CharacterAffiliationResponse
+      type: object
     CharacterResearchAgentsResponse:
       description: 200 ok object
       example:
@@ -33262,6 +33562,8 @@ components:
       - remainder_points
       - skill_type_id
       - started_at
+      title: CharacterResearchAgentsResponse
+      type: object
     CharacterAssetsLocationsPosition:
       description: position object
       example:
@@ -33288,6 +33590,8 @@ components:
       - x
       - "y"
       - z
+      title: CharacterAssetsLocationsPosition
+      type: object
     CharacterAssetsLocationsResponse:
       description: 200 ok object
       example:
@@ -33307,6 +33611,8 @@ components:
       required:
       - item_id
       - position
+      title: CharacterAssetsLocationsResponse
+      type: object
     CharacterBookmarksCoordinates:
       description: Optional object that is returned if a bookmark was made on a planet
         or a random location in space.
@@ -33334,6 +33640,8 @@ components:
       - x
       - "y"
       - z
+      title: CharacterBookmarksCoordinates
+      type: object
     CharacterBookmarkItem:
       description: Optional object that is returned if a bookmark was made on a particular
         item.
@@ -33354,6 +33662,8 @@ components:
       required:
       - item_id
       - type_id
+      title: CharacterBookmarkItem
+      type: object
     CharacterBookmarksResponse:
       description: 200 ok object
       example:
@@ -33416,6 +33726,8 @@ components:
       - label
       - location_id
       - notes
+      title: CharacterBookmarksResponse
+      type: object
     CharacterBookmarkFoldersResponse:
       description: 200 ok object
       example:
@@ -33434,6 +33746,8 @@ components:
       required:
       - folder_id
       - name
+      title: CharacterBookmarkFoldersResponse
+      type: object
     ContactsResponse:
       description: 200 ok object
       example:
@@ -33491,6 +33805,8 @@ components:
       - contact_id
       - contact_type
       - standing
+      title: ContactsResponse
+      type: object
     CharacterCorporationHistoryResponse:
       description: 200 ok object
       example:
@@ -33523,6 +33839,8 @@ components:
       - corporation_id
       - record_id
       - start_date
+      title: CharacterCorporationHistoryResponse
+      type: object
     CharacterFatigueResponse:
       description: 200 ok object
       example:
@@ -33545,6 +33863,8 @@ components:
           format: date-time
           title: get_characters_character_id_fatigue_last_update_date
           type: string
+      title: CharacterFatigueResponse
+      type: object
     CharacterFittingsResponse:
       description: 200 ok object
       example:
@@ -33600,6 +33920,8 @@ components:
       - items
       - name
       - ship_type_id
+      title: CharacterFittingsResponse
+      type: object
     CharacterFitting:
       description: fitting object
       example:
@@ -33667,6 +33989,8 @@ components:
           type: integer
       required:
       - fitting_id
+      title: CharacterFittingResponse
+      type: object
     MailLabelSimple:
       description: label object
       example:
@@ -33738,6 +34062,8 @@ components:
       - graphic
       - layer
       - part
+      title: CharacterMedalsGraphic
+      type: object
     CharacterMedalsResponse:
       description: 200 ok object
       example:
@@ -33828,6 +34154,8 @@ components:
       - reason
       - status
       - title
+      title: CharacterMedalsResponse
+      type: object
     NewContactNotificationsResponse:
       description: 200 ok object
       example:
@@ -33869,6 +34197,8 @@ components:
       - send_date
       - sender_character_id
       - standing_level
+      title: NewContactNotificationsResponse
+      type: object
     CharacterOnlineResponse:
       description: 200 ok object
       example:
@@ -33898,6 +34228,8 @@ components:
           type: boolean
       required:
       - online
+      title: CharacterOnlineResponse
+      type: object
     CharacterOrdersResponse:
       description: 200 ok object
       example:
@@ -34011,6 +34343,8 @@ components:
       - type_id
       - volume_remain
       - volume_total
+      title: CharacterOrdersResponse
+      type: object
     CharacterPortraitResponse:
       description: 200 ok object
       example:
@@ -34035,6 +34369,8 @@ components:
           description: px64x64 string
           title: get_characters_character_id_portrait_px64x64
           type: string
+      title: CharacterPortraitResponse
+      type: object
     CharacterSkillqueueResponse:
       description: 200 ok object
       example:
@@ -34095,6 +34431,8 @@ components:
       - finished_level
       - queue_position
       - skill_id
+      title: CharacterSkillqueueResponse
+      type: object
     CharacterStandingsResponse:
       description: 200 ok object
       example:
@@ -34124,6 +34462,8 @@ components:
       - from_id
       - from_type
       - standing
+      title: CharacterStandingsResponse
+      type: object
     CharacterTitlesResponse:
       description: 200 ok object
       example:
@@ -34139,6 +34479,8 @@ components:
           format: int32
           title: get_characters_character_id_titles_title_id
           type: integer
+      title: CharacterTitlesResponse
+      type: object
     CorporationAssetsLocationsPosition:
       description: position object
       example:
@@ -34165,6 +34507,8 @@ components:
       - x
       - "y"
       - z
+      title: CorporationAssetsLocationsPosition
+      type: object
     CorporationAssetsLocationsResponse:
       description: 200 ok object
       example:
@@ -34184,6 +34528,8 @@ components:
       required:
       - item_id
       - position
+      title: CorporationAssetsLocationsResponse
+      type: object
     CorporationContactsResponse:
       description: 200 ok object
       example:
@@ -34235,6 +34581,8 @@ components:
       - contact_id
       - contact_type
       - standing
+      title: CorporationContactsResponse
+      type: object
     CorporationDivisionsHangar:
       description: hangar object
       example:
@@ -34253,6 +34601,8 @@ components:
           maxLength: 50
           title: get_corporations_corporation_id_divisions_name
           type: string
+      title: CorporationDivisionsHangar
+      type: object
     CorporationDivisionsWallet:
       description: wallet object
       example:
@@ -34271,6 +34621,8 @@ components:
           maxLength: 50
           title: get_corporations_corporation_id_divisions_wallet_name
           type: string
+      title: CorporationDivisionsWallet
+      type: object
     CorporationDivisionsResponse:
       description: 200 ok object
       example:
@@ -34311,6 +34663,8 @@ components:
           maxItems: 7
           title: get_corporations_corporation_id_divisions_wallet
           type: array
+      title: CorporationDivisionsResponse
+      type: object
     CorporationFacilitiesResponse:
       description: 200 ok object
       example:
@@ -34337,6 +34691,8 @@ components:
       - facility_id
       - system_id
       - type_id
+      title: CorporationFacilitiesResponse
+      type: object
     CorporationIconsResponse:
       description: 200 ok object
       example:
@@ -34356,6 +34712,8 @@ components:
           description: px64x64 string
           title: get_corporations_corporation_id_icons_px64x64
           type: string
+      title: CorporationIconsResponse
+      type: object
     CorporationMedalsResponse:
       description: 200 ok object
       example:
@@ -34396,6 +34754,8 @@ components:
       - description
       - medal_id
       - title
+      title: CorporationMedalsResponse
+      type: object
     CorporationMedalsIssuedResponse:
       description: 200 ok object
       example:
@@ -34445,6 +34805,8 @@ components:
       - medal_id
       - reason
       - status
+      title: CorporationMedalsIssuedResponse
+      type: object
     CorporationMembersTitlesResponse:
       description: 200 ok object
       example:
@@ -34474,6 +34836,8 @@ components:
       required:
       - character_id
       - titles
+      title: CorporationMembersTitlesResponse
+      type: object
     CorporationMemberTrackingResponse:
       description: 200 ok object
       example:
@@ -34522,6 +34886,8 @@ components:
           type: string
       required:
       - character_id
+      title: CorporationMemberTrackingResponse
+      type: object
     CorporationOrdersHistoryResponse:
       description: 200 ok object
       example:
@@ -34652,6 +35018,8 @@ components:
       - volume_remain
       - volume_total
       - wallet_division
+      title: CorporationOrdersHistoryResponse
+      type: object
     CorporationRolesResponse:
       description: 200 ok object
       example:
@@ -35176,6 +35544,8 @@ components:
           type: array
       required:
       - character_id
+      title: CorporationRolesResponse
+      type: object
     CorporationRolesHistoryResponse:
       description: 200 ok object
       example:
@@ -35347,6 +35717,8 @@ components:
       - new_roles
       - old_roles
       - role_type
+      title: CorporationRolesHistoryResponse
+      type: object
     CorporationStandingsResponse:
       description: 200 ok object
       example:
@@ -35376,6 +35748,8 @@ components:
       - from_id
       - from_type
       - standing
+      title: CorporationStandingsResponse
+      type: object
     CorporationStarbasesResponse:
       description: 200 ok object
       example:
@@ -35441,6 +35815,8 @@ components:
       - starbase_id
       - system_id
       - type_id
+      title: CorporationStarbasesResponse
+      type: object
     CorporationStarbaseFuel:
       description: fuel object
       example:
@@ -35460,6 +35836,8 @@ components:
       required:
       - quantity
       - type_id
+      title: CorporationStarbaseFuel
+      type: object
     CorporationStarbaseResponse:
       description: 200 ok object
       example:
@@ -35598,6 +35976,8 @@ components:
       - online
       - unanchor
       - use_alliance_standings
+      title: CorporationStarbaseResponse
+      type: object
     CorporationTitlesResponse:
       description: 200 ok object
       example:
@@ -36125,6 +36505,8 @@ components:
           format: int32
           title: get_corporations_corporation_id_titles_title_id
           type: integer
+      title: CorporationTitlesResponse
+      type: object
     DogmaEffectModifier:
       description: modifier object
       example:
@@ -36165,6 +36547,8 @@ components:
           type: integer
       required:
       - func
+      title: DogmaEffectModifier
+      type: object
     DogmaEffectResponse:
       description: 200 ok object
       example:
@@ -36319,6 +36703,8 @@ components:
           type: integer
       required:
       - effect_id
+      title: DogmaEffectResponse
+      type: object
     FactionWarfareSystemsResponse:
       description: 200 ok object
       example:
@@ -36370,6 +36756,8 @@ components:
       - solar_system_id
       - victory_points
       - victory_points_threshold
+      title: FactionWarfareSystemsResponse
+      type: object
     FactionsResponse:
       description: 200 ok object
       example:
@@ -36439,6 +36827,8 @@ components:
       - size_factor
       - station_count
       - station_system_count
+      title: FactionsResponse
+      type: object
     StationResponse:
       description: 200 ok object
       example:
@@ -36562,6 +36952,8 @@ components:
       - station_id
       - system_id
       - type_id
+      title: StationResponse
+      type: object
     StructureResponse:
       description: 200 ok object
       example:
@@ -36599,6 +36991,8 @@ components:
       - name
       - owner_id
       - solar_system_id
+      title: StructureResponse
+      type: object
     SystemKillsResponse:
       description: 200 ok object
       example:
@@ -36632,6 +37026,8 @@ components:
       - pod_kills
       - ship_kills
       - system_id
+      title: SystemKillsResponse
+      type: object
     AllianceResponse:
       description: 200 ok object
       example:
@@ -36683,6 +37079,8 @@ components:
       - date_founded
       - name
       - ticker
+      title: AllianceResponse
+      type: object
     CharacterBlueprintsResponse:
       description: 200 ok object
       example:
@@ -36833,6 +37231,8 @@ components:
       - runs
       - time_efficiency
       - type_id
+      title: CharacterBlueprintsResponse
+      type: object
     CharacterCalendarEventResponse:
       description: Full details of a specific event
       example:
@@ -36909,6 +37309,8 @@ components:
       - response
       - text
       - title
+      title: CharacterCalendarEventResponse
+      type: object
     CharacterCalendarEvent:
       description: response object
       example:
@@ -36944,6 +37346,8 @@ components:
           - structure
           title: get_characters_character_id_clones_location_type
           type: string
+      title: CloneHomeLocation
+      type: object
     Clone:
       description: jump_clone object
       example:
@@ -36994,6 +37398,8 @@ components:
       - jump_clone_id
       - location_id
       - location_type
+      title: Clone
+      type: object
     CharacterClonesResponse:
       description: 200 ok object
       example:
@@ -37075,6 +37481,8 @@ components:
           type: string
       required:
       - jump_clones
+      title: CharacterClonesResponse
+      type: object
     MailLabel:
       description: label object
       example:
@@ -37124,6 +37532,8 @@ components:
           minimum: 0
           title: get_characters_character_id_mail_labels_unread_count
           type: integer
+      title: MailLabel
+      type: object
     MailLabelsResponse:
       description: 200 ok object
       example:
@@ -37163,6 +37573,8 @@ components:
           minimum: 0
           title: get_characters_character_id_mail_labels_total_unread_count
           type: integer
+      title: MailLabelsResponse
+      type: object
     PlanetLink:
       description: link object
       example:
@@ -37191,6 +37603,8 @@ components:
       - destination_pin_id
       - link_level
       - source_pin_id
+      title: PlanetLink
+      type: object
     PlanetContent:
       description: content object
       example:
@@ -37210,6 +37624,8 @@ components:
       required:
       - amount
       - type_id
+      title: PlanetContent
+      type: object
     PlanetHead:
       description: head object
       example:
@@ -37238,6 +37654,8 @@ components:
       - head_id
       - latitude
       - longitude
+      title: PlanetHead
+      type: object
     PlanetExtractorDetails:
       description: extractor_details object
       example:
@@ -37291,6 +37709,8 @@ components:
           type: integer
       required:
       - heads
+      title: PlanetExtractorDetails
+      type: object
     PlanetFactoryDetails:
       description: factory_details object
       example:
@@ -37303,6 +37723,8 @@ components:
           type: integer
       required:
       - schematic_id
+      title: PlanetFactoryDetails
+      type: object
     PlanetPin:
       description: pin object
       example:
@@ -37405,6 +37827,8 @@ components:
       - longitude
       - pin_id
       - type_id
+      title: PlanetPin
+      type: object
     PlanetRoute:
       description: route object
       example:
@@ -37461,6 +37885,8 @@ components:
       - quantity
       - route_id
       - source_pin_id
+      title: PlanetRoute
+      type: object
     CharacterPlanetResponse:
       description: 200 ok object
       example:
@@ -37773,6 +38199,8 @@ components:
       - links
       - pins
       - routes
+      title: CharacterPlanetResponse
+      type: object
     CharacterRolesResponse:
       description: 200 ok object
       example:
@@ -38033,6 +38461,8 @@ components:
           maxItems: 50
           title: get_characters_character_id_roles_roles_at_other
           type: array
+      title: CharacterRolesResponse
+      type: object
     CharacterSearchResponse:
       description: 200 ok object
       example:
@@ -38213,6 +38643,8 @@ components:
           maxItems: 500
           title: get_characters_character_id_search_structure
           type: array
+      title: CharacterSearchResponse
+      type: object
     CorporationAlliancesHistoryResponse:
       description: 200 ok object
       example:
@@ -38244,6 +38676,8 @@ components:
       required:
       - record_id
       - start_date
+      title: CorporationAlliancesHistoryResponse
+      type: object
     CorporationBlueprintsResponse:
       description: 200 ok object
       example:
@@ -38433,6 +38867,8 @@ components:
       - runs
       - time_efficiency
       - type_id
+      title: CorporationBlueprintsResponse
+      type: object
     CorporationContainersLogsResponse:
       description: 200 ok object
       example:
@@ -38646,6 +39082,8 @@ components:
       - location_flag
       - location_id
       - logged_at
+      title: CorporationContainersLogsResponse
+      type: object
     CorporationOrdersResponse:
       description: 200 ok object
       example:
@@ -38768,6 +39206,8 @@ components:
       - volume_remain
       - volume_total
       - wallet_division
+      title: CorporationOrdersResponse
+      type: object
     UniverseNamesResponse:
       description: 200 ok object
       example:
@@ -38802,6 +39242,8 @@ components:
       - category
       - id
       - name
+      title: UniverseNamesResponse
+      type: object
     TypeDogmaAttribute:
       description: dogma_attribute object
       example:
@@ -38821,6 +39263,8 @@ components:
       required:
       - attribute_id
       - value
+      title: TypeDogmaAttribute
+      type: object
     TypeDogmaEffect:
       description: dogma_effect object
       example:
@@ -38839,6 +39283,8 @@ components:
       required:
       - effect_id
       - is_default
+      title: TypeDogmaEffect
+      type: object
     TypeResponse:
       description: 200 ok object
       example:
@@ -38966,6 +39412,8 @@ components:
       - name
       - published
       - type_id
+      title: TypeResponse
+      type: object
     Skill:
       description: skill object
       example:
@@ -38999,6 +39447,8 @@ components:
       - skill_id
       - skillpoints_in_skill
       - trained_skill_level
+      title: Skill
+      type: object
     CharacterSkillsResponse:
       description: 200 ok object
       example:
@@ -39046,6 +39496,8 @@ components:
       required:
       - skills
       - total_sp
+      title: CharacterSkillsResponse
+      type: object
     StructureService:
       description: service object
       example:
@@ -39067,6 +39519,8 @@ components:
       required:
       - name
       - state
+      title: StructureService
+      type: object
     CorporationStructuresResponse:
       description: 200 ok object
       example:
@@ -39201,6 +39655,8 @@ components:
       - structure_id
       - system_id
       - type_id
+      title: CorporationStructuresResponse
+      type: object
     CorporationWalletJournalResponse:
       description: 200 ok object
       example:
@@ -39450,6 +39906,8 @@ components:
       - description
       - id
       - ref_type
+      title: CorporationWalletJournalResponse
+      type: object
     SystemPlanet:
       description: planet object
       example:
@@ -39494,6 +39952,8 @@ components:
           type: integer
       required:
       - planet_id
+      title: SystemPlanet
+      type: object
     SystemResponse:
       description: 200 ok object
       example:
@@ -39649,6 +40109,8 @@ components:
       - position
       - security_status
       - system_id
+      title: SystemResponse
+      type: object
     CharacterResponse:
       description: 200 ok object
       example:
@@ -39728,6 +40190,8 @@ components:
       - gender
       - name
       - race_id
+      title: CharacterResponse
+      type: object
     CharacterAssetsResponse:
       description: 200 ok object
       example:
@@ -39873,6 +40337,8 @@ components:
       - location_type
       - quantity
       - type_id
+      title: CharacterAssetsResponse
+      type: object
     CharacterNotificationsResponse:
       description: 200 ok object
       example:
@@ -40146,6 +40612,8 @@ components:
       - sender_type
       - timestamp
       - type
+      title: CharacterNotificationsResponse
+      type: object
     CorporationResponse:
       description: 200 ok object
       example:
@@ -40238,6 +40706,8 @@ components:
       - name
       - tax_rate
       - ticker
+      title: CorporationResponse
+      type: object
     CorporationAssetsResponse:
       description: 200 ok object
       example:
@@ -40419,6 +40889,8 @@ components:
       - location_type
       - quantity
       - type_id
+      title: CorporationAssetsResponse
+      type: object
     CharacterWalletJournalResponse:
       description: 200 ok object
       example:
@@ -40665,6 +41137,8 @@ components:
       - description
       - id
       - ref_type
+      title: CharacterWalletJournalResponse
+      type: object
     CharacterFleetResponse:
       description: 200 ok object
       example:
@@ -40711,6 +41185,8 @@ components:
       - role
       - squad_id
       - wing_id
+      title: CharacterFleetResponse
+      type: object
   securitySchemes:
     evesso:
       flows:
@@ -40784,4 +41260,5 @@ components:
             esi-wallet.read_character_wallet.v1: EVE SSO scope esi-wallet.read_character_wallet.v1
             esi-wallet.read_corporation_wallets.v1: EVE SSO scope esi-wallet.read_corporation_wallets.v1
       type: oauth2
+x-original-swagger-version: "2.0"
 

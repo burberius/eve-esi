@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterAttributesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -63,6 +64,9 @@ public class CharacterAttributesResponse implements Serializable {
     public static final String SERIALIZED_NAME_WILLPOWER = "willpower";
     @SerializedName(SERIALIZED_NAME_WILLPOWER)
     private Integer willpower;
+
+    public CharacterAttributesResponse() {
+    }
 
     public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
 
@@ -117,6 +121,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return charisma
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "charisma integer")
     public Integer getCharisma() {
         return charisma;
@@ -137,6 +142,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return intelligence
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "intelligence integer")
     public Integer getIntelligence() {
         return intelligence;
@@ -178,6 +184,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return memory
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "memory integer")
     public Integer getMemory() {
         return memory;
@@ -198,6 +205,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return perception
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "perception integer")
     public Integer getPerception() {
         return perception;
@@ -218,6 +226,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return willpower
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "willpower integer")
     public Integer getWillpower() {
         return willpower;
@@ -228,7 +237,7 @@ public class CharacterAttributesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -272,7 +281,7 @@ public class CharacterAttributesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

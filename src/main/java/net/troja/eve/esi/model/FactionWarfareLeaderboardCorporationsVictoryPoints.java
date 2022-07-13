@@ -34,6 +34,7 @@ import java.io.Serializable;
  * and in total
  */
 @ApiModel(description = "Top 10 rankings of corporations by victory points from yesterday, last week and in total")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +49,9 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<>();
+
+    public FactionWarfareLeaderboardCorporationsVictoryPoints() {
+    }
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal) {
@@ -69,6 +73,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * 
      * @return activeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations active in faction warfare by total victory points. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
     public List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
@@ -96,6 +101,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * 
      * @return lastWeek
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by victory points in the past week")
     public List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
@@ -123,6 +129,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * 
      * @return yesterday
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by victory points in the past day")
     public List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> getYesterday() {
         return yesterday;
@@ -133,7 +140,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,7 +173,7 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

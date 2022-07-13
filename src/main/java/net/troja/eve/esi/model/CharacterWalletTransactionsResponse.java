@@ -29,6 +29,7 @@ import java.io.Serializable;
  * wallet transaction
  */
 @ApiModel(description = "wallet transaction")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterWalletTransactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -72,6 +73,9 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
     private Double unitPrice;
 
+    public CharacterWalletTransactionsResponse() {
+    }
+
     public CharacterWalletTransactionsResponse clientId(Integer clientId) {
 
         this.clientId = clientId;
@@ -83,6 +87,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return clientId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "client_id integer")
     public Integer getClientId() {
         return clientId;
@@ -103,6 +108,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return date
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Date and time of transaction")
     public OffsetDateTime getDate() {
         return date;
@@ -123,6 +129,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return isBuy
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "is_buy boolean")
     public Boolean getIsBuy() {
         return isBuy;
@@ -143,6 +150,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return isPersonal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "is_personal boolean")
     public Boolean getIsPersonal() {
         return isPersonal;
@@ -163,6 +171,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return journalRefId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "journal_ref_id integer")
     public Long getJournalRefId() {
         return journalRefId;
@@ -183,6 +192,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
@@ -203,6 +213,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
@@ -223,6 +234,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return transactionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Unique transaction ID")
     public Long getTransactionId() {
         return transactionId;
@@ -243,6 +255,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -263,6 +276,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * 
      * @return unitPrice
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Amount paid per unit")
     public Double getUnitPrice() {
         return unitPrice;
@@ -273,7 +287,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -321,7 +335,7 @@ public class CharacterWalletTransactionsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

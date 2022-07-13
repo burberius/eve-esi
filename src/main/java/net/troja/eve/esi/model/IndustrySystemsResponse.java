@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IndustrySystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +42,9 @@ public class IndustrySystemsResponse implements Serializable {
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)
     private Integer solarSystemId;
+
+    public IndustrySystemsResponse() {
+    }
 
     public IndustrySystemsResponse costIndices(List<SystemCostIndice> costIndices) {
 
@@ -58,6 +62,7 @@ public class IndustrySystemsResponse implements Serializable {
      * 
      * @return costIndices
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "cost_indices array")
     public List<SystemCostIndice> getCostIndices() {
         return costIndices;
@@ -78,6 +83,7 @@ public class IndustrySystemsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "solar_system_id integer")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -88,7 +94,7 @@ public class IndustrySystemsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -119,7 +125,7 @@ public class IndustrySystemsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -290,6 +291,9 @@ public class CorporationContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Double volume;
 
+    public CorporationContractsResponse() {
+    }
+
     public CorporationContractsResponse acceptorId(Integer acceptorId) {
 
         this.acceptorId = acceptorId;
@@ -301,6 +305,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return acceptorId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Who will accept the contract")
     public Integer getAcceptorId() {
         return acceptorId;
@@ -321,6 +326,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return assigneeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
     public Integer getAssigneeId() {
         return assigneeId;
@@ -347,6 +353,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return availability
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "To whom the contract is available")
     public AvailabilityEnum getAvailability() {
         if (availabilityEnum == null) {
@@ -420,6 +427,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return contractId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "contract_id integer")
     public Integer getContractId() {
         return contractId;
@@ -482,6 +490,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return dateExpired
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Expiration date of the contract")
     public OffsetDateTime getDateExpired() {
         return dateExpired;
@@ -502,6 +511,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return dateIssued
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Сreation date of the contract")
     public OffsetDateTime getDateIssued() {
         return dateIssued;
@@ -564,6 +574,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return forCorporation
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
     public Boolean getForCorporation() {
         return forCorporation;
@@ -584,6 +595,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return issuerCorporationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
     public Integer getIssuerCorporationId() {
         return issuerCorporationId;
@@ -604,6 +616,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return issuerId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Character ID for the issuer")
     public Integer getIssuerId() {
         return issuerId;
@@ -693,6 +706,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return status
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Status of the the contract")
     public StatusEnum getStatus() {
         if (statusEnum == null) {
@@ -751,6 +765,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return type
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Type of the contract")
     public TypeEnum getType() {
         if (typeEnum == null) {
@@ -793,7 +808,7 @@ public class CorporationContractsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -866,7 +881,7 @@ public class CorporationContractsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

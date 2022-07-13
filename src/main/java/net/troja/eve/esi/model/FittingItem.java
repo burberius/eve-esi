@@ -28,6 +28,7 @@ import java.io.Serializable;
  * item object
  */
 @ApiModel(description = "item object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FittingItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -173,6 +174,9 @@ public class FittingItem implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public FittingItem() {
+    }
+
     public FittingItem flag(FlagEnum flagEnum) {
 
         this.flagEnum = flagEnum;
@@ -190,6 +194,7 @@ public class FittingItem implements Serializable {
      * 
      * @return flag
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "flag string")
     public FlagEnum getFlag() {
         if (flagEnum == null) {
@@ -221,6 +226,7 @@ public class FittingItem implements Serializable {
      * 
      * @return quantity
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "quantity integer")
     public Integer getQuantity() {
         return quantity;
@@ -241,6 +247,7 @@ public class FittingItem implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -251,7 +258,7 @@ public class FittingItem implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -283,7 +290,7 @@ public class FittingItem implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

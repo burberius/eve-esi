@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterStandingsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -93,6 +94,9 @@ public class CharacterStandingsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STANDING)
     private Float standing;
 
+    public CharacterStandingsResponse() {
+    }
+
     public CharacterStandingsResponse fromId(Integer fromId) {
 
         this.fromId = fromId;
@@ -104,6 +108,7 @@ public class CharacterStandingsResponse implements Serializable {
      * 
      * @return fromId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "from_id integer")
     public Integer getFromId() {
         return fromId;
@@ -130,6 +135,7 @@ public class CharacterStandingsResponse implements Serializable {
      * 
      * @return fromType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "from_type string")
     public FromTypeEnum getFromType() {
         if (fromTypeEnum == null) {
@@ -161,6 +167,7 @@ public class CharacterStandingsResponse implements Serializable {
      * 
      * @return standing
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "standing number")
     public Float getStanding() {
         return standing;
@@ -171,7 +178,7 @@ public class CharacterStandingsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -204,7 +211,7 @@ public class CharacterStandingsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -28,6 +28,7 @@ import java.io.Serializable;
  * character object
  */
 @ApiModel(description = "character object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UniverseIdsCharacter implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class UniverseIdsCharacter implements Serializable {
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
+
+    public UniverseIdsCharacter() {
+    }
 
     public UniverseIdsCharacter id(Integer id) {
 
@@ -82,7 +86,7 @@ public class UniverseIdsCharacter implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -112,7 +116,7 @@ public class UniverseIdsCharacter implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

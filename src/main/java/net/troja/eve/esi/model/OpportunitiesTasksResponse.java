@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class OpportunitiesTasksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class OpportunitiesTasksResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TASK_ID)
     private Integer taskId;
 
+    public OpportunitiesTasksResponse() {
+    }
+
     public OpportunitiesTasksResponse description(String description) {
 
         this.description = description;
@@ -58,6 +62,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -78,6 +83,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -98,6 +104,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return notification
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "notification string")
     public String getNotification() {
         return notification;
@@ -118,6 +125,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * 
      * @return taskId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "task_id integer")
     public Integer getTaskId() {
         return taskId;
@@ -128,7 +136,7 @@ public class OpportunitiesTasksResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -163,7 +171,7 @@ public class OpportunitiesTasksResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

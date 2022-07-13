@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RacesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +48,9 @@ public class RacesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_RACE_ID)
     private Integer raceId;
 
+    public RacesResponse() {
+    }
+
     public RacesResponse allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -58,6 +62,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return allianceId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The alliance generally associated with this race")
     public Integer getAllianceId() {
         return allianceId;
@@ -78,6 +83,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -98,6 +104,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -118,6 +125,7 @@ public class RacesResponse implements Serializable {
      * 
      * @return raceId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "race_id integer")
     public Integer getRaceId() {
         return raceId;
@@ -128,7 +136,7 @@ public class RacesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -162,7 +170,7 @@ public class RacesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

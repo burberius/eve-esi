@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -56,6 +57,9 @@ public class MarketHistoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Long volume;
 
+    public MarketHistoryResponse() {
+    }
+
     public MarketHistoryResponse average(Double average) {
 
         this.average = average;
@@ -67,6 +71,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return average
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "average number")
     public Double getAverage() {
         return average;
@@ -87,6 +92,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return date
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The date of this historical statistic entry")
     public LocalDate getDate() {
         return date;
@@ -107,6 +113,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return highest
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "highest number")
     public Double getHighest() {
         return highest;
@@ -127,6 +134,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return lowest
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "lowest number")
     public Double getLowest() {
         return lowest;
@@ -147,6 +155,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return orderCount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Total number of orders happened that day")
     public Long getOrderCount() {
         return orderCount;
@@ -167,6 +176,7 @@ public class MarketHistoryResponse implements Serializable {
      * 
      * @return volume
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Total")
     public Long getVolume() {
         return volume;
@@ -177,7 +187,7 @@ public class MarketHistoryResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -216,7 +226,7 @@ public class MarketHistoryResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

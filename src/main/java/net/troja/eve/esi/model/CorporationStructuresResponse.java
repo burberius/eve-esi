@@ -32,6 +32,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -165,6 +166,9 @@ public class CorporationStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_UNANCHORS_AT)
     private OffsetDateTime unanchorsAt;
 
+    public CorporationStructuresResponse() {
+    }
+
     public CorporationStructuresResponse corporationId(Integer corporationId) {
 
         this.corporationId = corporationId;
@@ -176,6 +180,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return corporationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the corporation that owns the structure")
     public Integer getCorporationId() {
         return corporationId;
@@ -282,6 +287,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return profileId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The id of the ACL profile for this citadel")
     public Integer getProfileId() {
         return profileId;
@@ -362,6 +368,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return state
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "state string")
     public StateEnum getState() {
         if (stateEnum == null) {
@@ -435,6 +442,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return structureId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The Item ID of the structure")
     public Long getStructureId() {
         return structureId;
@@ -455,6 +463,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return systemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The solar system the structure is in")
     public Integer getSystemId() {
         return systemId;
@@ -475,6 +484,7 @@ public class CorporationStructuresResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The type id of the structure")
     public Integer getTypeId() {
         return typeId;
@@ -506,7 +516,7 @@ public class CorporationStructuresResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -565,7 +575,7 @@ public class CorporationStructuresResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

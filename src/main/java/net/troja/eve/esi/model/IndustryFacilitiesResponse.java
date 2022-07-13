@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IndustryFacilitiesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -55,6 +56,9 @@ public class IndustryFacilitiesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public IndustryFacilitiesResponse() {
+    }
+
     public IndustryFacilitiesResponse facilityId(Long facilityId) {
 
         this.facilityId = facilityId;
@@ -66,6 +70,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return facilityId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the facility")
     public Long getFacilityId() {
         return facilityId;
@@ -86,6 +91,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return ownerId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Owner of the facility")
     public Integer getOwnerId() {
         return ownerId;
@@ -106,6 +112,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return regionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Region ID where the facility is")
     public Integer getRegionId() {
         return regionId;
@@ -126,6 +133,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Solar system ID where the facility is")
     public Integer getSolarSystemId() {
         return solarSystemId;
@@ -167,6 +175,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Type ID of the facility")
     public Integer getTypeId() {
         return typeId;
@@ -177,7 +186,7 @@ public class IndustryFacilitiesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -216,7 +225,7 @@ public class IndustryFacilitiesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -28,6 +28,7 @@ import java.io.Serializable;
  * Summary of kills done by the given character against enemy factions
  */
 @ApiModel(description = "Summary of kills done by the given character against enemy factions")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterFwStatsKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -43,6 +44,9 @@ public class CharacterFwStatsKills implements Serializable {
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private Integer yesterday;
 
+    public CharacterFwStatsKills() {
+    }
+
     public CharacterFwStatsKills lastWeek(Integer lastWeek) {
 
         this.lastWeek = lastWeek;
@@ -55,6 +59,7 @@ public class CharacterFwStatsKills implements Serializable {
      * 
      * @return lastWeek
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Last week's total number of kills by a given character against enemy factions")
     public Integer getLastWeek() {
         return lastWeek;
@@ -76,6 +81,7 @@ public class CharacterFwStatsKills implements Serializable {
      * 
      * @return total
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Total number of kills by a given character against enemy factions since the character enlisted")
     public Integer getTotal() {
         return total;
@@ -97,6 +103,7 @@ public class CharacterFwStatsKills implements Serializable {
      * 
      * @return yesterday
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Yesterday's total number of kills by a given character against enemy factions")
     public Integer getYesterday() {
         return yesterday;
@@ -107,7 +114,7 @@ public class CharacterFwStatsKills implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -140,7 +147,7 @@ public class CharacterFwStatsKills implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

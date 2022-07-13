@@ -29,6 +29,7 @@ import java.io.Serializable;
  * faction
  */
 @ApiModel(description = "Summary of victory points gained by the given corporation for the enlisted faction")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationFwStatsVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -44,6 +45,9 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private Integer yesterday;
 
+    public CorporationFwStatsVictoryPoints() {
+    }
+
     public CorporationFwStatsVictoryPoints lastWeek(Integer lastWeek) {
 
         this.lastWeek = lastWeek;
@@ -55,6 +59,7 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
      * 
      * @return lastWeek
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Last week's victory points gained by members of the given corporation")
     public Integer getLastWeek() {
         return lastWeek;
@@ -75,6 +80,7 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
      * 
      * @return total
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Total victory points gained since the given corporation enlisted")
     public Integer getTotal() {
         return total;
@@ -95,6 +101,7 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
      * 
      * @return yesterday
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Yesterday's victory points gained by members of the given corporation")
     public Integer getYesterday() {
         return yesterday;
@@ -105,7 +112,7 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -138,7 +145,7 @@ public class CorporationFwStatsVictoryPoints implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

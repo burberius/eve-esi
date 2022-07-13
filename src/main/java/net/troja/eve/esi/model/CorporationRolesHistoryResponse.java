@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationRolesHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -398,6 +399,9 @@ public class CorporationRolesHistoryResponse implements Serializable {
     private String roleType;
     private RoleTypeEnum roleTypeEnum;
 
+    public CorporationRolesHistoryResponse() {
+    }
+
     public CorporationRolesHistoryResponse changedAt(OffsetDateTime changedAt) {
 
         this.changedAt = changedAt;
@@ -409,6 +413,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return changedAt
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "changed_at string")
     public OffsetDateTime getChangedAt() {
         return changedAt;
@@ -429,6 +434,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return characterId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The character whose roles are changed")
     public Integer getCharacterId() {
         return characterId;
@@ -449,6 +455,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return issuerId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ID of the character who issued this change")
     public Integer getIssuerId() {
         return issuerId;
@@ -480,6 +487,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return newRoles
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "new_roles array")
     public List<NewRolesEnum> getNewRoles() {
         if (newRolesEnum == null) {
@@ -525,6 +533,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return oldRoles
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "old_roles array")
     public List<OldRolesEnum> getOldRoles() {
         if (oldRolesEnum == null) {
@@ -565,6 +574,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * 
      * @return roleType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "role_type string")
     public RoleTypeEnum getRoleType() {
         if (roleTypeEnum == null) {
@@ -586,7 +596,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -625,7 +635,7 @@ public class CorporationRolesHistoryResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

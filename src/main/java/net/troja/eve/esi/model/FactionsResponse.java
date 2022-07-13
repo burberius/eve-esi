@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -71,6 +72,9 @@ public class FactionsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_STATION_SYSTEM_COUNT)
     private Integer stationSystemCount;
 
+    public FactionsResponse() {
+    }
+
     public FactionsResponse corporationId(Integer corporationId) {
 
         this.corporationId = corporationId;
@@ -103,6 +107,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return description
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "description string")
     public String getDescription() {
         return description;
@@ -123,6 +128,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return factionId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
@@ -143,6 +149,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return isUnique
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "is_unique boolean")
     public Boolean getIsUnique() {
         return isUnique;
@@ -184,6 +191,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return name
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "name string")
     public String getName() {
         return name;
@@ -204,6 +212,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return sizeFactor
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "size_factor number")
     public Float getSizeFactor() {
         return sizeFactor;
@@ -245,6 +254,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return stationCount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "station_count integer")
     public Integer getStationCount() {
         return stationCount;
@@ -265,6 +275,7 @@ public class FactionsResponse implements Serializable {
      * 
      * @return stationSystemCount
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "station_system_count integer")
     public Integer getStationSystemCount() {
         return stationSystemCount;
@@ -275,7 +286,7 @@ public class FactionsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -323,7 +334,7 @@ public class FactionsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

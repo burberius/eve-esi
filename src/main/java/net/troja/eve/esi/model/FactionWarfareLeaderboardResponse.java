@@ -30,6 +30,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +41,9 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
     public static final String SERIALIZED_NAME_VICTORY_POINTS = "victory_points";
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
     private FactionWarfareLeaderboardVictoryPoints victoryPoints;
+
+    public FactionWarfareLeaderboardResponse() {
+    }
 
     public FactionWarfareLeaderboardResponse kills(FactionWarfareLeaderboardKills kills) {
 
@@ -52,6 +56,7 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
      * 
      * @return kills
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public FactionWarfareLeaderboardKills getKills() {
         return kills;
@@ -72,6 +77,7 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "")
     public FactionWarfareLeaderboardVictoryPoints getVictoryPoints() {
         return victoryPoints;
@@ -82,7 +88,7 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -113,7 +119,7 @@ public class FactionWarfareLeaderboardResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

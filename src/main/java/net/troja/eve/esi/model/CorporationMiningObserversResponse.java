@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationMiningObserversResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -90,6 +91,9 @@ public class CorporationMiningObserversResponse implements Serializable {
     private String observerType;
     private ObserverTypeEnum observerTypeEnum;
 
+    public CorporationMiningObserversResponse() {
+    }
+
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
 
         this.lastUpdated = lastUpdated;
@@ -101,6 +105,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return lastUpdated
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "last_updated string")
     public LocalDate getLastUpdated() {
         return lastUpdated;
@@ -121,6 +126,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The entity that was observing the asteroid field when it was mined. ")
     public Long getObserverId() {
         return observerId;
@@ -147,6 +153,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerType
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "The category of the observing entity")
     public ObserverTypeEnum getObserverType() {
         if (observerTypeEnum == null) {
@@ -168,7 +175,7 @@ public class CorporationMiningObserversResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -201,7 +208,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

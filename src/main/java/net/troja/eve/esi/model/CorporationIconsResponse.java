@@ -28,6 +28,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationIconsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -42,6 +43,9 @@ public class CorporationIconsResponse implements Serializable {
     public static final String SERIALIZED_NAME_PX64X64 = "px64x64";
     @SerializedName(SERIALIZED_NAME_PX64X64)
     private String px64x64;
+
+    public CorporationIconsResponse() {
+    }
 
     public CorporationIconsResponse px128x128(String px128x128) {
 
@@ -107,7 +111,7 @@ public class CorporationIconsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -140,7 +144,7 @@ public class CorporationIconsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

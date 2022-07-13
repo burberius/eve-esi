@@ -28,6 +28,7 @@ import java.io.Serializable;
  * last_week object
  */
 @ApiModel(description = "last_week object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardLastWeekKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +39,9 @@ public class FactionWarfareLeaderboardLastWeekKills implements Serializable {
     public static final String SERIALIZED_NAME_FACTION_ID = "faction_id";
     @SerializedName(SERIALIZED_NAME_FACTION_ID)
     private Integer factionId;
+
+    public FactionWarfareLeaderboardLastWeekKills() {
+    }
 
     public FactionWarfareLeaderboardLastWeekKills amount(Integer amount) {
 
@@ -82,7 +86,7 @@ public class FactionWarfareLeaderboardLastWeekKills implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -113,7 +117,7 @@ public class FactionWarfareLeaderboardLastWeekKills implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

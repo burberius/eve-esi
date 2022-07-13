@@ -29,6 +29,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketStructuresResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -144,6 +145,9 @@ public class MarketStructuresResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME_TOTAL)
     private Integer volumeTotal;
 
+    public MarketStructuresResponse() {
+    }
+
     public MarketStructuresResponse duration(Integer duration) {
 
         this.duration = duration;
@@ -155,6 +159,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return duration
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "duration integer")
     public Integer getDuration() {
         return duration;
@@ -175,6 +180,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return isBuyOrder
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "is_buy_order boolean")
     public Boolean getIsBuyOrder() {
         return isBuyOrder;
@@ -195,6 +201,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return issued
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "issued string")
     public OffsetDateTime getIssued() {
         return issued;
@@ -215,6 +222,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_id integer")
     public Long getLocationId() {
         return locationId;
@@ -235,6 +243,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return minVolume
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "min_volume integer")
     public Integer getMinVolume() {
         return minVolume;
@@ -255,6 +264,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return orderId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "order_id integer")
     public Long getOrderId() {
         return orderId;
@@ -275,6 +285,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return price
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "price number")
     public Double getPrice() {
         return price;
@@ -301,6 +312,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return range
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "range string")
     public RangeEnum getRange() {
         if (rangeEnum == null) {
@@ -332,6 +344,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return typeId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "type_id integer")
     public Integer getTypeId() {
         return typeId;
@@ -352,6 +365,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "volume_remain integer")
     public Integer getVolumeRemain() {
         return volumeRemain;
@@ -372,6 +386,7 @@ public class MarketStructuresResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "volume_total integer")
     public Integer getVolumeTotal() {
         return volumeTotal;
@@ -382,7 +397,7 @@ public class MarketStructuresResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -432,7 +447,7 @@ public class MarketStructuresResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

@@ -31,6 +31,7 @@ import java.io.Serializable;
  * 200 ok object
  */
 @ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationBookmarksResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -70,6 +71,9 @@ public class CorporationBookmarksResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_NOTES)
     private String notes;
 
+    public CorporationBookmarksResponse() {
+    }
+
     public CorporationBookmarksResponse bookmarkId(Integer bookmarkId) {
 
         this.bookmarkId = bookmarkId;
@@ -81,6 +85,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return bookmarkId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "bookmark_id integer")
     public Integer getBookmarkId() {
         return bookmarkId;
@@ -122,6 +127,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return created
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "created string")
     public OffsetDateTime getCreated() {
         return created;
@@ -142,6 +148,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return creatorId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "creator_id integer")
     public Integer getCreatorId() {
         return creatorId;
@@ -204,6 +211,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return label
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "label string")
     public String getLabel() {
         return label;
@@ -224,6 +232,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return locationId
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "location_id integer")
     public Integer getLocationId() {
         return locationId;
@@ -244,6 +253,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * 
      * @return notes
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "notes string")
     public String getNotes() {
         return notes;
@@ -254,7 +264,7 @@ public class CorporationBookmarksResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -299,7 +309,7 @@ public class CorporationBookmarksResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
