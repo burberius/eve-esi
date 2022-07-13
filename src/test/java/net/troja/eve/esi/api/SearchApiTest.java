@@ -63,24 +63,4 @@ public class SearchApiTest extends GeneralApiTest {
         }
     }
 
-    /**
-     * Search on a string
-     *
-     * Search for entities that match a given sub-string.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-search.search_structures.v1
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getSearchTest() throws ApiException {
-        final List<String> categories = new ArrayList<>();
-        categories.add("solar_system");
-        final String search = "Jita";
-        final Boolean strict = null;
-        final SearchResponse response = api.getSearch(categories, search, LANGUAGE, DATASOURCE, null, LANGUAGE, strict);
-
-        assertThat(response.getSolarSystem().size(), equalTo(1));
-        assertThat(response.getSolarSystem().get(0), equalTo(30000142));
-    }
-
 }
