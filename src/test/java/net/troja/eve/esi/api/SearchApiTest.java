@@ -25,7 +25,6 @@ import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterSearchResponse;
-import net.troja.eve.esi.model.SearchResponse;
 
 /**
  * API tests for SearchApi
