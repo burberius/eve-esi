@@ -11,8 +11,9 @@
 
 package net.troja.eve.esi.api;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.BloodlinesResponse;
 import net.troja.eve.esi.model.CategoryResponse;
@@ -111,7 +112,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseCategoriesTest() throws ApiException {
         final List<Integer> response = api.getUniverseCategories(DATASOURCE, null);
 
-        assertThat(response.size(), equalTo(45));
+        assertThat(response.size(), equalTo(46));
     }
 
     /**
@@ -380,7 +381,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void getUniverseStructuresTest() throws ApiException {
-        final List<Long> response = api.getUniverseStructures(DATASOURCE, null, null);
+        final Set<Long> response = api.getUniverseStructures(DATASOURCE, null, null);
 
         assertThat(response.size(), greaterThan(0));
     }
@@ -503,7 +504,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void postUniverseIdsTest() throws ApiException {
-        List<String> names = new ArrayList<>();
+        Set<String> names = new HashSet<>();
         names.add("Aarnaras Wasken"); //Agents
         names.add(ALLIANCE_NAME_TRI); //Alliances
         names.add("GoldenGnu"); //Character
@@ -538,7 +539,7 @@ public class UniverseApiTest extends GeneralApiTest {
      */
     @Test
     public void postUniverseNamesTest() throws ApiException {
-        final List<Integer> ids = new ArrayList<>();
+        final Set<Integer> ids = new HashSet<>();
         ids.add(CHARACTER_ID_CHRIBBA);
         final List<UniverseNamesResponse> response = api.postUniverseNames(ids, DATASOURCE);
 

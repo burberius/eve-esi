@@ -11,8 +11,10 @@
 
 package net.troja.eve.esi.api;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterBlueprintsResponse;
 import net.troja.eve.esi.model.CharacterCorporationHistoryResponse;
@@ -257,7 +259,7 @@ public class CharacterApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdCspaTest() throws ApiException {
-        final List<Integer> characters = new ArrayList<>();
+        final Set<Integer> characters = new HashSet<>();
         characters.add(CHARACTER_ID_CHRIBBA);
 
         Float response = api.postCharactersCharacterIdCspa(characterId, characters, DATASOURCE, null);

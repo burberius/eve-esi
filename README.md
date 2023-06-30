@@ -69,14 +69,19 @@ To run the tests that use authorization you need to have some environment variab
 this information should not be published:
 * SSO_CLIENT_ID
 * SSO_REFRESH_TOKEN
+* SSO_REFRESH_TOKEN_PUBLIC_DATA
 
-Client id can be created on the following page: https://developers.eveonline.com/
-You should use http://localhost as redirect url as that is the value used in the test and it also
-makes it easier after the redirect.
+Client id can be created on the following page: https://developers.eveonline.com/. Add all the available
+scopes in the "Available Scopes List" to the "Requested Scopes List". You should use http://localhost 
+as redirect url as that is the value used in the test and it also makes it easier after the redirect.
 
 ### Create a refresh token for the tests
 To create a refresh token, you have to start the class *net/troja/eve/esi/api/auth/SsoAuthTest.java*
-with your client id as the argument or set the environment variables `SSO_CLIENT_ID`.
+with your client id as the argument or set the environment variables `SSO_CLIENT_ID`:
+
+```
+SSO_CLIENT_ID=<client id> mvn -Dexec.mainClass="net.troja.eve.esi.api.auth.SsoAuthTest" -Dexec.classpathScope=test test-compile exec:java
+```
 
 The url will open in your browser, login with your account and authorize the access. This will redirect you
 to an url on localhost, something like:
@@ -93,6 +98,13 @@ Authorization URL: https://login.eveonline.com/oauth/authorize?scope=esi-clones.
 Code from Answer: 7z524J_PQZ1YjacS35d8JRkOVwNl-jCvn814xCrgeSm3Acc981lZWW0
 Refresh Token: 0tr5SQ-piuKvqjFdDa765DESObTzWKUj5v63KjaL4cTAx041
 ```
+
+Repeat this process, this time passing the `--public` argument - this will generate a refresh token that should be set as `SSO_REFRESH_TOKEN_PUBLIC_DATA`.
+
+```
+SSO_CLIENT_ID=<client id> mvn -Dexec.mainClass="net.troja.eve.esi.api.auth.SsoAuthTest" -Dexec.classpathScope=test test-compile exec:java -Dexec.arguments="--public"
+```
+
 ## Tipps 'n' Tricks
 
 ### Paging

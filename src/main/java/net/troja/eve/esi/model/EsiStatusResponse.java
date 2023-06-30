@@ -30,6 +30,7 @@ import java.io.Serializable;
  * Per route status
  */
 @ApiModel(description = "Per route status")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EsiStatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -105,6 +106,9 @@ public class EsiStatusResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TAGS)
     private List<String> tags = new ArrayList<>();
 
+    public EsiStatusResponse() {
+    }
+
     public EsiStatusResponse endpoint(String endpoint) {
 
         this.endpoint = endpoint;
@@ -116,6 +120,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return endpoint
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "ESI Endpoint cluster advertising this route")
     public String getEndpoint() {
         return endpoint;
@@ -136,6 +141,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return method
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Swagger defined method")
     public String getMethod() {
         return method;
@@ -156,6 +162,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return route
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Swagger defined route, not including version prefix")
     public String getRoute() {
         return route;
@@ -184,6 +191,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return status
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Vague route status. Green is good, yellow is degraded, meaning slow or potentially dropping requests. Red means most requests are not succeeding and/or are very slow (5s+) on average.")
     public StatusEnum getStatus() {
         if (statusEnum == null) {
@@ -220,6 +228,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return tags
      **/
+    @javax.annotation.Nonnull
     @ApiModelProperty(required = true, value = "Swagger tags applicable to this route")
     public List<String> getTags() {
         return tags;
@@ -230,7 +239,7 @@ public class EsiStatusResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -267,7 +276,7 @@ public class EsiStatusResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

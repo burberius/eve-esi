@@ -11,8 +11,8 @@
 
 package net.troja.eve.esi.api;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import net.troja.eve.esi.ApiException;
@@ -92,7 +92,7 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsLocationsTest() throws ApiException {
-        List<Long> itemIds = get5AssetIds();
+        Set<Long> itemIds = get5AssetIds();
 
         List<CharacterAssetsLocationsResponse> response = api.postCharactersCharacterIdAssetsLocations(characterId, itemIds, DATASOURCE, null);
 
@@ -110,7 +110,7 @@ public class AssetsApiTest extends GeneralApiTest {
      */
     @Test
     public void postCharactersCharacterIdAssetsNamesTest() throws ApiException {
-        List<Long> itemIds = get5AssetIds();
+        Set<Long> itemIds = get5AssetIds();
 
         List<CharacterAssetsNamesResponse> response = api.postCharactersCharacterIdAssetsNames(characterId, itemIds, DATASOURCE, null);
 
@@ -130,7 +130,7 @@ public class AssetsApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void postCorporationsCorporationIdAssetsLocationsTest() throws ApiException {
         Integer corporationId = null;
-        List<Long> itemIds = null;
+        Set<Long> itemIds = null;
         List<CorporationAssetsLocationsResponse> response = api.postCorporationsCorporationIdAssetsLocations(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
@@ -148,15 +148,15 @@ public class AssetsApiTest extends GeneralApiTest {
     @Ignore("Needs corporation with read access")
     public void postCorporationsCorporationIdAssetsNamesTest() throws ApiException {
         Integer corporationId = null;
-        List<Long> itemIds = null;
+        Set<Long> itemIds = null;
         List<CorporationAssetsNamesResponse> response = api.postCorporationsCorporationIdAssetsNames(corporationId, itemIds, DATASOURCE, null);
 
         // TODO: test validations
     }
 
-    private List<Long> get5AssetIds() throws ApiException {
+    private Set<Long> get5AssetIds() throws ApiException {
         final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
 
-        return response.stream().limit(5).map(p -> p.getItemId()).collect(Collectors.toList());
+        return response.stream().limit(5).map(p -> p.getItemId()).collect(Collectors.toSet());
     }
 }
