@@ -16,6 +16,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -72,7 +73,7 @@ public class MailApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdMailTest() throws ApiException {
-        final List<Integer> labels = null;
+        final Set<Integer> labels = null;
         final Integer lastMailId = null;
         final List<MailHeadersResponse> response = api.getCharactersCharacterIdMail(characterId, DATASOURCE, null, labels, lastMailId, null);
 
