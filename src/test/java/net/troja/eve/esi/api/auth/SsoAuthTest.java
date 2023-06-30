@@ -110,7 +110,7 @@ public class SsoAuthTest extends GeneralApiTest {
         assertThat(payload.getScopes().size(), equalTo(1));
         assertThat(payload.getScopes().iterator().next(), equalTo("publicData"));
         assertThat(payload.getCharacterID(), notNullValue());
-        assertThat(payload.getCharacterID(), equalTo(987623974));
+        assertThat(payload.getCharacterID(), equalTo(characterId));
     }
 
     @Test
@@ -182,22 +182,23 @@ public class SsoAuthTest extends GeneralApiTest {
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
         final String state = "somesecret";
         final ApiClient client;
-        if (args.length == 1) {
+        boolean isPublicData = false;
+
+        if (System.getenv().get(SSO_CLIENT_ID) != null) {
+            client = new ApiClientBuilder().clientID(System.getenv().get(SSO_CLIENT_ID)).build();
+            isPublicData = args.length > 0 && args[0].equals("--public");
+        } else if (args.length >= 1) {
             client = new ApiClientBuilder().clientID(args[0]).build();
+            isPublicData = args.length > 1 && args[1].equals("--public");
         } else {
-            if (System.getenv().get(SSO_CLIENT_ID) != null) {
-                client = new ApiClientBuilder().clientID(System.getenv().get(SSO_CLIENT_ID)).build();
-            } else {
-                System.err.println("ClientId missing");
-                System.exit(-1);
-                client = new ApiClientBuilder().build();
-            }
+            System.err.println("ClientId missing");
+            System.exit(-1);
+            client = new ApiClientBuilder().build();
         }
+
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        //PUBLIC_DATA
-        //final Set<String> scopes = Collections.singleton(SsoScopes.PUBLIC_DATA); // SsoScopes.ALL;
-        //ALL
-        final Set<String> scopes = SsoScopes.ALL;
+        final Set<String> scopes = isPublicData ? Collections.singleton(SsoScopes.PUBLIC_DATA) : SsoScopes.ALL;
+
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
