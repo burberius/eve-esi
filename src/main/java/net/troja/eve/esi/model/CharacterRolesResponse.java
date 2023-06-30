@@ -126,6 +126,8 @@ public class CharacterRolesResponse implements Serializable {
 
         SECURITY_OFFICER("Security_Officer"),
 
+        SKILL_PLAN_MANAGER("Skill_Plan_Manager"),
+
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
@@ -269,6 +271,8 @@ public class CharacterRolesResponse implements Serializable {
         RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
 
         SECURITY_OFFICER("Security_Officer"),
+
+        SKILL_PLAN_MANAGER("Skill_Plan_Manager"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
@@ -414,6 +418,8 @@ public class CharacterRolesResponse implements Serializable {
 
         SECURITY_OFFICER("Security_Officer"),
 
+        SKILL_PLAN_MANAGER("Skill_Plan_Manager"),
+
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
         STARBASE_FUEL_TECHNICIAN("Starbase_Fuel_Technician"),
@@ -557,6 +563,8 @@ public class CharacterRolesResponse implements Serializable {
         RENT_RESEARCH_FACILITY("Rent_Research_Facility"),
 
         SECURITY_OFFICER("Security_Officer"),
+
+        SKILL_PLAN_MANAGER("Skill_Plan_Manager"),
 
         STARBASE_DEFENSE_OPERATOR("Starbase_Defense_Operator"),
 
