@@ -1,5 +1,5 @@
 [![Maven Central](https://img.shields.io/maven-central/v/net.troja.eve/eve-esi.svg?maxAge=86400)](http://mvnrepository.com/artifact/net.troja.eve/eve-esi)
-[![Build Status](http://jenkins.troja.net/job/GitHub%20eve-esi/badge/icon)](https://jenkins.troja.net/job/GitHub%20eve-esi/)
+[![Build Status](https://jenkins.vyor.de/buildStatus/icon?job=eve-esi)](https://jenkins.vyor.de/job/eve-esi/)
 
 # EVE-ESI
 A Java client library for the EVE Swagger Interface (ESI)
