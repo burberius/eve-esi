@@ -101,7 +101,7 @@ public class CharacterApiTest extends GeneralApiTest {
      * @throws ApiException
      *             if the Api call fails
      */
-    @Test
+    @Test @Ignore("Offline")
     public void getCharactersCharacterIdCorporationhistoryTest() throws ApiException {
         final List<CharacterCorporationHistoryResponse> response = api.getCharactersCharacterIdCorporationhistory(characterId, DATASOURCE, null);
 

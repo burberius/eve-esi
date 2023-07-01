@@ -221,7 +221,10 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#vendorE
     if ({{name}}Enum == null) {
       {{name}}Enum = new ArrayList<>();
       for (String value : {{name}}) {
-        {{name}}Enum.add({{{items.datatypeWithEnum}}}.fromValue(value));
+        {{{items.datatypeWithEnum}}} enumValue = {{{items.datatypeWithEnum}}}.fromValue(value);
+        if (enumValue != null) {
+            {{name}}Enum.add(enumValue);
+        }
       }
     }
     {{/isContainer}}

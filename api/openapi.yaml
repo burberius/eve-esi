@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: "1.12"
+  version: "1.17"
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -1774,7 +1774,7 @@ paths:
                   format: int32
                   title: CharacterImplantsResponse
                   type: integer
-                maxItems: 11
+                maxItems: 64
                 title: get_characters_character_id_implants_ok
                 type: array
           description: A list of implant type ids
@@ -17491,7 +17491,7 @@ paths:
                 description: 200 ok array
                 items:
                   $ref: '#/components/schemas/CharacterFittingsResponse'
-                maxItems: 250
+                maxItems: 512
                 title: get_characters_character_id_fittings_ok
                 type: array
           description: A list of fittings
@@ -17633,7 +17633,7 @@ paths:
                   description: items array
                   items:
                     $ref: '#/components/schemas/fitting_item'
-                  maxItems: 255
+                  maxItems: 512
                   minItems: 1
                   title: post_characters_character_id_fittings_items
                   type: array
@@ -24887,7 +24887,7 @@ paths:
 
         ---
 
-        This route is cached for up to 86400 seconds
+        This route is cached for up to 604800 seconds
       operationId: get_characters_character_id
       parameters:
       - description: An EVE character ID
@@ -24994,7 +24994,7 @@ paths:
       - dev
       - legacy
       - v5
-      x-cached-seconds: 86400
+      x-cached-seconds: 604800
       x-accepts: application/json
   /v5/characters/{character_id}/assets/:
     get:
@@ -33582,7 +33582,7 @@ components:
           description: items array
           items:
             $ref: '#/components/schemas/fitting_item'
-          maxItems: 255
+          maxItems: 512
           title: get_characters_character_id_fittings_items
           type: array
         name:
@@ -33633,7 +33633,7 @@ components:
           description: items array
           items:
             $ref: '#/components/schemas/fitting_item'
-          maxItems: 255
+          maxItems: 512
           minItems: 1
           title: post_characters_character_id_fittings_items
           type: array
@@ -34759,6 +34759,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -34817,6 +34818,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -34875,6 +34877,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -34933,6 +34936,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -34991,6 +34995,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35049,6 +35054,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35107,6 +35113,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35165,6 +35172,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35260,6 +35268,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35318,6 +35327,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35701,6 +35711,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35759,6 +35770,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35817,6 +35829,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35875,6 +35888,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35937,6 +35951,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -35995,6 +36010,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -36053,6 +36069,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -36111,6 +36128,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -36965,7 +36983,7 @@ components:
             format: int32
             title: get_characters_character_id_clones_implant
             type: integer
-          maxItems: 11
+          maxItems: 64
           title: get_characters_character_id_clones_implants
           type: array
         jump_clone_id:
@@ -37060,7 +37078,7 @@ components:
           description: jump_clones array
           items:
             $ref: '#/components/schemas/Clone'
-          maxItems: 10
+          maxItems: 64
           title: Clones
           type: array
         last_clone_jump_date:
@@ -37850,6 +37868,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -37908,6 +37927,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -37966,6 +37986,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -38024,6 +38045,7 @@ components:
             - Rent_Office
             - Rent_Research_Facility
             - Security_Officer
+            - Skill_Plan_Manager
             - Starbase_Defense_Operator
             - Starbase_Fuel_Technician
             - Station_Manager
@@ -39760,6 +39782,7 @@ components:
           - AutoFit
           - BoosterBay
           - Cargo
+          - CorporationGoalDeliveries
           - CorpseBay
           - Deliveries
           - DroneBay
@@ -39800,6 +39823,7 @@ components:
           - MedSlot5
           - MedSlot6
           - MedSlot7
+          - MobileDepotHold
           - QuafeBay
           - RigSlot0
           - RigSlot1
@@ -39993,6 +40017,9 @@ components:
           - CorpWarInvalidatedMsg
           - CorpWarRetractedMsg
           - CorpWarSurrenderMsg
+          - CorporationGoalClosed
+          - CorporationGoalCompleted
+          - CorporationGoalCreated
           - CustomsMsg
           - DeclareWar
           - DistrictAttacked
@@ -40113,6 +40140,7 @@ components:
           - StructureLostArmor
           - StructureLostShields
           - StructureOnline
+          - StructurePaintPurchased
           - StructureServicesOffline
           - StructureUnanchoring
           - StructureUnderAttack
@@ -40281,6 +40309,7 @@ components:
           - CorpSAG5
           - CorpSAG6
           - CorpSAG7
+          - CorporationGoalDeliveries
           - CrateLoot
           - Deliveries
           - DroneBay
@@ -40326,6 +40355,7 @@ components:
           - MedSlot5
           - MedSlot6
           - MedSlot7
+          - MobileDepotHold
           - OfficeFolder
           - Pilot
           - PlanetSurface
