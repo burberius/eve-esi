@@ -19,18 +19,41 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.Skill;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterSkillsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -46,6 +69,9 @@ public class CharacterSkillsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_UNALLOCATED_SP)
     private Integer unallocatedSp;
 
+    public CharacterSkillsResponse() {
+    }
+
     public CharacterSkillsResponse skills(List<Skill> skills) {
 
         this.skills = skills;
@@ -53,6 +79,9 @@ public class CharacterSkillsResponse implements Serializable {
     }
 
     public CharacterSkillsResponse addSkillsItem(Skill skillsItem) {
+        if (this.skills == null) {
+            this.skills = new ArrayList<>();
+        }
         this.skills.add(skillsItem);
         return this;
     }
@@ -62,7 +91,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return skills
      **/
-    @ApiModelProperty(required = true, value = "skills array")
+    @javax.annotation.Nonnull
     public List<Skill> getSkills() {
         return skills;
     }
@@ -82,7 +111,7 @@ public class CharacterSkillsResponse implements Serializable {
      * 
      * @return totalSp
      **/
-    @ApiModelProperty(required = true, value = "total_sp integer")
+    @javax.annotation.Nonnull
     public Long getTotalSp() {
         return totalSp;
     }
@@ -103,7 +132,6 @@ public class CharacterSkillsResponse implements Serializable {
      * @return unallocatedSp
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Skill points available to be assigned")
     public Integer getUnallocatedSp() {
         return unallocatedSp;
     }
@@ -113,7 +141,7 @@ public class CharacterSkillsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,11 +174,138 @@ public class CharacterSkillsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("skills");
+        openapiFields.add("total_sp");
+        openapiFields.add("unallocated_sp");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("skills");
+        openapiRequiredFields.add("total_sp");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterSkillsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterSkillsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                            // required
+                                                                            // fields
+                                                                            // but
+                                                                            // JSON
+                                                                            // object
+                                                                            // is
+                                                                            // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CharacterSkillsResponse is not found in the empty JSON string",
+                        CharacterSkillsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterSkillsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterSkillsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterSkillsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("skills").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `skills` to be an array in the JSON string but got `%s`", jsonObj.get("skills")
+                            .toString()));
+        }
+
+        JsonArray jsonArrayskills = jsonObj.getAsJsonArray("skills");
+        // validate the required field `skills` (array)
+        for (int i = 0; i < jsonArrayskills.size(); i++) {
+            Skill.validateJsonObject(jsonArrayskills.get(i).getAsJsonObject());
+        };
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterSkillsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterSkillsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterSkillsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterSkillsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterSkillsResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterSkillsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterSkillsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterSkillsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterSkillsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterSkillsResponse
+     */
+    public static CharacterSkillsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterSkillsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterSkillsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

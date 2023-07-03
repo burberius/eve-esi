@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +27,36 @@ import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationLastWeekKills
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCorporationYesterdayKills;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * Top 10 rankings of corporations by number of kills from yesterday, last week
  * and in total
  */
-@ApiModel(description = "Top 10 rankings of corporations by number of kills from yesterday, last week and in total")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardCorporationsKills implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -49,6 +72,9 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private List<FactionWarfareLeaderboardCorporationYesterdayKills> yesterday = new ArrayList<>();
 
+    public FactionWarfareLeaderboardCorporationsKills() {
+    }
+
     public FactionWarfareLeaderboardCorporationsKills activeTotal(
             List<FactionWarfareLeaderboardCorporationActiveTotalKills> activeTotal) {
 
@@ -58,6 +84,9 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
 
     public FactionWarfareLeaderboardCorporationsKills addActiveTotalItem(
             FactionWarfareLeaderboardCorporationActiveTotalKills activeTotalItem) {
+        if (this.activeTotal == null) {
+            this.activeTotal = new ArrayList<>();
+        }
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -69,7 +98,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations active in faction warfare by total kills. A corporation is considered \"active\" if they have participated in faction warfare in the past 14 days")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCorporationActiveTotalKills> getActiveTotal() {
         return activeTotal;
     }
@@ -87,6 +116,9 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
 
     public FactionWarfareLeaderboardCorporationsKills addLastWeekItem(
             FactionWarfareLeaderboardCorporationLastWeekKills lastWeekItem) {
+        if (this.lastWeek == null) {
+            this.lastWeek = new ArrayList<>();
+        }
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -96,7 +128,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past week")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCorporationLastWeekKills> getLastWeek() {
         return lastWeek;
     }
@@ -114,6 +146,9 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
 
     public FactionWarfareLeaderboardCorporationsKills addYesterdayItem(
             FactionWarfareLeaderboardCorporationYesterdayKills yesterdayItem) {
+        if (this.yesterday == null) {
+            this.yesterday = new ArrayList<>();
+        }
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -123,7 +158,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(required = true, value = "Top 10 ranking of corporations by kills in the past day")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCorporationYesterdayKills> getYesterday() {
         return yesterday;
     }
@@ -133,7 +168,7 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,11 +201,170 @@ public class FactionWarfareLeaderboardCorporationsKills implements Serializable 
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("active_total");
+        openapiFields.add("last_week");
+        openapiFields.add("yesterday");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("active_total");
+        openapiRequiredFields.add("last_week");
+        openapiRequiredFields.add("yesterday");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             FactionWarfareLeaderboardCorporationsKills
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FactionWarfareLeaderboardCorporationsKills.openapiRequiredFields.isEmpty()) { // has
+                                                                                               // required
+                                                                                               // fields
+                                                                                               // but
+                                                                                               // JSON
+                                                                                               // object
+                                                                                               // is
+                                                                                               // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in FactionWarfareLeaderboardCorporationsKills is not found in the empty JSON string",
+                                FactionWarfareLeaderboardCorporationsKills.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FactionWarfareLeaderboardCorporationsKills.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `FactionWarfareLeaderboardCorporationsKills` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FactionWarfareLeaderboardCorporationsKills.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("active_total").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `active_total` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("active_total").toString()));
+        }
+
+        JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
+        // validate the required field `active_total` (array)
+        for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
+            FactionWarfareLeaderboardCorporationActiveTotalKills.validateJsonObject(jsonArrayactiveTotal.get(i)
+                    .getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("last_week").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `last_week` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("last_week").toString()));
+        }
+
+        JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
+        // validate the required field `last_week` (array)
+        for (int i = 0; i < jsonArraylastWeek.size(); i++) {
+            FactionWarfareLeaderboardCorporationLastWeekKills.validateJsonObject(jsonArraylastWeek.get(i)
+                    .getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("yesterday").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `yesterday` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("yesterday").toString()));
+        }
+
+        JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
+        // validate the required field `yesterday` (array)
+        for (int i = 0; i < jsonArrayyesterday.size(); i++) {
+            FactionWarfareLeaderboardCorporationYesterdayKills.validateJsonObject(jsonArrayyesterday.get(i)
+                    .getAsJsonObject());
+        };
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FactionWarfareLeaderboardCorporationsKills.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'FactionWarfareLeaderboardCorporationsKills' and
+                             // its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FactionWarfareLeaderboardCorporationsKills> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FactionWarfareLeaderboardCorporationsKills.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FactionWarfareLeaderboardCorporationsKills>() {
+                @Override
+                public void write(JsonWriter out, FactionWarfareLeaderboardCorporationsKills value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FactionWarfareLeaderboardCorporationsKills read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FactionWarfareLeaderboardCorporationsKills given an
+     * JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FactionWarfareLeaderboardCorporationsKills
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             FactionWarfareLeaderboardCorporationsKills
+     */
+    public static FactionWarfareLeaderboardCorporationsKills fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FactionWarfareLeaderboardCorporationsKills.class);
+    }
+
+    /**
+     * Convert an instance of FactionWarfareLeaderboardCorporationsKills to an
+     * JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

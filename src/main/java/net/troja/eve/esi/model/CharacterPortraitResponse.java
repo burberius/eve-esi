@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterPortraitResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +70,9 @@ public class CharacterPortraitResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_PX64X64)
     private String px64x64;
 
+    public CharacterPortraitResponse() {
+    }
+
     public CharacterPortraitResponse px128x128(String px128x128) {
 
         this.px128x128 = px128x128;
@@ -59,7 +85,6 @@ public class CharacterPortraitResponse implements Serializable {
      * @return px128x128
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "px128x128 string")
     public String getPx128x128() {
         return px128x128;
     }
@@ -80,7 +105,6 @@ public class CharacterPortraitResponse implements Serializable {
      * @return px256x256
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "px256x256 string")
     public String getPx256x256() {
         return px256x256;
     }
@@ -101,7 +125,6 @@ public class CharacterPortraitResponse implements Serializable {
      * @return px512x512
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "px512x512 string")
     public String getPx512x512() {
         return px512x512;
     }
@@ -122,7 +145,6 @@ public class CharacterPortraitResponse implements Serializable {
      * @return px64x64
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "px64x64 string")
     public String getPx64x64() {
         return px64x64;
     }
@@ -132,7 +154,7 @@ public class CharacterPortraitResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -167,11 +189,139 @@ public class CharacterPortraitResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("px128x128");
+        openapiFields.add("px256x256");
+        openapiFields.add("px512x512");
+        openapiFields.add("px64x64");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterPortraitResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterPortraitResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                              // required
+                                                                              // fields
+                                                                              // but
+                                                                              // JSON
+                                                                              // object
+                                                                              // is
+                                                                              // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CharacterPortraitResponse is not found in the empty JSON string",
+                        CharacterPortraitResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterPortraitResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterPortraitResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("px128x128") != null && !jsonObj.get("px128x128").isJsonNull())
+                && !jsonObj.get("px128x128").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `px128x128` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("px128x128").toString()));
+        }
+        if ((jsonObj.get("px256x256") != null && !jsonObj.get("px256x256").isJsonNull())
+                && !jsonObj.get("px256x256").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `px256x256` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("px256x256").toString()));
+        }
+        if ((jsonObj.get("px512x512") != null && !jsonObj.get("px512x512").isJsonNull())
+                && !jsonObj.get("px512x512").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `px512x512` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("px512x512").toString()));
+        }
+        if ((jsonObj.get("px64x64") != null && !jsonObj.get("px64x64").isJsonNull())
+                && !jsonObj.get("px64x64").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `px64x64` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("px64x64").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterPortraitResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterPortraitResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterPortraitResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterPortraitResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterPortraitResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterPortraitResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterPortraitResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterPortraitResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterPortraitResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterPortraitResponse
+     */
+    public static CharacterPortraitResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterPortraitResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterPortraitResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -19,18 +19,41 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.DogmaEffectModifier;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DogmaEffectResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -88,7 +111,7 @@ public class DogmaEffectResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_MODIFIERS = "modifiers";
     @SerializedName(SERIALIZED_NAME_MODIFIERS)
-    private List<DogmaEffectModifier> modifiers = null;
+    private List<DogmaEffectModifier> modifiers;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -118,6 +141,9 @@ public class DogmaEffectResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TRACKING_SPEED_ATTRIBUTE_ID)
     private Integer trackingSpeedAttributeId;
 
+    public DogmaEffectResponse() {
+    }
+
     public DogmaEffectResponse description(String description) {
 
         this.description = description;
@@ -130,7 +156,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return description
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -151,7 +176,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return disallowAutoRepeat
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "disallow_auto_repeat boolean")
     public Boolean getDisallowAutoRepeat() {
         return disallowAutoRepeat;
     }
@@ -172,7 +196,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return dischargeAttributeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "discharge_attribute_id integer")
     public Integer getDischargeAttributeId() {
         return dischargeAttributeId;
     }
@@ -193,7 +216,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return displayName
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "display_name string")
     public String getDisplayName() {
         return displayName;
     }
@@ -214,7 +236,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return durationAttributeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "duration_attribute_id integer")
     public Integer getDurationAttributeId() {
         return durationAttributeId;
     }
@@ -235,7 +256,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return effectCategory
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "effect_category integer")
     public Integer getEffectCategory() {
         return effectCategory;
     }
@@ -255,7 +275,7 @@ public class DogmaEffectResponse implements Serializable {
      * 
      * @return effectId
      **/
-    @ApiModelProperty(required = true, value = "effect_id integer")
+    @javax.annotation.Nonnull
     public Integer getEffectId() {
         return effectId;
     }
@@ -276,7 +296,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return electronicChance
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "electronic_chance boolean")
     public Boolean getElectronicChance() {
         return electronicChance;
     }
@@ -297,7 +316,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return falloffAttributeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "falloff_attribute_id integer")
     public Integer getFalloffAttributeId() {
         return falloffAttributeId;
     }
@@ -318,7 +336,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return iconId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -339,7 +356,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return isAssistance
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "is_assistance boolean")
     public Boolean getIsAssistance() {
         return isAssistance;
     }
@@ -360,7 +376,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return isOffensive
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "is_offensive boolean")
     public Boolean getIsOffensive() {
         return isOffensive;
     }
@@ -381,7 +396,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return isWarpSafe
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "is_warp_safe boolean")
     public Boolean getIsWarpSafe() {
         return isWarpSafe;
     }
@@ -410,7 +424,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return modifiers
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "modifiers array")
     public List<DogmaEffectModifier> getModifiers() {
         return modifiers;
     }
@@ -431,7 +444,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return name
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -452,7 +464,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return postExpression
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "post_expression integer")
     public Integer getPostExpression() {
         return postExpression;
     }
@@ -473,7 +484,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return preExpression
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "pre_expression integer")
     public Integer getPreExpression() {
         return preExpression;
     }
@@ -494,7 +504,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return published
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "published boolean")
     public Boolean getPublished() {
         return published;
     }
@@ -515,7 +524,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return rangeAttributeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "range_attribute_id integer")
     public Integer getRangeAttributeId() {
         return rangeAttributeId;
     }
@@ -536,7 +544,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return rangeChance
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "range_chance boolean")
     public Boolean getRangeChance() {
         return rangeChance;
     }
@@ -557,7 +564,6 @@ public class DogmaEffectResponse implements Serializable {
      * @return trackingSpeedAttributeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "tracking_speed_attribute_id integer")
     public Integer getTrackingSpeedAttributeId() {
         return trackingSpeedAttributeId;
     }
@@ -567,7 +573,7 @@ public class DogmaEffectResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -639,11 +645,177 @@ public class DogmaEffectResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("description");
+        openapiFields.add("disallow_auto_repeat");
+        openapiFields.add("discharge_attribute_id");
+        openapiFields.add("display_name");
+        openapiFields.add("duration_attribute_id");
+        openapiFields.add("effect_category");
+        openapiFields.add("effect_id");
+        openapiFields.add("electronic_chance");
+        openapiFields.add("falloff_attribute_id");
+        openapiFields.add("icon_id");
+        openapiFields.add("is_assistance");
+        openapiFields.add("is_offensive");
+        openapiFields.add("is_warp_safe");
+        openapiFields.add("modifiers");
+        openapiFields.add("name");
+        openapiFields.add("post_expression");
+        openapiFields.add("pre_expression");
+        openapiFields.add("published");
+        openapiFields.add("range_attribute_id");
+        openapiFields.add("range_chance");
+        openapiFields.add("tracking_speed_attribute_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("effect_id");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             DogmaEffectResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!DogmaEffectResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // object
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DogmaEffectResponse is not found in the empty JSON string",
+                        DogmaEffectResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!DogmaEffectResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `DogmaEffectResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : DogmaEffectResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if ((jsonObj.get("display_name") != null && !jsonObj.get("display_name").isJsonNull())
+                && !jsonObj.get("display_name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `display_name` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("display_name").toString()));
+        }
+        if (jsonObj.get("modifiers") != null && !jsonObj.get("modifiers").isJsonNull()) {
+            JsonArray jsonArraymodifiers = jsonObj.getAsJsonArray("modifiers");
+            if (jsonArraymodifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("modifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `modifiers` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("modifiers").toString()));
+                }
+
+                // validate the optional field `modifiers` (array)
+                for (int i = 0; i < jsonArraymodifiers.size(); i++) {
+                    DogmaEffectModifier.validateJsonObject(jsonArraymodifiers.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DogmaEffectResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DogmaEffectResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DogmaEffectResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(DogmaEffectResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<DogmaEffectResponse>() {
+                @Override
+                public void write(JsonWriter out, DogmaEffectResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public DogmaEffectResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DogmaEffectResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of DogmaEffectResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             DogmaEffectResponse
+     */
+    public static DogmaEffectResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DogmaEffectResponse.class);
+    }
+
+    /**
+     * Convert an instance of DogmaEffectResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

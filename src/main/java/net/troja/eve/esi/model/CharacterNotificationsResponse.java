@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterNotificationsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -602,6 +625,9 @@ public class CharacterNotificationsResponse implements Serializable {
     private String type;
     private TypeEnum typeEnum;
 
+    public CharacterNotificationsResponse() {
+    }
+
     public CharacterNotificationsResponse isRead(Boolean isRead) {
 
         this.isRead = isRead;
@@ -614,7 +640,6 @@ public class CharacterNotificationsResponse implements Serializable {
      * @return isRead
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "is_read boolean")
     public Boolean getIsRead() {
         return isRead;
     }
@@ -634,7 +659,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return notificationId
      **/
-    @ApiModelProperty(required = true, value = "notification_id integer")
+    @javax.annotation.Nonnull
     public Long getNotificationId() {
         return notificationId;
     }
@@ -654,7 +679,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderId
      **/
-    @ApiModelProperty(required = true, value = "sender_id integer")
+    @javax.annotation.Nonnull
     public Integer getSenderId() {
         return senderId;
     }
@@ -663,15 +688,15 @@ public class CharacterNotificationsResponse implements Serializable {
         this.senderId = senderId;
     }
 
-    public CharacterNotificationsResponse senderType(SenderTypeEnum senderTypeEnum) {
-
-        this.senderTypeEnum = senderTypeEnum;
-        return this;
-    }
-
     public CharacterNotificationsResponse senderTypeString(String senderType) {
 
         this.senderType = senderType;
+        return this;
+    }
+
+    public CharacterNotificationsResponse senderType(SenderTypeEnum senderTypeEnum) {
+
+        this.senderTypeEnum = senderTypeEnum;
         return this;
     }
 
@@ -680,7 +705,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return senderType
      **/
-    @ApiModelProperty(required = true, value = "sender_type string")
+    @javax.annotation.Nonnull
     public SenderTypeEnum getSenderType() {
         if (senderTypeEnum == null) {
             senderTypeEnum = SenderTypeEnum.fromValue(senderType);
@@ -712,7 +737,6 @@ public class CharacterNotificationsResponse implements Serializable {
      * @return text
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "text string")
     public String getText() {
         return text;
     }
@@ -732,7 +756,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return timestamp
      **/
-    @ApiModelProperty(required = true, value = "timestamp string")
+    @javax.annotation.Nonnull
     public OffsetDateTime getTimestamp() {
         return timestamp;
     }
@@ -741,15 +765,15 @@ public class CharacterNotificationsResponse implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public CharacterNotificationsResponse type(TypeEnum typeEnum) {
-
-        this.typeEnum = typeEnum;
-        return this;
-    }
-
     public CharacterNotificationsResponse typeString(String type) {
 
         this.type = type;
+        return this;
+    }
+
+    public CharacterNotificationsResponse type(TypeEnum typeEnum) {
+
+        this.typeEnum = typeEnum;
         return this;
     }
 
@@ -758,7 +782,7 @@ public class CharacterNotificationsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(required = true, value = "type string")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         if (typeEnum == null) {
             typeEnum = TypeEnum.fromValue(type);
@@ -779,7 +803,7 @@ public class CharacterNotificationsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -820,11 +844,151 @@ public class CharacterNotificationsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("is_read");
+        openapiFields.add("notification_id");
+        openapiFields.add("sender_id");
+        openapiFields.add("sender_type");
+        openapiFields.add("text");
+        openapiFields.add("timestamp");
+        openapiFields.add("type");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("notification_id");
+        openapiRequiredFields.add("sender_id");
+        openapiRequiredFields.add("sender_type");
+        openapiRequiredFields.add("timestamp");
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterNotificationsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterNotificationsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                   // required
+                                                                                   // fields
+                                                                                   // but
+                                                                                   // JSON
+                                                                                   // object
+                                                                                   // is
+                                                                                   // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CharacterNotificationsResponse is not found in the empty JSON string",
+                                CharacterNotificationsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterNotificationsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterNotificationsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterNotificationsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("sender_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sender_type` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("sender_type").toString()));
+        }
+        if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull())
+                && !jsonObj.get("text").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `text` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("text").toString()));
+        }
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterNotificationsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterNotificationsResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterNotificationsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterNotificationsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterNotificationsResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterNotificationsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterNotificationsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterNotificationsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterNotificationsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterNotificationsResponse
+     */
+    public static CharacterNotificationsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterNotificationsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterNotificationsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

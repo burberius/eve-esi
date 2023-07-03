@@ -12,11 +12,14 @@
 
 package net.troja.eve.esi.auth;
 
+import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.Pair;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApiKeyAuth implements Authentication {
     private final String location;
     private final String paramName;
@@ -54,7 +57,8 @@ public class ApiKeyAuth implements Authentication {
     }
 
     @Override
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams,
+            Map<String, String> cookieParams, String payload, String method, URI uri) throws ApiException {
         if (apiKey == null) {
             return;
         }

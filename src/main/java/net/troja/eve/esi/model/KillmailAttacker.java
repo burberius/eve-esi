@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * attacker object
  */
-@ApiModel(description = "attacker object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KillmailAttacker implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -67,6 +90,9 @@ public class KillmailAttacker implements Serializable {
     @SerializedName(SERIALIZED_NAME_WEAPON_TYPE_ID)
     private Integer weaponTypeId;
 
+    public KillmailAttacker() {
+    }
+
     public KillmailAttacker allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -79,7 +105,6 @@ public class KillmailAttacker implements Serializable {
      * @return allianceId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "alliance_id integer")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -100,7 +125,6 @@ public class KillmailAttacker implements Serializable {
      * @return characterId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "character_id integer")
     public Integer getCharacterId() {
         return characterId;
     }
@@ -121,7 +145,6 @@ public class KillmailAttacker implements Serializable {
      * @return corporationId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "corporation_id integer")
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -141,7 +164,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return damageDone
      **/
-    @ApiModelProperty(required = true, value = "damage_done integer")
+    @javax.annotation.Nonnull
     public Integer getDamageDone() {
         return damageDone;
     }
@@ -162,7 +185,6 @@ public class KillmailAttacker implements Serializable {
      * @return factionId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -182,7 +204,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return finalBlow
      **/
-    @ApiModelProperty(required = true, value = "Was the attacker the one to achieve the final blow ")
+    @javax.annotation.Nonnull
     public Boolean getFinalBlow() {
         return finalBlow;
     }
@@ -202,7 +224,7 @@ public class KillmailAttacker implements Serializable {
      * 
      * @return securityStatus
      **/
-    @ApiModelProperty(required = true, value = "Security status for the attacker ")
+    @javax.annotation.Nonnull
     public Float getSecurityStatus() {
         return securityStatus;
     }
@@ -223,7 +245,6 @@ public class KillmailAttacker implements Serializable {
      * @return shipTypeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "What ship was the attacker flying ")
     public Integer getShipTypeId() {
         return shipTypeId;
     }
@@ -244,7 +265,6 @@ public class KillmailAttacker implements Serializable {
      * @return weaponTypeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "What weapon was used by the attacker for the kill ")
     public Integer getWeaponTypeId() {
         return weaponTypeId;
     }
@@ -254,7 +274,7 @@ public class KillmailAttacker implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -300,11 +320,131 @@ public class KillmailAttacker implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("alliance_id");
+        openapiFields.add("character_id");
+        openapiFields.add("corporation_id");
+        openapiFields.add("damage_done");
+        openapiFields.add("faction_id");
+        openapiFields.add("final_blow");
+        openapiFields.add("security_status");
+        openapiFields.add("ship_type_id");
+        openapiFields.add("weapon_type_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("damage_done");
+        openapiRequiredFields.add("final_blow");
+        openapiRequiredFields.add("security_status");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             KillmailAttacker
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!KillmailAttacker.openapiRequiredFields.isEmpty()) { // has
+                                                                     // required
+                                                                     // fields
+                                                                     // but JSON
+                                                                     // object
+                                                                     // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in KillmailAttacker is not found in the empty JSON string",
+                        KillmailAttacker.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!KillmailAttacker.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `KillmailAttacker` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : KillmailAttacker.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!KillmailAttacker.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'KillmailAttacker'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<KillmailAttacker> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(KillmailAttacker.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<KillmailAttacker>() {
+                @Override
+                public void write(JsonWriter out, KillmailAttacker value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public KillmailAttacker read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of KillmailAttacker given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of KillmailAttacker
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             KillmailAttacker
+     */
+    public static KillmailAttacker fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, KillmailAttacker.class);
+    }
+
+    /**
+     * Convert an instance of KillmailAttacker to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

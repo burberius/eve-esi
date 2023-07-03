@@ -33,20 +33,26 @@ public class SsoApiTest extends GeneralApiTest {
     }
 
     private void compareMethods(Class<?> c1, Class<?> c2) {
-        Set<String> methods1 = new HashSet<>();
-        for (Method method : c1.getMethods()) {
-            methods1.add(method.getName());
-        }
-        Set<String> methods2 = new HashSet<>();
-        for (Method method : c2.getMethods()) {
-            methods2.add(method.getName());
-        }
+        Set<String> methods1 = add(c1.getMethods());
+        Set<String> methods2 = add(c2.getMethods());
         for (String methodName : methods1) {
-            assertThat(methodName + "not found", methods2.contains(methodName), equalTo(true));
+            assertThat(methodName + " not found", methods2.contains(methodName), equalTo(true));
         }
         for (String methodName : methods2) {
-            assertThat(methodName + "not found", methods1.contains(methodName), equalTo(true));
+            assertThat(methodName + " not found", methods1.contains(methodName), equalTo(true));
         }
+    }
+
+    private Set<String> add(Method[] methods) {
+        Set<String> set = new HashSet<>();
+        for (Method method : methods) {
+            String name = method.getName();
+            if ("validateJsonObject".equals(name) || "toJson".equals(name) || "fromJson".equals(name)) {
+                continue;
+            }
+            set.add(name);
+        }
+        return set;
     }
 
     @Test

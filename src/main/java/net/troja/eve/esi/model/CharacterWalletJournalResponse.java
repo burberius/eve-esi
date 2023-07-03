@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterWalletJournalResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -463,6 +486,9 @@ public class CharacterWalletJournalResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TAX_RECEIVER_ID)
     private Integer taxReceiverId;
 
+    public CharacterWalletJournalResponse() {
+    }
+
     public CharacterWalletJournalResponse amount(Double amount) {
 
         this.amount = amount;
@@ -477,7 +503,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return amount
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn")
     public Double getAmount() {
         return amount;
     }
@@ -498,7 +523,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return balance
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Wallet balance after transaction occurred")
     public Double getBalance() {
         return balance;
     }
@@ -521,7 +545,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return contextId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id")
     public Long getContextId() {
         return contextId;
     }
@@ -530,15 +553,15 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.contextId = contextId;
     }
 
-    public CharacterWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdTypeEnum) {
-
-        this.contextIdTypeEnum = contextIdTypeEnum;
-        return this;
-    }
-
     public CharacterWalletJournalResponse contextIdTypeString(String contextIdType) {
 
         this.contextIdType = contextIdType;
+        return this;
+    }
+
+    public CharacterWalletJournalResponse contextIdType(ContextIdTypeEnum contextIdTypeEnum) {
+
+        this.contextIdTypeEnum = contextIdTypeEnum;
         return this;
     }
 
@@ -548,7 +571,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return contextIdType
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The type of the given context_id if present")
     public ContextIdTypeEnum getContextIdType() {
         if (contextIdTypeEnum == null) {
             contextIdTypeEnum = ContextIdTypeEnum.fromValue(contextIdType);
@@ -579,7 +601,7 @@ public class CharacterWalletJournalResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(required = true, value = "Date and time of transaction")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
@@ -599,7 +621,7 @@ public class CharacterWalletJournalResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(required = true, value = "The reason for the transaction, mirrors what is seen in the client")
+    @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
@@ -624,7 +646,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return firstPartyId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
     public Integer getFirstPartyId() {
         return firstPartyId;
     }
@@ -644,7 +665,7 @@ public class CharacterWalletJournalResponse implements Serializable {
      * 
      * @return id
      **/
-    @ApiModelProperty(required = true, value = "Unique journal reference ID")
+    @javax.annotation.Nonnull
     public Long getId() {
         return id;
     }
@@ -666,7 +687,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return reason
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The user stated reason for the transaction. Only applies to some ref_types")
     public String getReason() {
         return reason;
     }
@@ -675,15 +695,15 @@ public class CharacterWalletJournalResponse implements Serializable {
         this.reason = reason;
     }
 
-    public CharacterWalletJournalResponse refType(RefTypeEnum refTypeEnum) {
-
-        this.refTypeEnum = refTypeEnum;
-        return this;
-    }
-
     public CharacterWalletJournalResponse refTypeString(String refType) {
 
         this.refType = refType;
+        return this;
+    }
+
+    public CharacterWalletJournalResponse refType(RefTypeEnum refTypeEnum) {
+
+        this.refTypeEnum = refTypeEnum;
         return this;
     }
 
@@ -693,7 +713,7 @@ public class CharacterWalletJournalResponse implements Serializable {
      * 
      * @return refType
      **/
-    @ApiModelProperty(required = true, value = "\"The transaction type for the given. transaction. Different transaction types will populate different attributes.\"")
+    @javax.annotation.Nonnull
     public RefTypeEnum getRefType() {
         if (refTypeEnum == null) {
             refTypeEnum = RefTypeEnum.fromValue(refType);
@@ -729,7 +749,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return secondPartyId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name")
     public Integer getSecondPartyId() {
         return secondPartyId;
     }
@@ -750,7 +769,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return tax
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Tax amount received. Only applies to tax related transactions")
     public Double getTax() {
         return tax;
     }
@@ -772,7 +790,6 @@ public class CharacterWalletJournalResponse implements Serializable {
      * @return taxReceiverId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The corporation ID receiving any tax paid. Only applies to tax related transactions")
     public Integer getTaxReceiverId() {
         return taxReceiverId;
     }
@@ -782,7 +799,7 @@ public class CharacterWalletJournalResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -836,11 +853,162 @@ public class CharacterWalletJournalResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amount");
+        openapiFields.add("balance");
+        openapiFields.add("context_id");
+        openapiFields.add("context_id_type");
+        openapiFields.add("date");
+        openapiFields.add("description");
+        openapiFields.add("first_party_id");
+        openapiFields.add("id");
+        openapiFields.add("reason");
+        openapiFields.add("ref_type");
+        openapiFields.add("second_party_id");
+        openapiFields.add("tax");
+        openapiFields.add("tax_receiver_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("date");
+        openapiRequiredFields.add("description");
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("ref_type");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterWalletJournalResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterWalletJournalResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                   // required
+                                                                                   // fields
+                                                                                   // but
+                                                                                   // JSON
+                                                                                   // object
+                                                                                   // is
+                                                                                   // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CharacterWalletJournalResponse is not found in the empty JSON string",
+                                CharacterWalletJournalResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterWalletJournalResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterWalletJournalResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterWalletJournalResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("context_id_type") != null && !jsonObj.get("context_id_type").isJsonNull())
+                && !jsonObj.get("context_id_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `context_id_type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("context_id_type").toString()));
+        }
+        if (!jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull())
+                && !jsonObj.get("reason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reason").toString()));
+        }
+        if (!jsonObj.get("ref_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ref_type` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("ref_type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterWalletJournalResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterWalletJournalResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterWalletJournalResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterWalletJournalResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterWalletJournalResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterWalletJournalResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterWalletJournalResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterWalletJournalResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterWalletJournalResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterWalletJournalResponse
+     */
+    public static CharacterWalletJournalResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterWalletJournalResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterWalletJournalResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

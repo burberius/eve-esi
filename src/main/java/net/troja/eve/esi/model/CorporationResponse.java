@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -88,6 +111,9 @@ public class CorporationResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WAR_ELIGIBLE)
     private Boolean warEligible;
 
+    public CorporationResponse() {
+    }
+
     public CorporationResponse allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -100,7 +126,6 @@ public class CorporationResponse implements Serializable {
      * @return allianceId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "ID of the alliance that corporation is a member of, if any")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -120,7 +145,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ceoId
      **/
-    @ApiModelProperty(required = true, value = "ceo_id integer")
+    @javax.annotation.Nonnull
     public Integer getCeoId() {
         return ceoId;
     }
@@ -140,7 +165,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return creatorId
      **/
-    @ApiModelProperty(required = true, value = "creator_id integer")
+    @javax.annotation.Nonnull
     public Integer getCreatorId() {
         return creatorId;
     }
@@ -161,7 +186,6 @@ public class CorporationResponse implements Serializable {
      * @return dateFounded
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "date_founded string")
     public OffsetDateTime getDateFounded() {
         return dateFounded;
     }
@@ -182,7 +206,6 @@ public class CorporationResponse implements Serializable {
      * @return description
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -203,7 +226,6 @@ public class CorporationResponse implements Serializable {
      * @return factionId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "faction_id integer")
     public Integer getFactionId() {
         return factionId;
     }
@@ -224,7 +246,6 @@ public class CorporationResponse implements Serializable {
      * @return homeStationId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "home_station_id integer")
     public Integer getHomeStationId() {
         return homeStationId;
     }
@@ -244,7 +265,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return memberCount
      **/
-    @ApiModelProperty(required = true, value = "member_count integer")
+    @javax.annotation.Nonnull
     public Integer getMemberCount() {
         return memberCount;
     }
@@ -264,7 +285,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "the full name of the corporation")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -285,7 +306,6 @@ public class CorporationResponse implements Serializable {
      * @return shares
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "shares integer")
     public Long getShares() {
         return shares;
     }
@@ -305,7 +325,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return taxRate
      **/
-    @ApiModelProperty(required = true, value = "tax_rate number")
+    @javax.annotation.Nonnull
     public Float getTaxRate() {
         return taxRate;
     }
@@ -325,7 +345,7 @@ public class CorporationResponse implements Serializable {
      * 
      * @return ticker
      **/
-    @ApiModelProperty(required = true, value = "the short name of the corporation")
+    @javax.annotation.Nonnull
     public String getTicker() {
         return ticker;
     }
@@ -346,7 +366,6 @@ public class CorporationResponse implements Serializable {
      * @return url
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "url string")
     public String getUrl() {
         return url;
     }
@@ -367,7 +386,6 @@ public class CorporationResponse implements Serializable {
      * @return warEligible
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "war_eligible boolean")
     public Boolean getWarEligible() {
         return warEligible;
     }
@@ -377,7 +395,7 @@ public class CorporationResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -433,11 +451,162 @@ public class CorporationResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("alliance_id");
+        openapiFields.add("ceo_id");
+        openapiFields.add("creator_id");
+        openapiFields.add("date_founded");
+        openapiFields.add("description");
+        openapiFields.add("faction_id");
+        openapiFields.add("home_station_id");
+        openapiFields.add("member_count");
+        openapiFields.add("name");
+        openapiFields.add("shares");
+        openapiFields.add("tax_rate");
+        openapiFields.add("ticker");
+        openapiFields.add("url");
+        openapiFields.add("war_eligible");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ceo_id");
+        openapiRequiredFields.add("creator_id");
+        openapiRequiredFields.add("member_count");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("tax_rate");
+        openapiRequiredFields.add("ticker");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // object
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CorporationResponse is not found in the empty JSON string",
+                        CorporationResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("ticker").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ticker` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ticker").toString()));
+        }
+        if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `url` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("url").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CorporationResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationResponse
+     */
+    public static CorporationResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

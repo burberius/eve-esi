@@ -19,17 +19,40 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContactsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -103,11 +126,14 @@ public class ContactsResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_LABEL_IDS = "label_ids";
     @SerializedName(SERIALIZED_NAME_LABEL_IDS)
-    private List<Long> labelIds = null;
+    private List<Long> labelIds;
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)
     private Float standing;
+
+    public ContactsResponse() {
+    }
 
     public ContactsResponse contactId(Integer contactId) {
 
@@ -120,7 +146,7 @@ public class ContactsResponse implements Serializable {
      * 
      * @return contactId
      **/
-    @ApiModelProperty(required = true, value = "contact_id integer")
+    @javax.annotation.Nonnull
     public Integer getContactId() {
         return contactId;
     }
@@ -129,15 +155,15 @@ public class ContactsResponse implements Serializable {
         this.contactId = contactId;
     }
 
-    public ContactsResponse contactType(ContactTypeEnum contactTypeEnum) {
-
-        this.contactTypeEnum = contactTypeEnum;
-        return this;
-    }
-
     public ContactsResponse contactTypeString(String contactType) {
 
         this.contactType = contactType;
+        return this;
+    }
+
+    public ContactsResponse contactType(ContactTypeEnum contactTypeEnum) {
+
+        this.contactTypeEnum = contactTypeEnum;
         return this;
     }
 
@@ -146,7 +172,7 @@ public class ContactsResponse implements Serializable {
      * 
      * @return contactType
      **/
-    @ApiModelProperty(required = true, value = "contact_type string")
+    @javax.annotation.Nonnull
     public ContactTypeEnum getContactType() {
         if (contactTypeEnum == null) {
             contactTypeEnum = ContactTypeEnum.fromValue(contactType);
@@ -179,7 +205,6 @@ public class ContactsResponse implements Serializable {
      * @return isBlocked
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Whether this contact is in the blocked list. Note a missing value denotes unknown, not true or false")
     public Boolean getIsBlocked() {
         return isBlocked;
     }
@@ -200,7 +225,6 @@ public class ContactsResponse implements Serializable {
      * @return isWatched
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Whether this contact is being watched")
     public Boolean getIsWatched() {
         return isWatched;
     }
@@ -229,7 +253,6 @@ public class ContactsResponse implements Serializable {
      * @return labelIds
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "label_ids array")
     public List<Long> getLabelIds() {
         return labelIds;
     }
@@ -249,7 +272,7 @@ public class ContactsResponse implements Serializable {
      * 
      * @return standing
      **/
-    @ApiModelProperty(required = true, value = "Standing of the contact")
+    @javax.annotation.Nonnull
     public Float getStanding() {
         return standing;
     }
@@ -259,7 +282,7 @@ public class ContactsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -298,11 +321,139 @@ public class ContactsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contact_id");
+        openapiFields.add("contact_type");
+        openapiFields.add("is_blocked");
+        openapiFields.add("is_watched");
+        openapiFields.add("label_ids");
+        openapiFields.add("standing");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contact_id");
+        openapiRequiredFields.add("contact_type");
+        openapiRequiredFields.add("standing");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             ContactsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!ContactsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                     // required
+                                                                     // fields
+                                                                     // but JSON
+                                                                     // object
+                                                                     // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContactsResponse is not found in the empty JSON string",
+                        ContactsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!ContactsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `ContactsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : ContactsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("contact_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contact_type` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("contact_type").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("label_ids") != null && !jsonObj.get("label_ids").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `label_ids` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("label_ids").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContactsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContactsResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContactsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(ContactsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<ContactsResponse>() {
+                @Override
+                public void write(JsonWriter out, ContactsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public ContactsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContactsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of ContactsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             ContactsResponse
+     */
+    public static ContactsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContactsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ContactsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

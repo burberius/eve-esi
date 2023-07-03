@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationContainersLogsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -470,10 +493,7 @@ public class CorporationContainersLogsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
-    public CorporationContainersLogsResponse action(ActionEnum actionEnum) {
-
-        this.actionEnum = actionEnum;
-        return this;
+    public CorporationContainersLogsResponse() {
     }
 
     public CorporationContainersLogsResponse actionString(String action) {
@@ -482,12 +502,18 @@ public class CorporationContainersLogsResponse implements Serializable {
         return this;
     }
 
+    public CorporationContainersLogsResponse action(ActionEnum actionEnum) {
+
+        this.actionEnum = actionEnum;
+        return this;
+    }
+
     /**
      * action string
      * 
      * @return action
      **/
-    @ApiModelProperty(required = true, value = "action string")
+    @javax.annotation.Nonnull
     public ActionEnum getAction() {
         if (actionEnum == null) {
             actionEnum = ActionEnum.fromValue(action);
@@ -518,7 +544,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return characterId
      **/
-    @ApiModelProperty(required = true, value = "ID of the character who performed the action.")
+    @javax.annotation.Nonnull
     public Integer getCharacterId() {
         return characterId;
     }
@@ -538,7 +564,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return containerId
      **/
-    @ApiModelProperty(required = true, value = "ID of the container")
+    @javax.annotation.Nonnull
     public Long getContainerId() {
         return containerId;
     }
@@ -558,7 +584,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return containerTypeId
      **/
-    @ApiModelProperty(required = true, value = "Type ID of the container")
+    @javax.annotation.Nonnull
     public Integer getContainerTypeId() {
         return containerTypeId;
     }
@@ -567,15 +593,15 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.containerTypeId = containerTypeId;
     }
 
-    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
-
-        this.locationFlagEnum = locationFlagEnum;
-        return this;
-    }
-
     public CorporationContainersLogsResponse locationFlagString(String locationFlag) {
 
         this.locationFlag = locationFlag;
+        return this;
+    }
+
+    public CorporationContainersLogsResponse locationFlag(LocationFlagEnum locationFlagEnum) {
+
+        this.locationFlagEnum = locationFlagEnum;
         return this;
     }
 
@@ -584,7 +610,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return locationFlag
      **/
-    @ApiModelProperty(required = true, value = "location_flag string")
+    @javax.annotation.Nonnull
     public LocationFlagEnum getLocationFlag() {
         if (locationFlagEnum == null) {
             locationFlagEnum = LocationFlagEnum.fromValue(locationFlag);
@@ -615,7 +641,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(required = true, value = "location_id integer")
+    @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
@@ -635,7 +661,7 @@ public class CorporationContainersLogsResponse implements Serializable {
      * 
      * @return loggedAt
      **/
-    @ApiModelProperty(required = true, value = "Timestamp when this log was created")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLoggedAt() {
         return loggedAt;
     }
@@ -656,7 +682,6 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return newConfigBitmask
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "new_config_bitmask integer")
     public Integer getNewConfigBitmask() {
         return newConfigBitmask;
     }
@@ -677,7 +702,6 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return oldConfigBitmask
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "old_config_bitmask integer")
     public Integer getOldConfigBitmask() {
         return oldConfigBitmask;
     }
@@ -686,15 +710,15 @@ public class CorporationContainersLogsResponse implements Serializable {
         this.oldConfigBitmask = oldConfigBitmask;
     }
 
-    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordTypeEnum) {
-
-        this.passwordTypeEnum = passwordTypeEnum;
-        return this;
-    }
-
     public CorporationContainersLogsResponse passwordTypeString(String passwordType) {
 
         this.passwordType = passwordType;
+        return this;
+    }
+
+    public CorporationContainersLogsResponse passwordType(PasswordTypeEnum passwordTypeEnum) {
+
+        this.passwordTypeEnum = passwordTypeEnum;
         return this;
     }
 
@@ -704,7 +728,6 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return passwordType
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Type of password set if action is of type SetPassword or EnterPassword")
     public PasswordTypeEnum getPasswordType() {
         if (passwordTypeEnum == null) {
             passwordTypeEnum = PasswordTypeEnum.fromValue(passwordType);
@@ -736,7 +759,6 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return quantity
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Quantity of the item being acted upon")
     public Integer getQuantity() {
         return quantity;
     }
@@ -757,7 +779,6 @@ public class CorporationContainersLogsResponse implements Serializable {
      * @return typeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Type ID of the item being acted upon")
     public Integer getTypeId() {
         return typeId;
     }
@@ -767,7 +788,7 @@ public class CorporationContainersLogsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -819,11 +840,160 @@ public class CorporationContainersLogsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("action");
+        openapiFields.add("character_id");
+        openapiFields.add("container_id");
+        openapiFields.add("container_type_id");
+        openapiFields.add("location_flag");
+        openapiFields.add("location_id");
+        openapiFields.add("logged_at");
+        openapiFields.add("new_config_bitmask");
+        openapiFields.add("old_config_bitmask");
+        openapiFields.add("password_type");
+        openapiFields.add("quantity");
+        openapiFields.add("type_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("action");
+        openapiRequiredFields.add("character_id");
+        openapiRequiredFields.add("container_id");
+        openapiRequiredFields.add("container_type_id");
+        openapiRequiredFields.add("location_flag");
+        openapiRequiredFields.add("location_id");
+        openapiRequiredFields.add("logged_at");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationContainersLogsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationContainersLogsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                      // required
+                                                                                      // fields
+                                                                                      // but
+                                                                                      // JSON
+                                                                                      // object
+                                                                                      // is
+                                                                                      // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationContainersLogsResponse is not found in the empty JSON string",
+                                CorporationContainersLogsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationContainersLogsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationContainersLogsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationContainersLogsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("action").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `action` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("action").toString()));
+        }
+        if (!jsonObj.get("location_flag").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `location_flag` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("location_flag").toString()));
+        }
+        if ((jsonObj.get("password_type") != null && !jsonObj.get("password_type").isJsonNull())
+                && !jsonObj.get("password_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `password_type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("password_type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationContainersLogsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationContainersLogsResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationContainersLogsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationContainersLogsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationContainersLogsResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationContainersLogsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationContainersLogsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationContainersLogsResponse given an JSON
+     * string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationContainersLogsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationContainersLogsResponse
+     */
+    public static CorporationContainersLogsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationContainersLogsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationContainersLogsResponse to an JSON
+     * string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

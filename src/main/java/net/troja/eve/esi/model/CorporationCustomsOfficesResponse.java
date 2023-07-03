@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationCustomsOfficesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -141,6 +164,9 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TERRIBLE_STANDING_TAX_RATE)
     private Float terribleStandingTaxRate;
 
+    public CorporationCustomsOfficesResponse() {
+    }
+
     public CorporationCustomsOfficesResponse allianceTaxRate(Float allianceTaxRate) {
 
         this.allianceTaxRate = allianceTaxRate;
@@ -153,7 +179,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return allianceTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Only present if alliance access is allowed")
     public Float getAllianceTaxRate() {
         return allianceTaxRate;
     }
@@ -174,7 +199,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return allowAccessWithStandings
      **/
-    @ApiModelProperty(required = true, value = "standing_level and any standing related tax rate only present when this is true")
+    @javax.annotation.Nonnull
     public Boolean getAllowAccessWithStandings() {
         return allowAccessWithStandings;
     }
@@ -194,7 +219,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return allowAllianceAccess
      **/
-    @ApiModelProperty(required = true, value = "allow_alliance_access boolean")
+    @javax.annotation.Nonnull
     public Boolean getAllowAllianceAccess() {
         return allowAllianceAccess;
     }
@@ -215,7 +240,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return badStandingTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "bad_standing_tax_rate number")
     public Float getBadStandingTaxRate() {
         return badStandingTaxRate;
     }
@@ -236,7 +260,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return corporationTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "corporation_tax_rate number")
     public Float getCorporationTaxRate() {
         return corporationTaxRate;
     }
@@ -258,7 +281,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return excellentStandingTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Tax rate for entities with excellent level of standing, only present if this level is allowed, same for all other standing related tax rates")
     public Float getExcellentStandingTaxRate() {
         return excellentStandingTaxRate;
     }
@@ -279,7 +301,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return goodStandingTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "good_standing_tax_rate number")
     public Float getGoodStandingTaxRate() {
         return goodStandingTaxRate;
     }
@@ -300,7 +321,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return neutralStandingTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "neutral_standing_tax_rate number")
     public Float getNeutralStandingTaxRate() {
         return neutralStandingTaxRate;
     }
@@ -320,7 +340,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return officeId
      **/
-    @ApiModelProperty(required = true, value = "unique ID of this customs office")
+    @javax.annotation.Nonnull
     public Long getOfficeId() {
         return officeId;
     }
@@ -340,7 +360,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return reinforceExitEnd
      **/
-    @ApiModelProperty(required = true, value = "reinforce_exit_end integer")
+    @javax.annotation.Nonnull
     public Integer getReinforceExitEnd() {
         return reinforceExitEnd;
     }
@@ -362,7 +382,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return reinforceExitStart
      **/
-    @ApiModelProperty(required = true, value = "Together with reinforce_exit_end, marks a 2-hour period where this customs office could exit reinforcement mode during the day after initial attack")
+    @javax.annotation.Nonnull
     public Integer getReinforceExitStart() {
         return reinforceExitStart;
     }
@@ -371,15 +391,15 @@ public class CorporationCustomsOfficesResponse implements Serializable {
         this.reinforceExitStart = reinforceExitStart;
     }
 
-    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevelEnum) {
-
-        this.standingLevelEnum = standingLevelEnum;
-        return this;
-    }
-
     public CorporationCustomsOfficesResponse standingLevelString(String standingLevel) {
 
         this.standingLevel = standingLevel;
+        return this;
+    }
+
+    public CorporationCustomsOfficesResponse standingLevel(StandingLevelEnum standingLevelEnum) {
+
+        this.standingLevelEnum = standingLevelEnum;
         return this;
     }
 
@@ -389,7 +409,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return standingLevel
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Access is allowed only for entities with this level of standing or better")
     public StandingLevelEnum getStandingLevel() {
         if (standingLevelEnum == null) {
             standingLevelEnum = StandingLevelEnum.fromValue(standingLevel);
@@ -420,7 +439,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(required = true, value = "ID of the solar system this customs office is located in")
+    @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
@@ -441,7 +460,6 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * @return terribleStandingTaxRate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "terrible_standing_tax_rate number")
     public Float getTerribleStandingTaxRate() {
         return terribleStandingTaxRate;
     }
@@ -451,7 +469,7 @@ public class CorporationCustomsOfficesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -512,11 +530,151 @@ public class CorporationCustomsOfficesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("alliance_tax_rate");
+        openapiFields.add("allow_access_with_standings");
+        openapiFields.add("allow_alliance_access");
+        openapiFields.add("bad_standing_tax_rate");
+        openapiFields.add("corporation_tax_rate");
+        openapiFields.add("excellent_standing_tax_rate");
+        openapiFields.add("good_standing_tax_rate");
+        openapiFields.add("neutral_standing_tax_rate");
+        openapiFields.add("office_id");
+        openapiFields.add("reinforce_exit_end");
+        openapiFields.add("reinforce_exit_start");
+        openapiFields.add("standing_level");
+        openapiFields.add("system_id");
+        openapiFields.add("terrible_standing_tax_rate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("allow_access_with_standings");
+        openapiRequiredFields.add("allow_alliance_access");
+        openapiRequiredFields.add("office_id");
+        openapiRequiredFields.add("reinforce_exit_end");
+        openapiRequiredFields.add("reinforce_exit_start");
+        openapiRequiredFields.add("system_id");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationCustomsOfficesResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationCustomsOfficesResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                      // required
+                                                                                      // fields
+                                                                                      // but
+                                                                                      // JSON
+                                                                                      // object
+                                                                                      // is
+                                                                                      // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationCustomsOfficesResponse is not found in the empty JSON string",
+                                CorporationCustomsOfficesResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationCustomsOfficesResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationCustomsOfficesResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationCustomsOfficesResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("standing_level") != null && !jsonObj.get("standing_level").isJsonNull())
+                && !jsonObj.get("standing_level").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `standing_level` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("standing_level").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationCustomsOfficesResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationCustomsOfficesResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationCustomsOfficesResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationCustomsOfficesResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationCustomsOfficesResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationCustomsOfficesResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationCustomsOfficesResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationCustomsOfficesResponse given an JSON
+     * string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationCustomsOfficesResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationCustomsOfficesResponse
+     */
+    public static CorporationCustomsOfficesResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationCustomsOfficesResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationCustomsOfficesResponse to an JSON
+     * string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

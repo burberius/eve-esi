@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Reset BASH time counter
+SECONDS=0
+
 #
 # Get eve swagger file
 #
@@ -24,7 +27,6 @@ wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquilit
 # Get swagger code generator
 #
 VERSION=$(git ls-remote --tags https://github.com/OpenAPITools/openapi-generator.git | grep -o "refs/tags/v[^-]*$" | sort -rV | head -1 | sed -e 's#.*v##')
-VERSION=4.3.1
 
 if [ ! -e openapi-generator-cli-$VERSION.jar ]; then
   wget -O openapi-generator-cli-$VERSION.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$VERSION/openapi-generator-cli-$VERSION.jar
@@ -119,3 +121,10 @@ mvn formatter:format
 
 cp src/test/java/net/troja/eve/esi/api/GeneralApiTest.java src/test/java/net/troja/eve/esi/api.new/
 cp -r src/test/java/net/troja/eve/esi/api/auth src/test/java/net/troja/eve/esi/api.new/
+
+if (( $SECONDS >= 60 ))
+   then
+       echo "Generated in $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+   else
+       echo "Generated in $(($SECONDS % 60))sec"
+fi

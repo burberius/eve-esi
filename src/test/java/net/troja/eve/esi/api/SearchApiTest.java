@@ -11,14 +11,13 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.isOneOf;
 import static org.hamcrest.Matchers.notNullValue;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +47,7 @@ public class SearchApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdSearchTest() throws ApiException {
-        final List<String> categories = new ArrayList<>();
+        final Set<String> categories = new HashSet<>();
         categories.add("character");
         final String search = "GoldenGnu";
         final Boolean strict = true;

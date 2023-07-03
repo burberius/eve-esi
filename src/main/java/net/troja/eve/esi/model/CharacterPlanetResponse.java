@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +27,35 @@ import net.troja.eve.esi.model.PlanetPin;
 import net.troja.eve.esi.model.PlanetRoute;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterPlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +71,9 @@ public class CharacterPlanetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_ROUTES)
     private List<PlanetRoute> routes = new ArrayList<>();
 
+    public CharacterPlanetResponse() {
+    }
+
     public CharacterPlanetResponse links(List<PlanetLink> links) {
 
         this.links = links;
@@ -55,6 +81,9 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     public CharacterPlanetResponse addLinksItem(PlanetLink linksItem) {
+        if (this.links == null) {
+            this.links = new ArrayList<>();
+        }
         this.links.add(linksItem);
         return this;
     }
@@ -64,7 +93,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return links
      **/
-    @ApiModelProperty(required = true, value = "links array")
+    @javax.annotation.Nonnull
     public List<PlanetLink> getLinks() {
         return links;
     }
@@ -80,6 +109,9 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     public CharacterPlanetResponse addPinsItem(PlanetPin pinsItem) {
+        if (this.pins == null) {
+            this.pins = new ArrayList<>();
+        }
         this.pins.add(pinsItem);
         return this;
     }
@@ -89,7 +121,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return pins
      **/
-    @ApiModelProperty(required = true, value = "pins array")
+    @javax.annotation.Nonnull
     public List<PlanetPin> getPins() {
         return pins;
     }
@@ -105,6 +137,9 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     public CharacterPlanetResponse addRoutesItem(PlanetRoute routesItem) {
+        if (this.routes == null) {
+            this.routes = new ArrayList<>();
+        }
         this.routes.add(routesItem);
         return this;
     }
@@ -114,7 +149,7 @@ public class CharacterPlanetResponse implements Serializable {
      * 
      * @return routes
      **/
-    @ApiModelProperty(required = true, value = "routes array")
+    @javax.annotation.Nonnull
     public List<PlanetRoute> getRoutes() {
         return routes;
     }
@@ -124,7 +159,7 @@ public class CharacterPlanetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -157,11 +192,163 @@ public class CharacterPlanetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("links");
+        openapiFields.add("pins");
+        openapiFields.add("routes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("links");
+        openapiRequiredFields.add("pins");
+        openapiRequiredFields.add("routes");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterPlanetResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterPlanetResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                            // required
+                                                                            // fields
+                                                                            // but
+                                                                            // JSON
+                                                                            // object
+                                                                            // is
+                                                                            // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CharacterPlanetResponse is not found in the empty JSON string",
+                        CharacterPlanetResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterPlanetResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterPlanetResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterPlanetResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("links").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links")
+                            .toString()));
+        }
+
+        JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
+        // validate the required field `links` (array)
+        for (int i = 0; i < jsonArraylinks.size(); i++) {
+            PlanetLink.validateJsonObject(jsonArraylinks.get(i).getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("pins").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `pins` to be an array in the JSON string but got `%s`", jsonObj.get("pins")
+                            .toString()));
+        }
+
+        JsonArray jsonArraypins = jsonObj.getAsJsonArray("pins");
+        // validate the required field `pins` (array)
+        for (int i = 0; i < jsonArraypins.size(); i++) {
+            PlanetPin.validateJsonObject(jsonArraypins.get(i).getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("routes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `routes` to be an array in the JSON string but got `%s`", jsonObj.get("routes")
+                            .toString()));
+        }
+
+        JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("routes");
+        // validate the required field `routes` (array)
+        for (int i = 0; i < jsonArrayroutes.size(); i++) {
+            PlanetRoute.validateJsonObject(jsonArrayroutes.get(i).getAsJsonObject());
+        };
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterPlanetResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterPlanetResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterPlanetResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterPlanetResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterPlanetResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterPlanetResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterPlanetResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterPlanetResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterPlanetResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterPlanetResponse
+     */
+    public static CharacterPlanetResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterPlanetResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterPlanetResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

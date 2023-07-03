@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -38,8 +39,8 @@ public class RoutesApiTest extends GeneralApiTest {
     @Test
     public void getRouteOriginDestinationTest() throws ApiException {
 
-        final List<Integer> avoid = null;
-        final List<List<Integer>> connections = null;
+        final Set<Integer> avoid = null;
+        final Set<Set<Integer>> connections = null;
 
         final List<Integer> response = api.getRouteOriginDestination(SOLARSYSTEM_ID_ALIKARA, SOLARSYSTEM_ID_JITA, avoid, connections, DATASOURCE, null, null);
 

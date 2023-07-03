@@ -19,18 +19,41 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import net.troja.eve.esi.model.CorporationStarbaseFuel;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationStarbaseResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -231,7 +254,7 @@ public class CorporationStarbaseResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
-    private List<CorporationStarbaseFuel> fuels = null;
+    private List<CorporationStarbaseFuel> fuels;
 
     /**
      * Who can offline starbase (POS) and its structures
@@ -405,6 +428,9 @@ public class CorporationStarbaseResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_USE_ALLIANCE_STANDINGS)
     private Boolean useAllianceStandings;
 
+    public CorporationStarbaseResponse() {
+    }
+
     public CorporationStarbaseResponse allowAllianceMembers(Boolean allowAllianceMembers) {
 
         this.allowAllianceMembers = allowAllianceMembers;
@@ -416,7 +442,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return allowAllianceMembers
      **/
-    @ApiModelProperty(required = true, value = "allow_alliance_members boolean")
+    @javax.annotation.Nonnull
     public Boolean getAllowAllianceMembers() {
         return allowAllianceMembers;
     }
@@ -436,7 +462,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return allowCorporationMembers
      **/
-    @ApiModelProperty(required = true, value = "allow_corporation_members boolean")
+    @javax.annotation.Nonnull
     public Boolean getAllowCorporationMembers() {
         return allowCorporationMembers;
     }
@@ -445,15 +471,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.allowCorporationMembers = allowCorporationMembers;
     }
 
-    public CorporationStarbaseResponse anchor(AnchorEnum anchorEnum) {
-
-        this.anchorEnum = anchorEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse anchorString(String anchor) {
 
         this.anchor = anchor;
+        return this;
+    }
+
+    public CorporationStarbaseResponse anchor(AnchorEnum anchorEnum) {
+
+        this.anchorEnum = anchorEnum;
         return this;
     }
 
@@ -462,7 +488,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return anchor
      **/
-    @ApiModelProperty(required = true, value = "Who can anchor starbase (POS) and its structures")
+    @javax.annotation.Nonnull
     public AnchorEnum getAnchor() {
         if (anchorEnum == null) {
             anchorEnum = AnchorEnum.fromValue(anchor);
@@ -493,7 +519,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return attackIfAtWar
      **/
-    @ApiModelProperty(required = true, value = "attack_if_at_war boolean")
+    @javax.annotation.Nonnull
     public Boolean getAttackIfAtWar() {
         return attackIfAtWar;
     }
@@ -513,7 +539,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return attackIfOtherSecurityStatusDropping
      **/
-    @ApiModelProperty(required = true, value = "attack_if_other_security_status_dropping boolean")
+    @javax.annotation.Nonnull
     public Boolean getAttackIfOtherSecurityStatusDropping() {
         return attackIfOtherSecurityStatusDropping;
     }
@@ -535,7 +561,6 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return attackSecurityStatusThreshold
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Starbase (POS) will attack if target's security standing is lower than this value")
     public Float getAttackSecurityStatusThreshold() {
         return attackSecurityStatusThreshold;
     }
@@ -557,7 +582,6 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return attackStandingThreshold
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Starbase (POS) will attack if target's standing is lower than this value")
     public Float getAttackStandingThreshold() {
         return attackStandingThreshold;
     }
@@ -566,15 +590,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.attackStandingThreshold = attackStandingThreshold;
     }
 
-    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
-
-        this.fuelBayTakeEnum = fuelBayTakeEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse fuelBayTakeString(String fuelBayTake) {
 
         this.fuelBayTake = fuelBayTake;
+        return this;
+    }
+
+    public CorporationStarbaseResponse fuelBayTake(FuelBayTakeEnum fuelBayTakeEnum) {
+
+        this.fuelBayTakeEnum = fuelBayTakeEnum;
         return this;
     }
 
@@ -583,7 +607,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return fuelBayTake
      **/
-    @ApiModelProperty(required = true, value = "Who can take fuel blocks out of the starbase (POS)'s fuel bay")
+    @javax.annotation.Nonnull
     public FuelBayTakeEnum getFuelBayTake() {
         if (fuelBayTakeEnum == null) {
             fuelBayTakeEnum = FuelBayTakeEnum.fromValue(fuelBayTake);
@@ -603,15 +627,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.fuelBayTake = fuelBayTake;
     }
 
-    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayViewEnum) {
-
-        this.fuelBayViewEnum = fuelBayViewEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse fuelBayViewString(String fuelBayView) {
 
         this.fuelBayView = fuelBayView;
+        return this;
+    }
+
+    public CorporationStarbaseResponse fuelBayView(FuelBayViewEnum fuelBayViewEnum) {
+
+        this.fuelBayViewEnum = fuelBayViewEnum;
         return this;
     }
 
@@ -623,7 +647,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return fuelBayView
      **/
-    @ApiModelProperty(required = true, value = "Who can view the starbase (POS)'s fule bay. Characters either need to have required role or belong to the starbase (POS) owner's corporation or alliance, as described by the enum, all other access settings follows the same scheme")
+    @javax.annotation.Nonnull
     public FuelBayViewEnum getFuelBayView() {
         if (fuelBayViewEnum == null) {
             fuelBayViewEnum = FuelBayViewEnum.fromValue(fuelBayView);
@@ -664,7 +688,6 @@ public class CorporationStarbaseResponse implements Serializable {
      * @return fuels
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Fuel blocks and other things that will be consumed when operating a starbase (POS)")
     public List<CorporationStarbaseFuel> getFuels() {
         return fuels;
     }
@@ -673,15 +696,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.fuels = fuels;
     }
 
-    public CorporationStarbaseResponse offline(OfflineEnum offlineEnum) {
-
-        this.offlineEnum = offlineEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse offlineString(String offline) {
 
         this.offline = offline;
+        return this;
+    }
+
+    public CorporationStarbaseResponse offline(OfflineEnum offlineEnum) {
+
+        this.offlineEnum = offlineEnum;
         return this;
     }
 
@@ -690,7 +713,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return offline
      **/
-    @ApiModelProperty(required = true, value = "Who can offline starbase (POS) and its structures")
+    @javax.annotation.Nonnull
     public OfflineEnum getOffline() {
         if (offlineEnum == null) {
             offlineEnum = OfflineEnum.fromValue(offline);
@@ -710,15 +733,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.offline = offline;
     }
 
-    public CorporationStarbaseResponse online(OnlineEnum onlineEnum) {
-
-        this.onlineEnum = onlineEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse onlineString(String online) {
 
         this.online = online;
+        return this;
+    }
+
+    public CorporationStarbaseResponse online(OnlineEnum onlineEnum) {
+
+        this.onlineEnum = onlineEnum;
         return this;
     }
 
@@ -727,7 +750,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return online
      **/
-    @ApiModelProperty(required = true, value = "Who can online starbase (POS) and its structures")
+    @javax.annotation.Nonnull
     public OnlineEnum getOnline() {
         if (onlineEnum == null) {
             onlineEnum = OnlineEnum.fromValue(online);
@@ -747,15 +770,15 @@ public class CorporationStarbaseResponse implements Serializable {
         this.online = online;
     }
 
-    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchorEnum) {
-
-        this.unanchorEnum = unanchorEnum;
-        return this;
-    }
-
     public CorporationStarbaseResponse unanchorString(String unanchor) {
 
         this.unanchor = unanchor;
+        return this;
+    }
+
+    public CorporationStarbaseResponse unanchor(UnanchorEnum unanchorEnum) {
+
+        this.unanchorEnum = unanchorEnum;
         return this;
     }
 
@@ -764,7 +787,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return unanchor
      **/
-    @ApiModelProperty(required = true, value = "Who can unanchor starbase (POS) and its structures")
+    @javax.annotation.Nonnull
     public UnanchorEnum getUnanchor() {
         if (unanchorEnum == null) {
             unanchorEnum = UnanchorEnum.fromValue(unanchor);
@@ -796,7 +819,7 @@ public class CorporationStarbaseResponse implements Serializable {
      * 
      * @return useAllianceStandings
      **/
-    @ApiModelProperty(required = true, value = "True if the starbase (POS) is using alliance standings, otherwise using corporation's")
+    @javax.annotation.Nonnull
     public Boolean getUseAllianceStandings() {
         return useAllianceStandings;
     }
@@ -806,7 +829,7 @@ public class CorporationStarbaseResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -867,11 +890,193 @@ public class CorporationStarbaseResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("allow_alliance_members");
+        openapiFields.add("allow_corporation_members");
+        openapiFields.add("anchor");
+        openapiFields.add("attack_if_at_war");
+        openapiFields.add("attack_if_other_security_status_dropping");
+        openapiFields.add("attack_security_status_threshold");
+        openapiFields.add("attack_standing_threshold");
+        openapiFields.add("fuel_bay_take");
+        openapiFields.add("fuel_bay_view");
+        openapiFields.add("fuels");
+        openapiFields.add("offline");
+        openapiFields.add("online");
+        openapiFields.add("unanchor");
+        openapiFields.add("use_alliance_standings");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("allow_alliance_members");
+        openapiRequiredFields.add("allow_corporation_members");
+        openapiRequiredFields.add("anchor");
+        openapiRequiredFields.add("attack_if_at_war");
+        openapiRequiredFields.add("attack_if_other_security_status_dropping");
+        openapiRequiredFields.add("fuel_bay_take");
+        openapiRequiredFields.add("fuel_bay_view");
+        openapiRequiredFields.add("offline");
+        openapiRequiredFields.add("online");
+        openapiRequiredFields.add("unanchor");
+        openapiRequiredFields.add("use_alliance_standings");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationStarbaseResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationStarbaseResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                // required
+                                                                                // fields
+                                                                                // but
+                                                                                // JSON
+                                                                                // object
+                                                                                // is
+                                                                                // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationStarbaseResponse is not found in the empty JSON string",
+                                CorporationStarbaseResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationStarbaseResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationStarbaseResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationStarbaseResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("anchor").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `anchor` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("anchor").toString()));
+        }
+        if (!jsonObj.get("fuel_bay_take").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fuel_bay_take` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fuel_bay_take").toString()));
+        }
+        if (!jsonObj.get("fuel_bay_view").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fuel_bay_view` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fuel_bay_view").toString()));
+        }
+        if (jsonObj.get("fuels") != null && !jsonObj.get("fuels").isJsonNull()) {
+            JsonArray jsonArrayfuels = jsonObj.getAsJsonArray("fuels");
+            if (jsonArrayfuels != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fuels").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fuels` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fuels").toString()));
+                }
+
+                // validate the optional field `fuels` (array)
+                for (int i = 0; i < jsonArrayfuels.size(); i++) {
+                    CorporationStarbaseFuel.validateJsonObject(jsonArrayfuels.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (!jsonObj.get("offline").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `offline` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("offline").toString()));
+        }
+        if (!jsonObj.get("online").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `online` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("online").toString()));
+        }
+        if (!jsonObj.get("unanchor").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `unanchor` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("unanchor").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationStarbaseResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationStarbaseResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationStarbaseResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationStarbaseResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationStarbaseResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationStarbaseResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationStarbaseResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationStarbaseResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationStarbaseResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationStarbaseResponse
+     */
+    public static CorporationStarbaseResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationStarbaseResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationStarbaseResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

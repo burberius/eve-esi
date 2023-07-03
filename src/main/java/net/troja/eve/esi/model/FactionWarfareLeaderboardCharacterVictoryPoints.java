@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +27,36 @@ import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersLastWeekVictor
 import net.troja.eve.esi.model.FactionWarfareLeaderboardCharactersYesterdayVictoryPoints;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * Top 100 rankings of pilots by victory points from yesterday, last week and in
  * total
  */
-@ApiModel(description = "Top 100 rankings of pilots by victory points from yesterday, last week and in total")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -49,6 +72,9 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     private List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> yesterday = new ArrayList<>();
 
+    public FactionWarfareLeaderboardCharacterVictoryPoints() {
+    }
+
     public FactionWarfareLeaderboardCharacterVictoryPoints activeTotal(
             List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> activeTotal) {
 
@@ -58,6 +84,9 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addActiveTotalItem(
             FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints activeTotalItem) {
+        if (this.activeTotal == null) {
+            this.activeTotal = new ArrayList<>();
+        }
         this.activeTotal.add(activeTotalItem);
         return this;
     }
@@ -69,7 +98,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * 
      * @return activeTotal
      **/
-    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots active in faction warfare by total victory points. A pilot is considered \"active\" if they have participated in faction warfare in the past 14 days")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints> getActiveTotal() {
         return activeTotal;
     }
@@ -87,6 +116,9 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addLastWeekItem(
             FactionWarfareLeaderboardCharactersLastWeekVictoryPoints lastWeekItem) {
+        if (this.lastWeek == null) {
+            this.lastWeek = new ArrayList<>();
+        }
         this.lastWeek.add(lastWeekItem);
         return this;
     }
@@ -96,7 +128,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * 
      * @return lastWeek
      **/
-    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots by victory points in the past week")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersLastWeekVictoryPoints> getLastWeek() {
         return lastWeek;
     }
@@ -114,6 +146,9 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
 
     public FactionWarfareLeaderboardCharacterVictoryPoints addYesterdayItem(
             FactionWarfareLeaderboardCharactersYesterdayVictoryPoints yesterdayItem) {
+        if (this.yesterday == null) {
+            this.yesterday = new ArrayList<>();
+        }
         this.yesterday.add(yesterdayItem);
         return this;
     }
@@ -123,7 +158,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * 
      * @return yesterday
      **/
-    @ApiModelProperty(required = true, value = "Top 100 ranking of pilots by victory points in the past day")
+    @javax.annotation.Nonnull
     public List<FactionWarfareLeaderboardCharactersYesterdayVictoryPoints> getYesterday() {
         return yesterday;
     }
@@ -133,7 +168,7 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -166,11 +201,171 @@ public class FactionWarfareLeaderboardCharacterVictoryPoints implements Serializ
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("active_total");
+        openapiFields.add("last_week");
+        openapiFields.add("yesterday");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("active_total");
+        openapiRequiredFields.add("last_week");
+        openapiRequiredFields.add("yesterday");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             FactionWarfareLeaderboardCharacterVictoryPoints
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FactionWarfareLeaderboardCharacterVictoryPoints.openapiRequiredFields.isEmpty()) { // has
+                                                                                                    // required
+                                                                                                    // fields
+                                                                                                    // but
+                                                                                                    // JSON
+                                                                                                    // object
+                                                                                                    // is
+                                                                                                    // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in FactionWarfareLeaderboardCharacterVictoryPoints is not found in the empty JSON string",
+                                FactionWarfareLeaderboardCharacterVictoryPoints.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FactionWarfareLeaderboardCharacterVictoryPoints.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `FactionWarfareLeaderboardCharacterVictoryPoints` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FactionWarfareLeaderboardCharacterVictoryPoints.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("active_total").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `active_total` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("active_total").toString()));
+        }
+
+        JsonArray jsonArrayactiveTotal = jsonObj.getAsJsonArray("active_total");
+        // validate the required field `active_total` (array)
+        for (int i = 0; i < jsonArrayactiveTotal.size(); i++) {
+            FactionWarfareLeaderboardCharactersActiveTotalVictoryPoints.validateJsonObject(jsonArrayactiveTotal.get(i)
+                    .getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("last_week").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `last_week` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("last_week").toString()));
+        }
+
+        JsonArray jsonArraylastWeek = jsonObj.getAsJsonArray("last_week");
+        // validate the required field `last_week` (array)
+        for (int i = 0; i < jsonArraylastWeek.size(); i++) {
+            FactionWarfareLeaderboardCharactersLastWeekVictoryPoints.validateJsonObject(jsonArraylastWeek.get(i)
+                    .getAsJsonObject());
+        };
+        // ensure the json data is an array
+        if (!jsonObj.get("yesterday").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `yesterday` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("yesterday").toString()));
+        }
+
+        JsonArray jsonArrayyesterday = jsonObj.getAsJsonArray("yesterday");
+        // validate the required field `yesterday` (array)
+        for (int i = 0; i < jsonArrayyesterday.size(); i++) {
+            FactionWarfareLeaderboardCharactersYesterdayVictoryPoints.validateJsonObject(jsonArrayyesterday.get(i)
+                    .getAsJsonObject());
+        };
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FactionWarfareLeaderboardCharacterVictoryPoints.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'FactionWarfareLeaderboardCharacterVictoryPoints'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FactionWarfareLeaderboardCharacterVictoryPoints> thisAdapter = gson.getDelegateAdapter(
+                    this, TypeToken.get(FactionWarfareLeaderboardCharacterVictoryPoints.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FactionWarfareLeaderboardCharacterVictoryPoints>() {
+                @Override
+                public void write(JsonWriter out, FactionWarfareLeaderboardCharacterVictoryPoints value)
+                        throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FactionWarfareLeaderboardCharacterVictoryPoints read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FactionWarfareLeaderboardCharacterVictoryPoints
+     * given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FactionWarfareLeaderboardCharacterVictoryPoints
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             FactionWarfareLeaderboardCharacterVictoryPoints
+     */
+    public static FactionWarfareLeaderboardCharacterVictoryPoints fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FactionWarfareLeaderboardCharacterVictoryPoints.class);
+    }
+
+    /**
+     * Convert an instance of FactionWarfareLeaderboardCharacterVictoryPoints to
+     * an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

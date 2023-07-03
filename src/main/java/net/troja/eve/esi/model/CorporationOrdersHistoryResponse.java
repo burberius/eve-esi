@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationOrdersHistoryResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -212,6 +235,9 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WALLET_DIVISION)
     private Integer walletDivision;
 
+    public CorporationOrdersHistoryResponse() {
+    }
+
     public CorporationOrdersHistoryResponse duration(Integer duration) {
 
         this.duration = duration;
@@ -224,7 +250,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(required = true, value = "Number of days the order was valid for (starting from the issued date). An order expires at time issued + duration")
+    @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
@@ -245,7 +271,6 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * @return escrow
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "For buy orders, the amount of ISK in escrow")
     public Double getEscrow() {
         return escrow;
     }
@@ -266,7 +291,6 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * @return isBuyOrder
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "True if the order is a bid (buy) order")
     public Boolean getIsBuyOrder() {
         return isBuyOrder;
     }
@@ -286,7 +310,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return issued
      **/
-    @ApiModelProperty(required = true, value = "Date and time when this order was issued")
+    @javax.annotation.Nonnull
     public OffsetDateTime getIssued() {
         return issued;
     }
@@ -307,7 +331,6 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * @return issuedBy
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The character who issued this order")
     public Integer getIssuedBy() {
         return issuedBy;
     }
@@ -327,7 +350,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return locationId
      **/
-    @ApiModelProperty(required = true, value = "ID of the location where order was placed")
+    @javax.annotation.Nonnull
     public Long getLocationId() {
         return locationId;
     }
@@ -349,7 +372,6 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * @return minVolume
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "For buy orders, the minimum quantity that will be accepted in a matching sell order")
     public Integer getMinVolume() {
         return minVolume;
     }
@@ -369,7 +391,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return orderId
      **/
-    @ApiModelProperty(required = true, value = "Unique order ID")
+    @javax.annotation.Nonnull
     public Long getOrderId() {
         return orderId;
     }
@@ -389,7 +411,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return price
      **/
-    @ApiModelProperty(required = true, value = "Cost per unit for this order")
+    @javax.annotation.Nonnull
     public Double getPrice() {
         return price;
     }
@@ -398,15 +420,15 @@ public class CorporationOrdersHistoryResponse implements Serializable {
         this.price = price;
     }
 
-    public CorporationOrdersHistoryResponse range(RangeEnum rangeEnum) {
-
-        this.rangeEnum = rangeEnum;
-        return this;
-    }
-
     public CorporationOrdersHistoryResponse rangeString(String range) {
 
         this.range = range;
+        return this;
+    }
+
+    public CorporationOrdersHistoryResponse range(RangeEnum rangeEnum) {
+
+        this.rangeEnum = rangeEnum;
         return this;
     }
 
@@ -415,7 +437,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return range
      **/
-    @ApiModelProperty(required = true, value = "Valid order range, numbers are ranges in jumps")
+    @javax.annotation.Nonnull
     public RangeEnum getRange() {
         if (rangeEnum == null) {
             rangeEnum = RangeEnum.fromValue(range);
@@ -446,7 +468,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return regionId
      **/
-    @ApiModelProperty(required = true, value = "ID of the region where order was placed")
+    @javax.annotation.Nonnull
     public Integer getRegionId() {
         return regionId;
     }
@@ -455,15 +477,15 @@ public class CorporationOrdersHistoryResponse implements Serializable {
         this.regionId = regionId;
     }
 
-    public CorporationOrdersHistoryResponse state(StateEnum stateEnum) {
-
-        this.stateEnum = stateEnum;
-        return this;
-    }
-
     public CorporationOrdersHistoryResponse stateString(String state) {
 
         this.state = state;
+        return this;
+    }
+
+    public CorporationOrdersHistoryResponse state(StateEnum stateEnum) {
+
+        this.stateEnum = stateEnum;
         return this;
     }
 
@@ -472,7 +494,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return state
      **/
-    @ApiModelProperty(required = true, value = "Current order state")
+    @javax.annotation.Nonnull
     public StateEnum getState() {
         if (stateEnum == null) {
             stateEnum = StateEnum.fromValue(state);
@@ -503,7 +525,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(required = true, value = "The type ID of the item transacted in this order")
+    @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
@@ -523,7 +545,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return volumeRemain
      **/
-    @ApiModelProperty(required = true, value = "Quantity of items still required or offered")
+    @javax.annotation.Nonnull
     public Integer getVolumeRemain() {
         return volumeRemain;
     }
@@ -543,7 +565,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return volumeTotal
      **/
-    @ApiModelProperty(required = true, value = "Quantity of items required or offered at time order was placed")
+    @javax.annotation.Nonnull
     public Integer getVolumeTotal() {
         return volumeTotal;
     }
@@ -563,7 +585,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * 
      * @return walletDivision
      **/
-    @ApiModelProperty(required = true, value = "The corporation wallet division used for this order")
+    @javax.annotation.Nonnull
     public Integer getWalletDivision() {
         return walletDivision;
     }
@@ -573,7 +595,7 @@ public class CorporationOrdersHistoryResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -633,11 +655,162 @@ public class CorporationOrdersHistoryResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("duration");
+        openapiFields.add("escrow");
+        openapiFields.add("is_buy_order");
+        openapiFields.add("issued");
+        openapiFields.add("issued_by");
+        openapiFields.add("location_id");
+        openapiFields.add("min_volume");
+        openapiFields.add("order_id");
+        openapiFields.add("price");
+        openapiFields.add("range");
+        openapiFields.add("region_id");
+        openapiFields.add("state");
+        openapiFields.add("type_id");
+        openapiFields.add("volume_remain");
+        openapiFields.add("volume_total");
+        openapiFields.add("wallet_division");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("duration");
+        openapiRequiredFields.add("issued");
+        openapiRequiredFields.add("location_id");
+        openapiRequiredFields.add("order_id");
+        openapiRequiredFields.add("price");
+        openapiRequiredFields.add("range");
+        openapiRequiredFields.add("region_id");
+        openapiRequiredFields.add("state");
+        openapiRequiredFields.add("type_id");
+        openapiRequiredFields.add("volume_remain");
+        openapiRequiredFields.add("volume_total");
+        openapiRequiredFields.add("wallet_division");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationOrdersHistoryResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationOrdersHistoryResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                     // required
+                                                                                     // fields
+                                                                                     // but
+                                                                                     // JSON
+                                                                                     // object
+                                                                                     // is
+                                                                                     // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationOrdersHistoryResponse is not found in the empty JSON string",
+                                CorporationOrdersHistoryResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationOrdersHistoryResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationOrdersHistoryResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationOrdersHistoryResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("range").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `range` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("range").toString()));
+        }
+        if (!jsonObj.get("state").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `state` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("state").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationOrdersHistoryResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationOrdersHistoryResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationOrdersHistoryResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationOrdersHistoryResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationOrdersHistoryResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationOrdersHistoryResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationOrdersHistoryResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationOrdersHistoryResponse given an JSON
+     * string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationOrdersHistoryResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationOrdersHistoryResponse
+     */
+    public static CorporationOrdersHistoryResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationOrdersHistoryResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationOrdersHistoryResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationMiningObserversResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -90,6 +113,9 @@ public class CorporationMiningObserversResponse implements Serializable {
     private String observerType;
     private ObserverTypeEnum observerTypeEnum;
 
+    public CorporationMiningObserversResponse() {
+    }
+
     public CorporationMiningObserversResponse lastUpdated(LocalDate lastUpdated) {
 
         this.lastUpdated = lastUpdated;
@@ -101,7 +127,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return lastUpdated
      **/
-    @ApiModelProperty(required = true, value = "last_updated string")
+    @javax.annotation.Nonnull
     public LocalDate getLastUpdated() {
         return lastUpdated;
     }
@@ -121,7 +147,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerId
      **/
-    @ApiModelProperty(required = true, value = "The entity that was observing the asteroid field when it was mined. ")
+    @javax.annotation.Nonnull
     public Long getObserverId() {
         return observerId;
     }
@@ -130,15 +156,15 @@ public class CorporationMiningObserversResponse implements Serializable {
         this.observerId = observerId;
     }
 
-    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerTypeEnum) {
-
-        this.observerTypeEnum = observerTypeEnum;
-        return this;
-    }
-
     public CorporationMiningObserversResponse observerTypeString(String observerType) {
 
         this.observerType = observerType;
+        return this;
+    }
+
+    public CorporationMiningObserversResponse observerType(ObserverTypeEnum observerTypeEnum) {
+
+        this.observerTypeEnum = observerTypeEnum;
         return this;
     }
 
@@ -147,7 +173,7 @@ public class CorporationMiningObserversResponse implements Serializable {
      * 
      * @return observerType
      **/
-    @ApiModelProperty(required = true, value = "The category of the observing entity")
+    @javax.annotation.Nonnull
     public ObserverTypeEnum getObserverType() {
         if (observerTypeEnum == null) {
             observerTypeEnum = ObserverTypeEnum.fromValue(observerType);
@@ -168,7 +194,7 @@ public class CorporationMiningObserversResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -201,11 +227,136 @@ public class CorporationMiningObserversResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("last_updated");
+        openapiFields.add("observer_id");
+        openapiFields.add("observer_type");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("last_updated");
+        openapiRequiredFields.add("observer_id");
+        openapiRequiredFields.add("observer_type");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationMiningObserversResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationMiningObserversResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                       // required
+                                                                                       // fields
+                                                                                       // but
+                                                                                       // JSON
+                                                                                       // object
+                                                                                       // is
+                                                                                       // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationMiningObserversResponse is not found in the empty JSON string",
+                                CorporationMiningObserversResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationMiningObserversResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationMiningObserversResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationMiningObserversResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("observer_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `observer_type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("observer_type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationMiningObserversResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationMiningObserversResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationMiningObserversResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationMiningObserversResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationMiningObserversResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationMiningObserversResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationMiningObserversResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationMiningObserversResponse given an JSON
+     * string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationMiningObserversResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationMiningObserversResponse
+     */
+    public static CorporationMiningObserversResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationMiningObserversResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationMiningObserversResponse to an JSON
+     * string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -45,13 +45,13 @@ public class OAuthOkHttpClient implements HttpClient {
             }
         }
 
-        RequestBody body = request.getBody() != null ? RequestBody.create(mediaType, request.getBody()) : null;
+        RequestBody body = request.getBody() != null ? RequestBody.create(request.getBody(), mediaType) : null;
         requestBuilder.method(requestMethod, body);
 
         try {
             Response response = client.newCall(requestBuilder.build()).execute();
             return OAuthClientResponseFactory.createCustomResponse(response.body().string(), response.body()
-                    .contentType().toString(), response.code(), responseClass);
+                    .contentType().toString(), response.code(), response.headers().toMultimap(), responseClass);
         } catch (IOException e) {
             throw new OAuthSystemException(e);
         }
