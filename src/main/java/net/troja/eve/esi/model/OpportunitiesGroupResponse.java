@@ -19,17 +19,40 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class OpportunitiesGroupResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -57,6 +80,9 @@ public class OpportunitiesGroupResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_REQUIRED_TASKS)
     private List<Integer> requiredTasks = new ArrayList<>();
 
+    public OpportunitiesGroupResponse() {
+    }
+
     public OpportunitiesGroupResponse connectedGroups(List<Integer> connectedGroups) {
 
         this.connectedGroups = connectedGroups;
@@ -64,6 +90,9 @@ public class OpportunitiesGroupResponse implements Serializable {
     }
 
     public OpportunitiesGroupResponse addConnectedGroupsItem(Integer connectedGroupsItem) {
+        if (this.connectedGroups == null) {
+            this.connectedGroups = new ArrayList<>();
+        }
         this.connectedGroups.add(connectedGroupsItem);
         return this;
     }
@@ -73,7 +102,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return connectedGroups
      **/
-    @ApiModelProperty(required = true, value = "The groups that are connected to this group on the opportunities map")
+    @javax.annotation.Nonnull
     public List<Integer> getConnectedGroups() {
         return connectedGroups;
     }
@@ -93,7 +122,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(required = true, value = "description string")
+    @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
@@ -113,7 +142,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return groupId
      **/
-    @ApiModelProperty(required = true, value = "group_id integer")
+    @javax.annotation.Nonnull
     public Integer getGroupId() {
         return groupId;
     }
@@ -133,7 +162,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "name string")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -153,7 +182,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return notification
      **/
-    @ApiModelProperty(required = true, value = "notification string")
+    @javax.annotation.Nonnull
     public String getNotification() {
         return notification;
     }
@@ -169,6 +198,9 @@ public class OpportunitiesGroupResponse implements Serializable {
     }
 
     public OpportunitiesGroupResponse addRequiredTasksItem(Integer requiredTasksItem) {
+        if (this.requiredTasks == null) {
+            this.requiredTasks = new ArrayList<>();
+        }
         this.requiredTasks.add(requiredTasksItem);
         return this;
     }
@@ -178,7 +210,7 @@ public class OpportunitiesGroupResponse implements Serializable {
      * 
      * @return requiredTasks
      **/
-    @ApiModelProperty(required = true, value = "Tasks need to complete for this group")
+    @javax.annotation.Nonnull
     public List<Integer> getRequiredTasks() {
         return requiredTasks;
     }
@@ -188,7 +220,7 @@ public class OpportunitiesGroupResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -227,11 +259,166 @@ public class OpportunitiesGroupResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("connected_groups");
+        openapiFields.add("description");
+        openapiFields.add("group_id");
+        openapiFields.add("name");
+        openapiFields.add("notification");
+        openapiFields.add("required_tasks");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("connected_groups");
+        openapiRequiredFields.add("description");
+        openapiRequiredFields.add("group_id");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("notification");
+        openapiRequiredFields.add("required_tasks");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             OpportunitiesGroupResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!OpportunitiesGroupResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                               // required
+                                                                               // fields
+                                                                               // but
+                                                                               // JSON
+                                                                               // object
+                                                                               // is
+                                                                               // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OpportunitiesGroupResponse is not found in the empty JSON string",
+                        OpportunitiesGroupResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!OpportunitiesGroupResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `OpportunitiesGroupResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : OpportunitiesGroupResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("connected_groups") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("connected_groups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `connected_groups` to be an array in the JSON string but got `%s`", jsonObj
+                            .get("connected_groups").toString()));
+        }
+        if (!jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("notification").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `notification` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("notification").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("required_tasks") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("required_tasks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `required_tasks` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("required_tasks").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OpportunitiesGroupResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'OpportunitiesGroupResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OpportunitiesGroupResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(OpportunitiesGroupResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<OpportunitiesGroupResponse>() {
+                @Override
+                public void write(JsonWriter out, OpportunitiesGroupResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public OpportunitiesGroupResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OpportunitiesGroupResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of OpportunitiesGroupResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             OpportunitiesGroupResponse
+     */
+    public static OpportunitiesGroupResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OpportunitiesGroupResponse.class);
+    }
+
+    /**
+     * Convert an instance of OpportunitiesGroupResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

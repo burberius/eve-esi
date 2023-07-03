@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +26,48 @@ import net.troja.eve.esi.model.CorporationDivisionsHangar;
 import net.troja.eve.esi.model.CorporationDivisionsWallet;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationDivisionsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_HANGAR = "hangar";
     @SerializedName(SERIALIZED_NAME_HANGAR)
-    private List<CorporationDivisionsHangar> hangar = null;
+    private List<CorporationDivisionsHangar> hangar;
 
     public static final String SERIALIZED_NAME_WALLET = "wallet";
     @SerializedName(SERIALIZED_NAME_WALLET)
-    private List<CorporationDivisionsWallet> wallet = null;
+    private List<CorporationDivisionsWallet> wallet;
+
+    public CorporationDivisionsResponse() {
+    }
 
     public CorporationDivisionsResponse hangar(List<CorporationDivisionsHangar> hangar) {
 
@@ -63,7 +89,6 @@ public class CorporationDivisionsResponse implements Serializable {
      * @return hangar
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "hangar array")
     public List<CorporationDivisionsHangar> getHangar() {
         return hangar;
     }
@@ -92,7 +117,6 @@ public class CorporationDivisionsResponse implements Serializable {
      * @return wallet
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "wallet array")
     public List<CorporationDivisionsWallet> getWallet() {
         return wallet;
     }
@@ -102,7 +126,7 @@ public class CorporationDivisionsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -133,11 +157,146 @@ public class CorporationDivisionsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("hangar");
+        openapiFields.add("wallet");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationDivisionsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationDivisionsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                 // required
+                                                                                 // fields
+                                                                                 // but
+                                                                                 // JSON
+                                                                                 // object
+                                                                                 // is
+                                                                                 // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationDivisionsResponse is not found in the empty JSON string",
+                                CorporationDivisionsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationDivisionsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationDivisionsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if (jsonObj.get("hangar") != null && !jsonObj.get("hangar").isJsonNull()) {
+            JsonArray jsonArrayhangar = jsonObj.getAsJsonArray("hangar");
+            if (jsonArrayhangar != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("hangar").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `hangar` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("hangar").toString()));
+                }
+
+                // validate the optional field `hangar` (array)
+                for (int i = 0; i < jsonArrayhangar.size(); i++) {
+                    CorporationDivisionsHangar.validateJsonObject(jsonArrayhangar.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("wallet") != null && !jsonObj.get("wallet").isJsonNull()) {
+            JsonArray jsonArraywallet = jsonObj.getAsJsonArray("wallet");
+            if (jsonArraywallet != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("wallet").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `wallet` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("wallet").toString()));
+                }
+
+                // validate the optional field `wallet` (array)
+                for (int i = 0; i < jsonArraywallet.size(); i++) {
+                    CorporationDivisionsWallet.validateJsonObject(jsonArraywallet.get(i).getAsJsonObject());
+                };
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationDivisionsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationDivisionsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationDivisionsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationDivisionsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationDivisionsResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationDivisionsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationDivisionsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationDivisionsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationDivisionsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationDivisionsResponse
+     */
+    public static CorporationDivisionsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationDivisionsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationDivisionsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import net.troja.eve.esi.model.Position;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PlanetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +75,9 @@ public class PlanetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TYPE_ID)
     private Integer typeId;
 
+    public PlanetResponse() {
+    }
+
     public PlanetResponse name(String name) {
 
         this.name = name;
@@ -63,7 +89,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "name string")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -83,7 +109,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return planetId
      **/
-    @ApiModelProperty(required = true, value = "planet_id integer")
+    @javax.annotation.Nonnull
     public Integer getPlanetId() {
         return planetId;
     }
@@ -103,7 +129,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return position
      **/
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nonnull
     public Position getPosition() {
         return position;
     }
@@ -123,7 +149,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return systemId
      **/
-    @ApiModelProperty(required = true, value = "The solar system this planet is in")
+    @javax.annotation.Nonnull
     public Integer getSystemId() {
         return systemId;
     }
@@ -143,7 +169,7 @@ public class PlanetResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(required = true, value = "type_id integer")
+    @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
@@ -153,7 +179,7 @@ public class PlanetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,11 +215,134 @@ public class PlanetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("planet_id");
+        openapiFields.add("position");
+        openapiFields.add("system_id");
+        openapiFields.add("type_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("planet_id");
+        openapiRequiredFields.add("position");
+        openapiRequiredFields.add("system_id");
+        openapiRequiredFields.add("type_id");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to PlanetResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!PlanetResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                   // required
+                                                                   // fields but
+                                                                   // JSON
+                                                                   // object is
+                                                                   // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PlanetResponse is not found in the empty JSON string",
+                        PlanetResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!PlanetResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `PlanetResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : PlanetResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `position`
+        Position.validateJsonObject(jsonObj.getAsJsonObject("position"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PlanetResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PlanetResponse' and
+                             // its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PlanetResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(PlanetResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<PlanetResponse>() {
+                @Override
+                public void write(JsonWriter out, PlanetResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public PlanetResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PlanetResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of PlanetResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to PlanetResponse
+     */
+    public static PlanetResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PlanetResponse.class);
+    }
+
+    /**
+     * Convert an instance of PlanetResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

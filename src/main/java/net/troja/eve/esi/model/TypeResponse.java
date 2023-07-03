@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +26,35 @@ import net.troja.eve.esi.model.TypeDogmaAttribute;
 import net.troja.eve.esi.model.TypeDogmaEffect;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TypeResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -45,11 +68,11 @@ public class TypeResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
-    private List<TypeDogmaAttribute> dogmaAttributes = null;
+    private List<TypeDogmaAttribute> dogmaAttributes;
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
-    private List<TypeDogmaEffect> dogmaEffects = null;
+    private List<TypeDogmaEffect> dogmaEffects;
 
     public static final String SERIALIZED_NAME_GRAPHIC_ID = "graphic_id";
     @SerializedName(SERIALIZED_NAME_GRAPHIC_ID)
@@ -99,6 +122,9 @@ public class TypeResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Float volume;
 
+    public TypeResponse() {
+    }
+
     public TypeResponse capacity(Float capacity) {
 
         this.capacity = capacity;
@@ -111,7 +137,6 @@ public class TypeResponse implements Serializable {
      * @return capacity
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "capacity number")
     public Float getCapacity() {
         return capacity;
     }
@@ -131,7 +156,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return description
      **/
-    @ApiModelProperty(required = true, value = "description string")
+    @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
@@ -160,7 +185,6 @@ public class TypeResponse implements Serializable {
      * @return dogmaAttributes
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "dogma_attributes array")
     public List<TypeDogmaAttribute> getDogmaAttributes() {
         return dogmaAttributes;
     }
@@ -189,7 +213,6 @@ public class TypeResponse implements Serializable {
      * @return dogmaEffects
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "dogma_effects array")
     public List<TypeDogmaEffect> getDogmaEffects() {
         return dogmaEffects;
     }
@@ -210,7 +233,6 @@ public class TypeResponse implements Serializable {
      * @return graphicId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "graphic_id integer")
     public Integer getGraphicId() {
         return graphicId;
     }
@@ -230,7 +252,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return groupId
      **/
-    @ApiModelProperty(required = true, value = "group_id integer")
+    @javax.annotation.Nonnull
     public Integer getGroupId() {
         return groupId;
     }
@@ -251,7 +273,6 @@ public class TypeResponse implements Serializable {
      * @return iconId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "icon_id integer")
     public Integer getIconId() {
         return iconId;
     }
@@ -272,7 +293,6 @@ public class TypeResponse implements Serializable {
      * @return marketGroupId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "This only exists for types that can be put on the market")
     public Integer getMarketGroupId() {
         return marketGroupId;
     }
@@ -293,7 +313,6 @@ public class TypeResponse implements Serializable {
      * @return mass
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "mass number")
     public Float getMass() {
         return mass;
     }
@@ -313,7 +332,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "name string")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -334,7 +353,6 @@ public class TypeResponse implements Serializable {
      * @return packagedVolume
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "packaged_volume number")
     public Float getPackagedVolume() {
         return packagedVolume;
     }
@@ -355,7 +373,6 @@ public class TypeResponse implements Serializable {
      * @return portionSize
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "portion_size integer")
     public Integer getPortionSize() {
         return portionSize;
     }
@@ -375,7 +392,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return published
      **/
-    @ApiModelProperty(required = true, value = "published boolean")
+    @javax.annotation.Nonnull
     public Boolean getPublished() {
         return published;
     }
@@ -396,7 +413,6 @@ public class TypeResponse implements Serializable {
      * @return radius
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "radius number")
     public Float getRadius() {
         return radius;
     }
@@ -416,7 +432,7 @@ public class TypeResponse implements Serializable {
      * 
      * @return typeId
      **/
-    @ApiModelProperty(required = true, value = "type_id integer")
+    @javax.annotation.Nonnull
     public Integer getTypeId() {
         return typeId;
     }
@@ -437,7 +453,6 @@ public class TypeResponse implements Serializable {
      * @return volume
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "volume number")
     public Float getVolume() {
         return volume;
     }
@@ -447,7 +462,7 @@ public class TypeResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -505,11 +520,177 @@ public class TypeResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("capacity");
+        openapiFields.add("description");
+        openapiFields.add("dogma_attributes");
+        openapiFields.add("dogma_effects");
+        openapiFields.add("graphic_id");
+        openapiFields.add("group_id");
+        openapiFields.add("icon_id");
+        openapiFields.add("market_group_id");
+        openapiFields.add("mass");
+        openapiFields.add("name");
+        openapiFields.add("packaged_volume");
+        openapiFields.add("portion_size");
+        openapiFields.add("published");
+        openapiFields.add("radius");
+        openapiFields.add("type_id");
+        openapiFields.add("volume");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("description");
+        openapiRequiredFields.add("group_id");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("published");
+        openapiRequiredFields.add("type_id");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to TypeResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!TypeResponse.openapiRequiredFields.isEmpty()) { // has required
+                                                                 // fields but
+                                                                 // JSON object
+                                                                 // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TypeResponse is not found in the empty JSON string",
+                        TypeResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!TypeResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TypeResponse` properties. JSON: %s",
+                        entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : TypeResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if (jsonObj.get("dogma_attributes") != null && !jsonObj.get("dogma_attributes").isJsonNull()) {
+            JsonArray jsonArraydogmaAttributes = jsonObj.getAsJsonArray("dogma_attributes");
+            if (jsonArraydogmaAttributes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("dogma_attributes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `dogma_attributes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("dogma_attributes").toString()));
+                }
+
+                // validate the optional field `dogma_attributes` (array)
+                for (int i = 0; i < jsonArraydogmaAttributes.size(); i++) {
+                    TypeDogmaAttribute.validateJsonObject(jsonArraydogmaAttributes.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("dogma_effects") != null && !jsonObj.get("dogma_effects").isJsonNull()) {
+            JsonArray jsonArraydogmaEffects = jsonObj.getAsJsonArray("dogma_effects");
+            if (jsonArraydogmaEffects != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("dogma_effects").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `dogma_effects` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("dogma_effects").toString()));
+                }
+
+                // validate the optional field `dogma_effects` (array)
+                for (int i = 0; i < jsonArraydogmaEffects.size(); i++) {
+                    TypeDogmaEffect.validateJsonObject(jsonArraydogmaEffects.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TypeResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TypeResponse' and
+                             // its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TypeResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(TypeResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<TypeResponse>() {
+                @Override
+                public void write(JsonWriter out, TypeResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public TypeResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TypeResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of TypeResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to TypeResponse
+     */
+    public static TypeResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TypeResponse.class);
+    }
+
+    /**
+     * Convert an instance of TypeResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -38,15 +38,19 @@ import net.troja.eve.esi.model.CharacterRolesResponse;
 import net.troja.eve.esi.model.CharacterStandingsResponse;
 import net.troja.eve.esi.model.CharacterTitlesResponse;
 import net.troja.eve.esi.model.NewContactNotificationsResponse;
+import java.util.Set;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class CharacterApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public CharacterApi() {
         this(Configuration.getDefaultApiClient());
@@ -62,6 +66,22 @@ public class CharacterApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -112,16 +132,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -132,17 +142,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -157,6 +157,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -165,55 +185,67 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdCall(Integer characterId, String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v5/characters/{character_id}/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v5/characters/{character_id}/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterId(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdCall(characterId, datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdCall(characterId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -265,16 +297,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -285,17 +307,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -306,6 +318,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -371,16 +403,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -391,17 +413,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -412,6 +424,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -482,16 +514,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -502,17 +524,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -523,6 +535,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -604,27 +636,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -639,6 +656,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -647,14 +679,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdAgentsResearchCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/agents_research/".replaceAll("\\{" + "character_id"
-                + "\\}", localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/agents_research/".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -663,44 +712,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdAgentsResearchValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdAgentsResearch(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdAgentsResearchCall(characterId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdAgentsResearchCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -767,27 +810,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -798,6 +826,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -878,27 +921,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -909,6 +937,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -994,27 +1037,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1025,6 +1053,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1110,27 +1153,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1145,6 +1173,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1153,14 +1196,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdBlueprintsCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/blueprints/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v3/characters/{character_id}/blueprints/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1173,44 +1233,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdBlueprintsValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdBlueprints(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdBlueprintsCall(characterId, datasource, ifNoneMatch, page,
-                token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdBlueprintsCall(characterId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -1278,27 +1332,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1309,6 +1348,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1390,27 +1444,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1421,6 +1460,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1506,27 +1560,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1537,6 +1576,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1607,6 +1661,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1622,32 +1696,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1660,56 +1714,67 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdCorporationhistoryCall(Integer characterId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/corporationhistory/".replaceAll("\\{" + "character_id"
-                + "\\}", localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/corporationhistory/".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdCorporationhistoryValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdCorporationhistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdCorporationhistoryCall(characterId, datasource,
-                ifNoneMatch, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdCorporationhistoryCall(characterId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -1761,6 +1826,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1776,32 +1861,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1868,6 +1933,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1883,32 +1968,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1979,6 +2044,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1994,32 +2079,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2102,27 +2167,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2137,6 +2187,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2145,14 +2210,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdFatigueCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/fatigue/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/fatigue/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2161,44 +2243,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdFatigueValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdFatigue(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdFatigueCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdFatigueCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -2263,27 +2339,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2294,6 +2355,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2372,27 +2448,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2403,6 +2464,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2485,27 +2561,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2516,6 +2577,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2598,27 +2674,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2633,6 +2694,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2641,14 +2717,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdMedalsCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/medals/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/medals/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2657,44 +2750,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdMedalsValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdMedals(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdMedalsCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdMedalsCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -2758,27 +2845,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2789,6 +2861,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2866,27 +2953,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2897,6 +2969,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2979,27 +3066,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3010,6 +3082,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3091,27 +3178,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3126,6 +3198,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3134,14 +3221,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdNotificationsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v5/characters/{character_id}/notifications/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v5/characters/{character_id}/notifications/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3150,44 +3254,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdNotificationsValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdNotifications(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsCall(characterId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdNotificationsCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -3252,27 +3350,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3283,6 +3366,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3361,27 +3459,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3392,6 +3475,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3474,27 +3572,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3505,6 +3588,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3587,27 +3685,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3622,6 +3705,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3630,14 +3728,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdNotificationsContactsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/notifications/contacts/".replaceAll("\\{" + "character_id"
-                + "\\}", localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v2/characters/{character_id}/notifications/contacts/".replace("{" + "character_id"
+                + "}", localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3646,44 +3761,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdNotificationsContactsValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdNotificationsContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdNotificationsContactsCall(characterId, datasource,
-                ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdNotificationsContactsCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -3748,27 +3857,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3779,6 +3873,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3857,27 +3966,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3888,6 +3982,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3970,27 +4079,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4001,6 +4095,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4071,16 +4180,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4091,17 +4190,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4116,6 +4205,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4124,56 +4233,67 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdPortraitCall(Integer characterId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/portrait/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/portrait/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdPortraitValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdPortrait(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdPortraitCall(characterId, datasource, ifNoneMatch,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdPortraitCall(characterId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -4225,16 +4345,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4245,17 +4355,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4266,6 +4366,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4331,16 +4451,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4351,17 +4461,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4372,6 +4472,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4441,16 +4561,6 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4461,17 +4571,7 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4482,6 +4582,26 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4564,27 +4684,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4599,6 +4704,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4607,14 +4727,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdRolesCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/roles/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v3/characters/{character_id}/roles/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4623,44 +4760,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdRolesValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdRoles(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdRolesCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdRolesCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -4726,27 +4857,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4757,6 +4873,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4836,27 +4967,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4867,6 +4983,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4950,27 +5081,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4981,6 +5097,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5062,27 +5193,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5097,6 +5213,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5105,14 +5236,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdStandingsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/standings/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/standings/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -5121,44 +5269,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdStandingsValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdStandings(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdStandingsCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdStandingsCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -5223,27 +5365,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5254,6 +5381,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5332,27 +5474,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5363,6 +5490,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5445,27 +5587,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5476,6 +5603,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5558,27 +5700,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5593,6 +5720,21 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5601,14 +5743,31 @@ public class CharacterApi {
      */
     public okhttp3.Call getCharactersCharacterIdTitlesCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/titles/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/titles/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -5617,44 +5776,38 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdTitlesValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdTitles(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdTitlesCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdTitlesCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -5719,27 +5872,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5750,6 +5888,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5828,27 +5981,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5859,6 +5997,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5941,27 +6094,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5972,6 +6110,21 @@ public class CharacterApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6025,6 +6178,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6040,32 +6213,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6076,8 +6229,21 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersAffiliationCall(List<Integer> characters, String datasource,
+    public okhttp3.Call postCharactersAffiliationCall(Set<Integer> characters, String datasource,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = characters;
 
         // create path and map variables
@@ -6085,13 +6251,14 @@ public class CharacterApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -6100,26 +6267,26 @@ public class CharacterApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCharactersAffiliationValidateBeforeCall(List<Integer> characters, String datasource,
+    private okhttp3.Call postCharactersAffiliationValidateBeforeCall(Set<Integer> characters, String datasource,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characters' is set
         if (characters == null) {
             throw new ApiException(
                     "Missing the required parameter 'characters' when calling postCharactersAffiliation(Async)");
         }
 
-        okhttp3.Call localVarCall = postCharactersAffiliationCall(characters, datasource, _callback);
-        return localVarCall;
+        return postCharactersAffiliationCall(characters, datasource, _callback);
 
     }
 
@@ -6155,6 +6322,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6170,32 +6357,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6206,7 +6373,7 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public List<CharacterAffiliationResponse> postCharactersAffiliation(List<Integer> characters, String datasource)
+    public List<CharacterAffiliationResponse> postCharactersAffiliation(Set<Integer> characters, String datasource)
             throws ApiException {
         ApiResponse<List<CharacterAffiliationResponse>> localVarResp = postCharactersAffiliationWithHttpInfo(
                 characters, datasource);
@@ -6245,6 +6412,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6260,32 +6447,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6297,7 +6464,7 @@ public class CharacterApi {
      *                        </table>
      */
     public ApiResponse<List<CharacterAffiliationResponse>> postCharactersAffiliationWithHttpInfo(
-            List<Integer> characters, String datasource) throws ApiException {
+            Set<Integer> characters, String datasource) throws ApiException {
         okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(characters, datasource, null);
         Type localVarReturnType = new TypeToken<List<CharacterAffiliationResponse>>() {
         }.getType();
@@ -6339,6 +6506,26 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6354,32 +6541,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6390,7 +6557,7 @@ public class CharacterApi {
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersAffiliationAsync(List<Integer> characters, String datasource,
+    public okhttp3.Call postCharactersAffiliationAsync(Set<Integer> characters, String datasource,
             final ApiCallback<List<CharacterAffiliationResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCharactersAffiliationValidateBeforeCall(characters, datasource, _callback);
@@ -6445,27 +6612,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6480,22 +6632,54 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdCspaCall(Integer characterId, List<Integer> characters,
+    public okhttp3.Call postCharactersCharacterIdCspaCall(Integer characterId, Set<Integer> characters,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = characters;
 
         // create path and map variables
-        String localVarPath = "/v5/characters/{character_id}/cspa/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v5/characters/{character_id}/cspa/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -6504,9 +6688,6 @@ public class CharacterApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -6515,18 +6696,19 @@ public class CharacterApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCharactersCharacterIdCspaValidateBeforeCall(Integer characterId, List<Integer> characters,
+    private okhttp3.Call postCharactersCharacterIdCspaValidateBeforeCall(Integer characterId, Set<Integer> characters,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -6539,9 +6721,7 @@ public class CharacterApi {
                     "Missing the required parameter 'characters' when calling postCharactersCharacterIdCspa(Async)");
         }
 
-        okhttp3.Call localVarCall = postCharactersCharacterIdCspaCall(characterId, characters, datasource, token,
-                _callback);
-        return localVarCall;
+        return postCharactersCharacterIdCspaCall(characterId, characters, datasource, token, _callback);
 
     }
 
@@ -6591,27 +6771,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6626,13 +6791,28 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public Float postCharactersCharacterIdCspa(Integer characterId, List<Integer> characters, String datasource,
+    public Float postCharactersCharacterIdCspa(Integer characterId, Set<Integer> characters, String datasource,
             String token) throws ApiException {
         ApiResponse<Float> localVarResp = postCharactersCharacterIdCspaWithHttpInfo(characterId, characters,
                 datasource, token);
@@ -6685,27 +6865,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6720,13 +6885,28 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Float> postCharactersCharacterIdCspaWithHttpInfo(Integer characterId, List<Integer> characters,
+    public ApiResponse<Float> postCharactersCharacterIdCspaWithHttpInfo(Integer characterId, Set<Integer> characters,
             String datasource, String token) throws ApiException {
         okhttp3.Call localVarCall = postCharactersCharacterIdCspaValidateBeforeCall(characterId, characters,
                 datasource, token, null);
@@ -6783,27 +6963,12 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6818,13 +6983,28 @@ public class CharacterApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call postCharactersCharacterIdCspaAsync(Integer characterId, List<Integer> characters,
+    public okhttp3.Call postCharactersCharacterIdCspaAsync(Integer characterId, Set<Integer> characters,
             String datasource, String token, final ApiCallback<Float> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCharactersCharacterIdCspaValidateBeforeCall(characterId, characters,

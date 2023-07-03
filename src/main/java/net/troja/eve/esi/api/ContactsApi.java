@@ -37,9 +37,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class ContactsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public ContactsApi() {
         this(Configuration.getDefaultApiClient());
@@ -55,6 +58,22 @@ public class ContactsApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -101,27 +120,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -136,6 +140,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -144,14 +163,31 @@ public class ContactsApi {
      */
     public okhttp3.Call deleteCharactersCharacterIdContactsCall(Integer characterId, List<Integer> contactIds,
             String datasource, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (contactIds != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "contact_ids", contactIds));
         }
@@ -164,33 +200,27 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-
-        };
+        final String[] localVarAccepts = {};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteCharactersCharacterIdContactsValidateBeforeCall(Integer characterId,
             List<Integer> contactIds, String datasource, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -203,9 +233,7 @@ public class ContactsApi {
                     "Missing the required parameter 'contactIds' when calling deleteCharactersCharacterIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = deleteCharactersCharacterIdContactsCall(characterId, contactIds, datasource, token,
-                _callback);
-        return localVarCall;
+        return deleteCharactersCharacterIdContactsCall(characterId, contactIds, datasource, token, _callback);
 
     }
 
@@ -252,27 +280,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -283,6 +296,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -342,27 +370,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -373,6 +386,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -436,27 +464,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -467,6 +480,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -549,27 +577,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -584,6 +597,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -592,14 +620,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getAlliancesAllianceIdContactsCall(Integer allianceId, String datasource, String ifNoneMatch,
             Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/alliances/{alliance_id}/contacts/".replaceAll("\\{" + "alliance_id" + "\\}",
+        String localVarPath = "/v2/alliances/{alliance_id}/contacts/".replace("{" + "alliance_id" + "}",
                 localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -612,44 +657,38 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAlliancesAllianceIdContactsValidateBeforeCall(Integer allianceId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
             throw new ApiException(
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsCall(allianceId, datasource, ifNoneMatch, page,
-                token, _callback);
-        return localVarCall;
+        return getAlliancesAllianceIdContactsCall(allianceId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -716,27 +755,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -747,6 +771,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -827,27 +866,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -858,6 +882,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -943,27 +982,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -974,6 +998,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1056,27 +1095,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1091,6 +1115,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1099,14 +1138,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getAlliancesAllianceIdContactsLabelsCall(Integer allianceId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/alliances/{alliance_id}/contacts/labels/".replaceAll("\\{" + "alliance_id" + "\\}",
+        String localVarPath = "/v1/alliances/{alliance_id}/contacts/labels/".replace("{" + "alliance_id" + "}",
                 localVarApiClient.escapeString(allianceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1115,44 +1171,38 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAlliancesAllianceIdContactsLabelsValidateBeforeCall(Integer allianceId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'allianceId' is set
         if (allianceId == null) {
             throw new ApiException(
                     "Missing the required parameter 'allianceId' when calling getAlliancesAllianceIdContactsLabels(Async)");
         }
 
-        okhttp3.Call localVarCall = getAlliancesAllianceIdContactsLabelsCall(allianceId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getAlliancesAllianceIdContactsLabelsCall(allianceId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -1217,27 +1267,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1248,6 +1283,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1326,27 +1376,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1357,6 +1392,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1439,27 +1489,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1470,6 +1505,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1555,27 +1605,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1590,6 +1625,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1598,14 +1648,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getCharactersCharacterIdContactsCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1618,44 +1685,38 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdContactsCall(characterId, datasource, ifNoneMatch, page,
-                token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdContactsCall(characterId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -1722,27 +1783,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1753,6 +1799,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1833,27 +1894,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1864,6 +1910,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1949,27 +2010,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1980,6 +2026,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2062,27 +2123,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2097,6 +2143,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2105,14 +2166,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getCharactersCharacterIdContactsLabelsCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/contacts/labels/".replaceAll("\\{" + "character_id"
-                + "\\}", localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/characters/{character_id}/contacts/labels/".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2121,44 +2199,38 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdContactsLabelsValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdContactsLabels(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdContactsLabelsCall(characterId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdContactsLabelsCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -2223,27 +2295,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2254,6 +2311,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2332,27 +2404,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2363,6 +2420,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2445,27 +2517,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2476,6 +2533,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2561,27 +2633,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2596,6 +2653,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2604,14 +2676,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getCorporationsCorporationIdContactsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/contacts/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/contacts/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2624,45 +2713,39 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdContactsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdContactsCall(corporationId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -2730,27 +2813,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2761,6 +2829,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2842,27 +2925,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2873,6 +2941,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2959,27 +3042,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2990,6 +3058,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3072,27 +3155,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3107,6 +3175,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3115,14 +3198,31 @@ public class ContactsApi {
      */
     public okhttp3.Call getCorporationsCorporationIdContactsLabelsCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/contacts/labels/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v1/corporations/{corporation_id}/contacts/labels/".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3131,44 +3231,38 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdContactsLabelsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContactsLabels(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdContactsLabelsCall(corporationId, datasource,
-                ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdContactsLabelsCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -3233,27 +3327,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3264,6 +3343,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3342,27 +3436,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3373,6 +3452,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3455,27 +3549,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3486,6 +3565,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3560,27 +3654,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3599,19 +3678,51 @@ public class ContactsApi {
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
      *                        </table>
      */
     public okhttp3.Call postCharactersCharacterIdContactsCall(Integer characterId, Float standing,
             List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = contactIds;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3632,9 +3743,6 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("watched", watched));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3643,19 +3751,20 @@ public class ContactsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, Float standing,
             List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -3674,9 +3783,8 @@ public class ContactsApi {
                     "Missing the required parameter 'contactIds' when calling postCharactersCharacterIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = postCharactersCharacterIdContactsCall(characterId, standing, contactIds,
-                datasource, labelIds, token, watched, _callback);
-        return localVarCall;
+        return postCharactersCharacterIdContactsCall(characterId, standing, contactIds, datasource, labelIds, token,
+                watched, _callback);
 
     }
 
@@ -3732,27 +3840,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3768,6 +3861,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3833,27 +3941,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3869,6 +3962,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3938,27 +4046,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3974,6 +4067,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4042,27 +4150,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4077,6 +4170,21 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4086,14 +4194,31 @@ public class ContactsApi {
     public okhttp3.Call putCharactersCharacterIdContactsCall(Integer characterId, Float standing,
             List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = contactIds;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/contacts/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4114,12 +4239,7 @@ public class ContactsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("watched", watched));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-        final String[] localVarAccepts = {
-
-        };
+        final String[] localVarAccepts = {};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
@@ -4127,19 +4247,20 @@ public class ContactsApi {
 
         final String[] localVarContentTypes = { "application/json" };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putCharactersCharacterIdContactsValidateBeforeCall(Integer characterId, Float standing,
             List<Integer> contactIds, String datasource, List<Long> labelIds, String token, Boolean watched,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
@@ -4158,9 +4279,8 @@ public class ContactsApi {
                     "Missing the required parameter 'contactIds' when calling putCharactersCharacterIdContacts(Async)");
         }
 
-        okhttp3.Call localVarCall = putCharactersCharacterIdContactsCall(characterId, standing, contactIds, datasource,
-                labelIds, token, watched, _callback);
-        return localVarCall;
+        return putCharactersCharacterIdContactsCall(characterId, standing, contactIds, datasource, labelIds, token,
+                watched, _callback);
 
     }
 
@@ -4214,27 +4334,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4245,6 +4350,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4312,27 +4432,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4343,6 +4448,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4414,27 +4534,12 @@ public class ContactsApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4445,6 +4550,21 @@ public class ContactsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>

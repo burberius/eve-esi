@@ -34,9 +34,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class SovereigntyApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public SovereigntyApi() {
         this(Configuration.getDefaultApiClient());
@@ -52,6 +55,22 @@ public class SovereigntyApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -100,6 +119,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -115,32 +154,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -153,6 +172,19 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyCampaignsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -160,41 +192,40 @@ public class SovereigntyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getSovereigntyCampaignsValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSovereigntyCampaignsCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getSovereigntyCampaignsCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -244,6 +275,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -259,32 +310,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -348,6 +379,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -363,32 +414,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -455,6 +486,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -470,32 +521,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -563,6 +594,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -578,32 +629,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -616,6 +647,19 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyMapCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -623,41 +667,40 @@ public class SovereigntyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getSovereigntyMapValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSovereigntyMapCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getSovereigntyMapCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -708,6 +751,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -723,32 +786,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -811,6 +854,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -826,32 +889,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -920,6 +963,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -935,32 +998,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1027,6 +1070,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1042,32 +1105,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1080,6 +1123,19 @@ public class SovereigntyApi {
      */
     public okhttp3.Call getSovereigntyStructuresCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1087,41 +1143,40 @@ public class SovereigntyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getSovereigntyStructuresValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSovereigntyStructuresCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getSovereigntyStructuresCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -1171,6 +1226,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1186,32 +1261,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1275,6 +1330,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1290,32 +1365,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1382,6 +1437,26 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1397,32 +1472,12 @@ public class SovereigntyApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>

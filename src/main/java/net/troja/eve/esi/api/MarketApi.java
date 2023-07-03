@@ -40,9 +40,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class MarketApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public MarketApi() {
         this(Configuration.getDefaultApiClient());
@@ -58,6 +61,22 @@ public class MarketApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -120,27 +139,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -155,6 +159,21 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -163,14 +182,31 @@ public class MarketApi {
      */
     public okhttp3.Call getCharactersCharacterIdOrdersCall(Integer characterId, String datasource, String ifNoneMatch,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/orders/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v2/characters/{character_id}/orders/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -179,44 +215,38 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdOrdersValidateBeforeCall(Integer characterId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdOrders(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdOrdersCall(characterId, datasource, ifNoneMatch, token,
-                _callback);
-        return localVarCall;
+        return getCharactersCharacterIdOrdersCall(characterId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -281,27 +311,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -312,6 +327,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -390,27 +420,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -421,6 +436,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -503,27 +533,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -534,6 +549,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -619,27 +649,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -654,6 +669,21 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -662,14 +692,31 @@ public class MarketApi {
      */
     public okhttp3.Call getCharactersCharacterIdOrdersHistoryCall(Integer characterId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/characters/{character_id}/orders/history/".replaceAll(
-                "\\{" + "character_id" + "\\}", localVarApiClient.escapeString(characterId.toString()));
+        String localVarPath = "/v1/characters/{character_id}/orders/history/".replace("{" + "character_id" + "}",
+                localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -682,45 +729,39 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCharactersCharacterIdOrdersHistoryValidateBeforeCall(Integer characterId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'characterId' is set
         if (characterId == null) {
             throw new ApiException(
                     "Missing the required parameter 'characterId' when calling getCharactersCharacterIdOrdersHistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdOrdersHistoryCall(characterId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdOrdersHistoryCall(characterId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -790,27 +831,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -821,6 +847,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -904,27 +945,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -935,6 +961,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1022,27 +1063,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1053,6 +1079,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1138,27 +1179,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1173,6 +1199,21 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1181,14 +1222,31 @@ public class MarketApi {
      */
     public okhttp3.Call getCorporationsCorporationIdOrdersCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/orders/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v3/corporations/{corporation_id}/orders/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1201,44 +1259,38 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdOrdersValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdOrders(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdOrdersCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdOrdersCall(corporationId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -1307,27 +1359,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1338,6 +1375,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1420,27 +1472,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1451,6 +1488,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1539,27 +1591,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1570,6 +1607,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1656,27 +1708,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1691,6 +1728,21 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1699,14 +1751,31 @@ public class MarketApi {
      */
     public okhttp3.Call getCorporationsCorporationIdOrdersHistoryCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/orders/history/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/orders/history/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1719,45 +1788,40 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdOrdersHistoryValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdOrdersHistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdOrdersHistoryCall(corporationId, datasource,
-                ifNoneMatch, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdOrdersHistoryCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -1828,27 +1892,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1859,6 +1908,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1943,27 +2007,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1974,6 +2023,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2063,27 +2127,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2094,6 +2143,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2162,6 +2226,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2177,32 +2261,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2215,6 +2279,19 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsGroupsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2222,41 +2299,40 @@ public class MarketApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsGroupsValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getMarketsGroupsCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getMarketsGroupsCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -2306,6 +2382,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2321,32 +2417,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2408,6 +2484,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2423,32 +2519,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2515,6 +2591,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2530,32 +2626,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2631,16 +2707,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2651,17 +2717,7 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2676,6 +2732,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2684,14 +2760,31 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsGroupsMarketGroupIdCall(Integer marketGroupId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/markets/groups/{market_group_id}/".replaceAll("\\{" + "market_group_id" + "\\}",
+        String localVarPath = "/v1/markets/groups/{market_group_id}/".replace("{" + "market_group_id" + "}",
                 localVarApiClient.escapeString(marketGroupId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2700,7 +2793,6 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("language", language));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
             localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
@@ -2709,39 +2801,35 @@ public class MarketApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsGroupsMarketGroupIdValidateBeforeCall(Integer marketGroupId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'marketGroupId' is set
         if (marketGroupId == null) {
             throw new ApiException(
                     "Missing the required parameter 'marketGroupId' when calling getMarketsGroupsMarketGroupId(Async)");
         }
 
-        okhttp3.Call localVarCall = getMarketsGroupsMarketGroupIdCall(marketGroupId, acceptLanguage, datasource,
-                ifNoneMatch, language, _callback);
-        return localVarCall;
+        return getMarketsGroupsMarketGroupIdCall(marketGroupId, acceptLanguage, datasource, ifNoneMatch, language,
+                _callback);
 
     }
 
@@ -2800,16 +2888,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2820,17 +2898,7 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2841,6 +2909,26 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2913,16 +3001,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2933,17 +3011,7 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2954,6 +3022,26 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3030,16 +3118,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3050,17 +3128,7 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3071,6 +3139,26 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3139,6 +3227,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3154,32 +3262,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3192,6 +3280,19 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsPricesCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3199,41 +3300,40 @@ public class MarketApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsPricesValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getMarketsPricesCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getMarketsPricesCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -3283,6 +3383,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3298,32 +3418,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3385,6 +3485,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3400,32 +3520,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3492,6 +3592,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3507,32 +3627,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3603,16 +3703,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3633,11 +3723,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3652,18 +3737,50 @@ public class MarketApi {
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
      *                        </table>
      */
     public okhttp3.Call getMarketsRegionIdHistoryCall(Integer regionId, Integer typeId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/markets/{region_id}/history/".replaceAll("\\{" + "region_id" + "\\}",
+        String localVarPath = "/v1/markets/{region_id}/history/".replace("{" + "region_id" + "}",
                 localVarApiClient.escapeString(regionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3672,35 +3789,31 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsRegionIdHistoryValidateBeforeCall(Integer regionId, Integer typeId,
             String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
             throw new ApiException(
@@ -3713,8 +3826,7 @@ public class MarketApi {
                     "Missing the required parameter 'typeId' when calling getMarketsRegionIdHistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getMarketsRegionIdHistoryCall(regionId, typeId, datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getMarketsRegionIdHistoryCall(regionId, typeId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -3769,16 +3881,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3799,11 +3901,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3815,6 +3912,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3878,16 +3990,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3908,11 +4010,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3924,6 +4021,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3991,16 +4103,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4021,11 +4123,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4037,6 +4134,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>520</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4110,16 +4222,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4140,17 +4242,27 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4163,14 +4275,31 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsRegionIdOrdersCall(String orderType, Integer regionId, String datasource,
             String ifNoneMatch, Integer page, Integer typeId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/markets/{region_id}/orders/".replaceAll("\\{" + "region_id" + "\\}",
+        String localVarPath = "/v1/markets/{region_id}/orders/".replace("{" + "region_id" + "}",
                 localVarApiClient.escapeString(regionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4187,36 +4316,32 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("type_id", typeId));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsRegionIdOrdersValidateBeforeCall(String orderType, Integer regionId,
             String datasource, String ifNoneMatch, Integer page, Integer typeId, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'orderType' is set
         if (orderType == null) {
             throw new ApiException(
@@ -4229,9 +4354,7 @@ public class MarketApi {
                     "Missing the required parameter 'regionId' when calling getMarketsRegionIdOrders(Async)");
         }
 
-        okhttp3.Call localVarCall = getMarketsRegionIdOrdersCall(orderType, regionId, datasource, ifNoneMatch, page,
-                typeId, _callback);
-        return localVarCall;
+        return getMarketsRegionIdOrdersCall(orderType, regionId, datasource, ifNoneMatch, page, typeId, _callback);
 
     }
 
@@ -4292,16 +4415,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4322,17 +4435,27 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4407,16 +4530,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4437,17 +4550,27 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4526,16 +4649,6 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4556,17 +4669,27 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>503</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4640,6 +4763,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4655,32 +4798,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4693,14 +4816,31 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsRegionIdTypesCall(Integer regionId, String datasource, String ifNoneMatch,
             Integer page, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/markets/{region_id}/types/".replaceAll("\\{" + "region_id" + "\\}",
+        String localVarPath = "/v1/markets/{region_id}/types/".replace("{" + "region_id" + "}",
                 localVarApiClient.escapeString(regionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4709,43 +4849,38 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsRegionIdTypesValidateBeforeCall(Integer regionId, String datasource,
             String ifNoneMatch, Integer page, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'regionId' is set
         if (regionId == null) {
             throw new ApiException(
                     "Missing the required parameter 'regionId' when calling getMarketsRegionIdTypes(Async)");
         }
 
-        okhttp3.Call localVarCall = getMarketsRegionIdTypesCall(regionId, datasource, ifNoneMatch, page, _callback);
-        return localVarCall;
+        return getMarketsRegionIdTypesCall(regionId, datasource, ifNoneMatch, page, _callback);
 
     }
 
@@ -4801,6 +4936,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4816,32 +4971,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4911,6 +5046,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4926,32 +5081,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5025,6 +5160,26 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5040,32 +5195,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5150,27 +5285,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5185,6 +5305,21 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5193,14 +5328,31 @@ public class MarketApi {
      */
     public okhttp3.Call getMarketsStructuresStructureIdCall(Long structureId, String datasource, String ifNoneMatch,
             Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/markets/structures/{structure_id}/".replaceAll("\\{" + "structure_id" + "\\}",
+        String localVarPath = "/v1/markets/structures/{structure_id}/".replace("{" + "structure_id" + "}",
                 localVarApiClient.escapeString(structureId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -5213,44 +5365,38 @@ public class MarketApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMarketsStructuresStructureIdValidateBeforeCall(Long structureId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'structureId' is set
         if (structureId == null) {
             throw new ApiException(
                     "Missing the required parameter 'structureId' when calling getMarketsStructuresStructureId(Async)");
         }
 
-        okhttp3.Call localVarCall = getMarketsStructuresStructureIdCall(structureId, datasource, ifNoneMatch, page,
-                token, _callback);
-        return localVarCall;
+        return getMarketsStructuresStructureIdCall(structureId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -5318,27 +5464,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5349,6 +5480,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5430,27 +5576,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5461,6 +5592,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5546,27 +5692,12 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5577,6 +5708,21 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>

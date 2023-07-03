@@ -25,14 +25,19 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
+import java.util.Set;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class RoutesApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public RoutesApi() {
         this(Configuration.getDefaultApiClient());
@@ -48,6 +53,22 @@ public class RoutesApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -107,16 +128,6 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -127,17 +138,7 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -152,24 +153,61 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getRouteOriginDestinationCall(Integer destination, Integer origin, List<Integer> avoid,
-            List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
+    public okhttp3.Call getRouteOriginDestinationCall(Integer destination, Integer origin, Set<Integer> avoid,
+            Set<Set<Integer>> connections, String datasource, String flag, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/route/{origin}/{destination}/".replaceAll("\\{" + "destination" + "\\}",
-                localVarApiClient.escapeString(destination.toString())).replaceAll("\\{" + "origin" + "\\}",
+        String localVarPath = "/v1/route/{origin}/{destination}/".replace("{" + "destination" + "}",
+                localVarApiClient.escapeString(destination.toString())).replace("{" + "origin" + "}",
                 localVarApiClient.escapeString(origin.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (avoid != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "avoid", avoid));
         }
@@ -186,36 +224,32 @@ public class RoutesApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("flag", flag));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getRouteOriginDestinationValidateBeforeCall(Integer destination, Integer origin,
-            List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
+            Set<Integer> avoid, Set<Set<Integer>> connections, String datasource, String flag, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'destination' is set
         if (destination == null) {
             throw new ApiException(
@@ -228,9 +262,8 @@ public class RoutesApi {
                     "Missing the required parameter 'origin' when calling getRouteOriginDestination(Async)");
         }
 
-        okhttp3.Call localVarCall = getRouteOriginDestinationCall(destination, origin, avoid, connections, datasource,
-                flag, ifNoneMatch, _callback);
-        return localVarCall;
+        return getRouteOriginDestinationCall(destination, origin, avoid, connections, datasource, flag, ifNoneMatch,
+                _callback);
 
     }
 
@@ -291,16 +324,6 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -311,17 +334,7 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -336,14 +349,34 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public List<Integer> getRouteOriginDestination(Integer destination, Integer origin, List<Integer> avoid,
-            List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch) throws ApiException {
+    public List<Integer> getRouteOriginDestination(Integer destination, Integer origin, Set<Integer> avoid,
+            Set<Set<Integer>> connections, String datasource, String flag, String ifNoneMatch) throws ApiException {
         ApiResponse<List<Integer>> localVarResp = getRouteOriginDestinationWithHttpInfo(destination, origin, avoid,
                 connections, datasource, flag, ifNoneMatch);
         return localVarResp.getData();
@@ -406,16 +439,6 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -426,17 +449,7 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -451,6 +464,26 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -458,7 +491,7 @@ public class RoutesApi {
      *                        </table>
      */
     public ApiResponse<List<Integer>> getRouteOriginDestinationWithHttpInfo(Integer destination, Integer origin,
-            List<Integer> avoid, List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch)
+            Set<Integer> avoid, Set<Set<Integer>> connections, String datasource, String flag, String ifNoneMatch)
             throws ApiException {
         okhttp3.Call localVarCall = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,
                 connections, datasource, flag, ifNoneMatch, null);
@@ -526,16 +559,6 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -546,17 +569,7 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -571,14 +584,34 @@ public class RoutesApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getRouteOriginDestinationAsync(Integer destination, Integer origin, List<Integer> avoid,
-            List<List<Integer>> connections, String datasource, String flag, String ifNoneMatch,
+    public okhttp3.Call getRouteOriginDestinationAsync(Integer destination, Integer origin, Set<Integer> avoid,
+            Set<Set<Integer>> connections, String datasource, String flag, String ifNoneMatch,
             final ApiCallback<List<Integer>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRouteOriginDestinationValidateBeforeCall(destination, origin, avoid,

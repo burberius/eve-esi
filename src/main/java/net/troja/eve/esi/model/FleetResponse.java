@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FleetResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +70,9 @@ public class FleetResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_MOTD)
     private String motd;
 
+    public FleetResponse() {
+    }
+
     public FleetResponse isFreeMove(Boolean isFreeMove) {
 
         this.isFreeMove = isFreeMove;
@@ -58,7 +84,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isFreeMove
      **/
-    @ApiModelProperty(required = true, value = "Is free-move enabled")
+    @javax.annotation.Nonnull
     public Boolean getIsFreeMove() {
         return isFreeMove;
     }
@@ -78,7 +104,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isRegistered
      **/
-    @ApiModelProperty(required = true, value = "Does the fleet have an active fleet advertisement")
+    @javax.annotation.Nonnull
     public Boolean getIsRegistered() {
         return isRegistered;
     }
@@ -98,7 +124,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return isVoiceEnabled
      **/
-    @ApiModelProperty(required = true, value = "Is EVE Voice enabled")
+    @javax.annotation.Nonnull
     public Boolean getIsVoiceEnabled() {
         return isVoiceEnabled;
     }
@@ -118,7 +144,7 @@ public class FleetResponse implements Serializable {
      * 
      * @return motd
      **/
-    @ApiModelProperty(required = true, value = "Fleet MOTD in CCP flavoured HTML")
+    @javax.annotation.Nonnull
     public String getMotd() {
         return motd;
     }
@@ -128,7 +154,7 @@ public class FleetResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -163,11 +189,128 @@ public class FleetResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("is_free_move");
+        openapiFields.add("is_registered");
+        openapiFields.add("is_voice_enabled");
+        openapiFields.add("motd");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("is_free_move");
+        openapiRequiredFields.add("is_registered");
+        openapiRequiredFields.add("is_voice_enabled");
+        openapiRequiredFields.add("motd");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to FleetResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FleetResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                  // required
+                                                                  // fields but
+                                                                  // JSON object
+                                                                  // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FleetResponse is not found in the empty JSON string",
+                        FleetResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FleetResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FleetResponse` properties. JSON: %s",
+                        entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FleetResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("motd").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `motd` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("motd").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FleetResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FleetResponse' and
+                             // its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FleetResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FleetResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FleetResponse>() {
+                @Override
+                public void write(JsonWriter out, FleetResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FleetResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FleetResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FleetResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to FleetResponse
+     */
+    public static FleetResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FleetResponse.class);
+    }
+
+    /**
+     * Convert an instance of FleetResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
