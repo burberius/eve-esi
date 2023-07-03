@@ -108,21 +108,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{/isContainer}}
   {{/vendorExtensions.x-is-jackson-optional-nullable}}
   {{^vendorExtensions.x-is-jackson-optional-nullable}}
-  {{! ENUM_WORKAROUND_VARIABLE <START> }}
-  {{#isEnum}}
-  {{#isContainer}}
-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} List<String> {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
-  {{/isContainer}}
-  {{^isContainer}}
-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} String {{name}}{{#defaultValue}} = {{{.}}}.name(){{/defaultValue}};
-  {{/isContainer}}
-  {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}Enum{{#defaultValue}} = {{{.}}}{{/defaultValue}};
-  {{/isEnum}}
-  {{^isEnum}}
-  {{! ENUM_WORKAROUND_VARIABLE <DEFAULT> }}
   {{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}private{{/isDiscriminator}} {{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
-  {{/isEnum}}
-  {{! ENUM_WORKAROUND_VARIABLE <END> }}
   {{/vendorExtensions.x-is-jackson-optional-nullable}}
 
   {{/vars}}
@@ -159,34 +145,6 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
   {{#vars}}
 
   {{^isReadOnly}}
-  
-  {{! ENUM_WORKAROUND_BUILDER <START> }}
-  {{#isEnum}}
-  {{#deprecated}}
-  @Deprecated
-  {{/deprecated}}
-  {{#isContainer}}
-  public {{classname}} {{name}}String(List<String> {{name}}) {
-  {{/isContainer}}
-  {{^isContainer}}
-  public {{classname}} {{name}}String(String {{name}}) {
-  {{/isContainer}}
-    {{#vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});{{/vendorExtensions.x-is-jackson-optional-nullable}}
-    {{^vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}} = {{name}};{{/vendorExtensions.x-is-jackson-optional-nullable}}
-    return this;
-  }
-
-  {{#deprecated}}
-  @Deprecated
-  {{/deprecated}}
-  public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}Enum) {
-    {{#vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}}Enum = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}}Enum);{{/vendorExtensions.x-is-jackson-optional-nullable}}
-    {{^vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}}Enum = {{name}}Enum;{{/vendorExtensions.x-is-jackson-optional-nullable}}
-    return this;
-  }
-  {{/isEnum}}
-  {{^isEnum}}
-  {{! ENUM_WORKAROUND_BUILDER <DEFAULT> }}
   {{#deprecated}}
   @Deprecated
   {{/deprecated}}
@@ -195,13 +153,9 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     {{^vendorExtensions.x-is-jackson-optional-nullable}}this.{{name}} = {{name}};{{/vendorExtensions.x-is-jackson-optional-nullable}}
     return this;
   }
-  {{/isEnum}}
-  {{! ENUM_WORKAROUND_BUILDER <END> }}
   {{#isArray}}
 
-  {{! ENUM_WORKAROUND_ADD <START> }}
-  public {{classname}} add{{nameInCamelCase}}Item({{#isEnum}}String{{/isEnum}}{{^isEnum}}{{{items.datatypeWithEnum}}}{{/isEnum}} {{name}}Item) {
-  {{! ENUM_WORKAROUND_ADD <END> }}
+  public {{classname}} add{{nameInCamelCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
     {{#vendorExtensions.x-is-jackson-optional-nullable}}
     if (this.{{name}} == null || !this.{{name}}.isPresent()) {
       this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{{defaultValue}}}{{^defaultValue}}new {{#uniqueItems}}LinkedHashSet{{/uniqueItems}}{{^uniqueItems}}ArrayList{{/uniqueItems}}<>(){{/defaultValue}});
@@ -305,41 +259,10 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     return {{name}}.orElse(null);
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
     {{^vendorExtensions.x-is-jackson-optional-nullable}}
-    {{! ENUM_WORKAROUND_GETTER <START> }}
-    {{#isEnum}}
-    {{#isContainer}}
-    if ({{name}}Enum == null) {
-      {{name}}Enum = new ArrayList<>();
-      for (String value : {{name}}) {
-        {{{items.datatypeWithEnum}}} enumValue = {{{items.datatypeWithEnum}}}.fromValue(value);
-        if (enumValue != null) {
-            {{name}}Enum.add(enumValue);
-        }
-      }
-    }
-    {{/isContainer}}
-    {{^isContainer}}
-    if ({{name}}Enum == null) {
-      {{name}}Enum = {{{datatypeWithEnum}}}.fromValue({{name}});
-    }
-    {{/isContainer}}
-    return {{name}}Enum;
-    {{/isEnum}}
-    {{^isEnum}}
-    {{! ENUM_WORKAROUND_GETTER <DEFAULT> }}
     return {{name}};
-    {{/isEnum}}
-    {{! ENUM_WORKAROUND_GETTER <END> }}
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
   }
 
-  {{! ENUM_WORKAROUND_STRING_STRING_GETTER <START> }}
-  {{#isEnum}}
-  public {{#isContainer}}List<String>{{/isContainer}}{{^isContainer}}String{{/isContainer}} {{getter}}String() {
-    return {{name}};
-  }
-  {{/isEnum}}
-  {{! ENUM_WORKAROUND_STRING_STRING_GETTER <END> }}
   {{#vendorExtensions.x-is-jackson-optional-nullable}}
 {{> jackson_annotations}}
   public JsonNullable<{{{datatypeWithEnum}}}> {{getter}}_JsonNullable() {
@@ -355,28 +278,8 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
 
   {{^isReadOnly}}
 {{#vendorExtensions.x-setter-extra-annotation}}  {{{vendorExtensions.x-setter-extra-annotation}}}
-{{/vendorExtensions.x-setter-extra-annotation}}{{#jackson}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{> jackson_annotations}}{{/vendorExtensions.x-is-jackson-optional-nullable}}{{/jackson}}{{#deprecated}}  @Deprecated{{/deprecated}}
-  {{! ENUM_WORKAROUND_ENUM_SETTER <START> }}
-  public void {{setter}}({{{datatypeWithEnum}}} {{name}}{{#isEnum}}Enum{{/isEnum}}) {
-    {{#vendorExtensions.x-is-jackson-optional-nullable}}
-    this.{{name}}{{#isEnum}}Enum{{/isEnum}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}}{{#isEnum}}Enum{{/isEnum}});
-    {{/vendorExtensions.x-is-jackson-optional-nullable}}
-    {{^vendorExtensions.x-is-jackson-optional-nullable}}
-    this.{{name}}{{#isEnum}}Enum{{/isEnum}} = {{name}}{{#isEnum}}Enum{{/isEnum}};
-    {{/vendorExtensions.x-is-jackson-optional-nullable}}
-  }
-  {{! ENUM_WORKAROUND_ENUM_SETTER <END> }}
-
-  {{! ENUM_WORKAROUND_STRING_SETTER <START> }}
-  {{#isEnum}}
-{{#vendorExtensions.x-setter-extra-annotation}}  {{{vendorExtensions.x-setter-extra-annotation}}}
-{{/vendorExtensions.x-setter-extra-annotation}}{{#jackson}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{> jackson_annotations}}{{/vendorExtensions.x-is-jackson-optional-nullable}}{{/jackson}}{{#deprecated}}  @Deprecated{{/deprecated}}
-  {{#isContainer}}
-  public void {{setter}}String(List<String> {{name}}) {
-  {{/isContainer}}
-  {{^isContainer}}
-  public void {{setter}}String(String {{name}}) {
-  {{/isContainer}}
+{{/vendorExtensions.x-setter-extra-annotation}}{{#jackson}}{{^vendorExtensions.x-is-jackson-optional-nullable}}{{> jackson_annotations}}{{/vendorExtensions.x-is-jackson-optional-nullable}}{{/jackson}}{{#deprecated}}  @Deprecated
+{{/deprecated}}  public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
     {{#vendorExtensions.x-is-jackson-optional-nullable}}
     this.{{name}} = JsonNullable.<{{{datatypeWithEnum}}}>of({{name}});
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
@@ -384,8 +287,6 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     this.{{name}} = {{name}};
     {{/vendorExtensions.x-is-jackson-optional-nullable}}
   }
-  {{/isEnum}}
-  {{! ENUM_WORKAROUND_STRING_SETTER <END> }}
   {{/isReadOnly}}
 
   {{/vars}}
