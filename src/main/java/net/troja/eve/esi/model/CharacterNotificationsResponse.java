@@ -290,6 +290,10 @@ public class CharacterNotificationsResponse implements Serializable {
 
         CORPORATIONGOALCREATED("CorporationGoalCreated"),
 
+        CORPORATIONGOALNAMECHANGE("CorporationGoalNameChange"),
+
+        CORPORATIONLEFT("CorporationLeft"),
+
         CUSTOMSMSG("CustomsMsg"),
 
         DECLAREWAR("DeclareWar"),
@@ -398,6 +402,8 @@ public class CharacterNotificationsResponse implements Serializable {
 
         KILLRIGHTUSED("KillRightUsed"),
 
+        LPAUTOREDEEMED("LPAutoRedeemed"),
+
         LOCATECHARMSG("LocateCharMsg"),
 
         MADEWARMUTUAL("MadeWarMutual"),
@@ -464,7 +470,21 @@ public class CharacterNotificationsResponse implements Serializable {
 
         RETRACTSWAR("RetractsWar"),
 
+        SPAUTOREDEEMED("SPAutoRedeemed"),
+
         SEASONALCHALLENGECOMPLETED("SeasonalChallengeCompleted"),
+
+        SKINSEQUENCINGCOMPLETED("SkinSequencingCompleted"),
+
+        SKYHOOKDEPLOYED("SkyhookDeployed"),
+
+        SKYHOOKDESTROYED("SkyhookDestroyed"),
+
+        SKYHOOKLOSTSHIELDS("SkyhookLostShields"),
+
+        SKYHOOKONLINE("SkyhookOnline"),
+
+        SKYHOOKUNDERATTACK("SkyhookUnderAttack"),
 
         SOVALLCLAIMAQUIREDMSG("SovAllClaimAquiredMsg"),
 

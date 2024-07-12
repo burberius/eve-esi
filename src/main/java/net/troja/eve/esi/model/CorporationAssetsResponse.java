@@ -155,6 +155,8 @@ public class CorporationAssetsResponse implements Serializable {
 
         IMPOUNDED("Impounded"),
 
+        INFRASTRUCTUREHANGAR("InfrastructureHangar"),
+
         JUNKYARDREPROCESSED("JunkyardReprocessed"),
 
         JUNKYARDTRASHED("JunkyardTrashed"),
@@ -194,6 +196,8 @@ public class CorporationAssetsResponse implements Serializable {
         MEDSLOT7("MedSlot7"),
 
         MOBILEDEPOTHOLD("MobileDepotHold"),
+
+        MOONMATERIALBAY("MoonMaterialBay"),
 
         OFFICEFOLDER("OfficeFolder"),
 

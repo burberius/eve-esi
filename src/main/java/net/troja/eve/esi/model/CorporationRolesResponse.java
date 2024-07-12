@@ -83,6 +83,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -104,6 +106,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -144,6 +152,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -229,6 +239,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -250,6 +262,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -290,6 +308,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -376,6 +396,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -397,6 +419,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -437,6 +465,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -522,6 +552,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -543,6 +575,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -583,6 +621,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -669,6 +709,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -690,6 +732,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -730,6 +778,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -815,6 +865,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -836,6 +888,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -876,6 +934,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -961,6 +1021,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -982,6 +1044,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -1022,6 +1090,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 
@@ -1107,6 +1177,8 @@ public class CorporationRolesResponse implements Serializable {
 
         AUDITOR("Auditor"),
 
+        BRAND_MANAGER("Brand_Manager"),
+
         COMMUNICATIONS_OFFICER("Communications_Officer"),
 
         CONFIG_EQUIPMENT("Config_Equipment"),
@@ -1128,6 +1200,12 @@ public class CorporationRolesResponse implements Serializable {
         CONTAINER_TAKE_7("Container_Take_7"),
 
         CONTRACT_MANAGER("Contract_Manager"),
+
+        DELIVERIES_CONTAINER_TAKE("Deliveries_Container_Take"),
+
+        DELIVERIES_QUERY("Deliveries_Query"),
+
+        DELIVERIES_TAKE("Deliveries_Take"),
 
         DIPLOMAT("Diplomat"),
 
@@ -1168,6 +1246,8 @@ public class CorporationRolesResponse implements Serializable {
         JUNIOR_ACCOUNTANT("Junior_Accountant"),
 
         PERSONNEL_MANAGER("Personnel_Manager"),
+
+        PROJECT_MANAGER("Project_Manager"),
 
         RENT_FACTORY_FACILITY("Rent_Factory_Facility"),
 

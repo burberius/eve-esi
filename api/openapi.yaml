@@ -9103,7 +9103,7 @@ paths:
                 description: 200 ok array
                 items:
                   $ref: '#/components/schemas/FactionWarfareStatsResponse'
-                maxItems: 4
+                maxItems: 100
                 title: get_fw_stats_ok
                 type: array
           description: Per faction breakdown of faction warfare statistics
@@ -9210,7 +9210,7 @@ paths:
                 description: List of factions at war
                 items:
                   $ref: '#/components/schemas/FactionWarfareWarsResponse'
-                maxItems: 8
+                maxItems: 100
                 title: get_fw_wars_ok
                 type: array
           description: A list of NPC factions at war
@@ -10950,6 +10950,8 @@ paths:
                 type: string
         "400":
           content: {}
+        "404":
+          content: {}
         "420":
           content: {}
         "500":
@@ -10961,8 +10963,6 @@ paths:
         "401":
           content: {}
         "403":
-          content: {}
-        "404":
           content: {}
         "422":
           content: {}
@@ -21293,7 +21293,7 @@ paths:
                 faction_id: 1
                 is_unique: true
                 name: Faction
-                size_factor: 1
+                size_factor: 1.0
                 solar_system_id: 123
                 station_count: 1000
                 station_system_count: 100
@@ -24254,7 +24254,7 @@ paths:
             application/json:
               example:
               - amount: -1000
-                balance: 100000
+                balance: 100000.0
                 context_id: 2112625428
                 context_id_type: character_id
                 date: 2016-10-24T09:00:00Z
@@ -24831,7 +24831,7 @@ paths:
         "201":
           content:
             application/json:
-              example: 2950
+              example: 2950.0
               schema:
                 description: 201 created number
                 format: float
@@ -34663,6 +34663,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34674,6 +34675,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34694,6 +34698,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -34705,7 +34710,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_grantable_role
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_grantable_roles
           type: array
         grantable_roles_at_base:
@@ -34722,6 +34727,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34733,6 +34739,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34753,6 +34762,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -34764,7 +34774,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_grantable_roles_at_base_grantable_roles_at_base
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_grantable_roles_at_base
           type: array
         grantable_roles_at_hq:
@@ -34781,6 +34791,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34792,6 +34803,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34812,6 +34826,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -34823,7 +34838,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_grantable_roles_at_hq_grantable_roles_at_hq
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_grantable_roles_at_hq
           type: array
         grantable_roles_at_other:
@@ -34840,6 +34855,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34851,6 +34867,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34871,6 +34890,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -34882,7 +34902,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_grantable_roles_at_other_grantable_roles_at_other
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_grantable_roles_at_other
           type: array
         roles:
@@ -34899,6 +34919,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34910,6 +34931,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34930,6 +34954,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -34941,7 +34966,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_role
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_roles
           type: array
         roles_at_base:
@@ -34958,6 +34983,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -34969,6 +34995,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -34989,6 +35018,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35000,7 +35030,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_roles_at_base_roles_at_base
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_roles_at_base
           type: array
         roles_at_hq:
@@ -35017,6 +35047,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35028,6 +35059,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35048,6 +35082,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35059,7 +35094,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_roles_at_hq_roles_at_hq
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_roles_at_hq
           type: array
         roles_at_other:
@@ -35076,6 +35111,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35087,6 +35123,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35107,6 +35146,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35118,7 +35158,7 @@ components:
             - Trader
             title: get_corporations_corporation_id_roles_roles_at_other_roles_at_other
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_corporations_corporation_id_roles_roles_at_other
           type: array
       required:
@@ -35174,6 +35214,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35185,6 +35226,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35205,6 +35249,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35233,6 +35278,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35244,6 +35290,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35264,6 +35313,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35627,6 +35677,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35638,6 +35689,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35658,6 +35712,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35686,6 +35741,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35697,6 +35753,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35717,6 +35776,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35745,6 +35805,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35756,6 +35817,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35776,6 +35840,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35804,6 +35869,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35815,6 +35881,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35835,6 +35904,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35867,6 +35937,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35878,6 +35949,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35898,6 +35972,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35926,6 +36001,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35937,6 +36013,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -35957,6 +36036,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -35985,6 +36065,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -35996,6 +36077,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -36016,6 +36100,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -36044,6 +36129,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -36055,6 +36141,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -36075,6 +36164,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -37832,6 +37922,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -37843,6 +37934,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -37863,6 +37957,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -37874,7 +37969,7 @@ components:
             - Trader
             title: get_characters_character_id_roles_role
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_characters_character_id_roles_roles
           type: array
         roles_at_base:
@@ -37891,6 +37986,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -37902,6 +37998,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -37922,6 +38021,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -37933,7 +38033,7 @@ components:
             - Trader
             title: get_characters_character_id_roles_roles_at_base_roles_at_base
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_characters_character_id_roles_roles_at_base
           type: array
         roles_at_hq:
@@ -37950,6 +38050,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -37961,6 +38062,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -37981,6 +38085,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -37992,7 +38097,7 @@ components:
             - Trader
             title: get_characters_character_id_roles_roles_at_hq_roles_at_hq
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_characters_character_id_roles_roles_at_hq
           type: array
         roles_at_other:
@@ -38009,6 +38114,7 @@ components:
             - Account_Take_7
             - Accountant
             - Auditor
+            - Brand_Manager
             - Communications_Officer
             - Config_Equipment
             - Config_Starbase_Equipment
@@ -38020,6 +38126,9 @@ components:
             - Container_Take_6
             - Container_Take_7
             - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
             - Diplomat
             - Director
             - Factory_Manager
@@ -38040,6 +38149,7 @@ components:
             - Hangar_Take_7
             - Junior_Accountant
             - Personnel_Manager
+            - Project_Manager
             - Rent_Factory_Facility
             - Rent_Office
             - Rent_Research_Facility
@@ -38051,7 +38161,7 @@ components:
             - Trader
             title: get_characters_character_id_roles_roles_at_other_roles_at_other
             type: string
-          maxItems: 50
+          maxItems: 100
           title: get_characters_character_id_roles_roles_at_other
           type: array
       title: CharacterRolesResponse
@@ -39355,6 +39465,7 @@ components:
           - agents_preward
           - alliance_maintainance_fee
           - alliance_registration_fee
+          - allignment_based_gate_toll
           - asset_safety_recovery_tax
           - bounty
           - bounty_prize
@@ -39398,10 +39509,18 @@ components:
           - corporation_logo_change_cost
           - corporation_payment
           - corporation_registration_fee
+          - cosmetic_market_component_item_purchase
+          - cosmetic_market_skin_purchase
+          - cosmetic_market_skin_sale
+          - cosmetic_market_skin_sale_broker_fee
+          - cosmetic_market_skin_sale_tax
+          - cosmetic_market_skin_transaction
           - courier_mission_escrow
           - cspa
           - cspaofflinerefund
           - daily_challenge_reward
+          - daily_goal_payouts
+          - daily_goal_payouts_tax
           - datacore_fee
           - dna_modification_fee
           - docking_fee
@@ -39422,6 +39541,8 @@ components:
           - infrastructure_hub_maintenance
           - inheritance
           - insurance
+          - insurgency_corruption_contribution_reward
+          - insurgency_suppression_contribution_reward
           - item_trader_payment
           - jump_clone_activation_fee
           - jump_clone_installation_fee
@@ -39449,6 +39570,7 @@ components:
           - player_trading
           - project_discovery_reward
           - project_discovery_tax
+          - project_payouts
           - reaction
           - redeemed_isk_token
           - release_of_impounded_property
@@ -39468,6 +39590,7 @@ components:
           - store_purchase_refund
           - structure_gate_jump
           - transaction_tax
+          - under_construction
           - upkeep_adjustment_fee
           - war_ally_contract
           - war_fee
@@ -39841,6 +39964,7 @@ components:
           - HiSlot7
           - HiddenModifiers
           - Implant
+          - InfrastructureHangar
           - LoSlot0
           - LoSlot1
           - LoSlot2
@@ -39859,6 +39983,7 @@ components:
           - MedSlot6
           - MedSlot7
           - MobileDepotHold
+          - MoonMaterialBay
           - QuafeBay
           - RigSlot0
           - RigSlot1
@@ -40057,6 +40182,8 @@ components:
           - CorporationGoalClosed
           - CorporationGoalCompleted
           - CorporationGoalCreated
+          - CorporationGoalNameChange
+          - CorporationLeft
           - CustomsMsg
           - DeclareWar
           - DistrictAttacked
@@ -40111,6 +40238,7 @@ components:
           - KillRightUnavailable
           - KillRightUnavailableOpen
           - KillRightUsed
+          - LPAutoRedeemed
           - LocateCharMsg
           - MadeWarMutual
           - MercOfferRetractedMsg
@@ -40144,7 +40272,14 @@ components:
           - ReimbursementMsg
           - ResearchMissionAvailableMsg
           - RetractsWar
+          - SPAutoRedeemed
           - SeasonalChallengeCompleted
+          - SkinSequencingCompleted
+          - SkyhookDeployed
+          - SkyhookDestroyed
+          - SkyhookLostShields
+          - SkyhookOnline
+          - SkyhookUnderAttack
           - SovAllClaimAquiredMsg
           - SovAllClaimLostMsg
           - SovCommandNodeEventStarted
@@ -40377,6 +40512,7 @@ components:
           - HiddenModifiers
           - Implant
           - Impounded
+          - InfrastructureHangar
           - JunkyardReprocessed
           - JunkyardTrashed
           - LoSlot0
@@ -40397,6 +40533,7 @@ components:
           - MedSlot6
           - MedSlot7
           - MobileDepotHold
+          - MoonMaterialBay
           - OfficeFolder
           - Pilot
           - PlanetSurface
@@ -40594,6 +40731,7 @@ components:
           - agents_preward
           - alliance_maintainance_fee
           - alliance_registration_fee
+          - allignment_based_gate_toll
           - asset_safety_recovery_tax
           - bounty
           - bounty_prize
@@ -40637,10 +40775,18 @@ components:
           - corporation_logo_change_cost
           - corporation_payment
           - corporation_registration_fee
+          - cosmetic_market_component_item_purchase
+          - cosmetic_market_skin_purchase
+          - cosmetic_market_skin_sale
+          - cosmetic_market_skin_sale_broker_fee
+          - cosmetic_market_skin_sale_tax
+          - cosmetic_market_skin_transaction
           - courier_mission_escrow
           - cspa
           - cspaofflinerefund
           - daily_challenge_reward
+          - daily_goal_payouts
+          - daily_goal_payouts_tax
           - datacore_fee
           - dna_modification_fee
           - docking_fee
@@ -40661,6 +40807,8 @@ components:
           - infrastructure_hub_maintenance
           - inheritance
           - insurance
+          - insurgency_corruption_contribution_reward
+          - insurgency_suppression_contribution_reward
           - item_trader_payment
           - jump_clone_activation_fee
           - jump_clone_installation_fee
@@ -40688,6 +40836,7 @@ components:
           - player_trading
           - project_discovery_reward
           - project_discovery_tax
+          - project_payouts
           - reaction
           - redeemed_isk_token
           - release_of_impounded_property
@@ -40707,6 +40856,7 @@ components:
           - store_purchase_refund
           - structure_gate_jump
           - transaction_tax
+          - under_construction
           - upkeep_adjustment_fee
           - war_ally_contract
           - war_fee

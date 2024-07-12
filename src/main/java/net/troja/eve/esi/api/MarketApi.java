@@ -4763,6 +4763,11 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4789,11 +4794,6 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4936,6 +4936,11 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4962,11 +4967,6 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5046,6 +5046,11 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5072,11 +5077,6 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5160,6 +5160,11 @@ public class MarketApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5186,11 +5191,6 @@ public class MarketApi {
      *                        </tr>
      *                        <tr>
      *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>

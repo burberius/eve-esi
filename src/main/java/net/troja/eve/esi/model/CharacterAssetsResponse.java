@@ -127,6 +127,8 @@ public class CharacterAssetsResponse implements Serializable {
 
         IMPLANT("Implant"),
 
+        INFRASTRUCTUREHANGAR("InfrastructureHangar"),
+
         LOSLOT0("LoSlot0"),
 
         LOSLOT1("LoSlot1"),
@@ -162,6 +164,8 @@ public class CharacterAssetsResponse implements Serializable {
         MEDSLOT7("MedSlot7"),
 
         MOBILEDEPOTHOLD("MobileDepotHold"),
+
+        MOONMATERIALBAY("MoonMaterialBay"),
 
         QUAFEBAY("QuafeBay"),
 

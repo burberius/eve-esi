@@ -197,6 +197,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         ALLIANCE_REGISTRATION_FEE("alliance_registration_fee"),
 
+        ALLIGNMENT_BASED_GATE_TOLL("allignment_based_gate_toll"),
+
         ASSET_SAFETY_RECOVERY_TAX("asset_safety_recovery_tax"),
 
         BOUNTY("bounty"),
@@ -283,6 +285,18 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         CORPORATION_REGISTRATION_FEE("corporation_registration_fee"),
 
+        COSMETIC_MARKET_COMPONENT_ITEM_PURCHASE("cosmetic_market_component_item_purchase"),
+
+        COSMETIC_MARKET_SKIN_PURCHASE("cosmetic_market_skin_purchase"),
+
+        COSMETIC_MARKET_SKIN_SALE("cosmetic_market_skin_sale"),
+
+        COSMETIC_MARKET_SKIN_SALE_BROKER_FEE("cosmetic_market_skin_sale_broker_fee"),
+
+        COSMETIC_MARKET_SKIN_SALE_TAX("cosmetic_market_skin_sale_tax"),
+
+        COSMETIC_MARKET_SKIN_TRANSACTION("cosmetic_market_skin_transaction"),
+
         COURIER_MISSION_ESCROW("courier_mission_escrow"),
 
         CSPA("cspa"),
@@ -290,6 +304,10 @@ public class CharacterWalletJournalResponse implements Serializable {
         CSPAOFFLINEREFUND("cspaofflinerefund"),
 
         DAILY_CHALLENGE_REWARD("daily_challenge_reward"),
+
+        DAILY_GOAL_PAYOUTS("daily_goal_payouts"),
+
+        DAILY_GOAL_PAYOUTS_TAX("daily_goal_payouts_tax"),
 
         DATACORE_FEE("datacore_fee"),
 
@@ -330,6 +348,10 @@ public class CharacterWalletJournalResponse implements Serializable {
         INHERITANCE("inheritance"),
 
         INSURANCE("insurance"),
+
+        INSURGENCY_CORRUPTION_CONTRIBUTION_REWARD("insurgency_corruption_contribution_reward"),
+
+        INSURGENCY_SUPPRESSION_CONTRIBUTION_REWARD("insurgency_suppression_contribution_reward"),
 
         ITEM_TRADER_PAYMENT("item_trader_payment"),
 
@@ -385,6 +407,8 @@ public class CharacterWalletJournalResponse implements Serializable {
 
         PROJECT_DISCOVERY_TAX("project_discovery_tax"),
 
+        PROJECT_PAYOUTS("project_payouts"),
+
         REACTION("reaction"),
 
         REDEEMED_ISK_TOKEN("redeemed_isk_token"),
@@ -422,6 +446,8 @@ public class CharacterWalletJournalResponse implements Serializable {
         STRUCTURE_GATE_JUMP("structure_gate_jump"),
 
         TRANSACTION_TAX("transaction_tax"),
+
+        UNDER_CONSTRUCTION("under_construction"),
 
         UPKEEP_ADJUSTMENT_FEE("upkeep_adjustment_fee"),
 
