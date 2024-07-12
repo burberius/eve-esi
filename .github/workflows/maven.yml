@@ -10,6 +10,9 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    # Every Monday @ 8:44
+    - cron:  '44 8 * * 1'
 
 jobs:
   build:
