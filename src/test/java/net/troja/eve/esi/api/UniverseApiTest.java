@@ -283,7 +283,7 @@ public class UniverseApiTest extends GeneralApiTest {
      * @throws ApiException
      *             if the Api call fails
      */
-    @Test
+    @Test @Ignore("Endpoint is not working")
     public void getUniverseRacesTest() throws ApiException {
         final List<RacesResponse> response = api.getUniverseRaces(LANGUAGE, DATASOURCE, null, LANGUAGE);
 
