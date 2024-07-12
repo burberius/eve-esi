@@ -19,17 +19,40 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationTitlesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -176,8 +199,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES = "grantable_roles";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES)
-    private List<String> grantableRoles = null;
-    private List<GrantableRolesEnum> grantableRolesEnum = null;
+    private List<String> grantableRoles;
+    private List<GrantableRolesEnum> grantableRolesEnum;
 
     /**
      * grantable_roles_at_base string
@@ -323,8 +346,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE = "grantable_roles_at_base";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE)
-    private List<String> grantableRolesAtBase = null;
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum = null;
+    private List<String> grantableRolesAtBase;
+    private List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum;
 
     /**
      * grantable_roles_at_hq string
@@ -469,8 +492,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ = "grantable_roles_at_hq";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ)
-    private List<String> grantableRolesAtHq = null;
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum = null;
+    private List<String> grantableRolesAtHq;
+    private List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum;
 
     /**
      * grantable_roles_at_other string
@@ -616,8 +639,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER = "grantable_roles_at_other";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER)
-    private List<String> grantableRolesAtOther = null;
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum = null;
+    private List<String> grantableRolesAtOther;
+    private List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)
@@ -766,8 +789,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
-    private List<String> roles = null;
-    private List<RolesEnum> rolesEnum = null;
+    private List<String> roles;
+    private List<RolesEnum> rolesEnum;
 
     /**
      * roles_at_base string
@@ -912,8 +935,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
-    private List<String> rolesAtBase = null;
-    private List<RolesAtBaseEnum> rolesAtBaseEnum = null;
+    private List<String> rolesAtBase;
+    private List<RolesAtBaseEnum> rolesAtBaseEnum;
 
     /**
      * roles_at_hq string
@@ -1058,8 +1081,8 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
-    private List<String> rolesAtHq = null;
-    private List<RolesAtHqEnum> rolesAtHqEnum = null;
+    private List<String> rolesAtHq;
+    private List<RolesAtHqEnum> rolesAtHqEnum;
 
     /**
      * roles_at_other string
@@ -1204,22 +1227,25 @@ public class CorporationTitlesResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
-    private List<String> rolesAtOther = null;
-    private List<RolesAtOtherEnum> rolesAtOtherEnum = null;
+    private List<String> rolesAtOther;
+    private List<RolesAtOtherEnum> rolesAtOtherEnum;
 
     public static final String SERIALIZED_NAME_TITLE_ID = "title_id";
     @SerializedName(SERIALIZED_NAME_TITLE_ID)
     private Integer titleId;
 
-    public CorporationTitlesResponse grantableRoles(List<GrantableRolesEnum> grantableRolesEnum) {
-
-        this.grantableRolesEnum = grantableRolesEnum;
-        return this;
+    public CorporationTitlesResponse() {
     }
 
     public CorporationTitlesResponse grantableRolesString(List<String> grantableRoles) {
 
         this.grantableRoles = grantableRoles;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRoles(List<GrantableRolesEnum> grantableRolesEnum) {
+
+        this.grantableRolesEnum = grantableRolesEnum;
         return this;
     }
 
@@ -1237,7 +1263,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return grantableRoles
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "grantable_roles array")
     public List<GrantableRolesEnum> getGrantableRoles() {
         if (grantableRolesEnum == null) {
             grantableRolesEnum = new ArrayList<>();
@@ -1263,15 +1288,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.grantableRoles = grantableRoles;
     }
 
-    public CorporationTitlesResponse grantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum) {
-
-        this.grantableRolesAtBaseEnum = grantableRolesAtBaseEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse grantableRolesAtBaseString(List<String> grantableRolesAtBase) {
 
         this.grantableRolesAtBase = grantableRolesAtBase;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtBase(List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum) {
+
+        this.grantableRolesAtBaseEnum = grantableRolesAtBaseEnum;
         return this;
     }
 
@@ -1289,7 +1314,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return grantableRolesAtBase
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "grantable_roles_at_base array")
     public List<GrantableRolesAtBaseEnum> getGrantableRolesAtBase() {
         if (grantableRolesAtBaseEnum == null) {
             grantableRolesAtBaseEnum = new ArrayList<>();
@@ -1315,15 +1339,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.grantableRolesAtBase = grantableRolesAtBase;
     }
 
-    public CorporationTitlesResponse grantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum) {
-
-        this.grantableRolesAtHqEnum = grantableRolesAtHqEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse grantableRolesAtHqString(List<String> grantableRolesAtHq) {
 
         this.grantableRolesAtHq = grantableRolesAtHq;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtHq(List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum) {
+
+        this.grantableRolesAtHqEnum = grantableRolesAtHqEnum;
         return this;
     }
 
@@ -1341,7 +1365,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return grantableRolesAtHq
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "grantable_roles_at_hq array")
     public List<GrantableRolesAtHqEnum> getGrantableRolesAtHq() {
         if (grantableRolesAtHqEnum == null) {
             grantableRolesAtHqEnum = new ArrayList<>();
@@ -1367,15 +1390,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.grantableRolesAtHq = grantableRolesAtHq;
     }
 
-    public CorporationTitlesResponse grantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum) {
-
-        this.grantableRolesAtOtherEnum = grantableRolesAtOtherEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse grantableRolesAtOtherString(List<String> grantableRolesAtOther) {
 
         this.grantableRolesAtOther = grantableRolesAtOther;
+        return this;
+    }
+
+    public CorporationTitlesResponse grantableRolesAtOther(List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum) {
+
+        this.grantableRolesAtOtherEnum = grantableRolesAtOtherEnum;
         return this;
     }
 
@@ -1393,7 +1416,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return grantableRolesAtOther
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "grantable_roles_at_other array")
     public List<GrantableRolesAtOtherEnum> getGrantableRolesAtOther() {
         if (grantableRolesAtOtherEnum == null) {
             grantableRolesAtOtherEnum = new ArrayList<>();
@@ -1431,7 +1453,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return name
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "name string")
     public String getName() {
         return name;
     }
@@ -1440,15 +1461,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.name = name;
     }
 
-    public CorporationTitlesResponse roles(List<RolesEnum> rolesEnum) {
-
-        this.rolesEnum = rolesEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse rolesString(List<String> roles) {
 
         this.roles = roles;
+        return this;
+    }
+
+    public CorporationTitlesResponse roles(List<RolesEnum> rolesEnum) {
+
+        this.rolesEnum = rolesEnum;
         return this;
     }
 
@@ -1466,7 +1487,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return roles
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "roles array")
     public List<RolesEnum> getRoles() {
         if (rolesEnum == null) {
             rolesEnum = new ArrayList<>();
@@ -1492,15 +1512,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.roles = roles;
     }
 
-    public CorporationTitlesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
-
-        this.rolesAtBaseEnum = rolesAtBaseEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse rolesAtBaseString(List<String> rolesAtBase) {
 
         this.rolesAtBase = rolesAtBase;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtBase(List<RolesAtBaseEnum> rolesAtBaseEnum) {
+
+        this.rolesAtBaseEnum = rolesAtBaseEnum;
         return this;
     }
 
@@ -1518,7 +1538,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return rolesAtBase
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "roles_at_base array")
     public List<RolesAtBaseEnum> getRolesAtBase() {
         if (rolesAtBaseEnum == null) {
             rolesAtBaseEnum = new ArrayList<>();
@@ -1544,15 +1563,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.rolesAtBase = rolesAtBase;
     }
 
-    public CorporationTitlesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
-
-        this.rolesAtHqEnum = rolesAtHqEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse rolesAtHqString(List<String> rolesAtHq) {
 
         this.rolesAtHq = rolesAtHq;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtHq(List<RolesAtHqEnum> rolesAtHqEnum) {
+
+        this.rolesAtHqEnum = rolesAtHqEnum;
         return this;
     }
 
@@ -1570,7 +1589,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return rolesAtHq
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "roles_at_hq array")
     public List<RolesAtHqEnum> getRolesAtHq() {
         if (rolesAtHqEnum == null) {
             rolesAtHqEnum = new ArrayList<>();
@@ -1596,15 +1614,15 @@ public class CorporationTitlesResponse implements Serializable {
         this.rolesAtHq = rolesAtHq;
     }
 
-    public CorporationTitlesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
-
-        this.rolesAtOtherEnum = rolesAtOtherEnum;
-        return this;
-    }
-
     public CorporationTitlesResponse rolesAtOtherString(List<String> rolesAtOther) {
 
         this.rolesAtOther = rolesAtOther;
+        return this;
+    }
+
+    public CorporationTitlesResponse rolesAtOther(List<RolesAtOtherEnum> rolesAtOtherEnum) {
+
+        this.rolesAtOtherEnum = rolesAtOtherEnum;
         return this;
     }
 
@@ -1622,7 +1640,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return rolesAtOther
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "roles_at_other array")
     public List<RolesAtOtherEnum> getRolesAtOther() {
         if (rolesAtOtherEnum == null) {
             rolesAtOtherEnum = new ArrayList<>();
@@ -1660,7 +1677,6 @@ public class CorporationTitlesResponse implements Serializable {
      * @return titleId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "title_id integer")
     public Integer getTitleId() {
         return titleId;
     }
@@ -1670,7 +1686,7 @@ public class CorporationTitlesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1718,11 +1734,175 @@ public class CorporationTitlesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("grantable_roles");
+        openapiFields.add("grantable_roles_at_base");
+        openapiFields.add("grantable_roles_at_hq");
+        openapiFields.add("grantable_roles_at_other");
+        openapiFields.add("name");
+        openapiFields.add("roles");
+        openapiFields.add("roles_at_base");
+        openapiFields.add("roles_at_hq");
+        openapiFields.add("roles_at_other");
+        openapiFields.add("title_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationTitlesResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationTitlesResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                              // required
+                                                                              // fields
+                                                                              // but
+                                                                              // JSON
+                                                                              // object
+                                                                              // is
+                                                                              // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CorporationTitlesResponse is not found in the empty JSON string",
+                        CorporationTitlesResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationTitlesResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationTitlesResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("grantable_roles") != null && !jsonObj.get("grantable_roles").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `grantable_roles` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("grantable_roles").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("grantable_roles_at_base") != null && !jsonObj.get("grantable_roles_at_base").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `grantable_roles_at_base` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("grantable_roles_at_base").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("grantable_roles_at_hq") != null && !jsonObj.get("grantable_roles_at_hq").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `grantable_roles_at_hq` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("grantable_roles_at_hq").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("grantable_roles_at_other") != null && !jsonObj.get("grantable_roles_at_other").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `grantable_roles_at_other` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("grantable_roles_at_other").toString()));
+        }
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles")
+                            .toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("roles_at_base") != null && !jsonObj.get("roles_at_base").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `roles_at_base` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("roles_at_base").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("roles_at_hq") != null && !jsonObj.get("roles_at_hq").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `roles_at_hq` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("roles_at_hq").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("roles_at_other") != null && !jsonObj.get("roles_at_other").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `roles_at_other` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("roles_at_other").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationTitlesResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationTitlesResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationTitlesResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationTitlesResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationTitlesResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationTitlesResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationTitlesResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationTitlesResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationTitlesResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationTitlesResponse
+     */
+    public static CorporationTitlesResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationTitlesResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationTitlesResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

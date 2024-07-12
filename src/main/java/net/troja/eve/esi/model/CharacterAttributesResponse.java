@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterAttributesResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -64,6 +87,9 @@ public class CharacterAttributesResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_WILLPOWER)
     private Integer willpower;
 
+    public CharacterAttributesResponse() {
+    }
+
     public CharacterAttributesResponse accruedRemapCooldownDate(OffsetDateTime accruedRemapCooldownDate) {
 
         this.accruedRemapCooldownDate = accruedRemapCooldownDate;
@@ -76,7 +102,6 @@ public class CharacterAttributesResponse implements Serializable {
      * @return accruedRemapCooldownDate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Neural remapping cooldown after a character uses remap accrued over time")
     public OffsetDateTime getAccruedRemapCooldownDate() {
         return accruedRemapCooldownDate;
     }
@@ -97,7 +122,6 @@ public class CharacterAttributesResponse implements Serializable {
      * @return bonusRemaps
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Number of available bonus character neural remaps")
     public Integer getBonusRemaps() {
         return bonusRemaps;
     }
@@ -117,7 +141,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return charisma
      **/
-    @ApiModelProperty(required = true, value = "charisma integer")
+    @javax.annotation.Nonnull
     public Integer getCharisma() {
         return charisma;
     }
@@ -137,7 +161,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return intelligence
      **/
-    @ApiModelProperty(required = true, value = "intelligence integer")
+    @javax.annotation.Nonnull
     public Integer getIntelligence() {
         return intelligence;
     }
@@ -158,7 +182,6 @@ public class CharacterAttributesResponse implements Serializable {
      * @return lastRemapDate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Datetime of last neural remap, including usage of bonus remaps")
     public OffsetDateTime getLastRemapDate() {
         return lastRemapDate;
     }
@@ -178,7 +201,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return memory
      **/
-    @ApiModelProperty(required = true, value = "memory integer")
+    @javax.annotation.Nonnull
     public Integer getMemory() {
         return memory;
     }
@@ -198,7 +221,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return perception
      **/
-    @ApiModelProperty(required = true, value = "perception integer")
+    @javax.annotation.Nonnull
     public Integer getPerception() {
         return perception;
     }
@@ -218,7 +241,7 @@ public class CharacterAttributesResponse implements Serializable {
      * 
      * @return willpower
      **/
-    @ApiModelProperty(required = true, value = "willpower integer")
+    @javax.annotation.Nonnull
     public Integer getWillpower() {
         return willpower;
     }
@@ -228,7 +251,7 @@ public class CharacterAttributesResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -272,11 +295,135 @@ public class CharacterAttributesResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accrued_remap_cooldown_date");
+        openapiFields.add("bonus_remaps");
+        openapiFields.add("charisma");
+        openapiFields.add("intelligence");
+        openapiFields.add("last_remap_date");
+        openapiFields.add("memory");
+        openapiFields.add("perception");
+        openapiFields.add("willpower");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("charisma");
+        openapiRequiredFields.add("intelligence");
+        openapiRequiredFields.add("memory");
+        openapiRequiredFields.add("perception");
+        openapiRequiredFields.add("willpower");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterAttributesResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterAttributesResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                // required
+                                                                                // fields
+                                                                                // but
+                                                                                // JSON
+                                                                                // object
+                                                                                // is
+                                                                                // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CharacterAttributesResponse is not found in the empty JSON string",
+                                CharacterAttributesResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterAttributesResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterAttributesResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterAttributesResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterAttributesResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterAttributesResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterAttributesResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterAttributesResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterAttributesResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterAttributesResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterAttributesResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterAttributesResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterAttributesResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterAttributesResponse
+     */
+    public static CharacterAttributesResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterAttributesResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterAttributesResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

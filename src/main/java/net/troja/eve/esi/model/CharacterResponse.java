@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -124,6 +147,9 @@ public class CharacterResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TITLE)
     private String title;
 
+    public CharacterResponse() {
+    }
+
     public CharacterResponse allianceId(Integer allianceId) {
 
         this.allianceId = allianceId;
@@ -136,7 +162,6 @@ public class CharacterResponse implements Serializable {
      * @return allianceId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The character's alliance ID")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -156,7 +181,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return birthday
      **/
-    @ApiModelProperty(required = true, value = "Creation date of the character")
+    @javax.annotation.Nonnull
     public OffsetDateTime getBirthday() {
         return birthday;
     }
@@ -176,7 +201,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return bloodlineId
      **/
-    @ApiModelProperty(required = true, value = "bloodline_id integer")
+    @javax.annotation.Nonnull
     public Integer getBloodlineId() {
         return bloodlineId;
     }
@@ -196,7 +221,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return corporationId
      **/
-    @ApiModelProperty(required = true, value = "The character's corporation ID")
+    @javax.annotation.Nonnull
     public Integer getCorporationId() {
         return corporationId;
     }
@@ -217,7 +242,6 @@ public class CharacterResponse implements Serializable {
      * @return description
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "description string")
     public String getDescription() {
         return description;
     }
@@ -239,7 +263,6 @@ public class CharacterResponse implements Serializable {
      * @return factionId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "ID of the faction the character is fighting for, if the character is enlisted in Factional Warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -248,15 +271,15 @@ public class CharacterResponse implements Serializable {
         this.factionId = factionId;
     }
 
-    public CharacterResponse gender(GenderEnum genderEnum) {
-
-        this.genderEnum = genderEnum;
-        return this;
-    }
-
     public CharacterResponse genderString(String gender) {
 
         this.gender = gender;
+        return this;
+    }
+
+    public CharacterResponse gender(GenderEnum genderEnum) {
+
+        this.genderEnum = genderEnum;
         return this;
     }
 
@@ -265,7 +288,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return gender
      **/
-    @ApiModelProperty(required = true, value = "gender string")
+    @javax.annotation.Nonnull
     public GenderEnum getGender() {
         if (genderEnum == null) {
             genderEnum = GenderEnum.fromValue(gender);
@@ -296,7 +319,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return name
      **/
-    @ApiModelProperty(required = true, value = "name string")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -316,7 +339,7 @@ public class CharacterResponse implements Serializable {
      * 
      * @return raceId
      **/
-    @ApiModelProperty(required = true, value = "race_id integer")
+    @javax.annotation.Nonnull
     public Integer getRaceId() {
         return raceId;
     }
@@ -337,7 +360,6 @@ public class CharacterResponse implements Serializable {
      * @return securityStatus
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "security_status number")
     public Float getSecurityStatus() {
         return securityStatus;
     }
@@ -358,7 +380,6 @@ public class CharacterResponse implements Serializable {
      * @return title
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The individual title of the character")
     public String getTitle() {
         return title;
     }
@@ -368,7 +389,7 @@ public class CharacterResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -418,11 +439,159 @@ public class CharacterResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("alliance_id");
+        openapiFields.add("birthday");
+        openapiFields.add("bloodline_id");
+        openapiFields.add("corporation_id");
+        openapiFields.add("description");
+        openapiFields.add("faction_id");
+        openapiFields.add("gender");
+        openapiFields.add("name");
+        openapiFields.add("race_id");
+        openapiFields.add("security_status");
+        openapiFields.add("title");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("birthday");
+        openapiRequiredFields.add("bloodline_id");
+        openapiRequiredFields.add("corporation_id");
+        openapiRequiredFields.add("gender");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("race_id");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                      // required
+                                                                      // fields
+                                                                      // but
+                                                                      // JSON
+                                                                      // object
+                                                                      // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CharacterResponse is not found in the empty JSON string",
+                        CharacterResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("description").toString()));
+        }
+        if (!jsonObj.get("gender").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `gender` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("gender").toString()));
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CharacterResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterResponse
+     */
+    public static CharacterResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

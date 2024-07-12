@@ -19,17 +19,40 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import net.troja.eve.esi.model.FactionWarfareStatsKills;
 import net.troja.eve.esi.model.FactionWarfareStatsVictoryPoints;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -53,6 +76,9 @@ public class FactionWarfareStatsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
     private FactionWarfareStatsVictoryPoints victoryPoints;
 
+    public FactionWarfareStatsResponse() {
+    }
+
     public FactionWarfareStatsResponse factionId(Integer factionId) {
 
         this.factionId = factionId;
@@ -64,7 +90,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return factionId
      **/
-    @ApiModelProperty(required = true, value = "faction_id integer")
+    @javax.annotation.Nonnull
     public Integer getFactionId() {
         return factionId;
     }
@@ -84,7 +110,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return kills
      **/
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nonnull
     public FactionWarfareStatsKills getKills() {
         return kills;
     }
@@ -104,7 +130,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return pilots
      **/
-    @ApiModelProperty(required = true, value = "How many pilots fight for the given faction")
+    @javax.annotation.Nonnull
     public Integer getPilots() {
         return pilots;
     }
@@ -124,7 +150,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return systemsControlled
      **/
-    @ApiModelProperty(required = true, value = "The number of solar systems controlled by the given faction")
+    @javax.annotation.Nonnull
     public Integer getSystemsControlled() {
         return systemsControlled;
     }
@@ -144,7 +170,7 @@ public class FactionWarfareStatsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nonnull
     public FactionWarfareStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }
@@ -154,7 +180,7 @@ public class FactionWarfareStatsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -191,11 +217,136 @@ public class FactionWarfareStatsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("faction_id");
+        openapiFields.add("kills");
+        openapiFields.add("pilots");
+        openapiFields.add("systems_controlled");
+        openapiFields.add("victory_points");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("faction_id");
+        openapiRequiredFields.add("kills");
+        openapiRequiredFields.add("pilots");
+        openapiRequiredFields.add("systems_controlled");
+        openapiRequiredFields.add("victory_points");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             FactionWarfareStatsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FactionWarfareStatsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                // required
+                                                                                // fields
+                                                                                // but
+                                                                                // JSON
+                                                                                // object
+                                                                                // is
+                                                                                // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in FactionWarfareStatsResponse is not found in the empty JSON string",
+                                FactionWarfareStatsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FactionWarfareStatsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `FactionWarfareStatsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FactionWarfareStatsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // validate the required field `kills`
+        FactionWarfareStatsKills.validateJsonObject(jsonObj.getAsJsonObject("kills"));
+        // validate the required field `victory_points`
+        FactionWarfareStatsVictoryPoints.validateJsonObject(jsonObj.getAsJsonObject("victory_points"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FactionWarfareStatsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'FactionWarfareStatsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FactionWarfareStatsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FactionWarfareStatsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FactionWarfareStatsResponse>() {
+                @Override
+                public void write(JsonWriter out, FactionWarfareStatsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FactionWarfareStatsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FactionWarfareStatsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FactionWarfareStatsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             FactionWarfareStatsResponse
+     */
+    public static FactionWarfareStatsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FactionWarfareStatsResponse.class);
+    }
+
+    /**
+     * Convert an instance of FactionWarfareStatsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

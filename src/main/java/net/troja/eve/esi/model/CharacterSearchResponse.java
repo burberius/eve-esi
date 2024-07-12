@@ -19,63 +19,89 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterSearchResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_AGENT = "agent";
     @SerializedName(SERIALIZED_NAME_AGENT)
-    private List<Integer> agent = null;
+    private List<Integer> agent;
 
     public static final String SERIALIZED_NAME_ALLIANCE = "alliance";
     @SerializedName(SERIALIZED_NAME_ALLIANCE)
-    private List<Integer> alliance = null;
+    private List<Integer> alliance;
 
     public static final String SERIALIZED_NAME_CHARACTER = "character";
     @SerializedName(SERIALIZED_NAME_CHARACTER)
-    private List<Integer> character = null;
+    private List<Integer> character;
 
     public static final String SERIALIZED_NAME_CONSTELLATION = "constellation";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION)
-    private List<Integer> constellation = null;
+    private List<Integer> constellation;
 
     public static final String SERIALIZED_NAME_CORPORATION = "corporation";
     @SerializedName(SERIALIZED_NAME_CORPORATION)
-    private List<Integer> corporation = null;
+    private List<Integer> corporation;
 
     public static final String SERIALIZED_NAME_FACTION = "faction";
     @SerializedName(SERIALIZED_NAME_FACTION)
-    private List<Integer> faction = null;
+    private List<Integer> faction;
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPE = "inventory_type";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
-    private List<Integer> inventoryType = null;
+    private List<Integer> inventoryType;
 
     public static final String SERIALIZED_NAME_REGION = "region";
     @SerializedName(SERIALIZED_NAME_REGION)
-    private List<Integer> region = null;
+    private List<Integer> region;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM = "solar_system";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM)
-    private List<Integer> solarSystem = null;
+    private List<Integer> solarSystem;
 
     public static final String SERIALIZED_NAME_STATION = "station";
     @SerializedName(SERIALIZED_NAME_STATION)
-    private List<Integer> station = null;
+    private List<Integer> station;
 
     public static final String SERIALIZED_NAME_STRUCTURE = "structure";
     @SerializedName(SERIALIZED_NAME_STRUCTURE)
-    private List<Long> structure = null;
+    private List<Long> structure;
+
+    public CharacterSearchResponse() {
+    }
 
     public CharacterSearchResponse agent(List<Integer> agent) {
 
@@ -97,7 +123,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return agent
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "agent array")
     public List<Integer> getAgent() {
         return agent;
     }
@@ -126,7 +151,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return alliance
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "alliance array")
     public List<Integer> getAlliance() {
         return alliance;
     }
@@ -155,7 +179,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return character
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "character array")
     public List<Integer> getCharacter() {
         return character;
     }
@@ -184,7 +207,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return constellation
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "constellation array")
     public List<Integer> getConstellation() {
         return constellation;
     }
@@ -213,7 +235,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return corporation
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "corporation array")
     public List<Integer> getCorporation() {
         return corporation;
     }
@@ -242,7 +263,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return faction
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "faction array")
     public List<Integer> getFaction() {
         return faction;
     }
@@ -271,7 +291,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return inventoryType
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "inventory_type array")
     public List<Integer> getInventoryType() {
         return inventoryType;
     }
@@ -300,7 +319,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return region
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "region array")
     public List<Integer> getRegion() {
         return region;
     }
@@ -329,7 +347,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return solarSystem
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "solar_system array")
     public List<Integer> getSolarSystem() {
         return solarSystem;
     }
@@ -358,7 +375,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return station
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "station array")
     public List<Integer> getStation() {
         return station;
     }
@@ -387,7 +403,6 @@ public class CharacterSearchResponse implements Serializable {
      * @return structure
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "structure array")
     public List<Long> getStructure() {
         return structure;
     }
@@ -397,7 +412,7 @@ public class CharacterSearchResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -447,11 +462,188 @@ public class CharacterSearchResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("agent");
+        openapiFields.add("alliance");
+        openapiFields.add("character");
+        openapiFields.add("constellation");
+        openapiFields.add("corporation");
+        openapiFields.add("faction");
+        openapiFields.add("inventory_type");
+        openapiFields.add("region");
+        openapiFields.add("solar_system");
+        openapiFields.add("station");
+        openapiFields.add("structure");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterSearchResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterSearchResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                            // required
+                                                                            // fields
+                                                                            // but
+                                                                            // JSON
+                                                                            // object
+                                                                            // is
+                                                                            // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CharacterSearchResponse is not found in the empty JSON string",
+                        CharacterSearchResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterSearchResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterSearchResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `agent` to be an array in the JSON string but got `%s`", jsonObj.get("agent")
+                            .toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("alliance") != null && !jsonObj.get("alliance").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `alliance` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("alliance").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("character") != null && !jsonObj.get("character").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `character` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("character").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("constellation") != null && !jsonObj.get("constellation").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `constellation` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("constellation").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("corporation") != null && !jsonObj.get("corporation").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `corporation` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("corporation").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("faction") != null && !jsonObj.get("faction").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `faction` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("faction").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("inventory_type") != null && !jsonObj.get("inventory_type").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `inventory_type` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("inventory_type").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("region") != null && !jsonObj.get("region").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `region` to be an array in the JSON string but got `%s`", jsonObj.get("region")
+                            .toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("solar_system") != null && !jsonObj.get("solar_system").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `solar_system` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("solar_system").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("station") != null && !jsonObj.get("station").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `station` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("station").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("structure") != null && !jsonObj.get("structure").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `structure` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("structure").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterSearchResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterSearchResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterSearchResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterSearchResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterSearchResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterSearchResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterSearchResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterSearchResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterSearchResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterSearchResponse
+     */
+    public static CharacterSearchResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterSearchResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterSearchResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

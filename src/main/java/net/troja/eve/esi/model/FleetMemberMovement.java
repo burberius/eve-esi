@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * movement object
  */
-@ApiModel(description = "movement object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FleetMemberMovement implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -102,15 +125,18 @@ public class FleetMemberMovement implements Serializable {
     @SerializedName(SERIALIZED_NAME_WING_ID)
     private Long wingId;
 
-    public FleetMemberMovement role(RoleEnum roleEnum) {
-
-        this.roleEnum = roleEnum;
-        return this;
+    public FleetMemberMovement() {
     }
 
     public FleetMemberMovement roleString(String role) {
 
         this.role = role;
+        return this;
+    }
+
+    public FleetMemberMovement role(RoleEnum roleEnum) {
+
+        this.roleEnum = roleEnum;
         return this;
     }
 
@@ -126,7 +152,7 @@ public class FleetMemberMovement implements Serializable {
      * 
      * @return role
      **/
-    @ApiModelProperty(required = true, value = "If a character is moved to the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified. If a character is moved to the `wing_commander` role, only `wing_id` should be specified. If a character is moved to the `squad_commander` role, both `wing_id` and `squad_id` should be specified. If a character is moved to the `squad_member` role, both `wing_id` and `squad_id` should be specified.")
+    @javax.annotation.Nonnull
     public RoleEnum getRole() {
         if (roleEnum == null) {
             roleEnum = RoleEnum.fromValue(role);
@@ -158,7 +184,6 @@ public class FleetMemberMovement implements Serializable {
      * @return squadId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "squad_id integer")
     public Long getSquadId() {
         return squadId;
     }
@@ -179,7 +204,6 @@ public class FleetMemberMovement implements Serializable {
      * @return wingId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "wing_id integer")
     public Long getWingId() {
         return wingId;
     }
@@ -189,7 +213,7 @@ public class FleetMemberMovement implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -222,11 +246,130 @@ public class FleetMemberMovement implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("role");
+        openapiFields.add("squad_id");
+        openapiFields.add("wing_id");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("role");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             FleetMemberMovement
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FleetMemberMovement.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // object
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FleetMemberMovement is not found in the empty JSON string",
+                        FleetMemberMovement.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FleetMemberMovement.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `FleetMemberMovement` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FleetMemberMovement.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("role").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `role` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("role").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FleetMemberMovement.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FleetMemberMovement'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FleetMemberMovement> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FleetMemberMovement.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FleetMemberMovement>() {
+                @Override
+                public void write(JsonWriter out, FleetMemberMovement value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FleetMemberMovement read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FleetMemberMovement given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FleetMemberMovement
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             FleetMemberMovement
+     */
+    public static FleetMemberMovement fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FleetMemberMovement.class);
+    }
+
+    /**
+     * Convert an instance of FleetMemberMovement to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

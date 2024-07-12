@@ -19,18 +19,41 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import net.troja.eve.esi.model.CorporationFwStatsKills;
 import net.troja.eve.esi.model.CorporationFwStatsVictoryPoints;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationFwStatsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +77,9 @@ public class CorporationFwStatsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS)
     private CorporationFwStatsVictoryPoints victoryPoints;
 
+    public CorporationFwStatsResponse() {
+    }
+
     public CorporationFwStatsResponse enlistedOn(OffsetDateTime enlistedOn) {
 
         this.enlistedOn = enlistedOn;
@@ -67,7 +93,6 @@ public class CorporationFwStatsResponse implements Serializable {
      * @return enlistedOn
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The enlistment date of the given corporation into faction warfare. Will not be included if corporation is not enlisted in faction warfare")
     public OffsetDateTime getEnlistedOn() {
         return enlistedOn;
     }
@@ -89,7 +114,6 @@ public class CorporationFwStatsResponse implements Serializable {
      * @return factionId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The faction the given corporation is enlisted to fight for. Will not be included if corporation is not enlisted in faction warfare")
     public Integer getFactionId() {
         return factionId;
     }
@@ -109,7 +133,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return kills
      **/
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nonnull
     public CorporationFwStatsKills getKills() {
         return kills;
     }
@@ -131,7 +155,6 @@ public class CorporationFwStatsResponse implements Serializable {
      * @return pilots
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "How many pilots the enlisted corporation has. Will not be included if corporation is not enlisted in faction warfare")
     public Integer getPilots() {
         return pilots;
     }
@@ -151,7 +174,7 @@ public class CorporationFwStatsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(required = true, value = "")
+    @javax.annotation.Nonnull
     public CorporationFwStatsVictoryPoints getVictoryPoints() {
         return victoryPoints;
     }
@@ -161,7 +184,7 @@ public class CorporationFwStatsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -198,11 +221,132 @@ public class CorporationFwStatsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("enlisted_on");
+        openapiFields.add("faction_id");
+        openapiFields.add("kills");
+        openapiFields.add("pilots");
+        openapiFields.add("victory_points");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("kills");
+        openapiRequiredFields.add("victory_points");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationFwStatsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationFwStatsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                               // required
+                                                                               // fields
+                                                                               // but
+                                                                               // JSON
+                                                                               // object
+                                                                               // is
+                                                                               // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CorporationFwStatsResponse is not found in the empty JSON string",
+                        CorporationFwStatsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationFwStatsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationFwStatsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationFwStatsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        // validate the required field `kills`
+        CorporationFwStatsKills.validateJsonObject(jsonObj.getAsJsonObject("kills"));
+        // validate the required field `victory_points`
+        CorporationFwStatsVictoryPoints.validateJsonObject(jsonObj.getAsJsonObject("victory_points"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationFwStatsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationFwStatsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationFwStatsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationFwStatsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationFwStatsResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationFwStatsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationFwStatsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationFwStatsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationFwStatsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationFwStatsResponse
+     */
+    public static CorporationFwStatsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationFwStatsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationFwStatsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -50,9 +50,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class CorporationApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public CorporationApi() {
         this(Configuration.getDefaultApiClient());
@@ -68,6 +71,22 @@ public class CorporationApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -118,16 +137,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -138,17 +147,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -163,6 +162,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -171,55 +190,67 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdCall(Integer corporationId, String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v5/corporations/{corporation_id}/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v5/corporations/{corporation_id}/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationId(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdCall(corporationId, datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdCall(corporationId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -271,16 +302,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -291,17 +312,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -312,6 +323,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -377,16 +408,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -397,17 +418,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -418,6 +429,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -487,16 +518,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -507,17 +528,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -528,6 +539,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -597,6 +628,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -612,32 +663,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -650,56 +681,67 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdAlliancehistoryCall(Integer corporationId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/alliancehistory/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v3/corporations/{corporation_id}/alliancehistory/".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdAlliancehistoryValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdAlliancehistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdAlliancehistoryCall(corporationId, datasource,
-                ifNoneMatch, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdAlliancehistoryCall(corporationId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -751,6 +793,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -766,32 +828,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -858,6 +900,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -873,32 +935,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -969,6 +1011,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -984,32 +1046,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1095,27 +1137,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1130,6 +1157,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1138,14 +1180,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdBlueprintsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/blueprints/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v3/corporations/{corporation_id}/blueprints/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1158,45 +1217,40 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdBlueprintsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdBlueprints(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdBlueprintsCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdBlueprintsCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -1265,27 +1319,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1296,6 +1335,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1378,27 +1432,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1409,6 +1448,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1496,27 +1550,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1527,6 +1566,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1612,27 +1666,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1647,6 +1686,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -1655,14 +1709,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdContainersLogsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/containers/logs/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v3/corporations/{corporation_id}/containers/logs/".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -1675,45 +1746,40 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdContainersLogsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdContainersLogs(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdContainersLogsCall(corporationId, datasource,
-                ifNoneMatch, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdContainersLogsCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -1783,27 +1849,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1814,6 +1865,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1897,27 +1963,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -1928,6 +1979,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2016,27 +2082,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2047,6 +2098,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2129,27 +2195,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2164,6 +2215,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2172,14 +2238,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdDivisionsCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/divisions/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/divisions/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2188,44 +2271,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdDivisionsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdDivisions(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdDivisionsCall(corporationId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdDivisionsCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -2292,27 +2369,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2323,6 +2385,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2403,27 +2480,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2434,6 +2496,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2518,27 +2595,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2549,6 +2611,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2631,27 +2708,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2666,6 +2728,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -2674,14 +2751,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdFacilitiesCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/facilities/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/facilities/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -2690,44 +2784,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdFacilitiesValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdFacilities(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdFacilitiesCall(corporationId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdFacilitiesCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -2793,27 +2881,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2824,6 +2897,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2903,27 +2991,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -2934,6 +3007,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3017,27 +3105,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3048,6 +3121,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3119,16 +3207,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3139,17 +3217,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3164,6 +3232,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3172,56 +3260,67 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdIconsCall(Integer corporationId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/icons/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v2/corporations/{corporation_id}/icons/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdIconsValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdIcons(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdIconsCall(corporationId, datasource, ifNoneMatch,
-                _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdIconsCall(corporationId, datasource, ifNoneMatch, _callback);
 
     }
 
@@ -3274,16 +3373,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3294,17 +3383,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3315,6 +3394,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3381,16 +3480,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3401,17 +3490,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3422,6 +3501,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3492,16 +3591,6 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>401</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>403</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>404</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3512,17 +3601,7 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3533,6 +3612,26 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>401</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3617,27 +3716,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3652,6 +3736,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -3660,14 +3759,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMedalsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/medals/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v2/corporations/{corporation_id}/medals/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -3680,44 +3796,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMedalsValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedals(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMedalsCall(corporationId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -3785,27 +3895,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3816,6 +3911,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3897,27 +4007,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -3928,6 +4023,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4014,27 +4124,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4045,6 +4140,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4130,27 +4240,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4165,6 +4260,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4173,14 +4283,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMedalsIssuedCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/medals/issued/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/medals/issued/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4193,45 +4320,40 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMedalsIssuedValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMedalsIssued(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMedalsIssuedCall(corporationId, datasource,
-                ifNoneMatch, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMedalsIssuedCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -4300,27 +4422,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4331,6 +4438,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4413,27 +4535,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4444,6 +4551,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4531,27 +4653,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4562,6 +4669,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4644,27 +4766,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4679,6 +4786,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -4687,14 +4809,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMembersCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v4/corporations/{corporation_id}/members/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v4/corporations/{corporation_id}/members/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -4703,44 +4842,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMembersValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembers(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersCall(corporationId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMembersCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -4806,27 +4939,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4837,6 +4955,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4916,27 +5049,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -4947,6 +5065,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5030,27 +5163,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5061,6 +5179,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5142,27 +5275,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5177,6 +5295,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5185,14 +5318,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMembersLimitCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/members/limit/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/members/limit/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -5201,44 +5351,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMembersLimitValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersLimit(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersLimitCall(corporationId, datasource,
-                ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMembersLimitCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -5304,27 +5448,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5335,6 +5464,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5414,27 +5558,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5445,6 +5574,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5528,27 +5672,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5559,6 +5688,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5640,27 +5784,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5675,6 +5804,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -5683,14 +5827,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMembersTitlesCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/members/titles/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/members/titles/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -5699,44 +5860,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMembersTitlesValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembersTitles(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMembersTitlesCall(corporationId, datasource,
-                ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMembersTitlesCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -5802,27 +5957,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5833,6 +5973,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5912,27 +6067,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -5943,6 +6083,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6026,27 +6181,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6057,6 +6197,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6139,27 +6294,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6174,6 +6314,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6182,14 +6337,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdMembertrackingCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/membertracking/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/membertracking/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -6198,44 +6370,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdMembertrackingValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdMembertracking(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdMembertrackingCall(corporationId, datasource,
-                ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdMembertrackingCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -6302,27 +6468,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6333,6 +6484,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6413,27 +6579,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6444,6 +6595,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6528,27 +6694,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6559,6 +6710,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6641,27 +6807,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6676,6 +6827,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -6684,14 +6850,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdRolesCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/roles/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v2/corporations/{corporation_id}/roles/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -6700,44 +6883,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdRolesValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdRoles(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesCall(corporationId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdRolesCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -6803,27 +6980,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6834,6 +6996,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6913,27 +7090,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -6944,6 +7106,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7027,27 +7204,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7058,6 +7220,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7143,27 +7320,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7178,6 +7340,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -7186,14 +7363,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdRolesHistoryCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/roles/history/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/roles/history/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -7206,45 +7400,40 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdRolesHistoryValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdRolesHistory(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdRolesHistoryCall(corporationId, datasource,
-                ifNoneMatch, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdRolesHistoryCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -7314,27 +7503,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7345,6 +7519,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7428,27 +7617,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7459,6 +7633,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7547,27 +7736,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7578,6 +7752,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7663,27 +7852,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7698,6 +7872,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -7706,14 +7895,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdShareholdersCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/corporations/{corporation_id}/shareholders/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v1/corporations/{corporation_id}/shareholders/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -7726,45 +7932,40 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdShareholdersValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdShareholders(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdShareholdersCall(corporationId, datasource,
-                ifNoneMatch, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdShareholdersCall(corporationId, datasource, ifNoneMatch, page, token,
+                _callback);
 
     }
 
@@ -7833,27 +8034,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7864,6 +8050,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7946,27 +8147,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -7977,6 +8163,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8064,27 +8265,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8095,6 +8281,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8180,27 +8381,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8215,6 +8401,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -8223,14 +8424,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdStandingsCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/standings/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/standings/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -8243,45 +8461,39 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdStandingsValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStandings(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdStandingsCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdStandingsCall(corporationId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -8349,27 +8561,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8380,6 +8577,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8461,27 +8673,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8492,6 +8689,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8578,27 +8790,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8609,6 +8806,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8694,27 +8906,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8729,6 +8926,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -8737,14 +8949,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdStarbasesCall(Integer corporationId, String datasource,
             String ifNoneMatch, Integer page, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/starbases/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/starbases/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -8757,45 +8986,39 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdStarbasesValidateBeforeCall(Integer corporationId,
             String datasource, String ifNoneMatch, Integer page, String token, final ApiCallback _callback)
             throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStarbases(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesCall(corporationId, datasource, ifNoneMatch,
-                page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdStarbasesCall(corporationId, datasource, ifNoneMatch, page, token, _callback);
 
     }
 
@@ -8864,27 +9087,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8895,6 +9103,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -8977,27 +9200,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9008,6 +9216,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9095,27 +9318,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9126,6 +9334,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9212,27 +9435,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9247,6 +9455,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -9256,15 +9479,32 @@ public class CorporationApi {
     public okhttp3.Call getCorporationsCorporationIdStarbasesStarbaseIdCall(Integer corporationId, Long starbaseId,
             Integer systemId, String datasource, String ifNoneMatch, String token, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/starbases/{starbase_id}/".replaceAll(
-                "\\{" + "corporation_id" + "\\}", localVarApiClient.escapeString(corporationId.toString())).replaceAll(
-                "\\{" + "starbase_id" + "\\}", localVarApiClient.escapeString(starbaseId.toString()));
+        String localVarPath = "/v2/corporations/{corporation_id}/starbases/{starbase_id}/".replace(
+                "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
+                "{" + "starbase_id" + "}", localVarApiClient.escapeString(starbaseId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -9277,36 +9517,32 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdStarbasesStarbaseIdValidateBeforeCall(Integer corporationId,
             Long starbaseId, Integer systemId, String datasource, String ifNoneMatch, String token,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
@@ -9325,9 +9561,8 @@ public class CorporationApi {
                     "Missing the required parameter 'systemId' when calling getCorporationsCorporationIdStarbasesStarbaseId(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdStarbasesStarbaseIdCall(corporationId, starbaseId,
-                systemId, datasource, ifNoneMatch, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdStarbasesStarbaseIdCall(corporationId, starbaseId, systemId, datasource,
+                ifNoneMatch, token, _callback);
 
     }
 
@@ -9397,27 +9632,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9428,6 +9648,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9511,27 +9746,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9542,6 +9762,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9630,27 +9865,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9661,6 +9881,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9754,27 +9989,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9789,6 +10009,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -9798,14 +10033,31 @@ public class CorporationApi {
     public okhttp3.Call getCorporationsCorporationIdStructuresCall(Integer corporationId, String acceptLanguage,
             String datasource, String ifNoneMatch, String language, Integer page, String token,
             final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v4/corporations/{corporation_id}/structures/".replaceAll("\\{" + "corporation_id"
-                + "\\}", localVarApiClient.escapeString(corporationId.toString()));
+        String localVarPath = "/v4/corporations/{corporation_id}/structures/".replace("{" + "corporation_id" + "}",
+                localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -9822,7 +10074,6 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
             localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
@@ -9831,40 +10082,36 @@ public class CorporationApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdStructuresValidateBeforeCall(Integer corporationId,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Integer page, String token,
             final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdStructures(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdStructuresCall(corporationId, acceptLanguage,
-                datasource, ifNoneMatch, language, page, token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdStructuresCall(corporationId, acceptLanguage, datasource, ifNoneMatch,
+                language, page, token, _callback);
 
     }
 
@@ -9944,27 +10191,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -9975,6 +10207,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10069,27 +10316,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10100,6 +10332,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10198,27 +10445,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10229,6 +10461,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10311,27 +10558,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10346,6 +10578,21 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -10354,14 +10601,31 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsCorporationIdTitlesCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/titles/".replaceAll("\\{" + "corporation_id" + "\\}",
+        String localVarPath = "/v2/corporations/{corporation_id}/titles/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
@@ -10370,44 +10634,38 @@ public class CorporationApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsCorporationIdTitlesValidateBeforeCall(Integer corporationId, String datasource,
             String ifNoneMatch, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'corporationId' is set
         if (corporationId == null) {
             throw new ApiException(
                     "Missing the required parameter 'corporationId' when calling getCorporationsCorporationIdTitles(Async)");
         }
 
-        okhttp3.Call localVarCall = getCorporationsCorporationIdTitlesCall(corporationId, datasource, ifNoneMatch,
-                token, _callback);
-        return localVarCall;
+        return getCorporationsCorporationIdTitlesCall(corporationId, datasource, ifNoneMatch, token, _callback);
 
     }
 
@@ -10472,27 +10730,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10503,6 +10746,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10581,27 +10839,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10612,6 +10855,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10695,27 +10953,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10726,6 +10969,21 @@ public class CorporationApi {
      *                        </tr>
      *                        <tr>
      *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10794,6 +11052,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -10809,32 +11087,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -10847,6 +11105,19 @@ public class CorporationApi {
      */
     public okhttp3.Call getCorporationsNpccorpsCall(String datasource, String ifNoneMatch, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -10854,41 +11125,40 @@ public class CorporationApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (datasource != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("datasource", datasource));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (ifNoneMatch != null) {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] {};
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCorporationsNpccorpsValidateBeforeCall(String datasource, String ifNoneMatch,
             final ApiCallback _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCorporationsNpccorpsCall(datasource, ifNoneMatch, _callback);
-        return localVarCall;
+        return getCorporationsNpccorpsCall(datasource, ifNoneMatch, _callback);
 
     }
 
@@ -10938,6 +11208,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -10953,32 +11243,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -11040,6 +11310,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -11055,32 +11345,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -11147,6 +11417,26 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>420</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>500</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>503</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>504</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>401</td>
      *                        <td></td>
      *                        <td>-</td>
@@ -11162,32 +11452,12 @@ public class CorporationApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>420</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>422</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>502</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>503</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>504</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>

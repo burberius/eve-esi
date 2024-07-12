@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,52 +34,80 @@ import net.troja.eve.esi.model.UniverseIdsStation;
 import net.troja.eve.esi.model.UniverseIdsSystem;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UniverseIdsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_AGENTS = "agents";
     @SerializedName(SERIALIZED_NAME_AGENTS)
-    private List<UniverseIdsAgent> agents = null;
+    private List<UniverseIdsAgent> agents;
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
-    private List<UniverseIdsAlliance> alliances = null;
+    private List<UniverseIdsAlliance> alliances;
 
     public static final String SERIALIZED_NAME_CHARACTERS = "characters";
     @SerializedName(SERIALIZED_NAME_CHARACTERS)
-    private List<UniverseIdsCharacter> characters = null;
+    private List<UniverseIdsCharacter> characters;
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
-    private List<UniverseIdsConstellation> constellations = null;
+    private List<UniverseIdsConstellation> constellations;
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
-    private List<UniverseIdsCorporation> corporations = null;
+    private List<UniverseIdsCorporation> corporations;
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
-    private List<UniverseIdsFaction> factions = null;
+    private List<UniverseIdsFaction> factions;
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
-    private List<UniverseIdsInventoryType> inventoryTypes = null;
+    private List<UniverseIdsInventoryType> inventoryTypes;
 
     public static final String SERIALIZED_NAME_REGIONS = "regions";
     @SerializedName(SERIALIZED_NAME_REGIONS)
-    private List<UniverseIdsRegion> regions = null;
+    private List<UniverseIdsRegion> regions;
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
-    private List<UniverseIdsStation> stations = null;
+    private List<UniverseIdsStation> stations;
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
-    private List<UniverseIdsSystem> systems = null;
+    private List<UniverseIdsSystem> systems;
+
+    public UniverseIdsResponse() {
+    }
 
     public UniverseIdsResponse agents(List<UniverseIdsAgent> agents) {
 
@@ -103,7 +129,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return agents
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "agents array")
     public List<UniverseIdsAgent> getAgents() {
         return agents;
     }
@@ -132,7 +157,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return alliances
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "alliances array")
     public List<UniverseIdsAlliance> getAlliances() {
         return alliances;
     }
@@ -161,7 +185,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return characters
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "characters array")
     public List<UniverseIdsCharacter> getCharacters() {
         return characters;
     }
@@ -190,7 +213,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return constellations
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "constellations array")
     public List<UniverseIdsConstellation> getConstellations() {
         return constellations;
     }
@@ -219,7 +241,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return corporations
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "corporations array")
     public List<UniverseIdsCorporation> getCorporations() {
         return corporations;
     }
@@ -248,7 +269,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return factions
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "factions array")
     public List<UniverseIdsFaction> getFactions() {
         return factions;
     }
@@ -277,7 +297,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return inventoryTypes
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "inventory_types array")
     public List<UniverseIdsInventoryType> getInventoryTypes() {
         return inventoryTypes;
     }
@@ -306,7 +325,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return regions
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "regions array")
     public List<UniverseIdsRegion> getRegions() {
         return regions;
     }
@@ -335,7 +353,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return stations
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "stations array")
     public List<UniverseIdsStation> getStations() {
         return stations;
     }
@@ -364,7 +381,6 @@ public class UniverseIdsResponse implements Serializable {
      * @return systems
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "systems array")
     public List<UniverseIdsSystem> getSystems() {
         return systems;
     }
@@ -374,7 +390,7 @@ public class UniverseIdsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -422,11 +438,281 @@ public class UniverseIdsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("agents");
+        openapiFields.add("alliances");
+        openapiFields.add("characters");
+        openapiFields.add("constellations");
+        openapiFields.add("corporations");
+        openapiFields.add("factions");
+        openapiFields.add("inventory_types");
+        openapiFields.add("regions");
+        openapiFields.add("stations");
+        openapiFields.add("systems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             UniverseIdsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!UniverseIdsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                        // required
+                                                                        // fields
+                                                                        // but
+                                                                        // JSON
+                                                                        // object
+                                                                        // is
+                                                                        // null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in UniverseIdsResponse is not found in the empty JSON string",
+                        UniverseIdsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!UniverseIdsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `UniverseIdsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if (jsonObj.get("agents") != null && !jsonObj.get("agents").isJsonNull()) {
+            JsonArray jsonArrayagents = jsonObj.getAsJsonArray("agents");
+            if (jsonArrayagents != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("agents").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `agents` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("agents").toString()));
+                }
+
+                // validate the optional field `agents` (array)
+                for (int i = 0; i < jsonArrayagents.size(); i++) {
+                    UniverseIdsAgent.validateJsonObject(jsonArrayagents.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("alliances") != null && !jsonObj.get("alliances").isJsonNull()) {
+            JsonArray jsonArrayalliances = jsonObj.getAsJsonArray("alliances");
+            if (jsonArrayalliances != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("alliances").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `alliances` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("alliances").toString()));
+                }
+
+                // validate the optional field `alliances` (array)
+                for (int i = 0; i < jsonArrayalliances.size(); i++) {
+                    UniverseIdsAlliance.validateJsonObject(jsonArrayalliances.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("characters") != null && !jsonObj.get("characters").isJsonNull()) {
+            JsonArray jsonArraycharacters = jsonObj.getAsJsonArray("characters");
+            if (jsonArraycharacters != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("characters").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `characters` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("characters").toString()));
+                }
+
+                // validate the optional field `characters` (array)
+                for (int i = 0; i < jsonArraycharacters.size(); i++) {
+                    UniverseIdsCharacter.validateJsonObject(jsonArraycharacters.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("constellations") != null && !jsonObj.get("constellations").isJsonNull()) {
+            JsonArray jsonArrayconstellations = jsonObj.getAsJsonArray("constellations");
+            if (jsonArrayconstellations != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("constellations").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `constellations` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("constellations").toString()));
+                }
+
+                // validate the optional field `constellations` (array)
+                for (int i = 0; i < jsonArrayconstellations.size(); i++) {
+                    UniverseIdsConstellation.validateJsonObject(jsonArrayconstellations.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("corporations") != null && !jsonObj.get("corporations").isJsonNull()) {
+            JsonArray jsonArraycorporations = jsonObj.getAsJsonArray("corporations");
+            if (jsonArraycorporations != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("corporations").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `corporations` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("corporations").toString()));
+                }
+
+                // validate the optional field `corporations` (array)
+                for (int i = 0; i < jsonArraycorporations.size(); i++) {
+                    UniverseIdsCorporation.validateJsonObject(jsonArraycorporations.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("factions") != null && !jsonObj.get("factions").isJsonNull()) {
+            JsonArray jsonArrayfactions = jsonObj.getAsJsonArray("factions");
+            if (jsonArrayfactions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("factions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `factions` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("factions").toString()));
+                }
+
+                // validate the optional field `factions` (array)
+                for (int i = 0; i < jsonArrayfactions.size(); i++) {
+                    UniverseIdsFaction.validateJsonObject(jsonArrayfactions.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("inventory_types") != null && !jsonObj.get("inventory_types").isJsonNull()) {
+            JsonArray jsonArrayinventoryTypes = jsonObj.getAsJsonArray("inventory_types");
+            if (jsonArrayinventoryTypes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("inventory_types").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `inventory_types` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("inventory_types").toString()));
+                }
+
+                // validate the optional field `inventory_types` (array)
+                for (int i = 0; i < jsonArrayinventoryTypes.size(); i++) {
+                    UniverseIdsInventoryType.validateJsonObject(jsonArrayinventoryTypes.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("regions") != null && !jsonObj.get("regions").isJsonNull()) {
+            JsonArray jsonArrayregions = jsonObj.getAsJsonArray("regions");
+            if (jsonArrayregions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("regions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `regions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("regions").toString()));
+                }
+
+                // validate the optional field `regions` (array)
+                for (int i = 0; i < jsonArrayregions.size(); i++) {
+                    UniverseIdsRegion.validateJsonObject(jsonArrayregions.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("stations") != null && !jsonObj.get("stations").isJsonNull()) {
+            JsonArray jsonArraystations = jsonObj.getAsJsonArray("stations");
+            if (jsonArraystations != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("stations").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `stations` to be an array in the JSON string but got `%s`", jsonObj
+                                    .get("stations").toString()));
+                }
+
+                // validate the optional field `stations` (array)
+                for (int i = 0; i < jsonArraystations.size(); i++) {
+                    UniverseIdsStation.validateJsonObject(jsonArraystations.get(i).getAsJsonObject());
+                };
+            }
+        }
+        if (jsonObj.get("systems") != null && !jsonObj.get("systems").isJsonNull()) {
+            JsonArray jsonArraysystems = jsonObj.getAsJsonArray("systems");
+            if (jsonArraysystems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("systems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `systems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("systems").toString()));
+                }
+
+                // validate the optional field `systems` (array)
+                for (int i = 0; i < jsonArraysystems.size(); i++) {
+                    UniverseIdsSystem.validateJsonObject(jsonArraysystems.get(i).getAsJsonObject());
+                };
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UniverseIdsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UniverseIdsResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UniverseIdsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(UniverseIdsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<UniverseIdsResponse>() {
+                @Override
+                public void write(JsonWriter out, UniverseIdsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public UniverseIdsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UniverseIdsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of UniverseIdsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             UniverseIdsResponse
+     */
+    public static UniverseIdsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UniverseIdsResponse.class);
+    }
+
+    /**
+     * Convert an instance of UniverseIdsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

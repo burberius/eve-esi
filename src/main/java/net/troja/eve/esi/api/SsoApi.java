@@ -14,7 +14,6 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.Configuration;
 import net.troja.eve.esi.Pair;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterAssetsResponse;
 import net.troja.eve.esi.model.CharacterInfo;
 
 /**
@@ -26,7 +25,7 @@ public class SsoApi {
     private static final String REFRESH_TOKEN = "refresh_token";
     private static final String DATASOURCE = "tranquility";
     protected static final String DATE_FORMAT = "yyyy-MM-dd'T'hh:mm:ss";
-    private final ApiClient revokeApiClient = new ApiClientBuilder().build();
+    private final ApiClient localVarApiClient = new ApiClientBuilder().build();
     private ApiClient apiClient;
     private MetaApi metaApi;
 
@@ -37,7 +36,7 @@ public class SsoApi {
     public SsoApi(final ApiClient apiClient) {
         this.apiClient = apiClient;
         this.metaApi = new MetaApi(apiClient);
-        revokeApiClient.setBasePath(URI_REVOKE); // Set new basepath
+        localVarApiClient.setBasePath(URI_REVOKE); // Set new basepath
     }
 
     public ApiClient getApiClient() {
@@ -69,8 +68,10 @@ public class SsoApi {
         postRevokeToken(accessToken, ACCESS_TOKEN);
     }
 
-    private okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback _callback)
+    public okhttp3.Call postRevokeTokenCall(final String token, final String tokenTypeHint, final ApiCallback _callback)
             throws ApiException {
+        String basePath = null;
+        // Operation Servers
         Object localVarPostBody = new Object();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
@@ -91,36 +92,43 @@ public class SsoApi {
         localVarFormParams.put("token", token);
 
         final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = revokeApiClient.selectHeaderAccept(localVarAccepts);
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
         final String[] localVarContentTypes = { "application/x-www-form-urlencoded" };
 
-        final String localVarContentType = revokeApiClient.selectHeaderContentType(localVarContentTypes);
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
+        basePath = URI_REVOKE;
+
         String[] localVarAuthNames = new String[] {};
-        return revokeApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postRevokeTokenValidateBeforeCall(final String token, final String tokenTypeHint,
-            final ApiCallback callback) throws ApiException {
-        return postRevokeTokenCall(token, tokenTypeHint, callback);
-
-    }
-
-    private void postRevokeToken(final String token, final String tokenTypeHint) throws ApiException {
+    public void postRevokeToken(final String token, final String tokenTypeHint) throws ApiException {
         postRevokeTokenWithHttpInfo(token, tokenTypeHint);
     }
 
-    private ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
+    public ApiResponse<Void> postRevokeTokenWithHttpInfo(final String token, final String tokenTypeHint)
             throws ApiException {
-        okhttp3.Call call = postRevokeTokenValidateBeforeCall(token, tokenTypeHint, null);
-        return revokeApiClient.execute(call);
+        okhttp3.Call localVarCall = postRevokeTokenCall(token, tokenTypeHint, null);
+        Type localVarReturnType = new TypeToken<Void>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    public okhttp3.Call postRevokeTokenAsync(final String token, final String tokenTypeHint,
+            final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postRevokeTokenCall(token, tokenTypeHint, _callback);
+        Type localVarReturnType = new TypeToken<Void>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 }

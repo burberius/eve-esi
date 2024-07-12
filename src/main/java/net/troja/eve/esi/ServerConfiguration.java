@@ -14,7 +14,7 @@ public class ServerConfiguration {
      * @param URL
      *            A URL to the target host.
      * @param description
-     *            A describtion of the host designated by the URL.
+     *            A description of the host designated by the URL.
      * @param variables
      *            A map between a variable name and its value. The value is used
      *            for substitution in the server's URL template.
@@ -44,11 +44,11 @@ public class ServerConfiguration {
             if (variables != null && variables.containsKey(name)) {
                 value = variables.get(name);
                 if (serverVariable.enumValues.size() > 0 && !serverVariable.enumValues.contains(value)) {
-                    throw new RuntimeException("The variable " + name + " in the server URL has invalid value " + value
-                            + ".");
+                    throw new IllegalArgumentException("The variable " + name + " in the server URL has invalid value "
+                            + value + ".");
                 }
             }
-            url = url.replaceAll("\\{" + name + "\\}", value);
+            url = url.replace("{" + name + "}", value);
         }
         return url;
     }

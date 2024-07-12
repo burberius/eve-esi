@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterIndustryJobsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -176,6 +199,9 @@ public class CharacterIndustryJobsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_SUCCESSFUL_RUNS)
     private Integer successfulRuns;
 
+    public CharacterIndustryJobsResponse() {
+    }
+
     public CharacterIndustryJobsResponse activityId(Integer activityId) {
 
         this.activityId = activityId;
@@ -187,7 +213,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return activityId
      **/
-    @ApiModelProperty(required = true, value = "Job activity ID")
+    @javax.annotation.Nonnull
     public Integer getActivityId() {
         return activityId;
     }
@@ -207,7 +233,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintId
      **/
-    @ApiModelProperty(required = true, value = "blueprint_id integer")
+    @javax.annotation.Nonnull
     public Long getBlueprintId() {
         return blueprintId;
     }
@@ -229,7 +255,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintLocationId
      **/
-    @ApiModelProperty(required = true, value = "Location ID of the location from which the blueprint was installed. Normally a station ID, but can also be an asset (e.g. container) or corporation facility")
+    @javax.annotation.Nonnull
     public Long getBlueprintLocationId() {
         return blueprintLocationId;
     }
@@ -249,7 +275,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return blueprintTypeId
      **/
-    @ApiModelProperty(required = true, value = "blueprint_type_id integer")
+    @javax.annotation.Nonnull
     public Integer getBlueprintTypeId() {
         return blueprintTypeId;
     }
@@ -270,7 +296,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return completedCharacterId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "ID of the character which completed this job")
     public Integer getCompletedCharacterId() {
         return completedCharacterId;
     }
@@ -291,7 +316,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return completedDate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Date and time when this job was completed")
     public OffsetDateTime getCompletedDate() {
         return completedDate;
     }
@@ -312,7 +336,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return cost
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The sume of job installation fee and industry facility tax")
     public Double getCost() {
         return cost;
     }
@@ -332,7 +355,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(required = true, value = "Job duration in seconds")
+    @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
@@ -352,7 +375,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return endDate
      **/
-    @ApiModelProperty(required = true, value = "Date and time when this job finished")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEndDate() {
         return endDate;
     }
@@ -372,7 +395,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return facilityId
      **/
-    @ApiModelProperty(required = true, value = "ID of the facility where this job is running")
+    @javax.annotation.Nonnull
     public Long getFacilityId() {
         return facilityId;
     }
@@ -392,7 +415,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return installerId
      **/
-    @ApiModelProperty(required = true, value = "ID of the character which installed this job")
+    @javax.annotation.Nonnull
     public Integer getInstallerId() {
         return installerId;
     }
@@ -412,7 +435,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return jobId
      **/
-    @ApiModelProperty(required = true, value = "Unique job ID")
+    @javax.annotation.Nonnull
     public Integer getJobId() {
         return jobId;
     }
@@ -433,7 +456,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return licensedRuns
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Number of runs blueprint is licensed for")
     public Integer getLicensedRuns() {
         return licensedRuns;
     }
@@ -454,7 +476,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return outputLocationId
      **/
-    @ApiModelProperty(required = true, value = "Location ID of the location to which the output of the job will be delivered. Normally a station ID, but can also be a corporation facility")
+    @javax.annotation.Nonnull
     public Long getOutputLocationId() {
         return outputLocationId;
     }
@@ -476,7 +498,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return pauseDate
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Date and time when this job was paused (i.e. time when the facility where this job was installed went offline)")
     public OffsetDateTime getPauseDate() {
         return pauseDate;
     }
@@ -497,7 +518,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return probability
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Chance of success for invention")
     public Float getProbability() {
         return probability;
     }
@@ -518,7 +538,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return productTypeId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Type ID of product (manufactured, copied or invented)")
     public Integer getProductTypeId() {
         return productTypeId;
     }
@@ -539,7 +558,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return runs
      **/
-    @ApiModelProperty(required = true, value = "Number of runs for a manufacturing job, or number of copies to make for a blueprint copy")
+    @javax.annotation.Nonnull
     public Integer getRuns() {
         return runs;
     }
@@ -559,7 +578,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return startDate
      **/
-    @ApiModelProperty(required = true, value = "Date and time when this job started")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -579,7 +598,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return stationId
      **/
-    @ApiModelProperty(required = true, value = "ID of the station where industry facility is located")
+    @javax.annotation.Nonnull
     public Long getStationId() {
         return stationId;
     }
@@ -588,15 +607,15 @@ public class CharacterIndustryJobsResponse implements Serializable {
         this.stationId = stationId;
     }
 
-    public CharacterIndustryJobsResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
-        return this;
-    }
-
     public CharacterIndustryJobsResponse statusString(String status) {
 
         this.status = status;
+        return this;
+    }
+
+    public CharacterIndustryJobsResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
         return this;
     }
 
@@ -605,7 +624,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(required = true, value = "status string")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -638,7 +657,6 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * @return successfulRuns
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Number of successful runs for this job. Equal to runs unless this is an invention job")
     public Integer getSuccessfulRuns() {
         return successfulRuns;
     }
@@ -648,7 +666,7 @@ public class CharacterIndustryJobsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -721,11 +739,163 @@ public class CharacterIndustryJobsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("activity_id");
+        openapiFields.add("blueprint_id");
+        openapiFields.add("blueprint_location_id");
+        openapiFields.add("blueprint_type_id");
+        openapiFields.add("completed_character_id");
+        openapiFields.add("completed_date");
+        openapiFields.add("cost");
+        openapiFields.add("duration");
+        openapiFields.add("end_date");
+        openapiFields.add("facility_id");
+        openapiFields.add("installer_id");
+        openapiFields.add("job_id");
+        openapiFields.add("licensed_runs");
+        openapiFields.add("output_location_id");
+        openapiFields.add("pause_date");
+        openapiFields.add("probability");
+        openapiFields.add("product_type_id");
+        openapiFields.add("runs");
+        openapiFields.add("start_date");
+        openapiFields.add("station_id");
+        openapiFields.add("status");
+        openapiFields.add("successful_runs");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("activity_id");
+        openapiRequiredFields.add("blueprint_id");
+        openapiRequiredFields.add("blueprint_location_id");
+        openapiRequiredFields.add("blueprint_type_id");
+        openapiRequiredFields.add("duration");
+        openapiRequiredFields.add("end_date");
+        openapiRequiredFields.add("facility_id");
+        openapiRequiredFields.add("installer_id");
+        openapiRequiredFields.add("job_id");
+        openapiRequiredFields.add("output_location_id");
+        openapiRequiredFields.add("runs");
+        openapiRequiredFields.add("start_date");
+        openapiRequiredFields.add("station_id");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterIndustryJobsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterIndustryJobsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                  // required
+                                                                                  // fields
+                                                                                  // but
+                                                                                  // JSON
+                                                                                  // object
+                                                                                  // is
+                                                                                  // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CharacterIndustryJobsResponse is not found in the empty JSON string",
+                                CharacterIndustryJobsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterIndustryJobsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterIndustryJobsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterIndustryJobsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterIndustryJobsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterIndustryJobsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterIndustryJobsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterIndustryJobsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterIndustryJobsResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterIndustryJobsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterIndustryJobsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterIndustryJobsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterIndustryJobsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterIndustryJobsResponse
+     */
+    public static CharacterIndustryJobsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterIndustryJobsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterIndustryJobsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

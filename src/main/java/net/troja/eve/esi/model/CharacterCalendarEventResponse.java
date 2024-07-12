@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * Full details of a specific event
  */
-@ApiModel(description = "Full details of a specific event")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CharacterCalendarEventResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -126,6 +149,9 @@ public class CharacterCalendarEventResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TITLE)
     private String title;
 
+    public CharacterCalendarEventResponse() {
+    }
+
     public CharacterCalendarEventResponse date(OffsetDateTime date) {
 
         this.date = date;
@@ -137,7 +163,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return date
      **/
-    @ApiModelProperty(required = true, value = "date string")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
@@ -157,7 +183,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return duration
      **/
-    @ApiModelProperty(required = true, value = "Length in minutes")
+    @javax.annotation.Nonnull
     public Integer getDuration() {
         return duration;
     }
@@ -177,7 +203,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return eventId
      **/
-    @ApiModelProperty(required = true, value = "event_id integer")
+    @javax.annotation.Nonnull
     public Integer getEventId() {
         return eventId;
     }
@@ -197,7 +223,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return importance
      **/
-    @ApiModelProperty(required = true, value = "importance integer")
+    @javax.annotation.Nonnull
     public Integer getImportance() {
         return importance;
     }
@@ -217,7 +243,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerId
      **/
-    @ApiModelProperty(required = true, value = "owner_id integer")
+    @javax.annotation.Nonnull
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -237,7 +263,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerName
      **/
-    @ApiModelProperty(required = true, value = "owner_name string")
+    @javax.annotation.Nonnull
     public String getOwnerName() {
         return ownerName;
     }
@@ -246,15 +272,15 @@ public class CharacterCalendarEventResponse implements Serializable {
         this.ownerName = ownerName;
     }
 
-    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerTypeEnum) {
-
-        this.ownerTypeEnum = ownerTypeEnum;
-        return this;
-    }
-
     public CharacterCalendarEventResponse ownerTypeString(String ownerType) {
 
         this.ownerType = ownerType;
+        return this;
+    }
+
+    public CharacterCalendarEventResponse ownerType(OwnerTypeEnum ownerTypeEnum) {
+
+        this.ownerTypeEnum = ownerTypeEnum;
         return this;
     }
 
@@ -263,7 +289,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return ownerType
      **/
-    @ApiModelProperty(required = true, value = "owner_type string")
+    @javax.annotation.Nonnull
     public OwnerTypeEnum getOwnerType() {
         if (ownerTypeEnum == null) {
             ownerTypeEnum = OwnerTypeEnum.fromValue(ownerType);
@@ -294,7 +320,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return response
      **/
-    @ApiModelProperty(required = true, value = "response string")
+    @javax.annotation.Nonnull
     public String getResponse() {
         return response;
     }
@@ -314,7 +340,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return text
      **/
-    @ApiModelProperty(required = true, value = "text string")
+    @javax.annotation.Nonnull
     public String getText() {
         return text;
     }
@@ -334,7 +360,7 @@ public class CharacterCalendarEventResponse implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(required = true, value = "title string")
+    @javax.annotation.Nonnull
     public String getTitle() {
         return title;
     }
@@ -344,7 +370,7 @@ public class CharacterCalendarEventResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -391,11 +417,168 @@ public class CharacterCalendarEventResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("date");
+        openapiFields.add("duration");
+        openapiFields.add("event_id");
+        openapiFields.add("importance");
+        openapiFields.add("owner_id");
+        openapiFields.add("owner_name");
+        openapiFields.add("owner_type");
+        openapiFields.add("response");
+        openapiFields.add("text");
+        openapiFields.add("title");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("date");
+        openapiRequiredFields.add("duration");
+        openapiRequiredFields.add("event_id");
+        openapiRequiredFields.add("importance");
+        openapiRequiredFields.add("owner_id");
+        openapiRequiredFields.add("owner_name");
+        openapiRequiredFields.add("owner_type");
+        openapiRequiredFields.add("response");
+        openapiRequiredFields.add("text");
+        openapiRequiredFields.add("title");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CharacterCalendarEventResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CharacterCalendarEventResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                   // required
+                                                                                   // fields
+                                                                                   // but
+                                                                                   // JSON
+                                                                                   // object
+                                                                                   // is
+                                                                                   // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CharacterCalendarEventResponse is not found in the empty JSON string",
+                                CharacterCalendarEventResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CharacterCalendarEventResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CharacterCalendarEventResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CharacterCalendarEventResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("owner_name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `owner_name` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("owner_name").toString()));
+        }
+        if (!jsonObj.get("owner_type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `owner_type` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("owner_type").toString()));
+        }
+        if (!jsonObj.get("response").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("response").toString()));
+        }
+        if (!jsonObj.get("text").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `text` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("text").toString()));
+        }
+        if (!jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CharacterCalendarEventResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CharacterCalendarEventResponse' and its
+                             // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CharacterCalendarEventResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CharacterCalendarEventResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CharacterCalendarEventResponse>() {
+                @Override
+                public void write(JsonWriter out, CharacterCalendarEventResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CharacterCalendarEventResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CharacterCalendarEventResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CharacterCalendarEventResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CharacterCalendarEventResponse
+     */
+    public static CharacterCalendarEventResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CharacterCalendarEventResponse.class);
+    }
+
+    /**
+     * Convert an instance of CharacterCalendarEventResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

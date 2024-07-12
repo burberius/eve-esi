@@ -19,16 +19,39 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporationContractsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -290,6 +313,9 @@ public class CorporationContractsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VOLUME)
     private Double volume;
 
+    public CorporationContractsResponse() {
+    }
+
     public CorporationContractsResponse acceptorId(Integer acceptorId) {
 
         this.acceptorId = acceptorId;
@@ -301,7 +327,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return acceptorId
      **/
-    @ApiModelProperty(required = true, value = "Who will accept the contract")
+    @javax.annotation.Nonnull
     public Integer getAcceptorId() {
         return acceptorId;
     }
@@ -321,7 +347,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return assigneeId
      **/
-    @ApiModelProperty(required = true, value = "ID to whom the contract is assigned, can be corporation or character ID")
+    @javax.annotation.Nonnull
     public Integer getAssigneeId() {
         return assigneeId;
     }
@@ -330,15 +356,15 @@ public class CorporationContractsResponse implements Serializable {
         this.assigneeId = assigneeId;
     }
 
-    public CorporationContractsResponse availability(AvailabilityEnum availabilityEnum) {
-
-        this.availabilityEnum = availabilityEnum;
-        return this;
-    }
-
     public CorporationContractsResponse availabilityString(String availability) {
 
         this.availability = availability;
+        return this;
+    }
+
+    public CorporationContractsResponse availability(AvailabilityEnum availabilityEnum) {
+
+        this.availabilityEnum = availabilityEnum;
         return this;
     }
 
@@ -347,7 +373,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return availability
      **/
-    @ApiModelProperty(required = true, value = "To whom the contract is available")
+    @javax.annotation.Nonnull
     public AvailabilityEnum getAvailability() {
         if (availabilityEnum == null) {
             availabilityEnum = AvailabilityEnum.fromValue(availability);
@@ -379,7 +405,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return buyout
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Buyout price (for Auctions only)")
     public Double getBuyout() {
         return buyout;
     }
@@ -400,7 +425,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return collateral
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Collateral price (for Couriers only)")
     public Double getCollateral() {
         return collateral;
     }
@@ -420,7 +444,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return contractId
      **/
-    @ApiModelProperty(required = true, value = "contract_id integer")
+    @javax.annotation.Nonnull
     public Integer getContractId() {
         return contractId;
     }
@@ -441,7 +465,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return dateAccepted
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Date of confirmation of contract")
     public OffsetDateTime getDateAccepted() {
         return dateAccepted;
     }
@@ -462,7 +485,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return dateCompleted
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Date of completed of contract")
     public OffsetDateTime getDateCompleted() {
         return dateCompleted;
     }
@@ -482,7 +504,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return dateExpired
      **/
-    @ApiModelProperty(required = true, value = "Expiration date of the contract")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDateExpired() {
         return dateExpired;
     }
@@ -502,7 +524,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return dateIssued
      **/
-    @ApiModelProperty(required = true, value = "Сreation date of the contract")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDateIssued() {
         return dateIssued;
     }
@@ -523,7 +545,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return daysToComplete
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Number of days to perform the contract")
     public Integer getDaysToComplete() {
         return daysToComplete;
     }
@@ -544,7 +565,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return endLocationId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "End location ID (for Couriers contract)")
     public Long getEndLocationId() {
         return endLocationId;
     }
@@ -564,7 +584,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return forCorporation
      **/
-    @ApiModelProperty(required = true, value = "true if the contract was issued on behalf of the issuer's corporation")
+    @javax.annotation.Nonnull
     public Boolean getForCorporation() {
         return forCorporation;
     }
@@ -584,7 +604,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return issuerCorporationId
      **/
-    @ApiModelProperty(required = true, value = "Character's corporation ID for the issuer")
+    @javax.annotation.Nonnull
     public Integer getIssuerCorporationId() {
         return issuerCorporationId;
     }
@@ -604,7 +624,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return issuerId
      **/
-    @ApiModelProperty(required = true, value = "Character ID for the issuer")
+    @javax.annotation.Nonnull
     public Integer getIssuerId() {
         return issuerId;
     }
@@ -625,7 +645,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return price
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Price of contract (for ItemsExchange and Auctions)")
     public Double getPrice() {
         return price;
     }
@@ -646,7 +665,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return reward
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Remuneration for contract (for Couriers only)")
     public Double getReward() {
         return reward;
     }
@@ -667,7 +685,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return startLocationId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Start location ID (for Couriers contract)")
     public Long getStartLocationId() {
         return startLocationId;
     }
@@ -676,15 +693,15 @@ public class CorporationContractsResponse implements Serializable {
         this.startLocationId = startLocationId;
     }
 
-    public CorporationContractsResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
-        return this;
-    }
-
     public CorporationContractsResponse statusString(String status) {
 
         this.status = status;
+        return this;
+    }
+
+    public CorporationContractsResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
         return this;
     }
 
@@ -693,7 +710,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(required = true, value = "Status of the the contract")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -725,7 +742,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return title
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Title of the contract")
     public String getTitle() {
         return title;
     }
@@ -734,15 +750,15 @@ public class CorporationContractsResponse implements Serializable {
         this.title = title;
     }
 
-    public CorporationContractsResponse type(TypeEnum typeEnum) {
-
-        this.typeEnum = typeEnum;
-        return this;
-    }
-
     public CorporationContractsResponse typeString(String type) {
 
         this.type = type;
+        return this;
+    }
+
+    public CorporationContractsResponse type(TypeEnum typeEnum) {
+
+        this.typeEnum = typeEnum;
         return this;
     }
 
@@ -751,7 +767,7 @@ public class CorporationContractsResponse implements Serializable {
      * 
      * @return type
      **/
-    @ApiModelProperty(required = true, value = "Type of the contract")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         if (typeEnum == null) {
             typeEnum = TypeEnum.fromValue(type);
@@ -783,7 +799,6 @@ public class CorporationContractsResponse implements Serializable {
      * @return volume
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Volume of items in the contract")
     public Double getVolume() {
         return volume;
     }
@@ -793,7 +808,7 @@ public class CorporationContractsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -866,11 +881,176 @@ public class CorporationContractsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("acceptor_id");
+        openapiFields.add("assignee_id");
+        openapiFields.add("availability");
+        openapiFields.add("buyout");
+        openapiFields.add("collateral");
+        openapiFields.add("contract_id");
+        openapiFields.add("date_accepted");
+        openapiFields.add("date_completed");
+        openapiFields.add("date_expired");
+        openapiFields.add("date_issued");
+        openapiFields.add("days_to_complete");
+        openapiFields.add("end_location_id");
+        openapiFields.add("for_corporation");
+        openapiFields.add("issuer_corporation_id");
+        openapiFields.add("issuer_id");
+        openapiFields.add("price");
+        openapiFields.add("reward");
+        openapiFields.add("start_location_id");
+        openapiFields.add("status");
+        openapiFields.add("title");
+        openapiFields.add("type");
+        openapiFields.add("volume");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("acceptor_id");
+        openapiRequiredFields.add("assignee_id");
+        openapiRequiredFields.add("availability");
+        openapiRequiredFields.add("contract_id");
+        openapiRequiredFields.add("date_expired");
+        openapiRequiredFields.add("date_issued");
+        openapiRequiredFields.add("for_corporation");
+        openapiRequiredFields.add("issuer_corporation_id");
+        openapiRequiredFields.add("issuer_id");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             CorporationContractsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CorporationContractsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                 // required
+                                                                                 // fields
+                                                                                 // but
+                                                                                 // JSON
+                                                                                 // object
+                                                                                 // is
+                                                                                 // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CorporationContractsResponse is not found in the empty JSON string",
+                                CorporationContractsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CorporationContractsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `CorporationContractsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : CorporationContractsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("availability").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("availability").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CorporationContractsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'CorporationContractsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CorporationContractsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(CorporationContractsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<CorporationContractsResponse>() {
+                @Override
+                public void write(JsonWriter out, CorporationContractsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public CorporationContractsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CorporationContractsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of CorporationContractsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             CorporationContractsResponse
+     */
+    public static CorporationContractsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CorporationContractsResponse.class);
+    }
+
+    /**
+     * Convert an instance of CorporationContractsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

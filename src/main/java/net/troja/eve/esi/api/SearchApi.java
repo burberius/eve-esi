@@ -26,15 +26,19 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import net.troja.eve.esi.model.CharacterSearchResponse;
+import java.util.Set;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class SearchApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public SearchApi() {
         this(Configuration.getDefaultApiClient());
@@ -50,6 +54,22 @@ public class SearchApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -126,27 +146,12 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -161,23 +166,55 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharactersCharacterIdSearchCall(List<String> categories, Integer characterId, String search,
+    public okhttp3.Call getCharactersCharacterIdSearchCall(Set<String> categories, Integer characterId, String search,
             String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict,
             String token, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/search/".replaceAll("\\{" + "character_id" + "\\}",
+        String localVarPath = "/v3/characters/{character_id}/search/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (categories != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "categories", categories));
         }
@@ -202,7 +239,6 @@ public class SearchApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (acceptLanguage != null) {
             localVarHeaderParams.put("Accept-Language", localVarApiClient.parameterToString(acceptLanguage));
         }
@@ -211,31 +247,28 @@ public class SearchApi {
             localVarHeaderParams.put("If-None-Match", localVarApiClient.parameterToString(ifNoneMatch));
         }
 
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-
-        };
+        final String[] localVarContentTypes = {};
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "evesso" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams,
+                localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams,
+                localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCharactersCharacterIdSearchValidateBeforeCall(List<String> categories, Integer characterId,
+    private okhttp3.Call getCharactersCharacterIdSearchValidateBeforeCall(Set<String> categories, Integer characterId,
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
             Boolean strict, String token, final ApiCallback _callback) throws ApiException {
-
         // verify the required parameter 'categories' is set
         if (categories == null) {
             throw new ApiException(
@@ -254,9 +287,8 @@ public class SearchApi {
                     "Missing the required parameter 'search' when calling getCharactersCharacterIdSearch(Async)");
         }
 
-        okhttp3.Call localVarCall = getCharactersCharacterIdSearchCall(categories, characterId, search, acceptLanguage,
-                datasource, ifNoneMatch, language, strict, token, _callback);
-        return localVarCall;
+        return getCharactersCharacterIdSearchCall(categories, characterId, search, acceptLanguage, datasource,
+                ifNoneMatch, language, strict, token, _callback);
 
     }
 
@@ -335,27 +367,12 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -370,13 +387,28 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public CharacterSearchResponse getCharactersCharacterIdSearch(List<String> categories, Integer characterId,
+    public CharacterSearchResponse getCharactersCharacterIdSearch(Set<String> categories, Integer characterId,
             String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
             Boolean strict, String token) throws ApiException {
         ApiResponse<CharacterSearchResponse> localVarResp = getCharactersCharacterIdSearchWithHttpInfo(categories,
@@ -459,27 +491,12 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -494,13 +511,28 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<CharacterSearchResponse> getCharactersCharacterIdSearchWithHttpInfo(List<String> categories,
+    public ApiResponse<CharacterSearchResponse> getCharactersCharacterIdSearchWithHttpInfo(Set<String> categories,
             Integer characterId, String search, String acceptLanguage, String datasource, String ifNoneMatch,
             String language, Boolean strict, String token) throws ApiException {
         okhttp3.Call localVarCall = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId, search,
@@ -587,27 +619,12 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>404</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>420</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
-     *                        <td>422</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
      *                        <td>500</td>
-     *                        <td></td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>502</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
@@ -622,15 +639,30 @@ public class SearchApi {
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
+     *                        <td>404</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>422</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>502</td>
+     *                        <td></td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>520</td>
      *                        <td></td>
      *                        <td>-</td>
      *                        </tr>
      *                        </table>
      */
-    public okhttp3.Call getCharactersCharacterIdSearchAsync(List<String> categories, Integer characterId,
-            String search, String acceptLanguage, String datasource, String ifNoneMatch, String language,
-            Boolean strict, String token, final ApiCallback<CharacterSearchResponse> _callback) throws ApiException {
+    public okhttp3.Call getCharactersCharacterIdSearchAsync(Set<String> categories, Integer characterId, String search,
+            String acceptLanguage, String datasource, String ifNoneMatch, String language, Boolean strict,
+            String token, final ApiCallback<CharacterSearchResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCharactersCharacterIdSearchValidateBeforeCall(categories, characterId, search,
                 acceptLanguage, datasource, ifNoneMatch, language, strict, token, _callback);

@@ -19,15 +19,38 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
 
 /**
  * 200 ok object
  */
-@ApiModel(description = "200 ok object")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FactionWarfareSystemsResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -107,10 +130,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_VICTORY_POINTS_THRESHOLD)
     private Integer victoryPointsThreshold;
 
-    public FactionWarfareSystemsResponse contested(ContestedEnum contestedEnum) {
-
-        this.contestedEnum = contestedEnum;
-        return this;
+    public FactionWarfareSystemsResponse() {
     }
 
     public FactionWarfareSystemsResponse contestedString(String contested) {
@@ -119,12 +139,18 @@ public class FactionWarfareSystemsResponse implements Serializable {
         return this;
     }
 
+    public FactionWarfareSystemsResponse contested(ContestedEnum contestedEnum) {
+
+        this.contestedEnum = contestedEnum;
+        return this;
+    }
+
     /**
      * contested string
      * 
      * @return contested
      **/
-    @ApiModelProperty(required = true, value = "contested string")
+    @javax.annotation.Nonnull
     public ContestedEnum getContested() {
         if (contestedEnum == null) {
             contestedEnum = ContestedEnum.fromValue(contested);
@@ -155,7 +181,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return occupierFactionId
      **/
-    @ApiModelProperty(required = true, value = "occupier_faction_id integer")
+    @javax.annotation.Nonnull
     public Integer getOccupierFactionId() {
         return occupierFactionId;
     }
@@ -175,7 +201,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return ownerFactionId
      **/
-    @ApiModelProperty(required = true, value = "owner_faction_id integer")
+    @javax.annotation.Nonnull
     public Integer getOwnerFactionId() {
         return ownerFactionId;
     }
@@ -195,7 +221,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return solarSystemId
      **/
-    @ApiModelProperty(required = true, value = "solar_system_id integer")
+    @javax.annotation.Nonnull
     public Integer getSolarSystemId() {
         return solarSystemId;
     }
@@ -215,7 +241,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return victoryPoints
      **/
-    @ApiModelProperty(required = true, value = "victory_points integer")
+    @javax.annotation.Nonnull
     public Integer getVictoryPoints() {
         return victoryPoints;
     }
@@ -235,7 +261,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * 
      * @return victoryPointsThreshold
      **/
-    @ApiModelProperty(required = true, value = "victory_points_threshold integer")
+    @javax.annotation.Nonnull
     public Integer getVictoryPointsThreshold() {
         return victoryPointsThreshold;
     }
@@ -245,7 +271,7 @@ public class FactionWarfareSystemsResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -285,11 +311,139 @@ public class FactionWarfareSystemsResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contested");
+        openapiFields.add("occupier_faction_id");
+        openapiFields.add("owner_faction_id");
+        openapiFields.add("solar_system_id");
+        openapiFields.add("victory_points");
+        openapiFields.add("victory_points_threshold");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contested");
+        openapiRequiredFields.add("occupier_faction_id");
+        openapiRequiredFields.add("owner_faction_id");
+        openapiRequiredFields.add("solar_system_id");
+        openapiRequiredFields.add("victory_points");
+        openapiRequiredFields.add("victory_points_threshold");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             FactionWarfareSystemsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FactionWarfareSystemsResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                                  // required
+                                                                                  // fields
+                                                                                  // but
+                                                                                  // JSON
+                                                                                  // object
+                                                                                  // is
+                                                                                  // null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in FactionWarfareSystemsResponse is not found in the empty JSON string",
+                                FactionWarfareSystemsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FactionWarfareSystemsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `FactionWarfareSystemsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : FactionWarfareSystemsResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("contested").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contested` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("contested").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FactionWarfareSystemsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes
+                             // 'FactionWarfareSystemsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FactionWarfareSystemsResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(FactionWarfareSystemsResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<FactionWarfareSystemsResponse>() {
+                @Override
+                public void write(JsonWriter out, FactionWarfareSystemsResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public FactionWarfareSystemsResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FactionWarfareSystemsResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of FactionWarfareSystemsResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             FactionWarfareSystemsResponse
+     */
+    public static FactionWarfareSystemsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FactionWarfareSystemsResponse.class);
+    }
+
+    /**
+     * Convert an instance of FactionWarfareSystemsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
