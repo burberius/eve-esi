@@ -27,4 +27,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      env:
+        SSO_CLIENT_ID: ${{ secrets.SSO_CLIENT_ID }}
+        SSO_REFRESH_TOKEN: ${{ secrets.SSO_REFRESH_TOKEN }}
+        SSO_REFRESH_TOKEN_PUBLIC_DATA: ${{ secrets.SSO_REFRESH_TOKEN_PUBLIC_DATA }}
       run: mvn -B package --no-transfer-progress --file pom.xml
