@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: "1.24"
+  version: "1.30"
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -3261,12 +3261,16 @@ paths:
       x-accepts: application/json
   /v1/characters/{character_id}/opportunities/:
     get:
+      deprecated: true
       description: |-
         Return a list of tasks finished by a character
 
         ---
 
         This route is cached for up to 3600 seconds
+
+        ---
+        Warning: This route is deprecated
 
         SSO Scope: esi-characters.read_opportunities.v1
       operationId: get_characters_character_id_opportunities
@@ -5045,303 +5049,6 @@ paths:
       - Director
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
-  /v1/corporations/{corporation_id}/bookmarks/:
-    get:
-      description: |-
-        A list of your corporation's bookmarks
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-bookmarks.read_corporation_bookmarks.v1
-      operationId: get_corporations_corporation_id_bookmarks
-      parameters:
-      - description: An EVE corporation ID
-        in: path
-        name: corporation_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Which page of results to return
-        in: query
-        name: page
-        schema:
-          default: 1
-          format: int32
-          minimum: 1
-          type: integer
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - bookmark_id: 4
-                created: 2016-08-09T11:57:47Z
-                creator_id: 2112625428
-                folder_id: 5
-                item:
-                  item_id: 50006722
-                  type_id: 29633
-                label: Stargate
-                location_id: 30003430
-                notes: This is a stargate
-              - bookmark_id: 5
-                coordinates:
-                  x: -2958928814000
-                  "y": -338367275823
-                  z: 2114538075090
-                created: 2016-08-09T11:57:47Z
-                creator_id: 2112625428
-                folder_id: 5
-                label: Random location
-                location_id: 30003430
-                notes: This is a random location in space
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CorporationBookmarksResponse'
-                maxItems: 1000
-                title: get_corporations_corporation_id_bookmarks_ok
-                type: array
-          description: List of corporation owned bookmarks
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            X-Pages:
-              description: Maximum page number
-              schema:
-                default: 1
-                format: int32
-                type: integer
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "420":
-          content: {}
-        "500":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "404":
-          content: {}
-        "422":
-          content: {}
-        "502":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-bookmarks.read_corporation_bookmarks.v1
-      summary: List corporation bookmarks
-      tags:
-      - Bookmarks
-      x-alternate-versions:
-      - dev
-      - legacy
-      - v1
-      x-cached-seconds: 3600
-      x-accepts: application/json
-  /v1/corporations/{corporation_id}/bookmarks/folders/:
-    get:
-      description: |-
-        A list of your corporation's bookmark folders
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-bookmarks.read_corporation_bookmarks.v1
-      operationId: get_corporations_corporation_id_bookmarks_folders
-      parameters:
-      - description: An EVE corporation ID
-        in: path
-        name: corporation_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Which page of results to return
-        in: query
-        name: page
-        schema:
-          default: 1
-          format: int32
-          minimum: 1
-          type: integer
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - folder_id: 5
-                name: Important Locations
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CorporationBookmarkFoldersResponse'
-                maxItems: 1000
-                title: get_corporations_corporation_id_bookmarks_folders_ok
-                type: array
-          description: List of corporation owned bookmark folders
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            X-Pages:
-              description: Maximum page number
-              schema:
-                default: 1
-                format: int32
-                type: integer
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "420":
-          content: {}
-        "500":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "404":
-          content: {}
-        "422":
-          content: {}
-        "502":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-bookmarks.read_corporation_bookmarks.v1
-      summary: List corporation bookmark folders
-      tags:
-      - Bookmarks
-      x-alternate-versions:
-      - dev
-      - legacy
-      - v1
-      x-cached-seconds: 3600
       x-accepts: application/json
   /v1/corporations/{corporation_id}/contacts/labels/:
     get:
@@ -10981,12 +10688,16 @@ paths:
       x-accepts: application/json
   /v1/opportunities/groups/:
     get:
+      deprecated: true
       description: |-
         Return a list of opportunities groups
 
         ---
 
         This route expires daily at 11:05
+
+        ---
+        Warning: This route is deprecated
       operationId: get_opportunities_groups
       parameters:
       - description: The server name you would like data from
@@ -11092,12 +10803,16 @@ paths:
       x-accepts: application/json
   /v1/opportunities/groups/{group_id}/:
     get:
+      deprecated: true
       description: |-
         Return information of an opportunities group
 
         ---
 
         This route expires daily at 11:05
+
+        ---
+        Warning: This route is deprecated
       operationId: get_opportunities_groups_group_id
       parameters:
       - description: Language to use in the response
@@ -11251,12 +10966,16 @@ paths:
       x-accepts: application/json
   /v1/opportunities/tasks/:
     get:
+      deprecated: true
       description: |-
         Return a list of opportunities tasks
 
         ---
 
         This route expires daily at 11:05
+
+        ---
+        Warning: This route is deprecated
       operationId: get_opportunities_tasks
       parameters:
       - description: The server name you would like data from
@@ -11362,12 +11081,16 @@ paths:
       x-accepts: application/json
   /v1/opportunities/tasks/{task_id}/:
     get:
+      deprecated: true
       description: |-
         Return information of an opportunities task
 
         ---
 
         This route expires daily at 11:05
+
+        ---
+        Warning: This route is deprecated
       operationId: get_opportunities_tasks_task_id
       parameters:
       - description: The server name you would like data from
@@ -14227,7 +13950,7 @@ paths:
                 description: 200 ok array
                 items:
                   $ref: '#/components/schemas/RacesResponse'
-                maxItems: 4
+                maxItems: 6
                 title: get_universe_races_ok
                 type: array
           description: A list of character races
@@ -16189,301 +15912,6 @@ paths:
       - v2
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
-  /v2/characters/{character_id}/bookmarks/:
-    get:
-      description: |-
-        A list of your character's personal bookmarks
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-bookmarks.read_character_bookmarks.v1
-      operationId: get_characters_character_id_bookmarks
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Which page of results to return
-        in: query
-        name: page
-        schema:
-          default: 1
-          format: int32
-          minimum: 1
-          type: integer
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - bookmark_id: 4
-                created: 2016-08-09T11:57:47Z
-                creator_id: 2112625428
-                folder_id: 5
-                item:
-                  item_id: 50006722
-                  type_id: 29633
-                label: Stargate
-                location_id: 30003430
-                notes: This is a stargate
-              - bookmark_id: 5
-                coordinates:
-                  x: -2958928814000
-                  "y": -338367275823
-                  z: 2114538075090
-                created: 2016-08-09T11:57:47Z
-                creator_id: 2112625428
-                folder_id: 5
-                label: Random location
-                location_id: 30003430
-                notes: This is a random location in space
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterBookmarksResponse'
-                maxItems: 1000
-                title: get_characters_character_id_bookmarks_ok
-                type: array
-          description: A list of bookmarks
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            X-Pages:
-              description: Maximum page number
-              schema:
-                default: 1
-                format: int32
-                type: integer
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "420":
-          content: {}
-        "500":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "404":
-          content: {}
-        "422":
-          content: {}
-        "502":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-bookmarks.read_character_bookmarks.v1
-      summary: List bookmarks
-      tags:
-      - Bookmarks
-      x-alternate-versions:
-      - dev
-      - v2
-      x-cached-seconds: 3600
-      x-accepts: application/json
-  /v2/characters/{character_id}/bookmarks/folders/:
-    get:
-      description: |-
-        A list of your character's personal bookmark folders
-
-        ---
-
-        This route is cached for up to 3600 seconds
-
-        SSO Scope: esi-bookmarks.read_character_bookmarks.v1
-      operationId: get_characters_character_id_bookmarks_folders
-      parameters:
-      - description: An EVE character ID
-        in: path
-        name: character_id
-        required: true
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-      - description: The server name you would like data from
-        in: query
-        name: datasource
-        schema:
-          default: tranquility
-          enum:
-          - tranquility
-          type: string
-      - description: ETag from a previous request. A 304 will be returned if this
-          matches the current ETag
-        in: header
-        name: If-None-Match
-        schema:
-          type: string
-      - description: Which page of results to return
-        in: query
-        name: page
-        schema:
-          default: 1
-          format: int32
-          minimum: 1
-          type: integer
-      - description: Access token to use if unable to set a header
-        in: query
-        name: token
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - folder_id: 5
-                name: Icecream
-              schema:
-                description: 200 ok array
-                items:
-                  $ref: '#/components/schemas/CharacterBookmarkFoldersResponse'
-                maxItems: 1000
-                title: get_characters_character_id_bookmarks_folders_ok
-                type: array
-          description: List of bookmark folders
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            X-Pages:
-              description: Maximum page number
-              schema:
-                default: 1
-                format: int32
-                type: integer
-        "304":
-          content: {}
-          description: Not modified
-          headers:
-            Cache-Control:
-              description: The caching mechanism used
-              schema:
-                type: string
-            ETag:
-              description: RFC7232 compliant entity tag
-              schema:
-                type: string
-            Expires:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-            Last-Modified:
-              description: RFC7231 formatted datetime string
-              schema:
-                type: string
-        "400":
-          content: {}
-        "401":
-          content: {}
-        "403":
-          content: {}
-        "420":
-          content: {}
-        "500":
-          content: {}
-        "503":
-          content: {}
-        "504":
-          content: {}
-        "404":
-          content: {}
-        "422":
-          content: {}
-        "502":
-          content: {}
-        "520":
-          content: {}
-      security:
-      - evesso:
-        - esi-bookmarks.read_character_bookmarks.v1
-      summary: List bookmark folders
-      tags:
-      - Bookmarks
-      x-alternate-versions:
-      - dev
-      - v2
-      x-cached-seconds: 3600
       x-accepts: application/json
   /v2/characters/{character_id}/contacts/:
     delete:
@@ -27490,147 +26918,6 @@ components:
       - name
       title: CorporationAssetsNamesResponse
       type: object
-    CorporationBookmarksCoordinates:
-      description: Optional object that is returned if a bookmark was made on a planet
-        or a random location in space.
-      example:
-        x: 6.027456183070403
-        "y": 1.4658129805029452
-        z: 5.962133916683182
-      properties:
-        x:
-          description: x number
-          format: double
-          title: get_corporations_corporation_id_bookmarks_x
-          type: number
-        "y":
-          description: y number
-          format: double
-          title: get_corporations_corporation_id_bookmarks_y
-          type: number
-        z:
-          description: z number
-          format: double
-          title: get_corporations_corporation_id_bookmarks_z
-          type: number
-      required:
-      - x
-      - "y"
-      - z
-      title: CorporationBookmarksCoordinates
-      type: object
-    CorporationBookmarkItem:
-      description: Optional object that is returned if a bookmark was made on a particular
-        item.
-      example:
-        item_id: 7
-        type_id: 9
-      properties:
-        item_id:
-          description: item_id integer
-          format: int64
-          title: CorporationBookmarkItem_id
-          type: integer
-        type_id:
-          description: type_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_type_id
-          type: integer
-      required:
-      - item_id
-      - type_id
-      title: CorporationBookmarkItem
-      type: object
-    CorporationBookmarksResponse:
-      description: 200 ok object
-      example:
-        bookmark_id: 0
-        item:
-          item_id: 7
-          type_id: 9
-        notes: notes
-        created: 2000-01-23T04:56:07.000+00:00
-        coordinates:
-          x: 6.027456183070403
-          "y": 1.4658129805029452
-          z: 5.962133916683182
-        creator_id: 5
-        label: label
-        folder_id: 2
-        location_id: 3
-      properties:
-        bookmark_id:
-          description: bookmark_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_bookmark_id
-          type: integer
-        coordinates:
-          $ref: '#/components/schemas/CorporationBookmarksCoordinates'
-        created:
-          description: created string
-          format: date-time
-          title: get_corporations_corporation_id_bookmarks_created
-          type: string
-        creator_id:
-          description: creator_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_creator_id
-          type: integer
-        folder_id:
-          description: folder_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_folder_id
-          type: integer
-        item:
-          $ref: '#/components/schemas/CorporationBookmarkItem'
-        label:
-          description: label string
-          title: get_corporations_corporation_id_bookmarks_label
-          type: string
-        location_id:
-          description: location_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_location_id
-          type: integer
-        notes:
-          description: notes string
-          title: get_corporations_corporation_id_bookmarks_notes
-          type: string
-      required:
-      - bookmark_id
-      - created
-      - creator_id
-      - label
-      - location_id
-      - notes
-      title: CorporationBookmarksResponse
-      type: object
-    CorporationBookmarkFoldersResponse:
-      description: 200 ok object
-      example:
-        creator_id: 0
-        name: name
-        folder_id: 6
-      properties:
-        creator_id:
-          description: creator_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_folders_creator_id
-          type: integer
-        folder_id:
-          description: folder_id integer
-          format: int32
-          title: get_corporations_corporation_id_bookmarks_folders_folder_id
-          type: integer
-        name:
-          description: name string
-          title: get_corporations_corporation_id_bookmarks_folders_name
-          type: string
-      required:
-      - folder_id
-      - name
-      title: CorporationBookmarkFoldersResponse
-      type: object
     CorporationContactsLabelsResponse:
       description: 200 ok object
       example:
@@ -33183,141 +32470,6 @@ components:
       - item_id
       - position
       title: CharacterAssetsLocationsResponse
-      type: object
-    CharacterBookmarksCoordinates:
-      description: Optional object that is returned if a bookmark was made on a planet
-        or a random location in space.
-      example:
-        x: 6.027456183070403
-        "y": 1.4658129805029452
-        z: 5.962133916683182
-      properties:
-        x:
-          description: x number
-          format: double
-          title: get_characters_character_id_bookmarks_x
-          type: number
-        "y":
-          description: y number
-          format: double
-          title: get_characters_character_id_bookmarks_y
-          type: number
-        z:
-          description: z number
-          format: double
-          title: get_characters_character_id_bookmarks_z
-          type: number
-      required:
-      - x
-      - "y"
-      - z
-      title: CharacterBookmarksCoordinates
-      type: object
-    CharacterBookmarkItem:
-      description: Optional object that is returned if a bookmark was made on a particular
-        item.
-      example:
-        item_id: 7
-        type_id: 9
-      properties:
-        item_id:
-          description: item_id integer
-          format: int64
-          title: CharacterBookmarkItem_id
-          type: integer
-        type_id:
-          description: type_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_type_id
-          type: integer
-      required:
-      - item_id
-      - type_id
-      title: CharacterBookmarkItem
-      type: object
-    CharacterBookmarksResponse:
-      description: 200 ok object
-      example:
-        bookmark_id: 0
-        item:
-          item_id: 7
-          type_id: 9
-        notes: notes
-        created: 2000-01-23T04:56:07.000+00:00
-        coordinates:
-          x: 6.027456183070403
-          "y": 1.4658129805029452
-          z: 5.962133916683182
-        creator_id: 5
-        label: label
-        folder_id: 2
-        location_id: 3
-      properties:
-        bookmark_id:
-          description: bookmark_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_bookmark_id
-          type: integer
-        coordinates:
-          $ref: '#/components/schemas/CharacterBookmarksCoordinates'
-        created:
-          description: created string
-          format: date-time
-          title: get_characters_character_id_bookmarks_created
-          type: string
-        creator_id:
-          description: creator_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_creator_id
-          type: integer
-        folder_id:
-          description: folder_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_folder_id
-          type: integer
-        item:
-          $ref: '#/components/schemas/CharacterBookmarkItem'
-        label:
-          description: label string
-          title: get_characters_character_id_bookmarks_label
-          type: string
-        location_id:
-          description: location_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_location_id
-          type: integer
-        notes:
-          description: notes string
-          title: get_characters_character_id_bookmarks_notes
-          type: string
-      required:
-      - bookmark_id
-      - created
-      - creator_id
-      - label
-      - location_id
-      - notes
-      title: CharacterBookmarksResponse
-      type: object
-    CharacterBookmarkFoldersResponse:
-      description: 200 ok object
-      example:
-        name: name
-        folder_id: 0
-      properties:
-        folder_id:
-          description: folder_id integer
-          format: int32
-          title: get_characters_character_id_bookmarks_folders_folder_id
-          type: integer
-        name:
-          description: name string
-          title: get_characters_character_id_bookmarks_folders_name
-          type: string
-      required:
-      - folder_id
-      - name
-      title: CharacterBookmarkFoldersResponse
       type: object
     ContactsResponse:
       description: 200 ok object
@@ -40182,9 +39334,12 @@ components:
           - CorporationGoalClosed
           - CorporationGoalCompleted
           - CorporationGoalCreated
+          - CorporationGoalExpired
+          - CorporationGoalLimitReached
           - CorporationGoalNameChange
           - CorporationLeft
           - CustomsMsg
+          - DailyItemRewardAutoClaimed
           - DeclareWar
           - DistrictAttacked
           - DustAppAcceptedMsg
@@ -40243,6 +39398,9 @@ components:
           - MadeWarMutual
           - MercOfferRetractedMsg
           - MercOfferedNegotiationMsg
+          - MercenaryDenAttacked
+          - MercenaryDenNewMTO
+          - MercenaryDenReinforced
           - MissionCanceledTriglavian
           - MissionOfferExpirationMsg
           - MissionTimeoutMsg
@@ -40311,6 +39469,8 @@ components:
           - StructureItemsMovedToSafety
           - StructureLostArmor
           - StructureLostShields
+          - StructureLowReagentsAlert
+          - StructureNoReagentsAlert
           - StructureOnline
           - StructurePaintPurchased
           - StructureServicesOffline
@@ -40947,8 +40107,6 @@ components:
             esi-alliances.read_contacts.v1: EVE SSO scope esi-alliances.read_contacts.v1
             esi-assets.read_assets.v1: EVE SSO scope esi-assets.read_assets.v1
             esi-assets.read_corporation_assets.v1: EVE SSO scope esi-assets.read_corporation_assets.v1
-            esi-bookmarks.read_character_bookmarks.v1: EVE SSO scope esi-bookmarks.read_character_bookmarks.v1
-            esi-bookmarks.read_corporation_bookmarks.v1: EVE SSO scope esi-bookmarks.read_corporation_bookmarks.v1
             esi-calendar.read_calendar_events.v1: EVE SSO scope esi-calendar.read_calendar_events.v1
             esi-calendar.respond_calendar_events.v1: EVE SSO scope esi-calendar.respond_calendar_events.v1
             esi-characters.read_agents_research.v1: EVE SSO scope esi-characters.read_agents_research.v1

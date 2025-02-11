@@ -10,8 +10,6 @@ public class SsoScopes {
     public static final String ESI_ALLIANCES_READ_CONTACTS_V1 = "esi-alliances.read_contacts.v1";
     public static final String ESI_ASSETS_READ_ASSETS_V1 = "esi-assets.read_assets.v1";
     public static final String ESI_ASSETS_READ_CORPORATION_ASSETS_V1 = "esi-assets.read_corporation_assets.v1";
-    public static final String ESI_BOOKMARKS_READ_CHARACTER_BOOKMARKS_V1 = "esi-bookmarks.read_character_bookmarks.v1";
-    public static final String ESI_BOOKMARKS_READ_CORPORATION_BOOKMARKS_V1 = "esi-bookmarks.read_corporation_bookmarks.v1";
     public static final String ESI_CALENDAR_READ_CALENDAR_EVENTS_V1 = "esi-calendar.read_calendar_events.v1";
     public static final String ESI_CALENDAR_RESPOND_CALENDAR_EVENTS_V1 = "esi-calendar.respond_calendar_events.v1";
     public static final String ESI_CHARACTERS_READ_AGENTS_RESEARCH_V1 = "esi-characters.read_agents_research.v1";
@@ -75,8 +73,7 @@ public class SsoScopes {
     public static final String ESI_WALLET_READ_CORPORATION_WALLETS_V1 = "esi-wallet.read_corporation_wallets.v1";
 
     private static final String[] ALL_VALUES = { ESI_ALLIANCES_READ_CONTACTS_V1, ESI_ASSETS_READ_ASSETS_V1,
-            ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_BOOKMARKS_READ_CHARACTER_BOOKMARKS_V1,
-            ESI_BOOKMARKS_READ_CORPORATION_BOOKMARKS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
+            ESI_ASSETS_READ_CORPORATION_ASSETS_V1, ESI_CALENDAR_READ_CALENDAR_EVENTS_V1,
             ESI_CALENDAR_RESPOND_CALENDAR_EVENTS_V1, ESI_CHARACTERS_READ_AGENTS_RESEARCH_V1,
             ESI_CHARACTERS_READ_BLUEPRINTS_V1, ESI_CHARACTERS_READ_CONTACTS_V1,
             ESI_CHARACTERS_READ_CORPORATION_ROLES_V1, ESI_CHARACTERS_READ_FATIGUE_V1, ESI_CHARACTERS_READ_FW_STATS_V1,

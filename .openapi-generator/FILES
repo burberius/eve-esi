@@ -14,7 +14,6 @@ src/main/java/net/troja/eve/esi/ServerVariable.java
 src/main/java/net/troja/eve/esi/StringUtil.java
 src/main/java/net/troja/eve/esi/api/AllianceApi.java
 src/main/java/net/troja/eve/esi/api/AssetsApi.java
-src/main/java/net/troja/eve/esi/api/BookmarksApi.java
 src/main/java/net/troja/eve/esi/api/CalendarApi.java
 src/main/java/net/troja/eve/esi/api/CharacterApi.java
 src/main/java/net/troja/eve/esi/api/ClonesApi.java
@@ -66,10 +65,6 @@ src/main/java/net/troja/eve/esi/model/CharacterAssetsNamesResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterAssetsResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterAttributesResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterBlueprintsResponse.java
-src/main/java/net/troja/eve/esi/model/CharacterBookmarkFoldersResponse.java
-src/main/java/net/troja/eve/esi/model/CharacterBookmarkItem.java
-src/main/java/net/troja/eve/esi/model/CharacterBookmarksCoordinates.java
-src/main/java/net/troja/eve/esi/model/CharacterBookmarksResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterCalendarAttendeesResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterCalendarEvent.java
 src/main/java/net/troja/eve/esi/model/CharacterCalendarEventResponse.java
@@ -125,10 +120,6 @@ src/main/java/net/troja/eve/esi/model/CorporationAssetsLocationsResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationAssetsNamesResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationAssetsResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationBlueprintsResponse.java
-src/main/java/net/troja/eve/esi/model/CorporationBookmarkFoldersResponse.java
-src/main/java/net/troja/eve/esi/model/CorporationBookmarkItem.java
-src/main/java/net/troja/eve/esi/model/CorporationBookmarksCoordinates.java
-src/main/java/net/troja/eve/esi/model/CorporationBookmarksResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationContactsLabelsResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationContactsResponse.java
 src/main/java/net/troja/eve/esi/model/CorporationContainersLogsResponse.java
@@ -306,7 +297,6 @@ src/main/java/net/troja/eve/esi/model/WarKillmailsResponse.java
 src/main/java/net/troja/eve/esi/model/WarResponse.java
 src/test/java/net/troja/eve/esi/api/AllianceApiTest.java
 src/test/java/net/troja/eve/esi/api/AssetsApiTest.java
-src/test/java/net/troja/eve/esi/api/BookmarksApiTest.java
 src/test/java/net/troja/eve/esi/api/CalendarApiTest.java
 src/test/java/net/troja/eve/esi/api/CharacterApiTest.java
 src/test/java/net/troja/eve/esi/api/ClonesApiTest.java
