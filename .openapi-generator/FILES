@@ -1,4 +1,3 @@
-.github/workflows/maven.yml
 api/openapi.yaml
 src/main/java/net/troja/eve/esi/ApiCallback.java
 src/main/java/net/troja/eve/esi/ApiClient.java
