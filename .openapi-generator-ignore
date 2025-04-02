@@ -34,6 +34,7 @@ gradlew.bat
 gradle/wrapper/gradle-wrapper.properties
 gradle/wrapper/gradle-wrapper.jar
 git_push.sh
+.github/workflows/maven.yml
 
 pom.xml
 .gitignore

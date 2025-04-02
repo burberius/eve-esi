@@ -16,13 +16,6 @@ wget -O esi.json https://esi.evetech.net/_latest/swagger.json?datasource=tranqui
 #
 wget -O meta.json https://esi.evetech.net/swagger.json || exit 1
 
-### -!- Workaround START
-#
-# esi _dev
-#
-wget -O dev.json https://esi.evetech.net/_dev/swagger.json?datasource=tranquility || exit 1
-### -!- Workaround END
-
 #
 # Get swagger code generator
 #
@@ -51,10 +44,6 @@ rm -r src/main/java/net/troja/eve/esi/api
 #
 sed -i -f replace.sed esi.json
 sed -i -f meta_replace.sed meta.json
-
-### -!- Workaround START
-sed -i -f replace.sed dev.json
-### -!- Workaround END
 
 ./meta_transformation.sh
 ### -!- Workaround continue in transformation.sh
@@ -99,7 +88,7 @@ echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
 echo "public class SsoScopes {" >> $FILE
 echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
-for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
+for VAL in $(jq "(.paths[][]? | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
   echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
   if [ "a$ALL" = "a" ]; then

@@ -23,13 +23,11 @@ s/get_wars_war_id_ally/WarAlly/g
 
 # Inner Objects
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.type == "object") | .title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
-s/get_characters_character_id_bookmarks_target/BookmarkTarget/g
 s/get_corporations_corporation_id_alliancehistory_alliance/Alliance/g
 s/get_fw_stats_kills/FactionWarfareStatsKills/g
 s/get_fw_stats_victory_points/FactionWarfareStatsVictoryPoints/g
 
 # jq '.paths[].get.responses["200"].schema.items.properties[]? | select(.properties != null).properties[] | select(.type == "object").title' esi.json | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
-s/get_characters_character_id_bookmarks_item/CharacterBookmarkItem/g
 
 # Objects in post/put
 # jq '.paths[][].parameters[].schema.title' esi.json | grep -v null | sort | sed -e 's#"##g' -e 's#^#s/#' -e 's#$#//g#'
@@ -112,8 +110,6 @@ s/get_alliances_names_200_ok/AllianceNamesResponse/g
 s/get_characters_character_id_agents_research_200_ok/CharacterResearchAgentsResponse/g
 s/get_characters_character_id_assets_200_ok/CharacterAssetsResponse/g
 s/get_characters_character_id_blueprints_200_ok/CharacterBlueprintsResponse/g
-s/get_characters_character_id_bookmarks_200_ok/CharacterBookmarksResponse/g
-s/get_characters_character_id_bookmarks_folders_200_ok/CharacterBookmarkFoldersResponse/g
 s/get_characters_character_id_calendar_200_ok/CharacterCalendarResponse/g
 s/get_characters_character_id_chat_channels_200_ok/CharacterChatChannelsResponse/g
 s/get_characters_character_id_contacts_200_ok/ContactsResponse/g
@@ -205,10 +201,6 @@ s/get_corporations_corporation_id_blueprints_200_ok/CorporationBlueprintsRespons
 s/get_corporations_corporation_id_titles_200_ok/CorporationTitlesResponse/g
 s/post_characters_character_id_assets_locations_200_ok/CharacterAssetsLocationsResponse/g
 s/post_characters_character_id_assets_names_200_ok/CharacterAssetsNamesResponse/g
-s/get_corporations_corporation_id_bookmarks_200_ok/CorporationBookmarksResponse/g
-s/get_corporations_corporation_id_bookmarks_coordinates/CorporationBookmarksCoordinates/g
-s/get_corporations_corporation_id_bookmarks_folders_200_ok/CorporationBookmarkFoldersResponse/g
-s/get_corporations_corporation_id_bookmarks_item/CorporationBookmarkItem/g
 s/get_corporations_corporation_id_contracts_200_ok/CorporationContractsResponse/g
 s/get_corporations_corporation_id_contracts_contract_id_bids_200_ok/CorporationContractsBidsResponse/g
 s/get_corporations_corporation_id_contracts_contract_id_items_200_ok/CorporationContractsItemsResponse/g
@@ -241,7 +233,6 @@ s/get_corporations_corporation_id_roles_history_200_ok/CorporationRolesHistoryRe
 s/get_corporations_corporation_id_starbases_200_ok/CorporationStarbasesResponse/g
 s/get_corporations_corporation_id_starbases_starbase_id_fuel/CorporationStarbaseFuel/g
 s/get_corporations_corporation_id_starbases_starbase_id_ok/CorporationStarbaseResponse/g
-s/get_characters_character_id_bookmarks_coordinates/CharacterBookmarksCoordinates/g
 s/get_corporations_corporation_id_outposts_outpost_id_coordinates/CorporationOutpostCoordinates/g
 s/get_corporations_corporation_id_outposts_outpost_id_ok/CorporationOutpostResponse/g
 s/get_corporations_corporation_id_outposts_outpost_id_service/CorporationOutpostService/g
