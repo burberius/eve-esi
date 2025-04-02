@@ -287,7 +287,7 @@ public class UniverseApiTest extends GeneralApiTest {
     public void getUniverseRacesTest() throws ApiException {
         final List<RacesResponse> response = api.getUniverseRaces(LANGUAGE, DATASOURCE, null, LANGUAGE);
 
-        assertThat(response.size(), equalTo(4));
+        assertThat(response.size(), equalTo(6));
         final RacesResponse racesResponse = response.get(0);
         assertThat(racesResponse.getName(), equalTo("Caldari"));
     }
