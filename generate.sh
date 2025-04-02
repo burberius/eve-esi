@@ -99,7 +99,7 @@ echo "import java.util.Set;" >> $FILE
 echo "" >> $FILE
 echo "public class SsoScopes {" >> $FILE
 echo "public static final String PUBLIC_DATA = \"publicData\";" >> $FILE
-for VAL in $(jq "(.paths[][] | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
+for VAL in $(jq "(.paths[][]? | select(.security[0].evesso).security[0].evesso[0])" esi.json | sort | uniq | sed -e 's#"##g'); do
   echo $BAD_SCOPES | grep $VAL > /dev/null && continue
   UPPER=$(echo $VAL | tr [.a-z-] [_A-Z_])
   if [ "a$ALL" = "a" ]; then
