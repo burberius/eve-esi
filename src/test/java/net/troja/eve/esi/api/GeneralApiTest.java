@@ -43,11 +43,7 @@ public class GeneralApiTest {
     protected static final int SOLARSYSTEM_ID_JITA = 30000142;
     protected static final int SOLARSYSTEM_ID_ALIKARA = 30002754;
 
-    private static final String CONFIC_FILENAME = "test_config.properties";
-
     private static final int MAX_RETRIES = 3;
-
-    private static Properties testConfig;
 
     protected static String clientId;
     protected static int characterId;
@@ -61,12 +57,25 @@ public class GeneralApiTest {
     public static void initClass() throws ApiException {
         final Map<String, String> env = System.getenv();
         clientId = env.get(SSO_CLIENT_ID);
+		if (clientId == null) {
+            throw new NullPointerException(SSO_CLIENT_ID + " environment variable is null");
+        }
         final String clientSecret = env.get(SSO_CLIENT_SECRET);
-
-        load();
-        String nativeRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_NATIVE);
-        String webRefreshToken = testConfig.getProperty(SSO_REFRESH_TOKEN_WEB);
-        String refreshTokenPublicData = testConfig.getProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA);
+		if (clientSecret == null) {
+            throw new NullPointerException(SSO_CLIENT_SECRET + " environment variable is null");
+        }
+        String nativeRefreshToken = env.get(SSO_REFRESH_TOKEN_NATIVE);
+        if (nativeRefreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_NATIVE + " environment variable is null");
+        }
+        String webRefreshToken = env.get(SSO_REFRESH_TOKEN_WEB);
+        if (webRefreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_WEB + " environment variable is null");
+        }
+        String refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
+        if (refreshTokenPublicData == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_PUBLIC_DATA + " environment variable is null");
+        }
 
         //Need to have access to the clients so we can save the updated refresh token
         apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).authNative(clientId).refreshToken(nativeRefreshToken).build();
@@ -75,46 +84,15 @@ public class GeneralApiTest {
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
+        if (jwt == null) {
+            throw new NullPointerException("jwt is null");
+        }
         JWT.Payload payload = jwt.getPayload();
+        if (payload == null) {
+            throw new NullPointerException("payload is null");
+        }
         characterId = payload.getCharacterID();
         characterName = payload.getName();
-    }
-
-    @AfterClass
-    public static void save() throws ApiException {
-        load();
-        try (OutputStream output = new FileOutputStream(CONFIC_FILENAME)) {
-            //Update refresh token values
-            testConfig.setProperty(SSO_REFRESH_TOKEN_NATIVE, getRefreshToken(apiClient));
-            testConfig.setProperty(SSO_REFRESH_TOKEN_WEB, getRefreshToken(apiClientWeb));
-            testConfig.setProperty(SSO_REFRESH_TOKEN_PUBLIC_DATA, getRefreshToken(apiClientPublicData));
-            //Save file
-            testConfig.store(output, null);
-        } catch (IOException ex) {
-            throw new ApiException(ex);
-        }
-    }
-
-    private static String getRefreshToken(ApiClient client) {
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        return auth.getRefreshToken();
-    }
-
-    public static Properties getTestConfig() throws ApiException {
-        load();
-        return testConfig;
-    }
-
-    private static void load() throws ApiException {
-        if (testConfig != null) { //Only load once...
-            return;
-        }
-        testConfig = new Properties(); //init
-        try (InputStream input = new FileInputStream(CONFIC_FILENAME)) {
-            testConfig.load(input); //Load from file
-        } catch (IOException ex) {
-            throw new ApiException(ex);
-        }
     }
 
     protected void ignoreTestFails() {

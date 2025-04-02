@@ -19,17 +19,40 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import net.troja.eve.esi.JSON;
+
 /**
  * Per route status
  */
-@ApiModel(description = "Per route status")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EsiStatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -105,6 +128,9 @@ public class EsiStatusResponse implements Serializable {
     @SerializedName(SERIALIZED_NAME_TAGS)
     private List<String> tags = new ArrayList<>();
 
+    public EsiStatusResponse() {
+    }
+
     public EsiStatusResponse endpoint(String endpoint) {
 
         this.endpoint = endpoint;
@@ -116,7 +142,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return endpoint
      **/
-    @ApiModelProperty(required = true, value = "ESI Endpoint cluster advertising this route")
+    @javax.annotation.Nonnull
     public String getEndpoint() {
         return endpoint;
     }
@@ -136,7 +162,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return method
      **/
-    @ApiModelProperty(required = true, value = "Swagger defined method")
+    @javax.annotation.Nonnull
     public String getMethod() {
         return method;
     }
@@ -156,7 +182,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return route
      **/
-    @ApiModelProperty(required = true, value = "Swagger defined route, not including version prefix")
+    @javax.annotation.Nonnull
     public String getRoute() {
         return route;
     }
@@ -165,15 +191,15 @@ public class EsiStatusResponse implements Serializable {
         this.route = route;
     }
 
-    public EsiStatusResponse status(StatusEnum statusEnum) {
-
-        this.statusEnum = statusEnum;
-        return this;
-    }
-
     public EsiStatusResponse statusString(String status) {
 
         this.status = status;
+        return this;
+    }
+
+    public EsiStatusResponse status(StatusEnum statusEnum) {
+
+        this.statusEnum = statusEnum;
         return this;
     }
 
@@ -184,7 +210,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return status
      **/
-    @ApiModelProperty(required = true, value = "Vague route status. Green is good, yellow is degraded, meaning slow or potentially dropping requests. Red means most requests are not succeeding and/or are very slow (5s+) on average.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         if (statusEnum == null) {
             statusEnum = StatusEnum.fromValue(status);
@@ -211,6 +237,9 @@ public class EsiStatusResponse implements Serializable {
     }
 
     public EsiStatusResponse addTagsItem(String tagsItem) {
+        if (this.tags == null) {
+            this.tags = new ArrayList<>();
+        }
         this.tags.add(tagsItem);
         return this;
     }
@@ -220,7 +249,7 @@ public class EsiStatusResponse implements Serializable {
      * 
      * @return tags
      **/
-    @ApiModelProperty(required = true, value = "Swagger tags applicable to this route")
+    @javax.annotation.Nonnull
     public List<String> getTags() {
         return tags;
     }
@@ -230,7 +259,7 @@ public class EsiStatusResponse implements Serializable {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -267,11 +296,159 @@ public class EsiStatusResponse implements Serializable {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
     }
 
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("endpoint");
+        openapiFields.add("method");
+        openapiFields.add("route");
+        openapiFields.add("status");
+        openapiFields.add("tags");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("endpoint");
+        openapiRequiredFields.add("method");
+        openapiRequiredFields.add("route");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("tags");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj
+     *            JSON Object
+     * @throws IOException
+     *             if the JSON Object is invalid with respect to
+     *             EsiStatusResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!EsiStatusResponse.openapiRequiredFields.isEmpty()) { // has
+                                                                      // required
+                                                                      // fields
+                                                                      // but
+                                                                      // JSON
+                                                                      // object
+                                                                      // is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in EsiStatusResponse is not found in the empty JSON string",
+                        EsiStatusResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!EsiStatusResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `EsiStatusResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the
+        // JSON string
+        for (String requiredField : EsiStatusResponse.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s", requiredField,
+                        jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("endpoint").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `endpoint` to be a primitive type in the JSON string but got `%s`", jsonObj
+                            .get("endpoint").toString()));
+        }
+        if (!jsonObj.get("method").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `method` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("method").toString()));
+        }
+        if (!jsonObj.get("route").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `route` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("route").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("tags") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags")
+                            .toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!EsiStatusResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'EsiStatusResponse'
+                             // and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<EsiStatusResponse> thisAdapter = gson.getDelegateAdapter(this,
+                    TypeToken.get(EsiStatusResponse.class));
+
+            return (TypeAdapter<T>) new TypeAdapter<EsiStatusResponse>() {
+                @Override
+                public void write(JsonWriter out, EsiStatusResponse value) throws IOException {
+                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                    elementAdapter.write(out, obj);
+                }
+
+                @Override
+                public EsiStatusResponse read(JsonReader in) throws IOException {
+                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                    validateJsonObject(jsonObj);
+                    return thisAdapter.fromJsonTree(jsonObj);
+                }
+
+            }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of EsiStatusResponse given an JSON string
+     *
+     * @param jsonString
+     *            JSON string
+     * @return An instance of EsiStatusResponse
+     * @throws IOException
+     *             if the JSON string is invalid with respect to
+     *             EsiStatusResponse
+     */
+    public static EsiStatusResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, EsiStatusResponse.class);
+    }
+
+    /**
+     * Convert an instance of EsiStatusResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }

@@ -1,14 +1,12 @@
 package net.troja.eve.esi.api;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import org.junit.Test;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
-
 import static org.junit.Assert.fail;
+import org.junit.Test;
 
 
 public class SsoApiTest extends GeneralApiTest {

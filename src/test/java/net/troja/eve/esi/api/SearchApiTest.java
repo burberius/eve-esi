@@ -11,21 +11,19 @@
 
 package net.troja.eve.esi.api;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.isOneOf;
 import static org.hamcrest.Matchers.notNullValue;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.model.CharacterSearchResponse;
-import net.troja.eve.esi.model.SearchResponse;
 
 /**
  * API tests for SearchApi
@@ -49,7 +47,7 @@ public class SearchApiTest extends GeneralApiTest {
      */
     @Test
     public void getCharactersCharacterIdSearchTest() throws ApiException {
-        final List<String> categories = new ArrayList<>();
+        final Set<String> categories = new HashSet<>();
         categories.add("character");
         final String search = "GoldenGnu";
         final Boolean strict = true;
@@ -61,26 +59,6 @@ public class SearchApiTest extends GeneralApiTest {
         for (int charID : response.getCharacter()) {
             assertThat(charID, isOneOf(1652509239, 2120011828));
         }
-    }
-
-    /**
-     * Search on a string
-     *
-     * Search for entities that match a given sub-string.  ---  This route is cached for up to 3600 seconds  SSO Scope: esi-search.search_structures.v1
-     *
-     * @throws ApiException
-     *             if the Api call fails
-     */
-    @Test
-    public void getSearchTest() throws ApiException {
-        final List<String> categories = new ArrayList<>();
-        categories.add("solar_system");
-        final String search = "Jita";
-        final Boolean strict = null;
-        final SearchResponse response = api.getSearch(categories, search, LANGUAGE, DATASOURCE, null, LANGUAGE, strict);
-
-        assertThat(response.getSolarSystem().size(), equalTo(1));
-        assertThat(response.getSolarSystem().get(0), equalTo(30000142));
     }
 
 }

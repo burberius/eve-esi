@@ -65,7 +65,7 @@ public class SsoAuthTest extends GeneralApiTest {
     public void refreshTokenNative() throws ApiException {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         final Map<String, String> headerParams = new HashMap<>();
-        auth.applyToParams(null, headerParams, null);
+		auth.applyToParams(null, headerParams, null, null, null, null);
 
         assertThat(headerParams.size(), equalTo(1));
     }
@@ -74,7 +74,7 @@ public class SsoAuthTest extends GeneralApiTest {
     public void refreshTokenWeb() throws ApiException {
         final OAuth auth = (OAuth) apiClientWeb.getAuthentication("evesso");
         final Map<String, String> headerParams = new HashMap<>();
-        auth.applyToParams(null, headerParams, null);
+        auth.applyToParams(null, headerParams, null, null, null, null);
 
         assertThat(headerParams.size(), equalTo(1));
     }
