@@ -710,7 +710,7 @@ public class WalletApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v6/characters/{character_id}/wallet/journal/".replace("{" + "character_id" + "}",
+        String localVarPath = "/v5/characters/{character_id}/wallet/journal/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2274,7 +2274,7 @@ public class WalletApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v4/corporations/{corporation_id}/wallets/{division}/journal/".replace(
+        String localVarPath = "/v3/corporations/{corporation_id}/wallets/{division}/journal/".replace(
                 "{" + "corporation_id" + "}", localVarApiClient.escapeString(corporationId.toString())).replace(
                 "{" + "division" + "}", localVarApiClient.escapeString(division.toString()));
 

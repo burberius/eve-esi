@@ -199,7 +199,7 @@ public class AssetsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v5/characters/{character_id}/assets/".replace("{" + "character_id" + "}",
+        String localVarPath = "/v4/characters/{character_id}/assets/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -721,7 +721,7 @@ public class AssetsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v5/corporations/{corporation_id}/assets/".replace("{" + "corporation_id" + "}",
+        String localVarPath = "/v4/corporations/{corporation_id}/assets/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

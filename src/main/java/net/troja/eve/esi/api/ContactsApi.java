@@ -179,7 +179,7 @@ public class ContactsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
+        String localVarPath = "/v1/characters/{character_id}/contacts/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

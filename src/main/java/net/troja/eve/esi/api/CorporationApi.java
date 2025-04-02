@@ -3276,7 +3276,7 @@ public class CorporationApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/icons/".replace("{" + "corporation_id" + "}",
+        String localVarPath = "/v1/corporations/{corporation_id}/icons/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

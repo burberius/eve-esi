@@ -1238,7 +1238,7 @@ public class MarketApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/corporations/{corporation_id}/orders/".replace("{" + "corporation_id" + "}",
+        String localVarPath = "/v2/corporations/{corporation_id}/orders/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1767,7 +1767,7 @@ public class MarketApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/corporations/{corporation_id}/orders/history/".replace("{" + "corporation_id" + "}",
+        String localVarPath = "/v1/corporations/{corporation_id}/orders/history/".replace("{" + "corporation_id" + "}",
                 localVarApiClient.escapeString(corporationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

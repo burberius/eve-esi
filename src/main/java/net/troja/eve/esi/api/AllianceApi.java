@@ -1694,9 +1694,7 @@ public class AllianceApi {
 
     /**
      * Get alliance icon Get the icon urls for a alliance --- This route expires
-     * daily at 11:05 --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/
-     * diff/latest/dev/#GET-/alliances/{alliance_id}/icons/)
+     * daily at 11:05
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -1803,9 +1801,7 @@ public class AllianceApi {
 
     /**
      * Get alliance icon Get the icon urls for a alliance --- This route expires
-     * daily at 11:05 --- [Diff of the upcoming
-     * changes](https://esi.evetech.net/
-     * diff/latest/dev/#GET-/alliances/{alliance_id}/icons/)
+     * daily at 11:05
      * 
      * @param allianceId
      *            An EVE alliance ID (required)
@@ -1914,9 +1910,7 @@ public class AllianceApi {
 
     /**
      * Get alliance icon (asynchronously) Get the icon urls for a alliance ---
-     * This route expires daily at 11:05 --- [Diff of the upcoming
-     * changes](https
-     * ://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/icons/)
+     * This route expires daily at 11:05
      * 
      * @param allianceId
      *            An EVE alliance ID (required)

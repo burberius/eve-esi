@@ -10661,7 +10661,7 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v2/universe/structures/{structure_id}/".replace("{" + "structure_id" + "}",
+        String localVarPath = "/v1/universe/structures/{structure_id}/".replace("{" + "structure_id" + "}",
                 localVarApiClient.escapeString(structureId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -13620,7 +13620,7 @@ public class UniverseApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/universe/types/{type_id}/".replace("{" + "type_id" + "}",
+        String localVarPath = "/v2/universe/types/{type_id}/".replace("{" + "type_id" + "}",
                 localVarApiClient.escapeString(typeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -14588,7 +14588,7 @@ public class UniverseApi {
         Object localVarPostBody = ids;
 
         // create path and map variables
-        String localVarPath = "/v3/universe/names/";
+        String localVarPath = "/v2/universe/names/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

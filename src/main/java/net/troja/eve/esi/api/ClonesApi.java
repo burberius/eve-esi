@@ -190,7 +190,7 @@ public class ClonesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v3/characters/{character_id}/clones/".replace("{" + "character_id" + "}",
+        String localVarPath = "/v2/characters/{character_id}/clones/".replace("{" + "character_id" + "}",
                 localVarApiClient.escapeString(characterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

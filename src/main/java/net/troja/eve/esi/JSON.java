@@ -173,8 +173,6 @@ public class JSON {
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterOnlineResponse.CustomTypeAdapterFactory());
         gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterOpportunitiesResponse.CustomTypeAdapterFactory());
-        gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterOrdersHistoryResponse.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.CharacterOrdersResponse.CustomTypeAdapterFactory());
@@ -439,10 +437,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.MoonResponse.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.NewContactNotificationsResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.OpportunitiesGroupResponse.CustomTypeAdapterFactory());
-        gsonBuilder
-                .registerTypeAdapterFactory(new net.troja.eve.esi.model.OpportunitiesTasksResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.troja.eve.esi.model.PlanetContent.CustomTypeAdapterFactory());
         gsonBuilder
                 .registerTypeAdapterFactory(new net.troja.eve.esi.model.PlanetExtractorDetails.CustomTypeAdapterFactory());

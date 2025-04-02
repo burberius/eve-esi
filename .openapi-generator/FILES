@@ -32,7 +32,6 @@ src/main/java/net/troja/eve/esi/api/LocationApi.java
 src/main/java/net/troja/eve/esi/api/LoyaltyApi.java
 src/main/java/net/troja/eve/esi/api/MailApi.java
 src/main/java/net/troja/eve/esi/api/MarketApi.java
-src/main/java/net/troja/eve/esi/api/OpportunitiesApi.java
 src/main/java/net/troja/eve/esi/api/PlanetaryInteractionApi.java
 src/main/java/net/troja/eve/esi/api/RoutesApi.java
 src/main/java/net/troja/eve/esi/api/SearchApi.java
@@ -92,7 +91,6 @@ src/main/java/net/troja/eve/esi/model/CharacterMedalsResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterMiningResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterNotificationsResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterOnlineResponse.java
-src/main/java/net/troja/eve/esi/model/CharacterOpportunitiesResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterOrdersHistoryResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterOrdersResponse.java
 src/main/java/net/troja/eve/esi/model/CharacterPlanetResponse.java
@@ -237,8 +235,6 @@ src/main/java/net/troja/eve/esi/model/MarketPricesResponse.java
 src/main/java/net/troja/eve/esi/model/MarketStructuresResponse.java
 src/main/java/net/troja/eve/esi/model/MoonResponse.java
 src/main/java/net/troja/eve/esi/model/NewContactNotificationsResponse.java
-src/main/java/net/troja/eve/esi/model/OpportunitiesGroupResponse.java
-src/main/java/net/troja/eve/esi/model/OpportunitiesTasksResponse.java
 src/main/java/net/troja/eve/esi/model/PlanetContent.java
 src/main/java/net/troja/eve/esi/model/PlanetExtractorDetails.java
 src/main/java/net/troja/eve/esi/model/PlanetFactoryDetails.java
@@ -315,7 +311,6 @@ src/test/java/net/troja/eve/esi/api/LocationApiTest.java
 src/test/java/net/troja/eve/esi/api/LoyaltyApiTest.java
 src/test/java/net/troja/eve/esi/api/MailApiTest.java
 src/test/java/net/troja/eve/esi/api/MarketApiTest.java
-src/test/java/net/troja/eve/esi/api/OpportunitiesApiTest.java
 src/test/java/net/troja/eve/esi/api/PlanetaryInteractionApiTest.java
 src/test/java/net/troja/eve/esi/api/RoutesApiTest.java
 src/test/java/net/troja/eve/esi/api/SearchApiTest.java
