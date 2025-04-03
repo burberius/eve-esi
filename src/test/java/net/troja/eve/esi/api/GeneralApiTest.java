@@ -1,5 +1,12 @@
 package net.troja.eve.esi.api;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
+import org.junit.AfterClass;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +27,9 @@ public class GeneralApiTest {
     protected static final String DATASOURCE = "tranquility";
     protected static final String LANGUAGE = "en-us";
     protected static final String SSO_CLIENT_ID = "SSO_CLIENT_ID";
-    protected static final String SSO_REFRESH_TOKEN = "SSO_REFRESH_TOKEN";
+    protected static final String SSO_CLIENT_SECRET = "SSO_CLIENT_SECRET";
+    protected static final String SSO_REFRESH_TOKEN_NATIVE = "SSO_REFRESH_TOKEN_NATIVE";
+    protected static final String SSO_REFRESH_TOKEN_WEB = "SSO_REFRESH_TOKEN_WEB";
     protected static final String SSO_REFRESH_TOKEN_PUBLIC_DATA = "SSO_REFRESH_TOKEN_PUBLIC_DATA";
     protected static final int CHARACTER_ID_CHRIBBA = 196379789;
     protected static final String CHARACTER_NAME_CHRIBBA = "Chribba";
@@ -37,30 +46,41 @@ public class GeneralApiTest {
     private static final int MAX_RETRIES = 3;
 
     protected static String clientId;
-    protected static String refreshToken;
-    protected static String refreshTokenPublicData;
     protected static int characterId;
     protected static String characterName;
 
     protected static ApiClient apiClient;
+    protected static ApiClient apiClientWeb;
+    protected static ApiClient apiClientPublicData;
 
     @BeforeClass
     public static void initClass() throws ApiException {
         final Map<String, String> env = System.getenv();
-
         clientId = env.get(SSO_CLIENT_ID);
-        if (clientId == null) {
+		if (clientId == null) {
             throw new NullPointerException(SSO_CLIENT_ID + " environment variable is null");
         }
-        refreshToken = env.get(SSO_REFRESH_TOKEN);
-        if (refreshToken == null) {
-            throw new NullPointerException(SSO_REFRESH_TOKEN + " environment variable is null");
+        final String clientSecret = env.get(SSO_CLIENT_SECRET);
+		if (clientSecret == null) {
+            throw new NullPointerException(SSO_CLIENT_SECRET + " environment variable is null");
         }
-        refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
+        String nativeRefreshToken = env.get(SSO_REFRESH_TOKEN_NATIVE);
+        if (nativeRefreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_NATIVE + " environment variable is null");
+        }
+        String webRefreshToken = env.get(SSO_REFRESH_TOKEN_WEB);
+        if (webRefreshToken == null) {
+            throw new NullPointerException(SSO_REFRESH_TOKEN_WEB + " environment variable is null");
+        }
+        String refreshTokenPublicData = env.get(SSO_REFRESH_TOKEN_PUBLIC_DATA);
         if (refreshTokenPublicData == null) {
             throw new NullPointerException(SSO_REFRESH_TOKEN_PUBLIC_DATA + " environment variable is null");
         }
-        apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).clientID(clientId).refreshToken(refreshToken).build();
+
+        //Need to have access to the clients so we can save the updated refresh token
+        apiClient = new ApiClientBuilder().client(new ValidatingApiClient()).authNative(clientId).refreshToken(nativeRefreshToken).build();
+        apiClientWeb = new ApiClientBuilder().client(new ValidatingApiClient()).authWeb(clientId, clientSecret).refreshToken(webRefreshToken).build();
+        apiClientPublicData = new ApiClientBuilder().client(new ValidatingApiClient()).authNative(clientId).refreshToken(refreshTokenPublicData).build();
 
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();

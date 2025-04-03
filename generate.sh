@@ -34,7 +34,6 @@ fi
 #
 # Remove old model files in case something was removed
 #
-mv src/main/java/net/troja/eve/esi/model/CharacterInfo.java src/main/java/net/troja/eve/esi/CharacterInfo.java
 rm -r src/main/java/net/troja/eve/esi/model
 mv src/main/java/net/troja/eve/esi/api/SsoApi.java src/main/java/net/troja/eve/esi/SsoApi.java
 rm -r src/main/java/net/troja/eve/esi/api
@@ -68,7 +67,6 @@ java -jar openapi-generator-cli-$VERSION.jar generate \
   -c config.json
 mv src/test/java/net/troja/eve/esi/api src/test/java/net/troja/eve/esi/api.new
 mv src/test/java/net/troja/eve/esi/api.old src/test/java/net/troja/eve/esi/api
-mv src/main/java/net/troja/eve/esi/CharacterInfo.java src/main/java/net/troja/eve/esi/model/CharacterInfo.java
 mv src/main/java/net/troja/eve/esi/SsoApi.java src/main/java/net/troja/eve/esi/api/SsoApi.java
 
 # Fix route

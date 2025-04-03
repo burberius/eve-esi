@@ -32,6 +32,9 @@ jobs:
     - name: Build with Maven
       env:
         SSO_CLIENT_ID: ${{ secrets.SSO_CLIENT_ID }}
+        SSO_CLIENT_SECRET: ${{ secrets.SSO_CLIENT_SECRET }}
+        SSO_REFRESH_TOKEN_WEB: ${{ secrets.SSO_REFRESH_TOKEN_WEB }}
+        SSO_REFRESH_TOKEN_NATIVE: ${{ secrets.SSO_REFRESH_TOKEN_NATIVE }}
         SSO_REFRESH_TOKEN: ${{ secrets.SSO_REFRESH_TOKEN }}
         SSO_REFRESH_TOKEN_PUBLIC_DATA: ${{ secrets.SSO_REFRESH_TOKEN_PUBLIC_DATA }}
       run: mvn -B package --no-transfer-progress --file pom.xml

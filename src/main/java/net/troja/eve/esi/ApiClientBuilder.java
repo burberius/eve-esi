@@ -5,8 +5,9 @@ import okhttp3.OkHttpClient;
 
 public class ApiClientBuilder {
 
-    private String clientID;
-    private String refreshToken;
+    private String clientID = null;
+    private String clientSecret = null;
+    private String refreshToken = null;
     private String accessToken;
     private String userAgent;
     private OkHttpClient okHttpClient;
@@ -27,13 +28,7 @@ public class ApiClientBuilder {
         }
         // Set auth
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
-        if (clientID != null) {
-            if (refreshToken != null) {
-                auth.setAuth(clientID, refreshToken);
-            } else {
-                auth.setClientId(clientID);
-            }
-        }
+        auth.setAuthWeb(clientID, clientSecret, refreshToken); //Some of the values may be null, that is okay and by design
         if (accessToken != null) {
             auth.setAccessToken(accessToken);
         }
@@ -43,9 +38,41 @@ public class ApiClientBuilder {
         return client;
     }
 
-    public ApiClientBuilder clientID(String clientID) {
+    /**
+     * Native flow (No client secret/PKCE).
+     * @see <a href="https://docs.esi.evetech.net/docs/sso/native_sso_flow.html">Native SSO Flow</a>
+     *
+     * @param clientID
+     * @return 
+     */
+    public ApiClientBuilder authNative(String clientID) {
         this.clientID = clientID;
         return this;
+    }
+
+    /**
+     * Web flow (with client secret).
+     * @see <a href="https://docs.esi.evetech.net/docs/sso/web_based_sso_flow.html">Web base SSO Flow</a>
+     *
+     * @param clientID
+     * @param clientSecret
+     * @return 
+     */
+    public ApiClientBuilder authWeb(String clientID, String clientSecret) {
+        this.clientID = clientID;
+        this.clientSecret = clientSecret;
+        return this;
+    }
+
+    /**
+     * @deprecated Please use @see #authNative(String) or @see #authWeb(String, String) instead!
+     *
+     * @param clientID
+     * @return
+     */
+    @Deprecated
+    public ApiClientBuilder clientID(String clientID) {
+        throw new IllegalStateException("clientID() method has been replaced by authNative() or authWeb()");
     }
 
     public ApiClientBuilder refreshToken(String refreshToken) {
