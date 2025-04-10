@@ -13,7 +13,6 @@
 package net.troja.eve.esi.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,6 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.io.Serializable;
 
@@ -52,7 +52,7 @@ import net.troja.eve.esi.JSON;
 /**
  * Per route status
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class EsiStatusResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -236,7 +236,7 @@ public class EsiStatusResponse implements Serializable {
         return this;
     }
 
-    public EsiStatusResponse addTagsItem(String tagsItem) {
+    public EsiStatusResponse addtagsItem(String tagsItem) {
         if (this.tags == null) {
             this.tags = new ArrayList<>();
         }

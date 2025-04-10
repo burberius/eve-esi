@@ -1,8 +1,5 @@
 package net.troja.eve.esi.api;
 
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
 import net.troja.eve.esi.ApiCallback;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -11,9 +8,14 @@ import net.troja.eve.esi.ApiResponse;
 import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import okhttp3.Call;
-import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeFalse;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
+
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Fail.fail;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 public class GeneralApiTest {
     protected static final boolean IGNORE_WARNING_HEADER_199 = false;
@@ -44,7 +46,7 @@ public class GeneralApiTest {
 
     protected static ApiClient apiClient;
 
-    @BeforeClass
+    @BeforeAll
     public static void initClass() throws ApiException {
         final Map<String, String> env = System.getenv();
 
@@ -73,10 +75,6 @@ public class GeneralApiTest {
         }
         characterId = payload.getCharacterID();
         characterName = payload.getName();
-    }
-
-    protected void ignoreTestFails() {
-        assumeFalse("Ignore test fails", true); //true = ignore tests :: false = run all tests
     }
 
     private static class ValidatingApiClient extends ApiClient {
@@ -138,7 +136,7 @@ public class GeneralApiTest {
                 for (Map.Entry<String, List<String>> entry : responseHeaders.entrySet()) {
                     if (entry.getKey().toLowerCase().equals("warning")) {
                         if (entry.getValue().get(0).startsWith("199") && IGNORE_WARNING_HEADER_199) {
-                            assumeFalse(entry.getValue().get(0), true);
+                            assumeFalse(true, entry.getValue().get(0));
                         } else {
                             fail(entry.getValue().get(0));
                         }

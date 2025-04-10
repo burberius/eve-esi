@@ -4,12 +4,10 @@ import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
 
-import net.troja.eve.esi.HeaderUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class HeaderUtilTest {
@@ -52,9 +50,9 @@ public class HeaderUtilTest {
         Map<String, List<String>> responseHeaders = Collections.singletonMap("Expires", Collections.singletonList(testValue));
         OffsetDateTime expires = HeaderUtil.getExpires(responseHeaders);
         if (fail) {
-            assertThat(expires, nullValue());
+            assertThat(expires).isNull();
         } else {
-            assertThat(expires, notNullValue());
+            assertThat(expires).isNotNull();
         }
     }
     

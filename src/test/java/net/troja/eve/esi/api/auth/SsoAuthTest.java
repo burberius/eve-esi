@@ -20,7 +20,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import net.troja.eve.esi.api.GeneralApiTest;
-import org.junit.Test;
 
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -31,17 +30,16 @@ import net.troja.eve.esi.auth.JWT;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
 import net.troja.eve.esi.model.CharacterAssetsResponse;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-import static org.junit.Assume.assumeTrue;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Fail.fail;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class SsoAuthTest extends GeneralApiTest {
 
     @Test
-    public void threads() throws ApiException {
+    public void threads() {
         AssetsApi api = new AssetsApi(apiClient);
         final int threads = 10;
 
@@ -69,7 +67,7 @@ public class SsoAuthTest extends GeneralApiTest {
         final Map<String, String> headerParams = new HashMap<>();
         auth.applyToParams(null, headerParams, null, null, null, null);
 
-        assertThat(headerParams.size(), equalTo(1));
+        assertThat(headerParams).hasSize(1);
     }
 
     @Test
@@ -80,8 +78,8 @@ public class SsoAuthTest extends GeneralApiTest {
             api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, null, null);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
+            assertThat(ex).isNotNull();
+            assertThat(ex.getCode()).isNotNull();
         }
     }
 
@@ -91,51 +89,51 @@ public class SsoAuthTest extends GeneralApiTest {
         final ApiClient client = new ApiClientBuilder().clientID(clientId).refreshToken(refreshTokenPublicData).build();
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
-        assertThat(jwt, notNullValue());
+        assertThat(jwt).isNotNull();
         JWT.Header header = jwt.getHeader();
-        assertThat(header, notNullValue());
-        assertThat(header.getAlg(), notNullValue());
-        assertThat(header.getTyp(), notNullValue());
+        assertThat(header).isNotNull();
+        assertThat(header.getAlg()).isNotNull();
+        assertThat(header.getTyp()).isNotNull();
         JWT.Payload payload = jwt.getPayload();
-        assertThat(payload, notNullValue());
-        assertThat(payload.getAzp(), notNullValue());
-        assertThat(payload.getExp(), notNullValue());
-        assertThat(payload.getIss(), notNullValue());
-        assertThat(payload.getJti(), notNullValue());
-        assertThat(payload.getKid(), notNullValue());
-        assertThat(payload.getName(), notNullValue());
-        assertThat(payload.getOwner(), notNullValue());
-        assertThat(payload.getSub(), notNullValue());
-        assertThat(payload.getScopes(), notNullValue());
-        assertThat(payload.getScopes().size(), equalTo(1));
-        assertThat(payload.getScopes().iterator().next(), equalTo("publicData"));
-        assertThat(payload.getCharacterID(), notNullValue());
-        assertThat(payload.getCharacterID(), equalTo(987623974));
+        assertThat(payload).isNotNull();
+        assertThat(payload.getAzp()).isNotNull();
+        assertThat(payload.getExp()).isNotNull();
+        assertThat(payload.getIss()).isNotNull();
+        assertThat(payload.getJti()).isNotNull();
+        assertThat(payload.getKid()).isNotNull();
+        assertThat(payload.getName()).isNotNull();
+        assertThat(payload.getOwner()).isNotNull();
+        assertThat(payload.getSub()).isNotNull();
+        assertThat(payload.getScopes()).isNotNull();
+        assertThat(payload.getScopes()).hasSize(1);
+        assertThat(payload.getScopes().iterator().next()).isEqualTo("publicData");
+        assertThat(payload.getCharacterID()).isNotNull();
+        assertThat(payload.getCharacterID()).isEqualTo(987623974);
     }
 
     @Test
     public void getJwtTest() {
         final OAuth auth = (OAuth) apiClient.getAuthentication("evesso");
         JWT jwt = auth.getJWT();
-        assertThat(jwt, notNullValue());
+        assertThat(jwt).isNotNull();
         JWT.Header header = jwt.getHeader();
-        assertThat(header, notNullValue());
-        assertThat(header.getAlg(), notNullValue());
-        assertThat(header.getTyp(), notNullValue());
+        assertThat(header).isNotNull();
+        assertThat(header.getAlg()).isNotNull();
+        assertThat(header.getTyp()).isNotNull();
         JWT.Payload payload = jwt.getPayload();
-        assertThat(payload, notNullValue());
-        assertThat(payload.getAzp(), notNullValue());
-        assertThat(payload.getExp(), notNullValue());
-        assertThat(payload.getIss(), notNullValue());
-        assertThat(payload.getJti(), notNullValue());
-        assertThat(payload.getKid(), notNullValue());
-        assertThat(payload.getName(), notNullValue());
-        assertThat(payload.getOwner(), notNullValue());
-        assertThat(payload.getSub(), notNullValue());
-        assertThat(payload.getScopes(), notNullValue());
-        assertThat(payload.getScopes().size(), equalTo(SsoScopes.ALL.size()));
-        assertThat(payload.getCharacterID(), notNullValue());
-        assertThat(payload.getCharacterID(), equalTo(characterId));
+        assertThat(payload).isNotNull();
+        assertThat(payload.getAzp()).isNotNull();
+        assertThat(payload.getExp()).isNotNull();
+        assertThat(payload.getIss()).isNotNull();
+        assertThat(payload.getJti()).isNotNull();
+        assertThat(payload.getKid()).isNotNull();
+        assertThat(payload.getName()).isNotNull();
+        assertThat(payload.getOwner()).isNotNull();
+        assertThat(payload.getSub()).isNotNull();
+        assertThat(payload.getScopes()).isNotNull();
+        assertThat(payload.getScopes().size()).isEqualTo(SsoScopes.ALL.size());
+        assertThat(payload.getCharacterID()).isNotNull();
+        assertThat(payload.getCharacterID()).isEqualTo(characterId);
     }
 
     @Test
@@ -146,8 +144,8 @@ public class SsoAuthTest extends GeneralApiTest {
             api.getCharacterInfo();
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
+            assertThat(ex).isNotNull();
+            assertThat(ex.getCode()).isNotNull();
         }
     }
 
@@ -161,8 +159,8 @@ public class SsoAuthTest extends GeneralApiTest {
             oAuth.finishFlow("", state);
             fail("Must fail with ApiException");
         } catch (ApiException ex) {
-            assertThat(ex, notNullValue());
-            assertThat(ex.getCode(), notNullValue());
+            assertThat(ex).isNotNull();
+            assertThat(ex.getCode()).isNotNull();
         }
     }
 
@@ -227,8 +225,8 @@ public class SsoAuthTest extends GeneralApiTest {
         public Void call() throws Exception {
             Integer page = null;
             final List<CharacterAssetsResponse> response = api.getCharactersCharacterIdAssets(characterId, DATASOURCE, null, page, null);
-            assertThat(response, notNullValue());
-            assertThat(response.size(), greaterThan(0));
+            assertThat(response).isNotNull();
+            assertThat(response.size()).isGreaterThan(0);
             return null;
         }
     }

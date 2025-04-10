@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: An OpenAPI for EVE Online
   title: EVE Swagger Interface
-  version: "1.30"
+  version: "1.33"
 servers:
 - url: https://esi.evetech.net/
 paths:
@@ -117,7 +117,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/alliances/{alliance_id}/contacts/labels/:
     get:
       description: |-
@@ -242,7 +243,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/alliances/{alliance_id}/corporations/:
     get:
       description: |-
@@ -361,7 +363,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/alliances/{alliance_id}/icons/:
     get:
       description: |-
@@ -471,7 +474,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/affiliation/:
     post:
       description: |-
@@ -557,7 +561,8 @@ paths:
       x-cached-seconds: 3600
       x-codegen-request-body-name: characters
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/assets/names/:
     post:
       description: |-
@@ -656,7 +661,8 @@ paths:
       - v1
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/attributes/:
     get:
       description: |-
@@ -779,7 +785,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/calendar/:
     get:
       description: |-
@@ -914,7 +921,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/calendar/{event_id}/attendees/:
     get:
       description: |-
@@ -1049,7 +1057,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/contacts/:
     delete:
       description: |-
@@ -1132,7 +1141,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/contacts/labels/:
     get:
       description: |-
@@ -1257,7 +1267,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/contracts/:
     get:
       description: |-
@@ -1412,7 +1423,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/contracts/{contract_id}/bids/:
     get:
       description: |-
@@ -1546,7 +1558,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/contracts/{contract_id}/items/:
     get:
       description: |-
@@ -1683,7 +1696,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/fittings/:
     post:
       description: |-
@@ -1767,7 +1781,8 @@ paths:
       - v2
       x-codegen-request-body-name: fitting
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/fittings/{fitting_id}/:
     delete:
       description: |-
@@ -1843,7 +1858,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/fleet/:
     get:
       description: |-
@@ -1967,7 +1983,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 60
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/fw/stats/:
     get:
       description: |-
@@ -2095,7 +2112,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/implants/:
     get:
       description: |-
@@ -2225,7 +2243,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/industry/jobs/:
     get:
       description: |-
@@ -2370,7 +2389,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/killmails/recent/:
     get:
       description: |-
@@ -2511,7 +2531,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/location/:
     get:
       description: |-
@@ -2634,7 +2655,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/loyalty/points/:
     get:
       description: |-
@@ -2759,7 +2781,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/mail/:
     get:
       description: |-
@@ -2912,7 +2935,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 30
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |-
         Create and send a new mail
@@ -2996,7 +3020,8 @@ paths:
       - v1
       x-codegen-request-body-name: mail
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/mail/labels/{label_id}/:
     delete:
       description: |-
@@ -3072,7 +3097,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/mail/lists/:
     get:
       description: |-
@@ -3197,7 +3223,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/mail/{mail_id}/:
     delete:
       description: |-
@@ -3273,7 +3300,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     get:
       description: |-
         Return the contents of an EVE mail
@@ -3405,7 +3433,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 30
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Update metadata about a mail
@@ -3489,7 +3518,8 @@ paths:
       - v1
       x-codegen-request-body-name: contents
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/mining/:
     get:
       description: |-
@@ -3634,7 +3664,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/orders/history/:
     get:
       description: |-
@@ -3786,7 +3817,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/planets/:
     get:
       description: |-
@@ -3923,7 +3955,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/ship/:
     get:
       description: |-
@@ -4045,7 +4078,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/wallet/:
     get:
       description: |-
@@ -4168,7 +4202,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/characters/{character_id}/wallet/transactions/:
     get:
       description: |-
@@ -4308,7 +4343,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/contracts/public/bids/{contract_id}/:
     get:
       description: |-
@@ -4457,7 +4493,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/contracts/public/items/{contract_id}/:
     get:
       description: |-
@@ -4608,7 +4645,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/contracts/public/{region_id}/:
     get:
       description: |-
@@ -4748,7 +4786,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 1800
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporation/{corporation_id}/mining/extractions/:
     get:
       description: |-
@@ -4895,7 +4934,8 @@ paths:
       x-cached-seconds: 1800
       x-required-roles:
       - Station_Manager
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporation/{corporation_id}/mining/observers/:
     get:
       description: |-
@@ -5040,7 +5080,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Accountant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporation/{corporation_id}/mining/observers/{observer_id}/:
     get:
       description: |-
@@ -5194,7 +5235,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Accountant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/assets/names/:
     post:
       description: |-
@@ -5296,7 +5338,8 @@ paths:
       - Director
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/contacts/labels/:
     get:
       description: |-
@@ -5422,7 +5465,8 @@ paths:
       - v1
       x-cached-seconds: 300
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/contracts/:
     get:
       description: |-
@@ -5576,7 +5620,8 @@ paths:
       - v1
       x-cached-seconds: 300
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/contracts/{contract_id}/bids/:
     get:
       description: |-
@@ -5725,7 +5770,8 @@ paths:
       - v1
       x-cached-seconds: 3600
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/contracts/{contract_id}/items/:
     get:
       description: |-
@@ -5863,7 +5909,8 @@ paths:
       - v1
       x-cached-seconds: 3600
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/customs_offices/:
     get:
       description: |-
@@ -6017,7 +6064,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/fw/stats/:
     get:
       description: |-
@@ -6146,7 +6194,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/icons/:
     get:
       description: |-
@@ -6258,7 +6307,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/industry/jobs/:
     get:
       description: |-
@@ -6423,7 +6473,8 @@ paths:
       x-cached-seconds: 300
       x-required-roles:
       - Factory_Manager
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/killmails/recent/:
     get:
       description: |-
@@ -6569,7 +6620,8 @@ paths:
       x-cached-seconds: 300
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/orders/history/:
     get:
       description: |-
@@ -6729,7 +6781,8 @@ paths:
       x-required-roles:
       - Accountant
       - Trader
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/shareholders/:
     get:
       description: |-
@@ -6883,7 +6936,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/wallets/:
     get:
       description: |-
@@ -7026,7 +7080,8 @@ paths:
       x-required-roles:
       - Accountant
       - Junior_Accountant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/corporations/{corporation_id}/wallets/{division}/transactions/:
     get:
       description: |-
@@ -7180,7 +7235,8 @@ paths:
       x-required-roles:
       - Accountant
       - Junior_Accountant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/dogma/attributes/:
     get:
       description: |-
@@ -7290,7 +7346,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/dogma/attributes/{attribute_id}/:
     get:
       description: |-
@@ -7405,7 +7462,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/dogma/dynamic/items/{type_id}/{item_id}/:
     get:
       description: |-
@@ -7527,7 +7585,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/dogma/effects/:
     get:
       description: |-
@@ -7637,7 +7696,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/:
     get:
       description: |-
@@ -7758,7 +7818,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Update settings about a fleet
@@ -7834,7 +7895,8 @@ paths:
       - v1
       x-codegen-request-body-name: new_settings
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/members/:
     get:
       description: |-
@@ -8011,7 +8073,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |-
         Invite a character into the fleet. If a character has a CSPA charge set it is not possible to invite them to the fleet using ESI
@@ -8087,7 +8150,8 @@ paths:
       - v1
       x-codegen-request-body-name: invitation
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/members/{member_id}/:
     delete:
       description: |-
@@ -8162,7 +8226,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Move a fleet member around
@@ -8245,7 +8310,8 @@ paths:
       - v1
       x-codegen-request-body-name: movement
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/squads/{squad_id}/:
     delete:
       description: |-
@@ -8320,7 +8386,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Rename a fleet squad
@@ -8403,7 +8470,8 @@ paths:
       - v1
       x-codegen-request-body-name: naming
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/wings/:
     get:
       description: |-
@@ -8575,7 +8643,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |-
         Create a new wing in a fleet
@@ -8647,7 +8716,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/wings/{wing_id}/:
     delete:
       description: |-
@@ -8722,7 +8792,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Rename a fleet wing
@@ -8805,7 +8876,8 @@ paths:
       - v1
       x-codegen-request-body-name: naming
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fleets/{fleet_id}/wings/{wing_id}/squads/:
     post:
       description: |-
@@ -8885,7 +8957,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fw/leaderboards/:
     get:
       description: |-
@@ -9018,7 +9091,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fw/leaderboards/characters/:
     get:
       description: |-
@@ -9151,7 +9225,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fw/leaderboards/corporations/:
     get:
       description: |-
@@ -9284,7 +9359,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fw/stats/:
     get:
       description: |-
@@ -9400,7 +9476,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/fw/wars/:
     get:
       description: |-
@@ -9507,7 +9584,8 @@ paths:
       - legacy
       - v1
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/incursions/:
     get:
       description: |-
@@ -9627,7 +9705,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/industry/facilities/:
     get:
       description: |-
@@ -9738,7 +9817,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/industry/systems/:
     get:
       description: |-
@@ -9847,7 +9927,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/insurance/prices/:
     get:
       description: |-
@@ -10002,7 +10083,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/killmails/{killmail_id}/{killmail_hash}/:
     get:
       description: |-
@@ -10142,7 +10224,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 30758400
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/loyalty/stores/{corporation_id}/offers/:
     get:
       description: |-
@@ -10269,7 +10352,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/groups/:
     get:
       description: |-
@@ -10379,7 +10463,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/groups/{market_group_id}/:
     get:
       description: |-
@@ -10537,7 +10622,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/prices/:
     get:
       description: |-
@@ -10645,7 +10731,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/structures/{structure_id}/:
     get:
       description: |-
@@ -10792,7 +10879,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/{region_id}/history/:
     get:
       description: |-
@@ -10916,7 +11004,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/{region_id}/orders/:
     get:
       description: |-
@@ -11072,7 +11161,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/markets/{region_id}/types/:
     get:
       description: |-
@@ -11204,7 +11294,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/route/{origin}/{destination}/:
     get:
       description: |-
@@ -11369,7 +11460,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 86400
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/sovereignty/campaigns/:
     get:
       description: |-
@@ -11483,7 +11575,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/sovereignty/map/:
     get:
       description: |-
@@ -11591,7 +11684,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/sovereignty/structures/:
     get:
       description: |-
@@ -11703,7 +11797,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/status/:
     get:
       description: |-
@@ -11807,7 +11902,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 30
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/ui/openwindow/contract/:
     post:
       description: |-
@@ -11875,7 +11971,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/ui/openwindow/information/:
     post:
       description: |-
@@ -11943,7 +12040,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/ui/openwindow/marketdetails/:
     post:
       description: |-
@@ -12011,7 +12109,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/ui/openwindow/newmail/:
     post:
       description: |-
@@ -12081,7 +12180,8 @@ paths:
       - v1
       x-codegen-request-body-name: new_mail
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/ancestries/:
     get:
       description: |-
@@ -12234,7 +12334,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/asteroid_belts/{asteroid_belt_id}/:
     get:
       description: |-
@@ -12345,7 +12446,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/bloodlines/:
     get:
       description: |-
@@ -12504,7 +12606,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/categories/:
     get:
       description: |-
@@ -12613,7 +12716,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/categories/{category_id}/:
     get:
       description: |-
@@ -12770,7 +12874,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/constellations/:
     get:
       description: |-
@@ -12878,7 +12983,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/constellations/{constellation_id}/:
     get:
       description: |-
@@ -13038,7 +13144,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/graphics/:
     get:
       description: |-
@@ -13146,7 +13253,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/graphics/{graphic_id}/:
     get:
       description: |-
@@ -13254,7 +13362,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/groups/:
     get:
       description: |-
@@ -13377,7 +13486,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/groups/{group_id}/:
     get:
       description: |-
@@ -13536,7 +13646,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/ids/:
     post:
       description: |
@@ -13667,7 +13778,8 @@ paths:
       - v1
       x-codegen-request-body-name: names
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/moons/{moon_id}/:
     get:
       description: |-
@@ -13779,7 +13891,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/planets/{planet_id}/:
     get:
       description: |-
@@ -13892,7 +14005,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/races/:
     get:
       description: |-
@@ -14045,7 +14159,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/regions/:
     get:
       description: |-
@@ -14153,7 +14268,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/regions/{region_id}/:
     get:
       description: |-
@@ -14309,7 +14425,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/schematics/{schematic_id}/:
     get:
       description: |-
@@ -14418,7 +14535,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/stargates/{stargate_id}/:
     get:
       description: |-
@@ -14534,7 +14652,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/stars/{star_id}/:
     get:
       description: |-
@@ -14647,7 +14766,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/structures/:
     get:
       description: |-
@@ -14767,7 +14887,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/structures/{structure_id}/:
     get:
       description: |-
@@ -14885,7 +15006,8 @@ paths:
       - v1
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/system_jumps/:
     get:
       description: |-
@@ -14991,7 +15113,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/systems/:
     get:
       description: |-
@@ -15100,7 +15223,8 @@ paths:
       - dev
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/universe/types/:
     get:
       description: |-
@@ -15223,7 +15347,8 @@ paths:
       x-alternate-versions:
       - legacy
       - v1
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/wars/:
     get:
       description: |-
@@ -15340,7 +15465,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/wars/{war_id}/:
     get:
       description: |-
@@ -15460,7 +15586,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v1/wars/{war_id}/killmails/:
     get:
       description: |-
@@ -15591,7 +15718,8 @@ paths:
       - legacy
       - v1
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/alliances/{alliance_id}/contacts/:
     get:
       description: |-
@@ -15730,7 +15858,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/agents_research/:
     get:
       description: |-
@@ -15857,7 +15986,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/assets/locations/:
     post:
       description: |-
@@ -15958,7 +16088,8 @@ paths:
       - v2
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/clones/:
     get:
       description: |-
@@ -16087,7 +16218,8 @@ paths:
       - v3
       - v4
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/contacts/:
     get:
       description: |-
@@ -16228,7 +16360,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: |-
         Bulk add contacts with same settings
@@ -16354,7 +16487,8 @@ paths:
       - v2
       x-codegen-request-body-name: contact_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Bulk edit contacts with same settings
@@ -16466,7 +16600,8 @@ paths:
       - v2
       x-codegen-request-body-name: contact_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/corporationhistory/:
     get:
       description: |-
@@ -16585,7 +16720,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 86400
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/fatigue/:
     get:
       description: |-
@@ -16705,7 +16841,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/fittings/:
     get:
       description: |-
@@ -16835,7 +16972,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 300
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/mail/labels/:
     post:
       description: |-
@@ -16920,7 +17058,8 @@ paths:
       - v2
       x-codegen-request-body-name: label
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/medals/:
     get:
       description: |-
@@ -17063,7 +17202,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/notifications/contacts/:
     get:
       description: |-
@@ -17190,7 +17330,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/online/:
     get:
       description: |-
@@ -17312,7 +17453,8 @@ paths:
       - v2
       - v3
       x-cached-seconds: 60
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/orders/:
     get:
       description: |-
@@ -17448,7 +17590,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 1200
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/portrait/:
     get:
       description: |-
@@ -17559,7 +17702,8 @@ paths:
       - dev
       - v2
       - v3
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/skillqueue/:
     get:
       description: |-
@@ -17697,7 +17841,8 @@ paths:
       - legacy
       - v2
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/standings/:
     get:
       description: |-
@@ -17828,7 +17973,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/characters/{character_id}/titles/:
     get:
       description: |-
@@ -17952,7 +18098,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/npccorps/:
     get:
       description: |-
@@ -18061,7 +18208,8 @@ paths:
       x-alternate-versions:
       - dev
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/assets/locations/:
     post:
       description: |-
@@ -18165,7 +18313,8 @@ paths:
       - Director
       x-codegen-request-body-name: item_ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/contacts/:
     get:
       description: |-
@@ -18306,7 +18455,8 @@ paths:
       - v2
       x-cached-seconds: 300
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/divisions/:
     get:
       description: |-
@@ -18434,7 +18584,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/facilities/:
     get:
       description: |-
@@ -18564,7 +18715,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Factory_Manager
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/medals/:
     get:
       description: |-
@@ -18706,7 +18858,8 @@ paths:
       - v2
       x-cached-seconds: 3600
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/medals/issued/:
     get:
       description: |-
@@ -18853,7 +19006,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/members/limit/:
     get:
       description: |-
@@ -18978,7 +19132,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/members/titles/:
     get:
       description: |-
@@ -19107,7 +19262,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/membertracking/:
     get:
       description: |-
@@ -19246,7 +19402,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/orders/:
     get:
       description: |-
@@ -19405,7 +19562,8 @@ paths:
       x-required-roles:
       - Accountant
       - Trader
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/roles/:
     get:
       description: |-
@@ -19531,7 +19689,8 @@ paths:
       - dev
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/roles/history/:
     get:
       description: |-
@@ -19680,7 +19839,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/standings/:
     get:
       description: |-
@@ -19826,7 +19986,8 @@ paths:
       - v2
       x-cached-seconds: 3600
       x-required-roles: []
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/starbases/:
     get:
       description: |-
@@ -19970,7 +20131,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/starbases/{starbase_id}/:
     get:
       description: |-
@@ -20117,7 +20279,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/corporations/{corporation_id}/titles/:
     get:
       description: |-
@@ -20249,7 +20412,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/dogma/effects/{effect_id}/:
     get:
       description: |-
@@ -20363,7 +20527,8 @@ paths:
       x-alternate-versions:
       - dev
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/fw/systems/:
     get:
       description: |-
@@ -20475,7 +20640,8 @@ paths:
       - v2
       - v3
       x-cached-seconds: 1800
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/ui/autopilot/waypoint/:
     post:
       description: |-
@@ -20559,7 +20725,8 @@ paths:
       - dev
       - legacy
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/universe/factions/:
     get:
       description: |-
@@ -20716,7 +20883,8 @@ paths:
       x-alternate-versions:
       - dev
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/universe/names/:
     post:
       description: |
@@ -20805,7 +20973,8 @@ paths:
       - v3
       x-codegen-request-body-name: ids
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/universe/stations/{station_id}/:
     get:
       description: |-
@@ -20937,7 +21106,8 @@ paths:
       x-alternate-versions:
       - dev
       - v2
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/universe/system_kills/:
     get:
       description: |-
@@ -21044,7 +21214,8 @@ paths:
       x-alternate-versions:
       - v2
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v2/universe/types/{type_id}/:
     get:
       description: |-
@@ -21201,7 +21372,8 @@ paths:
       - legacy
       - v2
       - v3
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/alliances/{alliance_id}/:
     get:
       description: |-
@@ -21316,7 +21488,8 @@ paths:
       - v3
       - v4
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/blueprints/:
     get:
       description: |-
@@ -21460,7 +21633,8 @@ paths:
       - dev
       - v3
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/calendar/{event_id}/:
     get:
       description: |-
@@ -21600,7 +21774,8 @@ paths:
       - v3
       - v4
       x-cached-seconds: 5
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     put:
       description: |-
         Set your response status to an event
@@ -21687,7 +21862,8 @@ paths:
       x-cached-seconds: 5
       x-codegen-request-body-name: response
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/mail/labels/:
     get:
       description: |-
@@ -21814,7 +21990,8 @@ paths:
       - dev
       - v3
       x-cached-seconds: 30
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/planets/{planet_id}/:
     get:
       description: |-
@@ -21912,7 +22089,8 @@ paths:
       x-alternate-versions:
       - dev
       - v3
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/roles/:
     get:
       description: |-
@@ -22032,7 +22210,8 @@ paths:
       - dev
       - v3
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/characters/{character_id}/search/:
     get:
       description: |-
@@ -22243,7 +22422,8 @@ paths:
       - legacy
       - v3
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/corporations/{corporation_id}/alliancehistory/:
     get:
       description: |-
@@ -22361,7 +22541,8 @@ paths:
       - dev
       - v3
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/corporations/{corporation_id}/blueprints/:
     get:
       description: |-
@@ -22510,7 +22691,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/corporations/{corporation_id}/containers/logs/:
     get:
       description: |-
@@ -22677,7 +22859,8 @@ paths:
       x-cached-seconds: 600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v3/corporations/{corporation_id}/wallets/{division}/journal/:
     get:
       description: |-
@@ -22841,7 +23024,8 @@ paths:
       x-required-roles:
       - Accountant
       - Junior_Accountant
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/characters/{character_id}/assets/:
     get:
       description: |-
@@ -22987,7 +23171,8 @@ paths:
       - v4
       - v5
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/characters/{character_id}/notifications/:
     get:
       description: |-
@@ -23120,7 +23305,8 @@ paths:
       - v5
       - v6
       x-cached-seconds: 600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/characters/{character_id}/skills/:
     get:
       description: |-
@@ -23247,7 +23433,8 @@ paths:
       - dev
       - v4
       x-cached-seconds: 120
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/corporations/{corporation_id}/assets/:
     get:
       description: |-
@@ -23398,7 +23585,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Director
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/corporations/{corporation_id}/members/:
     get:
       description: |-
@@ -23525,7 +23713,8 @@ paths:
       - dev
       - v4
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/corporations/{corporation_id}/structures/:
     get:
       description: |-
@@ -23719,7 +23908,8 @@ paths:
       x-cached-seconds: 3600
       x-required-roles:
       - Station_Manager
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v4/universe/systems/{system_id}/:
     get:
       description: |-
@@ -23886,7 +24076,8 @@ paths:
       x-alternate-versions:
       - dev
       - v4
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v5/characters/{character_id}/:
     get:
       description: |-
@@ -24002,7 +24193,8 @@ paths:
       - legacy
       - v5
       x-cached-seconds: 604800
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v5/characters/{character_id}/cspa/:
     post:
       description: |-
@@ -24097,7 +24289,8 @@ paths:
       - v5
       x-codegen-request-body-name: characters
       x-content-type: application/json
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v5/characters/{character_id}/wallet/journal/:
     get:
       description: |-
@@ -24245,7 +24438,8 @@ paths:
       - v5
       - v6
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /v5/corporations/{corporation_id}/:
     get:
       description: |-
@@ -24363,7 +24557,8 @@ paths:
       - dev
       - v5
       x-cached-seconds: 3600
-      x-accepts: application/json
+      x-accepts:
+      - application/json
 components:
   parameters:
     Accept-Language:
@@ -32567,7 +32762,7 @@ components:
           type: string
         notification_id:
           description: notification_id integer
-          format: int32
+          format: int64
           title: get_characters_character_id_notifications_contacts_notification_id
           type: integer
         send_date:

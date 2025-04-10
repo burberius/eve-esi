@@ -27,13 +27,16 @@ import java.io.IOException;
 
 import net.troja.eve.esi.model.EsiStatusResponse;
 import net.troja.eve.esi.model.EsiVerifyResponse;
+import net.troja.eve.esi.model.GetStatusNotFound;
+import net.troja.eve.esi.model.GetVerifyError;
+import net.troja.eve.esi.model.GetVerifyNotFound;
+import net.troja.eve.esi.model.GetVerifyUnauthorized;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class MetaApi {
     private ApiClient localVarApiClient;
@@ -80,7 +83,8 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -151,7 +155,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -178,7 +183,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -209,7 +215,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -239,7 +246,8 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -308,7 +316,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -333,7 +342,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -362,7 +372,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -395,7 +406,8 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -481,7 +493,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -519,7 +532,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -561,7 +575,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -613,7 +628,8 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -687,14 +703,6 @@ public class MetaApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        if (xUserAgent != null) {
-            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
-        }
-
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -705,6 +713,14 @@ public class MetaApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (xUserAgent != null) {
+            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
+        }
+
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
         }
 
         String[] localVarAuthNames = new String[] { "evesso" };
@@ -739,7 +755,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -801,7 +818,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -868,7 +886,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -927,7 +946,8 @@ public class MetaApi {
      * @return Call to execute
      * @throws ApiException
      *             If fail to serialize the request body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -974,10 +994,6 @@ public class MetaApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("user_agent", userAgent));
         }
 
-        if (xUserAgent != null) {
-            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
-        }
-
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -988,6 +1004,10 @@ public class MetaApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        if (xUserAgent != null) {
+            localVarHeaderParams.put("X-User-Agent", localVarApiClient.parameterToString(xUserAgent));
         }
 
         String[] localVarAuthNames = new String[] {};
@@ -1014,7 +1034,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -1047,7 +1068,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot
      *             deserialize the response body
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
@@ -1084,7 +1106,8 @@ public class MetaApi {
      * @throws ApiException
      *             If fail to process the API call, e.g. serializing the request
      *             body object
-     * @http.response.details <table summary="Response Details" border="1">
+     * @http.response.details <table border="1">
+     *                        <caption>Response Details</caption>
      *                        <tr>
      *                        <td>Status Code</td>
      *                        <td>Description</td>
