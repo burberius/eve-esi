@@ -253,9 +253,9 @@ public class StarResponse implements Serializable {
 
         A0("A0"),
 
-        A0_IV("A0IV"),
+        A0IV("A0IV"),
 
-        A0_IV2("A0IV2");
+        A0IV2("A0IV2");
 
         private String value;
 

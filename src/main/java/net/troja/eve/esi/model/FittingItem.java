@@ -61,89 +61,89 @@ public class FittingItem implements Serializable {
     public enum FlagEnum {
         CARGO("Cargo"),
 
-        DRONE_BAY("DroneBay"),
+        DRONEBAY("DroneBay"),
 
-        FIGHTER_BAY("FighterBay"),
+        FIGHTERBAY("FighterBay"),
 
-        HI_SLOT0("HiSlot0"),
+        HISLOT0("HiSlot0"),
 
-        HI_SLOT1("HiSlot1"),
+        HISLOT1("HiSlot1"),
 
-        HI_SLOT2("HiSlot2"),
+        HISLOT2("HiSlot2"),
 
-        HI_SLOT3("HiSlot3"),
+        HISLOT3("HiSlot3"),
 
-        HI_SLOT4("HiSlot4"),
+        HISLOT4("HiSlot4"),
 
-        HI_SLOT5("HiSlot5"),
+        HISLOT5("HiSlot5"),
 
-        HI_SLOT6("HiSlot6"),
+        HISLOT6("HiSlot6"),
 
-        HI_SLOT7("HiSlot7"),
+        HISLOT7("HiSlot7"),
 
         INVALID("Invalid"),
 
-        LO_SLOT0("LoSlot0"),
+        LOSLOT0("LoSlot0"),
 
-        LO_SLOT1("LoSlot1"),
+        LOSLOT1("LoSlot1"),
 
-        LO_SLOT2("LoSlot2"),
+        LOSLOT2("LoSlot2"),
 
-        LO_SLOT3("LoSlot3"),
+        LOSLOT3("LoSlot3"),
 
-        LO_SLOT4("LoSlot4"),
+        LOSLOT4("LoSlot4"),
 
-        LO_SLOT5("LoSlot5"),
+        LOSLOT5("LoSlot5"),
 
-        LO_SLOT6("LoSlot6"),
+        LOSLOT6("LoSlot6"),
 
-        LO_SLOT7("LoSlot7"),
+        LOSLOT7("LoSlot7"),
 
-        MED_SLOT0("MedSlot0"),
+        MEDSLOT0("MedSlot0"),
 
-        MED_SLOT1("MedSlot1"),
+        MEDSLOT1("MedSlot1"),
 
-        MED_SLOT2("MedSlot2"),
+        MEDSLOT2("MedSlot2"),
 
-        MED_SLOT3("MedSlot3"),
+        MEDSLOT3("MedSlot3"),
 
-        MED_SLOT4("MedSlot4"),
+        MEDSLOT4("MedSlot4"),
 
-        MED_SLOT5("MedSlot5"),
+        MEDSLOT5("MedSlot5"),
 
-        MED_SLOT6("MedSlot6"),
+        MEDSLOT6("MedSlot6"),
 
-        MED_SLOT7("MedSlot7"),
+        MEDSLOT7("MedSlot7"),
 
-        RIG_SLOT0("RigSlot0"),
+        RIGSLOT0("RigSlot0"),
 
-        RIG_SLOT1("RigSlot1"),
+        RIGSLOT1("RigSlot1"),
 
-        RIG_SLOT2("RigSlot2"),
+        RIGSLOT2("RigSlot2"),
 
-        SERVICE_SLOT0("ServiceSlot0"),
+        SERVICESLOT0("ServiceSlot0"),
 
-        SERVICE_SLOT1("ServiceSlot1"),
+        SERVICESLOT1("ServiceSlot1"),
 
-        SERVICE_SLOT2("ServiceSlot2"),
+        SERVICESLOT2("ServiceSlot2"),
 
-        SERVICE_SLOT3("ServiceSlot3"),
+        SERVICESLOT3("ServiceSlot3"),
 
-        SERVICE_SLOT4("ServiceSlot4"),
+        SERVICESLOT4("ServiceSlot4"),
 
-        SERVICE_SLOT5("ServiceSlot5"),
+        SERVICESLOT5("ServiceSlot5"),
 
-        SERVICE_SLOT6("ServiceSlot6"),
+        SERVICESLOT6("ServiceSlot6"),
 
-        SERVICE_SLOT7("ServiceSlot7"),
+        SERVICESLOT7("ServiceSlot7"),
 
-        SUB_SYSTEM_SLOT0("SubSystemSlot0"),
+        SUBSYSTEMSLOT0("SubSystemSlot0"),
 
-        SUB_SYSTEM_SLOT1("SubSystemSlot1"),
+        SUBSYSTEMSLOT1("SubSystemSlot1"),
 
-        SUB_SYSTEM_SLOT2("SubSystemSlot2"),
+        SUBSYSTEMSLOT2("SubSystemSlot2"),
 
-        SUB_SYSTEM_SLOT3("SubSystemSlot3");
+        SUBSYSTEMSLOT3("SubSystemSlot3");
 
         private String value;
 

@@ -138,485 +138,485 @@ public class CharacterNotificationsResponse implements Serializable {
      */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        ACCEPTED_ALLY("AcceptedAlly"),
+        ACCEPTEDALLY("AcceptedAlly"),
 
-        ACCEPTED_SURRENDER("AcceptedSurrender"),
+        ACCEPTEDSURRENDER("AcceptedSurrender"),
 
-        AGENT_RETIRED_TRIGRAVIAN("AgentRetiredTrigravian"),
+        AGENTRETIREDTRIGRAVIAN("AgentRetiredTrigravian"),
 
-        ALL_ANCHORING_MSG("AllAnchoringMsg"),
+        ALLANCHORINGMSG("AllAnchoringMsg"),
 
-        ALL_MAINTENANCE_BILL_MSG("AllMaintenanceBillMsg"),
+        ALLMAINTENANCEBILLMSG("AllMaintenanceBillMsg"),
 
-        ALL_STRUC_INVULNERABLE_MSG("AllStrucInvulnerableMsg"),
+        ALLSTRUCINVULNERABLEMSG("AllStrucInvulnerableMsg"),
 
-        ALL_STRUCT_VULNERABLE_MSG("AllStructVulnerableMsg"),
+        ALLSTRUCTVULNERABLEMSG("AllStructVulnerableMsg"),
 
-        ALL_WAR_CORP_JOINED_ALLIANCE_MSG("AllWarCorpJoinedAllianceMsg"),
+        ALLWARCORPJOINEDALLIANCEMSG("AllWarCorpJoinedAllianceMsg"),
 
-        ALL_WAR_DECLARED_MSG("AllWarDeclaredMsg"),
+        ALLWARDECLAREDMSG("AllWarDeclaredMsg"),
 
-        ALL_WAR_INVALIDATED_MSG("AllWarInvalidatedMsg"),
+        ALLWARINVALIDATEDMSG("AllWarInvalidatedMsg"),
 
-        ALL_WAR_RETRACTED_MSG("AllWarRetractedMsg"),
+        ALLWARRETRACTEDMSG("AllWarRetractedMsg"),
 
-        ALL_WAR_SURRENDER_MSG("AllWarSurrenderMsg"),
+        ALLWARSURRENDERMSG("AllWarSurrenderMsg"),
 
-        ALLIANCE_CAPITAL_CHANGED("AllianceCapitalChanged"),
+        ALLIANCECAPITALCHANGED("AllianceCapitalChanged"),
 
-        ALLIANCE_WAR_DECLARED_V2("AllianceWarDeclaredV2"),
+        ALLIANCEWARDECLAREDV2("AllianceWarDeclaredV2"),
 
-        ALLY_CONTRACT_CANCELLED("AllyContractCancelled"),
+        ALLYCONTRACTCANCELLED("AllyContractCancelled"),
 
-        ALLY_JOINED_WAR_AGGRESSOR_MSG("AllyJoinedWarAggressorMsg"),
+        ALLYJOINEDWARAGGRESSORMSG("AllyJoinedWarAggressorMsg"),
 
-        ALLY_JOINED_WAR_ALLY_MSG("AllyJoinedWarAllyMsg"),
+        ALLYJOINEDWARALLYMSG("AllyJoinedWarAllyMsg"),
 
-        ALLY_JOINED_WAR_DEFENDER_MSG("AllyJoinedWarDefenderMsg"),
+        ALLYJOINEDWARDEFENDERMSG("AllyJoinedWarDefenderMsg"),
 
-        BATTLE_PUNISH_FRIENDLY_FIRE("BattlePunishFriendlyFire"),
+        BATTLEPUNISHFRIENDLYFIRE("BattlePunishFriendlyFire"),
 
-        BILL_OUT_OF_MONEY_MSG("BillOutOfMoneyMsg"),
+        BILLOUTOFMONEYMSG("BillOutOfMoneyMsg"),
 
-        BILL_PAID_CORP_ALL_MSG("BillPaidCorpAllMsg"),
+        BILLPAIDCORPALLMSG("BillPaidCorpAllMsg"),
 
-        BOUNTY_CLAIM_MSG("BountyClaimMsg"),
+        BOUNTYCLAIMMSG("BountyClaimMsg"),
 
-        BOUNTY_ESS_SHARED("BountyESSShared"),
+        BOUNTYESSSHARED("BountyESSShared"),
 
-        BOUNTY_ESS_TAKEN("BountyESSTaken"),
+        BOUNTYESSTAKEN("BountyESSTaken"),
 
-        BOUNTY_PLACED_ALLIANCE("BountyPlacedAlliance"),
+        BOUNTYPLACEDALLIANCE("BountyPlacedAlliance"),
 
-        BOUNTY_PLACED_CHAR("BountyPlacedChar"),
+        BOUNTYPLACEDCHAR("BountyPlacedChar"),
 
-        BOUNTY_PLACED_CORP("BountyPlacedCorp"),
+        BOUNTYPLACEDCORP("BountyPlacedCorp"),
 
-        BOUNTY_YOUR_BOUNTY_CLAIMED("BountyYourBountyClaimed"),
+        BOUNTYYOURBOUNTYCLAIMED("BountyYourBountyClaimed"),
 
-        BUDDY_CONNECT_CONTACT_ADD("BuddyConnectContactAdd"),
+        BUDDYCONNECTCONTACTADD("BuddyConnectContactAdd"),
 
-        CHAR_APP_ACCEPT_MSG("CharAppAcceptMsg"),
+        CHARAPPACCEPTMSG("CharAppAcceptMsg"),
 
-        CHAR_APP_REJECT_MSG("CharAppRejectMsg"),
+        CHARAPPREJECTMSG("CharAppRejectMsg"),
 
-        CHAR_APP_WITHDRAW_MSG("CharAppWithdrawMsg"),
+        CHARAPPWITHDRAWMSG("CharAppWithdrawMsg"),
 
-        CHAR_LEFT_CORP_MSG("CharLeftCorpMsg"),
+        CHARLEFTCORPMSG("CharLeftCorpMsg"),
 
-        CHAR_MEDAL_MSG("CharMedalMsg"),
+        CHARMEDALMSG("CharMedalMsg"),
 
-        CHAR_TERMINATION_MSG("CharTerminationMsg"),
+        CHARTERMINATIONMSG("CharTerminationMsg"),
 
-        CLONE_ACTIVATION_MSG("CloneActivationMsg"),
+        CLONEACTIVATIONMSG("CloneActivationMsg"),
 
-        CLONE_ACTIVATION_MSG2("CloneActivationMsg2"),
+        CLONEACTIVATIONMSG2("CloneActivationMsg2"),
 
-        CLONE_MOVED_MSG("CloneMovedMsg"),
+        CLONEMOVEDMSG("CloneMovedMsg"),
 
-        CLONE_REVOKED_MSG1("CloneRevokedMsg1"),
+        CLONEREVOKEDMSG1("CloneRevokedMsg1"),
 
-        CLONE_REVOKED_MSG2("CloneRevokedMsg2"),
+        CLONEREVOKEDMSG2("CloneRevokedMsg2"),
 
-        COMBAT_OPERATION_FINISHED("CombatOperationFinished"),
+        COMBATOPERATIONFINISHED("CombatOperationFinished"),
 
-        CONTACT_ADD("ContactAdd"),
+        CONTACTADD("ContactAdd"),
 
-        CONTACT_EDIT("ContactEdit"),
+        CONTACTEDIT("ContactEdit"),
 
-        CONTAINER_PASSWORD_MSG("ContainerPasswordMsg"),
+        CONTAINERPASSWORDMSG("ContainerPasswordMsg"),
 
-        CONTRACT_REGION_CHANGED_TO_POCHVEN("ContractRegionChangedToPochven"),
+        CONTRACTREGIONCHANGEDTOPOCHVEN("ContractRegionChangedToPochven"),
 
-        CORP_ALL_BILL_MSG("CorpAllBillMsg"),
+        CORPALLBILLMSG("CorpAllBillMsg"),
 
-        CORP_APP_ACCEPT_MSG("CorpAppAcceptMsg"),
+        CORPAPPACCEPTMSG("CorpAppAcceptMsg"),
 
-        CORP_APP_INVITED_MSG("CorpAppInvitedMsg"),
+        CORPAPPINVITEDMSG("CorpAppInvitedMsg"),
 
-        CORP_APP_NEW_MSG("CorpAppNewMsg"),
+        CORPAPPNEWMSG("CorpAppNewMsg"),
 
-        CORP_APP_REJECT_CUSTOM_MSG("CorpAppRejectCustomMsg"),
+        CORPAPPREJECTCUSTOMMSG("CorpAppRejectCustomMsg"),
 
-        CORP_APP_REJECT_MSG("CorpAppRejectMsg"),
+        CORPAPPREJECTMSG("CorpAppRejectMsg"),
 
-        CORP_BECAME_WAR_ELIGIBLE("CorpBecameWarEligible"),
+        CORPBECAMEWARELIGIBLE("CorpBecameWarEligible"),
 
-        CORP_DIVIDEND_MSG("CorpDividendMsg"),
+        CORPDIVIDENDMSG("CorpDividendMsg"),
 
-        CORP_FRIENDLY_FIRE_DISABLE_TIMER_COMPLETED("CorpFriendlyFireDisableTimerCompleted"),
+        CORPFRIENDLYFIREDISABLETIMERCOMPLETED("CorpFriendlyFireDisableTimerCompleted"),
 
-        CORP_FRIENDLY_FIRE_DISABLE_TIMER_STARTED("CorpFriendlyFireDisableTimerStarted"),
+        CORPFRIENDLYFIREDISABLETIMERSTARTED("CorpFriendlyFireDisableTimerStarted"),
 
-        CORP_FRIENDLY_FIRE_ENABLE_TIMER_COMPLETED("CorpFriendlyFireEnableTimerCompleted"),
+        CORPFRIENDLYFIREENABLETIMERCOMPLETED("CorpFriendlyFireEnableTimerCompleted"),
 
-        CORP_FRIENDLY_FIRE_ENABLE_TIMER_STARTED("CorpFriendlyFireEnableTimerStarted"),
+        CORPFRIENDLYFIREENABLETIMERSTARTED("CorpFriendlyFireEnableTimerStarted"),
 
-        CORP_KICKED("CorpKicked"),
+        CORPKICKED("CorpKicked"),
 
-        CORP_LIQUIDATION_MSG("CorpLiquidationMsg"),
+        CORPLIQUIDATIONMSG("CorpLiquidationMsg"),
 
-        CORP_NEW_CEO_MSG("CorpNewCEOMsg"),
+        CORPNEWCEOMSG("CorpNewCEOMsg"),
 
-        CORP_NEWS_MSG("CorpNewsMsg"),
+        CORPNEWSMSG("CorpNewsMsg"),
 
-        CORP_NO_LONGER_WAR_ELIGIBLE("CorpNoLongerWarEligible"),
+        CORPNOLONGERWARELIGIBLE("CorpNoLongerWarEligible"),
 
-        CORP_OFFICE_EXPIRATION_MSG("CorpOfficeExpirationMsg"),
+        CORPOFFICEEXPIRATIONMSG("CorpOfficeExpirationMsg"),
 
-        CORP_STRUCT_LOST_MSG("CorpStructLostMsg"),
+        CORPSTRUCTLOSTMSG("CorpStructLostMsg"),
 
-        CORP_TAX_CHANGE_MSG("CorpTaxChangeMsg"),
+        CORPTAXCHANGEMSG("CorpTaxChangeMsg"),
 
-        CORP_VOTE_CEO_REVOKED_MSG("CorpVoteCEORevokedMsg"),
+        CORPVOTECEOREVOKEDMSG("CorpVoteCEORevokedMsg"),
 
-        CORP_VOTE_MSG("CorpVoteMsg"),
+        CORPVOTEMSG("CorpVoteMsg"),
 
-        CORP_WAR_DECLARED_MSG("CorpWarDeclaredMsg"),
+        CORPWARDECLAREDMSG("CorpWarDeclaredMsg"),
 
-        CORP_WAR_DECLARED_V2("CorpWarDeclaredV2"),
+        CORPWARDECLAREDV2("CorpWarDeclaredV2"),
 
-        CORP_WAR_FIGHTING_LEGAL_MSG("CorpWarFightingLegalMsg"),
+        CORPWARFIGHTINGLEGALMSG("CorpWarFightingLegalMsg"),
 
-        CORP_WAR_INVALIDATED_MSG("CorpWarInvalidatedMsg"),
+        CORPWARINVALIDATEDMSG("CorpWarInvalidatedMsg"),
 
-        CORP_WAR_RETRACTED_MSG("CorpWarRetractedMsg"),
+        CORPWARRETRACTEDMSG("CorpWarRetractedMsg"),
 
-        CORP_WAR_SURRENDER_MSG("CorpWarSurrenderMsg"),
+        CORPWARSURRENDERMSG("CorpWarSurrenderMsg"),
 
-        CORPORATION_GOAL_CLOSED("CorporationGoalClosed"),
+        CORPORATIONGOALCLOSED("CorporationGoalClosed"),
 
-        CORPORATION_GOAL_COMPLETED("CorporationGoalCompleted"),
+        CORPORATIONGOALCOMPLETED("CorporationGoalCompleted"),
 
-        CORPORATION_GOAL_CREATED("CorporationGoalCreated"),
+        CORPORATIONGOALCREATED("CorporationGoalCreated"),
 
-        CORPORATION_GOAL_EXPIRED("CorporationGoalExpired"),
+        CORPORATIONGOALEXPIRED("CorporationGoalExpired"),
 
-        CORPORATION_GOAL_LIMIT_REACHED("CorporationGoalLimitReached"),
+        CORPORATIONGOALLIMITREACHED("CorporationGoalLimitReached"),
 
-        CORPORATION_GOAL_NAME_CHANGE("CorporationGoalNameChange"),
+        CORPORATIONGOALNAMECHANGE("CorporationGoalNameChange"),
 
-        CORPORATION_LEFT("CorporationLeft"),
+        CORPORATIONLEFT("CorporationLeft"),
 
-        CUSTOMS_MSG("CustomsMsg"),
+        CUSTOMSMSG("CustomsMsg"),
 
-        DAILY_ITEM_REWARD_AUTO_CLAIMED("DailyItemRewardAutoClaimed"),
+        DAILYITEMREWARDAUTOCLAIMED("DailyItemRewardAutoClaimed"),
 
-        DECLARE_WAR("DeclareWar"),
+        DECLAREWAR("DeclareWar"),
 
-        DISTRICT_ATTACKED("DistrictAttacked"),
+        DISTRICTATTACKED("DistrictAttacked"),
 
-        DUST_APP_ACCEPTED_MSG("DustAppAcceptedMsg"),
+        DUSTAPPACCEPTEDMSG("DustAppAcceptedMsg"),
 
-        ESS_MAIN_BANK_LINK("ESSMainBankLink"),
+        ESSMAINBANKLINK("ESSMainBankLink"),
 
-        ENTOSIS_CAPTURE_STARTED("EntosisCaptureStarted"),
+        ENTOSISCAPTURESTARTED("EntosisCaptureStarted"),
 
-        EXPERT_SYSTEM_EXPIRED("ExpertSystemExpired"),
+        EXPERTSYSTEMEXPIRED("ExpertSystemExpired"),
 
-        EXPERT_SYSTEM_EXPIRY_IMMINENT("ExpertSystemExpiryImminent"),
+        EXPERTSYSTEMEXPIRYIMMINENT("ExpertSystemExpiryImminent"),
 
-        FW_ALLIANCE_KICK_MSG("FWAllianceKickMsg"),
+        FWALLIANCEKICKMSG("FWAllianceKickMsg"),
 
-        FW_ALLIANCE_WARNING_MSG("FWAllianceWarningMsg"),
+        FWALLIANCEWARNINGMSG("FWAllianceWarningMsg"),
 
-        FW_CHAR_KICK_MSG("FWCharKickMsg"),
+        FWCHARKICKMSG("FWCharKickMsg"),
 
-        FW_CHAR_RANK_GAIN_MSG("FWCharRankGainMsg"),
+        FWCHARRANKGAINMSG("FWCharRankGainMsg"),
 
-        FW_CHAR_RANK_LOSS_MSG("FWCharRankLossMsg"),
+        FWCHARRANKLOSSMSG("FWCharRankLossMsg"),
 
-        FW_CHAR_WARNING_MSG("FWCharWarningMsg"),
+        FWCHARWARNINGMSG("FWCharWarningMsg"),
 
-        FW_CORP_JOIN_MSG("FWCorpJoinMsg"),
+        FWCORPJOINMSG("FWCorpJoinMsg"),
 
-        FW_CORP_KICK_MSG("FWCorpKickMsg"),
+        FWCORPKICKMSG("FWCorpKickMsg"),
 
-        FW_CORP_LEAVE_MSG("FWCorpLeaveMsg"),
+        FWCORPLEAVEMSG("FWCorpLeaveMsg"),
 
-        FW_CORP_WARNING_MSG("FWCorpWarningMsg"),
+        FWCORPWARNINGMSG("FWCorpWarningMsg"),
 
-        FAC_WAR_CORP_JOIN_REQUEST_MSG("FacWarCorpJoinRequestMsg"),
+        FACWARCORPJOINREQUESTMSG("FacWarCorpJoinRequestMsg"),
 
-        FAC_WAR_CORP_JOIN_WITHDRAW_MSG("FacWarCorpJoinWithdrawMsg"),
+        FACWARCORPJOINWITHDRAWMSG("FacWarCorpJoinWithdrawMsg"),
 
-        FAC_WAR_CORP_LEAVE_REQUEST_MSG("FacWarCorpLeaveRequestMsg"),
+        FACWARCORPLEAVEREQUESTMSG("FacWarCorpLeaveRequestMsg"),
 
-        FAC_WAR_CORP_LEAVE_WITHDRAW_MSG("FacWarCorpLeaveWithdrawMsg"),
+        FACWARCORPLEAVEWITHDRAWMSG("FacWarCorpLeaveWithdrawMsg"),
 
-        FAC_WAR_LP_DISQUALIFIED_EVENT("FacWarLPDisqualifiedEvent"),
+        FACWARLPDISQUALIFIEDEVENT("FacWarLPDisqualifiedEvent"),
 
-        FAC_WAR_LP_DISQUALIFIED_KILL("FacWarLPDisqualifiedKill"),
+        FACWARLPDISQUALIFIEDKILL("FacWarLPDisqualifiedKill"),
 
-        FAC_WAR_LP_PAYOUT_EVENT("FacWarLPPayoutEvent"),
+        FACWARLPPAYOUTEVENT("FacWarLPPayoutEvent"),
 
-        FAC_WAR_LP_PAYOUT_KILL("FacWarLPPayoutKill"),
+        FACWARLPPAYOUTKILL("FacWarLPPayoutKill"),
 
-        GAME_TIME_ADDED("GameTimeAdded"),
+        GAMETIMEADDED("GameTimeAdded"),
 
-        GAME_TIME_RECEIVED("GameTimeReceived"),
+        GAMETIMERECEIVED("GameTimeReceived"),
 
-        GAME_TIME_SENT("GameTimeSent"),
+        GAMETIMESENT("GameTimeSent"),
 
-        GIFT_RECEIVED("GiftReceived"),
+        GIFTRECEIVED("GiftReceived"),
 
-        I_HUB_DESTROYED_BY_BILL_FAILURE("IHubDestroyedByBillFailure"),
+        IHUBDESTROYEDBYBILLFAILURE("IHubDestroyedByBillFailure"),
 
-        INCURSION_COMPLETED_MSG("IncursionCompletedMsg"),
+        INCURSIONCOMPLETEDMSG("IncursionCompletedMsg"),
 
-        INDUSTRY_OPERATION_FINISHED("IndustryOperationFinished"),
+        INDUSTRYOPERATIONFINISHED("IndustryOperationFinished"),
 
-        INDUSTRY_TEAM_AUCTION_LOST("IndustryTeamAuctionLost"),
+        INDUSTRYTEAMAUCTIONLOST("IndustryTeamAuctionLost"),
 
-        INDUSTRY_TEAM_AUCTION_WON("IndustryTeamAuctionWon"),
+        INDUSTRYTEAMAUCTIONWON("IndustryTeamAuctionWon"),
 
-        INFRASTRUCTURE_HUB_BILL_ABOUT_TO_EXPIRE("InfrastructureHubBillAboutToExpire"),
+        INFRASTRUCTUREHUBBILLABOUTTOEXPIRE("InfrastructureHubBillAboutToExpire"),
 
-        INSURANCE_EXPIRATION_MSG("InsuranceExpirationMsg"),
+        INSURANCEEXPIRATIONMSG("InsuranceExpirationMsg"),
 
-        INSURANCE_FIRST_SHIP_MSG("InsuranceFirstShipMsg"),
+        INSURANCEFIRSTSHIPMSG("InsuranceFirstShipMsg"),
 
-        INSURANCE_INVALIDATED_MSG("InsuranceInvalidatedMsg"),
+        INSURANCEINVALIDATEDMSG("InsuranceInvalidatedMsg"),
 
-        INSURANCE_ISSUED_MSG("InsuranceIssuedMsg"),
+        INSURANCEISSUEDMSG("InsuranceIssuedMsg"),
 
-        INSURANCE_PAYOUT_MSG("InsurancePayoutMsg"),
+        INSURANCEPAYOUTMSG("InsurancePayoutMsg"),
 
-        INVASION_COMPLETED_MSG("InvasionCompletedMsg"),
+        INVASIONCOMPLETEDMSG("InvasionCompletedMsg"),
 
-        INVASION_SYSTEM_LOGIN("InvasionSystemLogin"),
+        INVASIONSYSTEMLOGIN("InvasionSystemLogin"),
 
-        INVASION_SYSTEM_START("InvasionSystemStart"),
+        INVASIONSYSTEMSTART("InvasionSystemStart"),
 
-        JUMP_CLONE_DELETED_MSG1("JumpCloneDeletedMsg1"),
+        JUMPCLONEDELETEDMSG1("JumpCloneDeletedMsg1"),
 
-        JUMP_CLONE_DELETED_MSG2("JumpCloneDeletedMsg2"),
+        JUMPCLONEDELETEDMSG2("JumpCloneDeletedMsg2"),
 
-        KILL_REPORT_FINAL_BLOW("KillReportFinalBlow"),
+        KILLREPORTFINALBLOW("KillReportFinalBlow"),
 
-        KILL_REPORT_VICTIM("KillReportVictim"),
+        KILLREPORTVICTIM("KillReportVictim"),
 
-        KILL_RIGHT_AVAILABLE("KillRightAvailable"),
+        KILLRIGHTAVAILABLE("KillRightAvailable"),
 
-        KILL_RIGHT_AVAILABLE_OPEN("KillRightAvailableOpen"),
+        KILLRIGHTAVAILABLEOPEN("KillRightAvailableOpen"),
 
-        KILL_RIGHT_EARNED("KillRightEarned"),
+        KILLRIGHTEARNED("KillRightEarned"),
 
-        KILL_RIGHT_UNAVAILABLE("KillRightUnavailable"),
+        KILLRIGHTUNAVAILABLE("KillRightUnavailable"),
 
-        KILL_RIGHT_UNAVAILABLE_OPEN("KillRightUnavailableOpen"),
+        KILLRIGHTUNAVAILABLEOPEN("KillRightUnavailableOpen"),
 
-        KILL_RIGHT_USED("KillRightUsed"),
+        KILLRIGHTUSED("KillRightUsed"),
 
-        LP_AUTO_REDEEMED("LPAutoRedeemed"),
+        LPAUTOREDEEMED("LPAutoRedeemed"),
 
-        LOCATE_CHAR_MSG("LocateCharMsg"),
+        LOCATECHARMSG("LocateCharMsg"),
 
-        MADE_WAR_MUTUAL("MadeWarMutual"),
+        MADEWARMUTUAL("MadeWarMutual"),
 
-        MERC_OFFER_RETRACTED_MSG("MercOfferRetractedMsg"),
+        MERCOFFERRETRACTEDMSG("MercOfferRetractedMsg"),
 
-        MERC_OFFERED_NEGOTIATION_MSG("MercOfferedNegotiationMsg"),
+        MERCOFFEREDNEGOTIATIONMSG("MercOfferedNegotiationMsg"),
 
-        MERCENARY_DEN_ATTACKED("MercenaryDenAttacked"),
+        MERCENARYDENATTACKED("MercenaryDenAttacked"),
 
-        MERCENARY_DEN_NEW_MTO("MercenaryDenNewMTO"),
+        MERCENARYDENNEWMTO("MercenaryDenNewMTO"),
 
-        MERCENARY_DEN_REINFORCED("MercenaryDenReinforced"),
+        MERCENARYDENREINFORCED("MercenaryDenReinforced"),
 
-        MISSION_CANCELED_TRIGLAVIAN("MissionCanceledTriglavian"),
+        MISSIONCANCELEDTRIGLAVIAN("MissionCanceledTriglavian"),
 
-        MISSION_OFFER_EXPIRATION_MSG("MissionOfferExpirationMsg"),
+        MISSIONOFFEREXPIRATIONMSG("MissionOfferExpirationMsg"),
 
-        MISSION_TIMEOUT_MSG("MissionTimeoutMsg"),
+        MISSIONTIMEOUTMSG("MissionTimeoutMsg"),
 
-        MOONMINING_AUTOMATIC_FRACTURE("MoonminingAutomaticFracture"),
+        MOONMININGAUTOMATICFRACTURE("MoonminingAutomaticFracture"),
 
-        MOONMINING_EXTRACTION_CANCELLED("MoonminingExtractionCancelled"),
+        MOONMININGEXTRACTIONCANCELLED("MoonminingExtractionCancelled"),
 
-        MOONMINING_EXTRACTION_FINISHED("MoonminingExtractionFinished"),
+        MOONMININGEXTRACTIONFINISHED("MoonminingExtractionFinished"),
 
-        MOONMINING_EXTRACTION_STARTED("MoonminingExtractionStarted"),
+        MOONMININGEXTRACTIONSTARTED("MoonminingExtractionStarted"),
 
-        MOONMINING_LASER_FIRED("MoonminingLaserFired"),
+        MOONMININGLASERFIRED("MoonminingLaserFired"),
 
-        MUTUAL_WAR_EXPIRED("MutualWarExpired"),
+        MUTUALWAREXPIRED("MutualWarExpired"),
 
-        MUTUAL_WAR_INVITE_ACCEPTED("MutualWarInviteAccepted"),
+        MUTUALWARINVITEACCEPTED("MutualWarInviteAccepted"),
 
-        MUTUAL_WAR_INVITE_REJECTED("MutualWarInviteRejected"),
+        MUTUALWARINVITEREJECTED("MutualWarInviteRejected"),
 
-        MUTUAL_WAR_INVITE_SENT("MutualWarInviteSent"),
+        MUTUALWARINVITESENT("MutualWarInviteSent"),
 
-        NPC_STANDINGS_GAINED("NPCStandingsGained"),
+        NPCSTANDINGSGAINED("NPCStandingsGained"),
 
-        NPC_STANDINGS_LOST("NPCStandingsLost"),
+        NPCSTANDINGSLOST("NPCStandingsLost"),
 
-        OFFER_TO_ALLY_RETRACTED("OfferToAllyRetracted"),
+        OFFERTOALLYRETRACTED("OfferToAllyRetracted"),
 
-        OFFERED_SURRENDER("OfferedSurrender"),
+        OFFEREDSURRENDER("OfferedSurrender"),
 
-        OFFERED_TO_ALLY("OfferedToAlly"),
+        OFFEREDTOALLY("OfferedToAlly"),
 
-        OFFICE_LEASE_CANCELED_INSUFFICIENT_STANDINGS("OfficeLeaseCanceledInsufficientStandings"),
+        OFFICELEASECANCELEDINSUFFICIENTSTANDINGS("OfficeLeaseCanceledInsufficientStandings"),
 
-        OLD_LSC_MESSAGES("OldLscMessages"),
+        OLDLSCMESSAGES("OldLscMessages"),
 
-        OPERATION_FINISHED("OperationFinished"),
+        OPERATIONFINISHED("OperationFinished"),
 
-        ORBITAL_ATTACKED("OrbitalAttacked"),
+        ORBITALATTACKED("OrbitalAttacked"),
 
-        ORBITAL_REINFORCED("OrbitalReinforced"),
+        ORBITALREINFORCED("OrbitalReinforced"),
 
-        OWNERSHIP_TRANSFERRED("OwnershipTransferred"),
+        OWNERSHIPTRANSFERRED("OwnershipTransferred"),
 
-        RAFFLE_CREATED("RaffleCreated"),
+        RAFFLECREATED("RaffleCreated"),
 
-        RAFFLE_EXPIRED("RaffleExpired"),
+        RAFFLEEXPIRED("RaffleExpired"),
 
-        RAFFLE_FINISHED("RaffleFinished"),
+        RAFFLEFINISHED("RaffleFinished"),
 
-        REIMBURSEMENT_MSG("ReimbursementMsg"),
+        REIMBURSEMENTMSG("ReimbursementMsg"),
 
-        RESEARCH_MISSION_AVAILABLE_MSG("ResearchMissionAvailableMsg"),
+        RESEARCHMISSIONAVAILABLEMSG("ResearchMissionAvailableMsg"),
 
-        RETRACTS_WAR("RetractsWar"),
+        RETRACTSWAR("RetractsWar"),
 
-        SP_AUTO_REDEEMED("SPAutoRedeemed"),
+        SPAUTOREDEEMED("SPAutoRedeemed"),
 
-        SEASONAL_CHALLENGE_COMPLETED("SeasonalChallengeCompleted"),
+        SEASONALCHALLENGECOMPLETED("SeasonalChallengeCompleted"),
 
-        SKIN_SEQUENCING_COMPLETED("SkinSequencingCompleted"),
+        SKINSEQUENCINGCOMPLETED("SkinSequencingCompleted"),
 
-        SKYHOOK_DEPLOYED("SkyhookDeployed"),
+        SKYHOOKDEPLOYED("SkyhookDeployed"),
 
-        SKYHOOK_DESTROYED("SkyhookDestroyed"),
+        SKYHOOKDESTROYED("SkyhookDestroyed"),
 
-        SKYHOOK_LOST_SHIELDS("SkyhookLostShields"),
+        SKYHOOKLOSTSHIELDS("SkyhookLostShields"),
 
-        SKYHOOK_ONLINE("SkyhookOnline"),
+        SKYHOOKONLINE("SkyhookOnline"),
 
-        SKYHOOK_UNDER_ATTACK("SkyhookUnderAttack"),
+        SKYHOOKUNDERATTACK("SkyhookUnderAttack"),
 
-        SOV_ALL_CLAIM_AQUIRED_MSG("SovAllClaimAquiredMsg"),
+        SOVALLCLAIMAQUIREDMSG("SovAllClaimAquiredMsg"),
 
-        SOV_ALL_CLAIM_LOST_MSG("SovAllClaimLostMsg"),
+        SOVALLCLAIMLOSTMSG("SovAllClaimLostMsg"),
 
-        SOV_COMMAND_NODE_EVENT_STARTED("SovCommandNodeEventStarted"),
+        SOVCOMMANDNODEEVENTSTARTED("SovCommandNodeEventStarted"),
 
-        SOV_CORP_BILL_LATE_MSG("SovCorpBillLateMsg"),
+        SOVCORPBILLLATEMSG("SovCorpBillLateMsg"),
 
-        SOV_CORP_CLAIM_FAIL_MSG("SovCorpClaimFailMsg"),
+        SOVCORPCLAIMFAILMSG("SovCorpClaimFailMsg"),
 
-        SOV_DISRUPTOR_MSG("SovDisruptorMsg"),
+        SOVDISRUPTORMSG("SovDisruptorMsg"),
 
-        SOV_STATION_ENTERED_FREEPORT("SovStationEnteredFreeport"),
+        SOVSTATIONENTEREDFREEPORT("SovStationEnteredFreeport"),
 
-        SOV_STRUCTURE_DESTROYED("SovStructureDestroyed"),
+        SOVSTRUCTUREDESTROYED("SovStructureDestroyed"),
 
-        SOV_STRUCTURE_REINFORCED("SovStructureReinforced"),
+        SOVSTRUCTUREREINFORCED("SovStructureReinforced"),
 
-        SOV_STRUCTURE_SELF_DESTRUCT_CANCEL("SovStructureSelfDestructCancel"),
+        SOVSTRUCTURESELFDESTRUCTCANCEL("SovStructureSelfDestructCancel"),
 
-        SOV_STRUCTURE_SELF_DESTRUCT_FINISHED("SovStructureSelfDestructFinished"),
+        SOVSTRUCTURESELFDESTRUCTFINISHED("SovStructureSelfDestructFinished"),
 
-        SOV_STRUCTURE_SELF_DESTRUCT_REQUESTED("SovStructureSelfDestructRequested"),
+        SOVSTRUCTURESELFDESTRUCTREQUESTED("SovStructureSelfDestructRequested"),
 
-        SOVEREIGNTY_IH_DAMAGE_MSG("SovereigntyIHDamageMsg"),
+        SOVEREIGNTYIHDAMAGEMSG("SovereigntyIHDamageMsg"),
 
-        SOVEREIGNTY_SBU_DAMAGE_MSG("SovereigntySBUDamageMsg"),
+        SOVEREIGNTYSBUDAMAGEMSG("SovereigntySBUDamageMsg"),
 
-        SOVEREIGNTY_TCU_DAMAGE_MSG("SovereigntyTCUDamageMsg"),
+        SOVEREIGNTYTCUDAMAGEMSG("SovereigntyTCUDamageMsg"),
 
-        STATION_AGGRESSION_MSG1("StationAggressionMsg1"),
+        STATIONAGGRESSIONMSG1("StationAggressionMsg1"),
 
-        STATION_AGGRESSION_MSG2("StationAggressionMsg2"),
+        STATIONAGGRESSIONMSG2("StationAggressionMsg2"),
 
-        STATION_CONQUER_MSG("StationConquerMsg"),
+        STATIONCONQUERMSG("StationConquerMsg"),
 
-        STATION_SERVICE_DISABLED("StationServiceDisabled"),
+        STATIONSERVICEDISABLED("StationServiceDisabled"),
 
-        STATION_SERVICE_ENABLED("StationServiceEnabled"),
+        STATIONSERVICEENABLED("StationServiceEnabled"),
 
-        STATION_STATE_CHANGE_MSG("StationStateChangeMsg"),
+        STATIONSTATECHANGEMSG("StationStateChangeMsg"),
 
-        STORY_LINE_MISSION_AVAILABLE_MSG("StoryLineMissionAvailableMsg"),
+        STORYLINEMISSIONAVAILABLEMSG("StoryLineMissionAvailableMsg"),
 
-        STRUCTURE_ANCHORING("StructureAnchoring"),
+        STRUCTUREANCHORING("StructureAnchoring"),
 
-        STRUCTURE_COURIER_CONTRACT_CHANGED("StructureCourierContractChanged"),
+        STRUCTURECOURIERCONTRACTCHANGED("StructureCourierContractChanged"),
 
-        STRUCTURE_DESTROYED("StructureDestroyed"),
+        STRUCTUREDESTROYED("StructureDestroyed"),
 
-        STRUCTURE_FUEL_ALERT("StructureFuelAlert"),
+        STRUCTUREFUELALERT("StructureFuelAlert"),
 
-        STRUCTURE_IMPENDING_ABANDONMENT_ASSETS_AT_RISK("StructureImpendingAbandonmentAssetsAtRisk"),
+        STRUCTUREIMPENDINGABANDONMENTASSETSATRISK("StructureImpendingAbandonmentAssetsAtRisk"),
 
-        STRUCTURE_ITEMS_DELIVERED("StructureItemsDelivered"),
+        STRUCTUREITEMSDELIVERED("StructureItemsDelivered"),
 
-        STRUCTURE_ITEMS_MOVED_TO_SAFETY("StructureItemsMovedToSafety"),
+        STRUCTUREITEMSMOVEDTOSAFETY("StructureItemsMovedToSafety"),
 
-        STRUCTURE_LOST_ARMOR("StructureLostArmor"),
+        STRUCTURELOSTARMOR("StructureLostArmor"),
 
-        STRUCTURE_LOST_SHIELDS("StructureLostShields"),
+        STRUCTURELOSTSHIELDS("StructureLostShields"),
 
-        STRUCTURE_LOW_REAGENTS_ALERT("StructureLowReagentsAlert"),
+        STRUCTURELOWREAGENTSALERT("StructureLowReagentsAlert"),
 
-        STRUCTURE_NO_REAGENTS_ALERT("StructureNoReagentsAlert"),
+        STRUCTURENOREAGENTSALERT("StructureNoReagentsAlert"),
 
-        STRUCTURE_ONLINE("StructureOnline"),
+        STRUCTUREONLINE("StructureOnline"),
 
-        STRUCTURE_PAINT_PURCHASED("StructurePaintPurchased"),
+        STRUCTUREPAINTPURCHASED("StructurePaintPurchased"),
 
-        STRUCTURE_SERVICES_OFFLINE("StructureServicesOffline"),
+        STRUCTURESERVICESOFFLINE("StructureServicesOffline"),
 
-        STRUCTURE_UNANCHORING("StructureUnanchoring"),
+        STRUCTUREUNANCHORING("StructureUnanchoring"),
 
-        STRUCTURE_UNDER_ATTACK("StructureUnderAttack"),
+        STRUCTUREUNDERATTACK("StructureUnderAttack"),
 
-        STRUCTURE_WENT_HIGH_POWER("StructureWentHighPower"),
+        STRUCTUREWENTHIGHPOWER("StructureWentHighPower"),
 
-        STRUCTURE_WENT_LOW_POWER("StructureWentLowPower"),
+        STRUCTUREWENTLOWPOWER("StructureWentLowPower"),
 
-        STRUCTURES_JOBS_CANCELLED("StructuresJobsCancelled"),
+        STRUCTURESJOBSCANCELLED("StructuresJobsCancelled"),
 
-        STRUCTURES_JOBS_PAUSED("StructuresJobsPaused"),
+        STRUCTURESJOBSPAUSED("StructuresJobsPaused"),
 
-        STRUCTURES_REINFORCEMENT_CHANGED("StructuresReinforcementChanged"),
+        STRUCTURESREINFORCEMENTCHANGED("StructuresReinforcementChanged"),
 
-        TOWER_ALERT_MSG("TowerAlertMsg"),
+        TOWERALERTMSG("TowerAlertMsg"),
 
-        TOWER_RESOURCE_ALERT_MSG("TowerResourceAlertMsg"),
+        TOWERRESOURCEALERTMSG("TowerResourceAlertMsg"),
 
-        TRANSACTION_REVERSAL_MSG("TransactionReversalMsg"),
+        TRANSACTIONREVERSALMSG("TransactionReversalMsg"),
 
-        TUTORIAL_MSG("TutorialMsg"),
+        TUTORIALMSG("TutorialMsg"),
 
-        WAR_ADOPTED_("WarAdopted "),
+        WARADOPTED_("WarAdopted "),
 
-        WAR_ALLY_INHERITED("WarAllyInherited"),
+        WARALLYINHERITED("WarAllyInherited"),
 
-        WAR_ALLY_OFFER_DECLINED_MSG("WarAllyOfferDeclinedMsg"),
+        WARALLYOFFERDECLINEDMSG("WarAllyOfferDeclinedMsg"),
 
-        WAR_CONCORD_INVALIDATES("WarConcordInvalidates"),
+        WARCONCORDINVALIDATES("WarConcordInvalidates"),
 
-        WAR_DECLARED("WarDeclared"),
+        WARDECLARED("WarDeclared"),
 
-        WAR_ENDED_HQ_SECURITY_DROP("WarEndedHqSecurityDrop"),
+        WARENDEDHQSECURITYDROP("WarEndedHqSecurityDrop"),
 
-        WAR_HQ_REMOVED_FROM_SPACE("WarHQRemovedFromSpace"),
+        WARHQREMOVEDFROMSPACE("WarHQRemovedFromSpace"),
 
-        WAR_INHERITED("WarInherited"),
+        WARINHERITED("WarInherited"),
 
-        WAR_INVALID("WarInvalid"),
+        WARINVALID("WarInvalid"),
 
-        WAR_RETRACTED("WarRetracted"),
+        WARRETRACTED("WarRetracted"),
 
-        WAR_RETRACTED_BY_CONCORD("WarRetractedByConcord"),
+        WARRETRACTEDBYCONCORD("WarRetractedByConcord"),
 
-        WAR_SURRENDER_DECLINED_MSG("WarSurrenderDeclinedMsg"),
+        WARSURRENDERDECLINEDMSG("WarSurrenderDeclinedMsg"),
 
-        WAR_SURRENDER_OFFER_MSG("WarSurrenderOfferMsg");
+        WARSURRENDEROFFERMSG("WarSurrenderOfferMsg");
 
         private String value;
 

@@ -71,175 +71,175 @@ public class CharacterAssetsResponse implements Serializable {
      */
     @JsonAdapter(LocationFlagEnum.Adapter.class)
     public enum LocationFlagEnum {
-        ASSET_SAFETY("AssetSafety"),
+        ASSETSAFETY("AssetSafety"),
 
-        AUTO_FIT("AutoFit"),
+        AUTOFIT("AutoFit"),
 
-        BOOSTER_BAY("BoosterBay"),
+        BOOSTERBAY("BoosterBay"),
 
         CARGO("Cargo"),
 
-        CORPORATION_GOAL_DELIVERIES("CorporationGoalDeliveries"),
+        CORPORATIONGOALDELIVERIES("CorporationGoalDeliveries"),
 
-        CORPSE_BAY("CorpseBay"),
+        CORPSEBAY("CorpseBay"),
 
         DELIVERIES("Deliveries"),
 
-        DRONE_BAY("DroneBay"),
+        DRONEBAY("DroneBay"),
 
-        FIGHTER_BAY("FighterBay"),
+        FIGHTERBAY("FighterBay"),
 
-        FIGHTER_TUBE0("FighterTube0"),
+        FIGHTERTUBE0("FighterTube0"),
 
-        FIGHTER_TUBE1("FighterTube1"),
+        FIGHTERTUBE1("FighterTube1"),
 
-        FIGHTER_TUBE2("FighterTube2"),
+        FIGHTERTUBE2("FighterTube2"),
 
-        FIGHTER_TUBE3("FighterTube3"),
+        FIGHTERTUBE3("FighterTube3"),
 
-        FIGHTER_TUBE4("FighterTube4"),
+        FIGHTERTUBE4("FighterTube4"),
 
-        FLEET_HANGAR("FleetHangar"),
+        FLEETHANGAR("FleetHangar"),
 
-        FRIGATE_ESCAPE_BAY("FrigateEscapeBay"),
+        FRIGATEESCAPEBAY("FrigateEscapeBay"),
 
         HANGAR("Hangar"),
 
-        HANGAR_ALL("HangarAll"),
+        HANGARALL("HangarAll"),
 
-        HI_SLOT0("HiSlot0"),
+        HISLOT0("HiSlot0"),
 
-        HI_SLOT1("HiSlot1"),
+        HISLOT1("HiSlot1"),
 
-        HI_SLOT2("HiSlot2"),
+        HISLOT2("HiSlot2"),
 
-        HI_SLOT3("HiSlot3"),
+        HISLOT3("HiSlot3"),
 
-        HI_SLOT4("HiSlot4"),
+        HISLOT4("HiSlot4"),
 
-        HI_SLOT5("HiSlot5"),
+        HISLOT5("HiSlot5"),
 
-        HI_SLOT6("HiSlot6"),
+        HISLOT6("HiSlot6"),
 
-        HI_SLOT7("HiSlot7"),
+        HISLOT7("HiSlot7"),
 
-        HIDDEN_MODIFIERS("HiddenModifiers"),
+        HIDDENMODIFIERS("HiddenModifiers"),
 
         IMPLANT("Implant"),
 
-        INFRASTRUCTURE_HANGAR("InfrastructureHangar"),
+        INFRASTRUCTUREHANGAR("InfrastructureHangar"),
 
-        LO_SLOT0("LoSlot0"),
+        LOSLOT0("LoSlot0"),
 
-        LO_SLOT1("LoSlot1"),
+        LOSLOT1("LoSlot1"),
 
-        LO_SLOT2("LoSlot2"),
+        LOSLOT2("LoSlot2"),
 
-        LO_SLOT3("LoSlot3"),
+        LOSLOT3("LoSlot3"),
 
-        LO_SLOT4("LoSlot4"),
+        LOSLOT4("LoSlot4"),
 
-        LO_SLOT5("LoSlot5"),
+        LOSLOT5("LoSlot5"),
 
-        LO_SLOT6("LoSlot6"),
+        LOSLOT6("LoSlot6"),
 
-        LO_SLOT7("LoSlot7"),
+        LOSLOT7("LoSlot7"),
 
         LOCKED("Locked"),
 
-        MED_SLOT0("MedSlot0"),
+        MEDSLOT0("MedSlot0"),
 
-        MED_SLOT1("MedSlot1"),
+        MEDSLOT1("MedSlot1"),
 
-        MED_SLOT2("MedSlot2"),
+        MEDSLOT2("MedSlot2"),
 
-        MED_SLOT3("MedSlot3"),
+        MEDSLOT3("MedSlot3"),
 
-        MED_SLOT4("MedSlot4"),
+        MEDSLOT4("MedSlot4"),
 
-        MED_SLOT5("MedSlot5"),
+        MEDSLOT5("MedSlot5"),
 
-        MED_SLOT6("MedSlot6"),
+        MEDSLOT6("MedSlot6"),
 
-        MED_SLOT7("MedSlot7"),
+        MEDSLOT7("MedSlot7"),
 
-        MOBILE_DEPOT_HOLD("MobileDepotHold"),
+        MOBILEDEPOTHOLD("MobileDepotHold"),
 
-        MOON_MATERIAL_BAY("MoonMaterialBay"),
+        MOONMATERIALBAY("MoonMaterialBay"),
 
-        QUAFE_BAY("QuafeBay"),
+        QUAFEBAY("QuafeBay"),
 
-        RIG_SLOT0("RigSlot0"),
+        RIGSLOT0("RigSlot0"),
 
-        RIG_SLOT1("RigSlot1"),
+        RIGSLOT1("RigSlot1"),
 
-        RIG_SLOT2("RigSlot2"),
+        RIGSLOT2("RigSlot2"),
 
-        RIG_SLOT3("RigSlot3"),
+        RIGSLOT3("RigSlot3"),
 
-        RIG_SLOT4("RigSlot4"),
+        RIGSLOT4("RigSlot4"),
 
-        RIG_SLOT5("RigSlot5"),
+        RIGSLOT5("RigSlot5"),
 
-        RIG_SLOT6("RigSlot6"),
+        RIGSLOT6("RigSlot6"),
 
-        RIG_SLOT7("RigSlot7"),
+        RIGSLOT7("RigSlot7"),
 
-        SHIP_HANGAR("ShipHangar"),
+        SHIPHANGAR("ShipHangar"),
 
         SKILL("Skill"),
 
-        SPECIALIZED_AMMO_HOLD("SpecializedAmmoHold"),
+        SPECIALIZEDAMMOHOLD("SpecializedAmmoHold"),
 
-        SPECIALIZED_ASTEROID_HOLD("SpecializedAsteroidHold"),
+        SPECIALIZEDASTEROIDHOLD("SpecializedAsteroidHold"),
 
-        SPECIALIZED_COMMAND_CENTER_HOLD("SpecializedCommandCenterHold"),
+        SPECIALIZEDCOMMANDCENTERHOLD("SpecializedCommandCenterHold"),
 
-        SPECIALIZED_FUEL_BAY("SpecializedFuelBay"),
+        SPECIALIZEDFUELBAY("SpecializedFuelBay"),
 
-        SPECIALIZED_GAS_HOLD("SpecializedGasHold"),
+        SPECIALIZEDGASHOLD("SpecializedGasHold"),
 
-        SPECIALIZED_ICE_HOLD("SpecializedIceHold"),
+        SPECIALIZEDICEHOLD("SpecializedIceHold"),
 
-        SPECIALIZED_INDUSTRIAL_SHIP_HOLD("SpecializedIndustrialShipHold"),
+        SPECIALIZEDINDUSTRIALSHIPHOLD("SpecializedIndustrialShipHold"),
 
-        SPECIALIZED_LARGE_SHIP_HOLD("SpecializedLargeShipHold"),
+        SPECIALIZEDLARGESHIPHOLD("SpecializedLargeShipHold"),
 
-        SPECIALIZED_MATERIAL_BAY("SpecializedMaterialBay"),
+        SPECIALIZEDMATERIALBAY("SpecializedMaterialBay"),
 
-        SPECIALIZED_MEDIUM_SHIP_HOLD("SpecializedMediumShipHold"),
+        SPECIALIZEDMEDIUMSHIPHOLD("SpecializedMediumShipHold"),
 
-        SPECIALIZED_MINERAL_HOLD("SpecializedMineralHold"),
+        SPECIALIZEDMINERALHOLD("SpecializedMineralHold"),
 
-        SPECIALIZED_ORE_HOLD("SpecializedOreHold"),
+        SPECIALIZEDOREHOLD("SpecializedOreHold"),
 
-        SPECIALIZED_PLANETARY_COMMODITIES_HOLD("SpecializedPlanetaryCommoditiesHold"),
+        SPECIALIZEDPLANETARYCOMMODITIESHOLD("SpecializedPlanetaryCommoditiesHold"),
 
-        SPECIALIZED_SALVAGE_HOLD("SpecializedSalvageHold"),
+        SPECIALIZEDSALVAGEHOLD("SpecializedSalvageHold"),
 
-        SPECIALIZED_SHIP_HOLD("SpecializedShipHold"),
+        SPECIALIZEDSHIPHOLD("SpecializedShipHold"),
 
-        SPECIALIZED_SMALL_SHIP_HOLD("SpecializedSmallShipHold"),
+        SPECIALIZEDSMALLSHIPHOLD("SpecializedSmallShipHold"),
 
-        STRUCTURE_DEED_BAY("StructureDeedBay"),
+        STRUCTUREDEEDBAY("StructureDeedBay"),
 
-        SUB_SYSTEM_BAY("SubSystemBay"),
+        SUBSYSTEMBAY("SubSystemBay"),
 
-        SUB_SYSTEM_SLOT0("SubSystemSlot0"),
+        SUBSYSTEMSLOT0("SubSystemSlot0"),
 
-        SUB_SYSTEM_SLOT1("SubSystemSlot1"),
+        SUBSYSTEMSLOT1("SubSystemSlot1"),
 
-        SUB_SYSTEM_SLOT2("SubSystemSlot2"),
+        SUBSYSTEMSLOT2("SubSystemSlot2"),
 
-        SUB_SYSTEM_SLOT3("SubSystemSlot3"),
+        SUBSYSTEMSLOT3("SubSystemSlot3"),
 
-        SUB_SYSTEM_SLOT4("SubSystemSlot4"),
+        SUBSYSTEMSLOT4("SubSystemSlot4"),
 
-        SUB_SYSTEM_SLOT5("SubSystemSlot5"),
+        SUBSYSTEMSLOT5("SubSystemSlot5"),
 
-        SUB_SYSTEM_SLOT6("SubSystemSlot6"),
+        SUBSYSTEMSLOT6("SubSystemSlot6"),
 
-        SUB_SYSTEM_SLOT7("SubSystemSlot7"),
+        SUBSYSTEMSLOT7("SubSystemSlot7"),
 
         UNLOCKED("Unlocked"),
 

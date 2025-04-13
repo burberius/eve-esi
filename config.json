@@ -7,5 +7,6 @@
   "library":"okhttp-gson",
   "serializableModel":"true",
   "hideGenerationTimestamp":"true",
-  "dateLibrary":"java8"
+  "dateLibrary":"java8",
+  "enumPropertyNaming":"legacy"
 }
