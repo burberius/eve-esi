@@ -129,7 +129,7 @@ public class CorporationContactsResponse implements Serializable {
     public static final String SERIALIZED_NAME_LABEL_IDS = "label_ids";
     @SerializedName(SERIALIZED_NAME_LABEL_IDS)
     @javax.annotation.Nullable
-    private List<Long> labelIds = new ArrayList<>();
+    private List<Long> labelIds;
 
     public static final String SERIALIZED_NAME_STANDING = "standing";
     @SerializedName(SERIALIZED_NAME_STANDING)

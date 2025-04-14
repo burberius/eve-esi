@@ -63,7 +63,7 @@ public class CharacterFitting implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nonnull
-    private List<FittingItem> items = new ArrayList<>();
+    private List<FittingItem> items;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)

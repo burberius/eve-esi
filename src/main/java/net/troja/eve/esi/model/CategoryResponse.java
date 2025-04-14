@@ -62,7 +62,7 @@ public class CategoryResponse implements Serializable {
     public static final String SERIALIZED_NAME_GROUPS = "groups";
     @SerializedName(SERIALIZED_NAME_GROUPS)
     @javax.annotation.Nonnull
-    private List<Integer> groups = new ArrayList<>();
+    private List<Integer> groups;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)

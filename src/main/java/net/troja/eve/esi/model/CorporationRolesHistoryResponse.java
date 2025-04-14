@@ -229,8 +229,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
     public static final String SERIALIZED_NAME_NEW_ROLES = "new_roles";
     @SerializedName(SERIALIZED_NAME_NEW_ROLES)
     @javax.annotation.Nonnull
-    private List<String> newRoles = new ArrayList<>();
-    private List<NewRolesEnum> newRolesEnum = new ArrayList<>();
+    private List<String> newRoles;
+    private List<NewRolesEnum> newRolesEnum;
 
     /**
      * old_role string
@@ -391,8 +391,8 @@ public class CorporationRolesHistoryResponse implements Serializable {
     public static final String SERIALIZED_NAME_OLD_ROLES = "old_roles";
     @SerializedName(SERIALIZED_NAME_OLD_ROLES)
     @javax.annotation.Nonnull
-    private List<String> oldRoles = new ArrayList<>();
-    private List<OldRolesEnum> oldRolesEnum = new ArrayList<>();
+    private List<String> oldRoles;
+    private List<OldRolesEnum> oldRolesEnum;
 
     /**
      * role_type string

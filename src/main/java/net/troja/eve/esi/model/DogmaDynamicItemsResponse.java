@@ -64,12 +64,12 @@ public class DogmaDynamicItemsResponse implements Serializable {
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
     @javax.annotation.Nonnull
-    private List<DogmaDynamicAttribute> dogmaAttributes = new ArrayList<>();
+    private List<DogmaDynamicAttribute> dogmaAttributes;
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
     @javax.annotation.Nonnull
-    private List<DogmaDynamicEffect> dogmaEffects = new ArrayList<>();
+    private List<DogmaDynamicEffect> dogmaEffects;
 
     public static final String SERIALIZED_NAME_MUTATOR_TYPE_ID = "mutator_type_id";
     @SerializedName(SERIALIZED_NAME_MUTATOR_TYPE_ID)

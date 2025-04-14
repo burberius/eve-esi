@@ -68,7 +68,7 @@ public class PlanetExtractorDetails implements Serializable {
     public static final String SERIALIZED_NAME_HEADS = "heads";
     @SerializedName(SERIALIZED_NAME_HEADS)
     @javax.annotation.Nonnull
-    private List<PlanetHead> heads = new ArrayList<>();
+    private List<PlanetHead> heads;
 
     public static final String SERIALIZED_NAME_PRODUCT_TYPE_ID = "product_type_id";
     @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE_ID)

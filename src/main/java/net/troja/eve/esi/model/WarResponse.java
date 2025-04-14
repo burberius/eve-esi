@@ -66,7 +66,7 @@ public class WarResponse implements Serializable {
     public static final String SERIALIZED_NAME_ALLIES = "allies";
     @SerializedName(SERIALIZED_NAME_ALLIES)
     @javax.annotation.Nullable
-    private List<WarAlly> allies = new ArrayList<>();
+    private List<WarAlly> allies;
 
     public static final String SERIALIZED_NAME_DECLARED = "declared";
     @SerializedName(SERIALIZED_NAME_DECLARED)

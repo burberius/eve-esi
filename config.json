@@ -8,5 +8,6 @@
   "serializableModel":"true",
   "hideGenerationTimestamp":"true",
   "dateLibrary":"java8",
-  "enumPropertyNaming":"legacy"
+  "enumPropertyNaming":"legacy",
+  "containerDefaultToNull":"true"
 }

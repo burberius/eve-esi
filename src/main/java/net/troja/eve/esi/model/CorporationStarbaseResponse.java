@@ -277,7 +277,7 @@ public class CorporationStarbaseResponse implements Serializable {
     public static final String SERIALIZED_NAME_FUELS = "fuels";
     @SerializedName(SERIALIZED_NAME_FUELS)
     @javax.annotation.Nullable
-    private List<CorporationStarbaseFuel> fuels = new ArrayList<>();
+    private List<CorporationStarbaseFuel> fuels;
 
     /**
      * Who can offline starbase (POS) and its structures

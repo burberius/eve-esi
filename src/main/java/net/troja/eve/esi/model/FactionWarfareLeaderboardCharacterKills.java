@@ -61,17 +61,17 @@ public class FactionWarfareLeaderboardCharacterKills implements Serializable {
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCharactersActiveTotalKills> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCharactersLastWeekKills> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCharactersYesterdayKills> yesterday;
 
     public FactionWarfareLeaderboardCharacterKills() {
     }

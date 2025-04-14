@@ -57,12 +57,12 @@ public class SystemPlanet implements Serializable {
     public static final String SERIALIZED_NAME_ASTEROID_BELTS = "asteroid_belts";
     @SerializedName(SERIALIZED_NAME_ASTEROID_BELTS)
     @javax.annotation.Nullable
-    private List<Integer> asteroidBelts = new ArrayList<>();
+    private List<Integer> asteroidBelts;
 
     public static final String SERIALIZED_NAME_MOONS = "moons";
     @SerializedName(SERIALIZED_NAME_MOONS)
     @javax.annotation.Nullable
-    private List<Integer> moons = new ArrayList<>();
+    private List<Integer> moons;
 
     public static final String SERIALIZED_NAME_PLANET_ID = "planet_id";
     @SerializedName(SERIALIZED_NAME_PLANET_ID)

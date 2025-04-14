@@ -57,7 +57,7 @@ public class MailMetaData implements Serializable {
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
     @javax.annotation.Nullable
-    private List<Integer> labels = new ArrayList<>();
+    private List<Integer> labels;
 
     public static final String SERIALIZED_NAME_READ = "read";
     @SerializedName(SERIALIZED_NAME_READ)

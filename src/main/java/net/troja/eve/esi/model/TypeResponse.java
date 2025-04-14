@@ -69,12 +69,12 @@ public class TypeResponse implements Serializable {
     public static final String SERIALIZED_NAME_DOGMA_ATTRIBUTES = "dogma_attributes";
     @SerializedName(SERIALIZED_NAME_DOGMA_ATTRIBUTES)
     @javax.annotation.Nullable
-    private List<TypeDogmaAttribute> dogmaAttributes = new ArrayList<>();
+    private List<TypeDogmaAttribute> dogmaAttributes;
 
     public static final String SERIALIZED_NAME_DOGMA_EFFECTS = "dogma_effects";
     @SerializedName(SERIALIZED_NAME_DOGMA_EFFECTS)
     @javax.annotation.Nullable
-    private List<TypeDogmaEffect> dogmaEffects = new ArrayList<>();
+    private List<TypeDogmaEffect> dogmaEffects;
 
     public static final String SERIALIZED_NAME_GRAPHIC_ID = "graphic_id";
     @SerializedName(SERIALIZED_NAME_GRAPHIC_ID)

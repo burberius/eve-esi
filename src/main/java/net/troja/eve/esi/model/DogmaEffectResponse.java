@@ -123,7 +123,7 @@ public class DogmaEffectResponse implements Serializable {
     public static final String SERIALIZED_NAME_MODIFIERS = "modifiers";
     @SerializedName(SERIALIZED_NAME_MODIFIERS)
     @javax.annotation.Nullable
-    private List<DogmaEffectModifier> modifiers = new ArrayList<>();
+    private List<DogmaEffectModifier> modifiers;
 
     public static final String SERIALIZED_NAME_NAME = "name";
     @SerializedName(SERIALIZED_NAME_NAME)

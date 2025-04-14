@@ -218,8 +218,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES = "grantable_roles";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES)
     @javax.annotation.Nullable
-    private List<String> grantableRoles = new ArrayList<>();
-    private List<GrantableRolesEnum> grantableRolesEnum = new ArrayList<>();
+    private List<String> grantableRoles;
+    private List<GrantableRolesEnum> grantableRolesEnum;
 
     /**
      * grantable_roles_at_base string
@@ -381,8 +381,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE = "grantable_roles_at_base";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_BASE)
     @javax.annotation.Nullable
-    private List<String> grantableRolesAtBase = new ArrayList<>();
-    private List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum = new ArrayList<>();
+    private List<String> grantableRolesAtBase;
+    private List<GrantableRolesAtBaseEnum> grantableRolesAtBaseEnum;
 
     /**
      * grantable_roles_at_hq string
@@ -543,8 +543,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ = "grantable_roles_at_hq";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_HQ)
     @javax.annotation.Nullable
-    private List<String> grantableRolesAtHq = new ArrayList<>();
-    private List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum = new ArrayList<>();
+    private List<String> grantableRolesAtHq;
+    private List<GrantableRolesAtHqEnum> grantableRolesAtHqEnum;
 
     /**
      * grantable_roles_at_other string
@@ -706,8 +706,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER = "grantable_roles_at_other";
     @SerializedName(SERIALIZED_NAME_GRANTABLE_ROLES_AT_OTHER)
     @javax.annotation.Nullable
-    private List<String> grantableRolesAtOther = new ArrayList<>();
-    private List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum = new ArrayList<>();
+    private List<String> grantableRolesAtOther;
+    private List<GrantableRolesAtOtherEnum> grantableRolesAtOtherEnum;
 
     /**
      * role string
@@ -868,8 +868,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
     @javax.annotation.Nullable
-    private List<String> roles = new ArrayList<>();
-    private List<RolesEnum> rolesEnum = new ArrayList<>();
+    private List<String> roles;
+    private List<RolesEnum> rolesEnum;
 
     /**
      * roles_at_base string
@@ -1030,8 +1030,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
     @javax.annotation.Nullable
-    private List<String> rolesAtBase = new ArrayList<>();
-    private List<RolesAtBaseEnum> rolesAtBaseEnum = new ArrayList<>();
+    private List<String> rolesAtBase;
+    private List<RolesAtBaseEnum> rolesAtBaseEnum;
 
     /**
      * roles_at_hq string
@@ -1192,8 +1192,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
     @javax.annotation.Nullable
-    private List<String> rolesAtHq = new ArrayList<>();
-    private List<RolesAtHqEnum> rolesAtHqEnum = new ArrayList<>();
+    private List<String> rolesAtHq;
+    private List<RolesAtHqEnum> rolesAtHqEnum;
 
     /**
      * roles_at_other string
@@ -1354,8 +1354,8 @@ public class CorporationRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
     @javax.annotation.Nullable
-    private List<String> rolesAtOther = new ArrayList<>();
-    private List<RolesAtOtherEnum> rolesAtOtherEnum = new ArrayList<>();
+    private List<String> rolesAtOther;
+    private List<RolesAtOtherEnum> rolesAtOtherEnum;
 
     public CorporationRolesResponse() {
     }

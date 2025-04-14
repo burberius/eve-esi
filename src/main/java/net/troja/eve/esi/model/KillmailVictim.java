@@ -84,7 +84,7 @@ public class KillmailVictim implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nullable
-    private List<KillmailItem> items = new ArrayList<>();
+    private List<KillmailItem> items;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)

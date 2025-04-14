@@ -59,12 +59,12 @@ public class CorporationDivisionsResponse implements Serializable {
     public static final String SERIALIZED_NAME_HANGAR = "hangar";
     @SerializedName(SERIALIZED_NAME_HANGAR)
     @javax.annotation.Nullable
-    private List<CorporationDivisionsHangar> hangar = new ArrayList<>();
+    private List<CorporationDivisionsHangar> hangar;
 
     public static final String SERIALIZED_NAME_WALLET = "wallet";
     @SerializedName(SERIALIZED_NAME_WALLET)
     @javax.annotation.Nullable
-    private List<CorporationDivisionsWallet> wallet = new ArrayList<>();
+    private List<CorporationDivisionsWallet> wallet;
 
     public CorporationDivisionsResponse() {
     }

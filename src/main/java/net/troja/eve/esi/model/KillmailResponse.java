@@ -60,7 +60,7 @@ public class KillmailResponse implements Serializable {
     public static final String SERIALIZED_NAME_ATTACKERS = "attackers";
     @SerializedName(SERIALIZED_NAME_ATTACKERS)
     @javax.annotation.Nonnull
-    private List<KillmailAttacker> attackers = new ArrayList<>();
+    private List<KillmailAttacker> attackers;
 
     public static final String SERIALIZED_NAME_KILLMAIL_ID = "killmail_id";
     @SerializedName(SERIALIZED_NAME_KILLMAIL_ID)

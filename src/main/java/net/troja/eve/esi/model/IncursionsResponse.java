@@ -72,7 +72,7 @@ public class IncursionsResponse implements Serializable {
     public static final String SERIALIZED_NAME_INFESTED_SOLAR_SYSTEMS = "infested_solar_systems";
     @SerializedName(SERIALIZED_NAME_INFESTED_SOLAR_SYSTEMS)
     @javax.annotation.Nonnull
-    private List<Integer> infestedSolarSystems = new ArrayList<>();
+    private List<Integer> infestedSolarSystems;
 
     public static final String SERIALIZED_NAME_INFLUENCE = "influence";
     @SerializedName(SERIALIZED_NAME_INFLUENCE)

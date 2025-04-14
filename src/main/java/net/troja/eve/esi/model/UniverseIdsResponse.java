@@ -67,52 +67,52 @@ public class UniverseIdsResponse implements Serializable {
     public static final String SERIALIZED_NAME_AGENTS = "agents";
     @SerializedName(SERIALIZED_NAME_AGENTS)
     @javax.annotation.Nullable
-    private List<UniverseIdsAgent> agents = new ArrayList<>();
+    private List<UniverseIdsAgent> agents;
 
     public static final String SERIALIZED_NAME_ALLIANCES = "alliances";
     @SerializedName(SERIALIZED_NAME_ALLIANCES)
     @javax.annotation.Nullable
-    private List<UniverseIdsAlliance> alliances = new ArrayList<>();
+    private List<UniverseIdsAlliance> alliances;
 
     public static final String SERIALIZED_NAME_CHARACTERS = "characters";
     @SerializedName(SERIALIZED_NAME_CHARACTERS)
     @javax.annotation.Nullable
-    private List<UniverseIdsCharacter> characters = new ArrayList<>();
+    private List<UniverseIdsCharacter> characters;
 
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsConstellation> constellations = new ArrayList<>();
+    private List<UniverseIdsConstellation> constellations;
 
     public static final String SERIALIZED_NAME_CORPORATIONS = "corporations";
     @SerializedName(SERIALIZED_NAME_CORPORATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsCorporation> corporations = new ArrayList<>();
+    private List<UniverseIdsCorporation> corporations;
 
     public static final String SERIALIZED_NAME_FACTIONS = "factions";
     @SerializedName(SERIALIZED_NAME_FACTIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsFaction> factions = new ArrayList<>();
+    private List<UniverseIdsFaction> factions;
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPES = "inventory_types";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPES)
     @javax.annotation.Nullable
-    private List<UniverseIdsInventoryType> inventoryTypes = new ArrayList<>();
+    private List<UniverseIdsInventoryType> inventoryTypes;
 
     public static final String SERIALIZED_NAME_REGIONS = "regions";
     @SerializedName(SERIALIZED_NAME_REGIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsRegion> regions = new ArrayList<>();
+    private List<UniverseIdsRegion> regions;
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
     @javax.annotation.Nullable
-    private List<UniverseIdsStation> stations = new ArrayList<>();
+    private List<UniverseIdsStation> stations;
 
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
     @javax.annotation.Nullable
-    private List<UniverseIdsSystem> systems = new ArrayList<>();
+    private List<UniverseIdsSystem> systems;
 
     public UniverseIdsResponse() {
     }

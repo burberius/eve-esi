@@ -94,7 +94,7 @@ public class CorporationStructuresResponse implements Serializable {
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
     @javax.annotation.Nullable
-    private List<StructureService> services = new ArrayList<>();
+    private List<StructureService> services;
 
     /**
      * state string

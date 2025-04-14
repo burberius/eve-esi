@@ -58,7 +58,7 @@ public class IndustrySystemsResponse implements Serializable {
     public static final String SERIALIZED_NAME_COST_INDICES = "cost_indices";
     @SerializedName(SERIALIZED_NAME_COST_INDICES)
     @javax.annotation.Nonnull
-    private List<SystemCostIndice> costIndices = new ArrayList<>();
+    private List<SystemCostIndice> costIndices;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)

@@ -61,17 +61,17 @@ public class FactionWarfareLeaderboardVictoryPoints implements Serializable {
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardActiveTotalVictoryPoints> activeTotal = new ArrayList<>();
+    private List<FactionWarfareLeaderboardActiveTotalVictoryPoints> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardLastWeekVictoryPoints> lastWeek = new ArrayList<>();
+    private List<FactionWarfareLeaderboardLastWeekVictoryPoints> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardYesterdayVictoryPoints> yesterday = new ArrayList<>();
+    private List<FactionWarfareLeaderboardYesterdayVictoryPoints> yesterday;
 
     public FactionWarfareLeaderboardVictoryPoints() {
     }

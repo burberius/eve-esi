@@ -78,7 +78,7 @@ public class ConstellationResponse implements Serializable {
     public static final String SERIALIZED_NAME_SYSTEMS = "systems";
     @SerializedName(SERIALIZED_NAME_SYSTEMS)
     @javax.annotation.Nonnull
-    private List<Integer> systems = new ArrayList<>();
+    private List<Integer> systems;
 
     public ConstellationResponse() {
     }

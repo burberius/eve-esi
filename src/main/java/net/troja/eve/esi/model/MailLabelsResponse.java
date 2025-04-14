@@ -58,7 +58,7 @@ public class MailLabelsResponse implements Serializable {
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
     @javax.annotation.Nullable
-    private List<MailLabel> labels = new ArrayList<>();
+    private List<MailLabel> labels;
 
     public static final String SERIALIZED_NAME_TOTAL_UNREAD_COUNT = "total_unread_count";
     @SerializedName(SERIALIZED_NAME_TOTAL_UNREAD_COUNT)

@@ -65,7 +65,7 @@ public class CharacterClonesResponse implements Serializable {
     public static final String SERIALIZED_NAME_JUMP_CLONES = "jump_clones";
     @SerializedName(SERIALIZED_NAME_JUMP_CLONES)
     @javax.annotation.Nonnull
-    private List<Clone> jumpClones = new ArrayList<>();
+    private List<Clone> jumpClones;
 
     public static final String SERIALIZED_NAME_LAST_CLONE_JUMP_DATE = "last_clone_jump_date";
     @SerializedName(SERIALIZED_NAME_LAST_CLONE_JUMP_DATE)

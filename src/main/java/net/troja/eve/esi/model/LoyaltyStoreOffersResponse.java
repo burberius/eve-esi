@@ -83,7 +83,7 @@ public class LoyaltyStoreOffersResponse implements Serializable {
     public static final String SERIALIZED_NAME_REQUIRED_ITEMS = "required_items";
     @SerializedName(SERIALIZED_NAME_REQUIRED_ITEMS)
     @javax.annotation.Nonnull
-    private List<RequiredItem> requiredItems = new ArrayList<>();
+    private List<RequiredItem> requiredItems;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)

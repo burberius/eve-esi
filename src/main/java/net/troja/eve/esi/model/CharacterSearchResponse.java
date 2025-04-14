@@ -57,57 +57,57 @@ public class CharacterSearchResponse implements Serializable {
     public static final String SERIALIZED_NAME_AGENT = "agent";
     @SerializedName(SERIALIZED_NAME_AGENT)
     @javax.annotation.Nullable
-    private List<Integer> agent = new ArrayList<>();
+    private List<Integer> agent;
 
     public static final String SERIALIZED_NAME_ALLIANCE = "alliance";
     @SerializedName(SERIALIZED_NAME_ALLIANCE)
     @javax.annotation.Nullable
-    private List<Integer> alliance = new ArrayList<>();
+    private List<Integer> alliance;
 
     public static final String SERIALIZED_NAME_CHARACTER = "character";
     @SerializedName(SERIALIZED_NAME_CHARACTER)
     @javax.annotation.Nullable
-    private List<Integer> character = new ArrayList<>();
+    private List<Integer> character;
 
     public static final String SERIALIZED_NAME_CONSTELLATION = "constellation";
     @SerializedName(SERIALIZED_NAME_CONSTELLATION)
     @javax.annotation.Nullable
-    private List<Integer> constellation = new ArrayList<>();
+    private List<Integer> constellation;
 
     public static final String SERIALIZED_NAME_CORPORATION = "corporation";
     @SerializedName(SERIALIZED_NAME_CORPORATION)
     @javax.annotation.Nullable
-    private List<Integer> corporation = new ArrayList<>();
+    private List<Integer> corporation;
 
     public static final String SERIALIZED_NAME_FACTION = "faction";
     @SerializedName(SERIALIZED_NAME_FACTION)
     @javax.annotation.Nullable
-    private List<Integer> faction = new ArrayList<>();
+    private List<Integer> faction;
 
     public static final String SERIALIZED_NAME_INVENTORY_TYPE = "inventory_type";
     @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
     @javax.annotation.Nullable
-    private List<Integer> inventoryType = new ArrayList<>();
+    private List<Integer> inventoryType;
 
     public static final String SERIALIZED_NAME_REGION = "region";
     @SerializedName(SERIALIZED_NAME_REGION)
     @javax.annotation.Nullable
-    private List<Integer> region = new ArrayList<>();
+    private List<Integer> region;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM = "solar_system";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM)
     @javax.annotation.Nullable
-    private List<Integer> solarSystem = new ArrayList<>();
+    private List<Integer> solarSystem;
 
     public static final String SERIALIZED_NAME_STATION = "station";
     @SerializedName(SERIALIZED_NAME_STATION)
     @javax.annotation.Nullable
-    private List<Integer> station = new ArrayList<>();
+    private List<Integer> station;
 
     public static final String SERIALIZED_NAME_STRUCTURE = "structure";
     @SerializedName(SERIALIZED_NAME_STRUCTURE)
     @javax.annotation.Nullable
-    private List<Long> structure = new ArrayList<>();
+    private List<Long> structure;
 
     public CharacterSearchResponse() {
     }

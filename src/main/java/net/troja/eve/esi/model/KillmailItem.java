@@ -68,7 +68,7 @@ public class KillmailItem implements Serializable {
     public static final String SERIALIZED_NAME_ITEMS = "items";
     @SerializedName(SERIALIZED_NAME_ITEMS)
     @javax.annotation.Nullable
-    private List<KillmailSubItem> items = new ArrayList<>();
+    private List<KillmailSubItem> items;
 
     public static final String SERIALIZED_NAME_QUANTITY_DESTROYED = "quantity_destroyed";
     @SerializedName(SERIALIZED_NAME_QUANTITY_DESTROYED)

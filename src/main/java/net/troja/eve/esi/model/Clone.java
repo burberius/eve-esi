@@ -57,7 +57,7 @@ public class Clone implements Serializable {
     public static final String SERIALIZED_NAME_IMPLANTS = "implants";
     @SerializedName(SERIALIZED_NAME_IMPLANTS)
     @javax.annotation.Nonnull
-    private List<Integer> implants = new ArrayList<>();
+    private List<Integer> implants;
 
     public static final String SERIALIZED_NAME_JUMP_CLONE_ID = "jump_clone_id";
     @SerializedName(SERIALIZED_NAME_JUMP_CLONE_ID)

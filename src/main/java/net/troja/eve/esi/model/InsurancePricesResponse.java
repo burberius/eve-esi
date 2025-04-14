@@ -58,7 +58,7 @@ public class InsurancePricesResponse implements Serializable {
     public static final String SERIALIZED_NAME_LEVELS = "levels";
     @SerializedName(SERIALIZED_NAME_LEVELS)
     @javax.annotation.Nonnull
-    private List<InsurancePriceLevel> levels = new ArrayList<>();
+    private List<InsurancePriceLevel> levels;
 
     public static final String SERIALIZED_NAME_TYPE_ID = "type_id";
     @SerializedName(SERIALIZED_NAME_TYPE_ID)

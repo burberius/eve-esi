@@ -69,7 +69,7 @@ public class SystemResponse implements Serializable {
     public static final String SERIALIZED_NAME_PLANETS = "planets";
     @SerializedName(SERIALIZED_NAME_PLANETS)
     @javax.annotation.Nullable
-    private List<SystemPlanet> planets = new ArrayList<>();
+    private List<SystemPlanet> planets;
 
     public static final String SERIALIZED_NAME_POSITION = "position";
     @SerializedName(SERIALIZED_NAME_POSITION)
@@ -94,12 +94,12 @@ public class SystemResponse implements Serializable {
     public static final String SERIALIZED_NAME_STARGATES = "stargates";
     @SerializedName(SERIALIZED_NAME_STARGATES)
     @javax.annotation.Nullable
-    private List<Integer> stargates = new ArrayList<>();
+    private List<Integer> stargates;
 
     public static final String SERIALIZED_NAME_STATIONS = "stations";
     @SerializedName(SERIALIZED_NAME_STATIONS)
     @javax.annotation.Nullable
-    private List<Integer> stations = new ArrayList<>();
+    private List<Integer> stations;
 
     public static final String SERIALIZED_NAME_SYSTEM_ID = "system_id";
     @SerializedName(SERIALIZED_NAME_SYSTEM_ID)

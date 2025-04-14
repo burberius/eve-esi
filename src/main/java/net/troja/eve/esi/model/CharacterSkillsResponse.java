@@ -58,7 +58,7 @@ public class CharacterSkillsResponse implements Serializable {
     public static final String SERIALIZED_NAME_SKILLS = "skills";
     @SerializedName(SERIALIZED_NAME_SKILLS)
     @javax.annotation.Nonnull
-    private List<Skill> skills = new ArrayList<>();
+    private List<Skill> skills;
 
     public static final String SERIALIZED_NAME_TOTAL_SP = "total_sp";
     @SerializedName(SERIALIZED_NAME_TOTAL_SP)

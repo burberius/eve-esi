@@ -200,8 +200,8 @@ public class StationResponse implements Serializable {
     public static final String SERIALIZED_NAME_SERVICES = "services";
     @SerializedName(SERIALIZED_NAME_SERVICES)
     @javax.annotation.Nonnull
-    private List<String> services = new ArrayList<>();
-    private List<ServicesEnum> servicesEnum = new ArrayList<>();
+    private List<String> services;
+    private List<ServicesEnum> servicesEnum;
 
     public static final String SERIALIZED_NAME_STATION_ID = "station_id";
     @SerializedName(SERIALIZED_NAME_STATION_ID)

@@ -60,17 +60,17 @@ public class CharacterPlanetResponse implements Serializable {
     public static final String SERIALIZED_NAME_LINKS = "links";
     @SerializedName(SERIALIZED_NAME_LINKS)
     @javax.annotation.Nonnull
-    private List<PlanetLink> links = new ArrayList<>();
+    private List<PlanetLink> links;
 
     public static final String SERIALIZED_NAME_PINS = "pins";
     @SerializedName(SERIALIZED_NAME_PINS)
     @javax.annotation.Nonnull
-    private List<PlanetPin> pins = new ArrayList<>();
+    private List<PlanetPin> pins;
 
     public static final String SERIALIZED_NAME_ROUTES = "routes";
     @SerializedName(SERIALIZED_NAME_ROUTES)
     @javax.annotation.Nonnull
-    private List<PlanetRoute> routes = new ArrayList<>();
+    private List<PlanetRoute> routes;
 
     public CharacterPlanetResponse() {
     }

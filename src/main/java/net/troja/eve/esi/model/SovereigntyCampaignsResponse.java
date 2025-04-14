@@ -148,7 +148,7 @@ public class SovereigntyCampaignsResponse implements Serializable {
     public static final String SERIALIZED_NAME_PARTICIPANTS = "participants";
     @SerializedName(SERIALIZED_NAME_PARTICIPANTS)
     @javax.annotation.Nullable
-    private List<SovereigntyCampaignParticipant> participants = new ArrayList<>();
+    private List<SovereigntyCampaignParticipant> participants;
 
     public static final String SERIALIZED_NAME_SOLAR_SYSTEM_ID = "solar_system_id";
     @SerializedName(SERIALIZED_NAME_SOLAR_SYSTEM_ID)

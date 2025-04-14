@@ -57,7 +57,7 @@ public class RegionResponse implements Serializable {
     public static final String SERIALIZED_NAME_CONSTELLATIONS = "constellations";
     @SerializedName(SERIALIZED_NAME_CONSTELLATIONS)
     @javax.annotation.Nonnull
-    private List<Integer> constellations = new ArrayList<>();
+    private List<Integer> constellations;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "description";
     @SerializedName(SERIALIZED_NAME_DESCRIPTION)

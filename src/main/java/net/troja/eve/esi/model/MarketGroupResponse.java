@@ -77,7 +77,7 @@ public class MarketGroupResponse implements Serializable {
     public static final String SERIALIZED_NAME_TYPES = "types";
     @SerializedName(SERIALIZED_NAME_TYPES)
     @javax.annotation.Nonnull
-    private List<Integer> types = new ArrayList<>();
+    private List<Integer> types;
 
     public MarketGroupResponse() {
     }

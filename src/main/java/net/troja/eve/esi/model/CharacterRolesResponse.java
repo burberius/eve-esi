@@ -213,8 +213,8 @@ public class CharacterRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES = "roles";
     @SerializedName(SERIALIZED_NAME_ROLES)
     @javax.annotation.Nullable
-    private List<String> roles = new ArrayList<>();
-    private List<RolesEnum> rolesEnum = new ArrayList<>();
+    private List<String> roles;
+    private List<RolesEnum> rolesEnum;
 
     /**
      * roles_at_base string
@@ -375,8 +375,8 @@ public class CharacterRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_BASE = "roles_at_base";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_BASE)
     @javax.annotation.Nullable
-    private List<String> rolesAtBase = new ArrayList<>();
-    private List<RolesAtBaseEnum> rolesAtBaseEnum = new ArrayList<>();
+    private List<String> rolesAtBase;
+    private List<RolesAtBaseEnum> rolesAtBaseEnum;
 
     /**
      * roles_at_hq string
@@ -537,8 +537,8 @@ public class CharacterRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_HQ = "roles_at_hq";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_HQ)
     @javax.annotation.Nullable
-    private List<String> rolesAtHq = new ArrayList<>();
-    private List<RolesAtHqEnum> rolesAtHqEnum = new ArrayList<>();
+    private List<String> rolesAtHq;
+    private List<RolesAtHqEnum> rolesAtHqEnum;
 
     /**
      * roles_at_other string
@@ -699,8 +699,8 @@ public class CharacterRolesResponse implements Serializable {
     public static final String SERIALIZED_NAME_ROLES_AT_OTHER = "roles_at_other";
     @SerializedName(SERIALIZED_NAME_ROLES_AT_OTHER)
     @javax.annotation.Nullable
-    private List<String> rolesAtOther = new ArrayList<>();
-    private List<RolesAtOtherEnum> rolesAtOtherEnum = new ArrayList<>();
+    private List<String> rolesAtOther;
+    private List<RolesAtOtherEnum> rolesAtOtherEnum;
 
     public CharacterRolesResponse() {
     }

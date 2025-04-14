@@ -61,17 +61,17 @@ public class FactionWarfareLeaderboardCorporationsVictoryPoints implements Seria
     public static final String SERIALIZED_NAME_ACTIVE_TOTAL = "active_total";
     @SerializedName(SERIALIZED_NAME_ACTIVE_TOTAL)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCorporationActiveTotalVictoryPoints> activeTotal;
 
     public static final String SERIALIZED_NAME_LAST_WEEK = "last_week";
     @SerializedName(SERIALIZED_NAME_LAST_WEEK)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCorporationLastWeekVictoryPoints> lastWeek;
 
     public static final String SERIALIZED_NAME_YESTERDAY = "yesterday";
     @SerializedName(SERIALIZED_NAME_YESTERDAY)
     @javax.annotation.Nonnull
-    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday = new ArrayList<>();
+    private List<FactionWarfareLeaderboardCorporationYesterdayVictoryPoints> yesterday;
 
     public FactionWarfareLeaderboardCorporationsVictoryPoints() {
     }

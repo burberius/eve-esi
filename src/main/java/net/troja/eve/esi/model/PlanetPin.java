@@ -61,7 +61,7 @@ public class PlanetPin implements Serializable {
     public static final String SERIALIZED_NAME_CONTENTS = "contents";
     @SerializedName(SERIALIZED_NAME_CONTENTS)
     @javax.annotation.Nullable
-    private List<PlanetContent> contents = new ArrayList<>();
+    private List<PlanetContent> contents;
 
     public static final String SERIALIZED_NAME_EXPIRY_TIME = "expiry_time";
     @SerializedName(SERIALIZED_NAME_EXPIRY_TIME)

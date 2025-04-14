@@ -74,7 +74,7 @@ public class CharacterMedalsResponse implements Serializable {
     public static final String SERIALIZED_NAME_GRAPHICS = "graphics";
     @SerializedName(SERIALIZED_NAME_GRAPHICS)
     @javax.annotation.Nonnull
-    private List<CharacterMedalsGraphic> graphics = new ArrayList<>();
+    private List<CharacterMedalsGraphic> graphics;
 
     public static final String SERIALIZED_NAME_ISSUER_ID = "issuer_id";
     @SerializedName(SERIALIZED_NAME_ISSUER_ID)

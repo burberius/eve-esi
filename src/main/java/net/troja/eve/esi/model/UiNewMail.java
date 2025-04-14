@@ -62,7 +62,7 @@ public class UiNewMail implements Serializable {
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nonnull
-    private List<Integer> recipients = new ArrayList<>();
+    private List<Integer> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)

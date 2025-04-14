@@ -62,7 +62,7 @@ public class CorporationMembersTitlesResponse implements Serializable {
     public static final String SERIALIZED_NAME_TITLES = "titles";
     @SerializedName(SERIALIZED_NAME_TITLES)
     @javax.annotation.Nonnull
-    private List<Integer> titles = new ArrayList<>();
+    private List<Integer> titles;
 
     public CorporationMembersTitlesResponse() {
     }

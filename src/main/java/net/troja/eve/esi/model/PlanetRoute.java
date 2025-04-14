@@ -82,7 +82,7 @@ public class PlanetRoute implements Serializable {
     public static final String SERIALIZED_NAME_WAYPOINTS = "waypoints";
     @SerializedName(SERIALIZED_NAME_WAYPOINTS)
     @javax.annotation.Nullable
-    private List<Long> waypoints = new ArrayList<>();
+    private List<Long> waypoints;
 
     public PlanetRoute() {
     }

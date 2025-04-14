@@ -68,7 +68,7 @@ public class FleetWingsResponse implements Serializable {
     public static final String SERIALIZED_NAME_SQUADS = "squads";
     @SerializedName(SERIALIZED_NAME_SQUADS)
     @javax.annotation.Nonnull
-    private List<Squad> squads = new ArrayList<>();
+    private List<Squad> squads;
 
     public FleetWingsResponse() {
     }

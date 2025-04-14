@@ -69,7 +69,7 @@ public class MailHeadersResponse implements Serializable {
     public static final String SERIALIZED_NAME_LABELS = "labels";
     @SerializedName(SERIALIZED_NAME_LABELS)
     @javax.annotation.Nullable
-    private Set<Integer> labels = new LinkedHashSet<>();
+    private Set<Integer> labels;
 
     public static final String SERIALIZED_NAME_MAIL_ID = "mail_id";
     @SerializedName(SERIALIZED_NAME_MAIL_ID)
@@ -79,7 +79,7 @@ public class MailHeadersResponse implements Serializable {
     public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
     @SerializedName(SERIALIZED_NAME_RECIPIENTS)
     @javax.annotation.Nullable
-    private Set<Recipient> recipients = new LinkedHashSet<>();
+    private Set<Recipient> recipients;
 
     public static final String SERIALIZED_NAME_SUBJECT = "subject";
     @SerializedName(SERIALIZED_NAME_SUBJECT)

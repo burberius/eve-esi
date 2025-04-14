@@ -134,7 +134,7 @@ public class EsiStatusResponse implements Serializable {
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
     @javax.annotation.Nonnull
-    private List<String> tags = new ArrayList<>();
+    private List<String> tags;
 
     public EsiStatusResponse() {
     }
